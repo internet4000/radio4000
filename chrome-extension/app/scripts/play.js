@@ -1,3 +1,6 @@
+/* jshint unused:false */
+/*global $:false */
+
 'use strict';
 
 /**
@@ -19,10 +22,11 @@ Play.prototype = {
 	init: function() {
 		this.inject();
 		this.fetch();
+		this._listen();
 	},
 
 	inject: function() {
-		chrome.windows.getCurrent(function (currentWindow) {
+		chrome.windows.getCurrent(function(currentWindow) {
 			chrome.tabs.query({
 				active: true,
 				windowId: currentWindow.id
@@ -46,7 +50,9 @@ Play.prototype = {
 
 	notify: function() {
 		var count = this.sounds.length + '';
-		chrome.browserAction.setBadgeText({text: count});
+		chrome.browserAction.setBadgeText({
+			text: count
+		});
 	},
 
 	save: function() {
@@ -58,29 +64,44 @@ Play.prototype = {
 		//   }
 		// }
 
-		var playlistData = {
-			'Playlist': {
-				'id': 1
-			},
-			'Sound': {
-				'title': 'Aubrey Plaza flips off reporter',
-				'key': 'NOrOgeHJeVE',
-				'type': 'youtube'
+		var playlistData;
+
+		for (var i = 0; i < this.sounds.length; i++) {
+			
+			playlistData = {
+				'Playlist': {
+					'id': 1
+				},
+				'Sound': {
+					'key': this.sounds[i].key,
+					'type': this.sounds[i].type
+				}
+			};
+
+
+			$.ajax({
+				type: 'put',
+				dataType: 'json',
+				data: playlistData,
+				url: 'http://play.kopfwelt.com/playlists/add.json',
+				// error: function() {
+				// 	// window.close();
+				// },
+				// success: function(response){
+				// 	// console.log(response);
+				// }
+			});
+
+			// window.close();
+		}
+	},
+
+	_listen: function() {
+		chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+			if (request.action === 'save') {
+				this.save();
 			}
-		};
-		// $.ajax({
-		// 	type: 'put',
-		// 	dataType: 'json',
-		// 	data: playlistData,
-		// 	url: 'http://plist.com/playlists/add.json',
-		// 	error: function() {
-		// 		window.close();
-		// 	},
-		// 	success: function(response){
-		// 		console.log(response);
-		// 		window.close();
-		// 	}
-		// });
+		}.bind(this));
 	}
 
 };

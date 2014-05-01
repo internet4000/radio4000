@@ -1,3 +1,5 @@
+/* jshint unused:false */
+
 'use strict';
 
 /**
@@ -40,15 +42,15 @@ Crawler.prototype = {
 
             // http://stackoverflow.com/questions/18336873/regex-to-extract-youtube-video-id
             var regYoutube = /^.*youtu(\.)?be(\.com)?(\/|v\/|u\/\w\/)(embed\/|watch\?(v=|.*(?=v=)))([^#\&\?]+)/;
-
+            var matches;
             if(url.match(regSoundcloud)) {
-                var matches = regSoundcloud.exec(url);
+                matches = regSoundcloud.exec(url);
                 this.sounds.push({
                     'type': 'soundcloud',
                     'key': matches[1]
                 });
             }else if(url.match(regYoutube)) {
-                var matches = regYoutube.exec(url);
+                matches = regYoutube.exec(url);
                 this.sounds.push({
                     'type': 'youtube',
                     'key': matches[6]
