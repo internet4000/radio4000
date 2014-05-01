@@ -18,17 +18,6 @@ Crawler.prototype = {
     start: function() {
         this._crawl();
         this._send();
-        chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-            this._crawl();
-            this._send();
-
-            // if (changeInfo.status == "loading")
-            // {
-            //     var url = tab.url;
-            //     var iconPath = ???
-            //     chrome.pageAction.setIcon({tabId: tabId, path: iconPath});
-            // }
-        }.bind(this));
     },
 
     _crawl: function() {
