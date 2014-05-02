@@ -3,4 +3,3 @@ Webapp.SoundsRoute = Ember.Route.extend({
     return this.get('store').find('sound');
   }
 });
-

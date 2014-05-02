@@ -1,6 +1,7 @@
 /*global Ember*/
 Webapp.Playlist = DS.Model.extend({
-    title: DS.attr('string')
+    title: DS.attr('string'),
+    sounds: DS.hasMany('sound')
 });
 
 // probably should be mixed-in...

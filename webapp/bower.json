@@ -8,6 +8,7 @@
     "bootstrap-sass": "~3.0.0"
   },
   "devDependencies": {
-    "ember-mocha-adapter": "0.1.2"
+    "ember-mocha-adapter": "0.1.2",
+    "flatui": "*"
   }
 }
