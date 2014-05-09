@@ -13,15 +13,10 @@ Webapp.User.reopen({
 
 // delete below here if you do not want fixtures
 Webapp.User.FIXTURES = [
-  
   {
     id: 0,
-    
   },
-  
   {
     id: 1,
-    
   }
-  
 ];

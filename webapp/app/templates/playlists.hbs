@@ -1,8 +1,9 @@
-<h1>playlists</h1>
+<h1>Playlists</h1>
 
 <ul>
  {{#each model}}
  <li>{{#link-to 'playlist' this}}{{this.id}}{{/link-to}}</li>
   {{/each}}
 </ul>
+
 {{outlet}}
