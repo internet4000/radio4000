@@ -1,6 +1,12 @@
+// This creates an ember app under the "Webapp" namespace
 var Webapp = window.Webapp = Ember.Application.create();
 
-/* Order and include as you please. */
+// Change the class used on active elements by Ember
+Ember.LinkView.reopen({
+	activeClass: 'is-active'
+});
+
+// Order and include as you please
 require('scripts/controllers/*');
 require('scripts/store');
 require('scripts/models/*');
