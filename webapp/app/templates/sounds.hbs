@@ -1,1 +1,16 @@
-{{outlet}}
+<h2>Sounds</h2>
+
+<ul class="List">
+	{{#each item in controller}}
+	<li class="List-item">
+		{{#link-to 'sound' item}}
+			{{item.key}} - {{item.provider}}
+		{{/link-to}}
+	</li>
+	{{/each}}
+</ul>
+
+<div {{bind-attr class=":Sound isHidden:is-hidden"}}>
+	<button class="Sound-toggleBtn" {{action toggleSound}}>Toggle</button>
+	{{outlet}}
+</div>

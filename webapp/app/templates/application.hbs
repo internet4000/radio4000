@@ -1,32 +1,5 @@
-<div>
-    <div class="container" id="main">
-        <div class="row">
-            <div>
-                <div class="col-md-12">
-                    <div class="well">
-                        <strong>Player</strong>
-                        {{outlet}}
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="todo">
-                        <ul class="list-group">
-                            {{#each item in controller}}
-                            <li class="list-group-item">
-                             <!-- todo-done -->
-                                <div class="todo-icon fui-video"></div>
-                                <div class="todo-content">
-                                    {{#link-to 'sound' item}}
-                                    <h4 class="todo-name">{{item.key}}</h4>
-                                     {{item.provider}}
-                                    {{/link-to}}
-                                </div>
-                            </li>
-                            {{/each}}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<h1 class="Logo">Much Play</h1>
+
+<hr>
+
+{{outlet}}
