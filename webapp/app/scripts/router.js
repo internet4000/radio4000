@@ -6,6 +6,8 @@ Webapp.Router.map(function () {
     });
   });
 
+  this.resource('styleguide');
+
   // this.resource('playlists', function(){
   //   this.resource('playlist', { path: '/:playlist_id' }, function(){
   //     this.route('edit');

@@ -4,7 +4,7 @@
 	{{#each item in controller}}
 	<li class="List-item">
 		{{#link-to 'sound' item}}
-			{{item.key}} - {{item.provider}}
+			{{item.key}} <small>{{item.provider}}</small>
 		{{/link-to}}
 	</li>
 	{{/each}}
