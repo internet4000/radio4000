@@ -1,19 +1,25 @@
 // $icon-font-path: "../styles/fonts/"; // Change the path to the fonts
 // @import "bootstrap-sass/lib/bootstrap";
 
-html {
-	font-family: 'Source Sans Pro', sans-serif;
-	font-size: 16px;
-	line-height: 1.3125;
-}
+@import 'base';
 
-a,
-a:visited {
-	color: blue;
-	text-decoration: none;
-}
-a:hover {
-	text-decoration: underline;
+
+.Nav {
+	@extend %patron-bold;
+	text-transform: uppercase;
+
+
+	a {
+		display: inline-block;
+		background: hsl(0, 0%, 93%);
+		border-radius: 2px;
+		padding: 0.4em 0.65em 0.25em;
+
+		&.is-active {
+			background-color: hsl(60, 100%, 80%);
+			color: black;
+		}
+	}
 }
 
 
@@ -22,7 +28,7 @@ a:hover {
 	padding-left: 0;
 }
 .List-item {
-	border-top: 1px solid hsl(0, 0%, 80%);
+	border-top: 1px solid hsl(0, 0%, 90%);
 
 	a {
 		display: block;
@@ -35,8 +41,6 @@ a:hover {
 		}
 	}
 }
-
-
 
 .Sound {
 	position: fixed;
