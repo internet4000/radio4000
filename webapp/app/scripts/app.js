@@ -1,5 +1,5 @@
-// This creates an ember app under the "Webapp" namespace
-var Webapp = window.Webapp = Ember.Application.create();
+// This creates an ember under the "App" namespace
+App  = Window.App = Ember.Application.create();
 
 // Change the class used on active elements by Ember
 Ember.LinkView.reopen({

@@ -1,2 +1,1 @@
-Webapp.UserEditView = Ember.View.extend({
-});
+// App.UserEditView = Ember.View.extend({});

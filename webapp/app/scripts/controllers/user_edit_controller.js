@@ -1,4 +1,4 @@
-Webapp.UserEditController = Ember.ObjectController.extend({
+App.UserEditController = Ember.ObjectController.extend({
   needs: 'user',
   actions: {
     save: function(){

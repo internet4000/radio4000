@@ -1,4 +1,4 @@
-Webapp.Router.map(function () {
+App.Router.map(function () {
 
   this.resource('sounds', function(){
     this.resource('sound', { path: '/:sound_id' }, function(){

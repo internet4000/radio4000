@@ -1,11 +1,11 @@
 /*global Ember*/
-Webapp.Playlist = DS.Model.extend({
+App.Playlist = DS.Model.extend({
     title: DS.attr('string'),
     sounds: DS.hasMany('sound')
 });
 
 // probably should be mixed-in...
-Webapp.Playlist.reopen({
+App.Playlist.reopen({
   attributes: function(){
     var model = this;
 

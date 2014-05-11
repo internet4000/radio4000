@@ -1,11 +1,11 @@
 /*global Ember*/
-Webapp.Sound = DS.Model.extend({
+App.Sound = DS.Model.extend({
     key: DS.attr('string'),
     provider: DS.attr('string')
 });
 
 // probably should be mixed-in...
-Webapp.Sound.reopen({
+App.Sound.reopen({
 
   // Not sure what this does
   attributes: function(){

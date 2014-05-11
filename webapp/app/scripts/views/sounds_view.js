@@ -1,2 +1,1 @@
-Webapp.SoundsView = Ember.View.extend({
-});
+// App.SoundsView = Ember.View.extend({});

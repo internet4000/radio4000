@@ -1,3 +1,3 @@
-Webapp.SoundPlayController = Ember.ObjectController.extend({
+App.SoundPlayController = Ember.ObjectController.extend({
   controllerName: 'sound'
 });

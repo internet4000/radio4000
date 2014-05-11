@@ -1,2 +1,1 @@
-Webapp.PlaylistEditView = Ember.View.extend({
-});
+// App.PlaylistEditView = Ember.View.extend({});

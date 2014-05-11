@@ -1,4 +1,4 @@
-Webapp.PlaylistEditController = Ember.ObjectController.extend({
+App.PlaylistEditController = Ember.ObjectController.extend({
   needs: 'playlist',
   actions: {
     save: function(){

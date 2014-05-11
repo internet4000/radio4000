@@ -1,4 +1,4 @@
-// Webapp.ApplicationAdapter = DS.FixtureAdapter;
+// App.ApplicationAdapter = DS.FixtureAdapter;
 
 // Use Ember's REST adapter and specify the host
 DS.RESTAdapter.reopen({
@@ -6,7 +6,7 @@ DS.RESTAdapter.reopen({
 });
 
 // If things aren't the the Ember default, we have to specify differences here
-Webapp.ApplicationAdapter = DS.RESTAdapter.extend({
+App.ApplicationAdapter = DS.RESTAdapter.extend({
     buildURL: function(record, suffix){
        return this._super(record, suffix) + ".json";
     }

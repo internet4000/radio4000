@@ -1,8 +1,8 @@
 /*global Ember*/
-Webapp.User = DS.Model.extend({});
+App.User = DS.Model.extend({});
 
 // probably should be mixed-in...
-Webapp.User.reopen({
+App.User.reopen({
   attributes: function(){
     var model = this;
     return Ember.keys(this.get('data')).map(function(key){
@@ -12,7 +12,7 @@ Webapp.User.reopen({
 });
 
 // delete below here if you do not want fixtures
-Webapp.User.FIXTURES = [
+App.User.FIXTURES = [
   {
     id: 0,
   },

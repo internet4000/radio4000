@@ -1,6 +1,6 @@
-Webapp.ApplicationRoute = Ember.Route.extend({});
+// App.ApplicationRoute = Ember.Route.extend({});
 
-Webapp.IndexRoute = Ember.Route.extend({
+App.IndexRoute = Ember.Route.extend({
 	beforeModel: function() {
 		this.transitionTo('sounds');
 	}

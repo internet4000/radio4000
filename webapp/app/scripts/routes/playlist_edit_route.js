@@ -1,4 +1,4 @@
-Webapp.PlaylistEditRoute = Ember.Route.extend({
+App.PlaylistEditRoute = Ember.Route.extend({
   model: function(params) {
     return this.get('store').find('playlist', this.modelFor('playlist').id);
   },

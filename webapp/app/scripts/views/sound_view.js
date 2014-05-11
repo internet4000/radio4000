@@ -1,9 +1,9 @@
-Webapp.SoundView = Ember.View.extend({
+AppSoundView = Ember.View.extend({
   // templateName: function() {
 
   //   return this.get('provider');
   // }.property().cacheable(),
-  srcChanged: function() {        
+  srcChanged: function() {
       this.get('sound').rerender();
   }.observes('src')
 });
@@ -22,7 +22,7 @@ Webapp.SoundView = Ember.View.extend({
    mykey = $('#sound').data('key');
    console.log(model);
 
-   
+
    function onYouTubeIframeAPIReady() {
      player = new YT.Player('player', {
        height: '390',

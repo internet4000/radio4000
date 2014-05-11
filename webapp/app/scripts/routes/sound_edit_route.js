@@ -1,4 +1,4 @@
-Webapp.SoundEditRoute = Ember.Route.extend({
+App.SoundEditRoute = Ember.Route.extend({
   model: function(params) {
     return this.get('store').find('sound', this.modelFor('sound').id);
   },

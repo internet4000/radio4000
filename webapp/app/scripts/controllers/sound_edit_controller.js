@@ -1,4 +1,4 @@
-Webapp.SoundEditController = Ember.ObjectController.extend({
+App.SoundEditController = Ember.ObjectController.extend({
   needs: 'sound',
   actions: {
     save: function(){
