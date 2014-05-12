@@ -1,1 +1,5 @@
-<iframe width="100%" height="300" {{bind-attr src="model.src"}} frameborder="0" allowfullscreen></iframe>
+{{!-- <article {{bind-attr class=":Sound controller.isFullscreen:is-hidden"}}> --}}
+
+{{#multi-embed key=model.key source=model.src}}{{/multi-embed}}
+
+{{!-- </article> --}}

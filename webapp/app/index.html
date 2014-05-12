@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
 
-    <script type="text/javascript">
+    <script>
     WebFontConfig = { fontdeck: { id: '45058' } };
 
     (function() {
@@ -24,6 +24,9 @@
     <!-- endbuild -->
 </head>
 <body>
+
+    <script src="scripts/player.js"></script>
+
     <!-- build:js(app) scripts/components.js -->
     <script src="bower_components/jquery/jquery.js"></script>
     <script src="bower_components/handlebars/handlebars.runtime.js"></script>
@@ -53,5 +56,18 @@
     <script src="bower_components/bootstrap-sass/js/collapse.js"></script>
     <script src="bower_components/bootstrap-sass/js/tab.js"></script>
     <!-- endbuild -->
+
+    <!-- Load the YouTube iFrame Player API code asynchronously. -->
+    <script>
+    // 2. This code loads the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    </script>
+
+    <!-- Soundcloud API -->
+    <script src="https://w.soundcloud.com/player/api.js"></script>
+
 </body>
 </html>

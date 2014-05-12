@@ -1,0 +1,12 @@
+<div class="Playback">
+	{{#if isPlaying}}
+		<button {{action pause}}>Pause</button>
+	{{else}}
+		<button {{action play}}>►</button>
+	{{/if}}
+
+	<button {{action maximize}}>Maximize</button>
+
+	{{!-- <button {{action prev}}>Prev</button>
+	<button {{action next}}>Next</button> --}}
+</div>

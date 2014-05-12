@@ -1,18 +1,18 @@
 App.SoundRoute = Ember.Route.extend({
-  model: function(params) {
-    return this.get('store').find('sound', params.sound_id);
-  },
 
-  // renderTemplate: function() {
-  //   var controller = this.controllerFor('sound');
+	// get the model we want from ember data
+	model: function(params) {
+		return this.get('store').find('sound', params.sound_id);
+	}
 
-  //   // Render the `favoritePost` template into
-  //   // the outlet `posts`, and display the `favoritePost`
-  //   // controller.
-  //   this.render('youtube', {
-  //     outlet: 'sound',
-  //     controller: controller
-  //   });
-  // }
+	// normally the post template would be rendered into the outlet of posts.
+	// here we render it to the player outlet on the application template
+	,renderTemplate: function() {
+		var controller = this.controllerFor('sound');
+		this.render('sound', {
+			into: 'application',
+			outlet: 'player',
+			controller: controller
+		});
+	}
 });
-

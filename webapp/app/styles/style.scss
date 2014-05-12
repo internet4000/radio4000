@@ -2,7 +2,11 @@
 // @import "bootstrap-sass/lib/bootstrap";
 
 @import 'base';
+@import 'buttons';
 
+body {
+	margin: 4em 1em 0;
+}
 
 .Nav {
 	@extend %patron-bold;
@@ -11,13 +15,14 @@
 
 	a {
 		display: inline-block;
-		background: hsl(0, 0%, 93%);
-		border-radius: 2px;
+		line-height: 1;
 		padding: 0.4em 0.65em 0.25em;
+		border-radius: 0.2em;
+		background: hsl(0, 0%, 93%);
+		color: black;
 
 		&.is-active {
-			background-color: hsl(60, 100%, 80%);
-			color: black;
+			background-color: $yellow;
 		}
 	}
 }
@@ -36,24 +41,37 @@
 		padding-bottom: 1px;
 
 		&.is-active {
-			background-color: hsl(60, 100%, 80%);
+			background-color: $yellow;
 			color: black;
 		}
 	}
+
+	small {
+		float: right;
+		color: black;
+	}
 }
 
-.Sound {
-	position: fixed;
-	bottom: 0;
-	right: -2px;
-	width: 90%;
-	z-index: 1;
-	box-shadow: -2px -2px 5px hsla(0, 0%, 0%, 0.20);
+.Player {
+	// position: fixed;
+	// bottom: 0;
+	// right: -2px;
+	// z-index: 1;
+	// width: 90%;
+	// padding: 1em;
+	// box-shadow: -2px -2px 5px hsla(0, 0%, 0%, 0.20);
 	background-color: hsl(0,0%,90%);
+
+	iframe {
+		margin: 1em;
+	}
 
 	&.is-hidden {
 		width: 53px;
 		height: 20px;
+	}
+	&.is-maximized {
+		background-color: red;
 	}
 }
 .Sound-toggleBtn {
@@ -61,4 +79,16 @@
 	top: -11px;
 	left: -13px;
 	z-index: 1;
+}
+
+.Playback {
+	margin: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	padding: 0.5em 1em;
+	background-color: hsla(0,0%, 100%, 0.90);
+	border-bottom: 1px solid;
 }

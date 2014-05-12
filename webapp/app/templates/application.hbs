@@ -1,10 +1,18 @@
-<h1 class="Logo">Much Play</h1>
+{{view App.PlaybackView}}
+
+<header>
+	<h1 class="Logo">Much Play</h1>
+</header>
 
 <nav class="Nav">
 	{{#link-to 'sounds'}}Sounds{{/link-to}}
 	{{#link-to 'styleguide'}}Styleguide{{/link-to}}
 </nav>
 
-<hr>
+<main>
+	{{outlet}}
 
-{{outlet}}
+	<div {{bind-attr class=':Player isMaximized'}}>
+		{{outlet player}}
+	</div>
+</main>
