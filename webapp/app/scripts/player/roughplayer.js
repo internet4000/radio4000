@@ -62,14 +62,21 @@ var roughPlayer = {
 	},
 
 	loadVideo: function(videoId) {
-		ytPlayer.loadVideoById({
-			'videoId': 'kQFKtI6gn9Y'
-			// ,'startSeconds': 20,
-			// 'endSeconds': 60,
-			// 'suggestedQuality': 'large'
-		});
 
-		roughPlayer.updatePlaylistTitle('');
+		if (!ytPlayer) {
+			console.log('NO ytplayer. Something wrong with the order of scripts/loading/init');
+			return false;
+		}
+
+		console.log(videoId);
+
+		// console.log(videoId);
+		if (!videoId) { var videoId = 'KPiNtH2wZM4'; }
+
+		ytPlayer.loadVideoById({
+			'videoId': videoId
+		});
+		// roughPlayer.updatePlaylistTitle('');
 	},
 
 	/**
@@ -181,7 +188,8 @@ var roughPlayer = {
 
 			if (roughPlayer.firstPlay) {
 
-				// console.log('first play');
+				console.log('first play');
+				// App.advanceReadiness();
 
 				// roughPlayer.nextVideo();
 

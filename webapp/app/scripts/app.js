@@ -1,5 +1,32 @@
 // This creates an ember under the "App" namespace
-App  = Window.App = Ember.Application.create();
+App = Ember.Application.create({
+	rootElement: '#Ember'
+});
+
+// Wait loading the Ember app until YouTube API is ready
+// App.deferReadiness();
+
+Ember.Application.initializer({
+	name: 'youTube',
+	initialize: function(container, application) {
+
+		// App.deferReadiness();
+		// App.advanceReadiness();
+
+		$(function(){
+			console.log('rdy');
+		});
+	}
+});
+
+// Ember.Application.initializer({
+// 	name: 'soundcloud',
+// 	after: 'youTube'
+// 	initialize: function(container, application) {
+// 		// this will run after the youtube initializer
+// 	}
+// });
+
 
 // Change the class used on active elements by Ember
 Ember.LinkView.reopen({

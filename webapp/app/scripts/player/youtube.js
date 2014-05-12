@@ -1,19 +1,26 @@
 /*global YT */
 
+// Load the IFrame Player API code asynchronously.
+var tag = document.createElement('script');
+tag.src = "http://www.youtube.com/iframe_api"; // iframe api
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+/**
+ * This will set up the default YouTube player API events and sync them to the roughPlayer
+ * it will also automatically call, load, play and immediately stop a video to get the API working
+ */
+
 // Settings
 var muted = false;
-
-// Make sure the player is global
-var ytPlayer;
-
-// Options for the YouTube player
+var ytPlayer = 'Just a global for now..';
 var playerOptions = {
 	width: '640',
-	height: '390',
+	height: '166',
 	videoId: 'KPiNtH2wZM4',
 	playerVars: {
 		'html5': 1,
-		'autoplay': 0,
+		'autoplay': 1,
 		'autohide': 2,
 		// 'controls': 1, // hide controls
 		// 'controls': 2, // only show controls after video is loaded
@@ -51,31 +58,34 @@ function onYouTubePlayerAPIReady() {
 
 	// Replace the 'ytplayer' element with an <iframe>
 	// this will also trigger the next events…
+	// console.log(ytplayer);
 	ytPlayer = new YT.Player('ytplayer', playerOptions);
-
+	// ytPlayer = new YT.Player('ytplayer2', playerOptions);
 	// $('html').removeClass('is-loading');
 }
-
 
 /**
  * The API will call this function when the video player is ready.
  */
 function onPlayerReady(event) {
-	console.log('onPlayerReady');
 	roughPlayer.updateGUI('onPlayerReady');
 
 	// event.target.cueVideoById(db.videos[1], 5, "small");
 	// event.target.cuePlaylist(db.playlists[1], 5, "small");
 	// event.target.playVideo();
 
-	// Start by loading a random video/playlist to properly trigger the API
-	roughPlayer.loadVideo();
-	ytPlayer.stopVideo();
 
+	// Start by loading a random video/playlist to properly trigger the API
+	// roughPlayer.loadVideo();
 	// roughPlayer.loadPlaylist();
+	// ytPlayer.stopVideo();
+
 
 	// Make sure we have volume
 	var p = event.target;
+
+	p.playVideo();
+	p.stopVideo();
 
 	if (!muted) {
 		if (p.isMuted()) {
@@ -86,7 +96,6 @@ function onPlayerReady(event) {
 		p.mute();
 	}
 }
-
 
 /**
  * Called every time the player changes (often!)
@@ -125,6 +134,9 @@ function onPlayerStateChange(event) {
 
 	// Break on end
 	if (state === YT.PlayerState.ENDED) {
+
+		console.log('ended');
+
 		// roughPlayer.showLoader();
 		// roughPlayer.updateVideoTitle('Hey! No more roughPlayer.tv for now, go outside or read a book');
 	}
@@ -136,7 +148,6 @@ function onPlayerStateChange(event) {
 	// 	roughPlayer.showLoader();
 	// }
 }
-
 
 /**
  * Handles errors from the YouTube API
@@ -161,4 +172,3 @@ function onPlayerError(event) {
 			break;
 	}
 }
-

@@ -5,7 +5,8 @@
 @import 'components/list';
 
 body {
-	margin: 4em 1em 0;
+	margin: 4em 1em 186px;
+	overflow-y: scroll;
 }
 
 
@@ -44,6 +45,7 @@ body {
 		display: none;
 	}
 	&.youtube #YouTubePlayer,
+	&.youtube #ytplayer,
 	&.soundcloud #SoundcloudPlayer {
 		display: block;
 	}

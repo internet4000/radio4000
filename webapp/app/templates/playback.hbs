@@ -1,7 +1,6 @@
 <div {{bind-attr class=':Playback model:is-active'}}>
-	{{#if model}}
-
-		<p>
+	<p>
+		{{#if model}}
 			{{#if isPlaying}}
 				<button {{action 'pause'}}<strong>ll</strong></button>
 			{{else}}
@@ -13,18 +12,18 @@
 			</button>
 
 			<span class="Playback-title">{{provider}}: {{key}}</span>
-		</p>
 
-		<div {{bind-attr class=':Player isMinimized model.provider'}}>
+		{{else}}
+			Choose a sound!
+		{{/if}}
+	</p>
 
-			<iframe id="YouTubePlayer" width="100%" height="166" frameborder="0"
-				{{bind-attr src="youtubeUrl"}}></iframe>
-
-			<iframe id="SoundcloudPlayer" width="100%" height="166" frameborder="0"
-				{{bind-attr src="soundcloudUrl"}}></iframe>
-		</div>
-
-	{{else}}
-		<p>Choose a sound!</p>
-	{{/if}}
+	<div {{bind-attr class=':Player isMinimized model.provider'}}>
+		<div id="ytplayer"></div>
+		{{youtubeUrl}}
+		{{!-- <iframe id="YouTubePlayer" width="100%" height="166" frameborder="0"
+			{{bind-attr src="youtubeUrl"}}></iframe> --}}
+		<iframe id="SoundcloudPlayer" width="100%" height="166" frameborder="0"
+			{{bind-attr src="soundcloudUrl"}}></iframe>
+	</div>
 </div>
