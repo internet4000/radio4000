@@ -32,8 +32,8 @@ module.exports = function (grunt) {
                 tasks: ['emberTemplates']
             },
             compass: {
-                files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
-                tasks: ['compass:server']
+                files: ['<%= yeoman.app %>/styles/**/*.{scss,sass}'],
+                tasks: ['compass:server', 'autoprefixer']
             },
             neuter: {
                 files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
@@ -93,6 +93,7 @@ module.exports = function (grunt) {
                 path: 'http://localhost:<%= connect.options.port %>'
             }
         },
+
         clean: {
             dist: {
                 files: [{
@@ -106,6 +107,7 @@ module.exports = function (grunt) {
             },
             server: '.tmp'
         },
+
         jshint: {
             options: {
                 jshintrc: '.jshintrc',
@@ -118,6 +120,7 @@ module.exports = function (grunt) {
                 'test/spec/{,*/}*.js'
             ]
         },
+
         mocha: {
             all: {
                 options: {
@@ -126,6 +129,7 @@ module.exports = function (grunt) {
                 }
             }
         },
+
         compass: {
             options: {
                 sassDir: '<%= yeoman.app %>/styles',
@@ -147,17 +151,19 @@ module.exports = function (grunt) {
                 }
             }
         },
-        // not used since Uglify task does concat,
-        // but still available if needed
-        /*concat: {
-            dist: {}
-        },*/
-        // not enabled since usemin task does concat and uglify
-        // check index.html to edit your build targets
-        // enable this task if you prefer defining your build targets here
-        /*uglify: {
-            dist: {}
-        },*/
+
+        // Add vendor prefixed styles
+        autoprefixer: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: '.tmp/styles/',
+                    src: '{,*/}*.css',
+                    dest: '.tmp/styles/'
+                }]
+            }
+        },
+
         rev: {
             dist: {
                 files: {
@@ -170,12 +176,14 @@ module.exports = function (grunt) {
                 }
             }
         },
+
         useminPrepare: {
             html: '.tmp/index.html',
             options: {
                 dest: '<%= yeoman.dist %>'
             }
         },
+
         usemin: {
             html: ['<%= yeoman.dist %>/{,*/}*.html'],
             css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
@@ -183,6 +191,7 @@ module.exports = function (grunt) {
                 dirs: ['<%= yeoman.dist %>']
             }
         },
+
         imagemin: {
             dist: {
                 files: [{
@@ -193,6 +202,7 @@ module.exports = function (grunt) {
                 }]
             }
         },
+
         svgmin: {
             dist: {
                 files: [{
@@ -318,7 +328,7 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    '.tmp/scripts/compiled-templates.js': '<%= yeoman.app %>/templates/{,*/}*.hbs'
+                    '.tmp/scripts/compiled-templates.js': '<%= yeoman.app %>/templates/**/*.hbs'
                 }
             }
         },
@@ -344,6 +354,7 @@ module.exports = function (grunt) {
             'clean:server',
             'replace:app',
             'concurrent:server',
+            'autoprefixer',
             'neuter:app',
             'copy:fonts',
             'connect:livereload',
@@ -366,6 +377,7 @@ module.exports = function (grunt) {
         'replace:dist',
         'useminPrepare',
         'concurrent:dist',
+        'autoprefixer',
         'neuter:app',
         'concat',
         'cssmin',
