@@ -9,11 +9,12 @@
 
 	a {
 		display: block;
+		color: $black;
 		padding-top: .357142857em; // optical center
 
 		&.is-active {
 			background-color: $yellow;
-			color: black;
+			color: $black;
 		}
 	}
 
