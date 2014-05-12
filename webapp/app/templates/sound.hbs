@@ -1,5 +1,10 @@
-{{!-- <article {{bind-attr class=":Sound controller.isFullscreen:is-hidden"}}> --}}
+<div {{bind-attr class=":Sound controller.isMaximized:is-maximized"}}>
+	{{embedSource}}
+</div>
 
+{{!--
+
+{{bind-attr src='embed'}}
 {{#multi-embed key=model.key source=model.src}}{{/multi-embed}}
 
-{{!-- </article> --}}
+--}}

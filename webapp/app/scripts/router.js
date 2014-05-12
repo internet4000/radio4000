@@ -2,7 +2,8 @@ App.Router.map(function () {
 
   this.resource('sounds', function(){
     this.resource('sound', { path: '/:sound_id' }, function(){
-      this.route('play');
+      // this.route('play');
+      // this.route('edit');
     });
   });
 
