@@ -1,10 +1,10 @@
 <h2>Sounds</h2>
 
 <ul class="List">
-	{{#each item in controller}}
+	{{#each sound in controller}}
 	<li class="List-item">
-		{{#link-to 'sound' item}}
-			{{item.key}} <small>{{item.provider}}</small>
+		{{#link-to 'sound' sound}}
+			{{sound.key}} <small>{{sound.provider}}</small>
 		{{/link-to}}
 	</li>
 	{{/each}}

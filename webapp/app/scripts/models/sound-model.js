@@ -25,7 +25,7 @@ App.Sound.reopen({
     var src = '';
 
     if (this.get('provider') === 'youtube') {
-      src = '//www.youtube.com/embed/' + this.get('key');
+      src = '//www.youtube.com/embed/' + this.get('key') + '?enablejsapi=1&autoplay=1';
     } else if (this.get('provider') === 'soundcloud') {
       src = 'https://w.soundcloud.com/player/?url=http://api.soundcloud.com/tracks/' + this.get('key');
     }

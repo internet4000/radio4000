@@ -10,4 +10,3 @@ App.PlaylistEditController = Ember.ObjectController.extend({
     }
   }
 });
-
