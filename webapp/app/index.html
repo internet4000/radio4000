@@ -24,10 +24,16 @@
 </head>
 <body>
 
-	<!-- Soundcloud API -->
-	<script src="https://w.soundcloud.com/player/api.js"></script>
-	<!-- Soundcloud SDK - we only need this to create players from JS -->
-	<script src="http://connect.soundcloud.com/sdk.js"></script>
+	<div id="ytplayer"></div>
+
+	<script>
+		// Load the IFrame Player API code asynchronously.
+		var tag = document.createElement('script');
+		tag.src = "http://www.youtube.com/iframe_api"; // iframe api
+		var firstScriptTag = document.getElementsByTagName('script')[0];
+		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+	</script>
+
 
 	<!-- build:js(app) scripts/components.js -->
 	<script src="bower_components/jquery/jquery.js"></script>
@@ -40,24 +46,18 @@
 	<script src="scripts/compiled-templates.js"></script>
 	<!-- endbuild -->
 
+	<script src="https://w.soundcloud.com/player/api.js"></script>
+
 	<!-- build:js(.tmp) scripts/main.js -->
 	<script src="scripts/player/player.js"></script>
 	<script src="scripts/player/youtube.js"></script>
 	<script src="scripts/player/soundcloud.js"></script>
+	<script src="scripts/player/roughplayer.js"></script>
 	<script src="scripts/combined-scripts.js"></script>
 	<!-- endbuild -->
 
 	<!-- build:js scripts/plugins.js -->
 	<!-- endbuild -->
-
-	<!-- Load the YouTube iFrame Player API code asynchronously. -->
-	<script>
-	// 2. This code loads the IFrame Player API code asynchronously.
-	var tag = document.createElement('script');
-	tag.src = "https://www.youtube.com/iframe_api";
-	var firstScriptTag = document.getElementsByTagName('script')[0];
-	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-	</script>
 
 </body>
 </html>

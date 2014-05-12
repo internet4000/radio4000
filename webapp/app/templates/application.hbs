@@ -1,7 +1,6 @@
-{{view App.PlaybackView}}
-
 <header>
 	<h1 class="Logo">Much Play</h1>
+	{{render 'playback'}}
 </header>
 
 <nav class="Nav">
@@ -11,8 +10,4 @@
 
 <main>
 	{{outlet}}
-
-	<div {{bind-attr class=':Player isMaximized'}}>
-		{{outlet player}}
-	</div>
 </main>

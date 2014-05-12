@@ -1,18 +1,30 @@
-<div class="Playback">
+<div {{bind-attr class=':Playback model:is-active'}}>
+	{{#if model}}
 
-	{{#if isPlaying}}
-		<button {{action pause}}>Pause</button>
+		<p>
+			{{#if isPlaying}}
+				<button {{action 'pause'}}<strong>ll</strong></button>
+			{{else}}
+				<button {{action 'play'}}>►</button>
+			{{/if}}
+
+			<button {{action 'togglePlayer'}}>
+				{{#if isMinimized}}Show{{else}}Hide{{/if}}
+			</button>
+
+			<span class="Playback-title">{{provider}}: {{key}}</span>
+		</p>
+
+		<div {{bind-attr class=':Player isMinimized model.provider'}}>
+
+			<iframe id="YouTubePlayer" width="100%" height="166" frameborder="0"
+				{{bind-attr src="youtubeUrl"}}></iframe>
+
+			<iframe id="SoundcloudPlayer" width="100%" height="166" frameborder="0"
+				{{bind-attr src="soundcloudUrl"}}></iframe>
+		</div>
+
 	{{else}}
-		<button {{action play}}>►</button>
+		<p>Choose a sound!</p>
 	{{/if}}
-	<button {{action maximize}}>Maximize</button>
-
-	{{!-- <button {{action prev}}>Prev</button>
-	<button {{action next}}>Next</button> --}}
-
-	<div id="SoundCloud">
-		{{! <iframe id="SoundCloudWidget" width="100%" height="166" src="http://w.soundcloud.com/player/" frameborder="0" allowfullscreen></iframe> }}
-	</div>
-	<div id="YouTube"></div>
-
 </div>

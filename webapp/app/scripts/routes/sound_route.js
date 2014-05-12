@@ -10,14 +10,21 @@ App.SoundRoute = Ember.Route.extend({
 	// 	return { sound_key: model.get('key') };
 	// }
 
-	// normally the post template would be rendered into the outlet of posts.
-	// here we render it to the player outlet on the application template
+	// Normally the post template would be rendered into the outlet of sounds.hbs
+	// Instead we render it to the 'player' outlet of application.hbs
 	// ,renderTemplate: function() {
-	// 	var controller = this.controllerFor('sound');
+	// 	// var controller = this.controllerFor('sound');
 	// 	this.render('sound', {
 	// 		into: 'application',
-	// 		outlet: 'player',
-	// 		controller: controller
+	// 		outlet: 'player'
+	// 		// ,controller: controller
 	// 	});
 	// }
+
+	// Pass the model to the controller of "playback".
+	// We need this to persist the template between routes
+	,setupController: function(controller, model) {
+		this.controllerFor('playback').set('model', model);
+		this.controllerFor('playback').set('provider', model.get('provider'));
+	}
 });

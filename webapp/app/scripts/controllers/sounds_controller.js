@@ -1,1 +1,3 @@
-// App.SoundsController = Ember.ArrayController.extend({});
+// App.SoundsController = Ember.ArrayController.extend({
+// 	title: 'No title yet'
+// });
