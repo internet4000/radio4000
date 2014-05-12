@@ -1,12 +1,14 @@
+(function(){
+
 var youtube;
 function onYouTubeIframeAPIReady() {
 	youtube = new YT.Player('player', {
 		// height: '390',
 		// width: '640',
 		// videoId: mykey,
-		playerVars: {
-			'autoplay': 1
-		},
+		// playerVars: {
+		// 	'autoplay': 1
+		// },
 		events: {
 			'onReady': onPlayerReady,
 			'onStateChange': onPlayerStateChange,
@@ -17,7 +19,7 @@ function onYouTubeIframeAPIReady() {
 
 // The API will call this function when the video player is ready.
 function onPlayerReady(event) {
-	console.log('onplayerready');
+	console.log('YouTube onPlayerReady');
 	// event.target.playVideo();
 }
 
@@ -29,6 +31,4 @@ function onPlayerError(event) {
 	console.log(event);
 }
 
-function stopVideo() {
-	youtube.stopVideo();
-}
+});

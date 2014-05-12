@@ -1,12 +1,18 @@
 <div class="Playback">
+
 	{{#if isPlaying}}
 		<button {{action pause}}>Pause</button>
 	{{else}}
 		<button {{action play}}>►</button>
 	{{/if}}
-
 	<button {{action maximize}}>Maximize</button>
 
 	{{!-- <button {{action prev}}>Prev</button>
 	<button {{action next}}>Next</button> --}}
+
+	<div id="SoundCloud">
+		{{! <iframe id="SoundCloudWidget" width="100%" height="166" src="http://w.soundcloud.com/player/" frameborder="0" allowfullscreen></iframe> }}
+	</div>
+	<div id="YouTube"></div>
+
 </div>
