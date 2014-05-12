@@ -262,13 +262,13 @@ module.exports = function (grunt) {
         copy: {
             fonts: {
                 files: [
-                    { 
+                    {
                         expand: true,
                         flatten: true,
                         filter: 'isFile',
                         cwd: '<%= yeoman.app %>/bower_components/',
                         dest: '<%= yeoman.app %>/styles/fonts/',
-                        src: [ 
+                        src: [
                             'bootstrap-sass/dist/fonts/**', // Bootstrap
                             'font-awesome/fonts/**' // Font-Awesome
                         ]
@@ -333,11 +333,6 @@ module.exports = function (grunt) {
                 dest: '.tmp/scripts/combined-scripts.js'
             }
         }
-    });
-
-    grunt.registerTask('server', function (target) {
-        grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
-        grunt.task.run(['serve:' + target]);
     });
 
     grunt.registerTask('serve', function (target) {

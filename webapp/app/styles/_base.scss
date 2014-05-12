@@ -35,7 +35,8 @@ a:visited {
 	text-decoration: none;
 }
 a:hover {
-	color: hsl(100, 60%, 50%);
+	// color: hsl(100, 60%, 50%);
+	text-decoration: underline;
 }
 
 h1,h2,h3,h4 {
@@ -45,7 +46,6 @@ h4 {
 	font-size: 14px;
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
-	margin-bottom: -1em;
 }
 
 

@@ -1,0 +1,46 @@
+// $icon-font-path: "../styles/fonts/"; // Change the path to the fonts
+// @import "bootstrap-sass/lib/bootstrap";
+
+@import 'base';
+@import 'buttons';
+@import 'components/nav';
+@import 'components/list';
+
+body {
+	margin: 4em 1em 0;
+}
+
+.Playback {
+	margin: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	padding: 0.5em 1em;
+	background-color: hsla(0,0%, 100%, 0.90);
+	border-bottom: 1px solid;
+}
+
+.Player {
+	// position: fixed;
+	// bottom: 0;
+	// right: -2px;
+	// z-index: 1;
+	// width: 90%;
+	// padding: 1em;
+	// box-shadow: -2px -2px 5px hsla(0, 0%, 0%, 0.20);
+	background-color: hsl(0,0%,90%);
+
+	iframe {
+		display: block;
+	}
+
+	&.is-hidden {
+		width: 53px;
+		height: 20px;
+	}
+	&.is-maximized {
+		background-color: red;
+	}
+}

@@ -1,73 +1,63 @@
 <!doctype html>
 <html>
 <head>
-    <meta charset="utf-8">
+	<meta charset="utf-8">
 
-    <script>
-    WebFontConfig = { fontdeck: { id: '45058' } };
+	<script>
+	WebFontConfig = { fontdeck: { id: '45058' } };
+	(function() {
+		var wf = document.createElement('script');
+		wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+		'://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+		wf.type = 'text/javascript';
+		wf.async = 'true';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(wf, s);
+	})();
+	</script>
 
-    (function() {
-      var wf = document.createElement('script');
-      wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-      wf.type = 'text/javascript';
-      wf.async = 'true';
-      var s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(wf, s);
-    })();
-    </script>
+	<title>Much Play</title>
 
-    <title>Much Play</title>
-
-    <!-- build:css styles/main.css -->
-    <link rel="stylesheet" href="styles/style.css">
-    <!-- endbuild -->
+	<!-- build:css styles/main.css -->
+	<link rel="stylesheet" href="styles/main.css">
+	<!-- endbuild -->
 </head>
 <body>
 
-    <script src="scripts/player.js"></script>
+	<!-- Soundcloud API -->
+	<script src="https://w.soundcloud.com/player/api.js"></script>
+	<!-- Soundcloud SDK - we only need this to create players from JS -->
+	<script src="http://connect.soundcloud.com/sdk.js"></script>
 
-    <!-- build:js(app) scripts/components.js -->
-    <script src="bower_components/jquery/jquery.js"></script>
-    <script src="bower_components/handlebars/handlebars.runtime.js"></script>
-    <script src="@@ember"></script>
-    <script src="@@ember_data"></script>
-    <!-- endbuild -->
+	<!-- build:js(app) scripts/components.js -->
+	<script src="bower_components/jquery/jquery.js"></script>
+	<script src="bower_components/handlebars/handlebars.runtime.js"></script>
+	<script src="@@ember"></script>
+	<script src="@@ember_data"></script>
+	<!-- endbuild -->
 
-    <!-- build:js(.tmp) scripts/templates.js -->
-    <script src="scripts/compiled-templates.js"></script>
-    <!-- endbuild -->
+	<!-- build:js(.tmp) scripts/templates.js -->
+	<script src="scripts/compiled-templates.js"></script>
+	<!-- endbuild -->
 
-    <!-- build:js(.tmp) scripts/main.js -->
-    <script src="scripts/combined-scripts.js"></script>
-    <!-- endbuild -->
+	<!-- build:js(.tmp) scripts/main.js -->
+	<script src="scripts/player/player.js"></script>
+	<script src="scripts/player/youtube.js"></script>
+	<script src="scripts/player/soundcloud.js"></script>
+	<script src="scripts/combined-scripts.js"></script>
+	<!-- endbuild -->
 
-    <!-- build:js scripts/plugins.js -->
-    <script src="bower_components/bootstrap-sass/js/affix.js"></script>
-    <script src="bower_components/bootstrap-sass/js/alert.js"></script>
-    <script src="bower_components/bootstrap-sass/js/dropdown.js"></script>
-    <script src="bower_components/bootstrap-sass/js/tooltip.js"></script>
-    <script src="bower_components/bootstrap-sass/js/modal.js"></script>
-    <script src="bower_components/bootstrap-sass/js/transition.js"></script>
-    <script src="bower_components/bootstrap-sass/js/button.js"></script>
-    <script src="bower_components/bootstrap-sass/js/popover.js"></script>
-    <script src="bower_components/bootstrap-sass/js/carousel.js"></script>
-    <script src="bower_components/bootstrap-sass/js/scrollspy.js"></script>
-    <script src="bower_components/bootstrap-sass/js/collapse.js"></script>
-    <script src="bower_components/bootstrap-sass/js/tab.js"></script>
-    <!-- endbuild -->
+	<!-- build:js scripts/plugins.js -->
+	<!-- endbuild -->
 
-    <!-- Load the YouTube iFrame Player API code asynchronously. -->
-    <script>
-    // 2. This code loads the IFrame Player API code asynchronously.
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    </script>
-
-    <!-- Soundcloud API -->
-    <script src="https://w.soundcloud.com/player/api.js"></script>
+	<!-- Load the YouTube iFrame Player API code asynchronously. -->
+	<script>
+	// 2. This code loads the IFrame Player API code asynchronously.
+	var tag = document.createElement('script');
+	tag.src = "https://www.youtube.com/iframe_api";
+	var firstScriptTag = document.getElementsByTagName('script')[0];
+	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+	</script>
 
 </body>
 </html>
