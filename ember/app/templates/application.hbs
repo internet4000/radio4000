@@ -1,0 +1,18 @@
+<header>
+	<h1>{{#link-to "index"}}Much Play{{/link-to}}</h1>
+	<nav>
+		{{#link-to "playlists.new"}}New Playlist{{/link-to}}
+	</nav>
+</header>
+
+{{#if auth.isLoggedIn}}
+	<p>Hej {{auth.currentUser.displayName}}. <button {{action 'logout'}}>Log out</button></p>
+{{else}}
+	<p>Please log in: <button {{action 'login'}}>Log in</button></p>
+{{/if}}
+
+<hr>
+
+<main>
+	{{outlet}}
+</main>

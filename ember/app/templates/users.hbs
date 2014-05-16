@@ -1,0 +1,15 @@
+<h2>Users</h2>
+<ul class="List">
+	{{#each user in model}}
+	<li>
+		<h3>{{user.firstName}} ({{user.id}})</h3>
+		<p>Playlists:</p>
+		<ul>
+			{{#each playlist in user.playlists}}
+				<li>{{playlist.title}}</li>
+			{{/each}}
+		</ul>
+		<input type="button" {{action "updateUser" user}} value="update" />
+	</li>
+	{{/each}}
+</ul>
