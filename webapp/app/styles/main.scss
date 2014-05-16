@@ -61,8 +61,7 @@ body {
 }
 
 .List {
-	float: left;
-	margin-left: 30px;
+	margin-left: 320px;
 	margin-top: 0;
 }
 
@@ -84,9 +83,11 @@ body {
 .Player {
 	// position
 	position: fixed;
-	bottom: 60px;
+	bottom: 73px;
 	right: 20px;
 	width: 450px;
+	background-color: white;
+	padding: 20px;
 	// toggle animation
 	transition: transform 200ms ease-in-out;
 	&.is-minimized {
