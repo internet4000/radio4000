@@ -15,11 +15,12 @@ var app = new EmberApp({
 
 // Use this to add additional libraries to the generated output files.
 app.import('vendor/ember-data/ember-data.js');
-app.import('vendor/emberfire/dist/emberfire.js');
+app.import('vendor/emberfire/dist/emberfire.min.js');
 app.import('vendor/firebase/firebase.js');
-// app.import('vendor/markdown/lib/markdown.js');
-// app.import('vendor/moment/moment.js');
-// app.import('vendor/js-md5/js/md5.js');
+app.import('vendor/firebase-simple-login/firebase-simple-login-debug.js');
+app.import('vendor/markdown/lib/markdown.js');
+app.import('vendor/moment/moment.js');
+app.import('vendor/js-md5/js/md5.js');
 
 // If the library that you are including contains AMD or ES6 modules that
 // you would like to import into your application please specify an

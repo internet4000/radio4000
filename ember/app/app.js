@@ -1,10 +1,5 @@
-/* global Firebase */
 import Resolver from 'ember/resolver';
 import loadInitializers from 'ember/load-initializers';
-
-// Firebase
-var dbRoot = "https://muchplay.firebaseio.com";
-var dbRef = new Firebase(dbRoot);
 
 Ember.MODEL_FACTORY_INJECTIONS = true;
 
@@ -42,7 +37,6 @@ var App = Ember.Application.extend({
 	Resolver: Resolver,
 
 	ready: function () {
-
 		// Util
 		this.register('utility:main', Utility, { singleton: true, instantiate: true });
 		['controller', 'route', 'component', 'adapter', 'transform', 'model', 'serializer'].forEach(function(type) {
@@ -54,10 +48,10 @@ var App = Ember.Application.extend({
 			this.inject(type, 'store', 'store:main');
 		}, this);
 
-		// Auth
-		this.register('main:auth', App.AuthController);
-		this.inject('route', 'auth', 'main:auth');
-		this.inject('controller', 'auth', 'main:auth');
+		// // Auth
+		// this.register('auth:main', AuthController);
+		// this.inject('route', 'auth', 'auth:main');
+		// this.inject('controller', 'auth', 'auth:main');
 	}
 });
 

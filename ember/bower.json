@@ -16,6 +16,7 @@
     "js-md5": "~1.1.0",
     "firebase": "~1.0.15",
     "moment": "~2.6.0",
-    "markdown": "~0.5.0"
+    "markdown": "~0.5.0",
+    "firebase-simple-login": "~1.4.1"
   }
 }

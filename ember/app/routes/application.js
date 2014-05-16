@@ -1,15 +1,10 @@
 var ApplicationRoute = Ember.Route.extend({
-	actions: {
-	  login: function() {
-	    // auth.login('facebook');
-	    this.get('auth').login();
-	  },
-
-	  logout: function() {
-	    // auth.logout();
-	    this.get('auth').logout();
-	  }
-	}
+	// login: function() {
+	// 	AuthController.authClient.login('google');
+	// },
+	// logout: function() {
+	// 	AuthController.authClient.logout();
+	// }
 });
 
 export default ApplicationRoute;
