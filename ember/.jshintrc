@@ -1,5 +1,9 @@
 {
   "predef": {
+    "Firebase": true,
+    "FirebaseSimpleLogin": true,
+    "moment": true,
+    "md5": true,
     "document": true,
     "window": true,
     "location": true,
@@ -36,5 +40,5 @@
   "white": false,
   "eqnull": true,
   "esnext": true,
-  "unused": true
+  "unused": false
 }

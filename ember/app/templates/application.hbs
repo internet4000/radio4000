@@ -5,10 +5,12 @@
 	</nav>
 </header>
 
-{{#if isLoggedIn}}
-	<p>Hej {{currentUser.displayName}}. <button {{action 'logout'}}>Log out</button></p>
+<p>Hej {{authController.currentUser.displayName}}.</p>
+
+{{#if authController.isLoggedIn}}
+	 <button {{action 'logout'}}>Log out</button>
 {{else}}
-	<p>Please log in: <button {{action 'login'}}>Log in</button></p>
+	<button {{action 'login'}}>Log in</button>
 {{/if}}
 
 <hr>

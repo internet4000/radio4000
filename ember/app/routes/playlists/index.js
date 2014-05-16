@@ -1,7 +1,3 @@
-var PlaylistsIndexRoute = Ember.Route.extend({
-	model: function() {
-		return this.store.findAll('playlist');
-	}
-});
+var PlaylistsIndexRoute = Ember.Route.extend({});
 
 export default PlaylistsIndexRoute;
