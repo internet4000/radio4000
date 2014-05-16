@@ -1,22 +1,24 @@
 <div {{bind-attr class=':Playback model:is-active'}}>
-	<p>
-		{{#if model}}
-			{{#if isPlaying}}
-				<button {{action 'pause'}}<strong>ll</strong></button>
+	<div class="Controls">
+		<div class="Inner">
+			{{#if model}}
+				{{#if isPlaying}}
+					<button {{action 'pause'}}<strong>ll</strong></button>
+				{{else}}
+					<button {{action 'play'}}>►</button>
+				{{/if}}
+
+				<button {{action 'togglePlayer'}}>
+					{{#if isMinimized}}Show{{else}}Hide{{/if}}
+				</button>
+
+				<span class="Playback-title">{{provider}}: {{key}}</span>
+
 			{{else}}
-				<button {{action 'play'}}>►</button>
+				Choose a sound!
 			{{/if}}
-
-			<button {{action 'togglePlayer'}}>
-				{{#if isMinimized}}Show{{else}}Hide{{/if}}
-			</button>
-
-			<span class="Playback-title">{{provider}}: {{key}}</span>
-
-		{{else}}
-			Choose a sound!
-		{{/if}}
-	</p>
+		</div>
+	</div>
 
 	<div {{bind-attr class=':Player isMinimized model.provider'}}>
 		<div id="ytplayer"></div>

@@ -5,36 +5,88 @@
 @import 'components/list';
 
 body {
-	margin: 4em 1em 186px;
 	overflow-y: scroll;
+	margin: 0;
+	background-color: rgb(233, 233, 233);
+}
+.Inner {
+	margin: 0 auto;
+	max-width: 1040px;
 }
 
-
-// Top bar with controls
-.Playback {
+.SiteHeader {
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
+	background-color: white;
 	z-index: 1;
-	padding: 0 1em;
-	border-bottom: 1px solid;
-	margin-bottom: 1em;
-	background-color: hsla(0,0%, 100%, 0.90);
 }
+.SiteMain {
+	margin-top: 20px;
+	position: relative;
+	z-index: 2;
+	.Inner {
+		background-color: rgb(255, 255, 255);
+		padding: 20px;
+		overflow: auto;
+	}
+}
+
+.Title {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: -5px;
+	padding: 5px;
+	display: inline-block;
+}
+
+// Profile Img
+.Profile {
+	width: 290px;
+	float: left;
+}
+
+// New Item
+.NewItem {
+	width: 100%;
+	min-height: 30px;
+}
+
+// Top bar with controls
+
 .Playback-title {
 	position: relative;
 	top: 1px;
 }
 
+.List {
+	float: left;
+	margin-left: 30px;
+	margin-top: 0;
+}
+
+// Controls
+.Controls {
+	position: fixed;
+	z-index: 3;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	border-bottom: 1px solid;
+	background-color: white;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
 
 // Container for the embeds
 .Player {
 	// position
 	position: fixed;
-	bottom: 0;
-	left: 0;
-	right: 0;
+	bottom: 60px;
+	right: 20px;
+	width: 450px;
 	// toggle animation
 	transition: transform 200ms ease-in-out;
 	&.is-minimized {

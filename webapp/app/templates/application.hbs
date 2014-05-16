@@ -1,13 +1,17 @@
-<header>
-	<h1 class="Logo">Much Play</h1>
-	{{render 'playback'}}
-</header>
 
-<nav class="Nav">
-	{{#link-to 'sounds'}}Sounds{{/link-to}}
-	{{#link-to 'styleguide'}}Styleguide{{/link-to}}
-</nav>
+<main class="SiteMain">
+	<div class="Inner">
+		
+		<div class="Profile">
+			<img class="ProfileImg" src="img/background-header.jpg">
+			<h1 class="Title">Collection Title</h1>
+			<textarea class="NewItem" placeholder="Wanna add a new item? Here!"></textarea>
+			<p>This is my description cuz i am a fucking cool guy and i like eating ice cream cuz it is good in my stomak. <3 luv groovin </p>
+		</div>
 
-<main>
-	{{outlet}}
+		{{render 'playback'}}
+
+		{{outlet}}
+
+	</div>
 </main>
