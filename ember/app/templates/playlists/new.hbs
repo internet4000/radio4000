@@ -1,5 +1,8 @@
-<h2>New Playlist</h2>
-{{input value=playlist.title placeholder="Title"}}<br>
-{{input value=playlist.username placeholder="Username"}}<br>
-{{textarea value=playlist.body placeholder="Body"}}<br>
-<button {{action "publishPlaylist"}}>Publish</button>
+<h2>Create your own playlist</h2>
+
+{{input value=playlist.title placeholder="Playlist title"}}<br>
+{{textarea value=playlist.body placeholder="Describe your playlist"}}<br>
+{{input value=playlist.username placeholder="Username"}}
+<br>
+<button {{action "publishPlaylist"}}>Create</button>
+{{#link-to 'playlists'}}Cancel{{/link-to}}

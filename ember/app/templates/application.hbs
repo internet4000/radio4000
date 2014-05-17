@@ -1,17 +1,21 @@
 <header>
 	<h1>{{#link-to "index"}}Much Play{{/link-to}}</h1>
-	<nav>
-		{{#link-to "playlists.new"}}New Playlist{{/link-to}}
-	</nav>
+
+	{{#if authController.isLoggedIn}}
+		<h3>{{authController.currentUser.displayName}}</h3>
+		<p>
+			{{#link-to "playlists.new"}}<button>Create your playlist</button>{{/link-to}}
+			<button {{action 'logout'}}>Log out</button>
+		</p>
+	{{else}}
+		<h3>Create your own collection of music</h3>
+		<p>Get started with either Google or Facebook (We don't need anything but your name).</p>
+		<p>
+			<button {{action 'login' 'google'}}>Start with Google</button>
+			<button {{action 'login' 'facebook'}}>Start with Facebook</button>
+		</p>
+	{{/if}}
 </header>
-
-<p>Hej {{authController.currentUser.displayName}}.</p>
-
-{{#if authController.isLoggedIn}}
-	 <button {{action 'logout'}}>Log out</button>
-{{else}}
-	<button {{action 'login'}}>Log in</button>
-{{/if}}
 
 <hr>
 

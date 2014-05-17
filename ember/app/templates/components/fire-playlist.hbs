@@ -1,44 +1,32 @@
-<div class="playlist-header">
-	<img {{bind-attr src="playlist.user.avatar"}} class="avatar playlist-avatar"/>
-	<div class="playlist-author">{{playlist.user.id}}</div>
-	<time class="playlist-date">{{playlist.publishedDate}}</time>
-</div>
+<article>
+	<h1>{{playlist.title}}</h1>
+	{{#if isExpanded}}
+		<div>{{markdown playlist.body}}</div>
+		<h3>{{#if playlist.tracks}}Tracks{{else}}No tracks yet.{{/if}}</h3>
 
-<h3>{{playlist.title}}</h3>
+		<ul class="List">
+			{{#each track in playlist.tracks}}
+				<li>
+					<p class="Track">
+						{{track.url}} <small>{{track.user.username}}</small><br>
+					</p>
+				</li>
+			{{/each}}
+		</ul>
+	{{/if}}
 
-{{#if isExpanded}}
-	<div>{{markdown playlist.body}}</div>
+	{{#if authController.isLoggedIn}}
+		<hr>
+		<h3>Add track</h3>
+		{{input value=trackUrl placeholder="YouTube or Soundcloud url"}}<br>
+		{{input value=trackUsername placeholder=authController.currentUser}}<br>
+		{{textarea value=trackBody placeholder="Track description"}}<br>
+		<button {{action "publishTrack"}}>Save</button>
+	{{/if}}
 
-	<hr>
+	{{!-- <header>
+		<div class="Playlist-author">{{playlist.user.id}} (<time class="Playlist-date">{{playlist.publishedDate}}</time>)</div>
+		<img {{bind-attr src="playlist.user.avatar"}} class="avatar Playlist-avatar"/>
+	</div> --}}
 
-	<h4>
-		{{#if playlist.tracks}}
-			Tracks
-		{{else}}
-			Leave a track!
-		{{/if}}
-	</h4>
-
-	<ul class="List">
-		{{#each track in playlist.tracks}}
-			<li>
-				<div class="Meta">
-					<img {{bind-attr src="track.user.avatar"}} class="avatar playlist-track-avatar" />
-					<strong>{{track.url}}</strong><br>
-					<em class="playlist-track-date">{{track.publishedDate}}</em><br>
-					<strong class="playlist-track-author">{{track.user.username}}</strong><br>
-				</div>
-				<div class="Body">
-					{{markdown track.body}}
-				</div>
-			</li>
-		{{/each}}
-	</ul>
-
-	<hr>
-
-	{{input value=trackUrl placeholder="YouTube or Soundcloud url"}}<br>
-	{{input value=trackUsername placeholder="Username should be inserted here automatically and hidden from the user"}}<br>
-	{{textarea value=trackBody placeholder="Track description"}}<br>
-	<button {{action "publishTrack"}}>Save</button>
-{{/if}}
+</article>
