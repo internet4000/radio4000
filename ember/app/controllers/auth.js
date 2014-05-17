@@ -9,81 +9,28 @@ var AuthController = Ember.Controller.extend({
 		// Create the Firebase login object
 		this.authClient = new FirebaseSimpleLogin(this.dbRef, function(error, user) {
 
-			// Error: not authenticated
-			if (error) {
-				console.log('Authentication failed: ' + error);
+			if (user) {
+				// Success: user authenticated with Firebase
+				console.log('Logged in. Checking user in Firebase');
 
-			// Success: user authenticated with Firebase
-			} else if (user) {
+				// Save the authenticated object into our app
 				this.set('isLoggedIn', true);
 				this.set('currentUser', user);
-				console.log('Logged in');
 
-				this.userExists();
+				// Check if the user already exists in the DB, else create the user
+				this.get('util').getUserByUsername(this.get('currentUser'));
 
-			// Not logged in
+			} else if (error) {
+				// Error: not authenticated
+				console.log('Authentication failed: ' + error);
+
 			} else {
+				// User is logged out
 				this.set('isLoggedIn', false);
 				this.set('curentUser', null);
 				console.log('Not logged in');
 			}
 		}.bind(this));
-	},
-
-	createUser: function() {
-		var userRef = new Firebase('https://muchplay.firebaseio.com/users/' + user.username);
-
-		var properties = {
-			id: user.username,
-			name: user.username,
-			displayName: user.displayName,
-			avatarUrl: user.avatar_url
-		};
-
-		var controller = this;
-		userRef.once('value', function(snapshot) {
-			var user = this.store.createRecord('user', {
-				ref: userRef
-			});
-			user.setProperties(properties);
-			controller.set('currentUser', user);
-			user.save(); // Save the user
-		});
-	},
-
-	userExists: function() {
-		var store = this.get('store');
-		var currentUser = this.get('currentUser');
-		var username = this.get('currentUser.displayName');
-
-		// console.log(username);
-		// username = username.replace(/[^a-zA-Z0-9 -]/g, '');
-		// console.log(username);
-
-
-		return this.get('store').find('user', username).then(function(user) {
-			// User already exists so just return it
-			console.log('exists');
-			console.log(user);
-			return user;
-		}, function() {
-
-			console.log('doesnt?');
-			console.log(user);
-
-			// // HACK: `find()` creates an entry in store.typeMapFor().idToRecord which prevents `createRecord()` from working
-			// delete store.typeMapFor(store.modelFor('user')).idToRecord[username];
-
-			// A user couldn't be found, so create a new user
-			var user = store.createRecord('user', {
-				displayName: currentUser.get('displayName'),
-				id: currentUser.get('id'),
-				created: new Date().getTime()
-			});
-			// Save the user
-			user.save();
-			return user;
-		});
 	},
 
 	actions: {

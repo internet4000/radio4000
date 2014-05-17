@@ -1,5 +1,6 @@
 /* global md5 */
 var User = DS.Model.extend({
+	name: DS.attr('string'),
 	created: DS.attr('number'),
 	playlists: DS.hasMany('playlist', { async: true }),
 

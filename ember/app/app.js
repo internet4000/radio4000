@@ -12,26 +12,31 @@ var Utility = Ember.Object.extend({
 	 * @return {Promise}
 	 */
 
-	getUserByUsername: function(username) {
+	getUserByUsername: function(user) {
 		var store = this.get('store');
-		username = username.replace(/[^a-zA-Z0-9 -]/g, '');
-		return this.get('store').find('user', username).then(function(user) {
+		console.log(user);
 
+		return this.get('store').find('user', user.id).then(function() {
 			// User already exists so just return it
+
+			Ember.debug('user already exists');
 			return user;
 		}, function() {
+			Ember.debug('A user could not be found, so create a new one');
 
 			// HACK: `find()` creates an entry in store.typeMapFor().idToRecord which prevents `createRecord()` from working
-			delete store.typeMapFor(store.modelFor('user')).idToRecord[username];
+			delete store.typeMapFor(store.modelFor('user')).idToRecord[user.displayName];
 
-			// A user couldn't be found, so create a new user
-			var user = store.createRecord('user', {
-				id: username,
+			var newUser = store.createRecord('user', {
+				id: user.id,
+				name: user.displayName,
 				created: new Date().getTime()
 			});
+
 			// Save the user
-			user.save();
-			return user;
+			newUser.save();
+
+			return newUser;
 		});
 	}
 });
