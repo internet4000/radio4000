@@ -4,7 +4,7 @@ var FirePlaylistComponent = Ember.Component.extend({
 	trackUsername: '',
 	trackBody: '',
 	isEditing: false,
-	isOwner: 'from component',
+	isOwner: 'not yet',
 
 	init: function () {
 		this._super();
@@ -18,13 +18,13 @@ var FirePlaylistComponent = Ember.Component.extend({
 
 		Ember.debug(currentUserId);
 		Ember.debug(playlistUserId);
-		// if (currentUserId === playlistUserId) {
-		// 	this.set('isOwner', true);
-		// 	return true;
-		// } else {
-		// 	this.set('isOwner', false);
-		// 	return false;
-		// }
+		if (currentUserId === playlistUserId) {
+			this.set('isOwner', true);
+			return true;
+		} else {
+			this.set('isOwner', false);
+			return false;
+		}
 	},
 
 	trackIsValid: function() {

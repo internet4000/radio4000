@@ -1,6 +1,7 @@
 <article>
+	<h1>{{playlist.title}}</h1>
 
-	{{#if authController.isLoggedIn}}
+	{{#if controller.isOwner}}
 		{{#if isEditing}}
 			{{input value=playlist.title focus-out="acceptChanges"}}<br>
 			{{textarea value=playlist.body focus-out="acceptChanges"}}<br>
@@ -10,13 +11,6 @@
 		{{/if}}
 	{{/if}}
 
-	<h1>Owner: {{playlist.isOwner}}</h1>
-	<h1>2: {{controller.isOwner}}</h1>
-	{{!-- {{#if playlist.isOwner}}
-		<p>You own this playlist.</p>
-	{{/if}} --}}
-
-	<h1>{{playlist.title}}</h1>
 	{{#if isExpanded}}
 		<div>{{markdown playlist.body}}</div>
 		<h3>{{#if playlist.tracks}}Tracks{{else}}No tracks yet.{{/if}}</h3>
