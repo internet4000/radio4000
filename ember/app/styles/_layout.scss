@@ -11,14 +11,16 @@ body {
 }
 .SiteHeader {
 	margin-bottom: 20px;
+	overflow: auto;
 }
 
 .SiteMain {
 	overflow: auto;
+	clear: both;
 }
 .SiteTitle {
 	margin: 0 3px;
-	@media (min-width: 600px) {
+	@media (min-width: 650px) {
 		float: left;
 	}
 }
@@ -34,7 +36,7 @@ body {
 		float: left;
 		margin: 0;
 	}
-	@media (min-width: 600px) {
+	@media (min-width: 650px) {
 		float: left;
 	}
 }

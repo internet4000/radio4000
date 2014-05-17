@@ -9,21 +9,28 @@
 
 .PlaylistHeader,
 .PlaylistBody {
-	float: left;
 	padding-bottom: 20px;
-	
 	.Inner {
 		padding: 10px;
 	}
+
+	@media (min-width: 650px) {
+		float: left;
+	}
 }
+
 .PlaylistHeader {
-	width: 30%;
-	.Inner {
-		margin-right: 20px;
+	@media (min-width: 650px) {
+		width: 30%;
+		.Inner {
+			margin-right: 20px;
+		}
 	}
 }
 .PlaylistBody {
-	width: 70%;
+	@media (min-width: 650px) {
+		width: 70%;
+	}
 }
 .PlaylistTitle {
 	margin: 0;
@@ -34,12 +41,5 @@
  */
 
 .PlaylistTeaser {
-	display: inline-block;
-	width: 23%;
-	min-height: 160px;
-	background-color: white;
-	border: 1px solid gray;
-	margin-right: 1%;
-	margin-left: 1%;
-	text-align: center;
+
 }
