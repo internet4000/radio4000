@@ -8,7 +8,7 @@ var FirePlaylistComponent = Ember.Component.extend({
 
 	init: function () {
 		this._super();
-		this.authController = this.get('controllers.auth');
+		// this.authController = this.get('controllers.auth');
 		this.checkOwner();
 	},
 
@@ -16,15 +16,15 @@ var FirePlaylistComponent = Ember.Component.extend({
 		var currentUserId = this.get('authController.currentUser.id');
 		var playlistUserId = this.get('playlist.user.id');
 
-		// Ember.debug(currentUserId);
-		// Ember.debug(playlistUserId);
-		if (currentUserId === playlistUserId) {
-			this.set('isOwner', true);
-			return true;
-		} else {
-			this.set('isOwner', false);
-			return false;
-		}
+		Ember.debug(currentUserId);
+		Ember.debug(playlistUserId);
+		// if (currentUserId === playlistUserId) {
+		// 	this.set('isOwner', true);
+		// 	return true;
+		// } else {
+		// 	this.set('isOwner', false);
+		// 	return false;
+		// }
 	},
 
 	trackIsValid: function() {
