@@ -8,8 +8,8 @@ var ApplicationController = Ember.Controller.extend({
 	},
 
 	actions: {
-		login: function() {
-			this.get('authController').authClient.login('google');
+		login: function(provider) {
+			this.get('authController').authClient.login(provider);
 		},
 		logout: function() {
 			this.get('authController').authClient.logout();
