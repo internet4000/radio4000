@@ -1,42 +1,48 @@
-<article>
-	<h1>{{playlist.title}}</h1>
+<section class="PLaylist">
+	
+	<div class="PlaylistHeader">
+		<h1 class="PlaylistTitle">{{playlist.title}}</h1>
 
-	{{#if controller.isOwner}}
-		{{#if isEditing}}
-			{{input value=playlist.title focus-out="acceptChanges"}}<br>
-			{{textarea value=playlist.body focus-out="acceptChanges"}}<br>
-			<button {{action "stopEditing"}}>Save playlist</button>
-		{{else}}
-			<button {{action 'editPlaylist'}}>edit</button>
+		{{#if controller.isOwner}}
+			{{#if isEditing}}
+				{{input value=playlist.title focus-out="acceptChanges"}}<br>
+				{{textarea value=playlist.body focus-out="acceptChanges"}}<br>
+				<button {{action "stopEditing"}}>Save playlist</button>
+			{{else}}
+				<button {{action 'editPlaylist'}}>edit</button>
+			{{/if}}
 		{{/if}}
-	{{/if}}
+	</div>
 
-	{{#if isExpanded}}
-		<div>{{markdown playlist.body}}</div>
-		<h3>{{#if playlist.tracks}}Tracks{{else}}No tracks yet.{{/if}}</h3>
+	<div class="PlaylistBody">{{markdown playlist.body}}</div>
 
-		<ul class="List">
-			{{#each track in playlist.tracks}}
-				<li>
+		{{#if authController.isLoggedIn}}
+			<div class="AddTrack">
+				<h3>Add track</h3>
+				{{input value=trackUrl placeholder="YouTube or Soundcloud url"}}<br>
+				{{input value=trackTitle placeholder="Title"}}<br>
+				{{textarea value=trackBody placeholder="Optional description"}}<br>
+				<button {{action "publishTrack"}}>Save</button>
+			</div>
+		{{/if}}
+
+		{{#if isExpanded}}
+
+			<div class="Tracks">
+				<h3>{{#if playlist.tracks}}Tracks{{else}}No tracks yet.{{/if}}</h3>
+				
+				{{#each track in playlist.tracks}}
 					<p class="Track">
-						{{track.url}} <small>{{track.user.username}}</small><br>
+						<p>{{track.url}}</p>
+						<p>{{track.user.username}}</p>
 					</p>
-				</li>
-			{{/each}}
-		</ul>
-	{{/if}}
+				{{/each}}
+			</div>
+		{{/if}}
 
-	{{#if authController.isLoggedIn}}
-		<hr>
-		<h3>Add track</h3>
-		{{input value=trackUrl placeholder="YouTube or Soundcloud url"}}<br>
-		{{input value=trackTitle placeholder="Title"}}<br>
-		{{textarea value=trackBody placeholder="Optional description"}}<br>
-		<button {{action "publishTrack"}}>Save</button>
-	{{/if}}
 
 	{{!-- <header>
 		<div class="Playlist-author">{{playlist.user.id}} (<time class="Playlist-date">{{playlist.createdDate}}</time>)</div>
 		<img {{bind-attr src="playlist.user.avatar"}} class="avatar Playlist-avatar"/>
 	</div> --}}
-</article>
+</section>
