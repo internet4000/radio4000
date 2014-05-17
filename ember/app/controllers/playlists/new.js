@@ -32,6 +32,7 @@ var PlaylistsNewController = Ember.ObjectController.extend({
 				// Create a new playlist
 				var newPlaylist = this.store.createRecord('playlist', {
 					title: this.get('playlist.title'),
+					url: this.get('playlist.url'),
 					body: this.get('playlist.body'),
 					created: new Date().getTime(),
 					user: promises.user
@@ -52,7 +53,8 @@ var PlaylistsNewController = Ember.ObjectController.extend({
 				// Empty the form fields
 				this.setProperties({
 					'playlist.title': '',
-					'playlist.body': ''
+					'playlist.body': '',
+					'playlist.url': ''
 				});
 
 				this.transitionToRoute('playlist', newPlaylist);
