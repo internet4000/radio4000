@@ -36,10 +36,11 @@
 					<h3>{{#if playlist.tracks}}Tracks{{else}}No tracks yet.{{/if}}</h3>
 
 					{{#each track in playlist.tracks}}
-						<p class="Track">
-							<p>{{track.url}}</p>
-							<p>{{track.user.username}}</p>
-						</p>
+						<article class="Track">
+							<a class="TrackName" href="{{track.url}}">{{track.title}}</a>
+							<p class="TrackDescription">{{track.body}}</p>
+							{{!-- <p>{{track.user.username}}</p> --}}
+						</article>
 					{{/each}}
 				</div>
 			{{/if}}

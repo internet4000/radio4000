@@ -25,14 +25,30 @@ body {
 	
 	.Inner {
 		background-color: white;
-		margin-right: 20px;
-		margin-left: 20px;
 		padding: 10px;
 	}
 }
 .PlaylistHeader {
 	width: 30%;
+	.Inner {
+		margin-right: 20px;
+	}
 }
 .PlaylistBody {
 	width: 70%;
+}
+
+// Track List and Unique tracks
+.Track {
+	border-top: 1px solid gray;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	&:first-of-type {
+		border-top: 0px solid gray;
+	}
+}
+.TrackDescription {
+	font-style: italic;
+	color: gray;
+	margin: 0;
 }
