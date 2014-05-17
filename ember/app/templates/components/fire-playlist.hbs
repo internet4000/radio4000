@@ -1,44 +1,50 @@
 <section class="PLaylist">
 	
 	<div class="PlaylistHeader">
-		<h1 class="PlaylistTitle">{{playlist.title}}</h1>
+		<div class="Inner">
+			<h1 class="PlaylistTitle">{{playlist.title}}</h1>
+			<p class="PlaylistDescription">{{markdown playlist.body}}</p>
 
-		{{#if controller.isOwner}}
-			{{#if isEditing}}
-				{{input value=playlist.title focus-out="acceptChanges"}}<br>
-				{{textarea value=playlist.body focus-out="acceptChanges"}}<br>
-				<button {{action "stopEditing"}}>Save playlist</button>
-			{{else}}
-				<button {{action 'editPlaylist'}}>edit</button>
+			<div class="PlaylistEdit">
+				{{#if controller.isOwner}}
+					{{#if isEditing}}
+						{{input value=playlist.title focus-out="acceptChanges"}}<br>
+						{{textarea value=playlist.body focus-out="acceptChanges"}}<br>
+						<button {{action "stopEditing"}}>Save playlist</button>
+					{{else}}
+						<button {{action 'editPlaylist'}}>edit</button>
+					{{/if}}
+				{{/if}}
+			</div>
+
+			{{#if authController.isLoggedIn}}
+				<div class="AddTrack">
+					<h3>Add track</h3>
+					{{input value=trackUrl placeholder="YouTube or Soundcloud url"}}<br>
+					{{input value=trackTitle placeholder="Title"}}<br>
+					{{textarea value=trackBody placeholder="Optional description"}}<br>
+					<button {{action "publishTrack"}}>Save</button>
+				</div>
 			{{/if}}
-		{{/if}}
+		</div>
 	</div>
 
-	<div class="PlaylistBody">{{markdown playlist.body}}</div>
+	<div class="PlaylistBody">
+		<div class="Inner">
+			{{#if isExpanded}}
+				<div class="Tracks">
+					<h3>{{#if playlist.tracks}}Tracks{{else}}No tracks yet.{{/if}}</h3>
 
-		{{#if authController.isLoggedIn}}
-			<div class="AddTrack">
-				<h3>Add track</h3>
-				{{input value=trackUrl placeholder="YouTube or Soundcloud url"}}<br>
-				{{input value=trackTitle placeholder="Title"}}<br>
-				{{textarea value=trackBody placeholder="Optional description"}}<br>
-				<button {{action "publishTrack"}}>Save</button>
-			</div>
-		{{/if}}
-
-		{{#if isExpanded}}
-
-			<div class="Tracks">
-				<h3>{{#if playlist.tracks}}Tracks{{else}}No tracks yet.{{/if}}</h3>
-				
-				{{#each track in playlist.tracks}}
-					<p class="Track">
-						<p>{{track.url}}</p>
-						<p>{{track.user.username}}</p>
-					</p>
-				{{/each}}
-			</div>
-		{{/if}}
+					{{#each track in playlist.tracks}}
+						<p class="Track">
+							<p>{{track.url}}</p>
+							<p>{{track.user.username}}</p>
+						</p>
+					{{/each}}
+				</div>
+			{{/if}}
+		</div>
+	</div>
 
 
 	{{!-- <header>

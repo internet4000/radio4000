@@ -1,19 +1,24 @@
 <header class="SiteHeader">
-	<h1>{{#link-to "index"}}Much Play{{/link-to}}</h1>
+	<h1 class="SiteTitle">{{#link-to "index"}}Much Play{{/link-to}}</h1>
 
 	{{#if authController.isLoggedIn}}
-		<h3>{{authController.currentUser.displayName}}</h3>
-		<p>
-			{{#link-to "playlists.new"}}<button>Create your playlist</button>{{/link-to}}
-			<button {{action 'logout'}}>Log out</button>
-		</p>
+		<div class="UserSettings">
+			<h3>{{authController.currentUser.displayName}}</h3>
+			<p>
+				{{#link-to "playlists.new"}}<button>Create your playlist</button>{{/link-to}}
+				<button {{action 'logout'}}>Log out</button>
+			</p>
+		</div>
 	{{else}}
-		<h3>Create your own collection of music</h3>
-		<p>Get started with either Google or Facebook (We don't need anything but your name).</p>
-		<p>
-			<button {{action 'login' 'google'}}>Start with Google</button>
-			<button {{action 'login' 'facebook'}}>Start with Facebook</button>
-		</p>
+
+		<div class="UserLog">
+			<h3>Create your own collection of music</h3>
+			<p>Get started with either Google or Facebook (We don't need anything but your name).</p>
+			<p>
+				<button {{action 'login' 'google'}}>Start with Google</button>
+				<button {{action 'login' 'facebook'}}>Start with Facebook</button>
+			</p>
+		</div>
 	{{/if}}
 </header>
 
