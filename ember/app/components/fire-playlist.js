@@ -65,12 +65,16 @@ var FirePlaylistComponent = Ember.Component.extend({
 		editPlaylist: function() {
 			this.set('isEditing', true);
 		},
-		stopEditing: function() {
+		saveEditing: function() {
 			this.set('isEditing', false);
-		},
-		acceptChanges: function() {
 			this.get('playlist').save();
 		},
+
+		// valueObserver: function() {
+		// 	this.transitionTo('playlists')
+		// 	// Executes whenever the "value" property changes
+		// }.observes('title'),
+
 		removeTrack: function(track) {
 			var playlist = this.get('playlist');
 			Promise.cast(playlist.get('tracks')).then(function(tracks) {
