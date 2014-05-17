@@ -24,3 +24,18 @@
 .PlaylistTitle {
 	margin: 0;
 }
+
+/**
+ * Playlist Teaser
+ */
+
+.PlaylistTeaser {
+	display: inline-block;
+	width: 23%;
+	min-height: 160px;
+	background-color: white;
+	border: 1px solid gray;
+	margin-right: 1%;
+	margin-left: 1%;
+	text-align: center;
+}

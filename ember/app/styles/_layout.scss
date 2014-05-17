@@ -21,8 +21,25 @@ body {
 	display: inline-block;
 }
 
-// User Log
+
+/*
+ User settings and log-in
+*/
+
 .UserLog {
 	display: inline-block;
-	padding-left: 10px;
+	padding-left: 3px;
+}
+
+.UserSettings {
+	position: fixed;
+	top: 0;
+	right: 0;
+	background: white;
+	padding: 20px;
+	border: 1px solid gray;
+	h3,
+	p {
+		margin: 5px;
+	}
 }

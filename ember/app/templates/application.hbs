@@ -3,7 +3,7 @@
 
 	{{#if authController.isLoggedIn}}
 		<div class="UserSettings">
-			<h3>{{authController.currentUser.displayName}}</h3>
+			<p>Welcome, {{authController.currentUser.displayName}}</p>
 			<p>
 				{{#link-to "playlists.new"}}<button>Create your playlist</button>{{/link-to}}
 				<button {{action 'logout'}}>Log out</button>
