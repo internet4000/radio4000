@@ -1,22 +1,21 @@
 <header class="SiteHeader">
 	<h1 class="SiteTitle">{{#link-to "index"}}Much Play{{/link-to}}</h1>
 
-	{{#if authController.isLoggedIn}}
-		<div class="UserSettings">
+	<div class="UserActions">
+		{{#if authController.isLoggedIn}}
 			<p>Welcome, {{authController.currentUser.displayName}}</p>
 			<p>
-				{{#link-to "playlists.new"}}<button>Create your playlist</button>{{/link-to}}
-				<button {{action 'logout'}}>Log out</button>
+				{{#link-to "playlists.new"}}<button class="Btn">Create your playlist</button>{{/link-to}}
+				<button class="Btn" {{action 'logout'}}>Log out</button>
 			</p>
-		</div>
-	{{else}}
-
-		<div class="UserLog">
-			Create your own collection of music in a second
-			<button class="Btn" {{action 'login' 'google'}}>Sign-in with Google</button>
-			<button class="Btn" {{action 'login' 'facebook'}}>Sign-in with with Facebook</button>
-		</div>
-	{{/if}}
+		{{else}}
+			<p>Create your own collection of music in a second</p>
+			<p>
+				<button class="Btn" {{action 'login' 'google'}}>Sign-in with Google</button>
+				<button class="Btn" {{action 'login' 'facebook'}}>Sign-in with with Facebook</button>
+			</p>
+		{{/if}}
+	</div>
 </header>
 
 <main class="SiteMain">

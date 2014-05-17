@@ -1,7 +1,8 @@
-<section class="PLaylist">
+<section class="Playlist">
 
 	<div class="PlaylistHeader">
 		<div class="Inner">
+			<img src="">
 			<h1 class="PlaylistTitle">{{playlist.title}}</h1>
 			<p class="PlaylistDescription">{{markdown playlist.body}}</p>
 
@@ -15,7 +16,7 @@
 							<button {{action "saveEditing"}}>Save playlist</button>
 						</div>
 					{{else}}
-						<button class="Btn" {{action 'editPlaylist'}}>edit</button>
+						<button class="Btn" {{action 'editPlaylist'}}>Edit playlist</button>
 					{{/if}}
 				{{/if}}
 			</div>
@@ -27,7 +28,7 @@
 						{{input value=trackUrl placeholder="YouTube or Soundcloud url"}}<br>
 						{{input value=trackTitle placeholder="Title"}}<br>
 						{{textarea value=trackBody placeholder="Optional description"}}<br>
-						<button class="Btn" {{action "publishTrack"}}>Save</button>
+						<button class="Btn" {{action "publishTrack"}}>Add new track</button>
 					</div>
 				</div>
 			{{/if}}

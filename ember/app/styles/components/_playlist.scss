@@ -2,13 +2,17 @@
  * Playlist
  */
 
+.Playlist {
+	background-color: white;
+	overflow: auto;
+}
+
 .PlaylistHeader,
 .PlaylistBody {
 	float: left;
 	padding-bottom: 20px;
 	
 	.Inner {
-		background-color: white;
 		padding: 10px;
 	}
 }

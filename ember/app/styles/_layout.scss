@@ -17,8 +17,10 @@ body {
 	overflow: auto;
 }
 .SiteTitle {
-	margin: 0;
-	display: inline-block;
+	margin: 0 3px;
+	@include min-width(600px) {
+		float: left;
+	}
 }
 
 
@@ -26,20 +28,13 @@ body {
  User settings and log-in
 */
 
-.UserLog {
-	display: inline-block;
+.UserActions {
 	padding-left: 3px;
-}
-
-.UserSettings {
-	position: fixed;
-	top: 0;
-	right: 0;
-	background: white;
-	padding: 20px;
-	border: 1px solid gray;
-	h3,
 	p {
-		margin: 5px;
+		float: left;
+		margin: 0;
+	}
+	@include min-width(600px) {
+		float: left;
 	}
 }
