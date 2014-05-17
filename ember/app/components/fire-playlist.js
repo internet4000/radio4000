@@ -31,7 +31,6 @@ var FirePlaylistComponent = Ember.Component.extend({
 				title: this.get('trackTitle'),
 				body: this.get('trackBody'),
 				created: new Date().getTime()
-				// ,user: promises.user
 			});
 
 			// Pass the action on to the playlist controller (see playlist.hbs)
@@ -43,12 +42,6 @@ var FirePlaylistComponent = Ember.Component.extend({
 				trackTitle: '',
 				trackBody: ''
 			});
-
-			// Ember.RSVP.hash({
-			// 	user: this.get('util').getUserByUsername(this.get('trackUsername'))
-			// }).then(function(promises) {
-
-			// }.bind(this));
 		},
 		removeTrack: function(track) {
 			var playlist = this.get('playlist');
