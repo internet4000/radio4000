@@ -29,17 +29,25 @@ var PlaylistsNewController = Ember.ObjectController.extend({
 				// Ember.debug(promises);
 				// console.log(promises);
 
-				// Define the new playlist
+				// Create a new playlist
 				var newPlaylist = this.store.createRecord('playlist', {
 					title: this.get('playlist.title'),
 					body: this.get('playlist.body'),
-					created: new Date().getTime(),
-					user: promises.user
-					// ,user: 'test'//this.get('auth').get('currentUser.id')
+					created: new Date().getTime()
+					// ,user: promises.user
 				});
 
-				// Save it to the DB
-				newPlaylist.save();
+				// Save it to the DB and try to relate the playlist to the current user. Currently it stores the user id in the playlist but it would be nicer if the playlist id was stored in the user object
+				newPlaylist.save().then(function() {
+					Ember.RSVP.Promise.cast(promises.user.get('playlists')).then(function(users) {
+						users.addObject(newPlaylist);
+						newPlaylist.save().then(function() {
+							// success?
+						}, function() {
+							// error?
+						});
+					});
+				});
 
 				// Empty the form fields
 				this.setProperties({

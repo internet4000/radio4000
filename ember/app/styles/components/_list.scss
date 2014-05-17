@@ -1,0 +1,26 @@
+.List {
+	list-style: none;
+	padding-left: 0;
+}
+.List-item {
+	border-top: 1px solid hsl(0, 0%, 90%);
+
+	a {
+		display: block;
+		color: $black;
+		padding-top: .357142857em; // optical center
+
+		&.is-active {
+			background-color: $yellow;
+			color: $black;
+		}
+	}
+
+	small {
+		float: right;
+		color: gray;
+		@media (max-width: 400px) {
+			display: none;
+		}
+	}
+}

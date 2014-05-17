@@ -1,0 +1,18 @@
+.Nav {
+	@extend %patron-bold;
+	text-transform: uppercase;
+
+
+	a {
+		display: inline-block;
+		line-height: 1;
+		padding: 0.5em 0.65em 0.25em;
+		border-radius: 0.2em;
+		background: hsl(0, 0%, 93%);
+		color: black;
+
+		&.is-active {
+			background-color: $yellow;
+		}
+	}
+}

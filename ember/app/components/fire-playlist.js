@@ -18,15 +18,13 @@ var FirePlaylistComponent = Ember.Component.extend({
 		publishTrack: function() {
 
 			if (!this.trackIsValid()) {
-				Ember.debug('not valid');
+				Ember.debug('unvalid track');
 				return; }
 
-			Ember.debug('valid');
-
-			var store = this.get('store');
+			Ember.debug('valid track');
 
 			// Create a new track
-			var track = store.createRecord('track', {
+			var track = this.get('store').createRecord('track', {
 				url: this.get('trackUrl'),
 				title: this.get('trackTitle'),
 				body: this.get('trackBody'),

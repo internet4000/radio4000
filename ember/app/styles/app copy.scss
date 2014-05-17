@@ -1,0 +1,107 @@
+
+@import 'base';
+@import 'buttons';
+@import 'components/nav';
+@import 'components/list';
+
+body {
+	overflow-y: scroll;
+	margin: 0;
+	background-color: rgb(233, 233, 233);
+}
+.Inner {
+	margin: 0 auto;
+	max-width: 1040px;
+}
+
+.SiteHeader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background-color: white;
+	z-index: 1;
+}
+.SiteMain {
+	margin-top: 20px;
+	position: relative;
+	z-index: 2;
+	.Inner {
+		background-color: rgb(255, 255, 255);
+		padding: 20px;
+		overflow: auto;
+	}
+}
+
+.Title {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: -5px;
+	padding: 5px;
+	display: inline-block;
+}
+
+// Profile Img
+.Profile {
+	width: 290px;
+	float: left;
+}
+
+// New Item
+.NewItem {
+	width: 100%;
+	min-height: 30px;
+}
+
+// Top bar with controls
+
+.Playback-title {
+	position: relative;
+	top: 1px;
+}
+
+.List {
+	margin-left: 320px;
+	margin-top: 0;
+}
+
+// Controls
+.Controls {
+	position: fixed;
+	z-index: 3;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	border-bottom: 1px solid;
+	background-color: white;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+// Container for the embeds
+.Player {
+	// position
+	position: fixed;
+	bottom: 73px;
+	right: 20px;
+	width: 450px;
+	background-color: white;
+	padding: 20px;
+	// toggle animation
+	transition: transform 200ms ease-in-out;
+	&.is-minimized {
+		transform: translateY(100%);
+	}
+
+	iframe {
+		display: none;
+	}
+	&.youtube #YouTubePlayer,
+	&.youtube #ytplayer,
+	&.soundcloud #SoundcloudPlayer {
+		display: block;
+	}
+}
+
+
