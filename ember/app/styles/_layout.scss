@@ -4,6 +4,10 @@ body {
 	background-color: rgb(233, 233, 233);
 }
 
+.SiteMain {
+	overflow: auto;
+}
+
 // User Log
 .UserLog {
 	position: fixed;
@@ -17,16 +21,17 @@ body {
 .PlaylistHeader,
 .PlaylistBody {
 	float: left;
-	background-color: white;
 	padding-bottom: 20px;
-}
-.Inner {
-	margin-right: 20px;
-	margin-left: 20px;
+	
+	.Inner {
+		background-color: white;
+		margin-right: 20px;
+		margin-left: 20px;
+		padding: 10px;
+	}
 }
 .PlaylistHeader {
-	width: 25%;
-	margin-right: 5%;
+	width: 30%;
 }
 .PlaylistBody {
 	width: 70%;
