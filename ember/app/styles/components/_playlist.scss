@@ -1,0 +1,26 @@
+/**
+ * Playlist
+ */
+
+.PlaylistHeader,
+.PlaylistBody {
+	float: left;
+	padding-bottom: 20px;
+	
+	.Inner {
+		background-color: white;
+		padding: 10px;
+	}
+}
+.PlaylistHeader {
+	width: 30%;
+	.Inner {
+		margin-right: 20px;
+	}
+}
+.PlaylistBody {
+	width: 70%;
+}
+.PlaylistTitle {
+	margin: 0;
+}

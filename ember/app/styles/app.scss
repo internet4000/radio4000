@@ -2,9 +2,12 @@
 @import 'base';
 @import 'layout';
 
+// Components
 @import 'components/nav';
 @import 'components/list';
 @import 'components/buttons';
+@import 'components/track';
+@import 'components/playlist';
 
 // Player
 @import 'components/player';

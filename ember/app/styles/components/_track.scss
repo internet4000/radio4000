@@ -1,0 +1,35 @@
+/**
+ * Unique Track
+ */
+
+.Track {
+	border-top: 1px solid gray;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	&:first-of-type {
+		border-top: 0px solid gray;
+	}
+}
+.TrackDescription {
+	font-style: italic;
+	color: gray;
+	margin: 0;
+}
+
+
+/**
+ * Add Track
+ */
+
+.AddTrack {
+	input, 
+	textarea {
+		width: 100%;
+	}
+	input {
+		min-height: 30px;
+	}
+	text-area {
+		min-height: 80px;	
+	}
+}
