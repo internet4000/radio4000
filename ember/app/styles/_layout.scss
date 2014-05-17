@@ -1,62 +1,58 @@
 body {
 	overflow-y: scroll;
-	margin: 0;
+	margin: 1em;
 	background-color: rgb(233, 233, 233);
 }
-.Inner {
-	margin: 0 auto;
-	max-width: 1040px;
-}
 
-.SiteHeader {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	background-color: white;
-	z-index: 1;
-}
-.SiteMain {
-	margin-top: 20px;
-	position: relative;
-	z-index: 2;
-	.Inner {
-		background-color: rgb(255, 255, 255);
-		padding: 20px;
-		overflow: auto;
-	}
-}
+// .Inner {
+// 	margin: 0 auto;
+// 	max-width: 1040px;
+// }
 
-.Title {
-	margin-top: 10px;
-	margin-bottom: 10px;
-	margin-left: -5px;
-	padding: 5px;
-	display: inline-block;
-}
+// .SiteHeader {
+// 	position: fixed;
+// 	top: 0;
+// 	left: 0;
+// 	right: 0;
+// 	background-color: white;
+// 	z-index: 1;
+// }
+// .SiteMain {
+// 	margin-top: 20px;
+// 	position: relative;
+// 	z-index: 2;
+// 	.Inner {
+// 		background-color: rgb(255, 255, 255);
+// 		padding: 20px;
+// 		overflow: auto;
+// 	}
+// }
 
-// Profile Img
-.Profile {
-	width: 290px;
-	float: left;
-}
+// .Title {
+// 	margin-top: 10px;
+// 	margin-bottom: 10px;
+// 	margin-left: -5px;
+// 	padding: 5px;
+// 	display: inline-block;
+// }
 
-// New Item
-.NewItem {
-	width: 100%;
-	min-height: 30px;
-}
+// // Profile Img
+// .Profile {
+// 	width: 290px;
+// 	float: left;
+// }
+
+// // New Item
+// .NewItem {
+// 	width: 100%;
+// 	min-height: 30px;
+// }
 
 // Top bar with controls
 
 .Playback-title {
 	position: relative;
 	top: 1px;
-}
-
-.List {
-	margin-left: 320px;
-	margin-top: 0;
 }
 
 // Controls
@@ -97,5 +93,3 @@ body {
 		display: block;
 	}
 }
-
-

@@ -3,6 +3,7 @@ var FirePlaylistComponent = Ember.Component.extend({
 	classNameBindings: ['isExpanded:playlist-expanded', 'isSingle:playlist-single'],
 	trackUsername: '',
 	trackBody: '',
+	isEditing: false,
 
 	trackIsValid: function() {
 		var isValid = true;
@@ -40,6 +41,17 @@ var FirePlaylistComponent = Ember.Component.extend({
 				trackTitle: '',
 				trackBody: ''
 			});
+		},
+
+		editPlaylist: function() {
+			this.set('isEditing', true);
+			console.log(this.get('playlist'));
+		},
+		acceptChanges: function() {
+			this.get('playlist').save();
+		},
+		saveChanges: function() {
+			this.set('isEditing', false);
 		},
 		removeTrack: function(track) {
 			var playlist = this.get('playlist');

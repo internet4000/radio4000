@@ -1,4 +1,15 @@
 <article>
+
+	{{#if authController.isLoggedIn}}
+		{{#if isEditing}}
+			{{input value=playlist.title focus-out="acceptChanges"}}<br>
+			{{textarea value=playlist.body focus-out="acceptChanges"}}<br>
+			<button {{action "savePlaylist"}}>Save playlist</button>
+		{{else}}
+			<button {{action 'editPlaylist'}}>edit</button>
+		{{/if}}
+	{{/if}}
+
 	<h1>{{playlist.title}}</h1>
 	{{#if isExpanded}}
 		<div>{{markdown playlist.body}}</div>
