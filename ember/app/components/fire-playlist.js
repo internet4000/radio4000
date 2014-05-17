@@ -1,10 +1,8 @@
 var FirePlaylistComponent = Ember.Component.extend({
-	classNames: ['playlist'],
-	classNameBindings: ['isExpanded:playlist-expanded', 'isSingle:playlist-single'],
-	trackUsername: '',
-	trackBody: '',
+	// classNames: ['playlist'],
+	// classNameBindings: ['isExpanded:playlist-expanded', 'isSingle:playlist-single'],
 	isEditing: false,
-	isOwner: 'not yet',
+	isOwner: false,
 
 	init: function () {
 		this._super();

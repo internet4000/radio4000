@@ -5,7 +5,11 @@ var AuthController = Ember.Controller.extend({
 	currentUser: null,
 
 	init: function() {
+		this._super();
+		this.fireBaseAuth();
+	},
 
+	fireBaseAuth: function() {
 		// Create the Firebase login object
 		this.authClient = new FirebaseSimpleLogin(this.dbRef, function(error, user) {
 
