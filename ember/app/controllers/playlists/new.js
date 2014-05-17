@@ -23,28 +23,29 @@ var PlaylistsNewController = Ember.ObjectController.extend({
 
 			Ember.debug(this.get('auth'));
 
-			Ember.RSVP.hash({
-				user: this.get('util').getUserByUsername(this.get('playlist.username'))
+			// Define the new playlist
+			var newPlaylist = this.store.createRecord('playlist', {
+				title: this.get('playlist.title'),
+				body: this.get('playlist.body'),
+				created: new Date().getTime()
+				// ,user: 'test'//this.get('auth').get('currentUser.id')
+			});
 
-			}).then(function(promises) {
+			// Save it to the DB
+			newPlaylist.save();
 
-				var newPlaylist = this.store.createRecord('playlist', {
-					title: this.get('playlist.title'),
-					body: this.get('playlist.body'),
-					created: new Date().getTime(),
-					user: this.get('currentUser.id')
-				});
+			// Empty the form fields
+			this.setProperties({
+				'playlist.title': '',
+				'playlist.body': ''
+			});
 
-				newPlaylist.save();
+			this.transitionToRoute('playlist', newPlaylist);
 
-				this.setProperties({
-					'playlist.title': '',
-					'playlist.username': '',
-					'playlist.body': ''
-				});
-
-				this.transitionToRoute('playlist', newPlaylist);
-			}.bind(this));
+			// Ember.RSVP.hash({
+			// 	user: this.get('util').getUserByUsername(this.get('playlist.username'))
+			// }).then(function(promises) {
+			// }.bind(this));
 		}
 	},
 

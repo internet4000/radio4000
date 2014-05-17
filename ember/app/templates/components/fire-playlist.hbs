@@ -19,14 +19,13 @@
 		<hr>
 		<h3>Add track</h3>
 		{{input value=trackUrl placeholder="YouTube or Soundcloud url"}}<br>
-		{{input value=trackUsername placeholder=authController.currentUser}}<br>
-		{{textarea value=trackBody placeholder="Track description"}}<br>
+		{{input value=trackTitle placeholder="Title"}}<br>
+		{{textarea value=trackBody placeholder="Optional description"}}<br>
 		<button {{action "publishTrack"}}>Save</button>
 	{{/if}}
 
 	{{!-- <header>
-		<div class="Playlist-author">{{playlist.user.id}} (<time class="Playlist-date">{{playlist.publishedDate}}</time>)</div>
+		<div class="Playlist-author">{{playlist.user.id}} (<time class="Playlist-date">{{playlist.createdDate}}</time>)</div>
 		<img {{bind-attr src="playlist.user.avatar"}} class="avatar Playlist-avatar"/>
 	</div> --}}
-
 </article>

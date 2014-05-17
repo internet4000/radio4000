@@ -1,5 +1,5 @@
 var PlaylistsIndexController = Ember.ArrayController.extend({
-	sortProperties: ['published'],
+	sortProperties: ['created'],
 	sortAscending: false
 });
 
