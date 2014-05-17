@@ -18,7 +18,7 @@ body {
 }
 .SiteTitle {
 	margin: 0 3px;
-	@include min-width(600px) {
+	@media (min-width: 600px) {
 		float: left;
 	}
 }
@@ -34,7 +34,7 @@ body {
 		float: left;
 		margin: 0;
 	}
-	@include min-width(600px) {
+	@media (min-width: 600px) {
 		float: left;
 	}
 }
