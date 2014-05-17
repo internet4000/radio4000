@@ -1,0 +1,12 @@
+.Form {
+	input, 
+	textarea {
+		width: 100%;
+	}
+	input {
+		min-height: 30px;
+	}
+	textarea {
+		min-height: 80px;	
+	}
+}

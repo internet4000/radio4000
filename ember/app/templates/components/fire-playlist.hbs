@@ -8,9 +8,12 @@
 			<div class="PlaylistEdit">
 				{{#if controller.isOwner}}
 					{{#if isEditing}}
-						{{input value=playlist.title}}<br>
-						{{textarea value=playlist.body}}<br>
-						<button {{action "saveEditing"}}>Save playlist</button>
+						<div class="Form">
+							{{input value=playlist.title}}
+							{{input type="url" value=playlist.url}}
+							{{textarea value=playlist.body}}
+							<button {{action "saveEditing"}}>Save playlist</button>
+						</div>
 					{{else}}
 						<button {{action 'editPlaylist'}}>edit</button>
 					{{/if}}
@@ -20,10 +23,12 @@
 			{{#if authController.isLoggedIn}}
 				<div class="AddTrack">
 					<h3>Add track</h3>
-					{{input value=trackUrl placeholder="YouTube or Soundcloud url"}}<br>
-					{{input value=trackTitle placeholder="Title"}}<br>
-					{{textarea value=trackBody placeholder="Optional description"}}<br>
-					<button {{action "publishTrack"}}>Save</button>
+					<div class="Form">
+						{{input value=trackUrl placeholder="YouTube or Soundcloud url"}}<br>
+						{{input value=trackTitle placeholder="Title"}}<br>
+						{{textarea value=trackBody placeholder="Optional description"}}<br>
+						<button {{action "publishTrack"}}>Save</button>
+					</div>
 				</div>
 			{{/if}}
 		</div>
