@@ -3,6 +3,7 @@ var FirePlaylistComponent = Ember.Component.extend({
 	classNameBindings: ['isExpanded:playlist-expanded', 'isSingle:playlist-single'],
 	trackUsername: '',
 	trackBody: '',
+
 	trackIsValid: function() {
 		var isValid = true;
 		['trackUsername', 'trackBody'].forEach(function(field) {
@@ -12,6 +13,7 @@ var FirePlaylistComponent = Ember.Component.extend({
 		}, this);
 		return isValid;
 	},
+
 	actions: {
 		publishTrack: function() {
 			if (!this.trackIsValid()) { return; }

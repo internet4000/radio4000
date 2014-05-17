@@ -16,10 +16,14 @@ var Utility = Ember.Object.extend({
 		var store = this.get('store');
 		username = username.replace(/[^a-zA-Z0-9 -]/g, '');
 		return this.get('store').find('user', username).then(function(user) {
+
+			// User already exists so just return it
 			return user;
 		}, function() {
+
 			// HACK: `find()` creates an entry in store.typeMapFor().idToRecord which prevents `createRecord()` from working
 			delete store.typeMapFor(store.modelFor('user')).idToRecord[username];
+
 			// A user couldn't be found, so create a new user
 			var user = store.createRecord('user', {
 				id: username,
