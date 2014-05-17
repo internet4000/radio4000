@@ -12,17 +12,12 @@
 	{{else}}
 
 		<div class="UserLog">
-			<h3>Create your own collection of music</h3>
-			<p>Get started with either Google or Facebook (We don't need anything but your name).</p>
-			<p>
-				<button {{action 'login' 'google'}}>Start with Google</button>
-				<button {{action 'login' 'facebook'}}>Start with Facebook</button>
-			</p>
+			Create your own collection of music in a second
+			<button class="Btn" {{action 'login' 'google'}}>Sign-in with Google</button>
+			<button class="Btn" {{action 'login' 'facebook'}}>Sign-in with with Facebook</button>
 		</div>
 	{{/if}}
 </header>
-
-<hr>
 
 <main class="SiteMain">
 	{{outlet}}

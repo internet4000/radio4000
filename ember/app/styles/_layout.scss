@@ -3,17 +3,28 @@ body {
 	margin: 1em;
 	background-color: rgb(233, 233, 233);
 }
+.SiteHeader,
+.SiteMain {
+	max-width: 1040px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.SiteHeader {
+	margin-bottom: 20px;
+}
 
 .SiteMain {
 	overflow: auto;
 }
+.SiteTitle {
+	margin: 0;
+	display: inline-block;
+}
 
 // User Log
 .UserLog {
-	position: fixed;
-	top: 0;
-	right: 0;
-	background-color: gray;
+	display: inline-block;
+	padding-left: 10px;
 }
 
 
@@ -39,6 +50,18 @@ body {
 }
 
 // Track List and Unique tracks
+.AddTrack {
+	input, 
+	textarea {
+		width: 100%;
+	}
+	input {
+		min-height: 30px;
+	}
+	text-area {
+		min-height: 80px;	
+	}
+}
 .Track {
 	border-top: 1px solid gray;
 	padding-top: 3px;
