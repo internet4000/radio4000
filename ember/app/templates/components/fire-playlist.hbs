@@ -15,7 +15,7 @@
 							<button {{action "saveEditing"}}>Save playlist</button>
 						</div>
 					{{else}}
-						<button {{action 'editPlaylist'}}>edit</button>
+						<button class="Btn" {{action 'editPlaylist'}}>edit</button>
 					{{/if}}
 				{{/if}}
 			</div>
@@ -27,7 +27,7 @@
 						{{input value=trackUrl placeholder="YouTube or Soundcloud url"}}<br>
 						{{input value=trackTitle placeholder="Title"}}<br>
 						{{textarea value=trackBody placeholder="Optional description"}}<br>
-						<button {{action "publishTrack"}}>Save</button>
+						<button class="Btn" {{action "publishTrack"}}>Save</button>
 					</div>
 				</div>
 			{{/if}}
