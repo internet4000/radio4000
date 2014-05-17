@@ -4,6 +4,28 @@ var FirePlaylistComponent = Ember.Component.extend({
 	trackUsername: '',
 	trackBody: '',
 	isEditing: false,
+	isOwner: 'from component',
+
+	init: function () {
+		this._super();
+		this.authController = this.get('controllers.auth');
+		this.checkOwner();
+	},
+
+	checkOwner: function() {
+		var currentUserId = this.get('authController.currentUser.id');
+		var playlistUserId = this.get('playlist.user.id');
+
+		// Ember.debug(currentUserId);
+		// Ember.debug(playlistUserId);
+		if (currentUserId === playlistUserId) {
+			this.set('isOwner', true);
+			return true;
+		} else {
+			this.set('isOwner', false);
+			return false;
+		}
+	},
 
 	trackIsValid: function() {
 		var isValid = true;
@@ -17,7 +39,6 @@ var FirePlaylistComponent = Ember.Component.extend({
 
 	actions: {
 		publishTrack: function() {
-
 			if (!this.trackIsValid()) {
 				Ember.debug('unvalid track');
 				return; }
@@ -45,13 +66,12 @@ var FirePlaylistComponent = Ember.Component.extend({
 
 		editPlaylist: function() {
 			this.set('isEditing', true);
-			console.log(this.get('playlist'));
+		},
+		stopEditing: function() {
+			this.set('isEditing', false);
 		},
 		acceptChanges: function() {
 			this.get('playlist').save();
-		},
-		saveChanges: function() {
-			this.set('isEditing', false);
 		},
 		removeTrack: function(track) {
 			var playlist = this.get('playlist');

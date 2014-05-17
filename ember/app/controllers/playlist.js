@@ -1,12 +1,5 @@
 var PlaylistController = Ember.ObjectController.extend({
 	needs: ['auth'],
-
-	init: function () {
-		this.authController = this.get('controllers.auth');
-		// Ember.debug('authCtrl: ' + authCtrl);
-		// this._super();
-	},
-
 	actions: {
 		publishTrack: function(playlist, track) {
 			Ember.debug('here2');
