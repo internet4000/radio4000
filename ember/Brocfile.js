@@ -2,6 +2,10 @@
 
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
+var p = require('ember-cli/lib/preprocessors');
+var preprocessCss = p.preprocessCss;
+var autoprefixer = require('broccoli-autoprefixer');
+
 var app = new EmberApp({
   name: require('./package.json').name,
 
@@ -12,6 +16,15 @@ var app = new EmberApp({
 
   getEnvJSON: require('./config/environment')
 });
+
+
+app.styles = function() {
+  //compiling less to css
+  var styles =  preprocessCss(this.appAndDependencies(), this.name + '/styles', '/assets');
+  //applying autoprefixer on styles
+  styles = autoprefixer(styles,['> 1%', 'last 2 versions']);
+  return styles;
+};
 
 // Use this to add additional libraries to the generated output files.
 app.import('vendor/ember-data/ember-data.js');
