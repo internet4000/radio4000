@@ -17,7 +17,6 @@ var app = new EmberApp({
   getEnvJSON: require('./config/environment')
 });
 
-
 app.styles = function() {
   //compiling less to css
   var styles =  preprocessCss(this.appAndDependencies(), this.name + '/styles', '/assets');
@@ -48,6 +47,5 @@ app.import('vendor/ic-ajax/dist/named-amd/main.js', {
     'request',
   ]
 });
-
 
 module.exports = app.toTree();

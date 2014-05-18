@@ -1,10 +1,12 @@
 <div class="Playlists">
-	
+
 	<h2>Trending Playlists</h2>
 
 	{{#each playlist in arrangedContent}}
 		<article class="PlaylistTeaser">
-			{{fire-playlist-slug playlist=playlist}}
+			{{#link-to "playlist" playlist}}
+				{{playlist.title}}
+			{{/link-to}}
 		</article>
 	{{/each}}
 </div>
