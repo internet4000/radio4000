@@ -15,13 +15,12 @@
 			{{/link-to}}
 
 			{{#unless isEditing}}
-				<h1 class="PlaylistTitle">
-					{{#link-to 'playlist' this}}
-						{{title}}
-					{{/link-to}}
-				</h1>
-				<p class="PlaylistUrl">/{{url}}</p>
+				<div class="PlaylistFacts">
+					<h1 class="PlaylistTitle">{{title}}</h1>
+					<p class="PlaylistUrl">/{{url}}</p>
+				</div>
 				<p class="PlaylistDescription">{{body}}</p>
+
 				<p><button {{action 'editPlaylist'}}>Edit playlist</button></p>
 			{{else}}
 				<form class="Form">
