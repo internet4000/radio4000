@@ -26,28 +26,49 @@
 			{{#if authController.isLoggedIn}}
 				{{#if isEditing}}
 					<form class="Form">
-						{{input value=title}}
-						{{input type="url" placeholder="Enter" value=url}}
-						{{textarea value=body}}
+						{{input value=title placeholder="Title"}}
+						{{input type="url" value=url}}
+						{{textarea value=body placeholder="Description"}}
 						<button {{action "saveEditing"}}>Save playlist</button> <button {{action 'cancelEditing'}}>Cancel</button>
 					</form>
 				{{/if}}
-				
+
 				<div class="AddTrack">
 					{{#if isAdding}}
 						<div class="Form">
-							{{input value=trackUrl placeholder="YouTube or Soundcloud url"}}<br>
+							{{input value=trackUrl autofocus='autofocus' placeholder="YouTube or Soundcloud url"}}<br>
 							{{input value=trackTitle placeholder="Title"}}<br>
 							{{textarea value=trackBody placeholder="Optional description"}}<br>
 							<button {{action "publishTrack"}}>Add track</button> <button {{action 'cancelTrack'}}>Cancel</button>
 						</div>
 					{{else}}
-						<button class="AddTrackBtn" {{action 'addTrack'}}>Add a track…</button>
+						<button class="AddTrackBtn" {{action 'publishTrack'}}>Add a track…</button>  <button {{action 'cancelTrack'}}>Cancel</button>
 					{{/if}}
 				</div>
 			{{/if}}
 		</div>
 	</div>
 
-	{{render 'tracks' model}}
+	<div class="PlaylistBody">
+		<div class="Inner">
+
+			<div class="Tracks">
+				{{#if tracks}}
+					<h2>Tracks</h2>
+				{{else}}
+					<h2>No tracks yet.</h2>
+				{{/if}}
+
+				{{#each track in tracks}}
+					{{x-track
+						track=track
+						playlist=this
+						authController=authController
+						onPublishTrack="publishTrack"}}
+				{{/each}}
+			</div>
+		</div>
+	</div>
+
+	{{outlet}}
 </section>

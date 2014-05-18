@@ -6,10 +6,10 @@ Router.map(function() {
 
 	this.resource('playlists', { path: '/playlists' }, function() {
 		this.route('new');
-		this.resource('playlist', { path: '/p/:playlist_id' }, function() {
-			// this.route('edit');
-			this.resource('track', { path: '/t/:track_id' });
-		});
+	});
+
+	this.resource('playlist', { path: '/p/:playlist_id' }, function() {
+		this.resource('track', { path: '/t/:track_id' });
 	});
 
 	this.resource('users', { path: '/users' });

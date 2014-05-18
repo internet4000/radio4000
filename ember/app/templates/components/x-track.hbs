@@ -1,0 +1,30 @@
+<article class="Track">
+	{{#link-to 'track' track}}
+		<p class="Track-name" {{bind-attr href=track.url}}>{{track.title}}</p>
+		<p class="Track-description">{{track.body}}</p>
+	{{/link-to}}
+
+	{{#unless isEditing}}
+		<div class="Track-controls">
+			<button {{action 'edit'}}>Edit</button>
+		</div>
+	{{/unless}}
+
+	{{#if isEditing}}
+		<form class="Form">
+			<label>URL
+				{{input type="url" placeholder="YouTube or Soundcloud URL" value=track.url}}</label>
+			<label>Title
+			{{input value=track.title placeholder="Title"}}</label>
+			<label>Description
+			{{textarea value=track.body placeholder="Description"}}</label>
+
+			<div class="Track-controls">
+				<button {{action "saveModel"}}>Save track</button> <button {{action 'deleteModel' track}}>Delete</button> <button {{action 'stopEditing'}}>Cancel</button>
+			</div>
+		</form>
+	{{/if}}
+
+</article>
+
+{{yield}}

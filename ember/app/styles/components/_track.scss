@@ -3,6 +3,7 @@
  */
 
 .Track {
+	position: relative;
 	border-top: 1px solid $lightgray;
 	&:first-of-type {
 		border-top: 0;
@@ -33,4 +34,13 @@
 	font-size: 14px;
 	color: $gray;
 	margin-bottom: 0;
+}
+.Track-controls {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	display: none;
+	.Track:hover & {
+		display: block;
+	}
 }
