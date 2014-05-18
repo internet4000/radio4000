@@ -13,6 +13,12 @@ var ApplicationController = Ember.Controller.extend({
 		},
 		logout: function() {
 			this.get('authController').authClient.logout();
+		},
+		mouseEnter:function (){
+
+		},
+		mouseLeave: function() {
+
 		}
 	}
 });
