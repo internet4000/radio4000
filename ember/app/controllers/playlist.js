@@ -66,15 +66,12 @@ var PlaylistController = Ember.ObjectController.extend({
 			Ember.debug('valid track');
 
 			// Create a new track
-			var track = this.get('store').createRecord('track', {
+			track = this.get('store').createRecord('track', {
 				url: this.get('trackUrl'),
 				title: this.get('trackTitle'),
 				body: this.get('trackBody'),
 				created: new Date().getTime()
 			});
-
-			// Pass the action on to the playlist controller (see playlist.hbs)
-			this.sendAction('onPublishTrack', this.get('playlist'), track);
 
 			// Reset the fields
 			this.setProperties({
@@ -83,23 +80,17 @@ var PlaylistController = Ember.ObjectController.extend({
 				trackBody: ''
 			});
 
+			var model = this.get('model');
+
 			track.save().then(function() {
-				Ember.RSVP.Promise.cast(playlist.get('tracks')).then(function(tracks) {
+				Ember.RSVP.Promise.cast(model.get('tracks')).then(function(tracks) {
 					tracks.addObject(track);
-					playlist.save().then(function() {
+					model.save().then(function() {
 						// success?
 					}, function() {
 						// error?
 					});
 				});
-			});
-		},
-		removeTrack: function(track) {
-			var playlist = this.get('playlist');
-			Promise.cast(playlist.get('tracks')).then(function(tracks) {
-				tracks.removeObject(track);
-				track.destroyRecord();
-				playlist.save();
 			});
 		}
 	}
