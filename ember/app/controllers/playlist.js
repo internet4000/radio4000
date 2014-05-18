@@ -1,34 +1,12 @@
 var PlaylistController = Ember.ObjectController.extend({
-	// classNames: ['playlist'],
-	// classNameBindings: ['isExpanded:playlist-expanded', 'isSingle:playlist-single'],
 	needs: ['auth'],
 	isEditing: false,
 	isAdding: false,
-	// isOwner: false,
 
 	init: function () {
 		this._super();
 		this.authController = this.get('controllers.auth');
-		// this.checkOwner();
 	},
-
-	// checkOwner: function() {
-	// 	var currentUserId = this.get('authController.currentUser.id');
-	// 	var modelUserId = this.get('model.id');
-
-	// 	// can't find the id???
-
-	// 	Ember.debug(currentUserId);
-	// 	Ember.debug(modelUserId);
-
-	// 	// if (currentUserId === modelUserId) {
-	// 	// 	this.set('isOwner', true);
-	// 	// 	return true;
-	// 	// } else {
-	// 	// 	this.set('isOwner', false);
-	// 	// 	return false;
-	// 	// }
-	// },
 
 	trackIsValid: function() {
 		var isValid = true;
