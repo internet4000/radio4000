@@ -12,7 +12,7 @@ input[type='url'],
 textarea {
 	font-size: 13px;
 	padding: 5px 6px 4px;
-	border: 1px solid hsl(0, 0%, 50%);
+	border: 1px solid $lightgray;
 	border-radius: 3px;
 	color: $black;
 }
@@ -35,7 +35,7 @@ input[type='url'],
 textarea {
 	width: 100%;
 	max-width: 100%;
-	box-shadow: 1px 2px 3px hsl(0, 0%, 85%) inset;
+	box-shadow: 1px 2px 3px $superlightgray inset;
 	min-height: 30px;
 }
 textarea {
