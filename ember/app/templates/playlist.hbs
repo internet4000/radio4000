@@ -20,7 +20,7 @@
 					<p class="PlaylistUrl">/{{url}}</p>
 				</div>
 				<p class="PlaylistDescription">{{body}}</p>
-				<p><button {{action 'editPlaylist'}}>Edit playlist</button></p>
+				<button class="EditBtn" {{action 'editPlaylist'}}>Edit playlist</button>
 			{{/unless}}
 
 			{{#if authController.isLoggedIn}}
