@@ -14,11 +14,11 @@
 							{{input value=playlist.title}}
 							{{input type="url" value=playlist.url}}
 							{{textarea value=playlist.body}}
-							<button class="Btn" {{action "saveEditing"}}>Save playlist</button>
+							<button {{action "saveEditing"}}>Save playlist</button>
 						</form>
 					{{else}}
 						<p>
-							<button class="Btn" {{action 'editPlaylist'}}>Edit playlist</button>
+							<button {{action 'editPlaylist'}}>Edit playlist</button>
 						</p>
 					{{/if}}
 				{{/if}}
@@ -31,7 +31,7 @@
 						{{input value=trackUrl placeholder="YouTube or Soundcloud url"}}<br>
 						{{input value=trackTitle placeholder="Title"}}<br>
 						{{textarea value=trackBody placeholder="Optional description"}}<br>
-						<button class="Btn" {{action "publishTrack"}}>Add new track</button>
+						<button {{action "publishTrack"}}>Add new track</button>
 					</div>
 				</div>
 			{{/if}}
@@ -55,10 +55,4 @@
 			{{/if}}
 		</div>
 	</div>
-
-
-	{{!-- <header>
-		<div class="Playlist-author">{{playlist.user.id}} (<time class="Playlist-date">{{playlist.createdDate}}</time>)</div>
-		<img {{bind-attr src="playlist.user.avatar"}} class="avatar Playlist-avatar"/>
-	</div> --}}
 </section>

@@ -8,6 +8,7 @@ input[type='text'],
 input[type='email'],
 input[type='tel'],
 input[type='password'],
+input[type='url'],
 textarea {
 	font-size: 13px;
 	padding: 5px 6px 4px;
@@ -27,10 +28,10 @@ select {
 
 // Text inputs
 input[type='text'],
-input[type='url'],
 input[type='email'],
 input[type='tel'],
 input[type='password'],
+input[type='url'],
 textarea {
 	width: 100%;
 	max-width: 100%;
@@ -41,6 +42,7 @@ textarea {
 	min-height: 4.8em;
 }
 
+// Form design should be tigther than inputs alone
 .Form {
 	input[type='text'],
 	input[type='url'],
