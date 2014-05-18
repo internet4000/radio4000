@@ -21,11 +21,11 @@
 				</div>
 				<p class="PlaylistDescription">{{body}}</p>
 
-				<p><button {{action 'editPlaylist'}}>Edit playlist</button></p>
+				<button {{action 'editPlaylist'}}>Edit playlist</button>
 			{{else}}
 				<form class="Form">
 					{{input value=title}}
-					{{!-- {{input type="url" placeholder="Enter" value=url}} --}}
+					{{input type="url" placeholder="Enter" value=url}}
 					{{textarea value=body}}
 					<button {{action "saveEditing"}}>Save playlist</button>
 				</form>

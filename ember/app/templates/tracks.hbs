@@ -2,7 +2,7 @@
 	<div class="Inner">
 
 		<div class="Tracks">
-			<h2>{{#if tracks}}Tracks{{else}}No tracks yet.{{/if}}</h2>
+			{{#if tracks}}{{else}}<h2>No tracks yet.</h2>{{/if}}
 
 			{{#each track in tracks}}
 				<article class="Track">
