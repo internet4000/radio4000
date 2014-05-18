@@ -4,16 +4,23 @@
 
 .Track {
 	border-top: 1px solid $lightgray;
-	margin-top: 4px;
-	margin-bottom: 6px;
-	padding-top: 10px;
-	padding-bottom: 3px;
 	&:first-of-type {
-		border-top: 0px solid $lightgray;
+		border-top: 0;
 	}
+
+	// Link around the entire track
+	> a {
+		display: block;
+		padding-top: 5px;
+		padding-bottom: 3px;
+	}
+}
+.Track-name {
+	margin-bottom: 0;
 }
 .Track-description {
 	@extend %patron-italic;
+	font-size: 14px;
 	color: $gray;
-	margin: 0;
+	margin-bottom: 0;
 }
