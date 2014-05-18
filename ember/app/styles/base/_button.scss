@@ -40,12 +40,10 @@ button {
 }
 
 /**
- * Add Track Button
+ * Buttonsthat look like text inputs (also see forms.scss)
  */
 
-.AddTrackBtn {
-	width: 100%;
-	height: 30px;
+.Btn--textInput {
 	background-image: none;
 	background-color: white;
 	text-align: left;
@@ -61,5 +59,5 @@ button {
  */
 
 .EditBtn {
-	
+
 }

@@ -9,14 +9,14 @@ $base-line-height-unitless: 1.3125;
 
 // Colors
 $yellow: hsl(60, 100%, 80%);
-$black: hsl(0,0%,10%);
+$blue: #1b7fec;
+$lightblue: #dff1ff;
 
-$gray: #a7a7a7;
+$black: hsl(0,0%,10%);
+$gray: hsl(0, 0%, 35%);
 $lightgray: #e9eaed;
 $superlightgray: #ececec;
 
-$blue: #1b7fec;
-$lightblue: #dff1ff;
 
 // Good looking easings for animation
 $easing: cubic-bezier(0.165, 0.84, 0.44, 1);
