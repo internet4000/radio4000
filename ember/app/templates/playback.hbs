@@ -6,9 +6,9 @@
 				<span class="Playback-title">{{model.title}}</span>
 
 				{{#if isPlaying}}
-					<button class="PlayerBtn PlayerBtn-play" {{action 'pause'}}<strong>ll</strong></button>
+					<button class="PlayerBtn PlayerBtn-pause" {{action 'pause'}}<strong>ll</strong></button>
 				{{else}}
-					<button class="PlayerBtn PlayerBtn-pause" {{action 'play'}}>►</button>
+					<button class="PlayerBtn PlayerBtn-play" {{action 'play'}}>►</button>
 				{{/if}}
 
 				<button {{action 'togglePlayer'}}>
