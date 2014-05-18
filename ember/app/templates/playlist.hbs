@@ -32,19 +32,19 @@
 						<button {{action "saveEditing"}}>Save playlist</button> <button {{action 'cancelEditing'}}>Cancel</button>
 					</form>
 				{{/if}}
-				{{#if isAdding}}
+				
 				<div class="AddTrack">
-					<h3>Add track</h3>
-					<div class="Form">
-						{{input value=trackUrl placeholder="YouTube or Soundcloud url"}}<br>
-						{{input value=trackTitle placeholder="Title"}}<br>
-						{{textarea value=trackBody placeholder="Optional description"}}<br>
-						<button {{action "publishTrack"}}>Add track</button> <button {{action 'cancelTrack'}}>Cancel</button>
-					</div>
+					{{#if isAdding}}
+						<div class="Form">
+							{{input value=trackUrl placeholder="YouTube or Soundcloud url"}}<br>
+							{{input value=trackTitle placeholder="Title"}}<br>
+							{{textarea value=trackBody placeholder="Optional description"}}<br>
+							<button {{action "publishTrack"}}>Add track</button> <button {{action 'cancelTrack'}}>Cancel</button>
+						</div>
+					{{else}}
+						<button class="AddTrackBtn" {{action 'addTrack'}}>Add a track…</button>
+					{{/if}}
 				</div>
-				{{else}}
-					<p><button {{action 'addTrack'}}>Add track</button></p>
-				{{/if}}
 			{{/if}}
 		</div>
 	</div>

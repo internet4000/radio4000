@@ -36,3 +36,15 @@
 button {
 	@extend .Btn;
 }
+
+.AddTrackBtn {
+	width: 100%;
+	height: 30px;
+	background-image: none;
+	background-color: white;
+	text-align: left;
+	color: $gray;
+	&:hover {
+		background-image: none;
+	}
+}
