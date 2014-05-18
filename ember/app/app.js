@@ -64,6 +64,11 @@ var App = Ember.Application.extend({
 	}
 });
 
+// Change the class used on active elements by Ember
+Ember.LinkView.reopen({
+	activeClass: 'is-active'
+});
+
 loadInitializers(App, 'play');
 
 
