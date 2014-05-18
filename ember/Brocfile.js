@@ -26,6 +26,7 @@ app.styles = function() {
 };
 
 // Use this to add additional libraries to the generated output files.
+app.import('vendor/modernizr-custom.min.js');
 app.import('vendor/ember-data/ember-data.js');
 app.import('vendor/emberfire/dist/emberfire.min.js');
 app.import('vendor/firebase/firebase.js');
