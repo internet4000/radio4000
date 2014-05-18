@@ -41,11 +41,11 @@ body {
 	border: 2px solid hsl(211, 85%, 32%);
 	border-radius: 3px;
 	font-size: 20px;
-	background-color: $blue;
-	@extend %patron-bold;
+	background-color: $lightblue;
+	@extend %patron-light;
 	-webkit-font-smoothing: antialiased;
 	a {
-		color: white;
+		color: $blue;
 	}
 }
 
