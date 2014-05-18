@@ -30,7 +30,7 @@ app.import('vendor/modernizr-custom.min.js');
 app.import('vendor/ember-data/ember-data.js');
 app.import('vendor/emberfire/dist/emberfire.min.js');
 app.import('vendor/firebase/firebase.js');
-app.import('vendor/firebase-simple-login/firebase-simple-login-debug.js');
+app.import('vendor/firebase-simple-login/firebase-simple-login.js');
 app.import('vendor/markdown/lib/markdown.js');
 app.import('vendor/moment/moment.js');
 app.import('vendor/js-md5/js/md5.js');
