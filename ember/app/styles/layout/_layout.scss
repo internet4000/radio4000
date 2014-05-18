@@ -35,20 +35,20 @@ body {
 	}
 }
 .SiteTitle {
+	@extend %patron-bold;
 	position: fixed;
 	z-index: 2;
 	top: -2px;
 	right: 10px;
 	margin: 0;
-	padding: 5px 6px 2px;
-	border: 2px solid hsl(211, 85%, 32%);
-	border-radius: 3px;
 	font-size: 20px;
-	background-color: $lightblue;
-	@extend %patron-bold;
+	padding: 5px 6px 2px;
+	background-color: $green;
+	border: 2px solid darken($green, 20%);
+	border-radius: 3px;
 	-webkit-font-smoothing: antialiased;
 	a {
-		color: $blue;
+		color: $bleach;
 	}
 }
 
@@ -58,18 +58,18 @@ body {
 */
 
 .UserActions {
-	z-index: 1;
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	right: 0;
-	background: #c0e3ff;
-	width: 350px;
-	padding-top: 100px;
-	text-align: center;
-	transform: translateX(100%);
-	transition: all ease-in-out 200ms;
-	.sidebar-is-open & {
-		transform: translateX(0);
-	}
+	margin: 2rem 0 1rem;
+	// z-index: 1;
+	// position: fixed;
+	// top: 0;
+	// bottom: 0;
+	// right: 0;
+	// background: #c0e3ff;
+	// width: 350px;
+	// padding-top: 100px;
+	// transform: translateX(100%);
+	// transition: all ease-in-out 200ms;
+	// .sidebar-is-open & {
+	// 	transform: translateX(0);
+	// }
 }
