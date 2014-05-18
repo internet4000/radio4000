@@ -44,7 +44,7 @@
 		<div class="Inner">
 			{{#if isExpanded}}
 				<div class="Tracks">
-					<h2>{{#if playlist.tracks}}Tracks{{else}}No tracks yet.{{/if}}</h2>
+					{{#if playlist.tracks}}{{else}}<h2>No tracks yet.</h2>{{/if}}
 
 					{{#each track in playlist.tracks}}
 						<article class="Track">
