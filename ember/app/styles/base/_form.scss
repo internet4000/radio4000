@@ -1,0 +1,53 @@
+/**
+ * Forms
+ */
+
+// Shared styles for inputs and buttons
+.Btn,
+input[type='text'],
+input[type='email'],
+input[type='tel'],
+input[type='password'],
+textarea {
+	font-size: 13px;
+	padding: 5px 6px 4px;
+	border: 1px solid hsl(0, 0%, 50%);
+	border-radius: 3px;
+	color: $black;
+}
+
+// Consistent alignment
+label,
+input,
+textarea,
+select {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+// Text inputs
+input[type='text'],
+input[type='url'],
+input[type='email'],
+input[type='tel'],
+input[type='password'],
+textarea {
+	width: 100%;
+	max-width: 100%;
+	box-shadow: 1px 2px 3px hsl(0, 0%, 85%) inset;
+	min-height: 30px;
+}
+textarea {
+	min-height: 4.8em;
+}
+
+.Form {
+	input[type='text'],
+	input[type='url'],
+	input[type='email'],
+	input[type='tel'],
+	input[type='password'],
+	textarea {
+		margin-bottom: 0.5rem;
+	}
+}

@@ -1,7 +1,15 @@
+// More sensible box-model
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+
 body {
 	overflow-y: scroll;
 	margin: 1em;
-	background-color: rgb(233, 233, 233);
+	background-color: $lightgray;
 }
 .SiteHeader,
 .SiteMain {
@@ -13,15 +21,14 @@ body {
 	margin-bottom: 20px;
 	overflow: auto;
 }
-
 .SiteMain {
 	overflow: auto;
 	clear: both;
 }
 .SiteTitle {
-	margin: 0 3px;
+	margin-bottom: 0;
 	@media (min-width: 650px) {
-		float: left;
+		// float: left;
 	}
 }
 
@@ -31,12 +38,13 @@ body {
 */
 
 .UserActions {
-	padding-left: 3px;
-	p {
-		float: left;
-		margin: 0;
-	}
-	@media (min-width: 650px) {
-		float: left;
-	}
+	// padding-left: 3px;
+	// p {
+	// 	float: left;
+	// 	margin: 0;
+	// }
+	// @media (min-width: 650px) {
+	// 	float: left;
+	// 	margin-top: 7px;
+	// }
 }

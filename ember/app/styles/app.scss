@@ -1,16 +1,20 @@
+/*!
+	MUCH PLAY
+*/
 
-@import 'base';
-@import 'layout';
+// Base
+@import 'base/config';
+@import 'base/normalize-custom';
+@import 'base/base';
+@import 'base/form';
+@import 'base/button';
+
+// Layout
+@import 'layout/layout';
 
 // Components
 @import 'components/nav';
 @import 'components/list';
-@import 'components/buttons';
-@import 'components/track';
 @import 'components/playlist';
-
-// Layout
-@import 'layout/form';
-
-// Player
+@import 'components/track';
 @import 'components/player';

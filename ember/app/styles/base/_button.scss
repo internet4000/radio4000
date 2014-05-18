@@ -1,0 +1,32 @@
+/**
+ * Buttons
+ */
+
+.Btn {
+	// reset
+	-webkit-appearance: none;;
+	@extend %patron-medium;
+	line-height: normal;
+	text-align: center;
+	text-decoration: none;
+	white-space: normal;
+	margin: 0;
+	// styling
+	display: inline-block;
+	background-color: white;
+	background-image: linear-gradient(to bottom, hsl(0, 100%, 100%) 55%, hsl(0, 0%, 85%));
+	color: $black;
+}
+
+
+.Btn:hover,
+.Btn:focus,
+.Btn:active {
+    text-decoration: underline;
+}
+
+.Btn:disabled,
+.Btn.is-disabled {
+    cursor: default;
+    opacity: 0.75;
+}

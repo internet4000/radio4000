@@ -1,0 +1,25 @@
+// Typography
+$base-font-size: 16px;
+$base-line-height-unitless: 1.3125;
+
+%patron-bold { font-family:"Patron Bold", 'Patron Medium'; font-weight:bold; }
+%patron-medium { font-family:"Patron Medium", 'Patron Bold'; font-weight:600; }
+%patron-italic { font-family:"Patron Light Italic", 'Patron Light'; font-weight:300; font-style:italic; }
+%patron-light { font-family:"Patron Light", 'Patron Light'; font-weight:300; }
+
+// Colors
+$yellow: hsl(60, 100%, 80%);
+$black: hsl(0,0%,10%);
+$gray: hsl(0,0%,60%);
+$lightgray: hsl(0,0%,90%);
+
+// Good looking easings for animation
+$easing: cubic-bezier(0.165, 0.84, 0.44, 1);
+$easing2: cubic-bezier(0.770, 0, 0.175, 1);
+$easing3: cubic-bezier(0.165,.84,.44,1);
+$easing4: cubic-bezier(1,.01,.3,1);
+
+// Layout: Breakpoints
+$layout-s: 30em;
+$layout-m: 50em;
+$layout-l: 70em;

@@ -1,22 +1,25 @@
+<h1 class="PlaylistTitle">{{playlist.title}}</h1>
+<div class="PlaylistDescription">{{markdown playlist.body}}</div>
+
 <section class="Playlist">
 
 	<div class="PlaylistHeader">
 		<div class="Inner">
-			<img src="">
-			<h1 class="PlaylistTitle">{{playlist.title}}</h1>
-			<p class="PlaylistDescription">{{markdown playlist.body}}</p>
+			{{!-- <img src=""> --}}
 
 			<div class="PlaylistEdit">
 				{{#if controller.isOwner}}
 					{{#if isEditing}}
-						<div class="Form">
+						<form class="Form">
 							{{input value=playlist.title}}
 							{{input type="url" value=playlist.url}}
 							{{textarea value=playlist.body}}
-							<button {{action "saveEditing"}}>Save playlist</button>
-						</div>
+							<button class="Btn" {{action "saveEditing"}}>Save playlist</button>
+						</form>
 					{{else}}
-						<button class="Btn" {{action 'editPlaylist'}}>Edit playlist</button>
+						<p>
+							<button class="Btn" {{action 'editPlaylist'}}>Edit playlist</button>
+						</p>
 					{{/if}}
 				{{/if}}
 			</div>
@@ -39,12 +42,12 @@
 		<div class="Inner">
 			{{#if isExpanded}}
 				<div class="Tracks">
-					<h3>{{#if playlist.tracks}}Tracks{{else}}No tracks yet.{{/if}}</h3>
+					<h2>{{#if playlist.tracks}}Tracks{{else}}No tracks yet.{{/if}}</h2>
 
 					{{#each track in playlist.tracks}}
 						<article class="Track">
-							<a class="TrackName" href="{{track.url}}">{{track.title}}</a>
-							<p class="TrackDescription">{{track.body}}</p>
+							<a class="Track-name" {{bind-attr href=track.url}}>{{track.title}}</a>
+							<p class="Track-description">{{track.body}}</p>
 							{{!-- <p>{{track.user.username}}</p> --}}
 						</article>
 					{{/each}}
