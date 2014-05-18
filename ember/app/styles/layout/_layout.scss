@@ -9,7 +9,7 @@
 body {
 	overflow-y: scroll;
 	margin: 5px;
-	background-color: $lightgray;
+	background-color: $gray;
 }
 .SiteHeader,
 .SiteMain {
@@ -25,16 +25,20 @@ body {
 	clear: both;
 	background-color: white;
 	padding: 30px;
+	transition: all ease-in-out 200ms;
+	.sidebar-is-open & {
+		transform: translateX(-350px);
+	}
 }
 .SiteTitle {
 	margin: 0;
 	position: fixed;
 	top: 10px;
 	right: 10px;
-	background-color: rgb(147, 206, 240);
+	background-color: $blue;
 	padding: 5px 10px 3px;
 	border-radius: 6px;
-	border: 3px solid #DBDBDB;
+	border: 3px solid $lightgray;
 	font-family: "Patron", sans-serif;
 	font-weight: 200;
 	font-size: 20px;
@@ -59,5 +63,9 @@ body {
 	width: 350px;
 	padding-top: 100px;
 	text-align: center;
-	-webkit-transform: translateX(100%);
+	transform: translateX(100%);
+	transition: all ease-in-out 200ms;
+	.sidebar-is-open & {
+		transform: translateX(0);
+	}
 }

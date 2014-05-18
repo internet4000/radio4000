@@ -5,7 +5,7 @@
 .Btn {
 	// reset
 	-webkit-appearance: none;;
-	@extend %patron-medium;
+	@extend %patron;
 	line-height: normal;
 	text-align: center;
 	text-decoration: none;
@@ -16,6 +16,7 @@
 	background-color: rgb(192, 227, 255);
 	background-image: linear-gradient(to bottom, hsl(0, 100%, 100%) 60%, hsl(0, 0%, 85%));
 	color: $black;
+	padding: 6px 12px;
 }
 
 
