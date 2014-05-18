@@ -2,37 +2,54 @@
  * Player
  */
 
-// Controls
-.Controls {
+// Playback
+.Playback {
 	position: fixed;
 	z-index: 3;
 	bottom: 0;
 	left: 0;
 	right: 0;
 	z-index: 1;
+	.Inner {
+		max-width: 1040px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+// Controls
+.Controls {
+	width: 70%;
+	margin-left: 30%;
 	border-top: 1px solid $gray;
 	border-left: 1px solid $gray;
+	border-right: 1px solid $gray;
 	background-color: $lightblue;
 	padding: 5px;
+	overflow: auto;
+}
+.Controls-buttons {
+	float: right;
 }
 
 // Container for the embeds
 .Player {
-	// position
-	position: fixed;
-	bottom: 73px;
-	right: 20px;
-	width: 450px;
-	background-color: white;
-	padding: 20px;
-	// toggle animation
-	transition: transform 200ms ease-in-out;
-	&.is-minimized {
-		transform: translateY(100%);
-	}
+	width: 30%;
+	// // position
+	// position: fixed;
+	// bottom: 73px;
+	// right: 20px;
+	// width: 450px;
+	// background-color: white;
+	// padding: 20px;
+	// // toggle animation
+	// transition: transform 200ms ease-in-out;
+	// &.is-minimized {
+	// 	transform: translateY(100%);
+	// }
 
-	// temporary, until it works
-	display: none;
+	// // temporary, until it works
+	// display: none;
 
 	iframe {
 		display: none;
