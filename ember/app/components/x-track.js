@@ -1,5 +1,7 @@
 var XTrackComponent = Ember.Component.extend({
 	isEditing: false,
+	classNames: ['Track'],
+	classNameBindings: ['isEditing:is-editing'],
 
 	actions: {
 		edit: function() {
@@ -8,18 +10,17 @@ var XTrackComponent = Ember.Component.extend({
 		stopEditing: function(track) {
 			this.set('isEditing', false);
 		},
-		deleteModel: function(track, playlist) {
-			playlist = this.get('playlist');
+		// Delete the track object and the corresponding track object in playlist.tracks
+		deleteTrack: function(track) {
+			Ember.debug('deleting');
 
-			// Remove the track
-			// track.destroyRecord();
+			var playlist = this.get('playlist');
 
-			// And the relation in playlist.trackIsValid
-			// NOT WORKING
-			Promise.cast(playlist.get('tracks')).then(function(tracks) {
-				tracks.removeObject(track);
+			Promise.cast(playlist.get('tracks')).then(function(whatver) {
+				whatver.removeObject(track);
 				track.destroyRecord();
 				playlist.save();
+				Ember.debug('Deleted.');
 			});
 		},
 
@@ -35,14 +36,13 @@ var XTrackComponent = Ember.Component.extend({
 			return isValid;
 		},
 
-		saveModel: function(track, playlist) {
+		saveTrack: function(track, playlist) {
 			// if (!this.trackIsValid()) {
 			// 	Ember.debug('unvalid track');
 			// 	return; }
 
 			// Get the current model track
 			track = this.get('track');
-			playlist = this.get('playlist');
 
 			// Close edit state
 			this.set('isEditing', false);

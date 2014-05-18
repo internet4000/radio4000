@@ -1,33 +1,30 @@
-<article {{bind-attr class=":Track isEditing:is-editing"}}>
-	{{#link-to 'track' track}}
-		<p class="Track-name" {{bind-attr href=track.url}}>{{track.title}}</p>
-		<p class="Track-description">{{track.body}}</p>
-	{{/link-to}}
+{{#link-to 'track' track}}
+	<p class="Track-name" {{bind-attr href=track.url}}>{{track.title}}</p>
+	<p class="Track-description">{{track.body}}</p>
+{{/link-to}}
 
-	{{#unless isEditing}}
+{{#unless isEditing}}
+	<div class="Track-controls">
+		<button {{action 'edit'}}>Edit</button>
+	</div>
+{{/unless}}
+
+{{#if isEditing}}
+	<form class="Form">
+		<label>URL
+			{{input type="url" placeholder="YouTube or Soundcloud URL" value=track.url}}</label>
+		<label>Title
+		{{input value=track.title placeholder="Title"}}</label>
+		<label>Description
+		{{textarea value=track.body placeholder="Description"}}</label>
+		<button {{action "saveTrack" track}}>Save track</button>
+		<button class="Btn--text" {{action 'deleteTrack' track}}>Delete</button>
+		<button class="Btn--text" {{action 'stopEditing'}}>Cancel</button>
+
 		<div class="Track-controls">
-			<button {{action 'edit'}}>Edit</button>
+			<button {{action 'stopEditing'}}>Cancel</button>
 		</div>
-	{{/unless}}
-
-	{{#if isEditing}}
-		<form class="Form">
-			<label>URL
-				{{input type="url" placeholder="YouTube or Soundcloud URL" value=track.url}}</label>
-			<label>Title
-			{{input value=track.title placeholder="Title"}}</label>
-			<label>Description
-			{{textarea value=track.body placeholder="Description"}}</label>
-			<button {{action "saveModel"}}>Save track</button>
-			<button class="Btn--text" {{action 'deleteModel' track}}>Delete</button>
-			<button class="Btn--text" {{action 'stopEditing'}}>Cancel</button>
-
-			<div class="Track-controls">
-				<button {{action 'stopEditing'}}>Cancel</button>
-			</div>
-		</form>
-	{{/if}}
-
-</article>
+	</form>
+{{/if}}
 
 {{yield}}
