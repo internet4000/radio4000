@@ -1,7 +1,9 @@
 <h2>Create your own playlist</h2>
 
-{{input value=playlist.title placeholder="Playlist title"}}<br>
-{{textarea value=playlist.body placeholder="Describe your playlist"}}<br>
-{{input type="url" value=playlist.url placeholder="Chose a Url for your playlist"}}<br>
-<br>
-<button {{action "publishPlaylist"}}>Create</button> {{#link-to 'playlists'}}Cancel{{/link-to}}
+<form class="Form">
+	{{input value=playlist.title placeholder="Playlist title"}}<br>
+	{{textarea value=playlist.body placeholder="Describe your playlist"}}<br>
+	{{!-- {{input type="url" value=playlist.url placeholder="Chose a URL for your playlist"}}<br> --}}
+	<br>
+	<button {{action "publishPlaylist"}}>Create</button> {{#link-to 'playlists'}}Cancel{{/link-to}}
+</form>
