@@ -3,9 +3,13 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+
 	this.resource('playlists', { path: '/playlists' }, function() {
-		this.resource('playlist', { path: '/p/:playlist_id' });
 		this.route('new');
+		this.resource('playlist', { path: '/p/:playlist_id' }, function() {
+			// this.route('edit');
+			this.resource('track', { path: '/t/:track_id' });
+		});
 	});
 
 	this.resource('users', { path: '/users' });

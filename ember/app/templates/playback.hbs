@@ -1,0 +1,31 @@
+<div {{bind-attr class=':Playback model:is-active'}}>
+	<div class="Controls">
+		<div class="Inner">
+			{{#if model}}
+				{{#if isPlaying}}
+					<button {{action 'pause'}}<strong>ll</strong></button>
+				{{else}}
+					<button {{action 'play'}}>►</button>
+				{{/if}}
+
+				<button {{action 'togglePlayer'}}>
+					{{#if isMinimized}}Show{{else}}Hide{{/if}}
+				</button>
+
+				<span class="Playback-title">{{model.title}}</span>
+
+			{{else}}
+				Choose a sound!
+			{{/if}}
+		</div>
+	</div>
+
+	<div {{bind-attr class=':Player isMinimized model.provider'}}>
+		<div id="ytplayer"></div>
+		{{youtubeUrl}}
+		{{!-- <iframe id="YouTubePlayer" width="100%" height="166" frameborder="0"
+			{{bind-attr src="youtubeUrl"}}></iframe> --}}
+		<iframe id="SoundcloudPlayer" width="100%" height="166" frameborder="0"
+			{{bind-attr src="soundcloudUrl"}}></iframe>
+	</div>
+</div>

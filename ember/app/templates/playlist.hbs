@@ -1,6 +1,52 @@
-{{fire-playlist
-	playlist=model
-	authController=authController
-	isExpanded=true
-	isSingle=true
-	onPublishTrack="publishTrack"}}
+<section class="Playlist">
+
+	{{!-- {{fire-playlist
+		playlist=model
+		authController=authController
+		isExpanded=true
+		isSingle=true
+		onPublishTrack="publishTrack"}} --}}
+
+	<div class="PlaylistHeader">
+		<div class="Inner">
+
+			{{#link-to 'playlist' this}}
+				<img class="PlaylistAvatar" src="https://i1.sndcdn.com/avatars-000069254848-ak10xz-t200x200.jpg?30a2558">
+			{{/link-to}}
+
+			{{#unless isEditing}}
+				<h1 class="PlaylistTitle">
+					{{#link-to 'playlist' this}}
+						{{title}}
+					{{/link-to}}
+				</h1>
+				<p class="PlaylistUrl">/{{url}}</p>
+				<p class="PlaylistDescription">{{body}}</p>
+				<p><button {{action 'editPlaylist'}}>Edit playlist</button></p>
+			{{else}}
+				<form class="Form">
+					{{input value=title}}
+					{{!-- {{input type="url" placeholder="Enter" value=url}} --}}
+					{{textarea value=body}}
+					<button {{action "saveEditing"}}>Save playlist</button>
+				</form>
+			{{/unless}}
+
+			<p>Owner: {{conroller.isOwner}} or {{isOwner}}</p>
+
+			{{#if authController.isLoggedIn}}
+				<div class="AddTrack">
+					<h3>Add track</h3>
+					<div class="Form">
+						{{input value=trackUrl placeholder="YouTube or Soundcloud url"}}<br>
+						{{input value=trackTitle placeholder="Title"}}<br>
+						{{textarea value=trackBody placeholder="Optional description"}}<br>
+						<button {{action "publishTrack"}}>Add new track</button>
+					</div>
+				</div>
+			{{/if}}
+		</div>
+	</div>
+
+	{{render 'tracks' model}}
+</section>

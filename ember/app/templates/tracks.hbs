@@ -1,0 +1,19 @@
+<div class="PlaylistBody">
+	<div class="Inner">
+
+		<div class="Tracks">
+			<h2>{{#if tracks}}Tracks{{else}}No tracks yet.{{/if}}</h2>
+
+			{{#each track in tracks}}
+				<article class="Track">
+					{{#link-to 'track' track}}
+						<p class="Track-name" {{bind-attr href=track.url}}>{{track.title}}</p>
+						<p class="Track-description">{{track.body}}</p>
+					{{/link-to}}
+				</article>
+			{{/each}}
+
+			{{outlet}}
+		</div>
+	</div>
+</div>
