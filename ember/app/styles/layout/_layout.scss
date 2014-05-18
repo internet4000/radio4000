@@ -24,6 +24,7 @@ body {
 	overflow: auto;
 	clear: both;
 	background-color: white;
+	border-radius: 3px;
 	padding: 30px;
 	transition: all ease-in-out 200ms;
 	.sidebar-is-open & {
@@ -31,18 +32,18 @@ body {
 	}
 }
 .SiteTitle {
-	margin: 0;
 	position: fixed;
-	top: 10px;
-	right: 10px;
-	background-color: $blue;
-	padding: 5px 10px 3px;
-	border-radius: 6px;
-	border: 3px solid $superlightgray;
-	font-family: "Patron", sans-serif;
-	font-weight: 200;
-	font-size: 20px;
 	z-index: 2;
+	top: -2px;
+	right: 10px;
+	margin: 0;
+	padding: 5px 6px 2px;
+	border: 2px solid hsl(211, 85%, 32%);
+	border-radius: 3px;
+	font-size: 20px;
+	background-color: $blue;
+	@extend %patron-bold;
+	-webkit-font-smoothing: antialiased;
 	a {
 		color: white;
 	}
