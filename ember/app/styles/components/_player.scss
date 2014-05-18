@@ -7,14 +7,12 @@
 	position: fixed;
 	z-index: 3;
 	bottom: 0;
-	right: 50%;
-	transform: translateX(50%);
+	right: 0;
+	left: 0;
 	transition: all ease-in-out 200ms;
-
+	transform: translateY(100%);
 	&.is-active {
-		left: 0;
-		right: 0;
-		transform: translateX(0);
+		transform: translateY(0);
 	}
 	.Inner {
 		max-width: 1040px;
@@ -28,17 +26,9 @@
 	background-color: $lightblue;
 	padding: 5px;
 	overflow: auto;
-	border-radius: 50%;
 	transition: all ease-in-out 200ms;
-
-	.Playback.is-active & {
-		width: 70%;
-		margin-left: 30%;
-		border-top: 1px solid $gray;
-		border-left: 1px solid $gray;
-		border-right: 1px solid $gray;
-		border-radius: 0;
-	}
+	width: 70%;
+	margin-left: 30%;
 }
 .Controls-buttons {
 	float: right;
