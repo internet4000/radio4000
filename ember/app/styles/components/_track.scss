@@ -5,9 +5,6 @@
 .Track {
 	position: relative;
 	border-top: 1px solid $lightgray;
-	&:first-of-type {
-		border-top: 0;
-	}
 	a {
 		display: block;
 		padding-top: 12px;
@@ -23,6 +20,11 @@
 		&.is-active {
 			background-color: $lightblue;
 		}
+	}
+
+	.Form {
+		background: $yellow;
+		padding: 0.5em 0.5em 0;
 	}
 }
 .Track-name {

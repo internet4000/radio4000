@@ -1,4 +1,4 @@
-<article class="Track">
+<article {{bind-attr class=":Track isEditing:is-editing"}}>
 	{{#link-to 'track' track}}
 		<p class="Track-name" {{bind-attr href=track.url}}>{{track.title}}</p>
 		<p class="Track-description">{{track.body}}</p>
@@ -18,9 +18,10 @@
 			{{input value=track.title placeholder="Title"}}</label>
 			<label>Description
 			{{textarea value=track.body placeholder="Description"}}</label>
+			<button {{action "saveModel"}}>Save track</button> <button {{action 'deleteModel' track}}>Delete</button>
 
 			<div class="Track-controls">
-				<button {{action "saveModel"}}>Save track</button> <button {{action 'deleteModel' track}}>Delete</button> <button {{action 'stopEditing'}}>Cancel</button>
+				<button {{action 'stopEditing'}}>Cancel</button>
 			</div>
 		</form>
 	{{/if}}
