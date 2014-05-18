@@ -1,11 +1,11 @@
-<h1 class="PlaylistTitle">{{playlist.title}}</h1>
-<div class="PlaylistDescription">{{markdown playlist.body}}</div>
 
 <section class="Playlist">
 
 	<div class="PlaylistHeader">
 		<div class="Inner">
 			{{!-- <img src=""> --}}
+			<h1 class="PlaylistTitle">{{playlist.title}}</h1>
+			<div class="PlaylistDescription">{{markdown playlist.body}}</div>
 
 			<div class="PlaylistEdit">
 				{{#if controller.isOwner}}

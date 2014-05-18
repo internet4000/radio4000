@@ -8,7 +8,7 @@
 
 body {
 	overflow-y: scroll;
-	margin: 1em;
+	margin: 5px;
 	background-color: $lightgray;
 }
 .SiteHeader,
@@ -18,17 +18,29 @@ body {
 	margin-right: auto;
 }
 .SiteHeader {
-	margin-bottom: 20px;
 	overflow: auto;
 }
 .SiteMain {
 	overflow: auto;
 	clear: both;
+	background-color: white;
+	padding: 30px;
 }
 .SiteTitle {
-	margin-bottom: 0;
-	@media (min-width: 650px) {
-		// float: left;
+	margin: 0;
+	position: fixed;
+	top: 10px;
+	right: 10px;
+	background-color: rgb(147, 206, 240);
+	padding: 5px 10px 3px;
+	border-radius: 6px;
+	border: 3px solid #DBDBDB;
+	font-family: "Patron", sans-serif;
+	font-weight: 200;
+	font-size: 20px;
+	z-index: 2;
+	a {
+		color: white;
 	}
 }
 
@@ -38,13 +50,14 @@ body {
 */
 
 .UserActions {
-	// padding-left: 3px;
-	// p {
-	// 	float: left;
-	// 	margin: 0;
-	// }
-	// @media (min-width: 650px) {
-	// 	float: left;
-	// 	margin-top: 7px;
-	// }
+	z-index: 1;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	background: #c0e3ff;
+	width: 350px;
+	padding-top: 100px;
+	text-align: center;
+	-webkit-transform: translateX(100%);
 }
