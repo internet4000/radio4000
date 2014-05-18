@@ -55,6 +55,7 @@
 	@media (min-width: $layout-m) {
 		float: none;
 		margin-left: 0;
+		padding-left: 0; // reset
 		min-height: 0; // reset
 	}
 }

@@ -16,7 +16,7 @@
 					{{#if isEditing}}
 						<form class="Form">
 							{{input value=playlist.title}}
-							{{!-- {{input type="url" placeholder="Enter" value=playlist.url}} --}}
+							{{input type="url" placeholder="Enter" value=playlist.url}}
 							{{textarea value=playlist.body}}
 							<button {{action "saveEditing"}}>Save playlist</button>
 						</form>
