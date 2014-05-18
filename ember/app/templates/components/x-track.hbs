@@ -18,7 +18,9 @@
 			{{input value=track.title placeholder="Title"}}</label>
 			<label>Description
 			{{textarea value=track.body placeholder="Description"}}</label>
-			<button {{action "saveModel"}}>Save track</button> <button {{action 'deleteModel' track}}>Delete</button>
+			<button {{action "saveModel"}}>Save track</button>
+			<button class="Btn--text" {{action 'deleteModel' track}}>Delete</button>
+			<button class="Btn--text" {{action 'stopEditing'}}>Cancel</button>
 
 			<div class="Track-controls">
 				<button {{action 'stopEditing'}}>Cancel</button>

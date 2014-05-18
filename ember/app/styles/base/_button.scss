@@ -17,7 +17,7 @@
 	background-color: rgb(192, 227, 255);
 	background-image: linear-gradient(to bottom, white 60%, #E9E9E9);
 	color: $black;
-	padding: 6px 12px 5px;
+	padding: 6px 10px 5px;
 }
 
 // Different states
@@ -37,6 +37,18 @@
 // Also style buttons without the .Btn class
 button {
 	@extend .Btn;
+}
+
+.Btn--text {
+	padding-left: 5px;
+	padding-right: 5px;
+	border-color: transparent;
+	background-image: none;
+	background-color: transparent;
+	text-align: left;
+	&:hover {
+		background-image: none;
+	}
 }
 
 /**
