@@ -2,6 +2,9 @@
 	<div class="Controls">
 		<div class="Inner">
 			{{#if model}}
+				
+				<span class="Playback-title">{{model.title}}</span>
+
 				{{#if isPlaying}}
 					<button {{action 'pause'}}<strong>ll</strong></button>
 				{{else}}
@@ -12,7 +15,6 @@
 					{{#if isMinimized}}Show{{else}}Hide{{/if}}
 				</button>
 
-				<span class="Playback-title">{{model.title}}</span>
 
 			{{else}}
 				Choose a sound!

@@ -13,13 +13,12 @@
 	position: fixed;
 	z-index: 3;
 	bottom: 0;
-	left: 0;
 	right: 0;
 	z-index: 1;
-	border-bottom: 1px solid;
-	background-color: hsl(0, 100%, 90%);
-	padding-top: 5px;
-	padding-bottom: 22px; // space f chm l ba
+	border-top: 1px solid $gray;
+	border-left: 1px solid $gray;
+	background-color: $lightblue;
+	padding: 5px;
 }
 
 // Container for the embeds
