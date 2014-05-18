@@ -3,12 +3,41 @@ var PlaylistController = Ember.ObjectController.extend({
 	// classNameBindings: ['isExpanded:playlist-expanded', 'isSingle:playlist-single'],
 	needs: ['auth'],
 	isEditing: false,
-	isOwner: false,
+	isAdding: false,
+	// isOwner: false,
 
 	init: function () {
 		this._super();
 		this.authController = this.get('controllers.auth');
 		// this.checkOwner();
+	},
+
+	// checkOwner: function() {
+	// 	var currentUserId = this.get('authController.currentUser.id');
+	// 	var modelUserId = this.get('model.id');
+
+	// 	// can't find the id???
+
+	// 	Ember.debug(currentUserId);
+	// 	Ember.debug(modelUserId);
+
+	// 	// if (currentUserId === modelUserId) {
+	// 	// 	this.set('isOwner', true);
+	// 	// 	return true;
+	// 	// } else {
+	// 	// 	this.set('isOwner', false);
+	// 	// 	return false;
+	// 	// }
+	// },
+
+	trackIsValid: function() {
+		var isValid = true;
+		['trackUrl'].forEach(function(field) {
+			if (this.get(field) === '') {
+				isValid = false;
+			}
+		}, this);
+		return isValid;
 	},
 
 	actions: {
@@ -17,13 +46,23 @@ var PlaylistController = Ember.ObjectController.extend({
 		},
 		saveEditing: function() {
 			this.set('isEditing', false);
-			this.get('playlist').save();
+			this.get('model').save();
+		},
+		addTrack: function() {
+			this.set('isAdding', true);
+		},
+		cancelEditing: function() {
+			this.set('isEditing', false);
+		},
+		cancelTrack: function() {
+			this.set('isAdding', false);
 		},
 		publishTrack: function(playlist, track) {
 			if (!this.trackIsValid()) {
 				Ember.debug('unvalid track');
 				return; }
 
+			this.set('isAdding', false);
 			Ember.debug('valid track');
 
 			// Create a new track
@@ -63,32 +102,6 @@ var PlaylistController = Ember.ObjectController.extend({
 				playlist.save();
 			});
 		}
-	},
-
-	checkOwner: function() {
-		// var currentUserId = this.get('authController.currentUser.id');
-		// var playlistUserId = this.get('model');
-
-		// Ember.debug(currentUserId);
-		// Ember.debug(playlistUserId);
-
-		// if (currentUserId === playlistUserId) {
-		// 	this.set('isOwner', true);
-		// 	return true;
-		// } else {
-		// 	this.set('isOwner', false);
-		// 	return false;
-		// }
-	},
-
-	trackIsValid: function() {
-		var isValid = true;
-		['trackUrl'].forEach(function(field) {
-			if (this.get(field) === '') {
-				isValid = false;
-			}
-		}, this);
-		return isValid;
 	}
 });
 

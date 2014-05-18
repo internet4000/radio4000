@@ -21,27 +21,30 @@
 				</div>
 				<p class="PlaylistDescription">{{body}}</p>
 				<p><button {{action 'editPlaylist'}}>Edit playlist</button></p>
-			{{else}}
-				<form class="Form">
-					{{input value=title}}
-					{{input type="url" placeholder="Enter" value=url}}
-					{{textarea value=body}}
-					<button {{action "saveEditing"}}>Save playlist</button>
-				</form>
 			{{/unless}}
 
-			<p>Owner: {{conroller.isOwner}} or {{isOwner}}</p>
-
 			{{#if authController.isLoggedIn}}
+				{{#if isEditing}}
+					<form class="Form">
+						{{input value=title}}
+						{{input type="url" placeholder="Enter" value=url}}
+						{{textarea value=body}}
+						<button {{action "saveEditing"}}>Save playlist</button> <button {{action 'cancelEditing'}}>Cancel</button>
+					</form>
+				{{/if}}
+				{{#if isAdding}}
 				<div class="AddTrack">
 					<h3>Add track</h3>
 					<div class="Form">
 						{{input value=trackUrl placeholder="YouTube or Soundcloud url"}}<br>
 						{{input value=trackTitle placeholder="Title"}}<br>
 						{{textarea value=trackBody placeholder="Optional description"}}<br>
-						<button {{action "publishTrack"}}>Add new track</button>
+						<button {{action "publishTrack"}}>Add track</button> <button {{action 'cancelTrack'}}>Cancel</button>
 					</div>
 				</div>
+				{{else}}
+					<p><button {{action 'addTrack'}}>Add track</button></p>
+				{{/if}}
 			{{/if}}
 		</div>
 	</div>
