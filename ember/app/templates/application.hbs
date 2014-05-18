@@ -5,14 +5,13 @@
 		{{#if authController.isLoggedIn}}
 			<p>Welcome, {{authController.currentUser.displayName}}</p>
 			<p>
-				{{#link-to "playlists.new"}}<button class="Btn">Create your playlist</button>{{/link-to}}
-				<button class="Btn" {{action 'logout'}}>Log out</button>
+				{{#link-to "playlists.new"}}<button>Create a playlist</button>{{/link-to}}
 			</p>
 		{{else}}
 			<p>Create your own collection of music in a second.</p>
 			<p>
-				<button class="Btn" {{action 'login' 'google'}}>Sign-in with Google</button>
-				<button class="Btn" {{action 'login' 'facebook'}}>Sign-in with with Facebook</button>
+				<button {{action 'login' 'google'}}>Sign-in with Google</button>
+				<button {{action 'login' 'facebook'}}>Sign-in with with Facebook</button>
 			</p>
 		{{/if}}
 	</div>
@@ -26,3 +25,5 @@
 	{{render 'playback'}}
 	{{outlet 'player'}}
 </div>
+
+<p><button {{action 'logout'}}>Log out</button></p>

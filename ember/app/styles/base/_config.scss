@@ -1,6 +1,6 @@
 // Typography
 $base-font-size: 15px;
-$base-line-height-unitless: 1.3125;
+$base-line-height-unitless: 1.333333333;
 
 %patron-bold { font-family:"Patron Bold", 'Patron Medium'; font-weight:bold; }
 %patron-medium { font-family:"Patron Medium", 'Patron Bold'; font-weight:600; }
@@ -29,3 +29,5 @@ $easing4: cubic-bezier(1,.01,.3,1);
 $layout-s: 30em; // 450px/15px
 $layout-m: 40em; // 46.7em; // 700px/15px
 $layout-l: 70em;
+
+$border-radius: 3px;

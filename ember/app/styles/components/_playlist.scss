@@ -3,108 +3,74 @@
  */
 
 .Playlist {
-	background-color: white;
-	border-radius: 3px;
 	overflow: auto;
 }
-.PlaylistHeader,
-.PlaylistBody {
-	padding-bottom: 20px;
-
-	@media (min-width: $layout-m) {
-		float: left;
-	}
-}
-
-
-/**
- * PLaylist Header
- **/
-
 .PlaylistHeader {
 	overflow: auto;
 	@media (min-width: $layout-m) {
-		width: 30%;
-		.Inner {
-			margin-right: 30px;
-		}
+		float: left;
+		width: 15rem;
 	}
 }
+.PlaylistBody {
+	@media (min-width: $layout-m) {
+		margin-left: 15rem + 1rem;
+	}
+}
+
 .PlaylistAvatar {
-	width: 120px;
-	height: 120px;
+	width: 5rem;
+	float: right;
+	margin-bottom: 1rem;
+	margin-left: 1rem;
+
 	// bring Facts and Avatar on same line
 	@media (min-width: $layout-s) {
+		width: 8.6rem;
 		float: left;
-		margin-right: -120px; // to bring PlaylistFact on same line
+		margin-left: 0;
+		margin-right: 1rem;
 	}
 	@media (min-width: $layout-m) {
-		float: none;
-		width: 200px;
-		height: 200px;
+		width: 100%;
 		margin-right: 0;
 	}
 }
 .PlaylistFacts {
 	// bring Facts and Avatar on same line
-	@media (min-width: $layout-s) {
-		margin-left: 120px; // to circomvent PlaylistAvatar width
-		padding-left: 10px;
-		min-height: 120px; // to make it the same height as avatar
-	}
-	@media (min-width: $layout-m) {
-		float: none;
-		margin-left: 0;
-		padding-left: 0; // reset
-		min-height: 0; // reset
-	}
+	// @media (min-width: $layout-s) {
+	// 	margin-left: 10rem; // to circomvent PlaylistAvatar width
+	// 	padding-left: 0.5rem;
+	// 	min-height: 10rem; // to make it at least the height of the avatar
+	// }
+	// @media (min-width: $layout-m) {
+	// 	float: none;
+	// 	margin-left: 0;
+	// 	padding-left: 0; // reset
+	// 	min-height: 0; // reset
+	// }
 }
-
-
 .PlaylistTitle {
-	margin-top: 10px;
-	margin-right: 0;
-	margin-bottom: 0;
-}
-.PlaylistUrl {
-	margin-bottom: 0;
-	margin-top: 0px;
-	font-size: 14px;
-	color: $gray;
+	margin-bottom: 0.5rem;
+	padding-top: 1rem;
 }
 .PlaylistDescription {
-	margin-top: 20px;
 	color: $gray;
 	@media (min-width: $layout-s) {
-		clear: both;
+		// clear: both;
 	}
 }
 
 // add track
 .AddTrack {
-	margin-top: 20px;
-	padding: 10px;
-	background-color: $lightblue;
+	margin-top: 1rem;
+	padding: 0.5rem;
+	background-color: $yellow;
 	clear: both;
 	@media (min-width: $layout-m) {
 		clear: none;
 	}
-}
-
-/**
- * PLaylist Body
- **/
-
-.PlaylistBody {
-	@media (min-width: $layout-m) {
-		width: 70%;
+	.Form {
+		margin-bottom: 0;
 	}
-}
-
-/**
- * Playlist Teaser
- */
-
-.PlaylistTeaser {
-
 }

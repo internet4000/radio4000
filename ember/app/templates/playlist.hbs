@@ -17,17 +17,16 @@
 			{{#unless isEditing}}
 				<div class="PlaylistFacts">
 					<h1 class="PlaylistTitle">{{title}}</h1>
-					<p class="PlaylistUrl">/{{url}}</p>
+					<p class="PlaylistDescription">{{body}}</p>
+					<p><button class="Btn--edit" {{action 'editPlaylist'}}>Edit playlist</button></p>
 				</div>
-				<p class="PlaylistDescription">{{body}}</p>
-				<button class="EditBtn" {{action 'editPlaylist'}}>Edit playlist</button>
 			{{/unless}}
 
 			{{#if authController.isLoggedIn}}
 				{{#if isEditing}}
 					<form class="Form">
 						{{input value=title placeholder="Title"}}
-						{{input type="url" value=url}}
+						{{input value=url placeholder="URL" type="url"}}
 						{{textarea value=body placeholder="Description"}}
 						<button {{action "saveEditing"}}>Save playlist</button> <button class="Btn--text" {{action 'cancelEditing'}}>Cancel</button>
 					</form>

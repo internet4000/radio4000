@@ -10,7 +10,7 @@ input[type='tel'],
 input[type='password'],
 input[type='url'],
 textarea {
-	@extend %patron-light;
+	// @extend %patron-light;
 	font-size: 13px;
 	padding: 5px 6px 4px;
 	border: 1px solid rgba(0,0,0,0.2);
