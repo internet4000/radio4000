@@ -1,5 +1,5 @@
 // Typography
-$base-font-size: 16px;
+$base-font-size: 15px;
 $base-line-height-unitless: 1.3125;
 
 %patron-bold { font-family:"Patron Bold", 'Patron Medium'; font-weight:bold; }
@@ -11,7 +11,7 @@ $base-line-height-unitless: 1.3125;
 $yellow: hsl(60, 100%, 80%);
 $black: hsl(0,0%,10%);
 
-$gray: hsl(0,0%,60%);
+$gray: #A7A7A7;
 $lightgray: #e9eaed;
 
 $blue: #1B7FEC;
