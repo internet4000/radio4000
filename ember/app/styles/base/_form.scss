@@ -10,6 +10,7 @@ input[type='tel'],
 input[type='password'],
 input[type='url'],
 textarea {
+	@extend %patron-light;
 	font-size: 13px;
 	padding: 5px 6px 4px;
 	border: 1px solid $lightgray;
@@ -53,4 +54,12 @@ textarea {
 	textarea {
 		margin-bottom: 0.5rem;
 	}
+}
+
+// Label styles
+label {
+	display: block;
+	@extend %patron-medium;
+	font-size: 13px;
+	color: $gray;
 }

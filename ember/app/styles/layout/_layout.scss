@@ -25,10 +25,13 @@ body {
 	clear: both;
 	background-color: white;
 	border-radius: 3px;
-	padding: 30px;
+	padding: 20px;
 	transition: all ease-in-out 200ms;
 	.sidebar-is-open & {
 		transform: translateX(-350px);
+	}
+	@media (min-width: $layout-l) {
+		padding: 30px;
 	}
 }
 .SiteTitle {

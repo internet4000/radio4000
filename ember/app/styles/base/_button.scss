@@ -20,19 +20,21 @@
 	padding: 6px 12px 5px;
 }
 
+// Different states
 .Btn:hover,
-.Btn:focus,
-.Btn:active {
+.Btn:focus {
     text-decoration: underline;
+ }
+.Btn:active {
     background-image: linear-gradient(to bottom, $superlightgray 30%, white);
 }
-
 .Btn:disabled,
 .Btn.is-disabled {
     cursor: default;
     opacity: 0.75;
 }
 
+// Also style buttons without the .Btn class
 button {
 	@extend .Btn;
 }
