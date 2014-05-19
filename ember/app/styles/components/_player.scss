@@ -23,15 +23,21 @@
 
 // Controls
 .Controls {
-	background-color: $lightblue;
+	// layout
 	padding: 5px;
 	overflow: auto;
-	transition: all ease-in-out 200ms;
-	width: 100%;
+	transition: margin 200ms ease-in-out;
 	@media (min-width: $layout-m) {
-		width: 70%;
-		margin-left: 30%;
+		margin-left: 17.5rem; // match sidebar width
 	}
+
+	// ugly style
+	// background-color: $lightblue;
+	background-color: hsl(0, 0%, 18%);
+	background-image: linear-gradient(to bottom, hsl(0, 0%, 18%) 40%, hsl(0, 0%, 11%));
+	box-shadow: 0px -2px 2px hsla(0, 0%, 0%, 0.6);
+	border-top: 1px solid hsl(0, 0%, 13%);
+	color: #dadada;
 }
 .Controls-buttons {
 	float: right;
@@ -64,4 +70,9 @@
 	&.soundcloud #SoundcloudPlayer {
 		display: block;
 	}
+}
+.Playback-title {
+	position: relative;
+	top: 12px;
+	left: 5px;
 }

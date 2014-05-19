@@ -1,6 +1,6 @@
 <div {{bind-attr class=':Playback model:is-active'}}>
 	<div class="Inner">
-		
+
 		<div {{bind-attr class=':Player isMinimized model.provider'}}>
 			<div id="ytplayer"></div>
 			{{youtubeUrl}}
@@ -12,7 +12,7 @@
 
 		<div class="Controls">
 			{{#if model}}
-				
+
 				<span class="Playback-title">{{model.title}}</span>
 
 				<div class="Controls-buttons">
@@ -27,11 +27,9 @@
 					</button>
 				</div>
 
-
 			{{else}}
 				<button class="PlayerBtn PlayerBtn-play PlayerBtn-play--innactive" {{action 'play'}}>►</button>
 			{{/if}}
 		</div>
-
 	</div>
 </div>
