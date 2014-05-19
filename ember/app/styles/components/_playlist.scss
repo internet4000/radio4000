@@ -53,6 +53,9 @@
 .PlaylistTitle {
 	margin-bottom: 0.5rem;
 	padding-top: 1rem;
+	@media (min-width: $layout-m) {
+		clear: both;
+	}
 }
 .PlaylistDescription {
 	color: $gray;
