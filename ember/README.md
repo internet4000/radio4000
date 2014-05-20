@@ -1,13 +1,26 @@
-1. First, install
+# Muchplay
 
-npm install -g ember-cli
+This README outlines the details of collaborating on this Ember application.
 
-2. Then go
+## Installation
 
-npm install && bower install
+* `npm install ember-cli`
+* `git clone` this repository
+* `npm install`
+* `bower install`
 
-3. And start the server with
+## Running
 
-ember serve
+* `ember server`
+* Visit your app at http://localhost:4200.
 
-4. Lastly, open http://localhost:4200 in your browser
+## Running Tests
+
+* `ember test`
+* `ember test --server`
+
+## Building
+
+* `ember build`
+
+For more information on using ember-cli, visit [http://iamstef.net/ember-cli/](http://iamstef.net/ember-cli/).
