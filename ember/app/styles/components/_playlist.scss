@@ -5,16 +5,22 @@
 .Playlist {
 	overflow: auto;
 }
+
 .PlaylistHeader {
 	overflow: auto;
+	.Inner {
+		background-color: white;
+		padding: 20px;
+	}
 	@media (min-width: $layout-m) {
 		float: left;
-		width: 15rem;
+		width: 18rem;
 	}
 }
 .PlaylistBody {
+	background-color: white;
 	@media (min-width: $layout-m) {
-		margin-left: 15rem + 1rem;
+		margin-left: 18rem + 1rem;
 	}
 }
 

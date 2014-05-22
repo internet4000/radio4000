@@ -4,13 +4,12 @@
 
 .Track {
 	position: relative;
-	border-top: 1px solid $lightgray;
 	a {
 		display: block;
-		padding-top: 11px;
-		padding-bottom: 6px;
-		padding-left: 5px;
-		padding-right: 5px;
+		padding-top: 15px;
+		padding-bottom: 10px;
+		padding-left: 20px;
+		padding-right: 20px;
 		&:hover {
 			text-decoration: none;
 			.Track-name {
@@ -35,6 +34,10 @@
 	.Form {
 		background: $yellow;
 		padding: 0.5em;
+	}
+	// even odd
+	&:nth-of-type(odd) {
+		background-color: $slightgray;
 	}
 }
 .Track-name {

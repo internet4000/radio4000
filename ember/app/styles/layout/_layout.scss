@@ -10,6 +10,7 @@ body {
 	overflow-y: scroll;
 	margin: 0.5rem 0.5rem 5rem;
 	background-color: $lightgray;
+	background: linear-gradient( 45deg, #1e5799, #7db9e8 ); 
 }
 .SiteHeader,
 .SiteMain {
@@ -23,7 +24,6 @@ body {
 .SiteMain {
 	overflow: auto;
 	clear: both;
-	background-color: white;
 	border-radius: $border-radius;
 	padding: 1rem;
 	margin-bottom: 1rem;

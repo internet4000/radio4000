@@ -26,6 +26,6 @@
     "body-parser": "^1.2.0",
     "glob": "^3.2.9",
     "broccoli-autoprefixer": "^0.2.0",
-    "broccoli-sass": "^0.1.4",
+    "broccoli-sass": "^0.1.4"
   }
 }
