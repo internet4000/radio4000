@@ -1,8 +1,8 @@
 html {
 	@extend %patron-light;
 	font-size: $base-font-size;
-	line-height: $base-line-height-unitless;
-	color: $black;
+	line-height: $base-line-height;
+	color: $text-color;
 	text-rendering: optimizeLegibility;
 	// -webkit-font-smoothing: antialiased;
 }
@@ -15,7 +15,7 @@ em {
 
 a,
 a:visited {
-	color: $blue;
+	color: $link-color;
 	text-decoration: none;
 }
 a:hover {

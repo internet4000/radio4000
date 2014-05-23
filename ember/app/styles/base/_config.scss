@@ -1,6 +1,6 @@
 // Typography
 $base-font-size: 15px;
-$base-line-height-unitless: 1.333333333;
+$base-line-height: (20/15);
 
 %patron-bold { font-family:"Patron Bold", 'Patron Medium'; font-weight:bold; }
 %patron-medium { font-family:"Patron Medium", 'Patron Bold'; font-weight:600; }
@@ -8,17 +8,21 @@ $base-line-height-unitless: 1.333333333;
 %patron-light { font-family:"Patron Light", 'Patron Light'; font-weight:300; }
 
 // Colors
-$yellow: hsl(60, 100%, 70%);
-$blue: #1b7fec;
-$lightblue: #dff1ff;
-$green: hsl(110, 85%, 35%);
-$bleach: hsl(72, 100%, 97%);
+$yellow:         hsl(60, 100%, 70%);
+$blue:           hsl(210, 75%, 50%);
+$lightblue:      lighten($blue, 10%);
+$green:          hsl(110, 85%, 35%);
+$bleach:         hsl(72, 100%, 97%);
+$black:          hsl(0, 0%, 10%);
+$gray:           hsl(0, 0%, 50%);
+$lightgray:      hsl(0, 0%, 75%);
+$slightgray:     hsl(0, 0%, 90%); // slighty lighter than lightgray
+$superlightgray: hsl(0, 0%, 95%);
 
-$black: hsl(0,0%,10%);
-$gray: hsl(0, 0%, 35%);
-$lightgray: #e9eaed;
-$slightgray: rgba(238, 238, 238, 0.4); // slighty lighter than lightgray
-$superlightgray: #ececec;
+// Color definitions
+$text-color: $black;
+$link-color: $blue;
+$primary-color: $blue;
 
 // Good looking easings for animation
 $easing: cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -27,8 +31,8 @@ $easing3: cubic-bezier(0.165,.84,.44,1);
 $easing4: cubic-bezier(1,.01,.3,1);
 
 // Layout: Breakpoints
-$layout-s: 30em; // 450px/15px
-$layout-m: 40em; // 46.7em; // 700px/15px
-$layout-l: 70em;
+$layout-s: rem(450);
+$layout-m: rem(700);
+$layout-l: rem(1000);
 
 $border-radius: 3px;
