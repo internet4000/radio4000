@@ -6,11 +6,16 @@
 	overflow: auto;
 }
 
+.PlaylistHeader,
+.PlaylistBody {
+   background-color: white;
+   border-radius: $border-radius;
+}
 .PlaylistHeader {
 	overflow: auto;
+
 	.Inner {
-		background-color: white;
-		padding: 20px;
+		padding: 1.5rem 1.5rem 0.5rem;
 	}
 	@media (min-width: $layout-m) {
 		float: left;
@@ -18,12 +23,10 @@
 	}
 }
 .PlaylistBody {
-	background-color: white;
 	@media (min-width: $layout-m) {
 		margin-left: 18rem + 1rem;
 	}
 }
-
 .PlaylistAvatar {
 	width: 5rem;
 	float: right;
@@ -41,20 +44,6 @@
 		width: 100%;
 		margin-right: 0;
 	}
-}
-.PlaylistFacts {
-	// bring Facts and Avatar on same line
-	// @media (min-width: $layout-s) {
-	// 	margin-left: 10rem; // to circomvent PlaylistAvatar width
-	// 	padding-left: 0.5rem;
-	// 	min-height: 10rem; // to make it at least the height of the avatar
-	// }
-	// @media (min-width: $layout-m) {
-	// 	float: none;
-	// 	margin-left: 0;
-	// 	padding-left: 0; // reset
-	// 	min-height: 0; // reset
-	// }
 }
 .PlaylistTitle {
 	margin-bottom: 0.5rem;
@@ -82,4 +71,10 @@
 	.Form {
 		margin-bottom: 0;
 	}
+}
+
+
+.Tracks > h2 {
+   padding-top: 1.5rem;
+   margin-left: 1.5rem;
 }

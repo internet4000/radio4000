@@ -5,12 +5,14 @@
 	box-sizing: border-box;
 }
 
-
+html {
+	background-color: #1e5799;
+	background-image: linear-gradient( 45deg, #1e5799, #7db9e8);
+	min-height: 100%;
+}
 body {
 	overflow-y: scroll;
-	margin: 0.5rem 0.5rem 5rem;
-	background-color: $lightgray;
-	background: linear-gradient( 45deg, #1e5799, #7db9e8 ); 
+	margin: 1.5rem 1.5rem 5rem;
 }
 .SiteHeader,
 .SiteMain {
@@ -25,8 +27,7 @@ body {
 	overflow: auto;
 	clear: both;
 	border-radius: $border-radius;
-	padding: 1rem;
-	margin-bottom: 1rem;
+	margin-bottom: 1.5rem;
 	// transition: all ease-in-out 200ms;
 	// .sidebar-is-open & {
 	// 	transform: translateX(-350px);
