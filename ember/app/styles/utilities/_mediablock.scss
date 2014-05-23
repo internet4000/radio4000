@@ -1,0 +1,44 @@
+/**
+ * Media block
+ */
+
+.MediaBlock {
+	@include clearfix;
+	position: relative;
+	zoom: 1;
+}
+.MediaBlock-media {
+	float: left;
+	margin-right: em($u-space);
+}
+.MediaBlock-body {
+	display: table-cell;
+	width: 10000px;
+	*width: auto;
+}
+.MediaBlock--full {
+	.MediaBlock-media {
+		width: 100%;
+		text-align: center;
+	}
+}
+
+// Modifier: Right aligned
+.MediaBlock-media--right {
+	float: right;
+	margin-right: auto;
+	margin-left: em($u-space);
+}
+
+.VideoBorder {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border: 5px solid $white;
+
+	// full width for smaller screens
+	@media (max-width: 30em) {
+		width: 100%;
+		height: auto;
+	}
+}

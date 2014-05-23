@@ -2,6 +2,11 @@
 	MUCH PLAY
 */
 
+// Utilities
+@import 'utilities/clearfix';
+@import 'utilities/functions';
+
+
 // Base
 @import 'base/config';
 @import 'base/normalize-custom';
