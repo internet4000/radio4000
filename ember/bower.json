@@ -2,8 +2,8 @@
   "name": "play",
   "dependencies": {
     "handlebars": "~1.3.0",
-    "jquery": "^1.11.1",
-    "qunit": "~1.12.0",
+    "jquery": "^2.1.1",
+    "qunit": "~1.14.0",
     "ember-qunit": "~0.1.5",
     "ember": "1.5.1",
     "ember-data": "1.0.0-beta.7",
