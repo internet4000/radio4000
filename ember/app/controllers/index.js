@@ -1,4 +1,6 @@
-var ApplicationController = Ember.Controller.extend({
+// most of this is duplicate code of app controller. should send events there instead?
+
+var IndexController = Ember.ArrayController.extend({
 	needs: ['auth'],
 
 	init: function () {
@@ -16,4 +18,4 @@ var ApplicationController = Ember.Controller.extend({
 	}
 });
 
-export default ApplicationController;
+export default IndexController;

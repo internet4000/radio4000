@@ -1,20 +1,5 @@
 <header class="SiteHeader">
 	<h1 class="SiteTitle">{{#link-to "index"}}Muchplay{{/link-to}}</h1>
-
-	<div class="UserActions">
-		{{#if authController.isLoggedIn}}
-			<p>Welcome, {{authController.currentUser.displayName}}</p>
-			<p>
-				{{#link-to "playlists.new"}}<button>Create a playlist</button>{{/link-to}}
-			</p>
-		{{else}}
-			<p>Create your own collection of music in a second.</p>
-			<p>
-				<button {{action 'login' 'google'}}>Sign-in with Google</button>
-				<button {{action 'login' 'facebook'}}>Sign-in with with Facebook</button>
-			</p>
-		{{/if}}
-	</div>
 </header>
 
 <main class="SiteMain">
@@ -26,4 +11,6 @@
 	{{outlet 'player'}}
 </div>
 
-<p><button {{action 'logout'}}>Log out</button></p>
+{{#if authController.isLoggedIn}}
+	<p><button {{action 'logout'}}>Log out</button></p>
+{{/if}}

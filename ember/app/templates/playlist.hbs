@@ -18,7 +18,10 @@
 				<div class="PlaylistFacts">
 					<h1 class="PlaylistTitle">{{title}}</h1>
 					<p class="PlaylistDescription">{{body}}</p>
-					<p><button class="Btn--edit" {{action 'editPlaylist'}}>Edit playlist</button></p>
+					{{#if authController.isLoggedIn}}
+					{{!-- @todo should only be for the author --}}
+						<p><button class="Btn--edit" {{action 'editPlaylist'}}>Edit playlist</button></p>
+					{{/if}}
 				</div>
 			{{/unless}}
 
