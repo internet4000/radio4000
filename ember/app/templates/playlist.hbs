@@ -29,7 +29,7 @@
 				{{#if isEditing}}
 					<form class="Form">
 						{{input value=title placeholder="Title"}}
-						{{input value=url placeholder="URL" type="url"}}
+						{{input value=slug placeholder="Slug"}}
 						{{textarea value=body placeholder="Description"}}
 						<button {{action "saveEditing"}}>Save playlist</button> <button class="Btn--text" {{action 'cancelEditing'}}>Cancel</button>
 					</form>

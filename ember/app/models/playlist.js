@@ -2,7 +2,7 @@
 var Playlist = DS.Model.extend({
 	title: DS.attr('string'),
 	body: DS.attr('string'),
-	url: DS.attr('string'),
+	slug: DS.attr('string'),
 	created: DS.attr('number'),
 	createdDate: function() {
 		return moment(this.get('created')).format('MMMM Do, YYYY');

@@ -8,7 +8,7 @@ var PlaylistsNewController = Ember.ObjectController.extend({
 
 	playlistIsValid: function() {
 		var isValid = true;
-		['playlist.url', 'playlist.title', 'playlist.body'].forEach(function(field) {
+		['playlist.slug', 'playlist.title', 'playlist.body'].forEach(function(field) {
 			if (this.get(field) === '') {
 				isValid = false;
 			}
@@ -32,7 +32,7 @@ var PlaylistsNewController = Ember.ObjectController.extend({
 				// Create a new playlist
 				var newPlaylist = this.store.createRecord('playlist', {
 					title: this.get('playlist.title'),
-					url: this.get('playlist.url'),
+					slug: this.get('playlist.slug'),
 					body: this.get('playlist.body'),
 					created: new Date().getTime(),
 					user: promises.user
@@ -54,7 +54,7 @@ var PlaylistsNewController = Ember.ObjectController.extend({
 				this.setProperties({
 					'playlist.title': '',
 					'playlist.body': '',
-					'playlist.url': ''
+					'playlist.slug': ''
 				});
 
 				this.transitionToRoute('playlist', newPlaylist);
