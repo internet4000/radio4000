@@ -1,15 +1,24 @@
 # Muchplay
 
-This README outlines the details of collaborating on this Ember application.
+This is an Ember.js application scaffolded with Ember-cli. This will get everything working.
 
-## Installation
+1. Make sure you are using the ember-cli master version directly from Github
 
-* `npm install ember-cli`
-* `git clone` this repository
-* `npm install`
-* `bower install`
+Clone the repository to your computer and inside the folder, you run these two commands:
 
-## Running
+`npm uninstall -g ember-cli` (makes sure you don't have a global version)
+`git pull` (makes sure the repo is up to date)
+`npm link` (makes this folder act as the global ember-cli)
+
+Also see https://github.com/stefanpenner/ember-cli#working-with-master
+
+2. Install project dependencies
+
+cd into the project folder and run
+
+`npm install && bower install`
+
+## Development server
 
 * `ember server`
 * Visit your app at http://localhost:4200.
