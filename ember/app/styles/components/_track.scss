@@ -6,8 +6,8 @@
 	position: relative;
 	a {
 		display: block;
-		padding-top: 1rem;
-		padding-bottom: rem(10);
+		padding-top: rem(10);
+		padding-bottom: rem(7); // 3px less is optical center
 		padding-left: 1.5rem;
 		padding-right: 1.5rem;
 		&:hover {
@@ -18,15 +18,20 @@
 		}
 		&.is-active {
 			background-color: $lightblue;
+			color: #fff;
+			.Track-description {
+				color: inherit;
+			}
 
 			// playing indicator
 			.Track-name:before {
 				content: '►';
 				display: inline;
 				font-size: 10px;
-				margin-right: 2px;
+				margin-right: 3px;
 				position: relative;
 				top: -1px;
+				text-decoration: none;
 			}
 		}
 	}
