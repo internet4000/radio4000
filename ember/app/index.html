@@ -2,7 +2,9 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Muchplay</title>
+	<meta name="description" content="Collect, curate, play and share your own collection of tracks.">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<script>
 		WebFontConfig = { fontdeck: { id: '45058' } };
@@ -17,10 +19,6 @@
 		})();
 	</script>
 
-	<title>Muchplay</title>
-	<meta name="description" content="Collect, curate and share your own playlist of YouTube and Soundcloud tracks.">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
 	{{BASE_TAG}}
 
 	<script src="modernizr-custom.min.js"></script>
@@ -30,6 +28,8 @@
 </head>
 
 <body>
+
+	<!-- Our Ember app -->
 	<script>
 		window.ENV = {{ENV}};
 	</script>
@@ -37,5 +37,17 @@
 	<script>
 		window.Play = require('play/app')['default'].create(ENV.APP);
 	</script>
+
+	<!-- YouTube API async -->
+	<script>
+		var tag = document.createElement('script');
+		tag.src = "https://www.youtube.com/iframe_api";
+		var firstScriptTag = document.getElementsByTagName('script')[0];
+		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+	</script>
+
+	<!-- Test container for YouTube -->
+	<div id="testplayer"></div>
+
 </body>
 </html>
