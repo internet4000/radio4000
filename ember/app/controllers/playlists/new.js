@@ -21,16 +21,15 @@ var PlaylistsNewController = Ember.ObjectController.extend({
 
 			if (!this.playlistIsValid()) { return; }
 
-			Ember.debug(this.get('auth'));
-
+			// Get the current user
 			Ember.RSVP.hash({
 				user: this.store.find('user', this.get('auth.currentUser.id'))
 			}).then(function(promises) {
-				// Ember.debug(promises);
-				// console.log(promises);
+
+				var user = promises.user;
 
 				// Create a new playlist
-				var newPlaylist = this.store.createRecord('playlist', {
+				var playlist = this.store.createRecord('playlist', {
 					title: this.get('playlist.title'),
 					slug: this.get('playlist.slug'),
 					body: this.get('playlist.body'),
@@ -38,11 +37,16 @@ var PlaylistsNewController = Ember.ObjectController.extend({
 					user: promises.user
 				});
 
-				// Save it to the DB and try to relate the playlist to the current user. Currently it stores the user id in the playlist but it would be nicer if the playlist id was stored in the user object
-				newPlaylist.save().then(function() {
-					Ember.RSVP.Promise.cast(promises.user.get('playlists')).then(function(users) {
-						users.addObject(newPlaylist);
-						newPlaylist.save().then(function() {
+				// Mark that the user has at least one playlist
+				user.set('hasPlaylist', true);
+
+				// Save the playlist
+				playlist.save().then(function() {
+
+					// and then save the same playlist into the user
+					Ember.RSVP.Promise.cast(user.get('playlists')).then(function(playlists) {
+						playlists.addObject(playlist);
+						user.save().then(function() {
 							// success?
 						}, function() {
 							// error?
@@ -57,7 +61,7 @@ var PlaylistsNewController = Ember.ObjectController.extend({
 					'playlist.slug': ''
 				});
 
-				this.transitionToRoute('playlist', newPlaylist);
+				this.transitionToRoute('playlist', playlist);
 
 			}.bind(this));
 		}
