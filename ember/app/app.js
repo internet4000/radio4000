@@ -14,13 +14,13 @@ var Utility = Ember.Object.extend({
 
 	getUserByUsername: function(user) {
 		var store = this.get('store');
-		console.log(user);
+		// console.log(user);
 
 		return this.get('store').find('user', user.id).then(function() {
 			// User already exists so just return it
-
 			Ember.debug('user already exists');
 			return user;
+
 		}, function() {
 			Ember.debug('A user could not be found, so create a new one');
 

@@ -2,7 +2,14 @@
 var AuthController = Ember.Controller.extend({
 	dbRef: new Firebase('https://muchplay.firebaseio.com'),
 	isLoggedIn: false,
-	currentUser: null,
+
+	// checkPlaylists: function() {
+	// 	this.get('store').find('user', this.get('currentUser.id')).then(function(data) {
+	// 		Ember.debug('really ran');
+	// 		Ember.debug(data);
+	// 	});
+
+	// }.observes('currentUser'),
 
 	init: function() {
 		this._super();
@@ -10,23 +17,30 @@ var AuthController = Ember.Controller.extend({
 	},
 
 	fireBaseAuth: function() {
+		var self = this;
+
 		// Create the Firebase login object
 		this.authClient = new FirebaseSimpleLogin(this.dbRef, function(error, user) {
 
 			if (user) {
 				// Success: user authenticated with Firebase
-				console.log('Logged in. Checking user in Firebase');
+				Ember.debug('Logged in');
 
-				// Save the authenticated object into our app
+				// Set the authenticated user object in our app
 				this.set('isLoggedIn', true);
 				this.set('currentUser', user);
 
-				// Check if the user already exists in the DB, else create the user
+				// Checks if the user already exists, if so, it returns the user object
+				// otherwise it creates the user
 				this.get('util').getUserByUsername(this.get('currentUser'));
+
+				this.get('store').find('user', this.get('currentUser.id')).then(function(promise) {
+					self.set('currentUserModel', promise);
+				});
 
 			} else if (error) {
 				// Error: not authenticated
-				console.log('Authentication failed: ' + error);
+				Ember.debug('Authentication failed: ' + error);
 
 			} else {
 				// User is logged out
@@ -39,7 +53,7 @@ var AuthController = Ember.Controller.extend({
 
 	actions: {
 		login: function(provider) {
-			if (!provider) provider = 'google';
+			// if (!provider) provider = 'google';
 			this.authClient.login(provider);
 		},
 		logout: function() {
