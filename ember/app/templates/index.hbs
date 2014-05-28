@@ -1,12 +1,12 @@
-<div class="Box">
+<div class="Home">
 	<h1>Muchplay</h1>
-	<p><strong>The perfect way to collect, curate, play and share your own collection of YouTube and Soundcloud tracks.</strong></p>
+	<p>The perfect way to collect, curate, play and share your own collection of YouTube and Soundcloud tracks.</p>
 
-	{{#if authController.isLoggedIn}}
-		<p>Welcome, {{authController.currentUser.displayName}}!</p>
+	{{#if authController.currentUserModel.hasPlaylist}}
+		<p>@Todo: redirect/link to the user's playlist</p>
+	{{else}}
 		<p>{{#link-to "playlists.new"}}<button>Create your own collection</button>{{/link-to}}</p>
 	{{/if}}
-	<p>{{#link-to 'playlists'}}See all collections{{/link-to}}.</p>
 
 	{{#unless authController.isLoggedIn}}
 		<p>Register and sign-in with either Facebook or Google to get your own collection.</p>
@@ -15,7 +15,6 @@
 			<button {{action 'login' 'facebook'}}>Start with with Facebook</button>
 		</p>
 	{{/unless}}
+
+	<p>{{#link-to 'playlists'}}Playlists{{/link-to}}.</p>
 </div>
-
-
-<p>@todo: If you already have a playlist, link to that and hide the create button.</p>
