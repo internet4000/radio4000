@@ -7,6 +7,12 @@
 		isSingle=true
 		onPublishTrack="publishTrack"}} --}}
 
+	{{#if isOwner}}
+		<p>Is owner</p>
+	{{else}}
+		<p>is not owner</p>
+	{{/if}}
+
 	<div class="PlaylistHeader">
 		<div class="Inner">
 
@@ -14,37 +20,36 @@
 				<img class="PlaylistAvatar" src="https://i1.sndcdn.com/avatars-000069254848-ak10xz-t200x200.jpg?30a2558">
 			{{/link-to}}
 
-			{{#unless isEditing}}
 				<div class="PlaylistFacts">
 					<h1 class="PlaylistTitle">{{title}}</h1>
 					<p class="PlaylistDescription">{{body}}</p>
+					{{#unless isEditing}}
 					{{#if authController.isLoggedIn}}
-					{{!-- @todo should only be for the author --}}
 						<p><button class="Btn--edit" {{action 'editPlaylist'}}>Edit playlist</button></p>
 					{{/if}}
+					{{/unless}}
 				</div>
-			{{/unless}}
 
 			{{#if authController.isLoggedIn}}
 				{{#if isEditing}}
-					<form class="Form">
-						{{input value=title placeholder="Title"}}
+					<form class="Form" {{action "saveEditing" on="submit"}}>
+						{{input value=title placeholder="Title" autofocus='autofocus'}}
 						{{input value=slug placeholder="Slug"}}
 						{{textarea value=body placeholder="Description"}}
-						<button {{action "saveEditing"}}>Save playlist</button> <button class="Btn--text" {{action 'cancelEditing'}}>Cancel</button>
+						<button type="submit">Save playlist</button> <button class="Btn--text" {{action 'cancelEditing'}}>Cancel</button>
 					</form>
 				{{/if}}
 
-				<div class="AddTrack Form">
+				<form class="AddTrack Form" {{action "publishTrack" on='submit'}}>
 					{{#if isAdding}}
 						{{input value=trackUrl autofocus='autofocus' placeholder="YouTube or Soundcloud url"}}<br>
 						{{input value=trackTitle placeholder="Title"}}<br>
 						{{textarea value=trackBody placeholder="Optional description"}}<br>
-						<button {{action "publishTrack"}}>Add track</button> <button class="Btn--text" {{action 'cancelTrack'}}>Cancel</button>
+						<button type='submit'>Add track</button> <button class="Btn--text" {{action 'cancelTrack'}}>Cancel</button>
 					{{else}}
 						<button class="Btn--textInput" {{action 'addTrack'}}>Add a track…</button>
 					{{/if}}
-				</div>
+				</form>
 			{{/if}}
 		</div>
 	</div>

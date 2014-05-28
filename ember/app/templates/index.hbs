@@ -2,10 +2,12 @@
 	<h1>Muchplay</h1>
 	<p>The perfect way to collect, curate, play and share your own collection of YouTube and Soundcloud tracks.</p>
 
-	{{#if authController.currentUserModel.hasPlaylist}}
-		<p>@Todo: redirect/link to the user's playlist</p>
-	{{else}}
-		<p>{{#link-to "playlists.new"}}<button>Create your own collection</button>{{/link-to}}</p>
+	{{#if authController.isLoggedIn}}
+		{{#if authController.currentUserModel.hasPlaylist}}
+			<p>@Todo: redirect/link to the user's playlist</p>
+		{{else}}
+			<p>{{#link-to "playlists.new"}}<button>Create your own collection</button>{{/link-to}}</p>
+		{{/if}}
 	{{/if}}
 
 	{{#unless authController.isLoggedIn}}
