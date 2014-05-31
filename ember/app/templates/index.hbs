@@ -9,7 +9,7 @@
 			<p>{{#link-to "playlists.new"}}<button>Create your own collection</button>{{/link-to}}</p>
 		{{/if}}
 
-		<p><button class="Home-logoutButton Btn Btn--text" {{action 'logout'}}>Log out</button></p>
+		{{!-- <p><button class="Home-logoutButton Btn Btn--text" {{action 'logout'}}>Log out</button></p> --}}
 	{{/if}}
 
 	{{#unless authController.isLoggedIn}}
@@ -20,5 +20,7 @@
 		</p>
 	{{/unless}}
 
-	<p>{{#link-to 'about'}}About{{/link-to}} • {{#link-to 'playlists'}}Playlists{{/link-to}}</p>
+	<p class="Home-meta">{{#link-to 'about'}}About{{/link-to}} • <a href="#" {{action 'logout'}}>Log out</a></p>
 </div>
+
+
