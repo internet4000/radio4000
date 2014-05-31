@@ -14,30 +14,32 @@
 	&.is-active {
 		transform: translateY(0);
 	}
-	.Inner {
-		max-width: 1040px;
-		margin-left: auto;
-		margin-right: auto;
-	}
+	// .Inner {
+	// 	max-width: 1040px;
+	// 	margin-left: auto;
+	// 	margin-right: auto;
+	// }
 }
 
 // Controls
 .Controls {
 	// layout
-	padding: 5px;
+	margin: 10px;
+	padding: 5px 10px;
 	overflow: auto;
 	transition: margin 200ms ease-in-out;
-	@media (min-width: $layout-m) {
-		margin-left: 17.5rem; // match sidebar width
-	}
-
 	// ugly style
-	// background-color: $lightblue;
-	background-color: hsl(0, 0%, 18%);
-	background-image: linear-gradient(to bottom, hsl(0, 0%, 18%) 40%, hsl(0, 0%, 11%));
-	box-shadow: 0px -2px 2px hsla(0, 0%, 0%, 0.6);
-	border-top: 1px solid hsl(0, 0%, 13%);
-	color: #dadada;
+	padding: 5px;
+	overflow: auto;
+	// background-color: $primary-color;
+	background-color: hsla(0,100%,100%, 0.85);
+	background-image: linear-gradient(to bottom, hsla(0, 100%, 100%, 0.26) 40%, hsla(0, 100%, 50%, 0));
+	box-shadow: 3px 3px 0px hsl(0, 0%, 0%);
+	border-top: 1px solid hsl(0, 100%, 100%);
+
+	@extend %patron-bold;
+	// @extend %patron-medium;
+
 }
 .Controls-buttons {
 	float: right;
