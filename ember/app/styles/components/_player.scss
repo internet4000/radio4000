@@ -6,11 +6,12 @@
 .Playback {
 	position: fixed;
 	z-index: 3;
-	bottom: 0;
+	// bottom: 0;
+	top: 0;
 	right: 0;
 	left: 0;
-	transition: all ease-in-out 200ms;
-	transform: translateY(100%);
+	transition: all ease 200ms;
+	transform: translateY(-100%);
 	&.is-active {
 		transform: translateY(0);
 	}
@@ -25,24 +26,21 @@
 .Controls {
 	// layout
 	margin: 10px;
-	padding: 5px 10px;
+	padding: 5px 1rem;
 	overflow: auto;
 	transition: margin 200ms ease-in-out;
-	// ugly style
-	padding: 5px;
 	overflow: auto;
 	// background-color: $primary-color;
 	background-color: hsla(0,100%,100%, 0.85);
 	background-image: linear-gradient(to bottom, hsla(0, 100%, 100%, 0.26) 40%, hsla(0, 100%, 50%, 0));
 	box-shadow: 3px 3px 0px hsl(0, 0%, 0%);
 	border-top: 1px solid hsl(0, 100%, 100%);
-
 	@extend %patron-bold;
 	// @extend %patron-medium;
 
 }
 .Controls-buttons {
-	float: right;
+	float: left;
 }
 
 // Container for the embeds
