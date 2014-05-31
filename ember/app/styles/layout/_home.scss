@@ -1,10 +1,27 @@
 .Home {
-	max-width: 40em;
-	margin: 3rem auto 0;
 	text-align: center;
 
 	h1 {
 		font-size: 50px;
 		margin-bottom: 2rem;
 	}
+	.Manchet {
+		font-size: 22px;
+		max-width: 25em;
+		margin-right: auto;
+		margin-left: auto;
+	}
+	button {
+		font-size: 18px;
+		// when wide enough to have the same width
+		@media (min-width: $layout-m) {
+			min-width: 13.8em;
+		}
+		// &:first-of-type {
+		// 	background-color: hsl(7, 71%, 55%);
+		// }
+	}
+}
+.Home-logoutButton {
+	text-align: center;
 }

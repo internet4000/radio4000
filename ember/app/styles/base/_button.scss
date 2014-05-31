@@ -13,10 +13,10 @@
 	margin: 0;
 	// styling
 	display: inline-block;
-	background-color: rgb(192, 227, 255);
-	background-image: linear-gradient(to bottom, white 60%, #E9E9E9);
+	background-color: #e9e9e9;
+	background-image: linear-gradient(to bottom, white 60%, transparent);
 	color: $black;
-	padding: 6px 10px 5px;
+	padding: em(6px) em(10px) em(4px);
 }
 
 // Different states

@@ -10,7 +10,3 @@
 	{{render 'playback'}}
 	{{outlet 'player'}}
 </div>
-
-{{#if authController.isLoggedIn}}
-	<p><button {{action 'logout'}}>Log out</button></p>
-{{/if}}

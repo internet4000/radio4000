@@ -1,22 +1,24 @@
-<div class="Home">
+<div class="Article Home">
 	<h1>Muchplay</h1>
-	<p>The perfect way to collect, curate, play and share your own collection of YouTube and Soundcloud tracks.</p>
+	<p class="Manchet">The perfect way to curate, play and share your own collection of YouTube and Soundcloud tracks.</p>
 
 	{{#if authController.isLoggedIn}}
 		{{#if authController.currentUserModel.hasPlaylist}}
-			<p>@Todo: redirect/link to the user's playlist</p>
+			<p>{{#link-to "playlists"}}<button>Your collection</button>{{/link-to}}</p>
 		{{else}}
 			<p>{{#link-to "playlists.new"}}<button>Create your own collection</button>{{/link-to}}</p>
 		{{/if}}
+
+		<p><button class="Home-logoutButton Btn Btn--text" {{action 'logout'}}>Log out</button></p>
 	{{/if}}
 
 	{{#unless authController.isLoggedIn}}
-		<p>Register and sign-in with either Facebook or Google to get your own collection.</p>
+		{{!-- <p>Get a collection by and sign-in with either Facebook or Google to get your own collection.</p> --}}
 		<p>
 			<button {{action 'login' 'google'}}>Start with Google</button>
 			<button {{action 'login' 'facebook'}}>Start with with Facebook</button>
 		</p>
 	{{/unless}}
 
-	<p>{{#link-to 'playlists'}}Playlists{{/link-to}}.</p>
+	<p>{{#link-to 'about'}}About{{/link-to}} • {{#link-to 'playlists'}}Playlists{{/link-to}}</p>
 </div>

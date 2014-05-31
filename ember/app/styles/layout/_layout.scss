@@ -7,7 +7,7 @@
 
 html {
 	// background-color: #1e5799;
-	background-color: #fafafa;
+	background-color: hsl(0,0%,90%);
 	// background-image: linear-gradient( 45deg, #1e5799, #7db9e8);
 	min-height: 100%;
 }
@@ -72,4 +72,10 @@ body {
 	// .sidebar-is-open & {
 	// 	transform: translateX(0);
 	// }
+}
+
+
+.Article {
+	max-width: 40em;
+	margin: 3rem auto 0;
 }
