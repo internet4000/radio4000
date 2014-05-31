@@ -5,8 +5,8 @@
 	padding-left: 0;
 
 	li {
-		p {
-			margin: 0;
+		&:nth-of-type(odd) {
+			background-color: $superlightgray;
 		}
 		a {
 			display: block;
@@ -20,23 +20,10 @@
 			&:hover {
 				text-decoration: underline;
 			}
-			&.is-active {
-				background-color: $lightblue;
-				color: #fff;
-			}
 		}
-		// even odd
-		&:nth-of-type(odd) a {
-			background-color: $superlightgray;
+		p {
+			margin: 0;
 		}
-
-		// small {
-		// 	float: right;
-		// 	color: gray;
-		// 	@media (max-width: 400px) {
-		// 		display: none;
-		// 	}
-		// }
 	}
 }
 

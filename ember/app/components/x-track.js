@@ -1,5 +1,5 @@
 var XTrackComponent = Ember.Component.extend({
-	tagName: 'li',
+	// tagName: 'li',
 	classNames: ['Track'],
 	classNameBindings: ['isEditing:is-editing'],
 	isEditing: false,

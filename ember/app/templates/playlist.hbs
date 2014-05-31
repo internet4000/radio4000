@@ -66,11 +66,13 @@
 
 				<ul class="List">
 					{{#each track in tracks}}
-						{{x-track
-							track=track
-							playlist=model
-							authController=authController
-							onPublishTrack="publishTrack"}}
+						<li>
+							{{x-track
+								track=track
+								playlist=model
+								authController=authController
+								onPublishTrack="publishTrack"}}
+						</li>
 					{{/each}}
 				</ul>
 			</div>

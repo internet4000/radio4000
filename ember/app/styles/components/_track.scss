@@ -7,6 +7,8 @@
 	a {
 		&:hover {}
 		&.is-active {
+			background-color: $lightblue;
+			color: #fff;
 			.Track-description {
 				color: inherit;
 			}
@@ -22,6 +24,7 @@
 			}
 		}
 	}
+
 	.Form {
 		background: $yellow;
 		padding: 0.5rem;
