@@ -4,9 +4,9 @@
 
 	{{#if authController.isLoggedIn}}
 		{{#if authController.currentUserModel.hasPlaylist}}
-			<p>{{#link-to "playlists"}}<button>Your collection</button>{{/link-to}}</p>
+			<p>{{#link-to "playlists"}}<button class="Btn--primary Btn--large">Your collection</button>{{/link-to}}</p>
 		{{else}}
-			<p>{{#link-to "playlists.new"}}<button>Create your own collection</button>{{/link-to}}</p>
+			<p>{{#link-to "playlists.new"}}<button class="Btn--primary Btn--large">Create your own collection</button>{{/link-to}}</p>
 		{{/if}}
 
 		{{!-- <p><button class="Home-logoutButton Btn Btn--text" {{action 'logout'}}>Log out</button></p> --}}

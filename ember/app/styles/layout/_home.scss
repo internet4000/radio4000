@@ -2,8 +2,8 @@
 	text-align: center;
 
 	h1 {
-		font-size: 50px;
-		margin-bottom: 2rem;
+		font-size: 40px;
+		// margin-bottom: 1rem;
 	}
 	.Manchet {
 		font-size: 22px;
@@ -12,7 +12,6 @@
 		margin-left: auto;
 	}
 	button {
-		font-size: 18px;
 		// when wide enough to have the same width
 		@media (min-width: $layout-m) {
 			min-width: 13.8em;

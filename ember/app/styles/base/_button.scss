@@ -63,12 +63,17 @@ button {
 		background-image: none;
 	}
 }
-
-
-/**
- * Edit button
- */
-
-.Btn--edit {
-
+.Btn--edit {}
+.Btn--primary {
+	background-color: hsl(110, 85%, 35%);
+	background-image: linear-gradient(to bottom, hsla(0, 100%, 100%, 0.10) 40%, hsla(0, 0%, 0%, 0));
+	color: $bleach;
+	box-shadow: 2px 2px 0 hsl(0, 0%, 60%);
+	border: 2px solid hsl(110, 85%, 25%);
+	@extend %patron-medium;
+	letter-spacing: 0.04em;
+}
+.Btn--large {
+	font-size: 19px;
+	padding: em(11) em(10) em(8);
 }

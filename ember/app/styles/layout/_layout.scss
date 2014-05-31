@@ -14,6 +14,7 @@ html {
 body {
 	overflow-y: scroll;
 	margin: 1.5rem 1.5rem 5rem;
+	margin-top: 84px; // fits with controls on top
 }
 .SiteHeader,
 .SiteMain {
@@ -44,7 +45,7 @@ body {
 	font-size: 20px;
 	padding: 5px 6px 2px;
 	background-color: $green;
-	border: 2px solid darken($green, 20%);
+	border: 2px solid $darkgreen;;
 	border-radius: $border-radius;
 	-webkit-font-smoothing: antialiased;
 	a {
