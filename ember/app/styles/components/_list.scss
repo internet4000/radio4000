@@ -1,31 +1,42 @@
+// List styles. You need to
+
 .List {
 	list-style: none;
 	padding-left: 0;
 
-	border-top: 1px solid hsl(0, 0%, 70%);
 	li {
-		border-bottom: 1px solid hsl(0, 0%, 70%);
-
 		p {
 			margin: 0;
 		}
 		a {
 			display: block;
 			color: $black;
-			padding-top: .357142857em; // optical center
+			// padding-top: .357142857em; // optical center
+			padding-top: rem(10);
+			padding-bottom: rem(7); // 3px less is optical center
+			padding-left: 1.5rem;
+			padding-right: 1.5rem;
 
+			&:hover {
+				text-decoration: underline;
+			}
 			&.is-active {
-				background-color: $yellow;
-				color: $black;
+				background-color: $lightblue;
+				color: #fff;
 			}
 		}
-		small {
-			float: right;
-			color: gray;
-			@media (max-width: 400px) {
-				display: none;
-			}
+		// even odd
+		&:nth-of-type(odd) a {
+			background-color: $superlightgray;
 		}
+
+		// small {
+		// 	float: right;
+		// 	color: gray;
+		// 	@media (max-width: 400px) {
+		// 		display: none;
+		// 	}
+		// }
 	}
 }
 

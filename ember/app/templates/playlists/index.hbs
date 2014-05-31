@@ -1,10 +1,12 @@
 <div class="Box">
 	<h1>Playlists</h1>
-	{{#each playlist in arrangedContent}}
-		<article class="PlaylistTeaser">
-			{{#link-to "playlist" playlist}}
-				{{playlist.title}}
-			{{/link-to}}
-		</article>
-	{{/each}}
+	<ul class="List">
+		{{#each playlist in arrangedContent}}
+			<li class="PlaylistTeaser">
+				{{#link-to "playlist" playlist}}
+					{{playlist.title}}
+				{{/link-to}}
+			</li>
+		{{/each}}
+	</ul>
 </div>

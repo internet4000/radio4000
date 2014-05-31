@@ -5,24 +5,11 @@
 .Track {
 	position: relative;
 	a {
-		display: block;
-		padding-top: rem(10);
-		padding-bottom: rem(7); // 3px less is optical center
-		padding-left: 1.5rem;
-		padding-right: 1.5rem;
-		&:hover {
-			text-decoration: none;
-			.Track-name {
-				text-decoration: underline;
-			}
-		}
+		&:hover {}
 		&.is-active {
-			background-color: $lightblue;
-			color: #fff;
 			.Track-description {
 				color: inherit;
 			}
-
 			// playing indicator
 			.Track-name:before {
 				content: '►';
@@ -35,14 +22,9 @@
 			}
 		}
 	}
-
 	.Form {
 		background: $yellow;
 		padding: 0.5rem;
-	}
-	// even odd
-	&:nth-of-type(odd) {
-		background-color: $superlightgray;
 	}
 }
 .Track-name {

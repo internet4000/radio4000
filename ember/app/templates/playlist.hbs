@@ -64,13 +64,15 @@
 					<h2>No tracks yet.</h2>
 				{{/if}}
 
-				{{#each track in tracks}}
-					{{x-track
-						track=track
-						playlist=model
-						authController=authController
-						onPublishTrack="publishTrack"}}
-				{{/each}}
+				<ul class="List">
+					{{#each track in tracks}}
+						{{x-track
+							track=track
+							playlist=model
+							authController=authController
+							onPublishTrack="publishTrack"}}
+					{{/each}}
+				</ul>
 			</div>
 		</div>
 	</div>
