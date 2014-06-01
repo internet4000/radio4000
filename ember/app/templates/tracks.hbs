@@ -14,7 +14,7 @@
 		{{#each track in model}}
 			<li>{{x-track
 					track=track
-					playlist=model
+					playlist=controllers.playlist.model
 					authController=controllers.auth
 					onPublishTrack="publishTrack"}}
 			</li>
