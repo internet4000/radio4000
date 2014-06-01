@@ -18,8 +18,17 @@
 			padding-right: 1.5rem;
 
 			&:hover {
-				text-decoration: underline;
+				text-decoration: none;
+				background-color: hsl(0,0%,95%);
 			}
+
+			&.is-active {
+				background-color: $lightblue;
+				color: #fff;
+			}
+			// &.is-active:hover {
+			// 	text-decoration: none;
+			// }
 		}
 		p {
 			margin: 0;

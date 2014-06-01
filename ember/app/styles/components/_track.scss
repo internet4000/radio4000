@@ -17,17 +17,19 @@
 				content: '►';
 				display: inline;
 				font-size: 10px;
-				margin-right: 3px;
+				margin-right: 0.5rem;
 				position: relative;
 				top: -1px;
 				text-decoration: none;
 			}
 		}
 	}
-
 	.Form {
 		background: $yellow;
 		padding: 0.5rem;
+	}
+	.Btn--danger {
+		float: right;
 	}
 }
 .Track-name {
