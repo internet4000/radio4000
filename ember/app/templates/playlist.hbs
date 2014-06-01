@@ -4,8 +4,13 @@
 		<div class="Inner">
 
 			<div class="Playlist-info">
+
 				{{#link-to 'playlist' this}}
-					<img class="Playlist-avatar" src="https://i1.sndcdn.com/avatars-000069254848-ak10xz-t200x200.jpg?30a2558">
+					{{#if image}}
+						<img class="Playlist-avatar" {{bind-attr src=image}}>
+					{{else}}
+						<img class="Playlist-avatar" src="https://i1.sndcdn.com/avatars-000069254848-ak10xz-t200x200.jpg?30a2558">
+					{{/if}}
 				{{/link-to}}
 
 				<h1 class="Playlist-title">{{title}}</h1>
@@ -26,6 +31,7 @@
 					<form class="Form" {{action "saveEditing" on="submit"}}>
 						{{input value=title placeholder="Title" autofocus='autofocus'}}
 						{{input value=slug placeholder="Slug"}}
+						{{textarea value=image placeholder="Image URL"}}
 						{{textarea value=body placeholder="Description"}}
 						<button type="submit">Save playlist</button> <button class="Btn--text" {{action 'cancelEditing'}}>Cancel</button>
 					</form>

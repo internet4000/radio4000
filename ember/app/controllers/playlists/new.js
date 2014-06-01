@@ -32,6 +32,7 @@ var PlaylistsNewController = Ember.ObjectController.extend({
 				var playlist = this.store.createRecord('playlist', {
 					title: this.get('playlist.title'),
 					slug: this.get('playlist.slug'),
+					image: this.get('playlist.image'),
 					body: this.get('playlist.body'),
 					created: new Date().getTime(),
 					user: promises.user
@@ -54,12 +55,13 @@ var PlaylistsNewController = Ember.ObjectController.extend({
 					});
 				});
 
-				// Empty the form fields
-				this.setProperties({
-					'playlist.title': '',
-					'playlist.body': '',
-					'playlist.slug': ''
-				});
+				// // Empty the form fields
+				// this.setProperties({
+				// 	'playlist.title': '',
+				// 	'playlist.body': '',
+				// 	'playlist.image': '',
+				// 	'playlist.slug': ''
+				// });
 
 				this.transitionToRoute('playlist', playlist);
 
