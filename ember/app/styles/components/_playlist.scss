@@ -21,13 +21,26 @@
 .Playlist-header {
 	overflow: auto;
 	@media (min-width: $layout-m) {
-		float: left;
+		position: fixed;
+		top: 0;
+		left: 0;
 		width: 18rem;
+		height: 100%;
+		z-index: 1;
+
+		// test styles
+		background-color: $primary-color;
+		border: 0;
+		color: #fff;
+
 	}
 }
 .Playlist-body {
 	@media (min-width: $layout-m) {
-		margin-left: 18rem + 1rem;
+		// margin-left: 18rem + 0rem;
+		margin-left: 269px; // to go under the 1px border
+		margin-top: 1rem;
+		margin-right: 1rem;
 	}
 }
 .Playlist-avatar {
@@ -56,7 +69,7 @@
 	}
 }
 .Playlist-description {
-	color: $gray;
+	// color: $gray;
 	@media (min-width: $layout-s) {
 		// clear: both;
 	}
