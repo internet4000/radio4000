@@ -10,8 +10,11 @@
 				{{/link-to}}
 
 				<h1 class="Playlist-title">{{title}}</h1>
-				<p class="Playlist-description">{{body}}</p>
-				{{#if isOwner}}<p>Is owner</p>{{else}}<p>is not owner</p>{{/if}}
+				<p class="Playlist-description">
+					{{body}}
+					{{#if isOwner}}<br>Is owner{{else}}<br>is not owner{{/if}}
+				</p>
+
 
 				{{#unless isEditing}}
 					{{#if authController.isLoggedIn}}
@@ -29,17 +32,6 @@
 						<button type="submit">Save playlist</button> <button class="Btn--text" {{action 'cancelEditing'}}>Cancel</button>
 					</form>
 				{{/if}}
-
-				<form class="Form AddTrack" {{action "publishTrack" on='submit'}}>
-					{{#if isAdding}}
-						{{input value=trackUrl autofocus='autofocus' placeholder="YouTube or Soundcloud url"}}<br>
-						{{input value=trackTitle placeholder="Title"}}<br>
-						{{textarea value=trackBody placeholder="Optional description"}}<br>
-						<button type='submit'>Add track</button> <button class="Btn--text" {{action 'cancelTrack'}}>Cancel</button>
-					{{else}}
-						<button class="Btn--textInput" {{action 'addTrack'}}>Add a track…</button>
-					{{/if}}
-				</form>
 			{{/if}}
 		</div>
 	</div>
@@ -53,6 +45,17 @@
 				{{else}}
 					<h2>No tracks yet.</h2>
 				{{/if}}
+
+				<form class="Form AddTrack" {{action "publishTrack" on='submit'}}>
+					{{#if isAdding}}
+						{{input value=trackUrl autofocus='autofocus' placeholder="YouTube or Soundcloud url"}}<br>
+						{{input value=trackTitle placeholder="Title"}}<br>
+						{{textarea value=trackBody placeholder="Optional description"}}<br>
+						<button type='submit'>Add track</button> <button class="Btn--text" {{action 'cancelTrack'}}>Cancel</button>
+					{{else}}
+						<button class="Btn--textInput" {{action 'addTrack'}}>Add a track…</button>
+					{{/if}}
+				</form>
 
 				<ul class="List">
 					{{#each track in tracks}}

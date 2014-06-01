@@ -19,18 +19,17 @@ body {
 }
 .SiteHeader,
 .SiteMain {
-	max-width: 1040px;
-	margin-left: auto;
-	margin-right: auto;
+	// margin: 1rem;
+	// max-width: 1040px;
+	// margin-left: auto;
+	// margin-right: auto;
 }
 .SiteHeader {
-	overflow: auto;
+
 }
 .SiteMain {
-	overflow: auto;
-	clear: both;
-	margin-top: 1.5rem;
-	margin-bottom: 1.5rem;
+	@include clearfix;
+	// clear: both;
 	border-radius: $border-radius;
 }
 .Article {

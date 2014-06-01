@@ -1,5 +1,5 @@
 .Route-index {
-	background-image: radial-gradient(rgba(white, 0.2), transparent);
+	background-image: radial-gradient(rgba(white, 0.4) 40%, transparent);
 
 	// Hide logo on home because we show it in the middle
 	.SiteLogo {
@@ -26,6 +26,7 @@
 		max-width: 25em;
 		margin-right: auto;
 		margin-left: auto;
+		margin-bottom: 1.1rem; // optical same as from title above
 	}
 	button {
 		// when wide enough to have the same width
