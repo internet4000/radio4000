@@ -1,6 +1,9 @@
 var TracksController = Ember.ArrayController.extend({
+	needs: ['auth', 'playlist'],
+
+	// Sort by newest on top
 	sortProperties: ['created'],
-	sortAscending: false // newest on top
+	sortAscending: false,
 });
 
 export default TracksController;

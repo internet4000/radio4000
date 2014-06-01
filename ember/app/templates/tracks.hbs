@@ -11,11 +11,11 @@
 	</form>
 
 	<ul class="List">
-		{{#each track in controller}}
+		{{#each track in model}}
 			<li>{{x-track
 					track=track
 					playlist=model
-					authController=authController
+					authController=controllers.auth
 					onPublishTrack="publishTrack"}}
 			</li>
 		{{/each}}
