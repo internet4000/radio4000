@@ -4,7 +4,6 @@
 		<div class="Inner">
 
 			<div class="Playlist-info">
-
 				{{#link-to 'playlist' this}}
 					<img class="Playlist-avatar" src="https://i1.sndcdn.com/avatars-000069254848-ak10xz-t200x200.jpg?30a2558">
 				{{/link-to}}
@@ -14,7 +13,6 @@
 					{{body}}
 					{{#if isOwner}}<br>Is owner{{else}}<br>is not owner{{/if}}
 				</p>
-
 
 				{{#unless isEditing}}
 					{{#if authController.isLoggedIn}}
@@ -38,40 +36,7 @@
 
 	<div class="Playlist-body">
 		<div class="Inner">
-
-			<section class="Tracks">
-				{{#if tracks}}
-					<h2>Tracks</h2>
-				{{else}}
-					<h2>No tracks yet.</h2>
-				{{/if}}
-
-				<form class="Form AddTrack" {{action "publishTrack" on='submit'}}>
-					{{#if isAdding}}
-						{{input value=trackUrl autofocus='autofocus' placeholder="YouTube or Soundcloud url"}}<br>
-						{{input value=trackTitle placeholder="Title"}}<br>
-						{{textarea value=trackBody placeholder="Optional description"}}<br>
-						<button type='submit'>Add track</button> <button class="Btn--text" {{action 'cancelTrack'}}>Cancel</button>
-					{{else}}
-						<button class="Btn--textInput" {{action 'addTrack'}}>Add a track…</button>
-					{{/if}}
-				</form>
-
-				<ul class="List">
-					{{#each track in tracks}}
-						<li>
-							{{x-track
-								track=track
-								playlist=model
-								authController=authController
-								onPublishTrack="publishTrack"}}
-						</li>
-					{{/each}}
-				</ul>
-			</section>
+			{{outlet}}
 		</div>
 	</div>
-
-	{{outlet}}
-
 </article>

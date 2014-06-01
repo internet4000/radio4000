@@ -1,38 +1,33 @@
-// List styles. You need to
-
 .List {
 	list-style: none;
 	padding-left: 0;
+	margin-bottom: 0;
+}
+.List li {
+	&:nth-of-type(odd) {
+		background-color: $superlightgray;
+	}
+	a {
+		display: block;
+		color: $black;
+		// padding-top: .357142857em; // optical center
+		padding-top: rem(10);
+		padding-bottom: rem(7); // 3px less is optical center
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
 
-	li {
-		&:nth-of-type(odd) {
-			background-color: $superlightgray;
+		&:hover {
+			text-decoration: none;
+			background-color: hsl(0,0%,95%);
 		}
-		a {
-			display: block;
-			color: $black;
-			// padding-top: .357142857em; // optical center
-			padding-top: rem(10);
-			padding-bottom: rem(7); // 3px less is optical center
-			padding-left: 1.5rem;
-			padding-right: 1.5rem;
 
-			&:hover {
-				text-decoration: none;
-				background-color: hsl(0,0%,95%);
-			}
-
-			&.is-active {
-				background-color: $lightblue;
-				color: #fff;
-			}
-			// &.is-active:hover {
-			// 	text-decoration: none;
-			// }
+		&.is-active {
+			background-color: $lightblue;
+			color: #fff;
 		}
-		p {
-			margin: 0;
-		}
+	}
+	p {
+		margin: 0;
 	}
 }
 
