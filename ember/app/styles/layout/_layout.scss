@@ -29,54 +29,10 @@ body {
 .SiteMain {
 	overflow: auto;
 	clear: both;
-	margin: 1.5rem 1.5rem 5rem;
+	margin-top: 1.5rem;
+	margin-bottom: 1.5rem;
 	border-radius: $border-radius;
-	// transition: all ease-in-out 200ms;
-	// .sidebar-is-open & {
-	// 	transform: translateX(-350px);
-	// }
 }
-.SiteTitle {
-	@extend %patron-bold;
-	position: fixed;
-	z-index: 2;
-	top: -2px;
-	right: 0.5rem;
-	margin: 0;
-	font-size: 20px;
-	padding: 5px 6px 2px;
-	background-color: $green;
-	border: 2px solid $darkgreen;;
-	border-radius: $border-radius;
-	-webkit-font-smoothing: antialiased;
-	a {
-		color: $bleach;
-	}
-}
-
-
-/*
- User settings and log-in
-*/
-
-.UserActions {
-	margin: 2rem 0 1rem;
-	// z-index: 1;
-	// position: fixed;
-	// top: 0;
-	// bottom: 0;
-	// right: 0;
-	// background: #c0e3ff;
-	// width: 350px;
-	// padding-top: 100px;
-	// transform: translateX(100%);
-	// transition: all ease-in-out 200ms;
-	// .sidebar-is-open & {
-	// 	transform: translateX(0);
-	// }
-}
-
-
 .Article {
 	max-width: 40em;
 	margin: 3rem auto 0;

@@ -1,0 +1,19 @@
+.SiteLogo {
+	transition: transform 250ms ease;
+	position: fixed;
+	z-index: 2;
+	top: -2px;
+	right: 0.5rem;
+	margin: 0;
+	padding: 5px 6px 2px;
+	border: 2px solid $darkgreen;;
+	border-radius: $border-radius;
+
+	@extend %patron-bold;
+	font-size: 20px;
+	background-color: $green;
+	-webkit-font-smoothing: antialiased;
+	a {
+		color: $bleach;
+	}
+}

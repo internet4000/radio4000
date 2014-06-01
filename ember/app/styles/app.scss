@@ -6,7 +6,6 @@
 @import 'utilities/clearfix';
 @import 'utilities/functions';
 
-
 // Base
 @import 'base/config';
 @import 'base/normalize-custom';
@@ -20,6 +19,7 @@
 @import 'layout/home';
 
 // Components
+@import 'components/logo';
 @import 'components/nav';
 @import 'components/list';
 @import 'components/playlist';
