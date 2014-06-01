@@ -7,7 +7,7 @@ html {
 	// -webkit-font-smoothing: antialiased;
 }
 strong {
-	@extend %patron-bold;
+	@extend %patron-medium;
 }
 em {
 	@extend %patron-italic;
@@ -69,7 +69,8 @@ input,
 table,
 address,
 textarea,
-form {
+form,
+hr {
     margin: 0 0 1rem;
 }
 
@@ -83,5 +84,11 @@ embed {
 }
 
 .Manchet {
-	font-size: 22px;
+	font-size: 20px;
 }
+.Article-body {
+	p {
+		font-size: 18px;
+	}
+}
+
