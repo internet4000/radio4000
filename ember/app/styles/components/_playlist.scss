@@ -30,13 +30,14 @@ $sidebarWidthLarger: 360px;
 		width: $sidebarWidth;
 		height: 100%;
 		z-index: 1;
+		padding-bottom: 4rem; // room for fixed player bottom
 
 		// test styles
 		background-color: $primary-color;
 		border: 0;
 		color: #fff;
 	}
-	@media (min-width: $layout-l) {
+	@media (min-width: $layout-ml) {
 		width: $sidebarWidthLarger;
 	}
 }
@@ -47,7 +48,7 @@ $sidebarWidthLarger: 360px;
 		margin-top: 1rem;
 		margin-right: 1rem;
 	}
-	@media (min-width: $layout-l) {
+	@media (min-width: $layout-ml) {
 		margin-left: $sidebarWidthLarger - 1px; // to go under the 1px border
 	}
 }

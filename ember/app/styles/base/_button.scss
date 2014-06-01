@@ -53,29 +53,17 @@ button {
  * Button modifiers
  */
 
-.Btn--text {
-	padding-left: 5px;
-	padding-right: 5px;
-	border-color: transparent;
-	background-image: none;
-	background-color: transparent;
-	text-align: left;
-	&:hover {
-		background-image: none;
-	}
-}
-
 /**
  * Primary, colored button
  */
 
 .Btn--primary {
+	@extend %patron-medium;
 	background-color: hsl(110, 85%, 35%);
 	background-image: linear-gradient(to bottom, hsla(0, 100%, 100%, 0.10) 40%, hsla(0, 0%, 0%, 0));
 	color: $bleach;
 	box-shadow: 2px 2px 0 hsl(0, 0%, 60%);
 	border: 2px solid hsl(110, 85%, 25%);
-	@extend %patron-medium;
 	letter-spacing: 0.04em;
 }
 
@@ -96,11 +84,23 @@ button {
  * Buttons that look like text inputs (also see forms.scss)
  */
 
+.Btn--text {
+	padding-left: rem(5);
+	padding-right: rem(5);
+	border-color: transparent;
+	background-image: none;
+	background-color: transparent;
+	text-align: left;
+	&:hover {
+		background-image: none;
+	}
+}
+
 .Btn--textInput {
+	@extend %patron-medium;
 	background-image: none;
 	background-color: white;
 	text-align: left;
-	color: $gray;
 	&:hover {
 		background-image: none;
 	}
