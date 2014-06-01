@@ -1,12 +1,12 @@
 <header class="SiteHeader">
-	<h1 class="SiteTitle">{{#link-to "index"}}Muchplay{{/link-to}}</h1>
+	<h1 class="SiteLogo">{{#link-to "index"}}Muchplay{{/link-to}}</h1>
 </header>
 
 <main class="SiteMain">
 	{{outlet}}
 </main>
 
-<div>
+<aside class="SiteAside">
 	{{render 'playback'}}
 	{{outlet 'player'}}
-</div>
+</aside>

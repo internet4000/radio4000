@@ -2,13 +2,14 @@
 	MUCH PLAY
 */
 
+
 // Utilities
 @import 'utilities/clearfix';
 @import 'utilities/functions';
 
 // Base
-@import 'base/config';
 @import 'base/normalize-custom';
+@import 'base/config';
 @import 'base/base';
 @import 'base/form';
 @import 'base/button';

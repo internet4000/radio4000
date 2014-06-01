@@ -1,12 +1,28 @@
+.Route-index {
+	background-image: radial-gradient(rgba(white, 0.2), transparent);
+
+	// Hide logo on home because we show it in the middle
+	.SiteLogo {
+		transform: translateY(-100%);
+	}
+}
+
 .Home {
 	text-align: center;
 
+	@media (min-width: $layout-m) {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		margin: -2rem auto 0;
+	}
+
 	h1 {
 		font-size: 40px;
-		// margin-bottom: 1rem;
 	}
 	.Manchet {
-		font-size: 22px;
 		max-width: 25em;
 		margin-right: auto;
 		margin-left: auto;
@@ -21,9 +37,6 @@
 		// }
 	}
 }
-// .Home-logoutButton {
-// 	text-align: center;
-// }
 
 // Bigger click area
 .Home-meta {
@@ -32,3 +45,4 @@
 		padding: 0.5em 0.4em;
 	}
 }
+

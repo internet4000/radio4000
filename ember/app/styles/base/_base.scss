@@ -13,12 +13,13 @@ em {
 	@extend %patron-italic;
 }
 
-a,
-a:visited {
+a {
 	color: $link-color;
 	text-decoration: none;
 }
-a:hover {
+a:hover,
+a:focus,
+a:active {
 	// color: hsl(100, 60%, 50%);
 	text-decoration: underline;
 }
@@ -79,4 +80,8 @@ canvas,
 video,
 embed {
 	max-width: 100%;
+}
+
+.Manchet {
+	font-size: 22px;
 }

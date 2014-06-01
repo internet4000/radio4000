@@ -11,7 +11,7 @@
 	right: 0;
 	left: 0;
 	transition: all ease 200ms;
-	transform: translateY(-100%);
+	transform: translateY(100%);
 	&.is-active {
 		transform: translateY(0);
 	}

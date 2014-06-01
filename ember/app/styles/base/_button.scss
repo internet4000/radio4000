@@ -1,32 +1,44 @@
 /**
- * Buttons
+ * Button reset (inspired by https://github.com/suitcss/components-button)
  */
 
 .Btn {
-	// reset
-	-webkit-appearance: none;;
-	@extend %patron;
-	line-height: normal;
-	text-align: center;
-	text-decoration: none;
-	white-space: normal;
-	margin: 0;
-	// styling
-	display: inline-block;
-	background-color: #e9e9e9;
-	background-image: linear-gradient(to bottom, white 60%, transparent);
-	color: $black;
-	padding: em(6px) em(10px) em(4px);
+  -webkit-appearance: none; /* 1 */
+  background: transparent;
+  cursor: pointer;
+  display: inline-block;
+  font: inherit; /* 4 */
+  line-height: normal; /* 6 */
+  margin: 0;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none; /* 6 */
+  white-space: normal; /* 7 */
 }
 
-// Different states
+/**
+ * Button styling
+ */
+
+.Btn {
+	@extend %patron-medium;
+	padding-left: em(10);
+	padding-right: em(10);
+	background-color: $slightgray;
+	background-image: linear-gradient(to bottom, white 60%, transparent);
+	color: $black;
+}
+
+/**
+ * UI states
+ */
 .Btn:hover,
-.Btn:focus {
+.Btn:focus,
+.Btn:active {
     text-decoration: underline;
  }
-.Btn:active {
-    background-image: linear-gradient(to bottom, $superlightgray 30%, white);
-}
+
 .Btn:disabled,
 .Btn.is-disabled {
     cursor: default;
@@ -37,6 +49,10 @@
 button {
 	@extend .Btn;
 }
+
+/**
+ * Button modifiers
+ */
 
 .Btn--text {
 	padding-left: 5px;
@@ -51,7 +67,34 @@ button {
 }
 
 /**
- * Buttonsthat look like text inputs (also see forms.scss)
+ * Primary, colored button
+ */
+
+.Btn--primary {
+	background-color: hsl(110, 85%, 35%);
+	background-image: linear-gradient(to bottom, hsla(0, 100%, 100%, 0.10) 40%, hsla(0, 0%, 0%, 0));
+	color: $bleach;
+	box-shadow: 2px 2px 0 hsl(0, 0%, 60%);
+	border: 2px solid hsl(110, 85%, 25%);
+	@extend %patron-medium;
+	letter-spacing: 0.04em;
+}
+
+/**
+ * Button sizes
+ */
+
+.Btn--large {
+	font-size: 19px;
+	padding: em(11) em(10) em(8);
+}
+
+.Btn--danger {
+	color: $red;
+}
+
+/**
+ * Buttons that look like text inputs (also see forms.scss)
  */
 
 .Btn--textInput {
@@ -62,22 +105,4 @@ button {
 	&:hover {
 		background-image: none;
 	}
-}
-.Btn--edit {}
-.Btn--primary {
-	background-color: hsl(110, 85%, 35%);
-	background-image: linear-gradient(to bottom, hsla(0, 100%, 100%, 0.10) 40%, hsla(0, 0%, 0%, 0));
-	color: $bleach;
-	box-shadow: 2px 2px 0 hsl(0, 0%, 60%);
-	border: 2px solid hsl(110, 85%, 25%);
-	@extend %patron-medium;
-	letter-spacing: 0.04em;
-}
-.Btn--large {
-	font-size: 19px;
-	padding: em(11) em(10) em(8);
-}
-
-.Btn--danger {
-	color: $red;
 }

@@ -12,15 +12,13 @@ $yellow:         hsl(60, 100%, 70%);
 $blue:           hsl(210, 75%, 50%);
 $lightblue:      lighten($blue, 10%);
 $red:            hsl(0, 100%, 50%);
-
 $green:          hsl(110, 85%, 35%);
 $darkgreen: 	  hsl(110, 85%, 25%);
-
 $bleach:         hsl(72, 100%, 97%);
 $black:          hsl(0, 0%, 10%);
 $gray:           hsl(0, 0%, 50%);
 $lightgray:      hsl(0, 0%, 85%);
-$slightgray:     hsl(0, 0%, 95%); // slighty lighter than lightgray
+$slightgray:     hsl(0, 0%, 95%);
 $superlightgray: hsl(0, 0%, 98%);
 
 // Color definitions
