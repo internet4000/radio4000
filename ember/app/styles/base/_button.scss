@@ -36,7 +36,12 @@
 .Btn:focus,
 .Btn:active {
     text-decoration: underline;
+    outline: none;
  }
+.Btn:active {
+	top: 1px;
+	left: 1px;
+}
 
 .Btn:disabled,
 .Btn.is-disabled {
@@ -59,12 +64,16 @@ button {
 
 .Btn--primary {
 	@extend %patron-medium;
-	background-color: hsl(110, 85%, 35%);
-	background-image: linear-gradient(to bottom, hsla(0, 100%, 100%, 0.10) 40%, hsla(0, 0%, 0%, 0));
+	background-color: $green;
+	background-image: linear-gradient(to bottom, rgba(white, 0.10) 40%, transparent);
 	color: $bleach;
 	box-shadow: 2px 2px 0 hsl(0, 0%, 60%);
-	border: 2px solid hsl(110, 85%, 25%);
+	border: 2px solid $darkgreen;
 	letter-spacing: 0.04em;
+
+	&:hover {
+		background-image: linear-gradient(to bottom, rgba(white, 0.20) 40%, transparent);
+	}
 }
 
 /**

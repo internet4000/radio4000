@@ -15,8 +15,8 @@
 	{{#unless authController.isLoggedIn}}
 		{{!-- <p>Get a collection by and sign-in with either Facebook or Google to get your own collection.</p> --}}
 		<p>
-			<button {{action 'login' 'google'}}>Start with Google</button>
-			<button {{action 'login' 'facebook'}}>Start with with Facebook</button>
+			<button {{action 'login' 'google'}} class="Btn--primary Btn--large">Start with Google</button>
+			<button {{action 'login' 'facebook'}} class="Btn--primary Btn--large">Start with with Facebook</button>
 		</p>
 	{{/unless}}
 
