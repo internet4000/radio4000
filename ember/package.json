@@ -1,6 +1,6 @@
 {
   "name": "play",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "private": true,
   "directories": {
     "doc": "doc",
@@ -18,7 +18,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "ember-cli": "0.0.28",
+    "ember-cli": "0.0.34",
     "originate": "0.1.5",
     "broccoli-ember-hbs-template-compiler": "^1.5.0",
     "loom-generators-ember-appkit": "^1.1.1",

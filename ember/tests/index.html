@@ -34,14 +34,17 @@
     <div id="qunit-fixture"></div>
 
     <script>
-      window.ENV = {{ENV}};
+      window.PlayENV = {{ENV}};
+      window.EmberENV = window.PlayENV.EmberENV;
     </script>
     <script src="assets/qunit.js"></script>
+    <script src="assets/qunit-notifications.js"></script>
+    <script src="assets/vendor.js"></script>
     <script src="assets/play.js"></script>
     <script src="testem.js"></script>
     <script>
       require('play/tests/test-helper');
-      require('play/tests/test-loader');
     </script>
+    <script src="assets/test-loader.js"></script>
   </body>
 </html>

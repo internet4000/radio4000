@@ -22,7 +22,6 @@
 	{{BASE_TAG}}
 
 	<script src="modernizr-custom.min.js"></script>
-
 	<!-- <link rel="stylesheet" href="assets/vendor.css"> -->
 	<link rel="stylesheet" href="assets/play.css">
 </head>
@@ -31,11 +30,13 @@
 
 	<!-- Our Ember app -->
 	<script>
-		window.ENV = {{ENV}};
+		window.PlayENV = {{ENV}};
+		window.EmberENV = window.PlayENV.EmberENV;
 	</script>
+	<script src="assets/vendor.js"></script>
 	<script src="assets/play.js"></script>
 	<script>
-		window.Play = require('play/app')['default'].create(ENV.APP);
+		window.Play = require('play/app')['default'].create(PlayENV.APP);
 	</script>
 
 	<!-- YouTube API async -->

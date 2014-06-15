@@ -2,42 +2,45 @@
 
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
-var p = require('ember-cli/lib/preprocessors');
-var preprocessCss = p.preprocessCss;
-var autoprefixer = require('broccoli-autoprefixer');
+var app = new EmberApp();
+// var app = new EmberApp({
+//   name: require('./package.json').name,
 
-var app = new EmberApp({
-  name: require('./package.json').name,
+//   minifyCSS: {
+//     enabled: true,
+//     options: {}
+//   },
 
-  minifyCSS: {
-    enabled: true,
-    options: {}
-  },
+//   getEnvJSON: require('./config/environment')
+// });
 
-  getEnvJSON: require('./config/environment')
-});
-
-app.styles = function() {
-  //compiling less to css
-  var styles =  preprocessCss(this.appAndDependencies(), this.name + '/styles', '/assets');
-  //applying autoprefixer on styles
-  styles = autoprefixer(styles,['> 1%', 'last 2 versions']);
-  return styles;
-};
-
-// Use this to add additional libraries to the generated output files.
-app.import('vendor/ember-data/ember-data.js');
-app.import('vendor/emberfire/dist/emberfire.min.js');
-app.import('vendor/firebase/firebase.js');
-app.import('vendor/firebase-simple-login/firebase-simple-login.js');
-app.import('vendor/markdown/lib/markdown.js');
-app.import('vendor/moment/moment.js');
-app.import('vendor/js-md5/js/md5.js');
+// Use `app.import` to add additional libraries to the generated
+// output files.
+//
+// If you need to use different assets in different
+// environments, specify an object as the first parameter. That
+// object's keys should be the environment name and the values
+// should be the asset to use in that environment.
+//
+// If the library that you are including contains AMD or ES6
+// modules that you would like to import into your application
+// please specify an object with the list of modules as keys
+// along with the exports of each module as its value.
 
 // If the library that you are including contains AMD or ES6 modules that
 // you would like to import into your application please specify an
 // object with the list of modules as keys along with the exports of each
 // module as its value.
+
+app.import({
+  development: 'vendor/ember-data/ember-data.js',
+  production:  'vendor/ember-data/ember-data.prod.js'
+}, {
+  'ember-data': [
+    'default'
+  ]
+});
+
 app.import('vendor/ic-ajax/dist/named-amd/main.js', {
   'ic-ajax': [
     'default',
@@ -48,5 +51,25 @@ app.import('vendor/ic-ajax/dist/named-amd/main.js', {
   ]
 });
 
+// Use this to add additional libraries to the generated output files.
+app.import('vendor/ember-data/ember-data.js');
+app.import('vendor/emberfire/dist/emberfire.min.js');
+app.import('vendor/firebase/firebase.js');
+app.import('vendor/firebase-simple-login/firebase-simple-login.js');
+app.import('vendor/markdown/lib/markdown.js');
+app.import('vendor/moment/moment.js');
+app.import('vendor/js-md5/js/md5.js');
+
+var p = require('ember-cli/lib/preprocessors');
+var preprocessCss = p.preprocessCss;
+var autoprefixer = require('broccoli-autoprefixer');
+
+app.styles = function() {
+  //compiling less to css
+  var styles =  preprocessCss(this.appAndDependencies(), this.name + '/styles', '/assets');
+  //applying autoprefixer on styles
+  styles = autoprefixer(styles,['> 1%', 'last 2 versions']);
+  return styles;
+};
 
 module.exports = app.toTree();
