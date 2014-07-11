@@ -2,10 +2,10 @@
 $base-font-size: 15px;
 $base-line-height: (20/15);
 
-%patron-bold { font-family:"Patron Bold", 'Patron Medium'; font-weight:bold; }
-%patron-medium { font-family:"Patron Medium", 'Patron Bold'; font-weight:600; }
-%patron-italic { font-family:"Patron Light Italic", 'Patron Light'; font-weight:300; font-style:italic; }
-%patron-light { font-family:"Patron Light", 'Patron Light'; font-weight:300; }
+%patron-bold { font-family:"Patron Bold", 'Patron Medium', sans-serif; font-weight:bold; }
+%patron-medium { font-family:"Patron Medium", 'Patron Bold', sans-serif; font-weight:600; }
+%patron-italic { font-family:"Patron Light Italic", 'Patron Light', sans-serif; font-weight:300; font-style:italic; }
+%patron-light { font-family:"Patron Light", 'Patron Light', sans-serif; font-weight:300; }
 
 // Colors
 $yellow:         hsl(60, 100%, 70%);
