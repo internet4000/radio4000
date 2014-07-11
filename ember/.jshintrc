@@ -3,6 +3,8 @@
     "Firebase": true,
     "FirebaseSimpleLogin": true,
     "moment": true,
+    "Ember": true,
+    "DS": true,
     "md5": true,
     "document": true,
     "window": true,

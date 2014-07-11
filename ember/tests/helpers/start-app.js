@@ -2,6 +2,7 @@
 
 var Application = require('play/app')['default'];
 var Router = require('play/router')['default'];
+import Ember from 'ember';
 
 export default function startApp(attrs) {
   var App;
