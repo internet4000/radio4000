@@ -25,10 +25,11 @@ var TracksController = Ember.ArrayController.extend({
 		},
 		publishTrack: function(playlist, track) {
 			if (!this.trackIsValid()) {
-				Ember.debug('invalid track');
-				return; }
+				Ember.debug('invalid track - wont publish');
+				return;
+			}
 
-			Ember.debug('valid track');
+			Ember.debug('valid track - published');
 
 			// Close the edit box
 			this.set('isAdding', false);

@@ -13,13 +13,18 @@ var PlaylistsNewController = Ember.ObjectController.extend({
 				isValid = false;
 			}
 		}, this);
+		Ember.debug(isValid);
 		return isValid;
 	},
 
 	actions: {
 		publishPlaylist: function() {
+			if (!this.playlistIsValid()) {
+				Ember.debug('invalid playlist - wont publish');
+				return;
+			}
 
-			if (!this.playlistIsValid()) { return; }
+			Ember.debug('valid playlist - published');
 
 			// Get the current user
 			Ember.RSVP.hash({
