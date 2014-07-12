@@ -2,16 +2,15 @@ var ApplicationController = Ember.Controller.extend({
 	needs: ['auth'],
 
 	init: function () {
-		this.authController = this.get('controllers.auth');
 		// this._super();
 	},
 
 	actions: {
 		login: function(provider) {
-			this.get('authController').authClient.login(provider);
+			this.get('controllers.auth').authClient.login(provider);
 		},
 		logout: function() {
-			this.get('authController').authClient.logout();
+			this.get('controllers.auth').authClient.logout();
 		}
 	}
 });

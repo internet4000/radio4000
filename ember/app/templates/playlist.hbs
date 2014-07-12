@@ -21,7 +21,9 @@
 
 				{{#unless isEditing}}
 					{{#if authController.isLoggedIn}}
-						<p><button class="Btn--edit" {{action 'editPlaylist'}}>Edit playlist</button></p>
+						{{#if isOwner}}
+							<p><button class="Btn--edit" {{action 'editPlaylist'}}>Edit playlist</button></p>
+						{{/if}}
 					{{/if}}
 				{{/unless}}
 			</div>

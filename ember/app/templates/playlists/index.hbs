@@ -1,11 +1,15 @@
 <div class="Box">
+
 	<h1>Playlists</h1>
+	{{!-- <p>Hey, your user id is: {{controllers.auth}}</p> --}}
+
 	<ul class="List">
 		{{#each playlist in arrangedContent}}
 			<li class="PlaylistTeaser">
 				{{#link-to "playlist" playlist}}
 					{{playlist.title}}
 				{{/link-to}}
+					{{playlist.isOwner}}
 			</li>
 		{{/each}}
 	</ul>

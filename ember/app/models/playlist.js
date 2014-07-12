@@ -10,6 +10,10 @@ var Playlist = DS.Model.extend({
 		return moment(this.get('created')).format('MMMM Do, YYYY');
 	}.property('created'),
 
+	isOwner: function() {
+		return this.get('user.id');
+	}.property('user'),
+
 	tracks: DS.hasMany('track', { async: true }),
 	user: DS.belongsTo('user')
 });

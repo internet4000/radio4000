@@ -12,11 +12,11 @@
     "ember-load-initializers": "stefanpenner/ember-load-initializers#0.0.2",
     "ember-qunit-notifications": "^0.0.3",
     "ember-cli-test-loader": "rjackson/ember-cli-test-loader#0.0.2",
-    "emberfire": "~1.0.9",
+    "emberfire": "~1.0.13",
     "js-md5": "~1.1.0",
     "firebase": "~1.0.15",
-    "moment": "~2.7.0",
     "firebase-simple-login": "~1.6.0",
+    "moment": "~2.7.0",
     "markdown": "~0.5.0"
   }
 }

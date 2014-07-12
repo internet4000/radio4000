@@ -74,7 +74,7 @@ loadInitializers(App, 'play');
 
 
 /**
- * Helpers
+ * Handlebars helpers
  */
 
 Ember.Handlebars.helper('breaklines', function(value) {
@@ -87,22 +87,25 @@ Ember.Handlebars.helper('markdown', function(value) {
 	return new Ember.Handlebars.SafeString(window.markdown.toHTML(value));
 });
 
-Ember.Route.reopen({
-  activate: function() {
-    var cssClass = this.toCssClass();
-    // // you probably don't need the application class
-    // // to be added to the body
-    // if (cssClass != 'application') {
-    // }
-   Ember.$('body').addClass(cssClass);
-  },
-  deactivate: function() {
-    Ember.$('body').removeClass(this.toCssClass());
-  },
-  toCssClass: function() {
-    return 'Route-' + this.routeName.replace(/\./g, '-').dasherize();
-  }
-});
+/**
+ * Body classes (don't use this)
+ */
 
+// Ember.Route.reopen({
+// activate: function() {
+// var cssClass = this.toCssClass();
+// // // you probably don't need the application class
+// // // to be added to the body
+// // if (cssClass != 'application') {
+// // }
+// Ember.$('body').addClass(cssClass);
+// },
+// deactivate: function() {
+// Ember.$('body').removeClass(this.toCssClass());
+// },
+// toCssClass: function() {
+// return 'Route-' + this.routeName.replace(/\./g, '-').dasherize();
+// }
+// });
 
 export default App;

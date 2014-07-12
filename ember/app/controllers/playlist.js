@@ -3,30 +3,31 @@ var PlaylistController = Ember.ObjectController.extend({
 	isEditing: false,
 	isAdding: false,
 	isOwner: false,
+	oskar: 'oskar initial',
 
-	// Checks if the current user id matches the user id on the playlist model
-	// DOERSNT
-	checkOwner: function() {
-		var userId = this.get('controllers.auth.currentUser.id');
-		var modelId = this.get('content.user.id');
-
-		console.log(this.get('content'));
-		console.log(this.get('model'));
-
-		if (userId === modelId) {
-			this.set('isOwner', true);
-			Ember.debug('TRUE MAN');
-		} else {
-			this.set('isOwner', false);
-			Ember.debug('MUCH FALSE');
-		}
-	},
+	test: function() {
+		console.log('HEJ');
+	}.property('this.oskar'),
 
 	init: function () {
 		this._super();
-		this.authController = this.get('controllers.auth');
+		// Ember.debug(this.get('oskar'));
+		// this.authController = this.get('controllers.auth');
+	},
 
-		// this.checkOwner();
+	// Checks if the current user id matches the user id on the playlist model
+	checkOwner: function() {
+		console.log('does this run');
+		// var userId = this.get('controllers.auth.currentUser.id'); // "10152422494934521"
+		// var modelId = this.get('content.user.id');
+
+		// if (userId === modelId) {
+		// 	this.set('isOwner', true);
+		// 	Ember.debug('TRUE MAN');
+		// } else {
+		// 	this.set('isOwner', false);
+		// 	Ember.debug('MUCH FALSE');
+		// }
 	},
 
 	actions: {
