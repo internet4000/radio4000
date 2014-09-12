@@ -1,4 +1,6 @@
 /* global moment */
+import DS from "ember-data";
+
 var Track = DS.Model.extend({
 	key: DS.attr('string'),
 	provider: DS.attr('string'),

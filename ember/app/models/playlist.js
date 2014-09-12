@@ -1,4 +1,6 @@
 /* global moment */
+import DS from "ember-data";
+
 var Playlist = DS.Model.extend({
 	title: DS.attr('string'),
 	body: DS.attr('string'),

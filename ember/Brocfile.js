@@ -18,7 +18,7 @@ var app = new EmberApp();
 // along with the exports of each module as its value.
 
 // Extra scripts to incude
-app.import('vendor/ember-data/ember-data.js');
+// app.import('vendor/ember-data/ember-data.js'); // I think Ember loads this automatically???
 app.import('vendor/emberfire/dist/emberfire.min.js');
 app.import('vendor/firebase/firebase.js');
 app.import('vendor/firebase-simple-login/firebase-simple-login.js');
