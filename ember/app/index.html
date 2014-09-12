@@ -21,22 +21,21 @@
 
 	{{BASE_TAG}}
 
-	<script src="modernizr-custom.min.js"></script>
-	<!-- <link rel="stylesheet" href="assets/vendor.css"> -->
+	<link rel="stylesheet" href="assets/vendor.css">
 	<link rel="stylesheet" href="assets/play.css">
+	<script src="modernizr-custom.min.js"></script>
 </head>
 
 <body>
 
-	<!-- Our Ember app -->
+	<!-- Ember CLI app -->
 	<script>
-		window.PlayENV = {{ENV}};
-		window.EmberENV = window.PlayENV.EmberENV;
+		window.EmberENV = {{EMBER_ENV}};
 	</script>
 	<script src="assets/vendor.js"></script>
 	<script src="assets/play.js"></script>
 	<script>
-		window.Play = require('play/app')['default'].create(PlayENV.APP);
+		window.Play = require('play/app')['default'].create({{APP_CONFIG}});
 	</script>
 
 	<!-- YouTube API async -->

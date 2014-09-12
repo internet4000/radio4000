@@ -1,14 +1,8 @@
 {
   "predef": {
-    "Firebase": true,
-    "FirebaseSimpleLogin": true,
-    "moment": true,
-    "Ember": true,
-    "DS": true,
-    "md5": true,
     "document": true,
     "window": true,
-    "PlayENV": true
+    "-Promise": true
   },
   "browser" : true,
   "boss" : true,

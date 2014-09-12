@@ -1,11 +1,11 @@
 import Ember from 'ember';
+import config from './config/environment';
 
 var Router = Ember.Router.extend({
-  location: PlayENV.locationType
+  location: config.locationType
 });
 
 Router.map(function() {
-
 	// Playlists
 	this.resource('playlists', { path: '/playlists' }, function() {
 		this.route('new');

@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import Resolver from 'ember/resolver';
 import loadInitializers from 'ember/load-initializers';
+import config from './config/environment';
 
 Ember.MODEL_FACTORY_INJECTIONS = true;
 
@@ -43,26 +44,26 @@ var Utility = Ember.Object.extend({
 });
 
 var App = Ember.Application.extend({
-	modulePrefix: 'play', // TODO: loaded via config
-	Resolver: Resolver,
+  modulePrefix: config.modulePrefix,
+  Resolver: Resolver,
 
-	ready: function () {
-		// Util
-		this.register('utility:main', Utility, { singleton: true, instantiate: true });
-		['controller', 'route', 'component', 'adapter', 'transform', 'model', 'serializer'].forEach(function(type) {
-			this.inject(type, 'util', 'utility:main');
-		}, this);
+  ready: function () {
+  	// Util
+  	this.register('utility:main', Utility, { singleton: true, instantiate: true });
+  	['controller', 'route', 'component', 'adapter', 'transform', 'model', 'serializer'].forEach(function(type) {
+  		this.inject(type, 'util', 'utility:main');
+  	}, this);
 
-		// Store
-		['component', 'utility:main'].forEach(function(type) {
-			this.inject(type, 'store', 'store:main');
-		}, this);
+  	// Store
+  	['component', 'utility:main'].forEach(function(type) {
+  		this.inject(type, 'store', 'store:main');
+  	}, this);
 
-		// // Auth
-		// this.register('auth:main', AuthController);
-		// this.inject('route', 'auth', 'auth:main');
-		// this.inject('controller', 'auth', 'auth:main');
-	}
+  	// // Auth
+  	// this.register('auth:main', AuthController);
+  	// this.inject('route', 'auth', 'auth:main');
+  	// this.inject('controller', 'auth', 'auth:main');
+  }
 });
 
 // Change the class used on active elements by Ember
@@ -70,8 +71,7 @@ Ember.LinkView.reopen({
 	activeClass: 'is-active'
 });
 
-loadInitializers(App, 'play');
-
+loadInitializers(App, config.modulePrefix);
 
 /**
  * Handlebars helpers
@@ -86,26 +86,5 @@ Ember.Handlebars.helper('breaklines', function(value) {
 Ember.Handlebars.helper('markdown', function(value) {
 	return new Ember.Handlebars.SafeString(window.markdown.toHTML(value));
 });
-
-/**
- * Body classes (don't use this)
- */
-
-// Ember.Route.reopen({
-// activate: function() {
-// var cssClass = this.toCssClass();
-// // // you probably don't need the application class
-// // // to be added to the body
-// // if (cssClass != 'application') {
-// // }
-// Ember.$('body').addClass(cssClass);
-// },
-// deactivate: function() {
-// Ember.$('body').removeClass(this.toCssClass());
-// },
-// toCssClass: function() {
-// return 'Route-' + this.routeName.replace(/\./g, '-').dasherize();
-// }
-// });
 
 export default App;
