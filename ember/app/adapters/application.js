@@ -1,9 +1,8 @@
 /* global Firebase */
+// import Ember from 'ember';
+import DS from 'ember-data';
 
-// See more at https://github.com/firebase/emberFire
-
-var ApplicationAdapter = DS.FirebaseAdapter.extend({
+export default DS.FirebaseAdapter.extend({
+	// See more at https://github.com/firebase/emberFire
 	firebase: new Firebase('https://muchplay.firebaseio.com')
 });
-
-export default ApplicationAdapter;

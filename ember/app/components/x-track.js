@@ -1,4 +1,6 @@
-var XTrackComponent = Ember.Component.extend({
+import Ember from 'ember';
+
+export default Ember.Component.extend({
 	// tagName: 'li',
 	classNames: ['Track'],
 	classNameBindings: ['isEditing:is-editing'],
@@ -55,5 +57,3 @@ var XTrackComponent = Ember.Component.extend({
 		}
 	}
 });
-
-export default XTrackComponent;

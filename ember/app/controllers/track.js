@@ -1,5 +1,5 @@
-var TrackController = Ember.ObjectController.extend({
+import Ember from 'ember';
+
+export default Ember.ObjectController.extend({
 	oskar: false
 });
-
-export default TrackController;

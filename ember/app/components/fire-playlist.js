@@ -1,4 +1,6 @@
-var FirePlaylistComponent = Ember.Component.extend({
+import Ember from 'ember';
+
+export default Ember.Component.extend({
 	// classNames: ['playlist'],
 	// classNameBindings: ['isExpanded:playlist-expanded', 'isSingle:playlist-single'],
 	isEditing: false,
@@ -85,5 +87,3 @@ var FirePlaylistComponent = Ember.Component.extend({
 		}
 	}
 });
-
-export default FirePlaylistComponent;

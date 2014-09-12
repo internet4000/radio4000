@@ -1,3 +1,5 @@
-var ApplicationSerializer = DS.FirebaseSerializer.extend();
+import DS from 'ember-data';
 
-export default ApplicationSerializer;
+export default DS.FirebaseSerializer.extend({
+
+});

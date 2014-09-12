@@ -1,5 +1,5 @@
-var TrackView = Ember.View.extend({
+import Ember from 'ember';
+
+export default Ember.View.extend({
 
 });
-
-export default TrackView;

@@ -1,11 +1,15 @@
-var PlaylistRoute = Ember.Route.extend({
+import Ember from 'ember';
+
+export default Ember.Route.extend({
 	model: function(params) {
 		return this.store.find('playlist', params.playlist_id);
 	}
-	,
-	setupController: function(controller, model) {
-		controller.set('content', model);
-	}
+
+	// ,
+	// setupController: function(controller, model) {
+	// 	controller.set('content', model);
+	// }
+
 	// ,serialize: function(model) {
 	// 	var cleanSlug = model.get('title');
 	// 	cleanSlug = cleanSlug.toLowerCase().split(' ').join('-');
@@ -15,7 +19,3 @@ var PlaylistRoute = Ember.Route.extend({
 	// 	};
 	// }
 });
-
-export default PlaylistRoute;
-
-

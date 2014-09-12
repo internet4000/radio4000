@@ -1,4 +1,6 @@
-var TracksController = Ember.ArrayController.extend({
+import Ember from 'ember';
+
+export default Ember.ArrayController.extend({
 	needs: ['auth', 'playlist'],
 
 	// Sort by newest on top
@@ -67,5 +69,3 @@ var TracksController = Ember.ArrayController.extend({
 		}
 	}
 });
-
-export default TracksController;

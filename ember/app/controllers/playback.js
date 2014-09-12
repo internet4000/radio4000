@@ -1,4 +1,6 @@
-var PlaybackController = Ember.ObjectController.extend({
+import Ember from 'ember';
+
+export default Ember.ObjectController.extend({
 	isPlaying: false,
 	isMinimized: false,
 	provider: null,
@@ -53,5 +55,3 @@ var PlaybackController = Ember.ObjectController.extend({
 	// 	return 'https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/' + this.get('model.key') + soundcloudParameters;
 	// }.property('model.key')
 });
-
-export default PlaybackController;

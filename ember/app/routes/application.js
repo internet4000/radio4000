@@ -1,3 +1,5 @@
-var ApplicationRoute = Ember.Route.extend({});
+import Ember from 'ember';
 
-export default ApplicationRoute;
+export default Ember.Route.extend({
+
+});

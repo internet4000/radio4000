@@ -1,4 +1,6 @@
-var PlaylistController = Ember.ObjectController.extend({
+import Ember from 'ember';
+
+export default Ember.ObjectController.extend({
 	needs: ['auth'],
 	isEditing: false,
 	isAdding: false,
@@ -43,5 +45,3 @@ var PlaylistController = Ember.ObjectController.extend({
 		}
 	}
 });
-
-export default PlaylistController;

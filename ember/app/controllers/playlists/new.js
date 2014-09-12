@@ -1,4 +1,6 @@
-var PlaylistsNewController = Ember.ObjectController.extend({
+import Ember from 'ember';
+
+export default Ember.ObjectController.extend({
 	needs: ['auth'],
 
 	init: function() {
@@ -76,5 +78,3 @@ var PlaylistsNewController = Ember.ObjectController.extend({
 
 	playlist: undefined
 });
-
-export default PlaylistsNewController;

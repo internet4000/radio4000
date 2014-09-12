@@ -1,4 +1,6 @@
-var ApplicationController = Ember.Controller.extend({
+import Ember from 'ember';
+
+export default Ember.Controller.extend({
 	needs: ['auth'],
 
 	init: function () {
@@ -14,5 +16,3 @@ var ApplicationController = Ember.Controller.extend({
 		}
 	}
 });
-
-export default ApplicationController;

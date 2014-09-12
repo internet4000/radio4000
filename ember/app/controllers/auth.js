@@ -1,5 +1,7 @@
 /* global Firebase, FirebaseSimpleLogin */
-var AuthController = Ember.Controller.extend({
+import Ember from 'ember';
+
+export default Ember.Controller.extend({
 	dbRef: new Firebase('https://muchplay.firebaseio.com'),
 	isLoggedIn: false,
 
@@ -61,5 +63,3 @@ var AuthController = Ember.Controller.extend({
 		}
 	}
 });
-
-export default AuthController;

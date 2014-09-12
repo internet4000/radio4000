@@ -1,4 +1,6 @@
-var TrackRoute = Ember.Route.extend({
+import Ember from 'ember';
+
+export default Ember.Route.extend({
 	model: function(params) {
 		return this.store.find('track', params.track_id);
 	},
@@ -16,5 +18,3 @@ var TrackRoute = Ember.Route.extend({
 		// this.controllerFor('playback').set('provider', model.get('provider'));
 	}
 });
-
-export default TrackRoute;

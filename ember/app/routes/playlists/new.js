@@ -1,4 +1,6 @@
-var PlaylistsNewRoute = Ember.Route.extend({
+import Ember from 'ember';
+
+export default Ember.Route.extend({
 	beforeModel: function() {
 		var self = this;
 		var auth = this.controllerFor('auth');
@@ -12,5 +14,3 @@ var PlaylistsNewRoute = Ember.Route.extend({
 		});
 	}
 });
-
-export default PlaylistsNewRoute;

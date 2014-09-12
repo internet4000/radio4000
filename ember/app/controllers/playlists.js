@@ -1,6 +1,6 @@
-var PlaylistsController = Ember.ArrayController.extend({
+import Ember from 'ember';
+
+export default Ember.ArrayController.extend({
 	needs: ['auth']
 	// this.get('controllers.auth');
 });
-
-export default PlaylistsController;
