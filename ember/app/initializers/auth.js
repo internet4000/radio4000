@@ -1,40 +1,27 @@
 /* global Firebase, FirebaseSimpleLogin */
+import Ember from 'ember';
 
 export default {
 	name: 'auth',
-
 	dbRef: new Firebase('https://muchplay.firebaseio.com'),
 	isLoggedIn: false,
 
 	initialize: function(container, app) {
 		console.log('auth');
-
-		// var store = container.lookup('store:main')
-		// console.log(store);
-		// controller = container.lookup('controller:currentUser').set('content', user)
-
-		// console.log(this);
-		// container.register('auth:main', Auth, { singleton: true });
-		// container.register('route', 'auth', 'service:auth');
-
-		// ['controller', 'route', 'component', 'adapter', 'model'].forEach(function(type) {
-		// 	this.inject(type, 'auth', 'auth:main');
-		// }, this);
-
-		// console.log(container);
-		// console.log(app);
-		// console.log(this.get('auth'));
-		// this.fireBaseAuth();
 	},
 
 	fireBaseAuth: function() {
 		var self = this;
 
+		console.log('what');
+
 		// Create the Firebase login object
 		this.authClient = new FirebaseSimpleLogin(this.dbRef, function(error, user) {
-
-			if (user) {
-				// Success: user authenticated with Firebase
+			if (error) {
+				// an error occurred while attempting login
+				Ember.debug('Authentication failed: ' + error);
+			} else if (user) {
+				// user authenticated with Firebase
 				Ember.debug('Logged in');
 
 				// Set the authenticated user object in our app
@@ -48,13 +35,8 @@ export default {
 				this.get('store').find('user', this.get('currentUser.id')).then(function(promise) {
 					self.set('currentUserModel', promise);
 				});
-
-			} else if (error) {
-				// Error: not authenticated
-				Ember.debug('Authentication failed: ' + error);
-
 			} else {
-				// User is logged out
+				// user is logged out
 				this.set('isLoggedIn', false);
 				this.set('curentUser', null);
 				console.log('Not logged in');

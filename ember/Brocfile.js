@@ -18,12 +18,13 @@ var app = new EmberApp();
 // along with the exports of each module as its value.
 
 // Extra scripts to incude
-// app.import('vendor/ember-data/ember-data.js'); // I think Ember loads this automatically???
-app.import('vendor/emberfire/dist/emberfire.min.js');
-app.import('vendor/firebase/firebase.js');
-app.import('vendor/firebase-simple-login/firebase-simple-login.js');
-app.import('vendor/markdown/lib/markdown.js');
-app.import('vendor/moment/moment.js');
-app.import('vendor/js-md5/js/md5.js');
+
+// app.import('bower_components/ember-data/ember-data.js'); // I think Ember loads this automatically???
+// app.import('bower_components/emberfire/dist/emberfire.min.js');
+// app.import('bower_components/firebase/firebase.js');
+app.import('bower_components/firebase-simple-login/firebase-simple-login.js');
+// app.import('bower_components/markdown/lib/markdown.js');
+// app.import('bower_components/moment/moment.js');
+// app.import('bower_components/js-md5/js/md5.js');
 
 module.exports = app.toTree();
