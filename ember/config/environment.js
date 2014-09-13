@@ -2,6 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
+    firebase_instance: 'muchplay',
     modulePrefix: 'play',
     environment: environment,
     baseURL: '/',

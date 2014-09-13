@@ -1,35 +1,39 @@
 # Muchplay
 
-This is an Ember.js application scaffolded with Ember-cli. This will get everything working.
+This is an Ember.js application scaffolded with Ember CLI.
+It's a bit complicated to get everything running right now so please refer to ths guide.
 
-1. Make sure you are using the ember-cli master version directly from Github
+## Use Ember CLI directly from GitHub
 
-Clone the repository to your computer and inside the folder, you run these two commands:
+This ensures we have the latest fixes (and bugs) - as the project matures we should stop doing this and use the version published on NPM. See https://github.com/stefanpenner/ember-cli#working-with-master
 
-`npm uninstall -g ember-cli` (makes sure you don't have a global version)
-`git pull` (makes sure the repo is up to date)
-`npm link` (makes this folder act as the global ember-cli)
+1. Clone the Ember CLI repo to your computer
+2. Go inside the folder
+3. Run `npm uninstall -g ember-cli` (to make sure you don't have a global version)
+4. Run `git pull` (makes sure the repo is up to date)
+5. `npm link` (symlinks this folder as a "global" ember-cli)
 
-Also see https://github.com/stefanpenner/ember-cli#working-with-master
+## Install project dependencies
 
-2. Install project dependencies
+1. Go to the play/ember folder
+2. Run `npm install && bower install`
 
-cd into the project folder and run
+## Watching, building and testing
 
-`npm install && bower install`
+See http://www.ember-cli.com/ - but:
 
-## Development server
+- `ember server` (or just ember s)
+- `ember test`
+- `ember build`
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+## Generators
 
-## Running Tests
+The CLI helps create new files, see http://www.ember-cli.com/#generators-and-blueprints
 
-* `ember test`
-* `ember test --server`
+## Emberfire
 
-## Building
+We use Firebase as our backend through Ember Data and [Emberfire](https://github.com/firebase/emberfire).
 
-* `ember build`
+## Help
 
-For more information on using ember-cli, visit [http://iamstef.net/ember-cli/](http://iamstef.net/ember-cli/).
+Contact oskar@rough.dk

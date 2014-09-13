@@ -19,9 +19,6 @@ var app = new EmberApp();
 
 // Extra scripts to incude
 
-// app.import('bower_components/ember-data/ember-data.js'); // I think Ember loads this automatically???
-// app.import('bower_components/emberfire/dist/emberfire.min.js');
-// app.import('bower_components/firebase/firebase.js');
 app.import('bower_components/firebase-simple-login/firebase-simple-login.js');
 // app.import('bower_components/markdown/lib/markdown.js');
 // app.import('bower_components/moment/moment.js');
