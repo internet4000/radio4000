@@ -24,9 +24,7 @@
 	&:active {
 		text-decoration: none;
 		outline: none;
-		&:hover {
-			background-image: linear-gradient(to bottom, white 70%, transparent);
-		}
+		background-image: linear-gradient(to bottom, white 70%, transparent);
 	}
 	&:active {
 		// @todo

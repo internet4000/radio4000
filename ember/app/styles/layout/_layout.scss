@@ -1,16 +1,11 @@
 // More sensible box-model
-*,
-*:before,
-*:after {
-	box-sizing: border-box;
-}
+*,*:before,*:after { box-sizing: border-box; }
 
 html {
 	// background-image: url(../images/topographic_dark_min.png);
 	// background-image: url(../images/geometry2.png);
 	// background-size: cover;
 	background-color: hsl(40, 30%, 94%);
-	// background-color: $beautifulblue;
 	color: $text-color;
 }
 .SiteHeader,
@@ -18,6 +13,11 @@ html {
 .SiteHeader {}
 .SiteMain {
 	@include clearfix;
-	margin: 6rem 2rem 0;
-	border-radius: $border-radius;
+	margin: 5rem 2rem 0;
+}
+
+.Article {
+	max-width: 40em;
+	margin-left: auto;
+	margin-right: auto;
 }

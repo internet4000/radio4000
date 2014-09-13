@@ -14,9 +14,6 @@
 	{{/if}}
 
 	<ul class="List">
-		{{#unless model}}
-			<li><a href="#">Loading tracks</a></li>
-		{{/unless}}
 		{{#each track in model}}
 			<li>{{x-track
 					auth=auth

@@ -1,16 +1,16 @@
-<p>{{#link-to 'playlists'}}&larr; playlists{{/link-to}}</p>
-
 <article class="Playlist">
 	<div class="Playlist-header">
 		<div class="Inner">
 
 			<div class="Playlist-info">
 
-				{{#link-to 'playlist' this}}
-					{{#if image}}
+				{{!-- <p>{{#link-to 'playlists'}}&larr; playlists{{/link-to}}</p> --}}
+
+				{{#if image}}
+					{{#link-to 'playlist' this}}
 						<img class="Playlist-avatar" {{bind-attr src=image}}>
-					{{/if}}
-				{{/link-to}}
+					{{/link-to}}
+				{{/if}}
 
 				<h1 class="Playlist-title">{{title}}</h1>
 				<p class="Playlist-description">

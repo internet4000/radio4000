@@ -2,8 +2,7 @@
  * Playlist
  */
 
-$sidebarWidth: 270px;
-$sidebarWidthLarger: 360px;
+$sidebarWidth: 260px;
 
 .Playlist {
 	@include clearfix;
@@ -23,17 +22,21 @@ $sidebarWidthLarger: 360px;
 .Playlist-header {
 	overflow: auto;
 	margin-bottom: -2px;
-	a {
-		color: $yellow;
-	}
-	@media (min-width: $layout-s) {
-		position: relative;
-		.Btn--edit {
-			position: absolute;
-			top: 0.5rem;
-			right: 0.5rem;
-		}
-	}
+
+	// edit button fixed
+	// @media (min-width: $layout-s) {
+	// 	position: relative;
+	// 	.Btn--edit {
+	// 		position: absolute;
+	// 		top: 0.5rem;
+	// 		right: 0.5rem;
+
+	// 		@media (min-width: $layout-m) {
+	// 			position: static;
+	// 		}
+	// 	}
+	// }
+
 	@media (min-width: $layout-m) {
 		position: fixed;
 		top: 0;
@@ -41,21 +44,15 @@ $sidebarWidthLarger: 360px;
 		width: $sidebarWidth;
 		height: 100%;
 		z-index: 1;
-		padding-top: 3rem; // room for logo
+		padding-top: 1rem; // room for logo
 		padding-bottom: 4rem; // room for fixed player bottom
 		border: 0;
-	}
-	@media (min-width: $layout-ml) {
-		width: $sidebarWidthLarger;
 	}
 }
 .Playlist-body {
 	@media (min-width: $layout-m) {
+		margin-top: 2rem;
 		margin-left: $sidebarWidth;
-		margin-top: 1rem;
-	}
-	@media (min-width: $layout-ml) {
-		margin-left: $sidebarWidthLarger;
 	}
 }
 .Playlist-avatar {
@@ -77,18 +74,11 @@ $sidebarWidthLarger: 360px;
 	}
 }
 .Playlist-title {
-	margin-bottom: 0.5rem;
 	@media (min-width: $layout-m) {
-		padding-top: 1rem;
-		clear: both;
+		margin-top: 2rem;
 	}
 }
-.Playlist-description {
-	// color: $gray;
-	@media (min-width: $layout-s) {
-		// clear: both;
-	}
-}
+.Playlist-description {}
 
 // add track
 .AddTrack {

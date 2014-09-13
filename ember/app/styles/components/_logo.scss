@@ -2,11 +2,12 @@
 	position: fixed;
 	z-index: 2;
 	top: -2px;
-	left: 1rem;
+	right: 1rem;
 	margin: 0;
 	border-radius: $border-radius;
 
-	@extend %patron-bold;
+	@extend %patron-black-italic;
+	background: linear-gradient(hsl(17, 100%, 50%), hsl(278, 90%, 42%));
 	font-size: 22px;
 	background-color: $beautifulblue;
 	-webkit-font-smoothing: antialiased;

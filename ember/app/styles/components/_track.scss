@@ -4,6 +4,7 @@
 
 .Track {
 	position: relative;
+	overflow: hidden; // hide controls
 	a {
 		&:hover {}
 		&.is-active {
@@ -44,10 +45,16 @@
 }
 .Track-controls {
 	position: absolute;
-	top: 5px;
+	top: 6px;
 	right: 5px;
-	display: none;
-	.Track:hover & {
-		display: block;
+	transition: transform 300ms $easing5;
+	transform: translateX(120%) scale(0.9);
+	.Track:hover &,
+	.Track.is-editing & {
+		transform: translateX(0) scale(1);
+	}
+
+	.Btn {
+		padding: em(4,13) em(7,13) em(3,13);
 	}
 }

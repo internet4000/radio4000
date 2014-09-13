@@ -5,7 +5,6 @@
 		{{input value=title placeholder="Playlist title"}}<br>
 		{{textarea value=body placeholder="Describe your playlist"}}<br>
 		{{!-- {{input type="url" value=url placeholder="Chose a URL for your playlist"}}<br> --}}
-		<br>
-		<button class="Btn" {{action "newPlaylist"}}>Create</button> {{#link-to 'playlists'}}Cancel{{/link-to}}
+		<button class="Btn Btn--primary" {{action "newPlaylist"}}>Create</button> {{#link-to 'playlists'}}Cancel{{/link-to}}
 	</form>
 </div>

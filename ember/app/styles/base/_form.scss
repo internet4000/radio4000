@@ -18,6 +18,8 @@ textarea {
 }
 .Btn {
 	@extend %patron-medium;
+	padding-top: em(9);
+	padding-bottom: em(7);
 }
 
 // Consistent alignment

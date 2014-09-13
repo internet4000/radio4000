@@ -1,6 +1,6 @@
 .Home {
 	text-align: center;
-
+	background: radio-gradient(hsla(0, 0%, 100%,0.5), transparent);
 	@media (min-width: $layout-m) {
 		position: absolute;
 		left: 0;
@@ -10,18 +10,17 @@
 		margin: -2rem auto 0;
 	}
 	h1 {
-		font-size: 3rem;
-		background: linear-gradient(hsl(17, 100%, 50%), hsl(358, 90%, 52%));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
+		@extend %patron-black-italic;
+		@extend %text-bg;
+		font-size: 4rem;
+		margin-bottom: 0.5rem;
 	}
 	.Manchet {
-		max-width: 25em;
-		margin-right: auto;
+		max-width: 20em;
 		margin-left: auto;
-		margin-bottom: 1.1rem; // optical same as from title above
+		margin-right: auto;
 	}
-	button {
+	.Btn {
 		// when wide enough to have the same width
 		@media (min-width: $layout-m) {
 			min-width: 13.8em;

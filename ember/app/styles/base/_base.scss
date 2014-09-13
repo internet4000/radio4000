@@ -51,6 +51,11 @@ h4 {
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
 }
+%text-bg {
+	background: linear-gradient(hsl(17, 100%, 50%), hsl(278, 90%, 42%));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
 
 // Set a consistent margin between elements
 h1,
