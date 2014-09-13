@@ -2,7 +2,9 @@ import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
 	needs: ['playlist'],
-	// playlist: Ember.computed.alias('controllers.playlist')
+	canEdit: Ember.computed.alias('controllers.playlist.canEdit'),
+
+	isAdding: false,
 
 	// Sort by newest on top
 	sortProperties: ['created'],
@@ -23,7 +25,7 @@ export default Ember.ArrayController.extend({
 		addTrack: function() {
 			this.set('isAdding', true);
 		},
-		cancelTrack: function() {
+		cancel: function() {
 			this.set('isAdding', false);
 		},
 		publishTrack: function(playlist, track) {
@@ -35,7 +37,7 @@ export default Ember.ArrayController.extend({
 			Ember.debug('valid track - published');
 
 			// Close the edit box
-			this.set('isAdding', false);
+			this.send('cancel');
 
 			// Create a new track
 			track = this.get('store').createRecord('track', {
@@ -48,11 +50,14 @@ export default Ember.ArrayController.extend({
 			// Get the parent playlist
 			playlist = this.get('controllers.playlist').get('model');
 
+			// console.log(track);
+			// console.log(playlist.get('title'));
+
 			// Save the track
 			track.save().then(function() {
 				// And add it to the tracks property of the playlist
-				Ember.RSVP.Promise.cast(playlist.get('tracks')).then(function(tracks) {
-					tracks.addObject(track);
+				Ember.RSVP.Promise.cast(playlist.get('tracks')).then(function(promise) {
+					promise.addObject(track);
 					playlist.save().then(function() {
 						Ember.debug('Success: Track saved to playlist');
 					}, function() {

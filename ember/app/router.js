@@ -6,16 +6,13 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-
 	this.resource('about');
 	this.resource('styleguide');
 
 	this.resource('playlists', function() {
 		this.route('new');
 	});
-
 	this.resource('playlist', { path: '/playlist/:playlist_id' }, function() {
-		// this.route('tracks');
 		this.resource('tracks', { path: 'tracks' }, function() {
 			this.resource('track', { path: ':track_id' });
 		});

@@ -12,13 +12,9 @@ export default DS.Model.extend({
 	// // user: DS.belongsTo('user', { async: true }),
 
 	// async so it gets loaded with parent record?
-	// tracks: DS.hasMany('track', { async: true })
+	,tracks: DS.hasMany('track', { async: true })
 
 	// createdDate: function() {
 	// 	return moment(this.get('created')).format('MMMM Do, YYYY');
 	// }.property('created')
-
-	// isOwner: function() {
-	// 	return this.get('user.id');
-	// }.property('user')
 });
