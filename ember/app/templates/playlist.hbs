@@ -1,8 +1,8 @@
+<p>{{#link-to 'playlists'}}&larr; back{{/link-to}}</p>
+
 <article class="Playlist">
 	<div class="Playlist-header">
 		<div class="Inner">
-
-			<p>{{#link-to 'playlists'}}&larr; back{{/link-to}}</p>
 
 			<div class="Playlist-info">
 
@@ -24,7 +24,7 @@
 							{{!-- {{input value=slug placeholder="Slug"}} --}}
 							{{!-- {{textarea value=image placeholder="Image URL"}} --}}
 							{{textarea value=body placeholder="Description"}}
-							<button class="Btn" type="submit">Save playlist</button> <button class="Btn Btn--text" {{action 'cancel'}}>Cancel</button>
+							<button class="Btn Btn--primary" type="submit">Save playlist</button> <button class="Btn Btn--text" {{action 'cancel'}}>Cancel</button>
 						</form>
 					{{else}}
 						<p><button class="Btn Btn--edit" {{action 'edit'}}>Edit playlist</button></p>
@@ -37,9 +37,7 @@
 
 	<div class="Playlist-body">
 		<div class="Inner">
-
 			{{render 'tracks' tracks}}
-
 			{{outlet}}
 		</div>
 	</div>

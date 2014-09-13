@@ -12,7 +12,6 @@ $sidebarWidthLarger: 360px;
 .Playlist-header,
 .Playlist-body {
    background-color: white;
-   margin-bottom: 1.5rem;
    border: 1px solid $lightgray;
    border-radius: $border-radius;
 }
@@ -23,10 +22,17 @@ $sidebarWidthLarger: 360px;
 
 .Playlist-header {
 	overflow: auto;
-	background-color: $darkteal;
-	color: #fff;
+	margin-bottom: -2px;
 	a {
 		color: $yellow;
+	}
+	@media (min-width: $layout-s) {
+		position: relative;
+		.Btn--edit {
+			position: absolute;
+			top: 0.5rem;
+			right: 0.5rem;
+		}
 	}
 	@media (min-width: $layout-m) {
 		position: fixed;
