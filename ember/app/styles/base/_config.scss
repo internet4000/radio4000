@@ -21,11 +21,12 @@ $lightgray:      hsl(0, 0%, 85%);
 $slightgray:     hsl(0, 0%, 95%);
 $superlightgray: hsl(0, 0%, 98%);
 $coolcolor: hsl(173, 32%, 45%);
+$teal: hsl(187, 85%, 35%);
 
 // Color definitions
 $text-color: $black;
 $link-color: $blue;
-$primary-color: $green;
+$primary-color: $teal;
 
 // Good looking easings for animation
 $easing: cubic-bezier(0.165, 0.84, 0.44, 1);

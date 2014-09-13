@@ -1,67 +1,44 @@
-/**
- * Button reset (inspired by https://github.com/suitcss/components-button)
- */
-
+// Button reset (inspired by https://github.com/suitcss/components-button)
 .Btn {
-  -webkit-appearance: none; /* 1 */
-  background: transparent;
-  cursor: pointer;
-  display: inline-block;
-  line-height: normal; /* 6 */
-  margin: 0;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  user-select: none; /* 6 */
-  white-space: normal; /* 7 */
-}
-
-/**
- * Button styling
- */
-
-.Btn {
+	-webkit-appearance: none; /* 1 */
+	background: transparent;
+	cursor: pointer;
+	display: inline-block;
+	line-height: normal; /* 6 */
+	margin: 0;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	user-select: none; /* 6 */
+	white-space: normal; /* 7 */
+	// Button styling
 	@extend %patron-medium;
 	padding-left: em(10);
 	padding-right: em(10);
 	background-color: $slightgray;
 	background-image: linear-gradient(to bottom, white 60%, transparent);
 	color: $black;
-}
 
-/**
- * UI states
- */
-.Btn:hover,
-.Btn:focus,
-.Btn:active {
-    text-decoration: underline;
-    outline: none;
- }
-.Btn:active {
-	top: 1px;
-	left: 1px;
+	&:hover,
+	&:focus,
+	&:active {
+	    text-decoration: none;
+	    outline: none;
+	 }
+	&:active {
+		top: 1px;
+		left: 1px;
+	}
+	&:disabled,
+	&.is-disabled {
+	    cursor: default;
+	    opacity: 0.75;
+	}
 }
-
-.Btn:disabled,
-.Btn.is-disabled {
-    cursor: default;
-    opacity: 0.75;
-}
-
-// Also style buttons without the .Btn class
-button {
-	@extend .Btn;
-}
-
-/**
- * Button modifiers
- */
 
 /**
  * Primary, colored button
  */
-
 .Btn--primary {
 	@extend %patron-medium;
 	background-color: $green;
@@ -79,7 +56,6 @@ button {
 /**
  * Button sizes
  */
-
 .Btn--large {
 	font-size: 19px;
 	padding: em(11) 1.5rem em(8);
@@ -90,9 +66,8 @@ button {
 }
 
 /**
- * Buttons that look like text inputs (also see forms.scss)
+ * Button that looks like text
  */
-
 .Btn--text {
 	padding-left: rem(5);
 	padding-right: rem(5);
@@ -105,6 +80,9 @@ button {
 	}
 }
 
+/**
+ * Button that looks like an input field
+ */
 .Btn--textInput {
 	@extend %patron-medium;
 	background-image: none;

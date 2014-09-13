@@ -2,6 +2,7 @@ html {
 	@extend %patron-light;
 	font-size: $base-font-size;
 	line-height: $base-line-height;
+	background-color: hsl(40, 30%, 94%);
 	color: $text-color;
 	text-rendering: optimizeLegibility;
 	// -webkit-font-smoothing: antialiased;

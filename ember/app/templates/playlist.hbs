@@ -24,10 +24,10 @@
 							{{!-- {{input value=slug placeholder="Slug"}} --}}
 							{{!-- {{textarea value=image placeholder="Image URL"}} --}}
 							{{textarea value=body placeholder="Description"}}
-							<button type="submit">Save playlist</button> <button class="Btn--text" {{action 'cancel'}}>Cancel</button>
+							<button class="Btn" type="submit">Save playlist</button> <button class="Btn Btn--text" {{action 'cancel'}}>Cancel</button>
 						</form>
 					{{else}}
-						<p><button class="Btn--edit" {{action 'edit'}}>Edit playlist</button></p>
+						<p><button class="Btn Btn--edit" {{action 'edit'}}>Edit playlist</button></p>
 					{{/if}}
 				{{/if}}
 

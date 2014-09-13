@@ -5,15 +5,16 @@
 	top: -2px;
 	left: 1rem;
 	margin: 0;
-	padding: 0.4em 0.6em 0.3em;
-	border: 2px solid $darkgreen;;
 	border-radius: $border-radius;
 
 	@extend %patron-bold;
-	font-size: 20px;
-	background-color: $green;
+	font-size: 24px;
+	background-color: $primary-color;
 	-webkit-font-smoothing: antialiased;
+
 	a {
+		display: block;
+		padding: 0.5em 0.5em 0.4em;
 		color: $bleach;
 	}
 }

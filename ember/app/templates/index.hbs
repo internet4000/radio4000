@@ -8,13 +8,13 @@
 			<h3>Hej! You are logged in!</h3>
 			<p>Your id is {{auth.user.id}} and your name is {{auth.user.name}}</p>
 
-			<p>{{#link-to "playlists"}}<button class="Btn--primary">Your collection</button>{{/link-to}}</p>
-			<p>{{#link-to "playlists.new"}}<button class="Btn--primary">Create your own collection</button>{{/link-to}}</p>
+			<p>{{#link-to "playlists"}}<button class="Btn Btn--primary">Your collection</button>{{/link-to}}</p>
+			<p>{{#link-to "playlists.new"}}<button class="Btn Btn--primary">Create your own collection</button>{{/link-to}}</p>
 
 		{{else}}
 			<h3>Please login</h3>
-			<button {{ action 'login' 'google' this}}>Login with Google</button>
-			<button {{ action 'login' 'facebook' this}}>Login with Facebook</button>
+			<button class="Btn" {{ action 'login' 'google' this}}>Login with Google</button>
+			<button class="Btn" {{ action 'login' 'facebook' this}}>Login with Facebook</button>
 		{{/if}}
 	</form>
 

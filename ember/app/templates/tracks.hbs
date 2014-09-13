@@ -6,9 +6,9 @@
 			{{input value=trackUrl autofocus='autofocus' placeholder="YouTube or Soundcloud url"}}<br>
 			{{input value=trackTitle placeholder="Title"}}<br>
 			{{textarea value=trackBody placeholder="Optional description"}}<br>
-			<button type='submit'>Add track</button> <button class="Btn--text" {{action 'cancel'}}>Cancel</button>
+			<button class="Btn" type='submit'>Add track</button> <button class="Btn Btn--text" {{action 'cancel'}}>Cancel</button>
 		{{else}}
-			<button class="Btn--textInput" {{action 'addTrack'}}>Add a track…</button>
+			<button class="Btn Btn--textInput" {{action 'addTrack'}}>Add a track…</button>
 		{{/if}}
 	</form>
 	{{/if}}
