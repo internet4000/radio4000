@@ -1,30 +1,26 @@
 <div class="Article Home">
+
 	<h1>Muchplay</h1>
 	<p class="Manchet">The perfect way to curate, play and share your own collection of YouTube and Soundcloud tracks.</p>
 
-	{{#if authController.isLoggedIn}}
+	<form>
+		{{#if auth.authed}}
+			<h3>Hej! You are logged in!</h3>
+			<p>Your id is {{auth.user.id}} and your name is {{auth.user.name}}</p>
 
-		{{#if authController.currentUserModel.hasPlaylist}}
-			<p>{{#link-to "playlists"}}<button class="Btn--primary Btn--large">Your collection</button>{{/link-to}}</p>
+			<p>{{#link-to "playlists"}}<button class="Btn--primary">Your collection</button>{{/link-to}}</p>
+			<p>{{#link-to "playlists.new"}}<button class="Btn--primary">Create your own collection</button>{{/link-to}}</p>
+
 		{{else}}
-			<p>{{#link-to "playlists.new"}}<button class="Btn--primary Btn--large">Create your own collection</button>{{/link-to}}</p>
+			<h3>Please login</h3>
+			<button {{ action 'login' 'google' this}}>Login with Google</button>
+			<button {{ action 'login' 'facebook' this}}>Login with Facebook</button>
 		{{/if}}
+	</form>
 
-		{{!-- <p><button class="Home-logoutButton Btn Btn--text" {{action 'logout'}}>Log out</button></p> --}}
-	{{/if}}
-
-		<p>{{#link-to "playlists"}}<button class="Btn--primary Btn--large">Your collection</button>{{/link-to}}</p>
-		<p>{{#link-to "playlists.new"}}<button class="Btn--primary Btn--large">Create your own collection</button>{{/link-to}}</p>
-
-	{{#unless authController.isLoggedIn}}
-		{{!-- <p>Get a collection by and sign-in with either Facebook or Google to get your own collection.</p> --}}
-		<p>
-			<button {{action 'login' 'google'}} class="Btn--primary Btn--large">Start with Google</button>
-			<button {{action 'login' 'facebook'}} class="Btn--primary Btn--large">Start with with Facebook</button>
-		</p>
-	{{/unless}}
-
-	<p class="Home-meta">{{#link-to 'about'}}About{{/link-to}} • <a href="#" {{action 'logout'}}>Log out</a></p>
+	<p class="Home-meta">
+		{{#link-to 'about'}}About{{/link-to}}
+		{{#if auth.authed}}
+			 • <a href="#" {{action 'logout' this}}>Log out</a></p>
+		{{/if}}
 </div>
-
-

@@ -3,19 +3,12 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
-	needs: ['auth'],
-
-	init: function () {
-		// this.authController = ;
-		// this._super();
-	},
-
 	actions: {
 		login: function(provider) {
-			this.get('controllers.auth').authClient.login(provider);
+			this.get('auth').login(provider);
 		},
 		logout: function() {
-			this.get('controllers.auth').authClient.logout();
+			this.get('auth').logout();
 		}
 	}
 });

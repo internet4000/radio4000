@@ -1,57 +1,87 @@
-/* global Firebase, FirebaseSimpleLogin */
+// https://www.firebase.com/docs/web/guide/user-auth.html
+// @todo user vs currentUser naming
 import Ember from 'ember';
+import DS from 'ember-data';
 
+var Ref = new window.Firebase('https://muchplay.firebaseio.com/');
+
+// To use this object globally we'll need to inject it into all our controllers and routes.
 export default {
-	name: 'auth',
-	dbRef: new Firebase('https://muchplay.firebaseio.com'),
-	isLoggedIn: false,
+	name: 'auth', // or 'Auth' ?
+	after: 'store',
 
 	initialize: function(container, app) {
-		console.log('auth');
-	},
 
-	fireBaseAuth: function() {
-		var self = this;
+		// This object will be used for authentication. The variable auth will be used later.
+		var auth = Ember.Object.extend({
+			authed: false,
+			user: null,
 
-		console.log('what');
+			init: function() {
+				// get access to the ember data store
+				this.store = container.lookup('store:main');
 
-		// Create the Firebase login object
-		this.authClient = new FirebaseSimpleLogin(this.dbRef, function(error, user) {
-			if (error) {
-				// an error occurred while attempting login
-				Ember.debug('Authentication failed: ' + error);
-			} else if (user) {
-				// user authenticated with Firebase
-				Ember.debug('Logged in');
+				// login with Firebase
+				this.authClient = new window.FirebaseSimpleLogin(Ref, function(error, user) {
+					if (error) {
+						// an error occurred while attempting login
+						alert('Authentication failed: ' + error);
+					} else if (user) {
+						// user authenticated with Firebase
+						this.set('authed', true);
+						this.initUser(user.id);
+						Ember.debug('authenticated');
+					} else {
+						// user is logged out
+						this.set('authed', false);
+						this.set('user', null);
+						Ember.debug('Not authenticated');
+					}
+				}.bind(this));
+			},
 
-				// Set the authenticated user object in our app
-				this.set('isLoggedIn', true);
-				this.set('currentUser', user);
+			login: function(provider) {
+				this.authClient.login(provider);
+			},
 
-				// Checks if the user already exists, if so, it returns the user object
-				// otherwise it creates the user
-				this.get('util').getUserByUsername(this.get('currentUser'));
+			logout: function() {
+				this.authClient.logout();
+			},
 
-				this.get('store').find('user', this.get('currentUser.id')).then(function(promise) {
-					self.set('currentUserModel', promise);
+			// Tests if the user already exists
+			initUser: function(id) {
+				var self = this;
+
+				// @todo emberfire doesn't support findQuery so…
+				// this.get('store').find('user', { authId: this.get('user.id') }).then(function(promise) {
+				this.get('store').find('user', id).then(function(promise) {
+					// we have a user with that id already
+					console.log('we have a user already');
+					self.set('user', promise);
+				}, function() {
+					console.log('we dont');
+					// or we don't so create one
+					self.createUser();
 				});
-			} else {
-				// user is logged out
-				this.set('isLoggedIn', false);
-				this.set('curentUser', null);
-				console.log('Not logged in');
-			}
-		}.bind(this));
-	}
+			},
 
-	// ,
-	// actions: {
-	// 	login: function(provider) {
-	// 		// if (!provider) provider = 'google';
-	// 		this.authClient.login(provider);
-	// 	},
-	// 	logout: function() {
-	// 		this.authClient.logout();
-	// 	}
-	// }
+			createUser: function() {
+				var store = this.get('store');
+
+				var newUser = store.createRecord('user', {
+					id: this.get('user.id'), // set id to the id of firebase auth social id
+					name: this.get('user.displayName'),
+					created: new Date().getTime()
+				}).save();
+
+				console.log('created a user');
+
+				this.set('user', newUser);
+			}
+		});
+
+		app.register('auth:main', auth, {singleton: true});
+		app.inject('controller', 'auth', 'auth:main');
+		app.inject('route', 'auth', 'auth:main');
+	}
 };

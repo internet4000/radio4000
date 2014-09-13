@@ -1,10 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-	needs: ['auth'],
-
 	init: function() {
-		this.set('auth', this.get('controllers.auth'));
 		this.set('playlist',  Ember.Object.create());
 	},
 
@@ -30,6 +27,8 @@ export default Ember.ObjectController.extend({
 
 			// Get the current user
 			Ember.RSVP.hash({
+
+				// @TODO FIX THIS, there is no currentuser on auth
 				user: this.store.find('user', this.get('auth.currentUser.id'))
 			}).then(function(promises) {
 
