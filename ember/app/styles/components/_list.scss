@@ -5,7 +5,7 @@
 	background-color: #fff;
 }
 .List li {
-	&:nth-of-type(odd) {
+	&:nth-of-type(even) {
 		background-color: $superlightgray;
 	}
 	a {

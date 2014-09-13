@@ -16,7 +16,6 @@
 
 		<div class="Controls">
 			{{#if model}}
-
 				<div class="Controls-buttons">
 					{{#if isPlaying}}
 						<button class="PlayerBtn PlayerBtn-pause" {{action 'pause'}}ll</button>
@@ -28,10 +27,16 @@
 					</button> --}}
 				</div>
 
-				<span class="Playback-title">{{model.title}}</span>
+				<span class="Playback-title">
+					{{#if model.title}}
+						{{model.title}}
+					{{else}}
+						Untitled
+					{{/if}}
+				</span>
 
 			{{else}}
-				<button class="PlayerBtn PlayerBtn-play PlayerBtn-play--innactive" {{action 'play'}}>►</button>
+				<button class="PlayerBtn PlayerBtn-play PlayerBtn-play--inactive" {{action 'play'}}>►</button>
 			{{/if}}
 		</div>
 	</div>
