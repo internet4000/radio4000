@@ -34,6 +34,12 @@ The CLI helps create new files, see http://www.ember-cli.com/#generators-and-blu
 
 We use Firebase as our backend through Ember Data and [Emberfire](https://github.com/firebase/emberfire).
 
+## Deploying
+
+You can deploy to Firebase by installing the firebase cli and then running
+
+- `firebase deploy`
+
 ## Help
 
 Contact oskar@rough.dk
