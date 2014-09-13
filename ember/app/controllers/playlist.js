@@ -19,7 +19,7 @@ export default Ember.ObjectController.extend({
 
 	// Checks if the current user id matches the user id on the playlist model
 	checkAuth: function() {
-		if (this.get('model.uid') === this.get('auth.user.id')) {
+		if (this.get('model') === this.get('auth.user.playlist')) {
 			this.set('canEdit', true);
 		} else {
 			this.set('canEdit', false);
