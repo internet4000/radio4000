@@ -1,7 +1,7 @@
 /* global moment */
 import DS from 'ember-data';
 
-var Track = DS.Model.extend({
+export default DS.Model.extend({
 	key: DS.attr('string'),
 	provider: DS.attr('string'),
 	url: DS.attr('string'),
@@ -16,5 +16,3 @@ var Track = DS.Model.extend({
 
 	playlist: DS.belongsTo('playlist')
 });
-
-export default Track;

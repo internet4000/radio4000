@@ -1,7 +1,7 @@
 /* global moment */
 import DS from 'ember-data';
 
-var Playlist = DS.Model.extend({
+export default DS.Model.extend({
 	title: DS.attr('string'),
 	body: DS.attr('string'),
 	slug: DS.attr('string'),
@@ -19,5 +19,3 @@ var Playlist = DS.Model.extend({
 	tracks: DS.hasMany('track', { async: true }), // async so it gets loaded with parent record?
 	user: DS.belongsTo('user', { async: true })
 });
-
-export default Playlist;
