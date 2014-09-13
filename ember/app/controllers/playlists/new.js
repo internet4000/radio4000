@@ -1,11 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-	initialize: function() {
-		this._super();
-		console.log( this.get('model.title') );
-	},
-
 	actions: {
 		newPlaylist: function() {
 			if (!this.playlistIsValid()) { return false; }
@@ -27,36 +22,21 @@ export default Ember.ObjectController.extend({
 
 	// Create a new playlist
 	createPlaylist: function() {
+		var user = this.get('auth.user');
+
 		var newPlaylist = this.get('store').createRecord('playlist', {
 			created: new Date().getTime(),
 			title: this.get('title'),
 			body: this.get('body'),
-			uid: this.get('auth.user.id')
+			user: user
 			// slug: this.get('slug'),
 			// image: this.get('image'),
-			// // user: this.get('user'), // doesnt create a real relationship
 		}).save();
 
-		// this.transitionToRoute('playlist', playlist);
+		// Indicate that we have at least one playlist
+		user.set('hasPlaylist', true);
+		user.save();
+
 		this.transitionToRoute('playlists');
-
-		// // and then save the same playlist into the user
-		// then(function() {
-		// Ember.RSVP.Promise.cast(user.get('playlists')).then(function(playlists) {
-		// 	playlists.addObject(playlist);
-		// 	user.save().then(function() {
-		// 		// success?
-		// 	}, function() {
-		// 		// error?
-		// 	});
-		// });
-
-		// // Empty the form fields
-		// this.setProperties({
-		// 	'playlist.title': '',
-		// 	'playlist.body': '',
-		// 	'playlist.image': '',
-		// 	'playlist.slug': ''
-		// });
 	}
 });

@@ -6,7 +6,7 @@ $sidebarWidth: 270px;
 $sidebarWidthLarger: 360px;
 
 .Playlist {
-	overflow: auto;
+	@include clearfix;
 }
 .Box,
 .Playlist-header,
@@ -23,6 +23,11 @@ $sidebarWidthLarger: 360px;
 
 .Playlist-header {
 	overflow: auto;
+	background-color: $darkteal;
+	color: #fff;
+	a {
+		color: $yellow;
+	}
 	@media (min-width: $layout-m) {
 		position: fixed;
 		top: 0;
@@ -30,12 +35,9 @@ $sidebarWidthLarger: 360px;
 		width: $sidebarWidth;
 		height: 100%;
 		z-index: 1;
+		padding-top: 3rem; // room for logo
 		padding-bottom: 4rem; // room for fixed player bottom
-
-		// test styles
-		background-color: $primary-color;
 		border: 0;
-		color: #fff;
 	}
 	@media (min-width: $layout-ml) {
 		width: $sidebarWidthLarger;
@@ -43,13 +45,11 @@ $sidebarWidthLarger: 360px;
 }
 .Playlist-body {
 	@media (min-width: $layout-m) {
-		// margin-left: $sidebarWidth + 0rem;
-		margin-left: $sidebarWidth - 1px; // to go under the 1px border
+		margin-left: $sidebarWidth;
 		margin-top: 1rem;
-		margin-right: 1rem;
 	}
 	@media (min-width: $layout-ml) {
-		margin-left: $sidebarWidthLarger - 1px; // to go under the 1px border
+		margin-left: $sidebarWidthLarger;
 	}
 }
 .Playlist-avatar {

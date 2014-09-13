@@ -1,5 +1,6 @@
 .Home {
 	text-align: center;
+
 	@media (min-width: $layout-m) {
 		position: absolute;
 		left: 0;
@@ -9,7 +10,10 @@
 		margin: -2rem auto 0;
 	}
 	h1 {
-		font-size: 40px;
+		font-size: 3rem;
+		background: linear-gradient(hsl(17, 100%, 50%), hsl(358, 90%, 52%));
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
 	}
 	.Manchet {
 		max-width: 25em;

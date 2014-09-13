@@ -1,20 +1,22 @@
 <div class="Article Home">
 
 	<h1>Muchplay</h1>
-	<p class="Manchet">The perfect way to curate, play and share your own collection of YouTube and Soundcloud tracks.</p>
+	<p class="Manchet">The perfect way to curate, play and share your own playlist of YouTube tracks.</p>
 
 	<form>
 		{{#if auth.authed}}
-			<h3>Hej! You are logged in!</h3>
-			<p>Your id is {{auth.user.id}} and your name is {{auth.user.name}}</p>
+			<h3>Welcome back, {{auth.user.name}}</h3>
 
-			<p>{{#link-to "playlists"}}<button class="Btn Btn--primary">Your collection</button>{{/link-to}}</p>
-			<p>{{#link-to "playlists.new"}}<button class="Btn Btn--primary">Create your own collection</button>{{/link-to}}</p>
+			{{#if auth.user.hasPlaylist}}
+				<p>{{#link-to "playlist" auth.user.playlist}}<button class="Btn Btn--large Btn--primary">Your playlist</button>{{/link-to}}</p>
+			{{else}}
+				<p>{{#link-to "playlists.new"}}<button class="Btn">Create your own playlist</button>{{/link-to}}</p>
+			{{/if}}
 
 		{{else}}
-			<h3>Please login</h3>
-			<button class="Btn" {{ action 'login' 'google' this}}>Login with Google</button>
-			<button class="Btn" {{ action 'login' 'facebook' this}}>Login with Facebook</button>
+			<h3>To get a playlist, please connect</h3>
+			<button class="Btn Btn--primary" {{ action 'login' 'google' this}}>Connect with Google</button>
+			<button class="Btn Btn--primary" {{ action 'login' 'facebook' this}}>Connect with Facebook</button>
 		{{/if}}
 	</form>
 

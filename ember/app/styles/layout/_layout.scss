@@ -5,19 +5,19 @@
 	box-sizing: border-box;
 }
 
-// Make sure body covers the entire screen
-html,
-body {
-	height: 100%;
-}
-body {
-	overflow-y: scroll; // make sure pages don't jump
+html {
+	// background-image: url(../images/topographic_dark_min.png);
+	// background-image: url(../images/geometry2.png);
+	// background-size: cover;
+	background-color: hsl(40, 30%, 94%);
+	// background-color: $beautifulblue;
+	color: $text-color;
 }
 .SiteHeader,
 .SiteMain {}
 .SiteHeader {}
 .SiteMain {
 	@include clearfix;
-	margin: 5rem 2rem 0;
+	margin: 6rem 2rem 0;
 	border-radius: $border-radius;
 }

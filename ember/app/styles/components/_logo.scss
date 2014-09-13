@@ -1,5 +1,4 @@
 .SiteLogo {
-	transition: transform 250ms ease;
 	position: fixed;
 	z-index: 2;
 	top: -2px;
@@ -16,5 +15,10 @@
 		display: block;
 		padding: 0.5em 0.5em 0.4em;
 		color: $bleach;
+	}
+
+	transition: transform 600ms $easing5;
+	&.is-hidden {
+		transform: translateY(-100%) scale(0.9);
 	}
 }
