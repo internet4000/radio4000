@@ -1,5 +1,5 @@
 <article class="Playlist">
-
+	<p>{{#link-to 'playlists'}}&larr; back{{/link-to}}</p>
 	<div class="Playlist-header">
 		<div class="Inner">
 
@@ -16,29 +16,24 @@
 				<h1 class="Playlist-title">{{title}}</h1>
 				<p class="Playlist-description">
 					{{body}}
-					{{#if isOwner}}<br>Is owner{{else}}<br>is not owner{{/if}}
 				</p>
 
-				{{#unless isEditing}}
-					{{#if auth.authed}}
-						{{#if isOwner}}
-							<p><button class="Btn--edit" {{action 'editPlaylist'}}>Edit playlist</button></p>
-						{{/if}}
+				{{#if canEdit}}
+					<p>can edit</p>
+					{{#if isEditing}}
+						<form class="Form" {{action "save" on="submit"}}>
+							{{input value=title placeholder="Title" autofocus='autofocus'}}
+							{{!-- {{input value=slug placeholder="Slug"}} --}}
+							{{!-- {{textarea value=image placeholder="Image URL"}} --}}
+							{{textarea value=body placeholder="Description"}}
+							<button type="submit">Save playlist</button> <button class="Btn--text" {{action 'cancel'}}>Cancel</button>
+						</form>
+					{{else}}
+						<p><button class="Btn--edit" {{action 'edit'}}>Edit playlist</button></p>
 					{{/if}}
-				{{/unless}}
-			</div>
-
-			{{#if auth.authed}}
-				{{#if isEditing}}
-					<form class="Form" {{action "savePlaylist" on="submit"}}>
-						{{input value=title placeholder="Title" autofocus='autofocus'}}
-						{{input value=slug placeholder="Slug"}}
-						{{textarea value=image placeholder="Image URL"}}
-						{{textarea value=body placeholder="Description"}}
-						<button type="submit">Save playlist</button> <button class="Btn--text" {{action 'cancelEditing'}}>Cancel</button>
-					</form>
 				{{/if}}
-			{{/if}}
+
+			</div>
 		</div>
 	</div>
 

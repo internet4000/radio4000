@@ -1,9 +1,8 @@
-/* global md5 */
 import DS from 'ember-data';
 
 export default DS.Model.extend({
 	name: DS.attr('string'),
-	authId: DS.attr('string'),
+	// authId: DS.attr('string'),
 	created: DS.attr('number')
 
 	// @todo this breaks the matrix

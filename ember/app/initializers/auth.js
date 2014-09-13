@@ -16,69 +16,54 @@ export default {
 			user: null,
 
 			init: function() {
+				var self = this;
+
 				// get access to the ember data store
 				this.store = container.lookup('store:main');
 
 				// login with Firebase
-				// https://www.firebase.com/docs/web/guide/user-auth.html
 				this.authClient = new window.FirebaseSimpleLogin(Ref, function(error, user) {
 					if (error) {
 						// an error occurred while attempting login
 						alert('Authentication failed: ' + error);
 					} else if (user) {
-						// user authenticated with Firebase
-						this.set('authed', true);
-						this.initUser(user.id);
-						Ember.debug('authenticated');
+						self.set('authed', true);
+
+						// @todo emberfire doesn't support findQuery so…
+						// self.get('store').find('user', { authId: self.get('user.id') }).then(function(promise) {
+						self.get('store').find('user', user.id).then(function(promise) {
+							// we have a user with that id already
+							self.set('user', promise);
+							return false;
+						}, function() {
+							// or we don't so:
+							// or we don't so create one
+							var newUser = self.get('store').createRecord('user', {
+								id: user.id, // set id to the id of firebase auth social id
+								name: user.displayName,
+								created: new Date().getTime()
+							}).save().then(function(){
+								console.log('created a user');
+								self.set('user', newUser);
+							});
+						});
+
 					} else {
-						// user is logged out
-						this.set('authed', false);
-						this.set('user', null);
-						Ember.debug('Not authenticated');
+						self.set('authed', false);
+						self.set('user', null);
 					}
-				}.bind(this));
+				});
 			},
 
 			login: function(provider) {
 				this.authClient.login(provider);
 			},
-
 			logout: function() {
 				this.authClient.logout();
-			},
-
-			// Tests if the user already exists
-			initUser: function(id) {
-				var self = this;
-
-				// @todo emberfire doesn't support findQuery so…
-				// this.get('store').find('user', { authId: this.get('user.id') }).then(function(promise) {
-				this.get('store').find('user', id).then(function(promise) {
-					// we have a user with that id already
-					console.log('we have a user already');
-					self.set('user', promise);
-				}, function() {
-					console.log('we dont');
-					// or we don't so create one
-					self.createUser();
-				});
-			},
-
-			createUser: function() {
-				var store = this.get('store');
-
-				var newUser = store.createRecord('user', {
-					id: this.get('user.id'), // set id to the id of firebase auth social id
-					name: this.get('user.displayName'),
-					created: new Date().getTime()
-				}).save();
-
-				console.log('created a user');
-
-				this.set('user', newUser);
 			}
 		});
 
+		// Register and inject the initializer into all controllers and routes
 		app.register('auth:main', auth, {singleton: true});
 		app.inject('controller', 'auth', 'auth:main');
 		app.inject('route', 'auth', 'auth:main');

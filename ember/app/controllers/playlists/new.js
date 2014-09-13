@@ -28,12 +28,13 @@ export default Ember.ObjectController.extend({
 	// Create a new playlist
 	createPlaylist: function() {
 		var newPlaylist = this.get('store').createRecord('playlist', {
+			created: new Date().getTime(),
 			title: this.get('title'),
 			body: this.get('body'),
-			slug: this.get('slug'),
-			image: this.get('image'),
-			created: new Date().getTime(),
-			user: this.get('auth.user.id')
+			uid: this.get('auth.user.id')
+			// slug: this.get('slug'),
+			// image: this.get('image'),
+			// // user: this.get('user'), // doesnt create a real relationship
 		}).save();
 
 		// this.transitionToRoute('playlist', playlist);

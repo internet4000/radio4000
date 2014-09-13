@@ -2,21 +2,21 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
+	created: DS.attr('number'),
 	title: DS.attr('string'),
 	body: DS.attr('string'),
-	slug: DS.attr('string'),
-	image: DS.attr('string'),
-	created: DS.attr('number'),
+	uid: DS.attr('string')
 
-	user: DS.attr('string'),
-	// user: DS.belongsTo('user', { async: true })
+	// slug: DS.attr('string'),
+	// image: DS.attr('string'),
+	// // user: DS.belongsTo('user', { async: true }),
 
 	// async so it gets loaded with parent record?
-	// tracks: DS.hasMany('track', { async: true }),
+	// tracks: DS.hasMany('track', { async: true })
 
-	createdDate: function() {
-		return moment(this.get('created')).format('MMMM Do, YYYY');
-	}.property('created')
+	// createdDate: function() {
+	// 	return moment(this.get('created')).format('MMMM Do, YYYY');
+	// }.property('created')
 
 	// isOwner: function() {
 	// 	return this.get('user.id');
