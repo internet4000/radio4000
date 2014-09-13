@@ -1,8 +1,6 @@
 <section class="Tracks">
-	<h2>Tracks</h2>
 
-	<p>{{#if canEdit}}can edit{{/if}}</p>
-
+	{{#if canEdit}}
 	<form class="Form AddTrack" {{action "publishTrack" on='submit'}}>
 		{{#if isAdding}}
 			{{input value=trackUrl autofocus='autofocus' placeholder="YouTube or Soundcloud url"}}<br>
@@ -13,13 +11,13 @@
 			<button class="Btn--textInput" {{action 'addTrack'}}>Add a track…</button>
 		{{/if}}
 	</form>
+	{{/if}}
 
 	<ul class="List">
 		{{#each track in model}}
 			<li>{{x-track
 					track=track
 					playlist=controllers.playlist.model
-					authController=controllers.auth
 					onPublishTrack="publishTrack"}}
 			</li>
 		{{/each}}

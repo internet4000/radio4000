@@ -1,5 +1,3 @@
 import Ember from 'ember';
 
-export default Ember.ObjectController.extend({
-	oskar: false
-});
+export default Ember.ObjectController.extend();

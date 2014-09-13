@@ -1,4 +1,3 @@
-/* global moment */
 import DS from 'ember-data';
 
 export default DS.Model.extend({
@@ -10,7 +9,7 @@ export default DS.Model.extend({
 	created: DS.attr('number'),
 
 	createdDate: function() {
-		var m = moment(this.get('created'));
+		var m = window.moment(this.get('created'));
 		return '%@ at %@'.fmt(m.format('MMMM Do, YYYY'), m.format('h:mm:ss a'));
 	}.property('created'),
 

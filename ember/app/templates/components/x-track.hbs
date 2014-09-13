@@ -1,5 +1,11 @@
 {{#link-to 'track' track}}
-	<p class="Track-name" {{bind-attr href=track.url}}>{{track.title}}</p>
+	<p class="Track-name" {{bind-attr href=track.url}}>
+		{{#if track.title}}
+			{{track.title}}
+		{{else}}
+			Untitled
+		{{/if}}
+	</p>
 	<p class="Track-description">{{track.body}}</p>
 {{/link-to}}
 

@@ -12,7 +12,7 @@ export default Ember.ArrayController.extend({
 
 	trackIsValid: function() {
 		var isValid = true;
-		['trackUrl', 'trackTitle'].forEach(function(field) {
+		['trackUrl'].forEach(function(field) {
 			if (this.get(field) === '') {
 				isValid = false;
 			}
@@ -39,7 +39,10 @@ export default Ember.ArrayController.extend({
 			// Close the edit box
 			this.send('cancel');
 
-			// Create a new track
+			// Get the parent playlist
+			playlist = this.get('controllers.playlist').get('model');
+
+			// Create a new child track
 			track = this.get('store').createRecord('track', {
 				url: this.get('trackUrl'),
 				title: this.get('trackTitle'),
@@ -47,17 +50,21 @@ export default Ember.ArrayController.extend({
 				created: new Date().getTime()
 			});
 
-			// Get the parent playlist
-			playlist = this.get('controllers.playlist').get('model');
-
 			// console.log(track);
 			// console.log(playlist.get('title'));
+
+			// playlist.get('tracks').addObject(track);
+			// playlist.save().then(function() {
+			// 	track.save();
+			// }, function(err) {
+			// 	alert('error', err)
+			// });
 
 			// Save the track
 			track.save().then(function() {
 				// And add it to the tracks property of the playlist
-				Ember.RSVP.Promise.cast(playlist.get('tracks')).then(function(promise) {
-					promise.addObject(track);
+				Ember.RSVP.Promise.cast(playlist.get('tracks')).then(function(tracks) {
+					tracks.addObject(track);
 					playlist.save().then(function() {
 						Ember.debug('Success: Track saved to playlist');
 					}, function() {

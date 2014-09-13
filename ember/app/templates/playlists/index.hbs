@@ -2,11 +2,10 @@
 
 <ul class="List">
 	{{#each playlist in arrangedContent}}
-		<li class="PlaylistTeaser">
+		<li>
 			{{#link-to "playlist" playlist}}
 				{{playlist.title}}
 			{{/link-to}}
-				{{playlist.isOwner}}
 		</li>
 	{{/each}}
 </ul>

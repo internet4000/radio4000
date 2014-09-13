@@ -2,6 +2,7 @@
 	list-style: none;
 	padding-left: 0;
 	margin-bottom: 0;
+	background-color: #fff;
 }
 .List li {
 	&:nth-of-type(odd) {
@@ -9,12 +10,12 @@
 	}
 	a {
 		display: block;
-		color: $black;
-		// padding-top: .357142857em; // optical center
+		font-size: rem(14);
 		padding-top: rem(10);
 		padding-bottom: rem(7); // 3px less is optical center
 		padding-left: 1.5rem;
 		padding-right: 1.5rem;
+		color: $black;
 
 		&:hover {
 			text-decoration: none;

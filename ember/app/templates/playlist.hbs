@@ -1,4 +1,3 @@
-
 <article class="Playlist">
 	<p>{{#link-to 'playlists'}}&larr; back{{/link-to}}</p>
 	<div class="Playlist-header">
@@ -9,8 +8,6 @@
 				{{#link-to 'playlist' this}}
 					{{#if image}}
 						<img class="Playlist-avatar" {{bind-attr src=image}}>
-					{{else}}
-						<img class="Playlist-avatar" src="https://i1.sndcdn.com/avatars-000069254848-ak10xz-t200x200.jpg?30a2558">
 					{{/if}}
 				{{/link-to}}
 
@@ -20,7 +17,6 @@
 				</p>
 
 				{{#if canEdit}}
-					<p>can edit</p>
 					{{#if isEditing}}
 						<form class="Form" {{action "save" on="submit"}}>
 							{{input value=title placeholder="Title" autofocus='autofocus'}}
@@ -40,6 +36,9 @@
 
 	<div class="Playlist-body">
 		<div class="Inner">
+
+			{{render 'tracks' tracks}}
+
 			{{outlet}}
 		</div>
 	</div>
