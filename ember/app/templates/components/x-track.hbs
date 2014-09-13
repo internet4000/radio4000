@@ -18,12 +18,12 @@
 			{{input value=track.title placeholder="Title"}}</label>
 			<label>Description
 			{{textarea value=track.body placeholder="Description"}}</label>
-			<button {{action "saveTrack" track}}>Save track</button>
-			<button class="Btn--text Btn--danger" {{action 'deleteTrack' track}}>Delete</button>
-			<button class="Btn--text" {{action 'stopEditing'}}>Cancel</button>
+			<button {{action "save" track}}>Save track</button>
+			<button class="Btn--text Btn--danger" {{action 'remove' track}}>Delete</button>
+			<button class="Btn--text" {{action 'cancel'}}>Cancel</button>
 
 			<div class="Track-controls">
-				<button {{action 'stopEditing'}}>Cancel</button>
+				<button {{action 'cancel'}}>Cancel</button>
 			</div>
 		</form>
 	{{else}}

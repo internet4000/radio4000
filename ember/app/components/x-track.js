@@ -10,36 +10,24 @@ export default Ember.Component.extend({
 		edit: function() {
 			this.set('isEditing', true);
 		},
-		stopEditing: function(track) {
+		cancel: function(track) {
 			this.set('isEditing', false);
 		},
 		// Delete the track object and the corresponding track object in playlist.tracks
-		deleteTrack: function(track) {
+		remove: function(track) {
 			Ember.debug('deleting');
 
 			var playlist = this.get('playlist');
-
-			Promise.cast(playlist.get('tracks')).then(function(whatver) {
-				whatver.removeObject(track);
+			playlist.get('tracks').then(function(tracks) {
+				tracks.removeObject(track);
 				track.destroyRecord();
 				playlist.save();
-				Ember.debug('Deleted.');
+
+				Ember.debug('Deleted the track');
 			});
 		},
 
-		// doesnt work right now. think track.url is wrong
-		trackIsValid: function() {
-			var isValid = true;
-			['track.url'].forEach(function(field) {
-				if (this.get(field) === '') {
-					isValid = false;
-				}
-			}, this);
-			Ember.debug(isValid);
-			return isValid;
-		},
-
-		saveTrack: function(track, playlist) {
+		save: function(track, playlist) {
 			// if (!this.trackIsValid()) {
 			// 	Ember.debug('unvalid track');
 			// 	return; }
