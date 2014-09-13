@@ -20,7 +20,7 @@
 				</p>
 
 				{{#unless isEditing}}
-					{{#if authController.isLoggedIn}}
+					{{#if auth.authed}}
 						{{#if isOwner}}
 							<p><button class="Btn--edit" {{action 'editPlaylist'}}>Edit playlist</button></p>
 						{{/if}}
@@ -28,9 +28,9 @@
 				{{/unless}}
 			</div>
 
-			{{#if authController.isLoggedIn}}
+			{{#if auth.authed}}
 				{{#if isEditing}}
-					<form class="Form" {{action "saveEditing" on="submit"}}>
+					<form class="Form" {{action "savePlaylist" on="submit"}}>
 						{{input value=title placeholder="Title" autofocus='autofocus'}}
 						{{input value=slug placeholder="Slug"}}
 						{{textarea value=image placeholder="Image URL"}}

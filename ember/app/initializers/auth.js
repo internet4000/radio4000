@@ -1,5 +1,3 @@
-// https://www.firebase.com/docs/web/guide/user-auth.html
-// @todo user vs currentUser naming
 import Ember from 'ember';
 import DS from 'ember-data';
 
@@ -7,7 +5,7 @@ var Ref = new window.Firebase('https://muchplay.firebaseio.com/');
 
 // To use this object globally we'll need to inject it into all our controllers and routes.
 export default {
-	name: 'auth', // or 'Auth' ?
+	name: 'auth',
 	after: 'store',
 
 	initialize: function(container, app) {
@@ -22,6 +20,7 @@ export default {
 				this.store = container.lookup('store:main');
 
 				// login with Firebase
+				// https://www.firebase.com/docs/web/guide/user-auth.html
 				this.authClient = new window.FirebaseSimpleLogin(Ref, function(error, user) {
 					if (error) {
 						// an error occurred while attempting login

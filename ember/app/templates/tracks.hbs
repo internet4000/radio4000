@@ -1,5 +1,5 @@
 <section class="Tracks">
-	{{#if authController.isLoggedIn}}
+	{{#if auth.authed}}
 		{{#if isOwner}}
 			<form class="Form AddTrack" {{action "publishTrack" on='submit'}}>
 				{{#if isAdding}}

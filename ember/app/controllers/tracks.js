@@ -1,7 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
-	needs: ['auth', 'playlist'],
+	needs: ['playlist'],
+	// playlist: Ember.computed.alias('controllers.playlist')
 
 	// Sort by newest on top
 	sortProperties: ['created'],

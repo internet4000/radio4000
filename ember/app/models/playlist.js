@@ -6,16 +6,19 @@ export default DS.Model.extend({
 	body: DS.attr('string'),
 	slug: DS.attr('string'),
 	image: DS.attr('string'),
-
 	created: DS.attr('number'),
+
+	user: DS.attr('string'),
+	// user: DS.belongsTo('user', { async: true })
+
+	// async so it gets loaded with parent record?
+	// tracks: DS.hasMany('track', { async: true }),
+
 	createdDate: function() {
 		return moment(this.get('created')).format('MMMM Do, YYYY');
-	}.property('created'),
+	}.property('created')
 
-	isOwner: function() {
-		return this.get('user.id');
-	}.property('user'),
-
-	tracks: DS.hasMany('track', { async: true }), // async so it gets loaded with parent record?
-	user: DS.belongsTo('user', { async: true })
+	// isOwner: function() {
+	// 	return this.get('user.id');
+	// }.property('user')
 });

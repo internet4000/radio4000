@@ -3,7 +3,7 @@
 	<p class="Track-description">{{track.body}}</p>
 {{/link-to}}
 
-{{#if authController.isLoggedIn}}
+{{#if auth.authed}}
 	{{#if isEditing}}
 		<form class="Form">
 			<label>URL

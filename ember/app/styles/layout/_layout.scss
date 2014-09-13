@@ -29,10 +29,10 @@ body {
 }
 .SiteMain {
 	@include clearfix;
-	// clear: both;
+	margin: 2rem;
 	border-radius: $border-radius;
 }
 .Article {
 	max-width: 40em;
-	margin: 3rem auto 0;
+	// margin: 3rem auto 0;
 }

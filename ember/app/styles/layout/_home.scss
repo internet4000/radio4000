@@ -1,15 +1,5 @@
-.Route-index {
-	background-image: radial-gradient(rgba(white, 0.4) 40%, transparent);
-
-	// Hide logo on home because we show it in the middle
-	.SiteLogo {
-		transform: translateY(-100%);
-	}
-}
-
 .Home {
 	text-align: center;
-
 	@media (min-width: $layout-m) {
 		position: absolute;
 		left: 0;
@@ -18,7 +8,6 @@
 		transform: translateY(-50%);
 		margin: -2rem auto 0;
 	}
-
 	h1 {
 		font-size: 40px;
 	}
@@ -33,9 +22,6 @@
 		@media (min-width: $layout-m) {
 			min-width: 13.8em;
 		}
-		// &:first-of-type {
-		// 	background-color: hsl(7, 71%, 55%);
-		// }
 	}
 }
 
@@ -46,4 +32,3 @@
 		padding: 0.5em 0.4em;
 	}
 }
-

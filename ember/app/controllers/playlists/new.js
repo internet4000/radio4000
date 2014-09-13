@@ -1,13 +1,22 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-	init: function() {
-		this.set('playlist',  Ember.Object.create());
+	initialize: function() {
+		this._super();
+		console.log( this.get('model.title') );
 	},
 
+	actions: {
+		newPlaylist: function() {
+			if (!this.playlistIsValid()) { return false; }
+			this.createPlaylist();
+		}
+	},
+
+	// Make sure the form fields aren't empty
 	playlistIsValid: function() {
 		var isValid = true;
-		['playlist.slug', 'playlist.title', 'playlist.body'].forEach(function(field) {
+		['title', 'body'].forEach(function(field) {
 			if (this.get(field) === '') {
 				isValid = false;
 			}
@@ -16,64 +25,37 @@ export default Ember.ObjectController.extend({
 		return isValid;
 	},
 
-	actions: {
-		publishPlaylist: function() {
-			if (!this.playlistIsValid()) {
-				Ember.debug('invalid playlist - wont publish');
-				return;
-			}
+	// Create a new playlist
+	createPlaylist: function() {
+		var newPlaylist = this.get('store').createRecord('playlist', {
+			title: this.get('title'),
+			body: this.get('body'),
+			slug: this.get('slug'),
+			image: this.get('image'),
+			created: new Date().getTime(),
+			user: this.get('auth.user.id')
+		}).save();
 
-			Ember.debug('valid playlist - published');
+		// this.transitionToRoute('playlist', playlist);
+		this.transitionToRoute('playlists');
 
-			// Get the current user
-			Ember.RSVP.hash({
+		// // and then save the same playlist into the user
+		// then(function() {
+		// Ember.RSVP.Promise.cast(user.get('playlists')).then(function(playlists) {
+		// 	playlists.addObject(playlist);
+		// 	user.save().then(function() {
+		// 		// success?
+		// 	}, function() {
+		// 		// error?
+		// 	});
+		// });
 
-				// @TODO FIX THIS, there is no currentuser on auth
-				user: this.store.find('user', this.get('auth.currentUser.id'))
-			}).then(function(promises) {
-
-				var user = promises.user;
-
-				// Create a new playlist
-				var playlist = this.store.createRecord('playlist', {
-					title: this.get('playlist.title'),
-					slug: this.get('playlist.slug'),
-					image: this.get('playlist.image'),
-					body: this.get('playlist.body'),
-					created: new Date().getTime(),
-					user: promises.user
-				});
-
-				// Mark that the user has at least one playlist
-				user.set('hasPlaylist', true);
-
-				// Save the playlist
-				playlist.save().then(function() {
-
-					// and then save the same playlist into the user
-					Ember.RSVP.Promise.cast(user.get('playlists')).then(function(playlists) {
-						playlists.addObject(playlist);
-						user.save().then(function() {
-							// success?
-						}, function() {
-							// error?
-						});
-					});
-				});
-
-				// // Empty the form fields
-				// this.setProperties({
-				// 	'playlist.title': '',
-				// 	'playlist.body': '',
-				// 	'playlist.image': '',
-				// 	'playlist.slug': ''
-				// });
-
-				this.transitionToRoute('playlist', playlist);
-
-			}.bind(this));
-		}
-	},
-
-	playlist: undefined
+		// // Empty the form fields
+		// this.setProperties({
+		// 	'playlist.title': '',
+		// 	'playlist.body': '',
+		// 	'playlist.image': '',
+		// 	'playlist.slug': ''
+		// });
+	}
 });

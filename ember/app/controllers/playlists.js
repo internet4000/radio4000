@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
-	needs: ['auth']
-	// this.get('controllers.auth');
+	// Sort by newest on top
+	sortProperties: ['created'],
+	sortAscending: false
 });

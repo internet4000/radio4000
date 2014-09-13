@@ -18,7 +18,7 @@
 							{{input value=playlist.title}}
 							{{input type="url" placeholder="Enter" value=playlist.url}}
 							{{textarea value=playlist.body}}
-							<button {{action "saveEditing"}}>Save playlist</button>
+							<button {{action "savePlaylist"}}>Save playlist</button>
 						</form>
 					{{else}}
 						<button {{action 'editPlaylist'}}>Edit playlist</button>
@@ -26,7 +26,7 @@
 				{{/if}}
 			</div>
 
-			{{#if authController.isLoggedIn}}
+			{{#if auth.authed}}
 				<div class="AddTrack">
 					<h3>Add track</h3>
 					<div class="Form">

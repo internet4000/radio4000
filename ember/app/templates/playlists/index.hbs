@@ -1,16 +1,12 @@
-<div class="Box">
+<p>{{#link-to 'playlists.new'}}Create a new playlist{{/link-to}}.</p>
 
-	<h1>Playlists</h1>
-	{{!-- <p>Hey, your user id is: {{controllers.auth}}</p> --}}
-
-	<ul class="List">
-		{{#each playlist in arrangedContent}}
-			<li class="PlaylistTeaser">
-				{{#link-to "playlist" playlist}}
-					{{playlist.title}}
-				{{/link-to}}
-					{{playlist.isOwner}}
-			</li>
-		{{/each}}
-	</ul>
-</div>
+<ul class="List">
+	{{#each playlist in arrangedContent}}
+		<li class="PlaylistTeaser">
+			{{#link-to "playlist" playlist}}
+				{{playlist.title}}
+			{{/link-to}}
+				{{playlist.isOwner}}
+		</li>
+	{{/each}}
+</ul>
