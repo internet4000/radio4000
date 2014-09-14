@@ -1,30 +1,45 @@
-# Muchplay
+# Radio4000
 
 This is an Ember.js application scaffolded with ember-cli which is a beautiful beast, meaning it's a bit complicated to get everything running right now so please refer to this guide.
 
-## Use ember-cli directly from GitHub
+## How to install
 
-As ember-cli is under heavy development we're not using the version on npm but the master branch on GitHub. This ensures we have the latest fixes. Please see https://github.com/stefanpenner/ember-cli#working-with-master or follow the steps here:
+Please follow this guide step-by-step to make sure everything works.
 
-1. Clone the repo somewhere
+1. First we need to install the newest ember-cli from GitHub and use it as a global npm package.
 
-```
-git clone https://github.com/stefanpenner/ember-cli.git
+```git clone https://github.com/stefanpenner/ember-cli.git
 cd ember-cli
-npm link
+npm link```
+
+The repository you just cloned will now work just as a global npm package would.
+
+2. Install Radio4000 dependencies
+
+```git clone https://github.com/kopfwelt/play.git
+cd play
+npm install && bower install
+npm uninstall ember-cli
+npm link ember-cli
 ```
 
-2. Go inside the folder and run `npm link` - this symlinks the folder as a "global" ember-cli
+3. That's it. You're done. If it worked, you should be able to use these commands inside the 'play' folder
+
+## Watching, building and testing
+
+See http://www.ember-cli.com/ - but:
+
+- `ember server` (or just ember s)
+- `ember test`
+- `ember build`
+
+## Generators
+
+The CLI helps create new files, see http://www.ember-cli.com/#generators-and-blueprints
 
 ## Updating ember-cli
 
-Git pull it where you cloned it and run `npm link ember-cli` again.
-
-## Install project dependencies
-
-1. Go to the `play` folder
-2. Run `npm install && bower install`
-3.
+If you want to use the latest ember-cli, go to where you cloned the repository and run `git pull` and `npm link ember-cli` again.
 
 ## Important if you use Sublime Text
 
@@ -45,18 +60,6 @@ Sublime automatically watches all files in a folder. Because ember-cli is so hug
 	]
 }
 ```
-
-## Watching, building and testing
-
-See http://www.ember-cli.com/ - but:
-
-- `ember server` (or just ember s)
-- `ember test`
-- `ember build`
-
-## Generators
-
-The CLI helps create new files, see http://www.ember-cli.com/#generators-and-blueprints
 
 ## Emberfire
 
