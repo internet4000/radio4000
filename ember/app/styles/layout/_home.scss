@@ -13,12 +13,12 @@
 		@extend %patron-black-italic;
 		@extend %text-bg;
 		font-size: 4rem;
-		margin-bottom: 0.5rem;
 	}
 	.Manchet {
 		max-width: 20em;
 		margin-left: auto;
 		margin-right: auto;
+		margin-bottom: 1.5rem;
 	}
 	.Btn {
 		// when wide enough to have the same width

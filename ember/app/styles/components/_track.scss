@@ -6,10 +6,11 @@
 	position: relative;
 	overflow: hidden; // hide controls
 	a {
+		transition: border 600ms $easing5;
+		border-left: 0 solid hsl(255, 95%, 39%);
 		&:hover {}
 		&.is-active {
-			background-color: $lightblue;
-			color: #fff;
+			border-left-width: 5px;
 			.Track-description {
 				color: inherit;
 			}
@@ -38,7 +39,6 @@
 }
 
 .Track-description {
-	@extend %patron-italic;
 	font-size: 13px;
 	color: $gray;
 	margin-bottom: 0;
@@ -53,7 +53,6 @@
 	.Track.is-editing & {
 		transform: translateX(0) scale(1);
 	}
-
 	.Btn {
 		padding: em(4,13) em(7,13) em(3,13);
 	}

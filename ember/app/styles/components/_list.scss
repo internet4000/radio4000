@@ -15,16 +15,9 @@
 		padding-bottom: rem(7); // 3px less is optical center
 		padding-left: 1.5rem;
 		padding-right: 1.5rem;
-		color: $black;
-
+		color: $text-color;
 		&:hover {
 			text-decoration: none;
-			background-color: hsl(0,0%,95%);
-		}
-
-		&.is-active {
-			background-color: $primary-color;
-			color: #fff;
 		}
 	}
 	p {
