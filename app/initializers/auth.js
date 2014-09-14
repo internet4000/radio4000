@@ -41,7 +41,8 @@ export default {
 							var newUser = self.get('store').createRecord('user', {
 								id: user.id, // set id to the id of firebase auth social id
 								name: user.displayName,
-								created: new Date().getTime()
+								created: new Date().getTime(),
+								email: user.thirdPartyUserData.email // sometimes email is private and this will be empty
 							}).save().then(function(){
 								console.log('created a user');
 								self.set('user', newUser);
