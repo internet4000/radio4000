@@ -1,11 +1,10 @@
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 
 
+// Modified by Kopfwelt to suit our own needs
 
-
-// Modified tby Kopfwelt to suit our own needs
-
-
+// More sensible box-model
+*,*:before,*:after { box-sizing: border-box; }
 
 
 /**

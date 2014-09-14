@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 
+// @todo get this ref from the application adapter somehow
 var Ref = new window.Firebase('https://muchplay.firebaseio.com/');
 
 // To use this object globally we'll need to inject it into all our controllers and routes.
@@ -36,7 +37,6 @@ export default {
 							self.set('user', promise);
 							return false;
 						}, function() {
-							// or we don't so:
 							// or we don't so create one
 							var newUser = self.get('store').createRecord('user', {
 								id: user.id, // set id to the id of firebase auth social id

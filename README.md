@@ -64,9 +64,10 @@ We use Firebase as our backend through Ember Data and [Emberfire](https://github
 
 ## Deploying
 
-You can deploy to Firebase by installing the firebase cli and then running
+You can deploy directly to Firebase like this:
 
-- `firebase deploy`
+1. `npm install -g firebase-cli
+2.  `firebase deploy`
 
 ## Help
 

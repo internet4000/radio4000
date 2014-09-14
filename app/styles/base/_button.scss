@@ -11,8 +11,9 @@
 	text-decoration: none;
 	user-select: none; /* 6 */
 	white-space: normal; /* 7 */
+
 	// Button styling
-	@extend %patron-medium;
+	@extend %patron-bold;
 	padding-left: em(10);
 	padding-right: em(10);
 	background-color: $slightgray;
@@ -36,9 +37,7 @@
 	}
 }
 
-/**
- * Primary, colored button
- */
+// Primary, colored button
 .Btn.Btn--primary {
 	background-color: $green;
 	background-image: linear-gradient(to bottom, rgba(white, 0.10) 40%, transparent);
@@ -54,21 +53,18 @@
 	}
 }
 
-/**
- * Button sizes
- */
+// Large buttons
 .Btn--large {
 	font-size: 18px;
 	padding: 0.8rem 1.4rem 0.6rem;
 }
 
+// Danger buttons
 .Btn--danger {
 	color: $red;
 }
 
-/**
- * Button that looks like text
- */
+// Buttons that looks like text
 .Btn--text {
 	padding-left: rem(5);
 	padding-right: rem(5);
@@ -81,9 +77,7 @@
 	}
 }
 
-/**
- * Button that looks like an input field
- */
+// Button that looks like an input field
 .Btn--textInput {
 	@extend %patron-medium;
 	background-image: none;
