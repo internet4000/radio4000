@@ -7,6 +7,8 @@
 *,*:before,*:after { box-sizing: border-box; }
 
 
+
+
 /**
  * 2. Prevent iOS text size adjust after orientation change, without disabling
  *    user zoom.
@@ -325,4 +327,14 @@ table {
 td,
 th {
   padding: 0;
+}
+
+
+// Consistent alignment
+label,
+input,
+textarea,
+select {
+  display: inline-block;
+  vertical-align: middle;
 }

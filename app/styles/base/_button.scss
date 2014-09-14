@@ -14,18 +14,19 @@
 
 	// Button styling
 	@extend %patron-bold;
-	padding-left: em(10);
-	padding-right: em(10);
+	padding-left: 0.8rem;
+	padding-right: 0.8rem;
 	background-color: $slightgray;
 	background-image: linear-gradient(to bottom, white 60%, transparent);
-	color: $black;
+	color: $text-color;
+	-webkit-font-smoothing: antialised;
 
 	&:hover,
 	&:focus,
 	&:active {
 		text-decoration: none;
 		outline: none;
-		background-image: linear-gradient(to bottom, white 70%, transparent);
+		background-image: linear-gradient(to bottom, white 70%, hsla(0, 0%, 0%, 0.10));
 	}
 	&:active {
 		// @todo
@@ -38,25 +39,16 @@
 }
 
 // Primary, colored button
-.Btn.Btn--primary {
+.Btn--primary {
 	background-color: $green;
 	background-image: linear-gradient(to bottom, rgba(white, 0.10) 40%, transparent);
 	color: $bleach;
-	box-shadow: 2px 2px 0 hsl(0, 0%, 80%);
-	border: 2px solid $darkgreen;
-	letter-spacing: 0.04em;
 
 	&:hover,
 	&:focus,
 	&:active {
-		background-image: linear-gradient(to bottom, rgba(white, 0.20) 40%, transparent);
+		background-image: linear-gradient(to bottom, rgba(white, 0.10) 40%, hsla(0,0%,0%,0.10));
 	}
-}
-
-// Large buttons
-.Btn--large {
-	font-size: 18px;
-	padding: 0.8rem 1.4rem 0.6rem;
 }
 
 // Danger buttons
@@ -64,22 +56,28 @@
 	color: $red;
 }
 
+// Large buttons
+.Btn--large {
+	font-size: 20px;
+	padding: 0.5em 0.7em 0.3em;
+}
+
+
+
 // Buttons that looks like text
 .Btn--text {
-	padding-left: rem(5);
-	padding-right: rem(5);
 	border-color: transparent;
 	background-image: none;
 	background-color: transparent;
 	text-align: left;
 	&:hover {
 		background-image: none;
+		text-decoration: underline;
 	}
 }
 
 // Button that looks like an input field
 .Btn--textInput {
-	@extend %patron-medium;
 	background-image: none;
 	background-color: white;
 	text-align: left;

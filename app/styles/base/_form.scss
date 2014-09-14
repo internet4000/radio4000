@@ -11,24 +11,10 @@ input[type='password'],
 input[type='url'],
 textarea {
 	font-size: 13px;
-	padding: em(7px) em(6px) em(5px);
+	padding: em(10,13) em(8,13) em(8,13);
 	border: 1px solid rgba(0,0,0,0.2);
 	border-radius: $border-radius;
 	color: $black;
-}
-.Btn {
-	@extend %patron-medium;
-	padding-top: em(9);
-	padding-bottom: em(7);
-}
-
-// Consistent alignment
-label,
-input,
-textarea,
-select {
-	display: inline-block;
-	vertical-align: middle;
 }
 
 // Text inputs
@@ -42,15 +28,14 @@ textarea,
 	@extend %patron-light;
 	width: 100%;
 	max-width: 100%;
-	box-shadow: 1px 2px 3px $superlightgray inset;
-	min-height: 30px;
+	box-shadow: 1px 2px 2px hsl(0, 0%, 90%) inset;
 }
 textarea {
-	min-height: 4.8em;
+	min-height: 5em;
 }
 
 // Form design should be tigther than inputs alone
-.Form {
+form {
 	margin-bottom: 0.5rem; // to make total bottom 1rem
 	input[type='text'],
 	input[type='url'],
@@ -64,8 +49,8 @@ textarea {
 
 // Label styles
 label {
+	@extend %patron-bold;
 	display: block;
-	@extend %patron-medium;
 	font-size: 13px;
 	color: $gray;
 }
