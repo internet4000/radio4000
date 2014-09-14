@@ -31,14 +31,12 @@
 
 // Container for the embeds
 .Player {
-	width: 300px;
+	width: 210px;
+	height: 80px;
+	display: none; // @todo make it nice or should we just hide the player?
 	iframe {
-		// display: none;
-	}
-	&.youtube #YouTubePlayer,
-	&.youtube #ytplayer,
-	&.soundcloud #SoundcloudPlayer {
-		display: block;
+		width: 100%;
+		height: 100%;
 	}
 }
 .Playback-title {

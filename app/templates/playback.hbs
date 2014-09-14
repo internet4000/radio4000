@@ -3,12 +3,9 @@
 
 		<div {{bind-attr class=':Player isMinimized model.provider'}}>
 
-			{{!-- <div id="ytplayer"></div> --}}
-
-			{{!-- <iframe width="420" height="315" src="//www.youtube.com/embed/voIprW-gxXk" frameborder="0" allowfullscreen></iframe>
-
-			<iframe id="YouTubePlayer" width="100%" height="166" frameborder="0"
-				{{bind-attr src="model.url"}}></iframe> --}}
+			{{#if model}}
+				<iframe id="player" type="text/html" width="210" height="166" frameborder="0" {{bind-attr src="embedURL"}}></iframe>
+			{{/if}}
 
 			{{!-- <iframe id="SoundcloudPlayer" width="100%" height="166" frameborder="0"
 				{{bind-attr src="model.url"}}></iframe> --}}
@@ -18,9 +15,9 @@
 			{{#if model}}
 				<div class="Controls-buttons">
 					{{#if isPlaying}}
-						<button class="PlayerBtn PlayerBtn-pause" {{action 'pause'}}ll</button>
+						<button class="PlayerBtn" {{action 'pause'}}>ll</button>
 					{{else}}
-						<button class="PlayerBtn PlayerBtn-play" {{action 'play'}}>►</button>
+						<button class="PlayerBtn" {{action 'play'}}>►</button>
 					{{/if}}
 					{{!-- <button {{action 'togglePlayer'}}>
 						{{#if isMinimized}}Show{{else}}Hide{{/if}}

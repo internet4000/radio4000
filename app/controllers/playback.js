@@ -1,57 +1,85 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-	isPlaying: false,
 	isMinimized: false,
-	provider: null,
+	isPlaying: false,
 
 	actions: {
 		play: function() {
 			this.set('isPlaying', true);
-			// roughPlayer.playVideo();
+			this.muchplayer.playVideo();
 		},
 		pause: function() {
 			this.set('isPlaying', false);
-			// roughPlayer.stopVideo();
-		},
-		togglePlayer: function() {
-			this.toggleProperty('isMinimized');
+			this.muchplayer.pauseVideo();
 		}
 	},
 
-	// @TODO don't know how to sync youtube play and this event
-	onExternalPlay: function() {
-		console.log('external play!');
-		this.set('isPlaying', true);
-	},
+	// Returns a valid YouTube ID from a URL
+	embedURL: function() {
 
-	// // This creates a url string from the model's key and provider to be used in an iframe embed
-	// youtubeUrl: function() {
-	// 	if (this.get('model.provider') !== 'youtube') { return false; }
+		var self = this;
 
-	// 	// ytPlayer = new YT.Player('YouTube2', playerOptions);
-	// 	// console.log(roughPlayer);
-	// 	// console.log(ytPlayer);
-	// 	// if (!ytPlayer) {
-	// 	// 	ytPlayer = new YT.Player('ytplayer', playerOptions);
-	// 	// 	roughPlayer.loadVideo(this.get('model.key'));
-	// 	// }
+		if (!window.muchplayer) {
+			console.log('no global muchplayer');
+		}
 
-	// 	console.log('if you go directly on a youtube sound it will not work. you need to wait for the player to load the first dummy video');
-	// 	roughPlayer.loadVideo(this.get('model.key'));
+		console.log('create a YT.Player instance');
+		this.muchplayer = new YT.Player('player', {
+			events: {
+				'onReady': self.myPlayerReady
+			}
+		});
 
-	// 	// var youtubeParameters = '?enablejsapi=1&autoplay=0&rel=0&showinfo=0&autohide=1&origin=http://localhost';
-	// 	// return '//www.youtube.com/embed/' + this.get('model.key') + youtubeParameters;
-	// }.property('model.key'),
+		// Get the ID from the URL
+		var url = this.get('model.url');
+		var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+		var match = url.match(regExp);
 
-	// soundcloudUrl: function() {
-	// 	if (this.get('model.provider') !== 'soundcloud') { return false; }
+		if (match && match[7].length === 11) {
+			this.set('id', match[7]);
+		} else {
+			console.log('wrong youtube url:' + url);
+			this.set('id', '');
+		}
 
-	// 	console.log('sc loading?');
-	// 	// pause if there is a youtube video playing already
-	// 	// this.send('pause');
+		return 'http://www.youtube.com/embed/'+ this.get('id') + '?enablejsapi=1&autoplay=1&rel=0&showinfo=0&autohide=1';
+	}.property('model.url'),
 
-	// 	var soundcloudParameters = '&color=00cc11&auto_play=false&hide_related=true&show_artwork=true&show_comments=false&maxheight=166';
-	// 	return 'https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/' + this.get('model.key') + soundcloudParameters;
-	// }.property('model.key')
+	myPlayerReady: function() {
+		console.log('my player ready');
+	}
+
+
+	// afterYouTubePlayerAPIReady: function() {
+	// 	console.log('after yt api ready')
+
+	// 	// we create a YT.Player object from the embed we just inserted
+
+	// }
+
+	/*
+	// This creates a url string from the model's key and provider to be used in an iframe embed
+	youtubeUrl: function() {
+		// if (this.get('model.provider') !== 'youtube') { return false; }
+
+		roughPlayer.loadVideo(this.get('model.key'));
+
+		// var youtubeParameters = '?enablejsapi=1&autoplay=0&rel=0&showinfo=0&autohide=1&origin=http://localhost';
+		// return '//www.youtube.com/embed/' + this.get('model.key') + youtubeParameters;
+	}.property('model.url'),
+	*/
+
+	/*
+	soundcloudUrl: function() {
+		if (this.get('model.provider') !== 'soundcloud') { return false; }
+
+		console.log('sc loading?');
+		// pause if there is a youtube video playing already
+		// this.send('pause');
+
+		var soundcloudParameters = '&color=00cc11&auto_play=false&hide_related=true&show_artwork=true&show_comments=false&maxheight=166';
+		return 'https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/' + this.get('model.key') + soundcloudParameters;
+	}.property('model.key')
+	*/
 });

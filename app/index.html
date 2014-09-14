@@ -25,11 +25,10 @@
 	<link rel="stylesheet" href="assets/play.css">
 	<script src="modernizr-custom.min.js"></script>
 </head>
-
 <body>
 
-	<!-- Ember CLI app -->
 	<script>
+		// Ember CLI setup
 		window.EmberENV = {{EMBER_ENV}};
 	</script>
 	<script src="assets/vendor.js"></script>
@@ -38,16 +37,18 @@
 		window.Play = require('play/app')['default'].create({{APP_CONFIG}});
 	</script>
 
-	<!-- YouTube API async -->
 	<script>
+		// Load the IFrame Player API code asynchronously
 		var tag = document.createElement('script');
 		tag.src = "https://www.youtube.com/iframe_api";
 		var firstScriptTag = document.getElementsByTagName('script')[0];
 		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-	</script>
 
-	<!-- Test container for YouTube -->
-	<div id="testplayer"></div>
+		function onYouTubePlayerAPIReady() {
+			console.log('yt api ready');
+			// afterYouTubePlayerAPIReady();
+		}
+	</script>
 
 </body>
 </html>
