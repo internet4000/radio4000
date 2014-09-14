@@ -9,7 +9,7 @@ export default Ember.Route.extend({
 		}
 
 		// abort if user already has a playlist
-		if (!this.get('auth.user.hasPlaylist')) {
+		if (this.get('auth.user.hasPlaylist')) {
 			this.transitionTo('application');
 		}
 	}
