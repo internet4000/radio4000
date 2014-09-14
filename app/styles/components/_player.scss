@@ -31,10 +31,19 @@
 
 // Container for the embeds
 .Player {
-	width: 210px;
+	background-color: darken($primary-color,12%);
+	// width: 210px;
 	height: 80px;
-	display: none; // @todo make it nice or should we just hide the player?
+
+	// animate
+	margin-top: -80px;
+	transition: margin 600ms $easing5;
+	&.is-maximized {
+		margin-top: 0;
+	}
+	// the youtbe iframe
 	iframe {
+		max-width: 210px;
 		width: 100%;
 		height: 100%;
 	}
