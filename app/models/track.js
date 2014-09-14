@@ -20,7 +20,7 @@ export default DS.Model.extend({
 	}.property('url'),
 
 	embedUrl: function() {
-		return 'http://www.youtube.com/embed/'+ this.get('ytID') + '?enablejsapi=1&autoplay=1&rel=0&showinfo=0&autohide=1';
+		return '//www.youtube.com/embed/'+ this.get('ytID') + '?enablejsapi=1&autoplay=1&rel=0&showinfo=0&autohide=1';
 	}.property('ytID'),
 
 	createdDate: function() {
