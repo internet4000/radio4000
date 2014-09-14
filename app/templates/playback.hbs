@@ -4,30 +4,31 @@
 		<div {{bind-attr class=':Player isMaximized model.provider'}}>
 			{{#if model}}
 				<iframe id="player" type="text/html" width="210" height="166" frameborder="0" {{bind-attr src="embedUrl"}}></iframe>
+				{{!-- <iframe id="SoundcloudPlayer" width="100%" height="166" frameborder="0"
+					{{bind-attr src="model.url"}}></iframe> --}}
 			{{/if}}
-			{{!-- <iframe id="SoundcloudPlayer" width="100%" height="166" frameborder="0"
-				{{bind-attr src="model.url"}}></iframe> --}}
 		</div>
 
 		<div class="Controls">
 			{{#if model}}
 				<div class="Controls-buttons">
-
 					<button class="PlayerBtn" {{action 'toggle'}}>&#9835;</button>
-
-					{{!-- {{#if isPlaying}}
+					{{#if isPlaying}}
 						<button class="PlayerBtn" {{action 'pause'}}>ll</button>
 					{{else}}
 						<button class="PlayerBtn" {{action 'play'}}>►</button>
-					{{/if}} --}}
+					{{/if}}
 				</div>
 
-				<span class="Playback-title">
+				<span class="Controls-state">{{state}}</span>
+
+				<span class="Controls-title">
 					{{#if model.title}}
 						{{model.title}}
 					{{else}}
 						Untitled
 					{{/if}}
+
 				</span>
 
 			{{else}}

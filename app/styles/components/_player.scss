@@ -48,7 +48,11 @@
 		height: 100%;
 	}
 }
-.Playback-title {
+.Controls-state {
+	margin-right: 0.5rem;
+}
+.Controls-title,
+.Controls-state {
 	position: relative;
 	top: 0.65em;
 }
@@ -61,6 +65,6 @@
 	background-color: transparent;
 	&:hover,
 	&:focus {
-		background-color: hsl(14, 100%, 50%);
+		background-color: darken($primary-color,16%);
 	}
 }
