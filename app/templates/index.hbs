@@ -1,27 +1,30 @@
-<div class="Article Home">
+<article class="Article Home">
 
-	<h1>Muchplay</h1>
+	<h1>Radio4000</h1>
 	<p class="Manchet">The perfect way to curate, play and share your own playlist of YouTube tracks.</p>
 
-	<form>
-		{{#if auth.authed}}
-			{{#if auth.user.hasPlaylist}}
-				<h3>Welcome back, {{auth.user.name}}</h3>
-				<p>{{#link-to "playlist" auth.user.playlist}}<button class="Btn Btn--large Btn--primary">Your playlist</button>{{/link-to}}</p>
-			{{else}}
-				<h3>Success, {{auth.user.name}}!</h3>
-				<p>Now you just need to {{#link-to "playlists.new"}}<button class="Btn">Create your own playlist</button>{{/link-to}}</p>
-			{{/if}}
-		{{else}}
-			<h3>To get a playlist, please connect</h3>
-			<button class="Btn Btn--primary" {{ action 'login' 'google' this}}>Connect with Google</button>
-			<button class="Btn Btn--primary" {{ action 'login' 'facebook' this}}>Connect with Facebook</button>
-		{{/if}}
-	</form>
 
-	<p class="Home-meta">
-		{{#link-to 'about'}}About{{/link-to}}
-		{{#if auth.authed}}
-			 • <a href="#" {{action 'logout' this}}>Log out</a></p>
+	{{#if auth.authed}}
+
+		{{#if auth.user.hasPlaylist}}
+			<h3>Welcome back, {{auth.user.name}}</h3>
+			<p>{{#link-to "playlist" auth.user.playlist}}<button class="Btn Btn--large Btn--primary">Your playlist</button>{{/link-to}}</p>
+		{{else}}
+			<h3>Success, {{auth.user.name}}!</h3>
+			<p>Now you just need to {{#link-to "playlists.new"}}<button class="Btn">Create your own playlist</button>{{/link-to}}</p>
 		{{/if}}
-</div>
+
+	{{else}}
+
+		<h3>To get a playlist, please connect</h3>
+		<button class="Btn Btn--primary" {{ action 'login' 'google' this}}>Connect with Google</button>
+		<button class="Btn Btn--primary" {{ action 'login' 'facebook' this}}>Connect with Facebook</button>
+
+	{{/if}}
+
+	<footer>
+		{{#link-to "playlists"}}Playlists{{/link-to}} •
+		{{#link-to 'about'}}About{{/link-to}}
+		{{#if auth.authed}} • <a href="#" {{action 'logout' this}}>Log out</a>{{/if}}
+	</footer>
+</article>
