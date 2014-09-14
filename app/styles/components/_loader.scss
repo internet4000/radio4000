@@ -3,7 +3,9 @@
 .Loader {
 	display: inline-block;
 	vertical-align: top;
-	margin: 1rem;
+	position: fixed;
+	bottom: 1rem;
+	right: 1rem;
 
 	// Set the color of the icon
 	svg path,

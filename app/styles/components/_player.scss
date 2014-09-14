@@ -50,6 +50,9 @@
 }
 .Controls-state {
 	margin-right: 0.5rem;
+	@media (max-width: $layout-s) {
+		display: none;
+	}
 }
 .Controls-title,
 .Controls-state {
