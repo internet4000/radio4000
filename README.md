@@ -6,28 +6,31 @@ This is an Ember.js application scaffolded with ember-cli which is a beautiful b
 
 Please follow this guide step-by-step to make sure everything works.
 
-1. First we need to install the newest ember-cli from GitHub and use it as a global npm package.
+### First we need to install the newest ember-cli from GitHub and use it as a global npm package.
 
-```git clone https://github.com/stefanpenner/ember-cli.git
+```
+git clone https://github.com/stefanpenner/ember-cli.git
 cd ember-cli
-npm link```
+npm link
+```
 
 The repository you just cloned will now work just as a global npm package would.
 
-2. Install Radio4000 dependencies
+### Install Radio4000 dependencies
 
-```git clone https://github.com/kopfwelt/play.git
+```
+git clone https://github.com/kopfwelt/play.git
 cd play
 npm install && bower install
 npm uninstall ember-cli
 npm link ember-cli
 ```
 
-3. That's it. You're done. If it worked, you should be able to use these commands inside the 'play' folder
+That's it. You're done. If it worked, you should be able to use these commands inside the 'play' folder
 
 ## Watching, building and testing
 
-See http://www.ember-cli.com/ - but:
+Also see http://www.ember-cli.com/
 
 - `ember server` (or just ember s)
 - `ember test`
@@ -69,7 +72,7 @@ We use Firebase as our backend through Ember Data and [Emberfire](https://github
 
 You can deploy directly to Firebase like this:
 
-1. `npm install -g firebase-cli
+1. `npm install -g firebase-cli`
 2.  `firebase deploy`
 
 ## Help
