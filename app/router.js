@@ -16,6 +16,7 @@ Router.map(function() {
 		this.resource('tracks', { path: 'tracks' });
 		this.resource('track', { path: ':track_id' }); // not nested to avoid double tracks
 	});
+  this.route('dashboard');
 });
 
 export default Router;

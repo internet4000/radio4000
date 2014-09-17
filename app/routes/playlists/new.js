@@ -8,9 +8,13 @@ export default Ember.Route.extend({
 			this.transitionTo('application');
 		}
 
+		// @todo if user is premium, can create more playlist
+		console.log(this.get('auth'));
+		// Ember.debug(this.get('auth'));
 		// abort if user already has a playlist
 		if (this.get('auth.user.hasPlaylist')) {
 			this.transitionTo('application');
+
 		}
 	}
 });
