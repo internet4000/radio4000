@@ -1,31 +1,20 @@
 <div class="Dashboard">
-	{{#if auth.authed}}
 
-		{{#if auth.user.playlist}}
+	{{#if auth.user.playlist}}
 
-			<p>Welcome back {{auth.user.name}}! Here is your playlist: {{#link-to "playlist" auth.user.playlist}} {{auth.user.playlist.title}} {{/link-to}}</p>
-
-		{{else}}
-
-			<p>Welcome {{auth.user.name}}! Now you just need to</p>
-			<p>{{#link-to "playlists.new"}}<button class="Btn">Create your own playlist</button>{{/link-to}}</p>
-
-		{{/if}}
-
-		{{#if auth.user.favouritePlaylists}}
-			<h2>Your Favourite Playlist</h2>
-		{{else}}
-			<p>Your favourite playlist will be displayed here once you star your first.</p>
-		{{/if}}
+		<p>Welcome back {{auth.user.name}}! Here is your playlist: {{#link-to "playlist" auth.user.playlist}} {{auth.user.playlist.title}} {{/link-to}}</p>
 
 	{{else}}
 
-		<h3>Get your own playlist</h3>
-		<p>
-			<button class="Btn Btn--primary" {{ action 'login' 'google' this}}>Connect with Google</button>
-			<button class="Btn Btn--primary" {{ action 'login' 'facebook' this}}>Connect with Facebook</button>
-		</p>
+		<p>Welcome {{auth.user.name}}! Now you just need to</p>
+		<p>{{#link-to "playlists.new"}}<button class="Btn">Create your own playlist</button>{{/link-to}}</p>
 
+	{{/if}}
+
+	{{#if auth.user.favouritePlaylists}}
+		<h2>Your Favourite Playlist</h2>
+	{{else}}
+		<p>Your favourite playlist will be displayed here once you star your first.</p>
 	{{/if}}
 
 	{{outlet}}

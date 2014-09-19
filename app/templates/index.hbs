@@ -4,28 +4,10 @@
 
 	{{#if auth.authed}}
 
+		{{render 'dashboard' dashboard}}
+
 	{{else}}
 		<p class="Manchet">The perfect way to curate, play and share your own collection of YouTube tracks.</p>
-	{{/if}}
-
-	{{#if auth.authed}}
-
-		{{#if auth.user.playlist}}
-
-			{{!-- <h3>Welcome back, {{auth.user.name}}</h3>
-			<p>{{#link-to "playlist" auth.user.playlist}}
-				<button class="Btn Btn--large Btn--primary">Your playlist</button>
-			{{/link-to}}</p> --}}
-
-			{{render 'dashboard' dashboard}}
-
-		{{else}}
-
-			<h3>Success, {{auth.user.name}}!</h3>
-			<p>{{#link-to "playlists.new"}}<button class="Btn">Create your own playlist</button>{{/link-to}}</p>
-		{{/if}}
-
-	{{else}}
 
 		<h3>Get your own list</h3>
 		<p>
