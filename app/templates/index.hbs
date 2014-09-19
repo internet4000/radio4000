@@ -7,13 +7,9 @@
 		{{render 'dashboard' dashboard}}
 
 	{{else}}
-		<p class="Manchet">The perfect way to curate, play and share your own collection of YouTube tracks.</p>
 
-		<h3>Get your own list</h3>
-		<p>
-			<button class="Btn Btn--primary" {{ action 'login' 'google' this}}>Connect with Google</button>
-			<button class="Btn Btn--primary" {{ action 'login' 'facebook' this}}>Connect with Facebook</button>
-		</p>
+		{{render 'manchet' manchet}}
+
 	{{/if}}
 
 	<nav>
