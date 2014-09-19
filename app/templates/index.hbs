@@ -15,7 +15,7 @@
 		{{else}}
 
 			<h3>Success, {{auth.user.name}}!</h3>
-			<p>Now you just need to {{#link-to "playlists.new"}}<button class="Btn">Create your own playlist</button>{{/link-to}}</p>
+			<p>{{#link-to "playlists.new"}}<button class="Btn">Create your own playlist</button>{{/link-to}}</p>
 		{{/if}}
 
 	{{else}}

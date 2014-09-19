@@ -4,10 +4,21 @@ html {
 }
 .SiteMain {
 	@include clearfix;
-	margin: 5rem 2rem 0;
+	margin: 5rem 1rem 0;
+	@media (min-width: $layout-m) {
+		margin-left: 2rem;
+		margin-right: 2rem;
+	}
 }
 .Article {
 	max-width: 40em;
 	margin-left: auto;
 	margin-right: auto;
+}
+.Box {
+	padding: 1.5rem 1rem 0.5rem;
+	border: 1px solid $lightgray;
+	border-radius: $border-radius;
+	background-color: white;
+	@media (min-width: $layout-m) {}
 }

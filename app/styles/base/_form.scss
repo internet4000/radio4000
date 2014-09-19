@@ -35,13 +35,13 @@ textarea {
 }
 
 // Form design should be tigther than inputs alone
-form {
+.Form {
 	margin-bottom: 0.5rem; // to make total bottom 1rem
 	input[type='text'],
-	input[type='url'],
 	input[type='email'],
 	input[type='tel'],
 	input[type='password'],
+	input[type='url'],
 	textarea {
 		margin-bottom: 0.5rem;
 	}

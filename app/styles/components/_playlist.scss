@@ -7,18 +7,6 @@ $sidebarWidth: 260px;
 .Playlist {
 	@include clearfix;
 }
-.Box,
-.Playlist-header,
-.Playlist-body {
-   background-color: white;
-   border: 1px solid $lightgray;
-   border-radius: $border-radius;
-}
-.Box,
-.Playlist-header .Inner {
-	padding: 1.5rem 1.5rem 0.5rem;
-}
-
 .Playlist-header {
 	overflow: auto;
 	margin-bottom: -2px;
