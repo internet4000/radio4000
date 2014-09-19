@@ -2,6 +2,7 @@ html {
 	background-color: $bg-color;
 	color: $text-color;
 }
+
 .SiteMain {
 	@include clearfix;
 	margin: 5rem 1rem 0;
@@ -10,15 +11,20 @@ html {
 		margin-right: 2rem;
 	}
 }
-.Article {
-	max-width: 40em;
-	margin-left: auto;
-	margin-right: auto;
-}
+
 .Box {
 	padding: 1.5rem 1rem 0.5rem;
 	border: 1px solid $lightgray;
 	border-radius: $border-radius;
 	background-color: white;
-	@media (min-width: $layout-m) {}
+	@media (min-width: $layout-s) {
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
+	}
+}
+
+.Article {
+	max-width: 40em;
+	margin-left: auto;
+	margin-right: auto;
 }

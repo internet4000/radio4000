@@ -10,11 +10,15 @@
 		transform: translateY(-50%);
 		margin: -2rem auto 0;
 	}
+	// big title
 	h1 {
 		@extend %patron-black-italic;
 		@extend %text-bg;
-		font-size: 4rem;
+		font-size: 40px;
 		letter-spacing: -0.05em;
+		@media (min-width: $layout-s) {
+			font-size: 4rem;
+		}
 	}
 	.Manchet {
 		max-width: 20em;
