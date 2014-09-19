@@ -2,16 +2,17 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
 	actions: {
-		newPlaylist: function() {
-			if (!this.playlistIsValid()) { return false; }
-			this.createPlaylist();
+		create: function() {
+			if (this.validPlaylist) {
+				this.createNewPlaylist();
+			}
 		}
 	},
 
-	// Make sure the form fields aren't empty
-	playlistIsValid: function() {
+	// Makes sure the form fields aren't empty
+	validPlaylist: function() {
 		var isValid = true;
-		['title', 'body'].forEach(function(field) {
+		['title'].forEach(function(field) {
 			if (this.get(field) === '') {
 				isValid = false;
 			}
@@ -21,7 +22,7 @@ export default Ember.ObjectController.extend({
 	},
 
 	// Create a new playlist
-	createPlaylist: function() {
+	createNewPlaylist: function() {
 		var user = this.get('auth.user');
 
 		var newPlaylist = this.get('store').createRecord('playlist', {
@@ -33,10 +34,10 @@ export default Ember.ObjectController.extend({
 			// image: this.get('image'),
 		}).save();
 
-		// Indicate that we have at least one playlist
-		user.set('hasPlaylist', true);
+		// Save the relationship on the user as well
 		user.save();
 
-		this.transitionToRoute('playlists');
+		// Go to the new route
+		this.transitionToRoute('playlist', newPlaylist);
 	}
 });

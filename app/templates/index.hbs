@@ -5,7 +5,7 @@
 
 	{{#if auth.authed}}
 
-		{{#if auth.user.hasPlaylist}}
+		{{#if auth.user.playlist}}
 
 			<h3>Welcome back, {{auth.user.name}}</h3>
 			<p>{{#link-to "playlist" auth.user.playlist}}

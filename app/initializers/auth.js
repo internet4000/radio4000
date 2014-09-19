@@ -27,29 +27,28 @@ export default {
 					if (error) {
 						// an error occurred while attempting login
 						alert('Authentication failed: ' + error);
+
 					} else if (user) {
-						self.set('authed', true);
+						// login
+						console.log('logged in');
 
 						// @todo emberfire doesn't support findQuery so…
 						// self.get('store').find('user', { authId: self.get('user.id') }).then(function(promise) {
+
+						// check if a user already exists
 						self.get('store').find('user', user.id).then(function(promise) {
 							// we have a user with that id already
+							// console.log(promise.get('playlist'));
 							self.set('user', promise);
-							return false;
+							self.set('authed', true);
 						}, function() {
 							// or we don't so create one
-							var newUser = self.get('store').createRecord('user', {
-								id: user.id, // set id to the id of firebase auth social id
-								name: user.displayName,
-								created: new Date().getTime(),
-								email: user.thirdPartyUserData.email // sometimes email is private and this will be empty
-							}).save().then(function(){
-								console.log('created a user');
-								self.set('user', newUser);
-							});
+							self.createUser(user);
 						});
 
+
 					} else {
+						// logout
 						self.set('authed', false);
 						self.set('user', null);
 					}
@@ -61,6 +60,22 @@ export default {
 			},
 			logout: function() {
 				this.authClient.logout();
+			},
+
+			createUser: function(user) {
+				var self = this;
+				var newUser = this.get('store').createRecord('user', {
+					id: user.id, // set id to the id of firebase auth social id
+					name: user.displayName,
+					created: new Date().getTime(),
+					email: user.thirdPartyUserData.email // sometimes email is private and this will be empty
+				});
+
+				newUser.save().then(function(){
+					console.log('created a new user');
+					self.set('user', newUser);
+					self.set('authed', true);
+				});
 			}
 		});
 

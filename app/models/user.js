@@ -4,7 +4,8 @@ export default DS.Model.extend({
 	name: DS.attr('string'),
 	email: DS.attr('string'),
 	created: DS.attr('number'),
-	playlist: DS.belongsTo('playlist'),
+	playlist: DS.belongsTo('playlist')
+	// ,
 	// playlists: DS.hasMany('playlist', { async: true }),
-	hasPlaylist: DS.attr('boolean', { defaultValue: false })
+	// hasPlaylist: DS.attr('boolean', { defaultValue: false })
 });

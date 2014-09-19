@@ -2,19 +2,19 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	beforeModel: function() {
+		var authed = this.get('auth.authed');
+		var hasPlaylist = this.get('auth.user.playlist');
 
 		// abort if not logged in
-		if (!this.get('auth.authed') ) {
+		// @todo this only works if you enter the route from an internal link
+		if (!authed) {
+			console.log('sorry, not logged in');
 			this.transitionTo('application');
 		}
 
-		// @todo if user is premium, can create more playlist
-		console.log(this.get('auth'));
-		// Ember.debug(this.get('auth'));
 		// abort if user already has a playlist
-		if (this.get('auth.user.hasPlaylist')) {
+		if (hasPlaylist) {
 			this.transitionTo('application');
-
 		}
 	}
 });
