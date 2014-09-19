@@ -13,7 +13,7 @@ Router.map(function() {
 		this.route('new');
 	});
 
-	this.resource('playlist', { path: '/p/:playlist_slug' }, function() {
+	this.resource('playlist', { path: '/p/:playlist_id' }, function() {
 		this.resource('tracks', { path: 'tracks' });
 		this.resource('track', { path: ':track_id' }); // not nested to avoid double tracks
 	});
