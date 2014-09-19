@@ -1,10 +1,8 @@
-<div class="Box">
-	<h2>Create your own playlist</h2>
+<h2>Create your own playlist</h2>
 
-	<form class="Form">
-		{{input value=title placeholder="Playlist title"}}
-		{{textarea value=body placeholder="Describe your playlist"}}
-		{{input value=url placeholder="Chose a URL for your playlist"}}
-		<button class="Btn Btn--primary" {{action "create"}}>Create</button>
-	</form>
-</div>
+<form class="Form">
+	{{input value=title placeholder="Playlist title"}}
+	{{textarea value=body placeholder="Describe your playlist"}}
+	{{!-- {{input value=slug placeholder="Choose a URL for your playlist"}} --}}
+	<button class="Btn Btn--primary" {{action "create"}}>Create</button>
+</form>

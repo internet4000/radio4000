@@ -12,10 +12,12 @@ Router.map(function() {
 	this.resource('playlists', function() {
 		this.route('new');
 	});
-	this.resource('playlist', { path: '/playlist/:playlist_id' }, function() {
+
+	this.resource('playlist', { path: '/p/:playlist_slug' }, function() {
 		this.resource('tracks', { path: 'tracks' });
 		this.resource('track', { path: ':track_id' }); // not nested to avoid double tracks
 	});
+
   this.route('dashboard');
 });
 

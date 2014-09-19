@@ -28,10 +28,9 @@ export default Ember.ObjectController.extend({
 		var newPlaylist = this.get('store').createRecord('playlist', {
 			created: new Date().getTime(),
 			title: this.get('title'),
+			slug: this.get('slug'),
 			body: this.get('body'),
 			user: user
-			// slug: this.get('slug'),
-			// image: this.get('image'),
 		}).save();
 
 		// Save the relationship on the user as well
