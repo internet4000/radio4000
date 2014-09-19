@@ -2,7 +2,7 @@
 	<h1 class="SiteLogo">{{#link-to "index"}}Radio 4000{{/link-to}}</h1>
 </header>
 
-<main class="SiteMain">
+<main class="SiteMain" {{bind-attr class="auth.authed:is-authed"}}>
 	{{outlet}}
 </main>
 

@@ -1,16 +1,22 @@
 <article class="Article Home">
 
-	<h1>Radio 4000</h1>
+	<h1>Radio4000</h1>
+
+	{{#if auth.authed}}
+	{{else}}
 	<p class="Manchet">The perfect way to curate, play and share your own collection of YouTube tracks.</p>
+	{{/if}}
 
 	{{#if auth.authed}}
 
 		{{#if auth.user.playlist}}
 
-			<h3>Welcome back, {{auth.user.name}}</h3>
+			{{!-- <h3>Welcome back, {{auth.user.name}}</h3>
 			<p>{{#link-to "playlist" auth.user.playlist}}
 				<button class="Btn Btn--large Btn--primary">Your playlist</button>
-			{{/link-to}}</p>
+			{{/link-to}}</p> --}}
+
+			{{render dashboard}}
 
 		{{else}}
 
@@ -29,9 +35,6 @@
 	{{/if}}
 
 	<nav>
-		{{#if auth.authed}}
-			{{#link-to 'dashboard'}}Dashboard{{/link-to}} •
-		{{/if}}
 		{{#link-to 'playlists'}}Playlists{{/link-to}} •
 		{{#link-to 'about'}}About{{/link-to}}
 		{{#if auth.authed}} • <a href="#" {{action 'logout' this}}>Log out</a>{{/if}}
