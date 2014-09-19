@@ -16,6 +16,7 @@
 				<p class="Playlist-description">
 					{{body}}
 				</p>
+				<p><button class="Btn Btn--favorite" {{action 'addToFavorite'}}>Add to favorite</button></p>
 
 				{{#if canEdit}}
 					{{#if isEditing}}

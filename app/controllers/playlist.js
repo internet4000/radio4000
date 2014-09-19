@@ -19,6 +19,10 @@ export default Ember.ObjectController.extend({
 				// after saving the playlist
 				this.send('cancel');
 			});
+		},
+		addToFavorite: function() {
+			console.log(auth.user.favouritePlaylists);
+			return this.get('auth.user.favouritePlaylists');
 		}
 	}
 });
