@@ -8,6 +8,6 @@ export default DS.Model.extend({
 	// 	return this.get('slug').replace(/\s+/g, '-').toLowerCase();
 	// },
 	body: DS.attr('string'),
-	user: DS.belongsTo('user'),
+	user: DS.belongsTo('user', { inverse: 'playlist' }),
 	tracks: DS.hasMany('track', { async: true })
 });
