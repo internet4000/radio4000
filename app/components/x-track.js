@@ -6,6 +6,10 @@ export default Ember.Component.extend({
 	classNameBindings: ['isEditing:is-editing'],
 	isEditing: false,
 
+	canEdit: function() {
+		return this.get('auth.user.playlist') === this.get('playlist');
+	}.property('playlist', 'auth'),
+
 	actions: {
 		edit: function() {
 			this.set('isEditing', true);

@@ -9,7 +9,7 @@
 	<p class="Track-description">{{track.body}}</p>
 {{/link-to}}
 
-{{#if auth.authed}}
+{{#if canEdit}}
 	{{#if isEditing}}
 		<form class="Form">
 			<label>URL
