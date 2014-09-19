@@ -25,18 +25,25 @@ export default Ember.ObjectController.extend({
 	createNewPlaylist: function() {
 		var user = this.get('auth.user');
 
-		var newPlaylist = this.get('store').createRecord('playlist', {
-			created: new Date().getTime(),
-			title: this.get('title'),
-			slug: this.get('slug'),
-			body: this.get('body'),
-			user: user
-		}).save();
+		// be sure the user does not already has a playlist (prevent multiple click on create)
+		console.log();
 
-		// Save the relationship on the user as well
-		user.save();
+		if(typeof user.playlist === 'undefined'){
 
-		// Go to the new route
-		this.transitionToRoute('playlist', newPlaylist);
+			var newPlaylist = this.get('store').createRecord('playlist', {
+				created: new Date().getTime(),
+				title: this.get('title'),
+				slug: this.get('slug'),
+				body: this.get('body'),
+				user: user
+			}).save();
+
+			// Save the relationship on the user as well
+			user.save();
+
+			// Go to the new route
+			this.transitionToRoute('playlist', newPlaylist);
+
+		};
 	}
 });
