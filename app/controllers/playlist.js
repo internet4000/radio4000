@@ -21,8 +21,6 @@ export default Ember.ObjectController.extend({
 			});
 		},
 		addToFavorite: function() {
-			console.log(auth.user.favouritePlaylists);
-			return this.get('auth.user.favouritePlaylists');
 		}
 	}
 });
