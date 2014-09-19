@@ -17,7 +17,7 @@
 				<button class="Btn Btn--large Btn--primary">Your playlist</button>
 			{{/link-to}}</p> --}}
 
-			{{render dashboard}}
+			{{render 'dashboard' dashboard}}
 
 		{{else}}
 
@@ -32,7 +32,6 @@
 			<button class="Btn Btn--primary" {{ action 'login' 'google' this}}>Connect with Google</button>
 			<button class="Btn Btn--primary" {{ action 'login' 'facebook' this}}>Connect with Facebook</button>
 		</p>
-
 	{{/if}}
 
 	<nav>
