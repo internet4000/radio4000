@@ -1,17 +1,22 @@
 <div class="Dashboard">
 	{{#if auth.authed}}
 
-		{{#if auth.user.hasPlaylist}}
+		{{#if auth.user.playlist}}
 
-			<p>Welcome back, {{auth.user.name}}! Here is your playlist: {{#link-to "playlist" auth.user.playlist}} {{auth.user.playlist.title}} {{/link-to}}</p>
+			<p>Welcome back {{auth.user.name}}! Here is your playlist: {{#link-to "playlist" auth.user.playlist}} {{auth.user.playlist.title}} {{/link-to}}</p>
 
 		{{else}}
 
-			<h3>Success, {{auth.user.name}}!</h3>
-			<p>Now you just need to {{#link-to "playlists.new"}}<button class="Btn">Create your own playlist</button>{{/link-to}}</p>
+			<p>Welcome {{auth.user.name}}! Now you just need to</p>
+			<p>{{#link-to "playlists.new"}}<button class="Btn">Create your own playlist</button>{{/link-to}}</p>
+
 		{{/if}}
 
-		<h2>Your Favourite Playlist</h2>
+		{{#if auth.user.favouritePlaylists}}
+			<h2>Your Favourite Playlist</h2>
+		{{else}}
+			<p>Your favourite playlist will be displayed here once you star your first.</p>
+		{{/if}}
 
 	{{else}}
 
