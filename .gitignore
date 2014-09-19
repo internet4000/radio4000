@@ -15,6 +15,5 @@
 /libpeerconnection.log
 npm-debug.log
 testem.log
-.divshot-cache
 *.sublime-project
 *.sublime-workspace
