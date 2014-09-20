@@ -7,6 +7,11 @@ export default Ember.ObjectController.extend({
 		return this.get('model.user') === this.get('auth.user');
 	}.property('model.user', 'auth.user'),
 
+	// isFavorite: function() {
+		// var userFavs = this.get('auth.user.favoritePlaylists');
+		// @todo if model is in userfavs, it's a favorite
+	// }.property('model.user', 'auth.user'),
+
 	actions: {
 		edit: function() {
 			this.set('isEditing', true);

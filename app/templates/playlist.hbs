@@ -3,11 +3,6 @@
 	<p>{{#link-to 'playlists'}}&larr; back to playlists{{/link-to}}</p>
 
 	<header class="Playlist-header Box">
-		{{!-- {{#if image}}
-			{{#link-to 'playlist' this}}
-				<img class="Playlist-avatar" {{bind-attr src=image}}>
-			{{/link-to}}
-		{{/if}} --}}
 
 		<h1 class="Playlist-title">{{title}}</h1>
 		<p class="Playlist-description">
@@ -15,7 +10,7 @@
 		</p>
 
 		{{#if auth.authed}}
-			<p><button class="Btn Btn--favorite" {{action 'favorite'}}>Add to favorites</button></p>
+			<p><button class="Btn Btn--favorite" {{action 'favorite'}} title="Add to favorites">&#3104;</button></p>
 		{{/if}}
 
 		{{#if canEdit}}
