@@ -1,13 +1,11 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-	created: DS.attr('number'),
 	title: DS.attr('string'),
 	slug: DS.attr('string'),
-	// autoSlug: function() {
-	// 	return this.get('slug').replace(/\s+/g, '-').toLowerCase();
-	// },
+	created: DS.attr('number'),
 	body: DS.attr('string'),
-	user: DS.belongsTo('user', { inverse: 'playlist' }),
-	tracks: DS.hasMany('track', { async: true })
+	tracks: DS.hasMany('track', { async: true }),
+	user: DS.belongsTo('user')
+	// ,favoriters: DS.hasMany('user', { inverse: 'favoritePlaylists' })
 });
