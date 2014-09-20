@@ -1,0 +1,32 @@
+<p>You are: {{name}}<p>
+
+{{#if playlists}}
+	<h2>Your playlist(s):</h2>
+	<ul class="List">
+		{{#each playlists}}
+			<li>
+				{{#link-to "playlist" this}}
+					<span>{{title}}</span>
+					{{!-- <span>id: {{id}}</span> --}}
+				{{/link-to}}
+			</li>
+		{{/each}}
+	</ul>
+{{else}}
+	<p>{{#link-to "playlists.new"}}<button class="Btn">Create your own playlist</button>{{/link-to}}</p>
+{{/if}}
+
+{{#if favoritePlaylists}}
+	<h2>Your favorite playlist(s):</h2>
+	<ul class="List">
+		{{#each favoritePlaylists}}
+			<li>
+				{{#link-to "playlist" this}}
+					<span>{{title}}</span>
+				{{/link-to}}
+			</li>
+		{{/each}}
+	</ul>
+{{else}}
+	<p class="is-inactiveText">Your favorite playlist will be rendered here</p>
+{{/if}}

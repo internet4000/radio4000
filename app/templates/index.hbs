@@ -4,11 +4,14 @@
 
 	{{#if auth.authed}}
 
-		{{render 'dashboard' dashboard}}
+		{{render 'dashboard' }}
 
 	{{else}}
 
 		{{partial 'manchet'}}
 
 	{{/if}}
+
+	{{partial 'navigation'}}
+
 </article>

@@ -18,7 +18,12 @@ Router.map(function() {
 		this.resource('track', { path: ':track_id' }); // not nested to avoid double tracks
 	});
 
-  this.route('dashboard');
+	this.resource('users', function(){
+		this.resource('user', { path: '/user/:user_id' });
+	});
+
+
+ 	this.route('dashboard');
 });
 
 export default Router;

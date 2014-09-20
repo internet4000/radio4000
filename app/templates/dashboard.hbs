@@ -1,33 +1,7 @@
-<div class="Dashboard">
+<p>Welcome {{auth.user.name}}!</p>
 
-	{{#if auth.user.playlists}}
+{{render 'user' auth.user}}
 
-		<p>Welcome back {{auth.user.name}}!</p>
-		<p>Here is your playlist: {{#link-to "playlist" auth.user.playlists}}{{auth.user.playlists.title}}{{/link-to}}</p>
+<p>Explore {{#link-to 'playlists'}}playlists{{/link-to}}. If you favorite any, they will show up here.</p>
 
-	{{else}}
-
-		<p>Welcome {{auth.user.name}}!</p>
-		<p>{{#link-to "playlists.new"}}<button class="Btn">Create your own playlist</button>{{/link-to}}</p>
-
-	{{/if}}
-
-	<h2>Your favourites</h2>
-	{{#if auth.user.favorites}}
-		<p>@todo actually show the favorites here.</p>
-	{{else}}
-		<p>Explore {{#link-to 'playlists'}}playlists{{/link-to}}. If you favorite any, they will show up here.</p>
-	{{/if}}
-
-	{{outlet}}
-
-</div>
-
-<nav class="Centered">
-	{{#link-to 'playlists'}}Playlists{{/link-to}} •
-	{{#link-to 'about'}}About{{/link-to}}
-	{{#if auth.authed}}
-		 • {{#link-to 'playlists.new'}}New playlist{{/link-to}}
-		 • <a href="#" {{action 'logout' this}}>Log out</a>{{/if}}
-</nav>
-
+{{outlet}}

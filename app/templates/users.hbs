@@ -1,0 +1,20 @@
+<div class="Box">
+	<h1>List of all users</h1>
+
+	<ul class="List List--users">
+		{{#each}}
+			<li>
+				{{#link-to "user" this}}
+					<span>{{name}} - </span>
+					<span>id: {{id}}</span>
+					{{!-- <span>email: {{email}}</span>
+					<span>created: {{created}}</span> --}}
+				{{/link-to}}
+			</li>
+		{{/each}}
+	</ul>
+
+	<div>
+		{{outlet}}
+	</div>
+</div>
