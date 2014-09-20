@@ -18,7 +18,6 @@ export default {
 
 			init: function() {
 				var self = this;
-
 				// get access to the ember data store
 				this.store = container.lookup('store:main');
 
@@ -38,14 +37,12 @@ export default {
 						// check if a user already exists
 						self.get('store').find('user', user.id).then(function(promise) {
 							// we have a user with that id already
-							// console.log(promise.get('playlist'));
 							self.set('user', promise);
 							self.set('authed', true);
 						}, function() {
 							// or we don't so create one
 							self.createUser(user);
 						});
-
 
 					} else {
 						// logout
@@ -80,7 +77,7 @@ export default {
 		});
 
 		// Register and inject the initializer into all controllers and routes
-		app.register('auth:main', auth, {singleton: true});
+		app.register('auth:main', auth);
 		app.inject('controller', 'auth', 'auth:main');
 		app.inject('route', 'auth', 'auth:main');
 	}

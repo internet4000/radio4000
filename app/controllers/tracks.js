@@ -34,11 +34,6 @@ export default Ember.ArrayController.extend({
 				return;
 			}
 
-			Ember.debug('valid track - published');
-
-			// Close the edit box
-			this.send('cancel');
-
 			// Get the parent playlist
 			playlist = this.get('controllers.playlist').get('model');
 
@@ -50,15 +45,8 @@ export default Ember.ArrayController.extend({
 				created: new Date().getTime()
 			});
 
-			// console.log(track);
-			// console.log(playlist.get('title'));
-
-			// playlist.get('tracks').addObject(track);
-			// playlist.save().then(function() {
-			// 	track.save();
-			// }, function(err) {
-			// 	alert('error', err)
-			// });
+			// Close the edit box
+			this.send('cancel');
 
 			// Save the track
 			track.save().then(function() {

@@ -9,7 +9,7 @@ export default Ember.Route.extend({
 		// @todo this only works if you enter the route from an internal link
 		if (!authed) {
 			console.log('sorry, not logged in');
-			this.transitionTo('application');
+			this.transitionToRoute('application');
 		}
 
 		// abort if user already has a playlist
