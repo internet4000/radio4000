@@ -1,0 +1,16 @@
+/**
+ * Box, yep all about boxes
+ */
+
+.Box {
+	margin-bottom: 1rem;
+	padding: 1.5rem 1rem 0.5rem;
+	border-radius: $border-radius;
+	@media (min-width: $layout-s) {
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
+	}
+}
+.Box--clean {
+	padding: 0;
+}

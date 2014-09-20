@@ -1,21 +1,15 @@
 {{#if playlists}}
-	<div>
-		<h3>Your playlists</h3>
-		<ul class="List">
+	<div class="Box">
+		Your playlist:
 			{{#each playlists}}
-				<li>
-					{{#link-to "playlist" this}}
-						<span>{{title}}</span>
-						{{!-- <span>id: {{id}}</span> --}}
-					{{/link-to}}
-				</li>
+					{{#link-to "playlist" this}} <span>{{title}}</span> {{/link-to}}
 			{{/each}}
 		</ul>
 	</div>
 {{/if}}
 
 {{#if favoritePlaylists}}
-	<div>
+	<div class="Box">
 		<h3>Your favorites</h3>
 		<ul class="List">
 			{{#each favoritePlaylists}}

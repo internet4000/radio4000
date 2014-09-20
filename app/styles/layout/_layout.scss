@@ -1,3 +1,7 @@
+/**
+ * Layout
+ **/
+
 html {
 	background-color: $bg-color;
 	color: $text-color;
@@ -18,20 +22,6 @@ html {
 	&:last-of-type {
 		border-bottom: 0;
 	}
-}
-.Box {
-	margin-bottom: 1rem;
-	padding: 1.5rem 1rem 0.5rem;
-	border: 1px solid $lightgray;
-	border-radius: $border-radius;
-	background-color: white;
-	@media (min-width: $layout-s) {
-		padding-left: 1.5rem;
-		padding-right: 1.5rem;
-	}
-}
-.Box--clean {
-	padding: 0;
 }
 
 .Centered {

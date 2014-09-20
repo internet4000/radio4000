@@ -26,5 +26,8 @@
 		// margin-left: auto;
 		// margin-right: auto;
 	}
+	.is-authed & {
+		display: none;
+	}
 }
 
