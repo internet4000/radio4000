@@ -1,7 +1,5 @@
 <nav class="Centered">
-	{{#link-to 'playlists'}}Playlists{{/link-to}} •
 	{{#link-to 'about'}}About{{/link-to}}
 	{{#if auth.authed}}
-		 • {{#link-to 'playlists.new'}}New playlist{{/link-to}}
 		 • <a href="#" {{action 'logout' this}}>Log out</a>{{/if}}
 </nav>

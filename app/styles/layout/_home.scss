@@ -1,37 +1,30 @@
 .Home {
-	text-align: center;
+	// text-align: center;
 
-	// totally centered
-	@media (min-width: $layout-m) {
-		position: absolute;
-		left: 0;
-		right: 0;
-		top: 50%;
-		transform: translateY(-50%);
-		margin: -2rem auto 0;
-	}
+	// // totally centered
+	// @media (min-width: $layout-m) {
+	// 	position: absolute;
+	// 	left: 0;
+	// 	right: 0;
+	// 	top: 50%;
+	// 	transform: translateY(-50%);
+	// 	margin: -2rem auto 0;
+	// }
 	// big title
 	h1 {
 		@extend %patron-black-italic;
 		@extend %text-bg;
 		font-size: 40px;
-		letter-spacing: -0.05em;
+		letter-spacing: -0.03em;
 		@media (min-width: $layout-s) {
 			font-size: 4rem;
 		}
 	}
 	.Manchet {
 		max-width: 20em;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 1.5rem;
-	}
-	// Bigger click area
-	nav {
-		a {
-			display: inline-block;
-			padding: 0.5em 0.4em;
-		}
+		margin-bottom: 4rem;
+		// margin-left: auto;
+		// margin-right: auto;
 	}
 }
 

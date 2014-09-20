@@ -1,17 +1,43 @@
-<article class="Centered Home">
-
+<article class="Home">
 	<h1>Radio4000</h1>
-
-	{{#if auth.authed}}
-
-		{{render 'dashboard' }}
-
-	{{else}}
-
-		{{partial 'manchet'}}
-
-	{{/if}}
-
-	{{partial 'navigation'}}
-
+	<p class="Manchet">The perfect way to curate, play and share your own playlist of YouTube tracks.</p>
 </article>
+
+{{#if auth.authed}}
+	{{#unless auth.user.playlists}}
+		<section class="Section">
+			<h2>Create your playlist</h2>
+			<p>{{#link-to "playlists.new"}}<button class="Btn">Get your own playlist</button>{{/link-to}}</p>
+		</section>
+	{{/unless}}
+{{/if}}
+
+{{#unless auth.authed}}
+	<section class="Section">
+		<h2>Get your own playlist</h2>
+		{{#if showLogin}}
+			<p>Please choose how to log in.</p>
+			<p>
+				<button class="Btn Btn--primary" {{ action 'login' 'google' this}}>With Google</button>
+				<button class="Btn Btn--primary" {{ action 'login' 'facebook' this}}>With Facebook</button>
+			</p>
+		{{else}}
+			<p><a href="#" {{action 'showLogin'}}>Get started or log in</a></p>
+		{{/if}}
+	</section>
+{{/unless}}
+
+<section class="Section">
+	<h2>Just play something</h2>
+	{{#link-to 'playlists'}}See all playlists{{/link-to}}
+</section>
+
+{{#if auth.authed}}
+	<section class="Section">
+		<h2>Your stuff</h2>
+		{{render 'user' auth.user}}
+
+	</section>
+{{/if}}
+
+{{partial 'navigation'}}
