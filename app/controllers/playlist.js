@@ -50,6 +50,7 @@ export default Ember.ObjectController.extend({
 		favorite: function() {
 			var user = this.get('auth.user');
 			var playlist = this.get('model');
+			this.set('favorited', true);
 
 			Ember.RSVP.Promise.cast(user.get('favoritePlaylists')).then(function(favorites) {
 				favorites.addObject(playlist);

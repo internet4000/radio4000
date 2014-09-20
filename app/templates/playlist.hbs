@@ -10,7 +10,11 @@
 		</p>
 
 		{{#if auth.authed}}
-			<p><button class="Btn Btn--favorite" {{action 'favorite'}} title="Add to favorites">&#3104;</button></p>
+			{{#if favorited}}
+				<p>Saved to favorites.</p>
+			{{else}}
+				<p><button class="Btn Btn--favorite" {{action 'favorite'}} title="Add to favorites">Favorite</button></p>
+			{{/if}}
 		{{/if}}
 
 		{{#if canEdit}}
