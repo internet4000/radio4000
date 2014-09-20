@@ -11,11 +11,4 @@
 		{{partial 'manchet'}}
 
 	{{/if}}
-
-	<nav>
-		{{#link-to 'playlists'}}Playlists{{/link-to}} •
-		{{#link-to 'about'}}About{{/link-to}}
-		{{#if auth.authed}} • <a href="#" {{action 'logout' this}}>Log out</a>{{/if}}
-	</nav>
-
 </article>
