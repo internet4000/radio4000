@@ -6,6 +6,6 @@ export default DS.Model.extend({
 	created: DS.attr('number'),
 	body: DS.attr('string'),
 	tracks: DS.hasMany('track', { async: true }),
-	user: DS.belongsTo('user')
+	user: DS.belongsTo('user', { inverse: 'playlists' })
 	// ,favoriters: DS.hasMany('user', { inverse: 'favoritePlaylists' })
 });

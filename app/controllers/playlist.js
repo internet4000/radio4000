@@ -22,13 +22,24 @@ export default Ember.ObjectController.extend({
 			this.send('cancel');
 		},
 		tryDelete: function() {
+			var user = this.get('auth.user');
 			var playlist = this.get('model');
 			var confirmed = confirm('Are you sure?');
 
 			if (confirmed) {
-				Ember.debug('Playlist deleted');
+
+				// remove the playlist on the user
+				Ember.RSVP.Promise.cast(user.get('playlists')).then(function(playlists) {
+					playlists.removeObject(playlist);
+					user.save().then(function() {
+						Ember.debug('Success: playlist removed from user');
+					});
+				});
+
+				// delete the playlist itself
 				playlist.destroyRecord();
-				this.transitionToRoute('playlists');
+				Ember.debug('Playlist deleted');
+				this.transitionToRoute('application');
 			}
 		},
 		favorite: function() {
