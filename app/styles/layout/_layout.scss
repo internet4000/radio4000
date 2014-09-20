@@ -13,6 +13,7 @@ html {
 }
 
 .Box {
+	margin-bottom: 1rem;
 	padding: 1.5rem 1rem 0.5rem;
 	border: 1px solid $lightgray;
 	border-radius: $border-radius;
@@ -22,8 +23,11 @@ html {
 		padding-right: 1.5rem;
 	}
 }
+.Box--clean {
+	padding: 0;
+}
 
-.Article {
+.Centered {
 	max-width: 40em;
 	margin-left: auto;
 	margin-right: auto;

@@ -39,7 +39,7 @@
 }
 
 .Track-description {
-	font-size: 13px;
+	font-size: rem(13);
 	color: $gray;
 	margin-bottom: 0;
 }
@@ -55,5 +55,19 @@
 	}
 	.Btn {
 		padding: em(4,13) em(7,13) em(3,13);
+	}
+}
+
+// add track
+.AddTrack {
+	margin-bottom: 0;
+	padding: 0.5rem;
+	background-color: $yellow;
+	clear: both;
+	@media (min-width: $layout-m) {
+		clear: none;
+	}
+	.Form {
+		margin-bottom: 0;
 	}
 }

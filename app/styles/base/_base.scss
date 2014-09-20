@@ -19,7 +19,6 @@ a {
 a:hover,
 a:focus,
 a:active {
-	// color: hsl(100, 60%, 50%);
 	text-decoration: underline;
 }
 
@@ -35,19 +34,19 @@ h4 {
 	line-height: 1.1;
 }
 h1 {
-	font-size: 30px;
+	font-size: rem(30);
 	a {
 		color: $text-color;
 	}
 }
 h2 {
-	font-size: 20px;
+	font-size: rem(20);
 }
 h3 {
 	font-size: 1rem;
 }
 h4 {
-	font-size: 14px;
+	font-size: rem(14);
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
 }
@@ -97,10 +96,5 @@ embed {
 
 // Typography
 .Manchet {
-	font-size: 20px;
-}
-.Article-body {
-	p {
-		font-size: 18px;
-	}
+	font-size: rem(20);
 }

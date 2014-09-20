@@ -14,12 +14,14 @@
 
 	// Button styling
 	@extend %patron-bold;
-	padding-left: 0.8rem;
-	padding-right: 0.8rem;
+	font-size: rem(13);
+	// padding: em(8,12) em(8,12) em(7,12); // 30px height look sbetter but not consistent
+	// padding: em(10,12) em(8,12) em(9,12); // 34px height as inputs
+	padding: em(10,13) em(8,13) em(8,13);
 	background-color: $slightgray;
 	background-image: linear-gradient(to bottom, white 60%, transparent);
 	color: $text-color;
-	-webkit-font-smoothing: antialised;
+	-webkit-font-smoothing: antialiased;
 
 	&:hover,
 	&:focus,
@@ -58,7 +60,7 @@
 
 // Large buttons
 .Btn--large {
-	font-size: 20px;
+	font-size: rem(20);
 	padding: 0.5em 0.7em 0.3em;
 }
 
@@ -70,7 +72,8 @@
 	background-image: none;
 	background-color: transparent;
 	text-align: left;
-	&:hover {
+	&:hover,
+	&:focus {
 		background-image: none;
 		text-decoration: underline;
 	}
@@ -81,7 +84,20 @@
 	background-image: none;
 	background-color: white;
 	text-align: left;
-	&:hover {
+	&:hover,
+	&:focus {
 		background-image: none;
+	}
+}
+
+
+
+.BtnGroup {
+	.Btn {
+		margin-right: -1px;
+	}
+	.Btn:first-child {}
+	.Btn:last-child {
+		margin-right: 0;
 	}
 }
