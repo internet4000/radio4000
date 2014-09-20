@@ -1,45 +1,43 @@
 <article class="Playlist">
-	<div class="Playlist-header">
-		<div class="Inner">
 
-			<div class="Playlist-info">
+	<p>{{#link-to 'playlists'}}&larr; back to playlists{{/link-to}}</p>
 
-				{{!-- <p>{{#link-to 'playlists'}}&larr; playlists{{/link-to}}</p> --}}
+	<header class="Playlist-header Box">
+		{{!-- {{#if image}}
+			{{#link-to 'playlist' this}}
+				<img class="Playlist-avatar" {{bind-attr src=image}}>
+			{{/link-to}}
+		{{/if}} --}}
 
-				{{#if image}}
-					{{#link-to 'playlist' this}}
-						<img class="Playlist-avatar" {{bind-attr src=image}}>
-					{{/link-to}}
-				{{/if}}
+		<h1 class="Playlist-title">{{title}}</h1>
+		<p class="Playlist-description">
+			{{body}}
+		</p>
 
-				<h1 class="Playlist-title">{{title}}</h1>
-				<p class="Playlist-description">
-					{{body}}
-				</p>
-				<p><button class="Btn Btn--favorite" {{action 'addToFavorite'}}>Add to favorite</button></p>
+		{{#if auth.authed}}
+			<p><button class="Btn Btn--favorite" {{action 'favorite'}}>Add to favorites</button></p>
+		{{/if}}
 
-				{{#if canEdit}}
-					{{#if isEditing}}
-						<form class="Form" {{action "save" on="submit"}}>
-							{{input value=title placeholder="Title" autofocus='autofocus'}}
-							{{!-- {{input value=slug placeholder="Slug"}} --}}
-							{{!-- {{textarea value=image placeholder="Image URL"}} --}}
-							{{textarea value=body placeholder="Description"}}
-							<button class="Btn Btn--primary" type="submit">Save playlist</button> <button class="Btn Btn--text" {{action 'cancel'}}>Cancel</button>
-						</form>
-					{{else}}
-						<p><button class="Btn Btn--edit" {{action 'edit'}}>Edit playlist</button></p>
-					{{/if}}
-				{{/if}}
+		{{#if canEdit}}
+			{{#if isEditing}}
+				<form class="Form" {{action "save" on="submit"}}>
+					{{input value=title placeholder="Title" autofocus='autofocus'}}
+					{{!-- {{input value=slug placeholder="Slug"}} --}}
+					{{!-- {{textarea value=image placeholder="Image URL"}} --}}
+					{{textarea value=body placeholder="Description"}}
+					<button class="Btn Btn--primary" type="submit">Save playlist</button>
+					<button class="Btn Btn--text" {{action 'cancel'}}>Cancel</button>
+					<button class="Btn Btn--text Btn--danger" {{action 'tryDelete'}}>Delete playlist</button>
+				</form>
+			{{else}}
+				<p><button class="Btn Btn--edit" {{action 'edit'}}>Edit playlist</button></p>
 
-			</div>
-		</div>
-	</div>
+			{{/if}}
+		{{/if}}
+	</header>
 
-	<div class="Playlist-body">
-		<div class="Inner">
-			{{render 'tracks' tracks}}
-			{{outlet}}
-		</div>
+	<div class="Playlist-body Box Box--clean">
+		{{render 'tracks' tracks}}
+		{{outlet}}
 	</div>
 </article>
