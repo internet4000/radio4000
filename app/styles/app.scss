@@ -1,8 +1,14 @@
 /*!
 	RADIO 4000
 
-	by Hugo and Oskar
+	by Hugo Vieilledent and Oskar Rough Mosumgaard
 */
+
+// Utilities
+@import 'utilities/clearfix';
+@import 'utilities/functions';
+@import 'utilities/content-states';
+@import 'utilities/box';
 
 // Base
 @import 'base/normalize-custom';
@@ -10,12 +16,6 @@
 @import 'base/base';
 @import 'base/form';
 @import 'base/button';
-
-// Utilities
-@import 'utilities/clearfix';
-@import 'utilities/functions';
-@import 'utilities/content-states';
-@import 'utilities/box';
 
 // Layout
 @import 'layout/layout';

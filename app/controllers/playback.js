@@ -2,8 +2,7 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-	needs: ['playlist'],
-	currentPlaylist: Ember.computed.alias('controllers.playlist'),
+	needs: ['playlist', 'tracks', 'track'],
 
 	isMaximized: false,
 	isPlaying: false,
