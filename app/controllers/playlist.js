@@ -15,12 +15,32 @@ export default Ember.ObjectController.extend({
 			this.set('isEditing', false);
 		},
 		save: function() {
-			this.get('model').save().then(function(){
-				// after saving the playlist
-				this.send('cancel');
+			var playlist = this.get('model');
+			playlist.save().then(function(){
+				Ember.debug('Saved playlist');
 			});
+			this.send('cancel');
 		},
-		addToFavorite: function() {
+		tryDelete: function() {
+			var playlist = this.get('model');
+			var confirmed = confirm('Are you sure?');
+
+			if (confirmed) {
+				Ember.debug('Playlist deleted');
+				playlist.destroyRecord();
+				this.transitionToRoute('playlists');
+			}
+		},
+		favorite: function() {
+			var user = this.get('auth.user');
+			var playlist = this.get('model');
+
+			Ember.RSVP.Promise.cast(user.get('favoritePlaylists')).then(function(favorites) {
+				favorites.addObject(playlist);
+				user.save().then(function() {
+					Ember.debug('Success: playlist saved as favorite on the user');
+				});
+			});
 		}
 	}
 });

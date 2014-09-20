@@ -7,7 +7,7 @@ export default Ember.Component.extend({
 	isEditing: false,
 
 	canEdit: function() {
-		return this.get('auth.user.playlist') === this.get('playlist');
+		return this.get('auth.user.playlists') === this.get('playlist');
 	}.property('playlist', 'auth'),
 
 	actions: {
