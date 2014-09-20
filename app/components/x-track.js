@@ -1,14 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-	// tagName: 'li',
 	classNames: ['Track'],
 	classNameBindings: ['isEditing:is-editing'],
 	isEditing: false,
-
-	canEdit: function() {
-		return this.get('auth.user.playlists') === this.get('playlist');
-	}.property('playlist', 'auth'),
 
 	actions: {
 		edit: function() {
@@ -21,7 +16,7 @@ export default Ember.Component.extend({
 		remove: function(track) {
 			Ember.debug('deleting');
 
-			var playlist = this.get('playlist');
+			var playlist = this.get('playlist.model');
 			playlist.get('tracks').then(function(tracks) {
 				tracks.removeObject(track);
 				track.destroyRecord();
@@ -31,7 +26,7 @@ export default Ember.Component.extend({
 			});
 		},
 
-		save: function(track, playlist) {
+		save: function(track) {
 			// if (!this.trackIsValid()) {
 			// 	Ember.debug('unvalid track');
 			// 	return; }

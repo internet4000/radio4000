@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
+
+	// steal the edit property from the playlist
 	needs: ['playlist'],
 	canEdit: Ember.computed.alias('controllers.playlist.canEdit'),
 

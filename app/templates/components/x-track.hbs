@@ -1,5 +1,5 @@
 {{#link-to 'track' track}}
-	<p class="Track-name" {{bind-attr href=track.url}}>
+	<p class="Track-name">
 		{{#if track.title}}
 			{{track.title}}
 		{{else}}
@@ -9,7 +9,7 @@
 	<p class="Track-description">{{track.body}}</p>
 {{/link-to}}
 
-{{#if canEdit}}
+{{#if playlist.canEdit}}
 	{{#if isEditing}}
 		<form class="Form">
 			<label>URL

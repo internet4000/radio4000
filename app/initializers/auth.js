@@ -39,6 +39,7 @@ export default {
 							// we have a user with that id already
 							self.set('user', promise);
 							self.set('authed', true);
+							Ember.debug('auth.user was set');
 						}, function() {
 							// or we don't so create one
 							self.createUser(user);

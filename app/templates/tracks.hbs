@@ -15,9 +15,8 @@
 	{{#each track in model}}
 	{{!-- {{#reverse track in model}} --}}
 		<li>{{x-track
-				auth=auth
 				track=track
-				playlist=controllers.playlist.model
+				playlist=controllers.playlist
 				onPublishTrack="publishTrack"}}
 		</li>
 	{{/each}}

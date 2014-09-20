@@ -4,8 +4,8 @@ export default Ember.ObjectController.extend({
 	isEditing: false,
 
 	canEdit: function() {
-		return this.get('auth.user.playlist') === this.get('model');
-	}.property('model', 'auth'),
+		return this.get('model.user') === this.get('auth.user');
+	}.property('model.user', 'auth.user'),
 
 	actions: {
 		edit: function() {
