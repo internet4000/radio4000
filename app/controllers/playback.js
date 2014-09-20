@@ -18,7 +18,7 @@ export default Ember.ObjectController.extend({
 		},
 		toggle: function() {
 			this.toggleProperty('isMaximized');
-			console.log(this.player);
+			// console.log(this.player);
 		}
 	},
 
