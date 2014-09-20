@@ -12,8 +12,8 @@
 		<div class="Controls">
 			{{#if model}}
 				<div class="Controls-buttons">
+					{{#link-to 'playlist' currentPlaylist}}<button class="PlayerBtn" title="Go back to the playlist">&#9835;</button>{{/link-to}}
 					<button class="PlayerBtn" {{action 'toggle'}}>&#9672;</button>
-					<button class="PlayerBtn">&#9835;</button>
 					{{#if isPlaying}}
 						<button class="PlayerBtn" {{action 'pause'}}>ll</button>
 					{{else}}
@@ -21,7 +21,7 @@
 					{{/if}}
 				</div>
 
-				<span class="Controls-state">{{state}}</span>
+				{{!-- <span class="Controls-state">{{state}}</span> --}}
 
 				<span class="Controls-title">
 					{{#if model.title}}
@@ -29,7 +29,6 @@
 					{{else}}
 						Untitled
 					{{/if}}
-
 				</span>
 
 			{{else}}

@@ -2,9 +2,11 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
+	needs: ['playlist'],
+	currentPlaylist: Ember.computed.alias('controllers.playlist'),
+
 	isMaximized: false,
 	isPlaying: false,
-	muchplayer: null,
 	state: null,
 
 	actions: {
