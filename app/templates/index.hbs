@@ -27,17 +27,17 @@
 	</section>
 {{/unless}}
 
+{{#if auth.authed}}
+	<section class="Section">
+		{{render 'user' auth.user}}
+
+	</section>
+{{/if}}
+
 <section class="Section">
 	<h2>Just play something</h2>
 	{{#link-to 'playlists'}}See all playlists{{/link-to}}
 </section>
 
-{{#if auth.authed}}
-	<section class="Section">
-		<h2>Your stuff</h2>
-		{{render 'user' auth.user}}
-
-	</section>
-{{/if}}
 
 {{partial 'navigation'}}

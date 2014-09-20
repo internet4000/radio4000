@@ -4,17 +4,17 @@
 	by Hugo and Oskar
 */
 
-
-// Utilities
-@import 'utilities/clearfix';
-@import 'utilities/functions';
-
 // Base
 @import 'base/normalize-custom';
 @import 'base/config';
 @import 'base/base';
 @import 'base/form';
 @import 'base/button';
+
+// Utilities
+@import 'utilities/clearfix';
+@import 'utilities/functions';
+@import 'utilities/content-states';
 
 // Layout
 @import 'layout/layout';

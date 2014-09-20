@@ -1,8 +1,8 @@
 <h2>Playlists</h2>
-
+<p class="is-inactiveText">Those are all the existing playlists on Radio4000.</p>
 <ul class="List">
 	{{#each playlist in arrangedContent}}
-		<li>
+		<li class="List-item">
 			{{#link-to "playlist" playlist}}
 				{{playlist.title}}
 			{{/link-to}}

@@ -1,5 +1,5 @@
-<div class="Box">
-	{{#if playlists}}
+{{#if playlists}}
+	<div>
 		<h3>Your playlists</h3>
 		<ul class="List">
 			{{#each playlists}}
@@ -11,11 +11,11 @@
 				</li>
 			{{/each}}
 		</ul>
-	{{/if}}
-</div>
+	</div>
+{{/if}}
 
-<div class="Box">
-	{{#if favoritePlaylists}}
+{{#if favoritePlaylists}}
+	<div>
 		<h3>Your favorites</h3>
 		<ul class="List">
 			{{#each favoritePlaylists}}
@@ -28,5 +28,5 @@
 		</ul>
 	{{else}}
 		<p class="is-inactiveText">Your favorite playlists will be shown here.</p>
-	{{/if}}
-</div>
+	</div>
+{{/if}}
