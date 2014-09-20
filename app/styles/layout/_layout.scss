@@ -6,26 +6,28 @@ html {
 	background-color: $bg-color;
 	color: $text-color;
 }
+html,
+body {
+	min-height: 100%;
+}
 
 .SiteMain {
 	@include clearfix;
-	margin: 5rem 1rem 0;
-	@media (min-width: $layout-m) {
+	margin: 3rem 1rem 0;
+	@media (min-width: $layout-s) {
 		margin-left: 2rem;
 		margin-right: 2rem;
 	}
 }
 .Section {
-	padding-bottom: 1rem;
-	border-bottom: 1px solid $lightgray;
 	margin-bottom: 2rem;
-	&:last-of-type {
-		border-bottom: 0;
-	}
+	// padding-bottom: 1rem;
+	// border-bottom: 1px solid $lightgray;
+	// &:last-of-type {
+	// 	border-bottom: 0;
+	// }
 }
 
-.Centered {
+.Constrained {
 	max-width: 40em;
-	margin-left: auto;
-	margin-right: auto;
 }

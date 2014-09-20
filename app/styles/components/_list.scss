@@ -1,23 +1,30 @@
+// List view
 .List {
 	list-style: none;
 	padding-left: 0;
-	margin-bottom: 0;
-	background-color: #fff;
+	// margin-bottom: 0;
+	// background-color: #fff;
+	border-top: 1px solid $lightgray;
 }
 .List li {
+	border-bottom: 1px solid $lightgray;
 	// alternating bg colors
-	&:nth-of-type(even) a {
-		background-color: $superlightgray;
-	}
+	// &:nth-of-type(even) a {
+	// 	background-color: $superlightgray;
+	// }
 	a {
 		display: block;
+		font-size: rem(13);
 		padding-top: rem(10);
 		padding-bottom: rem(7); // 3px less is optical center
-		padding-left: 1.5rem;
-		padding-right: 1.5rem;
 		color: $text-color;
+		// padding-left: 1.5rem;
+		// padding-right: 1.5rem;
 		&:hover {
 			text-decoration: none;
+			.Track-title {
+				text-decoration: underline;
+			}
 		}
 	}
 	p {
@@ -25,3 +32,32 @@
 	}
 }
 
+// Grid view - work in progress, not really pretty yet
+.Grid {
+	list-style: none;
+	padding-left: 0;
+	li {
+		display: inline-block;
+		margin-right: rem(12);
+		margin-bottom: 1rem;
+	}
+	a {
+		@extend %patron-bold;
+		display: block;
+		min-width: 10rem;
+		padding: 2rem 1rem 0.6rem;
+
+		// background: linear-gradient(hsl(0, 100%, 100%), hsla(0, 0%, 20%, 0.10));
+		background: hsl(0, 100%, 100%);
+		color: $primary-color;
+		border-radius: 3px;
+		box-shadow: 1px 1px 0 0 hsla(0, 0%, 0%, 0.2);
+		border: 1px solid hsla(255, 4%, 55%, 0.2);
+		letter-spacing: 0.02em;
+
+		&:hover {
+			box-shadow: 1px 1px 0 0 hsla(0, 0%, 0%, 0.3);
+			border: 1px solid hsla(255, 4%, 55%, 0.4);
+		}
+	}
+}

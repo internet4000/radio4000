@@ -1,11 +1,8 @@
 <h2>Playlists</h2>
-<p class="is-inactiveText">Those are all the existing playlists on Radio4000.</p>
-<ul class="List">
+<p class="is-inactiveText">Explore music, find songs you never knew you like. Click! Play! Buy! Give us your money! Here'll you find every playlist on Radio4000.</p>
+
+<ul class="Grid">
 	{{#each playlist in arrangedContent}}
-		<li class="List-item">
-			{{#link-to "playlist" playlist}}
-				{{playlist.title}}
-			{{/link-to}}
-		</li>
+		<li>{{#link-to "playlist" playlist}}{{playlist.title}}{{/link-to}}</li>
 	{{/each}}
 </ul>

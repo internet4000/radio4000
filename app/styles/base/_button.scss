@@ -15,12 +15,13 @@
 	// Button styling
 	@extend %patron-bold;
 	font-size: rem(13);
-	// padding: em(8,12) em(8,12) em(7,12); // 30px height look sbetter but not consistent
+	padding: em(8,12) em(8,12) em(7,12); // 30px height look sbetter but not consistent
 	// padding: em(10,12) em(8,12) em(9,12); // 34px height as inputs
-	padding: em(10,13) em(8,13) em(8,13);
+	// padding: em(10,13) em(8,13) em(8,13);
 	background-color: $slightgray;
 	background-image: linear-gradient(to bottom, white 60%, transparent);
 	color: $text-color;
+	box-shadow: hsla(0, 0%, 0%, 0.2) 1px 1px 0 0;
 	-webkit-font-smoothing: antialiased;
 
 	&:hover,
@@ -69,6 +70,7 @@
 	border-color: transparent;
 	background-image: none;
 	background-color: transparent;
+	box-shadow: none;
 	text-align: left;
 	&:hover,
 	&:focus {
@@ -82,6 +84,7 @@
 	background-image: none;
 	background-color: white;
 	text-align: left;
+	box-shadow: none;
 	&:hover,
 	&:focus {
 		background-image: none;

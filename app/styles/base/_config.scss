@@ -11,7 +11,7 @@ $yellow:         hsl(60, 100%, 70%);
 $beautifulblue:  hsl(255, 95%, 39%);
 $blue:           hsl(210, 75%, 50%);
 $lightblue:      lighten($blue, 10%);
-$red:            hsl(0, 100%, 50%);
+$red:            hsl(0, 75%, 50%);
 $green:          hsl(110, 85%, 35%);
 $darkgreen: 	  hsl(110, 85%, 25%);
 $coolcolor: 	  hsl(173, 32%, 45%);
@@ -20,17 +20,19 @@ $darkteal: 		  hsl(187, 75%, 25%);
 // Grayscale
 $bleach:         hsl(72, 100%, 97%);
 $black:          hsl(0, 0%, 10%);
+$darkgray:		  hsl(0, 0%, 30%);
 $gray:           hsl(0, 0%, 50%);
 $lightgray:      hsl(0, 0%, 85%);
 $slightgray:     hsl(0, 0%, 95%);
 $superlightgray: hsl(0, 0%, 98%);
 
 // Color definitions
-$bg-color: hsl(40, 30%, 94%);
+$primary-color: $beautifulblue;
+$bg-color: hsl(40, 25%, 96%);
 $text-color: $black;
 $text-color-invert: $slightgray;
-$link-color: $blue;
-$primary-color: $beautifulblue;
+
+$link-color: $red;
 
 // Good looking easings for animation
 $easing:  cubic-bezier(0.165,  0.84,  0.4,   1); // fast, good looking

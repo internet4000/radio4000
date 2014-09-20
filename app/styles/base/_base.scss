@@ -22,40 +22,6 @@ a:active {
 	text-decoration: underline;
 }
 
-// Headers
-h1,h2,h3,h4 {
-	@extend %patron-bold;
-	line-height: 1.1;
-}
-h1,
-h2,
-h3,
-h4 {
-	line-height: 1.1;
-}
-h1 {
-	font-size: rem(30);
-	a {
-		color: $text-color;
-	}
-}
-h2 {
-	font-size: rem(20);
-}
-h3 {
-	font-size: 1rem;
-}
-h4 {
-	font-size: rem(14);
-	text-transform: uppercase;
-	letter-spacing: 0.05em;
-}
-%text-bg {
-	background: linear-gradient(hsl(17, 100%, 50%), hsl(278, 90%, 42%));
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-}
-
 // Set a consistent margin between elements
 h1,
 h2,
@@ -80,9 +46,34 @@ hr {
     margin: 0 0 1rem;
 }
 
-// Lists
-li {
+// Headers
+h1,h2,h3,h4 {
+	@extend %patron-bold;
+	line-height: 1.1;
+}
+h1 {
+	font-size: rem(30);
+	a {
+		color: $text-color;
+	}
+}
+h2 {
+	font-size: rem(20);
+	margin-bottom: 0.5rem;
+}
+h3 {
+	font-size: 1rem;
+	margin-bottom: 0;
+}
+h4 {
 	font-size: rem(13);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+%text-bg {
+	background: linear-gradient(hsl(17, 100%, 50%), hsl(278, 90%, 42%));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 // Responsive media

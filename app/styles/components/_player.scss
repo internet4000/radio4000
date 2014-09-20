@@ -6,11 +6,11 @@
 .Playback {
 	position: fixed;
 	z-index: 1;
-	top: 0;
+	bottom: 0;
 	right: 0;
 	left: 0;
 	transition: all 400ms $easing;
-	transform: translateY(-100%);
+	transform: translateY(100%);
 	&.is-active {
 		transform: translateY(0);
 	}
@@ -18,50 +18,50 @@
 
 // Controls
 .Controls {
-	padding: rem(4) 1rem rem(4) 10.3rem;
+	padding: 0.6rem 1rem;
 	overflow: auto;
 	background-color: $primary-color;
+	background: linear-gradient($primary-color, hsl(268, 90%, 42%));
 	color: $text-color-invert;
-	border-bottom: 1px solid hsl(0, 0%, 60%);
+}
+.Controls-title {
+	margin-top: 0.5rem;
+	margin-bottom: 0.25rem;
+	text-align: center;
 }
 .Controls-buttons {
-	float: left;
-	margin-right: 0.5rem;
+	text-align: center;
+	a:hover {
+		text-decoration: none;
+	}
 }
 
 // Container for the embeds
 .Player {
+	width: 150px;
+	height: 150px;
+	max-width: 100%;
+	max-height: 100%;
 	background-color: darken($primary-color,12%);
-	// width: 210px;
-	height: 80px;
-
 	// animate
-	margin-top: -80px;
-	transition: margin 600ms $easing;
+	transform: translateX(-100%);
+	transition: transform 600ms $easing, width 600ms $easing, height 600ms $easing;
 	&.is-maximized {
-		margin-top: 0;
+		transform: translateX(0);
+		width: 400px;
+		height: 400px;
 	}
-	// the youtbe iframe
+	// the youtube iframe
 	iframe {
-		max-width: 210px;
 		width: 100%;
 		height: 100%;
 	}
 }
-.Controls-state {
-	margin-right: 0.5rem;
-	@media (max-width: $layout-s) {
-		display: none;
-	}
-}
-.Controls-title,
-.Controls-state {
-	position: relative;
-	top: 0.65em;
-}
+
+// Round buttons used on player etc.
 .PlayerBtn {
-	height: 35px;
-	width: 35px;
+	height: 3rem;
+	width: 3rem;
 	border-radius: 50%;
 	border: 0;
 	padding: 6px 0 0 3px;
@@ -72,3 +72,7 @@
 		background-color: darken($primary-color,16%);
 	}
 }
+.PlayerBtn--playlist { padding-left: 0; }
+.PlayerBtn--toggle { padding: 4px 0 0 0; }
+.PlayerBtn--pause { padding: 6px 0 0 3px; }
+.PlayerBtn--play { padding: 6px 0 0 4px; }

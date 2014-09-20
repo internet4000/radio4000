@@ -36,6 +36,7 @@ textarea {
 
 // Form design should be tigther than inputs alone
 .Form {
+	max-width: 36rem;
 	margin-bottom: 0.5rem; // to make total bottom 1rem
 	input[type='text'],
 	input[type='email'],
@@ -54,3 +55,19 @@ label {
 	font-size: rem(13);
 	color: $gray;
 }
+
+
+// Shared styles between the forms for adding a track and editing a track
+.AddTrack,
+.EditTrack {
+	margin-bottom: 2rem;
+	padding: 0.5rem;
+	background-color: $yellow;
+	border: 1px solid hsla(0, 0%, 0%, 0.15);
+	border-radius: 3px;
+
+	.Form {
+		margin-bottom: 0;
+	}
+}
+.EditTrack {}

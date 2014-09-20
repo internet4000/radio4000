@@ -1,8 +1,10 @@
 {{#if playlists}}
 	<div class="Box">
-		Your playlist:
+		<h2>Your playlist</h2>
+		<p>This is your own playlist.</p>
+		<ul class="Grid">
 			{{#each playlists}}
-					{{#link-to "playlist" this}} <span>{{title}}</span> {{/link-to}}
+				<li>{{#link-to "playlist" this}}{{title}}{{/link-to}}</li>
 			{{/each}}
 		</ul>
 	</div>
@@ -10,17 +12,12 @@
 
 {{#if favoritePlaylists}}
 	<div class="Box">
-		<h3>Your favorites</h3>
-		<ul class="List">
+		<h2>Your favorites</h2>
+		<p>Add any list you enjoy as a favorite and we'll add it here to your collection.</p>
+		<ul class="Grid">
 			{{#each favoritePlaylists}}
-				<li>
-					{{#link-to "playlist" this}}
-						<span>{{title}}</span>
-					{{/link-to}}
-				</li>
+				<li>{{#link-to "playlist" this}}{{title}}{{/link-to}}</li>
 			{{/each}}
 		</ul>
-	{{else}}
-		<p class="is-inactiveText">Your favorite playlists will be shown here.</p>
 	</div>
 {{/if}}

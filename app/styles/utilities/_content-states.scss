@@ -4,7 +4,8 @@
 
 
 // some informative text for an inactive area
+// well used right after an h2
 .is-inactiveText {
-	color: $gray;
-	font-style: italic;
+	max-width: 30rem;
+	color: $darkgray;
 }

@@ -2,9 +2,9 @@
 
 	<header class="Playlist-header Box">
 		<h1 class="Playlist-title">{{title}}</h1>
-		<p class="Playlist-description">
+		<div class="Playlist-desc">
 			{{body}}
-		</p>
+		</div>
 
 		{{#if auth.authed}}
 			{{#if favorited}}
@@ -21,13 +21,12 @@
 					{{!-- {{input value=slug placeholder="Slug"}} --}}
 					{{!-- {{textarea value=image placeholder="Image URL"}} --}}
 					{{textarea value=body placeholder="Description"}}
-					<button class="Btn Btn--primary" type="submit">Save playlist</button>
+					<button class="Btn Btn--primary" type="submit">Save</button>
 					<button class="Btn Btn--text" {{action 'cancel'}}>Cancel</button>
-					<button class="Btn Btn--text Btn--danger" {{action 'tryDelete'}}>Delete playlist</button>
+					<button class="Btn Btn--text Btn--danger" {{action 'tryDelete'}}>Delete</button>
 				</form>
 			{{else}}
-				<p><button class="Btn Btn--edit" {{action 'edit'}}>Edit playlist</button></p>
-
+				<p><button class="Btn Btn--edit" {{action 'edit'}}>Edit</button></p>
 			{{/if}}
 		{{/if}}
 	</header>
