@@ -35,8 +35,8 @@
 	}
 	&:disabled,
 	&.is-disabled {
-	    cursor: default;
-	    opacity: 0.75;
+		cursor: default;
+		opacity: 0.75;
 	}
 }
 
@@ -64,8 +64,6 @@
 	padding: 0.5em 0.7em 0.3em;
 }
 
-
-
 // Buttons that looks like text
 .Btn--text {
 	border-color: transparent;
@@ -90,8 +88,7 @@
 	}
 }
 
-
-
+// Button groups
 .BtnGroup {
 	.Btn {
 		margin-right: -1px;

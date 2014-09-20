@@ -68,6 +68,7 @@
 	background-color: transparent;
 	&:hover,
 	&:focus {
+		outline: none;
 		background-color: darken($primary-color,16%);
 	}
 }
