@@ -1,29 +1,28 @@
 /*!
 	RADIO 4000
-
 	by Hugo Vieilledent and Oskar Rough Mosumgaard
 */
 
-// Utilities
+// 1. Utilities (mixins and functions)
 @import 'utilities/clearfix';
 @import 'utilities/functions';
-@import 'utilities/content-states';
-@import 'utilities/box';
 
-// Base
+// 2. Base (config and everything else without classes)
 @import 'base/normalize-custom';
 @import 'base/config';
 @import 'base/base';
 @import 'base/form';
 @import 'base/button';
 
-// Layout
-@import 'layout/layout';
-@import 'layout/home';
-
-// Components
+// 3. Components (reusable components)
+@import 'utilities/content-states';
+@import 'utilities/box';
 @import 'components/logo';
 @import 'components/list';
 @import 'components/playlist';
 @import 'components/track';
 @import 'components/player';
+
+// 4. Layout (site and page layout)
+@import 'layout/layout';
+@import 'layout/home';
