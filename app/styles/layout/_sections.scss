@@ -17,7 +17,7 @@
 
 	// Title
 	.Title {
-		color: white;
+		color: $text-color;
 		text-align: center;
 	}
 
@@ -43,7 +43,9 @@
 		padding-bottom: 2em;
 		margin-left: auto;
 		margin-right: auto;
-		background-color: $secondary-color;
+		border-style: solid;
+		border-width: 1px;
+		border-color: $secondary-color;
 		max-width: 20em;
 		transition: 200ms all ease-in-out;
 
@@ -58,21 +60,22 @@
 	a:hover {
 		text-decoration: none;
 		.Section-inner {
-			background-color: darken($primary-color, 10%);
+			background-color: lighten($primary-color, 60%);
 			box-shadow: $lightgray 4px 6px 30px;
 		}
 	}
 	a:active {
 		text-decoration: none;
 		background-color: $secondary-color;
-		p {
-			color: white;
-		}
 	}
 
 	.Title {
 		font-size: $font-25;
 		margin-bottom: 20px;
+		-webkit-font-smoothing:antialiased;
+	}
+	.Btn {
+		background-color: $green;
 	}
 }
 

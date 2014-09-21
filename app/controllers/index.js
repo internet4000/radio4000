@@ -7,6 +7,11 @@ export default Ember.ArrayController.extend({
 	// 	return auth.authed && !auth.user.playlists;
 	// }.property('auth'),
 
+	deactivate: function() {
+		// reset show login each time we enter index
+		this.set('showLogin', false);
+	},
+
 	// pass the actions to the auth controller
 	actions: {
 		login: function(provider) {
