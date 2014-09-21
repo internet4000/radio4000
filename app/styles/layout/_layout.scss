@@ -17,6 +17,7 @@ body {
 }
 // we scroll this instead
 .SiteMain {
+	// for the mobile app effect
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -26,6 +27,10 @@ body {
 	-webkit-overflow-scrolling: touch; // not sure, need to test
 	padding-top: 4rem; // space for the header
 	padding-bottom: 8rem; // space for the fixed bottom player
+
+	// make the app be small
+	max-width: 50rem;
+	margin: 0 auto;
 }
 
 // Use this when you need a bit of extra space
@@ -38,4 +43,8 @@ body {
 // Use this
 .Constrained {
 	max-width: 40em;
+}
+
+.Home {
+	margin-top: 60px;
 }

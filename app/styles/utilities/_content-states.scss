@@ -7,9 +7,20 @@
 // well used right after an h2
 .is-inactiveText {
 	max-width: 30rem;
-	color: $darkgray;
+	color: $gray;;
+	a {
+		text-decoration: underline;
+		color: $gray;
+	}
 }
 
 .is-highlighted {
 	text-decoration: underline;
+	padding-right: 3px;
+	&.Title {
+		font-size: $font-20;
+		font-weight: 400;
+		display: inline-block;
+		margin-bottom: 0;
+	}
 }

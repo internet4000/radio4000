@@ -1,11 +1,11 @@
-<p class="Manchet">Dashboard, aka the control center! You are here in command.</p>
+<p class="Manchet"><span class="is-highlighted">Dashboard</span>, aka the control center! You are here in command.</p>
 
 <section>
 	<div class="Section Section--half">
 		<div class="Section-inner">
 			{{#if playlists}}
-				<h2>Your playlist</h2>
-				<p>This is your own playlist.</p>
+				<h2>Your Radio</h2>
+				<p class="is-inactiveText">Curate music and share your radio to friends and beyond.</p>
 				<ul class="Grid">
 					{{#each playlists}}
 						<li>{{#link-to "playlist" this}}{{title}}{{/link-to}}</li>
@@ -29,13 +29,14 @@
 	<div class="Section Section--full">
 		<h2>Your favorites</h2>
 		{{#if favoritePlaylists}}
+			<p class="is-inactiveText">Radios you have saved as favorite. You can also {{#link-to 'playlists'}}explore other radios{{/link-to}}.</p>
 			<ul class="Grid">
 				{{#each favoritePlaylists}}
 					<li>{{#link-to "playlist" this}}{{title}}{{/link-to}}</li>
 				{{/each}}
 			</ul>
 		{{else}}
-			<p>You haven't add any playlist to your favorite yet. {{#link-to 'playlists'}}Explore other radios{{/link-to}}.</p>
+			<p class="is-inactiveText">You haven't add any playlist to your favorite yet. {{#link-to 'playlists'}}Explore other radios{{/link-to}}.</p>
 		{{/if}}
 	</div>
 </section>

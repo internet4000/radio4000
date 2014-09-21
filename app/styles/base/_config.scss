@@ -1,4 +1,7 @@
-// Typography
+/**
+ * Typography
+ **/
+
 $base-font-size: 15px;
 $base-line-height: (20/15);
 
@@ -8,7 +11,10 @@ $base-line-height: (20/15);
 %patron-bold { font-family: "Patron Bold", sans-serif; font-weight: bold; }
 %patron-black-italic { font-family: "Patron Black Italic", sans-serif; font-weight:bold; font-style:italic; }
 
-// Colors
+/**
+ * Colors
+ **/
+
 $yellow:         hsl(60, 100%, 70%);
 $beautifulblue:  hsl(255, 95%, 39%);
 $blue:           hsl(210, 75%, 50%);
@@ -37,13 +43,27 @@ $text-color-invert: $slightgray;
 
 $link-color: $red;
 
+/**
+ * Font sizes
+ **/
+
+$font-20: 20px;
+
+/**
+ * Easing and animations
+ **/
+
 // Good looking easings for animation
 $easing:  cubic-bezier(0.165,  0.84,  0.4,   1); // fast, good looking
 // $easing2: cubic-bezier(0.145,  1.05,  0.4,   1.1); // + spring physics
 // $easing4: cubic-bezier(0.770,  0,     0.175,  1); // ??
 $easing5: cubic-bezier(.3, 0, 0, 1.3); // nice for things that pop up (dropdown etc)
 
-// Layout: Breakpoints
+
+/**
+ * Layout: Breakpoints
+ **/
+
 $layout-s: rem(450);
 $layout-m: rem(650);
 $layout-ml: rem(750);

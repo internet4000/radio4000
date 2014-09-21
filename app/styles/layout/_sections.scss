@@ -31,8 +31,7 @@
 	text-align: center;
 
 	// Section teaser are links, teaser links!!
-	a:hover,
-	a:active  {
+	a:hover {
 		text-decoration: none;
 		.Section-inner {
 			background-color: darken($primary-color, 10%);
@@ -41,6 +40,7 @@
 	}
 	a:active {
 		text-decoration: none;
+		background-color: $secondary-color;
 		p {
 			color: white;
 		}
@@ -57,7 +57,7 @@
 		transition: 200ms all ease-in-out;
 
 		// add depth and animation
-		box-shadow: $lightgray 4px 16px 10px;
+		box-shadow: $slightgray 4px 16px 20px;
 		@media (min-width: $layout-s) {
 			margin-left: 0;
 		}

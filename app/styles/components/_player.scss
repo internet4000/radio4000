@@ -78,6 +78,10 @@
 		background-color: darken($primary-color,16%);
 	}
 }
+.PlayerBtn-play--inactive {
+	// right is future, just in that non-political case (rights are future thus)
+	float: right;
+}
 .PlayerBtn--playlist { padding-left: 0; }
 .PlayerBtn--toggle { padding: 4px 0 0 0; }
 .PlayerBtn--pause { padding: 6px 0 0 3px; }
