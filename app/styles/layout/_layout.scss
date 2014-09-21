@@ -26,17 +26,17 @@ body {
 	left: 0;
 	overflow: auto;
 	-webkit-overflow-scrolling: touch; // not sure, need to test
-	padding-top: 5rem; // space for the header
-	@media (min-width: $layout-s) {
+	padding-top: 4rem; // space for the header
+	@media (min-width: $layout-m) {
 		padding-top: 6rem;
 	}
-	padding-bottom: 8rem; // space for the fixed bottom player
+	padding-bottom: 5rem; // space for the fixed bottom player
+}
 
-	.Container {
-		// make the app be small, not on .SiteMain to keep the mobile touch improvement
-		max-width: 50rem;
-		margin: 0 auto;
-	}
+// make the app be small, not on .SiteMain to keep the mobile touch improvement
+.Container {
+	max-width: 50rem;
+	margin: 0 auto;
 }
 
 // Use this when you need a bit of extra space
@@ -49,4 +49,6 @@ body {
 // Use this
 .Constrained {
 	max-width: 40em;
+	margin-left: auto;
+	margin-right: auto;
 }
