@@ -4,6 +4,8 @@
 
 <main class="SiteMain" {{bind-attr class="auth.authed:is-authed"}}>
 	{{outlet}}
+
+	{{partial 'navigation'}}
 </main>
 
 <aside class="SiteAside">

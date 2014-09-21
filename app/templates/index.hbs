@@ -29,11 +29,7 @@
 	{{/unless}}
 
 	{{#if auth.authed}}
-		<section class="Section">
-			{{render 'user' auth.user}}
-		</section>
+		{{render 'user' auth.user}}
 	{{/if}}
 
-
-	{{partial 'navigation'}}
 </div>
