@@ -14,6 +14,7 @@ body {
 	right: 0;
 	bottom: 0;
 	left: 0;
+	overflow: hidden;
 }
 // we scroll this instead
 .SiteMain {
@@ -25,12 +26,9 @@ body {
 	left: 0;
 	overflow: auto;
 	-webkit-overflow-scrolling: touch; // not sure, need to test
-	padding-top: 4rem; // space for the header
-	@media (min-width: $layout-m) {
+	padding-top: 5rem; // space for the header
+	@media (min-width: $layout-s) {
 		padding-top: 6rem;
-	}
-	@media (min-width: $layout-l) {
-		padding-top: 7rem;
 	}
 	padding-bottom: 8rem; // space for the fixed bottom player
 

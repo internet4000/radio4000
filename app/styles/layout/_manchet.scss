@@ -3,10 +3,9 @@
  **/
 
 .Manchet {
-	text-align: center;
+	font-size: rem($font-20);
 	max-width: 20em;
 	margin-left: auto;
 	margin-right: auto;
-	font-size: rem($font-20);
-	margin-top: 50px;
+	text-align: center;
 }
