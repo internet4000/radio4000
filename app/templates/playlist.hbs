@@ -6,14 +6,6 @@
 			{{body}}
 		</div>
 
-		{{#if auth.authed}}
-			{{#if favorited}}
-				<p><a href="#" class="" {{action 'removeFavorite'}}>remove from favorite</a></p>
-			{{else}}
-				<p><a href="#" class="" {{action 'favorite'}}>add to favorite</a></p>
-			{{/if}}
-		{{/if}}
-
 		{{#if canEdit}}
 			{{#if isEditing}}
 				<form class="Form" {{action "save" on="submit"}}>
@@ -32,9 +24,9 @@
 
 		{{#if auth.authed}}
 			{{#if favorited}}
-				<p>Saved to favorites.</p>
+				<p><a href="#" class="" {{action 'removeFavorite'}}>remove from favorite</a></p>
 			{{else}}
-				<p><button class="Btn Btn--favorite" {{action 'favorite'}} title="Add to favorites">Favorite</button></p>
+				<p><a href="#" class="" {{action 'favorite'}}>add to favorite</a></p>
 			{{/if}}
 		{{/if}}
 	</header>
