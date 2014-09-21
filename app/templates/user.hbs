@@ -5,7 +5,7 @@
 	<div class="Section">
 		<div class="Section-inner">
 			{{#if playlists}}
-				<h2 class="Title">Your radio</h2>
+				<h2>Your radio</h2>
 				<p class="is-inactiveText">Curate music, enjoy your own taste or share it with friends and beyond.</p>
 				<ul class="Grid">
 					{{#each playlists}}
@@ -20,21 +20,19 @@
 		</div>
 	</div>
 
-	<div class="Section">
-		<div class="Section-inner">
-			<h2 class="Title">Your favorites</h2>
-			{{#if favoritePlaylists}}
-				<p class="is-inactiveText">Radios you have saved as favorite. You can also {{#link-to 'playlists'}}explore other radios{{/link-to}}.</p>
-				<ul class="Grid">
-					{{#each favoritePlaylists}}
-						<li>{{#link-to "playlist" this}}{{title}}{{/link-to}}</li>
-					{{/each}}
-				</ul>
-			{{else}}
-				<p class="is-inactiveText">You do not have any favorite playlist yet? {{#link-to 'playlists'}}Explore other radios{{/link-to}}.</p>
-			{{/if}}
-		</div>
-	</div>
+	<section class="Section">
+		<h2>Your favorites</h2>
+		{{#if favoritePlaylists}}
+			<p class="is-inactiveText">Quick access to the best channels. {{#link-to 'playlists'}}Explore other channels{{/link-to}}.</p>
+			<ul class="Grid">
+				{{#each favoritePlaylists}}
+					<li>{{#link-to "playlist" this}}{{title}}{{/link-to}}</li>
+				{{/each}}
+			</ul>
+		{{else}}
+			<p class="is-inactiveText">You haven't addded any favorites yet. {{#link-to 'playlists'}}Explore other channels{{/link-to}}.</p>
+		{{/if}}
+	</section>
 
 	{{!-- <div class="Section Section--half">
 		<div class="Section-inner">
@@ -42,18 +40,4 @@
 			<p class="is-inactiveText">Here will be displayed the last playlist you've been browsing.</p>
 		</div>
 	</div> --}}
-</section>
-
-<section class="Section">
-	<h2>Your favorites</h2>
-	{{#if favoritePlaylists}}
-		<p class="is-inactiveText">Quick access to the best channels. {{#link-to 'playlists'}}Explore other channels{{/link-to}}.</p>
-		<ul class="Grid">
-			{{#each favoritePlaylists}}
-				<li>{{#link-to "playlist" this}}{{title}}{{/link-to}}</li>
-			{{/each}}
-		</ul>
-	{{else}}
-		<p class="is-inactiveText">You haven't addded any favorites yet. {{#link-to 'playlists'}}Explore other channels{{/link-to}}.</p>
-	{{/if}}
 </section>
