@@ -2,7 +2,6 @@
  * Playlist
  */
 
-
 .Playlist {}
 .Playlist-header {
 	text-align: center;
@@ -10,11 +9,9 @@
 		float: right;
 	}
 }
-.Playlist-body {}
+.Playlist-title {
+}
 .Playlist-desc {
 	margin-bottom: 1rem;
 }
-
-.Playlist-title {
-	text-align: center;
-}
+.Playlist-body {}

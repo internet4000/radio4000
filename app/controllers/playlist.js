@@ -41,6 +41,15 @@ export default Ember.ObjectController.extend({
 					});
 				});
 
+				// @todo
+				// remove the playlist as favorite
+				// Ember.RSVP.Promise.cast(user.get('favoritePlaylists')).then(function(favs) {
+				// 	favs.removeObject(playlist);
+				// 	user.save().then(function() {
+				// 		Ember.debug('Success: playlist removed from user');
+				// 	});
+				// });
+
 				// delete the playlist itself
 				playlist.destroyRecord();
 				Ember.debug('Playlist deleted');
