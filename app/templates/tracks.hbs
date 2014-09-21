@@ -12,6 +12,9 @@
 {{/if}}
 
 <ul class="List">
+	{{#unless arrangedContent}}
+		{{partial loading}}
+	{{/unless}}
 	{{#each track in arrangedContent}}
 	{{!-- {{#reverse track in model}} --}}
 		<li>{{x-track
