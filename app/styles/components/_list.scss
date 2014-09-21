@@ -15,11 +15,9 @@
 	a {
 		display: block;
 		font-size: rem(13);
-		padding-top: rem(10);
-		padding-bottom: rem(7); // 3px less is optical center
+		line-height: normal;
+		padding: em(14,13) 1rem em(12,13); // 40px height
 		color: $text-color;
-		// padding-left: 1.5rem;
-		// padding-right: 1.5rem;
 		&:hover {
 			text-decoration: none;
 			.Track-title {
