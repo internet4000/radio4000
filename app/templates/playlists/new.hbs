@@ -4,8 +4,8 @@
 	</section>
 
 	<form class="Form Form--newPlaylist">
-		{{input value=title placeholder="Playlist title"}}
-		{{textarea value=body placeholder="Describe your playlist"}}
+		{{input value=title placeholder='Title of your radio (could be "The Pirate Radio"'}}
+		{{textarea value=body placeholder='Description of your playlist (why not "DETROIT k33p it r34l?" '}}
 		{{!-- {{input value=slug placeholder="Choose a URL for your playlist"}} --}}
 		<button class="Btn Btn--primary" {{action "create"}}>Create</button>
 	</form>
