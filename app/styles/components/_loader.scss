@@ -10,10 +10,6 @@
 		height: 100%;
 	}
 
-	// centered
-	margin-left: auto;
-	margin-right: auto;
-
 	// on top of other things
 	position: relative;
 	z-index: 1;
@@ -23,4 +19,9 @@
 	svg rect {
 		fill: #FF6700;
 	}
+}
+
+.Loader--center {
+	margin-left: auto;
+	margin-right: auto;
 }
