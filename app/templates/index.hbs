@@ -1,18 +1,9 @@
-<article class="Section Home">
-	{{!-- <h1>Radio4000</h1> --}}
-	<p class="Manchet">Create your own <span class="is-highlighted">radio</span>, share your music taste and listen to your friend's</p>
-</article>
-
-{{#if auth.authed}}
-	{{#unless auth.user.playlists}}
-		<section class="Section">
-			<h2>Create your playlist</h2>
-			<p>{{#link-to "playlists.new"}}<button class="Btn">Get your own playlist</button>{{/link-to}}</p>
-		</section>
-	{{/unless}}
-{{/if}}
-
 {{#unless auth.authed}}
+
+	<article class="Section Home">
+		<p class="Manchet">Create your own <span class="is-highlighted">radio</span>, share your music tastes and listen to your friend's</p>
+	</article>
+
 	<section class="Section Section--teaser">
 	<a href="#" {{action 'showLogin'}}>
 			<div class="Section-inner">
@@ -29,6 +20,15 @@
 			</div>
 		</a>
 	</section>
+
+	<section class="Section Section--teaser">
+		{{#link-to 'playlists'}}
+			<div class="Section-inner">
+				<h2 class="Title">Start listening</h2>
+				<p>See all playlists</p>
+			</div>
+		{{/link-to}}
+	</section>
 {{/unless}}
 
 {{#if auth.authed}}
@@ -36,15 +36,6 @@
 		{{render 'user' auth.user}}
 	</section>
 {{/if}}
-
-<section class="Section Section--teaser">
-	{{#link-to 'playlists'}}
-		<div class="Section-inner">
-			<h2 class="Title">Start listening</h2>
-			<p>See all playlists</p>
-		</div>
-	{{/link-to}}
-</section>
 
 
 {{partial 'navigation'}}

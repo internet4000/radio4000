@@ -7,11 +7,11 @@
  * Logged in effects
  **/
 
-.is-authed {
-	.Manchet {
-		display: none;
-	}
-}
+// .is-authed {
+// 	.Manchet {
+// 		display: none;
+// 	}
+// }
 
 /**
  * Section teasers for first time users
@@ -20,13 +20,21 @@
 .Section--teaser {
 	text-align: center;
 
-	a:hover {
+	a:hover,
+	a:active  {
 		text-decoration: none;
 		.Section-inner {
 			background-color: darken($primary-color, 10%);
 			box-shadow: $lightgray 4px 6px 30px;
 		}
 	}
+	a:active {
+		text-decoration: none;
+		p {
+			color: white;
+		}
+	}
+
 
 	@media (min-width: $layout-s) {
 		width: 50%;
@@ -63,3 +71,6 @@
 	}
 }
 
+/**
+ * Login teaser
+ **/
