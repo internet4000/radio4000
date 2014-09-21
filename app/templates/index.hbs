@@ -1,11 +1,11 @@
 {{#unless auth.authed}}
 
 	<article class="Section Home">
-		<p class="Manchet"><span class="is-highlighted">Create your radio</span>, share your music tastes and listen to your friend's</p>
+		<p class="Manchet"><a href="#" class="is-highlighted" {{ action 'showLogin' true }}>Create your radio</a>, share your music tastes and listen to your friend's</p>
 	</article>
 
 	<section class="Section Section--half Section--teaser">
-	<a href="#" {{action 'showLogin'}}>
+		<a href="#" {{action 'showLogin' true}}>
 			<div class="Section-inner">
 				<h2 class="Title">Create your Radio</h2>
 				{{#if showLogin}}
