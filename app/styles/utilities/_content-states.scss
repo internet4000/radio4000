@@ -13,16 +13,22 @@
 	}
 }
 
+// is highlighted
 .is-highlighted {
-	text-decoration: underline;
+	text-decoration: none;
 	padding-right: 3px;
+	color: $red;
 	&.Title {
 		font-size: $font-20;
 		font-weight: 400;
 		display: inline-block;
 		margin-bottom: 0;
 	}
-	a {
-		color: $text-color;
-	}
+}
+a.is-highlighted:active,
+a.is-highlighted:hover,
+a.is-highlighted:visited {
+	color: $text-color;
+	cursor: pointer;
+	text-decoration: none;
 }
