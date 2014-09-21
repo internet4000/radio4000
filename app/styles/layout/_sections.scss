@@ -2,10 +2,16 @@
  * Sections
  **/
 
-/**
- * Section half
- **/
+ // Use this when you need a bit of extra space
+.Section {
+	overflow: auto;
+	clear: both;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	margin-bottom: 2rem;
+}
 
+// Two column section
 .Section--half {
 	@media (min-width: $layout-s) {
 		width: 50%;
@@ -13,11 +19,7 @@
 	}
 }
 
-// &:first-of-type {
-// 	.Box-inner {
-// 		@media (min-width: $layout-s) {
-// 			margin-left: auto;
-// 			margin-right: 0;
-// 		}
-// 	}
-// }
+// Sections without extra bottom margin
+.Section--noBottom {
+	margin-bottom: 0;
+}
