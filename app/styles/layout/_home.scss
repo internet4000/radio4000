@@ -1,20 +1,7 @@
-.Home {
-	text-align: center;
-	// bigger title
-	h1 {
-		// @extend %patron-black-italic;
-		@extend %text-bg;
-		font-size: 40px;
-		margin-bottom: 0.5rem;
-		letter-spacing: -0.03em;
-	}
-	.Manchet {
-		max-width: 20em;
-		margin-left: auto;
-		margin-right: auto;
+/**
+ * Home
+ **/
 
-	}
-}
 
 /**
  * Logged in effects
@@ -33,6 +20,14 @@
 .Section--teaser {
 	text-align: center;
 
+	a:hover {
+		text-decoration: none;
+		.Section-inner {
+			background-color: darken($primary-color, 10%);
+			box-shadow: $lightgray 4px 6px 30px;
+		}
+	}
+
 	@media (min-width: $layout-s) {
 		width: 50%;
 		float: left;
@@ -43,17 +38,27 @@
 		color: white;
 	}
 	.Section-inner {
-		padding-left: 1em;
-		padding-right: 1em;
 		padding-top: 2em;
 		padding-bottom: 2em;
 		background-color: $secondary-color;
 		cursor: pointer;
 		max-width: 20em;
+		margin-left: auto;
+		margin-right: auto;
+		transition: 200ms all ease-in-out;
+
+		// add depth
+		box-shadow: $lightgray 4px 16px 10px;
+		@media (min-width: $layout-s) {
+			margin-left: 0;
+		}
 	}
 	&:first-of-type {
 		.Section-inner {
-			margin-left: auto;
+			@media (min-width: $layout-s) {
+				margin-left: auto;
+				margin-right: 0;
+			}
 		}
 	}
 }

@@ -1,6 +1,6 @@
 <article class="Section Home">
 	{{!-- <h1>Radio4000</h1> --}}
-	<p class="Manchet">The perfect way to curate, play and share your own playlist of YouTube tracks.</p>
+	<p class="Manchet">Create your own <span class="is-highlighted">radio</span>, share your music taste and listen to your friend's</p>
 </article>
 
 {{#if auth.authed}}
@@ -14,18 +14,20 @@
 
 {{#unless auth.authed}}
 	<section class="Section Section--teaser">
-		<div class="Section-inner">
-			<h2 class="Title">Get your own playlist</h2>
-			{{#if showLogin}}
-				<p>Please choose how to log in.</p>
-				<p>
-					<button class="Btn Btn--primary" {{ action 'login' 'google' this}}>With Google</button>
-					<button class="Btn Btn--primary" {{ action 'login' 'facebook' this}}>With Facebook</button>
-				</p>
-			{{else}}
-				<p><a href="#" {{action 'showLogin'}}>Get started or log in</a></p>
-			{{/if}}
-		</div>
+	<a href="#" {{action 'showLogin'}}>
+			<div class="Section-inner">
+				<h2 class="Title">Get your own playlist</h2>
+				{{#if showLogin}}
+					<p>Please choose how to log in.</p>
+					<p>
+						<button class="Btn Btn--primary" {{ action 'login' 'google' this}}>With Google</button>
+						<button class="Btn Btn--primary" {{ action 'login' 'facebook' this}}>With Facebook</button>
+					</p>
+				{{else}}
+					<p>Get started or log in</p>
+				{{/if}}
+			</div>
+		</a>
 	</section>
 {{/unless}}
 
@@ -36,10 +38,12 @@
 {{/if}}
 
 <section class="Section Section--teaser">
-	<div class="Section-inner">
-		<h2 class="Title">Start listening</h2>
-		<p>{{#link-to 'playlists'}}See all playlists{{/link-to}}</p>
-	</div>
+	{{#link-to 'playlists'}}
+		<div class="Section-inner">
+			<h2 class="Title">Start listening</h2>
+			<p>See all playlists</p>
+		</div>
+	{{/link-to}}
 </section>
 
 
