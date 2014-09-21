@@ -2,16 +2,45 @@
  * Box, yep all about boxes
  */
 
-.Box {
-	// margin-bottom: 1rem;
-	// padding: 1.5rem 1rem 0.5rem;
-	// border: 1px solid $lightgray;
-	// border-radius: $border-radius;
-	// @media (min-width: $layout-s) {
-	// 	padding-left: 1.5rem;
-	// 	padding-right: 1.5rem;
-	// }
-}
-.Box--clean {
-	padding: 0;
-}
+ /**
+  * Login teaser, home page not logged in
+  **/
+
+ .Box {
+ 	display: block;
+ 	border: 1px solid $secondary-color;
+ 	text-align: center;
+ 	padding-top: 1.6em;
+ 	padding-bottom: 1.6em;
+ 	@media (min-width: $layout-s) {
+ 		padding-top: 2.6em;
+ 		padding-bottom: 2.6em;
+ 	}
+ 	// centered
+ 	max-width: 20em;
+ 	margin-left: auto;
+ 	margin-right: auto;
+ 	// add depth and animation
+ 	transition: 200ms all ease-in-out;
+ 	box-shadow: $slightgray 4px 16px 20px;
+
+ 	.Btn {
+ 		background-color: $green;
+ 	}
+ 	.Title {
+ 		color: $text-color;
+ 	}
+ 	> *:last-child {
+ 		margin-bottom: 0;
+ 	}
+
+ 	&:hover {
+ 		text-decoration: none;
+		background-color: lighten($primary-color, 60%);
+		box-shadow: $lightgray 4px 6px 30px;
+ 	}
+ 	&:active {
+ 		text-decoration: none;
+ 		background-color: $secondary-color;
+ 	}
+ }

@@ -1,6 +1,6 @@
 <article class="Playlist Constrained">
 
-	<header class="Playlist-header Box">
+	<header class="Playlist-header Section">
 		<h1 class="Playlist-title">{{title}}</h1>
 		<div class="Playlist-desc">
 			{{body}}
@@ -31,7 +31,7 @@
 		{{/if}}
 	</header>
 
-	<div class="Playlist-body Box Box--clean">
+	<div class="Playlist-body">
 		{{render 'tracks' tracks}}
 		{{outlet}}
 	</div>
