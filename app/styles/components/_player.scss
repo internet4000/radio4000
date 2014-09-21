@@ -9,11 +9,12 @@
 	bottom: 0;
 	right: 0;
 	left: 0;
-	transition: all 400ms $easing;
-	transform: translateY(100%);
-	&.is-active {
-		transform: translateY(0);
-	}
+	backface-visibility: hidden;
+	// transition: all 400ms $easing;
+	// transform: translateY(100%);
+	// &.is-active {
+	// 	transform: translateY(0);
+	// }
 }
 
 // Controls

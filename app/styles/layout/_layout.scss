@@ -6,28 +6,36 @@ html {
 	background-color: $bg-color;
 	color: $text-color;
 }
-html,
+
+// a fixed body makes for a better mobile app
 body {
-	min-height: 100%;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
 }
-
+// we scroll this instead
 .SiteMain {
-	@include clearfix;
-	margin: 3rem 1rem 0;
-	@media (min-width: $layout-s) {
-		margin-left: 2rem;
-		margin-right: 2rem;
-	}
-}
-.Section {
-	margin-bottom: 2rem;
-	// padding-bottom: 1rem;
-	// border-bottom: 1px solid $lightgray;
-	// &:last-of-type {
-	// 	border-bottom: 0;
-	// }
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch; // not sure, need to test
+	padding-top: 2rem; // space for the header
+	padding-bottom: 100px; // space for the fixed bottom player
 }
 
+// Use this when you need a bit of extra space
+.Section {
+	padding-left: 1rem;
+	padding-right: 1rem;
+	margin-bottom: 2rem;
+}
+
+// Only relevant for desktop
 .Constrained {
 	max-width: 40em;
 }
