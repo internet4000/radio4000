@@ -101,7 +101,7 @@
 // Button groups
 .BtnGroup {
 	.Btn {
-		margin-right: -1px;
+		margin-right: em(-5px);
 	}
 	.Btn:first-child {}
 	.Btn:last-child {

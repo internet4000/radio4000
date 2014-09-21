@@ -24,6 +24,10 @@ export default Ember.ArrayController.extend({
 	},
 
 	actions: {
+		sortBy: function(property) {
+			this.set('sortProperties', [property]);
+			this.set('sortAscending', !this.get('sortAscending'));
+		},
 		addTrack: function() {
 			this.set('isAdding', true);
 		},
