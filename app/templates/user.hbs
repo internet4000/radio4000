@@ -1,37 +1,41 @@
 <p class="Manchet">Dashboard, aka the control center! You are here in command.</p>
 
-<div class="Section Section--teaser">
-	<div class="Box">
-		{{#if playlists}}
-			<h2>Your playlist</h2>
-			<p>This is your own playlist.</p>
-			<ul class="Grid">
-				{{#each playlists}}
-					<li>{{#link-to "playlist" this}}{{title}}{{/link-to}}</li>
-				{{/each}}
-			</ul>
-		{{else}}
-			<h2>Create your playlist</h2>
-			<p>{{#link-to "playlists.new"}}<button class="Btn">Get your own playlist</button>{{/link-to}}</p>
-		{{/if}}
+<section>
+	<div class="Section Section--half">
+		<div class="Section-inner">
+			{{#if playlists}}
+				<h2>Your playlist</h2>
+				<p>This is your own playlist.</p>
+				<ul class="Grid">
+					{{#each playlists}}
+						<li>{{#link-to "playlist" this}}{{title}}{{/link-to}}</li>
+					{{/each}}
+				</ul>
+			{{else}}
+				<h2>Create your playlist</h2>
+				<p>{{#link-to "playlists.new"}}<button class="Btn">Get your own playlist</button>{{/link-to}}</p>
+			{{/if}}
+		</div>
 	</div>
+		<div class="Section Section--half">
+			<div class="Section-inner">
+				<h2>Your History</h2>
+				<p class="is-inactiveText">Here will be displayed the last playlist you've been browsing.</p>
+			</div>
+		</div>
+</section>
 
-	<div class="Box">
-		<h2>Your History</h2>
-		<p class="is-inactiveText">Here will be displayed the last playlist you've been browsing.</p>
-	</div>
-</div>
-
-<div class="Section Section--teaser">
-	{{#if favoritePlaylists}}
-		<div class="Box">
-			<h2>Your favorites</h2>
-			<p>Add any list you enjoy as a favorite and we'll add it here to your collection.</p>
+<section>
+	<div class="Section Section--full">
+		<h2>Your favorites</h2>
+		{{#if favoritePlaylists}}
 			<ul class="Grid">
 				{{#each favoritePlaylists}}
 					<li>{{#link-to "playlist" this}}{{title}}{{/link-to}}</li>
 				{{/each}}
 			</ul>
-		</div>
-	{{/if}}
-</div>
+		{{else}}
+			<p>You haven't add any playlist to your favorite yet. {{#link-to 'playlists'}}Explore other radios{{/link-to}}.</p>
+		{{/if}}
+	</div>
+</section>

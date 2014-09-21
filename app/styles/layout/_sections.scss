@@ -1,25 +1,36 @@
 /**
- * Home
+ * Sections
  **/
 
 
+
 /**
- * Logged in effects
+ * Section half
  **/
 
-// .is-authed {
-// 	.Manchet {
-// 		display: none;
-// 	}
-// }
+.Section--half {
+	@media (min-width: $layout-s) {
+		width: 50%;
+		float: left;
+		padding: 1em;
+	}
+
+	// Title
+	.Title {
+		color: white;
+		text-align: center;
+	}
+
+}
 
 /**
- * Section teasers for first time users
+ * Login teaser, home page not logged in
  **/
 
 .Section--teaser {
 	text-align: center;
 
+	// Section teaser are links, teaser links!!
 	a:hover,
 	a:active  {
 		text-decoration: none;
@@ -35,27 +46,17 @@
 		}
 	}
 
-
-	@media (min-width: $layout-s) {
-		width: 50%;
-		float: left;
-		padding: 1em;
-	}
-
-	.Title {
-		color: white;
-	}
+	// Has inner boxes that are centered also
 	.Section-inner {
 		padding-top: 2em;
 		padding-bottom: 2em;
-		background-color: $secondary-color;
-		cursor: pointer;
-		max-width: 20em;
 		margin-left: auto;
 		margin-right: auto;
+		background-color: $secondary-color;
+		max-width: 20em;
 		transition: 200ms all ease-in-out;
 
-		// add depth
+		// add depth and animation
 		box-shadow: $lightgray 4px 16px 10px;
 		@media (min-width: $layout-s) {
 			margin-left: 0;
@@ -69,8 +70,13 @@
 			}
 		}
 	}
+
 }
 
 /**
- * Login teaser
+ * Favourite full
  **/
+
+.Section--full {
+	clear: both;
+}
