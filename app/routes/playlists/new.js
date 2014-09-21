@@ -4,6 +4,7 @@ export default Ember.Route.extend({
 	beforeModel: function() {
 		var authed = this.get('auth.authed');
 		var hasPlaylist = this.get('auth.user.playlists.content').length > 0;
+		// var hasPlaylist = this.get('auth.user.playlists');
 
 		// abort if not logged in
 		// @todo this only works if you enter the route from an internal link
@@ -17,5 +18,10 @@ export default Ember.Route.extend({
 		if (hasPlaylist) {
 			this.transitionToRoute('application');
 		}
-	}
+	},
+	renderTemplate: function() {
+		this.render('playlists/new', {
+			into: 'application'
+		});
+	},
 });

@@ -10,7 +10,7 @@ Router.map(function() {
 	this.resource('styleguide');
 
 	this.resource('playlists', function() {
-		this.route('new');
+		this.route('new', { path: 'new' });
 	});
 
 	this.resource('playlist', { path: '/p/:playlist_id' }, function() {

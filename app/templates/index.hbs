@@ -1,41 +1,43 @@
-{{#unless auth.authed}}
+<div class="Container">
+	{{#unless auth.authed}}
 
-	<article class="Section Home">
-		<p class="Manchet"><a href="#" class="is-highlighted" {{ action 'showLogin' true }}>Create your radio</a>, share your music tastes and listen to your friend's</p>
-	</article>
+		<section class="Section Section--manchet">
+			<a href="#" class="is-highlighted" {{ action 'showLogin' true }}>Create your radio</a>, share your music tastes and listen to your friend's
+		</section>
 
-	<section class="Section Section--half Section--teaser">
-		<a href="#" {{action 'showLogin' true}}>
-			<div class="Section-inner">
-				<h2 class="Title">Create your Radio</h2>
-				{{#if showLogin}}
-					<p><span class="is-highlighted">choose</span> how to log in</p>
-					<p>
-						<button class="Btn Btn--primary" {{ action 'login' 'google' this}}>with Google</button>
-						<button class="Btn Btn--primary" {{ action 'login' 'facebook' this}}>with Facebook</button>
-					</p>
-				{{else}}
-					<p><span class="is-highlighted">log in</span> to get started</p>
-				{{/if}}
-			</div>
-		</a>
-	</section>
+		<section class="Section Section--half Section--teaser">
+			<a href="#" {{action 'showLogin' true}}>
+				<div class="Section-inner">
+					<h2 class="Title">Create your Radio</h2>
+					{{#if showLogin}}
+						<p><span class="is-highlighted">choose</span> how to log in</p>
+						<p>
+							<button class="Btn Btn--primary" {{ action 'login' 'google' this}}>with Google</button>
+							<button class="Btn Btn--primary" {{ action 'login' 'facebook' this}}>with Facebook</button>
+						</p>
+					{{else}}
+						<p><span class="is-highlighted">log in</span> to get started</p>
+					{{/if}}
+				</div>
+			</a>
+		</section>
 
-	<section class="Section Section--half Section--teaser">
-		{{#link-to 'playlists'}}
-			<div class="Section-inner">
-				<h2 class="Title">Listen</h2>
-				<p><span class="is-highlighted">browse</span> playlists</p>
-			</div>
-		{{/link-to}}
-	</section>
-{{/unless}}
+		<section class="Section Section--half Section--teaser">
+			{{#link-to 'playlists'}}
+				<div class="Section-inner">
+					<h2 class="Title">Listen</h2>
+					<p><span class="is-highlighted">browse</span> playlists</p>
+				</div>
+			{{/link-to}}
+		</section>
+	{{/unless}}
 
-{{#if auth.authed}}
-	<section class="Section">
-		{{render 'user' auth.user}}
-	</section>
-{{/if}}
+	{{#if auth.authed}}
+		<section class="Section">
+			{{render 'user' auth.user}}
+		</section>
+	{{/if}}
 
 
-{{partial 'navigation'}}
+	{{partial 'navigation'}}
+</div>

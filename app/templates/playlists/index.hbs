@@ -1,5 +1,7 @@
-<ul class="Grid">
-	{{#each playlist in arrangedContent}}
-		<li>{{#link-to "playlist" playlist}}{{playlist.title}}{{/link-to}}</li>
-	{{/each}}
-</ul>
+<div class="Container">
+	<ul class="Grid">
+		{{#each playlist in arrangedContent}}
+			<li>{{#link-to "playlist" playlist}}{{playlist.title}}{{/link-to}}</li>
+		{{/each}}
+	</ul>
+</div>

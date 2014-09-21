@@ -1,8 +1,14 @@
-<h2>Create your own playlist</h2>
+<div class="Container">
+	<section class="Section--manchet">
+		First and last step, <span class="is-highlighted">name your radio</span>
+	</section>
 
-<form class="Form">
-	{{input value=title placeholder="Playlist title"}}
-	{{textarea value=body placeholder="Describe your playlist"}}
-	{{!-- {{input value=slug placeholder="Choose a URL for your playlist"}} --}}
-	<button class="Btn Btn--primary" {{action "create"}}>Create</button>
-</form>
+	<form class="Form Form--newPlaylist">
+		{{input value=title placeholder="Playlist title"}}
+		{{textarea value=body placeholder="Describe your playlist"}}
+		{{!-- {{input value=slug placeholder="Choose a URL for your playlist"}} --}}
+		<button class="Btn Btn--primary" {{action "create"}}>Create</button>
+	</form>
+
+	{{outlet}}
+</div>

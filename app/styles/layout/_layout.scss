@@ -32,9 +32,11 @@ body {
 	}
 	padding-bottom: 8rem; // space for the fixed bottom player
 
-	// make the app be small
-	max-width: 50rem;
-	margin: 0 auto;
+	.Container {
+		// make the app be small, not on .SiteMain to keep the mobile touch improvement
+		max-width: 50rem;
+		margin: 0 auto;
+	}
 }
 
 // Use this when you need a bit of extra space
