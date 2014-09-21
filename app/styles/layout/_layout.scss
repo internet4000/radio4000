@@ -26,6 +26,12 @@ body {
 	overflow: auto;
 	-webkit-overflow-scrolling: touch; // not sure, need to test
 	padding-top: 4rem; // space for the header
+	@media (min-width: $layout-m) {
+		padding-top: 6rem;
+	}
+	@media (min-width: $layout-l) {
+		padding-top: 7rem;
+	}
 	padding-bottom: 8rem; // space for the fixed bottom player
 
 	// make the app be small

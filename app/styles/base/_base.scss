@@ -1,10 +1,14 @@
 html {
 	// @extend %patron-light;
 	@extend %fira;
-	font-size: $base-font-size;
 	line-height: $base-line-height;
 	text-rendering: optimizeLegibility;
-	// -webkit-font-smoothing: antialiased;
+
+	// important, specify in pixels here as all other font-size are re(m)lative to this
+	font-size: 14px;
+	@media (min-width: $layout-s) {
+		font-size: $base-font-size;
+	}
 }
 strong {
 	// @extend %patron-bold;
@@ -55,14 +59,19 @@ h1,h2,h3,h4 {
 	@extend %fira-bold;
 	line-height: 1.1;
 }
-h1 {
-	font-size: rem(30);
+h1,
+.Title {
+	font-size: rem(22);
+	// responsive but more importantly proportionally nicer
+	@media (min-width: $layout-s) { font-size: rem(26); }
 	a {
 		color: $text-color;
 	}
 }
 h2 {
-	font-size: rem(20);
+	font-size: rem(17);
+	// responsive but more importantly proportionally nicer
+	@media (min-width: $layout-s) { font-size: rem(20); }
 	margin-bottom: 0.5rem;
 }
 h3 {

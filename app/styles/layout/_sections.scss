@@ -39,8 +39,12 @@
 	}
 	// Has inner boxes that are centered also
 	.Section-inner {
-		padding-top: 2.6em;
-		padding-bottom: 2em;
+		padding-top: 1.6em;
+		padding-bottom: 1em;
+		@media (min-width: $layout-s) {
+			padding-top: 2.6em;
+			padding-bottom: 2em;
+		}
 		margin-left: auto;
 		margin-right: auto;
 		border-style: solid;
@@ -67,12 +71,6 @@
 	a:active {
 		text-decoration: none;
 		background-color: $secondary-color;
-	}
-
-	.Title {
-		font-size: $font-25;
-		margin-bottom: 20px;
-		-webkit-font-smoothing:antialiased;
 	}
 	.Btn {
 		background-color: $green;
