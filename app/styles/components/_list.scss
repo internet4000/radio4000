@@ -42,7 +42,7 @@
 	a {
 		@extend %patron-bold;
 		display: block;
-		min-width: 10rem;
+		width: 10rem;
 		padding: 2rem 1rem 0.6rem;
 
 		// background: linear-gradient(hsl(0, 100%, 100%), hsla(0, 0%, 20%, 0.10));
