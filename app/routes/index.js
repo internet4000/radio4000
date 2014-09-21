@@ -2,9 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	activate: function() {
-		Ember.$('.SiteLogo').addClass('is-hidden');
+		Ember.$('.SiteLogo').addClass('is-translated');
 	},
 	deactivate: function() {
-		Ember.$('.SiteLogo').removeClass('is-hidden');
+		Ember.$('.SiteLogo').removeClass('is-translated');
 	}
 });
