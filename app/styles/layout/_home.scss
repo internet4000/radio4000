@@ -20,10 +20,36 @@
 	}
 	.Manchet {
 		max-width: 20em;
+		padding-top: 1em;
 		margin-bottom: 3rem;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
 	}
 	// .is-authed & {
 	// 	display: none;
 	// }
+}
+
+.Section--teaser {
+	text-align: center;
+
+	@media (min-width: $layout-s) {
+		width: 50%;
+		float: left;
+		padding: 1em;
+	}
+
+	.Title {
+		color: white;
+	}
+	.Section-inner {
+		padding-left: 1em;
+		padding-right: 1em;
+		padding-top: 2em;
+		padding-bottom: 2em;
+		background-color: $secondary-color;
+		cursor: pointer;
+	}
 }
 
