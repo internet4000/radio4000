@@ -15,10 +15,21 @@
 		margin-bottom: 3rem;
 		text-align: center;
 	}
-	// .is-authed & {
-	// 	display: none;
-	// }
 }
+
+/**
+ * Logged in effects
+ **/
+
+.is-authed {
+	.Manchet {
+		display: none;
+	}
+}
+
+/**
+ * Section teasers for first time users
+ **/
 
 .Section--teaser {
 	text-align: center;

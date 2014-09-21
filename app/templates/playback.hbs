@@ -25,13 +25,13 @@
 						<button class="PlayerBtn PlayerBtn--playlist" title="Show current playlist">&#9835;</button>
 					{{/link-to}}
 
-					<button class="PlayerBtn PlayerBtn--toggle" {{action 'toggle'}} title="Toggle the video">&#127916;</button>
-
 					{{#if isPlaying}}
 						<button class="PlayerBtn PlayerBtn--pause" {{action 'pause'}}>ll</button>
 					{{else}}
 						<button class="PlayerBtn PlayerBtn--play" {{action 'play'}}>►</button>
 					{{/if}}
+
+					<button class="PlayerBtn PlayerBtn--toggle" {{action 'toggle'}} title="Toggle the video">&#127916;</button>
 				</div>
 
 			{{else}}

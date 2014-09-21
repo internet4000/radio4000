@@ -58,6 +58,18 @@ export default Ember.ObjectController.extend({
 					Ember.debug('Success: playlist saved as favorite on the user');
 				});
 			});
+		},
+		removeFavorite: function() {
+			var user = this.get('auth.user');
+			var playlist = this.get('model');
+			this.set('favorited', false);
+
+			Ember.RSVP.Promise.cast(user.get('favoritePlaylists')).then(function(favorites) {
+				favorites.removeObject(playlist);
+				user.save().then(function() {
+					Ember.debug('Success: playlist removes from favorite on the user');
+				});
+			});
 		}
 	}
 });
