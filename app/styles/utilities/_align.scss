@@ -1,16 +1,24 @@
 /**
- * Alignment helpers
+ * Vertical align elements with an unknown height
+ * works in IE9+
  */
 
-// totally centered
+.u-alignMiddle {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+/**
+ * Totally center
+ */
+
 .u-alignCenter {
 	text-align: center;
-	@media (min-width: $layout-m) {
-		position: absolute;
-		left: 0;
-		right: 0;
-		top: 50%;
-		transform: translateY(-50%);
-		margin: 0 auto;
-	}
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	margin: 0 auto;
 }
