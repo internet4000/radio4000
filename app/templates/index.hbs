@@ -1,21 +1,21 @@
 {{#unless auth.authed}}
 
 	<article class="Section Home">
-		<p class="Manchet">Create your <span class="is-highlighted">radio</span>, share your music tastes and listen to your friend's</p>
+		<p class="Manchet"><span class="is-highlighted">Create your radio</span>, share your music tastes and listen to your friend's</p>
 	</article>
 
 	<section class="Section Section--half Section--teaser">
 	<a href="#" {{action 'showLogin'}}>
 			<div class="Section-inner">
-				<h2 class="Title">Get your own playlist</h2>
+				<h2 class="Title">Create your Radio</h2>
 				{{#if showLogin}}
-					<p>Please choose how to log in.</p>
+					<p><span class="is-highlighted">choose</span> how to log in</p>
 					<p>
-						<button class="Btn Btn--primary" {{ action 'login' 'google' this}}>With Google</button>
-						<button class="Btn Btn--primary" {{ action 'login' 'facebook' this}}>With Facebook</button>
+						<button class="Btn Btn--primary" {{ action 'login' 'google' this}}>with Google</button>
+						<button class="Btn Btn--primary" {{ action 'login' 'facebook' this}}>with Facebook</button>
 					</p>
 				{{else}}
-					<p>Get started or log in</p>
+					<p><span class="is-highlighted">log in</span> to get started</p>
 				{{/if}}
 			</div>
 		</a>
@@ -24,8 +24,8 @@
 	<section class="Section Section--half Section--teaser">
 		{{#link-to 'playlists'}}
 			<div class="Section-inner">
-				<h2 class="Title">Start listening</h2>
-				<p>See all playlists</p>
+				<h2 class="Title">Listen</h2>
+				<p><span class="is-highlighted">browse</span> playlists</p>
 			</div>
 		{{/link-to}}
 	</section>

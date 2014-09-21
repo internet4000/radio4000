@@ -29,6 +29,30 @@
 
 .Section--teaser {
 	text-align: center;
+	&:first-of-type {
+		.Section-inner {
+			@media (min-width: $layout-s) {
+				margin-left: auto;
+				margin-right: 0;
+			}
+		}
+	}
+	// Has inner boxes that are centered also
+	.Section-inner {
+		padding-top: 2em;
+		padding-bottom: 2em;
+		margin-left: auto;
+		margin-right: auto;
+		background-color: $secondary-color;
+		max-width: 20em;
+		transition: 200ms all ease-in-out;
+
+		// add depth and animation
+		box-shadow: $slightgray 4px 16px 20px;
+		@media (min-width: $layout-s) {
+			margin-left: 0;
+		}
+	}
 
 	// Section teaser are links, teaser links!!
 	a:hover {
@@ -46,31 +70,10 @@
 		}
 	}
 
-	// Has inner boxes that are centered also
-	.Section-inner {
-		padding-top: 2em;
-		padding-bottom: 2em;
-		margin-left: auto;
-		margin-right: auto;
-		background-color: $secondary-color;
-		max-width: 20em;
-		transition: 200ms all ease-in-out;
-
-		// add depth and animation
-		box-shadow: $slightgray 4px 16px 20px;
-		@media (min-width: $layout-s) {
-			margin-left: 0;
-		}
+	.Title {
+		font-size: $font-25;
+		margin-bottom: 20px;
 	}
-	&:first-of-type {
-		.Section-inner {
-			@media (min-width: $layout-s) {
-				margin-left: auto;
-				margin-right: 0;
-			}
-		}
-	}
-
 }
 
 /**
