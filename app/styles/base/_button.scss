@@ -16,9 +16,7 @@
 	// @extend %patron-bold;
 	@extend %fira-bold;
 	font-size: rem(13);
-	padding: em(8,12) em(8,12) em(7,12); // 30px height look sbetter but not consistent
-	// padding: em(10,12) em(8,12) em(9,12); // 34px height as inputs
-	// padding: em(10,13) em(8,13) em(8,13);
+	padding: 0.3em 0.8em 0.2em;
 	background-color: $slightgray;
 	background-image: linear-gradient(to bottom, white 60%, transparent);
 	color: $text-color;

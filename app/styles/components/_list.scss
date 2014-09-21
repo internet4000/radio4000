@@ -16,7 +16,7 @@
 		display: block;
 		font-size: rem(13);
 		line-height: normal;
-		padding: em(14,13) 1rem em(12,13); // 40px height
+		padding: em(12,13) 1rem em(10,13); // 40px height
 		color: $text-color;
 		&:hover {
 			text-decoration: none;
@@ -35,16 +35,13 @@
 	list-style: none;
 	padding-left: 0;
 	li {
-		display: inline-block;
-		margin-right: rem(12);
-		margin-bottom: 1rem;
+		margin-bottom: 0.5rem;
 	}
 	a {
 		@extend %patron-bold;
-		display: block;
-		width: 10rem;
-		padding: 2rem 1rem 0.6rem;
-
+		display: inline-block;
+		min-width: 12rem;
+		padding: 0.6rem 0.7rem 0.5rem;
 		// background: linear-gradient(hsl(0, 100%, 100%), hsla(0, 0%, 20%, 0.10));
 		background: hsl(0, 100%, 100%);
 		color: $primary-color;
@@ -54,7 +51,6 @@
 		letter-spacing: 0.02em;
 
 		&:hover {
-			box-shadow: 1px 1px 0 0 hsla(0, 0%, 0%, 0.3);
 			border: 1px solid hsla(255, 4%, 55%, 0.4);
 		}
 	}
