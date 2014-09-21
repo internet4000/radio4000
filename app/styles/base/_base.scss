@@ -1,16 +1,18 @@
 html {
-	@extend %patron-light;
+	// @extend %patron-light;
+	@extend %fira;
 	font-size: $base-font-size;
-
 	line-height: $base-line-height;
 	text-rendering: optimizeLegibility;
 	// -webkit-font-smoothing: antialiased;
 }
 strong {
-	@extend %patron-bold;
+	// @extend %patron-bold;
+	font-weight: 600;
 }
 em {
-	@extend %patron-italic;
+	// @extend %patron-italic;
+	font-style: italic;
 }
 
 a {
@@ -49,7 +51,8 @@ hr {
 
 // Headers
 h1,h2,h3,h4 {
-	@extend %patron-bold;
+	// @extend %patron-bold;
+	@extend %fira-bold;
 	line-height: 1.1;
 }
 h1 {

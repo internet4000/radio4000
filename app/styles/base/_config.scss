@@ -2,9 +2,11 @@
 $base-font-size: 15px;
 $base-line-height: (20/15);
 
-%patron-light { font-family:"Patron Light", 'Patron Light', sans-serif; font-weight:300; }
+%fira { font-family: 'fira-sans'; }
+%fira-bold { font-family: 'fira-sans'; font-weight: 600; }
+%patron-light { font-family: "Patron Light", 'Patron Light', sans-serif; font-weight:300; }
 %patron-bold { font-family: "Patron Bold", sans-serif; font-weight: bold; }
-%patron-black-italic { font-family:"Patron Black Italic", sans-serif; font-weight:bold; font-style:italic; }
+%patron-black-italic { font-family: "Patron Black Italic", sans-serif; font-weight:bold; font-style:italic; }
 
 // Colors
 $yellow:         hsl(60, 100%, 70%);

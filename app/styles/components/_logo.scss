@@ -8,8 +8,8 @@
 	margin: 0;
 	transition: 2000ms all ease-in-out;
 
-	// style (very much the same as .Btn.Btn--large)
-	@extend %patron-black-italic;
+
+	// @extend %patron-black-italic;
 	font-size: rem(20);
 	border: 1px solid hsla(0, 0%, 0%, 0.2);
 	border-radius: $border-radius;

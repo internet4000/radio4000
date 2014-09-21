@@ -13,7 +13,8 @@
 	white-space: normal; /* 7 */
 
 	// Button styling
-	@extend %patron-bold;
+	// @extend %patron-bold;
+	@extend %fira-bold;
 	font-size: rem(13);
 	padding: em(8,12) em(8,12) em(7,12); // 30px height look sbetter but not consistent
 	// padding: em(10,12) em(8,12) em(9,12); // 34px height as inputs

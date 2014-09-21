@@ -23,7 +23,8 @@ input[type='password'],
 input[type='url'],
 textarea,
 .Btn--textInput {
-	@extend %patron-light;
+	// @extend %patron-light;
+	@extend %fira;
 	font-size: rem(13);
 	padding: em(10,13) em(8,13) em(8,13);
 	width: 100%;
@@ -50,7 +51,8 @@ textarea {
 
 // Label styles
 label {
-	@extend %patron-bold;
+	// @extend %patron-bold;
+	@extend %fira-bold;
 	display: block;
 	font-size: rem(13);
 	color: $gray;
