@@ -1,12 +1,11 @@
-<section class="Section Section--manchet">
-	<span class="is-highlighted">Dashboard</span>, aka the control center! You are here in command.
-</section>
+<p class="Manchet">Welcome, here's a complete overview of what you can do.</p>
 
 <section class="Dashboard">
-	<div class="Section Section--half">
+
+	<div class="Section">
 		<div class="Section-inner">
 			{{#if playlists}}
-				<h2 class="Title">Your Radio</h2>
+				<h2 class="Title">Your radio</h2>
 				<p class="is-inactiveText">Curate music, enjoy your own taste or share it with friends and beyond.</p>
 				<ul class="Grid">
 					{{#each playlists}}
@@ -20,20 +19,41 @@
 			{{/if}}
 		</div>
 	</div>
-		<div class="Section Section--half">
-			<div class="Section-inner">
-				<h2 class="Title">Your favorites</h2>
-				{{#if favoritePlaylists}}
-					<p class="is-inactiveText">Radios you have saved as favorite. You can also {{#link-to 'playlists'}}explore other radios{{/link-to}}.</p>
-					<ul class="Grid">
-						{{#each favoritePlaylists}}
-							<li>{{#link-to "playlist" this}}{{title}}{{/link-to}}</li>
-						{{/each}}
-					</ul>
-				{{else}}
-					<p class="is-inactiveText">You do not have any favorite playlist yet? {{#link-to 'playlists'}}Explore other radios{{/link-to}}.</p>
-				{{/if}}
-			</div>
+
+	<div class="Section">
+		<div class="Section-inner">
+			<h2 class="Title">Your favorites</h2>
+			{{#if favoritePlaylists}}
+				<p class="is-inactiveText">Radios you have saved as favorite. You can also {{#link-to 'playlists'}}explore other radios{{/link-to}}.</p>
+				<ul class="Grid">
+					{{#each favoritePlaylists}}
+						<li>{{#link-to "playlist" this}}{{title}}{{/link-to}}</li>
+					{{/each}}
+				</ul>
+			{{else}}
+				<p class="is-inactiveText">You do not have any favorite playlist yet? {{#link-to 'playlists'}}Explore other radios{{/link-to}}.</p>
+			{{/if}}
 		</div>
+	</div>
+
+	{{!-- <div class="Section Section--half">
+		<div class="Section-inner">
+			<h2>Your history</h2>
+			<p class="is-inactiveText">Here will be displayed the last playlist you've been browsing.</p>
+		</div>
+	</div> --}}
 </section>
 
+<section class="Section">
+	<h2>Your favorites</h2>
+	{{#if favoritePlaylists}}
+		<p class="is-inactiveText">Quick access to the best channels. {{#link-to 'playlists'}}Explore other channels{{/link-to}}.</p>
+		<ul class="Grid">
+			{{#each favoritePlaylists}}
+				<li>{{#link-to "playlist" this}}{{title}}{{/link-to}}</li>
+			{{/each}}
+		</ul>
+	{{else}}
+		<p class="is-inactiveText">You haven't addded any favorites yet. {{#link-to 'playlists'}}Explore other channels{{/link-to}}.</p>
+	{{/if}}
+</section>

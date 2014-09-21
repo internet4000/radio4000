@@ -33,12 +33,6 @@ body {
 	padding-bottom: 5rem; // space for the fixed bottom player
 }
 
-// make the app be small, not on .SiteMain to keep the mobile touch improvement
-.Container {
-	max-width: 50rem;
-	margin: 0 auto;
-}
-
 // Use this when you need a bit of extra space
 .Section {
 	padding-left: 1rem;
@@ -47,7 +41,7 @@ body {
 }
 
 // Use this
-.Constrained {
+.Container {
 	max-width: 40em;
 	margin-left: auto;
 	margin-right: auto;
