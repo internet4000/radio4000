@@ -24,6 +24,7 @@
 	background-color: $primary-color;
 	background: linear-gradient($primary-color, hsl(268, 90%, 42%));
 	color: $text-color-invert;
+	box-shadow: 0px -1px 2px hsla(0, 0%, 0%, 0.3);
 }
 .Controls-title {
 	margin-top: 0.5rem;
@@ -39,6 +40,9 @@
 
 // Container for the embeds
 .Player {
+	position: fixed;
+	left: 0;
+	bottom: 94px; // height of the bottom bar
 	width: 150px;
 	height: 150px;
 	max-width: 100%;

@@ -1,6 +1,7 @@
 html {
 	@extend %patron-light;
 	font-size: $base-font-size;
+
 	line-height: $base-line-height;
 	text-rendering: optimizeLegibility;
 	// -webkit-font-smoothing: antialiased;
@@ -88,4 +89,18 @@ embed {
 // Typography
 .Manchet {
 	font-size: rem(20);
+}
+
+// Seperators
+hr {
+	margin: 2rem 0;
+}
+
+// Lists
+h2 + ul {
+	margin-top: 1rem;
+	padding-left: 1.8rem;
+}
+li {
+	font-size: rem(14);
 }
