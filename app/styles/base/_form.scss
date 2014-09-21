@@ -24,7 +24,8 @@ input[type='url'],
 textarea,
 .Btn--textInput {
 	// @extend %patron-light;
-	@extend %fira;
+	// @extend %fira;
+	font-weight: normal;
 	font-size: rem(13);
 	padding: em(10,13) em(8,13) em(8,13);
 	width: 100%;
@@ -55,7 +56,6 @@ label {
 	@extend %fira-bold;
 	display: block;
 	font-size: rem(13);
-	color: $gray;
 }
 
 

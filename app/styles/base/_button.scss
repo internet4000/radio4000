@@ -20,8 +20,8 @@
 	background-color: $slightgray;
 	background-image: linear-gradient(to bottom, white 60%, transparent);
 	color: $text-color;
-	box-shadow: hsla(0, 0%, 0%, 0.2) 1px 1px 0 0;
-	-webkit-font-smoothing: antialiased;
+	box-shadow: hsla(0, 0%, 0%, 0.2) 0 1px 0 0;
+	// -webkit-font-smoothing: antialiased;
 
 	&:hover,
 	&:focus,
@@ -58,6 +58,12 @@
 	color: $red;
 }
 
+// Small buttons
+.Btn--small {
+	font-size: rem(11);
+	padding: em(4,11) em(7,11) em(1,11);
+}
+
 // Large buttons
 .Btn--large {
 	font-size: rem(20);
@@ -71,6 +77,8 @@
 	background-color: transparent;
 	box-shadow: none;
 	text-align: left;
+	padding-left: 0.4em;
+	padding-right: 0.4em;
 	&:hover,
 	&:focus {
 		background-image: none;

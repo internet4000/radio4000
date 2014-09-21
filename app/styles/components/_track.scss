@@ -36,17 +36,25 @@
 .Track-description {
 	color: $gray;
 }
+
+// TRACK EDIT BUTTON
+
 .Track-controls {
 	position: absolute;
 	top: 6px;
 	right: 5px;
-	transition: transform 300ms $easing5;
-	transform: translateX(120%) scale(0.9);
-	.Track:hover &,
-	.Track.is-editing & {
-		transform: translateX(0) scale(1);
-	}
 	.Btn {
 		padding: em(4,13) em(7,13) em(3,13);
+	}
+}
+// for no-touch, we hide and show on hover
+.no-touch {
+	.Track-controls {
+		transition: transform 300ms $easing5;
+		transform: translateX(120%) scale(0.9);
+	}
+	.Track:hover .Track-controls,
+	.Track.is-editing .Track-controls {
+		transform: translateX(0) scale(1);
 	}
 }
