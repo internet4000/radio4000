@@ -9,4 +9,10 @@ export default Ember.Route.extend({
 	// serialize: function(model) {
 	// 	return { playlist_slug: model.get('title') };
 	// }
+	activate: function() {
+		Ember.$('.SiteLogo').addClass('is-translated');
+	},
+	deactivate: function() {
+		Ember.$('.SiteLogo').removeClass('is-translated');
+	}
 });

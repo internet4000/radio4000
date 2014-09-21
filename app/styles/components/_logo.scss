@@ -4,11 +4,11 @@
 	position: fixed;
 	z-index: 2;
 	top: -2px;
-	left: 1rem;
+	left: 50%;
+	transform: translateX(-50%);
 	margin: 0;
 	transition: 2000ms all ease-in-out;
 	backface-visibility: hidden; // performance
-
 
 	// @extend %patron-black-italic;
 	font-size: rem(20);
@@ -27,13 +27,9 @@
 		}
 	}
 
-	// animate in and out
-	transition: transform 600ms $easing5;
-	// &.is-hidden {
-	// 	transform: translateY(-100%) scale(0.9);
-	// }
+	transition: all 600ms $easing;
 	&.is-translated {
-		left: 50%;
-		transform: translateX(-50%);
+		left: 0;
+		transform: translateX(0);
 	}
 }
