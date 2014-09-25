@@ -25,6 +25,8 @@ export default DS.Model.extend({
 
 	createdDate: function() {
 		var m = window.moment(this.get('created'));
-		return '%@ at %@'.fmt(m.format('MMMM Do, YYYY'), m.format('h:mm:ss a'));
+		// return '%@ at %@'.fmt(m.format('MMMM Do, YYYY'), m.format('h:mm:ss a'));
+		// return '%@ at %@'.fmt(m.format('MMMM Do, YYYY'));
+		return m.fromNow(); // 19 hours ago
 	}.property('created')
 });

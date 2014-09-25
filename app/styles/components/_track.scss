@@ -33,6 +33,15 @@
 }
 .Track-name {
 }
+.Track-date {
+	color: $gray;
+	// only show for larger screens
+	display: none;
+	@media (min-width: $layout-s) {
+		display: block;
+		float: right;
+	}
+}
 .Track-description {
 	color: $gray;
 }

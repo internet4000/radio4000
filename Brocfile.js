@@ -26,5 +26,6 @@ var app = new EmberApp({
 app.import('bower_components/firebase/firebase.js');
 app.import('bower_components/firebase-simple-login/firebase-simple-login.js');
 app.import('bower_components/emberfire/dist/emberfire.js');
+app.import('bower_components/moment/moment.js');
 
 module.exports = app.toTree();
