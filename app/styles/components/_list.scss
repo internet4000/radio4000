@@ -28,6 +28,22 @@
 		margin: 0;
 	}
 }
+// Counter
+// .List {
+//   counter-reset: list; // Set the list counter to 0
+// }
+// .List li:before {
+//   counter-increment: list; // Increment the list counter
+//   content: counter(list); // Display the counter
+//   position: absolute;
+//   top: 0;
+//   font-size: rem(13);
+//   margin-top: 1.1em;
+//   left: 0.6em;
+//   color: $gray;
+// }
+
+
 
 /**
  * Grid view - work in progress, not really pretty yet

@@ -45,8 +45,9 @@ textarea {
 	input[type='tel'],
 	input[type='password'],
 	input[type='url'],
-	textarea {
-		margin-bottom: 0.5rem;
+	textarea,
+	.Btn {
+		margin-bottom: 1rem;
 	}
 }
 
