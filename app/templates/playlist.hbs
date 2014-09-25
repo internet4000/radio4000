@@ -22,13 +22,19 @@
 			{{/if}}
 		{{/if}}
 
-		{{#if auth.authed}}
-			{{#if favorited}}
-				<p><a href="#" class="" {{action 'removeFavorite'}}>remove from favorite</a></p>
+		{{!-- <p>isFavorite: {{isFavorite}}</p>
+		<p>model id: {{id}}</p>
+		{{#each favoritePlaylist in userFavs}}
+			<p>favoritePlaylist id: {{favoritePlaylist.id}}</p>
+		{{/each}} --}}
+
+		<p>{{#if auth.authed}}
+			{{#if isFavorite}}
+				<button class="Btn" {{action 'removeFavorite'}}>Remove from favorites</button>
 			{{else}}
-				<p><a href="#" class="" {{action 'favorite'}}>add to favorite</a></p>
+				<button class="Btn" {{action 'favorite'}}>Add to favorites</button>
 			{{/if}}
-		{{/if}}
+		</p>{{/if}}
 	</header>
 
 	<div class="Playlist-body">

@@ -7,10 +7,29 @@ export default Ember.ObjectController.extend({
 		return this.get('model.user') === this.get('auth.user');
 	}.property('model.user', 'auth.user'),
 
-	// isFavorite: function() {
-		// var userFavs = this.get('auth.user.favoritePlaylists');
-		// @todo if model is in userfavs, it's a favorite
-	// }.property('model.user', 'auth.user'),
+	userFavs: function() {
+		return this.get('auth.user.favoritePlaylists');
+	}.property('auth.user.favoritePlaylists.[]'),
+
+	isFavorite: function() {
+		// first check if we have the favorites and can continue
+		var favorites = this.get('auth.user.favoritePlaylists');
+		if (favorites === null) { return false; }
+
+		// initially set it to false
+		var model = this.get('model');
+		var isFavorite = false;
+
+		// iterate through each favorite and see if it matches the current model
+		favorites.forEach(function(item){
+			if (model === item) {
+				isFavorite = true;
+			}
+		});
+
+		return isFavorite;
+	}.property('auth.user.favoritePlaylists.[]'),
+	// }.property('model', 'auth.user.favoritePlaylists.@each'),
 
 	actions: {
 		edit: function() {
