@@ -36,7 +36,7 @@ export default Ember.ObjectController.extend({
 		var newPlaylist = this.get('store').createRecord('playlist', {
 			created: new Date().getTime(),
 			title: this.get('title'),
-			slug: this.get('slug'),
+			slug: this.get('title').dasherize(),
 			body: this.get('body'),
 			user: user
 		});

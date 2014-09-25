@@ -1,12 +1,15 @@
 <div class="Container">
-	<section class="Section Section--manchet">
-		First and last step, <span class="is-highlighted">name your radio</span>
-	</section>
+	<h1 class="Title">New radio channel</h1>
+	<p class="Manchet">First and last step, name your new radio channel.</p>
 
 	<form class="Form Form--newPlaylist">
-		{{input value=title placeholder='Title of your radio (could be "The Pirate Radio"'}}
-		{{textarea value=body placeholder='Description of your playlist (why not "DETROIT k33p it r34l?" '}}
-		{{!-- {{input value=slug placeholder="Choose a URL for your playlist"}} --}}
+
+		<label for="title">Title of your radio</label>
+		{{input name="title" value=title autofocus="autofocus" placeholder='Could be "The Pirate Radio"'}}
+
+		<label for="body">Description of your channel</label>
+		{{textarea name="body" value=body placeholder='Why not "DETROIT k33p it r34l?"'}}
+
 		<button class="Btn Btn--primary" {{action "create"}}>Create</button>
 	</form>
 

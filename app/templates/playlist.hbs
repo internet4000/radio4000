@@ -1,6 +1,13 @@
 <article class="Playlist Constrained">
 
 	<header class="Playlist-header Section">
+
+		{{#if canEdit}}
+			{{#unless isEditing}}
+				<p class="u-alignRight"><button class="Btn Btn--edit" {{action 'edit'}}>Edit</button></p>
+			{{/unless}}
+		{{/if}}
+
 		<h1 class="Playlist-title">{{title}}</h1>
 		<div class="Playlist-desc">
 			{{body}}
@@ -9,16 +16,23 @@
 		{{#if canEdit}}
 			{{#if isEditing}}
 				<form class="Form" {{action "save" on="submit"}}>
-					{{input value=title placeholder="Title" autofocus='autofocus'}}
-					{{!-- {{input value=slug placeholder="Slug"}} --}}
-					{{!-- {{textarea value=image placeholder="Image URL"}} --}}
-					{{textarea value=body placeholder="Description"}}
+					<label for="title">Title</label>
+					{{input name="title" value=title placeholder="Title" autofocus='autofocus'}}
+
+					<label for="body">Description</label>
+					{{textarea name="body" value=body placeholder="Description"}}
+
+
+					{{#if isEditingSlug}}
+						<label for="slug">URL - <span class="u-danger">Warning: this will change the link of the channel. The old one won't work (but you can always change it back)</span></label>
+						{{input name="slug" value=slug placeholder="Slug"}}
+					{{/if}}
+
 					<button class="Btn Btn--primary" type="submit">Save</button>
+					<button class="Btn Btn--text" {{action "editSlug"}}>Change URL</button>
 					<button class="Btn Btn--text" {{action 'cancel'}}>Cancel</button>
 					<button class="Btn Btn--text Btn--danger" {{action 'tryDelete'}}>Delete</button>
 				</form>
-			{{else}}
-				<p><button class="Btn Btn--edit" {{action 'edit'}}>Edit</button></p>
 			{{/if}}
 		{{/if}}
 
@@ -32,7 +46,7 @@
 			{{#if isFavorite}}
 				<button class="Btn" {{action 'removeFavorite'}}>Remove from favorites</button>
 			{{else}}
-				<button class="Btn" {{action 'favorite'}}>Add to favorites</button>
+				<button class="Btn" {{action 'favorite'}}>Add {{title}} to favorites</button>
 			{{/if}}
 		</p>{{/if}}
 	</header>
