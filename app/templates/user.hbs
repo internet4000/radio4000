@@ -23,21 +23,21 @@
 	<section class="Section">
 		<h2>Your favorites</h2>
 		{{#if favoritePlaylists}}
-			<p class="is-inactiveText">Quick access to the best channels. {{#link-to 'playlists'}}Explore other channels{{/link-to}}.</p>
+			<p class="is-inactiveText">Quick access to the best channels</p>
 			<ul class="Grid">
 				{{#each favoritePlaylists}}
 					<li>{{#link-to "playlist" this}}{{title}}{{/link-to}}</li>
 				{{/each}}
 			</ul>
 		{{else}}
-			<p class="is-inactiveText">You haven't addded any favorites yet. {{#link-to 'playlists'}}Explore other channels{{/link-to}}.</p>
+			<p class="is-inactiveText">You haven't addded any favorites yet.</p>
 		{{/if}}
 	</section>
 
-	{{!-- <div class="Section Section--half">
-		<div class="Section-inner">
-			<h2>Your history</h2>
-			<p class="is-inactiveText">Here will be displayed the last playlist you've been browsing.</p>
-		</div>
-	</div> --}}
+	<section class="Section">
+		{{#link-to 'playlists' class="Box"}}
+			<h2>Explore more channels</h2>
+			<p><span class="is-highlighted">browse</span> channels</p>
+		{{/link-to}}
+	</section>
 </section>
