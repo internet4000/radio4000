@@ -1,7 +1,9 @@
 <div class="Container">
-	<ul class="Grid">
+	<ul class="BoxList">
 		{{#each playlist in arrangedContent}}
-			<li>{{#link-to "playlist" playlist}}{{playlist.title}}{{/link-to}}</li>
+			<li>{{#link-to "playlist" playlist class="Box"}}
+				<h3>{{playlist.title}}</h3>
+			{{/link-to}}</li>
 		{{/each}}
 	</ul>
 </div>

@@ -1,14 +1,13 @@
-// List view
+/**
+ * List view
+ */
 .List {
 	list-style: none;
 	padding-left: 0;
-	// margin-bottom: 0;
-	// background-color: #fff;
 	border-top: 1px solid $lightgray;
 }
 .List li {
 	border-bottom: 1px solid $lightgray;
-	// alternating bg colors
 	// &:nth-of-type(even) a {
 	// 	background-color: $superlightgray;
 	// }
@@ -30,7 +29,9 @@
 	}
 }
 
-// Grid view - work in progress, not really pretty yet
+/**
+ * Grid view - work in progress, not really pretty yet
+ */
 .Grid {
 	list-style: none;
 	padding-left: 0;
@@ -53,5 +54,17 @@
 		&:hover {
 			border: 1px solid hsla(255, 4%, 55%, 0.4);
 		}
+	}
+}
+
+/**
+ * List of .Box(es)
+ */
+.BoxList {
+	list-style: none;
+	padding-left: 0;
+	> li {}
+	.Box {
+		margin: 0 1rem 1rem 0;
 	}
 }
