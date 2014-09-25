@@ -12,15 +12,19 @@
  	text-align: center;
  	padding-top: 1.6em;
  	padding-bottom: 1.6em;
- 	@media (min-width: $layout-s) {
- 		padding-top: 2.6em;
- 		padding-bottom: 2.6em;
- 	}
-
  	// constrained
  	margin-left: auto;
  	margin-right: auto;
  	max-width: 20em;
+
+
+ 	@media (min-width: $layout-s) {
+ 		padding-top: 2.6em;
+ 		padding-bottom: 2.6em;
+ 		// not centered anymore
+ 		margin-left: 0;
+ 		margin-right: 0;
+ 	}
 
  	// add depth and animation
  	transition: 200ms all ease-in-out;
