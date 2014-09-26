@@ -1,10 +1,11 @@
 <div class="Container">
-	<h1 class="Title">Playlists — explore radios, find music you like</h1>
-	<ul class="BoxList">
+	<h1 class="Title Manchet"><span class="is-highlighted">Playlists</span> — explore radios, find music you like</h1>
+	<div class="BoxList">
 		{{#each playlist in arrangedContent}}
-			<li>{{#link-to "playlist" playlist class="Box"}}
+			<div>{{#link-to "playlist" playlist class="Box"}}
 				<h3>{{playlist.title}}</h3>
-			{{/link-to}}</li>
+				<p>{{playlist.body}}</p>
+			{{/link-to}}</div>
 		{{/each}}
-	</ul>
+	</div>
 </div>

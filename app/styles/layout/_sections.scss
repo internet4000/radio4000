@@ -14,6 +14,7 @@
 // Two column section
 .Section--half {
 	clear: none;
+	overflow: visible;
 	@media (min-width: $layout-s) {
 		width: 50%;
 		float: left;
