@@ -1,6 +1,6 @@
-{{#link-to 'track' track}}
+<a class="Track-date" {{bind-attr href=track.url}}>{{track.createdDate}}</a>
+{{#link-to 'track' track class="Track-link"}}
 	<p class="Track-name">
-		<a class="Track-date" {{bind-attr href=track.url}}>{{track.createdDate}}</a>
 		{{#if track.title}}
 			{{track.title}}
 		{{else}}
