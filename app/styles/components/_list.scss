@@ -48,6 +48,7 @@
 /**
  * Grid view - work in progress, not really pretty yet
  */
+
 .Grid {
 	list-style: none;
 	padding-left: 0;
@@ -73,14 +74,14 @@
 	}
 }
 
+
 /**
  * List of .Box(es)
  */
-.BoxList {
-	list-style: none;
-	padding-left: 0;
-	> li {}
-	.Box {
+
+.Box {
+	a {
 		margin: 0 1rem 1rem 0;
+		display: block;
 	}
 }

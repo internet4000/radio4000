@@ -3,8 +3,14 @@
  **/
 
 .Playlists {
-	padding-left: 1em;
-	padding-right: 1em;
+	text-align: center;
+
+	.Box--playlist {
+		display: inline-block;
+		margin-left: 1rem;
+		margin-right: 1rem;
+		margin-bottom: 2rem; // double for because left + right = 2
+	}
 }
 
 // temporary, need to refactor user.hbs

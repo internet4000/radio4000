@@ -23,6 +23,19 @@ export default Ember.ArrayController.extend({
 		return isValid;
 	},
 
+	youtubeIdFromUrl: function(url) {
+		var ID = '';
+		url = url.replace(/(>|<)/gi,'').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+		if(url[2] !== undefined) {
+			ID = url[2].split(/[^0-9a-z_]/i);
+			ID = ID[0];
+		}
+		else {
+			ID = url;
+		}
+		return ID;
+	},
+
 	actions: {
 		sortBy: function(property) {
 			this.set('sortProperties', [property]);
@@ -34,11 +47,16 @@ export default Ember.ArrayController.extend({
 		cancel: function() {
 			this.set('isAdding', false);
 		},
+
+
 		publishTrack: function(playlist, track) {
 			if (!this.trackIsValid()) {
 				Ember.debug('invalid track - wont publish');
 				return;
 			}
+
+			// get the youtube ID somehow
+			// this.get('trackUrl').youtubeIdFromUrl();
 
 			// Get the parent playlist
 			playlist = this.get('controllers.playlist').get('model');
