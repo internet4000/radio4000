@@ -19,7 +19,7 @@
 	// padding-right: 3px;
 	color: $red;
 	&.Title {
-		font-size: $font-20;
+		@include size-3;
 		font-weight: 400;
 		display: inline-block;
 		margin-bottom: 0;

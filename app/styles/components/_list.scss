@@ -8,42 +8,10 @@
 }
 .List li {
 	border-bottom: 1px solid $lightgray;
-	// &:nth-of-type(even) a {
-	// 	background-color: $superlightgray;
-	// }
-	a {
-		display: block;
-		font-size: rem(13);
-		line-height: normal;
-		padding: em(12,13) 1rem em(10,13); // 40px height
-		color: $text-color;
-		&:hover {
-			text-decoration: none;
-			.Track-title {
-				text-decoration: underline;
-			}
-		}
-	}
 	p {
 		margin: 0;
 	}
 }
-// Counter
-// .List {
-//   counter-reset: list; // Set the list counter to 0
-// }
-// .List li:before {
-//   counter-increment: list; // Increment the list counter
-//   content: counter(list); // Display the counter
-//   position: absolute;
-//   top: 0;
-//   font-size: rem(13);
-//   margin-top: 1.1em;
-//   left: 0.6em;
-//   color: $gray;
-// }
-
-
 
 /**
  * Grid view - work in progress, not really pretty yet
@@ -56,7 +24,7 @@
 		margin-bottom: 0.5rem;
 	}
 	a {
-		@extend %patron-bold;
+		font-weight: 600;
 		display: inline-block;
 		min-width: 12rem;
 		padding: 0.9rem 0.7rem 0.9rem;
@@ -66,14 +34,12 @@
 		border-radius: 3px;
 		box-shadow: 1px 1px 0 0 hsla(0, 0%, 0%, 0.2);
 		border: 1px solid hsla(255, 4%, 55%, 0.2);
-		letter-spacing: 0.02em;
 
 		&:hover {
 			border: 1px solid hsla(255, 4%, 55%, 0.4);
 		}
 	}
 }
-
 
 /**
  * List of .Box(es)

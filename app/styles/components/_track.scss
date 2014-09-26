@@ -5,35 +5,47 @@
 .Track {
 	position: relative;
 	overflow: hidden; // hide controls
-	a {
-		transition: border 500ms $easing5;
-		border-left: 0 solid hsl(255, 95%, 39%);
-		&:hover {}
-		&.is-active {
-			border-left-width: 5px;
-			padding-left: 5px;
-			.Track-description {
-				color: inherit;
-			}
-			// playing indicator
-			.Track-name:before {
-				content: '►';
-				display: inline;
-				font-size: 10px;
-				margin-right: 0.5rem;
-				position: relative;
-				top: -1px;
-				text-decoration: none;
-			}
-		}
-	}
+	@include size-1;
 	.Btn--danger {
 		float: right;
+	}
+}
+.Track-link {
+	display: block;
+	line-height: normal;
+	padding: em(12,13) 1rem em(10,13); // 40px height
+	border-left: 0 solid hsl(255, 95%, 39%);
+	color: $text-color;
+	transition: border 500ms $easing5;
+	&:hover {
+		text-decoration: none;
+		.Track-title {
+			text-decoration: underline;
+		}
+	}
+	&.is-active {
+		border-left-width: 5px;
+		padding-left: 5px;
+		.Track-description {
+			color: inherit;
+		}
+		// playing indicator
+		.Track-name:before {
+			content: '►';
+			display: inline;
+			font-size: 10px;
+			margin-right: 0.5rem;
+			position: relative;
+			top: -1px;
+			text-decoration: none;
+		}
 	}
 }
 .Track-name {
 }
 .Track-date {
+	margin-top: 1em;
+	margin-right: 1rem;
 	color: $gray;
 	// only show for larger screens
 	display: none;
@@ -50,8 +62,8 @@
 
 .Track-controls {
 	position: absolute;
-	top: 6px;
-	right: 5px;
+	top: em(8,14);
+	right: 1rem;
 	.Btn {
 		padding: em(4,13) em(7,13) em(3,13);
 	}

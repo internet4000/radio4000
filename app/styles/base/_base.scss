@@ -1,25 +1,5 @@
 html {
-	// @extend %patron-light;
-	// @extend %fira;
-	@extend %dagny;
-	line-height: $base-line-height;
-	text-rendering: optimizeLegibility;
-
-	// important, specify in pixels here as all other font-size are re(m)lative to this
-	font-size: 15px;
-	@media (min-width: $layout-s) {
-		font-size: $base-font-size;
-	}
 }
-strong {
-	// @extend %patron-bold;
-	font-weight: 600;
-}
-em {
-	// @extend %patron-italic;
-	font-style: italic;
-}
-
 a {
 	color: $link-color;
 	text-decoration: none;
@@ -54,37 +34,6 @@ hr {
     margin: 0 0 1rem;
 }
 
-// Headers
-h1,h2,h3,h4 {
-	// @extend %patron-bold;
-	// @extend %fira-bold;
-	// font-family: "ff-meta-web-pro-condensed";
-	@extend %dagny-bold;
-	line-height: 1.1;
-}
-h1,
-.Title {
-	font-size: rem(22);
-	// @extend %dagny-black;
-	// responsive but more importantly proportionally nicer
-	@media (min-width: $layout-s) { font-size: rem(26); }
-	a {
-		color: $text-color;
-	}
-}
-h2 {
-	font-size: rem(17);
-	// responsive but more importantly proportionally nicer
-	@media (min-width: $layout-s) { font-size: rem(20); }
-	margin-bottom: 0.5rem;
-}
-h3 {
-	font-size: 1rem;
-	margin-bottom: 0;
-}
-h4 {
-	font-size: rem(13);
-}
 %text-bg {
 	background: linear-gradient(hsl(17, 100%, 50%), hsl(278, 90%, 42%));
 	-webkit-background-clip: text;
@@ -110,7 +59,4 @@ h2 + ul,
 h3 + ul {
 	margin-top: 1rem;
 	padding-left: 1.8rem;
-}
-li {
-	font-size: rem(14);
 }

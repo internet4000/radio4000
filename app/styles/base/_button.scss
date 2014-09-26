@@ -13,10 +13,6 @@
 	white-space: normal; /* 7 */
 
 	// Button styling
-	// @extend %patron-bold;
-	// @extend %fira-bold;
-	font-weight: 600;
-	font-size: rem(13);
 	padding: 0.3em 0.8em 0.2em;
 	background-color: $slightgray;
 	background-image: linear-gradient(to bottom, white 60%, transparent);
@@ -67,7 +63,7 @@
 
 // Large buttons
 .Btn--large {
-	font-size: rem(20);
+	@include size-2;
 	padding: 0.5em 0.7em 0.3em;
 }
 
