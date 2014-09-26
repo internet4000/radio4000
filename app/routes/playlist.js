@@ -22,13 +22,12 @@ export default Ember.Route.extend({
 	// unfortunately it needs to go through all playlists to find the right one
 	// but it's actually not that slow, YET
 	modelBySlug: function(params) {
-		console.log(params);
 		this.store.findAll('playlist').then(function(playlists) {
 			Ember.debug('Looking for a playlist among aaaall playlists…');
-			playlists.forEach(function(item) {
-				if (item.get('slug') === params.playlist_id) {
+			playlists.forEach(function(playlist) {
+				if (playlist.get('slug') === params.playlist_id) {
 					Ember.debug('found it!');
-					this.controller.set('model', item);
+					this.controllerFor('playlist').set('model', playlist);
 				}
 			}.bind(this));
 		}.bind(this));
