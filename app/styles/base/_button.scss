@@ -14,7 +14,8 @@
 
 	// Button styling
 	// @extend %patron-bold;
-	@extend %fira-bold;
+	// @extend %fira-bold;
+	font-weight: 600;
 	font-size: rem(13);
 	padding: 0.3em 0.8em 0.2em;
 	background-color: $slightgray;

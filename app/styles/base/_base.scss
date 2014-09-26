@@ -1,11 +1,12 @@
 html {
 	// @extend %patron-light;
-	@extend %fira;
+	// @extend %fira;
+	@extend %dagny;
 	line-height: $base-line-height;
 	text-rendering: optimizeLegibility;
 
 	// important, specify in pixels here as all other font-size are re(m)lative to this
-	font-size: 14px;
+	font-size: 15px;
 	@media (min-width: $layout-s) {
 		font-size: $base-font-size;
 	}
@@ -56,12 +57,15 @@ hr {
 // Headers
 h1,h2,h3,h4 {
 	// @extend %patron-bold;
-	@extend %fira-bold;
+	// @extend %fira-bold;
+	// font-family: "ff-meta-web-pro-condensed";
+	@extend %dagny-bold;
 	line-height: 1.1;
 }
 h1,
 .Title {
 	font-size: rem(22);
+	// @extend %dagny-black;
 	// responsive but more importantly proportionally nicer
 	@media (min-width: $layout-s) { font-size: rem(26); }
 	a {

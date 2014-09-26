@@ -2,13 +2,17 @@
  * Typography
  **/
 
-$base-font-size: 15px;
-$base-line-height: (20/15);
+$base-font-size: 16px;
+$base-line-height: (21/16);
 
 // %fira { font-family: 'fira-sans'; }
 // %fira-bold { font-family: 'fira-sans'; font-weight: 600; }
 %fira { font-family: 'ff-meta-web-pro'; }
 %fira-bold { font-family: 'ff-meta-web-pro'; font-weight: 600; }
+
+%dagny { font-family: 'ff-dagny-web-pro'; }
+%dagny-bold { font-family: 'ff-dagny-web-pro'; font-weight: 700; }
+%dagny-black { font-family: 'ff-dagny-web-pro'; font-weight: 900; }
 
 // %patron-light { font-family: "Patron Light", 'Patron Light', sans-serif; font-weight:300; }
 // %patron-bold { font-family: "Patron Bold", sans-serif; font-weight: bold; }

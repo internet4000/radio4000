@@ -23,8 +23,6 @@ input[type='password'],
 input[type='url'],
 textarea,
 .Btn--textInput {
-	// @extend %patron-light;
-	// @extend %fira;
 	font-weight: normal;
 	font-size: rem(13);
 	padding: em(10,13) em(8,13) em(8,13);
@@ -39,7 +37,6 @@ textarea {
 // Form design should be tigther than inputs alone
 .Form {
 	max-width: 36rem;
-	margin-bottom: 0.5rem; // to make total bottom 1rem
 	input[type='text'],
 	input[type='email'],
 	input[type='tel'],
@@ -54,7 +51,7 @@ textarea {
 // Label styles
 label {
 	// @extend %patron-bold;
-	@extend %fira-bold;
+	@extend %dagny-bold;
 	display: block;
 	font-size: rem(13);
 }
@@ -69,6 +66,11 @@ label {
 	border-radius: 3px;
 
 	.Form {
+		margin-bottom: 0;
+	}
+}
+.AddTrack {
+	.Btn {
 		margin-bottom: 0;
 	}
 }
