@@ -1,17 +1,17 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
+	isAdding: false,
 
 	// steal the edit property from the playlist
 	needs: ['playlist'],
 	canEdit: Ember.computed.alias('controllers.playlist.canEdit'),
 
-	isAdding: false,
-
 	// Sort by newest on top
 	sortProperties: ['created'],
 	sortAscending: false,
 
+	// Check if the track is valid before saving
 	trackIsValid: function() {
 		var isValid = true;
 		['trackUrl'].forEach(function(field) {
@@ -23,20 +23,25 @@ export default Ember.ArrayController.extend({
 		return isValid;
 	},
 
-	youtubeIdFromUrl: function(url) {
-		var ID = '';
-		url = url.replace(/(>|<)/gi,'').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
-		if(url[2] !== undefined) {
-			ID = url[2].split(/[^0-9a-z_]/i);
-			ID = ID[0];
-		}
-		else {
-			ID = url;
-		}
-		return ID;
+	// Get the ID from a YouTube URL
+	// @todo if it's not passed a youtube url it fails…
+	getYouTubeID: function(url) {
+		return url.match(/(?:youtu\.be\/|youtube\.com(?:\/embed\/|\/v\/|\/watch\?v=|\/user\/\S+|\/ytscreeningroom\?v=|\/sandalsResorts#\w\/\w\/.*\/))([^\/&]{10,12})/)[1];
 	},
 
 	actions: {
+		// This gets called when you paste something into the input-url component
+		// it sets the track title based on a title from the YouTube API based on track URL
+		autoTitle: function(url) {
+			var id = this.getYouTubeID(url);
+			if (!id) {
+				console.log('errrrror');
+			}
+			var apikey = 'AIzaSyCk5FiiPiyHON7PMLfLulM9GFmSYt6W5v4';
+			Ember.$.getJSON('https://www.googleapis.com/youtube/v3/videos?id='+id+'&key='+apikey+'&fields=items(id,snippet(title))&part=snippet').then(function(response) {
+				this.set('trackTitle', response.items[0].snippet.title);
+			}.bind(this));
+		},
 		sortBy: function(property) {
 			this.set('sortProperties', [property]);
 			this.set('sortAscending', !this.get('sortAscending'));
@@ -47,8 +52,6 @@ export default Ember.ArrayController.extend({
 		cancel: function() {
 			this.set('isAdding', false);
 		},
-
-
 		publishTrack: function(playlist, track) {
 			if (!this.trackIsValid()) {
 				Ember.debug('invalid track - wont publish');

@@ -1,7 +1,7 @@
 {{#if canEdit}}
 	<form class="Form AddTrack" {{action "publishTrack" on='submit'}}>
 		{{#if isAdding}}
-			{{input value=trackUrl autofocus='autofocus' placeholder="YouTube or Soundcloud url"}}<br>
+			{{input-url value=trackUrl placeholder="YouTube URL" pasted="autoTitle"}}
 			{{input value=trackTitle placeholder="Title"}}<br>
 			{{textarea value=trackBody placeholder="Optional description"}}<br>
 			<button class="Btn Btn--primary" type='submit'>Add track</button> <button class="Btn Btn--text" {{action 'cancel'}}>Cancel</button>
@@ -38,7 +38,6 @@
 
 <ul class="List">
 	{{#each track in arrangedContent}}
-	{{!-- {{#reverse track in model}} --}}
 		<li>{{x-track
 				track=track
 				playlist=controllers.playlist
