@@ -16,6 +16,7 @@
     "firebase-simple-login": "~1.6.4",
     "emberfire": "~1.2.5",
     "firebase": "~1.0.24",
-    "moment": "~2.8.3"
+    "moment": "~2.8.3",
+    "normalize-opentype.css": "~0.2.0"
   }
 }
