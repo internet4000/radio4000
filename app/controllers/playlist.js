@@ -34,15 +34,6 @@ export default Ember.ObjectController.extend({
 		edit: function() {
 			this.set('isEditing', true);
 		},
-
-		// truncateText: function(string, length) {
-		// 	if (string.length > length) {
-		// 		return string.substring(0, length - 3) + '...';
-		// 	} else {
-		// 		return string;
-		// 	}
-		// },
-
 		editSlug: function(status) {
 			this.set('isEditingSlug', true);
 		},
