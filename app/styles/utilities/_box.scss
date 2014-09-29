@@ -59,7 +59,9 @@ a.Box,
  **/
 
 .Box--playlist {
-	transition: all 2000ms ease-in-out;
+	width: 20em;
+	min-height: 11em;
+	vertical-align: top;
 	.Title {
 		color: $black;
 		margin-bottom: 9px;
