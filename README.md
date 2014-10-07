@@ -1,48 +1,33 @@
 # Radio4000
 
-This is an Ember.js application scaffolded with ember-cli which is a beautiful beast, meaning it's a bit complicated to get everything running right now so please refer to this guide.
+This is an Ember.js application scaffolded with ember-cli.
 
 ## How to install
 
 Please follow this guide step-by-step to make sure everything works.
 
-### First we need to install the newest ember-cli from GitHub and use it as a global npm package.
-
-```
-git clone https://github.com/stefanpenner/ember-cli.git
-cd ember-cli
-npm link
-```
-
-The repository you just cloned will now work just as a global npm package would.
-
 ### Install Radio4000 dependencies
+
+`npm install -g ember-cli`
+
+then clone the project repository and install it
 
 ```
 git clone https://github.com/kopfwelt/play.git
 cd play
 npm install && bower install
-npm uninstall ember-cli
-npm link ember-cli
 ```
 
 That's it. You're done. If it worked, you should be able to use these commands inside the 'play' folder
 
 ## Watching, building and testing
 
-Also see http://www.ember-cli.com/
-
 - `ember server` (or just ember s)
 - `ember test`
-- `ember build`
+- `ember build` (build will still include logs, warnings etc. for testing)
+- `ember build --environment=production` (hard to debug, only use this when it's ready for deploy)
 
-## Generators
-
-The CLI helps create new files, see http://www.ember-cli.com/#generators-and-blueprints
-
-## Updating ember-cli
-
-If you want to use the latest ember-cli, go to where you cloned the repository and run `git pull` and `npm link ember-cli` again.
+Also see http://www.ember-cli.com/
 
 ## Important if you use Sublime Text
 
@@ -63,6 +48,14 @@ Sublime automatically watches all files in a folder. Because ember-cli is so hug
 	]
 }
 ```
+
+## Generators
+
+The CLI helps create new files, see http://www.ember-cli.com/#generators-and-blueprints - for instance, you can write `ember generate route helloWorld`
+
+## Updating ember-cli
+
+See https://github.com/stefanpenner/ember-cli/releases
 
 ## Emberfire
 
