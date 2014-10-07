@@ -1,4 +1,8 @@
-<p class="Manchet">Welcome, here's a complete overview of what you can do.</p>
+<div class="Manchet">
+	<h1>
+		<span class="is-highlighted">Dashboard</span> — a complete overview of what you can do.
+	</h1>
+</div>
 
 <section class="Dashboard">
 
@@ -7,9 +11,9 @@
 			{{#if playlists}}
 				<h2>Your radio</h2>
 				<p class="is-inactiveText">Curate music, enjoy your own taste or share it with friends and beyond.</p>
-				<ul class="Grid">
+				<div class="Playlists">
 					{{#each playlists}}
-						<li>{{#link-to "playlist" this}}{{title}}{{/link-to}}</li>
+						<div class="Playlist">{{#link-to "playlist" this}}{{title}}{{/link-to}}</div>
 					{{/each}}
 				</ul>
 			{{else}}
@@ -24,11 +28,11 @@
 		<h2>Your favorites</h2>
 		{{#if favoritePlaylists}}
 			<p class="is-inactiveText">Quick access to the best channels</p>
-			<ul class="Grid">
+			<div class="Playlists">
 				{{#each favoritePlaylists}}
-					<li>{{#link-to "playlist" this}}{{title}}{{/link-to}}</li>
+					<div class="Playlist">{{#link-to "playlist" this}}{{title}}{{/link-to}}</div>
 				{{/each}}
-			</ul>
+			</div>
 		{{else}}
 			<p class="is-inactiveText">You haven't addded any favorites yet.</p>
 		{{/if}}

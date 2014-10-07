@@ -3,10 +3,13 @@
  */
 
 .Manchet {
-	@include size-3;
 	max-width: 20em;
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
 	margin-bottom: 3rem;
+	h1 {
+		@include size-3;
+		font-weight: 400;
+	}
 }

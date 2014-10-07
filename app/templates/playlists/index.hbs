@@ -1,6 +1,9 @@
 {{!-- index of playlists goes into playlists.hbs --}}
 
-<h1 class="Title Manchet"><span class="is-highlighted">Playlists</span> — explore radios, find music you like</h1>
+<div class="Manchet">
+	<h1><span class="is-highlighted">Playlists</span> — explore radios, find music you like</h1>
+</div>
+
 <div class="Playlists">
 	{{#each playlist in arrangedContent}}
 		{{#link-to "playlist" playlist class="Box Box--playlist"}}

@@ -1,5 +1,8 @@
 <nav class="Nav Section Container">
 	{{#link-to 'about'}}About{{/link-to}}
 	{{#if auth.authed}}
-		 • <a href="#" {{action 'logout' this}}>Log out</a>{{/if}}
+		• <a href="#" {{action 'logout' this}}>Log out</a>
+	{{else}}
+		• <a href="#" class="" {{ action 'showLogin' true }}>Login</a>
+	{{/if}}
 </nav>

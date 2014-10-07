@@ -1,9 +1,11 @@
 <div class="Container">
 	{{#unless auth.authed}}
 
-		<section class="Section Manchet">
-			<a href="#" class="is-highlighted" {{ action 'showLogin' true }}>Create your radio</a> – share your music tastes and listen to your friend's
-		</section>
+		<div class="Manchet">
+			<h1>
+				<span class="is-highlighted">Create your radio</span> – share your music tastes and listen to your friend's
+			</h1>
+		</div>
 
 		<section class="Section Section--half">
 			<a href="#" class="Box" {{action 'showLogin' true}}>

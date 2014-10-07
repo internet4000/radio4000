@@ -27,8 +27,6 @@
 	box-shadow: 0px -1px 2px hsla(0, 0%, 0%, 0.3);
 }
 .Controls-title {
-	margin-top: 0.5rem;
-	margin-bottom: 0.25rem;
 	text-align: center;
 }
 .Controls-buttons {
@@ -41,20 +39,18 @@
 // Container for the embeds
 .Player {
 	position: fixed;
-	left: 0;
-	bottom: 94px; // height of the bottom bar
-	width: 150px;
-	height: 150px;
+	right: 0;
+	bottom: 100px; // height of the bottom bar
+	width: 250px;
+	height: 250px;
 	max-width: 100%;
 	max-height: 100%;
 	background-color: darken($primary-color,12%);
+	transform: translateX(100%);
 	// animate
-	transform: translateX(-100%);
 	transition: transform 600ms $easing, width 600ms $easing, height 600ms $easing;
 	&.is-maximized {
 		transform: translateX(0);
-		width: 400px;
-		height: 400px;
 	}
 	// the youtube iframe
 	iframe {
