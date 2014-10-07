@@ -29,6 +29,11 @@
 {{/unless}}
 
 <div class="Section Section--noBottom">
+	<div class="BtnGroup u-alignLeft">
+		<button class="Btn" {{action 'play'}}>Just play</button>
+		<button class="Btn" {{action 'prev'}}>Previous</button>
+		<button class="Btn" {{action 'next'}}>Next</button>
+	</div>
 	<div class="BtnGroup u-alignRight">
 		<h4 class="BtnGroup-label">Sort by</h4>
 		<button class="Btn" {{action 'sortBy' 'created'}}>Date</button>

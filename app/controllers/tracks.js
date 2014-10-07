@@ -4,8 +4,9 @@ export default Ember.ArrayController.extend({
 	isAdding: false,
 
 	// steal the edit property from the playlist
-	needs: ['playlist'],
+	needs: ['playlist', 'playback'],
 	canEdit: Ember.computed.alias('controllers.playlist.canEdit'),
+	playback: Ember.computed.alias('controllers.playback'),
 
 	// Sort by newest on top
 	sortProperties: ['created'],
@@ -23,6 +24,10 @@ export default Ember.ArrayController.extend({
 		return isValid;
 	},
 
+	// playlistLength: function() {
+	//  	return this.get('model').length;
+	// }.property('model.[],
+
 	// Get the ID from a YouTube URL
 	// @todo if it's not passed a youtube url it fails…
 	getYouTubeID: function(url) {
@@ -30,6 +35,54 @@ export default Ember.ArrayController.extend({
 	},
 
 	actions: {
+		play: function() {
+			// transition to the latest object (the newest)
+			this.transitionToRoute('track', this.get('model.lastObject'));
+		},
+		prev: function() {
+			console.log('prev');
+
+			var playlist = this.get('model');
+			var playlistLength = playlist.get('length');
+			var currentTrack = this.get('playback.model');
+			var currentIndex = playlist.indexOf(currentTrack);
+			var prevIndex = (currentIndex + 1);
+
+			// test: with a playlist of 11 tracks total, currentIndex can not be 10
+			if (currentIndex === (playlistLength-1)) {
+				console.log('first track, can not go to rpevious');
+				return false;
+			}
+
+			console.log('current: ' + currentIndex);
+			console.log('prev will be: ' + prevIndex);
+
+			var prevTrack = playlist.objectAt(prevIndex);
+			this.transitionToRoute('track', prevTrack);
+		},
+		next: function() {
+			console.log('next');
+
+			var playlist = this.get('model');
+			var playlistLength = playlist.get('length');
+			var currentTrack = this.get('playback.model');
+			var currentIndex = playlist.indexOf(currentTrack);
+			var nextIndex = currentIndex - 1;
+
+			if (currentIndex === 0) {
+				console.log('last track, can not go to next');
+				return false;
+			}
+
+			console.log(playlistLength);
+			console.log('current: ' + currentIndex);
+			console.log('next will be: ' + (currentIndex - 1));
+
+			var nextTrack = playlist.objectAt((currentIndex - 1));
+			this.transitionToRoute('track', nextTrack);
+		},
+
+
 		// This gets called when you paste something into the input-url component
 		// it sets the track title based on a title from the YouTube API based on track URL
 		autoTitle: function(url) {

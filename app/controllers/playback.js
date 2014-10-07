@@ -4,7 +4,7 @@ import Ember from 'ember';
 export default Ember.ObjectController.extend({
 	needs: ['playlist', 'tracks', 'track'],
 
-	isMaximized: false,
+	isMaximized: true,
 	isPlaying: false,
 	state: null,
 
