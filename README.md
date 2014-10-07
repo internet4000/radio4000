@@ -70,4 +70,9 @@ You can deploy directly to Firebase like this:
 
 ## Help
 
-Contact oskar@rough.dk
+Contact oskar@rough.dk or try this
+
+```rm -rf node_modules bower_components vendor tmp
+npm cache clear
+npm i
+bower i```
