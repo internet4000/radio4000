@@ -30,6 +30,11 @@ export default Ember.ObjectController.extend({
 		return isFavorite;
 	}.property('auth.user.favoritePlaylists.[]'),
 
+	cleanSlug: function(slug) {
+		var cleanSlug = this.get('slug').dasherize();
+		this.set('slug', cleanSlug);
+	},
+
 	actions: {
 		edit: function() {
 			this.set('isEditing', true);
@@ -44,9 +49,8 @@ export default Ember.ObjectController.extend({
 		save: function() {
 			var playlist = this.get('model');
 
-			//@todo make sure slug is clean
-			var cleanSlug = this.get('slug').dasherize();
-			this.set('slug', cleanSlug);
+			// Make sure slug is clean
+			this.cleanSlug();
 
 			// Save, transition to new url and close (cancel) the edit mode
 			playlist.save().then(function(){
