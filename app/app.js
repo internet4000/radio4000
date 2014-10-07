@@ -6,13 +6,13 @@ import config from './config/environment';
 Ember.MODEL_FACTORY_INJECTIONS = true;
 
 var App = Ember.Application.extend({
-	rootElement: '#Radio4000',
-	modulePrefix: config.modulePrefix,
-	podModulePrefix: config.podModulePrefix,
-	Resolver: Resolver
+  rootElement: '#Radio4000',
+  modulePrefix: config.modulePrefix,
+  podModulePrefix: config.podModulePrefix,
+  Resolver: Resolver
 });
 
-// Change the class used on active elements by Ember
+// Change the class Ember adds to active elements
 Ember.LinkView.reopen({
 	activeClass: 'is-active'
 });
