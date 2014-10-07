@@ -2,7 +2,21 @@
  * Playlist
  */
 
-.Playlist {}
+.Playlist {
+	.Title {
+		font-size: 1rem;
+	}
+	.Body {
+		color: $text-color;
+	}
+
+	&:hover {
+		text-decoration: none;
+		.Title {
+			text-decoration: underline;
+		}
+	}
+}
 .Playlist-header {
 	.Btn--danger {
 		float: right;
