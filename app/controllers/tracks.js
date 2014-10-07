@@ -1,12 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
-	isAdding: false,
-
 	// steal the edit property from the playlist
-	needs: ['playlist', 'playback'],
+	needs: ['playlist', 'playback', 'track'],
 	canEdit: Ember.computed.alias('controllers.playlist.canEdit'),
 	playback: Ember.computed.alias('controllers.playback'),
+	track: Ember.computed.alias('controllers.track'),
+
+	isAdding: false,
+
 
 	// Sort by newest on top
 	sortProperties: ['created'],
@@ -32,56 +34,46 @@ export default Ember.ArrayController.extend({
 
 	trackIndex: function() {
 		var index = this.get('model').indexOf(this.get('playback.model'));
-		console.log('trackIndex: ' + index);
+		Ember.debug('trackIndex return: ' + index);
 		return index;
-	}.property('playback.model'),
-
-	playlistLength: function() {
-	 	return this.get('model.length');
-	}.property('model.[]'),
-
-	playTrack: function(track) {
-		if (!track) {
-			console.log('no track?!');
-			return false;
-		}
-		console.log('playing track: ' + track.get('title'));
-	 	this.transitionToRoute('track', track);
-	},
+	}.property('model.[]', 'playback.model'),
 
 	actions: {
+		playTrack: function(track) {
+			if (!track) {
+				Ember.debug('no track?!');
+				return false;
+			}
+			Ember.debug('playing track: ' + track.get('title'));
+		 	this.transitionToRoute('track', track);
+		},
 		playLatest: function(track) {
-			console.log('playing latest track');
-			this.playTrack(this.get('model.lastObject'));
+			Ember.debug('playing latest track');
+			this.send('playTrack', this.get('model.lastObject'));
 			
 		},
-		prev: function() {
-			console.log(this.get('trackIndex'));
-			if (this.get('trackIndex') === (this.get('playlistLength') - 1) || this.get('trackIndex') < 0) {
-				// at first track already
-				this.playTrack(this.get('model').objectAt(0));
+		prev: function(model) {
+			Ember.debug('prev');
+			if (this.get('trackIndex') === (this.get('model.length') - 1)) {
+				Ember.debug('at newest track already, playing last');
+				this.send('playTrack', this.get('model').objectAt(0));
 				return false;
 			}
+
 			var prevTrack = this.get('model').objectAt((this.get('trackIndex') + 1));
-			this.playTrack(prevTrack);
+			this.send('playTrack', prevTrack);
 		},
-		next: function() {
-			// console.log(this.get('trackIndex'));
-			if (this.get('trackIndex') === 0) {
-				// at last track already
-				this.playTrack(this.get('model.lastObject'));
+		next: function(model) {
+			Ember.debug('next');
+			
+			if (this.get('trackIndex') <= 0) {
+				Ember.debug('last or no track, playing first');
+				this.send('playTrack', this.get('model.lastObject'));
 				return false;
-			}
-			if (this.get('trackIndex') < 0) {
-				// no current track
-				console.log('no track so far, playing first');
-				var lastTrack = this.get('model.lastObject');
-				console.log(this.get('model.lastObject.title'));
-				this.playTrack(lastTrack);
 			}
 
 			var prevTrack = this.get('model').objectAt((this.get('trackIndex') - 1));
-			this.playTrack(prevTrack);
+			this.send('playTrack', prevTrack);
 		},
 
 		// This gets called when you paste something into the input-url component
@@ -89,7 +81,7 @@ export default Ember.ArrayController.extend({
 		autoTitle: function(url) {
 			var id = this.getYouTubeID(url);
 			if (!id) {
-				console.log('errrrror');
+				Ember.debug('errrrror');
 			}
 			var apikey = 'AIzaSyCk5FiiPiyHON7PMLfLulM9GFmSYt6W5v4';
 			Ember.$.getJSON('https://www.googleapis.com/youtube/v3/videos?id='+id+'&key='+apikey+'&fields=items(id,snippet(title))&part=snippet').then(function(response) {

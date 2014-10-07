@@ -4,8 +4,6 @@
 		<div {{bind-attr class=':Player isMaximized model.provider'}}>
 			{{#if model}}
 				<iframe id="player" type="text/html" width="210" height="166" frameborder="0" {{bind-attr src="embedUrl"}}></iframe>
-				{{!-- <iframe id="SoundcloudPlayer" width="100%" height="166" frameborder="0"
-					{{bind-attr src="model.url"}}></iframe> --}}
 			{{/if}}
 		</div>
 
@@ -23,17 +21,21 @@
 				</div>
 
 				<div class="Controls-buttons">
+					
+					<button class="Btn" {{action 'prev' model}}>Previous</button>
 					{{#if isPlaying}}
-						<button class="PlayerBtn PlayerBtn--pause" {{action 'pause'}}>||</button>
+						<button class="Btn" {{action 'pause'}}>Pause</button>
 					{{else}}
-						<button class="PlayerBtn PlayerBtn--play" {{action 'play'}}>►</button>
+						<button class="Btn" {{action 'play'}}>Play</button>
 					{{/if}}
+					<button class="Btn" {{action 'next' model}}>Next</button>
 
-					<button class="PlayerBtn PlayerBtn--toggle" {{action 'toggle'}} title="Toggle the video">▭</button>
+
+					<button class="Btn" {{action 'toggle'}} title="Toggle the video">Video</button>
 				</div>
 
 			{{else}}
-				<button class="PlayerBtn PlayerBtn-play PlayerBtn-play--inactive" {{action 'play'}}>►</button>
+				<button class="Btn" {{action 'play'}}>@dodo just playsomething</button>
 			{{/if}}
 		</div>
 	</div>

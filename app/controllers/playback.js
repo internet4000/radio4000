@@ -2,13 +2,19 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-	needs: ['playlist', 'tracks', 'track'],
+	needs: ['playlist', 'tracks'],
 
-	isMaximized: true,
+	isMaximized: false,
 	isPlaying: false,
 	state: null,
 
 	actions: {
+		prev: function() {
+			alert('prev currently only works from the playlist');
+		},
+		next: function() {
+			alert('next currently only works from the playlist');
+		},
 		play: function() {
 			this.set('isPlaying', true);
 			this.player.playVideo();
@@ -19,7 +25,6 @@ export default Ember.ObjectController.extend({
 		},
 		toggle: function() {
 			this.toggleProperty('isMaximized');
-			// console.log(this.player);
 		}
 	},
 
