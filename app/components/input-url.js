@@ -7,7 +7,7 @@ export default Ember.Component.extend({
 		var self = this;
 
 		// use jQuery's 'paste' event
-		this.$('input').on('paste', function(event) {
+		this.$('input').on('paste', function() {
 			var input = Ember.$(this);
 			// dirty hack, otherwise the pasted value isn't available yet
 			setTimeout(function() {

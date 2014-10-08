@@ -39,7 +39,7 @@ export default Ember.ObjectController.extend({
 		edit: function() {
 			this.set('isEditing', true);
 		},
-		editSlug: function(status) {
+		editSlug: function() {
 			this.set('isEditingSlug', true);
 		},
 		cancel: function() {

@@ -9,7 +9,7 @@ export default Ember.Component.extend({
 		edit: function() {
 			this.set('isEditing', true);
 		},
-		cancel: function(track) {
+		cancel: function() {
 			this.set('isEditing', false);
 		},
 		// Delete the track object and the corresponding track object in playlist.tracks

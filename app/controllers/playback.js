@@ -31,7 +31,7 @@ export default Ember.ObjectController.extend({
 			Ember.debug('playing track: ' + track.get('title'));
 		 	this.transitionToRoute('track', track);
 		},
-		prev: function(model) {
+		prev: function() {
 			Ember.debug('prev');
 			if (this.get('trackIndex') === (this.get('tracks.length') - 1)) {
 				Ember.debug('at newest track already, playing last');
@@ -42,7 +42,7 @@ export default Ember.ObjectController.extend({
 			var prevTrack = this.get('tracks').objectAt((this.get('trackIndex') + 1));
 			this.send('playTrack', prevTrack);
 		},
-		next: function(model) {
+		next: function() {
 			Ember.debug('next');
 
 			if (this.get('trackIndex') <= 0) {
