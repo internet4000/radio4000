@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import DS from 'ember-data';
+// import DS from 'ember-data';
 
 var Ref = new window.Firebase('https://muchplay.firebaseio.com/');
 
@@ -28,7 +28,7 @@ export default {
 
 					} else if (user) {
 						// login
-						console.log('logged in');
+						Ember.debug('logged in');
 
 						// @todo emberfire doesn't support findQuery so…
 						// self.get('store').find('user', { authId: self.get('user.id') }).then(function(promise) {
@@ -68,7 +68,7 @@ export default {
 				});
 
 				newUser.save().then(function(){
-					console.log('created a new user');
+					Ember.debug('created a new user');
 					self.set('user', newUser);
 					self.set('authed', true);
 				});
