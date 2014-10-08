@@ -32,48 +32,9 @@ export default Ember.ArrayController.extend({
 		return url.match(/(?:youtu\.be\/|youtube\.com(?:\/embed\/|\/v\/|\/watch\?v=|\/user\/\S+|\/ytscreeningroom\?v=|\/sandalsResorts#\w\/\w\/.*\/))([^\/&]{10,12})/)[1];
 	},
 
-	trackIndex: function() {
-		var index = this.get('model').indexOf(this.get('playback.model'));
-		Ember.debug('trackIndex return: ' + index);
-		return index;
-	}.property('model.[]', 'playback.model'),
-
 	actions: {
-		playTrack: function(track) {
-			if (!track) {
-				Ember.debug('no track?!');
-				return false;
-			}
-			Ember.debug('playing track: ' + track.get('title'));
-		 	this.transitionToRoute('track', track);
-		},
-		playLatest: function(track) {
-			Ember.debug('playing latest track');
-			this.send('playTrack', this.get('model.lastObject'));
-			
-		},
-		prev: function(model) {
-			Ember.debug('prev');
-			if (this.get('trackIndex') === (this.get('model.length') - 1)) {
-				Ember.debug('at newest track already, playing last');
-				this.send('playTrack', this.get('model').objectAt(0));
-				return false;
-			}
-
-			var prevTrack = this.get('model').objectAt((this.get('trackIndex') + 1));
-			this.send('playTrack', prevTrack);
-		},
-		next: function(model) {
-			Ember.debug('next');
-			
-			if (this.get('trackIndex') <= 0) {
-				Ember.debug('last or no track, playing first');
-				this.send('playTrack', this.get('model.lastObject'));
-				return false;
-			}
-
-			var prevTrack = this.get('model').objectAt((this.get('trackIndex') - 1));
-			this.send('playTrack', prevTrack);
+		playLatest: function() {
+			this.transitionToRoute('track', this.get('model.lastObject'));
 		},
 
 		// This gets called when you paste something into the input-url component

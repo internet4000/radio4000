@@ -8,12 +8,51 @@ export default Ember.ObjectController.extend({
 	isPlaying: false,
 	state: null,
 
+	tracks: function() {
+		return this.get('controllers.playlist.model.tracks');
+	}.property('controllers.playlist.model.tracks.[]'),
+
+	trackIndex: function() {
+		var index = this.get('tracks').indexOf(this.get('model'));
+		Ember.debug('trackIndex return: ' + index);
+		return index;
+	}.property('tracks', 'model'),
+
+
 	actions: {
-		prev: function() {
-			alert('prev currently only works from the playlist');
+		justPlay: function() {
+			this.transitionToRoute('playlists');
 		},
-		next: function() {
-			alert('next currently only works from the playlist');
+		playTrack: function(track) {
+			if (!track) {
+				Ember.debug('no track?!');
+				return false;
+			}
+			Ember.debug('playing track: ' + track.get('title'));
+		 	this.transitionToRoute('track', track);
+		},
+		prev: function(model) {
+			Ember.debug('prev');
+			if (this.get('trackIndex') === (this.get('tracks.length') - 1)) {
+				Ember.debug('at newest track already, playing last');
+				this.send('playTrack', this.get('tracks').objectAt(0));
+				return false;
+			}
+
+			var prevTrack = this.get('tracks').objectAt((this.get('trackIndex') + 1));
+			this.send('playTrack', prevTrack);
+		},
+		next: function(model) {
+			Ember.debug('next');
+
+			if (this.get('trackIndex') <= 0) {
+				Ember.debug('last or no track, playing first');
+				this.send('playTrack', this.get('tracks.lastObject'));
+				return false;
+			}
+
+			var prevTrack = this.get('tracks').objectAt((this.get('trackIndex') - 1));
+			this.send('playTrack', prevTrack);
 		},
 		play: function() {
 			this.set('isPlaying', true);
