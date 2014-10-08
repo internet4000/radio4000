@@ -125,6 +125,7 @@ export default Ember.ObjectController.extend({
 		} else if (state === 0) {
 			this.set('state', 'ended');
 			this.set('isPlaying', false);
+			this.send('next');
 			// go to next??
 			// stir.onEnd();
 		}
