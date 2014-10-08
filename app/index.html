@@ -1,38 +1,35 @@
 <!doctype html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Radio4000</title>
-	<meta name="description" content="Collect, curate, play and share your own playlist">
-	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
-	{{BASE_TAG}}
-	<!-- <link rel="stylesheet" href="assets/vendor.css"> -->
-	<link rel="stylesheet" href="assets/play.css">
-	<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
-	<script src="modernizr-custom.min.js"></script>
+  <meta charset="utf-8">
+  <title>Radio4000</title>
+  <meta name="description" content="Collect, curate, play and share your own playlist">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  {{content-for 'head'}}
+  <link rel="stylesheet" href="assets/vendor.css">
+  <link rel="stylesheet" href="assets/radio4000.css">
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic' rel='stylesheet'>
+  <script src="modernizr-custom.min.js"></script>
 </head>
 <body>
 
-	<div id="Radio4000"></div>
+  <div id="Radio4000"></div>
 
-	<script>
-		window.EmberENV = {{EMBER_ENV}};
-	</script>
-	<script src="assets/vendor.js"></script>
-	<script src="assets/play.js"></script>
-	<script>
-		window.Play = require('play/app')['default'].create({{APP_CONFIG}});
-	</script>
+  <script src="assets/vendor.js"></script>
+  <script src="assets/radio4000.js"></script>
 
-	<script>
-		// load the iFrame player API code
-		var tag = document.createElement('script');tag.src = "https://www.youtube.com/iframe_api";var firstScriptTag = document.getElementsByTagName('script')[0];firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  <script>
+    // Load the IFrame Player API code asynchronously
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-		// @todo notify ember about this event
-		function onYouTubePlayerAPIReady() {
-			console.log('yt api ready');
-		}
-	</script>
+    function onYouTubePlayerAPIReady() {
+      console.log('yt api ready');
+      // @todo notify ember about this event
+    }
+  </script>
 
 </body>
 </html>
