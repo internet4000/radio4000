@@ -9,7 +9,7 @@
 			{{/unless}}
 		{{/if}}
 
-		<h1 class="Playlist-title">{{title}}</h1>
+		<h1 class="Playlist-title">{{#link-to 'playlist' this}}{{title}}{{/link-to}}</h1>
 		<div class="Playlist-desc">
 			{{body}}
 		</div>

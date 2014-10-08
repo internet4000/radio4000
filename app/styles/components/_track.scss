@@ -13,10 +13,10 @@
 .Track-link {
 	display: block;
 	line-height: normal;
-	padding: em(12,13) 1rem em(10,13); // 40px height
-	border-left: 0 solid hsl(255, 95%, 39%);
+	padding: em(12,13) 1rem 0.5rem; // 45px height
+	border-left: 4px solid transparent;
 	color: $text-color;
-	transition: border 500ms $easing5;
+	transition: border 250ms $easing5;
 	&:hover {
 		text-decoration: none;
 		.Track-title {
@@ -24,19 +24,19 @@
 		}
 	}
 	&.is-active {
-		border-left-width: 5px;
-		padding-left: 5px;
+		border-left-color: $primary-color;
 		.Track-description {
 			color: inherit;
 		}
 		// playing indicator
 		.Track-name:before {
-			content: '►';
+			content: ''; // ►
 			display: inline;
 			font-size: 10px;
-			margin-right: 0.5rem;
-			position: relative;
-			top: -1px;
+			position: absolute;
+			left: 0.5rem;
+			top: 50%;
+			margin-top: -0.5em;
 			text-decoration: none;
 		}
 	}

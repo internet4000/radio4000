@@ -1,11 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
+	// steal the edit property from the playlist
+	needs: ['playlist', 'playback', 'track'],
+	canEdit: Ember.computed.alias('controllers.playlist.canEdit'),
+	playback: Ember.computed.alias('controllers.playback'),
+	track: Ember.computed.alias('controllers.track'),
+
 	isAdding: false,
 
-	// steal the edit property from the playlist
-	needs: ['playlist'],
-	canEdit: Ember.computed.alias('controllers.playlist.canEdit'),
 
 	// Sort by newest on top
 	sortProperties: ['created'],
@@ -30,12 +33,16 @@ export default Ember.ArrayController.extend({
 	},
 
 	actions: {
+		playLatest: function() {
+			this.transitionToRoute('track', this.get('model.lastObject'));
+		},
+
 		// This gets called when you paste something into the input-url component
 		// it sets the track title based on a title from the YouTube API based on track URL
 		autoTitle: function(url) {
 			var id = this.getYouTubeID(url);
 			if (!id) {
-				console.log('errrrror');
+				Ember.debug('errrrror');
 			}
 			var apikey = 'AIzaSyCk5FiiPiyHON7PMLfLulM9GFmSYt6W5v4';
 			Ember.$.getJSON('https://www.googleapis.com/youtube/v3/videos?id='+id+'&key='+apikey+'&fields=items(id,snippet(title))&part=snippet').then(function(response) {

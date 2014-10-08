@@ -15,6 +15,9 @@ export default Ember.Route.extend({
 
 	setupController: function(controller, model) {
 		this.controllerFor('playback').set('model', model);
-		// this.controllerFor('playback').set('provider', model.get('provider'));
+	},
+
+	deactivate: function() {
+		console.log('LEAVING');
 	}
 });
