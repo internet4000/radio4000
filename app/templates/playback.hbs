@@ -21,7 +21,7 @@
 				</div>
 
 				<div class="Controls-buttons">
-					
+
 					<button class="Btn" {{action 'prev' model}}>Previous</button>
 					{{#if isPlaying}}
 						<button class="Btn" {{action 'pause'}}>Pause</button>
@@ -35,7 +35,8 @@
 				</div>
 
 			{{else}}
-				<button class="Btn" {{action 'play'}}>@dodo just playsomething</button>
+				{{!-- no track is selected here --}}
+				<button class="Btn" {{action 'justPlay'}}>Play</button>
 			{{/if}}
 		</div>
 	</div>
