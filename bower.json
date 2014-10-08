@@ -18,5 +18,8 @@
     "firebase": "~1.1.0",
     "moment": "~2.8.3",
     "normalize-opentype.css": "~0.2.0"
+  },
+  "resolutions": {
+    "firebase": "~1.1.0"
   }
 }
