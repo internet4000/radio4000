@@ -1,27 +1,18 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-	beforeModel: function() {
-
-		// @todo this only works if you enter the route from an internal link
-		// var authed = this.get('auth.authed');
-		// if (!authed) {
-		// 	console.log('sorry, not logged in');
-		// 	this.transitionToRoute('application');
-		// }
-
-		// @todo doesn't work anymore
-		// var hasPlaylist = this.get('auth.user.playlists');
-		// if (hasPlaylist) {
-		// 	Ember.debug('Already has a playlist, redirecting…');
-		// 	this.transitionToRoute('application');
-		// }
+	beforeModel: function(transition) {
+		// if you visit this route via an url the auth object hasn't checked auth status yet
+		// if we do the check inside this run loop, it works
+		// @todo find a normal way of first executing this after authed is checked
+		// or… delay ember app while auth is checking
+  		Ember.run.later(this, function(){
+	  		// code here will execute within a RunLoop in about 500ms
+	  		if (!this.get('auth.authed')) {
+				Ember.debug('sorry, not logged in');
+				alert('Sorry, you have to be logged in to create a new playlist.');
+				this.transitionTo('application');
+			}
+		}, 500);
 	}
-
-	// ,
-	// renderTemplate: function() {
-	// 	this.render('playlists/new', {
-	// 		into: 'application'
-	// 	});
-	// }
 });
