@@ -2,7 +2,6 @@
 
 module.exports = function(environment) {
   var ENV = {
-    firebase_instance: 'muchplay',
     modulePrefix: 'radio4000',
     environment: environment,
     baseURL: '/',
