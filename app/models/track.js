@@ -7,7 +7,7 @@ export default DS.Model.extend({
 	title: DS.attr('string'),
 	body: DS.attr('string'),
 	created: DS.attr('number'),
-	playlist: DS.belongsTo('playlist'),
+	playlist: DS.belongsTo('playlist', { async: true }),
 
 	ytID: function() {
 		var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
