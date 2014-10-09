@@ -15,18 +15,26 @@
 {{#if playlist.canEdit}}
 	{{#if isEditing}}
 		<form class="Form EditTrack">
+			<div class="Form-group">
 			<label>URL
 				{{input type="url" placeholder="YouTube or Soundcloud URL" value=track.url}}</label>
-			<label>Title
-			{{input value=track.title placeholder="Title"}}</label>
-			<label>Description
-			{{textarea value=track.body placeholder="Description"}}</label>
-			<button class="Btn Btn--primary" {{action "save" track}}>Save track</button>
-			<button class="Btn Btn--text Btn--danger" {{action 'remove' track}}>Delete</button>
-			<button class="Btn Btn--text" {{action 'cancel'}}>Cancel</button>
-
-			<div class="Track-controls">
+			</div>
+			<div class="Form-group">
+				<label>Title
+					{{input value=track.title placeholder="Title"}}
+				</label>
+			</div>
+			<div class="Form-group">
+				<label>Description
+				{{textarea value=track.body placeholder="Description"}}</label>
+			</div>
+			<div class="Form-group">
+				<button class="Btn Btn--primary" {{action "save" track}}>Save track</button>
+				<button class="Btn Btn--text Btn--danger" {{action 'remove' track}}>Delete</button>
 				<button class="Btn Btn--text" {{action 'cancel'}}>Cancel</button>
+				<div class="Track-controls">
+					<button class="Btn Btn--text" {{action 'cancel'}}>Cancel</button>
+				</div>
 			</div>
 		</form>
 	{{else}}

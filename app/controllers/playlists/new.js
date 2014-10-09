@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
 	actions: {
-		create: function() {
+		newPlaylist: function() {
 			if (this.validPlaylist) {
 				this.createNewPlaylist();
 			}

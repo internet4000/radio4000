@@ -17,22 +17,26 @@
 		{{#if canEdit}}
 			{{#if isEditing}}
 				<form class="Form" {{action "save" on="submit"}}>
-					<label for="title">Title</label>
-					{{input name="title" value=title placeholder="Title" autofocus='autofocus'}}
-
-					<label for="body">Description</label>
-					{{textarea name="body" value=body placeholder="Description"}}
-
-
+					<div class="Form-group">
+						<label for="title">Title</label>
+						{{input name="title" value=title placeholder="Title" autofocus='autofocus'}}
+					</div>
+					<div class="Form-group">
+						<label for="body">Description</label>
+						{{textarea name="body" value=body placeholder="Description"}}
+					</div>
 					{{#if isEditingSlug}}
-						<label for="slug">URL - <span class="u-danger">Warning: this will change the link of the channel. The old one won't work (but you can always change it back)</span></label>
-						{{input name="slug" value=slug placeholder="Slug"}}
+						<div class="Form-group">
+							<label for="slug">URL - <span class="u-danger">Warning: this will change the link of the channel. The old one won't work (but you can always change it back)</span></label>
+							{{input name="slug" value=slug placeholder="Slug"}}
+						</div>
 					{{/if}}
-
-					<button class="Btn Btn--primary" type="submit">Save</button>
-					<button class="Btn Btn--text" {{action "editSlug"}}>Change URL</button>
-					<button class="Btn Btn--text" {{action 'cancel'}}>Cancel</button>
-					<button class="Btn Btn--text Btn--danger" {{action 'tryDelete'}}>Delete</button>
+					<div class="Form-group">
+						<button class="Btn Btn--primary" type="submit">Save</button>
+						<button class="Btn Btn--text" {{action "editSlug"}}>Change URL</button>
+						<button class="Btn Btn--text" {{action 'cancel'}}>Cancel</button>
+						<button class="Btn Btn--text Btn--danger" {{action 'tryDelete'}}>Delete</button>
+					</div>
 				</form>
 			{{/if}}
 		{{/if}}
