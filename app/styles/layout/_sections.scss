@@ -12,12 +12,16 @@
 }
 
 // Two column section
-.Section--half {
+.Section-half {
 	clear: none;
 	overflow: visible;
 	@media (min-width: $layout-s) {
 		width: 50%;
 		float: left;
+		padding-left: 1rem;
+		+ .Section-half {
+			padding-right: 1rem;
+		}
 	}
 }
 

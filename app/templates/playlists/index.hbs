@@ -1,14 +1,16 @@
 {{!-- index of playlists goes into playlists.hbs --}}
 
-<div class="Manchet">
-	<h1><span class="is-highlighted">Playlists</span> — explore radios, find music you like</h1>
-</div>
+<div class="Section">
+	<div class="Manchet">
+		<h1><span class="is-highlighted">Playlists</span> — explore radios, find music you like</h1>
+	</div>
 
-<div class="Playlists">
-	{{#each playlist in arrangedContent}}
-		{{#link-to "playlist" playlist class="Playlist"}}
-			<h3 class="Title">{{playlist.title}}</h3>
-			<p class="Body">{{playlist.body}}</p>
-		{{/link-to}}
-	{{/each}}
+	<div class="Playlists">
+		{{#each playlist in arrangedContent}}
+			{{#link-to "playlist" playlist class="Playlist"}}
+				<h3 class="Title">{{playlist.title}}</h3>
+				<p class="Body">{{playlist.body}}</p>
+			{{/link-to}}
+		{{/each}}
+	</div>
 </div>

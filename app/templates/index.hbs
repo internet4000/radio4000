@@ -7,31 +7,31 @@
 			</h1>
 		</div>
 
-		<section class="Section Section--half">
-			<a href="#" class="Box" {{action 'showLogin' true}}>
-				<h2 class="Title">Create your radio</h2>
-				{{#if showLogin}}
-					<p><span class="is-highlighted">choose</span> how to register/log in</p>
-					<p>
-						<button class="Btn Btn--primary" {{ action 'login' 'google' this}}>with Google</button>
-						<button class="Btn Btn--primary" {{ action 'login' 'facebook' this}}>with Facebook</button>
-					</p>
-				{{else}}
-					<p><span class="is-highlighted">2 clicks</span> to broadcast</p>
-				{{/if}}
-			</a>
-		</section>
-
-		<section class="Section Section--half">
-			{{#link-to 'playlists' class="Box"}}
-				<h2 class="Title">Listen</h2>
-				<p><span class="is-highlighted">browse</span> playlists</p>
-			{{/link-to}}
+		<section class="Section">
+			<div class="Section-half">
+				<a href="#" class="Box" {{action 'showLogin' true}}>
+					<h2 class="Title">Create your radio</h2>
+					{{#if showLogin}}
+						<p><span class="is-highlighted">choose</span> how to register/log in</p>
+						<p>
+							<button class="Btn Btn--primary" {{ action 'login' 'google' this}}>with Google</button>
+							<button class="Btn Btn--primary" {{ action 'login' 'facebook' this}}>with Facebook</button>
+						</p>
+					{{else}}
+						<p><span class="is-highlighted">2 clicks</span> to broadcast</p>
+					{{/if}}
+				</a>
+			</div>
+			<div class="Section-half">
+				{{#link-to 'playlists' class="Box"}}
+					<h2 class="Title">Listen</h2>
+					<p><span class="is-highlighted">browse</span> playlists</p>
+				{{/link-to}}
+			</div>
 		</section>
 	{{/unless}}
 
 	{{#if auth.authed}}
 		{{render 'user' auth.user}}
 	{{/if}}
-
 </div>
