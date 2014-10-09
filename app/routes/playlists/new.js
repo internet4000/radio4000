@@ -13,6 +13,6 @@ export default Ember.Route.extend({
 				alert('Sorry, you have to be logged in to create a new playlist.');
 				this.transitionTo('application');
 			}
-		}, 500);
+		}, 750);
 	}
 });
