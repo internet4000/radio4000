@@ -16,11 +16,11 @@
 // is highlighted
 .is-highlighted {
 	text-decoration: none;
-	// padding-right: 3px;
-	color: $red;
+	// color: $red;
+	font-weight: bold;
 	&.Title {
 		@include size-3;
-		font-weight: 400;
+		// font-weight: 400;
 		display: inline-block;
 		margin-bottom: 0;
 	}
