@@ -16,61 +16,130 @@ export default {
 			user: null,
 
 			init: function() {
-				var self = this;
 				// get access to the ember data store
 				this.store = container.lookup('store:main');
 
-				// login with Firebase
-				this.authClient = new window.FirebaseSimpleLogin(Ref, function(error, user) {
+				// OLD METHOLD (SEE NEW METHOD BELOW)
+				this.authClient = new window.FirebaseSimpleLogin(ref, function(error, user) {
+					// an error occurred while attempting login
 					if (error) {
-						// an error occurred while attempting login
 						alert('Authentication failed: ' + error);
+					}
+					// login
+					else if (user) {
+						Ember.debug('Logged in');
+						console.log(user);
+						this.set('authed', true);
+						this.set('authData', user);
+						this.checkUser();
+					}
+					// logout
+					else {
+						this.set('authed', false);
+						this.set('authData', '');
+						this.set('user', null);
+					}
+				}.bind(this));
 
-					} else if (user) {
-						// login
-						Ember.debug('logged in');
-
-						// @todo emberfire doesn't support findQuery so…
-						// self.get('store').find('user', { authId: self.get('user.id') }).then(function(promise) {
-
-						// check if a user already exists
-						self.get('store').find('user', user.id).then(function(promise) {
-							// we have a user with that id already
-							self.set('user', promise);
-							self.set('authed', true);
-							Ember.debug('auth.user was set');
-						}, function() {
-							// or we don't so create one
-							self.createUser(user);
-						});
-
-					} else {
-						// logout
-						self.set('authed', false);
-						self.set('user', null);
+				// NEW METHOD (see old method above)
+				// ref.onAuth(function(authData) {
+				// 	if (authData) {
+				// 		Ember.debug('Logged in');
+				// 		Ember.debug(user);
+				// 		this.set('authed', true);
+				// 		this.set('authData', authData);
+				// 		this.checkUser();
+				// 	} else {
+				// 		Ember.debug('Logged out');
+				// 	}
+				// }.bind(this));
+			},
+			login: function(provider) {
+				Ember.debug('trying to login');
+				this.authClient.login(provider); // firebase simple login
+				// this.loginWithPopup(provider); // firebase 1.1.1
+			},
+			// firebase 1.1.1 login with popup
+			loginWithPopup: function(provider) {
+				var self = this;
+				Ember.debug('logging in with popup');
+				ref.authWithOAuthPopup(provider, function(error, authData) {
+					if (error) {
+						if (error.code === "TRANSPORT_UNAVAILABLE") {
+							// fall-back to browser redirects, and pick up the session
+							// automatically when we come back to the origin page
+							self.loginWithRedirect(provider);
+						}
+					} else if (authData) {
+						// console.log(authData);
 					}
 				});
 			},
-			login: function(provider) {
-				this.authClient.login(provider);
+			// firebase 1.1.1 login with redirect (needed for chrome on iOS)
+			loginWithRedirect: function(provider) {
+				var self = this;
+				Ember.debug('logging in with redirect');
+				ref.authWithOAuthRedirect(provider, function(error, authData) {
+					if (error) {
+						console.log('errrrror');
+					} else if (authData) {
+						console.log(authData);
+					}
+				});
 			},
+
 			logout: function() {
-				this.authClient.logout();
+				Ember.debug('trying to log out');
+
+				this.authClient.logout(); // firebase simple login
+				// ref.unauth(); // firebase 1.1.1
+				this.set('authed', false);
+				this.set('user', null);
+				this.set('uid', '');
 			},
+
+			checkUser: function() {
+				var store = this.get('store');
+				Ember.debug('Checking whether the user already exists…');
+
+				// store.find('user', this.get('authData.uid')).then(function(user) {
+				// 	Ember.debug('user already exists');
+				// 	Ember.debug(user);
+				// 	this.set('user', user);
+
+				// }, function(user) {
+				// 	Ember.debug('no user found');
+				// 	Ember.debug(user);
+				// 	console.log(user);
+
+				// 	// @todo can't use the uid as id for the new user model because ember complains it was already used
+				// 	// one of these two should help but doesn't
+				// 	// user.unloadRecord();
+				// 	// this.get('store').unloadRecord(user);
+
+				// 	this.createUser();
+
+				// }.bind(this));
+
+				this.createUser();
+			},
+
 			createUser: function(user) {
 				Ember.debug('Trying to create a new user');
 				var self = this;
-				var newUser = this.get('store').createRecord('user', {
-					id: user.id, // set id to the id of firebase auth social id
-					name: user.displayName,
-					created: new Date().getTime(),
-					email: user.thirdPartyUserData.email // sometimes email is private and this will be empty
-				});
 
-				newUser.save().then(function(){
+				var newUser = this.get('store').createRecord('user', {
+					id: this.get('authData.uid'), // use uid as id
+					name: this.get('authData.displayName'),
+					email: this.get('authData.email'),
+					created: new Date().getTime()
+				}).save().then(function(user){
 					Ember.debug('created a new user');
-					self.set('user', newUser);
-					self.set('authed', true);
+					self.set('user', user);
+					Ember.debug(self.get('user'));
+				}, function() {
+					Ember.debug('could not save user');
+					self.set('user', null);
 				});
 			}
 		});

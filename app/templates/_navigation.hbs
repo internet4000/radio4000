@@ -3,6 +3,6 @@
 	{{#if auth.authed}}
 		• <a href="#" {{action 'logout' this}}>Log out</a>
 	{{else}}
-		• <a href="#" class="" {{action 'showLogin' true}}>Login</a>
+		• {{#link-to 'login'}}Login{{/link-to}}
 	{{/if}}
 </nav>

@@ -1,0 +1,16 @@
+<div class="Container Section">
+	<h1>Login</h1>
+	<p>
+		<button class="Btn Btn--primary" {{action 'login' 'google'}}>with Google</button>
+		<button class="Btn Btn--primary" {{action 'login' 'facebook'}}>with Facebook</button>
+	</p>
+	<p>
+		<button class="Btn" {{action 'logout'}}>Logout</button>
+	</p>
+
+	<h2>Login status</h2>
+	<p>logged in: {{auth.authed}}<br>uid: {{auth.authData.uid}}</p>
+
+</div>
+
+{{outlet}}

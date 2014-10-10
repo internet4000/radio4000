@@ -26,6 +26,7 @@ Router.map(function() {
 	this.resource('users', function(){
 		this.resource('user', { path: '/user/:user_id' });
 	});
+  this.route('login');
 });
 
 export default Router;
