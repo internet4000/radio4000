@@ -26,7 +26,7 @@ body {
 	bottom: 0;
 	left: 0;
 	overflow: auto;
-	padding-top: 4rem; // space for the header
+	padding-top: 5rem; // space for the header
 	@media (min-width: $layout-m) {
 		padding-top: 6rem;
 	}

@@ -15,9 +15,11 @@
 .Section-half {
 	clear: none;
 	overflow: visible;
+	margin-bottom: 1em;
 	@media (min-width: $layout-s) {
 		width: 50%;
 		float: left;
+		margin-bottom: 0;
 		padding-left: 1rem;
 		+ .Section-half {
 			padding-right: 1rem;
