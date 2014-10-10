@@ -25,27 +25,26 @@ export default Ember.ObjectController.extend({
 	createNewPlaylist: function() {
 		Ember.debug('createNewPlaylist');
 
+		var self= this;
 		var user = this.get('auth.user');
+		if (!user) { Ember.warn('no user'); return false; }
+
+		Ember.debug(user);
 
 		var newPlaylist = this.store.createRecord('playlist', {
 			title: this.get('title'),
 			slug: this.get('title').dasherize(),
 			body: this.get('body'),
 			created: new Date().getTime(),
-			user: promises.user
-		});
-
-		newPlaylist.save().then(function() {
-			Ember.debug('playlist saved');
-			this.transitionToRoute('playlist', newPlaylist);
-		}.bind(this), function() {
-			Ember.debug('could not save playlist');
-		});
-
-		user.get('playlists').then(function(playlists) {
-			playlists.addObject(newPlaylist);
-			user.save().then(function() {
-				Ember.debug('user saved');
+			uid: user.id
+			// user: user
+		}).save().then(function(savedPlaylist) {
+			user.get('playlists').then(function(userPlaylists) {
+				userPlaylists.addObject(savedPlaylist);
+				user.save().then(function() {
+					Ember.debug('playlist saved on user');
+					self.transitionToRoute('playlist', savedPlaylist);
+				});
 			});
 		});
 	}

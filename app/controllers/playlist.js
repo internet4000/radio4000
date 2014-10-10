@@ -4,12 +4,12 @@ export default Ember.ObjectController.extend({
 
 	isEditing: false,
 	canEdit: function() {
-		return this.get('model.user') === this.get('auth.user');
-	}.property('model.user', 'auth.user'),
+		return this.get('model.uid') === this.get('auth.authData.uid');
+	}.property('model.uid', 'auth.user'),
 
 	isEditingSlug: false,
 
-	userFavs: function() {
+	userFavorites: function() {
 		return this.get('auth.user.favoritePlaylists');
 	}.property('auth.user.favoritePlaylists.[]'),
 
@@ -42,14 +42,16 @@ export default Ember.ObjectController.extend({
 				// If any other playlist has the same slug, abort!
 				if (playlist !== currentPlaylist && playlist.get('slug') === newSlug) {
 					alert('Sorry, that URL is already taken. Please choose another one.');
-					var canIHazSlug = false;
+					canIHazSlug = false;
 				}
 			});
 
 			if (canIHazSlug) {
 				this.set('slug', newSlug);
+				console.log('setting slug to' + newSlug);
 				this.send('save');
 			} else {
+				console.log('reverting slug to' + this.get('savedSlug'));
 				this.set('slug', this.get('savedSlug')); // revert to old slug
 			}
 
@@ -72,7 +74,6 @@ export default Ember.ObjectController.extend({
 			// Make sure slug is clean
 			this.validateSlug();
 		},
-
 		// Save, transition to new url and close (cancel) the edit mode
 		save: function() {
 			this.get('model').save().then(function(){
@@ -106,16 +107,16 @@ export default Ember.ObjectController.extend({
 		},
 		// Save the current model playlist on the user as a favorite
 		favorite: function() {
-			this.get('userFavs').addObject(this.get('model'));
+			this.get('userFavorites').addObject(this.get('model'));
 			this.send('saveUser');
 		},
 		removeFavorite: function() {
-			this.get('userFavs').removeObject(this.get('model'));
+			this.get('userFavorites').removeObject(this.get('model'));
 			this.send('saveUser');
 		},
 		saveUser: function() {
-			var user = this.get('auth.user');
-			user.save().then(function() {
+			this.get('model').save();
+			this.get('auth.user').save().then(function() {
 				Ember.debug('user saved');
 			}, function() {
 				Ember.warn('could not save user');

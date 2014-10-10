@@ -5,6 +5,11 @@ export default DS.Model.extend({
 	slug: DS.attr('string'),
 	created: DS.attr('number'),
 	body: DS.attr('string'),
-	user: DS.belongsTo('user', { inverse: 'playlists', async: true }),
-	tracks: DS.hasMany('track', { async: true })
+
+	// temporary but it works
+	uid: DS.attr('string'),
+
+	// relationships
+	tracks: DS.hasMany('track', { async: true }),
+	user: DS.belongsTo('user', { inverse: 'playlists', async: true })
 });
