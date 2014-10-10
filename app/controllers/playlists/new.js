@@ -23,37 +23,30 @@ export default Ember.ObjectController.extend({
 
 	// Create a new playlist
 	createNewPlaylist: function() {
+		Ember.debug('createNewPlaylist');
 
-		// 1. Get parent user, the owner
 		var user = this.get('auth.user');
 
-		// if user already has a playlist, bring him to the dashboard
-		// if (user.get('playlist')) {
-		// 	this.transitionToRoute('application');
-		// }
-
-		// 2. Create the playlist
-		var newPlaylist = this.get('store').createRecord('playlist', {
-			created: new Date().getTime(),
+		var newPlaylist = this.store.createRecord('playlist', {
 			title: this.get('title'),
 			slug: this.get('title').dasherize(),
 			body: this.get('body'),
-			user: user
+			created: new Date().getTime(),
+			user: promises.user
 		});
 
-		// 3. Save it, then
 		newPlaylist.save().then(function() {
-			Ember.debug('New playlist saved');
-			// 4. Get the relationship on the parent
-			Ember.RSVP.Promise.cast(user.get('playlists')).then(function(playlists) {
-				playlists.addObject(newPlaylist);
-				user.save().then(function() {
-					Ember.debug('New playlist saved on the user');
-				});
+			Ember.debug('playlist saved');
+			this.transitionToRoute('playlist', newPlaylist);
+		}.bind(this), function() {
+			Ember.debug('could not save playlist');
+		});
+
+		user.get('playlists').then(function(playlists) {
+			playlists.addObject(newPlaylist);
+			user.save().then(function() {
+				Ember.debug('user saved');
 			});
 		});
-
-		// Go to the new route
-		this.transitionToRoute('playlist', newPlaylist);
 	}
 });
