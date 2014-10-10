@@ -79,29 +79,21 @@ export default Ember.ObjectController.extend({
 				this.transitionToRoute('application');
 			}
 		},
+		// Save the current model playlist on the user as a favorite
 		favorite: function() {
-			var user = this.get('auth.user');
-			var playlist = this.get('model');
-			this.set('favorited', true);
-
-			// Save the current model playlist on the user as a favorite
-			Ember.RSVP.Promise.cast(user.get('favoritePlaylists')).then(function(favorites) {
-				favorites.addObject(playlist);
-				user.save().then(function() {
-					Ember.debug('Success: playlist saved as favorite on the user');
-				});
-			});
+			this.get('userFavs').addObject(this.get('model'));
+			this.send('saveUser');
 		},
 		removeFavorite: function() {
+			this.get('userFavs').removeObject(this.get('model'));
+			this.send('saveUser');
+		},
+		saveUser: function() {
 			var user = this.get('auth.user');
-			var playlist = this.get('model');
-			this.set('favorited', false);
-
-			Ember.RSVP.Promise.cast(user.get('favoritePlaylists')).then(function(favorites) {
-				favorites.removeObject(playlist);
-				user.save().then(function() {
-					Ember.debug('Success: playlist removes from favorite on the user');
-				});
+			user.save().then(function() {
+				Ember.debug('user saved');
+			}, function() {
+				Ember.warn('could not save user');
 			});
 		}
 	}
