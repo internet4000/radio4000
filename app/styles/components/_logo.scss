@@ -10,13 +10,17 @@
 	transition: 2000ms all ease-in-out;
 	backface-visibility: hidden; // performance
 
-	// @extend %patron-black-italic;
-	@include size-3;
-	border: 1px solid hsla(0, 0%, 0%, 0.2);
-	border-radius: $border-radius;
-	background: linear-gradient(hsl(17, 100%, 50%), hsl(278, 90%, 42%));
-	background-color: $beautifulblue;
-	-webkit-font-smoothing: antialiased;
+	img {
+		max-width: 60px;
+	}
+
+	// // @extend %patron-black-italic;
+	// @include size-3;
+	// border: 1px solid hsla(0, 0%, 0%, 0.2);
+	// border-radius: $border-radius;
+	// background: linear-gradient(hsl(17, 100%, 50%), hsl(278, 90%, 42%));
+	// background-color: $beautifulblue;
+	// -webkit-font-smoothing: antialiased;
 
 	a {
 		display: block;

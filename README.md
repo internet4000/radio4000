@@ -72,7 +72,7 @@ You can deploy directly to Firebase like this:
 
 Contact oskar@rough.dk or try this
 
-```rm -rf node_modules bower_components vendor tmp
+```rm -rf node_modules bower_components tmp
 npm cache clear
 npm i
 bower i```
