@@ -12,7 +12,7 @@ Router.map(function() {
 	this.route('dashboard');
 
 	// many playlists
-	this.resource('playlists', function() {
+	this.resource('playlists', { path: 'discover'}, function() {
 		this.route('new', { path: 'new' });
 	});
 

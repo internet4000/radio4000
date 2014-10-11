@@ -1,9 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-	// model: function(params) {
-	// 	return this.store.find('track', params.track_id);
-	// },
 
 	// don't use the outlet of playlist.hbs, but an outlet in application.hbs
 	renderTemplate: function() {
@@ -12,12 +9,13 @@ export default Ember.Route.extend({
 			outlet: 'player'
 		});
 	},
-
 	setupController: function(controller, model) {
 		this.controllerFor('playback').set('model', model);
 	},
 
 	deactivate: function() {
-		console.log('LEAVING');
+		// make sure fullscreen video is off
+		this.controllerFor('playback').set('guiState', 1);
+		this.controllerFor('playback').set('guiStateClass', 'is-off');
 	}
 });

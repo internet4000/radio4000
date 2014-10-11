@@ -2,9 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 
-	userPlaylists: function() {
-		return this.get('auth.user.playlists');
-	}.property('auth.user.playlists.[]'),
+
 
 	// yourPlaylist: function() {
 	// 	var userplaylist = this.get('auth.user.playlists').objectAt(0);
