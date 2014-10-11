@@ -18,28 +18,6 @@
 	}
 }
 
-// player states effects
-
-.Application {
-	&.Player-is-minimized {
-		.Player {
-		}
-		.Playlist {
-			transform: scale(1);
-		}
-	}
-	&.Player-is-maximized {
-		.Player {
-
-			transform: translate3d(0,0,0);
-		}
-		.Playlist {
-			transform: scale(0.85);
-			opacity: 0;
-		}
-	}
-}
-
 // Controls
 .Controls {
 	z-index: 3;
@@ -111,5 +89,23 @@
 		width: 100%;
 		height: 100%;
 		transform: translate3d(0,100%,0);
+	}
+}
+
+.Application {
+	// initial state
+	.Player {}
+	.Playlist {
+		transform: scale(1);
+	}
+	// maximized state
+	&.is-maximized {
+		.Player {
+			transform: translate3d(0,0,0);
+		}
+		.Playlist {
+			transform: scale(0.85);
+			opacity: 0;
+		}
 	}
 }

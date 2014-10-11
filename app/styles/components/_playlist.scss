@@ -4,7 +4,7 @@
 
 .Playlist {
 	position: relative;
-	transition: transform 550ms $easing, opacity 550ms;
+	transition: transform 600ms $easing, opacity 600ms;
 	&.Container {
 		background-color: $bg-color;
 	}

@@ -15,7 +15,6 @@ export default Ember.Route.extend({
 
 	deactivate: function() {
 		// make sure fullscreen video is off
-		this.controllerFor('playback').set('guiState', 1);
-		this.controllerFor('playback').set('guiStateClass', 'is-off');
+		this.controllerFor('playback').set('isMaximized', false);
 	}
 });

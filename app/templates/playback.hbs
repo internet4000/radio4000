@@ -1,7 +1,7 @@
 <div {{bind-attr class=':Playback model:is-active'}}>
 	<div class="">
 
-		<div {{bind-attr class=':Player isMaximized model.provider'}}>
+		<div {{bind-attr class=':Player isMaximized'}}>
 			{{#if model}}
 				<iframe id="player" type="text/html" width="210" height="166" frameborder="0" {{bind-attr src="embedUrl"}}></iframe>
 			{{/if}}
