@@ -10,6 +10,10 @@
 	margin-bottom: 3rem;
 	h1 {
 		@include size-3;
-		font-weight: 400;
+		.is-highlighted,
+		small {
+			font-size: 1em;
+			@include type-regular;
+		}
 	}
 }

@@ -7,6 +7,9 @@
 	text-align: center;
 	margin-top: 5em;
 
+	a {
+		color: $text-color;
+	}
 	a.is-active {
 		text-decoration: underline;
 	}
