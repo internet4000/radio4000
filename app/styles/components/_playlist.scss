@@ -31,8 +31,8 @@
 }
 .Playlist-desc {
 	text-align: left;
-	&:first-line {
-   	text-align: center
+	&:first-letter {
+		padding-left: 2em;
 	}
 	margin-bottom: 1rem;
 }
