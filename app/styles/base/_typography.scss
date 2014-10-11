@@ -14,17 +14,17 @@ html {
 	// background-size: 100% 1rem;
 }
 strong {
-	font-weight: 600;
+	@include type-bold;
 }
 em {
 	font-style: italic;
 }
 label {
-	font-weight: 600;
+	@include type-bold;
 }
 .Btn {
 	@include size-1;
-	font-weight: 600;
+	@include type-bold;
 }
 // Headers
 h1,h2,h3,h4 {

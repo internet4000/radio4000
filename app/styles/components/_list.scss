@@ -24,7 +24,7 @@
 		margin-bottom: 0.5rem;
 	}
 	a {
-		font-weight: 600;
+		@include type-bold;
 		display: inline-block;
 		width: 20em;
 		min-height: 11em;

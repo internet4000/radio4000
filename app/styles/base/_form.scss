@@ -13,6 +13,7 @@ textarea {
 	border: 1px solid rgba(0,0,0,0.2);
 	border-radius: $border-radius;
 	color: $black;
+	-webkit-font-smoothing: antialiased;
 }
 
 // Text inputs
@@ -50,6 +51,15 @@ textarea {
 label {
 	display: block;
 	@include size-1;
+
+	input[type='text'],
+	input[type='email'],
+	input[type='tel'],
+	input[type='password'],
+	input[type='url'],
+	textarea {
+		margin-top: 0.25rem;
+	}
 }
 
 

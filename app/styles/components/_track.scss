@@ -46,7 +46,7 @@
 .Track-date {
 	margin-top: 1em;
 	margin-right: 1rem;
-	color: $gray;
+	color: $lightgray;
 	// only show for larger screens
 	display: none;
 	@media (min-width: $layout-s) {
@@ -62,7 +62,7 @@
 
 .Track-controls {
 	position: absolute;
-	top: em(8,14);
+	top: 0.35em;
 	right: 1rem;
 	.Btn {
 		padding: em(4,13) em(7,13) em(3,13);
@@ -72,7 +72,7 @@
 .no-touch {
 	.Track-controls {
 		transition: transform 300ms $easing5;
-		transform: translateX(120%) scale(0.9);
+		transform: translateX(150%) scale(0.85);
 	}
 	.Track:hover .Track-controls,
 	.Track.is-editing .Track-controls {
