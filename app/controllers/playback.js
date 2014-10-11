@@ -4,9 +4,11 @@ import Ember from 'ember';
 export default Ember.ObjectController.extend({
 	needs: ['playlist', 'tracks'],
 
-	isMaximized: false,
+
 	isPlaying: false,
-	state: null,
+	state: null, // youtube player state
+	guiState: 1, // gui state
+	guiStateClass: 'is-off',
 
 	tracks: function() {
 		return this.get('controllers.playlist.model.tracks');
@@ -63,7 +65,19 @@ export default Ember.ObjectController.extend({
 			this.player.pauseVideo();
 		},
 		toggle: function() {
-			this.toggleProperty('isMaximized');
+			if (this.get('guiState') === 1) {
+				//first click
+				this.set('guiState', 2);
+				this.set('guiStateClass', 'is-background');
+			} else if (this.get('guiState') === 2) {
+				//second click
+				this.set('guiState', 3);
+				this.set('guiStateClass', 'is-maximized');
+			} else {
+				//third click
+				this.set('guiState', 1);
+				this.set('guiStateClass', 'is-off');
+			}
 		}
 	},
 

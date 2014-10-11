@@ -134,7 +134,7 @@ export default {
 
 				var newUser = this.get('store').createRecord('user', {
 					id: this.get('authData.uid'), // use uid as id
-					authData: this.get('authData'),
+					name: this.get('authData.facebook.displayName'),
 					created: new Date().getTime()
 				}).save().then(function(user){
 					Ember.debug('created a new user');
