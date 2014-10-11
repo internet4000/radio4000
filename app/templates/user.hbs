@@ -1,20 +1,20 @@
 <div class="Manchet">
-	<h1>Dashboard<small> — a complete overview of what you can do</small></h1>
+	<h1>Radio4000<small> — a complete overview of what you can do</small></h1>
 </div>
 
 <section class="Dashboard">
-
+	<h2>Your channel</h2>
 	<section class="Section">
 			{{#each playlists}}
 				{{#link-to "playlist" this class="Box"}}
-					<h2>{{title}}</h2>
-					<p>Your radio</p>
+					<h3>{{title}}</h3>
+					<p>{{description}}</p>
 				{{/link-to}}
 			{{/each}}
 
 			{{#unless playlists}}
 				{{#link-to "playlists.new" class="Box"}}
-					<h2>Get your own playlist</h2>
+					<h3>Get your own channel</h3>
 				{{/link-to}}
 			{{/unless}}
 	</section>

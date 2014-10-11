@@ -9,49 +9,45 @@
 // this syntax is kool, cuz it works like a ch4rm
 a.Box,
 .Box > a {
-		display: block;
-		border: 1px solid $secondary-color;
-		text-align: center;
-		padding-top: 1.6em;
-		padding-bottom: 1.6em;
-		// constrained
-		margin-left: auto;
-		margin-right: auto;
-		max-width: 20em;
+	display: block;
+	border: 1px solid hsla(0, 0%, 0%, 0.2);
+	text-align: center;
+	padding-top: 1.6em;
+	padding-bottom: 1.6em;
+	transition: 200ms all ease-in-out;
+	box-shadow: $slightgray 4px 16px 20px;
 
-
-		@media (min-width: $layout-s) {
-			padding-top: 2.6em;
-			padding-bottom: 2.6em;
-			// not centered anymore
-			margin-left: 0;
-			margin-right: 0;
-		}
-
-		// add depth and animation
-		transition: 200ms all ease-in-out;
-		box-shadow: $slightgray 4px 16px 20px;
-
-		.Btn {
-			background-color: $green;
-		}
-		h2 {
-			color: $text-color;
-		}
-		> *:last-child {
-			margin-bottom: 0;
-		}
-
-		&:hover {
-			text-decoration: none;
-			background-color: lighten($primary-color, 60%);
-			box-shadow: $lightgray 4px 6px 30px;
-		}
-		&:active {
-			text-decoration: none;
-			background-color: $secondary-color;
-		}
+	// constrained
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 20em;
+	@media (min-width: $layout-s) {
+		padding-top: 2.6em;
+		padding-bottom: 2.6em;
+		// not centered anymore
+		margin-left: 0;
+		margin-right: 0;
 	}
+
+	h2 {
+		color: $text-color;
+	}
+	> *:last-child {
+		margin-bottom: 0;
+	}
+	&:hover {
+		text-decoration: none;
+		background-color: lighten($primary-color, 60%);
+		box-shadow: $lightgray 4px 6px 30px;
+	}
+	&:active {
+		text-decoration: none;
+		background-color: $secondary-color;
+	}
+	+ & {
+		margin-top: -1px;
+	}
+}
 
 
 /**
