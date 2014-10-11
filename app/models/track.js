@@ -7,6 +7,7 @@ export default DS.Model.extend({
 	created: DS.attr('number'),
 	playlist: DS.belongsTo('playlist', { async: true }),
 
+	// Return a YouTube ID from the url
 	ytID: function() {
 		var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
 		var match = this.get('url').match(regExp);
@@ -17,10 +18,12 @@ export default DS.Model.extend({
 		}
 	}.property('url'),
 
+	// Create a URL to embed in an iframe
 	embedUrl: function() {
 		return '//www.youtube.com/embed/'+ this.get('ytID') + '?enablejsapi=1&autoplay=1&rel=0&showinfo=0&autohide=1';
 	}.property('ytID'),
 
+	// Format the date
 	createdDate: function() {
 		var m = window.moment(this.get('created'));
 		// return '%@ at %@'.fmt(m.format('MMMM Do, YYYY'), m.format('h:mm:ss a'));

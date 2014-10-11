@@ -3,7 +3,7 @@
   "dependencies": {
     "handlebars": "~1.3.0",
     "jquery": "^1.11.1",
-    "ember": "1.7.0",
+    "ember": "1.8.0-beta.4",
     "ember-data": "http://builds.emberjs.com/canary/ember-data.js",
     "ember-resolver": "~0.1.7",
     "loader.js": "stefanpenner/loader.js#1.0.1",
@@ -13,7 +13,7 @@
     "ember-qunit": "0.1.8",
     "ember-qunit-notifications": "0.0.4",
     "qunit": "~1.15.0",
-    "emberfire": "~1.2.6",
+    "emberfire": "~1.2.7",
     "moment": "~2.8.3",
     "normalize-opentype.css": "~0.2.0",
     "firebase": "~1.1.x",

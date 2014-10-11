@@ -36,14 +36,19 @@ export default Ember.ObjectController.extend({
 			slug: this.get('title').dasherize(),
 			body: this.get('body'),
 			created: new Date().getTime(),
-			uid: user.id
-			// user: user
+			uid: user.id,
+			user: user
 		}).save().then(function(savedPlaylist) {
+
+			// Redirect to the new playlist
+			self.transitionToRoute('playlist', savedPlaylist);
+
+			// Save the new playlist on the user
 			user.get('playlists').then(function(userPlaylists) {
 				userPlaylists.addObject(savedPlaylist);
 				user.save().then(function() {
 					Ember.debug('playlist saved on user');
-					self.transitionToRoute('playlist', savedPlaylist);
+
 				});
 			});
 		});

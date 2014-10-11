@@ -14,21 +14,35 @@ export default Ember.ObjectController.extend({
 	}.property('auth.user.favoritePlaylists.[]'),
 
 	isFavorite: function() {
-		// first check if we have the favorites and can continue
-		var favorites = this.get('auth.user.favoritePlaylists');
-		if (favorites === null) { return false; }
+		Ember.debug('checking favorites');
+
 		// initially set it to false
-		var model = this.get('model');
 		var isFavorite = false;
-		// iterate through each favorite and see if it matches the current model
-		favorites.forEach(function(item){
-			if (model === item) {
+		var playlist = this.get('model');
+
+		// check if the user is set
+		var user = this.get('auth.user');
+		if (!user) {
+			Ember.debug('no user yet, waaaaait for it');
+			return false;
+		}
+
+		// compare each favorite with the current model
+		Ember.debug('continuing searching for favs, have the user now');
+		Ember.debug(this.get('userFavorites'));
+		this.get('userFavorites').forEach(function(userFavorite) {
+			if (playlist === userFavorite) {
+				console.log(userFavorite.get('title') + ' YAY!');
 				isFavorite = true;
+			} else {
+				console.log(userFavorite.get('title') + ' nop…');
 			}
 		});
 
+		console.log(isFavorite);
+
 		return isFavorite;
-	}.property('auth.user.favoritePlaylists.[]'),
+	}.property('userFavorites', 'auth.user'),
 
 	validateSlug: function() {
 		var canIHazSlug = true;
@@ -83,7 +97,7 @@ export default Ember.ObjectController.extend({
 			this.send('cancel');
 		},
 		tryDelete: function() {
-			var confirmed = confirm('Are you sure?');
+			var confirmed = confirm('Are you sure? Your playlist will be gone forever. But you can always create a new one.');
 			if (confirmed) {
 				this.send('deletePlaylist');
 			}
@@ -115,7 +129,6 @@ export default Ember.ObjectController.extend({
 			this.send('saveUser');
 		},
 		saveUser: function() {
-			this.get('model').save();
 			this.get('auth.user').save().then(function() {
 				Ember.debug('user saved');
 			}, function() {
