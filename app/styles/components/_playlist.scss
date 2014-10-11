@@ -5,8 +5,11 @@
 .Playlist {
 	z-index: 2;
 	position: relative;
-	background-color: rgba(118, 118, 118, 0.8);
 	padding-top: 16px;
+	transition: all 500ms $easing;
+	&.Container {
+		background-color: $bg-color;
+	}
 	.Title {
 		font-size: 1rem;
 	}

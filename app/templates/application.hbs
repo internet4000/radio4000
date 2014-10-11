@@ -1,18 +1,20 @@
-<header class="SiteHeader">
-	<h1 class="SiteLogo">{{#link-to "index" title="Back to the dashboard"}}
-		<img src="images/radio-4000-logo.png" alt="Radio 4000">
-	{{/link-to}}</h1>
-</header>
+<div class="Application" {{bind-attr class='guiStateClass'}}>
+	<header class="SiteHeader">
+		<h1 class="SiteLogo">{{#link-to "index" title="Back to the dashboard"}}
+			<img src="images/radio-4000-logo.png" alt="Radio 4000">
+		{{/link-to}}</h1>
+	</header>
 
-<main class="SiteMain">
-	{{outlet}}
+	<main class="SiteMain">
+		{{outlet}}
 
-	{{partial 'navigation'}}
-</main>
+		{{partial 'navigation'}}
+	</main>
 
-<aside class="SiteAside">
-	{{render 'playback'}}
-	{{outlet 'player'}}
-</aside>
+	<aside class="SiteAside">
+		{{render 'playback'}}
+		{{outlet 'player'}}
+	</aside>
 
 
+</div>

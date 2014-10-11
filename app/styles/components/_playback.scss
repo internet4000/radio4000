@@ -18,9 +18,31 @@
 	}
 }
 
+// player states effects
+
+.Application {
+	&.Player-is-minimized {
+		.Player {
+		}
+		.Playlist {
+			transform: translateX(0);
+		}
+	}
+	&.Player-is-maximized {
+		.Player {
+			height: 100%;
+			width:	100%;
+		}
+		.Playlist {
+
+			transform: translateX(-200%);
+		}
+	}
+}
+
 // Controls
 .Controls {
-	z-index: 2;
+	z-index: 3;
 	position: relative;
 	padding: 0.7rem 1rem 0.7rem 60px;
 	overflow: auto;
@@ -70,40 +92,16 @@
 .Player {
 	position: fixed;
 	right: 0;
-	bottom: 100px; // height of the bottom bar
+	bottom: 0;
+	// bottom: 100px; // height of the bottom bar
 	width: 250px;
 	height: 250px;
 	max-width: 100%;
 	max-height: 100%;
 	background-color: darken($primary-color,12%);
-	transform: translateX(100%);
+	// transform: translateX(100%);
 	// animate
-	transition: transform 600ms $easing, width 600ms $easing, height 600ms $easing;
-	&.is-maximized {
-		transform: translateX(0);
-		position: fixed;
-		top: 0;
-		right: 0;
-		left: 0;
-		bottom: 0;
-		width: 100%;
-		height: 100%;
-		z-index: 1;
-	}
-	&:is-off {
-		transform: translateX(100%);
-	}
-	&:is-background {
-		transform: translateX(0);
-		position: fixed;
-		top: 0;
-		right: 0;
-		left: 0;
-		bottom: 0;
-		width: 100%;
-		height: 100%;
-		z-index: 1;
-	}
+	transition: all 400ms $easing;
 	// the youtube iframe
 	iframe {
 		width: 100%;

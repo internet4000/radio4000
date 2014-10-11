@@ -68,15 +68,11 @@ export default Ember.ObjectController.extend({
 			if (this.get('guiState') === 1) {
 				//first click
 				this.set('guiState', 2);
-				this.set('guiStateClass', 'is-background');
-			} else if (this.get('guiState') === 2) {
-				//second click
-				this.set('guiState', 3);
-				this.set('guiStateClass', 'is-maximized');
+				this.set('guiStateClass', 'Player-is-maximized');
 			} else {
-				//third click
+				//second click
 				this.set('guiState', 1);
-				this.set('guiStateClass', 'is-off');
+				this.set('guiStateClass', 'Player-is-minimized');
 			}
 		}
 	},
