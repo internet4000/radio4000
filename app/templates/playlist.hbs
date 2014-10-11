@@ -47,16 +47,17 @@
 			<p>favoritePlaylist id: {{favoritePlaylist.id}}</p>
 		{{/each}} --}}
 
+
 		<p>{{#if auth.authed}}
-			{{#if isFavorite}}
-				<button class="Btn" {{action 'removeFavorite'}}>Remove from favorites</button>
-			{{else}}
-				<button class="Btn" {{action 'favorite'}}>Add to favorite playlists</button>
-			{{/if}}
+
+				{{#if isReallyFavorite}}
+					<button class="Btn" {{action 'removeFavorite'}}>Unfavorite</button></p>
+				{{else}}
+					<button class="Btn" {{action 'favorite'}}>Favorite</button>
+				{{/if}}
+
 		</p>{{/if}}
 
-		<p><button class="Btn" {{action 'favorite'}}>Favorite</button>
-		<button class="Btn" {{action 'removeFavorite'}}>Unfavorite</button></p>
 	</header>
 
 	<div class="Playlist-body">
