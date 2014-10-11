@@ -1,7 +1,7 @@
 import Ember from 'ember';
 // import DS from 'ember-data';
 
-var Ref = new window.Firebase('https://muchplay.firebaseio.com/');
+var ref = new window.Firebase('https://muchplay.firebaseio.com/');
 
 // To use this object globally we'll need to inject it into all our controllers and routes.
 export default {
@@ -13,7 +13,6 @@ export default {
 		// This object will be used for authentication. The variable auth will be used later.
 		var auth = Ember.Object.extend({
 			authed: false,
-			user: null,
 
 			init: function() {
 				// get access to the ember data store
@@ -24,20 +23,20 @@ export default {
 					// an error occurred while attempting login
 					if (error) {
 						alert('Authentication failed: ' + error);
+						this.afterLogout();
 					}
 					// login
 					else if (user) {
 						Ember.debug('Logged in');
-						console.log(user);
-						this.set('authed', true);
 						this.set('authData', user);
-						this.checkUser();
+						this.set('authed', true);
+						// @todo we skip temporarily check because it isn't working and create anew user everytime
+						// this.checkUser();
+						this.createUser();
 					}
 					// logout
 					else {
-						this.set('authed', false);
-						this.set('authData', '');
-						this.set('user', null);
+						this.afterLogout();
 					}
 				}.bind(this));
 
@@ -87,43 +86,41 @@ export default {
 					}
 				});
 			},
-
 			logout: function() {
 				Ember.debug('trying to log out');
 
 				this.authClient.logout(); // firebase simple login
 				// ref.unauth(); // firebase 1.1.1
-				this.set('authed', false);
-				this.set('user', null);
-				this.set('uid', '');
+				this.afterLogout();
 			},
-
+			afterLogout: function() {
+				this.set('authed', false);
+				this.set('authData', null);
+				this.set('user', null);
+			},
 			checkUser: function() {
 				var store = this.get('store');
 				Ember.debug('Checking whether the user already exists…');
 
-				// store.find('user', this.get('authData.uid')).then(function(user) {
-				// 	Ember.debug('user already exists');
-				// 	Ember.debug(user);
-				// 	this.set('user', user);
+				store.find('user', this.get('authData.uid')).then(function(user) {
+					Ember.debug('user already exists');
+					Ember.debug(user);
+					this.set('user', user);
 
-				// }, function(user) {
-				// 	Ember.debug('no user found');
-				// 	Ember.debug(user);
-				// 	console.log(user);
+				}, function(user) {
+					Ember.debug('no user found');
+					Ember.debug(user);
+					console.log(user);
 
-				// 	// @todo can't use the uid as id for the new user model because ember complains it was already used
-				// 	// one of these two should help but doesn't
-				// 	// user.unloadRecord();
-				// 	// this.get('store').unloadRecord(user);
+					// @todo can't use the uid as id for the new user model because ember complains it was already used
+					// one of these two should help but doesn't
+					// user.unloadRecord();
+					// this.get('store').unloadRecord(user);
 
-				// 	this.createUser();
+					this.createUser();
 
-				// }.bind(this));
-
-				this.createUser();
+				}.bind(this));
 			},
-
 			createUser: function(user) {
 				Ember.debug('Trying to create a new user');
 				var self = this;
@@ -136,7 +133,6 @@ export default {
 				}).save().then(function(user){
 					Ember.debug('created a new user');
 					self.set('user', user);
-					Ember.debug(self.get('user'));
 				}, function() {
 					Ember.debug('could not save user');
 					self.set('user', null);

@@ -1,16 +1,11 @@
 <div class="Container Section">
-	<h1>Login</h1>
+	<h1>Login or create a new user</h1>
 	<p>
-		<button class="Btn Btn--primary" {{action 'login' 'google'}}>with Google</button>
-		<button class="Btn Btn--primary" {{action 'login' 'facebook'}}>with Facebook</button>
-	</p>
-	<p>
-		<button class="Btn" {{action 'logout'}}>Logout</button>
+		<button class="Btn Btn--primary" {{action 'login' 'google'}}>Sign up with Google</button>
+		<button class="Btn Btn--primary" {{action 'login' 'facebook'}}>Sign up with Facebook</button>
 	</p>
 
-	<h2>Login status</h2>
-	<p>logged in: {{auth.authed}}<br>uid: {{auth.authData.uid}}</p>
-
+	{{#if auth.authed}}{{/if}}
 </div>
 
 {{outlet}}
