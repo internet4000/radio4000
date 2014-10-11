@@ -5,18 +5,18 @@
 <section class="Dashboard">
 
 	<section class="Section">
-			{{#if playlists}}
-				<h2>Your radio</h2>
-				<div class="Playlists">
-					{{#each playlists}}
-						<p class="Playlist">{{#link-to "playlist" this}}{{title}}{{/link-to}}</p>
-					{{/each}}
-				</ul>
-			{{else}}
-				<div class="CreatePlaylist">
-					<p>{{#link-to "playlists.new"}}<button class="Btn">Get your own playlist</button>{{/link-to}}</p>
-				</div>
-			{{/if}}
+			{{#each playlists}}
+				{{#link-to "playlist" this class="Box"}}
+					<h2>{{title}}</h2>
+					<p>Your radio</p>
+				{{/link-to}}
+			{{/each}}
+
+			{{#unless playlists}}
+				{{#link-to "playlists.new" class="Box"}}
+					<h2>Get your own playlist</h2>
+				{{/link-to}}
+			{{/unless}}
 	</section>
 
 	<section class="Section">
