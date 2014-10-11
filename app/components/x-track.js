@@ -21,25 +21,17 @@ export default Ember.Component.extend({
 				Ember.debug(tracks);
 				tracks.removeObject(track);
 				track.destroyRecord();
-				// playlist.save();
-
+				playlist.save();
 				Ember.debug('Deleted the track');
 			});
 		},
 
 		save: function(track) {
-			// if (!this.trackIsValid()) {
-			// 	Ember.debug('unvalid track');
-			// 	return; }
-
-			// Get the current model track
-			track = this.get('track');
-
 			// Close edit state
 			this.set('isEditing', false);
 
 			// Save the model
-			track.save().then(function() {
+			this.get('track').save().then(function() {
 				Ember.debug('Saved track');
 			});
 		}
