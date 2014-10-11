@@ -20,7 +20,7 @@
     "firebase-simple-login": "~1.6.4"
   },
   "resolutions": {
-    "firebase": "~1.1.1",
+    "firebase": "1.1.x",
     "ember-data": "e-tag:ccee9589f"
   }
 }

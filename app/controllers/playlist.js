@@ -106,34 +106,51 @@ export default Ember.ObjectController.extend({
 			var user = this.get('auth.user');
 			var playlist = this.get('model');
 
-			// remove the playlist on the user
+			// also remove the playlist on the user
 			// @todo it should remove it on every user…
 			Ember.RSVP.Promise.cast(user.get('playlists')).then(function(playlists) {
 				playlists.removeObject(playlist);
+
+				// delete the playlist itself
+				playlist.destroyRecord();
+				this.transitionToRoute('application');
+				Ember.debug('Playlist deleted');
+
 				user.save().then(function() {
 					Ember.debug('Success: playlist removed from user');
 				});
 			});
-			// delete the playlist itself
-			playlist.destroyRecord();
-			Ember.debug('Playlist deleted');
-			this.transitionToRoute('application');
+
 		},
 		// Save the current model playlist on the user as a favorite
 		favorite: function() {
-			this.get('userFavorites').addObject(this.get('model'));
-			this.send('saveUser');
+			var favs = this.get('userFavorites');
+
+			Ember.debug(favs);
+			favs.then(function(newFavs){
+				Ember.debug(newFavs);
+				Ember.debug(favs);
+			});
+
+			favs.addObject(this.get('model'));
+			this.get('auth.user').save();
 		},
 		removeFavorite: function() {
-			this.get('userFavorites').removeObject(this.get('model'));
-			this.send('saveUser');
-		},
-		saveUser: function() {
-			this.get('auth.user').save().then(function() {
-				Ember.debug('user saved');
-			}, function() {
-				Ember.warn('could not save user');
-			});
+			var favs = this.get('userFavorites');
+			Ember.debug(favs);
+			favs.removeObject(this.get('model'));
+			this.get('auth.user').save();
+
+			// // this.get('userFavorites').removeObject(this.get('model'));
+			// // this.send('saveUser');
+
+			// this.get('userFavorites').removeObject(this.get('model'));
+			// user.save();
+			// // favorites.save();
+			// 	// // playlist.destroyRecord();
+			// 	// user.save();
+			// 	// playlist.save();
+			// // });
 		}
 	}
 });

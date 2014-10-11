@@ -7,7 +7,7 @@ html {
 	@include type-regular;
 	line-height: $base-line-height;
 	font-size: 15px; // important, specify in pixels here as all other font-size are re(m)lative to this
-	@media (min-width: $layout-s) { font-size: $base-font-size; }
+	@media (min-width: $layout-m) { font-size: $base-font-size; }
 	// vertical rhythm
 	// background-image: linear-gradient(to bottom,hsl(180, 100%, 50%) 0,hsla(0, 100%, 100%, 0)1px);
 	// background-repeat: repeat-y;

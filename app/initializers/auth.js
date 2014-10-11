@@ -1,7 +1,7 @@
 import Ember from 'ember';
 // import DS from 'ember-data';
 
-var ref = new window.Firebase('https://muchplay.firebaseio.com/');
+var ref = new window.Firebase('https://jsbin-test.firebaseio.com/');
 
 // To use this object globally we'll need to inject it into all our controllers and routes.
 export default {
@@ -19,44 +19,44 @@ export default {
 				this.store = container.lookup('store:main');
 
 				// OLD METHOLD (SEE NEW METHOD BELOW)
-				this.authClient = new window.FirebaseSimpleLogin(ref, function(error, user) {
-					// an error occurred while attempting login
-					if (error) {
-						alert('Authentication failed: ' + error);
-						this.afterLogout();
-					}
-					// login
-					else if (user) {
-						Ember.debug('Logged in');
-						this.set('authData', user);
-						this.set('authed', true);
-						// @todo we skip temporarily check because it isn't working and create anew user everytime
-						// this.checkUser();
-						this.createUser();
-					}
-					// logout
-					else {
-						this.afterLogout();
-					}
-				}.bind(this));
-
-				// NEW METHOD (see old method above)
-				// ref.onAuth(function(authData) {
-				// 	if (authData) {
+				// this.authClient = new window.FirebaseSimpleLogin(ref, function(error, user) {
+				// 	// an error occurred while attempting login
+				// 	if (error) {
+				// 		alert('Authentication failed: ' + error);
+				// 		this.afterLogout();
+				// 	}
+				// 	// login
+				// 	else if (user) {
 				// 		Ember.debug('Logged in');
-				// 		Ember.debug(user);
+				// 		this.set('authData', user);
 				// 		this.set('authed', true);
-				// 		this.set('authData', authData);
-				// 		this.checkUser();
-				// 	} else {
-				// 		Ember.debug('Logged out');
+				// 		// @todo we skip temporarily check because it isn't working and create anew user everytime
+				// 		// this.checkUser();
+				// 		this.createUser();
+				// 	}
+				// 	// logout
+				// 	else {
+				// 		this.afterLogout();
 				// 	}
 				// }.bind(this));
+
+				// NEW METHOD (see old method above)
+				ref.onAuth(function(authData) {
+					if (authData) {
+						Ember.debug('Logged in');
+						this.set('authed', true);
+						this.set('authData', authData);
+						// this.checkUser();
+						this.createUser();
+					} else {
+						Ember.debug('Logged out');
+					}
+				}.bind(this));
 			},
 			login: function(provider) {
 				Ember.debug('trying to login');
-				this.authClient.login(provider); // firebase simple login
-				// this.loginWithPopup(provider); // firebase 1.1.1
+				// this.authClient.login(provider); // firebase simple login
+				this.loginWithPopup(provider); // firebase 1.1.1
 			},
 			// firebase 1.1.1 login with popup
 			loginWithPopup: function(provider) {
@@ -70,6 +70,7 @@ export default {
 							self.loginWithRedirect(provider);
 						}
 					} else if (authData) {
+						Ember.debug('Logged in with popup');
 						// console.log(authData);
 					}
 				});
@@ -82,15 +83,15 @@ export default {
 					if (error) {
 						console.log('errrrror');
 					} else if (authData) {
-						console.log(authData);
+						Ember.debug('Logged in with redirect');
 					}
 				});
 			},
 			logout: function() {
 				Ember.debug('trying to log out');
 
-				this.authClient.logout(); // firebase simple login
-				// ref.unauth(); // firebase 1.1.1
+				// this.authClient.logout(); // firebase simple login
+				ref.unauth(); // firebase 1.1.1
 				this.afterLogout();
 			},
 			afterLogout: function() {
@@ -125,10 +126,15 @@ export default {
 				Ember.debug('Trying to create a new user');
 				var self = this;
 
+				console.log(this.get('authData'));
+
+				// provider
+				// facebook.displayName
+				// facebook.email
+
 				var newUser = this.get('store').createRecord('user', {
 					id: this.get('authData.uid'), // use uid as id
-					name: this.get('authData.displayName'),
-					email: this.get('authData.email'),
+					authData: this.get('authData'),
 					created: new Date().getTime()
 				}).save().then(function(user){
 					Ember.debug('created a new user');

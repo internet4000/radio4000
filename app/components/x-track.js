@@ -18,9 +18,10 @@ export default Ember.Component.extend({
 
 			var playlist = this.get('playlist.model');
 			playlist.get('tracks').then(function(tracks) {
+				Ember.debug(tracks);
 				tracks.removeObject(track);
 				track.destroyRecord();
-				playlist.save();
+				// playlist.save();
 
 				Ember.debug('Deleted the track');
 			});

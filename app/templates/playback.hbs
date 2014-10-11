@@ -10,6 +10,34 @@
 		<div class="Controls">
 			{{#if model}}
 
+
+				<div class="Controls-buttons">
+
+					<button class="Btn Btn--text" {{action 'prev' model}} title="Previous">
+						{{x-icon i='previous'}}
+					</button>
+					{{#if isPlaying}}
+						<button class="Btn Btn--text" {{action 'pause'}} title="Pause">
+							{{x-icon i='pause'}}
+						</button>
+					{{else}}
+						<button class="Btn Btn--text" {{action 'play'}} title="Play">
+							{{x-icon i='play'}}
+						</button>
+					{{/if}}
+					<button class="Btn Btn--text" title="Next" {{action 'next' model}}>
+						{{x-icon i='next'}}
+					</button>
+
+					<button class="Btn Btn--text Controls-videoBtn" {{action 'toggle'}} title="Toggle the video">
+						{{#if isMaximized}}
+							{{x-icon i='arrows-compress'}}
+						{{else}}
+							{{x-icon i='arrows-expand'}}
+						{{/if}}
+					</button>
+				</div>
+
 				<div class="Controls-title">
 					{{#link-to 'playlist' controllers.playlist}}
 						{{#if model.title}}
@@ -20,24 +48,6 @@
 					{{/link-to}}
 				</div>
 
-				<div class="Controls-buttons">
-
-					<button title="Previous" class="Btn" {{action 'prev' model}}>{{x-icon name='previous'}}</button>
-					{{#if isPlaying}}
-						<button title="Pause" class="Btn" {{action 'pause'}}>{{x-icon name='pause'}}</button>
-					{{else}}
-						<button title="Play" class="Btn" {{action 'play'}}>{{x-icon name='play'}}</button>
-					{{/if}}
-					<button title="Next" class="Btn" {{action 'next' model}}>{{x-icon name='next'}}</button>
-
-					<button class="Btn" {{action 'toggle'}} title="Toggle the video">
-						{{#if isMaximized}}
-							{{x-icon name='arrows-compress'}}
-						{{else}}
-							{{x-icon name='arrows-expand'}}
-						{{/if}}
-					</button>
-				</div>
 
 			{{else}}
 				{{!-- no track is selected here --}}

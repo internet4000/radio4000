@@ -33,12 +33,13 @@
 			text-decoration: underline;
 		}
 	}
+
 }
 .Controls-title {
 	text-align: center;
 	a {
 		display: block;
-		margin-bottom: 0.5em;
+		// margin-bottom: 0.5em;
 		&.is-active {
 			text-decoration: none;
 		}
@@ -48,6 +49,18 @@
 	text-align: center;
 	a:hover {
 		text-decoration: none;
+	}
+	.Btn--text {
+		font-size: 2rem;
+		padding: 0 0.1em;
+		color: $bleach;
+	}
+	.Controls-videoBtn {
+		// float: right;
+		font-size: 1.3rem;
+		position: absolute;
+		top: 0.8em;
+		right: 1rem;
 	}
 }
 

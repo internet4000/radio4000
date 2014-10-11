@@ -1,18 +1,15 @@
 <div class="Container Section">
 	<h1>List of all users</h1>
 
-	<ul class="List List--users">
+	<ul class="List">
 		{{#each}}
-			<li>
-				{{#link-to "user" this}}
-					<span>{{name}} - </span>
-					<span>id: {{id}}</span>
-					{{!-- <span>email: {{email}}</span>
-					<span>created: {{created}}</span> --}}
-				{{/link-to}}
-			</li>
+			<li>{{#link-to "user" this}}
+				<span>{{id}}</span>
+				<span>{{name}}</span>
+				<span>{{created}}</span>
+			{{/link-to}}</li>
 		{{/each}}
 	</ul>
-</div>
 
-{{outlet}}
+	{{outlet}}
+</div>
