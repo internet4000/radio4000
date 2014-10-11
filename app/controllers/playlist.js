@@ -56,6 +56,12 @@ export default Ember.ObjectController.extend({
 		// dasherize turns spaces into dashes and makes it lowercase
 		var newSlug = this.get('slug').dasherize();
 
+		// make sure the new one isn't empty
+		if (newSlug === '') {
+			alert("Hey, the URL can't be empty. Please enter the URL you'd like your playlist to have. If you have no idea, just enter the title.");
+			return false;
+		}
+
 		this.store.find('playlist').then(function(playlists) {
 			playlists.forEach(function(playlist) {
 
