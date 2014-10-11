@@ -4,20 +4,19 @@
 
 		<div class="Bar">
 
-			{{!-- <h1 class="SiteLogo">{{#link-to "index" title="Back to the dashboard"}}
+			<h1 class="SiteLogo">{{#link-to "index" title="Back to the dashboard"}}
 				<img src="images/radio4000-small-cropped.png" alt="Radio 4000">
-				Radio 4000
-				{{/link-to}}</h1> --}}
+				{{/link-to}}</h1>
 
 			<nav>
-				{{#link-to 'application'}}Radio 4000{{/link-to}}
-
+				{{!-- {{#link-to 'application'}}Radio 4000{{/link-to}} --}}
 				{{#if auth.authed}}
-					{{#link-to 'application'}}Your playlist{{/link-to}}
-					{{!-- yourplay: {{yourPlaylist}} --}}
+					{{#each auth.user.playlists}}
+						{{#link-to 'playlist' this}}Your playlist{{/link-to}}
+					{{/each}}
 				{{/if}}
 
-				{{#link-to 'playlists'}}Playlists{{/link-to}}
+				{{#link-to 'playlists'}}Discover{{/link-to}}
 
 				<div class="u-alignRight">
 					{{#if auth.authed}}
@@ -32,15 +31,6 @@
 	</header>
 
 	<main class="SiteMain">
-
-	{{#each playlist in userPlaylists}}
-			{{#link-to "playlist" playlist class="Playlist"}}
-				<h3 class="Title">{{playlist.title}}</h3>
-				<p class="Body">{{playlist.body}}</p>
-			{{/link-to}}
-		{{/each}}
-
-
 		{{outlet}}
 	</main>
 

@@ -1,17 +1,14 @@
 .SiteLogo {
+	float: left;
+	max-width: 100px;
+	margin: 0 1rem 0 0;
 
 	// position
-	position: fixed;
-	z-index: 2;
-	top: rem(4);
-	left: rem(4);
-	margin: 0;
-	transition: 2000ms all ease-in-out;
-	backface-visibility: hidden; // performance
-
-	img {
-		max-width: 100px;
-	}
+	// position: fixed;
+	// z-index: 2;
+	// top: rem(4);
+	// left: rem(4);
+	// transition: 2000ms all ease-in-out;
 
 	// // @extend %patron-black-italic;
 	// @include size-3;
@@ -23,7 +20,7 @@
 
 	a {
 		display: block;
-		// padding: 0.5em 0.7em 0.3em;
+		padding: 0.3rem 0 0.5rem 1rem;
 		color: $bleach;
 		&:hover {
 			text-decoration: none;

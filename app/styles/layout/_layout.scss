@@ -56,15 +56,15 @@ body {
 	background: linear-gradient($primary-color, hsl(268, 90%, 42%));
 	color: $text-color-invert;
 	nav {
-		padding-left: 0.75rem;
-		padding-right: 0.75rem;
-	}
-	a {
-		display: inline-block;
-		color: $text-color-invert;
-		padding: 1em 0.25rem;
-		&.is-active {
-			text-decoration: underline;
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+		a {
+			display: inline-block;
+			color: $text-color-invert;
+			padding: 1em 0.5rem;
+			&.is-active {
+				text-decoration: underline;
+			}
 		}
 	}
 }
