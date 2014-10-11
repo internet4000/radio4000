@@ -3,14 +3,14 @@
 	// position
 	position: fixed;
 	z-index: 2;
-	top: 0.5rem;
-	left: 0.5rem;
+	top: rem(4);
+	left: rem(4);
 	margin: 0;
 	transition: 2000ms all ease-in-out;
 	backface-visibility: hidden; // performance
 
 	img {
-		max-width: 60px;
+		max-width: 40px;
 	}
 
 	// // @extend %patron-black-italic;

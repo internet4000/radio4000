@@ -26,11 +26,11 @@ body {
 	bottom: 0;
 	left: 0;
 	overflow: auto;
-	padding-top: 5rem; // space for the header
+	padding-top: 6rem; // space for the header
 	@media (min-width: $layout-m) {
-		padding-top: 6rem;
+		padding-top: 7rem;
 	}
-	padding-bottom: 5rem; // space for the fixed bottom player
+	padding-bottom: 2rem; // space for the fixed bottom player
 }
 
 // Use this
