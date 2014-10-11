@@ -1,11 +1,11 @@
 {{!-- index of playlists goes into playlists.hbs --}}
 
 <div class="Section">
-	<div class="Manchet">
-		<h1>Discover<small> — channels by other people</small></h1>
-	</div>
+		<div class="Manchet">
+			<h1>Discover<small> — channels by other people</small></h1>
+		</div>
 
-	<div class="Playlists">
+	<div class="Playlists Container">
 		{{#each playlist in arrangedContent}}
 			{{#link-to "playlist" playlist class="Playlist"}}
 				<h3 class="Title">{{playlist.title}}</h3>
