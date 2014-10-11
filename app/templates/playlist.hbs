@@ -41,21 +41,12 @@
 			{{/if}}
 		{{/if}}
 
-		{{!-- <p>isFavorite: {{isFavorite}}</p>
-		<p>model id: {{id}}</p>
-		{{#each favoritePlaylist in userFavs}}
-			<p>favoritePlaylist id: {{favoritePlaylist.id}}</p>
-		{{/each}} --}}
-
-
 		<p>{{#if auth.authed}}
-
 				{{#if isReallyFavorite}}
 					<button class="Btn" {{action 'removeFavorite'}}>Unfavorite</button></p>
 				{{else}}
 					<button class="Btn" {{action 'favorite'}}>Favorite</button>
 				{{/if}}
-
 		</p>{{/if}}
 
 	</header>

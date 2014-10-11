@@ -47,9 +47,8 @@ export default Ember.ObjectController.extend({
 				}
 			});
 		});
-
-
-	}.property('userFavorites.[]', 'auth.user'),
+	}.property('model', 'userFavorites.[]', 'auth.user'),
+	// }.property('model', 'auth.user.favoritePlaylists.@each'),
 
 	validateSlug: function() {
 		var canIHazSlug = true;
