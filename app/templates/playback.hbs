@@ -22,21 +22,27 @@
 
 				<div class="Controls-buttons">
 
-					<button class="Btn" {{action 'prev' model}}>Previous</button>
+					<button title="Previous" class="Btn" {{action 'prev' model}}>{{x-icon name='previous'}}</button>
 					{{#if isPlaying}}
-						<button class="Btn" {{action 'pause'}}>Pause</button>
+						<button title="Pause" class="Btn" {{action 'pause'}}>{{x-icon name='pause'}}</button>
 					{{else}}
-						<button class="Btn" {{action 'play'}}>Play</button>
+						<button title="Play" class="Btn" {{action 'play'}}>{{x-icon name='play'}}</button>
 					{{/if}}
-					<button class="Btn" {{action 'next' model}}>Next</button>
+					<button title="Next" class="Btn" {{action 'next' model}}>{{x-icon name='next'}}</button>
 
-
-					<button class="Btn" {{action 'toggle'}} title="Toggle the video">Video</button>
+					<button class="Btn" {{action 'toggle'}} title="Toggle the video">
+						{{#if isMaximized}}
+							{{x-icon name='arrows-compress'}}
+						{{else}}
+							{{x-icon name='arrows-expand'}}
+						{{/if}}
+					</button>
 				</div>
 
 			{{else}}
 				{{!-- no track is selected here --}}
-				<button class="Btn" {{action 'justPlay'}}>Play</button>
+				{{#link-to 'playlists'}}Playlists{{/link-to}}
+				{{!-- <button class="Btn" {{action 'justPlay'}}>Playlists</button> --}}
 			{{/if}}
 		</div>
 	</div>
