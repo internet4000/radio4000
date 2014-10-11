@@ -9,8 +9,6 @@
 
 		<div class="Controls">
 			{{#if model}}
-
-
 				<div class="Controls-buttons">
 
 					<button class="Btn Btn--text" {{action 'prev' model}} title="Previous">
@@ -51,8 +49,6 @@
 
 			{{else}}
 				{{!-- no track is selected here --}}
-				{{#link-to 'playlists'}}Playlists{{/link-to}}
-				{{!-- <button class="Btn" {{action 'justPlay'}}>Playlists</button> --}}
 			{{/if}}
 		</div>
 	</div>

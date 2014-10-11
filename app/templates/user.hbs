@@ -3,27 +3,21 @@
 </div>
 
 <section class="Dashboard">
-	<h2>Your channel</h2>
+	<h2>Get your own channel</h2>
 	<section class="Section">
-			{{#each playlists}}
-				{{#link-to "playlist" this class="Box"}}
-					<h3>{{title}}</h3>
-					<p>{{description}}</p>
-				{{/link-to}}
-			{{/each}}
 
-			{{#unless playlists}}
-				{{#link-to "playlists.new" class="Box"}}
-					<h3>Get your own channel</h3>
-				{{/link-to}}
-			{{/unless}}
-	</section>
+		{{!-- {{#each playlists}}
+			{{#link-to "playlist" this class="Box"}}
+				<h3>{{title}}</h3>
+				<p>{{description}}</p>
+			{{/link-to}}
+		{{/each}} --}}
 
-	<section class="Section">
-		<h2>Explore more channels</h2>
-		{{#link-to 'playlists'}}
-			<p>Browse channels</p>
-		{{/link-to}}
+		{{#unless playlists}}
+			{{#link-to "playlists.new" class="Box"}}
+				<h3>Get your own channel</h3>
+			{{/link-to}}
+		{{/unless}}
 	</section>
 
 	<section class="Section">

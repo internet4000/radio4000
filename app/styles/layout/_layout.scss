@@ -15,7 +15,6 @@ body {
 	bottom: 0;
 	left: 0;
 	overflow: hidden;
-
 }
 // we scroll this instead
 .SiteMain {
@@ -41,4 +40,31 @@ body {
 }
 .Container--full {
 	max-width: none;
+}
+
+
+
+
+
+
+.Bar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 3;
+	background: linear-gradient($primary-color, hsl(268, 90%, 42%));
+	color: $text-color-invert;
+	nav {
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
+	}
+	a {
+		display: inline-block;
+		color: $text-color-invert;
+		padding: 1em 0.25rem;
+		&.is-active {
+			text-decoration: underline;
+		}
+	}
 }

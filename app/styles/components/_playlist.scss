@@ -3,10 +3,8 @@
  */
 
 .Playlist {
-	z-index: 2;
 	position: relative;
-	padding-top: 16px;
-	transition: all 500ms $easing;
+	transition: transform 550ms $easing, opacity 550ms;
 	&.Container {
 		background-color: $bg-color;
 	}

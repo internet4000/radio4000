@@ -1,9 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-	// beforeModel: function() {
+	// afterModel: function() {
 	// 	if (this.get('auth.authed')) {
-	// 		this.transitionTo('application');
+	// 		this.transitionToRoute('application');
 	// 	}
 	// }
 });

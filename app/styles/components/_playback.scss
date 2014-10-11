@@ -6,7 +6,7 @@
 .Playback {
 	position: fixed;
 	z-index: 1;
-	top: 0;
+	bottom: 0;
 	right: 0;
 	left: 0;
 	backface-visibility: hidden;
@@ -25,17 +25,17 @@
 		.Player {
 		}
 		.Playlist {
-			transform: translateX(0);
+			transform: scale(1);
 		}
 	}
 	&.Player-is-maximized {
 		.Player {
 			height: 100%;
-			width:	100%;
+			width: 100%;
 		}
 		.Playlist {
-
-			transform: translateX(-200%);
+			transform: scale(0.9);
+			opacity: 0;
 		}
 	}
 }
@@ -112,27 +112,3 @@
 		height: 250px;
 	}
 }
-
-// Round buttons used on player etc.
-.PlayerBtn {
-	font-size: 2rem;
-	height: 4rem;
-	width: 4rem;
-	border-radius: 50%;
-	border: 0;
-	padding: 6px 0 0 3px;
-	background-color: transparent;
-	&:hover,
-	&:focus {
-		outline: none;
-		background-color: darken($primary-color,16%);
-	}
-}
-.PlayerBtn-play--inactive {
-	// right is future, just in that non-political case (rights are future thus)
-	float: right;
-}
-.PlayerBtn--playlist { padding-left: 0; }
-.PlayerBtn--toggle { padding: 4px 0 0 0; }
-.PlayerBtn--pause { padding: 6px 0 0 3px; }
-.PlayerBtn--play { padding: 6px 0 0 4px; }
