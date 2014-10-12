@@ -18,44 +18,26 @@ export default {
 				// get access to the ember data store
 				this.store = container.lookup('store:main');
 
-				// OLD METHOLD (SEE NEW METHOD BELOW)
-				// this.authClient = new window.FirebaseSimpleLogin(ref, function(error, user) {
-				// 	// an error occurred while attempting login
-				// 	if (error) {
-				// 		alert('Authentication failed: ' + error);
-				// 		this.afterLogout();
-				// 	}
-				// 	// login
-				// 	else if (user) {
-				// 		Ember.debug('Logged in');
-				// 		this.set('authData', user);
-				// 		this.set('authed', true);
-				// 		// @todo we skip temporarily check because it isn't working and create anew user everytime
-				// 		// this.checkUser();
-				// 		this.createUser();
-				// 	}
-				// 	// logout
-				// 	else {
-				// 		this.afterLogout();
-				// 	}
-				// }.bind(this));
-
 				// NEW METHOD (see old method above)
 				ref.onAuth(function(authData) {
 					if (authData) {
 						Ember.debug('Logged in');
 						this.set('authed', true);
 						this.set('authData', authData);
+
+						// @todo if we check first, we cant later create user firebase bug already in use
 						// this.checkUser();
 						this.createUser();
 					} else {
 						Ember.debug('Logged out');
+						this.set('authed', false);
+						this.set('authData', null);
+						this.set('user', null);
 					}
 				}.bind(this));
 			},
 			login: function(provider) {
 				Ember.debug('trying to login');
-				// this.authClient.login(provider); // firebase simple login
 				this.loginWithPopup(provider); // firebase 1.1.1
 			},
 			// firebase 1.1.1 login with popup
@@ -89,39 +71,23 @@ export default {
 			},
 			logout: function() {
 				Ember.debug('trying to log out');
-
 				// this.authClient.logout(); // firebase simple login
 				ref.unauth(); // firebase 1.1.1
-				this.afterLogout();
 			},
-			afterLogout: function() {
-				this.set('authed', false);
-				this.set('authData', null);
-				this.set('user', null);
-			},
+
+			// @todo can't use the uid as id for the new user model because ember complains it was already used
 			checkUser: function() {
-				var store = this.get('store');
+				var self = this;
 				Ember.debug('Checking whether the user already exists…');
-
-				store.find('user', this.get('authData.uid')).then(function(user) {
+				var savedUser = this.get('store').find('user', this.get('authData.uid'));
+				savedUser.then(function(user) {
 					Ember.debug('user already exists');
-					Ember.debug(user);
-					this.set('user', user);
-
+					self.set('user', user);
 				}, function(user) {
 					Ember.debug('no user found');
-					Ember.debug(user);
-					console.log(user);
-
-					// @todo can't use the uid as id for the new user model because ember complains it was already used
-					// one of these two should help but doesn't
-					// user.unloadRecord();
-					// this.get('store').unloadRecord(user);
-
-					this.createUser();
-
-				}.bind(this));
+				});
 			},
+
 			createUser: function(user) {
 				Ember.debug('Trying to create a new user');
 				var self = this;
