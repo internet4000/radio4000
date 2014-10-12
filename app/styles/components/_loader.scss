@@ -25,3 +25,9 @@
 	margin-left: auto;
 	margin-right: auto;
 }
+.Loader--middle {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%);
+}

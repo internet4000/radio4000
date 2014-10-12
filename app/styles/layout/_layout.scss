@@ -25,24 +25,13 @@ body {
 	bottom: 53px;
 	left: 0;
 	overflow: auto;
-
-	// padding-right: 10px;
-	// padding-left: 10px;
-	// .Playlist .Container {
-	// 	padding-top: 2em;
-	// 	padding-bottom: 2em;
-	// }
-	// .Container {
-	// 	padding-top: 6rem; // space for the header
-	// 	padding-bottom: 6rem; // space for the fixed bottom player
-	// 	background-color: $slightgray;
-	// 	position: relative;;
-	// 	overflow: hidden; // for .btn--favorite
-	// 	@media (min-width: $layout-m) {
-	// 		padding-top: 7rem;
-	// 		padding-bottom: 7rem;
-	// 	}
-	// }
+	padding-right: 10px;
+	padding-left: 10px;
+	// padding-bottom: 7em;
+	.Playlist .Container {
+		padding-top: 2em;
+		padding-bottom: 2em;
+	}
 }
 
 .Bar {
