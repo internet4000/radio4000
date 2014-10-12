@@ -1,6 +1,7 @@
 /**
  * List view
  */
+
 .List {
 	list-style: none;
 	padding-left: 0;
@@ -14,42 +15,11 @@
 }
 
 /**
- * Grid view - work in progress, not really pretty yet
+ * Smaller lists (good for long text)
  */
 
-.Grid {
-	list-style: none;
-	padding-left: 0;
+.SmallerList {
 	li {
-		margin-bottom: 0.5rem;
-	}
-	a {
-		@include type-bold;
-		display: inline-block;
-		width: 20em;
-		min-height: 11em;
-		vertical-align: top;
-		padding: 0.9rem 0.7rem 0.9rem;
-		// background: linear-gradient(hsl(0, 100%, 100%), hsla(0, 0%, 20%, 0.10));
-		background: hsl(0, 100%, 100%);
-		color: $primary-color;
-		border-radius: 3px;
-		box-shadow: 1px 1px 0 0 hsla(0, 0%, 0%, 0.2);
-		border: 1px solid hsla(255, 4%, 55%, 0.2);
-
-		&:hover {
-			border: 1px solid hsla(255, 4%, 55%, 0.4);
-		}
-	}
-}
-
-/**
- * List of .Box(es)
- */
-
-.Box {
-	a {
-		margin: 0 1rem 1rem 0;
-		display: block;
+		@include size-1;
 	}
 }
