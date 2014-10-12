@@ -9,7 +9,7 @@
 		{{#each playlist in arrangedContent}}
 			{{#link-to "playlist" playlist class="Playlist"}}
 				<h3 class="Title">{{playlist.title}}</h3>
-				<p class="Body">{{playlist.body}}</p>
+				<p class="Body">{{do-truncate playlist.body 142}}</p>
 			{{/link-to}}
 		{{/each}}
 	</div>
