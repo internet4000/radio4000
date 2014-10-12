@@ -22,39 +22,27 @@ body {
 	position: absolute;
 	top: 53px; // height of topbar
 	right: 0;
-	bottom: 0;
+	bottom: 53px;
 	left: 0;
 	overflow: auto;
 
-	padding-right: 10px;
-	padding-left: 10px;
-	.Playlist .Container {
-		padding-top: 2em;
-		padding-bottom: 2em;
-	}
-	.Container {
-		padding-top: 6rem; // space for the header
-		padding-bottom: 6rem; // space for the fixed bottom player
-		background-color: $slightgray;
-		position: relative;;
-		overflow: hidden; // for .btn--favorite
-		@media (min-width: $layout-m) {
-			padding-top: 7rem;
-			padding-bottom: 7rem;
-		}
-	}
-}
-
-// Use this
-.Container {
-	max-width: 45em;
-	margin-left: auto;
-	margin-right: auto;
-	padding-right: 1em;
-	padding-left: 1em;
-}
-.Container--full {
-	max-width: none;
+	// padding-right: 10px;
+	// padding-left: 10px;
+	// .Playlist .Container {
+	// 	padding-top: 2em;
+	// 	padding-bottom: 2em;
+	// }
+	// .Container {
+	// 	padding-top: 6rem; // space for the header
+	// 	padding-bottom: 6rem; // space for the fixed bottom player
+	// 	background-color: $slightgray;
+	// 	position: relative;;
+	// 	overflow: hidden; // for .btn--favorite
+	// 	@media (min-width: $layout-m) {
+	// 		padding-top: 7rem;
+	// 		padding-bottom: 7rem;
+	// 	}
+	// }
 }
 
 .Bar {
