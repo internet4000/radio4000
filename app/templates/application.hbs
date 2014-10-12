@@ -3,28 +3,39 @@
 	<header class="SiteHeader">
 
 		<div class="Bar">
-
-			<h1 class="SiteLogo">{{#link-to "index" title="Back to the dashboard"}}
-				<img src="images/radio4000-small-cropped.png" alt="Radio 4000">
-				{{/link-to}}</h1>
+			<h1 class="SiteLogo">
+				{{#link-to "index" title="Back to the dashboard"}}
+					<img src="images/radio4000-small-cropped.png" alt="Radio 4000">
+				{{/link-to}}
+			</h1>
 
 			<nav>
 				{{#if auth.authed}}
-					{{#each auth.user.playlists}}
+					{{#if auth.user.playlists}}
 						{{#link-to 'playlist' this}}My playlist{{/link-to}}
-					{{/each}}
+					{{/if}}
 				{{/if}}
 
 				{{#link-to 'playlists'}}Discover{{/link-to}}
 
-				<div class="u-alignRight">
-					{{#unless auth.authed}}
-						{{#link-to 'login'}}Log in{{/link-to}}
-					{{/unless}}
-				</div>
+				<aside class="ContextualNavigation u-alignRight">
+					{{#if auth.authed}}
+						{{#if auth.user.playlists}}
+							{{#link-to 'playlist' this}}+ Add track{{/link-to}}
+							{{else}}
+								{{#link-to 'playlist.new' this}}+ Create your playlist{{/link-to}}
+						{{/if}}
+
+						{{else}}
+							{{#link-to 'login'}}Log in{{/link-to}}
+					{{/if}}
+
+				</aside>
 			</nav>
 
 		</div>
+
+
 	</header>
 
 	<main class="SiteMain">

@@ -1,8 +1,7 @@
-<article class="Playlist">
+<article class="PlaylistDetail">
 
 	<div class="Manchet">
 		<h1 class="Playlist-title">{{#link-to 'playlist' this}}{{title}}{{/link-to}}</h1>
-		<button class="Btn" {{action "playLatest"}}>{{x-icon i="play"}} Play</button>
 	</div>
 
 	<div class="Container">
@@ -10,16 +9,18 @@
 
 			<p class="BtnGroup">
 
-				{{#if canEdit}}
-					{{#if isEditing}}
-						<button class="Btn" {{action 'cancel'}}>{{x-icon i="pencil"}} Cancel editing</button>
-					{{else}}
-						<button class="Btn" {{action 'edit'}} title="Edit your radio">{{x-icon i="pencil"}} Edit</button>
-					{{/if}}
-				{{/if}}
+				<button class="Btn" {{action "playLatest"}}>{{x-icon i="play"}} Play</button>
 
 				{{#if auth.authed}}
 					{{x-favorite value=isFavorite action="toggleFavorite"}}
+				{{/if}}
+
+				{{#if canEdit}}
+					{{#if isEditing}}
+						<button class="Btn u-alignRight" {{action 'cancel'}}>{{x-icon i="pencil"}} Cancel editing</button>
+					{{else}}
+						<button class="Btn u-alignRight" {{action 'edit'}} title="Edit your radio">{{x-icon i="pencil"}} Edit</button>
+					{{/if}}
 				{{/if}}
 			</p>
 
@@ -27,11 +28,6 @@
 				{{body}}
 			</div>
 
-			{{#if canEdit}}
-				{{#unless isEditing}}
-					<p class="u-alignRight"><button class="Btn Btn--edit" title="Edit your radio" {{action 'edit'}}>Edit</button></p>
-				{{/unless}}
-			{{/if}}
 
 			{{#if isEditing}}
 				<form class="Form" {{action "trySave" on="submit"}}>

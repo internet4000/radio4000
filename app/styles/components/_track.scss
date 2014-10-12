@@ -13,7 +13,10 @@
 .Track-link {
 	display: block;
 	line-height: normal;
-	padding: em(12,13) 1rem 0.5rem; // 45px height
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
 	border-left: 4px solid transparent;
 	color: $text-color;
 	transition: border 250ms $easing5;
