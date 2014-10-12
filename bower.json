@@ -20,6 +20,6 @@
   },
   "resolutions": {
     "firebase": "1.1.x",
-    "ember-data": "e-tag:ccee9589f"
+    "ember-data": "e-tag:1cba3d698"
   }
 }
