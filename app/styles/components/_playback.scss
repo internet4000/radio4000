@@ -41,14 +41,18 @@
 	text-align: center;
 	a {
 		display: block;
-		// margin-bottom: 0.5em;
+		padding-top: 0.4em; // centered vertically
+		padding-bottom: 0.2em; // and same height as top bar
 		&.is-active {
 			text-decoration: none;
 		}
 	}
 }
 .Controls-buttons {
-	text-align: center;
+	position: absolute;
+	left: 1rem;
+	top: 0.3rem;
+
 	a:hover {
 		text-decoration: none;
 	}
@@ -57,21 +61,20 @@
 		padding: 0 0.1em;
 		color: $bleach;
 	}
-	.Controls-videoBtn {
-		// float: right;
-		font-size: 1.3rem;
-		position: absolute;
-		top: 0.8em;
-		right: 1rem;
-	}
+}
+.Controls-videoBtn {
+	// float: right;
+	font-size: 1.3rem;
+	position: absolute;
+	top: 0.8em;
+	right: 1rem;
 }
 
 // Container for the embeds
 .Player {
 	position: fixed;
 	right: 0;
-	bottom: 0;
-	// bottom: 100px; // height of the bottom bar
+	bottom: 53px; // bar height
 	width: 100px;
 	height: 100px;
 	max-width: 100%;
