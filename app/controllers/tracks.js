@@ -65,9 +65,6 @@ export default Ember.ArrayController.extend({
 				return;
 			}
 
-			// get the youtube ID somehow
-			// this.get('trackUrl').youtubeIdFromUrl();
-
 			// Get the parent playlist
 			playlist = this.get('controllers.playlist').get('model');
 
