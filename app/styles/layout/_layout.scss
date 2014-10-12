@@ -22,12 +22,9 @@ body {
 	position: absolute;
 	top: 53px; // height of topbar
 	right: 0;
-	bottom: 53px;
+	bottom: 53px; // height of bottom bar
 	left: 0;
 	overflow: auto;
-	padding-right: 10px;
-	padding-left: 10px;
-	// padding-bottom: 7em;
 	.Playlist .Container {
 		padding-top: 2em;
 		padding-bottom: 2em;
@@ -42,13 +39,14 @@ body {
 	z-index: 3;
 	background: linear-gradient($primary-color, hsl(268, 90%, 42%));
 	color: $text-color-invert;
+	min-height: 53px;
 	nav {
 		padding-left: 0.5rem;
 		padding-right: 0.5rem;
 		a {
 			display: inline-block;
 			color: $text-color-invert;
-			padding: 1em 0.5rem;
+			padding: 1.2em .5rem 1em;
 			&.is-active {
 				text-decoration: underline;
 			}

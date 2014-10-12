@@ -1,7 +1,7 @@
 <nav class="Nav Section">
-	{{#link-to 'about'}}About{{/link-to}} •
+	{{#link-to 'about'}}About{{/link-to}}
 	{{#if auth.authed}}
-		<a href="#" {{action 'logout' this}}>Log out</a>
+	 • <a href="#" {{action 'logout' this}}>Log out</a>
 	{{else}}
 		{{!-- {{#link-to 'login'}}Log in{{/link-to}} --}}
 	{{/if}}

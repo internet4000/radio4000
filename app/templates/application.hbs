@@ -9,21 +9,18 @@
 				{{/link-to}}</h1>
 
 			<nav>
-				{{!-- {{#link-to 'application'}}Radio 4000{{/link-to}} --}}
 				{{#if auth.authed}}
 					{{#each auth.user.playlists}}
-						{{#link-to 'playlist' this}}Your playlist{{/link-to}}
+						{{#link-to 'playlist' this}}My playlist{{/link-to}}
 					{{/each}}
 				{{/if}}
 
 				{{#link-to 'playlists'}}Discover{{/link-to}}
 
 				<div class="u-alignRight">
-					{{#if auth.authed}}
-						{{!-- <a href="#" {{action 'logout' this}}>Log out</a> --}}
-					{{else}}
+					{{#unless auth.authed}}
 						{{#link-to 'login'}}Log in{{/link-to}}
-					{{/if}}
+					{{/unless}}
 				</div>
 			</nav>
 

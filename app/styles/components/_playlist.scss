@@ -9,9 +9,10 @@
 		background-color: $bg-color;
 	}
 	.Title {
-		font-size: 1rem;
+		@include size-2;
 	}
 	.Body {
+		@include size-1;
 		color: $text-color;
 	}
 

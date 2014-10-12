@@ -3,33 +3,12 @@
 	max-width: 100px;
 	margin: 0 1rem 0 0;
 
-	// position
-	// position: fixed;
-	// z-index: 2;
-	// top: rem(4);
-	// left: rem(4);
-	// transition: 2000ms all ease-in-out;
-
-	// // @extend %patron-black-italic;
-	// @include size-3;
-	// border: 1px solid hsla(0, 0%, 0%, 0.2);
-	// border-radius: $border-radius;
-	// background: linear-gradient(hsl(17, 100%, 50%), hsl(278, 90%, 42%));
-	// background-color: $beautifulblue;
-	// -webkit-font-smoothing: antialiased;
-
 	a {
 		display: block;
-		padding: 0.6rem 0 0.5rem 1rem;
+		padding: 0.9rem 0 0.5rem 1rem;
 		color: $bleach;
 		&:hover {
 			text-decoration: none;
 		}
-	}
-
-	transition: all 600ms $easing;
-	&.is-translated {
-		// left: 0;
-		// transform: translateX(0);
 	}
 }

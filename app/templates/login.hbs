@@ -1,11 +1,17 @@
-<div class="Container Container--transparent Section">
+<div class="Manchet">
 	<h1>Login or create a new user</h1>
+</div>
+
+<div class="Container Container--transparent Section">
+
 	<p>
 		<button class="Btn Btn--primary" {{action 'login' 'google'}}>Sign up with Google</button>
 		<button class="Btn Btn--primary" {{action 'login' 'facebook'}}>Sign up with Facebook</button>
 	</p>
 
-	{{#if auth.authed}}{{/if}}
+	{{#if auth.authed}}
+		<p class="Muted">You are already logged in as {{auth.user.id}}.<br>Did you want to <a href="#" {{action 'logout'}}>logout?</button></p>
+	{{/if}}
 </div>
 
 {{outlet}}

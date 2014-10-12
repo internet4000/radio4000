@@ -10,9 +10,7 @@
 	margin-right: auto;
 	padding-right: 1em;
 	padding-left: 1em;
-	padding-top: 6rem; // space for the header
-	padding-bottom: 6rem; // space for the fixed bottom player
-	background-color: $slightgray;
+	// background-color: $slightgray;
 	position: relative;
 	overflow: hidden; // for .btn--favorite
 }
@@ -53,7 +51,3 @@
 	}
 }
 
-// Sections without extra bottom margin
-.Section--noBottom {
-	padding-bottom: 0;
-}

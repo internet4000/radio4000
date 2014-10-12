@@ -76,3 +76,8 @@ h3 + ul {
 		left: -0.2em;
 	}
 }
+
+.Muted {
+	@include size-1;
+	color: $gray;
+}
