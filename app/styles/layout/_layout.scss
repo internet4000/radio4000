@@ -35,6 +35,8 @@ body {
 		padding-top: 6rem; // space for the header
 		padding-bottom: 6rem; // space for the fixed bottom player
 		background-color: $slightgray;
+		position: relative;;
+		overflow: hidden; // for .btn--favorite
 		@media (min-width: $layout-m) {
 			padding-top: 7rem;
 			padding-bottom: 7rem;

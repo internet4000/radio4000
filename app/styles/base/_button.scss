@@ -120,3 +120,26 @@
 		color: gray;
 	}
 }
+
+// Btn--fav
+.Btn--favorite,
+.Btn--removeFavorite {
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-image: none;
+	border: 0;
+	border-radius: 0;
+	color: transparent;
+	-webkit-transform: rotate(145deg);
+	width: 120px;
+	height: 120px;
+	margin-top: -72px;
+	margin-right: -75px;
+}
+.Btn--favorite {
+	background-color: rgb(200, 200, 200);
+}
+.Btn--removeFavorite {
+	background-color: lighter(rgb(200, 200, 200), 10%);
+}

@@ -14,7 +14,7 @@
 
 			{{#if canEdit}}
 				{{#unless isEditing}}
-					<p class="u-alignRight"><button class="Btn Btn--edit" {{action 'edit'}}>Edit</button></p>
+					<p class="u-alignRight"><button class="Btn Btn--edit" title="Edit your radio" {{action 'edit'}}>Edit</button></p>
 				{{/unless}}
 			{{/if}}
 
@@ -47,9 +47,9 @@
 
 			<p>{{#if auth.authed}}
 					{{#if isReallyFavorite}}
-						<button class="Btn" {{action 'removeFavorite'}}>Unfavorite</button></p>
+						<button class="Btn Btn--removeFavorite" title="Remove this radio from your favorite" {{action 'removeFavorite'}}>Unfavorite</button></p>
 					{{else}}
-						<button class="Btn" {{action 'favorite'}}>Favorite</button>
+						<button class="Btn--favorite" title="Save this radio as your favorite" {{action 'favorite'}}>Favorite</button>
 					{{/if}}
 			</p>{{/if}}
 
