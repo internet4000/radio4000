@@ -6,5 +6,14 @@ export default Ember.Route.extend({
 		// - user favorites
 		// - user playlists
 		return this.store.find('user');
+	},
+	actions: {
+		// pass the actions on to auth
+		login: function(provider) {
+			this.get('auth').login(provider);
+		},
+		logout: function() {
+			this.get('auth').logout();
+		}
 	}
 });
