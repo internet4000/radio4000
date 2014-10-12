@@ -1,17 +1,13 @@
-<div class="Manchet">
-	<h1>Radio4000<small> — a complete overview of what you can do</small></h1>
-</div>
-
 <section class="Dashboard">
 	<h2>Get your own channel</h2>
 	<section class="Section">
 
-		{{!-- {{#each playlists}}
-			{{#link-to "playlist" this class="Box"}}
+		{{#each playlists}}
+			{{!-- {{#link-to "playlist" this class="Box"}}
 				<h3>{{title}}</h3>
 				<p>{{description}}</p>
-			{{/link-to}}
-		{{/each}} --}}
+			{{/link-to}} --}}
+		{{/each}}
 
 		{{#unless playlists}}
 			{{#link-to "playlists.new" class="Box"}}
