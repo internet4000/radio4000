@@ -11,44 +11,38 @@ export default Ember.ObjectController.extend({
 
 	isEditingSlug: false,
 
-	userFavorites: function() {
-		return this.get('auth.user.favoritePlaylists');
-	}.property('auth.user.favoritePlaylists.[]'),
 
-	isFavorite: function() {
-		Ember.debug('checking favorites');
 
-		var isFavorite = false; // initially set it to false before the check
-		var favorites = this.get('userFavorites');
-		var playlist = this.get('model');
-		var user = this.get('auth.user');
+	// Favorites
+	// because it's a hasMany relationship, this needs a bit of extra work to really work
+	isFavorite: false,
+	isFavoriteTest: function() {
+		// make sure it runs
+		Ember.run.once(this, 'testFavorite');
+	}.observes('model', 'auth.user.favoritePlaylists.[]'),
+	testFavorite: function() {
+		// Ember.debug('test fav');
 		var self = this;
-		// check if the user is set
-		if (!user) {
-			Ember.debug('no user yet, waaaaait for it');
-			return false;
-		}
+		var playlist = this.get('model');
+		var favorites = this.get('auth.user.favoritePlaylists');
+		this.set('isFavorite', false);
+		favorites.then(function() {
+			favorites.forEach(function(item) {
 
-		// HACK!! otherwise it doesn't always load
-		if (this.get('firstRun')) {
-			Ember.debug('first');
-			user.reload();
-			this.set('firstRun', false);
-		}
+				console.log('comparing this');
+				Ember.debug(playlist);
+				console.log('with this');
+				Ember.debug(item);
 
-		Ember.debug('Continuing searching for favs, have the user now');
-		favorites.then(function(favs) {
-			favs.some(function(fav) {
-				if (playlist === fav) {
-					isFavorite = true;
-					Ember.warn(isFavorite);
-					self.set('isReallyFavorite', true);
-					// console.log(fav.get('title') + ' YAY!');
+				if (playlist === item) {
+					console.log('match');
+					self.set('isFavorite', true);
+				} else {
+					console.log('no match');
 				}
 			});
 		});
-	}.property('model', 'userFavorites.[]', 'auth.user'),
-	// }.property('model', 'auth.user.favoritePlaylists.@each'),
+	},
 
 	validateSlug: function() {
 		var canIHazSlug = true;
@@ -131,26 +125,36 @@ export default Ember.ObjectController.extend({
 				});
 			});
 		},
-		// Save the current model playlist on the user as a favorite
-		favorite: function() {
-			var favs = this.get('userFavorites').addObject(this.get('model'));
-			this.get('auth.user').save().then(function() {
-				this.set('isReallyFavorite', true);
-			}.bind(this));
-		},
-		removeFavorite: function() {
+
+
+		toggleFavorite: function() {
+			if (this.get('model.isSaving')) { return false; }
+
+			var self = this;
+
 			var user = this.get('auth.user');
 			var playlist = this.get('model');
-			var self = this;
-			user.get('favoritePlaylists').then(function(favs) {
-				// Ember.debug(favs);
-				user.reload(); // hack! without this it won't remove the object
-				favs.removeObject(playlist);
-				user.save().then(function() {
-					Ember.debug('saved');
-					self.set('isReallyFavorite', false);
-				});
-			});
+
+
+			user.get('favoritePlaylists').then(function(favorites) {
+				// Ember.debug(favorites);
+				// Ember.debug(isFavorite);
+
+				// either add or remove the favorite
+				if (!this.get('isFavorite')) {
+					Ember.debug('adding');
+					favorites.addObject(playlist);
+				} else {
+					Ember.debug('removing');
+					user.reload(); // hack! without this it won't remove the object
+					favorites.removeObject(playlist);
+				}
+
+				user.save();
+				this.toggleProperty('isFavorite');
+
+
+			}.bind(this));
 		}
 	}
 });
