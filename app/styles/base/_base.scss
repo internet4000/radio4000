@@ -70,7 +70,9 @@ h3 + ul {
 	// vertical center inside buttons
 	.Btn & {
 		float: left;
-		// position: relative;
-		// top: 0.06em;
+
+		position: relative;
+		top: 0.15em;
+		left: -0.2em;
 	}
 }

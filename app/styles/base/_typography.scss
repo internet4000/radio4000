@@ -33,9 +33,9 @@ h1,h2,h3,h4 {
 }
 h1,
 .Title {
-	@include size-4;
+	@include size-3;
 	// responsive but more importantly proportionally nicer
-	@media (min-width: $layout-m) { @include size-5; }
+	@media (min-width: $layout-s) { @include size-4; }
 	a {
 		color: $text-color;
 	}

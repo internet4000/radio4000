@@ -19,13 +19,15 @@
 	color: $text-color;
 	box-shadow: hsla(0, 0%, 0%, 0.2) 0 1px 0 0;
 	// -webkit-font-smoothing: antialiased;
+	transition: border-color 200ms, background 200ms;
 
 	&:hover,
 	&:focus,
 	&:active {
 		text-decoration: none;
 		outline: none;
-		background-image: linear-gradient(to bottom, white 70%, hsla(0, 0%, 0%, 0.10));
+		background-image: linear-gradient(to bottom, white 70%, hsla(0, 0%, 0%, 0.1));
+		border-color: rgba(0,0,0,0.18);
 	}
 	&:active {
 		// @todo
@@ -34,6 +36,11 @@
 	&.is-disabled {
 		cursor: default;
 		opacity: 0.75;
+	}
+
+	// buxfix because ember sometimes adds a div inside a button
+	div {
+		display: inline;
 	}
 }
 
@@ -80,6 +87,7 @@
 	&:focus {
 		background-image: none;
 		text-decoration: underline;
+		border-color: transparent;
 	}
 }
 
@@ -96,14 +104,20 @@
 }
 
 // Button groups
+// eliminates double-borders and extra spacing between buttons
 .BtnGroup {
 	margin-bottom: 1rem;
-	.Btn {
-		margin-right: em(-5px);
+	.Btn + .Btn {
+		margin-left: em(-5, 14);
+		border-radius: 0;
 	}
-	.Btn:first-child {}
+	.Btn:first-of-type {
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+	}
 	.Btn:last-child {
-		margin-right: 0;
+		border-top-right-radius: $border-radius;
+		border-bottom-right-radius: $border-radius;
 	}
 }
 .BtnGroup-label {
