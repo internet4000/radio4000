@@ -85,6 +85,9 @@ export default Ember.ArrayController.extend({
 			});
 		},
 		saveNewTrack: function(track) {
+			// Get the parent playlist
+			var playlist = this.get('controllers.playlist').get('model');
+
 			// Save the track
 			track.save().then(function() {
 				// And add it to the tracks property of the playlist
