@@ -1,9 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-
 	needs: ['tracks'],
-
 	firstRun: true,
 
 	// editing
@@ -13,12 +11,12 @@ export default Ember.ObjectController.extend({
 		return this.get('model.uid') === this.get('auth.authData.uid');
 	}.property('model.uid', 'auth.user'),
 
-
-
 	// Favorites
 	// because it's a hasMany relationship, this needs a bit of extra work to really work
 	isFavorite: false,
 	isFavoriteTest: function() {
+		// only run if you are logged in
+		if (!this.get('auth.authed')) { return false; }
 		// make sure it runs
 		Ember.run.once(this, 'testFavorite');
 	}.observes('model', 'auth.user.favoritePlaylists.[]'),
@@ -28,6 +26,7 @@ export default Ember.ObjectController.extend({
 		var playlist = this.get('model');
 		var favorites = this.get('auth.user.favoritePlaylists');
 		this.set('isFavorite', false);
+		// console.log(favorites);
 		favorites.then(function() {
 			favorites.forEach(function(item) {
 
