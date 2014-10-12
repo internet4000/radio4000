@@ -1,12 +1,27 @@
-
 <article class="Playlist">
 
 	<div class="Manchet">
 		<h1 class="Playlist-title">{{#link-to 'playlist' this}}{{title}}{{/link-to}}</h1>
+		<button class="Btn" {{action "playLatest"}}>{{x-icon i="play"}} Play</button>
 	</div>
 
 	<div class="Container">
 		<header class="Playlist-header Section">
+
+			<p class="BtnGroup">
+
+				{{#if canEdit}}
+					{{#if isEditing}}
+						<button class="Btn" {{action 'cancel'}}>{{x-icon i="pencil"}} Cancel editing</button>
+					{{else}}
+						<button class="Btn" {{action 'edit'}} title="Edit your radio">{{x-icon i="pencil"}} Edit</button>
+					{{/if}}
+				{{/if}}
+
+				{{#if auth.authed}}
+					{{x-favorite value=isFavorite action="toggleFavorite"}}
+				{{/if}}
+			</p>
 
 			<div class="Playlist-desc">
 				{{body}}
@@ -18,40 +33,29 @@
 				{{/unless}}
 			{{/if}}
 
-			{{#if canEdit}}
-				{{#if isEditing}}
-					<form class="Form" {{action "trySave" on="submit"}}>
+			{{#if isEditing}}
+				<form class="Form" {{action "trySave" on="submit"}}>
+					<div class="Form-group">
+						<label for="title">Title</label>
+						{{input name="title" value=title placeholder="Title" autofocus='autofocus'}}
+					</div>
+					<div class="Form-group">
+						<label for="body">Description</label>
+						{{textarea name="body" value=body placeholder="Description"}}
+					</div>
+					{{#if isEditingSlug}}
 						<div class="Form-group">
-							<label for="title">Title</label>
-							{{input name="title" value=title placeholder="Title" autofocus='autofocus'}}
+							<label for="slug">URL - <span class="u-danger">Warning: this will change the link of the channel. The old one won't work (but you can always change it back)</span></label>
+							{{input name="slug" value=slug placeholder="Slug"}}
 						</div>
-						<div class="Form-group">
-							<label for="body">Description</label>
-							{{textarea name="body" value=body placeholder="Description"}}
-						</div>
-						{{#if isEditingSlug}}
-							<div class="Form-group">
-								<label for="slug">URL - <span class="u-danger">Warning: this will change the link of the channel. The old one won't work (but you can always change it back)</span></label>
-								{{input name="slug" value=slug placeholder="Slug"}}
-							</div>
-						{{/if}}
-						<div class="Form-group">
-							<button class="Btn Btn--primary" type="submit">Save</button>
-							<button class="Btn Btn--text" {{action "editSlug"}}>Change URL</button>
-							<button class="Btn Btn--text" {{action 'cancel'}}>Cancel</button>
-							<button class="Btn Btn--text Btn--danger" {{action 'tryDelete'}}>Delete</button>
-						</div>
-					</form>
-				{{/if}}
-			{{/if}}
-
-			<p>{{#if auth.authed}}
-					{{#if isReallyFavorite}}
-						<button class="Btn Btn--removeFavorite" title="Remove this radio from your favorite" {{action 'removeFavorite'}}>Unfavorite</button></p>
-					{{else}}
-						<button class="Btn--favorite" title="Save this radio as your favorite" {{action 'favorite'}}>Favorite</button>
 					{{/if}}
-			</p>{{/if}}
+					<div class="Form-group">
+						<button class="Btn Btn--primary" type="submit">Save</button>
+						<button class="Btn Btn--text" {{action "editSlug"}}>Change URL</button>
+						<button class="Btn Btn--text Btn--danger" {{action 'tryDelete'}}>Delete</button>
+					</div>
+				</form>
+			{{/if}}
 
 		</header>
 

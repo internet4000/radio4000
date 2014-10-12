@@ -2,14 +2,16 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
 
+	needs: ['tracks'],
+
 	firstRun: true,
 
+	// editing
 	isEditing: false,
+	isEditingSlug: false,
 	canEdit: function() {
 		return this.get('model.uid') === this.get('auth.authData.uid');
 	}.property('model.uid', 'auth.user'),
-
-	isEditingSlug: false,
 
 
 
@@ -79,6 +81,9 @@ export default Ember.ObjectController.extend({
 	},
 
 	actions: {
+		playLatest: function() {
+			this.transitionToRoute('track', this.get('tracks.lastObject'));
+		},
 		edit: function() {
 			this.set('isEditing', true);
 		},

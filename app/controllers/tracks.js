@@ -33,10 +33,6 @@ export default Ember.ArrayController.extend({
 	},
 
 	actions: {
-		playLatest: function() {
-			this.transitionToRoute('track', this.get('model.lastObject'));
-		},
-
 		// This gets called when you paste something into the input-url component
 		// it sets the track title based on a title from the YouTube API based on track URL
 		autoTitle: function(url) {
@@ -77,8 +73,18 @@ export default Ember.ArrayController.extend({
 			});
 
 			// Close the edit box
+			this.send('saveNewTrack', track);
 			this.send('cancel');
 
+
+			// Reset the fields
+			this.setProperties({
+				trackUrl: '',
+				trackTitle: '',
+				trackBody: ''
+			});
+		},
+		saveNewTrack: function(track) {
 			// Save the track
 			track.save().then(function() {
 				// And add it to the tracks property of the playlist
@@ -90,13 +96,6 @@ export default Ember.ArrayController.extend({
 						Ember.debug('Error: Track NOT saved to playlist');
 					});
 				});
-			});
-
-			// Reset the fields
-			this.setProperties({
-				trackUrl: '',
-				trackTitle: '',
-				trackBody: ''
 			});
 		}
 	}

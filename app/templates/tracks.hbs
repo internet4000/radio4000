@@ -11,16 +11,13 @@
 	</form>
 {{/if}}
 
-<div class="Section Section--noBottom">
-	<div class="BtnGroup u-alignLeft">
-		<button class="Btn" {{action 'playLatest'}}>Play radio</button>
-	</div>
-	<div class="BtnGroup u-alignRight">
+{{!-- <p> --}}
+	{{!-- <div class="BtnGroup u-alignRight">
 		<h4 class="BtnGroup-label">Sort by</h4>
 		<button class="Btn" {{action 'sortBy' 'created'}}>Date</button>
 		<button class="Btn" {{action 'sortBy' 'title'}}>Title</button>
-	</div>
-</div>
+	</div> --}}
+{{!-- </p> --}}
 
 {{#unless model}}
 	<p>No tracks yet.</p>
