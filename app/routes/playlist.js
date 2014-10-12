@@ -30,12 +30,5 @@ export default Ember.Route.extend({
 				}
 			}.bind(this));
 		}.bind(this));
-	},
-
-	activate: function() {
-		Ember.$('.SiteLogo').addClass('is-translated');
-	},
-	deactivate: function() {
-		Ember.$('.SiteLogo').removeClass('is-translated');
 	}
 });

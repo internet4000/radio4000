@@ -8,8 +8,9 @@ var Router = Ember.Router.extend({
 Router.map(function() {
 	// pages
 	this.route('about');
+	// this.route('dashboard');
+	this.route('login');
 	this.route('styleguide');
-	this.route('dashboard');
 
 	// many playlists
 	this.resource('playlists', { path: 'discover'}, function() {
@@ -26,7 +27,6 @@ Router.map(function() {
 	this.resource('users', function(){
 		this.resource('user', { path: '/user/:user_id' });
 	});
-  this.route('login');
 });
 
 export default Router;
