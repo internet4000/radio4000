@@ -28,7 +28,6 @@
 				{{body}}
 			</div>
 
-
 			{{#if isEditing}}
 				<form class="Form" {{action "trySave" on="submit"}}>
 					<div class="Form-group">
@@ -55,6 +54,7 @@
 		</header>
 
 		<div class="Playlist-body">
+			{{outlet 'playlist-body'}}
 			{{render 'tracks' tracks}}
 			{{outlet}}
 		</div>
