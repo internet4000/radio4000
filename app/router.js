@@ -14,8 +14,10 @@ Router.map(function() {
 
 	// many playlists
 	this.resource('playlists', { path: 'discover'}, function() {
-		this.route('new', { path: 'new' });
 	});
+
+	this.route('new', { path: '/new' });
+
 
 	// single playlist
 	this.resource('playlist', { path: '/p/:playlist_id' }, function() {
