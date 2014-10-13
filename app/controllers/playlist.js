@@ -129,8 +129,6 @@ export default Ember.ObjectController.extend({
 				});
 			});
 		},
-
-
 		toggleFavorite: function() {
 			if (this.get('model.isSaving')) { return false; }
 

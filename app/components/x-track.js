@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
 	classNames: ['Track'],
 	classNameBindings: ['isEditing:is-editing'],
+
 	isEditing: false,
 
 	actions: {
