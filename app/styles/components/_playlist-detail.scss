@@ -4,7 +4,8 @@
 
 .PlaylistDetail {
 	position: relative;
-	transition: transform 600ms $easing, opacity 600ms;
+	z-index: 2; // above the player
+	transition: transform 600ms $easing, opacity 600ms $easing;
 	.Container {
 		padding-left: 0;
 		padding-right: 0;
