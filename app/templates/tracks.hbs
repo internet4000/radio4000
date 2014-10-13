@@ -4,19 +4,22 @@
 	<button class="Btn" {{action 'sortBy' 'title'}}>Title</button>
 </div> --}}
 
-{{#unless model}}
-	<p>No tracks yet.</p>
-{{/unless}}
+<div class="Container">
 
-<ul class="List">
-	{{#each track in arrangedContent}}
-		<li>{{x-track
-				track=track
-				playlist=controllers.playlist
-				onPublishTrack="publishTrack"}}
-		</li>
-	{{/each}}
-</ul>
+	{{#unless model}}
+		<p>No tracks yet.</p>
+	{{/unless}}
+
+	<ul class="List">
+		{{#each track in arrangedContent}}
+			<li>{{x-track
+					track=track
+					playlist=controllers.playlist
+					onPublishTrack="publishTrack"}}
+			</li>
+		{{/each}}
+	</ul>
+</div>
 
 {{!-- by default, the "detail page" of an x-track would be rendered here,
 		but we overwrite it in the track router --}}
