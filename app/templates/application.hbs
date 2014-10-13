@@ -1,7 +1,6 @@
 <div class="Application" {{bind-attr class='isMaximized'}}>
 
 	<header class="SiteHeader">
-
 		<div class="Bar">
 			<h1 class="SiteLogo">
 				{{#link-to "index" title="Back to the dashboard"}}
@@ -10,32 +9,28 @@
 			</h1>
 
 			<nav>
-				{{#if auth.authed}}
-					{{#if auth.user.playlists}}
-						{{#link-to 'playlist' this}}My playlist{{/link-to}}
-					{{/if}}
-				{{/if}}
+				{{#each auth.user.playlists}}
+					{{#link-to 'playlist' this}}My playlist{{/link-to}}
+				{{/each}}
 
 				{{#link-to 'playlists'}}Discover{{/link-to}}
 
 				<aside class="ContextualNavigation u-alignRight">
 					{{#if auth.authed}}
-						{{#if auth.user.playlists}}
-							{{#link-to 'playlist' this}}+ Add track{{/link-to}}
-							{{else}}
-								{{#link-to 'new' this}}+ Create your playlist{{/link-to}}
-						{{/if}}
+							{{#each auth.user.playlists}}
+								{{#link-to 'playlist.add' this}}+ Add track{{/link-to}}
+							{{/each}}
 
+							{{#unless auth.user.playlists}}
+								{{#link-to 'new'}}+ Create your playlist{{/link-to}}
+							{{/unless}}
 						{{else}}
 							{{#link-to 'login'}}Log in{{/link-to}}
 					{{/if}}
 
 				</aside>
 			</nav>
-
 		</div>
-
-
 	</header>
 
 	<main class="SiteMain">
