@@ -1,12 +1,12 @@
 <section class="Dashboard">
-	<h2>Get your own channel</h2>
-	<section class="Section">
 
+	<section class="Section">
+		<h2>Your channel</h2>
 		{{#each playlists}}
-			{{!-- {{#link-to "playlist" this class="Box"}}
+			{{#link-to "playlist" this class="Box"}}
 				<h3>{{title}}</h3>
 				<p>{{description}}</p>
-			{{/link-to}} --}}
+			{{/link-to}}
 		{{/each}}
 
 		{{#unless playlists}}
@@ -19,14 +19,14 @@
 	<section class="Section">
 		<h2>Your favorites</h2>
 		{{#if favoritePlaylists}}
-			<p class="is-inactiveText">Quick access to channels you starred as favorites</p>
+			<p class="is-inactiveText">Quick access to channels you saved as favorite.</p>
 			<div class="Playlists">
 				{{#each favoritePlaylists}}
 					<div class="Playlist">{{#link-to "playlist" this}}{{title}}{{/link-to}}</div>
 				{{/each}}
 			</div>
 		{{else}}
-			<p class="is-inactiveText">You haven't addded any favorites yet.</p>
+			<p class="is-inactiveText">You haven't saved any favorites yet.</p>
 		{{/if}}
 	</section>
 

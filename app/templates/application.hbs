@@ -10,7 +10,7 @@
 
 			<nav>
 				{{#each auth.user.playlists}}
-					{{#link-to 'playlist' this}}My playlist{{/link-to}}
+					{{#link-to 'playlist' this}}My channel{{/link-to}}
 				{{/each}}
 
 				{{#link-to 'playlists'}}Discover{{/link-to}}
@@ -22,7 +22,7 @@
 							{{/each}}
 
 							{{#unless auth.user.playlists}}
-								{{#link-to 'new'}}+ Create your playlist{{/link-to}}
+								{{#link-to 'new'}}+ Create your channel{{/link-to}}
 							{{/unless}}
 						{{else}}
 							{{#link-to 'login'}}Log in{{/link-to}}

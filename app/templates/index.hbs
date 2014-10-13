@@ -2,26 +2,25 @@
 	<h1>Radio4000<small> – collect and share your favorite music and listen to your friend's</small></h1>
 </div>
 
-	{{#unless auth.authed}}
+<div class="Container">
 
+	{{#if auth.authed}}
+		{{render 'user' auth.user}}
+	{{else}}
 		<section class="Section">
 			<div class="Section-half">
 				{{#link-to 'login' class="Box"}}
 					<h2 class="Title">Create</h2>
-					<p>Get your own playlist</p>
+					<p>Get your own channel</p>
 				{{/link-to}}
 			</div>
 			<div class="Section-half">
 				{{#link-to 'playlists' class="Box"}}
-					<h2 class="Title">Listen</h2>
-					<p>Browse other playlists</p>
+					<h2 class="Title">Discover</h2>
+					<p>Listen to a channel now</p>
 				{{/link-to}}
 			</div>
 		</section>
-	{{/unless}}
-
-	{{#if auth.authed}}
-		{{render 'user' auth.user}}
 	{{/if}}
 
 	{{partial 'navigation'}}
