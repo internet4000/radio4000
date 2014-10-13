@@ -40,7 +40,8 @@ h1,
 		color: $text-color;
 	}
 }
-h2 {
+h2,
+.Subtitle {
 	@include size-2;
 	// responsive but more importantly proportionally nicer
 	@media (min-width: $layout-m) { @include size-3; }

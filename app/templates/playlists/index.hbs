@@ -1,16 +1,14 @@
-{{!-- index of playlists goes into playlists.hbs --}}
-
-<div class="Section">
-		<div class="Manchet">
-			<h1>Discover<small> — channels by other people</small></h1>
-		</div>
-
-	<div class="Playlists Container">
+<div class="Section Container">
+	<section class="Playlists">
 		{{#each playlist in arrangedContent}}
-			{{#link-to "playlist" playlist class="Playlist"}}
-				<h3 class="Title">{{playlist.title}}</h3>
-				<p class="Body">{{do-truncate playlist.body 142}}</p>
-			{{/link-to}}
+			<div class="Playlist">
+				<h3 class="Subtitle">
+					{{#link-to "playlist" playlist}}
+						{{playlist.title}}
+					{{/link-to}}
+				</h3>
+				<p>{{do-truncate playlist.body 142}}</p>
+			</div>
 		{{/each}}
-	</div>
+	</section>
 </div>
