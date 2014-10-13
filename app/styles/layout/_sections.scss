@@ -10,16 +10,12 @@
 	margin-right: auto;
 	padding-right: 1em;
 	padding-left: 1em;
-	// background-color: $slightgray;
 	position: relative;
 	overflow: hidden; // for .btn--favorite
 }
 // Use this when it should be full width
 .Container--full {
 	max-width: none;
-}
-.Container--transparent {
-	background-color: transparent;
 }
 
 
