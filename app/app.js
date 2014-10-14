@@ -1,3 +1,4 @@
+/*global ga*/
 import Ember from 'ember';
 import Resolver from 'ember/resolver';
 import loadInitializers from 'ember/load-initializers';
@@ -15,6 +16,15 @@ var App = Ember.Application.extend({
 // Change the class Ember adds to active elements
 Ember.LinkView.reopen({
 	activeClass: 'is-active'
+});
+
+Ember.Router.reopen({
+  notifyGoogleAnalytics: function() {
+    return ga('send', 'pageview', {
+        'page': this.get('url'),
+        'title': this.get('url')
+      });
+  }.on('didTransition')
 });
 
 loadInitializers(App, config.modulePrefix);
