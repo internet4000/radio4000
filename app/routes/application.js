@@ -5,7 +5,7 @@ export default Ember.Route.extend({
 		// if we don't load all playlists here, some things aren't properly loaded:
 		// - user favorites
 		// - user playlists
-		return this.store.find('user');
+		return this.store.find('user'), this.store.find('playlist');
 	},
 	actions: {
 		// pass the actions on to auth

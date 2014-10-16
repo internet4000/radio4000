@@ -2,14 +2,14 @@
 
 	<section class="Section">
 		<h2>Your channel</h2>
-		{{#each playlists}}
-			{{#link-to "playlist" this class="Box"}}
-				<h3>{{title}}</h3>
-				<p>{{description}}</p>
+		{{#each playlist in auth.user.playlists}}
+			{{#link-to "playlist" playlist class="Box"}}
+				<h3>{{playlist.title}}</h3>
+				<p>{{playlist.description}}</p>
 			{{/link-to}}
 		{{/each}}
 
-		{{#unless playlists}}
+		{{#unless auth.user.playlists}}
 			{{#link-to "new" class="Box"}}
 				<h3>Get your own channel</h3>
 			{{/link-to}}
@@ -18,11 +18,11 @@
 
 	<section class="Section">
 		<h2>Your favorites</h2>
-		{{#if favoritePlaylists}}
+		{{#if auth.user.favoritePlaylists}}
 			<p class="is-inactiveText">Quick access to channels you saved as favorite.</p>
 			<div class="Playlists">
-				{{#each favoritePlaylists}}
-					<div class="Playlist">{{#link-to "playlist" this}}{{title}}{{/link-to}}</div>
+				{{#each playlist in auth.user.favoritePlaylists}}
+					<div class="Playlist">{{#link-to "playlist" playlist}}{{playlist.title}}{{/link-to}}</div>
 				{{/each}}
 			</div>
 		{{else}}
