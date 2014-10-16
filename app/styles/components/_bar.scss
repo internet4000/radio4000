@@ -1,0 +1,25 @@
+/**
+ *  The top bar
+ */
+.Bar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 3;
+	background: linear-gradient($primary-color, hsl(268, 90%, 42%));
+	color: $text-color-invert;
+	min-height: 53px;
+	nav {
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+		a {
+			display: inline-block;
+			color: $text-color-invert;
+			padding: 1.2em 0.75em 1em;
+			&.is-active {
+				text-decoration: underline;
+			}
+		}
+	}
+}

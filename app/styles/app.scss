@@ -21,11 +21,13 @@
 @import 'utilities/content-states';
 @import 'utilities/box';
 @import 'components/logo';
+@import 'components/loader';
 @import 'components/list';
 @import 'components/playlist-detail';
 @import 'components/track';
 @import 'components/playback';
-@import 'components/loader';
+@import 'components/player';
+@import 'components/bar';
 
 // 4. Layout (site and page layout)
 @import 'layout/layout';

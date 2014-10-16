@@ -10,4 +10,11 @@
 		padding-left: 0;
 		padding-right: 0;
 	}
+
+	// initial state
+	transform: scale(1);
+	.Application .is-maximized & {
+		transform: scale(0.85);
+		opacity: 0;
+	}
 }

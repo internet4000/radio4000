@@ -6,20 +6,25 @@
 	list-style: none;
 	padding-left: 0;
 	border-top: 1px solid $lightgray;
-}
-.List li {
-	border-bottom: 1px solid $lightgray;
-	p {
-		margin: 0;
+
+	li {
+		border-bottom: 1px solid $lightgray;
+		p {
+			margin: 0;
+		}
 	}
 }
 
-/**
- * Smaller lists (good for long text)
- */
-
+// Smaller lists (good for long text)
 .SmallerList {
 	li {
 		@include size-1;
 	}
+}
+
+// Lists after headlines
+h2 + ul,
+h3 + ul {
+	margin-top: 1rem;
+	padding-left: 1.8rem;
 }

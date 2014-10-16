@@ -1,5 +1,5 @@
-// Button reset (inspired by https://github.com/suitcss/components-button)
 .Btn {
+	// Button reset (inspired by https://github.com/suitcss/components-button)
 	-webkit-appearance: none; /* 1 */
 	background: transparent;
 	cursor: pointer;
@@ -11,15 +11,14 @@
 	text-decoration: none;
 	user-select: none; /* 6 */
 	white-space: normal; /* 7 */
-
 	// Button styling
 	padding: 0.3em 0.8em 0.2em;
 	background-color: $slightgray;
 	background-image: linear-gradient(to bottom, white 60%, transparent);
 	color: $text-color;
 	box-shadow: hsla(0, 0%, 0%, 0.2) 0 1px 0 0;
-	// -webkit-font-smoothing: antialiased;
 	transition: border-color 200ms, background 200ms;
+	// -webkit-font-smoothing: antialiased;
 
 	&:hover,
 	&:focus,
@@ -104,7 +103,7 @@
 }
 
 // Button groups
-// eliminates double-borders and extra spacing between buttons
+// (eliminates double-borders and extra spacing between buttons)
 .BtnGroup {
 	margin-bottom: 1rem;
 	.Btn + .Btn {
@@ -128,6 +127,7 @@
 	color: $gray;
 }
 
+
 // Control buttons
 .Controls-buttons {
 	.Btn:hover {
@@ -141,15 +141,16 @@
 	position: absolute;
 	top: 0;
 	right: 0;
-	background-image: none;
-	border: 0;
-	border-radius: 0;
-	color: transparent;
-	-webkit-transform: rotate(145deg);
 	width: 120px;
 	height: 120px;
 	margin-top: -72px;
 	margin-right: -75px;
+	transform: rotate(145deg);
+
+	background-image: none;
+	border: 0;
+	border-radius: 0;
+	color: transparent;
 }
 .Btn--favorite {
 	background-color: rgb(200, 200, 200);

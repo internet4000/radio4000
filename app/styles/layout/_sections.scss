@@ -1,8 +1,8 @@
-/**
- * Container
-	use this to wrap everything
-	pushes content from the edge
- **/
+// use .Container for vertical stacks (it could add padding)
+
+// use .Section for extra margin bottom, essentially
+// + if you need two sections next to each other, use .Section-half
+
 
 .Container {
 	max-width: 45em;
@@ -21,7 +21,6 @@
 
 /**
  * Sections
- 	use this when you more VERTICAL space than what the base elements give you
  **/
 
  // Use this when you need a bit of extra space
@@ -46,4 +45,3 @@
 		}
 	}
 }
-

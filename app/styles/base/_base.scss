@@ -1,3 +1,4 @@
+// Links
 a {
 	color: $link-color;
 	text-decoration: none;
@@ -32,12 +33,6 @@ hr {
     margin: 0 0 1rem;
 }
 
-%text-bg {
-	background: linear-gradient(hsl(17, 100%, 50%), hsl(278, 90%, 42%));
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-}
-
 // Responsive media
 iframe,
 img,
@@ -50,13 +45,6 @@ embed {
 // Seperators
 hr {
 	margin: 2rem 0;
-}
-
-// Lists
-h2 + ul,
-h3 + ul {
-	margin-top: 1rem;
-	padding-left: 1.8rem;
 }
 
 // Icons
@@ -75,9 +63,4 @@ h3 + ul {
 		top: 0.15em;
 		left: -0.2em;
 	}
-}
-
-.Muted {
-	@include size-1;
-	color: $gray;
 }
