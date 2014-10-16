@@ -18,7 +18,6 @@ export default {
 				// get access to the ember data store
 				this.store = container.lookup('store:main');
 
-				// NEW METHOD (see old method above)
 				ref.onAuth(function(authData) {
 					if (authData) {
 						Ember.debug('Logged in');
@@ -29,7 +28,7 @@ export default {
 						// this.checkUser();
 						this.createUser();
 					} else {
-						Ember.debug('Logged out');
+						Ember.debug('Not logged in');
 						this.set('authed', false);
 						this.set('authData', null);
 						this.set('user', null);
@@ -38,9 +37,9 @@ export default {
 			},
 			login: function(provider) {
 				Ember.debug('trying to login');
-				this.loginWithPopup(provider); // firebase 1.1.1
+				this.loginWithPopup(provider);
 			},
-			// firebase 1.1.1 login with popup
+			// login with popup
 			loginWithPopup: function(provider) {
 				var self = this;
 				Ember.debug('logging in with popup');
@@ -52,12 +51,12 @@ export default {
 							self.loginWithRedirect(provider);
 						}
 					} else if (authData) {
-						Ember.debug('Logged in with popup');
+						// Ember.debug('Logged in with popup');
 						// console.log(authData);
 					}
 				});
 			},
-			// firebase 1.1.1 login with redirect (needed for chrome on iOS)
+			// firebase login with redirect (needed for chrome on iOS)
 			loginWithRedirect: function(provider) {
 				var self = this;
 				Ember.debug('logging in with redirect');
@@ -65,12 +64,11 @@ export default {
 					if (error) {
 						console.log('errrrror');
 					} else if (authData) {
-						Ember.debug('Logged in with redirect');
+						// Ember.debug('Logged in with redirect');
 					}
 				});
 			},
 			logout: function() {
-				Ember.debug('trying to log out');
 				// this.authClient.logout(); // firebase simple login
 				ref.unauth(); // firebase 1.1.1
 			},

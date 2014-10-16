@@ -18,14 +18,14 @@
 				<aside class="ContextualNavigation u-alignRight">
 					{{#if auth.authed}}
 							{{#each auth.user.playlists}}
-								{{#link-to 'playlist.add' this}}+ Add track{{/link-to}}
+								{{#link-to 'playlist.add' this}}{{x-icon i="music"}} Add track{{/link-to}}
 							{{/each}}
 
 							{{#unless auth.user.playlists}}
-								{{#link-to 'new'}}+ Create your channel{{/link-to}}
+								{{#link-to 'new'}}Create your channel{{/link-to}}
 							{{/unless}}
 						{{else}}
-							{{#link-to 'login'}}Log in{{/link-to}}
+							{{#link-to 'login'}}Login{{/link-to}}
 					{{/if}}
 
 				</aside>

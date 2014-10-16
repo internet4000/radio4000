@@ -4,11 +4,13 @@
 	{{x-icon i="plus"}} Add favorite
 {{/if}}
 
-
 {{!--
-	<p>{{#if auth.authed}}
-					{{#if isReallyFavorite}}
-						<button class="Btn Btn--removeFavorite" title="Remove this radio from your favorite" {{action 'removeFavorite'}}>Unfavorite</button></p>
-					{{else}}
-						<button class="Btn--favorite" title="Save this radio as your favorite" {{action 'favorite'}}>Favorite</button>
+<p>
+{{#if auth.authed}}
+	{{#if isReallyFavorite}}
+		<button class="Btn Btn--removeFavorite" title="Remove this radio from your favorite" {{action 'removeFavorite'}}>Unfavorite</button></p>
+	{{else}}
+		<button class="Btn--favorite" title="Save this radio as your favorite" {{action 'favorite'}}>Favorite</button>
+	{{/if}}
+{{/if}}
  --}}

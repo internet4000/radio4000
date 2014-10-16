@@ -4,6 +4,11 @@
 
 <div class="Container Section">
 
+	{{#unless auth.authed}}
+		<h3>uh oh, not logged in</h3>
+		<p>Before you can get your channel, please log in using either Google or Facebook.</p>
+	{{/unless}}
+
 	<form class="Form Form--newPlaylist" {{action "newPlaylist" on="submit"}}>
 		<div class="Form-group">
 			<label>Title of your radio

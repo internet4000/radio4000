@@ -7,9 +7,17 @@
 	left: 0;
 	right: 0;
 	z-index: 3;
-	background: linear-gradient($primary-color, hsl(268, 90%, 42%));
 	color: $text-color-invert;
 	min-height: 53px;
+
+	// purple
+	background: linear-gradient($primary-color, hsl(268, 90%, 42%));
+	// background: linear-gradient($primary-color, $primary-color);
+
+	// alternative green
+	// background: linear-gradient(hsl(138, 94%, 41%),hsl(148, 60%, 40%));
+	// border-bottom: 2px solid hsla(0, 0%, 20%, 0.30);
+
 	nav {
 		padding-left: 0.5rem;
 		padding-right: 0.5rem;
@@ -23,3 +31,5 @@
 		}
 	}
 }
+
+

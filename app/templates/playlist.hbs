@@ -16,6 +16,10 @@
 				{{/if}}
 
 				{{#if canEdit}}
+					{{#link-to 'playlist.add' this class="Btn"}}
+						{{x-icon i="plus"}} Add track
+					{{/link-to}}
+
 					{{#if isEditing}}
 						<button class="Btn u-alignRight" {{action 'cancel'}}>{{x-icon i="pencil"}} Cancel editing</button>
 					{{else}}
