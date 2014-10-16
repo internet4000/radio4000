@@ -4,14 +4,15 @@
 
 <div class="Container Section">
 
-	<p>
-		<button class="Btn Btn--primary" {{action 'login' 'google'}}>Sign up with Google</button>
-		<button class="Btn Btn--primary" {{action 'login' 'facebook'}}>Sign up with Facebook</button>
-	</p>
+	<div class="LoginBox">
 
-	{{#if auth.authed}}
-		<p class="Muted">You are already logged in as {{auth.user.id}}.<br>Did you want to <a href="#" {{action 'logout'}}>logout?</button></p>
-	{{/if}}
+		{{#if auth.authed}}
+			<p class="Muted">You are already logged in as {{auth.user.id}}.<br>Did you want to <a href="#" {{action 'logout'}}>logout?</button></p>
+			{{else}}
+			<button class="Btn Btn--primary" {{action 'login' 'google'}}>Sign up with Google</button>
+			<button class="Btn Btn--primary" {{action 'login' 'facebook'}}>Sign up with Facebook</button>
+		{{/if}}
+	</div >
 </div>
 
 {{outlet}}
