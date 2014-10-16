@@ -28,6 +28,13 @@
 			&.is-active {
 				text-decoration: underline;
 			}
+
+			// center icons
+			[class^="icon-"],
+			[class*=" icon-"] {
+				position: relative;
+				top: 0.1em;
+			}
 		}
 	}
 }

@@ -106,6 +106,9 @@
 // (eliminates double-borders and extra spacing between buttons)
 .BtnGroup {
 	margin-bottom: 1rem;
+	.Btn {
+		vertical-align: bottom;
+	}
 	.Btn + .Btn {
 		margin-left: em(-5, 14);
 		border-radius: 0;
