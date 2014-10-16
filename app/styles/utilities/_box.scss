@@ -5,11 +5,10 @@
 // this syntax is kool, cuz it works like a ch4rm
 a.Box,
 .Box > a {
-	display: block;
+	display: inline-block;
 	border: 1px solid hsla(0, 0%, 0%, 0.2);
 	text-align: center;
-	padding-top: 1.6em;
-	padding-bottom: 1.6em;
+	padding: 1.6rem 1rem;
 	transition: 200ms all ease-in-out;
 	box-shadow: $slightgray 4px 16px 20px;
 

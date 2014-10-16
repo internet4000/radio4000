@@ -2,36 +2,30 @@
 
 	<div class="Manchet">
 		<h1 class="Playlist-title">{{#link-to 'playlist' this}}{{title}}{{/link-to}}</h1>
+		<p class="Playlist-desc">{{body}}</p>
+		<p class="BtnGroup">
+			<button class="Btn" {{action "playLatest"}}>{{x-icon i="play"}} Play</button>
+
+			{{#if auth.authed}}
+				{{x-favorite value=isFavorite action="toggleFavorite"}}
+			{{/if}}
+
+			{{#if canEdit}}
+				{{#link-to 'playlist.add' this class="Btn"}}
+					{{x-icon i="plus"}} Add track
+				{{/link-to}}
+
+				{{#if isEditing}}
+					<button class="Btn u-alignRight" {{action 'cancel'}}>{{x-icon i="pencil"}} Cancel editing</button>
+				{{else}}
+					<button class="Btn u-alignRight" {{action 'edit'}} title="Edit your radio">{{x-icon i="pencil"}} Edit</button>
+				{{/if}}
+			{{/if}}
+		</p>
 	</div>
 
 	<div class="Container">
 		<header class="Playlist-header Section">
-
-			<p class="BtnGroup">
-
-				<button class="Btn" {{action "playLatest"}}>{{x-icon i="play"}} Play</button>
-
-				{{#if auth.authed}}
-					{{x-favorite value=isFavorite action="toggleFavorite"}}
-				{{/if}}
-
-				{{#if canEdit}}
-					{{#link-to 'playlist.add' this class="Btn"}}
-						{{x-icon i="plus"}} Add track
-					{{/link-to}}
-
-					{{#if isEditing}}
-						<button class="Btn u-alignRight" {{action 'cancel'}}>{{x-icon i="pencil"}} Cancel editing</button>
-					{{else}}
-						<button class="Btn u-alignRight" {{action 'edit'}} title="Edit your radio">{{x-icon i="pencil"}} Edit</button>
-					{{/if}}
-				{{/if}}
-			</p>
-
-			<div class="Playlist-desc">
-				{{body}}
-			</div>
-
 			{{#if isEditing}}
 				<form class="Form" {{action "trySave" on="submit"}}>
 					<div class="Form-group">

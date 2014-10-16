@@ -1,7 +1,7 @@
 {{!-- {{#if playlist.canEdit}} --}}
 <form class="Form AddTrack" {{action "addTrack" on='submit'}}>
 	{{#if isExpanded}}
-		{{input-url value=trackUrl placeholder="YouTube URL" pasted="autoTitle"}}
+		{{input-url value=trackUrl placeholder="YouTube URL" pasted="autoTitle" autofocus="autofocus"}}
 		{{input value=trackTitle placeholder="Title"}}<br>
 		{{textarea value=trackBody placeholder="Optional description"}}<br>
 		<button class="Btn Btn--primary" type='submit'>Add track</button> <button class="Btn Btn--text" {{action 'contract'}}>Cancel</button>

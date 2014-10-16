@@ -3,13 +3,16 @@
  */
 
 .Manchet {
-	max-width: 20em;
-	margin-left: auto;
-	margin-right: auto;
+	padding: 3rem 1rem 2rem;
 	text-align: center;
-	margin-top: 3rem;
-	margin-bottom: 2rem;
+	background: linear-gradient($lightgray, $bg-color);
 
+	h1,
+	p {
+		max-width: 24rem;
+		margin-left: auto;
+		margin-right: auto;
+	}
 	h1 {
 		small,
 		.is-highlighted {
