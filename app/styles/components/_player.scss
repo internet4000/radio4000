@@ -12,29 +12,24 @@ $controlHeight: 53px;
 	width: 100px;
 	height: 100px;
 	max-width: 100%;
-	// transform: translateX(100%);
-	// animate
-	transition: all 600ms $easing;
-	// the youtube iframe
-	iframe {
-		width: 100%;
-		height: 100%;
-	}
 	@media (min-width: $layout-m) {
 		width: 200px;
 		height: 200px;
 		transform: translateZ(0);
 	}
 
+	// the youtube iframe
+	iframe {
+		width: 100%;
+		height: 100%;
+	}
+
 	// maximized state
-	.Application.is-maximized & {
-		position: fixed;
-		bottom: $controlHeight;
+	&.is-maximized {
+		top: $controlHeight;
 		left: 0;
-		top: 0;
 		width: auto;
 		height: auto;
-		transform: translate3d(0,0,0);
 		z-index: 3; // on top of playlist
 	}
 }
