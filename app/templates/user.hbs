@@ -24,7 +24,6 @@
 				{{#each playlist in auth.user.favoritePlaylists}}
 					{{#link-to "playlist" playlist class="Playlist Playlist--teaser"}}
 						<h3 class="Playlist-title">{{playlist.title}}</h3>
-						<p class="Playlist-description"> {{do-truncate playlist.body 140}} </p>
 					{{/link-to}}
 				{{/each}}
 			</div>
