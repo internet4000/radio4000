@@ -31,3 +31,9 @@ body {
 		padding-bottom: 2em;
 	}
 }
+
+.SiteAside {
+	// fixes z-index issues; w/ animations etc.
+	position: relative;
+	z-index: 3;
+}
