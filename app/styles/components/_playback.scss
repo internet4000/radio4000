@@ -10,7 +10,12 @@
 	right: 0;
 	left: 0;
 	backface-visibility: hidden;
+	transform: translateY(100%);
+	transition: all 400ms $easing5;
 
+	&.is-active {
+		transform: translateY(0);
+	}
 	// bottom aligned for tocuh
 	.touch & {
 		top: initial;

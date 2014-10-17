@@ -136,6 +136,13 @@
 	.Btn:hover {
 		color: gray;
 	}
+	.Btn {
+		border-width: 0px;
+	}
+}
+.Controls-buttons .Btn,
+.Controls-videoBtn.Btn {
+	border-width: 0px;
 }
 
 // Btn--fav
