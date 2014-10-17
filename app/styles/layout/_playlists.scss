@@ -12,8 +12,26 @@
 }
 
 .Playlist {
-	.Subtitle {
+
+}
+.Playlist--teaser {
+	display: block;
+	border-bottom: 1px solid $lightgray;
+	padding-top: 11px;
+	padding-left: 11px;
+	padding-right: 11px;
+	padding-bottom: 11px;
+	.Playlist-title {
+		padding-bottom: 3px;
+	}
+	.Playlist-description {
+		color: $gray;
 		margin-bottom: 0;
+	}
+
+	&:hover {
+		text-decoration: none;
+		background-color: white;
 	}
 }
 
