@@ -83,8 +83,8 @@ export default Ember.ObjectController.extend({
 	},
 
 	actions: {
-		isExpanded: function() {
-			this.set('isExpanded', true);
+		extend: function() {
+			this.toggleProperty('isExpanded');
 		},
 		playLatest: function() {
 			this.transitionToRoute('track', this.get('tracks.lastObject'));
