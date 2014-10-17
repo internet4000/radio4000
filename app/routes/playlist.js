@@ -30,5 +30,9 @@ export default Ember.Route.extend({
 				}
 			}.bind(this));
 		}.bind(this));
+	},
+
+	deactivate: function() {
+		this.controller.set('isExpanded', false);
 	}
 });
