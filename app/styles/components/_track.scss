@@ -5,7 +5,6 @@
 .Track {
 	position: relative;
 	overflow: hidden; // hide controls
-	@include size-1;
 	.Btn--danger {
 		float: right;
 	}

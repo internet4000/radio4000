@@ -15,12 +15,26 @@
 		text-align: center;
 	}
 	.Playlist-description {
+		position: relative;
 		text-align: left;
 		max-height: 100px;
 		overflow: hidden;
 		&.is-expended {
 			max-height: none;
 		}
+	}
+	.Playlist-description:after {
+		content: "";
+		display: block;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 20px;
+		background: linear-gradient(transparent, $bg-color);
+	}
+	.Playlist-description:after.is-expended {
+		background: none;
 	}
 
 	// initial state
