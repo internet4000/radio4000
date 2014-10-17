@@ -5,7 +5,7 @@
 .Manchet {
 	padding: 3rem 1rem 2rem;
 	text-align: center;
-	background: linear-gradient($lightgray, $bg-color);
+	background: linear-gradient(darken($lightgray,5%), $bg-color);
 
 	h1,
 	p {
@@ -20,4 +20,15 @@
 			@extend %font-regular;
 		}
 	}
+}
+
+/**
+ * Dark version
+ */
+
+.Manchet--dark {
+	background: linear-gradient($darkblue, lighten($darkblue, 5%) 70%);
+	// background-color: $darkblue;
+	color: $text-color-invert;
+	margin-bottom: 2rem;
 }

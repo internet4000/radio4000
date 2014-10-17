@@ -36,6 +36,7 @@ $yellow:         hsl(60, 100%, 70%);
 $beautifulblue:  hsl(255, 95%, 39%);
 $blue:           hsl(210, 75%, 50%);
 $lightblue:      lighten($blue, 10%);
+$darkblue:		  hsl(230, 50%, 23%);
 $red:            hsl(0, 75%, 50%);
 $green:          #64c306;
 $darkgreen: 	  hsl(110, 85%, 25%);
@@ -56,7 +57,7 @@ $primary-color: $beautifulblue;
 $secondary-color: rgba(82, 136, 156, 0.36);
 $bg-color: hsl(40, 25%, 96%);
 $text-color: $black;
-$text-color-invert: $slightgray;
+$text-color-invert: $superlightgray;
 
 $link-color: $red;
 

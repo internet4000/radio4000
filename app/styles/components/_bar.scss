@@ -9,6 +9,7 @@
 	z-index: 3;
 	color: $text-color-invert;
 	min-height: 53px;
+	border-bottom: 1px solid hsla(0, 0%, 0%, 0.4);
 
 	// purple
 	background: linear-gradient($primary-color, hsl(268, 90%, 42%));

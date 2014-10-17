@@ -1,11 +1,9 @@
-<section class="Dashboard">
-
-	<section class="Section">
+<section class="Section">
+	<div class="Section-half">
 		<h2>Your playlist</h2>
 		{{#each playlist in auth.user.playlists}}
 			{{#link-to "playlist" playlist class="Playlist Playlist--teaser"}}
 				<h3 class="Playlist-title">{{playlist.title}}</h3>
-				<p class="Playlist-description"> {{do-truncate playlist.body 140}} </p>
 			{{/link-to}}
 		{{/each}}
 
@@ -14,12 +12,10 @@
 				<h3>Get your own playlist</h3>
 			{{/link-to}}
 		{{/unless}}
-	</section>
-
-	<section class="Section">
+	</div>
+	<div class="Section-half">
 		<h2>Your favorites</h2>
 		{{#if auth.user.favoritePlaylists}}
-			<p class="is-inactiveText">Quick access to playlists you saved as favorite.</p>
 			<div class="Playlists">
 				{{#each playlist in auth.user.favoritePlaylists}}
 					{{#link-to "playlist" playlist class="Playlist Playlist--teaser"}}
@@ -30,6 +26,5 @@
 		{{else}}
 			<p class="is-inactiveText">You haven't saved any favorites yet.</p>
 		{{/if}}
-	</section>
-
+	</div>
 </section>

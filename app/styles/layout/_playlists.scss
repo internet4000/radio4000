@@ -2,27 +2,17 @@
  * Playlists
  **/
 
-.Playlists {
-	.Box--playlist {
-		display: inline-block;
-		margin-left: 1rem;
-		margin-right: 1rem;
-		margin-bottom: 2rem; // double for because left + right = 2
-	}
-}
 .Playlist {}
 .Playlist--teaser {
 	display: block;
 	border-bottom: 1px solid $lightgray;
-	padding-top: 11px;
-	padding-left: 11px;
-	padding-right: 11px;
-	padding-bottom: 11px;
+	padding: em(11);
 	.Playlist-title {
-		padding-bottom: 3px;
+		padding-bottom: em(3);
 		margin-bottom: 0;
 	}
 	.Playlist-description {
+		@include size-1;
 		max-width: 80%;
 		margin-bottom: 0;
 		color: $gray;
