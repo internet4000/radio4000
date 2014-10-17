@@ -23,7 +23,6 @@ export default {
 						Ember.debug('Logged in');
 						this.set('authed', true);
 						this.set('authData', authData);
-
 						// @todo if we check first, we cant later create user firebase bug already in use
 						// this.checkUser();
 						this.createUser();
@@ -69,36 +68,31 @@ export default {
 				});
 			},
 			logout: function() {
-				// this.authClient.logout(); // firebase simple login
-				ref.unauth(); // firebase 1.1.1
+				ref.unauth();
 			},
-
 			// @todo can't use the uid as id for the new user model because ember complains it was already used
 			checkUser: function() {
 				var self = this;
 				Ember.debug('Checking whether the user already exists…');
-				var savedUser = this.get('store').find('user', this.get('authData.uid'));
-				savedUser.then(function(user) {
-					Ember.debug('user already exists');
+
+				var existingUser = this.get('store').find('user', this.get('authData.uid'));
+				existingUser.then(function(user) {
+					Ember.debug('User already exists, done.');
 					self.set('user', user);
 				}, function(user) {
-					Ember.debug('no user found');
+					Ember.debug('No user found');
+					self.createUser(user);
 				});
 			},
 
 			createUser: function(user) {
-				Ember.debug('Trying to create a new user');
 				var self = this;
 
-				console.log(this.get('authData'));
-
-				// provider
-				// facebook.displayName
-				// facebook.email
-
+				// @todo harvest email
 				var newUser = this.get('store').createRecord('user', {
 					id: this.get('authData.uid'), // use uid as id
-					name: this.get('authData.facebook.displayName'),
+					provider: this.get('authData.provider'),
+					name: this.get('authData.facebook.displayName') || this.get('authData.google.displayName'),
 					created: new Date().getTime()
 				}).save().then(function(user){
 					Ember.debug('created a new user');

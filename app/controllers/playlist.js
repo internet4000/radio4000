@@ -134,6 +134,8 @@ export default Ember.ObjectController.extend({
 					Ember.debug('Success: playlist removed from user');
 				});
 			});
+
+			// @todo remove it in all users favoritePlaylists relationships
 		},
 		toggleFavorite: function() {
 			if (this.get('model.isSaving')) { return false; }
