@@ -14,3 +14,10 @@
 		text-decoration: underline;
 	}
 }
+
+.ContextualNavigation {
+	display: none;
+	@media (min-width: $layout-s) {
+		display: block;
+	}
+}
