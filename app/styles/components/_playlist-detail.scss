@@ -19,6 +19,7 @@
 		text-align: left;
 		max-height: 100px;
 		overflow: hidden;
+		transition: 200ms all ease-in-out;
 		&.is-expended {
 			max-height: none;
 		}
@@ -30,11 +31,12 @@
 		bottom: 0;
 		left: 0;
 		right: 0;
-		height: 20px;
+		height: 70px;
+		transition: 200ms all ease-in-out;
 		background: linear-gradient(transparent, $bg-color);
 	}
-	.Playlist-description:after.is-expended {
-		background: none;
+	.Playlist-description.is-expended:after {
+		height: 0;
 	}
 
 	// initial state
