@@ -1,14 +1,8 @@
 <div class="Manchet">
-	<h1>New radio channel<small> — first and last step, name your new radio channel</small></h1>
+	<h1>New radio channel<small> — first and last step, give it a name</small></h1>
 </div>
 
 <div class="Container Section">
-
-	{{#unless auth.authed}}
-		<h3>uh oh, not logged in</h3>
-		<p>Before you can get your channel, please log in using either Google or Facebook.</p>
-	{{/unless}}
-
 	<form class="Form Form--newPlaylist" {{action "newPlaylist" on="submit"}}>
 		<div class="Form-group">
 			<label>Title of your radio
@@ -24,6 +18,4 @@
 			<button class="Btn Btn--primary" type="submit">Create</button>
 		</div>
 	</form>
-
-	{{outlet}}
 </div>
