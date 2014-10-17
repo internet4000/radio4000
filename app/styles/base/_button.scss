@@ -108,18 +108,18 @@
 	margin-bottom: 1rem;
 	.Btn {
 		vertical-align: bottom;
-	}
-	.Btn + .Btn {
-		margin-left: em(-5, 14);
-		border-radius: 0;
-	}
-	.Btn:first-child {
-		border-top-right-radius: 0;
-		border-bottom-right-radius: 0;
-	}
-	.Btn:last-child {
-		border-top-right-radius: $border-radius;
-		border-bottom-right-radius: $border-radius;
+		& + .Btn {
+			margin-left: em(-5, 14);
+			border-radius: 0;
+		}
+		&:first-child {
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+		&:last-child {
+			border-top-right-radius: $border-radius;
+			border-bottom-right-radius: $border-radius;
+		}
 	}
 }
 .BtnGroup-label {
@@ -128,6 +128,15 @@
 	top: em(1,13);
 	margin-right: 0.2em;
 	color: $gray;
+}
+
+.BtnGroupWrapper {
+	.BtnGroup {
+		display: inline-block;
+	}
+	.BtnGroup + .BtnGroup {
+		margin-left: rem(4); // because of inline-block it's not 1rem
+	}
 }
 
 

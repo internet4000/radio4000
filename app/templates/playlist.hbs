@@ -5,29 +5,31 @@
 
 		<p {{bind-attr class=":Playlist-description :Container isExpanded:is-expended:is-collapsed"}} {{action "extend"}}>{{body}}</p>
 
-		<p class="BtnGroup">
-			<button class="Btn" {{action "playLatest"}}>{{x-icon i="play"}} Play</button>
-
-			{{#if auth.authed}}
-				{{x-favorite value=isFavorite action="toggleFavorite"}}
-			{{/if}}
-
-			{{#if canEdit}}
-				{{#link-to 'playlist.add' this class="Btn"}}
-					{{x-icon i="plus"}} Add track
-				{{/link-to}}
-
-				{{#if isEditing}}
-					{{#link-to 'playlist' this class="Btn"}}
-						{{x-icon i="pencil"}} Cancel editing
-					{{/link-to}}
-				{{else}}
-					{{#link-to 'playlist.edit' this class="Btn" title="Edit your playlist"}}
-						{{x-icon i="pencil"}} Edit
-					{{/link-to}}
+		<div class="BtnGroupWrapper">
+			<div class="BtnGroup">
+				<button class="Btn" {{action "playLatest"}}>{{x-icon i="play"}} Play</button>
+				{{#if auth.authed}}
+					{{x-favorite value=isFavorite action="toggleFavorite"}}
 				{{/if}}
-			{{/if}}
-		</p>
+			</div>
+			<div class="BtnGroup">
+				{{#if canEdit}}
+					{{#link-to 'playlist.add' this class="Btn"}}
+						{{x-icon i="plus"}} Add track
+					{{/link-to}}
+
+					{{#if isEditing}}
+						{{#link-to 'playlist' this class="Btn"}}
+							{{x-icon i="pencil"}} Cancel editing
+						{{/link-to}}
+					{{else}}
+						{{#link-to 'playlist.edit' this class="Btn" title="Edit your playlist"}}
+							{{x-icon i="pencil"}} Edit
+						{{/link-to}}
+					{{/if}}
+				{{/if}}
+			</div>
+		</div>
 	</div>
 
 	<div class="Container">
