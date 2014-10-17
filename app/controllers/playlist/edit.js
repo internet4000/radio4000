@@ -39,8 +39,6 @@ export default Ember.ObjectController.extend({
 		}.bind(this));
 	},
 
-
-
 	actions: {
 		editSlug: function() {
 			this.set('isEditingSlug', true);

@@ -6,6 +6,7 @@
 	position: relative;
 	z-index: 2; // above the player
 	transition: transform 600ms $easing, opacity 600ms $easing;
+
 	.Container {
 		padding-left: 0;
 		padding-right: 0;
@@ -46,3 +47,22 @@
 		opacity: 0;
 	}
 }
+
+/**
+ * New style with images
+ */
+
+.Playlist--detail {
+	.Manchet {
+		text-align: left;
+	}
+	.Playlist-title {
+		text-align: left;
+		padding-top: 1.8rem;
+	}
+	.Thumbnail {
+		float: left;
+		margin-right: 1rem;
+	}
+}
+

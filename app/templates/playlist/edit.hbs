@@ -7,9 +7,14 @@
 		<label for="body">Description</label>
 		{{textarea name="body" value=body placeholder="Description"}}
 	</div>
+	<div class="Form-group">
+		<label for="image">Channel photo</label>
+		{{file-upload image=image}}
+		{{!-- {{input name="image" value=image placeholder="Image"}} --}}
+	</div>
 	{{#if isEditingSlug}}
 		<div class="Form-group">
-			<label for="slug">URL - <span class="u-danger">Warning: this will change the link of your playlist. The old one won't work (but you can always change it back)</span></label>
+			<label for="slug">URL - <span class="u-danger">Warning: this will change the link of your channel. The old one won't work (but you can always change it back)</span></label>
 			{{input name="slug" value=slug placeholder="Slug"}}
 		</div>
 	{{/if}}

@@ -1,13 +1,19 @@
 <article class="Playlist Playlist--detail">
 
 	<div class="Manchet">
-		<h1 class="Playlist-title">{{#link-to 'playlist' this}}{{title}}{{/link-to}}</h1>
 
-		<p {{bind-attr class=":Playlist-description :Container isExpanded:is-expended:is-collapsed"}} {{action "extend"}}>{{body}}</p>
+			<figure class="Thumbnail" {{action "playLatest"}} {{bind-attr style=imageBackground}}>
+				<button class="Thumbnail-button">{{x-icon i="play"}}</button>
+				{{#if image}}
+					{{!-- <img {{bind-attr src=image alt=title}}> --}}
+				{{/if}}
+			</figure>
+
+		<h1 class="Playlist-title">{{#link-to 'playlist' this}}{{title}}{{/link-to}}</h1>
 
 		<div class="BtnGroupWrapper">
 			<div class="BtnGroup">
-				<button class="Btn" {{action "playLatest"}}>{{x-icon i="play"}} Play</button>
+
 				{{#if auth.authed}}
 					{{x-favorite value=isFavorite action="toggleFavorite"}}
 				{{/if}}
@@ -30,6 +36,8 @@
 				{{/if}}
 			</div>
 		</div>
+
+		<p {{bind-attr class=":Playlist-description :Container isExpanded:is-expended:is-collapsed"}} {{action "extend"}}>{{body}}</p>
 	</div>
 
 	<div class="Container">

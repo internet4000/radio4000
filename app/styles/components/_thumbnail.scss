@@ -1,0 +1,35 @@
+.Thumbnail {
+	position: relative;
+	width: 100px;
+	height: 100px;
+	background-color: $beautifulblue;
+	background-size: cover;
+	background-position: 50%;
+
+	img {
+		vertical-align: bottom;
+		min-height: 98px; // hacky doesn't really work but image should be at least the height of title + btn groups
+		transition: filter 400ms;
+	}
+	&:hover {
+		img {
+			filter: brightness(1.1);
+		}
+	}
+}
+.Thumbnail-button {
+	// reset button
+	background-image: none;
+	background-color: transparent;
+	border: 0;
+	// centered
+	position: absolute;
+	z-index: 1;
+	font-size: 4rem;
+	top: 0; left: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	line-height: 1.9;
+	color: hsl(0, 100%, 100%);
+}
