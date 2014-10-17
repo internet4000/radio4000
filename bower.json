@@ -3,7 +3,7 @@
   "dependencies": {
     "handlebars": "~1.3.0",
     "jquery": "^1.11.1",
-    "ember": "1.8.0-beta.4",
+    "ember": "1.8.0-beta.5",
     "ember-data": "components/ember-data#canary",
     "ember-resolver": "~0.1.7",
     "loader.js": "stefanpenner/loader.js#1.0.1",
@@ -19,7 +19,6 @@
     "firebase": "~1.1.x"
   },
   "resolutions": {
-    "ember-data": "canary",
-    "firebase": "1.1.x"
+    "ember-data": "canary"
   }
 }
