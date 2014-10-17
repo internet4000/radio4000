@@ -1,4 +1,4 @@
-<article class="Playlist--detail">
+<article class="Playlist Playlist--detail">
 
 	<div class="Manchet">
 		<h1 class="Playlist-title">{{#link-to 'playlist' this}}{{title}}{{/link-to}}</h1>
@@ -18,9 +18,13 @@
 				{{/link-to}}
 
 				{{#if isEditing}}
-					<button class="Btn" {{action 'cancel'}}>{{x-icon i="pencil"}} Cancel editing</button>
+					{{#link-to 'playlist' this class="Btn"}}
+						{{x-icon i="pencil"}} Cancel editing
+					{{/link-to}}
 				{{else}}
-					<button class="Btn" {{action 'edit'}} title="Edit your radio">{{x-icon i="pencil"}} Edit</button>
+					{{#link-to 'playlist.edit' this class="Btn" title="Edit your channel"}}
+						{{x-icon i="pencil"}} Edit
+					{{/link-to}}
 				{{/if}}
 			{{/if}}
 		</p>
@@ -28,29 +32,7 @@
 
 	<div class="Container">
 		<header class="Playlist-header Section">
-			{{#if isEditing}}
-				<form class="Form" {{action "trySave" on="submit"}}>
-					<div class="Form-group">
-						<label for="title">Title</label>
-						{{input name="title" value=title placeholder="Title" autofocus='autofocus'}}
-					</div>
-					<div class="Form-group">
-						<label for="body">Description</label>
-						{{textarea name="body" value=body placeholder="Description"}}
-					</div>
-					{{#if isEditingSlug}}
-						<div class="Form-group">
-							<label for="slug">URL - <span class="u-danger">Warning: this will change the link of the channel. The old one won't work (but you can always change it back)</span></label>
-							{{input name="slug" value=slug placeholder="Slug"}}
-						</div>
-					{{/if}}
-					<div class="Form-group">
-						<button class="Btn Btn--primary" type="submit">Save</button>
-						<button class="Btn Btn--text" {{action "editSlug"}}>Change URL</button>
-						<button class="Btn Btn--text Btn--danger" {{action 'tryDelete'}}>Delete</button>
-					</div>
-				</form>
-			{{/if}}
+			{{outlet 'playlist-header'}}
 		</header>
 
 		<div class="Playlist-body">
@@ -58,6 +40,5 @@
 			{{render 'tracks' tracks}}
 			{{outlet}}
 		</div>
-
 	</div>
 </article>

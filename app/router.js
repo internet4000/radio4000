@@ -22,6 +22,7 @@ Router.map(function() {
 	// single playlist
 	this.resource('playlist', { path: '/p/:playlist_id' }, function() {
 		this.route('add');
+		this.route('edit');
 		this.resource('tracks', { path: 'tracks' });
 		this.resource('track', { path: ':track_id' }); // not nested inside tracks avoid double tracks
 	});

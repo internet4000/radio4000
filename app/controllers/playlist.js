@@ -8,7 +8,6 @@ export default Ember.ObjectController.extend({
 	isExpanded: false,
 	// editing
 	isEditing: false,
-	isEditingSlug: false,
 
 	canEdit: function() {
 		return this.get('model.uid') === this.get('auth.authData.uid');
@@ -48,39 +47,6 @@ export default Ember.ObjectController.extend({
 		});
 	},
 
-	validateSlug: function() {
-		var canIHazSlug = true;
-		var currentPlaylist = this.get('model');
-		// dasherize turns spaces into dashes and makes it lowercase
-		var newSlug = this.get('slug').dasherize();
-
-		// make sure the new one isn't empty
-		if (newSlug === '') {
-			alert("Hey, the URL can't be empty. Please enter the URL you'd like your playlist to have. If you have no idea, just enter the title.");
-			return false;
-		}
-
-		this.store.find('playlist').then(function(playlists) {
-			playlists.forEach(function(playlist) {
-
-				// If any other playlist has the same slug, abort!
-				if (playlist !== currentPlaylist && playlist.get('slug') === newSlug) {
-					alert('Sorry, that URL is already taken. Please choose another one.');
-					canIHazSlug = false;
-				}
-			});
-
-			if (canIHazSlug) {
-				this.set('slug', newSlug);
-				console.log('setting slug to' + newSlug);
-				this.send('save');
-			} else {
-				console.log('reverting slug to' + this.get('savedSlug'));
-				this.set('slug', this.get('savedSlug')); // revert to old slug
-			}
-
-		}.bind(this));
-	},
 
 	actions: {
 		extend: function() {
@@ -92,17 +58,8 @@ export default Ember.ObjectController.extend({
 		edit: function() {
 			this.set('isEditing', true);
 		},
-		editSlug: function() {
-			this.set('isEditingSlug', true);
-			this.set('savedSlug', this.get('slug')); // save it for later
-		},
 		cancel: function() {
 			this.set('isEditing', false);
-			this.set('isEditingSlug', false);
-		},
-		trySave: function() {
-			// Make sure slug is clean
-			this.validateSlug();
 		},
 		// Save, transition to new url and close (cancel) the edit mode
 		save: function() {
@@ -110,6 +67,7 @@ export default Ember.ObjectController.extend({
 				Ember.debug('Saved playlist');
 				this.transitionToRoute('playlist', this.get('slug'));
 			}.bind(this));
+
 			this.send('cancel');
 		},
 		tryDelete: function() {
