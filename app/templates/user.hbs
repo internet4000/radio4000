@@ -1,7 +1,7 @@
 <section class="Dashboard">
 
 	<section class="Section">
-		<h2>Your channel</h2>
+		<h2>Your playlist</h2>
 		{{#each playlist in auth.user.playlists}}
 			{{#link-to "playlist" playlist class="Playlist Playlist--teaser"}}
 				<h3 class="Playlist-title">{{playlist.title}}</h3>
@@ -11,7 +11,7 @@
 
 		{{#unless auth.user.playlists}}
 			{{#link-to "new" class="Box"}}
-				<h3>Get your own channel</h3>
+				<h3>Get your own playlist</h3>
 			{{/link-to}}
 		{{/unless}}
 	</section>
@@ -19,7 +19,7 @@
 	<section class="Section">
 		<h2>Your favorites</h2>
 		{{#if auth.user.favoritePlaylists}}
-			<p class="is-inactiveText">Quick access to channels you saved as favorite.</p>
+			<p class="is-inactiveText">Quick access to playlists you saved as favorite.</p>
 			<div class="Playlists">
 				{{#each playlist in auth.user.favoritePlaylists}}
 					{{#link-to "playlist" playlist class="Playlist Playlist--teaser"}}

@@ -1,16 +1,16 @@
 <div class="Manchet">
-	<h1>New radio channel<small> — first and last step, give it a name</small></h1>
+	<h1>New radio playlist<small> — first and last step, give it a name</small></h1>
 </div>
 
 <div class="Container Section">
 	<form class="Form Form--newPlaylist" {{action "newPlaylist" on="submit"}}>
 		<div class="Form-group">
-			<label>Title of your radio
-				{{input value=title autofocus="autofocus" placeholder='Could be "The Pirate Radio"'}}
+			<label>Title
+			{{input value=title autofocus="autofocus" placeholder='Could be "The Pirate Radio"'}}
 			</label>
 		</div>
 		<div class="Form-group">
-			<label>Description of your channel
+			<label>Description
 				{{textarea value=body placeholder='Why not "DETROIT k33p it r34l?"'}}
 			</label>
 		</div>
