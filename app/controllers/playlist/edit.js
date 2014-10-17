@@ -49,6 +49,10 @@ export default Ember.ObjectController.extend({
 		trySave: function() {
 			// Make sure slug is clean
 			this.validateSlug();
-		}
+		},
+		close: function() {
+			// leaving the route also sets isexpanded to false
+			this.transitionToRoute('playlist', this.get('model'));
+		},
 	}
 });

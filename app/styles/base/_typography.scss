@@ -43,7 +43,6 @@ h2,
 }
 h3 {
 	@include size-2;
-	margin-bottom: 0;
 }
 h4 {
 	@include size-1;
@@ -52,4 +51,9 @@ h4 {
 .Muted {
 	@include size-1;
 	color: $gray;
+}
+
+// Lists
+ul {
+	padding-left: 2em;
 }

@@ -26,11 +26,10 @@ export default Ember.ObjectController.extend({
 		expand: function() {
 			this.set('isExpanded', true);
 		},
-		contract: function() {
+		close: function() {
 			// leaving the route also sets isexpanded to false
-			this.transitionTo('playlist', this.get('controllers.playlist').get('model'));
+			this.transitionToRoute('playlist', this.get('controllers.playlist').get('model'));
 		},
-
 		addTrack: function() {
 			if (!this.isValid()) { return false; }
 
