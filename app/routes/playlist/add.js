@@ -2,6 +2,12 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 
+	// Abort if user isn't allowed to edit
+	beforeModel: function() {
+		var canEdit = this.controllerFor('playlist').get('canEdit');
+		if (!canEdit) { this.transitionTo('playlist', this.modelFor('playlist')); }
+	},
+
 	model: function() {
 		return Ember.Object.create();
 	},
@@ -20,11 +26,9 @@ export default Ember.Route.extend({
 	},
 
 	actions: {
+		//  this action is triggered from the add.js controller/template
 		saveTrack: function(track) {
-
 			var playlist = this.controllerFor('playlist').get('model');
-
-			// Save the track
 			track.save().then(function() {
 				// And add it to the tracks property of the playlist
 				Ember.RSVP.Promise.cast(playlist.get('tracks')).then(function(tracks) {
