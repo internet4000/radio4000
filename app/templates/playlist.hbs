@@ -2,7 +2,9 @@
 
 	<div class="Manchet">
 		<h1 class="Playlist-title">{{#link-to 'playlist' this}}{{title}}{{/link-to}}</h1>
-		<p class="Playlist-description Container" {{action "isExtended"}}>{{body}}</p>
+
+		<p {{bind-attr class=":Playlist-description :Container isExpanded:is-expended:is-collapsed"}}>{{body}}</p>
+
 		<p class="BtnGroup">
 			<button class="Btn" {{action "playLatest"}}>{{x-icon i="play"}} Play</button>
 

@@ -5,7 +5,7 @@ export default Ember.ObjectController.extend({
 	firstRun: true,
 
 	// small description
-	isExtended: false,
+	isExpanded: false,
 	// editing
 	isEditing: false,
 	isEditingSlug: false,
@@ -83,8 +83,8 @@ export default Ember.ObjectController.extend({
 	},
 
 	actions: {
-		extend: function() {
-			this.set('isExtended', true);
+		isExpanded: function() {
+			this.set('isExpanded', true);
 		},
 		playLatest: function() {
 			this.transitionToRoute('track', this.get('tracks.lastObject'));
