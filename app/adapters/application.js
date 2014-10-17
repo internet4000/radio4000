@@ -1,5 +1,6 @@
 import DS from 'ember-data';
+import ENV from '../config/environment';
 
 export default DS.FirebaseAdapter.extend({
-	firebase: new window.Firebase('https://jsbin-test.firebaseio.com')
+	firebase: new window.Firebase(ENV.firebaseURL)
 });

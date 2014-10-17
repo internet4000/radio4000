@@ -1,7 +1,7 @@
 import Ember from 'ember';
-// import DS from 'ember-data';
+import ENV from '../config/environment';
 
-var ref = new window.Firebase('https://jsbin-test.firebaseio.com/');
+var ref = new window.Firebase(ENV.firebaseURL);
 
 // To use this object globally we'll need to inject it into all our controllers and routes.
 export default {
