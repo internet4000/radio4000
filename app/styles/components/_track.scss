@@ -22,7 +22,8 @@
 	transition: border 250ms $easing5;
 	&:hover {
 		text-decoration: none;
-		background-color: white;
+		// background-color: white;
+		background-image: linear-gradient(to right, white 70%, transparent);
 		.Track-title {
 			text-decoration: underline;
 		}

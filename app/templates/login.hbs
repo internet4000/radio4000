@@ -5,15 +5,14 @@
 <div class="Container Section">
 
 	<div class="LoginBox">
-
-		{{#if auth.authed.id}}
-			<p class="Muted">You are already logged in. Go to the {{#link-to 'application'}}homepage{{/link-to}}.</p>
+		{{#if auth.authed}}
+			<p class="Muted">You are already logged in ({{auth.user.id}}). Go to the {{#link-to 'application'}}homepage{{/link-to}}.</p>
 		{{else}}
 			<button class="Btn Btn--primary" {{action 'login' 'google'}}>Sign up with Google</button>
 			<button class="Btn Btn--primary" {{action 'login' 'facebook'}}>Sign up with Facebook</button>
 		{{/if}}
+	</div>
 
-	</div >
 </div>
 
 {{outlet}}

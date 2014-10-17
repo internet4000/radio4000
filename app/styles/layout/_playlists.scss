@@ -10,10 +10,7 @@
 		margin-bottom: 2rem; // double for because left + right = 2
 	}
 }
-
-.Playlist {
-
-}
+.Playlist {}
 .Playlist--teaser {
 	display: block;
 	border-bottom: 1px solid $lightgray;
@@ -25,19 +22,15 @@
 		padding-bottom: 3px;
 	}
 	.Playlist-description {
-		color: $gray;
+		@include size-1;
+		max-width: 80%;
 		margin-bottom: 0;
+		color: $gray;
 	}
 
 	&:hover {
 		text-decoration: none;
-		background-color: white;
+		// background-color: white;
+		background-image: linear-gradient(to right, white 70%, transparent);
 	}
-}
-
-// temporary, need to refactor user.hbs
-.CreatePlaylist {
-	text-align: center;
-	padding-top: 2rem;
-	padding-bottom: 1rem;
 }
