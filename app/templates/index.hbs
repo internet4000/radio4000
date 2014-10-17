@@ -22,5 +22,13 @@
 		</section>
 	{{/if}}
 
-	{{partial 'navigation'}}
+	<nav class="Nav Section">
+		{{#link-to 'about'}}About{{/link-to}}
+		{{#if auth.authed}}
+		 • <a href="#" {{action 'logout' this}}>Log out</a>
+		{{else}}
+			{{!-- {{#link-to 'login'}}Log in{{/link-to}} --}}
+		{{/if}}
+	</nav>
+
 </div>

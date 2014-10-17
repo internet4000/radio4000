@@ -1,8 +1,30 @@
-<nav class="Nav Section">
-	{{#link-to 'about'}}About{{/link-to}}
-	{{#if auth.authed}}
-	 • <a href="#" {{action 'logout' this}}>Log out</a>
-	{{else}}
-		{{!-- {{#link-to 'login'}}Log in{{/link-to}} --}}
-	{{/if}}
-</nav>
+<div class="Bar">
+	<h1 class="SiteLogo">
+		{{#link-to "index" title="Back to the dashboard"}}
+			<img src="images/radio4000-small-cropped.png" alt="Radio 4000">
+		{{/link-to}}
+	</h1>
+
+	<nav>
+		{{#each auth.user.playlists}}
+			{{#link-to 'playlist' this}}My playlist{{/link-to}}
+		{{/each}}
+
+		{{#link-to 'playlists'}}Discover{{/link-to}}
+
+		<aside class="ContextualNavigation u-alignRight">
+			{{#if auth.authed}}
+					{{#each auth.user.playlists}}
+						{{#link-to 'playlist.add' this}}{{x-icon i="plus"}} Add track{{/link-to}}
+					{{/each}}
+
+					{{#unless auth.user.playlists}}
+						{{#link-to 'new'}}New playlist{{/link-to}}
+					{{/unless}}
+				{{else}}
+					{{#link-to 'login'}}Login{{/link-to}}
+			{{/if}}
+
+		</aside>
+	</nav>
+</div>
