@@ -2,13 +2,20 @@
  * Playlist
  */
 
-.PlaylistDetail {
+.Playlist--detail {
 	position: relative;
 	z-index: 2; // above the player
 	transition: transform 600ms $easing, opacity 600ms $easing;
 	.Container {
 		padding-left: 0;
 		padding-right: 0;
+	}
+
+	.Playlist-title {
+		text-align: center;
+	}
+	.Playlist-description {
+		text-align: left;
 	}
 
 	// initial state
