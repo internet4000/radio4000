@@ -17,7 +17,7 @@
 		small,
 		.is-highlighted {
 			font-size: 1em;
-			@include type-regular;
+			@extend %font-regular;
 		}
 	}
 }

@@ -5,19 +5,12 @@
 $base-font-size: 16px;
 $base-line-height: (21/16);
 
-/*
-div { font-family:"Maison Neue Light", Helvetica, Arial, Sans-Serif, sans-serif; font-weight:200; font-style:normal; }
-div { font-family:"Maison Neue Book", Helvetica, Arial, Sans-Serif, sans-serif; font-weight:300; font-style:normal; }
-div { font-family:"Maison Neue Bold", Helvetica, Arial, Sans-Serif, sans-serif; font-weight:bold; font-style:normal; }
-div { font-family:"Patron Black Italic", sans-serif; font-weight:bold; font-style:italic; }
-*/
-
-@mixin type-regular {
+%font-regular {
 	// font-family: 'pt sans','Lucida Grande','Lucida Sans', sans-serif;
 	font-family: 'Maison Neue Book', sans-serif;
 	font-weight: normal;
 }
-@mixin type-bold {
+%font-bold {
 	font-family: 'Maison Neue Bold', sans-serif;
 	font-weight: bold;
 	font-style: normal;

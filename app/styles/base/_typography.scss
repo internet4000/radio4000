@@ -4,28 +4,28 @@
  */
 
 html {
-	@include type-regular;
+	@extend %font-regular;
 	line-height: $base-line-height;
 	font-size: 15px; // important, specify in pixels here as all other font-size are re(m)lative to this
 	@media (min-width: $layout-m) { font-size: $base-font-size; }
 }
 strong {
-	@include type-bold;
+	@extend %font-bold;
 }
 em {
 	font-style: italic;
 }
 label {
-	@include type-bold;
+	@extend %font-bold;
 }
 .Btn {
 	@include size-1;
-	@include type-bold;
+	@extend %font-bold;
 }
 
 // Headers
 h1,h2,h3,h4 {
-	@include type-bold;
+	@extend %font-bold;
 }
 h1,
 .Title {
