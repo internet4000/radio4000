@@ -4,9 +4,12 @@ export default Ember.ObjectController.extend({
 	needs: ['tracks'],
 	firstRun: true,
 
+	// small description
+	isExtended: false,
 	// editing
 	isEditing: false,
 	isEditingSlug: false,
+
 	canEdit: function() {
 		return this.get('model.uid') === this.get('auth.authData.uid');
 	}.property('model.uid', 'auth.user'),
@@ -80,6 +83,9 @@ export default Ember.ObjectController.extend({
 	},
 
 	actions: {
+		extend: function() {
+			this.set('isExtended', true);
+		},
 		playLatest: function() {
 			this.transitionToRoute('track', this.get('tracks.lastObject'));
 		},

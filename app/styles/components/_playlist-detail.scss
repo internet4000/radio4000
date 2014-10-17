@@ -16,6 +16,11 @@
 	}
 	.Playlist-description {
 		text-align: left;
+		max-height: 100px;
+		overflow: hidden;
+		&.is-extended {
+			max-height: none;
+		}
 	}
 
 	// initial state
