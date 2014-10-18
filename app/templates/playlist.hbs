@@ -1,13 +1,13 @@
 <article class="Playlist Playlist--detail">
 
-	<div class="Manchet">
+	<figure class="Thumbnail" {{action "playLatest"}} {{bind-attr style=imageBackground}}>
+		<button class="Thumbnail-button">{{x-icon i="play"}}</button>
+		{{#if image}}
+			{{!-- <img {{bind-attr src=image alt=title}}> --}}
+		{{/if}}
+	</figure>
 
-		<figure class="Thumbnail" {{action "playLatest"}} {{bind-attr style=imageBackground}}>
-			<button class="Thumbnail-button">{{x-icon i="play"}}</button>
-			{{#if image}}
-				{{!-- <img {{bind-attr src=image alt=title}}> --}}
-			{{/if}}
-		</figure>
+	<div class="Playlist-header">
 
 		<h1 class="Playlist-title">{{#link-to 'playlist' this}}{{title}}{{/link-to}}</h1>
 
