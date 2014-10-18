@@ -7,14 +7,6 @@
 	z-index: 2; // above the player
 	transition: transform 600ms $easing, opacity 600ms $easing;
 
-	.Container {
-		padding-left: 0;
-		padding-right: 0;
-	}
-
-	.Playlist-title {
-		text-align: center;
-	}
 	.Playlist-description {
 		position: relative;
 		text-align: left;
@@ -47,6 +39,9 @@
 		opacity: 0;
 	}
 }
+.Playlist-body {
+	margin-bottom: 2rem;
+}
 
 /**
  * New style with images
@@ -55,14 +50,12 @@
 .Playlist--detail {
 	.Manchet {
 		text-align: left;
-	}
-	.Playlist-title {
-		text-align: left;
-		padding-top: 1.8rem;
-	}
-	.Thumbnail {
-		float: left;
-		margin-right: 1rem;
+		.Playlist-title {
+			padding-top: 1.8rem;
+		}
+		.Thumbnail {
+			float: left;
+			margin-right: 1rem;
+		}
 	}
 }
-

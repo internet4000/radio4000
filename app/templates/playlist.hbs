@@ -2,12 +2,12 @@
 
 	<div class="Manchet">
 
-			<figure class="Thumbnail" {{action "playLatest"}} {{bind-attr style=imageBackground}}>
-				<button class="Thumbnail-button">{{x-icon i="play"}}</button>
-				{{#if image}}
-					{{!-- <img {{bind-attr src=image alt=title}}> --}}
-				{{/if}}
-			</figure>
+		<figure class="Thumbnail" {{action "playLatest"}} {{bind-attr style=imageBackground}}>
+			<button class="Thumbnail-button">{{x-icon i="play"}}</button>
+			{{#if image}}
+				{{!-- <img {{bind-attr src=image alt=title}}> --}}
+			{{/if}}
+		</figure>
 
 		<h1 class="Playlist-title">{{#link-to 'playlist' this}}{{title}}{{/link-to}}</h1>
 
@@ -48,7 +48,20 @@
 		<div class="Playlist-body">
 			{{outlet 'playlist-body'}}
 			{{render 'tracks' tracks}}
-			{{outlet}}
+		</div>
+
+		<div class="Playlist-favorites Container">
+			<h2>Favorites from {{title}}</h2>
+			<p>A list of radio channels {{title}} saved.</p>
+			{{#if user.favoritePlaylists}}
+				<div class="Playlists">
+					{{#each playlist in user.favoritePlaylists}}
+						{{#link-to "playlist" playlist class="Playlist Playlist--teaser"}}
+							<h3 class="Playlist-title">{{playlist.title}}</h3>
+						{{/link-to}}
+					{{/each}}
+				</div>
+			{{/if}}
 		</div>
 	</div>
 </article>
