@@ -3,7 +3,6 @@ import ENV from '../config/environment';
 
 var ref = new window.Firebase(ENV.firebaseURL);
 
-// To use this object globally we'll need to inject it into all our controllers and routes.
 export default {
 	name: 'session',
 	after: 'store',
@@ -17,26 +16,24 @@ export default {
 				this.store = container.lookup('store:main');
 
 				ref.onAuth(function(authData) {
-					if (authData) {
-						Ember.debug('Logged in');
-						this.set('authed', true);
-						this.set('authData', authData);
-						// @todo if we check first, we cant later create user firebase bug already in use
-						// this.checkUser();
-						this.createUser();
-					} else {
+					if (!authData) {
 						Ember.debug('Not logged in');
 						this.set('authed', false);
 						this.set('authData', null);
 						this.set('user', null);
+						return false;
 					}
+
+					Ember.debug('Logged in');
+					this.set('authed', true);
+					this.set('authData', authData);
+					this.afterAuthentication(authData.uid);
 				}.bind(this));
 			},
 			login: function(provider) {
 				Ember.debug('trying to login');
 				this.loginWithPopup(provider);
 			},
-			// login with popup
 			loginWithPopup: function(provider) {
 				var self = this;
 				Ember.debug('logging in with popup');
@@ -68,29 +65,44 @@ export default {
 			logout: function() {
 				ref.unauth();
 			},
-			// @todo can't use the uid as id for the new user model because ember complains it was already used
-			checkUser: function() {
-				var self = this;
-				Ember.debug('Checking whether the user already exists…');
 
-				var existingUser = this.get('store').find('user', this.get('authData.uid'));
-				existingUser.then(function(user) {
-					Ember.debug('User already exists, done.');
-					self.set('user', user);
-				}, function(user) {
-					Ember.debug('No user found');
-					self.createUser(user);
+			afterAuthentication: function(userId) {
+				var self = this;
+				Ember.debug('Checking if user exists');
+
+				ref.child('users').child(userId).once('value', function(snapshot) {
+					var exists = (snapshot.val() !== null);
+					userExistsCallback(userId, exists);
 				});
+
+				function userExistsCallback(userId, exists) {
+					Ember.debug('user exists: ' + exists);
+					// self.createUser(userId);
+					// self.existingUser(userId);
+					if (exists) {
+						self.existingUser(userId);
+					} else {
+						self.createUser(userId);
+					}
+				}
 			},
 
-			createUser: function(user) {
-				var self = this;
+			existingUser: function(userId) {
+				this.store.find('user', userId).then(function(user) {
+					Ember.debug('Found an existing user, setting it…');
+					this.set('user', user);
+				}.bind(this));
+			},
 
-				// @todo harvest email
+			createUser: function(userId) {
+				var self = this;
+				Ember.debug('No existing user, creating a user');
+
 				var newUser = this.get('store').createRecord('user', {
-					id: this.get('authData.uid'), // use uid as id
+					id: userId, // use uid as id
 					provider: this.get('authData.provider'),
 					name: this.get('authData.facebook.displayName') || this.get('authData.google.displayName'),
+					email: this.get('authData.facebook.email') || this.get('authData.google.email'),
 					created: new Date().getTime()
 				}).save().then(function(user){
 					Ember.debug('created a new user');
