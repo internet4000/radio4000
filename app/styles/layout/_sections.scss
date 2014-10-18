@@ -40,9 +40,12 @@
 		width: 50%;
 		float: left;
 		margin-bottom: 0;
-		padding-right: 1rem;
+
+		// 1rem between
+		padding-right: 0.5rem;
 		+ .Section-half {
-			padding-left: 1rem;
+			padding-left: 0.5rem;
+			padding-right: 0;
 		}
 	}
 }
