@@ -28,20 +28,19 @@ export default Ember.ObjectController.extend({
 		var playlist = this.get('model');
 		var favorites = this.get('session.user.favoritePlaylists');
 		this.set('isFavorite', false);
-		// console.log(favorites);
 		favorites.then(function() {
 			favorites.forEach(function(item) {
 
-				console.log('comparing this');
-				Ember.debug(playlist);
-				console.log('with this');
-				Ember.debug(item);
+				// Ember.debug('comparing this');
+				// Ember.debug(playlist);
+				// Ember.debug('with this');
+				// Ember.debug(item);
 
 				if (playlist === item) {
-					console.log('match');
+					// Ember.debug('match');
 					self.set('isFavorite', true);
 				} else {
-					console.log('no match');
+					// Ember.debug('no match');
 				}
 			});
 		});
@@ -105,9 +104,6 @@ export default Ember.ObjectController.extend({
 
 
 			user.get('favoritePlaylists').then(function(favorites) {
-				// Ember.debug(favorites);
-				// Ember.debug(isFavorite);
-
 				// either add or remove the favorite
 				if (!this.get('isFavorite')) {
 					Ember.debug('adding');
@@ -120,8 +116,6 @@ export default Ember.ObjectController.extend({
 
 				user.save();
 				this.toggleProperty('isFavorite');
-
-
 			}.bind(this));
 		}
 	}

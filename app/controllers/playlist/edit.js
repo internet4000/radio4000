@@ -28,11 +28,11 @@ export default Ember.ObjectController.extend({
 
 			if (canIHazSlug) {
 				this.set('slug', newSlug);
-				console.log('setting slug to' + newSlug);
+				Ember.debug('Setting slug to: ' + newSlug);
 				this.set('isEditingSlug', false);
 				this.get('controllers.playlist').send('save');
 			} else {
-				console.log('reverting slug to' + this.get('savedSlug'));
+				Ember.debug('Reverting slug to: ' + this.get('savedSlug'));
 				this.set('slug', this.get('savedSlug')); // revert to old slug
 			}
 
