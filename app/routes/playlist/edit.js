@@ -33,6 +33,12 @@ export default Ember.Route.extend({
 			var playlist = this.controllerFor('playlist').get('model');
 			track.save().then(function() {
 			});
+		},
+		tryDelete: function() {
+			var confirmed = confirm('Are you sure? Your playlist will be gone forever. But you can always create a new one.');
+			if (confirmed) {
+				this.controllerFor('playlist').send('deletePlaylist');
+			}
 		}
 	}
 });

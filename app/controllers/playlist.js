@@ -69,28 +69,27 @@ export default Ember.ObjectController.extend({
 
 			this.send('cancel');
 		},
-		tryDelete: function() {
-			var confirmed = confirm('Are you sure? Your playlist will be gone forever. But you can always create a new one.');
-			if (confirmed) {
-				this.send('deletePlaylist');
-			}
-		},
 		deletePlaylist: function() {
-			var user = this.get('session.user');
+			// var user = this.get('session.user');
 			var playlist = this.get('model');
 
-			// also remove the playlist on the user
-			// @todo it should remove it on every user…
-			Ember.RSVP.Promise.cast(user.get('playlists')).then(function(playlists) {
-				playlists.removeObject(playlist);
+			// get all users
+			this.store.find('user').then(function(users) {
+				users.forEach(function(user) {
+					Ember.debug(user);
+					user.get('favoritePlaylists').then(function(favoritePlaylist) {
+						favoritePlaylist.removeObject(playlist);
+						user.save().then(function() {
+							Ember.debug('Success: playlist removed from user');
+						});
+					});
+				});
+
 				// delete the playlist itself
 				playlist.destroyRecord();
 				this.transitionToRoute('application');
 				Ember.debug('Playlist deleted');
-				user.save().then(function() {
-					Ember.debug('Success: playlist removed from user');
-				});
-			});
+			}.bind(this));
 
 			// @todo remove it in all users favoritePlaylists relationships
 		},
