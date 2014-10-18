@@ -1,13 +1,13 @@
 <section class="Section">
 	<div class="Section-half">
 		<h2>Your playlist</h2>
-		{{#each playlist in auth.user.playlists}}
+		{{#each playlist in session.user.playlists}}
 			{{#link-to "playlist" playlist class="Playlist Playlist--teaser"}}
 				<h3 class="Playlist-title">{{playlist.title}}</h3>
 			{{/link-to}}
 		{{/each}}
 
-		{{#unless auth.user.playlists}}
+		{{#unless session.user.playlists}}
 			{{#link-to "new" class="Box"}}
 				<h3>Get your own playlist</h3>
 			{{/link-to}}
@@ -15,9 +15,9 @@
 	</div>
 	<div class="Section-half">
 		<h2>Your favorites</h2>
-		{{#if auth.user.favoritePlaylists}}
+		{{#if session.user.favoritePlaylists}}
 			<div class="Playlists">
-				{{#each playlist in auth.user.favoritePlaylists}}
+				{{#each playlist in session.user.favoritePlaylists}}
 					{{#link-to "playlist" playlist class="Playlist Playlist--teaser"}}
 						<h3 class="Playlist-title">{{playlist.title}}</h3>
 					{{/link-to}}

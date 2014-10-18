@@ -6,19 +6,19 @@
 	</h1>
 
 	<nav>
-		{{#each auth.user.playlists}}
+		{{#each session.user.playlists}}
 			{{#link-to 'playlist' this}}My playlist{{/link-to}}
 		{{/each}}
 
 		{{#link-to 'playlists'}}Discover{{/link-to}}
 
 		<aside class="ContextualNavigation u-alignRight">
-			{{#if auth.authed}}
-					{{#each auth.user.playlists}}
+			{{#if session.authed}}
+					{{#each session.user.playlists}}
 						{{#link-to 'playlist.add' this}}{{x-icon i="plus"}} Add track{{/link-to}}
 					{{/each}}
 
-					{{#unless auth.user.playlists}}
+					{{#unless session.user.playlists}}
 						{{#link-to 'new'}}New playlist{{/link-to}}
 					{{/unless}}
 				{{else}}

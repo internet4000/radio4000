@@ -10,23 +10,23 @@ export default Ember.ObjectController.extend({
 	isEditing: false,
 
 	canEdit: function() {
-		return this.get('model.uid') === this.get('auth.authData.uid');
-	}.property('model.uid', 'auth.user'),
+		return this.get('model.uid') === this.get('session.authData.uid');
+	}.property('model.uid', 'session.user'),
 
 	// Favorites
 	// because it's a hasMany relationship, this needs a bit of extra work to really work
 	isFavorite: false,
 	isFavoriteTest: function() {
 		// only run if you are logged in
-		if (!this.get('auth.authed')) { return false; }
+		if (!this.get('session.authed')) { return false; }
 		// make sure it runs
 		Ember.run.once(this, 'testFavorite');
-	}.observes('model', 'auth.user.favoritePlaylists.[]'),
+	}.observes('model', 'session.user.favoritePlaylists.[]'),
 	testFavorite: function() {
 		// Ember.debug('test fav');
 		var self = this;
 		var playlist = this.get('model');
-		var favorites = this.get('auth.user.favoritePlaylists');
+		var favorites = this.get('session.user.favoritePlaylists');
 		this.set('isFavorite', false);
 		// console.log(favorites);
 		favorites.then(function() {
@@ -77,7 +77,7 @@ export default Ember.ObjectController.extend({
 			}
 		},
 		deletePlaylist: function() {
-			var user = this.get('auth.user');
+			var user = this.get('session.user');
 			var playlist = this.get('model');
 
 			// also remove the playlist on the user
@@ -100,7 +100,7 @@ export default Ember.ObjectController.extend({
 
 			var self = this;
 
-			var user = this.get('auth.user');
+			var user = this.get('session.user');
 			var playlist = this.get('model');
 
 

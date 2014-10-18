@@ -3,8 +3,8 @@
 </div>
 
 <div class="Container">
-	{{#if auth.authed}}
-		{{render 'user' auth.user}}
+	{{#if session.authed}}
+		{{render 'user' session.user}}
 	{{else}}
 		<section class="Section">
 			<div class="Section-half">
@@ -24,7 +24,7 @@
 
 	<nav class="Nav Section">
 		{{#link-to 'about'}}About{{/link-to}}
-		{{#if auth.authed}}
+		{{#if session.authed}}
 		 • <a href="#" {{action 'logout' this}}>Log out</a>
 		{{else}}
 			{{!-- {{#link-to 'login'}}Log in{{/link-to}} --}}

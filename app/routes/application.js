@@ -8,12 +8,11 @@ export default Ember.Route.extend({
 		return this.store.find('user'), this.store.find('playlist');
 	},
 	actions: {
-		// pass the actions on to auth
 		login: function(provider) {
-			this.get('auth').login(provider);
+			this.get('session').login(provider);
 		},
 		logout: function() {
-			this.get('auth').logout();
+			this.get('session').logout();
 		}
 	}
 });

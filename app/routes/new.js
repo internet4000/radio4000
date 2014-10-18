@@ -10,15 +10,15 @@ export default Ember.Route.extend({
 	  	// code here will execute within a RunLoop in about 500ms
   		Ember.run.next(this, function(){
 
-			if (!this.get('auth.authed')) {
+			if (!this.get('session.authed')) {
 				this.transitionTo('login');
 			}
 
-			if (this.get('auth.user.playlists.length')) {
+			if (this.get('session.user.playlists.length')) {
 				this.transitionTo('application');
 			}
 
-			// this.get('auth.user.playlists').then(function(playlists) {
+			// this.get('session.user.playlists').then(function(playlists) {
 			// 	Ember.debug(playlists);
 			// 	if (playlists) {
 			// 		Ember.debug('YES');
@@ -30,11 +30,11 @@ export default Ember.Route.extend({
 		}, 250);
 
 		// Abort if user isn't allowed to edit
-		// this.get('auth.user').then(function(userPlaylists){
+		// this.get('session.user').then(function(userPlaylists){
 		// });
-		// Ember.debug(this.get('auth.user'));
+		// Ember.debug(this.get('session.user'));
 		// if (userPlaylists) { this.transitionTo('application'); }
-		// console.log(this.get('auth.user.playlists.length'));
-		// Ember.debug(this.get('auth.user.playlists.length'));
+		// console.log(this.get('session.user.playlists.length'));
+		// Ember.debug(this.get('session.user.playlists.length'));
 	}
 });

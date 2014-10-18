@@ -5,13 +5,11 @@ var ref = new window.Firebase(ENV.firebaseURL);
 
 // To use this object globally we'll need to inject it into all our controllers and routes.
 export default {
-	name: 'auth',
+	name: 'session',
 	after: 'store',
-
 	initialize: function(container, app) {
 
-		// This object will be used for authentication. The variable auth will be used later.
-		var auth = Ember.Object.extend({
+		var session = Ember.Object.extend({
 			authed: false,
 
 			init: function() {
@@ -105,8 +103,8 @@ export default {
 		});
 
 		// Register and inject the initializer into all controllers and routes
-		app.register('auth:main', auth);
-		app.inject('controller', 'auth', 'auth:main');
-		app.inject('route', 'auth', 'auth:main');
+		app.register('session:main', session);
+		app.inject('route', 'session', 'session:main');
+		app.inject('controller', 'session', 'session:main');
 	}
 };
