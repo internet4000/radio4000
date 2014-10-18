@@ -2,12 +2,12 @@
 
 	<figure class="Thumbnail" {{action "playLatest"}} {{bind-attr style=imageBackground}}>
 		<button class="Thumbnail-button">{{x-icon i="play"}}</button>
-		{{#if image}}
-			{{!-- <img {{bind-attr src=image alt=title}}> --}}
-		{{/if}}
+		{{!-- {{#if image}}
+			<img {{bind-attr src=image alt=title}}>
+		{{/if}} --}}
 	</figure>
 
-	<div class="Playlist-header">
+	<div class="Playlist-header Container">
 
 		<h1 class="Playlist-title">{{#link-to 'playlist' this}}{{title}}{{/link-to}}</h1>
 
@@ -37,7 +37,7 @@
 			</div>
 		</div>
 
-		<p {{bind-attr class=":Playlist-description :Container isExpanded:is-expended:is-collapsed"}} {{action "extend"}}>{{body}}</p>
+		<p {{bind-attr class=":Playlist-description isExpanded:is-expended:is-collapsed"}} {{action "extend"}}>{{body}}</p>
 	</div>
 
 	<div class="Container">

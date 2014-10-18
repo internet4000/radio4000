@@ -31,6 +31,7 @@ h1,
 .Title {
 	@include size-3;
 	@media (min-width: $layout-s) { @include size-4; }
+	@media (min-width: $layout-m) { @include size-5; }
 	a {
 		color: $text-color;
 	}
