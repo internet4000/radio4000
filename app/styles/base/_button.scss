@@ -74,7 +74,8 @@
 }
 
 // Buttons that looks like text
-.Btn--text {
+// extra specificity hack
+.Btn.Btn--text {
 	border-color: transparent;
 	background-image: none;
 	background-color: transparent;
