@@ -7,14 +7,14 @@
 		{{/if}} --}}
 	</figure>
 
-	<div class="Playlist-header Container">
+	<div class="Playlist-header Container Section">
 
 		<h1 class="Playlist-title">{{#link-to 'playlist' this}}{{title}}{{/link-to}}</h1>
 
 		<div class="BtnGroupWrapper">
 			<div class="BtnGroup">
 
-				{{#if auth.authed}}
+				{{#if session.authed}}
 					{{x-favorite value=isFavorite action="toggleFavorite"}}
 				{{/if}}
 			</div>
@@ -38,30 +38,26 @@
 		</div>
 
 		<p {{bind-attr class=":Playlist-description isExpanded:is-expended:is-collapsed"}} {{action "extend"}}>{{body}}</p>
+
+		{{outlet 'playlist-header'}}
 	</div>
 
-	<div class="Container">
-		<header class="Playlist-header Section">
-			{{outlet 'playlist-header'}}
-		</header>
+	<div class="Playlist-body">
+		{{outlet 'playlist-body'}}
+		{{render 'tracks' tracks}}
+	</div>
 
-		<div class="Playlist-body">
-			{{outlet 'playlist-body'}}
-			{{render 'tracks' tracks}}
-		</div>
-
-		<div class="Playlist-favorites Container">
-			<h2>Favorites from {{title}}</h2>
-			<p>A list of radio channels {{title}} saved.</p>
-			{{#if user.favoritePlaylists}}
-				<div class="Playlists">
-					{{#each playlist in user.favoritePlaylists}}
-						{{#link-to "playlist" playlist class="Playlist Playlist--teaser"}}
-							<h3 class="Playlist-title">{{playlist.title}}</h3>
-						{{/link-to}}
-					{{/each}}
-				</div>
-			{{/if}}
-		</div>
+	<div class="Playlist-favorites Container">
+		<h2>Favorites from {{title}}</h2>
+		<p>A list of radio channels {{title}} saved.</p>
+		{{#if user.favoritePlaylists}}
+			<div class="Playlists">
+				{{#each playlist in user.favoritePlaylists}}
+					{{#link-to "playlist" playlist class="Playlist Playlist--teaser"}}
+						<h3 class="Playlist-title">{{playlist.title}}</h3>
+					{{/link-to}}
+				{{/each}}
+			</div>
+		{{/if}}
 	</div>
 </article>

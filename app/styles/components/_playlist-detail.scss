@@ -7,6 +7,9 @@
 	z-index: 2; // above the player
 	transition: transform 600ms $easing, opacity 600ms $easing;
 
+	.Playlist-title {
+		@media (min-width: $layout-m) { @include size-5; }
+	}
 	.Playlist-description {
 		position: relative;
 		text-align: left;

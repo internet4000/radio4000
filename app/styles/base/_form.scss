@@ -65,9 +65,10 @@ label {
 // Shared styles between the forms for adding a track and editing a track
 .AddTrack,
 .EditTrack {
-	padding: 0.5rem;
-	background-color: $yellow;
-	border-radius: 3px;
+	padding: 1rem;
+	background-color: $slightgray;
+	border-top: 1px solid hsla(0, 0%, 57%, 0.73);
+	// box-shadow: 1px 1px 5px 0 hsla(0, 0%, 0%, 0.34) inset;
 
 	.Form {
 		margin-bottom: 0;
