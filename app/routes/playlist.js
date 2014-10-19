@@ -33,11 +33,13 @@ export default Ember.Route.extend({
 	},
 
 	afterModel: function(model) {
+		// Set the document title
 		var title = this.modelFor('playlist').get('title');
 		document.title = title + ' - Radio4000';
 	},
 
 	deactivate: function() {
+		// Make sure playlist description is closed
 		this.controller.set('isExpanded', false);
 	}
 });
