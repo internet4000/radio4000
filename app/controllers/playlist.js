@@ -2,11 +2,7 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
 	needs: ['tracks'],
-	firstRun: true,
-
-	// small description
-	isExpanded: false,
-	// editing
+	isExpanded: false, // small description
 	isEditing: false,
 
 	canEdit: function() {
