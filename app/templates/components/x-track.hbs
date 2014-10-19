@@ -14,6 +14,7 @@
 {{#if playlist.canEdit}}
 	{{#if isEditing}}
 		<form class="Form EditTrack">
+
 			<div class="Form-group">
 			<label>URL
 				{{input type="url" placeholder="YouTube or Soundcloud URL" value=track.url}}</label>
@@ -35,6 +36,7 @@
 					<button class="Btn Btn--text" {{action 'cancel'}}>Cancel editing</button>
 				</div>
 			</div>
+
 		</form>
 	{{else}}
 		<div class="Track-controls">
