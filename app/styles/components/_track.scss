@@ -3,37 +3,24 @@
  */
 
 .Track {
+	@include size-1;
 	position: relative;
 	overflow: hidden; // hide controls
-	.Btn--danger {
-		float: right;
+
+	.Track-description {
+		color: $gray;
+		font-style: italic;
 	}
 }
 .Track-link {
-	display: block;
-	line-height: normal;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	padding-left: 10px;
-	padding-right: 10px;
 	border-left: 4px solid transparent;
-	color: $text-color;
 	transition: border 250ms $easing5;
-	&:hover {
-		text-decoration: none;
-		// background-color: white;
-		background-image: linear-gradient(to right, white 70%, transparent);
-		.Track-title {
-			text-decoration: underline;
-		}
-	}
+	color: $text-color;
+
 	&.is-active {
 		border-left-color: $primary-color;
-		.Track-description {
-			color: inherit;
-		}
 		// playing indicator
-		.Track-name:before {
+		.Track-title:before {
 			content: ''; // ►
 			display: inline;
 			font-size: 10px;
@@ -45,19 +32,14 @@
 		}
 	}
 }
-.Track-date {
-	margin-top: 1em;
-	margin-right: 1rem;
-	color: $lightgray;
-	// only show for larger screens
-	display: none;
-	@media (min-width: $layout-s) {
-		display: block;
-		float: right;
-	}
-}
+.Track-title,
 .Track-description {
-	color: $gray;
+	// put title and description on same line oh wow
+	display: inline-block;
+}
+.Track-title {
+	@extend %font-regular;
+	@include size-1;
 }
 
 // TRACK EDIT BUTTON

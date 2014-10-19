@@ -1,5 +1,5 @@
 /**
- * List view
+ * List (only allows one single link in each <li>)
  */
 
 .List {
@@ -9,8 +9,26 @@
 
 	li {
 		border-bottom: 1px solid $lightgray;
-		p {
-			margin: 0;
+		line-height: normal;
+	}
+	h3,
+	p {
+		margin: 0;
+	}
+	p {
+		@include size-1;
+		max-width: 80%;
+		color: $text-color;
+	}
+	a {
+		display: block;
+		padding: 0.6rem 0.7rem 0.55rem;
+		&:hover {
+			background-image: linear-gradient(to right, white 70%, transparent);
+			text-decoration: none;
+			h3 {
+				text-decoration: underline;
+			}
 		}
 	}
 }

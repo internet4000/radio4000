@@ -56,16 +56,16 @@
 
 	<div class="Playlist-favorites Container">
 		<h2>Favorites from {{title}}</h2>
-		<p>A list of radio channels {{title}} saved.</p>
-
 		{{#if user.favoritePlaylists}}
-		<div class="Playlists">
+			<ul class="List">
 			{{#each playlist in user.favoritePlaylists}}
-				{{#link-to "playlist" playlist class="Playlist Playlist--teaser"}}
-					<h3 class="Playlist-title">{{playlist.title}}</h3>
-				{{/link-to}}
+				<li>
+					{{#link-to "playlist" playlist class="PlaylistTeaser"}}
+						<h3 class="PlaylistTeaser-title">{{playlist.title}}</h3>
+					{{/link-to}}
+				</li>
 			{{/each}}
-		</div>
+			</ul>
 		{{/if}}
 	</div>
 </article>

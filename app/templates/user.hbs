@@ -2,8 +2,8 @@
 	<div class="Section-half">
 		<h2>Your playlist</h2>
 		{{#each playlist in session.user.playlists}}
-			{{#link-to "playlist" playlist class="Playlist Playlist--teaser"}}
-				<h3 class="Playlist-title">{{playlist.title}}</h3>
+			{{#link-to "playlist" playlist}}
+				<h3>{{playlist.title}}</h3>
 			{{/link-to}}
 		{{/each}}
 
@@ -16,13 +16,15 @@
 	<div class="Section-half">
 		<h2>Your favorites</h2>
 		{{#if session.user.favoritePlaylists}}
-			<div class="Playlists">
+			<ul class="List">
 				{{#each playlist in session.user.favoritePlaylists}}
-					{{#link-to "playlist" playlist class="Playlist Playlist--teaser"}}
-						<h3 class="Playlist-title">{{playlist.title}}</h3>
-					{{/link-to}}
+					<li>
+						{{#link-to "playlist" playlist}}
+							<h3>{{playlist.title}}</h3>
+						{{/link-to}}
+					</li>
 				{{/each}}
-			</div>
+			</ul>
 		{{else}}
 			<p class="is-inactiveText">You haven't saved any favorites yet.</p>
 		{{/if}}
