@@ -1,4 +1,3 @@
-<a class="Track-date" {{bind-attr href=track.url}}>{{track.createdDate}}</a>
 {{#link-to 'track' track class="Track-link"}}
 	<p class="Track-name">
 		{{#if track.title}}
@@ -33,7 +32,7 @@
 				<button class="Btn Btn--text Btn--danger" {{action 'remove' track}}>Delete</button>
 				<button class="Btn Btn--text" {{action 'cancel'}}>Cancel</button>
 				<div class="Track-controls">
-					<button class="Btn Btn--text" {{action 'cancel'}}>Cancel</button>
+					<button class="Btn Btn--text" {{action 'cancel'}}>(cancel editing)</button>
 				</div>
 			</div>
 		</form>

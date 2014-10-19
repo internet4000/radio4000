@@ -18,6 +18,10 @@ export default DS.Model.extend({
 		}
 	}.property('image'),
 
+	lastUpdated: function() {
+		return this.get('tracks.lastObject.createdDate');
+		}.property('tracks.@each.createdDate'),
+
 	// relationships
 	tracks: DS.hasMany('track', { async: true }),
 	user: DS.belongsTo('user', { inverse: 'playlists', async: true })
