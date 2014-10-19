@@ -10,8 +10,8 @@ export default Ember.ObjectController.extend({
 	isEditing: false,
 
 	canEdit: function() {
-		return this.get('model.uid') === this.get('session.authData.uid');
-	}.property('model.uid', 'session.user'),
+		return this.get('user.id') === this.get('session.user.id');
+	}.property('user.id', 'session.user.id'),
 
 	// Favorites
 	// because it's a hasMany relationship, this needs a bit of extra work to really work
