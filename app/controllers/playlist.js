@@ -26,12 +26,10 @@ export default Ember.ObjectController.extend({
 		this.set('isFavorite', false);
 		favorites.then(function() {
 			favorites.forEach(function(item) {
-
 				// Ember.debug('comparing this');
 				// Ember.debug(playlist);
 				// Ember.debug('with this');
 				// Ember.debug(item);
-
 				if (playlist === item) {
 					// Ember.debug('match');
 					self.set('isFavorite', true);
@@ -45,12 +43,19 @@ export default Ember.ObjectController.extend({
 	actions: {
 		claim: function() {
 			var user = this.get('session.user');
+			var playlist = this.get('model');
+
 			user.get('playlists').then(function(playlists) {
-				playlists.addObject(this.get('model'));
+				playlists.addObject(playlist);
 				user.save().then(function() {
 					Ember.debug('Success: playlist removed from user');
 				});
 			}.bind(this));
+
+			playlist.set('user', user);
+			playlist.save().then(function() {
+				Ember.debug('Success: playlist removed from user');
+			});
 		},
 		extend: function() {
 			this.toggleProperty('isExpanded');
