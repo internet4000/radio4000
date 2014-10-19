@@ -42,8 +42,16 @@ export default Ember.ObjectController.extend({
 		});
 	},
 
-
 	actions: {
+		claim: function() {
+			var user = this.get('session.user');
+			user.get('playlists').then(function(playlists) {
+				playlists.addObject(this.get('model'));
+				user.save().then(function() {
+					Ember.debug('Success: playlist removed from user');
+				});
+			}.bind(this));
+		},
 		extend: function() {
 			this.toggleProperty('isExpanded');
 		},
