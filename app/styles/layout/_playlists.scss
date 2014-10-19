@@ -29,3 +29,9 @@
 		background-image: linear-gradient(to right, white 70%, transparent);
 	}
 }
+
+.LastUpdate {
+	@include size-1;
+	font-weight: 400;
+	color: $lightgray;
+}

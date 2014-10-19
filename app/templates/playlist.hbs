@@ -9,7 +9,13 @@
 
 	<div class="Playlist-header Container Section">
 
-		<h1 class="Playlist-title">{{#link-to 'playlist' this}}{{title}}{{/link-to}}</h1>
+		<div class="Playlist-title">
+			<h1 class="">
+				{{#link-to 'playlist' this}}{{title}}{{/link-to}}
+				<span class="LastUpdate">({{lastUpdate}})</span>
+			</h1>
+		</div>
+
 		<div class="BtnGroupWrapper">
 			<div class="BtnGroup">
 
