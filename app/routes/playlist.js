@@ -1,12 +1,19 @@
 import Ember from 'ember';
+import DocumentTitleMixin from '../mixins/document-title';
 
-export default Ember.Route.extend({
+export default Ember.Route.extend(DocumentTitleMixin, {
+	// title: function() {
+	// 	return 'Hey';
+	// }.property('model.title'),
+	// // title: 'dsadsa - Radio4000',
+	// titleSpecificityIncreases: true,
+
 	model: function(params) {
 		// return this.modelFor('playlists').findBy('slug', params.playlist_slug);
 		return this.store.find('playlist', params.playlist_id).then(function(){
-			Ember.debug('yes!');
+			// this doesn't work because id (= slug) should use findby and emberfire meh
 		}, function() {
-			Ember.warn('not so much');
+			// Ember.warn('not so much');
 			this.modelBySlug(params);
 		}.bind(this));
 	},
@@ -32,11 +39,12 @@ export default Ember.Route.extend({
 		}.bind(this));
 	},
 
-	afterModel: function(model) {
-		// Set the document title
-		var title = this.modelFor('playlist').get('title');
-		document.title = title + ' - Radio4000';
-	},
+	// afterModel: function(model) {
+	// 	// Set the document title
+	// 	// var title = this.modelFor('playlist').get('title');
+	// 	// if (!title) { return false; }
+	// 	// document.title = title + ' - Radio4000';
+	// },
 
 	deactivate: function() {
 		// Make sure playlist description is closed
