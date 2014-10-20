@@ -27,7 +27,7 @@
 		{{#if session.authed}}
 		 • <a href="#" {{action 'logout' this}}>Log out</a>
 		{{else}}
-			{{!-- {{#link-to 'login'}}Log in{{/link-to}} --}}
+		• {{#link-to 'login'}}Login{{/link-to}}
 		{{/if}}
 	</nav>
 
