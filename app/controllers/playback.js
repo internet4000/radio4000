@@ -20,7 +20,6 @@ export default Ember.ObjectController.extend({
 		return index;
 	}.property('tracks', 'model'),
 
-
 	actions: {
 		justPlay: function() {
 			this.transitionToRoute('playlists');
@@ -86,7 +85,7 @@ export default Ember.ObjectController.extend({
 				events: {
 					'onReady': self.onPlayerReady,
 					'onStateChange': self.onPlayerStateChange.bind(self),
-					'onError': self.onPlayerError
+					'onError': self.onPlayerError.bind(self)
 				}
 			});
 			self.set('isPlaying', true);
@@ -101,8 +100,25 @@ export default Ember.ObjectController.extend({
 		console.log(event);
 		this.checkPlayerState(event.data);
 	},
-	onPlayerError: function() {
-		Ember.debug('onPlayerError');
+	onPlayerError: function(event) {
+		Ember.warn('onError, code ' + event.data);
+		switch(event.data){
+			case 2:
+				Ember.warn('invalid parameter');
+				break;
+			case 100:
+				Ember.warn('not found/private');
+				this.send('next');
+				break;
+			case 101:
+			case 150:
+				Ember.warn('the same: embed not allowed');
+				this.set('model.description', 'gema fuck');
+				this.send('next');
+				break;
+			default:
+				break;
+		}
 	},
 
 	/**
