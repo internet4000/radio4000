@@ -14,17 +14,14 @@
 
 		<aside class="ContextualNavigation u-alignRight">
 			{{#if session.authed}}
-					{{#each session.user.playlists}}
-						{{#link-to 'playlist.add' this}}{{x-icon i="plus"}} Add track{{/link-to}}
-					{{/each}}
-
-					{{#unless session.user.playlists}}
-						{{#link-to 'new'}}New playlist{{/link-to}}
-					{{/unless}}
+				{{#if session.user.playlists}}
+					{{#link-to 'playlist.add' session.user.playlists.firstObject}}{{x-icon i="plus"}} Add track{{/link-to}}
 				{{else}}
-					{{#link-to 'login'}}Login{{/link-to}}
+					{{#link-to 'new'}}New playlist{{/link-to}}
+				{{/if}}
+			{{else}}
+				{{#link-to 'login'}}Login{{/link-to}}
 			{{/if}}
-
 		</aside>
 	</nav>
 </div>
