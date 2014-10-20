@@ -14,7 +14,7 @@ export default Ember.ObjectController.extend({
 	isFavorite: false,
 	isFavoriteTest: function() {
 		// only run if you are logged in
-		if (!this.get('session.authed')) { return false; }
+		if (!this.get('session.user')) { return false; }
 		// make sure it runs
 		Ember.run.once(this, 'testFavorite');
 	}.observes('model', 'session.user.favoritePlaylists.[]'),
