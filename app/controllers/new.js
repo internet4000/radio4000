@@ -25,7 +25,7 @@ export default Ember.ObjectController.extend({
 	createNewPlaylist: function() {
 		Ember.debug('createNewPlaylist');
 
-		var self= this;
+		var self = this;
 		var user = this.get('session.user');
 		if (!user) { Ember.warn('no user'); return false; }
 

@@ -70,15 +70,15 @@ export default {
 				var self = this;
 				Ember.debug('Checking if user exists');
 
+				// See if the user exists using native firebase because of emberfire problem with "id already in use"
 				ref.child('users').child(userId).once('value', function(snapshot) {
 					var exists = (snapshot.val() !== null);
 					userExistsCallback(userId, exists);
 				});
 
+				// Do the right thing depending on whether the user exists
 				function userExistsCallback(userId, exists) {
 					Ember.debug('user exists: ' + exists);
-					// self.createUser(userId);
-					// self.existingUser(userId);
 					if (exists) {
 						self.existingUser(userId);
 					} else {
