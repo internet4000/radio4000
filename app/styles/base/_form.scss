@@ -80,3 +80,7 @@ label {
 	}
 }
 .EditTrack {}
+
+.Form-group label input {
+	@extend %font-regular;
+}
