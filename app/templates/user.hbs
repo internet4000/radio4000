@@ -1,8 +1,9 @@
 <section class="Section">
 		<h2>Your channel</h2>
 		{{#unless session.user.playlists}}
-			{{#link-to "new" class="Box"}}
-				<h3>Get your own playlist</h3>
+			<p class="is-inactiveText">You haven't got a channel yet</p>
+			{{#link-to "new" class="BoxIcon BoxIcon--add"}}
+				create it!
 			{{/link-to}}
 		{{/unless}}
 		{{#with session.user.playlists.firstObject}}
@@ -31,6 +32,9 @@
 			</ul>
 		{{else}}
 			<p class="is-inactiveText">You haven't saved any favorites yet.</p>
+			{{#link-to "new" class="BoxIcon BoxIcon--explore"}}
+				explore channels
+			{{/link-to}}
 		{{/if}}
 	</div>
 
