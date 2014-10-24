@@ -4,7 +4,7 @@ export default Ember.Route.extend({
 	model: function() {
 		return Ember.Object.create();
 	},
-	afterModel: function(transition) {
+	afterModel: function(model, transition) {
 
 		// if you visit this route via an url the auth object hasn't checked auth status yet
 		// if we do the check inside this run loop, it works

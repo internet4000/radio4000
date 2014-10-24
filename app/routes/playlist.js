@@ -28,20 +28,22 @@ export default Ember.Route.extend({
 				if (playlist.get('slug') === params.playlist_id) {
 					Ember.debug('found it!');
 					this.controllerFor('playlist').set('model', playlist);
+
+					// set document title
+					document.title = playlist.get('title') + ' - Radio4000';
+
+					// open 'add track' if there are no tracks
+					// var canEdit = this.controllerFor(playlist).get('canEdit');
+					// if (canEdit && playlist.get('tracks.length') === 0) {
+					// 	this.transitionTo('playlist.add', playlist);
+					// }
 				}
 			}.bind(this));
 		}.bind(this));
 	},
 
-	afterModel: function(model) {
-		// Set the document title
-		var model = this.modelFor('playlist');
-		if (!model) { return false; }
-
-		document.title = model.get('title') + ' - Radio4000';
-
-
-	},
+	// @TODO: this hook isn't reliable until we fix slug hack
+	// afterModel: function(model) {},
 
 	deactivate: function() {
 		// Make sure playlist description is closed
