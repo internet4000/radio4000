@@ -1,7 +1,5 @@
 <section class="Section">
-
-	<div class="Section-half">
-		<h2>Your playlist</h2>
+		<h2>Your channel</h2>
 		{{#unless session.user.playlists}}
 			{{#link-to "new" class="Box"}}
 				<h3>Get your own playlist</h3>
@@ -12,10 +10,11 @@
 				<h3>{{title}}</h3>
 			{{/link-to}}
 		{{/with}}
-	</div>
+</section>
 
-	<div class="Section-half">
-		<h2>Your favorites</h2>
+<section class="Section">
+	<div>
+		<h2>Your favorite channels</h2>
 		{{#if session.user.favoritePlaylists}}
 			<ul class="List">
 				{{#each playlist in session.user.favoritePlaylists}}
