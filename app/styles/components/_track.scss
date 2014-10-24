@@ -19,6 +19,7 @@
 
 	&.is-active {
 		border-left-color: $primary-color;
+		padding-left: rem(10);
 		// playing indicator
 		.Track-title:before {
 			content: ''; // ►
@@ -31,11 +32,6 @@
 			text-decoration: none;
 		}
 	}
-}
-.Track-title,
-.Track-description {
-	// put title and description on same line oh wow
-	display: inline-block;
 }
 .Track-title {
 	@extend %font-regular;
