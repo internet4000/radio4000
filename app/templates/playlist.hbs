@@ -18,11 +18,6 @@
 
 			<div class="BtnGroupWrapper">
 				<div class="BtnGroup">
-					{{#if session.authed}}
-						{{x-favorite value=isFavorite action="toggleFavorite"}}
-					{{/if}}
-				</div>
-				<div class="BtnGroup">
 					{{#if canEdit}}
 						{{#link-to 'playlist.add' this class="Btn"}}
 							{{x-icon i="plus"}} Add track
@@ -36,6 +31,11 @@
 								{{x-icon i="pencil"}} Edit
 							{{/link-to}}
 						{{/if}}
+					{{/if}}
+				</div>
+				<div class="BtnGroup">
+					{{#if session.authed}}
+						{{x-favorite value=isFavorite action="toggleFavorite"}}
 					{{/if}}
 				</div>
 			</div>

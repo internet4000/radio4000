@@ -8,6 +8,10 @@ export default Ember.Route.extend({
 		if (!canEdit) { this.transitionTo('playlist', this.modelFor('playlist')); }
 	},
 
+	model: function() {
+		return this.modelFor('playlist');
+	},
+
 	// not sure why this is not the model hook but that's what ember docs say
 	afterModel: function() {
 		this.set('model', this.modelFor('playlist'));
