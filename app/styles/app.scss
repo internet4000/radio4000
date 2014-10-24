@@ -18,8 +18,14 @@
 @import 'base/form';
 @import 'base/typography';
 
+// 3. Layout (site and page layout)
+@import 'layout/layout';
+@import 'layout/sections';
+@import 'layout/playlists';
+@import 'layout/playlists-new';
+@import 'layout/manchet';
 
-// 3. Components (reusable components)
+// 4. Components (reusable components)
 @import 'utilities/content-states';
 @import 'utilities/box';
 @import 'components/logo';
@@ -34,12 +40,6 @@
 @import 'components/annoncement';
 @import 'components/boxicon';
 
-// 4. Layout (site and page layout)
-@import 'layout/layout';
-@import 'layout/sections';
-@import 'layout/playlists';
-@import 'layout/playlists-new';
-@import 'layout/manchet';
 
 // 5. Navigation
 @import 'navigation/navigation';
