@@ -2,9 +2,8 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
 	needs: ['tracks'],
-	isExpanded: false, // small description
-	isEditing: false,
 
+	isEditing: false,
 	canEdit: function() {
 		return this.get('user.id') === this.get('session.user.id');
 	}.property('user.id', 'session.user.id'),
@@ -56,9 +55,6 @@ export default Ember.ObjectController.extend({
 			playlist.save().then(function() {
 				Ember.debug('Success: playlist removed from user');
 			});
-		},
-		extend: function() {
-			this.toggleProperty('isExpanded');
 		},
 		playLatest: function() {
 			this.transitionToRoute('track', this.get('tracks.lastObject'));

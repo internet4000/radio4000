@@ -20,7 +20,7 @@ export default DS.Model.extend({
 
 	lastUpdated: function() {
 		return this.get('tracks.lastObject.createdDate');
-		}.property('tracks.@each.createdDate'),
+	}.property('tracks.@each.createdDate'),
 
 	// relationships
 	tracks: DS.hasMany('track', { async: true }),
