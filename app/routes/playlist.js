@@ -39,6 +39,8 @@ export default Ember.Route.extend({
 		if (!model) { return false; }
 
 		document.title = model.get('title') + ' - Radio4000';
+
+
 	},
 
 	deactivate: function() {
