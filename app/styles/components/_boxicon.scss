@@ -14,7 +14,7 @@ $boxIconSize: 35px;
 		height: $boxIconSize;
 		width: $boxIconSize;
 		border: 1px dashed $primary-color;
-
+		line-height: 22px;
 		position: absolute;
 		top: -6px;
 		left: -45px;
@@ -36,4 +36,9 @@ $boxIconSize: 35px;
 		padding-top: 7px;
 		font-size: 16px;
 	}
+}
+
+.BoxIcon--white {
+	color: white;
+	border-color: white;
 }

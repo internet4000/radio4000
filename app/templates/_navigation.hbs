@@ -17,7 +17,7 @@
 				{{#if session.user.playlists}}
 					{{#link-to 'playlist.add' session.user.playlists.firstObject}}{{x-icon i="plus"}} Add track{{/link-to}}
 				{{else}}
-					{{#link-to 'new'}}New playlist{{/link-to}}
+					{{#link-to 'new' class=""}}+ New playlist{{/link-to}}
 				{{/if}}
 			{{else}}
 				{{#link-to 'login'}}Login{{/link-to}}

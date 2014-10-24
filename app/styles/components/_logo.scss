@@ -1,14 +1,34 @@
+/**
+ * Site Logo
+ * our has an animation which is define here at the beginning
+ **/
+
+ /**
+  * actual site logo
+  **/
+
+
 .SiteLogo {
 	float: left;
-	max-width: 100px;
 	margin: 0 0.5rem 0 0;
 
 	a {
+		width: 144px;
 		display: block;
-		padding: 15px 7px 6px;
+		padding-top: 15px;
+		padding-left: 15px;
+		padding-right: 19px;
+		padding-bottom: 6px;
 		color: $bleach;
+
 		&:hover {
 			text-decoration: none;
+		}
+		&:before {
+
+		}
+		&:after {
+
 		}
 	}
 }
