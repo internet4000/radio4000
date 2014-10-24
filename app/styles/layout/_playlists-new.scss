@@ -4,7 +4,12 @@
 
 .Form--newPlaylist {
 	margin: 0 auto;
+	max-width: rem(400);
 	.Btn {
 		float: right;
+	}
+	input {
+		margin-top: 16px;
+
 	}
 }

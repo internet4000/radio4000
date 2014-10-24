@@ -51,6 +51,6 @@ export default Ember.ObjectController.extend({
 		close: function() {
 			// leaving the route also sets isexpanded to false
 			this.transitionToRoute('playlist', this.get('model'));
-		},
+		}
 	}
 });

@@ -1,0 +1,36 @@
+/**
+ * Annoncement
+ **/
+
+%leave {
+		animation-name: leave;
+		animation-duration: 10s;
+		animation-iteration-count: 1;
+}
+
+@keyframes leave {
+	0%{
+		transform: translateY(0) translateX(-50%);
+	}
+
+	90% {
+		transform: translateY(0) translateX(-50%);
+	}
+	100%{
+		transform:translateY(-100%) translateX(-50%);
+	}
+}
+
+.Annoncement {
+	@extend %leave;
+	z-index: 2;
+	position: fixed;
+	transition: 200ms transform $easing;
+	transform: translateY(-100%) translateX(-50%);
+	left: 50%;
+	top: 53px;
+	max-width: 400px;
+	padding: 17px 10px 0px 10px;
+	text-align: center;
+	background-color: yellow;
+}

@@ -41,7 +41,7 @@ export default Ember.ObjectController.extend({
 		}).save().then(function(savedPlaylist) {
 
 			// Redirect to the new playlist
-			self.transitionToRoute('playlist', savedPlaylist);
+			self.transitionToRoute('playlist.add', savedPlaylist);
 
 			// Save the new playlist on the user
 			user.get('playlists').then(function(userPlaylists) {
