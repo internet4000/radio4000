@@ -8,18 +8,9 @@ export default Ember.Route.extend({
 		if (!canEdit) { this.transitionTo('playlist', this.modelFor('playlist')); }
 	},
 
-	model: function() {
-		return this.controllerFor('playlist').get('model');
-	},
-	setupController: function(controller, model) {
-		this.controllerFor('playlist').set('isEditing', true);
-		controller.set('model', model);
-		controller.set('isEditing', true);
-	},
-
-	deactivate: function() {
-		this.controllerFor('playlist').set('isEditing', false);
-		this.controller.set('isEditing', false);
+	// not sure why this is not the model hook but that's what ember docs say
+	afterModel: function() {
+		this.set('model', this.modelFor('playlist'));
 	},
 
 	// render into the playlist template
