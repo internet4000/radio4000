@@ -4,19 +4,33 @@ export default Ember.Component.extend({
 	classNames: ['Track'],
 	classNameBindings: ['isEditing:is-editing'],
 
-	isEditing: false,
+
+	currentTrackComponent: null,
+	isEditing: function(){
+		return this.get('currentTrackComponent') === this.get('elementId');
+	}.property('currentTrackComponent'),
 
 	actions: {
 		edit: function() {
-			this.set('isEditing', true);
+			var current = null;
+			if (!this.get('isEditing')) {
+				current = this.get('elementId');
+			}
+			this.set('currentTrackComponent', current);
 		},
 		cancel: function() {
 			this.set('isEditing', false);
 		},
-		// Delete the track object and the corresponding track object in playlist.tracks
+		save: function(track) {
+			this.send('cancel'); // close
+			this.get('track').save().then(function() {
+				Ember.debug('Saved track');
+			});
+		},
 		remove: function(track) {
 			Ember.debug('deleting');
 
+			// Delete the track object and the corresponding track object in playlist.tracks
 			var playlist = this.get('playlist.model');
 			playlist.get('tracks').then(function(tracks) {
 				Ember.debug(tracks);
@@ -24,16 +38,6 @@ export default Ember.Component.extend({
 				track.destroyRecord();
 				playlist.save();
 				Ember.debug('Deleted the track');
-			});
-		},
-
-		save: function(track) {
-			// Close edit state
-			this.set('isEditing', false);
-
-			// Save the model
-			this.get('track').save().then(function() {
-				Ember.debug('Saved track');
 			});
 		}
 	}

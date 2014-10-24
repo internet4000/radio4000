@@ -7,14 +7,17 @@ export default Ember.ArrayController.extend({
 	playback: Ember.computed.alias('controllers.playback'),
 	track: Ember.computed.alias('controllers.track'),
 
+	currentTrackComponent: null,
+
 	// Sort by newest on top
 	sortProperties: ['created'],
-	sortAscending: false,
+	sortAscending: false
 
-	actions: {
-		// sortBy: function(property) {
-		// 	this.set('sortProperties', [property]);
-		// 	this.set('sortAscending', !this.get('sortAscending'));
-		// }
-	}
+	// ,
+	// actions: {
+	// 	// sortBy: function(property) {
+	// 	// 	this.set('sortProperties', [property]);
+	// 	// 	this.set('sortAscending', !this.get('sortAscending'));
+	// 	// }
+	// }
 });
