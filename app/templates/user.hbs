@@ -6,9 +6,13 @@
 			{{/link-to}}
 		{{/unless}}
 		{{#with session.user.playlists.firstObject}}
-			{{#link-to "playlist" this}}
-				<h3>{{title}}</h3>
-			{{/link-to}}
+			<ul class="List">
+				<li>
+					{{#link-to "playlist" this}}
+						<h3>{{title}}</h3>
+					{{/link-to}}
+				</li>
+			</ul>
 		{{/with}}
 </section>
 
