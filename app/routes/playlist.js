@@ -1,12 +1,6 @@
 import Ember from 'ember';
-import DocumentTitleMixin from '../mixins/document-title';
 
-export default Ember.Route.extend(DocumentTitleMixin, {
-	// title: function() {
-	// 	return 'Hey';
-	// }.property('model.title'),
-	// // title: 'dsadsa - Radio4000',
-	// titleSpecificityIncreases: true,
+export default Ember.Route.extend({
 
 	model: function(params) {
 		// return this.modelFor('playlists').findBy('slug', params.playlist_slug);
@@ -39,12 +33,12 @@ export default Ember.Route.extend(DocumentTitleMixin, {
 		}.bind(this));
 	},
 
-	// afterModel: function(model) {
-	// 	// Set the document title
-	// 	// var title = this.modelFor('playlist').get('title');
-	// 	// if (!title) { return false; }
-	// 	// document.title = title + ' - Radio4000';
-	// },
+	afterModel: function(model) {
+		// Set the document title
+		var title = this.modelFor('playlist').get('title');
+		if (!title) { return false; }
+		document.title = title + ' - Radio4000';
+	},
 
 	deactivate: function() {
 		// Make sure playlist description is closed
