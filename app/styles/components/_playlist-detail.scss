@@ -7,13 +7,14 @@
 	z-index: 2; // above the player
 }
 .Playlist-header {
-	padding-top: rem(50);
-	margin-bottom: rem(36);
+	padding-top: 2rem;
+	padding-bottom: 1rem;
+	margin-bottom: 2.25rem;
 	background-color: $lightgray;
 	// background-image: linear-gradient(to bottom, hsl(0, 100%, 100%), hsla(0, 0%, 0%, 0));
 }
 .Playlist-add {
-	margin-top: -100px; // so add track overlaps description: lulz?!
+	margin-top: -4.2rem; // below buttons (with one line descriptions)
 }
 .Playlist-title {
 	@media (min-width: $layout-m) {
