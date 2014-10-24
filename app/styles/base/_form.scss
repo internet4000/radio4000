@@ -74,7 +74,8 @@ label {
 	}
 }
 .AddTrack {
-	box-shadow: $lightbeautifulblue 0px 0px 30px;
+	box-shadow: $mediumgray 0px 0px 15px;
+	margin-top: 20px; // for the box shadow to express itself
 	.Btn {
 		margin-bottom: 0;
 	}

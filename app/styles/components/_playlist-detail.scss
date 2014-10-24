@@ -17,6 +17,9 @@
 	margin-bottom: rem(36);
 	background-color: $lightgray;
 }
+.Playlist-add {
+	margin-top: -100px; // so add track overlaps description: lulz?!
+}
 .Playlist-title {
 	@media (min-width: $layout-m) {
 		@include size-5;
@@ -25,6 +28,8 @@
 .Playlist-description {
 	position: relative;
 	text-align: left;
+	color: $gray;
+	@extend %font-regular;
 }
 .Playlist-body {
 	margin-bottom: 2rem;
