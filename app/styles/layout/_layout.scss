@@ -25,7 +25,8 @@ body {
 	right: 0;
 	bottom: 0;
 	left: 0;
-	overflow: auto;
+	overflow-x: hidden;
+	overflow-y: scroll;
 	padding-bottom: 60px;
 }
 
