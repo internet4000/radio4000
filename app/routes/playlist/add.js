@@ -24,17 +24,22 @@ export default Ember.Route.extend({
 		//  this action is triggered from the add.js controller/template
 		saveTrack: function(track) {
 			var playlist = this.controllerFor('playlist').get('model');
+
 			track.save().then(function() {
 				// And add it to the tracks property of the playlist
 				Ember.RSVP.Promise.cast(playlist.get('tracks')).then(function(tracks) {
 					tracks.addObject(track);
 					playlist.save().then(function() {
 						Ember.debug('Success: Track saved to playlist');
+
 					}, function() {
 						Ember.debug('Error: Track NOT saved to playlist');
 					});
 				});
 			});
+
+			// Go back!
+			this.transitionTo('playlist', playlist);
 		}
 	}
 });
