@@ -1,7 +1,7 @@
 <section class="Section">
 		<h2>Your channel</h2>
 		{{#unless session.user.playlists}}
-			<p class="is-inactiveText">You haven't got a channel yet</p>
+			<p class="is-inactiveText">You haven't got a channel yet, you can create one or explore existing ones</p>
 			{{#link-to "new" class="BoxIcon BoxIcon--add"}}
 				create it!
 			{{/link-to}}
@@ -31,8 +31,8 @@
 				{{/each}}
 			</ul>
 		{{else}}
-			<p class="is-inactiveText">You haven't saved any favorites yet.</p>
-			{{#link-to "new" class="BoxIcon BoxIcon--explore"}}
+			<p class="is-inactiveText">You haven't saved any favorites yet, explore existing channels to get started</p>
+			{{#link-to "playlists" class="BoxIcon BoxIcon--explore"}}
 				explore channels
 			{{/link-to}}
 		{{/if}}
