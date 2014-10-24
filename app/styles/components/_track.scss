@@ -12,6 +12,16 @@
 		font-style: italic;
 	}
 }
+.Track.is-editing {
+	background-color: $mediumgray;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	.Track-link:hover {
+		background-image: none;
+	}
+}
+
+
 .Track-link {
 	border-left: 4px solid transparent;
 	transition: border 250ms $easing5;

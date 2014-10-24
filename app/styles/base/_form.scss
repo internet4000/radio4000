@@ -59,6 +59,7 @@ label {
 	input[type='url'],
 	textarea {
 		margin-top: 0.25rem;
+		@extend %font-regular;
 	}
 }
 
@@ -66,10 +67,8 @@ label {
 .AddTrack,
 .EditTrack {
 	padding: 1rem;
-	background-color: $slightgray;
-	border-top: 1px solid hsla(0, 0%, 57%, 0.73);
-	// box-shadow: 1px 1px 5px 0 hsla(0, 0%, 0%, 0.34) inset;
-
+	background-color: $lightgray;
+	margin-bottom: 0;
 	.Form {
 		margin-bottom: 0;
 	}

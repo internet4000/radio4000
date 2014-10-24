@@ -7,45 +7,47 @@
 		{{/if}} --}}
 	</figure>
 
-	<div class="Playlist-header Container Section">
-		<div class="Playlist-title">
-			<h1 class="">
-				{{#link-to 'playlist' this}}{{title}}{{/link-to}}
-				<span class="Muted LastUpdate">({{tracks.length}} tracks, {{lastUpdated}})</span>
-			</h1>
-		</div>
-
-		<div class="BtnGroupWrapper">
-			<div class="BtnGroup">
-				{{#if session.authed}}
-					{{x-favorite value=isFavorite action="toggleFavorite"}}
-				{{/if}}
+	<div class="Playlist-header Section">
+		<div class="Container">
+			<div class="Playlist-title">
+				<h1 class="">
+					{{#link-to 'playlist' this}}{{title}}{{/link-to}}
+					<span class="Muted LastUpdate">({{tracks.length}} tracks, {{lastUpdated}})</span>
+				</h1>
 			</div>
-			<div class="BtnGroup">
-				{{#if canEdit}}
-					{{#link-to 'playlist.add' this class="Btn"}}
-						{{x-icon i="plus"}} Add track
-					{{/link-to}}
-					{{#if isEditing}}
-						{{#link-to 'playlist' this class="Btn"}}
-							{{x-icon i="pencil"}} Cancel editing
-						{{/link-to}}
-					{{else}}
-						{{#link-to 'playlist.edit' this class="Btn" title="Edit your playlist"}}
-							{{x-icon i="pencil"}} Edit
-						{{/link-to}}
+
+			<div class="BtnGroupWrapper">
+				<div class="BtnGroup">
+					{{#if session.authed}}
+						{{x-favorite value=isFavorite action="toggleFavorite"}}
 					{{/if}}
-				{{/if}}
+				</div>
+				<div class="BtnGroup">
+					{{#if canEdit}}
+						{{#link-to 'playlist.add' this class="Btn"}}
+							{{x-icon i="plus"}} Add track
+						{{/link-to}}
+						{{#if isEditing}}
+							{{#link-to 'playlist' this class="Btn"}}
+								{{x-icon i="pencil"}} Cancel editing
+							{{/link-to}}
+						{{else}}
+							{{#link-to 'playlist.edit' this class="Btn" title="Edit your playlist"}}
+								{{x-icon i="pencil"}} Edit
+							{{/link-to}}
+						{{/if}}
+					{{/if}}
+				</div>
 			</div>
+
+			<p {{bind-attr class=":Playlist-description isExpanded:is-expended:is-collapsed"}} {{action "extend"}}>
+				{{body}}
+			</p>
+
+			{{!-- <p><button {{action 'claim'}}>claim</button></p> --}}
+
+			{{outlet 'playlist-header'}}
 		</div>
-
-		<p {{bind-attr class=":Playlist-description isExpanded:is-expended:is-collapsed"}} {{action "extend"}}>
-			{{body}}
-		</p>
-
-		{{!-- <p><button {{action 'claim'}}>claim</button></p> --}}
-
-		{{outlet 'playlist-header'}}
 	</div>
 
 	<div class="Playlist-body">

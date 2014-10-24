@@ -2,13 +2,13 @@
 	position: relative;
 	width: 100%;
 	height: 100px;
-	@media (min-width: $layout-s) {
-		height: 200px;
-	}
-	margin-bottom: 2rem;
 	background-color: $beautifulblue;
 	background-size: cover;
 	background-position: 50%;
+	margin-bottom: 0;
+	@media (min-width: $layout-s) {
+		height: 200px;
+	}
 
 	img {
 		vertical-align: bottom;

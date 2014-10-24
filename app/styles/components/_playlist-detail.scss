@@ -12,6 +12,11 @@
 	// 	opacity: 0;
 	// }
 }
+.Playlist-header {
+	padding-top: rem(50);
+	margin-bottom: rem(36);
+	background-color: $lightgray;
+}
 .Playlist-title {
 	@media (min-width: $layout-m) {
 		@include size-5;
