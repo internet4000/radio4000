@@ -67,20 +67,22 @@ label {
 .AddTrack,
 .EditTrack {
 	padding: 1rem;
-	background-color: $lightgray;
 	margin-bottom: 0;
 	.Form {
 		margin-bottom: 0;
 	}
 }
 .AddTrack {
+	background-color: $superlightgray;
 	box-shadow: $mediumgray 0px 0px 15px;
-	margin-top: 20px; // for the box shadow to express itself
+	margin-top: 3rem; // for the box shadow to express itself
 	.Btn {
 		margin-bottom: 0;
 	}
 }
-.EditTrack {}
+.EditTrack {
+	background-color: $lightgray;
+}
 
 .Form-group label input {
 	@extend %font-regular;
