@@ -18,6 +18,11 @@
 .Container--full {
 	max-width: none;
 }
+// remove padding
+.Container--noPadding {
+	padding-right: 0;
+	padding-left: 0;
+}
 
 
 /**

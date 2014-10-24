@@ -22,7 +22,10 @@
 	}
 	a {
 		display: block;
-		padding: 0.6rem 0 0.55rem;
+		padding-top: rem(10);
+		padding-bottom: rem(10);
+		padding-right: 1em;
+		padding-left: 1em;
 		&:hover {
 			background-color: white;
 			text-decoration: none;
