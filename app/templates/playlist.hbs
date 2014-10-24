@@ -1,21 +1,9 @@
 <article class="Playlist Playlist--detail">
 
-	<figure class="Thumbnail" {{action "playLatest"}} {{bind-attr style=imageBackground}}>
-		<button class="Thumbnail-button">{{x-icon i="play"}}</button>
-		{{!-- {{#if image}}
-			<img {{bind-attr src=image alt=title}}>
-		{{/if}} --}}
-	</figure>
+	<figure class="Thumbnail" {{bind-attr style=imageBackground}}>
+		<button class="Thumbnail-button" {{action "playLatest"}}>{{x-icon i="play"}}</button>
 
-	<div class="Playlist-header Section">
-		<div class="Container">
-			<div class="Playlist-title">
-				<h1 class="">
-					{{#link-to 'playlist' this}}{{title}}{{/link-to}}
-					<span class="Muted LastUpdate">({{tracks.length}} tracks, {{lastUpdated}})</span>
-				</h1>
-			</div>
-
+		<div class="Thumbnail-bottom">
 			<div class="BtnGroupWrapper">
 				<div class="BtnGroup">
 					{{#if canEdit}}
@@ -24,7 +12,7 @@
 						{{/link-to}}
 						{{#if isEditing}}
 							{{#link-to 'playlist' this class="Btn"}}
-								{{x-icon i="pencil"}} Cancel editing
+								{{x-icon i="pencil"}} Edit
 							{{/link-to}}
 						{{else}}
 							{{#link-to 'playlist.edit' this class="Btn" title="Edit your playlist"}}
@@ -39,7 +27,16 @@
 					{{/if}}
 				</div>
 			</div>
+		</div>
+	</figure>
 
+	<div class="Playlist-header Section">
+		<div class="Container">
+			<h1 class="Playlist-title">
+				{{#link-to 'playlist' this}}{{title}}{{/link-to}}
+				<span class="Muted LastUpdate">({{tracks.length}} tracks, {{lastUpdated}})</span>
+			</h1>
+			<p class="Playlist-description">{{body}}</p>
 
 			{{!-- <p><button {{action 'claim'}}>claim</button></p> --}}
 

@@ -22,7 +22,7 @@ export default Ember.Component.extend({
 			this.set('isEditing', false);
 		},
 		save: function(track) {
-			this.send('cancel'); // close
+			this.send('cancel');
 			this.get('track').save().then(function() {
 				Ember.debug('Saved track');
 			});

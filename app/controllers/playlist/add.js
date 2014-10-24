@@ -26,7 +26,7 @@ export default Ember.ObjectController.extend({
 		expand: function() {
 			this.set('isExpanded', true);
 		},
-		close: function() {
+		cancel: function() {
 			// leaving the route also sets isexpanded to false
 			this.transitionToRoute('playlist', this.get('controllers.playlist').get('model'));
 		},

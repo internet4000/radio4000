@@ -59,20 +59,13 @@ export default Ember.ObjectController.extend({
 		playLatest: function() {
 			this.transitionToRoute('track', this.get('tracks.lastObject'));
 		},
-		edit: function() {
-			this.set('isEditing', true);
+		stopEditing: function() {
+			this.transitionTo('playlist', this.get('model'));
 		},
-		cancel: function() {
-			this.set('isEditing', false);
-		},
-		// Save, transition to new url and close (cancel) the edit mode
 		save: function() {
 			this.get('model').save().then(function(){
-				Ember.debug('Saved playlist');
 				this.transitionToRoute('playlist', this.get('slug'));
 			}.bind(this));
-
-			this.send('cancel');
 		},
 		deletePlaylist: function() {
 			// var user = this.get('session.user');
