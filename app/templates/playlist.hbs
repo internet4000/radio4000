@@ -57,8 +57,8 @@
 	</div>
 
 	<div class="Playlist-favorites Container Container--noPadding">
-		<h2>Favorites from {{title}}</h2>
 		{{#if user.favoritePlaylists}}
+			<h2>Favorites from {{title}}</h2>
 			<ul class="List">
 			{{#each playlist in user.favoritePlaylists}}
 				<li>
