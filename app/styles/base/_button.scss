@@ -17,19 +17,18 @@
 	background-image: linear-gradient(to bottom, white 60%, transparent);
 	color: $text-color;
 	box-shadow: hsla(0, 0%, 0%, 0.2) 0 1px 0 0;
-	transition: border-color 200ms, background 200ms;
+	transition: border-color 200ms, background 200ms, box-shadow 200ms;
 	// -webkit-font-smoothing: antialiased;
 
 	&:hover,
 	&:focus,
 	&:active {
 		text-decoration: none;
-		outline: none;
 		background-image: linear-gradient(to bottom, white 70%, hsla(0, 0%, 0%, 0.1));
 		border-color: rgba(0,0,0,0.18);
 	}
-	&:active {
-		// @todo
+	&:focus {
+
 	}
 	&:disabled,
 	&.is-disabled {
@@ -41,6 +40,12 @@
 	div {
 		display: inline;
 	}
+}
+.Btn:active,
+.Btn.is-active {
+	// looks like it's pressed down
+	outline: none;
+	box-shadow: hsla(0, 0%, 0%, 0.5) 1px 1px 6px inset;
 }
 
 // Primary, colored button
