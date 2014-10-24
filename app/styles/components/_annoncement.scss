@@ -30,7 +30,10 @@
 	left: 50%;
 	top: 53px;
 	max-width: 400px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	box-shadow: rgba(182, 166, 0, 0.64) 0 0 7px inset;
 	padding: 17px 10px 0px 10px;
 	text-align: center;
-	background-color: yellow;
+	background-color: #FFFC30;
 }
