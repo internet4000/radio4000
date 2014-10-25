@@ -10,15 +10,15 @@
 
 .SiteLogo {
 	float: left;
-	margin: 0 0.5rem 0 0;
+	margin: 0;
 
 	a {
 		width: 144px;
 		display: block;
-		padding-top: 15px;
-		padding-left: 15px;
-		padding-right: 19px;
-		padding-bottom: 6px;
+		padding-top: 13px;
+		padding-left: 1rem; // same as container etc
+		padding-right: 1rem;
+		padding-bottom: 5px;
 		color: $bleach;
 
 		&:hover {
