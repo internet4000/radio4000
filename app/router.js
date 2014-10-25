@@ -31,6 +31,7 @@ Router.map(function() {
 	this.resource('users', function(){
 		this.resource('user', { path: '/user/:user_id' });
 	});
+  this.route('log');
 });
 
 export default Router;

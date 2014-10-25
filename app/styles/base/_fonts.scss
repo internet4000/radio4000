@@ -44,13 +44,13 @@
 // 	font-style: normal;
 // }
 
-// @font-face {
-// 	font-family: 'maisonneue-mono';
-// 	src: url('/fonts/maisonneue-mono-webfont.eot');
-// 	src: url('/fonts/maisonneue-mono-webfont.eot?#iefix') format('embedded-opentype'),
-// 		 url('/fonts/maisonneue-mono-webfont.woff2') format('woff2'),
-// 		 url('/fonts/maisonneue-mono-webfont.woff') format('woff'),
-// 		 url('/fonts/maisonneue-mono-webfont.ttf') format('truetype');
-// 	font-weight: normal;
-// 	font-style: normal;
-// }
+@font-face {
+	font-family: 'maisonneue-mono';
+	src: url('/fonts/maisonneue-mono-webfont.eot');
+	src: url('/fonts/maisonneue-mono-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('/fonts/maisonneue-mono-webfont.woff2') format('woff2'),
+		 url('/fonts/maisonneue-mono-webfont.woff') format('woff'),
+		 url('/fonts/maisonneue-mono-webfont.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
