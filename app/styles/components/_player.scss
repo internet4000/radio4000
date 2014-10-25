@@ -18,6 +18,11 @@ $controlHeight: 53px;
 		transform: translateZ(0);
 	}
 
+	// hide it when there's no model
+	&.is-hidden {
+		visibility: hidden;
+	}
+
 	// the youtube iframe
 	iframe {
 		width: 100%;
@@ -30,6 +35,6 @@ $controlHeight: 53px;
 		left: 0;
 		width: auto;
 		height: auto;
-		z-index: 3; // on top of playlist
+		z-index: 3; // on top of channel
 	}
 }
