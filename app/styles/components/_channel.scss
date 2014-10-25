@@ -22,6 +22,7 @@
 	}
 }
 .Playlist-description {
+	max-width: rem(510); // 10 words on 1 line
 }
 .Playlist-body {
 	margin-bottom: 2rem;

@@ -1,4 +1,4 @@
-<form class="Form" {{action "trySave" on="submit"}}>
+<form class="Form EditPlaylist" {{action "trySave" on="submit"}}>
 	<div class="Form-group">
 		<label for="title">Title</label>
 		{{input name="title" value=title placeholder="Title" autofocus='autofocus'}}
@@ -13,14 +13,15 @@
 		{{!-- {{input name="image" value=image placeholder="Image"}} --}}
 	</div>
 	{{#if isEditingSlug}}
-		<div class="Form-group">
-			<label for="slug">URL - <span class="u-danger">Warning: this will change the link of your channel. The old one won't work (but you can always change it back)</span></label>
+		<div class="Form-group Form--playlistSlug">
+			<label for="slug">Permalink</label>
+			<span class="Permalink">radio4000.com/c/</span>
 			{{input name="slug" value=slug placeholder="Slug"}}
 		</div>
 	{{/if}}
 	<div class="Form-group">
 		<button class="Btn Btn--primary" type="submit">Save</button>
-		<button class="Btn Btn--text" {{action "editSlug"}}>Change URL</button>
+		<button class="Btn Btn--text" {{action "editSlug"}}>Change Permalink</button>
 		<button class="Btn Btn--text" {{action "cancel"}}>Cancel</button>
 		<button class="Btn Btn--text Btn--danger" {{action 'tryDelete'}}>Delete</button>
 	</div>
