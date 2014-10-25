@@ -26,7 +26,8 @@
 		padding-bottom: rem(10);
 		padding-right: 1em;
 		padding-left: 1em;
-		&:hover {
+		&:hover,
+		&:focus {
 			background-color: white;
 			text-decoration: none;
 			h3 {
