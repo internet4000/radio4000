@@ -1,4 +1,4 @@
-<div {{bind-attr class=':Player isMaximized'}}>
+<div {{bind-attr class=':Player model::is-hidden isMaximized'}}>
 	{{#if model}}
 		<iframe id="player" type="text/html" width="210" height="166" frameborder="0" {{bind-attr src="embedUrl"}}></iframe>
 	{{/if}}
@@ -35,7 +35,7 @@
 			</button>
 
 			<div class="Controls-title" title="current track / go to current channel">
-				{{#link-to 'playlist' model.playlist}}
+				{{#link-to 'channel' model.channel}}
 					{{#if model.title}}
 						{{model.title}}
 					{{else}}

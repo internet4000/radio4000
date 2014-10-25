@@ -14,7 +14,7 @@
 				{{/link-to}}
 			</div>
 			<div class="Section-half">
-				{{#link-to 'playlists' class="Box" title="discover music by channels" }}
+				{{#link-to 'channels' class="Box" title="discover music by channels"}}
 					<h2 class="Title">Discover music</h2>
 					<p>Listen now</p>
 				{{/link-to}}
@@ -23,7 +23,7 @@
 	{{/if}}
 
 	<nav class="Nav Section">
-		{{#link-to 'about' title="about radio 4000" }}About{{/link-to}}
+		{{#link-to 'about' title="about radio 4000"}}About{{/link-to}}
 		{{#if session.authed}}
 		 • <a href="#" title="logout from radio 4000" {{action 'logout' this}}>Log out</a>
 		{{else}}

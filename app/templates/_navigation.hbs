@@ -6,21 +6,21 @@
 	</h1>
 
 	<nav>
-		{{#each session.user.playlists}}
-			{{#link-to 'playlist' this title="Go to my channel" }}My channel{{/link-to}}
+		{{#each session.user.channels}}
+			{{#link-to 'channel' this title="Go to my channel"}}My channel{{/link-to}}
 		{{/each}}
 
-		{{#link-to 'playlists' title="Discover channels" }}Discover{{/link-to}}
+		{{#link-to 'channels' title="Discover channels"}}Discover{{/link-to}}
 
 		<aside class="ContextualNavigation u-alignRight">
 			{{#if session.authed}}
-				{{#if session.user.playlists}}
-					{{#link-to 'playlist.add' session.user.playlists.firstObject title="Add a track to my channel" }}{{x-icon i="plus"}} Add track{{/link-to}}
+				{{#if session.user.channels}}
+					{{#link-to 'channel.add' session.user.channels.firstObject title="Add a track to my channel"}}{{x-icon i="plus"}} Add track{{/link-to}}
 				{{else}}
-					{{#link-to 'new' title="Create your channel" }}+ New channel{{/link-to}}
+					{{#link-to 'new' title="Create your channel"}}+ New channel{{/link-to}}
 				{{/if}}
 			{{else}}
-				{{#link-to 'login' title="Login to Radio 4000" }}Login{{/link-to}}
+				{{#link-to 'login' title="Login to Radio 4000"}}Login{{/link-to}}
 			{{/if}}
 		</aside>
 	</nav>

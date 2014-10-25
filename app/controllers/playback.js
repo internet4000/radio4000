@@ -2,7 +2,7 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-	needs: ['playlist', 'tracks'],
+	needs: ['channel', 'tracks'],
 
 	isMaximized: false, // fullscreen layout
 	isPlaying: false,
@@ -11,8 +11,8 @@ export default Ember.ObjectController.extend({
 	// guiStateClass: 'is-off',
 
 	tracks: function() {
-		return this.get('controllers.playlist.model.tracks');
-	}.property('controllers.playlist.model.tracks.[]'),
+		return this.get('controllers.channel.model.tracks');
+	}.property('controllers.channel.model.tracks.[]'),
 
 	trackIndex: function() {
 		var index = this.get('tracks').indexOf(this.get('model'));
@@ -22,7 +22,7 @@ export default Ember.ObjectController.extend({
 
 	actions: {
 		justPlay: function() {
-			this.transitionToRoute('playlists');
+			this.transitionToRoute('channels');
 		},
 		playTrack: function(track) {
 			if (!track) {

@@ -20,10 +20,9 @@
 
 // 3. Layout (site and page layout)
 @import 'layout/layout';
-@import 'layout/sections';
-@import 'layout/playlists';
-@import 'layout/playlists-new';
 @import 'layout/manchet';
+@import 'layout/new';
+@import 'layout/sections';
 
 // 4. Components (reusable components)
 @import 'utilities/content-states';
@@ -31,7 +30,7 @@
 @import 'components/logo';
 @import 'components/loader';
 @import 'components/list';
-@import 'components/playlist-detail';
+@import 'components/channel';
 @import 'components/track';
 @import 'components/playback';
 @import 'components/player';

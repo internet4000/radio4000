@@ -7,15 +7,15 @@
 			<div class="BtnGroupWrapper Container">
 				<div class="BtnGroup">
 					{{#if canEdit}}
-						{{#link-to 'playlist.add' this class="Btn" title="add track"}}
+						{{#link-to 'channel.add' this class="Btn" title="add track"}}
 							{{x-icon i="plus"}} Add track
 						{{/link-to}}
 						{{#if isEditing}}
-							{{#link-to 'playlist' this class="Btn" title="cancel editing channel"}}
+							{{#link-to 'channel' this class="Btn" title="cancel editing channel"}}
 								{{x-icon i="pencil"}} Edit
 							{{/link-to}}
 						{{else}}
-							{{#link-to 'playlist.edit' this class="Btn" title="edit your channel"}}
+							{{#link-to 'channel.edit' this class="Btn" title="edit your channel"}}
 								{{x-icon i="pencil"}} Edit
 							{{/link-to}}
 						{{/if}}
@@ -33,7 +33,7 @@
 	<div class="Playlist-header Section">
 		<div class="Container">
 			<h1 class="Playlist-title">
-				{{#link-to 'playlist' this title="channel title"}}
+				{{#link-to 'channel' this title="channel title"}}
 					{{title}}
 				{{/link-to}}
 				<span class="Muted LastUpdate">({{tracks.length}} tracks, {{lastUpdated}})</span>
@@ -42,27 +42,27 @@
 
 			{{!-- <p><button {{action 'claim'}}>claim</button></p> --}}
 
-			{{outlet 'playlist-header'}}
+			{{outlet 'channel-header'}}
 		</div>
 	</div>
 
-	{{outlet 'playlist-body'}}
+	{{outlet 'channel-body'}}
 
 	<div class="Playlist-body">
 		{{render 'tracks' tracks}}
 	</div>
 
-	{{#if user.favoritePlaylists}}
+	{{#if user.favoriteChannels}}
 	<div class="Playlist-favorites">
 		<div class="Container">
 			<h2>Favorites from {{title}}</h2>
 		</div>
 		<div class="Container Container--noPadding">
 			<ul class="List">
-			{{#each playlist in user.favoritePlaylists}}
+			{{#each channel in user.favoriteChannels}}
 				<li>
-					{{#link-to "playlist" playlist class="PlaylistTeaser" title="user favorite channels"}}
-						<h3 class="PlaylistTeaser-title">{{playlist.title}}</h3>
+					{{#link-to "channel" channel class="PlaylistTeaser" title="user favorite channels"}}
+						<h3 class="PlaylistTeaser-title">{{channel.title}}</h3>
 					{{/link-to}}
 				</li>
 			{{/each}}

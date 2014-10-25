@@ -1,0 +1,17 @@
+<div class="Section">
+	<div class="Container">
+		<h2>Latest channels</h2>
+	</div>
+	<div class="Container Container--noPadding">
+		<ul class="List">
+		{{#each channel in arrangedContent}}
+			<li>
+				{{#link-to "channel" channel title="latest channels"}}
+					<h3 class="PlaylistTeaser-title">{{channel.title}}</h3>
+					<p class="PlaylistTeaser-description"> {{do-truncate channel.body 140}} </p>
+				{{/link-to}}
+			</li>
+		{{/each}}
+		</ul>
+	</div>
+</div>

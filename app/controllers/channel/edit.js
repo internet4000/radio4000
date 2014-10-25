@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-	needs: ['playlist'],
+	needs: ['channel'],
 	isEditingSlug: false,
 
 	validateSlug: function() {
@@ -12,15 +12,15 @@ export default Ember.ObjectController.extend({
 
 		// make sure the new one isn't empty
 		if (newSlug === '') {
-			alert("Hey, the URL can't be empty. Please enter the URL you'd like your playlist to have. If you have no idea, just enter the title.");
+			alert("Hey, the URL can't be empty. Please enter the URL you'd like your channel to have. If you have no idea, just enter the title.");
 			return false;
 		}
 
-		this.store.find('playlist').then(function(playlists) {
-			playlists.forEach(function(playlist) {
+		this.store.find('channel').then(function(channels) {
+			channels.forEach(function(channel) {
 
-				// If any other playlist has the same slug, abort!
-				if (playlist !== currentPlaylist && playlist.get('slug') === newSlug) {
+				// If any other channel has the same slug, abort!
+				if (channel !== currentPlaylist && channel.get('slug') === newSlug) {
 					alert('Sorry, that URL is already taken. Please choose another one.');
 					canIHazSlug = false;
 				}
@@ -30,7 +30,7 @@ export default Ember.ObjectController.extend({
 				this.set('slug', newSlug);
 				Ember.debug('Setting slug to: ' + newSlug);
 				this.set('isEditingSlug', false);
-				this.get('controllers.playlist').send('save');
+				this.get('controllers.channel').send('save');
 			} else {
 				Ember.debug('Reverting slug to: ' + this.get('savedSlug'));
 				this.set('slug', this.get('savedSlug')); // revert to old slug
@@ -50,7 +50,7 @@ export default Ember.ObjectController.extend({
 		},
 		cancel: function() {
 			// leaving the route also sets isexpanded to false
-			this.transitionToRoute('playlist', this.get('model'));
+			this.transitionToRoute('channel', this.get('model'));
 		}
 	}
 });

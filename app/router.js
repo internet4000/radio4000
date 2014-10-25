@@ -2,7 +2,7 @@ import Ember from 'ember';
 import config from './config/environment';
 
 var Router = Ember.Router.extend({
-  location: config.locationType
+	location: config.locationType
 });
 
 Router.map(function() {
@@ -11,17 +11,16 @@ Router.map(function() {
 	this.route('login');
 	this.route('styleguide');
 
-	// many playlists
-	this.resource('playlists', { path: 'discover'}, function() {
+	// channels
+	this.resource('channels', { path: 'discover'}, function() {
 		// don't delete this anonym function, otherwise 'index' isn't generated
-
 	});
 
-	// new playlist
+	// new channel
 	this.route('new', { path: '/new'} );
 
-	// single playlist
-	this.resource('playlist', { path: '/p/:playlist_id' }, function() {
+	// single channel
+	this.resource('channel', { path: '/c/:channel_id' }, function() {
 		this.route('add');
 		this.route('edit');
 		this.resource('tracks', { path: 'tracks' });

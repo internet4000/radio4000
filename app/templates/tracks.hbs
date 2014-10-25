@@ -7,7 +7,7 @@
 <div class="Container">
 
 	{{#unless model}}
-		{{#if controllers.playlist.canEdit}}
+		{{#if controllers.channel.canEdit}}
 			<div class="Annoncement">
 				<h3>Welcome to your new channel!</h3>
 				<p>To get started, tap 'Add track'</p>
@@ -25,7 +25,7 @@
 		{{#each track in arrangedContent}}
 			<li>{{x-track
 					track=track
-					playlist=controllers.playlist
+					channel=controllers.channel
 					currentTrackComponent=currentTrackComponent
 					onPublishTrack="publishTrack"}}
 			</li>

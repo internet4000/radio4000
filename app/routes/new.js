@@ -13,7 +13,7 @@ export default Ember.Route.extend({
 		// or… delay ember app while auth is checking
 	  	// code here will execute within a RunLoop in about 500ms
   		Ember.run.next(this, function(){
-			if (this.get('session.user.playlists.length')) {
+			if (this.get('session.user.channels.length')) {
 				this.transitionTo('application');
 			}
 		}, 250);

@@ -5,7 +5,7 @@ export default DS.Model.extend({
 	title: DS.attr('string'),
 	body: DS.attr('string'),
 	created: DS.attr('number'),
-	playlist: DS.belongsTo('playlist', { async: true }),
+	channel: DS.belongsTo('channel', { async: true }),
 
 	// Return a YouTube ID from the url
 	ytID: function() {

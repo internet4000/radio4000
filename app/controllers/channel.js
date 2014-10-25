@@ -16,20 +16,20 @@ export default Ember.ObjectController.extend({
 		if (!this.get('session.user')) { return false; }
 		// make sure it runs
 		Ember.run.once(this, 'testFavorite');
-	}.observes('model', 'session.user.favoritePlaylists.[]'),
+	}.observes('model', 'session.user.favoriteChannels.[]'),
 	testFavorite: function() {
 		// Ember.debug('test fav');
 		var self = this;
-		var playlist = this.get('model');
-		var favorites = this.get('session.user.favoritePlaylists');
+		var model = this.get('model');
+		var favorites = this.get('session.user.favoriteChannels');
 		this.set('isFavorite', false);
 		favorites.then(function() {
 			favorites.forEach(function(item) {
 				// Ember.debug('comparing this');
-				// Ember.debug(playlist);
+				// Ember.debug(model);
 				// Ember.debug('with this');
 				// Ember.debug(item);
-				if (playlist === item) {
+				if (model === item) {
 					// Ember.debug('match');
 					self.set('isFavorite', true);
 				} else {
@@ -42,34 +42,34 @@ export default Ember.ObjectController.extend({
 	actions: {
 		claim: function() {
 			var user = this.get('session.user');
-			var playlist = this.get('model');
+			var model = this.get('model');
 
-			user.get('playlists').then(function(playlists) {
-				playlists.addObject(playlist);
+			user.get('channels').then(function(channels) {
+				channels.addObject(model);
 				user.save().then(function() {
-					Ember.debug('Success: playlist removed from user');
+					Ember.debug('Success: channel removed from user');
 				});
 			}.bind(this));
 
-			playlist.set('user', user);
-			playlist.save().then(function() {
-				Ember.debug('Success: playlist removed from user');
+			model.set('user', user);
+			model.save().then(function() {
+				Ember.debug('Success: channel removed from user');
 			});
 		},
 		playLatest: function() {
 			this.transitionToRoute('track', this.get('tracks.lastObject'));
 		},
 		stopEditing: function() {
-			this.transitionToRoute('playlist', this.get('model'));
+			this.transitionToRoute('channel', this.get('model'));
 		},
 		save: function() {
 			this.get('model').save().then(function() {
-				this.transitionToRoute('playlist', this.get('slug'));
+				this.transitionToRoute('channel', this.get('slug'));
 			}.bind(this));
 		},
 		deletePlaylist: function() {
 			// var user = this.get('session.user');
-			var playlist = this.get('model');
+			var model = this.get('model');
 
 			// get all users
 			this.store.find('user').then(function(users) {
@@ -77,42 +77,40 @@ export default Ember.ObjectController.extend({
 				// @todo there must be a better way to do this
 				users.forEach(function(user) {
 					Ember.debug(user);
-					user.get('favoritePlaylists').then(function(favoritePlaylist) {
-						favoritePlaylist.removeObject(playlist);
+					user.get('favoriteChannels').then(function(favoritePlaylist) {
+						favoritePlaylist.removeObject(model);
 						user.save().then(function() {
-							Ember.debug('Success: playlist removed from user');
+							Ember.debug('Success: channel removed from user');
 						});
 					});
 				});
 
-				// delete the playlist itself
-				playlist.destroyRecord().then(function() {
+				// delete the channel itself
+				model.destroyRecord().then(function() {
 					Ember.debug('Playlist deleted');
 					this.transitionToRoute('application');
 				}.bind(this));
 
 			}.bind(this));
 
-			// @todo remove it in all users favoritePlaylists relationships
+			// @todo remove it in all users favoriteChannels relationships
 		},
 		toggleFavorite: function() {
 			if (this.get('model.isSaving')) { return false; }
 
 			var self = this;
-
 			var user = this.get('session.user');
-			var playlist = this.get('model');
+			var model = this.get('model');
 
-
-			user.get('favoritePlaylists').then(function(favorites) {
+			user.get('favoriteChannels').then(function(favorites) {
 				// either add or remove the favorite
 				if (!this.get('isFavorite')) {
 					Ember.debug('adding');
-					favorites.addObject(playlist);
+					favorites.addObject(model);
 				} else {
 					Ember.debug('removing');
 					user.reload(); // hack! without this it won't remove the object
-					favorites.removeObject(playlist);
+					favorites.removeObject(model);
 				}
 
 				user.save();

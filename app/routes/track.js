@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 
-	// 1. don't use the outlet of playlist.hbs, but an outlet in application.hbs
+	// 1. don't use the outlet of channel.hbs, but an outlet in application.hbs
 	renderTemplate: function() {
 
 		// 2. actually, don't render at all

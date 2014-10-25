@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-	needs: ['playlist'],
+	needs: ['channel'],
 	isExpanded: false,
 
 	// Check if the track is valid before saving
@@ -28,13 +28,13 @@ export default Ember.ObjectController.extend({
 		},
 		cancel: function() {
 			// leaving the route also sets isexpanded to false
-			this.transitionToRoute('playlist', this.get('controllers.playlist').get('model'));
+			this.transitionToRoute('channel', this.get('controllers.channel').get('model'));
 		},
 		addTrack: function() {
 			if (!this.isValid()) { return false; }
 
-			// Get the parent playlist (where we want to insert the track)
-			var playlist = this.get('controllers.playlist').get('model');
+			// Get the parent channel (where we want to insert the track)
+			var channel = this.get('controllers.channel').get('model');
 
 			// Create a new child track
 			var track = this.get('store').createRecord('track', {

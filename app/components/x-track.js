@@ -4,7 +4,6 @@ export default Ember.Component.extend({
 	classNames: ['Track'],
 	classNameBindings: ['isEditing:is-editing'],
 
-
 	currentTrackComponent: null,
 	isEditing: function(){
 		return this.get('currentTrackComponent') === this.get('elementId');
@@ -30,13 +29,13 @@ export default Ember.Component.extend({
 		remove: function(track) {
 			Ember.debug('deleting');
 
-			// Delete the track object and the corresponding track object in playlist.tracks
-			var playlist = this.get('playlist.model');
-			playlist.get('tracks').then(function(tracks) {
+			// Delete the track object and the corresponding track object in channel.tracks
+			var channel = this.get('channel.model');
+			channel.get('tracks').then(function(tracks) {
 				Ember.debug(tracks);
 				tracks.removeObject(track);
 				track.destroyRecord();
-				playlist.save();
+				channel.save();
 				Ember.debug('Deleted the track');
 			});
 		}

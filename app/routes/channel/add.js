@@ -3,8 +3,8 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 	// Abort if user isn't allowed to edit
 	beforeModel: function() {
-		var canEdit = this.controllerFor('playlist').get('canEdit');
-		if (!canEdit) { this.transitionTo('playlist', this.modelFor('playlist')); }
+		var canEdit = this.controllerFor('channel').get('canEdit');
+		if (!canEdit) { this.transitionTo('channel', this.modelFor('channel')); }
 	},
 	// Create a new model we can use for the track
 	model: function() {
@@ -15,7 +15,7 @@ export default Ember.Route.extend({
 		controller.set('isExpanded', true);
 	},
 	renderTemplate: function() {
-		this.render({ outlet: 'playlist-body'});
+		this.render({ outlet: 'channel-body'});
 	},
 	deactivate: function() {
 		this.controller.set('isExpanded', false);
@@ -23,23 +23,23 @@ export default Ember.Route.extend({
 	actions: {
 		//  this action is triggered from the add.js controller/template
 		saveTrack: function(track) {
-			var playlist = this.controllerFor('playlist').get('model');
+			var channel = this.controllerFor('channel').get('model');
 
 			track.save().then(function() {
-				// And add it to the tracks property of the playlist
-				Ember.RSVP.Promise.cast(playlist.get('tracks')).then(function(tracks) {
+				// And add it to the tracks property of the channel
+				Ember.RSVP.Promise.cast(channel.get('tracks')).then(function(tracks) {
 					tracks.addObject(track);
-					playlist.save().then(function() {
-						Ember.debug('Success: Track saved to playlist');
+					channel.save().then(function() {
+						Ember.debug('Success: Track saved to channel');
 
 					}, function() {
-						Ember.debug('Error: Track NOT saved to playlist');
+						Ember.debug('Error: Track NOT saved to channel');
 					});
 				});
 			});
 
 			// Go back!
-			this.transitionTo('playlist', playlist);
+			this.transitionTo('channel', channel);
 		}
 	}
 });
