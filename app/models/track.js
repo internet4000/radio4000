@@ -9,8 +9,17 @@ export default DS.Model.extend({
 
 	// Return a YouTube ID from the url
 	ytID: function() {
+		var url = this.get('url');
 		var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-		var match = this.get('url').match(regExp);
+
+		// @todo shouldn't be necessary
+		// models without urls should be checked before creating/saving
+		if (!url) {
+			Ember.debug('no url? ' + url);
+			return false;
+		}
+
+		var match = url.match(regExp);
 		if (match && match[7].length === 11) {
 			return match[7];
 		} else {
