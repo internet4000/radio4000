@@ -1,17 +1,14 @@
 <div class="Manchet">
-	<h1>Your new radio channel<small> — first and last step, give it a name</small></h1>
+	<h1>Name your new radio channel</h1>
 </div>
 
 <div class="Container Section">
 	<form class="Form Form--newPlaylist" {{action "newPlaylist" on="submit"}}>
 		<div class="Form-group">
-			<label>
 			{{input value=title placeholder='For instance "The Pirate Radio"'}}
-			</label>
 		</div>
-
 		<div class="Form-group">
-			<button class="Btn Btn--primary" type="submit" title="create your radio channel">Create your radio channel</button>
+			<button type="submit" class="Btn Btn--primary" title="Create your radio channel">Create your radio channel</button>
 		</div>
 	</form>
 </div>
