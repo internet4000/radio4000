@@ -1,13 +1,17 @@
-<div class="Section Container Container--noPadding">
-	<h2>Latest channels</h2>
-	<ul class="List">
-	{{#each playlist in arrangedContent}}
-		<li>
-			{{#link-to "playlist" playlist}}
-				<h3 class="PlaylistTeaser-title">{{playlist.title}}</h3>
-				<p class="PlaylistTeaser-description"> {{do-truncate playlist.body 140}} </p>
-			{{/link-to}}
-		</li>
-	{{/each}}
-	</ul>
+<div class="Section">
+	<div class="Container">
+		<h2>Latest channels</h2>
+	</div>
+	<div class="Container Container--noPadding">
+		<ul class="List">
+		{{#each playlist in arrangedContent}}
+			<li>
+				{{#link-to "playlist" playlist}}
+					<h3 class="PlaylistTeaser-title">{{playlist.title}}</h3>
+					<p class="PlaylistTeaser-description"> {{do-truncate playlist.body 140}} </p>
+				{{/link-to}}
+			</li>
+		{{/each}}
+		</ul>
+	</div>
 </div>
