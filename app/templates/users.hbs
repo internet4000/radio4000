@@ -1,15 +1,18 @@
-<div class="Section Container Container--noPadding">
-	<h1>List of all users</h1>
-
-	<ul class="List">
-		{{#each}}
-			<li>{{#link-to "user" this}}
-				<span>{{id}}</span>
-				<span>{{name}}</span>
-				<span>{{created}}</span>
-			{{/link-to}}</li>
-		{{/each}}
-	</ul>
-
-	{{outlet}}
+<div class="Manchet">
+	<h1>List of all registered users</h1>
 </div>
+<section class="Section">
+	<div class="Container Container--noPadding">
+		<ul class="List">
+			{{#each}}
+				<li>{{#link-to "user" this}}
+					<span>{{id}}</span>
+					<span>{{name}}</span>
+					<span>{{created}}</span>
+				{{/link-to}}</li>
+			{{/each}}
+		</ul>
+
+		{{outlet}}
+	</div>
+</section>

@@ -6,10 +6,10 @@
 
 	<div class="LoginBox">
 		{{#if session.authed}}
-			<p class="Muted">You are already logged in ({{session.user.id}}). Go to the {{#link-to 'application'}}homepage{{/link-to}}.</p>
+			<p class="Muted">You are already logged in ({{session.user.id}}). Go to the {{#link-to 'application' title="back to dashboard"}}homepage{{/link-to}}.</p>
 		{{else}}
-			<button class="Btn Btn--primary" {{action 'login' 'google'}}>with Google</button>
-			<button class="Btn Btn--primary" {{action 'login' 'facebook'}}>with Facebook</button>
+			<button class="Btn Btn--primary" title="login with Google" {{action 'login' 'google'}}>with Google</button>
+			<button class="Btn Btn--primary" title="login with facebook" {{action 'login' 'facebook'}}>with Facebook</button>
 		{{/if}}
 	</div>
 

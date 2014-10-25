@@ -7,15 +7,15 @@
 			<div class="BtnGroupWrapper Container">
 				<div class="BtnGroup">
 					{{#if canEdit}}
-						{{#link-to 'playlist.add' this class="Btn"}}
+						{{#link-to 'playlist.add' this class="Btn" title="add track"}}
 							{{x-icon i="plus"}} Add track
 						{{/link-to}}
 						{{#if isEditing}}
-							{{#link-to 'playlist' this class="Btn"}}
+							{{#link-to 'playlist' this class="Btn" title="cancel editing channel"}}
 								{{x-icon i="pencil"}} Edit
 							{{/link-to}}
 						{{else}}
-							{{#link-to 'playlist.edit' this class="Btn" title="Edit your playlist"}}
+							{{#link-to 'playlist.edit' this class="Btn" title="edit your channel"}}
 								{{x-icon i="pencil"}} Edit
 							{{/link-to}}
 						{{/if}}
@@ -33,7 +33,9 @@
 	<div class="Playlist-header Section">
 		<div class="Container">
 			<h1 class="Playlist-title">
-				{{#link-to 'playlist' this}}{{title}}{{/link-to}}
+				{{#link-to 'playlist' this title="channel title"}}
+					{{title}}
+				{{/link-to}}
 				<span class="Muted LastUpdate">({{tracks.length}} tracks, {{lastUpdated}})</span>
 			</h1>
 			<p class="Playlist-description">{{body}}</p>
@@ -59,7 +61,7 @@
 			<ul class="List">
 			{{#each playlist in user.favoritePlaylists}}
 				<li>
-					{{#link-to "playlist" playlist class="PlaylistTeaser"}}
+					{{#link-to "playlist" playlist class="PlaylistTeaser" title="user favorite channels"}}
 						<h3 class="PlaylistTeaser-title">{{playlist.title}}</h3>
 					{{/link-to}}
 				</li>

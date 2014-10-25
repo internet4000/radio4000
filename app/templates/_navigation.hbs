@@ -1,26 +1,26 @@
 <div class="Bar">
 	<h1 class="SiteLogo">
-		{{#link-to "index" title="Back to the dashboard"}}
+		{{#link-to "index" title="Back to dashboard"}}
 			<img src="images/radio4000-small-cropped.png" alt="Radio 4000">
 		{{/link-to}}
 	</h1>
 
 	<nav>
 		{{#each session.user.playlists}}
-			{{#link-to 'playlist' this}}My playlist{{/link-to}}
+			{{#link-to 'playlist' this title="Go to my channel" }}My channel{{/link-to}}
 		{{/each}}
 
-		{{#link-to 'playlists'}}Discover{{/link-to}}
+		{{#link-to 'playlists' title="Discover channels" }}Discover{{/link-to}}
 
 		<aside class="ContextualNavigation u-alignRight">
 			{{#if session.authed}}
 				{{#if session.user.playlists}}
-					{{#link-to 'playlist.add' session.user.playlists.firstObject}}{{x-icon i="plus"}} Add track{{/link-to}}
+					{{#link-to 'playlist.add' session.user.playlists.firstObject title="Add a track to my channel" }}{{x-icon i="plus"}} Add track{{/link-to}}
 				{{else}}
-					{{#link-to 'new' class=""}}+ New playlist{{/link-to}}
+					{{#link-to 'new' title="Create your channel" }}+ New channel{{/link-to}}
 				{{/if}}
 			{{else}}
-				{{#link-to 'login'}}Login{{/link-to}}
+				{{#link-to 'login' title="Login to Radio 4000" }}Login{{/link-to}}
 			{{/if}}
 		</aside>
 	</nav>

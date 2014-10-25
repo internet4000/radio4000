@@ -8,13 +8,13 @@
 	{{else}}
 		<section class="Section">
 			<div class="Section-half">
-				{{#link-to 'new' class="Box"}}
+				{{#link-to 'new' class="Box" title="login or register to create your channel"}}
 					<h2 class="Title">Login or Register</h2>
 					<p>to create your channel →</p>
 				{{/link-to}}
 			</div>
 			<div class="Section-half">
-				{{#link-to 'playlists' class="Box"}}
+				{{#link-to 'playlists' class="Box" title="discover music by channels" }}
 					<h2 class="Title">Discover music</h2>
 					<p>Listen now</p>
 				{{/link-to}}
@@ -23,11 +23,11 @@
 	{{/if}}
 
 	<nav class="Nav Section">
-		{{#link-to 'about'}}About{{/link-to}}
+		{{#link-to 'about' title="about radio 4000" }}About{{/link-to}}
 		{{#if session.authed}}
-		 • <a href="#" {{action 'logout' this}}>Log out</a>
+		 • <a href="#" title="logout from radio 4000" {{action 'logout' this}}>Log out</a>
 		{{else}}
-		• {{#link-to 'login'}}Login{{/link-to}}
+		• {{#link-to 'login' title="login radio 4000"}}Login{{/link-to}}
 		{{/if}}
 	</nav>
 

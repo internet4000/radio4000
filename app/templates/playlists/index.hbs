@@ -6,7 +6,7 @@
 		<ul class="List">
 		{{#each playlist in arrangedContent}}
 			<li>
-				{{#link-to "playlist" playlist}}
+				{{#link-to "playlist" playlist title="latest channels"}}
 					<h3 class="PlaylistTeaser-title">{{playlist.title}}</h3>
 					<p class="PlaylistTeaser-description"> {{do-truncate playlist.body 140}} </p>
 				{{/link-to}}

@@ -9,24 +9,24 @@
 		{{#if model}}
 			<div class="Controls-buttons">
 
-				<button class="Btn Btn--text" {{action 'prev' model}} title="Previous">
+				<button class="Btn Btn--text" title="previous track" {{action 'prev' model}} title="Previous">
 					{{x-icon i='previous'}}
 				</button>
 				{{#if isPlaying}}
-					<button class="Btn Btn--text" {{action 'pause'}} title="Pause">
+					<button class="Btn Btn--text" title="pause track" {{action 'pause'}} title="Pause">
 						{{x-icon i='pause'}}
 					</button>
 				{{else}}
-					<button class="Btn Btn--text" {{action 'play'}} title="Play">
+					<button class="Btn Btn--text" title="play track" {{action 'play'}} title="Play">
 						{{x-icon i='play'}}
 					</button>
 				{{/if}}
-				<button class="Btn Btn--text" title="Next" {{action 'next' model}}>
+				<button class="Btn Btn--text" title="next track" {{action 'next' model}}>
 					{{x-icon i='next'}}
 				</button>
 			</div>
 
-			<button class="Btn Btn--text Controls-videoBtn" {{action 'toggle'}} title="Toggle the video">
+			<button class="Btn Btn--text Controls-videoBtn" {{action 'toggle'}} title="toggle fullscreen video">
 				{{#if isMaximized}}
 					{{x-icon i='arrows-compress'}}
 				{{else}}
@@ -34,7 +34,7 @@
 				{{/if}}
 			</button>
 
-			<div class="Controls-title">
+			<div class="Controls-title" title="current track / go to current channel">
 				{{#link-to 'playlist' model.playlist}}
 					{{#if model.title}}
 						{{model.title}}

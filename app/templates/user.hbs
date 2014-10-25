@@ -2,14 +2,14 @@
 		<h2>Your channel</h2>
 		{{#unless session.user.playlists}}
 			<p class="is-inactiveText">You haven't got a channel yet</p>
-			{{#link-to "new" class="BoxIcon BoxIcon--add"}}
+			{{#link-to "new" class="BoxIcon BoxIcon--add" title="create your channel"}}
 				create your channel
 			{{/link-to}}
 		{{/unless}}
 		{{#with session.user.playlists.firstObject}}
 			<ul class="List">
 				<li>
-					{{#link-to "playlist" this}}
+					{{#link-to "playlist" this title="your channel"}}
 						<h3>{{title}}</h3>
 					{{/link-to}}
 				</li>
@@ -24,7 +24,7 @@
 			<ul class="List">
 				{{#each playlist in session.user.favoritePlaylists}}
 					<li>
-						{{#link-to "playlist" playlist}}
+						{{#link-to "playlist" playlist title="your favorite channel"}}
 							<h3>{{playlist.title}}</h3>
 						{{/link-to}}
 					</li>
@@ -32,7 +32,7 @@
 			</ul>
 		{{else}}
 			<p class="is-inactiveText">You haven't saved any favorites yet</p>
-			{{#link-to "playlists" class="BoxIcon BoxIcon--explore"}}
+			{{#link-to "playlists" class="BoxIcon BoxIcon--explore" title="discover channels"}}
 				discover channels
 			{{/link-to}}
 		{{/if}}
