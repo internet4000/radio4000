@@ -25,6 +25,12 @@ label {
 .Muted {
 	@include size-1;
 	color: $gray;
+
+	// inside h1 it needs to be pulled up a bit
+	h1 & {
+		position: relative;
+		top: -0.12em;
+	}
 }
 
 // Headers

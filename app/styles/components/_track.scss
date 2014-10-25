@@ -13,10 +13,11 @@
 	}
 }
 .Track.is-editing {
-	background-color: $mediumgray;
-	margin-bottom: 30px;
+	background-color: #fff;
 	box-shadow: $lightbeautifulblue 0px 0px 10px;
+	margin-bottom: 2rem;
 	.Track-link:hover {
+		background-color: transparent;
 		background-image: none;
 	}
 }
