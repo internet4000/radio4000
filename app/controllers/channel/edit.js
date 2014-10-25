@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
 	needs: ['channel'],
-	isEditingSlug: false,
+	// isEditingSlug: false,
 
 	validateSlug: function() {
 		var canIHazSlug = true;
@@ -29,7 +29,7 @@ export default Ember.ObjectController.extend({
 			if (canIHazSlug) {
 				this.set('slug', newSlug);
 				Ember.debug('Setting slug to: ' + newSlug);
-				this.set('isEditingSlug', false);
+				// this.set('isEditingSlug', false);
 				this.get('controllers.channel').send('save');
 			} else {
 				Ember.debug('Reverting slug to: ' + this.get('savedSlug'));
@@ -40,10 +40,10 @@ export default Ember.ObjectController.extend({
 	},
 
 	actions: {
-		editSlug: function() {
-			this.set('isEditingSlug', true);
-			this.set('savedSlug', this.get('slug')); // save it for later
-		},
+		// editSlug: function() {
+		// 	this.set('isEditingSlug', true);
+		// 	this.set('savedSlug', this.get('slug')); // save it for later
+		// },
 		trySave: function() {
 			// Make sure slug is clean
 			this.validateSlug();

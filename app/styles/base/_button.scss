@@ -62,11 +62,6 @@
 	}
 }
 
-// Danger buttons
-.Btn--danger {
-	color: $red;
-}
-
 // Small buttons
 .Btn--small {
 	font-size: rem(11);
@@ -95,6 +90,14 @@
 		text-decoration: underline;
 		border-color: transparent;
 	}
+}
+
+// Danger buttons
+.Btn--danger {
+	color: $red;
+}
+.Btn.Btn--delete {
+	padding: 0;
 }
 
 // Button that looks like an input field

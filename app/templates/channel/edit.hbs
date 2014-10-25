@@ -10,19 +10,19 @@
 	<div class="Form-group">
 		<label for="image">Channel photo</label>
 		{{file-upload image=image}}
-		{{!-- {{input name="image" value=image placeholder="Image"}} --}}
 	</div>
-	{{#if isEditingSlug}}
-		<div class="Form-group Form--playlistSlug">
-			<label for="slug">Permalink</label>
-			<span class="Permalink">radio4000.com/c/</span>
-			{{input name="slug" value=slug placeholder="Slug"}}
-		</div>
-	{{/if}}
+
+	<div class="Form-group Form--playlistSlug">
+		<label for="slug">Permalink</label>
+		<span class="Permalink">radio4000.com/c/</span>
+		{{input name="slug" value=slug placeholder="channel-slug"}}
+	</div>
 	<div class="Form-group">
+		<button class="Btn Btn--text Btn--danger Btn--delete" {{action 'tryDelete'}}>Delete channel (no way back)</button>
+	</div>
+
+	<div class="Form-group Form--save">
 		<button class="Btn Btn--primary" type="submit">Save</button>
-		<button class="Btn Btn--text" {{action "editSlug"}}>Change Permalink</button>
 		<button class="Btn Btn--text" {{action "cancel"}}>Cancel</button>
-		<button class="Btn Btn--text Btn--danger" {{action 'tryDelete'}}>Delete</button>
 	</div>
 </form>
