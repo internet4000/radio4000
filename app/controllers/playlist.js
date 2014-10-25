@@ -60,10 +60,10 @@ export default Ember.ObjectController.extend({
 			this.transitionToRoute('track', this.get('tracks.lastObject'));
 		},
 		stopEditing: function() {
-			this.transitionTo('playlist', this.get('model'));
+			this.transitionToRoute('playlist', this.get('model'));
 		},
 		save: function() {
-			this.get('model').save().then(function(){
+			this.get('model').save().then(function() {
 				this.transitionToRoute('playlist', this.get('slug'));
 			}.bind(this));
 		},
@@ -73,6 +73,8 @@ export default Ember.ObjectController.extend({
 
 			// get all users
 			this.store.find('user').then(function(users) {
+
+				// @todo there must be a better way to do this
 				users.forEach(function(user) {
 					Ember.debug(user);
 					user.get('favoritePlaylists').then(function(favoritePlaylist) {
@@ -84,9 +86,11 @@ export default Ember.ObjectController.extend({
 				});
 
 				// delete the playlist itself
-				playlist.destroyRecord();
-				this.transitionToRoute('application');
-				Ember.debug('Playlist deleted');
+				playlist.destroyRecord().then(function() {
+					Ember.debug('Playlist deleted');
+					this.transitionToRoute('application');
+				}.bind(this));
+
 			}.bind(this));
 
 			// @todo remove it in all users favoritePlaylists relationships

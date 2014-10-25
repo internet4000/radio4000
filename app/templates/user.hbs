@@ -24,7 +24,7 @@
 			<ul class="List">
 				{{#each playlist in session.user.favoritePlaylists}}
 					<li>
-						{{#link-to "playlist" playlist title="your favorite channel"}}
+						{{#link-to "playlist" playlist title="Your favorite channel"}}
 							<h3>{{playlist.title}}</h3>
 						{{/link-to}}
 					</li>
@@ -32,8 +32,8 @@
 			</ul>
 		{{else}}
 			<p class="is-inactiveText">You haven't saved any favorites yet</p>
-			{{#link-to "playlists" class="BoxIcon BoxIcon--explore" title="discover channels"}}
-				discover channels
+			{{#link-to "playlists" class="BoxIcon BoxIcon--explore" title="Discover channels"}}
+				Discover channels
 			{{/link-to}}
 		{{/if}}
 	</div>
