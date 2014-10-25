@@ -2,17 +2,17 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-	needs: ['channel', 'tracks'],
+
+	// channel gets set by the track route
+	channel: null,
 
 	isMaximized: false, // fullscreen layout
 	isPlaying: false,
 	state: null, // youtube player state
-	// guiState: 1, // gui state
-	// guiStateClass: 'is-off',
 
 	tracks: function() {
-		return this.get('controllers.channel.model.tracks');
-	}.property('controllers.channel.model.tracks.[]'),
+		return this.get('channel.tracks');
+	}.property('channel.tracks.[]'),
 
 	trackIndex: function() {
 		var index = this.get('tracks').indexOf(this.get('model'));
@@ -32,29 +32,6 @@ export default Ember.ObjectController.extend({
 			Ember.debug('playing track: ' + track.get('title'));
 		 	this.transitionToRoute('track', track);
 		},
-		prev: function() {
-			Ember.debug('prev');
-			if (this.get('trackIndex') === (this.get('tracks.length') - 1)) {
-				Ember.debug('at newest track already, playing last');
-				this.send('playTrack', this.get('tracks').objectAt(0));
-				return false;
-			}
-
-			var prevTrack = this.get('tracks').objectAt((this.get('trackIndex') + 1));
-			this.send('playTrack', prevTrack);
-		},
-		next: function() {
-			Ember.debug('next');
-
-			if (this.get('trackIndex') <= 0) {
-				Ember.debug('last or no track, playing first');
-				this.send('playTrack', this.get('tracks.lastObject'));
-				return false;
-			}
-
-			var prevTrack = this.get('tracks').objectAt((this.get('trackIndex') - 1));
-			this.send('playTrack', prevTrack);
-		},
 		play: function() {
 			this.set('isPlaying', true);
 			this.player.playVideo();
@@ -63,19 +40,38 @@ export default Ember.ObjectController.extend({
 			this.set('isPlaying', false);
 			this.player.pauseVideo();
 		},
+		playPrev: function() {
+			if (this.get('trackIndex') === (this.get('tracks.length') - 1)) {
+				Ember.debug('at newest track already, playing last');
+				this.send('playTrack', this.get('tracks').objectAt(0));
+				return false;
+			}
+
+			Ember.debug('playPrev');
+			var prevTrack = this.get('tracks').objectAt((this.get('trackIndex') + 1));
+			this.send('playTrack', prevTrack);
+		},
+		playNext: function() {
+			if (this.get('trackIndex') <= 0) {
+				Ember.debug('last or no track, playing first');
+				this.send('playTrack', this.get('tracks.lastObject'));
+				return false;
+			}
+
+			Ember.debug('playNext');
+			var prevTrack = this.get('tracks').objectAt((this.get('trackIndex') - 1));
+			this.send('playTrack', prevTrack);
+		},
 		toggle: function() {
 			this.toggleProperty('isMaximized');
-			// if (this.get('guiState') === 1) {
-			// 	//first click
-			// 	this.set('guiState', 2);
-			// 	this.set('guiStateClass', 'Player-is-maximized');
-			// } else {
-			// 	//second click
-			// 	this.set('guiState', 1);
-			// 	this.set('guiStateClass', 'Player-is-minimized');
-			// }
 		}
 	},
+
+
+
+	/**
+	 * @todo: put everything below here into another file. a mixin?
+	 */
 
 	createYTPlayer: function() {
 		console.log('create a YT.Player instance');
@@ -91,13 +87,11 @@ export default Ember.ObjectController.extend({
 			self.set('isPlaying', true);
 		});
 	}.observes('embedURL'),
-
 	onPlayerReady: function() {
-		Ember.debug('onPlayerReady');
+		// Ember.debug('onPlayerReady');
 	},
 	onPlayerStateChange: function(event) {
-		Ember.debug('onPlayerStateChange');
-		console.log(event);
+		// Ember.debug('onPlayerStateChange');
 		this.checkPlayerState(event.data);
 	},
 	onPlayerError: function(event) {
@@ -108,13 +102,13 @@ export default Ember.ObjectController.extend({
 				break;
 			case 100:
 				Ember.warn('not found/private');
-				this.send('next');
+				this.send('playNext');
 				break;
 			case 101:
 			case 150:
 				Ember.warn('the same: embed not allowed');
-				this.set('model.description', 'gema fuck');
-				this.send('next');
+				// this.set('model.description', 'gema fuck');
+				this.send('playNext');
 				break;
 			default:
 				break;
@@ -136,25 +130,29 @@ export default Ember.ObjectController.extend({
 
 		if (state === 'onYouTubePlayerAPIReady') {
 			this.set('state', 'apiReady');
+
 		} else if (state === 'onPlayerReady') {
 			this.set('state', 'playerReady');
 			// stir.onPlayerReady();
+
 		} else if (state === -1) {
 			this.set('state', 'unstarted');
+
 		} else if (state === 3) {
 			this.set('state', 'buffering');
+
 		} else if (state === 1) {
 			this.set('state', 'playing');
 			this.set('isPlaying', true);
+
 		} else if (state === 2) {
 			this.set('state', 'paused');
 			this.set('isPlaying', false);
+
 		} else if (state === 0) {
 			this.set('state', 'ended');
 			this.set('isPlaying', false);
-			this.send('next');
-			// go to next??
-			// stir.onEnd();
+			this.send('playNext');
 		}
 
 		console.log(this.get('state'));

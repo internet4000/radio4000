@@ -9,7 +9,7 @@
 		{{#if model}}
 			<div class="Controls-buttons">
 
-				<button class="Btn Btn--text" title="previous track" {{action 'prev' model}} title="Previous">
+				<button class="Btn Btn--text" title="previous track" {{action 'playPrev' model}} title="Previous">
 					{{x-icon i='previous'}}
 				</button>
 				{{#if isPlaying}}
@@ -21,7 +21,7 @@
 						{{x-icon i='play'}}
 					</button>
 				{{/if}}
-				<button class="Btn Btn--text" title="next track" {{action 'next' model}}>
+				<button class="Btn Btn--text" title="next track" {{action 'playNext' model}}>
 					{{x-icon i='next'}}
 				</button>
 			</div>
@@ -37,7 +37,7 @@
 			<div class="Controls-title" title="current track / go to current channel">
 				{{#link-to 'channel' model.channel}}
 					{{#if model.title}}
-						{{model.title}}
+						{{model.title}} ({{channel.title}})
 					{{else}}
 						Untitled
 					{{/if}}
