@@ -50,9 +50,12 @@
 		{{render 'tracks' tracks}}
 	</div>
 
-	<div class="Playlist-favorites Container Container--noPadding">
-		{{#if user.favoritePlaylists}}
+	{{#if user.favoritePlaylists}}
+	<div class="Playlist-favorites">
+		<div class="Container">
 			<h2>Favorites from {{title}}</h2>
+		</div>
+		<div class="Container Container--noPadding">
 			<ul class="List">
 			{{#each playlist in user.favoritePlaylists}}
 				<li>
@@ -62,6 +65,7 @@
 				</li>
 			{{/each}}
 			</ul>
-		{{/if}}
+		</div>
 	</div>
+	{{/if}}
 </article>
