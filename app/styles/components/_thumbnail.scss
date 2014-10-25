@@ -54,6 +54,7 @@
 .Thumbnail-bottom {
 	position: absolute;
 	bottom: 0;
-	left: 1rem;
+	left: 0;
+	right: 0;
 	z-index: 2; // above the button
 }
