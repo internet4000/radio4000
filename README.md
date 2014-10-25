@@ -76,3 +76,8 @@ Contact oskar@rough.dk or try this
 npm cache clear
 npm i
 bower i```
+
+
+## Google API
+
+We're using the YouTube API so you might run into trouble with permissions, domains etc. If so, check here https://console.developers.google.com/project/much-play/
