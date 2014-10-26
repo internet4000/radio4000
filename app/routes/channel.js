@@ -27,16 +27,13 @@ export default Ember.Route.extend({
 			channels.forEach(function(channel) {
 				if (channel.get('slug') === params.channel_id) {
 					Ember.debug('found it!');
+
+					// set the mode where we need it
 					this.controllerFor('channel').set('model', channel);
+					this.controllerFor('channel.edit').set('model', channel);
 
 					// set document title
 					document.title = channel.get('title') + ' - Radio4000';
-
-					// open 'add track' if there are no tracks
-					// var canEdit = this.controllerFor(channel).get('canEdit');
-					// if (canEdit && channel.get('tracks.length') === 0) {
-					// 	this.transitionTo('channel.add', channel);
-					// }
 				}
 			}.bind(this));
 		}.bind(this));

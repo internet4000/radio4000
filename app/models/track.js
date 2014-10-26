@@ -15,7 +15,7 @@ export default DS.Model.extend({
 		// @todo shouldn't be necessary
 		// models without urls should be checked before creating/saving
 		if (!url) {
-			Ember.debug('no url? ' + url);
+			console.log('no url? ' + url);
 			return false;
 		}
 

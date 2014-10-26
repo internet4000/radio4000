@@ -41,12 +41,13 @@
 		display: inline;
 	}
 }
+
+// looks like it's pressed down
 .Btn:active,
 .Btn.is-active,
 .Btn:focus {
-	// looks like it's pressed down
 	outline: none;
-	box-shadow: rgba(0,0,0,0.2)1px 1px 4px inset;
+	box-shadow: hsla(0, 0%, 0%, 0.3) 2px 2px 4px inset;
 }
 
 // Primary, colored button

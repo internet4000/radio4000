@@ -8,14 +8,15 @@ export default Ember.Route.extend({
 		if (!canEdit) { this.transitionTo('channel', this.modelFor('channel')); }
 	},
 
+	// model gets set in the channel route
+
 	// render into the channel template
 	renderTemplate: function() {
 		this.render({ outlet: 'channel-header'});
 	},
 
-	// indicate we're editing (used for changing buttons etc.)
 	setupController: function(controller, model) {
-		this._super(controller, model);
+		// indicate we're editing (used for changing buttons etc.)
 		this.controllerFor('channel').set('isEditing', true);
 	},
 
