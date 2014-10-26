@@ -8,15 +8,11 @@
 }
 .Playlist-header {
 	padding-top: 2rem;
-	padding-bottom: 1rem;
-	margin-bottom: 2.25rem;
-	background-color: $primary-colorLight;
-	// background-image: linear-gradient(to bottom, hsl(0, 100%, 100%), hsla(0, 0%, 0%, 0));
-}
-.Playlist-add {
-	margin-top: -4.2rem; // below buttons (with one line descriptions)
+	// background-color: $superlightgray;//$primary-colorLight;
+	background-image: linear-gradient(to bottom,hsl(264, 50%, 100%),hsla(0, 0%, 0%, 0) 30%);
 }
 .Playlist-title {
+	margin-bottom: 0.5rem;
 	@media (min-width: $layout-m) {
 		@include size-5;
 	}
@@ -29,4 +25,14 @@
 }
 .LastUpdate {
 	@extend %font-regular;
+}
+
+// Form to edit the playlist
+.Playlist-edit {
+	margin-bottom: 1rem;
+}
+
+// Form to add a track
+.Playlist-add {
+	margin-top: -3.2rem; // below buttons (with one line descriptions)
 }

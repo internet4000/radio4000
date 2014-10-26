@@ -7,11 +7,11 @@
 	padding-left: 0;
 
 	li {
-		border-bottom: 1px solid $slightgray;
+		border-bottom: 1px solid hsl(0, 0%, 87%);//$slightgray;
 		line-height: normal;
 	}
 	h3 {
-		@extend %font-regular;
+		// @extend %font-regular;
 	}
 	h3,
 	p {
