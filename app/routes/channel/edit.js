@@ -20,12 +20,6 @@ export default Ember.Route.extend({
 		this.controllerFor('channel').set('isEditing', true);
 	},
 
-	// clear any unsaved changes
-	deactivate: function() {
-		this.controllerFor('channel').get('model').rollback();
-		this.controllerFor('channel').set('isEditing', false);
-	},
-
 	actions: {
 		//  this action is triggered from the add.js controller/template
 		saveTrack: function(track) {
@@ -37,5 +31,11 @@ export default Ember.Route.extend({
 				this.controllerFor('channel').send('deletePlaylist');
 			}
 		}
+	},
+
+	// clear any unsaved changes
+	deactivate: function() {
+		this.controllerFor('channel').get('model').rollback();
+		this.controllerFor('channel').set('isEditing', false);
 	}
 });
