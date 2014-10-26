@@ -69,25 +69,34 @@ export default Ember.ObjectController.extend({
 			}.bind(this));
 		},
 		deletePlaylist: function() {
-			// var user = this.get('session.user');
+			var user = this.get('session.user');
 			var model = this.get('model');
+
+			// @todo there must be a better way to do this
+			user.get('channels').then(function(channels) {
+				channels.removeObject(model);
+				user.save().then(function() {
+					Ember.debug('Success: channel removed from user');
+				});
+			});
 
 			// get all users
 			this.store.find('user').then(function(users) {
 
 				// @todo there must be a better way to do this
-				users.forEach(function(user) {
-					Ember.debug(user);
-					user.get('favoriteChannels').then(function(favoritePlaylist) {
+				users.forEach(function(eachuser) {
+					Ember.debug(eachuser);
+					eachuser.get('favoriteChannels').then(function(favoritePlaylist) {
 						favoritePlaylist.removeObject(model);
-						user.save().then(function() {
-							Ember.debug('Success: channel removed from user');
+						eachuser.save().then(function() {
+							Ember.debug('Success: channel removed as favorite user');
 						});
 					});
 				});
 
 				// delete the channel itself
-				model.destroyRecord().then(function() {
+				model.deleteRecord();
+				model.save().then(function() {
 					Ember.debug('Playlist deleted');
 					this.transitionToRoute('application');
 				}.bind(this));
