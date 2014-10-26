@@ -21,8 +21,8 @@
 			{{!-- <p><button {{action 'claim'}}>claim</button></p> --}}
 
 			<div class="BtnGroupWrapper">
-				<div class="BtnGroup">
-					{{#if canEdit}}
+				{{#if canEdit}}
+					<div class="BtnGroup">
 						{{#link-to 'channel.add' this class="Btn" title="add track"}}
 							{{x-icon i="plus"}} Add track
 						{{/link-to}}
@@ -35,8 +35,8 @@
 								{{x-icon i="pencil"}} Edit
 							{{/link-to}}
 						{{/if}}
-					{{/if}}
 				</div>
+				{{/if}}
 				<div class="BtnGroup">
 					{{#if session.authed}}
 						{{x-favorite value=isFavorite action="toggleFavorite"}}
