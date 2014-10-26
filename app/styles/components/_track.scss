@@ -14,7 +14,7 @@
 }
 .Track.is-editing {
 	background-color: #fff;
-	box-shadow: $lightbeautifulblue 0px 0px 10px;
+	box-shadow: $lightbeautifulblue 0 0 10px;
 	margin-bottom: 2rem;
 	.Track-link:hover {
 		background-color: transparent;
@@ -32,20 +32,21 @@
 		border-left-color: $primary-color;
 		padding-left: rem(10);
 		// playing indicator
-		.Track-title:before {
-			content: ''; // ►
-			display: inline;
-			font-size: 10px;
-			position: absolute;
-			left: 0.5rem;
-			top: 50%;
-			margin-top: -0.5em;
-			text-decoration: none;
-		}
+		// .Track-title:before {
+		// 	content: ''; // ►
+		// 	display: inline;
+		// 	font-size: 10px;
+		// 	position: absolute;
+		// 	left: 0.5rem;
+		// 	top: 50%;
+		// 	margin-top: -0.5em;
+		// 	text-decoration: none;
+		// }
 	}
 }
 .Track-title {
 	@extend %font-regular;
+	@include size-1;
 }
 
 // TRACK EDIT BUTTON

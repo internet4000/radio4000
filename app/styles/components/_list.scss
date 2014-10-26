@@ -5,7 +5,6 @@
 .List {
 	list-style: none;
 	padding-left: 0;
-	// border-top: 1px solid $lightgray;
 
 	li {
 		border-bottom: 1px solid $lightgray;
@@ -24,8 +23,8 @@
 		display: block;
 		padding-top: rem(10);
 		padding-bottom: rem(10);
-		padding-right: 1em;
-		padding-left: 1em;
+		padding-right: 1rem;
+		padding-left: 1rem;
 		&:hover,
 		&:focus {
 			background-color: white;
