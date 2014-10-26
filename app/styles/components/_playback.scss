@@ -46,9 +46,11 @@
 	text-align: center;
 	a {
 		display: block;
-		line-height: 53px;
-		// padding-top: 0.4em; // centered vertically
-		// padding-bottom: 0.2em; // and same height as top bar
+		padding-top: 1rem;
+		@media (min-width: $layout-m) {
+			padding-left: 136px;
+			padding-right: 136px;
+		}
 		&.is-active {
 			text-decoration: none;
 		}
