@@ -4,7 +4,23 @@
 		<button class="Thumbnail-button" title="play this channel" {{action "playLatest"}}>{{x-icon i="play"}}</button>
 
 		<div class="Thumbnail-bottom">
-			<div class="BtnGroupWrapper Container">
+
+		</div>
+	</figure>
+
+	<div class="Playlist-header Section">
+		<div class="Container">
+			<h1 class="Playlist-title">
+				{{#link-to 'channel' this title="channel title"}}
+					{{title}}
+				{{/link-to}}
+				<span class="Muted LastUpdate">({{tracks.length}} tracks, {{lastUpdated}})</span>
+			</h1>
+			<p class="Playlist-description">{{body}}</p>
+
+			{{!-- <p><button {{action 'claim'}}>claim</button></p> --}}
+
+			<div class="BtnGroupWrapper">
 				<div class="BtnGroup">
 					{{#if canEdit}}
 						{{#link-to 'channel.add' this class="Btn" title="add track"}}
@@ -26,23 +42,12 @@
 						{{x-favorite value=isFavorite action="toggleFavorite"}}
 					{{/if}}
 				</div>
-			</div>
-		</div>
-	</figure>
-
-	<div class="Playlist-header Section">
-		<div class="Container">
-			<h1 class="Playlist-title">
-				{{#link-to 'channel' this title="channel title"}}
-					{{title}}
-				{{/link-to}}
-				<span class="Muted LastUpdate">({{tracks.length}} tracks, {{lastUpdated}})</span>
-			</h1>
-			<p class="Playlist-description">{{body}}</p>
-
-			{{!-- <p><button {{action 'claim'}}>claim</button></p> --}}
 
 			{{outlet 'channel-header'}}
+
+			</div>
+
+
 		</div>
 	</div>
 
