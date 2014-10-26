@@ -23,8 +23,8 @@
 		display: block;
 		padding-top: rem(10);
 		padding-bottom: rem(10);
-		padding-right: 1rem;
-		padding-left: 1rem;
+		padding-right: rem(10);
+		padding-left: rem(10);
 		&:hover,
 		&:focus {
 			background-color: white;

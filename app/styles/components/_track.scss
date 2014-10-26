@@ -23,10 +23,12 @@
 }
 
 
-.Track-link {
+.Track-link,
+a.Track-link {
 	border-left: 4px solid transparent;
 	transition: border 250ms $easing5;
 	color: $text-color;
+	padding-right: rem(60);
 
 	&.is-active {
 		border-left-color: $primary-color;
