@@ -1,9 +1,11 @@
+/**
+ * Use this in a controller, or don't
+ */
+
 import Ember from 'ember';
 
 export default Ember.Mixin.create({
-	activate: function() {
-		this._super();
+	scrollUp: function() {
 		window.scrollTo(0,0);
-		console.log('scrolled');
-	}
+	}.observes('model')
 });

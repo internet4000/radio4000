@@ -1,7 +1,6 @@
 import Ember from 'ember';
-import ResetScrollMixin from '../mixins/reset-scroll';
 
-export default Ember.Route.extend(ResetScrollMixin, {
+export default Ember.Route.extend({
 	model: function(params) {
 		return this.store.find('channel').then(function(channels) {
 			return channels.findBy('slug', params.channel_slug);
@@ -14,6 +13,7 @@ export default Ember.Route.extend(ResetScrollMixin, {
 	},
 
 	afterModel: function(model) {
+		window.scrollTo(0,0);
 		document.title = model.get('title') + ' - Radio4000';
 		this.controllerFor('channel.edit').set('model', model);
 	},
