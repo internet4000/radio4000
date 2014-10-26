@@ -19,7 +19,7 @@
 	}
 	&:hover {
 		.Thumbnail-button {
-			background-color: rgba(0, 0, 0, 0.7);
+			background-color: rgba(0, 0, 0, 0.3);
 		}
 	}
 }
@@ -27,6 +27,7 @@
 	// reset button
 	background-image: none;
 	background-color: transparent;
+	transition: background-color 200ms;
 	border: 0;
 	// centered
 	position: absolute;
