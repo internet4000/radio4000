@@ -9,24 +9,26 @@ html {
 
 // a fixed body makes for a better mobile app
 body {
-	position: fixed;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	overflow: hidden;
+	// position: fixed;
+	// top: 0;
+	// right: 0;
+	// bottom: 0;
+	// left: 0;
+	// overflow: hidden;
+	overflow-y: scroll;
 }
 
 // we scroll this instead
 .SiteMain {
 	// for the mobile app effect
-	position: absolute;
-	top: 53px; // height of topbar
-	right: 0;
-	bottom: 0;
-	left: 0;
-	overflow-x: hidden;
-	overflow-y: scroll;
+	// position: absolute;
+	// top: 53px; // height of topbar
+	// right: 0;
+	// bottom: 0;
+	// left: 0;
+	// overflow-x: hidden;
+	// overflow-y: scroll;
+	margin-top: 53px;
 	padding-bottom: 60px;
 }
 
