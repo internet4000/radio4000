@@ -27,18 +27,5 @@
 .MediaBlock-media--right {
 	float: right;
 	margin-right: auto;
-	margin-left: em($u-space);
-}
-
-.VideoBorder {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	border: 5px solid $white;
-
-	// full width for smaller screens
-	@media (max-width: 30em) {
-		width: 100%;
-		height: auto;
-	}
+	margin-left: 1rem;
 }

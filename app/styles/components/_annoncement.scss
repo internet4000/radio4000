@@ -3,10 +3,10 @@
  **/
 
 %leave {
-		animation-name: leave;
-		animation-duration: 10s;
-		animation-iteration-count: 1;
-		animation-fill-mode: forwards;
+	animation-name: leave;
+	animation-duration: 10s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
 }
 
 @keyframes leave {
@@ -16,7 +16,6 @@
 	10%{
 		transform: translateY(0);
 	}
-
 	90% {
 		transform: translateY(0);
 	}
@@ -34,13 +33,13 @@
 	right: 12px;
 	top: 53px;
 	max-width: 400px;
-	border-bottom-left-radius: 3px;
-	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: $border-radius;
+	border-bottom-right-radius: $border-radius;
 	box-shadow: rgba(182, 166, 0, 0.64) 0 0 3px inset;
 	padding-top: 15px;
-	padding-right: 8px;
+	padding-right: 0.5rem;
 	padding-bottom: 0;
-	padding-left: 8px;
+	padding-left: 0.5rem;
 	text-align: center;
 	background-color: #FFFC30;
 }
