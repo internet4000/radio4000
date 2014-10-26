@@ -3,14 +3,17 @@ import Ember from 'ember';
 export default Ember.ObjectController.extend({
 	needs: ['channel'],
 	isExpanded: false,
+	formError: false,
 
 	// Check if the track is valid before saving
 	isValid: function() {
+		this.set('formError', false);
+
 		var isValid = true;
-		// only track url is required!
-		['trackUrl'].forEach(function(field) {
+		['trackUrl', 'trackTitle'].forEach(function(field) {
 			if (this.get(field) === '') {
 				isValid = false;
+				this.set('formError', 'Please enter a valid YouTube URL and a title.');
 			}
 		}, this);
 		return isValid;

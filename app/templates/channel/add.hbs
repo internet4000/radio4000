@@ -2,14 +2,15 @@
 	<div class="Section Container">
 		<form class="Form AddTrack" {{action "addTrack" on='submit'}}>
 			<h3>Add track</h3>
-			{{#if isExpanded}}
-				{{input-url value=trackUrl placeholder="YouTube URL" pasted="autoTitle"}}
-				{{input value=trackTitle placeholder="Title"}}<br>
-				{{textarea value=trackBody placeholder="Optional description"}}<br>
-				<button class="Btn Btn--primary" type='submit' title="add track to your channel">Add track</button> <button class="Btn Btn--text" title="cancel adding track" {{action 'cancel'}}>Cancel</button>
-			{{!-- {{else}}
-				<button class="Btn Btn--textInput" {{action 'expand'}}>Add a track…</button> --}}
+
+			{{#if formError}}
+				<p class="Warning">{{formError}}</p>
 			{{/if}}
+
+			{{input-url value=trackUrl placeholder="YouTube URL" pasted="autoTitle"}}
+			{{input value=trackTitle placeholder="Title"}}<br>
+			{{textarea value=trackBody placeholder="Optional description"}}<br>
+			<button class="Btn Btn--primary" type='submit' title="add track to your channel">Add track</button> <button class="Btn Btn--text" title="cancel adding track" {{action 'cancel'}}>Cancel</button>
 		</form>
 	</div>
 </div>
