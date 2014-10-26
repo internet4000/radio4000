@@ -2,26 +2,28 @@
 	<h1>Radio4000<small> – collect your favorite music, share your channel with your friends and listen to theirs</small></h1>
 </div>
 
-<div class="Container">
 	{{#if session.authed}}
 		{{render 'user' session.user}}
 	{{else}}
-		<section class="Section">
-			<div class="Section-half">
-				{{#link-to 'new' class="Box" title="login or register to create your channel"}}
-					<h2 class="Title">Login or Register</h2>
-					<p>to create your channel →</p>
-				{{/link-to}}
-			</div>
-			<div class="Section-half">
-				{{#link-to 'channels' class="Box" title="discover music by channels"}}
-					<h2 class="Title">Discover music</h2>
-					<p>Listen now</p>
-				{{/link-to}}
-			</div>
-		</section>
+		<div class="Container">
+			<section class="Section">
+				<div class="Section-half">
+					{{#link-to 'new' class="Box" title="login or register to create your channel"}}
+						<h2 class="Title">Login or Register</h2>
+						<p>to create your channel →</p>
+					{{/link-to}}
+				</div>
+				<div class="Section-half">
+					{{#link-to 'channels' class="Box" title="discover music by channels"}}
+						<h2 class="Title">Discover music</h2>
+						<p>Listen now</p>
+					{{/link-to}}
+				</div>
+			</section>
+		</div>
 	{{/if}}
 
+<div class="Container">
 	<nav class="Nav Section">
 		{{#link-to 'about' title="about radio 4000"}}About{{/link-to}}
 		{{#if session.authed}}
@@ -30,5 +32,4 @@
 		• {{#link-to 'login' title="login radio 4000"}}Login{{/link-to}}
 		{{/if}}
 	</nav>
-
 </div>

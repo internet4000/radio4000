@@ -1,40 +1,52 @@
-<section class="Section">
-		<h2>Your channel</h2>
+
+	<section class="Section">
+		<div class="Container">
+			<h2>Your channel</h2>
+		</div>
+
 		{{#unless session.user.channels}}
-			<p class="is-inactiveText">You haven't got a channel yet</p>
-			{{#link-to "new" class="BoxIcon BoxIcon--add" title="Create your channel"}}
-				Create your channel
-			{{/link-to}}
+			<div class="Container">
+				<p class="is-inactiveText">You haven't got a channel yet</p>
+				{{#link-to "new" class="BoxIcon BoxIcon--add" title="Create your channel"}}
+					Create your channel
+				{{/link-to}}
+			</div>
 		{{/unless}}
 		{{#with session.user.channels.firstObject}}
-			<ul class="List">
-				<li>
-					{{#link-to "channel" this title="your channel"}}
-						<h3>{{title}}</h3>
-					{{/link-to}}
-				</li>
-			</ul>
-		{{/with}}
-</section>
-
-<section class="Section">
-	<div>
-		<h2>Your favorite channels</h2>
-		{{#if session.user.favoriteChannels}}
-			<ul class="List">
-				{{#each channel in session.user.favoriteChannels}}
+			<div class="Container Container--noPadding">
+				<ul class="List">
 					<li>
-						{{#link-to "channel" channel title="Your favorite channel"}}
-							<h3>{{channel.title}}</h3>
+						{{#link-to "channel" this title="your channel"}}
+							<h3>{{title}}</h3>
 						{{/link-to}}
 					</li>
-				{{/each}}
-			</ul>
-		{{else}}
-			<p class="is-inactiveText">You haven't saved any favorites yet</p>
-			{{#link-to "channels" class="BoxIcon BoxIcon--explore" title="Discover channels"}}
-				Discover channels
-			{{/link-to}}
-		{{/if}}
-	</div>
-</section>
+				</ul>
+			</div>
+		{{/with}}
+	</section>
+
+	<section class="Section">
+		<div class="Container">
+			<h2>Your favorite channels</h2>
+		</div>
+			{{#if session.user.favoriteChannels}}
+				<div class="Container Container--noPadding">
+					<ul class="List">
+						{{#each channel in session.user.favoriteChannels}}
+							<li>
+								{{#link-to "channel" channel title="Your favorite channel"}}
+									<h3>{{channel.title}}</h3>
+								{{/link-to}}
+							</li>
+						{{/each}}
+					</ul>
+				</div>
+			{{else}}
+				<div class="Container">
+					<p class="is-inactiveText">You haven't saved any favorites yet</p>
+					{{#link-to "channels" class="BoxIcon BoxIcon--explore" title="Discover channels"}}
+						Discover channels
+					{{/link-to}}
+				</div>
+			{{/if}}
+	</section>
