@@ -64,7 +64,12 @@ h4 {
 ul {
 	padding-left: 2em;
 }
-
+pre,
 .Mono {
 	@extend %font-mono;
+}
+.Code {
+	padding: 0.45em;
+	background: $black;
+	color: hsl(118, 100%, 59%);
 }
