@@ -69,41 +69,33 @@ export default Ember.ObjectController.extend({
 			}.bind(this));
 		},
 		deletePlaylist: function() {
+			var self = this;
 			var user = this.get('session.user');
 			var model = this.get('model');
 
-			// @todo there must be a better way to do this
-			user.get('channels').then(function(channels) {
-				channels.removeObject(model);
-				user.save().then(function() {
-					Ember.debug('Success: channel removed from user');
-				});
+			Ember.debug('Playlist deleted');
+
+
+
+			// remove channel from session user
+			user.get('channels').removeObject(model);
+			user.get('favoriteChannels').removeObject(model);
+			user.save().then(function(){
+				// delete the channel itself
+				model.destroyRecord();
 			});
 
-			// get all users
+			// 1. find users that have the channel as favorite
+			// 2. remove it
 			this.store.find('user').then(function(users) {
-
-				// @todo there must be a better way to do this
-				users.forEach(function(eachuser) {
-					Ember.debug(eachuser);
-					eachuser.get('favoriteChannels').then(function(favoritePlaylist) {
+				users.forEach(function(user) {
+					user.get('favoriteChannels').then(function(favoritePlaylist) {
 						favoritePlaylist.removeObject(model);
-						eachuser.save().then(function() {
-							Ember.debug('Success: channel removed as favorite user');
-						});
+						user.save();
+						self.transitionToRoute('/');
 					});
 				});
-
-				// delete the channel itself
-				model.deleteRecord();
-				model.save().then(function() {
-					Ember.debug('Playlist deleted');
-					this.transitionToRoute('application');
-				}.bind(this));
-
-			}.bind(this));
-
-			// @todo remove it in all users favoriteChannels relationships
+			});
 		},
 		toggleFavorite: function() {
 			if (this.get('model.isSaving')) { return false; }
