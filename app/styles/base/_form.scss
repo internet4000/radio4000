@@ -34,19 +34,6 @@ textarea {
 	min-height: 5em;
 }
 
-// Form design should be tigther than inputs alone
-.Form {
-	input[type='text'],
-	input[type='email'],
-	input[type='tel'],
-	input[type='password'],
-	input[type='url'],
-	textarea,
-	.Btn {
-		margin-bottom: 1rem;
-	}
-}
-
 // Label styles
 label {
 	display: block;
@@ -63,6 +50,33 @@ label {
 		@extend %font-regular;
 	}
 }
+
+// Form design should be tigther than inputs alone
+.Form {
+	input[type='text'],
+	input[type='email'],
+	input[type='tel'],
+	input[type='password'],
+	input[type='url'],
+	textarea,
+	.Btn {
+		margin-bottom: 1rem;
+	}
+}
+.Form-group {}
+.Form-group--small {
+	max-width: 14em;
+	input {
+		padding: 0.5em 0.5em 0.3em;
+	}
+}
+
+
+
+
+
+
+
 
 // Shared styles between the forms for adding a track and editing a track
 .AddTrack,
@@ -133,3 +147,5 @@ label {
 .Form--save {
 	margin-top: 20px;
 }
+
+
