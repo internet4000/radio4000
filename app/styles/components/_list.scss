@@ -22,13 +22,11 @@
 	a {
 		display: block;
 		padding: rem(10) 1rem;
+		text-decoration: none;
 		&:hover,
 		&:focus {
 			background-color: white;
 			text-decoration: none;
-			h3 {
-				text-decoration: underline;
-			}
 		}
 	}
 }
