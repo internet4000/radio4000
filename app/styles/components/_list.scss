@@ -7,8 +7,11 @@
 	padding-left: 0;
 
 	li {
-		border-bottom: 1px solid $lightgray;
+		border-bottom: 1px solid $slightgray;
 		line-height: normal;
+	}
+	h3 {
+		@extend %font-regular;
 	}
 	h3,
 	p {
@@ -23,6 +26,9 @@
 		display: block;
 		padding: rem(10) 1rem;
 		text-decoration: none;
+	}
+	a,
+	li {
 		&:hover,
 		&:focus {
 			background-color: white;
