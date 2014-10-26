@@ -1,10 +1,11 @@
 <div class="Section">
 	<div class="Container">
 		<h2>Latest channels</h2>
+		{{input type="text" value=search placeholder="Search channels"}}
 	</div>
 	<div class="Container Container--noPadding">
 		<ul class="List">
-		{{#each channel in arrangedContent}}
+		{{#each channel in channels}}
 			<li>
 				{{#link-to "channel" channel title="latest channels"}}
 					<h3 class="PlaylistTeaser-title">{{channel.title}}</h3>
