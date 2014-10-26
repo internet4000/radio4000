@@ -63,8 +63,9 @@ export default Ember.ObjectController.extend({
 			this.transitionToRoute('channel', this.get('model'));
 		},
 		save: function() {
+			this.transitionToRoute('channel', this.get('slug'));
 			this.get('model').save().then(function() {
-				this.transitionToRoute('channel', this.get('slug'));
+				Ember.debug('Saved channel');
 			}.bind(this));
 		},
 		deletePlaylist: function() {
