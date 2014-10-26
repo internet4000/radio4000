@@ -1,0 +1,6 @@
+{
+  "name": "radio4000",
+  "root": "dist",
+  "clean_urls": false,
+  "error_page": "error.html"
+}
