@@ -73,16 +73,13 @@ export default Ember.ObjectController.extend({
 			var user = this.get('session.user');
 			var model = this.get('model');
 
-			Ember.debug('Playlist deleted');
-
-
-
 			// remove channel from session user
 			user.get('channels').removeObject(model);
 			user.get('favoriteChannels').removeObject(model);
 			user.save().then(function(){
 				// delete the channel itself
 				model.destroyRecord();
+				Ember.debug('Playlist deleted');
 			});
 
 			// 1. find users that have the channel as favorite

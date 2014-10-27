@@ -6,7 +6,7 @@ export default Ember.ObjectController.extend({
 
 	validateSlug: function() {
 		var canIHazSlug = true;
-		var currentPlaylist = this.get('model');
+		var model = this.get('model');
 		// dasherize turns spaces into dashes and makes it lowercase
 		var newSlug = this.get('slug').dasherize();
 
@@ -20,7 +20,7 @@ export default Ember.ObjectController.extend({
 			channels.forEach(function(channel) {
 
 				// If any other channel has the same slug, abort!
-				if (channel !== currentPlaylist && channel.get('slug') === newSlug) {
+				if (channel !== model && channel.get('slug') === newSlug) {
 					alert('Sorry, that URL is already taken. Please choose another one.');
 					canIHazSlug = false;
 				}
@@ -29,13 +29,11 @@ export default Ember.ObjectController.extend({
 			if (canIHazSlug) {
 				this.set('slug', newSlug);
 				Ember.debug('Setting slug to: ' + newSlug);
-				// this.set('isEditingSlug', false);
 				this.get('controllers.channel').send('save');
 			} else {
 				Ember.debug('Reverting slug to: ' + this.get('savedSlug'));
 				this.set('slug', this.get('savedSlug')); // revert to old slug
 			}
-
 		}.bind(this));
 	},
 
