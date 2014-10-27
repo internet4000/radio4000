@@ -22,14 +22,3 @@
 			</section>
 		</div>
 	{{/if}}
-
-<div class="Container">
-	<nav class="Nav Section">
-		{{#link-to 'about' title="about radio 4000"}}About{{/link-to}}
-		{{#if session.authed}}
-		 • <a href="#" title="logout from radio 4000" {{action 'logout' this}}>Log out</a>
-		{{else}}
-		• {{#link-to 'login' title="login radio 4000"}}Login{{/link-to}}
-		{{/if}}
-	</nav>
-</div>

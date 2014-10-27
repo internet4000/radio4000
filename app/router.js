@@ -32,6 +32,7 @@ Router.map(function() {
 	this.resource('users', function(){
 		this.resource('user', { path: '/user/:user_id' });
 	});
+  this.route('forum');
 });
 
 export default Router;
