@@ -14,14 +14,14 @@ then clone the project repository and install it
 
 ```
 cd radio4000
-npm install && bower install
+bundle install && npm install && bower install
 ```
 
 That's it. You're done. If it worked, you should be able to use these commands inside the 'play' folder
 
 ## Watching, building and testing
 
-- `ember server` (or just ember s)
+- `ember s` 
 - `ember test`
 - `ember build` (build will still include logs, warnings etc. for testing)
 - `ember build --environment=production` (hard to debug, only use this when it's ready for deploy)
@@ -48,14 +48,6 @@ Sublime automatically watches all files in a folder. Because ember-cli is so hug
 }
 ```
 
-## Generators
-
-The CLI helps create new files, see http://www.ember-cli.com/#generators-and-blueprints - for instance, you can write `ember generate route helloWorld`
-
-## Updating ember-cli
-
-See https://github.com/stefanpenner/ember-cli/releases
-
 ## Emberfire
 
 We use Firebase as our backend through Ember Data and [Emberfire](https://github.com/firebase/emberfire).
@@ -66,16 +58,6 @@ You can deploy directly to Firebase like this:
 
 1. `npm install -g firebase-cli`
 2.  `firebase deploy`
-
-## Help
-
-Contact oskar@rough.dk or try this
-
-```rm -rf node_modules bower_components tmp
-npm cache clear
-npm i
-bower i```
-
 
 ## Google API
 
