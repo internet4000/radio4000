@@ -13,8 +13,7 @@ Please follow this guide step-by-step to make sure everything works.
 then clone the project repository and install it
 
 ```
-git clone https://github.com/kopfwelt/play.git
-cd play
+cd radio4000
 npm install && bower install
 ```
 
