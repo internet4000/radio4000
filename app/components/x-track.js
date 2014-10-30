@@ -4,6 +4,14 @@ export default Ember.Component.extend({
 	classNames: ['Track'],
 	classNameBindings: ['isEditing:is-editing'],
 
+	// close 'add track' on esc key
+	keyDown: function(event) {
+		if (event.keyCode === 27) {
+			// @todo call the cancel action here instead
+			this.set('currentTrackComponent', null);
+		}
+	},
+
 	currentTrackComponent: null,
 	isEditing: function(){
 		return this.get('currentTrackComponent') === this.get('elementId');
@@ -11,14 +19,10 @@ export default Ember.Component.extend({
 
 	actions: {
 		edit: function() {
-			var current = null;
-			if (!this.get('isEditing')) {
-				current = this.get('elementId');
-			}
-			this.set('currentTrackComponent', current);
+			this.set('currentTrackComponent', this.get('elementId'));
 		},
 		cancel: function() {
-			this.set('isEditing', false);
+			this.set('currentTrackComponent', null);
 		},
 		save: function(track) {
 			this.send('cancel');

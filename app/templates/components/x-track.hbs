@@ -29,7 +29,7 @@
 			</div>
 			<div class="Form-group">
 				<label>Title
-					{{input value=track.title placeholder="Title"}}
+					{{focus-input value=track.title placeholder="Title"}}
 				</label>
 			</div>
 			<div class="Form-group">
@@ -45,7 +45,7 @@
 		</form>
 	{{else}}
 		<div class="Track-controls">
-			<span {{action 'edit'}} title="edit track">(edit)</span>
+			<span {{action 'edit'}} title="edit track">edit</span>
 		</div>
 	{{/if}}
 {{/if}}

@@ -63,6 +63,7 @@ export default Ember.ObjectController.extend({
 			this.transitionToRoute('channel', this.get('model'));
 		},
 		save: function() {
+			// transition to current slug (needed if it changed)
 			this.transitionToRoute('channel', this.get('slug'));
 			this.get('model').save().then(function() {
 				Ember.debug('Saved channel');
