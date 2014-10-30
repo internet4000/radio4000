@@ -43,3 +43,13 @@
 		@include size-1;
 	}
 }
+
+.List--noHover {
+	a,
+	li {
+		&:hover,
+		&:focus {
+			background-color: initial;
+		}
+	}
+}
