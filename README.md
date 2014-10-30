@@ -4,24 +4,28 @@ This is an Ember.js application scaffolded with ember-cli.
 
 ## How to install
 
-Please follow this guide step-by-step to make sure everything works.
+Please follow this guide step-by-step to make sure everything works. It assumes you're on OS X with node installed.
 
 ### Install Radio4000 dependencies
+
+First install Ember CLI, which is used as development server and to build the project.
 
 `npm install -g ember-cli`
 
 then clone the project repository and install it
 
 ```
+git clone https://github.com/hugovieilledent/radio4000.git
 cd radio4000
-bundle install && npm install && bower install
+npm install
+bower install
 ```
 
-That's it. You're done. If it worked, you should be able to use these commands inside the 'play' folder
+Done. To start the server see below.
 
 ## Watching, building and testing
 
-- `ember s` 
+- `ember s`  (short for `ember serve`, opens a dev server at 0.0.0.0:4000)
 - `ember test`
 - `ember build` (build will still include logs, warnings etc. for testing)
 - `ember build --environment=production` (hard to debug, only use this when it's ready for deploy)
@@ -54,10 +58,10 @@ We use Firebase as our backend through Ember Data and [Emberfire](https://github
 
 ## Deploying
 
-You can deploy directly to Firebase like this:
+You can only deploy if your SSH key is set up on the server. If it is, use:
 
-1. `npm install -g firebase-cli`
-2.  `firebase deploy`
+`gulp deploy`
+`gulp deploy-live`
 
 ## Google API
 
