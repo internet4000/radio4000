@@ -2,7 +2,8 @@
 
 module.exports = function(environment) {
   var ENV = {
-    firebaseURL: 'https://jsbin-test.firebaseio.com/',
+    // firebaseURL: 'https://jsbin-test.firebaseio.com/',
+    firebaseURL: 'https://radio4000.firebaseio.com/',
     modulePrefix: 'radio4000',
     environment: environment,
     baseURL: '/',
