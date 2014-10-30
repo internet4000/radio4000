@@ -91,15 +91,16 @@ label {
 .AddTrack,
 .Playlist-edit {
 	background-color: $superlightgray;
-	box-shadow: $mediumgray 0px 0px 15px;
+	box-shadow: $mediumgray 0 0 1rem;
 	margin-top: 1rem; // for the box shadow to express itself
 	.Btn {
 		margin-bottom: 0;
 	}
 }
 .EditTrack {
-	background-color: $lightgray;
+	padding-left: 2rem;
 	padding-bottom: 0;
+	background-color: $lightgray;
 }
 
 .Form-group label input {
@@ -107,12 +108,11 @@ label {
 }
 
 /**
- * form playlist slog
+ * Form playlist slug
  */
-
 .Form--playlistSlug {
-	position: relative;
 	@include clearfix;
+	position: relative;
 	.Permalink {
 		color: $gray;
 		float: left;
@@ -139,13 +139,3 @@ label {
 		}
 	}
 }
-
-/**
- * Form actions
- **/
-
-.Form--save {
-	margin-top: 20px;
-}
-
-

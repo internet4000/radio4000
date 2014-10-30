@@ -19,12 +19,9 @@
 		{{input name="slug" value=slug placeholder="channel-slug"}}
 	</div>
 
-	<div class="Form-group">
-		<button class="Btn Btn--text Btn--danger Btn--delete" {{action 'tryDelete'}}>Delete channel (no way back)</button>
-	</div>
-
 	<div class="Form-group Form--save">
 		<button class="Btn Btn--primary" type="submit">Save</button>
 		<button class="Btn Btn--text" {{action "cancel"}}>Cancel</button>
+		<button class="Btn Btn--text Btn--danger u-alignRight Btn--delete" {{action 'tryDelete'}}>Delete channel (no way back)</button>
 	</div>
 </form>

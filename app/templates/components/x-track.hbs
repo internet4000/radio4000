@@ -15,26 +15,25 @@
 		<p class="Track-description">{{track.body}}</p>
 		{{/if}}
 	{{/unless}}
-
 {{/link-to}}
-
 
 {{#if channel.canEdit}}
 	{{#if isEditing}}
 		<form class="Form EditTrack">
-
-			<div class="Form-group">
-			<label>URL
-				{{input type="url" placeholder="YouTube or Soundcloud URL" value=track.url}}</label>
-			</div>
 			<div class="Form-group">
 				<label>Title
 					{{focus-input value=track.title placeholder="Title"}}
 				</label>
 			</div>
 			<div class="Form-group">
+				<label>URL
+					{{input type="url" placeholder="YouTube or Soundcloud URL" value=track.url}}
+				</label>
+			</div>
+			<div class="Form-group">
 				<label>Description
-				{{textarea value=track.body placeholder="Description"}}</label>
+					{{textarea value=track.body placeholder="Description"}}
+				</label>
 			</div>
 			<div class="Form-group">
 				<button class="Btn Btn--primary" {{action "save" track title="save track"}}>Save track</button>
