@@ -18,7 +18,7 @@
 @import 'base/form';
 @import 'base/typography';
 
-// 3. Layout (site and page layout)
+// 3. Layout (site and minimal page layout)
 @import 'layout/layout';
 @import 'layout/manchet';
 @import 'layout/new';
@@ -26,7 +26,6 @@
 
 // 4. Components (reusable components)
 @import 'utilities/content-states';
-@import 'utilities/box';
 @import 'components/logo';
 @import 'components/loader';
 @import 'components/list';
@@ -37,8 +36,8 @@
 @import 'components/bar';
 @import 'components/thumbnail';
 @import 'components/annoncement';
-@import 'components/boxicon';
-
+@import 'components/box';
+@import 'components/box-icon';
 
 // 5. Navigation
 @import 'navigation/navigation';
