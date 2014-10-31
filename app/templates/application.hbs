@@ -1,6 +1,8 @@
 <div class="Application" {{bind-attr class='isMaximized'}}>
 	<header class="SiteHeader">
-		{{partial 'navigation'}}
+		<div class="Bar">
+			{{partial 'navigation'}}
+		</div>
 	</header>
 
 	<main class="SiteMain">
@@ -12,16 +14,14 @@
 	</aside>
 
 	<footer class="SiteFooter">
-		<div class="Container">
-			<nav class="Nav Section">
-				{{#link-to 'about' title="about radio 4000"}}About{{/link-to}}
-				 • {{#link-to 'forum' title="radio 4000 forum"}}Forum{{/link-to}}
-				{{#if session.authed}}
-				 • <a href="#" title="logout from radio 4000" {{action 'logout' this}}>Log out</a>
-				{{else}}
-				• {{#link-to 'login' title="login radio 4000"}}Login{{/link-to}}
-				{{/if}}
-			</nav>
-		</div>
+		<nav class="Nav Container">
+			{{#link-to 'about' title="about radio 4000"}}About{{/link-to}}
+			 • {{#link-to 'forum' title="radio 4000 forum"}}Forum{{/link-to}}
+			{{#if session.authed}}
+			 • <a href="#" title="logout from radio 4000" {{action 'logout' this}}>Log out</a>
+			{{else}}
+			• {{#link-to 'login' title="login radio 4000"}}Login{{/link-to}}
+			{{/if}}
+		</nav>
 	</footer>
 </div>

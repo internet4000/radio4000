@@ -1,35 +1,33 @@
-<div class="Bar">
-	{{!-- <div class="LogoHtml" title="radio 4000">
-		<span class="LogoHtml-a">r</span>
-		<span class="LogoHtml-b">4</span>
-		<span class="LogoHtml-c">0</span>
-		<span class="LogoHtml-d">0</span>
-		<span class="LogoHtml-e">0</span>
-	</div> --}}
-	<h1 class="SiteLogo">
-		{{#link-to "index" title="Back to dashboard"}}
-			{{!-- <img src="images/radio4000-small-cropped.png" alt="Radio 4000"> --}}
-			<img src="images/logo-radio4000-5.png" alt="Radio 4000">
-		{{/link-to}}
-	</h1>
+{{!-- <div class="LogoHtml" title="radio 4000">
+	<span class="LogoHtml-a">r</span>
+	<span class="LogoHtml-b">4</span>
+	<span class="LogoHtml-c">0</span>
+	<span class="LogoHtml-d">0</span>
+	<span class="LogoHtml-e">0</span>
+</div> --}}
+<h1 class="SiteLogo">
+	{{#link-to "index" title="Back to dashboard"}}
+		{{!-- <img src="images/radio4000-small-cropped.png" alt="Radio 4000"> --}}
+		<img src="images/logo-radio4000-5.png" alt="Radio 4000">
+	{{/link-to}}
+</h1>
 
-	<nav>
-		{{#each session.user.channels}}
-			{{#link-to 'channel' this title="Go to my channel"}}My channel{{/link-to}}
-		{{/each}}
+<nav>
+	{{#each session.user.channels}}
+		{{#link-to 'channel' this title="Go to my channel"}}My channel{{/link-to}}
+	{{/each}}
 
-		{{#link-to 'channels' title="Discover channels"}}Discover{{/link-to}}
+	{{#link-to 'channels' title="Discover channels"}}Discover{{/link-to}}
 
-		<aside class="ContextualNavigation u-alignRight">
-			{{#if session.authed}}
-				{{#if session.user.channels}}
-					{{#link-to 'channel.add' session.user.channels.firstObject title="Add a track to my channel"}}{{x-icon i="plus"}} Add track{{/link-to}}
-				{{else}}
-					{{#link-to 'new' title="Create your channel"}}+ New channel{{/link-to}}
-				{{/if}}
+	<aside class="ContextualNavigation u-alignRight">
+		{{#if session.authed}}
+			{{#if session.user.channels}}
+				{{#link-to 'channel.add' session.user.channels.firstObject title="Add a track to my channel"}}{{x-icon i="plus"}} Add track{{/link-to}}
 			{{else}}
-				{{#link-to 'login' title="Login to Radio 4000"}}Login{{/link-to}}
+				{{#link-to 'new' title="Create your channel"}}+ New channel{{/link-to}}
 			{{/if}}
-		</aside>
-	</nav>
-</div>
+		{{else}}
+			{{#link-to 'login' title="Login to Radio 4000"}}Login{{/link-to}}
+		{{/if}}
+	</aside>
+</nav>
