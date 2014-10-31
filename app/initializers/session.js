@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import ENV from '../config/environment';
+// https://gist.github.com/jkarsrud/941d8eb7a58e92953a55
 
 var ref = new window.Firebase(ENV.firebaseURL);
 
@@ -7,7 +8,6 @@ export default {
 	name: 'session',
 	after: 'store',
 	initialize: function(container, app) {
-
 		var session = Ember.Object.extend({
 			authed: false,
 
