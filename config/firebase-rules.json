@@ -1,0 +1,27 @@
+// THIS FILE IS ONLY A BACKUP
+// Check the real rules online at https://radio4000.firebaseio.com/# or whatever the current DB is
+
+{
+  "rules": {
+
+    // default rules are false if not specified
+    // setting these to true would make ALL CHILD PATHS readable/writable
+    ".read": false,
+    ".write": "auth != null",
+
+    "channels": {
+      ".read": true,
+    },
+
+    "tracks": {
+      ".read": true,
+    },
+
+    "users": {
+      // this limits to your own user, but we need to be able to read other users as well
+      //"$user": {
+      //  ".read": "$user == auth.uid"
+      //}
+    }
+  }
+}
