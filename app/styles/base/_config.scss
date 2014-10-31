@@ -46,45 +46,44 @@ $font-25: 25px;
  * Colors
  */
 
-$yellow:         hsl(60, 100%, 70%);
-$beautifulblue:  hsl(255, 95%, 39%);
-$lightbeautifulblue:  rgba(211, 198, 228, 0.80);
-$blue:           hsl(210, 75%, 50%);
-$lightblue:      lighten($blue, 10%);
-$darkblue:		  hsl(230, 50%, 23%);
-$verydarkblue:	  hsl(255, 65%, 19%);
-$red:            hsl(0, 75%, 50%);
-$green:          hsl(125, 82%, 35%);
-$darkgreen: 	  hsl(110, 85%, 25%);
-$coolcolor: 	  hsl(173, 32%, 45%);
-$teal: 			  hsl(187, 85%, 35%);
-$darkteal: 		  hsl(187, 75%, 25%);
+$red:					hsl(0, 75%, 50%);
+$yellow:				hsl(60, 100%, 70%);
+$blue:				hsl(255, 95%, 39%);
+$purple:				hsl(260, 90%, 42%);
+$lighterblue: 		hsla(266, 36%, 84%, 0.8);
+$darkblue:			hsl(230, 50%, 23%);
+$verydarkblue:		hsl(255, 65%, 19%);
+$green:				hsl(125, 82%, 35%);
+// $darkgreen:			hsl(110, 85%, 25%);
+// $coolcolor:			hsl(173, 32%, 45%);
+// $teal:				hsl(187, 85%, 35%);
+// $darkteal:			hsl(187, 75%, 25%);
+$sand:				hsl(46, 5%, 92%);
 // Grayscale
-$bleach:         hsl(72, 100%, 97%);
-$black:          hsl(0, 0%, 10%);
-$darkgray:		  hsl(0, 0%, 30%);
-$gray:           hsl(0, 0%, 50%);
-$mediumgray:     hsl(0, 0%, 70%);
-$lightgray:      hsl(0, 0%, 91%);
-$slightgray:     hsl(0, 0%, 95%);
-$superlightgray: hsl(0, 0%, 98%);
+$bleach:				hsl(72, 100%, 97%);
+$black:				hsl(0, 0%, 10%);
+$darkgray:			hsl(0, 0%, 30%);
+$gray:				hsl(0, 0%, 50%);
+$mediumgray:		hsl(0, 0%, 70%);
+$lightgray:			hsl(0, 0%, 91%);
+$slightgray:		hsl(0, 0%, 95%);
+$superlightgray:	hsl(0, 0%, 98%);
 
 // Color definitions
-$primary-color: $beautifulblue;
-$primary-colorLight: #F6F6FD;
+$primary-color: $purple;
 $secondary-color: rgba(82, 136, 156, 0.36);
-$bg-color: hsl(46, 5%, 92%);//#E9E9ED;
+$bg-color: $sand;
 $text-color: $black;
 $text-color-invert: $superlightgray;
-
 $link-color: $red;
+
 
 /**
  * Easing and animations
  */
 
 // Good looking easings for animation
-$easing:  cubic-bezier(0.165,  0.84,  0.4,   1); // fast, good looking
+$easing:  cubic-bezier(0.165, 0.84, 0.4, 1); // fast, good looking
 // $easing2: cubic-bezier(0.145,  1.05,  0.4,   1.1); // + spring physics
 // $easing4: cubic-bezier(0.770,  0,     0.175,  1); // ??
 $easing5: cubic-bezier(.3, 0, 0, 1.3); // nice for things that pop up (dropdown etc)
