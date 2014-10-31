@@ -2,16 +2,22 @@
 
 /**
  * Truncate text helper
- *
- * use in .hbs file
- * {{do-truncate "abcdefghijklmnopqrstuvwxyz" 10}}
- *
- * if helpers have two names, like do-truncate instead of just truncate, ember-cli can load them automatically everywhere (performance!)
- **/
+
+	Use in a .hbs file like this:
+
+	{{do-truncate "abcdefghijklmnopqrstuvwxyz" 10}}
+
+	or like this
+
+	{{do-truncate someVariable 140}}
+
+	(btw, the helper only has a dash in its name so ember-cli loads it everywhere automatically)
+*/
 
 import Ember from 'ember';
 
 export default Ember.Handlebars.makeBoundHelper(function(str, len) {
+	if (!str) { return ''; }
 	if (str.length > len && str.length > 0) {
 		var new_str = str + ' ';
 		new_str = str.substr (0, len);

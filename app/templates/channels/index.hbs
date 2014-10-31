@@ -9,9 +9,9 @@
 		<ul class="List">
 		{{#each channel in channels}}
 			<li>
-				{{#link-to "channel" channel title="latest channels"}}
+				{{#link-to "channel" channel class="PlaylistTeaser"}}
 					<h3 class="PlaylistTeaser-title">{{channel.title}}</h3>
-					<p class="PlaylistTeaser-description"> {{do-truncate channel.body 140}}</p>
+					<p class="PlaylistTeaser-description">{{do-truncate channel.body 140}}</p>
 				{{/link-to}}
 			</li>
 		{{/each}}
