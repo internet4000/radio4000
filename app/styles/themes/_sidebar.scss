@@ -1,0 +1,79 @@
+/**
+ * Theme with a sidebar instead of a top panel
+ * oskar is experimenting
+ */
+
+$bar-sidebar-width: 9rem;
+
+@media (min-width: $layout-s) {
+
+	// make room for the bar
+	body {
+		padding-left: $bar-sidebar-width;// + 1rem;
+	}
+	// overwrites to avoid git conflicts
+	// @tobe refactored if we like it
+	.SiteMain {
+		margin-top: 0;
+		padding-bottom: 0;
+	}
+	.Manchet {
+		padding-top: 1.5rem;
+		margin-bottom: 0;
+		text-align: left;
+		h1,
+		p {
+			margin-left: 0;
+		}
+	}
+	.LoginBox {
+		text-align: left;
+	}
+
+
+	// bar to the left
+	.Bar {
+		// background-color: darken($bg-color, 5%);//$red;
+		// background-image: linear-gradient(to bottom, $red, $blue);
+		background-image: none;
+		background-color: $purple;
+		width: $bar-sidebar-width;
+		height: 100%;
+
+		.SiteLogo {
+			float: none;
+			a {
+				padding-top: 1.5rem;
+				width: 90%;
+			}
+		}
+		nav {
+			padding-left: 0;
+			padding-right: 0;
+			a {
+				// position: relative;
+				display: block;
+				padding: 0.6rem 0.5rem 0.6rem 1rem;
+			}
+			a.is-active {
+				// &:after {
+				// 	left: 100%;
+				// 	top: 50%;
+				// 	border: solid transparent;
+				// 	content: " ";
+				// 	height: 0;
+				// 	width: 0;
+				// 	position: absolute;
+				// 	pointer-events: none;
+				// 	border-color: blue;
+				// 	border-left-color: $bg-color;
+				// 	border-width: 1rem;
+				// 	margin-top: -1rem;
+				// }
+			}
+		}
+		.u-alignRight {
+			float: none;
+		}
+	}
+}
