@@ -3,9 +3,10 @@
  * oskar is experimenting
  */
 
-$bar-sidebar-width: 9rem;
+$bar-sidebar-width: 10rem;
+$main-gutter-left: 1rem;
 
-@media (min-width: $layout-s) {
+@media (min-width: $layout-m) {
 
 	// make room for the bar
 	body {
@@ -18,7 +19,7 @@ $bar-sidebar-width: 9rem;
 		padding-bottom: 0;
 	}
 	.Manchet {
-		padding-top: 1.5rem;
+		padding-top: 2.5rem;
 		margin-bottom: 0;
 		text-align: left;
 		h1,
@@ -28,6 +29,12 @@ $bar-sidebar-width: 9rem;
 	}
 	.LoginBox {
 		text-align: left;
+	}
+	.Form--newPlaylist {
+		margin-left: 0;
+		.Btn {
+			float: none;
+		}
 	}
 
 
@@ -53,9 +60,12 @@ $bar-sidebar-width: 9rem;
 			a {
 				// position: relative;
 				display: block;
-				padding: 0.6rem 0.5rem 0.6rem 1rem;
+				padding: 0.6rem 0.5rem 0.5rem 1rem;
 			}
 			a.is-active {
+				text-decoration: none;
+				background-color: $bg-color;
+				color: $text-color;
 				// &:after {
 				// 	left: 100%;
 				// 	top: 50%;
