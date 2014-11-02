@@ -1,50 +1,46 @@
-	<section class="Section">
-		<div class="Container">
-			<h2>Your channel</h2>
-		</div>
+<section class="Section">
+	<div class="Container">
+		<h2>Your channel</h2>
+	</div>
 
-		{{#if session.userChannel}}
-			<div class="Container Container--noPadding">
-				<ul class="List">
-					<li>
-						{{#link-to "channel" session.userChannel title="Your channel"}}
-							<h3>{{session.userChannel.title}}</h3>
-						{{/link-to}}
-					</li>
-				</ul>
-			</div>
-		{{else}}
-			<div class="Container">
-				<p class="is-inactiveText">You haven't got a channel yet</p>
-				{{#link-to "new" class="BoxIcon BoxIcon--add" title="Create your channel"}}
-					Create your channel
-				{{/link-to}}
-			</div>
-		{{/if}}
-	</section>
-
-	<section class="Section">
+	{{#if session.userChannel}}
+		<ul class="List">
+			<li>{{#link-to "channel" session.userChannel title="Your channel"}}
+				<h3>{{session.userChannel.title}}</h3>
+			{{/link-to}}</li>
+		</ul>
+	{{else}}
 		<div class="Container">
-			<h2>Your favorite channels</h2>
-		</div>
-		{{#if session.user.favoriteChannels}}
-		<div class="Container Container--noPadding">
-			<ul class="List">
-				{{#each channel in session.user.favoriteChannels}}
-					<li>
-						{{#link-to "channel" channel title="Your favorite channel"}}
-							<h3>{{channel.title}}</h3>
-						{{/link-to}}
-					</li>
-				{{/each}}
-			</ul>
-		</div>
-		{{else}}
-		<div class="Container">
-			<p class="is-inactiveText">You haven't saved any favorites yet</p>
-			{{#link-to "channels" class="BoxIcon BoxIcon--explore" title="Discover channels"}}
-				Discover channels
+			<p class="is-inactiveText">You haven't got a channel yet.</p>
+			{{#link-to "new" class="BoxIcon BoxIcon--add" title="Create your channel"}}
+				Create your channel
 			{{/link-to}}
 		</div>
-		{{/if}}
-	</section>
+	{{/if}}
+</section>
+
+<section class="Section">
+	<div class="Container">
+		<h2>Your favorite channels</h2>
+	</div>
+	{{#if session.user.favoriteChannels}}
+	<div class="Container Container--noPadding">
+		<ul class="List">
+			{{#each channel in session.user.favoriteChannels}}
+				<li>
+					{{#link-to "channel" channel title="Your favorite channel"}}
+						<h3>{{channel.title}}</h3>
+					{{/link-to}}
+				</li>
+			{{/each}}
+		</ul>
+	</div>
+	{{else}}
+	<div class="Container">
+		<p class="is-inactiveText">&nbsp;</p>
+		{{#link-to "channels" class="BoxIcon BoxIcon--explore" title="Discover channels"}}
+			Discover channels
+		{{/link-to}}
+	</div>
+	{{/if}}
+</section>

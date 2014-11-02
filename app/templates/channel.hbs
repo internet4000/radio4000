@@ -1,14 +1,14 @@
 <article class="Playlist Playlist--detail">
 
 	<figure class="Thumbnail" {{bind-attr style=imageBackground}}>
-		<button class="Thumbnail-button" title="play this channel" {{action "playLatest"}}>{{x-icon i="play"}}</button>
+		<button class="Thumbnail-button" title="Play this channel" {{action "playLatest"}}>{{x-icon i="play"}}</button>
 		<div class="Thumbnail-bottom"></div>
 	</figure>
 
 	<div class="Playlist-header Section">
 		<div class="Container">
 			<h1 class="Playlist-title">
-				{{#link-to 'channel' this title="channel title"}}
+				{{#link-to 'channel' this title="Channel title"}}
 					{{title}}
 				{{/link-to}}
 				<span class="Muted LastUpdate">({{tracks.length}} tracks, {{lastUpdated}})</span>
@@ -18,15 +18,15 @@
 			<div class="BtnGroupWrapper">
 				{{#if canEdit}}
 					<div class="BtnGroup">
-						{{#link-to 'channel.add' this class="Btn" title="add track"}}
+						{{#link-to 'channel.add' this class="Btn" title="Add track"}}
 							{{x-icon i="plus"}} Add track
 						{{/link-to}}
 						{{#if isEditing}}
-							{{#link-to 'channel' this class="Btn" title="cancel editing channel"}}
+							{{#link-to 'channel' this class="Btn" title="Cancel editing channel"}}
 								{{x-icon i="pencil"}} Edit
 							{{/link-to}}
 						{{else}}
-							{{#link-to 'channel.edit' this class="Btn" title="edit your channel"}}
+							{{#link-to 'channel.edit' this class="Btn" title="Edit your channel"}}
 								{{x-icon i="pencil"}} Edit
 							{{/link-to}}
 						{{/if}}
@@ -53,13 +53,13 @@
 	{{#if user.favoriteChannels}}
 	<div class="Playlist-favorites">
 		<div class="Container">
-			<h2>Favorites from {{title}}</h2>
+			<h2>Favorite channels from {{title}}</h2>
 		</div>
 		<div class="Container Container--noPadding">
 			<ul class="List">
 			{{#each channel in user.favoriteChannels}}
 				<li>
-					{{#link-to "channel" channel class="PlaylistTeaser" title="user favorite channels"}}
+					{{#link-to "channel" channel class="PlaylistTeaser" title="Go to this channel"}}
 						<h3 class="PlaylistTeaser-title">{{channel.title}}</h3>
 						<p class="PlaylistTeaser-description"> {{do-truncate channel.body 140}}</p>
 					{{/link-to}}
