@@ -12,16 +12,16 @@
 </h1>
 
 <nav>
-	{{#each session.user.channels}}
-		{{#link-to 'channel' this title="Go to my channel"}}My channel{{/link-to}}
-	{{/each}}
+	{{!-- {{#each session.user.channels}} --}}
+	{{#link-to 'channel' session.userChannel title="Go to my channel"}}My channel{{/link-to}}
+	{{!-- {{/each}} --}}
 
 	{{#link-to 'channels' title="Discover channels"}}Discover{{/link-to}}
 
 	<aside class="ContextualNavigation u-alignRight">
 		{{#if session.authed}}
-			{{#if session.user.channels}}
-				{{#link-to 'channel.add' session.user.channels.firstObject title="Add a track to my channel"}}{{x-icon i="plus"}} Add track{{/link-to}}
+			{{#if session.userChannel}}
+				{{#link-to 'channel.add' session.userChannel title="Add a track to my channel"}}{{x-icon i="plus"}} Add track{{/link-to}}
 			{{else}}
 				{{#link-to 'new' title="Create your channel"}}+ New channel{{/link-to}}
 			{{/if}}

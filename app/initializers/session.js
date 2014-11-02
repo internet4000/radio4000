@@ -68,7 +68,7 @@ export default {
 
 			afterAuthentication: function(userId) {
 				var self = this;
-				Ember.debug('Checking if user exists');
+				// Ember.debug('Checking if user exists');
 
 				// See if the user exists using native firebase because of emberfire problem with "id already in use"
 				ref.child('users').child(userId).once('value', function(snapshot) {
@@ -78,7 +78,7 @@ export default {
 
 				// Do the right thing depending on whether the user exists
 				function userExistsCallback(userId, exists) {
-					Ember.debug('user exists: ' + exists);
+					// Ember.debug('user exists: ' + exists);
 					if (exists) {
 						self.existingUser(userId);
 					} else {
@@ -89,15 +89,16 @@ export default {
 
 			existingUser: function(userId) {
 				this.store.find('user', userId).then(function(user) {
-					Ember.debug('Found an existing user, setting it…');
-					this.set('user', user);
+					// Ember.debug('Found an existing user, setting it…');
+					this.afterUser(user);
 				}.bind(this));
 			},
 
 			createUser: function(userId) {
 				var self = this;
-				Ember.debug('No existing user, creating a user');
+				// Ember.debug('No existing user, creating a user');
 
+				// create a user with the authdata firebase provides
 				var newUser = this.get('store').createRecord('user', {
 					id: userId, // use uid as id
 					provider: this.get('authData.provider'),
@@ -106,11 +107,17 @@ export default {
 					created: new Date().getTime()
 				}).save().then(function(user){
 					Ember.debug('created a new user');
-					self.set('user', user);
-				}, function() {
-					Ember.debug('could not save user');
-					self.set('user', null);
+					self.afterUser(user);
 				});
+			},
+
+			// This is the last step in a successful authentication
+			afterUser: function(user) {
+				this.set('user', user);
+				// also set the resolved channels
+				user.get('channels').then(function(channels) {
+					this.set('userChannel', channels.get('firstObject'));
+				}.bind(this));
 			}
 		});
 
