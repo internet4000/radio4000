@@ -39,6 +39,11 @@ export default Ember.ObjectController.extend({
 			// Get the parent channel (where we want to insert the track)
 			var channel = this.get('controllers.channel').get('model');
 
+			var title = this.get('trackTitle');
+			if (Ember.isEmpty(title)) {
+				this.set('trackTitle', 'Untitled');
+			}
+
 			// Create a new child track
 			var track = this.get('model').setProperties({
 				url: this.get('trackUrl'),
