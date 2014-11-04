@@ -1,9 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-	title: '', // define the title used for the input
-	slug: '', // define the title used for the input
-
 	// Makes sure the form fields aren't empty
 	isValid: function() {
 		var isValid = true;
@@ -62,28 +59,34 @@ export default Ember.ObjectController.extend({
 			this.validateSlug();
 		},
 		savePlaylist: function() {
+			var model = this.get('model');
 			var user = this.get('session.user');
 			var self = this;
-			var newPlaylist = this.store.createRecord('channel', {
+
+			model.setProperties({
 				title: this.get('title'),
 				slug: this.get('slug'),
 				body: this.get('body'),
 				created: new Date().getTime(),
 				uid: user.id,
 				user: user
-			}).save().then(function(savedPlaylist) {
+			});
 
-				// Redirect to the new channel
-				self.transitionToRoute('channel.add', savedPlaylist);
+			model.save().then(function() {
+				Ember.debug('channel saved');
+			});
 
-				// Save the new channel on the user
-				user.get('channels').then(function(userPlaylists) {
-					userPlaylists.addObject(savedPlaylist);
-					user.save().then(function() {
-						Ember.debug('channel saved on user');
-					});
+			// Save the new channel on the user
+			user.get('channels').then(function(channls) {
+				channls.addObject(model);
+				user.save().then(function() {
+					Ember.debug('channel added to user');
 				});
 			});
+
+
+			// Redirect to the new channel
+			this.transitionToRoute('channel.add', model);
 		}
 	}
 });

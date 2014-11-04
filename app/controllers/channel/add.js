@@ -40,7 +40,7 @@ export default Ember.ObjectController.extend({
 			var channel = this.get('controllers.channel').get('model');
 
 			// Create a new child track
-			var track = this.get('store').createRecord('track', {
+			var track = this.get('model').setProperties({
 				url: this.get('trackUrl'),
 				title: this.get('trackTitle'),
 				body: this.get('trackBody'),

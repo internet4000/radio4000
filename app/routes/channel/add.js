@@ -8,7 +8,7 @@ export default Ember.Route.extend({
 	},
 	// Create a new model we can use for the track
 	model: function() {
-		return Ember.Object.create();
+		return this.store.createRecord('track');
 	},
 	setupController: function(controller, model) {
 		controller.set('model', model);
@@ -23,7 +23,7 @@ export default Ember.Route.extend({
 	actions: {
 		//  this action is triggered from the add.js controller/template
 		saveTrack: function(track) {
-			var channel = this.controllerFor('channel').get('model');
+			var channel = this.modelFor('channel');
 
 			track.save().then(function() {
 				// And add it to the tracks property of the channel
@@ -31,9 +31,6 @@ export default Ember.Route.extend({
 					tracks.addObject(track);
 					channel.save().then(function() {
 						Ember.debug('Success: Track saved to channel');
-
-					}, function() {
-						Ember.debug('Error: Track NOT saved to channel');
 					});
 				});
 			});

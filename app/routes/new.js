@@ -1,6 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+	model: function() {
+		return this.store.createRecord('channel');
+	},
 	beforeModel: function(model, transition) {
 
 		if (!this.get('session.authed')) {
