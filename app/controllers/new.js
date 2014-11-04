@@ -23,7 +23,7 @@ export default Ember.ObjectController.extend({
 	},
 
 	validateSlug: function() {
-		var self = this;
+		var _this = this;
 		var canIHazSlug = true;
 		// dasherize turns spaces into dashes and makes it lowercase
 		var slug = this.get('slug');
@@ -38,7 +38,7 @@ export default Ember.ObjectController.extend({
 
 			if (!canIHazSlug) {
 				Ember.debug('Slug is in use');
-				this.set('slug', slug + '-' + self.makeid()); // revert to old slug
+				this.set('slug', slug + '-' + _this.makeid()); // revert to old slug
 			}
 
 			this.send('savePlaylist');
@@ -47,7 +47,7 @@ export default Ember.ObjectController.extend({
 
 	actions: {
 		newPlaylist: function() {
-			var self = this;
+			var _this = this;
 			var user = this.get('session.user');
 
 			// validation
@@ -61,7 +61,7 @@ export default Ember.ObjectController.extend({
 		savePlaylist: function() {
 			var model = this.get('model');
 			var user = this.get('session.user');
-			var self = this;
+			var _this = this;
 
 			model.setProperties({
 				title: this.get('title'),

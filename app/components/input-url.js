@@ -7,7 +7,7 @@ export default Ember.Component.extend({
 	}.on('didInsertElement'),
 
 	capturePaste: function() {
-		var self = this;
+		var _this = this;
 		var input = this.$('input');
 
 		input.on('paste', function() {
@@ -17,7 +17,7 @@ export default Ember.Component.extend({
 			setTimeout(function() {
 
 				// send the action to whereever the component is placed
-				self.sendAction('pasted', input.val());
+				_this.sendAction('pasted', input.val());
 			}, 100);
 		});
 	}.on('didInsertElement')

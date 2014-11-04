@@ -19,7 +19,7 @@ export default Ember.ObjectController.extend({
 	}.observes('model', 'session.user.favoriteChannels.[]'),
 	testFavorite: function() {
 		// Ember.debug('test fav');
-		var self = this;
+		var _this = this;
 		var model = this.get('model');
 		var favorites = this.get('session.user.favoriteChannels');
 		this.set('isFavorite', false);
@@ -31,7 +31,7 @@ export default Ember.ObjectController.extend({
 				// Ember.debug(item);
 				if (model === item) {
 					// Ember.debug('match');
-					self.set('isFavorite', true);
+					_this.set('isFavorite', true);
 				} else {
 					// Ember.debug('no match');
 				}
@@ -54,7 +54,7 @@ export default Ember.ObjectController.extend({
 			}.bind(this));
 		},
 		deletePlaylist: function() {
-			var self = this;
+			var _this = this;
 			var user = this.get('session.user');
 			var model = this.get('model');
 
@@ -62,7 +62,7 @@ export default Ember.ObjectController.extend({
 			user.get('channels').removeObject(model);
 			user.get('favoriteChannels').removeObject(model);
 			user.save().then(function(){
-				// delete the channel itself
+				// delete the channel it_this
 				model.destroyRecord();
 				Ember.debug('Playlist deleted');
 			});
@@ -74,7 +74,7 @@ export default Ember.ObjectController.extend({
 					user.get('favoriteChannels').then(function(favoritePlaylist) {
 						favoritePlaylist.removeObject(model);
 						user.save();
-						self.transitionToRoute('/');
+						_this.transitionToRoute('/');
 					});
 				});
 			});
@@ -82,7 +82,7 @@ export default Ember.ObjectController.extend({
 		toggleFavorite: function() {
 			if (this.get('model.isSaving')) { return false; }
 
-			var self = this;
+			var _this = this;
 			var user = this.get('session.user');
 			var model = this.get('model');
 

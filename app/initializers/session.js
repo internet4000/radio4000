@@ -35,14 +35,14 @@ export default {
 				this.loginWithPopup(provider);
 			},
 			loginWithPopup: function(provider) {
-				var self = this;
+				var _this = this;
 				Ember.debug('logging in with popup');
 				ref.authWithOAuthPopup(provider, function(error, authData) {
 					if (error) {
 						if (error.code === "TRANSPORT_UNAVAILABLE") {
 							// fall-back to browser redirects, and pick up the session
 							// automatically when we come back to the origin page
-							self.loginWithRedirect(provider);
+							_this.loginWithRedirect(provider);
 						}
 					} else if (authData) {
 						// Ember.debug('Logged in with popup');
@@ -52,7 +52,7 @@ export default {
 			},
 			// firebase login with redirect (needed for chrome on iOS)
 			loginWithRedirect: function(provider) {
-				var self = this;
+				var _this = this;
 				Ember.debug('logging in with redirect');
 				ref.authWithOAuthRedirect(provider, function(error, authData) {
 					if (error) {
@@ -67,7 +67,7 @@ export default {
 			},
 
 			afterAuthentication: function(userId) {
-				var self = this;
+				var _this = this;
 				// Ember.debug('Checking if user exists');
 
 				// See if the user exists using native firebase because of emberfire problem with "id already in use"
@@ -80,9 +80,9 @@ export default {
 				function userExistsCallback(userId, exists) {
 					// Ember.debug('user exists: ' + exists);
 					if (exists) {
-						self.existingUser(userId);
+						_this.existingUser(userId);
 					} else {
-						self.createUser(userId);
+						_this.createUser(userId);
 					}
 				}
 			},
@@ -95,7 +95,7 @@ export default {
 			},
 
 			createUser: function(userId) {
-				var self = this;
+				var _this = this;
 				// Ember.debug('No existing user, creating a user');
 
 				// create a user with the authdata firebase provides
@@ -107,7 +107,7 @@ export default {
 					created: new Date().getTime()
 				}).save().then(function(user){
 					Ember.debug('created a new user');
-					self.afterUser(user);
+					_this.afterUser(user);
 				});
 			},
 

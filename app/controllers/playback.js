@@ -75,16 +75,16 @@ export default Ember.ObjectController.extend({
 
 	createYTPlayer: function() {
 		console.log('create a YT.Player instance');
-		var self = this;
+		var _this = this;
 		Ember.run.schedule('afterRender', function() {
-			self.player = new YT.Player('player', {
+			_this.player = new YT.Player('player', {
 				events: {
-					'onReady': self.onPlayerReady,
-					'onStateChange': self.onPlayerStateChange.bind(self),
-					'onError': self.onPlayerError.bind(self)
+					'onReady': _this.onPlayerReady,
+					'onStateChange': _this.onPlayerStateChange.bind(_this),
+					'onError': _this.onPlayerError.bind(_this)
 				}
 			});
-			self.set('isPlaying', true);
+			_this.set('isPlaying', true);
 		});
 	}.observes('embedURL'),
 	onPlayerReady: function() {
