@@ -1,3 +1,4 @@
+/*global md5*/
 import Ember from 'ember';
 import ENV from '../config/environment';
 // https://gist.github.com/jkarsrud/941d8eb7a58e92953a55
@@ -96,11 +97,14 @@ export default {
 
 			createUser: function(userId) {
 				var _this = this;
+
+				var hashedId = md5(userId);
+
 				// Ember.debug('No existing user, creating a user');
 
 				// create a user with the authdata firebase provides
 				var newUser = this.get('store').createRecord('user', {
-					id: userId, // use uid as id
+					id: hashedId,
 					provider: this.get('authData.provider'),
 					name: this.get('authData.facebook.displayName') || this.get('authData.google.displayName'),
 					email: this.get('authData.facebook.email') || this.get('authData.google.email'),
