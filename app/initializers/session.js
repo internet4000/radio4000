@@ -97,13 +97,10 @@ export default {
 
 			createUser: function(userId) {
 				var _this = this;
-
 				var hashedId = md5(userId);
 
-				// Ember.debug('No existing user, creating a user');
-
 				// create a user with the authdata firebase provides
-				var newUser = this.get('store').createRecord('user', {
+				this.get('store').createRecord('user', {
 					id: hashedId,
 					provider: this.get('authData.provider'),
 					name: this.get('authData.facebook.displayName') || this.get('authData.google.displayName'),
