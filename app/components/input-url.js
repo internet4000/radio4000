@@ -8,7 +8,7 @@ export default Ember.Component.extend({
 	// use jQuery's 'paste' event
 	capturePaste: function() {
 		var _this = this;
-		var $input = this.$('$input');
+		var $input = this.$('input');
 
 		$input.on('paste', function() {
 
