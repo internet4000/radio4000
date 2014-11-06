@@ -13,10 +13,10 @@
     "ember-qunit": "0.1.8",
     "ember-qunit-notifications": "0.0.4",
     "qunit": "~1.15.0",
-    "emberfire": "~1.2.7",
+    "emberfire": "~1.3.0",
     "moment": "~2.8.3",
     "normalize-opentype.css": "~0.2.0",
-    "firebase": "~1.1.x",
+    "firebase": "~2.0.x",
     "js-md5": "~1.1.0"
   },
   "resolutions": {
