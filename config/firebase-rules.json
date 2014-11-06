@@ -7,21 +7,35 @@
     // default rules are false if not specified
     // setting these to true would make ALL CHILD PATHS readable/writable
     ".read": false,
-    ".write": "auth != null",
+
+    //".write": false,
+    ".write": "auth != null", // temporary write access everywhere
 
     "channels": {
       ".read": true,
+      //".write": "auth != null",
+      "$channel": {
+        ".write": "data.child('user').val() == auth.uid"
+      }
     },
 
     "tracks": {
-      ".read": true,
+      ".read": true
     },
 
     "users": {
-      // this limits to your own user, but we need to be able to read other users as well
-      //"$user": {
-      //  ".read": "$user == auth.uid"
-      //}
+      ".read": true,
+      "$user": {
+        // you need to be logged in and you can't modify existing data
+        ".write": "auth != null && data.exists()"
+      }
+    },
+
+    "userPrivates": {
+      "$userPrivate": {
+        // you need to be logged in and you can't modify existing data
+        ".write": "auth != null && data.exists()"
+      }
     }
   }
 }
