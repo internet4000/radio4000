@@ -1,18 +1,15 @@
 <div class="Manchet">
-	<h1>Login or Register</h1>
+	<h1>Create an account or sign in below</h1>
 </div>
 
 <div class="Container Section">
-
 	<div class="LoginBox">
-		<button class="Btn Btn--primary" title="Login with Google" {{action 'login' 'google'}}>with Google</button>
-		<button class="Btn Btn--primary" title="Login with Facebook" {{action 'login' 'facebook'}}>with Facebook</button>
-		{{!-- {{#if session.authed}}
-			<p class="Muted">You are already logged in ({{session.user.id}}). Go to the {{#link-to 'application' title="back to dashboard"}}homepage{{/link-to}}.</p>
-		{{else}}
-		{{/if}} --}}
+		<p>
+			<button class="Btn" title="Login with Google" {{action 'login' 'google'}}>
+				{{x-icon i="google-plus"}} Sign in with Google</button>
+			<button class="Btn" title="Login with Facebook" {{action 'login' 'facebook'}}>
+				{{x-icon i="facebook"}} Sign in with Facebook</button>
+		</p>
+		<p class="Muted">Sign up with e-mail is coming soon.</p>
 	</div>
-
 </div>
-
-{{outlet}}

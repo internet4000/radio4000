@@ -64,4 +64,15 @@ a.Box,
 
 .LoginBox {
 	text-align: center;
+
+	.Btn {
+		display: block;
+		min-width: 14em;
+		margin: 0 auto em(5);
+		text-align: left;
+		font-size: 1em;
+		svg {
+			margin-right: em(5);
+		}
+	}
 }

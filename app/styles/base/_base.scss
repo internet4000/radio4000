@@ -60,9 +60,17 @@ hr {
 	// vertical center inside buttons
 	.Btn & {
 		float: left;
-
 		position: relative;
 		top: 0.15em;
 		left: -0.2em;
 	}
+}
+.icon-facebook {
+	color: #3b5998;
+}
+.icon-google-plus {
+	color: #dd4b39;
+}
+.icon-twtter {
+	color: #00aced;
 }
