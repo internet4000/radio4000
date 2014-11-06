@@ -12,13 +12,11 @@
 		<label for="image">Channel photo</label>
 		{{file-upload image=image}}
 	</div>
-
 	<div class="Form-group Form--playlistSlug">
 		<label for="slug">Permalink</label>
 		<span class="Permalink">radio4000.com/c/</span>
 		{{input name="slug" value=slug placeholder="channel-slug"}}
 	</div>
-
 	<div class="Form-group Form--save">
 		<button class="Btn Btn--primary" type="submit">Save</button>
 		<button class="Btn Btn--text" {{action "cancel"}}>Cancel</button>

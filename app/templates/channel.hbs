@@ -2,7 +2,13 @@
 
 	<figure class="Thumbnail" {{bind-attr style=imageBackground}}>
 		<button class="Thumbnail-button" title="Play this channel" {{action "playLatest"}}>{{x-icon i="play"}}</button>
-		<div class="Thumbnail-bottom"></div>
+
+		{{#if canEdit}}
+			{{partial 'channel/editPhoto'}}
+		{{/if}}
+
+		<div class="Thumbnail-bottom">
+		</div>
 	</figure>
 
 	<div class="Playlist-header Section">

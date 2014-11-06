@@ -8,6 +8,8 @@ export default Ember.ObjectController.extend({
 		return this.get('user.id') === this.get('session.user.id');
 	}.property('user.id', 'session.user.id'),
 
+	isEditingPhoto: false,
+
 	// Favorites
 	// because it's a hasMany relationship, this needs a bit of extra work to really work
 	isFavorite: false,
@@ -40,6 +42,17 @@ export default Ember.ObjectController.extend({
 	},
 
 	actions: {
+		editPhoto: function() {
+			this.toggleProperty('isEditingPhoto');
+		},
+		cancelEditPhoto: function() {
+			this.send('editPhoto');
+			this.get('model').rollback();
+		},
+		savePhoto: function() {
+			this.send('editPhoto');
+			this.get('model').save();
+		},
 		playLatest: function() {
 			this.transitionToRoute('track', this.get('tracks.lastObject'));
 		},

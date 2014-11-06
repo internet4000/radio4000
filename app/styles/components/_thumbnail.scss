@@ -24,9 +24,9 @@
 
 	transition: -webkit-filter 400ms, -moz-filter 400ms, filter 400ms;
 	&:hover {
-		-moz-filter: brightness(1.1);
-		-webkit-filter: brightness(1.1);
-		filter: brightness(1.1);
+		// -moz-filter: brightness(1.1);
+		// -webkit-filter: brightness(1.1);
+		// filter: brightness(1.1);
 		// .Thumbnail-button {
 		// 	background-color: rgba(0, 0, 0, 0.3);
 		// }
@@ -57,10 +57,27 @@
 		transition: 300ms background ease-in-out, 200ms border-color ease-in-out, ;
 	}
 }
-.Thumbnail-bottom {
+
+.Thumbnail-edit {
 	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	z-index: 2; // above the button
+	z-index: 2; // above thumbnail button
+	height: 100%;
+	margin-bottom: 0;
+	padding: 1rem 1rem 0;
+	transition: background-color 250ms;
+	&.is-editingPhoto {
+		background-color: rgba(#fff, 0.85);
+	}
+
+	// only show edit photo button on hover
+	> .Btn {
+		visibility: hidden;
+		opacity: 0;
+		transition: opacity 250ms;
+	}
+}
+// show edit button on hover
+.Thumbnail:hover .Thumbnail-edit > .Btn {
+	opacity: 1;
+	visibility: visible;
 }

@@ -1,0 +1,15 @@
+<div class="Thumbnail-edit" {{bind-attr class="isEditingPhoto:is-editingPhoto"}}>
+	{{#if isEditingPhoto}}
+		<form class="Form" {{action "savePhoto" on="submit"}}>
+			<div class="Form-group">
+				{{file-upload image=image}}
+			</div>
+			<div class="Form-group">
+				<button class="Btn Btn--primary" type="submit">Save</button>
+				<button class="Btn Btn--text" {{action "cancelEditPhoto"}}>Cancel</button>
+			</div>
+		</form>
+	{{else}}
+		<button class="Btn" {{action 'editPhoto'}}>Change photo</button>
+	{{/if}}
+</div>
