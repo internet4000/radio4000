@@ -28,7 +28,8 @@ export default {
 					Ember.debug('Logged in');
 					this.set('authed', true);
 					this.set('authData', authData);
-					this.afterAuthentication(authData.uid);
+					var hashedId = md5(authData.uid);
+					this.afterAuthentication(hashedId);
 				}.bind(this));
 			},
 			login: function(provider) {
@@ -72,6 +73,7 @@ export default {
 				// Ember.debug('Checking if user exists');
 
 				// See if the user exists using native firebase because of emberfire problem with "id already in use"
+				console.log(userId);
 				ref.child('users').child(userId).once('value', function(snapshot) {
 					var exists = (snapshot.val() !== null);
 					userExistsCallback(userId, exists);
@@ -79,7 +81,7 @@ export default {
 
 				// Do the right thing depending on whether the user exists
 				function userExistsCallback(userId, exists) {
-					// Ember.debug('user exists: ' + exists);
+					Ember.debug('user exists: ' + exists);
 					if (exists) {
 						_this.existingUser(userId);
 					} else {
@@ -90,18 +92,17 @@ export default {
 
 			existingUser: function(userId) {
 				this.store.find('user', userId).then(function(user) {
-					// Ember.debug('Found an existing user, setting it…');
+					Ember.debug('Found an existing user, setting it…');
 					this.afterUser(user);
 				}.bind(this));
 			},
 
 			createUser: function(userId) {
 				var _this = this;
-				var hashedId = md5(userId);
 
 				// create a user with the authdata firebase provides
 				this.get('store').createRecord('user', {
-					id: hashedId,
+					id: userId,
 					provider: this.get('authData.provider'),
 					name: this.get('authData.facebook.displayName') || this.get('authData.google.displayName'),
 					email: this.get('authData.facebook.email') || this.get('authData.google.email'),
