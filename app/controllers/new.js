@@ -41,12 +41,12 @@ export default Ember.ObjectController.extend({
 				this.set('slug', slug + '-' + _this.makeid()); // revert to old slug
 			}
 
-			this.send('savePlaylist');
+			this.send('saveChannel');
 		}.bind(this));
 	},
 
 	actions: {
-		newPlaylist: function() {
+		newChannel: function() {
 			var _this = this;
 			var user = this.get('session.user');
 
@@ -58,7 +58,7 @@ export default Ember.ObjectController.extend({
 			this.set('slug', this.get('title').dasherize());
 			this.validateSlug();
 		},
-		savePlaylist: function() {
+		saveChannel: function() {
 			var model = this.get('model');
 			var user = this.get('session.user');
 			var _this = this;

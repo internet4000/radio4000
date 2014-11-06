@@ -28,7 +28,7 @@ export default Ember.Route.extend({
 		tryDelete: function() {
 			var confirmed = confirm('Are you sure? Your channel will be gone forever - you will lose all your tracks');
 			if (confirmed) {
-				this.controllerFor('channel').send('deletePlaylist');
+				this.controllerFor('channel').send('deleteChannel');
 			}
 		}
 	},

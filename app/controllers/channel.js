@@ -53,10 +53,10 @@ export default Ember.ObjectController.extend({
 				Ember.debug('Saved channel');
 			}.bind(this));
 		},
-		deletePlaylist: function() {
+		deleteChannel: function() {
 			var _this = this;
-			var user = this.get('session.user');
 			var model = this.get('model');
+			var user = this.get('session.user');
 
 			// remove channel from session user
 			user.get('channels').removeObject(model);
@@ -64,15 +64,15 @@ export default Ember.ObjectController.extend({
 			user.save().then(function(){
 				// delete the channel it_this
 				model.destroyRecord();
-				Ember.debug('Playlist deleted');
+				Ember.debug('Channel deleted');
 			});
 
 			// 1. find users that have the channel as favorite
 			// 2. remove it
 			this.store.find('user').then(function(users) {
 				users.forEach(function(user) {
-					user.get('favoriteChannels').then(function(favoritePlaylist) {
-						favoritePlaylist.removeObject(model);
+					user.get('favoriteChannels').then(function(favoriteChannels) {
+						favoriteChannels.removeObject(model);
 						user.save();
 						_this.transitionToRoute('/');
 					});
@@ -86,15 +86,15 @@ export default Ember.ObjectController.extend({
 			var user = this.get('session.user');
 			var model = this.get('model');
 
-			user.get('favoriteChannels').then(function(favorites) {
+			user.get('favoriteChannels').then(function(favoriteChannels) {
 				// either add or remove the favorite
 				if (!this.get('isFavorite')) {
 					Ember.debug('adding');
-					favorites.addObject(model);
+					favoriteChannels.addObject(model);
 				} else {
 					Ember.debug('removing');
 					user.reload(); // hack! without this it won't remove the object
-					favorites.removeObject(model);
+					favoriteChannels.removeObject(model);
 				}
 
 				user.save();
