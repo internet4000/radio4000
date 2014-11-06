@@ -6,9 +6,6 @@ export default DS.Model.extend({
 	created: DS.attr('number'),
 	body: DS.attr('string'),
 
-	// temporary but it works
-	uid: DS.attr('string'),
-
 	image: DS.attr('string'),
 	imageBackground: function() {
 		if (this.get('image')) {

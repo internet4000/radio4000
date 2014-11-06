@@ -68,7 +68,6 @@ export default Ember.ObjectController.extend({
 				slug: this.get('slug'),
 				body: this.get('body'),
 				created: new Date().getTime(),
-				uid: user.id,
 				user: user
 			});
 
