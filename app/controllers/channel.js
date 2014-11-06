@@ -8,7 +8,7 @@ export default Ember.ObjectController.extend({
 		return this.get('user.id') === this.get('session.user.id');
 	}.property('user.id', 'session.user.id'),
 
-	isEditingPhoto: false,
+	isEditingImage: false,
 
 	// Favorites
 	// because it's a hasMany relationship, this needs a bit of extra work to really work
@@ -42,15 +42,15 @@ export default Ember.ObjectController.extend({
 	},
 
 	actions: {
-		editPhoto: function() {
-			this.toggleProperty('isEditingPhoto');
+		editImage: function() {
+			this.toggleProperty('isEditingImage');
 		},
-		cancelEditPhoto: function() {
-			this.send('editPhoto');
+		cancelEditImage: function() {
+			this.send('editImage');
 			this.get('model').rollback();
 		},
-		savePhoto: function() {
-			this.send('editPhoto');
+		saveImage: function() {
+			this.send('editImage');
 			this.get('model').save();
 		},
 		playLatest: function() {
