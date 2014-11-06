@@ -8,9 +8,10 @@ var Router = Ember.Router.extend({
 Router.map(function() {
 	// pages
 	this.route('about');
+	this.route('forum');
+	this.route('log');
 	this.route('login');
 	this.route('styleguide');
-	this.route('log');
 
 	// new channel
 	this.route('new', { path: '/new'} );
@@ -32,7 +33,6 @@ Router.map(function() {
 	this.resource('users', function(){
 		this.resource('user', { path: '/user/:user_id' });
 	});
-  this.route('forum');
 });
 
 export default Router;

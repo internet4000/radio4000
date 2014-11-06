@@ -5,6 +5,11 @@ export default DS.Model.extend({
 	email: DS.attr('string'),
 	provider: DS.attr('string'),
 	created: DS.attr('number'),
-	channels: DS.hasMany('channel', { async: true }),
-	favoriteChannels: DS.hasMany('channel', { inverse: null, async: true })
+	channels: DS.hasMany('channel', {
+		async: true
+	}),
+	favoriteChannels: DS.hasMany('channel', {
+		inverse: null,
+		async: true
+	})
 });

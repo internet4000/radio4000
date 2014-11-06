@@ -21,5 +21,8 @@ export default DS.Model.extend({
 
 	// relationships
 	tracks: DS.hasMany('track', { async: true }),
-	user: DS.belongsTo('user', { inverse: 'channels', async: true })
+	user: DS.belongsTo('user', {
+		inverse: 'channels',
+		async: true
+	})
 });
