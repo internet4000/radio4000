@@ -12,10 +12,8 @@ body {
 	-webkit-overflow-scrolling: touch;
 }
 
-// we scroll this instead
 .SiteMain {
 	margin-top: $barHeight;
-	padding-bottom: 60px;
 }
 
 .SiteAside {
@@ -25,5 +23,5 @@ body {
 }
 
 .SiteFooter {
-	margin-bottom: rem(60);
+	margin-bottom: $barHeight + 10px;
 }

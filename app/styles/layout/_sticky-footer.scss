@@ -1,0 +1,25 @@
+// Sticks the footer to the bottom of the viewport
+// or further down if there's more content.
+// Also avoids ugly jumps when the site is loading
+
+
+// Full height containers
+html,
+body,
+#Radio4000,
+#Radio4000 > div {
+	height: 100%;
+	min-height: 100%;
+}
+
+// App container
+.BreadAndCheese {
+	display: flex; // use flexbox
+	flex-direction: column; // stack vertically
+	min-height: 100%; // full height
+}
+
+// Set main container to take up all available space after header and footer have had theirs
+.SiteMain {
+	flex: 1 0 auto;
+}
