@@ -2,13 +2,11 @@
  * Wrapper for the embed video/audio player
  */
 
-$controlHeight: 53px;
-
 .Player {
 	position: fixed;
 	z-index: 1;
 	right: 0;
-	bottom: $controlHeight;
+	bottom: $barHeight;
 	width: 100px;
 	height: 100px;
 	max-width: 100%;
@@ -31,7 +29,7 @@ $controlHeight: 53px;
 
 	// maximized state
 	&.is-maximized {
-		top: $controlHeight;
+		top: $barHeight;
 		left: 0;
 		width: auto;
 		height: auto;

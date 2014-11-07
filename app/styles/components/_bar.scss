@@ -7,7 +7,7 @@
 	left: 0;
 	width: 100%;
 	z-index: 3;
-	min-height: 53px;
+	min-height: $barHeight;
 
 	border-bottom: 1px solid hsla(0, 0%, 0%, 0.2);
 	color: $text-color-invert;

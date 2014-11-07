@@ -7,29 +7,14 @@ html {
 	color: $text-color;
 }
 
-// a fixed body makes for a better mobile app
 body {
-	// position: fixed;
-	// top: 0;
-	// right: 0;
-	// bottom: 0;
-	// left: 0;
-	// overflow: hidden;
 	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
 }
 
 // we scroll this instead
 .SiteMain {
-	// for the mobile app effect
-	// position: absolute;
-	// top: 53px; // height of topbar
-	// right: 0;
-	// bottom: 0;
-	// left: 0;
-	// overflow-x: hidden;
-	// overflow-y: scroll;
-	margin-top: 53px;
+	margin-top: $barHeight;
 	padding-bottom: 60px;
 }
 

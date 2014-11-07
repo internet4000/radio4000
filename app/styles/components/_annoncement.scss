@@ -31,7 +31,7 @@
 	transition: 200ms transform $easing;
 	transform: translateY(0);
 	right: 12px;
-	top: 53px;
+	top: $barHeight;
 	max-width: 400px;
 	border-bottom-left-radius: $border-radius;
 	border-bottom-right-radius: $border-radius;
