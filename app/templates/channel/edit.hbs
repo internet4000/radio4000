@@ -2,11 +2,11 @@
 	<h3>Edit your channel</h3>
 	<div class="Form-group">
 		<label for="title">Title</label>
-		{{focus-input name="title" value=title placeholder="Title" autofocus='autofocus'}}
+		{{focus-input id="title" value=title placeholder="Title" autofocus='autofocus'}}
 	</div>
 	<div class="Form-group">
 		<label for="body">Description</label>
-		{{textarea name="body" value=body placeholder="Description"}}
+		{{textarea id="body" value=body placeholder="Description"}}
 	</div>
 	<div class="Form-group">
 		<label for="image">Channel image</label>
@@ -15,7 +15,7 @@
 	<div class="Form-group Form--playlistSlug">
 		<label for="slug">Permalink</label>
 		<span class="Permalink">radio4000.com/c/</span>
-		{{input name="slug" value=slug placeholder="channel-slug"}}
+		{{input id="slug" value=slug placeholder="channel-slug"}}
 	</div>
 	<div class="Form-group Form--save">
 		<button class="Btn Btn--primary" type="submit">Save</button>
