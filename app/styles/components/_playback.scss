@@ -42,34 +42,62 @@
 	}
 
 }
-.Controls-title {
-	text-align: center;
-	a {
-		display: block;
-		padding-top: 1rem;
+
+.Controls-buttons {
+	position: absolute;
+	left: 1rem;
+	top: 0;
+	bottom: 0;
+
+	a:hover {
+		text-decoration: none;
+	}
+
+	// responsive buttons and icons, vertically centered
+	.Btn [class^="icon-"],
+	.Btn [class*=" icon-"] {
+		top: 0;
+	}
+	.Btn--text {
+		height: 100%;
+		font-size: 1.6rem;
+		padding: 0;
+		color: $bleach;
+		@media (min-width: $layout-s) {
+			font-size: 2rem;
+		}
 		@media (min-width: $layout-m) {
-			padding-left: 136px;
-			padding-right: 136px;
+			padding: 0 0.1em;
+		}
+	}
+}
+
+.Controls-title {
+	display: table;
+	width: 100%;
+	height: 53px;
+	text-align: center;
+
+	@include size-1;
+	@media (min-width: rem(530)) {
+		font-size: initial;
+	}
+
+	a {
+		display: table-cell;
+		vertical-align: middle;
+		padding-left: 7.3rem;
+		padding-right: 2.5rem;
+		@media (min-width: $layout-m) {
+			// padding-left: 136px;
+			// padding-right: 136px;
 		}
 		&.is-active {
 			text-decoration: none;
 		}
 	}
 }
-.Controls-buttons {
-	position: absolute;
-	left: 1rem;
-	top: 0.3rem;
 
-	a:hover {
-		text-decoration: none;
-	}
-	.Btn--text {
-		font-size: 2rem;
-		padding: 0 0.1em;
-		color: $bleach;
-	}
-}
 .Controls-videoBtn {
 	// float: right;
 	font-size: 1.3rem;
