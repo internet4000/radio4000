@@ -2,13 +2,15 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-
-	// channel gets set by the track route
-	channel: null,
-
+	channel: null, // channel gets set by the track route
 	isMaximized: false, // fullscreen layout
 	isPlaying: false,
 	state: null, // youtube player state
+
+	// onPlayingChange: function() {
+	// 	var playing = this.get('isPlaying');
+	// 	this.get('channel').set('isPlaying', playing);
+	// }.observes('isPlaying'),
 
 	tracks: function() {
 		return this.get('channel.tracks');
@@ -21,20 +23,18 @@ export default Ember.ObjectController.extend({
 	}.property('tracks', 'model'),
 
 	actions: {
-		justPlay: function() {
-			this.transitionToRoute('channels');
-		},
-		playTrack: function(track) {
-			if (!track) {
-				Ember.debug('no track?!');
-				return false;
-			}
-			Ember.debug('playing track: ' + track.get('title'));
-		 	this.transitionToRoute('track', track);
-		},
+		// playTrack: function(track) {
+		// 	if (!track) {
+		// 		Ember.debug('no track?!');
+		// 		return false;
+		// 	}
+		// 	Ember.debug('Playing track: ' + track.get('title'));
+		//  	this.transitionToRoute('track', track);
+		// },
 		play: function() {
-			this.set('isPlaying', true);
+			Ember.debug('play playback?!');
 			this.player.playVideo();
+			this.set('isPlaying', true);
 		},
 		pause: function() {
 			this.set('isPlaying', false);
@@ -42,25 +42,33 @@ export default Ember.ObjectController.extend({
 		},
 		playPrev: function() {
 			if (this.get('trackIndex') === (this.get('tracks.length') - 1)) {
-				Ember.debug('at newest track already, playing last');
-				this.send('playTrack', this.get('tracks').objectAt(0));
+				this.send('playLast');
 				return false;
 			}
 
-			Ember.debug('playPrev');
 			var prevTrack = this.get('tracks').objectAt((this.get('trackIndex') + 1));
-			this.send('playTrack', prevTrack);
+			Ember.debug('Playing previous track');
+			this.transitionToRoute('track', prevTrack);
+		},
+		playFirst: function() {
+			Ember.debug('Playing first track');
+			var firstTrack = this.get('tracks.lastObject');
+			this.transitionToRoute('track', firstTrack);
+		},
+		playLast: function() {
+			Ember.debug('Playing last track');
+			var lastTrack = this.get('tracks').objectAt(0);
+			this.transitionToRoute('track', lastTrack);
 		},
 		playNext: function() {
 			if (this.get('trackIndex') <= 0) {
-				Ember.debug('last or no track, playing first');
-				this.send('playTrack', this.get('tracks.lastObject'));
+				this.send('playFirst');
 				return false;
 			}
 
-			Ember.debug('playNext');
 			var prevTrack = this.get('tracks').objectAt((this.get('trackIndex') - 1));
-			this.send('playTrack', prevTrack);
+			Ember.debug('Playing next track');
+			this.transitionToRoute('track', prevTrack);
 		},
 		toggle: function() {
 			this.toggleProperty('isMaximized');

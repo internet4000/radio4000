@@ -1,7 +1,13 @@
 <article class="Playlist Playlist--detail">
 
 	<figure class="Thumbnail" {{bind-attr style=imageBackground}}>
-		<button class="Thumbnail-button" title="Play this channel" {{action "playLatest"}}>{{x-icon i="play"}}</button>
+		{{#if isPlaying}}
+			<div class="Thumbnail-bg" {{action "pause"}}></div>
+			<button class="Thumbnail-button" {{action "pause"}} title="Pause this channel">{{x-icon i="pause"}}</button>
+		{{else}}
+			<div class="Thumbnail-bg" {{action "playLatest"}}></div>
+			<button class="Thumbnail-button" {{action "play"}} title="Play this channel">{{x-icon i="play"}}</button>
+		{{/if}}
 
 		{{#if canEdit}}
 			{{partial 'channel/editImage'}}

@@ -1,7 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-	needs: ['tracks'],
+	needs: ['playback'],
+	playback: Ember.computed.alias('controllers.playback'),
 
 	isEditing: false,
 	canEdit: function() {
@@ -53,8 +54,15 @@ export default Ember.ObjectController.extend({
 			this.send('editImage');
 			this.get('model').save();
 		},
-		playLatest: function() {
-			this.transitionToRoute('track', this.get('tracks.lastObject'));
+		play: function() {
+			if (this.get('playback.model')) {
+				this.get('playback').send('play');
+			} else {
+				this.transitionToRoute('track', this.get('tracks.lastObject'));
+			}
+		},
+		pause: function() {
+			this.get('playback').send('pause');
 		},
 		stopEditing: function() {
 			this.transitionToRoute('channel', this.get('model'));
