@@ -9,6 +9,7 @@ Router.map(function() {
 	// pages
 	this.route('about');
 	this.route('forum');
+	this.route('help');
 	this.route('log');
 	this.route('login');
 	this.route('styleguide');
@@ -17,9 +18,7 @@ Router.map(function() {
 	this.route('new', { path: '/new'} );
 
 	// channels
-	this.resource('channels', { path: 'discover'}, function() {
-		// don't delete this anonym function, otherwise 'index' isn't generated
-	});
+	this.resource('channels', { path: 'discover'}, function() {});
 
 	// single channel
 	this.resource('channel', { path: '/c/:channel_slug' }, function() {
