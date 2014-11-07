@@ -4,10 +4,9 @@
 	<button class="Btn" {{action 'sortBy' 'title'}}>Title</button>
 </div> --}}
 
-<div class="Container">
-
-	{{#unless model}}
-		{{#if controllers.channel.canEdit}}
+{{#unless model}}
+	{{#if controllers.channel.canEdit}}
+		<div class="Container">
 			<div class="Annoncement">
 				<h3>Welcome to your new channel!</h3>
 				<p>To get started, tap 'Add track'</p>
@@ -15,10 +14,9 @@
 			</div>
 		{{else}}
 			<p>No tracks yet.</p>
-		{{/if}}
-	{{/unless}}
-
-</div>
+		</div>
+	{{/if}}
+{{/unless}}
 
 <div class="Container Container--noPadding">
 	<ul class="List">

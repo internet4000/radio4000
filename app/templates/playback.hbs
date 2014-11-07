@@ -37,7 +37,7 @@
 			<div class="Controls-title" title="Current track / go to current channel">
 				{{#link-to 'channel' model.channel}}
 					{{#if model.title}}
-						{{model.title}} ({{channel.title}})
+						{{model.title}} <span class="Controls-channel">({{channel.title}})</span>
 					{{else}}
 						Untitled
 					{{/if}}
