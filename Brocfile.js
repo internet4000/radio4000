@@ -3,6 +3,11 @@
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 var app = new EmberApp({
+	fingerprint: {
+		exclude: ['apple-touch-icon', 'favicon', 'mstile']
+		// extensions: [ 'js', 'css', 'png', 'jpg', 'gif' ],
+		// replaceExtensions: [ 'html', 'css', 'js' ]
+	},
 	minifyCSS: {
 		enabled: true,
 		options: {}
