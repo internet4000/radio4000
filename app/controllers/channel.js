@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-	needs: ['playback', 'channelEdit'],
+	needs: ['playback'],
 	playback: Ember.computed.alias('controllers.playback'),
 	isEditing: false,
 	isEditingImage: false,
@@ -58,7 +58,7 @@ export default Ember.ObjectController.extend({
 		},
 		saveImage: function() {
 			this.send('editImage');
-			this.get('controllers.channel.edit').send('save');
+			this.get('model').save();
 		},
 
 		toggleFavorite: function() {

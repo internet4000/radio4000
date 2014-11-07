@@ -1,7 +1,6 @@
 <article class="Channel Channel--detail">
-
 	<figure class="Thumbnail" {{bind-attr style=imageBackground}}>
-		{{#if isPlaying}}
+		{{#if playback.isPlaying}}
 			<div class="Thumbnail-bg" {{action "pause"}}></div>
 			<button class="Thumbnail-button" {{action "pause"}} title="Pause this channel">{{x-icon i="pause"}}</button>
 		{{else}}
