@@ -4,9 +4,8 @@
 
 .Manchet {
 	padding: 3rem 1rem 1rem;
-	margin-bottom: 2rem;
 	text-align: center;
-	// background-color: white;
+
 	h1,
 	p {
 		max-width: 30rem;
@@ -20,15 +19,4 @@
 			@extend %font-regular;
 		}
 	}
-}
-
-/**
- * Dark version
- */
-
-.Manchet--dark {
-	background: linear-gradient($darkblue, lighten($darkblue, 5%) 70%);
-	// background-color: $darkblue;
-	color: $text-color-invert;
-	margin-bottom: 2rem;
 }
