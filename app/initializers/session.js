@@ -18,27 +18,27 @@ export default {
 
 				ref.onAuth(function(authData) {
 					if (!authData) {
-						Ember.debug('Not logged in');
+						// Ember.debug('Not logged in');
 						this.set('authed', false);
 						this.set('authData', null);
 						this.set('user', null);
 						return false;
 					}
 
-					Ember.debug('Logged in');
+					// Ember.debug('Logged in');
 					this.set('authed', true);
 					this.set('authData', authData);
-					var hashedId = md5(authData.uid);
-					this.afterAuthentication(hashedId);
+					// var hashedId = md5(authData.uid);
+					this.afterAuthentication(authData.uid);
 				}.bind(this));
 			},
 			login: function(provider) {
-				Ember.debug('trying to login');
+				// Ember.debug('trying to login');
 				this.loginWithPopup(provider);
 			},
 			loginWithPopup: function(provider) {
 				var _this = this;
-				Ember.debug('logging in with popup');
+				// Ember.debug('logging in with popup');
 				ref.authWithOAuthPopup(provider, function(error, authData) {
 					if (error) {
 						if (error.code === "TRANSPORT_UNAVAILABLE") {
@@ -55,10 +55,10 @@ export default {
 			// firebase login with redirect (needed for chrome on iOS)
 			loginWithRedirect: function(provider) {
 				var _this = this;
-				Ember.debug('logging in with redirect');
+				// Ember.debug('logging in with redirect');
 				ref.authWithOAuthRedirect(provider, function(error, authData) {
 					if (error) {
-						console.log('errrrror');
+						// console.log('errrrror');
 					} else if (authData) {
 						// Ember.debug('Logged in with redirect');
 					}
@@ -73,7 +73,6 @@ export default {
 				// Ember.debug('Checking if user exists');
 
 				// See if the user exists using native firebase because of emberfire problem with "id already in use"
-				console.log(userId);
 				ref.child('users').child(userId).once('value', function(snapshot) {
 					var exists = (snapshot.val() !== null);
 					userExistsCallback(userId, exists);
@@ -81,7 +80,7 @@ export default {
 
 				// Do the right thing depending on whether the user exists
 				function userExistsCallback(userId, exists) {
-					Ember.debug('user exists: ' + exists);
+					// Ember.debug('user exists: ' + exists);
 					if (exists) {
 						_this.existingUser(userId);
 					} else {
@@ -92,7 +91,7 @@ export default {
 
 			existingUser: function(userId) {
 				this.store.find('user', userId).then(function(user) {
-					Ember.debug('Found an existing user, setting it…');
+					// Ember.debug('Found an existing user, setting it…');
 					this.afterUser(user);
 				}.bind(this));
 			},
@@ -108,7 +107,7 @@ export default {
 					email: this.get('authData.facebook.email') || this.get('authData.google.email'),
 					created: new Date().getTime()
 				}).save().then(function(user){
-					Ember.debug('created a new user');
+					// Ember.debug('created a new user');
 					_this.afterUser(user);
 				});
 			},
