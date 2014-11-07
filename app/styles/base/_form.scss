@@ -81,7 +81,7 @@ label {
 // Shared styles between the forms for adding a track and editing a track
 .AddTrack,
 .EditTrack,
-.Playlist-edit {
+.Channel-edit {
 	padding: 1rem;
 	margin-bottom: 0;
 	.Form {
@@ -89,7 +89,7 @@ label {
 	}
 }
 .AddTrack,
-.Playlist-edit {
+.Channel-edit {
 	background-color: $superlightgray;
 	box-shadow: $mediumgray 0 0 1rem;
 	margin-top: 1rem; // for the box shadow to express itself

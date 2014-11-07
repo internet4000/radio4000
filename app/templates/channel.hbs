@@ -1,4 +1,4 @@
-<article class="Playlist Playlist--detail">
+<article class="Channel Channel--detail">
 
 	<figure class="Thumbnail" {{bind-attr style=imageBackground}}>
 		{{#if isPlaying}}
@@ -14,15 +14,15 @@
 		{{/if}}
 	</figure>
 
-	<div class="Playlist-header Section">
+	<div class="Channel-header Section">
 		<div class="Container">
-			<h1 class="Playlist-title">
+			<h1 class="Channel-title">
 				{{#link-to 'channel' this title="Channel title"}}
 					{{title}}
 				{{/link-to}}
 				<span class="Muted LastUpdate">({{tracks.length}} tracks, {{lastUpdated}})</span>
 			</h1>
-			<p class="Playlist-description">{{body}}</p>
+			<p class="Channel-description">{{body}}</p>
 
 			<div class="BtnGroupWrapper">
 				{{#if canEdit}}
@@ -55,12 +55,12 @@
 
 	{{outlet 'channel-body'}}
 
-	<div class="Playlist-body">
+	<div class="Channel-body">
 		{{render 'tracks' tracks}}
 	</div>
 
 	{{#if user.favoriteChannels}}
-	<div class="Playlist-favorites">
+	<div class="Channel-favorites">
 		<div class="Container">
 			<h2>Favorite channels from {{title}}</h2>
 		</div>
@@ -68,9 +68,9 @@
 			<ul class="List">
 			{{#each channel in user.favoriteChannels}}
 				<li>
-					{{#link-to "channel" channel class="PlaylistTeaser" title="Go to this channel"}}
-						<h3 class="PlaylistTeaser-title">{{channel.title}}</h3>
-						<p class="PlaylistTeaser-description"> {{do-truncate channel.body 140}}</p>
+					{{#link-to "channel" channel class="ChannelTeaser" title="Go to this channel"}}
+						<h3 class="ChannelTeaser-title">{{channel.title}}</h3>
+						<p class="ChannelTeaser-description"> {{do-truncate channel.body 140}}</p>
 					{{/link-to}}
 				</li>
 			{{/each}}
