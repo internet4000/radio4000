@@ -20,19 +20,6 @@ export default Ember.Route.extend({
 		this.controllerFor('channel').set('isEditing', true);
 	},
 
-	actions: {
-		//  this action is triggered from the add.js controller/template
-		saveTrack: function(track) {
-			track.save();
-		},
-		tryDelete: function() {
-			var confirmed = confirm('Are you sure? Your channel will be gone forever - you will lose all your tracks');
-			if (confirmed) {
-				this.controllerFor('channel').send('deleteChannel');
-			}
-		}
-	},
-
 	// clear any unsaved changes
 	deactivate: function() {
 		this.controllerFor('channel').get('model').rollback();

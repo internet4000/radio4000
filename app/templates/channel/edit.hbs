@@ -1,25 +1,30 @@
 <form class="Form Channel-edit" {{action "trySave" on="submit"}}>
 	<h3>Edit your channel</h3>
+
 	<div class="Form-group">
 		<label for="title">Title</label>
 		{{focus-input id="title" value=title placeholder="Title" autofocus='autofocus'}}
 	</div>
+
 	<div class="Form-group">
 		<label for="body">Description</label>
 		{{textarea id="body" value=body placeholder="Description"}}
 	</div>
+
 	<div class="Form-group">
 		<label for="image">Channel image</label>
 		{{file-upload image=image}}
 	</div>
+
 	<div class="Form-group Form--playlistSlug">
 		<label for="slug">Permalink</label>
 		<span class="Permalink">radio4000.com/c/</span>
 		{{input id="slug" value=slug placeholder="channel-slug"}}
 	</div>
+
 	<div class="Form-group Form--save">
 		<button class="Btn Btn--primary" type="submit">Save</button>
-		<button class="Btn Btn--text" {{action "cancel"}}>Cancel</button>
+		<button class="Btn Btn--text" {{action "cancelEdit"}}>Cancel</button>
 		<button class="Btn Btn--text Btn--danger u-alignRight Btn--delete" {{action 'tryDelete'}}>Delete channel (no way back)</button>
 	</div>
 </form>

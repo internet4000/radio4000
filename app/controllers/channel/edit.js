@@ -2,34 +2,38 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
 	needs: ['channel'],
-	// isEditingSlug: false,
 
+	// Makes sure the slug is valid,
+	// e.g. not in use by any other channel
 	validateSlug: function() {
-		var canIHazSlug = true;
+		var iCanHazSlug = true;
 		var model = this.get('model');
-		// dasherize turns spaces into dashes and makes it lowercase
-		var newSlug = this.get('slug').dasherize();
 
 		// make sure the new one isn't empty
+		// dasherize turns spaces into dashes and makes it lowercase
+		var newSlug = this.get('slug').dasherize();
 		if (newSlug === '') {
-			alert("Hey, the URL can't be empty. Please enter the URL you'd like your channel to have. If you have no idea, just enter the title.");
+			alert("Hey, the URL can't be empty. Please enter the URL you'd like your channel to have. If you have no clue, just enter the title.");
 			return false;
 		}
 
-		this.store.find('channel').then(function(channels) {
-			channels.forEach(function(channel) {
+		// 1. Get all channels
+		var channels = this.store.find('channel');
+		channels.then(function(channels) {
 
-				// If any other channel has the same slug, abort!
+			// 2. If any other channel has the same slug, set to false
+			channels.forEach(function(channel) {
 				if (channel !== model && channel.get('slug') === newSlug) {
 					alert('Sorry, that URL is already taken. Please choose another one.');
-					canIHazSlug = false;
+					iCanHazSlug = false;
 				}
 			});
 
-			if (canIHazSlug) {
+			// 3. Set slug accordingly
+			if (iCanHazSlug) {
 				this.set('slug', newSlug);
 				Ember.debug('Setting slug to: ' + newSlug);
-				this.get('controllers.channel').send('save');
+				this.send('save');
 			} else {
 				Ember.debug('Reverting slug to: ' + this.get('savedSlug'));
 				this.set('slug', this.get('savedSlug')); // revert to old slug
@@ -38,17 +42,56 @@ export default Ember.ObjectController.extend({
 	},
 
 	actions: {
-		// editSlug: function() {
-		// 	this.set('isEditingSlug', true);
-		// 	this.set('savedSlug', this.get('slug')); // save it for later
-		// },
 		trySave: function() {
 			// Make sure slug is clean
 			this.validateSlug();
 		},
-		cancel: function() {
+		cancelEdit: function() {
 			// leaving the route also sets isexpanded to false
 			this.transitionToRoute('channel', this.get('model'));
+		},
+		// Saves the channel
+		save: function() {
+			Ember.debug('channel route save');
+			this.get('model').save();
+
+			// if the model changed, make sure we match a changed slug URL
+			if (this.get('isDirty')) {
+				this.transitionToRoute('channel', this.get('slug'));
+			}
+		},
+		tryDelete: function() {
+			var confirmed = confirm('Are you sure? Your channel will be gone forever - you will lose all your tracks');
+			if (confirmed) {
+				this.send('deleteChannel');
+			}
+		},
+
+		// Deletes the channel 4 real
+		deleteChannel: function() {
+			var _this = this;
+			var model = this.get('model');
+			var user = this.get('session.user');
+
+			model.destroyRecord();
+
+			// remove channel from session user
+			user.get('channels').removeObject(model);
+			user.get('favoriteChannels').removeObject(model);
+			user.save();
+
+			// 1. find users that have the channel as favorite
+			// 2. remove it
+			var users = this.store.find('user');
+			users.then(function(users) {
+				users.forEach(function(user) {
+					user.get('favoriteChannels').then(function(favoriteChannels) {
+						favoriteChannels.removeObject(model);
+						user.save();
+						_this.transitionToRoute('/');
+					});
+				});
+			});
 		}
 	}
 });

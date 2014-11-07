@@ -1,7 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-	// Makes sure the form fields aren't empty
+
+	// Validates form fields
 	isValid: function() {
 		var isValid = true;
 		['title'].forEach(function(field) {
@@ -13,15 +14,19 @@ export default Ember.ObjectController.extend({
 		return isValid;
 	},
 
-	makeid: function() {
+	// Returns a random string
+	getRandomText: function() {
 		var text = "";
 		var possible = "0ab1cd2ef3gh4ij5kl6mn7op8q9rstuvwxyz";
-		for (var i=0; i < 4; i++) {
+		for (var i=0; i<4; i++) {
 			text += possible.charAt(Math.floor(Math.random() * possible.length));
 		}
 		return text;
 	},
 
+	/**
+	 * Block comment
+	 **/
 	validateSlug: function() {
 		var _this = this;
 		var canIHazSlug = true;
@@ -38,7 +43,7 @@ export default Ember.ObjectController.extend({
 
 			if (!canIHazSlug) {
 				Ember.debug('Slug is in use');
-				this.set('slug', slug + '-' + _this.makeid()); // revert to old slug
+				this.set('slug', slug + '-' + _this.getRandomText()); // revert to old slug
 			}
 
 			this.send('saveChannel');
