@@ -6,7 +6,7 @@
 	<div class="Container Container--noPadding">
 		<ul class="List">
 			<li>{{#link-to "channel" session.userChannel title="Your channel"}}
-				<h3>{{session.userChannel.title}}</h3>
+				<h3>{{session.userChannel.title}} →</h3>
 			{{/link-to}}</li>
 		</ul>
 	</div>
@@ -14,7 +14,7 @@
 	<div class="Container">
 		<p class="Muted">You haven't got a channel yet.</p>
 		{{#link-to "new" class="BoxIcon BoxIcon--add" title="Create your channel"}}
-			Create your channel
+			Create your channel →
 		{{/link-to}}
 	</div>
 	{{/if}}
