@@ -7,7 +7,7 @@
 				<p class="Warning">{{formError}}</p>
 			{{/if}}
 
-			{{input-url value=trackUrl placeholder="YouTube URL" pasted="autoTitle"}}
+			{{input-url type="url" value=trackUrl placeholder="Paste in a YouTube URL" pasted="autoTitle" required}}
 			{{input value=trackTitle placeholder="Title"}}<br>
 			{{input value=trackBody placeholder="Optional description"}}<br>
 			<button class="Btn Btn--primary" type='submit' title="add track to your channel">Add track</button> <button class="Btn Btn--text" title="cancel adding track" {{action 'cancel'}}>Cancel</button>
