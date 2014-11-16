@@ -30,7 +30,7 @@ export default {
 			authed: false,
 
 			// get access to the ember data store
-			this.store = container.lookup('store:main');
+			// this.store = container.lookup('store:main');
 
 			init: function() {
 
@@ -116,6 +116,8 @@ export default {
 
 			// Existing user
 			existingUser: function(userId) {
+				var _this = this;
+
 				this.store.find('user', userId).then(function(user) {
 					_this.set('user', user);
 				}.bind(this));
