@@ -18,6 +18,7 @@ Ember.LinkView.reopen({
 	activeClass: 'is-active'
 });
 
+// Notify Google Analytics of page transitions
 Ember.Router.reopen({
   notifyGoogleAnalytics: function() {
     return ga('send', 'pageview', {

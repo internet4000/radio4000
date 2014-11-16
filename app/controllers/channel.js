@@ -12,6 +12,7 @@ export default Ember.ObjectController.extend({
 	}.property('user.id', 'session.user.id'),
 
 	// Favorites (works but should be cleaned up)
+	// TODO: emberfire comment with ObjectProxy
 	isFavorite: false,
 	isFavoriteTest: function() {
 		if (!this.get('session.user')) { return false; }
