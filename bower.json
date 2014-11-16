@@ -21,6 +21,8 @@
   },
   "resolutions": {
     "ember-data": "canary",
-    "jquery": ">= 1.7.0 < 2.2.0"
+    "jquery": ">= 1.7.0 < 2.2.0",
+    "ember": "1.8.1",
+    "firebase": "~2.0.x"
   }
 }
