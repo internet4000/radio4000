@@ -12,11 +12,4 @@
 		margin-left: auto;
 		margin-right: auto;
 	}
-	h1 {
-		small,
-		.is-highlighted {
-			font-size: 1em;
-			@extend %font-regular;
-		}
-	}
 }

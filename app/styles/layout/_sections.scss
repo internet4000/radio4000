@@ -34,6 +34,9 @@
 	clear: both;
 	padding-bottom: 2rem; // padding instead of margin - otherwise it cuts the box-shadow of .Box -_-
 }
+.Section--space {
+	padding-top: 4em;
+}
 
 // Two column section
 .Section-half {
