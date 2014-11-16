@@ -7,23 +7,65 @@
 	margin-top: 2em;
 	border-top-left-radius: 3px;
 	border-top-right-radius: 3px;
+	min-height: 10em;
+
+	.IntroDemo-header {
+		background-color: lighten($purple, 40%);
+		.IntroDemo-logo {
+			width: 50px;
+			padding-top: 10px;
+			padding-bottom: 5px;
+			padding-left: 5px;
+			padding-right: 5px;
+			margin-left: 4px;
+		}
+	}
+	.IntroDemo-container {
+		padding-top: 10px;
+		.Container {
+			padding-left: 5px;
+			padding-right: 5px;
+		}
+	}
+
+	.IntroDemo-browser {
+		@include clearfix;
+		background-color: #F2F3F7;
+		position: relative;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.IntroDemo-buttons {
+		float: left;
+		height: 8px;
+		width: 8px;
+		margin-right: 10px;
+		border-radius: 50%;
+		margin-top: 9px;
+		margin-bottom: 9px;
+	}
+	.IntroDemo-close {
+		background-color: #FE464D;
+		border: solid 1px #dd010c;
+	}
+	.IntroDemo-minimize {
+		background-color: #FEC324;
+		border: solid 1px #eeab01;
+	}
+	.IntroDemo-maximize {
+		background-color: #33CD7B;
+		border: solid 1px #2db96f;
+	}
+
+	.IntroDemo-addressbar {
+		background: #fff;
+		height: 16px;
+		width: 73%;
+		border-radius: 2px;
+		border: solid 1px #E7E8EF;
+		display: block;
+		float: left;
+		margin-top: 5px;
+	}
 }
 
-.IntroDemo-header {
-	background-color: lighten($purple, 40%);
-	.IntroDemo-logo {
-		width: 50px;
-		padding-top: 10px;
-		padding-bottom: 5px;
-		padding-left: 5px;
-		padding-right: 5px;
-		margin-left: 4px;
-	}
-}
-.IntroDemo-container {
-	padding-top: 10px;
-	.Container {
-		padding-left: 5px;
-		padding-right: 5px;
-	}
-}
