@@ -4,13 +4,8 @@
 		<h3 class="Track-title">Loading…</h3>
 	{{else}}
 		<h3 class="Track-title">
-			{{#if track.title}}
-				{{track.title}}
-			{{else}}
-				Untitled
-			{{/if}}
+			{{track.title}}
 		</h3>
-
 		{{#if track.body}}
 		<p class="Track-description">{{track.body}}</p>
 		{{/if}}
