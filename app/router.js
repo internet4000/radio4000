@@ -11,7 +11,7 @@ Router.map(function() {
 	this.route('forum');
 	this.route('help');
 	this.route('log');
-	this.route('login');
+	this.route('signin');
 	this.route('styleguide');
 
 	// new channel

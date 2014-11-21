@@ -5,7 +5,7 @@
  * Note: this assumes you've set up login on your Firebase,
  * only handles Google and Facebook for now,
  *
- * In your templates: <button {{action 'login' 'google'}}>Log in with Google</button>
+ * In your templates: <button {{action 'login' 'google'}}>Sign in with Google</button>
  */
 
 /*global md5*/
@@ -25,12 +25,11 @@ export default {
 
 		// session object is nested here as we need access to the container to get the store
 		var session = Ember.Object.extend({
-
-			// initial state
 			authed: false,
+			user: null,
 
 			// get access to the ember data store
-			// this.store = container.lookup('store:main');
+			store: container.lookup('store:main'),
 
 			init: function() {
 
@@ -98,20 +97,17 @@ export default {
 			afterAuthentication: function(userId) {
 				var _this = this;
 
-				// See if the user exists using native Firebase because of EmberFire problem with "id already in use"
+				// See if the user exists using native Firebase
+				// because of EmberFire problem with "id already in use"
 				ref.child('users').child(userId).once('value', function(snapshot) {
 					var exists = (snapshot.val() !== null);
-					userExistsCallback(userId, exists);
-				});
 
-				// Do the right thing depending on whether the user exists
-				function userExistsCallback(userId, exists) {
 					if (exists) {
 						_this.existingUser(userId);
 					} else {
 						_this.createUser(userId);
 					}
-				}
+				});
 			},
 
 			// Existing user
@@ -120,7 +116,10 @@ export default {
 
 				this.store.find('user', userId).then(function(user) {
 					_this.set('user', user);
-				}.bind(this));
+					user.get('channels').then(function(channels) {
+						_this.set('userChannel', channels.get('firstObject'));
+					});
+				});
 			},
 
 			// Create a new user
@@ -138,12 +137,6 @@ export default {
 					// Proceed with the newly create user
 					_this.set('user', user);
 				});
-			},
-
-			// This is the last step in a successful authentication
-			// Set the user (either new or existing)
-			afterUser: function(user) {
-				this.set('user', user);
 			}
 		});
 

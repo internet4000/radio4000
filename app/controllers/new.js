@@ -71,7 +71,6 @@ export default Ember.ObjectController.extend({
 			model.setProperties({
 				title: this.get('title'),
 				slug: this.get('slug'),
-				body: this.get('body'),
 				created: new Date().getTime(),
 				user: user
 			});
@@ -87,7 +86,6 @@ export default Ember.ObjectController.extend({
 					Ember.debug('channel added to user');
 				});
 			});
-
 
 			// Redirect to the new channel
 			this.transitionToRoute('channel.add', model);

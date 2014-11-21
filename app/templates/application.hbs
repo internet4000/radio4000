@@ -15,12 +15,12 @@
 
 	<footer class="SiteFooter">
 		<nav class="Nav Container">
-			{{#link-to 'about' title="about radio 4000"}}About{{/link-to}}
-			 • {{#link-to 'forum' title="radio 4000 forum"}}Forum{{/link-to}}
+			{{#link-to 'about' title="Learn more about Radio4000"}}About{{/link-to}}
+			 • {{#link-to 'forum' title="Go to the Radio 4000 forum"}}Forum{{/link-to}}
 			{{#if session.authed}}
-			 • <a href="#" title="logout from radio 4000" {{action 'logout' this}}>Log out</a>
+			 • <a href="#" title="Sign out from Radio 4000" {{action 'logout' this}}>Sign out</a>
 			{{else}}
-			• {{#link-to 'login' title="login radio 4000"}}Sign up{{/link-to}}
+			• {{#link-to 'signin' title="Sign in to Radio 4000"}}Sign in{{/link-to}}
 			{{/if}}
 		</nav>
 	</footer>
