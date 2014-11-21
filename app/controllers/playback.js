@@ -5,12 +5,8 @@ export default Ember.ObjectController.extend({
 	channel: null, // channel gets set by the track route
 	isMaximized: false, // fullscreen layout
 	isPlaying: false,
+	player: null, //youtube player
 	state: null, // youtube player state
-
-	// onPlayingChange: function() {
-	// 	var playing = this.get('isPlaying');
-	// 	this.get('channel').set('isPlaying', playing);
-	// }.observes('isPlaying'),
 
 	tracks: function() {
 		return this.get('channel.tracks');
@@ -31,15 +27,22 @@ export default Ember.ObjectController.extend({
 		// 	Ember.debug('Playing track: ' + track.get('title'));
 		//  	this.transitionToRoute('track', track);
 		// },
+
+
+
+		// TODO: if these two are called while this.player is being set up,
+		// it fails and breaks all future calls
 		play: function() {
-			Ember.debug('play playback?!');
+			// if (!this.player) { return false; }
+			// console.log(this.player);
 			this.player.playVideo();
-			this.set('isPlaying', true);
 		},
 		pause: function() {
-			this.set('isPlaying', false);
+			// if (!this.player) { return false; }
+			// console.log(this.player);
 			this.player.pauseVideo();
 		},
+
 		playPrev: function() {
 			if (this.get('trackIndex') === (this.get('tracks.length') - 1)) {
 				this.send('playLast');
@@ -75,32 +78,73 @@ export default Ember.ObjectController.extend({
 		}
 	},
 
-
-
 	/**
 	 * @todo: put everything below here into another file. a mixin?
 	 */
 
 	createYTPlayer: function() {
-		console.log('create a YT.Player instance');
 		var _this = this;
+
+		// // no need to create it again?
+		// if (this.get('player')) {
+		// 	console.log('we already have a player');
+		// 	this.get('player').loadVideoByURL('')
+
+
+		// 	return;
+		// }
+
 		Ember.run.schedule('afterRender', function() {
-			_this.player = new YT.Player('player', {
+			console.log('Creating a new YT.Player instance');
+			var player = new YT.Player('player', {
 				events: {
-					'onReady': _this.onPlayerReady,
+					'onReady': _this.onPlayerReady.bind(_this),
 					'onStateChange': _this.onPlayerStateChange.bind(_this),
 					'onError': _this.onPlayerError.bind(_this)
 				}
 			});
-			_this.set('isPlaying', true);
+			_this.set('player', player);
 		});
 	}.observes('embedURL'),
+
 	onPlayerReady: function() {
-		// Ember.debug('onPlayerReady');
+		console.log(this);
+		this.set('state', 'playerReady');
 	},
 	onPlayerStateChange: function(event) {
-		// Ember.debug('onPlayerStateChange');
-		this.checkPlayerState(event.data);
+		var state = event.data;
+
+		// -1 (unstarted)State
+		// 0 (ended) 		or YT.Player.ENDED
+		// 1 (playing) 	or YT.PlayerState.PLAYING
+		// 2 (paused) 		or YT.PlayerState.PAUSED
+		// 3 (buffering) 	or YT.PlayerState.BUFFERING
+		// 5 (video cued)	or YT.PlayerState.CUED
+
+		if (state === 'onYouTubePlayerAPIReady') {
+			this.set('state', 'apiReady');
+		} else if (state === 'onPlayerReady') {
+			this.onPlayerReady();
+		} else if (state === -1) {
+			this.onUnstarted();
+		} else if (state === 3) {
+			this.onBuffering();
+		} else if (state === 1) {
+			this.onPlay();
+		} else if (state === 2) {
+			this.onPause();
+		} else if (state === 0) {
+			this.onEnd();
+		}
+
+		console.log(this.get('state'));
+
+		// Toggle loader
+		// if (state === YT.PlayerState.PLAYING || state === YT.PlayerState.PAUSED) {
+		// 	stir.hideLoader();
+		// } else if (state === YT.PlayerState.BUFFERING || state === -1 || state === 0) {
+		// 	stir.showLoader();
+		// }
 	},
 	onPlayerError: function(event) {
 		Ember.warn('onError, code ' + event.data);
@@ -123,53 +167,24 @@ export default Ember.ObjectController.extend({
 		}
 	},
 
-	/**
-	 * Reacts on the YouTube player API events and triggers corresponding actions
-	 */
-	checkPlayerState: function(state) {
-		console.log(state);
-
-		// -1 (unstarted)State
-		// 0 (ended) 		or YT.Player.ENDED
-		// 1 (playing) 	or YT.PlayerState.PLAYING
-		// 2 (paused) 		or YT.PlayerState.PAUSED
-		// 3 (buffering) 	or YT.PlayerState.BUFFERING
-		// 5 (video cued)	or YT.PlayerState.CUED
-
-		if (state === 'onYouTubePlayerAPIReady') {
-			this.set('state', 'apiReady');
-
-		} else if (state === 'onPlayerReady') {
-			this.set('state', 'playerReady');
-			// stir.onPlayerReady();
-
-		} else if (state === -1) {
-			this.set('state', 'unstarted');
-
-		} else if (state === 3) {
-			this.set('state', 'buffering');
-
-		} else if (state === 1) {
-			this.set('state', 'playing');
-			this.set('isPlaying', true);
-
-		} else if (state === 2) {
-			this.set('state', 'paused');
-			this.set('isPlaying', false);
-
-		} else if (state === 0) {
-			this.set('state', 'ended');
-			this.set('isPlaying', false);
-			this.send('playNext');
-		}
-
-		console.log(this.get('state'));
-
-		// Toggle loader
-		// if (state === YT.PlayerState.PLAYING || state === YT.PlayerState.PAUSED) {
-		// 	stir.hideLoader();
-		// } else if (state === YT.PlayerState.BUFFERING || state === -1 || state === 0) {
-		// 	stir.showLoader();
-		// }
+	// abstracted methods, called by our players (e.g. youtube/soundcloud etc.)
+	onUnstarted: function() {
+		this.set('state', 'unstarted');
+	},
+	onBuffering: function() {
+		this.set('state', 'buffering');
+	},
+	onPlay: function() {
+		this.set('state', 'playing');
+		this.set('isPlaying', true);
+	},
+	onPause: function() {
+		this.set('state', 'paused');
+		this.set('isPlaying', false);
+	},
+	onEnd: function() {
+		this.set('state', 'ended');
+		this.set('isPlaying', false);
+		this.send('playNext');
 	}
 });
