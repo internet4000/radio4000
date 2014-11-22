@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 	classNames: ['Track'],
-	classNameBindings: ['isEditing:is-editing'],
+	classNameBindings: ['isEditing', 'isCurrent'],
 
 	// close 'add track' on esc key
 	keyDown: function(event) {
@@ -12,8 +12,14 @@ export default Ember.Component.extend({
 		}
 	},
 
+	// True if this track is the playback is using
+	isCurrent: function(){
+		return this.get('playback.model') === this.get('track');
+	}.property('playback.model', 'track'),
+
+	// Keeping track of editing in a list, so only one track is edited at a time
 	currentTrackComponent: null,
-	isEditing: function(){
+	isEditing: function() {
 		return this.get('currentTrackComponent') === this.get('elementId');
 	}.property('currentTrackComponent'),
 
