@@ -4,11 +4,11 @@
 <section class="Section">
 	<div class="Container Container--noPadding">
 		<ul class="List">
-			{{#each}}
-				<li>{{#link-to "user" this}}
-					<span>{{id}}</span>
-					<span>{{name}}</span>
-					<span>{{created}}</span>
+			{{#each user in controller}}
+				<li>{{#link-to "user" user}}
+					<span>{{user.id}}</span>
+					<span>{{user.name}}</span>
+					<span>{{user.created}}</span>
 				{{/link-to}}</li>
 			{{/each}}
 		</ul>
