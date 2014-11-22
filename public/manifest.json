@@ -1,0 +1,22 @@
+{
+  "name": "Radio4000",
+  "description": "Collect, curate, play and share your own radio channel",
+  "short_name": "Radio4000",
+
+  "version": "1",
+  "manifest_version": 2,
+
+  "start_url": "index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+
+  "app": {
+    "launch": {
+      "web_url": "http://radio4000.com/"
+    }
+  },
+
+  "icons": {
+    "128": "apple-touch-icon.png"
+  }
+}
