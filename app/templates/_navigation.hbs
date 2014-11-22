@@ -5,21 +5,20 @@
 </h1>
 
 <nav>
-	{{!-- {{#each session.user.channels}} --}}
-	{{#link-to 'channel' session.userChannel title="Go to my channel"}}My channel{{/link-to}}
-	{{!-- {{/each}} --}}
+	{{#if session.authed}}
+		{{#if session.userChannel}}
+			{{#link-to 'channel' session.userChannel title="Go to my channel"}}My channel{{/link-to}}
+			{{!-- {{#link-to 'channel.add' session.userChannel title="Add a track to my channel"}}{{x-icon i="plus"}} Add track{{/link-to}} --}}
+		{{else}}
+			{{#link-to 'new' title="Create your channel"}}+ Create your channel{{/link-to}}
+		{{/if}}
+	{{/if}}
 
 	{{#link-to 'channels' title="Discover channels"}}Discover{{/link-to}}
 
 	<aside class="ContextualNavigation u-alignRight">
-		{{#if session.authed}}
-			{{#if session.userChannel}}
-				{{#link-to 'channel.add' session.userChannel title="Add a track to my channel"}}{{x-icon i="plus"}} Add track{{/link-to}}
-			{{else}}
-				{{#link-to 'new' title="Create your channel"}}+ New channel{{/link-to}}
-			{{/if}}
-		{{else}}
+		{{#unless session.authed}}
 			{{#link-to 'signin' title="Sign in to Radio 4000"}}Sign in{{/link-to}}
-		{{/if}}
+		{{/unless}}
 	</aside>
 </nav>
