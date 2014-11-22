@@ -128,9 +128,9 @@ export default {
 
 				this.get('store').createRecord('user', {
 					id: userId,
-					provider: this.get('authData.provider'),
-					name: this.get('authData.facebook.displayName') || this.get('authData.google.displayName'),
-					email: this.get('authData.facebook.email') || this.get('authData.google.email'),
+					// provider: this.get('authData.provider'),
+					// name: this.get('authData.facebook.displayName') || this.get('authData.google.displayName'),
+					// email: this.get('authData.facebook.email') || this.get('authData.google.email'),
 					created: new Date().getTime()
 				}).save().then(function(user){
 
