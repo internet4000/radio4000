@@ -1,6 +1,6 @@
 {
   "name": "radio4000",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "directories": {
     "doc": "doc",
@@ -34,5 +34,8 @@
     "glob": "^4.0.5",
     "gulp": "^3.8.9",
     "rsyncwrapper": "^0.4.1"
+  },
+  "dependencies": {
+    "ember-cli-app-version": "^0.2.0"
   }
 }
