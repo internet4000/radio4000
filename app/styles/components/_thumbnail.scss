@@ -57,12 +57,17 @@
 	line-height: 1.9;
 	color: hsl(0, 100%, 100%);
 
-	&:focus {
-		outline: 0;
-	}
 	svg {
 		float: left;
 		transition: 300ms;
+	}
+
+	&:focus {
+		outline: 0;
+	}
+	&:disabled {
+		opacity: 0.25;
+		cursor: default;
 	}
 }
 

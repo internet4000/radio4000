@@ -16,11 +16,14 @@
 	&.is-active {
 		transform: translateY(0);
 	}
-	// bottom aligned for tocuh
-	.touch & {
-		top: initial;
-		bottom: 0;
-	}
+
+	// &.is-busy {
+	// 	.Controls-buttons {
+	// 		opacity: 0.5;
+	// 		pointer-events: none;
+	// 		cursor: default;
+	// 	}
+	// }
 }
 
 // Controls
@@ -45,7 +48,7 @@
 
 .Controls-buttons {
 	position: absolute;
-	left: 1rem;
+	left: 0.8rem; // like 1 rem
 	top: 0;
 	bottom: 0;
 	overflow: hidden;
@@ -57,7 +60,8 @@
 	// responsive buttons and icons, vertically centered
 	.Btn [class^="icon-"],
 	.Btn [class*=" icon-"] {
-		top: 0;
+		top: initial;
+		left: initial;
 	}
 	.Btn--text {
 		height: 100%;

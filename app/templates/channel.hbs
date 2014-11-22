@@ -2,10 +2,10 @@
 	<figure class="Thumbnail" {{bind-attr style=imageBackground}}>
 		{{#if playback.isPlaying}}
 			<div class="Thumbnail-bg" {{action "pause"}}></div>
-			<button class="Thumbnail-button" {{action "pause"}} title="Pause this channel">{{x-icon i="pause"}}</button>
+			<button class="Thumbnail-button" {{bind-attr disabled=playback.busy}} {{action "pause"}} title="Pause this channel">{{x-icon i="pause"}}</button>
 		{{else}}
 			<div class="Thumbnail-bg" {{action "play"}}></div>
-			<button class="Thumbnail-button" {{action "play"}} title="Play this channel">{{x-icon i="play"}}</button>
+			<button class="Thumbnail-button" {{bind-attr disabled=playback.busy}} {{action "play"}} title="Play this channel">{{x-icon i="play"}}</button>
 		{{/if}}
 
 		{{#if canEdit}}

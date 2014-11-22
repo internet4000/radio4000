@@ -2,11 +2,26 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-	channel: null, // channel gets set by the track route
-	isMaximized: false, // fullscreen layout
+	// channel gets set by the track route
+	channel: null,
+	isMaximized: false,
+
+	// the player
+	player: null,
+	state: null,
 	isPlaying: false,
-	player: null, //youtube player
-	state: null, // youtube player state
+
+	// busy is when the player is changing and therefore unresponsive to actions
+	busy: false,
+
+	// TODO: use this to integrate more players, later
+	proxyPlayer: function() {
+		if (this.player) {
+			return this.player;
+		} else {
+			return false;
+		}
+	}.property('player'),
 
 	tracks: function() {
 		return this.get('channel.tracks');
@@ -14,39 +29,36 @@ export default Ember.ObjectController.extend({
 
 	trackIndex: function() {
 		var index = this.get('tracks').indexOf(this.get('model'));
-		Ember.debug('trackIndex return: ' + index);
+		// Ember.debug('trackIndex return: ' + index);
 		return index;
 	}.property('tracks', 'model'),
 
 	actions: {
-		// playTrack: function(track) {
-		// 	if (!track) {
-		// 		Ember.debug('no track?!');
-		// 		return false;
-		// 	}
-		// 	Ember.debug('Playing track: ' + track.get('title'));
-		//  	this.transitionToRoute('track', track);
-		// },
 
-
+		// use this to play a track, if you don't want the url to change
+		playTrack: function(track) {
+			if (!track) {
+				Ember.debug('no track?!');
+				return false;
+			}
+			Ember.debug('Playing track: ' + track.get('title'));
+		 	this.transitionToRoute('track', track);
+		},
 
 		// TODO: if these two are called while this.player is being set up,
 		// it fails and breaks all future calls
 		play: function() {
 			// if (!this.player) { return false; }
-			// console.log(this.player);
-			this.player.playVideo();
+			this.get('proxyPlayer').playVideo();
 		},
 		pause: function() {
 			// if (!this.player) { return false; }
-			// console.log(this.player);
-			this.player.pauseVideo();
+			this.get('proxyPlayer').pauseVideo();
 		},
-
 		playPrev: function() {
 			if (this.get('trackIndex') === (this.get('tracks.length') - 1)) {
 				this.send('playLast');
-				return false;
+				return;
 			}
 
 			var prevTrack = this.get('tracks').objectAt((this.get('trackIndex') + 1));
@@ -66,7 +78,7 @@ export default Ember.ObjectController.extend({
 		playNext: function() {
 			if (this.get('trackIndex') <= 0) {
 				this.send('playFirst');
-				return false;
+				return;
 			}
 
 			var prevTrack = this.get('tracks').objectAt((this.get('trackIndex') - 1));
@@ -89,27 +101,27 @@ export default Ember.ObjectController.extend({
 		// if (this.get('player')) {
 		// 	console.log('we already have a player');
 		// 	this.get('player').loadVideoByURL('')
-
-
 		// 	return;
 		// }
 
+		this.set('busy', true);
+
 		Ember.run.schedule('afterRender', function() {
 			console.log('Creating a new YT.Player instance');
-			var player = new YT.Player('player', {
+			var newPlayer = new YT.Player('player', {
 				events: {
 					'onReady': _this.onPlayerReady.bind(_this),
 					'onStateChange': _this.onPlayerStateChange.bind(_this),
 					'onError': _this.onPlayerError.bind(_this)
 				}
 			});
-			_this.set('player', player);
+			_this.set('player', newPlayer);
 		});
 	}.observes('embedURL'),
 
 	onPlayerReady: function() {
-		console.log(this);
 		this.set('state', 'playerReady');
+		this.set('busy', false);
 	},
 	onPlayerStateChange: function(event) {
 		var state = event.data;
@@ -136,9 +148,6 @@ export default Ember.ObjectController.extend({
 		} else if (state === 0) {
 			this.onEnd();
 		}
-
-		console.log(this.get('state'));
-
 		// Toggle loader
 		// if (state === YT.PlayerState.PLAYING || state === YT.PlayerState.PAUSED) {
 		// 	stir.hideLoader();
@@ -169,7 +178,7 @@ export default Ember.ObjectController.extend({
 
 	// abstracted methods, called by our players (e.g. youtube/soundcloud etc.)
 	onUnstarted: function() {
-		this.set('state', 'unstarted');
+
 	},
 	onBuffering: function() {
 		this.set('state', 'buffering');

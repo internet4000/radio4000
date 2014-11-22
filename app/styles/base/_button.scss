@@ -33,7 +33,7 @@
 	&:disabled,
 	&.is-disabled {
 		cursor: default;
-		opacity: 0.75;
+		opacity: 0.25;
 	}
 
 	// buxfix because ember sometimes adds a div inside a button
