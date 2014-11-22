@@ -7,7 +7,7 @@
 	padding-left: 0;
 
 	li {
-		border-bottom: 1px solid hsl(0, 0%, 87%);//$slightgray;
+		border-bottom: 1px solid $lightgray;;
 		line-height: normal;
 	}
 	h3 {
@@ -31,7 +31,7 @@
 	li {
 		&:hover,
 		&:focus {
-			background-color: white;
+			background-color: $superlightgray;
 			text-decoration: none;
 		}
 	}

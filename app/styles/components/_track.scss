@@ -1,56 +1,29 @@
 /**
- * Unique Track
+ * Single track
  */
 
 .Track {
 	@include size-1;
 	position: relative;
 	overflow: hidden; // hide controls
-
-	.Track-description {
-		color: $gray;
-		font-style: italic;
-	}
-}
-.Track.is-editing {
-	background-color: #fff;
-	box-shadow: $lighterblue 0 0 10px;
-	.Track-link:hover {
-		background-color: transparent;
-		background-image: none;
-	}
-}
-
-
-.Track-link,
-a.Track-link {
-	border-left: 4px solid transparent;
-	transition: border 250ms $easing5;
-	color: $text-color;
-	padding-right: rem(60);
-
-	&.is-active {
-		border-left-color: $primary-color;
-		padding-left: 1rem;
-		// playing indicator
-		// .Track-title:before {
-		// 	content: ''; // ►
-		// 	display: inline;
-		// 	font-size: 10px;
-		// 	position: absolute;
-		// 	left: 0.5rem;
-		// 	top: 50%;
-		// 	margin-top: -0.5em;
-		// 	text-decoration: none;
-		// }
-	}
 }
 .Track-title {
 	@extend %font-regular;
 	@include size-1;
 }
+.Track-description.Track-description { // extra specificity
+	color: $gray;
+	font-style: italic;
+}
+.Track-link,
+a.Track-link { // Link surrounding the track
+	border-left: 4px solid transparent;
+	padding-right: rem(60);
+	color: $text-color;
+	transition: border 250ms $easing5;
+}
 
-// TRACK EDIT BUTTON
+// Track edit button
 .Track-controls {
 	cursor: pointer;
 	position: absolute;
@@ -61,5 +34,24 @@ a.Track-link {
 	color: $lightgray;
 	.Track:hover & {
 		color: $text-color;
+	}
+}
+
+// Active state
+.Track.is-current {
+	.Track-link,
+	a.Track-link {
+		border-left-color: $primary-color;
+		padding-left: 1rem;
+	}
+}
+
+// Edit state
+.Track.is-editing {
+	background-color: #fff;
+	box-shadow: $lighterblue 0 0 10px;
+	.Track-link:hover {
+		background-color: transparent;
+		background-image: none;
 	}
 }

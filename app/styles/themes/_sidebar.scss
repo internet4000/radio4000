@@ -12,6 +12,20 @@ $main-gutter-left: 1rem;
 	body {
 		padding-left: $bar-sidebar-width;// + 1rem;
 	}
+	.Container {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.Container,
+	.List a,
+	.Manchet {
+		padding-left: 2rem;
+		padding-right: 2rem;
+	}
+	.Container .List a {
+		padding-left: 0.25rem;
+		padding-right: 0.25rem;
+	}
 	// overwrites to avoid git conflicts
 	// @tobe refactored if we like it
 	.SiteMain {
