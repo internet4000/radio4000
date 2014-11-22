@@ -4,22 +4,6 @@
 	<button class="Btn" {{action 'sortBy' 'title'}}>Title</button>
 </div> --}}
 
-{{#unless model}}
-	{{#if controllers.channel.canEdit}}
-		<div class="Container">
-			<div class="Annoncement">
-				<h3>Welcome to your new channel!</h3>
-				<p>To get started, tap 'Add track'</p>
-				{{!-- just paste in a YouTube URL --}}
-			</div>
-		{{else}}
-			<div class="Container">
-				<p>No tracks yet.</p>
-			</div>
-		</div>
-	{{/if}}
-{{/unless}}
-
 <div class="Container Container--noPadding">
 	<ul class="List">
 		{{#each track in arrangedContent}}
@@ -33,6 +17,35 @@
 		{{/each}}
 	</ul>
 </div>
+
+{{!-- Shows help for the channel owner only --}}
+{{#if showHelp}}
+	<div class="Container">
+		<div class="Note">
+
+			{{#if noTracks}}
+				<h2>Welcome to your new channel!</h2>
+				<p>To add a track, tap, you guessed it, <em>'Add track'</em> above and paste in a complete YouTube video URL.</p>
+			{{/if}}
+
+			{{#if oneTrack}}
+				<h2>Great! Your first track</h2>
+				<p>Why don't you add some more?</p>
+			{{/if}}
+
+			{{#unless hasImage}}
+				<p>You can change the image of your channel in the top left corner. If you edit your channel, you'll see all your options.</p>
+			{{/unless}}
+		</div>
+	</div>
+{{else}}
+	{{!-- normal people get this --}}
+	{{#unless model}}
+		<div class="Container">
+			<p>No tracks yet.</p>
+		</div>
+	{{/unless}}
+{{/if}}
 
 {{!-- by default, the "detail page" of an x-track would be rendered here,
 		but we overwrite it in the track router --}}
