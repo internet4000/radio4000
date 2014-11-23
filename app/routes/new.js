@@ -1,24 +1,19 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-	beforeModel: function(model, transition) {
+	// route should abort if the session has a channel
+	alreadyHasChannel: function() {
+		Ember.debug(this.get('session.userChannel')); // ember model, this works
+	}.observes('session.userChannel.@each'),
 
-		// if not authenticated, redirect to sign in
+	beforeModel: function(model, transition) {
+		// if not authenticated, redirect
 		if (!this.get('session.authed')) {
 			this.transitionTo('signin');
 		}
 
-		// if you visit this route via an url the auth object hasn't checked auth status yet
-		// if we do the check inside this run loop, it works
-		// @todo find a normal way of first executing this after authed is checked
-		// or… delay ember app while auth is checking
-	  	// code here will execute within a RunLoop in about 500ms
-
-  		Ember.run.next(this, function(){
-			if (this.get('session.user.channels.length')) {
-				this.transitionTo('application');
-			}
-		}, 250);
+		// TODO: abort if the user already has a channel
+		// Ember.debug(this.get('userChannel'));
 	},
 
 	model: function() {

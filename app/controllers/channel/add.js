@@ -20,7 +20,7 @@ export default Ember.ObjectController.extend({
 	},
 
 	// Get the ID from a YouTube URL
-	// @todo if it's not passed a youtube url it fails…
+	// TODO: with this string 'fffc30' it fails
 	getYouTubeID: function(url) {
 		return url.match(/(?:youtu\.be\/|youtube\.com(?:\/embed\/|\/v\/|\/watch\?v=|\/user\/\S+|\/ytscreeningroom\?v=|\/sandalsResorts#\w\/\w\/.*\/))([^\/&]{10,12})/)[1];
 	},

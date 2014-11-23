@@ -36,6 +36,8 @@
     "rsyncwrapper": "^0.4.1"
   },
   "dependencies": {
-    "ember-cli-app-version": "^0.2.0"
+    "ember-cli-app-version": "^0.2.0",
+    "ember-cli-autoprefixer": "^0.2.0",
+    "gulp": "^3.8.10"
   }
 }
