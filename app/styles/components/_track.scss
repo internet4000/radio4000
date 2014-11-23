@@ -9,7 +9,7 @@
 
 	.icon-play {
 		position: absolute;
-		left: 0.4em;
+		left: 0;
 		top: 0.7em;
 		display: none;
 	}
@@ -24,10 +24,10 @@
 }
 .Track-link,
 a.Track-link { // Link surrounding the track
-	border-left: 4px solid transparent;
+	// border-left: 4px solid transparent;
 	padding-right: rem(60);
 	color: $text-color;
-	transition: border 250ms $easing5;
+	// transition: border 250ms $easing5;
 }
 
 // Track edit button
@@ -48,7 +48,7 @@ a.Track-link { // Link surrounding the track
 .Track.is-current {
 	.Track-link,
 	a.Track-link {
-		border-left-color: $primary-color;
+		// border-left-color: $primary-color;
 		padding-left: 1rem;
 	}
 	.icon-play {
