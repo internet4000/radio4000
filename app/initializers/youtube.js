@@ -1,4 +1,4 @@
-export function initialize(/* container, application */) {
+export function initialize(/*container, application*/) {
 	// application.inject('route', 'foo', 'service:foo');
 
 	// Loads the iframe player API asynchronously from YouTube
@@ -15,5 +15,6 @@ export function initialize(/* container, application */) {
 
 export default {
 	name: 'youtube',
-	initialize: initialize,
+	after: 'session',
+	initialize: initialize
 };

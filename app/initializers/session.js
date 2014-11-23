@@ -2,7 +2,7 @@
  * Working authentication with
  * Firebase 2.0.x + Ember.js 1.8.1 + Ember Data Canary + EmberFire 1.3.0 + Ember CLI
  *
- * Note: this assumes you've set up login on your Firebase,
+ * Note: this assumes you've set up login on your Firebase and
  * only handles Google and Facebook for now,
  *
  * In your templates: <button {{action 'login' 'google'}}>Sign in with Google</button>
@@ -21,7 +21,10 @@ export default {
 	// Run the initializer after the store is ready
 	after: 'store',
 
-	initialize: function(container, app) {
+	initialize: function(container, application) {
+
+		// defer the application while we do our session
+		// application.deferReadiness();
 
 		// session object is nested here as we need access to the container to get the store
 		var session = Ember.Object.extend({
@@ -32,6 +35,8 @@ export default {
 			store: container.lookup('store:main'),
 
 			init: function() {
+
+
 
 				// on init try to login
 				ref.onAuth(function(authData) {
@@ -117,6 +122,7 @@ export default {
 				this.store.find('user', userId).then(function(user) {
 					_this.set('user', user);
 					user.get('channels').then(function(channels) {
+						Ember.debug('setting the userChannel');
 						_this.set('userChannel', channels.get('firstObject'));
 					});
 				});
@@ -140,9 +146,12 @@ export default {
 			}
 		});
 
+		// resume application
+		// application.advanceReadiness();
+
 		// Register and inject the 'session' initializer into all controllers and routes
-		app.register('session:main', session);
-		app.inject('route', 'session', 'session:main');
-		app.inject('controller', 'session', 'session:main');
+		application.register('session:main', session);
+		application.inject('route', 'session', 'session:main');
+		application.inject('controller', 'session', 'session:main');
 	}
 };
