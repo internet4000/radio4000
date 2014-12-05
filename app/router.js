@@ -15,18 +15,25 @@ Router.map(function() {
 	this.route('styleguide');
 
 	// new channel
-	this.route('new', { path: '/new'} );
+	this.route('new');
 
-	// channels
+	// all channels
 	this.resource('channels', { path: 'discover'}, function() {});
 
-	// single channel
+	// channel
 	this.resource('channel', { path: '/c/:channel_slug' }, function() {
-		this.route('add');
 		this.route('edit');
-		this.resource('tracks', { path: 'tracks' });
-		this.resource('track', { path: ':track_id' }); // not nested inside tracks avoid double tracks
+
+		// channel tracks
+		this.resource('tracks', function() {
+			this.route('add');
+		});
+
+		this.resource('track', { path: ':track_id' });
 	});
+
+	// all tracks
+	this.resource('tracks', function() {});
 
 	// users
 	this.resource('users', function(){

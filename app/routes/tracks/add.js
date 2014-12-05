@@ -15,7 +15,10 @@ export default Ember.Route.extend({
 		controller.set('isExpanded', true);
 	},
 	renderTemplate: function() {
-		this.render({ outlet: 'channel-body'});
+		this.render({
+			into: 'channel',
+			outlet: 'channel-body'
+		});
 	},
 	deactivate: function() {
 		this.controller.set('isExpanded', false);

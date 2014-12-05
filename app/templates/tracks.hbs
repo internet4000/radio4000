@@ -1,8 +1,16 @@
+{{!-- <div class="Manchet">
+	<h1>Tracks<small> — all the {{model.length}} sounds of Radio4000</small></h1>
+</div> --}}
+
 {{!-- <div class="BtnGroup u-alignRight">
 	<h4 class="BtnGroup-label">Sort by</h4>
 	<button class="Btn" {{action 'sortBy' 'created'}}>Date</button>
 	<button class="Btn" {{action 'sortBy' 'title'}}>Title</button>
 </div> --}}
+
+{{!-- by default, the "detail page" of an x-track would be rendered here,
+		but we overwrite it in the track router --}}
+{{outlet}}
 
 <div class="Container Container--noPadding">
 	<ul class="List">
@@ -46,6 +54,3 @@
 	{{/unless}}
 {{/if}}
 
-{{!-- by default, the "detail page" of an x-track would be rendered here,
-		but we overwrite it in the track router --}}
-{{outlet}}

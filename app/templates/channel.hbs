@@ -26,7 +26,7 @@
 			<div class="BtnGroupWrapper">
 				{{#if canEdit}}
 					<div class="BtnGroup">
-						{{#link-to 'channel.add' this class="Btn" title="Add track"}}
+						{{#link-to 'tracks.add' this class="Btn" title="Add track"}}
 							{{x-icon i="plus"}} Add track
 						{{/link-to}}
 						{{#if isEditing}}
@@ -77,4 +77,6 @@
 		</div>
 	</div>
 	{{/if}}
+
+	{{!-- this page doesn't have a normal outlet to avoid rendering the track in to it --}}
 </article>

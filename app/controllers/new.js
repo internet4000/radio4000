@@ -88,7 +88,7 @@ export default Ember.ObjectController.extend({
 			});
 
 			// Redirect to the new channel
-			this.transitionToRoute('channel.add', model);
+			this.transitionToRoute('tracks.add', model);
 		}
 	}
 });
