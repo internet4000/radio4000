@@ -1,10 +1,6 @@
-<h1 class="SiteLogo">
-	{{#link-to "index" title="Back to home"}}
-		<img src="images/logos/logo-radio4000.png" alt="Radio 4000">
-	{{/link-to}}
-</h1>
-
 <nav>
+	{{#link-to 'channels' title="Discover channels"}}Discover{{/link-to}}
+
 	{{#if session.authed}}
 		{{#if session.userChannel}}
 			{{#link-to 'channel' session.userChannel title="Go to my channel"}}My channel{{/link-to}}
@@ -13,8 +9,6 @@
 			{{#link-to 'new' title="Create your channel"}}+ Create your channel{{/link-to}}
 		{{/if}}
 	{{/if}}
-
-	{{#link-to 'channels' title="Discover channels"}}Discover{{/link-to}}
 
 	<aside class="ContextualNavigation u-alignRight">
 		{{#unless session.authed}}

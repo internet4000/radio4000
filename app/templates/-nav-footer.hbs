@@ -1,0 +1,13 @@
+<ul class="Nav">
+	{{!-- <li>{{#link-to 'application' title="Back to home"}}Home{{/link-to}}</li> --}}
+	<li>{{#link-to 'about' title="Learn more about Radio4000"}}About{{/link-to}}</li>
+	<li>{{#link-to 'help' title="Answers to your questions"}}Help{{/link-to}}</li>
+	<li>{{#link-to 'log' title="See what's new in the changelog"}}Log{{/link-to}}</li>
+	<li>{{#link-to 'forum' title="Help us evolve. Join the Radio 4000 forum"}}Forum{{/link-to}}</li>
+
+	{{#if session.authed}}
+		<li><a href="#" title="Sign out from Radio 4000" {{action 'logout' this}}>Sign out</a></li>
+	{{else}}
+		<li>{{#link-to 'signin' title="Sign in to Radio 4000"}}Sign in{{/link-to}}</li>
+	{{/if}}
+</ul>
