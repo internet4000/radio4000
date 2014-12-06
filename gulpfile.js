@@ -12,8 +12,7 @@ gulp.task('deploy', function() {
 		recursive: true,
 		// deleteAll: true // Careful, this could cause data loss
 	}, function(error,stdout,stderr,cmd) {
-		if ( error ) {
-			// failed
+		if (error) {
 			console.log(error.message);
 		} else {
 			// success
@@ -32,8 +31,7 @@ gulp.task('deploy-live', function() {
 		recursive: true,
 		// deleteAll: true // Careful, this could cause data loss
 	}, function(error,stdout,stderr,cmd) {
-		if ( error ) {
-			// failed
+		if (error) {
 			console.log(error.message);
 		} else {
 			// success
