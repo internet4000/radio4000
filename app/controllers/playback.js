@@ -117,7 +117,7 @@ export default Ember.ObjectController.extend({
 			});
 			_this.set('player', newPlayer);
 		});
-	}.observes('embedURL'),
+	}.observes('embedUrl'),
 
 	onPlayerReady: function() {
 		this.set('state', 'playerReady');

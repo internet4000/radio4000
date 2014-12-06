@@ -50,5 +50,10 @@ export default DS.Model.extend({
 		}
 
 		return id;
-	}.property('url')
+	}.property('url'),
+
+	// Create a URL to embed in an iframe
+	embedUrl: function() {
+		return '//www.youtube.com/embed/'+ this.get('ytid') + '?enablejsapi=1&autoplay=1&rel=0&showinfo=0&autohide=1';
+	}.property('ytid'),
 });
