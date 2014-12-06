@@ -24,10 +24,7 @@ var app = new EmberApp({
 
 // Extra scripts to incude
 app.import('bower_components/firebase/firebase.js');
-
-// app.import('bower_components/emberfire/dist/emberfire.js');
-app.import('vendor/emberfire.js');
-
+app.import('bower_components/emberfire/dist/emberfire.js');
 app.import('bower_components/moment/moment.js');
 app.import('bower_components/js-md5/js/md5.js');
 
