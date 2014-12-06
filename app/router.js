@@ -36,7 +36,7 @@ Router.map(function() {
 	this.resource('tracks', function() {});
 
 	// users
-	this.resource('users', function(){
+	this.resource('users', function() {
 		this.resource('user', { path: '/user/:user_id' });
 	});
 });

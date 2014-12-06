@@ -13,7 +13,7 @@ export default Ember.Component.extend({
 	},
 
 	// True if this track is the playback is using
-	isCurrent: function(){
+	isCurrent: function() {
 		return this.get('playback.model') === this.get('track');
 	}.property('playback.model', 'track'),
 

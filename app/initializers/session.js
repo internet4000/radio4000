@@ -138,7 +138,7 @@ export default {
 					// name: this.get('authData.facebook.displayName') || this.get('authData.google.displayName'),
 					// email: this.get('authData.facebook.email') || this.get('authData.google.email'),
 					created: new Date().getTime()
-				}).save().then(function(user){
+				}).save().then(function(user) {
 
 					// Proceed with the newly create user
 					_this.set('user', user);
