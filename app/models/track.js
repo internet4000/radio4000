@@ -7,36 +7,48 @@ export default DS.Model.extend({
 	created: DS.attr('number'),
 	channel: DS.belongsTo('channel', { async: true }),
 
-	// Return a YouTube ID from the url
-	ytID: function() {
-		var url = this.get('url');
-		var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-
-		// @todo shouldn't be necessary
-		// models without urls should be checked before creating/saving
-		if (!url) {
-			console.log('no url? ' + url);
-			return false;
-		}
-
-		var match = url.match(regExp);
-		if (match && match[7].length === 11) {
-			return match[7];
-		} else {
-			return false;
-		}
-	}.property('url'),
-
-	// Create a URL to embed in an iframe
-	embedUrl: function() {
-		return '//www.youtube.com/embed/'+ this.get('ytID') + '?enablejsapi=1&autoplay=1&rel=0&showinfo=0&autohide=1';
-	}.property('ytID'),
-
 	// Format the date
 	createdDate: function() {
 		var m = window.moment(this.get('created'));
 		// return '%@ at %@'.fmt(m.format('MMMM Do, YYYY'), m.format('h:mm:ss a'));
 		// return '%@ at %@'.fmt(m.format('MMMM Do, YYYY'));
 		return m.fromNow(); // 19 hours ago
-	}.property('created')
+	}.property('created'),
+
+	// adapted from http://stackoverflow.com/a/5831191/1614967
+	// and https://github.com/brandly/angular-youtube-embed/blob/master/src/angular-youtube-embed.js
+	ytid: function() {
+		var url = this.get('url');
+		var youtubeRegexp = /https?:\/\/(?:[0-9A-Z-]+\.)?(?:youtu\.be\/|youtube(?:-nocookie)?\.com\S*[^\w\s-])([\w-]{11})(?=[^\w-]|$)(?![?=&+%\w.-]*(?:['"][^<>]*>|<\/a>))[?=&+%\w.-]*/ig;
+		var id = url.replace(youtubeRegexp, '$1');
+
+		function contains(str, substr) {
+			return (str.indexOf(substr) > -1);
+		}
+
+		if (contains(id, ';')) {
+			var pieces = id.split(';');
+
+			if (contains(pieces[1], '%')) {
+				 // links like this:
+				 // "http://www.youtube.com/attribution_link?a=pxa6goHqzaA&amp;u=%2Fwatch%3Fv%3DdPdgx30w9sU%26feature%3Dshare"
+				 // have the real query string URI encoded behind a ';'.
+				 // at this point, `id is 'pxa6goHqzaA;u=%2Fwatch%3Fv%3DdPdgx30w9sU%26feature%3Dshare'
+				 var uriComponent = decodeURIComponent(id.split(';')[1]);
+				 id = ('http://youtube.com' + uriComponent)
+							.replace(youtubeRegexp, '$1');
+			} else {
+				 // https://www.youtube.com/watch?v=VbNF9X1waSc&amp;feature=youtu.be
+				 // `id` looks like 'VbNF9X1waSc;feature=youtu.be' currently.
+				 // strip the ';feature=youtu.be'
+				 id = pieces[0];
+			}
+		} else if (contains(id, '#')) {
+			// id might look like '93LvTKF_jW0#t=1'
+			// and we want '93LvTKF_jW0'
+			id = id.split('#')[0];
+		}
+
+		return id;
+	}.property('url')
 });
