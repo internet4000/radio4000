@@ -27,9 +27,8 @@ Router.map(function() {
 		// channel tracks
 		this.resource('tracks', function() {
 			this.route('add');
+			this.resource('track', { path: ':track_id' });
 		});
-
-		this.resource('track', { path: ':track_id' });
 	});
 
 	// all tracks
