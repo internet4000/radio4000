@@ -30,13 +30,12 @@ export default {
 		var session = Ember.Object.extend({
 			authed: false,
 			user: null,
+			userChannel: null,
 
 			// get access to the ember data store
 			store: container.lookup('store:main'),
 
 			init: function() {
-
-
 
 				// on init try to login
 				ref.onAuth(function(authData) {
