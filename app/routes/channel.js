@@ -3,23 +3,25 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 	model: function(params) {
 
-		// TODO: this is how it should be, but no findQuery support in Emberfire
+		// 1. This is how it should be
+		// but no findQuery support in Emberfire
 		// return this.store.find('channel', { slug: params.channel_slug });
 
-		// alternative solution but loads all channels………
+		// 2. Alternative solution
+		// but loads all channels………
 		return this.store.find('channel').then(function(channels) {
 			return channels.findBy('slug', params.channel_slug);
 		});
 
+		// 3. firebase way but doesn't return an ember model
+		// because it doesn't go through the adapter
+		// var ref = new window.Firebase('https://radio4000.firebaseio.com/channels');
 		// return new Ember.Promise(function(resolve, reject) {
-		// 	ref.orderByChild('slug').equalTo(params.channel_slug).on('child_added', function(snapshot) {
+		// 	ref.orderByChild('slug').equalTo('yas').on('child_added', function(snapshot) {
 		// 		// var results = [];
-		// 		// snapshot.forEach(function(childSnapshot) {
-		// 			// var payload = adapter._assignIdToPayload(childSnapshot);
-		// 			// adapter._updateRecordCacheForType(type, payload);
-		// 			// results.push(childSnapshot.val());
-		// 		// });
-		// 		console.log(snapshot.val());
+		// 		// var payload = adapter._assignIdToPayload(snapshot);
+		// 		// adapter._updateRecordCacheForType(type, payload);
+		// 		// results.push(snapshot.val());
 		// 		resolve(snapshot.val());
 		// 	}, function(error) {
 		// 		reject(error);

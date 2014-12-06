@@ -28,9 +28,14 @@ body {
 	// make room for the fixed bottom bar
 	padding-bottom: $barHeight;
 
-	.Nav a {
-		color: $dark;
-		display: block;
-		padding: 2em 0.5em 0.5em;
+	.Nav {
+		// pull out so it aligns with the rest of the site
+		margin-left: -0.5rem;
+		margin-right: -0.5rem;
+		a {
+			color: $dark;
+			display: block;
+			padding: 2em 0.5em 0.5em;
+		}
 	}
 }
