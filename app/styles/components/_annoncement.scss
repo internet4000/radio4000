@@ -39,6 +39,7 @@
 // A colored box for important notices
 .Note {
 	position: relative;
+	max-width: 24rem;
 	padding: 1.5rem 1rem 1px;
 	border: 1px solid $mediumlightgray;
 	background-clip: padding-box;

@@ -1,7 +1,13 @@
 <div class="BreadAndCheese" {{bind-attr class='isMaximized'}}>
 	<header class="SiteHeader">
 		<div class="Bar">
-			{{partial 'navigation'}}
+			<h1 class="SiteLogo">
+				{{#link-to "index" title="Back to home"}}
+					<img src="images/logos/logo-radio4000.png" alt="Radio 4000">
+				{{/link-to}}
+			</h1>
+
+			{{partial 'nav-header'}}
 		</div>
 	</header>
 
@@ -13,15 +19,7 @@
 		{{render 'playback'}}
 	</aside>
 
-	<footer class="SiteFooter">
-		<nav class="Nav Container">
-			{{#link-to 'about' title="Learn more about Radio4000"}}About{{/link-to}}
-			 • {{#link-to 'forum' title="Go to the Radio 4000 forum"}}Forum{{/link-to}}
-			{{#if session.authed}}
-			 • <a href="#" title="Sign out from Radio 4000" {{action 'logout' this}}>Sign out</a>
-			{{else}}
-			• {{#link-to 'signin' title="Sign in to Radio 4000"}}Sign in{{/link-to}}
-			{{/if}}
-		</nav>
+	<footer class="SiteFooter Container">
+		{{partial 'nav-footer'}}
 	</footer>
 </div>

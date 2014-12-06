@@ -23,5 +23,14 @@ body {
 }
 
 .SiteFooter {
-	margin-bottom: $barHeight + 10px;
+	background-color: darken($bg-color, 6%);
+
+	// make room for the fixed bottom bar
+	padding-bottom: $barHeight;
+
+	.Nav a {
+		color: $dark;
+		display: block;
+		padding: 2em 0.5em 0.5em;
+	}
 }

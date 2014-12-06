@@ -4,11 +4,19 @@
 
 .Nav {
 	clear: both;
-	text-align: center;
-	margin-top: 2em;
+	list-style: none;
+	padding-left: 0;
+
+	li {
+		display: inline-block;
+	}
+
+	// link styles
 	a {
 		color: $text-color;
 	}
+
+	// active styles
 	a.is-active {
 		text-decoration: underline;
 	}
@@ -21,3 +29,5 @@
 	}
 }
 
+
+// •
