@@ -16,22 +16,19 @@
 	&.is-active {
 		transform: translateY(0);
 	}
-
-	// &.is-busy {
-	// 	.Controls-buttons {
-	// 		opacity: 0.5;
-	// 		pointer-events: none;
-	// 		cursor: default;
-	// 	}
-	// }
 }
 
 // Controls
 .Controls {
+
+	// items in one row, no wrapping
+	// and no space in the sides, just between
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+
 	min-height: $barHeight;
-	z-index: 3;
-	position: relative;
-	overflow: auto;
 	background-color: $primary-color;
 	background: linear-gradient($primary-color, hsl(268, 90%, 42%));
 	color: $text-color-invert;
@@ -44,59 +41,35 @@
 		}
 	}
 
+	// icon size here
+	.Button {
+		font-size: 20px;
+	}
 }
 
 .Controls-buttons {
-	position: absolute;
-	left: 0.8rem; // like 1 rem
-	top: 0;
-	bottom: 0;
-	overflow: hidden;
+	// no shrinking so icons would wrap
+	flex-shrink: 0;
+	display: flex; // this works
 
-	a:hover {
-		text-decoration: none;
-	}
-
-	// responsive buttons and icons, vertically centered
-	.Btn [class^="icon-"],
-	.Btn [class*=" icon-"] {
-		top: initial;
-		left: initial;
-	}
 	.Btn--text {
-		height: 100%;
-		font-size: 1.6rem;
 		padding: 0;
 		color: $bleach;
 		@media (min-width: $layout-s) {
 			font-size: 2rem;
 		}
-		@media (min-width: $layout-m) {
-			padding: 0 0.1em;
-		}
 	}
 }
 
 .Controls-title {
-	display: table;
-	width: 100%;
-	height: $barHeight;
-	text-align: center;
-
+	order: 2;
 	@include size-1;
 	@media (min-width: rem(530)) {
 		font-size: initial;
 	}
 
 	a {
-		display: table-cell;
-		vertical-align: middle;
-		padding-left: 7.3rem;
-		padding-right: 2.5rem;
-		@media (min-width: $layout-m) {
-			// padding-left: 136px;
-			// padding-right: 136px;
-		}
+		display: block;
 		&.is-active {
 			text-decoration: none;
 		}
@@ -104,10 +77,6 @@
 }
 
 .Controls-videoBtn {
-	// float: right;
-	font-size: 1.3rem;
-	position: absolute;
-	top: 0.4em;
-	right: 0.2rem;
+	order: 3;
 	color: $bleach;
 }
