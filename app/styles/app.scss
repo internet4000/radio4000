@@ -27,22 +27,22 @@
 
 // 4. Components (reusable components)
 @import 'utilities/content-states';
-@import 'components/logo';
-@import 'components/loader';
+@import 'components/icon';
 @import 'components/list';
+@import 'components/loader';
+@import 'components/logo';
+@import 'components/navigation';
+@import 'components/annoncement';
+@import 'components/bar';
+@import 'components/box';
+@import 'components/box-icon';
+
 @import 'components/channel';
 @import 'components/track';
 @import 'components/playback';
 @import 'components/player';
-@import 'components/bar';
 @import 'components/thumbnail';
-@import 'components/annoncement';
-@import 'components/box';
-@import 'components/box-icon';
 @import 'components/intro-demo';
 
-// 5. Navigation
-@import 'navigation/navigation';
-
-// 6. Themes
+// 5. Themes
 // @import 'themes/sidebar';

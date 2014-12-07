@@ -48,29 +48,3 @@ embed {
 hr {
 	margin: 2rem 0;
 }
-
-// Icons
-[class^="icon-"],
-[class*=" icon-"] {
-	display: inline-block;
-	height: 1em;
-	width: 1em;
-	fill: currentColor;
-
-	// vertical center inside buttons
-	.Btn & {
-		float: left;
-		position: relative;
-		top: 0.15em;
-		left: -0.2em;
-	}
-}
-.icon-facebook {
-	color: #3b5998;
-}
-.icon-google-plus {
-	color: #dd4b39;
-}
-.icon-twtter {
-	color: #00aced;
-}
