@@ -57,3 +57,33 @@
 	}
 }
 
+.Section-item {
+	max-width: 28rem;
+	padding: 2em 1.5em 0.5em;
+	margin-bottom: 1rem;
+	color: $bleach;
+	-webkit-font-smoothing: antialiased;
+
+	// &::after {
+	// 	content: '';
+	// 	display: block;
+	// 	height: 3px;
+	// 	width: 1em;
+	// 	background: $bleach;
+	// }
+	&:nth-child(odd) {
+		clear: right;
+		background: darken($green, 5%);
+	}
+	&:nth-child(even) {
+		float: right;
+		background: hsl(219, 64%, 43%);
+		background-color: $green;
+	}
+
+	a {
+		@extend %font-bold;
+		color: $bleach;
+	}
+}
+
