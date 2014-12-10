@@ -2,11 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 
-	// 1. this is an empty function to stop ember from
-	// trying to render a track template
+	// Normally a track would render into the outlet of the channel
+	// but we don't want that, so don't render anything:
 	renderTemplate: function() {},
 
-	// 2. because we just pass the track and channel to the playback controller instead
+	// Instead, we want the channel and track in the playback controller
 	setupController: function(controller, model) {
 		var channel = this.controllerFor('channel').get('model');
 		this.controllerFor('playback').set('model', model);
