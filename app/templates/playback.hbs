@@ -1,7 +1,9 @@
 <div {{bind-attr class=':Player model::is-hidden isMaximized'}}>
-	{{#if model}}
-		<iframe id="player" type="text/html" width="210" height="166" frameborder="0" {{bind-attr src="embedUrl"}}></iframe>
-	{{/if}}
+	{{ember-youtube ytid=model.ytid name=player
+		playing="ytPlaying"
+		paused="ytPaused"
+		ended="ytEnded"
+		error="ytError"}}
 </div>
 
 <div {{bind-attr class=':Playback model:is-active'}}>
@@ -20,12 +22,12 @@
 				<button class="Btn Btn--text" {{bind-attr disabled=busy}} {{action 'playPrev' model}} title="Previous track" >
 					{{x-icon i='previous'}}
 				</button>
-				{{#if isPlaying}}
-					<button class="Btn Btn--text" {{bind-attr disabled=busy}} {{action 'pause'}} title="Pause track" >
+				{{#if player.isPlaying}}
+					<button class="Btn Btn--text" {{bind-attr disabled=busy}} {{action 'togglePlay' target="player"}} title="Pause track" >
 						{{x-icon i='pause'}}
 					</button>
 				{{else}}
-					<button class="Btn Btn--text" {{bind-attr disabled=busy}} {{action 'play'}} title="Play track" >
+					<button class="Btn Btn--text" {{bind-attr disabled=busy}} {{action 'togglePlay' target="player"}} title="Play track" >
 						{{x-icon i='play'}}
 					</button>
 				{{/if}}
@@ -40,8 +42,17 @@
 					{{x-icon i='arrows-expand'}}
 				{{/if}}
 			</button>
-		{{else}}
-			{{!-- no track is selected here --}}
+
+			<div class="Controls-title" title="Current track / go to current channel">
+				{{#link-to 'channel' model.channel}}
+					{{#if model.title}}
+						{{model.title}} <span class="Controls-channel">({{channel.title}})</span>
+					{{else}}
+						Untitled
+					{{/if}}
+				{{/link-to}}
+			</div>
 		{{/if}}
 	</div>
 </div>
+

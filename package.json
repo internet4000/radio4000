@@ -32,12 +32,11 @@
     "ember-cli-qunit": "0.1.2",
     "ember-data": "1.0.0-beta.12",
     "ember-export-application-global": "^1.0.0",
+    "ember-youtube": "*",
     "express": "^4.8.5",
     "glob": "^4.0.5",
-    "ember-cli-app-version": "^0.2.1",
     "gulp": "^3.8.10",
     "rsyncwrapper": "^0.4.1",
     "liquid-fire": "^0.15.2"
-    "glob": "^4.0.5"
   }
 }
