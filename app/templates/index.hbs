@@ -1,4 +1,4 @@
-<div class="Manchet">
+<div class="Manchet Manchet--bigger">
 	<h1>Radio4000<small> – collect your favorite music, share your channel with your friends and listen to theirs</small></h1>
 </div>
 
@@ -6,7 +6,7 @@
 	{{render 'user' session.user}}
 {{else}}
 	<div class="Container">
-		<section class="Section">
+		<section class="Section Section--space">
 			<div class="Section-half">
 				{{#link-to 'new' class="Box" title="Sign up  to create your channel"}}
 					<h2 class="Title">Sign in</h2>
@@ -38,24 +38,38 @@
 				</div>
 			</div> --}}
 		</section>
+	</div>
 
-		<section class="Section">
+	<div class="Container Container--full">
+		<section class="Section Grid">
+			<div class="Section-item">
+				<h3 class="Title">It's everywhere</h3>
+				<p>App? There is no app. Just go to the website and press play. It'll keep playing until the battery runs out.</p>
+				{{!-- <p>{{#link-to 'channels'}}&rarr; Discover channels{{/link-to}}</p> --}}
+				<p><img src="images/icons/Cloud-Music.svg" alt=""></p>
+			</div>
 			<div class="Section-item">
 				<h3 class="Title">A tool for the music lovers</h3>
 				<p>With Radio4000 you have a place to collect your favorite music. Add the tracks you like from YouTube and we'll give you a radio in return.</p>
-				<p>{{#link-to 'about'}}&rarr; About{{/link-to}}</p>
-			</div>
-			<div class="Section-item">
-				<h3 class="Title">It's there at your friends place</h3>
-				<p>The song just ended, what's now? Radio4000 is everywhere. Just go to the website and press play.</p>
-				<p>{{#link-to 'channels'}}&rarr; Discover channels{{/link-to}}</p>
+				{{!-- <p>{{#link-to 'about'}}&rarr; About{{/link-to}}</p> --}}
+				{{!-- <p><img src="images/icons/Engagement-Ring.svg" alt=""></p> --}}
+				<p><img src="images/icons/Music-Equalizer.svg" alt=""></p>
+				{{!-- <p><img src="images/icons/Beach.svg" alt=""></p> --}}
+				{{!-- <p><img src="images/icons/Xylophone.svg" alt=""></p> --}}
 			</div>
 			<div class="Section-item">
 				<h3 class="Title">A single channel</h3>
-				<p>Everyone gets one single channel to fill with sweet music. From grooving jazz funk to blistering techno and back.</p>
-				<p>{{#link-to 'signin'}}&rarr; Sign in or up!{{/link-to}}</p>
+				<p>You get one single channel to fill with sweet music. From grooving jazz funk to blistering techno and back. The genre defines your radio.</p>
+				{{!-- <p>{{#link-to 'signin'}}&rarr; Sign in or up!{{/link-to}}</p> --}}
+				<p><img src="images/icons/Radio-4.svg" alt=""></p>
+				{{!-- <p><img src="images/icons/Desert.svg" alt=""></p> --}}
 			</div>
 		</section>
 
+	{{!-- <img src="images/icons/Bell.svg" alt="">
+	<img src="images/icons/Bonsai.svg" alt="">
+	<img src="images/icons/Cheese.svg" alt="">
+	<img src="images/icons/Record-Player.svg" alt="">
+ --}}
 	</div>
 {{/if}}

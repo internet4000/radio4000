@@ -1,0 +1,11 @@
+/**
+ * Negative text
+ * use this for whitish text on blackish backgrounds
+ *
+ * it will make type appear lighter but it also DISABLED subpixel antialiasing which isn't always good
+ */
+
+@mixin negative-text() {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}

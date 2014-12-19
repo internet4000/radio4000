@@ -21,6 +21,7 @@
   },
   "resolutions": {
     "handlebars": ">= 1.0.0 < 2.0.0",
-    "ember": "1.8.0"
+    "ember": "1.8.0",
+    "ember-data": "1.0.0-beta.12"
   }
 }

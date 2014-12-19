@@ -35,8 +35,9 @@
 	padding-bottom: 2rem; // padding instead of margin - otherwise it cuts the box-shadow of .Box -_-
 }
 .Section--space {
-	padding-top: 4em;
+	padding-top: 1em;
 }
+
 
 // Two column section
 .Section-half {
@@ -59,26 +60,24 @@
 
 .Section-item {
 	max-width: 28rem;
-	padding: 2em 1.5em 0.5em;
+	padding: 3em 1.5em 0.5em;
 	margin-bottom: 1rem;
-	color: $bleach;
-	-webkit-font-smoothing: antialiased;
-
-	// &::after {
-	// 	content: '';
-	// 	display: block;
-	// 	height: 3px;
-	// 	width: 1em;
-	// 	background: $bleach;
-	// }
+	background-color: #000;
+	// color: $bleach;
+	// @include negative-text;
 	&:nth-child(odd) {
-		clear: right;
-		background: darken($green, 5%);
+		background-color: $lightgray;
+		// background: darken($green, 5%);
+		// background-color: #000;
+		@media (min-width: $layout-s) {
+			margin-top: 1.5rem;
+		}
 	}
 	&:nth-child(even) {
-		float: right;
-		background: hsl(219, 64%, 43%);
-		background-color: $green;
+		background-color: #fff;
+		// background: hsl(219, 64%, 43%);
+		// background-color: $green;
+		// background-color: #111;
 	}
 
 	a {

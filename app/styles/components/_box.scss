@@ -11,6 +11,7 @@ a.Box,
 	padding: 1.6rem 1rem;
 	transition: 150ms all ease-in-out;
 	box-shadow: $slightgray 4px 16px 20px;
+	background-color: lighten($bg-color, 4%);
 
 	// constrained
 	margin-left: auto;
@@ -32,7 +33,7 @@ a.Box,
 	}
 	&:hover {
 		text-decoration: none;
-		background-color: lighten($primary-color, 60%);
+		background-color: $white;
 		box-shadow: $lightgray 4px 6px 30px;
 	}
 	&:active {
