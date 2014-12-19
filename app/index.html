@@ -35,6 +35,8 @@
   <meta name="msapplication-TileImage" content="/images/favicons/mstile-144x144.png">
 
   <script src="modernizr-custom.min.js"></script>
+
+  {{content-for 'head-footer'}}
 </head>
 <body>
   {{content-for 'body'}}
@@ -53,5 +55,6 @@
     ga('send', 'pageview');
   </script>
 
+  {{content-for 'body-footer'}}
 </body>
 </html>

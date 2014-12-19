@@ -2,9 +2,9 @@
   "name": "radio4000",
   "dependencies": {
     "handlebars": "~1.3.0",
-    "jquery": "~2.1.1",
-    "ember": "1.8.1",
-    "ember-data": "components/ember-data#canary",
+    "jquery": "~2.1.3",
+    "ember": "1.8.0",
+    "ember-data": "1.0.0-beta.12",
     "ember-resolver": "~0.1.10",
     "loader.js": "stefanpenner/loader.js#1.0.1",
     "ember-cli-shims": "stefanpenner/ember-cli-shims#0.0.3",
@@ -12,15 +12,15 @@
     "ember-load-initializers": "stefanpenner/ember-load-initializers#0.0.2",
     "ember-qunit": "0.1.8",
     "ember-qunit-notifications": "0.0.4",
-    "qunit": "~1.15.0",
     "firebase": "~2.0.6",
     "normalize-opentype.css": "~0.2.1",
     "js-md5": "~1.1.0",
     "moment": "~2.8.4",
-    "emberfire": "~1.3.1"
+    "emberfire": "~1.3.1",
+    "qunit": "~1.15.0"
   },
   "resolutions": {
-    "ember": "1.8.1",
-    "ember-data": "canary"
+    "handlebars": ">= 1.0.0 < 2.0.0",
+    "ember": "1.8.0"
   }
 }
