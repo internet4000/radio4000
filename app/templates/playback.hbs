@@ -1,5 +1,9 @@
 <div {{bind-attr class=':Player model::is-hidden isMaximized'}}>
-	{{ember-youtube ytid=model.ytid name=player playing="ytPlaying" paused="ytPaused" ended="ytEnded" error="ytError"}}
+	{{ember-youtube ytid=model.ytid name=player
+		playing="ytPlaying"
+		paused="ytPaused"
+		ended="ytEnded"
+		error="ytError"}}
 </div>
 
 <div {{bind-attr class=':Playback model:is-active'}}>

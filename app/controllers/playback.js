@@ -5,7 +5,6 @@ export default Ember.Controller.extend({
 	channel: null,
 	isMaximized: false,
 
-
 	tracks: function() {
 		return this.get('channel.tracks');
 	}.property('channel.tracks.[]'),
@@ -17,7 +16,6 @@ export default Ember.Controller.extend({
 	}.property('tracks', 'model'),
 
 	actions: {
-
 		ytPlaying: function() {
 			Ember.debug('on playing from controller');
 		},
