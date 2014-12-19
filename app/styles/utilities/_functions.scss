@@ -3,7 +3,7 @@
  */
 
 @function strip-unit($num) {
-  @return $num / ($num * 0 + 1);
+	@return $num / ($num * 0 + 1);
 }
 
 
@@ -13,13 +13,13 @@
 
 @function em($target, $context: $base-font-size, $desired-unit: 1em) {
 
-   // Make sure units are unitless
-   @if not unitless($target) {
-      $target: strip-unit($target);
-   }
-   @if not unitless($context) {
-      $context: strip-unit($context);
-   }
+	// Make sure units are unitless
+	@if not unitless($target) {
+		$target: strip-unit($target);
+	}
+	@if not unitless($context) {
+		$context: strip-unit($context);
+	}
 
 	@return ($target / $context) * $desired-unit;
 }
@@ -31,9 +31,9 @@
 
 @function rem($target, $context: $base-font-size, $desired-unit: 1rem) {
 
-   // Make sure units are unitless
+	// Make sure units are unitless
 	@if not unitless($target) {
-      $target: strip-unit($target);
+		$target: strip-unit($target);
 	}
 	@if not unitless($context) {
 		$context: strip-unit($context);

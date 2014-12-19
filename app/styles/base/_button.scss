@@ -14,7 +14,7 @@
 	// Button styling
 	padding: 0.3em 0.8em 0.2em;
 	background-color: $slightgray;
-	background-image: linear-gradient(to bottom, white 60%, #ececec);
+	background-image: linear-gradient(to bottom, #fff 60%, #ececec);
 	color: $text-color;
 	box-shadow: hsla(0, 0%, 0%, 0.2) 0 1px 0 0;
 	transition: border-color 200ms, background 200ms, box-shadow 200ms;
@@ -24,11 +24,8 @@
 	&:focus,
 	&:active {
 		text-decoration: none;
-		background-image: linear-gradient(to bottom, white 70%, hsla(0, 0%, 0%, 0.1));
+		background-image: linear-gradient(to bottom, #fff 70%, hsla(0, 0%, 0%, 0.1));
 		border-color: rgba(0,0,0,0.18);
-	}
-	&:focus {
-
 	}
 	&:disabled,
 	&.is-disabled {
@@ -53,13 +50,13 @@
 // Primary, colored button
 .Btn--primary {
 	background-color: $green;
-	background-image: linear-gradient(to bottom, rgba(white, 0.10) 40%, $green);
+	background-image: linear-gradient(to bottom, rgba($white, 0.1) 40%, $green);
 	color: $bleach;
 
 	&:hover,
 	&:focus,
 	&:active {
-		background-image: linear-gradient(to bottom, rgba(white, 0.10) 40%, hsla(0,0%,0%,0.10));
+		background-image: linear-gradient(to bottom, rgba($white, 0.1) 40%, hsla(0,0%,0%,0.1));
 	}
 }
 
@@ -101,7 +98,7 @@
 // Button that looks like an input field
 .Btn--textInput {
 	background-image: none;
-	background-color: white;
+	background-color: $white;
 	text-align: left;
 	box-shadow: none;
 	&:hover,
@@ -151,15 +148,15 @@
 // Control buttons
 .Controls-buttons {
 	.Btn:hover {
-		color: gray;
+		color: $gray;
 	}
 	.Btn {
-		border-width: 0px;
+		border-width: 0;
 	}
 }
 .Controls-buttons .Btn,
 .Controls-videoBtn.Btn {
-	border-width: 0px;
+	border-width: 0;
 }
 
 // Btn--fav

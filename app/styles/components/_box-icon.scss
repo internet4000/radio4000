@@ -10,7 +10,7 @@ $boxIconSize: 35px;
 	color: $primary-color;
 	&:before {
 		display: block;
-		content: "";
+		content: '';
 		height: $boxIconSize;
 		width: $boxIconSize;
 		border: 1px dashed $primary-color;
@@ -20,25 +20,22 @@ $boxIconSize: 35px;
 		left: -45px;
 	}
 }
-
 .BoxIcon--add {
 	&:before {
-		content: "+";
+		content: '+';
 		padding-left: 13px;
 		padding-top: 6px;
 	}
 }
-
 .BoxIcon--explore {
 	&:before {
-		content: "→";
+		content: '→';
 		padding-left: 9px;
 		padding-top: 6px;
 		font-size: 16px;
 	}
 }
-
-.BoxIcon--white {
-	color: white;
-	border-color: white;
+.BoxIcon--white {
+	color: #fff;
+	border-color: #fff;
 }

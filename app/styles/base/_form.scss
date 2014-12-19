@@ -4,23 +4,23 @@
 
 // Shared styles for inputs and buttons
 .Btn,
-input[type='text'],
-input[type='email'],
-input[type='tel'],
-input[type='password'],
-input[type='url'],
+[type='text'],
+[type='email'],
+[type='tel'],
+[type='password'],
+[type='url'],
 textarea {
+	@include negative-text;
 	border: 1px solid rgba(0,0,0,0.15);
 	border-radius: $border-radius;
-	-webkit-font-smoothing: antialiased;
 }
 
 // Text inputs
-input[type='text'],
-input[type='email'],
-input[type='tel'],
-input[type='password'],
-input[type='url'],
+[type='text'],
+[type='email'],
+[type='tel'],
+[type='password'],
+[type='url'],
 textarea,
 .Btn--textInput {
 	@include size-1;
@@ -36,47 +36,42 @@ textarea {
 
 // Label styles
 label {
-	display: block;
 	@include size-1;
+	display: block;
 	padding-bottom: 5px;
 
-	input[type='text'],
-	input[type='email'],
-	input[type='tel'],
-	input[type='password'],
-	input[type='url'],
+	[type='text'],
+	[type='email'],
+	[type='tel'],
+	[type='password'],
+	[type='url'],
 	textarea {
-		margin-top: 0.25rem;
 		@extend %font-regular;
+		margin-top: 0.25rem;
 	}
 }
 
 // Form design should be tigther than inputs alone
 .Form {
-	input[type='text'],
-	input[type='email'],
-	input[type='tel'],
-	input[type='password'],
-	input[type='url'],
+	[type='text'],
+	[type='email'],
+	[type='tel'],
+	[type='password'],
+	[type='url'],
 	textarea,
 	.Btn {
 		margin-bottom: 1rem;
 	}
 }
-.Form-group {}
+.Form-group {
+	// should wrap every label+input
+}
 .Form-group--small {
 	max-width: 14em;
 	input {
 		padding: 0.5em 0.5em 0.3em;
 	}
 }
-
-
-
-
-
-
-
 
 // Shared styles between the forms for adding a track and editing a track
 .AddTrack,
@@ -117,16 +112,16 @@ label {
 	@include clearfix;
 	position: relative;
 	.Permalink {
+		@include size-1;
 		color: $gray;
 		float: left;
 		padding-top: 0;
-		@include size-1;
 	}
 	input {
 		max-width: 200px;
 		float: left;
 		background-color: transparent;
-		border: 0px solid transparent;
+		border: 0 solid transparent;
 		box-shadow: 0 0 0 transparent;
 		padding-top: 0;
 		padding-bottom: 2px;
@@ -136,7 +131,7 @@ label {
 		border-radius: 0;
 		color: $gray;
 		&:focus {
-			color: black;
+			color: $black;
 			outline: none;
 			border-bottom: 2px solid $primary-color;
 		}

@@ -19,8 +19,8 @@ label {
 	@extend %font-bold;
 }
 .Btn {
-	@include size-1;
 	@extend %font-bold;
+	@include size-1;
 }
 .Muted {
 	@include size-1;
@@ -34,7 +34,10 @@ label {
 }
 
 // Headers
-h1,h2,h3,h4 {
+h1,
+h2,
+h3,
+h4 {
 	@extend %font-bold;
 }
 h1,
@@ -73,8 +76,8 @@ h3,
 h4 {
 	small,
 	.is-highlighted {
-		font-size: 1em;
 		@extend %font-regular;
+		font-size: 1em;
 	}
 }
 

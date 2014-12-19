@@ -11,9 +11,9 @@
 
 @keyframes leave {
 	0% { transform: translateY(-100%); }
-	10%{ transform: translateY(0); }
+	10% { transform: translateY(0); }
 	90% { transform: translateY(0); }
-	100%{ transform:translateY(-100%); }
+	100% { transform: translateY(-100%); }
 }
 
 .Annoncement {
@@ -45,7 +45,9 @@
 	background-clip: padding-box;
 	border-radius: $border-radius;
 	background-color: $yellow;
-	h2,h3,p {
+	h2,
+	h3,
+	p {
 		@include size-1;
 		margin-bottom: 1rem;
 	}
@@ -62,6 +64,6 @@
 		top: 0;
 		left: 1px;
 		right: 1px;
-		background: rgba(white, 0.8);
+		background: rgba(#fff, 0.8);
 	}
 }

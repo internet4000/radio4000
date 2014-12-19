@@ -6,7 +6,7 @@
 // some informative text for an inactive area
 // well used right after an h2
 .is-inactiveText {
-	color: $gray;;
+	color: $gray;
 	a {
 		text-decoration: underline;
 		color: $gray;
@@ -16,19 +16,19 @@
 // is highlighted
 .is-highlighted {
 	text-decoration: none;
-	// color: $red;
 	font-weight: bold;
 	&.Title {
 		@include size-3;
-		// font-weight: 400;
 		display: inline-block;
 		margin-bottom: 0;
 	}
 }
-a.is-highlighted:active,
-a.is-highlighted:hover,
-a.is-highlighted:visited {
-	color: $text-color;
-	cursor: pointer;
-	text-decoration: none;
+a.is-highlighted {
+	&:hover,
+	&:active,
+	&:visited {
+		color: $text-color;
+		cursor: pointer;
+		text-decoration: none;
+	}
 }

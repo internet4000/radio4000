@@ -8,11 +8,9 @@
 	width: 100%;
 	z-index: 3;
 	min-height: $barHeight;
-
 	border-bottom: 1px solid hsla(0, 0%, 0%, 0.2);
 	color: $text-color-invert;
 	background: linear-gradient(lighten($purple,10%), $purple);
-
 
 	nav {
 		padding-left: 0.5rem;

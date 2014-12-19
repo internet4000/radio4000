@@ -30,7 +30,7 @@
 
 	.IntroDemo-browser {
 		@include clearfix;
-		background-color: #F2F3F7;
+		background-color: #f2f3f7;
 		position: relative;
 		padding-left: 10px;
 		padding-right: 10px;
@@ -45,15 +45,15 @@
 		margin-bottom: 9px;
 	}
 	.IntroDemo-close {
-		background-color: #FE464D;
+		background-color: #fe464d;
 		border: solid 1px #dd010c;
 	}
 	.IntroDemo-minimize {
-		background-color: #FEC324;
+		background-color: #fec324;
 		border: solid 1px #eeab01;
 	}
 	.IntroDemo-maximize {
-		background-color: #33CD7B;
+		background-color: #33cd7b;
 		border: solid 1px #2db96f;
 	}
 
@@ -62,7 +62,7 @@
 		height: 16px;
 		width: 73%;
 		border-radius: 2px;
-		border: solid 1px #E7E8EF;
+		border: solid 1px #e7e8ef;
 		display: block;
 		float: left;
 		margin-top: 5px;

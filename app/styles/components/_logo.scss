@@ -14,25 +14,12 @@
 
 	a {
 		display: block;
-
-		// old
-		// width: 144px;
-		// padding: 13px 1rem 5px;
-
-		// new
 		width: 120px;
 		padding: 15px 1rem 8px;
-
 		color: $bleach;
 
 		&:hover {
 			text-decoration: none;
-		}
-		&:before {
-
-		}
-		&:after {
-
 		}
 	}
 }
