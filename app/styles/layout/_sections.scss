@@ -1,8 +1,7 @@
-// use .Container for vertical stacks (it could add padding)
 
+// use .Container for vertical stacks (it could add padding)
 // use .Section for extra margin bottom, essentially
 // + if you need two sections next to each other, use .Section-half
-
 
 .Container,
 %Container {
@@ -12,6 +11,10 @@
 	padding-right: 1rem;
 	padding-left: 1rem;
 	position: relative;
+}
+// Use this for lager max width
+.Container--large {
+	max-width: 83rem;
 }
 // Use this when it should be full width
 .Container--full {
@@ -24,11 +27,11 @@
 }
 
 
-/**
- * Sections
- **/
+//
+// Sections
+// Use this when you need a bit of extra space
+//
 
- // Use this when you need a bit of extra space
 .Section {
 	overflow: auto;
 	clear: both;
@@ -57,32 +60,3 @@
 		}
 	}
 }
-
-.Section-item {
-	max-width: 28rem;
-	padding: 3em 1.5em 0.5em;
-	margin-bottom: 1rem;
-	background-color: #000;
-	// color: $bleach;
-	// @include negative-text;
-	&:nth-child(odd) {
-		background-color: $lightgray;
-		// background: darken($green, 5%);
-		// background-color: #000;
-		@media (min-width: $layout-s) {
-			margin-top: 1.5rem;
-		}
-	}
-	&:nth-child(even) {
-		background-color: #fff;
-		// background: hsl(219, 64%, 43%);
-		// background-color: $green;
-		// background-color: #111;
-	}
-
-	a {
-		@extend %font-bold;
-		color: $bleach;
-	}
-}
-

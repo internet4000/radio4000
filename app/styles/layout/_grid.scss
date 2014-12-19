@@ -1,0 +1,35 @@
+
+.Grid {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center; // x-center
+	text-align: center;
+}
+.Grid-item {
+	// first full, then split the space
+	flex: 0 0 100%;
+	padding: 3em 1.5em 0.5em;
+	margin-bottom: 1rem;
+	background-color: #fff;
+
+	@media (min-width: $layout-s) {
+		flex: 1;
+	}
+
+	&:nth-child(odd) {
+		background-color: $lightgray;
+		@media (min-width: $layout-s) {
+			margin-top: 1.5rem;
+		}
+	}
+
+	img {
+		max-width: 5rem;
+	}
+}
+
+
+
+.Grid .Title {
+	margin-bottom: 0.5rem;
+}

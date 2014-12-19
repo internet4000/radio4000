@@ -5,71 +5,46 @@
 {{#if session.authed}}
 	{{render 'user' session.user}}
 {{else}}
-	<div class="Container">
-		<section class="Section Section--space">
-			<div class="Section-half">
-				{{#link-to 'new' class="Box" title="Sign up  to create your channel"}}
-					<h2 class="Title">Sign in</h2>
-					<p>to get your own channel →</p>
-				{{/link-to}}
-			</div>
-			<div class="Section-half">
-				{{#link-to 'channels' class="Box" title="Discover music by channels"}}
-					<h2 class="Title">Discover music</h2>
-					<p>Listen now</p>
-				{{/link-to}}
-			</div>
-		</section>
 
-		<section class="Section Section--space">
-			<h2 class="Title Title--centered">Discover music<small> – it's as simple as clicking play!</small></h2>
-			{{!-- <div class="IntroDemo">
-				<div class="IntroDemo-browser">
-					<span class="IntroDemo-buttons IntroDemo-close"></span>
-					<span class="IntroDemo-buttons IntroDemo-minimize"></span>
-					<span class="IntroDemo-buttons IntroDemo-maximize"></span>
-					<span class="IntroDemo-addressbar"></span>
-				</div>
-				<div class="IntroDemo-header">
-					<img src="images/logos/logo-radio4000.png" alt="Radio 4000 logo" class="IntroDemo-logo">
-				</div>
-				<div class="IntroDemo-container">
-					{{render 'tracks' demoChannel}}
-				</div>
-			</div> --}}
-		</section>
-	</div>
+	<section class="Container Section Section--space">
+		<div class="Section-half">
+			{{#link-to 'new' class="Box" title="Sign up  to create your channel"}}
+				<h2 class="Title">Sign in</h2>
+				<p>→ Get your own channel now</p>
+			{{/link-to}}
+		</div>
+		<div class="Section-half">
+			{{#link-to 'channels' class="Box" title="Discover music by channels"}}
+				<h2 class="Title">Discover music</h2>
+				<p>→ Listen now</p>
+			{{/link-to}}
+		</div>
+	</section>
 
-	<div class="Container Container--full">
-		<section class="Section Grid">
-			<div class="Section-item">
-				<h3 class="Title">It's everywhere</h3>
-				<p>App? There is no app. Just go to the website and press play. It'll keep playing until the battery runs out.</p>
-				{{!-- <p>{{#link-to 'channels'}}&rarr; Discover channels{{/link-to}}</p> --}}
+	<div class="Container Container--large">
+		<section class="Section Section--space Grid">
+			<div class="Grid-item">
+				<h3 class="Title">The deepest music library</h3>
+				<p>Dig the crates of the internet and add tracks to your channel directly from Youtube. Soundcloud is following soon.</p>
 				<p><img src="images/icons/Cloud-Music.svg" alt=""></p>
+				{{!-- <p>{{#link-to 'channels'}}&rarr; Discover channels{{/link-to}}</p> --}}
 			</div>
-			<div class="Section-item">
-				<h3 class="Title">A tool for the music lovers</h3>
-				<p>With Radio4000 you have a place to collect your favorite music. Add the tracks you like from YouTube and we'll give you a radio in return.</p>
-				{{!-- <p>{{#link-to 'about'}}&rarr; About{{/link-to}}</p> --}}
-				{{!-- <p><img src="images/icons/Engagement-Ring.svg" alt=""></p> --}}
-				<p><img src="images/icons/Music-Equalizer.svg" alt=""></p>
-				{{!-- <p><img src="images/icons/Beach.svg" alt=""></p> --}}
-				{{!-- <p><img src="images/icons/Xylophone.svg" alt=""></p> --}}
-			</div>
-			<div class="Section-item">
-				<h3 class="Title">A single channel</h3>
-				<p>You get one single channel to fill with sweet music. From grooving jazz funk to blistering techno and back. The genre defines your radio.</p>
-				{{!-- <p>{{#link-to 'signin'}}&rarr; Sign in or up!{{/link-to}}</p> --}}
+			<div class="Grid-item">
+				<h3 class="Title">My channel is my temple</h3>
+				<p>As your channel grows with your enlightened taste in music, Radio4000 will become your go-to music player, trust us.</p>
+				{{!-- <p><img src="images/icons/Music-Equalizer.svg" alt=""></p> --}}
 				<p><img src="images/icons/Radio-4.svg" alt=""></p>
-				{{!-- <p><img src="images/icons/Desert.svg" alt=""></p> --}}
+				{{!-- <p>{{#link-to 'channels'}}&rarr; Discover channels{{/link-to}}</p> --}}
+			</div>
+			<div class="Grid-item">
+				<h3 class="Title">The tranquility of one channel</h3>
+				<p>You're spoiled with one single channel. Welcome to the freedom of not having to think about playlists.</p>
+				<p><img src="images/icons/Desert.svg" alt=""></p>
+				{{!-- <p>{{#link-to 'channels'}}&rarr; Discover channels{{/link-to}}</p> --}}
 			</div>
 		</section>
 
-	{{!-- <img src="images/icons/Bell.svg" alt="">
-	<img src="images/icons/Bonsai.svg" alt="">
-	<img src="images/icons/Cheese.svg" alt="">
-	<img src="images/icons/Record-Player.svg" alt="">
- --}}
+		{{!-- <p>{{#link-to 'signin'}}Sign in{{/link-to}} or {{#link-to 'signin'}}sign up{{/link-to}} now.</p> --}}
 	</div>
+
 {{/if}}

@@ -39,23 +39,3 @@ body {
 		}
 	}
 }
-
-
-
-.Grid {
-	// flex container
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: center; // x-center
-	text-align: center;
-	@media (min-width: $layout-s) {}
-
-	// flex items
-	> * {
-		flex: 0 0 100%;
-		@media (min-width: $layout-s) {
-			flex: 1;
-			// align-self: center;
-		}
-	}
-}
