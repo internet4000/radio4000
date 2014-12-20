@@ -1,6 +1,6 @@
 import Ember from 'ember';
-
-export default Ember.ArrayController.extend({
+//
+export default Ember.Controller.extend({
 	// Sort by newest on top
 	sortProperties: ['created'],
 	sortAscending: false,
@@ -8,7 +8,7 @@ export default Ember.ArrayController.extend({
 	// returns the filtered channels if we are searching,
 	// otherwise the default array
 	channels: function() {
-		return this.get('search') ? this.get('filteredChannels') : this;
+		return this.get('search') ? this.get('filteredChannels') : this.get('model');
 	}.property('search', 'filteredChannels'),
 
 	// filters the array with our search value
@@ -17,5 +17,5 @@ export default Ember.ArrayController.extend({
 		return this.filter(function(channel) {
 			return channel.get('title').toLowerCase().indexOf(search) !== -1;
 		});
-	}.property('search', 'this.@each.title')
+	}.property('search', 'model.@each.title')
 });

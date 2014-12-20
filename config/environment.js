@@ -3,11 +3,9 @@
 module.exports = function(environment) {
   var ENV = {
 
-    // DEV DATABASE
-    firebaseURL: 'https://radio4000-dev.firebaseio.com/',
-
-    // LIVE DATABASE
-    // firebaseURL: 'https://radio4000.firebaseio.com/',
+    // firebaseURL: 'https://radio4000-dev.firebaseio.com/', // DEV
+    firebaseURL: 'https://jsbin-test.firebaseio.com/', // DEV2
+    // firebaseURL: 'https://radio4000.firebaseio.com/', // LIVE
 
     modulePrefix: 'radio4000',
     environment: environment,
