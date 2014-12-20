@@ -2,7 +2,7 @@
 	<button class="EditImage-btn"{{action 'editImage'}} title="Change image">{{x-icon i="camera"}}</button>
 	<form class="Form" {{action "saveImage" on="submit"}}>
 		<div class="Form-group">
-			{{file-upload image=image}}
+			{{file-upload image=newImage}}
 		</div>
 		<div class="Form-group">
 			<button class="Btn Btn--primary" type="submit">Save</button>

@@ -6,6 +6,14 @@ export default Ember.ObjectController.extend({
 	isEditing: false,
 	isEditingImage: false,
 
+	coverImage: function() {
+		return this.get('images.lastObject');
+	}.property('images.@each'),
+
+	checkFirstImage: function() {
+		Ember.debug(this.get('coverImage'));
+	}.property('coverImage'),
+
 	// True if session user matches channel user
 	canEdit: function() {
 		return this.get('user.id') === this.get('session.user.id');
@@ -52,14 +60,50 @@ export default Ember.ObjectController.extend({
 		// Edit image actions
 		editImage: function() {
 			this.toggleProperty('isEditingImage');
+			Ember.debug(this.get('images.length'));
 		},
 		cancelEditImage: function() {
 			this.send('editImage');
 			this.get('model').rollback();
 		},
 		saveImage: function() {
+			var model = this.get('model');
+			var images = model.get('images');
+			var coverImage = this.get('coverImage');
+			var newImage = this.get('newImage');
+
 			this.send('editImage');
-			this.get('model').save();
+			Ember.debug('saving image');
+			Ember.debug(newImage);
+
+			if (!newImage) {
+				Ember.debug('no new');
+				return;
+			}
+
+
+			if (coverImage) {
+				if (coverImage.get('src') === newImage) {
+					Ember.debug('same image');
+					return;
+				}
+				Ember.debug('updating image');
+				coverImage.set('src', this.get('newImage'));
+				coverImage.save();
+				return;
+			}
+
+			Ember.debug('new image');
+
+			// create the image
+			var image = this.store.createRecord('image', {
+				src: this.get('newImage')
+			});
+			image.save();
+
+			// save it
+			images.addObject(image);
+			model.save();
 		},
 
 		toggleFavorite: function() {

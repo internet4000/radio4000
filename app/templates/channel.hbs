@@ -1,5 +1,5 @@
 <article class="Channel Channel--detail">
-	<figure class="Thumbnail" {{bind-attr style=imageBackground}}>
+	<figure class="Thumbnail" {{bind-attr style=coverImage.background}}>
 		{{#if playback.player.isPlaying}}
 			<div class="Thumbnail-bg" {{action "pause"}}></div>
 			<button class="Thumbnail-button" {{action "togglePlay" target="playback.player"}} title="Pause this channel">{{x-icon i="pause"}}</button>
@@ -55,7 +55,7 @@
 	{{outlet 'channel-body'}}
 
 	<div class="Channel-body">
-		{{render 'tracks' tracks}}
+		{{!-- {{render 'tracks' tracks}} --}}
 	</div>
 
 	{{#if user.favoriteChannels}}
