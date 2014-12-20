@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
 	// filters the array with our search value
 	filteredChannels: function() {
 		var search = this.get('search').toLowerCase();
-		return this.filter(function(channel) {
+		return this.get('model').filter(function(channel) {
 			return channel.get('title').toLowerCase().indexOf(search) !== -1;
 		});
 	}.property('search', 'model.@each.title')
