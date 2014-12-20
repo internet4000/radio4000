@@ -96,28 +96,25 @@ export default {
 				});
 			},
 
-			// Runs after authentication
-			// It either sets a new or already exisiting user
+			// Runs after succesful auth
 			afterAuthentication: function(userId) {
 				var _this = this;
 
-				// See if the user exists using native Firebase
-				// because of EmberFire problem with "id already in use"
-				ref.child('users').child(userId).once('value', function(snapshot) {
-					var exists = (snapshot.val() !== null);
 
-					if (exists) {
-						_this.existingUser(userId);
-					} else {
-						_this.createUser(userId);
-					}
+
+				// Either reuse or create a user
+				this.store.find('user', userId).then(function(user) {
+					Ember.debug('existing');
+					_this.existingUser(userId);
+				}, function(user) {
+					Ember.debug('new');
+					_this.createUser(userId);
 				});
 			},
 
 			// Existing user
 			existingUser: function(userId) {
 				var _this = this;
-
 				this.store.find('user', userId).then(function(user) {
 					_this.set('user', user);
 					user.get('channels').then(function(channels) {
@@ -130,6 +127,9 @@ export default {
 			// Create a new user
 			createUser: function(userId) {
 				var _this = this;
+
+				// Without this, Emberfire gives an error
+				this.store.unloadAll('user');
 
 				this.get('store').createRecord('user', {
 					id: userId,
