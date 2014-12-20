@@ -6,13 +6,10 @@ export default Ember.ObjectController.extend({
 	isEditing: false,
 	isEditingImage: false,
 
+	// Set the last image as the cover image
 	coverImage: function() {
 		return this.get('images.lastObject');
 	}.property('images.@each'),
-
-	checkFirstImage: function() {
-		Ember.debug(this.get('coverImage'));
-	}.property('coverImage'),
 
 	// True if session user matches channel user
 	canEdit: function() {
@@ -60,50 +57,45 @@ export default Ember.ObjectController.extend({
 		// Edit image actions
 		editImage: function() {
 			this.toggleProperty('isEditingImage');
-			Ember.debug(this.get('images.length'));
 		},
 		cancelEditImage: function() {
 			this.send('editImage');
 			this.get('model').rollback();
 		},
 		saveImage: function() {
-			var model = this.get('model');
-			var images = model.get('images');
+			var channel = this.get('model');
 			var coverImage = this.get('coverImage');
 			var newImage = this.get('newImage');
 
+			// close dialog
 			this.send('editImage');
-			Ember.debug('saving image');
-			Ember.debug(newImage);
 
-			if (!newImage) {
-				Ember.debug('no new');
-				return;
+			// stop if the user didn't upload a new photo
+			if (!newImage) { return; }
+
+			// if we have no previous image
+			if (!coverImage) {
+
+				// create one
+				var image = this.store.createRecord('image', {
+					src: this.get('newImage')
+				}).save();
+
+				// and add it to the channel
+				channel.get('images').addObject(image);
+				channel.save();
 			}
 
-
+			// if we already have an image
 			if (coverImage) {
-				if (coverImage.get('src') === newImage) {
-					Ember.debug('same image');
-					return;
-				}
-				Ember.debug('updating image');
+				// and it's not the same one
+				if (coverImage.get('src') === newImage) { return; }
+
+				// update it
 				coverImage.set('src', this.get('newImage'));
 				coverImage.save();
-				return;
 			}
 
-			Ember.debug('new image');
-
-			// create the image
-			var image = this.store.createRecord('image', {
-				src: this.get('newImage')
-			});
-			image.save();
-
-			// save it
-			images.addObject(image);
-			model.save();
 		},
 
 		toggleFavorite: function() {
@@ -116,10 +108,8 @@ export default Ember.ObjectController.extend({
 			user.get('favoriteChannels').then(function(favoriteChannels) {
 				// either add or remove the favorite
 				if (!this.get('isFavorite')) {
-					Ember.debug('adding');
 					favoriteChannels.addObject(model);
 				} else {
-					Ember.debug('removing');
 					user.reload(); // hack! without this it won't remove the object
 					favoriteChannels.removeObject(model);
 				}

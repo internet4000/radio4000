@@ -54,6 +54,7 @@ export default Ember.ObjectController.extend({
 		save: function() {
 			Ember.debug('channel route save');
 			this.get('model').save();
+			this.get('controllers.channel').send('saveImage');
 
 			// if the model changed, make sure we match a changed slug URL
 			if (this.get('isDirty')) {
