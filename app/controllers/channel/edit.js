@@ -70,27 +70,39 @@ export default Ember.ObjectController.extend({
 		// Deletes the channel 4 real
 		deleteChannel: function() {
 			var _this = this;
-			var model = this.get('model');
+			var channel = this.get('model');
 			var user = this.get('session.user');
-
-			model.destroyRecord();
-
-			// remove channel from session user
-			user.get('channels').removeObject(model);
-			user.get('favoriteChannels').removeObject(model);
-			user.save();
-
-			// 1. find users that have the channel as favorite
-			// 2. remove it
 			var users = this.store.find('user');
+			var promises = [];
+
+			// destroy the channel
+			channel.destroyRecord().then(function() {
+				// and remove it from the user
+				user.get('channels').removeObject(channel);
+				user.save();
+			});
+
+			// remove it as favorite on all users
 			users.then(function(users) {
 				users.forEach(function(user) {
-					user.get('favoriteChannels').then(function(favoriteChannels) {
-						favoriteChannels.removeObject(model);
-						user.save();
-						_this.transitionToRoute('/');
+					user.get('favoriteChannels').then(function(favs) {
+						favs.removeObject(channel);
+						if (favs.get('isDirty')) {
+							Ember.debug('is dirty');
+							promises.push(favs.save());
+						}
 					});
 				});
+			}, function(error) {
+				//developer failed to save;
+				Ember.debug('no…');
+			});
+
+			// All favorites have been removed
+			Ember.RSVP.all(promises).then(function() {
+				_this.transitionToRoute('/');
+			}, function(error) {
+				//one or more languages failed to save
 			});
 		}
 	}
