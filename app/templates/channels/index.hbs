@@ -1,8 +1,10 @@
 <div class="Section">
-	<div class="Container">
-		{{!-- <h2>Search all channels</h2> --}}
-		<div class="Form-group">
-			{{input type="text" value=search placeholder="Search channels"}}
+	<div class="Container Flex">
+		{{input type="text" value=search placeholder="Search channels"}}
+		<div class="BtnGroup">
+			<h4 class="BtnGroup-label">Sort by</h4>
+			<button class="Btn" {{action 'sortBy' 'created'}}>Date</button>
+			<button class="Btn" {{action 'sortBy' 'title'}}>Title</button>
 		</div>
 	</div>
 	<div class="Container Container--noPadding">
