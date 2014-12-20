@@ -34,7 +34,7 @@
     "ember-export-application-global": "^1.0.0",
     "ember-youtube": "*",
     "express": "^4.8.5",
-    "glob": "^4.0.5",
+    "glob": "^4.3.2",
     "gulp": "^3.8.10",
     "liquid-fire": "^0.16.0",
     "rsyncwrapper": "^0.4.1"

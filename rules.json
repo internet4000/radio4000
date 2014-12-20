@@ -1,46 +1,6 @@
-"channels": {
-	".read": true,
-	"$channelID": {
-		".write": "auth != null",
-		"body": {},
-		"created": {},
-		"image": {},
-		"slug": {},
-		"title": {},
-		"tracks": {},
-		"user": {}
-	}  
-},
-
-"tracks": {
-	".read": true,
-	"$trackID": {
-		".read": true,
-		".write": "auth != null"
-	}  
-},
-
-"users": {
-	".read": true,
-	"$userID": {
-		".write": "auth != null && auth.uid == $userID",
-		"id": {
-			".read": true
-		},
-		"channels": {
-			".read": true  
-		},
-		"created": {
-			".read": true  
-		},
-		"favoriteChannels": {
-			".read": true  
-		},
-		"name": {
-			".read": "auth != null && auth.uid == $userID"
-		},
-		"provider": {
-			".read": true  
-		}
-	}  
+{
+  "rules":{
+    ".write":"(false)",
+    ".read":"true"
+  }
 }

@@ -66,3 +66,13 @@ You can only deploy if your SSH key is set up on the server. If it is, use:
 ## Google API
 
 We're using the YouTube API so you might run into trouble with permissions, domains etc. If so, check here https://console.developers.google.com/project/much-play/
+
+
+## Firebase security rules
+
+Firebase rules are a bitch. With the [Blaze Compiler](https://github.com/firebase/blaze_compiler) it's supposed to be easier, so.
+
+```
+$ npm install -g blaze_compiler
+$ blaze rules.yaml
+```
