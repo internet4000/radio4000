@@ -12,6 +12,7 @@ Router.map(function() {
 	this.route('help');
 	this.route('log');
 	this.route('signin');
+	this.route('stats');
 	this.route('styleguide');
 
 	// new channel
