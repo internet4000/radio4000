@@ -12,7 +12,10 @@
 			{{#each channel in channels}}
 				<li>
 					{{#link-to "channel" channel class="ChannelTeaser"}}
-						<h3 class="ChannelTeaser-title">{{channel.title}}</h3>
+						<h3 class="ChannelTeaser-title">
+							{{channel.title}}
+							<small class="u-alignRight">{{channel.tracks.length}}</small>
+						</h3>
 						<p class="ChannelTeaser-description">{{do-truncate channel.body 140}}</p>
 					{{/link-to}}
 				</li>

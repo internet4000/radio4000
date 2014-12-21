@@ -35,3 +35,12 @@
 .Channel-add {
 	margin-top: -4rem; // below buttons (with one line descriptions)
 }
+
+
+
+.ChannelTeaser-title small {
+	@extend %font-mono;
+	@include size-1;
+	float: right;
+	color: $mediumgray;
+}
