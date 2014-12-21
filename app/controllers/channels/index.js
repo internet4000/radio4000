@@ -1,9 +1,9 @@
 import Ember from 'ember';
-//
+
 export default Ember.ArrayController.extend({
 	// Sort by newest on top
-	sortProperties: ['created'],
-	sortAscending: true,
+	sortProperties: ['created', 'title'],
+	sortAscending: false,
 
 	// returns the filtered channels if we are searching,
 	// otherwise the default array
