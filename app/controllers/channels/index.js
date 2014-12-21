@@ -1,9 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
-	// Sort by newest on top
 	sortProperties: ['created', 'title'],
 	sortAscending: false,
+	// Sort by random initially
+	sortFunction: function(x, y) {
+		return 0.5 - Math.random();
+	},
 
 	// returns the filtered channels if we are searching,
 	// otherwise the default array
@@ -11,16 +14,15 @@ export default Ember.ArrayController.extend({
 		return this.get('search') ? this.get('filteredChannels') : this;
 	}.property('search', 'filteredChannels'),
 
-	// shuffled: function() {
-	// 	return this.shuffle(this.get('model'));
-	// }.property('model'),
-
 	// filters the array with our search value
 	filteredChannels: function() {
-		var search = this.get('search');
-		if (!search) { return; }
+		var filter = this.get('search');
+    	var rx = new RegExp(filter, 'gi');
+
+		if (!filter) { return; }
+
 		return this.filter(function(channel) {
-			return channel.get('title').toLowerCase().indexOf(search.toLowerCase()) !== -1;
+			return rx.test(channel.get('title')) || rx.test(channel.get('body'));
 		});
 	}.property('search'),
 
@@ -30,21 +32,4 @@ export default Ember.ArrayController.extend({
 			this.set('sortAscending', !this.get('sortAscending'));
 		}
 	}
-	// ,
-
-	// shuffle: function(array) {
-	//  var currentIndex, randomIndex, temporaryValue;
-
-	//  currentIndex = array.get('length');
-
-	//  while (currentIndex !== 0) {
-	// 	randomIndex = Math.floor(Math.random() * currentIndex);
-	// 	currentIndex--;
-	// 	temporaryValue = array.objectAt(currentIndex);
-	// 	array.replace(currentIndex, 1, [array.objectAt(randomIndex)]);
-	// 	array.replace(randomIndex, 1, [temporaryValue]);
-	//  }
-
-	//  return array;
- //  }
 });
