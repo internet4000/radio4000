@@ -1,0 +1,18 @@
+channels/-JXHtCxC9Ew-Ilck6iZ8
+
+"facebook:10152422494934521"
+
+{
+    "rules": {
+        ".read": true,
+        ".write": "auth.uid !== null",
+
+        "channels": {
+          ".indexOn": ["slug"]
+          //,
+          //"$channelID": {
+	        //	".write": "auth.uid !== null && data.child('user').val() === auth.uid"
+	        // }
+        }
+    }
+}

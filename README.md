@@ -17,11 +17,8 @@ then clone the project repository and install it
 ```
 git clone https://github.com/hugovieilledent/radio4000.git
 cd radio4000
-npm install
-bower install
+npm install; bower install
 ```
-
-Done. To start the server see below.
 
 ## Watching, building and testing
 
@@ -67,12 +64,11 @@ You can only deploy if your SSH key is set up on the server. If it is, use:
 
 We're using the YouTube API so you might run into trouble with permissions, domains etc. If so, check here https://console.developers.google.com/project/much-play/
 
-
 ## Firebase security rules
 
 Firebase rules are a bitch. With the [Blaze Compiler](https://github.com/firebase/blaze_compiler) it's supposed to be easier, so.
 
 ```
 $ npm install -g blaze_compiler
-$ blaze rules.yaml
+$ blaze rules/rules.yaml
 ```
