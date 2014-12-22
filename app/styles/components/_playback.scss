@@ -54,6 +54,9 @@
 	flex-shrink: 0;
 	display: flex; // this works
 
+	.Btn {
+		display: flex;
+	}
 	.Btn--text {
 		padding: 0;
 		color: $bleach;
