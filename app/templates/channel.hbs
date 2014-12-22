@@ -1,11 +1,12 @@
 <article class="Channel Channel--detail">
 	<figure class="Thumbnail" {{bind-attr style=coverImage.background}}>
+
 		{{#if playback.player.isPlaying}}
-			<div class="Thumbnail-bg" {{action "pause"}}></div>
-			<button class="Thumbnail-button" {{action "togglePlay" target="playback.player"}} title="Pause this channel">{{x-icon i="pause"}}</button>
+			<div class="Thumbnail-bg"></div>
+			<button class="Thumbnail-button" {{action "pause"}} title="Pause this channel">{{x-icon i="pause"}}</button>
 		{{else}}
-			<div class="Thumbnail-bg" {{action "play"}}></div>
-			<button class="Thumbnail-button" {{action "togglePlay" target="playback.player"}} title="Play this channel">{{x-icon i="play"}}</button>
+			<div class="Thumbnail-bg"></div>
+			<button class="Thumbnail-button" {{action "play"}} title="Play this channel">{{x-icon i="play"}}</button>
 		{{/if}}
 
 		{{#if canEdit}}
@@ -16,7 +17,7 @@
 	<div class="Channel-header Section">
 		<div class="Container">
 			<h1 class="Channel-title">
-				{{#link-to 'channel' this title="Channel title"}}
+				{{#link-to 'channel' this}}
 					{{title}}
 				{{/link-to}}
 				<span class="Muted LastUpdate">({{tracks.length}} tracks, {{lastUpdated}})</span>

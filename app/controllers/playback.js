@@ -29,6 +29,8 @@ export default Ember.Controller.extend({
 		ytError: function(error) {
 			Ember.debug('on yt error from controller');
 
+			console.log(error);
+
 			// dont do anything on 'invalid parameter'
 			if (error === 2) { return; }
 

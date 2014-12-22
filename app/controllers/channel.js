@@ -45,13 +45,13 @@ export default Ember.ObjectController.extend({
 		play: function() {
 			// Either continues play or plays the newest e.g. last track
 			if (this.get('playback.model')) {
-				this.get('playback').send('play');
+				this.get('playback.player').send('play');
 			} else {
 				this.transitionToRoute('track', this.get('tracks.lastObject'));
 			}
 		},
 		pause: function() {
-			this.get('playback').send('pause');
+			this.get('playback.player').send('pause');
 		},
 
 		// Edit image actions
