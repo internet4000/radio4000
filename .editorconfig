@@ -29,5 +29,5 @@ indent_size = 3
 indent_style = tabs
 indent_size = 3
 
-[*.md]
+[*.{diff,md}]
 trim_trailing_whitespace = false
