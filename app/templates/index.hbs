@@ -6,39 +6,36 @@
 	{{render 'user' session.user}}
 {{else}}
 
-	<section class="Container Section Section--space">
-		<div class="Section-half">
-			{{#link-to 'new' class="Box" title="Sign up  to create your channel"}}
-				<h2 class="Title">Sign in</h2>
-				<p>→ Get your own channel now</p>
-			{{/link-to}}
-		</div>
-		<div class="Section-half">
-			{{#link-to 'channels' class="Box" title="Discover music by channels"}}
-				<h2 class="Title">Discover music</h2>
-				<p>→ Listen now</p>
-			{{/link-to}}
-		</div>
+	<section class="Container Flex Section Section--space">
+		{{#link-to 'new' class="Box" title="Sign up  to create your channel"}}
+			<h2 class="Title">Sign in</h2>
+			<p>→ Get your own channel now</p>
+		{{/link-to}}
+
+		{{#link-to 'channels' class="Box" title="Discover music by channels"}}
+			<h2 class="Title">Discover music</h2>
+			<p>→ Listen now</p>
+		{{/link-to}}
 	</section>
 
 	<div class="Container Container--large">
 		<section class="Section Section--space Grid">
 			<div class="Grid-item">
-				<h3 class="Title">The deepest music library</h3>
-				<p>Dig the crates of the internet and add tracks to your channel directly from Youtube. Soundcloud is following soon.</p>
+				<h3 class="Subtitle">The deepest music library</h3>
+				<p>Dig the crates of the internet and add tracks to your channel directly from YouTube. <em>Soundcloud is following soon.</em></p>
 				<p><img src="images/icons/Cloud-Music.svg" alt=""></p>
 				{{!-- <p>{{#link-to 'channels'}}&rarr; Discover channels{{/link-to}}</p> --}}
 			</div>
 			<div class="Grid-item">
-				<h3 class="Title">My channel is my temple</h3>
+				<h3 class="Subtitle">My channel is my temple</h3>
 				<p>As your channel grows with your enlightened taste in music, Radio4000 will become your go-to music player, trust us.</p>
 				{{!-- <p><img src="images/icons/Music-Equalizer.svg" alt=""></p> --}}
 				<p><img src="images/icons/Radio-4.svg" alt=""></p>
 				{{!-- <p>{{#link-to 'channels'}}&rarr; Discover channels{{/link-to}}</p> --}}
 			</div>
 			<div class="Grid-item">
-				<h3 class="Title">The tranquility of one channel</h3>
-				<p>You're spoiled with one single channel. Welcome to the freedom of not having to think about playlists.</p>
+				<h3 class="Subtitle">The tranquility of a single channel</h3>
+				<p>You have one single channel for all your tracks. Welcome to the freedom of not having to think about playlists.</p>
 				<p><img src="images/icons/Desert.svg" alt=""></p>
 				{{!-- <p>{{#link-to 'channels'}}&rarr; Discover channels{{/link-to}}</p> --}}
 			</div>

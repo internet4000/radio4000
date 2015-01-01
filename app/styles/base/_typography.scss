@@ -44,7 +44,7 @@ h1,
 .Title {
 	@include size-3;
 	margin-bottom: 0.25rem;
-	@media (min-width: $layout-s) {
+	@media (min-width: $layout-m) {
 		@include size-4;
 	}
 	a {
@@ -58,12 +58,14 @@ h1,
 h2,
 .Subtitle {
 	@include size-2;
-	@media (min-width: $layout-m) { @include size-3; }
-	margin-bottom: 0;
+	// margin-bottom: 1rem;
+	@media (min-width: $layout-m) {
+		@include size-3;
+	}
 }
 h3 {
 	@include size-2;
-	margin-bottom: 0;
+	// margin-bottom: 1rem;
 }
 h4 {
 	@include size-1;
@@ -85,6 +87,8 @@ h4 {
 ul {
 	padding-left: 2em;
 }
+
+// Terminal style, code
 pre,
 .Mono {
 	@extend %font-mono;
@@ -95,7 +99,7 @@ pre,
 	color: hsl(118, 100%, 59%);
 }
 
-
+// Warnings
 .Warning {
 	background-color: $yellow;
 	color: $black;
