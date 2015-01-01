@@ -6,16 +6,19 @@
 	{{render 'user' session.user}}
 {{else}}
 
-	<section class="Container Flex Section Section--space">
-		{{#link-to 'new' class="Box" title="Sign up  to create your channel"}}
-			<h2 class="Title">Sign in</h2>
-			<p>→ Get your own channel now</p>
-		{{/link-to}}
-
-		{{#link-to 'channels' class="Box" title="Discover music by channels"}}
-			<h2 class="Title">Discover music</h2>
-			<p>→ Listen now</p>
-		{{/link-to}}
+	<section class="Container Grid Section Section--space">
+		<div class="Grid-item">
+			{{#link-to 'new' class="Box" title="Sign up  to create your channel"}}
+				<h2 class="Title">Sign in</h2>
+				<p>→ Get your own channel now</p>
+			{{/link-to}}
+		</div>
+		<div class="Grid-item">
+			{{#link-to 'channels' class="Box" title="Discover music by channels"}}
+				<h2 class="Title">Discover music</h2>
+				<p>→ Listen now</p>
+			{{/link-to}}
+		</div>
 	</section>
 
 	<div class="Container Container--large">
@@ -40,8 +43,6 @@
 				{{!-- <p>{{#link-to 'channels'}}&rarr; Discover channels{{/link-to}}</p> --}}
 			</div>
 		</section>
-
-		{{!-- <p>{{#link-to 'signin'}}Sign in{{/link-to}} or {{#link-to 'signin'}}sign up{{/link-to}} now.</p> --}}
 	</div>
 
 {{/if}}

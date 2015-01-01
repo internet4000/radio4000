@@ -187,3 +187,12 @@
 .Btn--removeFavorite {
 	background-color: lighter(rgb(200, 200, 200), 10%);
 }
+
+
+// Toggle sort-indicator according to button state
+.SortIndicator {
+	display: none;
+}
+.Btn.is-active .SortIndicator {
+	display: inline;
+}

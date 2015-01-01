@@ -30,7 +30,8 @@ address,
 textarea,
 form,
 hr,
-figure {
+figure,
+menu {
 	margin: 0 0 1rem;
 }
 
@@ -43,8 +44,12 @@ embed {
 	max-width: 100%;
 }
 
-
 // Seperators
 hr {
 	margin: 2rem 0;
+}
+
+
+menu {
+	padding: 0;
 }

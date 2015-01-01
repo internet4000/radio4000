@@ -1,12 +1,7 @@
 .Flex {
 	display: flex;
 
-	> * {
-		flex: 1;
-		margin-left: 0.5rem;
-		margin-right: 0.5rem;
-	}
-
+	// todo: refactor
 	.BtnGroup:last-child {
 		margin-left: 1rem;
 	}
@@ -18,6 +13,7 @@
 	justify-content: center; // x-center
 	text-align: center;
 
+	// todo: refactor
 	.Subtitle {
 		margin-bottom: 0.5rem;
 	}

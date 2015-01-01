@@ -6,6 +6,7 @@
 a.Box,
 .Box > a {
 	display: inline-block;
+	width: 100%;
 	border: 1px solid hsla(0, 0%, 0%, 0.2);
 	text-align: center;
 	padding: 1.6rem 1rem;

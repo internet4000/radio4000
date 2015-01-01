@@ -1,8 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
-	sortProperties: ['created', 'title'],
+	sortProperties: ['created'],
 	sortAscending: false,
+
 	// Sort by random initially
 	// sortFunction: function(x, y) {
 	// 	return 0.5 - Math.random();

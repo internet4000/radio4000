@@ -1,11 +1,13 @@
 <div class="Section">
 	<div class="Container Flex">
 		{{input type="text" value=search placeholder="Search channels"}}
-		<div class="BtnGroup">
+		{{#button-group}}
 			<h4 class="BtnGroup-label">Sort by</h4>
-			<button class="Btn" {{action 'sortBy' 'created'}}>Date</button>
-			<button class="Btn" {{action 'sortBy' 'title'}}>Title</button>
-		</div>
+			{{!-- <button class="Btn" {{action 'sortBy' 'lastUpdated'}}>Updated {{sort-indicator sortAscending=sortAscending}}</button> --}}
+			<button class="Btn" {{action 'sortBy' 'created'}}>Date {{sort-indicator sortAscending=sortAscending}}</button>
+			<button class="Btn" {{action 'sortBy' 'title'}}>Name {{sort-indicator sortAscending=sortAscending}}</button>
+			{{!-- <button class="Btn" {{action 'sortBy' 'tracks.length'}}>Tracks {{sort-indicator sortAscending=sortAscending}}</button> --}}
+		{{/button-group}}
 	</div>
 	<div class="Container Container--noPadding">
 		<ul class="List">
@@ -14,7 +16,11 @@
 					{{#link-to "channel" channel class="ChannelTeaser"}}
 						<h3 class="ChannelTeaser-title">
 							{{unbound channel.title}}
-							<small class="u-alignRight">{{unbound channel.tracks.length}}</small>
+							<small class="u-alignRight">
+								{{!-- {{unbound channel.lastUpdated}} - --}}
+								{{!-- {{unbound channel.created}} - --}}
+								{{!-- {{unbound channel.tracks.length}} --}}
+							</small>
 						</h3>
 						<p class="ChannelTeaser-description">{{do-truncate channel.body 140}}</p>
 					{{/link-to}}
