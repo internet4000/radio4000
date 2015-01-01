@@ -7,6 +7,10 @@ export default DS.Model.extend({
 	body: DS.attr('string'),
 
 	lastUpdated: function() {
+		return this.get('tracks.lastObject.created');
+	}.property('tracks.@each.created'),
+
+	lastUpdatedFormatted: function() {
 		return this.get('tracks.lastObject.createdDate');
 	}.property('tracks.@each.createdDate'),
 
