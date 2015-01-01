@@ -13,6 +13,10 @@
 		top: 0.7em;
 		display: none;
 	}
+
+	&.is-current {
+		// background-color: $superlightgray;
+	}
 }
 .Track-title {
 	@extend %font-regular;
@@ -39,9 +43,12 @@ a.Track-link { // Link surrounding the track
 	right: 1rem;
 	padding: em(4,13) em(7,13) em(3,13);
 	margin: 0;
-	color: $lightgray;
-	.Track:hover & {
-		color: $text-color;
+
+	.icon-pencil {
+		color: $mediumgray;
+		.Track:hover & {
+			color: $text-color;
+		}
 	}
 }
 

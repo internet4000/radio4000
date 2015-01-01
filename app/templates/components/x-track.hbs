@@ -1,8 +1,10 @@
-{{#link-to 'track' track class="Track-link"}}
-	{{x-icon i="play"}}
-	<h3 class="Track-title">{{track.title}}</h3>
-	{{#if track.body}}<p class="Track-description">{{track.body}}</p>{{/if}}
-{{/link-to}}
+{{#unless isEditing}}
+	{{#link-to 'track' track class="Track-link"}}
+		{{x-icon i="play"}}
+		<h3 class="Track-title">{{track.title}}</h3>
+		{{#if track.body}}<p class="Track-description">{{track.body}}</p>{{/if}}
+	{{/link-to}}
+{{/unless}}
 
 {{#if channel.canEdit}}
 	{{#if isEditing}}
@@ -31,7 +33,9 @@
 		</form>
 	{{else}}
 		<p class="Track-controls">
-			<span {{action 'edit'}} title="edit track">edit</span>
+			<span {{action 'edit'}} title="edit track">
+				{{x-icon i="pencil"}}
+			</span>
 		</p>
 	{{/if}}
 {{/if}}
