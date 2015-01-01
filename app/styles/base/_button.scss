@@ -192,6 +192,7 @@
 // Toggle sort-indicator according to button state
 .SortIndicator {
 	display: none;
+	font-size: 0.7em;
 }
 .Btn.is-active .SortIndicator {
 	display: inline;
