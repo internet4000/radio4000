@@ -9,6 +9,9 @@
 
 	li {
 		display: inline-block;
+		&:before {
+			display: none;
+		}
 	}
 
 	// link styles

@@ -9,6 +9,9 @@
 	li {
 		border-bottom: 1px solid $mediumlightgray;
 		line-height: normal;
+		&:before {
+			display: none;
+		}
 	}
 	h3,
 	p {

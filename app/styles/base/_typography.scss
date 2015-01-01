@@ -58,17 +58,16 @@ h1,
 h2,
 .Subtitle {
 	@include size-2;
-	// margin-bottom: 1rem;
 	@media (min-width: $layout-m) {
 		@include size-3;
 	}
 }
 h3 {
 	@include size-2;
-	// margin-bottom: 1rem;
 }
 h4 {
 	@include size-1;
+	margin-bottom: 0;
 }
 
 .Title,
@@ -85,7 +84,11 @@ h4 {
 
 // Lists
 ul {
-	padding-left: 2em;
+	padding-left: 1em;
+	list-style: none;
+	li:before {
+		content: "→ ";
+	}
 }
 
 // Terminal style, code

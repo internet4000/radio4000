@@ -7,7 +7,7 @@
 	fill: currentColor;
 
 	// vertical center inside buttons
-	.Btn & {
+	.Btn:not(.Btn--text) & {
 		float: left;
 		position: relative;
 		top: 0.15em;
