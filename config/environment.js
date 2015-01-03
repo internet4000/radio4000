@@ -50,7 +50,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.firebaseURL = 'https://radio4000.firebaseio.com/';
   }
 
   return ENV;
