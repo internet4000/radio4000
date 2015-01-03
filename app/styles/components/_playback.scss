@@ -20,7 +20,6 @@
 
 // Controls
 .Controls {
-
 	// items in one row, no wrapping
 	// and no space in the sides, just between
 	display: flex;
@@ -44,8 +43,9 @@
 	}
 
 	// icon size here
-	.Button {
+	.Btn {
 		font-size: 20px;
+		border-width: 0;
 	}
 }
 
@@ -63,12 +63,23 @@
 		font-size: 2rem;
 		color: $bleach;
 	}
+
+	.Controls-shuffle {
+		font-size: 1.5rem;
+		display: flex;
+		align-self: center;
+		margin-right: 1rem;
+		opacity: 0.4;
+		&.is-active {
+			opacity: 1;
+		}
+	}
 }
 
 .Controls-title {
 	@include size-1;
 	order: 2;
-	@media (min-width: rem(530)) {
+	@media (min-width: rem(700)) {
 		font-size: initial;
 	}
 

@@ -149,21 +149,6 @@
 	}
 }
 
-
-// Control buttons
-.Controls-buttons {
-	.Btn:hover {
-		color: $gray;
-	}
-	.Btn {
-		border-width: 0;
-	}
-}
-.Controls-buttons .Btn,
-.Controls-videoBtn.Btn {
-	border-width: 0;
-}
-
 // Btn--fav
 .Btn--favorite,
 .Btn--removeFavorite {

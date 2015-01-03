@@ -16,31 +16,6 @@ export default Ember.ObjectController.extend({
 		return this.get('user.id') === this.get('session.user.id');
 	}.property('user.id', 'session.user.id'),
 
-	// Favorites (works but should be cleaned up)
-	// TODO: emberfire comment with ObjectProxy
-	isFavorite: false,
-	isFavoriteTest: function() {
-		if (!this.get('session.user')) { return false; }
-
-		// TODO: this hack makes sure it runs at the right time, omg
-		Ember.run.once(this, 'testFavorite');
-	}.observes('model', 'session.user.favoriteChannels.[]'),
-
-	testFavorite: function() {
-		var _this = this;
-		var model = this.get('model');
-		var favorites = this.get('session.user.favoriteChannels');
-		this.set('isFavorite', false);
-
-		favorites.then(function() {
-			favorites.forEach(function(item) {
-				if (model === item) {
-					_this.set('isFavorite', true);
-				}
-			});
-		});
-	},
-
 	actions: {
 		play: function() {
 			// Either continues play or plays the newest e.g. last track
@@ -120,5 +95,29 @@ export default Ember.ObjectController.extend({
 				this.toggleProperty('isFavorite');
 			}.bind(this));
 		}
-	}
+	},
+
+	// Favorites (works but should be cleaned up)
+	// TODO: emberfire comment with ObjectProxy
+	isFavorite: false,
+	isFavoriteTest: function() {
+		if (!this.get('session.user')) { return false; }
+
+		// TODO: this hack makes sure it runs at the right time, omg
+		Ember.run.once(this, 'testFavorite');
+	}.observes('model', 'session.user.favoriteChannels.[]'),
+	testFavorite: function() {
+		var _this = this;
+		var model = this.get('model');
+		var favorites = this.get('session.user.favoriteChannels');
+		this.set('isFavorite', false);
+
+		favorites.then(function() {
+			favorites.forEach(function(item) {
+				if (model === item) {
+					_this.set('isFavorite', true);
+				}
+			});
+		});
+	},
 });
