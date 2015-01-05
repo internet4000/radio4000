@@ -1,3 +1,17 @@
+<h2>unplayed</h2>
+<ul>
+	{{#each item in unplayed}}
+	<li>{{item.title}}</li>
+	{{/each}}
+</ul>
+
+<h2>history</h2>
+<ul>
+	{{#each item in history}}
+	<li>{{item.title}}</li>
+	{{/each}}
+</ul>
+
 <div {{bind-attr class=':Player model::is-hidden isMaximized'}}>
 	{{ember-youtube ytid=model.ytid name=player
 		playing="ytPlaying"

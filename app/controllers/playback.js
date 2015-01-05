@@ -1,25 +1,49 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+	isMaximized: false,
+	isShuffled: true,
+
 	// channel gets set by the track route
 	channel: null,
-	isMaximized: false,
-	isShuffled: false,
 
+	// all listened tracks
+	// history: [],
+	history: Ember.A([]),
+
+	// all tracks not in the history array
+	// there is probably a computed macro to handle this.
+	unplayed: Ember.computed('history.[]', 'tracks.[]', function () {
+		var history = this.get('history');
+		var tracks = this.get('tracks');
+
+		Ember.debug(tracks);
+
+		if (!tracks) { return; }
+
+		return tracks.filter(function(track) {
+			return !history.contains(track);
+		});
+	}),
+
+	// tracks from the current channel
 	tracks: function() {
 		return this.get('channel.tracks');
 	}.property('channel.tracks.[]'),
 
-	trackIndex: function() {
-		var index = this.get('tracks').indexOf(this.get('model'));
-		// Ember.debug('trackIndex return: ' + index);
-		return index;
+	// gets the index of the current track
+	getCurrentTrackIndex: function() {
+		return this.get('tracks').indexOf(this.get('model'));
 	}.property('tracks', 'model'),
 
+	// gets a random track
 	getRandomTrack: function() {
-		var tracks = this.get('tracks');
-		var random = Math.floor(Math.random() * tracks.get('length'));
-		return tracks.objectAt(random);
+		var random = Math.floor(Math.random() * this.get('tracks.length'));
+		return this.get('tracks').objectAt(random);
+	},
+
+	clearHistory: function() {
+		this.get('history').clear();
 	},
 
 	actions: {
@@ -29,44 +53,78 @@ export default Ember.Controller.extend({
 			Ember.debug('Playing track: ' + track.get('title'));
 		 	this.set('model', track);
 		},
-		playNext: function() {
 
-			// if shuffle is on
-			if (this.get('isShuffled')) {
-				this.send('playTrack', this.getRandomTrack());
-				return;
-			}
-
-			// if at last track, play first one
-			if (this.get('trackIndex') <= 0) {
-				this.send('playFirst');
-				return;
-			}
-
-			var prevTrack = this.get('tracks').objectAt((this.get('trackIndex') - 1));
-			Ember.debug('Playing next track');
-			this.set('model', prevTrack);
-		},
 		playPrev: function() {
-			// if we're at the first item, play the last
-			if (this.get('trackIndex') === (this.get('tracks.length') - 1)) {
-				this.send('playLast');
-				return;
+			var history = this.get('history');
+			var idx = history.indexOf(this.get('model'));
+			var newTrack;
+
+			// if there is an idx, e.g. an active item
+			if (idx !== -1) {
+
+				// set the new active to the prev item from the active one
+				newTrack = history.objectAt(idx - 1);
+				this.set('model', newTrack);
+				Ember.debug(newTrack);
 			}
 
-			var prevTrack = this.get('tracks').objectAt((this.get('trackIndex') + 1));
-			Ember.debug('Playing previous track');
-			this.set('model', prevTrack);
+			// if we're at the first item, play the last
+			// if (this.get('getCurrentTrackIndex') === (this.get('tracks.length') - 1)) {
+			// 	this.send('playLast');
+			// 	return;
+			// }
 		},
+
+		playNext: function() {
+			var unplayed = this.get('unplayed');
+			var len = unplayed.get('length');
+			var isShuffled = this.get('isShuffled');
+			var newTrack;
+
+			// go to a random item from the unplayed items
+			if (isShuffled) {
+				Ember.debug('shuffling');
+				newTrack = unplayed.objectAt(Math.floor(Math.random() * len));
+			} else {
+				// or go to first
+				newTrack = unplayed.get('firstObject');
+			}
+
+			if (!newTrack) {
+				this.clearHistory();
+				return alert('no more to select');
+			}
+
+			this.get('history').pushObject(newTrack);
+			this.set('model', newTrack);
+
+			// // if shuffle is on
+			// if (this.get('isShuffled')) {
+			// 	this.send('playTrack', this.getRandomTrack());
+			// 	return;
+			// }
+
+			// // if at last track, play first one
+			// if (this.get('getCurrentTrackIndex') <= 0) {
+			// 	this.send('playFirst');
+			// 	return;
+			// }
+
+			// var prevTrack = this.get('tracks').objectAt((this.get('getCurrentTrackIndex') - 1));
+			// Ember.debug('Playing next track');
+			// this.set('model', prevTrack);
+		},
+
 		playFirst: function() {
-			Ember.debug('Playing first track');
 			var firstTrack = this.get('tracks.lastObject');
 			this.set('model', firstTrack);
+			Ember.debug('Playing first track');
 		},
 		playLast: function() {
-			Ember.debug('Playing last track');
 			var lastTrack = this.get('tracks').objectAt(0);
 			this.set('model', lastTrack);
+
+			Ember.debug('Playing last track');
 		},
 
 		// Toggles "fullscreen mode"
