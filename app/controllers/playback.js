@@ -17,8 +17,6 @@ export default Ember.Controller.extend({
 		var history = this.get('history');
 		var tracks = this.get('tracks');
 
-		Ember.debug(tracks);
-
 		if (!tracks) { return; }
 
 		return tracks.filter(function(track) {
@@ -61,18 +59,21 @@ export default Ember.Controller.extend({
 
 			// if there is an idx, e.g. an active item
 			if (idx !== -1) {
-
 				// set the new active to the prev item from the active one
 				newTrack = history.objectAt(idx - 1);
-				this.set('model', newTrack);
 				Ember.debug(newTrack);
 			}
 
-			// if we're at the first item, play the last
-			// if (this.get('getCurrentTrackIndex') === (this.get('tracks.length') - 1)) {
-			// 	this.send('playLast');
-			// 	return;
-			// }
+			// if no new track, play the last (e.g. first… omg)
+			if (!newTrack) {
+				return this.send('playFirst');
+			}
+
+			if (!this.get('isShuffled')) {
+				this.get('history').pushObject(newTrack);
+			}
+
+			this.set('model', newTrack);
 		},
 
 		playNext: function() {
@@ -87,12 +88,12 @@ export default Ember.Controller.extend({
 				newTrack = unplayed.objectAt(Math.floor(Math.random() * len));
 			} else {
 				// or go to first
-				newTrack = unplayed.get('firstObject');
+				newTrack = unplayed.get('lastObject');
 			}
 
 			if (!newTrack) {
 				this.clearHistory();
-				return alert('no more to select');
+				return this.send('playFirst');
 			}
 
 			this.get('history').pushObject(newTrack);
@@ -116,14 +117,17 @@ export default Ember.Controller.extend({
 		},
 
 		playFirst: function() {
+			// first is last because we have newest on top
 			var firstTrack = this.get('tracks.lastObject');
+			this.get('history').pushObject(firstTrack);
 			this.set('model', firstTrack);
 			Ember.debug('Playing first track');
 		},
 		playLast: function() {
-			var lastTrack = this.get('tracks').objectAt(0);
+			// last is first because we have newest on top
+			var lastTrack = this.get('tracks.firstObject');
 			this.set('model', lastTrack);
-
+			this.get('history').pushObject(lastTrack);
 			Ember.debug('Playing last track');
 		},
 
