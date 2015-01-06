@@ -10,9 +10,11 @@
 		{{/if}}
 	{{/if}}
 
-	<aside class="ContextualNavigation u-alignRight">
-		{{#unless session.authed}}
+	<div class="ContextualNavigation u-alignRight">
+		{{#if session.authed}}
+			<a href="#" class="Muted" title="Sign out from Radio 4000" {{action 'logout' this}}>Sign out</a>
+		{{else}}
 			{{#link-to 'signin' title="Sign in to Radio 4000"}}Sign in{{/link-to}}
-		{{/unless}}
-	</aside>
+		{{/if}}
+	</div>
 </nav>

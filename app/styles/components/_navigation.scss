@@ -33,4 +33,8 @@
 }
 
 
-// •
+// Muted in the header bar has a different look
+.SiteHeader .Bar .Muted {
+	font-size: 1em;
+	color: rgba(#fff, 0.5);
+}
