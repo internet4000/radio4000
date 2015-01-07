@@ -60,9 +60,10 @@ export default Ember.Controller.extend({
 	// Clears history every time the channel changes
 	clearHistory: function() {
 		this.get('history').clear();
-	},
+	}.observes('channel'),
 
 	actions: {
+
 		// use this to play a track, if you don't want the url to change
 		playTrack: function(track) {
 			if (!track) { return false; }
@@ -70,46 +71,50 @@ export default Ember.Controller.extend({
 		 	this.set('model', track);
 		},
 
-		playPrev: function() {
+		prev: function() {
+			var isShuffled = this.get('isShuffled');
 			var history = this.get('history');
 			var tracks = this.get('tracks');
 			var model = this.get('model');
-			var isShuffled = this.get('isShuffled');
-			var idx = history.indexOf(model);
 			var newTrack;
 
-			// if the current model is in the history array
-			if (idx !== -1 && isShuffled) {
-				console.log('is in history: ' + idx);
-				// set the new active to the prev item from the active one
-				newTrack = history.objectAt(idx - 1);
-			}
-
-			if (newTrack) {
-				Ember.debug('pushing prev history');
-				Ember.debug(newTrack.get('title'));
-				return this.set('model', newTrack);
-			} else {
-				// if no prev track in history
-				// try prev on the normal order
-				Ember.debug('trying prev normal');
+			// without shuffle
+			if (!isShuffled) {
+				// play prev in tracks
 				newTrack = tracks.objectAt(tracks.indexOf(model) + 1);
+
+				if (newTrack) {
+					return this.send('playTrack', newTrack);
+				} else {
+					// or play last
+					return this.send('playLast');
+				}
 			}
 
-			// and if that exists, set it
-			if (newTrack) {
-				Ember.debug('pushing prev normal');
-				Ember.debug(newTrack.get('title'));
-				this.get('history').pushObject(newTrack);
-				return this.set('model', newTrack);
-			}
+			// with shuffle
+			if (isShuffled) {
+				// play prev in history
+				newTrack = history.objectAt(history.indexOf(model) - 1);
 
-			// if not, go to last
-			Ember.debug('4');
-			return this.send('playLast');
+				if (newTrack) {
+					return this.send('playTrack', newTrack);
+				} else {
+					// or play prev in tracks
+					newTrack = tracks.objectAt(tracks.indexOf(model) + 1);
+				}
+
+				if (newTrack) {
+					return this.send('playTrack', newTrack);
+				} else {
+					// or reset
+					Ember.debug('resetting');
+					this.clearHistory();
+					return this.set('model', null);
+				}
+			}
 		},
 
-		playNext: function() {
+		next: function() {
 			var unplayed = this.get('unplayed');
 			var len = unplayed.get('length');
 			var isShuffled = this.get('isShuffled');
@@ -119,7 +124,7 @@ export default Ember.Controller.extend({
 
 			// go to a random item from the unplayed items
 			if (isShuffled) {
-				Ember.debug('shuffling');
+				Ember.debug('Shuffling');
 				newTrack = unplayed.objectAt(Math.floor(Math.random() * len));
 			} else if (model) {
 				// or go to next
@@ -134,38 +139,29 @@ export default Ember.Controller.extend({
 				return this.send('playFirst');
 			}
 
-			this.get('history').pushObject(newTrack);
-			this.set('model', newTrack);
+			if (isShuffled) {
+				this.get('history').pushObject(newTrack);
+			}
 
-			// // if shuffle is on
-			// if (this.get('isShuffled')) {
-			// 	this.send('playTrack', this.getRandomTrack());
-			// 	return;
-			// }
+			this.send('playTrack', newTrack);
+		},
 
-			// // if at last track, play first one
-			// if (this.get('getCurrentTrackIndex') <= 0) {
-			// 	this.send('playFirst');
-			// 	return;
-			// }
+		playPrev: function() {
 
-			// var prevTrack = this.get('tracks').objectAt((this.get('getCurrentTrackIndex') - 1));
-			// Ember.debug('Playing next track');
-			// this.set('model', prevTrack);
 		},
 
 		playFirst: function() {
 			// first is last because we have newest on top
 			var firstTrack = this.get('tracks.lastObject');
-			this.get('history').pushObject(firstTrack);
-			this.set('model', firstTrack);
+			// this.get('history').pushObject(firstTrack);
+			this.send('playTrack', firstTrack);
 			Ember.debug('Playing first track');
 		},
 		playLast: function() {
 			// last is first because we have newest on top
 			var lastTrack = this.get('tracks.firstObject');
-			this.set('model', lastTrack);
-			this.get('history').pushObject(lastTrack);
+			this.send('playTrack', lastTrack);
+			// this.get('history').pushObject(lastTrack);
 			Ember.debug('Playing last track');
 		},
 
@@ -182,7 +178,7 @@ export default Ember.Controller.extend({
 		},
 		ytEnded: function() {
 			// Ember.debug('on ended from controller');
-			this.send('playNext');
+			this.send('next');
 		},
 		ytError: function(error) {
 			// Ember.debug('on yt error from controller');
@@ -192,7 +188,7 @@ export default Ember.Controller.extend({
 			if (error === 2) { return; }
 
 			// otherwise play next
-			this.send('playNext');
+			this.send('next');
 		},
 	}
 });

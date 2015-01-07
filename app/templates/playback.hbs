@@ -35,7 +35,7 @@
 				</button> --}}
 				<label {{bind-attr class=":Btn :Btn--text :Controls-shuffle isShuffled:is-active"}} for="isShuffled">{{x-icon i='shuffle'}}</label>
 				{{input type="checkbox" id="isShuffled" checked=isShuffled class="is-hidden"}}
-				<button class="Btn Btn--text" {{action 'playPrev' model}} title="Previous track">
+				<button class="Btn Btn--text" {{action 'prev' model}} title="Previous track">
 					{{x-icon i='previous'}}
 				</button>
 				{{#if player.isPlaying}}
@@ -47,7 +47,7 @@
 						{{x-icon i='play'}}
 					</button>
 				{{/if}}
-				<button class="Btn Btn--text" {{action 'playNext' model}} title="Next track">
+				<button class="Btn Btn--text" {{action 'next' model}} title="Next track">
 					{{x-icon i='next'}}
 				</button>
 			</div>
