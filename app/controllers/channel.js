@@ -60,7 +60,6 @@ export default Ember.ObjectController.extend({
 					channel.get('images').addObject(image);
 					channel.save();
 				});
-
 			}
 
 			// if we already have an image
@@ -72,7 +71,6 @@ export default Ember.ObjectController.extend({
 				coverImage.set('src', this.get('newImage'));
 				coverImage.save();
 			}
-
 		},
 
 		toggleFavorite: function() {

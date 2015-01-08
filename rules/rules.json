@@ -1,6 +1,37 @@
 {
-  "rules":{
-    ".write":"(false)",
-    ".read":"true"
+  "rules": {
+
+    // default rules are false if not specified
+    // setting these to true would make ALL CHILD PATHS readable/writable
+
+    // false by default, authorise specifically
+    ".read": false,
+    //".write": "auth != null",
+
+    "channels": {
+      ".read": true,
+
+      // this allows us to query by slug, not only ID
+      ".indexOn": ["slug"],
+
+      "$channelID": {
+        ".write": "!data.exists() || !newData.exists() || data.child('user').val() === auth.uid"
+      }
+    },
+
+    "tracks": {
+      ".read": true,
+      ".write": false
+    },
+
+    "users": {
+      ".read": true,
+      ".write": false
+    },
+
+    "images": {
+      ".read": true,
+      ".write": false
+    }
   }
 }
