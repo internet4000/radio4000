@@ -43,7 +43,7 @@ export default Ember.ObjectController.extend({
 			var newImage = this.get('newImage');
 
 			// close dialog
-			this.send('editImage');
+			this.set('isEditingImage', false);
 
 			// stop if the user didn't upload a new photo
 			if (!newImage) { return; }
