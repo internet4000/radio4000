@@ -9,11 +9,9 @@
     //".write": "auth != null",
 
     "channels": {
-      ".read": true,
-
       // this allows us to query by slug, not only ID
       ".indexOn": ["slug"],
-
+      ".read": true,
       "$channelID": {
         ".write": "!data.exists() || !newData.exists() || data.child('user').val() === auth.uid"
       }
@@ -21,17 +19,27 @@
 
     "tracks": {
       ".read": true,
-      ".write": false
+      ".write": true, // todo: remove this when the below works
+      "$trackID": {
+        // todo: here we need to allow write if track.channel.user === auth.uid
+        //".write": "!data.exists() || !newData.exists() || data.child('user').val() === auth.uid"
+      }
     },
 
     "users": {
       ".read": true,
-      ".write": false
+      ".write": false,
+      "$userID": {
+        ".write": "!data.exists() || !newData.exists() || $userID === auth.uid"
+      }
     },
 
     "images": {
       ".read": true,
-      ".write": false
+      ".write": true, // todo: remove this when the below works
+      "$imageId": {
+        // todo: here we need to allow write if image.channel.user === auth.uid
+      }
     }
   }
 }
