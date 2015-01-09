@@ -104,10 +104,8 @@ export default {
 
 				// Either reuse or create a user
 				this.store.find('user', userId).then(function(user) {
-					Ember.debug('existing');
 					_this.existingUser(userId);
 				}, function(user) {
-					Ember.debug('new');
 					_this.createUser(userId);
 				});
 			},
@@ -118,7 +116,7 @@ export default {
 				this.store.find('user', userId).then(function(user) {
 					_this.set('user', user);
 					user.get('channels').then(function(channels) {
-						Ember.debug('setting the userChannel');
+						// Ember.debug('setting the userChannel');
 						_this.set('userChannel', channels.get('firstObject'));
 					});
 				});
