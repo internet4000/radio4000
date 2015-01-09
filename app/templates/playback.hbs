@@ -1,4 +1,4 @@
-<h2>unplayed</h2>
+{{!-- <h2>unplayed</h2>
 <ul>
 	{{#each item in unplayed}}
 	<li>{{item.title}}</li>
@@ -10,7 +10,7 @@
 	{{#each item in history}}
 	<li>{{item.title}}</li>
 	{{/each}}
-</ul>
+</ul> --}}
 
 <div {{bind-attr class=':Player model::is-hidden isMaximized'}}>
 	{{ember-youtube ytid=model.ytid name=player
@@ -31,9 +31,7 @@
 			</div>
 
 			<div class="Controls-buttons">
-				{{!-- <button class="Btn Btn--text">
-				</button> --}}
-				<label {{bind-attr class=":Btn :Btn--text :Controls-shuffle isShuffled:is-active"}} for="isShuffled">{{x-icon i='shuffle'}}</label>
+				<label {{bind-attr class=":Btn :Btn--text :Controls-shuffle isShuffled:is-active"}} for="isShuffled" title="Toggle shuffle playback">{{x-icon i='shuffle'}}</label>
 				{{input type="checkbox" id="isShuffled" checked=isShuffled class="is-hidden"}}
 				<button class="Btn Btn--text" {{action 'prev' model}} title="Previous track">
 					{{x-icon i='previous'}}
