@@ -6,7 +6,6 @@
 
     // false by default, authorise specifically
     ".read": false,
-    //".write": "auth != null",
 
     "channels": {
       // this allows us to query by slug, not only ID
@@ -19,7 +18,7 @@
 
     "tracks": {
       ".read": true,
-      ".write": true, // todo: remove this when the below works
+      ".write": "auth != null", // todo: remove this when the below works
       "$trackID": {
         // todo: here we need to allow write if track.channel.user === auth.uid
         //".write": "!data.exists() || !newData.exists() || data.child('user').val() === auth.uid"
@@ -36,7 +35,7 @@
 
     "images": {
       ".read": true,
-      ".write": true, // todo: remove this when the below works
+      ".write": "auth != null", // todo: remove this when the below works
       "$imageId": {
         // todo: here we need to allow write if image.channel.user === auth.uid
       }
