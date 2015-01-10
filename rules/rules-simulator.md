@@ -1,0 +1,98 @@
+Hello,
+
+For a project (stack: Ember + Firebase) I am working on I have been trying to write some security rules but it has been a huge Fail so far.
+I've used the Blaze Compiler way to write the rules (for its expected clarity). It is not a success. Writing it the normal json way is also a fail.
+
+I have two questions, the second is the most important to be solved - being to one separating us from the prototype release.
+
+Thank you in advance for your help.
+
+# Preliminary question
+
+When a user registers to our app (Firebase authentication) his record id becomes 'provider:user_id' and it is then this record_id that will be used in the relations between our different models. If a person (hacker) inspect the application with the Ember inspector or the Firebase Inspector he can easily find this record_id and then find the user name by a simple url following this scheme 'provider.com/id'.
+Is there a way to make this data totally anonymous so our users cannot be found on the social network they used to log in our application.
+
+PS: using Firebase 'mail' authentication could be a solution, but we would also like to enable the 'social authentifications'
+
+
+# Expected (plain english) rules behavior
+
+Here are a plain english version of what we thought to be the needed rules for the application to work 'as expected'.
+We wrote them according to our Ember models structure, that you can find in the next (3rd) chapter.
+
+## User
+- only non register (& non logged-in) user should be able to create an account
+- only this.user can edit himself
+- a user cannot edit an other user
+- a logged in user cannot create a new user
+
+name: only this.user can read, other user cannot read this property
+email: only this.user can read, other user cannot read this property
+provider: only this.user can read, other user cannot read this property
+created: only this.user can read, other user cannot read this property
+channels: all user can read this property, even non logged-in user
+
+
+## Track
+- any user can read every track (logged-in or not)
+- can be created by user who is: registered + logged in + has a channel
+- can be edited by user who created this track (which means registered + logged in + has a channel)
+ 
+## Image
+- any user can read every image (logged-in or not)
+- can be created by user who is: registered + logged in + has a channel + has an empty image record (because if not empty he cannot create a new image, but he can only edit the existing one he has attached to his channel)
+- can be edited by user who created this image (which means registered + logged in + has a channel + has this image attached to his channel)
+
+## Channel
+- can be read by anybody (logged-in or not)
+- can be written/edited only by the channel owner (user who has the channel id in his $user.channels record )
+- created only by a user that: is registered and logged in, does not already have a channel (user can only have one channel)
+
+
+# Ember models (4):
+
+## User 
+    export default DS.Model.extend({
+    	name:
+	    email: DS.attr('string'),
+	    provider: DS.attr('string'),
+    	created: DS.attr('number'),
+    	channels: DS.hasMany('channel', {
+	        	async: true
+    	}),
+	    favoriteChannels: DS.hasMany('channel', {
+		    inverse: null,
+    		async: true
+	    })
+    });
+
+
+## Track
+    export default DS.Model.extend({
+	    url: DS.attr('string'),
+    	title: DS.attr('string', { defaultValue: 'Untitled' }),
+    	body: DS.attr('string'),
+    	created: DS.attr('number'),
+    	channel: DS.belongsTo('channel', { async: true })
+    });
+    
+## Image
+    export default DS.Model.extend({
+	    channel: DS.hasMany('channel'),
+    	src: DS.attr('string'),
+    });
+
+## Channel
+    export default DS.Model.extend({
+	    title: DS.attr('string'),
+    	slug: DS.attr('string'),
+	    created: DS.attr('number'),
+    	body: DS.attr('string'),
+	    images: DS.hasMany('image', { async: true }),
+    	tracks: DS.hasMany('track', { async: true }),
+    	user: DS.belongsTo('user', {
+	        	inverse: 'channels',
+    		async: true
+	    })
+    });
+
