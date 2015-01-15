@@ -5,5 +5,5 @@ export default Ember.Route.extend({
 		if (this.get('session.user.id')) {
 			this.transitionTo('/');
 		}
-	}.observes('session.user.id')
+	}.on('init')
 });
