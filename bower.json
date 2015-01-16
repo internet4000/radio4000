@@ -22,6 +22,7 @@
   "resolutions": {
     "ember": "1.9.1",
     "handlebars": ">= 2.0.0 < 3.0.0",
-    "ember-data": "1.0.0-beta.14"
+    "ember-data": "1.0.0-beta.14",
+    "firebase": "~2.0.6"
   }
 }
