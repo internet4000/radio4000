@@ -88,6 +88,8 @@ export default Ember.ObjectController.extend({
 			} else {
 				sessionUserFavorites.addObject(channel);
 			}
+
+			this.get('session.userChannel').save();
 		}
 	},
 
