@@ -13,8 +13,8 @@ export default Ember.ObjectController.extend({
 
 	// True if session user matches channel user
 	canEdit: function() {
-		return this.get('user.id') === this.get('session.user.id');
-	}.property('user.id', 'session.user.id'),
+		return this.get('model') === this.get('session.userChannel');
+	}.property('model', 'session.userChannel'),
 
 	actions: {
 		play: function() {
@@ -75,48 +75,31 @@ export default Ember.ObjectController.extend({
 		},
 
 		toggleFavorite: function() {
-			if (this.get('model.isSaving')) { return false; }
+			var channel = this.get('model');
+			var sessionUserFavorites = this.get('session.userChannel.favoriteChannels');
+			var isFavorite = this.get('isFavorite');
 
-			var _this = this;
-			var user = this.get('session.user');
-			var model = this.get('model');
+			Ember.debug(isFavorite);
+			Ember.debug(channel.get('title'));
+			Ember.debug(this.get('session.userChannel.title'));
 
-			user.get('favoriteChannels').then(function(favoriteChannels) {
-				// either add or remove the favorite
-				if (!this.get('isFavorite')) {
-					favoriteChannels.addObject(model);
-				} else {
-					user.reload(); // hack! without this it won't remove the object
-					favoriteChannels.removeObject(model);
-				}
-
-				user.save();
-				this.toggleProperty('isFavorite');
-			}.bind(this));
+			if (isFavorite) {
+				sessionUserFavorites.removeObject(channel);
+			} else {
+				sessionUserFavorites.addObject(channel);
+			}
 		}
 	},
 
-	// Favorites (works but should be cleaned up)
-	// TODO: emberfire comment with ObjectProxy
-	isFavorite: false,
-	isFavoriteTest: function() {
-		if (!this.get('session.user')) { return false; }
+	// Favorites
+	isFavorite: function() {
+		var channel = this.get('model');
+		var sessionUserFavorites = this.get('session.userChannel.favoriteChannels');
 
-		// TODO: this hack makes sure it runs at the right time, omg
-		Ember.run.once(this, 'testFavorite');
-	}.observes('model', 'session.user.favoriteChannels.[]'),
-	testFavorite: function() {
-		var _this = this;
-		var model = this.get('model');
-		var favorites = this.get('session.user.favoriteChannels');
-		this.set('isFavorite', false);
+		// todo: change the computed property so we don't need this check
+		if (!sessionUserFavorites) { return; }
 
-		favorites.then(function() {
-			favorites.forEach(function(item) {
-				if (model === item) {
-					_this.set('isFavorite', true);
-				}
-			});
-		});
-	},
+		return sessionUserFavorites.contains(channel);
+
+	}.property('session.userChannel.favoriteChannels.[]'),
 });

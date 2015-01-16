@@ -24,10 +24,10 @@
 	<div class="Container">
 		<h2>Your favorite channels</h2>
 	</div>
-	{{#if session.user.favoriteChannels}}
+	{{#if session.userChannel.favoriteChannels}}
 	<div class="Container Container--noPadding">
 		<ul class="List">
-			{{#each channel in session.user.favoriteChannels}}
+			{{#each channel in session.userChannel.favoriteChannels}}
 				<li>
 					{{#link-to "channel" channel title="Your favorite channel"}}
 						<h3>{{channel.title}}</h3>

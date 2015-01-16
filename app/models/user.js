@@ -7,9 +7,5 @@ export default DS.Model.extend({
 	created: DS.attr('number'),
 	channels: DS.hasMany('channel', {
 		async: true
-	}),
-	favoriteChannels: DS.hasMany('channel', {
-		inverse: null,
-		async: true
 	})
 });

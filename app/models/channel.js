@@ -17,8 +17,5 @@ export default DS.Model.extend({
 	// relationships
 	images: DS.hasMany('image', { async: true }),
 	tracks: DS.hasMany('track', { async: true }),
-	user: DS.belongsTo('user', {
-		inverse: 'channels',
-		async: true
-	})
+	favoriteChannels: DS.hasMany('channel', { inverse: null, async: true })
 });

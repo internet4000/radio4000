@@ -1,3 +1,5 @@
+16. jan 2015
+
 {
   "rules": {
 
@@ -5,9 +7,13 @@
     // setting these to true would make ALL CHILD PATHS readable/writable
 
     "users": {
-      ".read": true,
+      // @todo other user should not be able to read other user- privacy
+      // ".read": "true",
+      ".read": "false",
       "$userID": {
-        ".write": "!data.exists() || !newData.exists() || $userID === auth.uid"
+        ".read": "$userID === auth.uid",
+        // @todo other user should not be able to read other user- privacy
+        ".write": "(!data.exists() && auth === null) || (!newData.exists() && auth === null) || $userID === auth.uid"
       }
     },
 
@@ -18,7 +24,8 @@
       ".indexOn": ["slug"],
 
       "$channelID": {
-        ".write": "!data.exists() || !newData.exists() || data.child('user').val() === auth.uid"
+        //".write": "(auth.uid !== null && !data.exists() || !newData.exists()) || data.child('user').val() === auth.uid"
+        ".write": "auth.uid !== null && data.child('user').val() === auth.uid || !data.exists()"
       }
     },
 
