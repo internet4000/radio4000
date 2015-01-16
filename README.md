@@ -29,6 +29,13 @@ npm install; bower install
 
 Also see http://www.ember-cli.com/
 
+## Deploying
+
+You can only deploy if your SSH key is set up on the server. If it is, use:
+
+`gulp deploy` (dev.radio4000.com)
+`gulp deploy-live` (radio4000.com)
+
 ## Important if you use Sublime Text
 
 Sublime automatically watches all files in a folder. Because ember-cli is so huge your PC will slow down. To solve this, tell Sublime to ignore the `tmp` and `node_modules` folder:
@@ -52,13 +59,6 @@ Sublime automatically watches all files in a folder. Because ember-cli is so hug
 ## Emberfire
 
 We use Firebase as our backend through Ember Data and [Emberfire](https://github.com/firebase/emberfire).
-
-## Deploying
-
-You can only deploy if your SSH key is set up on the server. If it is, use:
-
-`gulp deploy`
-`gulp deploy-live`
 
 ## Google API
 

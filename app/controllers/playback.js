@@ -54,7 +54,7 @@ export default Ember.Controller.extend({
 
 		history.pushObject(this.get('model'));
 		this.set('historyWasUpdated', true);
-		Ember.debug('model changed');
+		// Ember.debug('model changed');
 	}.observes('model'),
 
 	// Clears history every time the channel changes
@@ -67,7 +67,7 @@ export default Ember.Controller.extend({
 		// use this to play a track, if you don't want the url to change
 		playTrack: function(track) {
 			if (!track) { return false; }
-			Ember.debug('Playing track: ' + track.get('title'));
+			// Ember.debug('Playing track: ' + track.get('title'));
 		 	this.transitionToRoute('track', track);
 		},
 
@@ -107,7 +107,7 @@ export default Ember.Controller.extend({
 					return this.send('playTrack', newTrack);
 				} else {
 					// or reset
-					Ember.debug('resetting');
+					// Ember.debug('resetting');
 					this.clearHistory();
 					return this.set('model', null);
 				}
@@ -124,7 +124,6 @@ export default Ember.Controller.extend({
 
 			// go to a random item from the unplayed items
 			if (isShuffled) {
-				Ember.debug('Shuffling');
 				newTrack = unplayed.objectAt(Math.floor(Math.random() * len));
 			} else if (model) {
 				// or go to next
@@ -155,14 +154,14 @@ export default Ember.Controller.extend({
 			var firstTrack = this.get('tracks.lastObject');
 			// this.get('history').pushObject(firstTrack);
 			this.send('playTrack', firstTrack);
-			Ember.debug('Playing first track');
+			// Ember.debug('Playing first track');
 		},
 		playLast: function() {
 			// last is first because we have newest on top
 			var lastTrack = this.get('tracks.firstObject');
 			this.send('playTrack', lastTrack);
 			// this.get('history').pushObject(lastTrack);
-			Ember.debug('Playing last track');
+			// Ember.debug('Playing last track');
 		},
 
 		// Toggles "fullscreen mode"
