@@ -53,7 +53,8 @@ export default Ember.ObjectController.extend({
 
 				// create one
 				var image = this.store.createRecord('image', {
-					src: this.get('newImage')
+					src: this.get('newImage'),
+					channel: this.get('model')
 				}).save().then(function(image) {
 
 					// and add it to the channel

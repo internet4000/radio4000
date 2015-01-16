@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-	channel: DS.hasMany('channel'),
+	channel: DS.belongsTo('channel'),
 	src: DS.attr('string'),
 	background: function() {
 		var src = this.get('src');
