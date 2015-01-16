@@ -68,7 +68,7 @@ export default Ember.Controller.extend({
 		playTrack: function(track) {
 			if (!track) { return false; }
 			Ember.debug('Playing track: ' + track.get('title'));
-		 	this.set('model', track);
+		 	this.transitionToRoute('track', track);
 		},
 
 		prev: function() {
