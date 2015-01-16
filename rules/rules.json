@@ -4,13 +4,19 @@
     // default rules are false if not specified
     // setting these to true would make ALL CHILD PATHS readable/writable
 
-    // false by default, authorise specifically
-    ".read": false,
+    "users": {
+      ".read": true,
+      "$userID": {
+        ".write": "!data.exists() || !newData.exists() || $userID === auth.uid"
+      }
+    },
 
     "channels": {
+      ".read": true,
+
       // this allows us to query by slug, not only ID
       ".indexOn": ["slug"],
-      ".read": true,
+
       "$channelID": {
         ".write": "!data.exists() || !newData.exists() || data.child('user').val() === auth.uid"
       }
@@ -21,15 +27,7 @@
       ".write": "auth != null", // todo: remove this when the below works
       "$trackID": {
         // todo: here we need to allow write if track.channel.user === auth.uid
-        //".write": "!data.exists() || !newData.exists() || data.child('user').val() === auth.uid"
-      }
-    },
-
-    "users": {
-      ".read": true,
-      ".write": false,
-      "$userID": {
-        ".write": "!data.exists() || !newData.exists() || $userID === auth.uid"
+        // ".write": "!data.exists() || !newData.exists() || data.child('user').val() === auth.uid"
       }
     },
 
