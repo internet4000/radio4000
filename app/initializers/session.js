@@ -36,7 +36,6 @@ export default {
 			store: container.lookup('store:main'),
 
 			init: function() {
-
 				// on init try to login
 				ref.onAuth(function(authData) {
 
@@ -100,8 +99,6 @@ export default {
 			afterAuthentication: function(userId) {
 				var _this = this;
 
-
-
 				// Either reuse or create a user
 				this.store.find('user', userId).then(function(user) {
 					_this.existingUser(userId);
@@ -114,10 +111,11 @@ export default {
 			existingUser: function(userId) {
 				var _this = this;
 				this.store.find('user', userId).then(function(user) {
-					_this.set('user', user);
 					user.get('channels').then(function(channels) {
 						// Ember.debug('setting the userChannel');
-						_this.set('userChannel', channels.get('firstObject'));
+						var userChannel = channels.get('firstObject');
+						_this.set('userChannel', userChannel);
+						_this.set('user', user);
 					});
 				});
 			},
