@@ -4,7 +4,7 @@ var rsync = require('rsyncwrapper').rsync;
 /**
  * Upload dist to dev
  */
-gulp.task('deploy', function() {
+gulp.task('deploy-dev', function() {
 	rsync({
 		src: 'dist/',
 		dest: 'oskarrough@web461.webfaction.com:/home/oskarrough/webapps/radio_dev',
@@ -16,6 +16,8 @@ gulp.task('deploy', function() {
 			console.log(error.message);
 		} else {
 			// success
+			console.log('[radio4000.dev] deploy-dev is done!');
+			console.log('check the "firebaseURL" in environement.js');
 		}
 	});
 });
@@ -35,6 +37,8 @@ gulp.task('deploy-live', function() {
 			console.log(error.message);
 		} else {
 			// success
+			console.log('[radio4000.live] deploy-live is done!')
+			console.log('check the "firebaseURL" in environement.js');
 		}
 	});
 });
