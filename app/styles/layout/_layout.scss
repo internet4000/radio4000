@@ -35,7 +35,10 @@ body {
 		a {
 			color: $dark;
 			display: block;
-			padding: 2em 0.5em 0.5em;
+			padding: 2em 0.3em 0.5em;
+			@media (min-width: $layout-s) {
+				padding: 2em 0.5em 0.5em;
+			}
 		}
 	}
 }
