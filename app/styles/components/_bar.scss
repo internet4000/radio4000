@@ -18,7 +18,7 @@
 		a {
 			display: inline-block;
 			color: $text-color-invert;
-			padding: 1.2em 0.75em 1em;
+			padding: 1.2em 0.25em 1em;
 			&.is-active {
 				text-decoration: underline;
 			}
@@ -28,6 +28,10 @@
 			[class*=" icon-"] {
 				position: relative;
 				top: 0.1em;
+			}
+
+			@media (min-width: $layout-s) {
+				padding: 1.2em 0.75em 1em;
 			}
 		}
 	}
