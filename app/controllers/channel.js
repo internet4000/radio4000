@@ -6,11 +6,6 @@ export default Ember.ObjectController.extend({
 	isEditing: false,
 	isEditingImage: false,
 
-	// Set the last image as the cover image
-	coverImage: function() {
-		return this.get('images.lastObject');
-	}.property('images.@each'),
-
 	// True if session user matches channel user
 	canEdit: function() {
 		return this.get('model') === this.get('session.userChannel');

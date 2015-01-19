@@ -1,0 +1,30 @@
+<figure class="Thumbnail" {{bind-attr style=model.coverImage.background}}>
+	{{#if playback.player.isPlaying}}
+		<div class="Thumbnail-bg"></div>
+		<button class="Thumbnail-button" {{action "pause"}} title="Pause this channel">{{x-icon i="pause"}}</button>
+	{{else}}
+		<div class="Thumbnail-bg"></div>
+		<button class="Thumbnail-button" {{action "play"}} title="Play this channel">{{x-icon i="play"}}</button>
+	{{/if}}
+</figure>
+
+<h3 class="Cover-title">
+	{{#link-to 'channel' model}}{{model.title}}{{/link-to}}
+</h3>
+
+{{!-- <span class="Muted LastUpdate">({{model.tracks.length}} tracks, {{model.lastUpdatedFormatted}})</span> --}}
+{{!-- <p class="Channel-description">{{model.body}}</p> --}}
+
+{{!-- {{outlet 'channel-header'}} --}}
+
+{{!-- <div class="Channel-body">
+{{render 'tracks' tracks}}
+</div> --}}
+
+{{!-- <div class="BtnGroup">
+{{#if session.authed}}
+	{{x-favorite value=isFavorite action="toggleFavorite"}}
+{{/if}}
+</div> --}}
+
+{{yield}}
