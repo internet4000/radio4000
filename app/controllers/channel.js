@@ -75,26 +75,48 @@ export default Ember.ObjectController.extend({
 		},
 
 		toggleFavorite: function() {
+
 			var channel = this.get('model');
 			var sessionUserFavorites = this.get('session.userChannel.favoriteChannels');
+			console.log("channel");
+			console.log(channel);
+			Ember.debug(channel);
+
+			var sessionUserChannel = this.get('session.userChannel');
+			console.log("sessionUserChannel");
+			console.log(sessionUserChannel);
+			Ember.debug(sessionUserChannel);
+
+			var channelFollowers = channel.get('channelHasBeenFavorited');
+			console.log("channelFollowers");
+			console.log(channelFollowers);
+			Ember.debug(channelFollowers);
+
 			var isFavorite = this.get('isFavorite');
 
 			Ember.debug(isFavorite);
 			Ember.debug(channel.get('title'));
-			Ember.debug(this.get('session.userChannel.title'));
+			Ember.debug(this.get('session.userChannel.id'));
 
 			if (isFavorite) {
 				sessionUserFavorites.removeObject(channel);
+				channelFollowers.removeObject(sessionUserChannel);
 			} else {
 				sessionUserFavorites.addObject(channel);
+				channelFollowers.addObject(sessionUserChannel);
 			}
 
 			this.get('session.userChannel').save();
+
 		}
 	},
 
 	// Favorites
 	isFavorite: function() {
+
+		/**
+		 * loged in user favoriteChannels
+		 **/
 		var channel = this.get('model');
 		var sessionUserFavorites = this.get('session.userChannel.favoriteChannels');
 
@@ -104,4 +126,5 @@ export default Ember.ObjectController.extend({
 		return sessionUserFavorites.contains(channel);
 
 	}.property('session.userChannel.favoriteChannels.[]'),
+
 });
