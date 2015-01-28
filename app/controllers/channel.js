@@ -76,27 +76,13 @@ export default Ember.ObjectController.extend({
 
 		toggleFavorite: function() {
 
-			var channel = this.get('model');
-			var sessionUserFavorites = this.get('session.userChannel.favoriteChannels');
-			console.log("channel");
-			console.log(channel);
-			Ember.debug(channel);
-
 			var sessionUserChannel = this.get('session.userChannel');
-			console.log("sessionUserChannel");
-			console.log(sessionUserChannel);
-			Ember.debug(sessionUserChannel);
+			var sessionUserFavorites = sessionUserChannel.get('favoriteChannels');
 
+			var channel = this.get('model');
 			var channelFollowers = channel.get('channelHasBeenFavorited');
-			console.log("channelFollowers");
-			console.log(channelFollowers);
-			Ember.debug(channelFollowers);
 
 			var isFavorite = this.get('isFavorite');
-
-			Ember.debug(isFavorite);
-			Ember.debug(channel.get('title'));
-			Ember.debug(this.get('session.userChannel.id'));
 
 			if (isFavorite) {
 				sessionUserFavorites.removeObject(channel);
@@ -106,7 +92,8 @@ export default Ember.ObjectController.extend({
 				channelFollowers.addObject(sessionUserChannel);
 			}
 
-			this.get('session.userChannel').save();
+			sessionUserChannel.save();
+			channel.save();
 
 		}
 	},
