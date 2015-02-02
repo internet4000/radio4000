@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import youtube from 'radio4000/utils/youtube';
 
 export default Ember.ObjectController.extend({
 	needs: ['channel'],
@@ -18,12 +19,6 @@ export default Ember.ObjectController.extend({
 			}
 		}, this);
 		return isValid;
-	},
-
-	// Get the ID from a YouTube URL
-	// TODO: with this string 'fffc30' it fails
-	getYouTubeID: function(url) {
-		return url.match(/(?:youtu\.be\/|youtube\.com(?:\/embed\/|\/v\/|\/watch\?v=|\/user\/\S+|\/ytscreeningroom\?v=|\/sandalsResorts#\w\/\w\/.*\/))([^\/&]{10,12})/)[1];
 	},
 
 	actions: {
@@ -64,10 +59,10 @@ export default Ember.ObjectController.extend({
 		},
 
 		// This gets called when you paste something into the input-url component
-		// it sets the track title based on a title from the YouTube API based on track URL
+		// it takes a URL and turns it into a YouTube ID which we use to query the API for a title
 		autoTitle: function(url) {
 			var apikey = 'AIzaSyCk5FiiPiyHON7PMLfLulM9GFmSYt6W5v4';
-			var id = this.getYouTubeID(url);
+			var id = youtube(url);
 
 			if (!id) {
 				Ember.debug('errrrror');
