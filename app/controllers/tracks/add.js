@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
 	needs: ['channel'],
+	channel: Ember.computed.alias('controllers.channel.model'),
 	isExpanded: false,
 	formError: false,
 
@@ -31,13 +32,10 @@ export default Ember.ObjectController.extend({
 		},
 		cancel: function() {
 			// leaving the route also sets isexpanded to false
-			this.transitionToRoute('channel', this.get('controllers.channel').get('model'));
+			this.transitionToRoute('channel', this.get('channel'));
 		},
 		addTrack: function() {
 			if (!this.isValid()) { return false; }
-
-			// Get the parent channel (where we want to insert the track)
-			var channel = this.get('controllers.channel').get('model');
 
 			var title = this.get('trackTitle');
 			if (Ember.isEmpty(title)) {
@@ -49,6 +47,7 @@ export default Ember.ObjectController.extend({
 				url: this.get('trackUrl'),
 				title: this.get('trackTitle'),
 				body: this.get('trackBody'),
+				channel: this.get('channel'),
 				created: new Date().getTime()
 			});
 
@@ -67,11 +66,13 @@ export default Ember.ObjectController.extend({
 		// This gets called when you paste something into the input-url component
 		// it sets the track title based on a title from the YouTube API based on track URL
 		autoTitle: function(url) {
+			var apikey = 'AIzaSyCk5FiiPiyHON7PMLfLulM9GFmSYt6W5v4';
 			var id = this.getYouTubeID(url);
+
 			if (!id) {
 				Ember.debug('errrrror');
 			}
-			var apikey = 'AIzaSyCk5FiiPiyHON7PMLfLulM9GFmSYt6W5v4';
+
 			Ember.$.getJSON('https://www.googleapis.com/youtube/v3/videos?id='+id+'&key='+apikey+'&fields=items(id,snippet(title))&part=snippet').then(function(response) {
 				this.set('trackTitle', response.items[0].snippet.title);
 			}.bind(this));
