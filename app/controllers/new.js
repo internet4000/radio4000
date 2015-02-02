@@ -1,8 +1,10 @@
 import Ember from 'ember';
+import clean from 'radio4000/utils/clean';
 
 export default Ember.ObjectController.extend({
 	cleanSlug: function() {
-		return this.get('title').dasherize() + '-' + this.getRandomText();
+		var cleaned = clean(this.get('title'));
+		return cleaned.dasherize() + '-' + this.getRandomText();
 	}.property('title'),
 
 	actions: {
@@ -14,7 +16,7 @@ export default Ember.ObjectController.extend({
 
 			// we need a title
 			if (title === '') {
-				Ember.warn('no title');
+				Ember.warn('No title.');
 				return false;
 			}
 
@@ -50,9 +52,11 @@ export default Ember.ObjectController.extend({
 	getRandomText: function() {
 		var text = "";
 		var possible = "0ab1cd2ef3gh4ij5kl6mn7op8q9rstuvwxyz";
+
 		for (var i=0; i<4; i++) {
 			text += possible.charAt(Math.floor(Math.random() * possible.length));
 		}
+
 		return text;
 	}
 

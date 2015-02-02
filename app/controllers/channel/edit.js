@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import clean from 'radio4000/utils/clean';
 
 export default Ember.ObjectController.extend({
 	needs: ['channel'],
@@ -10,12 +11,12 @@ export default Ember.ObjectController.extend({
 		var model = this.get('model');
 
 		// make sure the new one isn't empty
-		// dasherize turns spaces into dashes and makes it lowercase
-		var newSlug = this.get('slug').dasherize();
-		if (newSlug === '') {
+		if (this.get('slug') === '') {
 			alert("Hey, the URL can't be empty. Please enter the URL you'd like your channel to have. If you have no clue, just enter the title.");
 			return false;
 		}
+
+		var newSlug = clean(this.get('slug'));
 
 		// 1. Get all channels
 		var channels = this.store.find('channel');
