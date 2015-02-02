@@ -80,7 +80,7 @@ export default Ember.ObjectController.extend({
 			var sessionUserFavorites = sessionUserChannel.get('favoriteChannels');
 
 			var channel = this.get('model');
-			var channelFollowers = channel.get('channelHasBeenFavorited');
+			var channelFollowers = channel.get('fans');
 
 			var isFavorite = this.get('isFavorite');
 

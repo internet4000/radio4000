@@ -18,5 +18,5 @@ export default DS.Model.extend({
 	images: DS.hasMany('image', { async: true }),
 	tracks: DS.hasMany('track', { async: true }),
 	favoriteChannels: DS.hasMany('channel', { inverse: null, async: true }),
-	channelHasBeenFavorited: DS.hasMany('channel', { inverse: null, async: true })
+	fans: DS.hasMany('channel', { inverse: null, async: true })
 });

@@ -1,3 +1,4 @@
+/*global require */
 var gulp = require('gulp');
 var rsync = require('rsyncwrapper').rsync;
 
@@ -14,10 +15,9 @@ gulp.task('deploy-dev', function() {
 	}, function(error,stdout,stderr,cmd) {
 		if (error) {
 			console.log(error.message);
-		} else {
-			// success
-			console.log('[radio4000.dev] deploy-dev is done!');
-			console.log('check the "firebaseURL" in environement.js');
+		} else { // success
+			console.log('Successfully deployed to dev.radio4000.com');
+			console.log('Note: make sure you deployed using the correct "firebaseURL" in environement.js');
 		}
 	});
 });
@@ -35,10 +35,9 @@ gulp.task('deploy-live', function() {
 	}, function(error,stdout,stderr,cmd) {
 		if (error) {
 			console.log(error.message);
-		} else {
-			// success
-			console.log('[radio4000.live] deploy-live is done!')
-			console.log('check the "firebaseURL" in environement.js');
+		} else { // success
+			console.log('Successfully deployed to radio4000.com');
+			console.log('Note: make sure you deployed using the correct "firebaseURL" in environement.js');
 		}
 	});
 });

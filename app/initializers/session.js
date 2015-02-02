@@ -1,6 +1,6 @@
 /*
  * Working authentication with
- * Firebase 2.0.x + Ember.js 1.8.1 + Ember Data Canary + EmberFire 1.3.0 + Ember CLI
+ * Firebase 2.0.x + Ember.js 1.9.1 + Ember Data Canary + EmberFire 1.3.1 + Ember CLI
  *
  * Note: this assumes you've set up login on your Firebase and
  * only handles Google and Facebook for now,
@@ -10,16 +10,14 @@
 
 /*global md5*/
 import Ember from 'ember';
+import ENV from '../config/environment';
 
 // Since I've defined my url in environment.js I can do this
-import ENV from '../config/environment';
 var ref = new window.Firebase(ENV.firebaseURL);
 
 export default {
 	name: 'session',
-
-	// Run the initializer after the store is ready
-	after: 'store',
+	after: 'store', // Run the initializer after the store is ready
 
 	initialize: function(container, application) {
 
@@ -110,9 +108,10 @@ export default {
 			// Existing user
 			existingUser: function(userId) {
 				var _this = this;
+
+				// Set the user and user channel for easy access later
 				this.store.find('user', userId).then(function(user) {
 					user.get('channels').then(function(channels) {
-						// Ember.debug('setting the userChannel');
 						var userChannel = channels.get('firstObject');
 						_this.set('userChannel', userChannel);
 						_this.set('user', user);
@@ -125,13 +124,12 @@ export default {
 				var _this = this;
 
 				// Without this, Emberfire gives an error
-				this.store.unloadAll('user');
+				// this.store.unloadAll('user');
 
 				this.get('store').createRecord('user', {
 					id: userId,
-					// provider: this.get('authData.provider'),
-					// name: this.get('authData.facebook.displayName') || this.get('authData.google.displayName'),
-					// email: this.get('authData.facebook.email') || this.get('authData.google.email'),
+					provider: this.get('authData.provider'),
+					name: this.get('authData.facebook.displayName') || this.get('authData.google.displayName'),
 					created: new Date().getTime()
 				}).save().then(function(user) {
 
@@ -140,9 +138,6 @@ export default {
 				});
 			}
 		});
-
-		// resume application
-		// application.advanceReadiness();
 
 		// Register and inject the 'session' initializer into all controllers and routes
 		application.register('session:main', session);
