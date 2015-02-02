@@ -1,0 +1,47 @@
+<!-- channel template -->
+<p><button {{action 'claim'}}>claim</button></p>
+
+<!-- channel controller actions -->
+<script>
+	claim: function() {
+		var user = this.get('session.user');
+		var model = this.get('model');
+
+		user.get('channels').then(function(channels) {
+			channels.addObject(model);
+			user.save().then(function() {
+				Ember.debug('Success: channel removed from user');
+			});
+		}.bind(this));
+
+		model.set('user', user);
+		model.save().then(function() {
+			Ember.debug('Success: channel removed from user');
+		});
+	}
+</script>
+
+
+<!-- ember-youtube replaces this but nice to have for testing -->
+<script>
+	embedUrl: function() {
+		return 'http://www.youtube-nocookie.com/embed/'+ this.get('model.ytid') +'?rel=0&amp;controls=0&amp;showinfo=0';
+	}.property('model.ytid')
+</script>
+
+<iframe width="560" height="315" {{bind-attr src=embedUrl}} allowfullscreen></iframe>
+
+
+{{!-- <h2>unplayed</h2>
+<ul>
+	{{#each item in unplayed}}
+	<li>{{item.title}}</li>
+	{{/each}}
+</ul>
+
+<h2>history</h2>
+<ul>
+	{{#each item in history}}
+	<li>{{item.title}}</li>
+	{{/each}}
+</ul> --}}

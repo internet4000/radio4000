@@ -1,17 +1,3 @@
-{{!-- <h2>unplayed</h2>
-<ul>
-	{{#each item in unplayed}}
-	<li>{{item.title}}</li>
-	{{/each}}
-</ul>
-
-<h2>history</h2>
-<ul>
-	{{#each item in history}}
-	<li>{{item.title}}</li>
-	{{/each}}
-</ul> --}}
-
 <div {{bind-attr class=':Player model::is-hidden isMaximized'}}>
 	{{ember-youtube ytid=model.ytid name=player
 		playing="ytPlaying"
@@ -22,42 +8,39 @@
 
 <div {{bind-attr class=':Playback model:is-active'}}>
 	<div class="Controls">
-		{{#if model}}
+		<div class="Controls-title" title="Current track / go to current channel">
+			{{#link-to 'channel' model.channel}}
+				{{model.title}} <span class="Controls-channel">({{channel.title}})</span>
+			{{/link-to}}
+		</div>
 
-			<div class="Controls-title" title="Current track / go to current channel">
-				{{#link-to 'channel' model.channel}}
-					{{model.title}} <span class="Controls-channel">({{channel.title}})</span>
-				{{/link-to}}
-			</div>
-
-			<div class="Controls-buttons">
-				<label {{bind-attr class=":Btn :Btn--text :Controls-shuffle isShuffled:is-active"}} for="isShuffled" title="Toggle shuffle playback">{{x-icon i='shuffle'}}</label>
-				{{input type="checkbox" id="isShuffled" checked=isShuffled class="is-hidden"}}
-				<button class="Btn Btn--text" {{action 'prev' model}} title="Previous track">
-					{{x-icon i='previous'}}
-				</button>
-				{{#if player.isPlaying}}
-					<button class="Btn Btn--text" {{action 'togglePlay' target="player"}} title="Pause track">
-						{{x-icon i='pause'}}
-					</button>
-				{{else}}
-					<button class="Btn Btn--text" {{action 'togglePlay' target="player"}} title="Play track">
-						{{x-icon i='play'}}
-					</button>
-				{{/if}}
-				<button class="Btn Btn--text" {{action 'next' model}} title="Next track">
-					{{x-icon i='next'}}
-				</button>
-			</div>
-
-			<button class="Btn Btn--text Controls-videoBtn" {{action 'toggle'}} title="Toggle fullscreen video">
-				{{#if isMaximized}}
-					{{x-icon i='arrows-compress'}}
-				{{else}}
-					{{x-icon i='arrows-expand'}}
-				{{/if}}
+		<div class="Controls-buttons">
+			<label {{bind-attr class=":Btn :Btn--text :Controls-shuffle isShuffled:is-active"}} for="isShuffled" title="Toggle shuffle playback">{{x-icon i='shuffle'}}</label>
+			{{input type="checkbox" id="isShuffled" checked=isShuffled class="is-hidden"}}
+			<button class="Btn Btn--text" {{action 'prev' model}} title="Previous track">
+				{{x-icon i='previous'}}
 			</button>
-		{{/if}}
+			{{#if player.isPlaying}}
+				<button class="Btn Btn--text" {{action 'togglePlay' target="player"}} title="Pause track">
+					{{x-icon i='pause'}}
+				</button>
+			{{else}}
+				<button class="Btn Btn--text" {{action 'togglePlay' target="player"}} title="Play track">
+					{{x-icon i='play'}}
+				</button>
+			{{/if}}
+			<button class="Btn Btn--text" {{action 'next' model}} title="Next track">
+				{{x-icon i='next'}}
+			</button>
+		</div>
+
+		<button class="Btn Btn--text Controls-videoBtn" {{action 'toggle'}} title="Toggle fullscreen video">
+			{{#if isMaximized}}
+				{{x-icon i='arrows-compress'}}
+			{{else}}
+				{{x-icon i='arrows-expand'}}
+			{{/if}}
+		</button>
 	</div>
 </div>
 

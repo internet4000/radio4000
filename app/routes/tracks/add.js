@@ -33,7 +33,7 @@ export default Ember.Route.extend({
 				Ember.RSVP.Promise.cast(channel.get('tracks')).then(function(tracks) {
 					tracks.addObject(track);
 					channel.save().then(function() {
-						Ember.debug('Success: Track saved to channel');
+						// Ember.debug('Success: Track saved to channel');
 					});
 				});
 			});

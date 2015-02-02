@@ -13,7 +13,6 @@ export default Ember.Controller.extend({
 
 	// all tracks not in the history array
 	// there is probably a computed macro to handle this.
-
 	unplayed: Ember.computed('history.[]', 'tracks.[]', function () {
 		var history = this.get('history');
 		var tracks = this.get('tracks');
