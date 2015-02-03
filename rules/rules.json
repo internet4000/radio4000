@@ -1,31 +1,33 @@
-16. jan 2015
-
 {
   "rules": {
 
-    // default rules are false if not specified
-    // setting these to true would make ALL CHILD PATHS readable/writable
+    // by default rules are false
+    // nested rules can not change rules above
 
     "users": {
-      // @todo other user should not be able to read other user- privacy
-      // ".read": "true",
-      ".read": "false",
+      // no one can read user list
+      ".read": false,
+      ".write": false,
+
       "$userID": {
+        // only auth user can read themselves
         ".read": "$userID === auth.uid",
-        // @todo other user should not be able to read other user- privacy
         ".write": "(!data.exists() && auth === null) || (!newData.exists() && auth === null) || $userID === auth.uid"
       }
     },
 
     "channels": {
+      ".indexOn": ["slug"], // this allows us to query by slug (normally it's only by ID)
       ".read": true,
-
-      // this allows us to query by slug, not only ID
-      ".indexOn": ["slug"],
+      ".write": "auth != null", // todo: remove this when the below works
 
       "$channelID": {
-        //".write": "(auth.uid !== null && !data.exists() || !newData.exists()) || data.child('user').val() === auth.uid"
-        ".write": "auth.uid !== null && data.child('user').val() === auth.uid || !data.exists()"
+        // ".write": "(auth.uid !== null && !data.exists() || !newData.exists()) || data.child('user').val() === auth.uid"
+        //".write": "auth.uid !== null && 1data.child('user').val() === auth.uid || !data.exists()"
+        //".write": "root.child('users/' + auth.uid + '/channels').val() === $channelID"
+
+        // Allow write if the auth user has a channel equal to the one we're trying to write here
+        //".write": "root.child('users/' + auth.uid + '/channels').child($channelID).exists()"
       }
     },
 
@@ -35,6 +37,11 @@
       "$trackID": {
         // todo: here we need to allow write if track.channel.user === auth.uid
         // ".write": "!data.exists() || !newData.exists() || data.child('user').val() === auth.uid"
+
+        // Allows write if there is no prev data OR
+        // if the 'channel' property is the same channel as the one in auth user
+        //".write": "!data.exists() || root.child('users/' + auth.uid + '/channels').child(#data.child('channel')).exists()"
+        //".write": "!data.exists() || data.child('channel').val() === root.child('users/' + auth.uid + '/channels').val()"
       }
     },
 
