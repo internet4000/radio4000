@@ -8,7 +8,6 @@
  * In your templates: <button {{action 'login' 'google'}}>Sign in with Google</button>
  */
 
-/*global md5*/
 import Ember from 'ember';
 import ENV from '../config/environment';
 

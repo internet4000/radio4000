@@ -15,7 +15,7 @@ export default Ember.Route.extend({
 		this.render({ outlet: 'channel-header'});
 	},
 
-	setupController: function(controller, model) {
+	setupController: function() {
 		// indicate we're editing (used for changing buttons etc.)
 		this.controllerFor('channel').set('isEditing', true);
 	},
