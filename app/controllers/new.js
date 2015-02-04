@@ -9,7 +9,6 @@ export default Ember.ObjectController.extend({
 
 	actions: {
 		createChannel: function() {
-			var _this = this;
 			var channel = this.get('model');
 			var title = this.get('title');
 			var user = this.get('session.user');

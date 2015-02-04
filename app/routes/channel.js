@@ -30,8 +30,6 @@ export default Ember.Route.extend({
 
 		return channelFromSlug.then(function(value) {
 			return that.store.find('channel', value);
-		}, function(error) {
-			Ember.warn('nay……');
 		});
 	},
 

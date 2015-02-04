@@ -95,15 +95,16 @@ export default Ember.ObjectController.extend({
 						}
 					});
 				});
-			}, function(error) {
+			}, function() {
 				//developer failed to save;
-				Ember.debug('no…');
+				Ember.warn('Error');
 			});
 
 			// All favorites have been removed
 			Ember.RSVP.all(promises).then(function() {
 				_this.transitionToRoute('/');
-			}, function(error) {
+			}, function() {
+				Ember.warn('Error');
 				//one or more languages failed to save
 			});
 		}

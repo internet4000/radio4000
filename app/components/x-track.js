@@ -30,7 +30,7 @@ export default Ember.Component.extend({
 		cancel: function() {
 			this.set('currentTrackComponent', null);
 		},
-		save: function(track) {
+		save: function() {
 			this.send('cancel');
 			this.get('track').save().then(function() {
 				Ember.debug('Saved track');

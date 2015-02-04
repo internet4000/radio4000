@@ -98,9 +98,9 @@ export default {
 				var _this = this;
 
 				// Either reuse or create a user
-				this.store.find('user', userId).then(function(user) {
+				this.store.find('user', userId).then(function() {
 					_this.existingUser(userId);
-				}, function(user) {
+				}, function() {
 					_this.createUser(userId);
 				});
 			},
