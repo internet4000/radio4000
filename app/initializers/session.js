@@ -19,10 +19,6 @@ export default {
 	after: 'store', // Run the initializer after the store is ready
 
 	initialize: function(container, application) {
-
-		// defer the application while we do our session
-		// application.deferReadiness();
-
 		// session object is nested here as we need access to the container to get the store
 		var session = Ember.Object.extend({
 			authed: false,
@@ -123,7 +119,7 @@ export default {
 				var _this = this;
 
 				// Without this, Emberfire gives an error
-				// this.store.unloadAll('user');
+				this.store.unloadAll('user');
 
 				this.get('store').createRecord('user', {
 					id: userId,
