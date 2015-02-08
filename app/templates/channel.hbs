@@ -1,5 +1,5 @@
 <article class="Channel Channel--detail">
-	<figure class="Thumbnail" {{bind-attr style=coverImage.background}}>
+	{{!-- <figure class="Thumbnail" {{bind-attr style=coverImage.background}}>
 
 		{{#if playback.player.isPlaying}}
 			<div class="Thumbnail-bg"></div>
@@ -12,7 +12,7 @@
 		{{#if canEdit}}
 			{{partial 'channel/editImage'}}
 		{{/if}}
-	</figure>
+	</figure> --}}
 
 	<div class="Channel-header Section">
 		<div class="Container">
@@ -20,8 +20,15 @@
 				{{#link-to 'channel' this}}
 					{{title}}
 				{{/link-to}}
-				<span class="Muted LastUpdate">({{tracks.length}} tracks, {{lastUpdatedFormatted}})</span>
 			</h1>
+			<div class="Channel-contextual">
+				<div class="Muted LastUpdate">(updated {{lastUpdatedFormatted}})</div>
+				<div class="BtnGroup">
+					{{#if session.authed}}
+						{{x-favorite value=isFavorite action="toggleFavorite"}}
+					{{/if}}
+				</div>
+			</div>
 			<p class="Channel-description">{{body}}</p>
 
 			<div class="BtnGroupWrapper">
@@ -41,15 +48,14 @@
 						{{/if}}
 				</div>
 				{{/if}}
-				<div class="BtnGroup">
-					{{#if session.authed}}
-						{{x-favorite value=isFavorite action="toggleFavorite"}}
-					{{/if}}
-				</div>
-				<span>{{channelHasBeenFavorited.length}} followers</span>
 
 			{{outlet 'channel-header'}}
 
+			</div>
+			<div class="Tab">
+				<span class="Tab-item">{{tracks.length}} tracks</span>
+				<span class="Tab-item">{{favoriteChannels.length}} favorite channels</span>
+				<span class="Tab-item">{{fans.length}} followers</span>
 			</div>
 		</div>
 	</div>

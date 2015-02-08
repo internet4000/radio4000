@@ -25,6 +25,12 @@
 .LastUpdate {
 	@extend %font-regular;
 }
+.Channel-contextual {
+	float: right;
+	.BtnGroup {
+		float: right;
+	}
+}
 
 // Form to edit the playlist
 .Channel-edit {
