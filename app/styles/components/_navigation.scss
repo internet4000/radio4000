@@ -27,8 +27,13 @@
 
 .ContextualNavigation {
 	display: none;
+	color: white;
+	padding: 1.2em .75em 1em;
 	@media (min-width: $layout-s) {
 		display: block;
+	}
+	a {
+		color: white;
 	}
 }
 
