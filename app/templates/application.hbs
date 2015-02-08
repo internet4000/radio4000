@@ -1,15 +1,27 @@
-<div {{bind-attr class=':BreadAndCheese isMaximized'}}>
+<div class="OverlayManager" {{bind-attr class=':BreadAndCheese isMaximized'}} {{bind-attr class="isPanelOpen:is-panelOpen"}}>
 	<header class="SiteHeader">
 		<div class="Bar">
+			<i id="TogglePanel" class="TooglePanel" {{action "openPanel"}} title="Menu">☰</i>
 			<h1 class="SiteLogo">
 				{{#link-to "index" title="Back to home"}}
 					<img src="images/logos/logo-radio4000.png" alt="Radio 4000">
 				{{/link-to}}
 			</h1>
 
-			{{partial 'partials/nav-header'}}
+			<div class="ContextualNavigation u-alignRight">
+				{{#if session.authed}}
+					{{!-- {{#link-to 'channel.tracks.add' this class="" title="Add track"}} + Add track {{/link-to}} --}}
+				{{else}}
+					{{#link-to 'signin' title="Sign in to Radio 4000"}}Sign in{{/link-to}}
+				{{/if}}
+			</div>
 		</div>
 	</header>
+	<aside class="SitePanelNav">
+			{{partial 'partials/nav-header'}}
+	</aside>
+
+	<aside class="SitePanelNavOverlay" {{action "closePanel"}}></aside>
 
 	<main class="SiteMain">
 		{{liquid-outlet name="main"}}
