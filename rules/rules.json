@@ -33,23 +33,27 @@
 
     "tracks": {
       ".read": true,
-      ".write": "auth != null", // todo: remove this when the below works
+      //".write": "auth != null", // todo: remove this when the below works
       "$trackID": {
+        //".write": "!data.exists() || root.child('users/' + auth.uid + '/channels').val().contains(data.child('channel').val())"
         // todo: here we need to allow write if track.channel.user === auth.uid
         // ".write": "!data.exists() || !newData.exists() || data.child('user').val() === auth.uid"
 
         // Allows write if there is no prev data OR
         // if the 'channel' property is the same channel as the one in auth user
-        //".write": "!data.exists() || root.child('users/' + auth.uid + '/channels').child(#data.child('channel')).exists()"
-        //".write": "!data.exists() || data.child('channel').val() === root.child('users/' + auth.uid + '/channels').val()"
+
+        //".write": "root.child('users/' + auth.uid + '/channels').child( newData.child('channel').val()  ).exists()"
+        ".write": "
+          root.child('users/' + auth.uid + '/channels').child( data.child('channel').val()  ).exists() ||
+          root.child('users/' + auth.uid + '/channels').child( newData.child('channel').val()  ).exists()"
       }
     },
 
     "images": {
       ".read": true,
       ".write": "auth != null", // todo: remove this when the below works
-      "$imageId": {
-        // todo: here we need to allow write if image.channel.user === auth.uid
+      "$imageID": {
+        // todo: here we need to allow write if $imageID.child('channel').val() === auth.uid
       }
     }
   }
