@@ -10,6 +10,8 @@
 
 .SiteLogo {
 	flex: 1;
+	display: flex;
+	align-items: center;
 	margin: 0;
 
 	a {
@@ -22,7 +24,6 @@
 	}
 	img {
 		vertical-align: middle;
-		padding: 1.4rem 0; // makes the tap-area full bar height
 	}
 }
 

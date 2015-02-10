@@ -33,7 +33,7 @@
 	a {
 		display: block;
 		color: $white;
-		padding: 1.3rem 1rem;
+		padding: 1.2rem 1rem 0.9rem;
 	}
 }
 
@@ -46,11 +46,9 @@
 
 .TooglePanel {
 	font-size: 2rem;
-	padding: 0.8rem 1rem;
+	padding: 0 1rem;
 	border: 0;
 	background: none;
-	color: $bleach;
-	&:hover {
-		color: $white;
-	}
+	color: $white;
+	&:hover {}
 }
