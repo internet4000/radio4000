@@ -84,11 +84,9 @@ $link-color: $red;
  */
 
 // Good looking easings for animation
-$easing:  cubic-bezier(0.165, 0.84, 0.4, 1); // fast, good looking
-// $easing2: cubic-bezier(0.145,  1.05,  0.4,   1.1); // + spring physics
-// $easing4: cubic-bezier(0.770,  0,     0.175,  1); // ??
-$easing5: cubic-bezier(.3, 0, 0, 1.3); // nice for things that pop up (dropdown etc)
-
+$easing:  cubic-bezier(0.165, 0.840, 0.400, 1.000); // fast, good looking
+$easing2: cubic-bezier(0.300, 0.000, 0.000, 1.300); // nice for things that pop up (dropdown etc)
+$easing3: cubic-bezier(0.860, 0.000, 0.070, 1.000); // nice again?.
 
 /**
  * Layout: Breakpoints
