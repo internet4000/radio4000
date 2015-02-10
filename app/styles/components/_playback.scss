@@ -2,29 +2,13 @@
  * Player
  */
 
-// Playback
-.Playback {
-	position: fixed;
-	z-index: 1;
-	bottom: 0;
-	right: 0;
-	left: 0;
-	backface-visibility: hidden;
-	transform: translateY(100%);
-	transition: all 400ms $easing2;
-
-	&.is-active {
-		transform: translateY(0);
-	}
-}
-
 // Controls
-.Controls {
+.Playback {
 	// distribute items
 	justify-content: space-between;
 
 	// a shadow to show that it's above the content
-	box-shadow: 0 0px 5px 1px rgba(0,0,0,.4);
+	// box-shadow: 0 0px 5px 1px rgba(0,0,0,.4);
 
 	// icon size here
 	.Btn {
@@ -33,7 +17,7 @@
 	}
 }
 
-.Controls-buttons {
+.Playback-buttons {
 	// no shrinking to avoid icons scaling down
 	flex-shrink: 0;
 	display: flex; // this works
@@ -48,11 +32,12 @@
 		color: $bleach;
 	}
 
-	.Controls-shuffle {
+	.Playback-shuffle {
 		font-size: 1.5rem;
 		display: flex;
 		align-self: center;
-		margin-right: 1rem;
+		padding-left: 1rem;
+		padding-right: 1rem;
 		opacity: 0.4;
 		&.is-active {
 			opacity: 1;
@@ -60,9 +45,10 @@
 	}
 }
 
-.Controls-title {
+.Playback-title {
 	@include size-1;
 	order: 2;
+	display: flex;
 	align-items: center;
 	@media (min-width: rem(700)) {
 		font-size: initial;
@@ -76,8 +62,9 @@
 	}
 }
 
-.Controls-videoBtn {
+.Playback-videoBtn {
 	order: 3;
 	font-size: 1.4rem;
+	padding-right: 1rem !important;
 	color: $bleach;
 }

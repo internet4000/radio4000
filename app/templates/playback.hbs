@@ -6,41 +6,38 @@
 		error="ytError"}}
 </div>
 
-<div {{bind-attr class=':Playback model:is-active'}}>
-	<div class="Bar Bar--bottom Controls">
-		<div class="Controls-title" title="Current track / go to current channel">
-			{{#link-to 'channel' model.channel}}
-				{{model.title}} <span class="Controls-channel">({{channel.title}})</span>
-			{{/link-to}}
-		</div>
+<div {{bind-attr class=':Bar :Bar--bottom :Playback model::is-hidden'}}>
+	<div class="Playback-title" title="Current track / go to current channel">
+		{{#link-to 'channel' model.channel}}
+			{{model.title}} <span class="Playback-channel">({{channel.title}})</span>
+		{{/link-to}}
+	</div>
 
-		<div class="Controls-buttons">
-			<label {{bind-attr class=":Btn :Btn--text :Controls-shuffle isShuffled:is-active"}} for="isShuffled" title="Toggle shuffle playback">{{x-icon i='shuffle'}}</label>
-			{{input type="checkbox" id="isShuffled" checked=isShuffled class="is-hidden"}}
-			<button class="Btn Btn--text" {{action 'prev' model}} title="Previous track">
-				{{x-icon i='previous'}}
+	<div class="Playback-buttons">
+		<label {{bind-attr class=":Playback-shuffle :Btn :Btn--text isShuffled:is-active"}} for="isShuffled" title="Toggle shuffle playback">{{x-icon i='shuffle'}}</label>
+		{{input type="checkbox" id="isShuffled" checked=isShuffled class="is-hidden"}}
+		<button class="Btn Btn--text" {{action 'prev' model}} title="Previous track">
+			{{x-icon i='previous'}}
+		</button>
+		{{#if player.isPlaying}}
+			<button class="Btn Btn--text" {{action 'togglePlay' target="player"}} title="Pause track">
+				{{x-icon i='pause'}}
 			</button>
-			{{#if player.isPlaying}}
-				<button class="Btn Btn--text" {{action 'togglePlay' target="player"}} title="Pause track">
-					{{x-icon i='pause'}}
-				</button>
-			{{else}}
-				<button class="Btn Btn--text" {{action 'togglePlay' target="player"}} title="Play track">
-					{{x-icon i='play'}}
-				</button>
-			{{/if}}
-			<button class="Btn Btn--text" {{action 'next' model}} title="Next track">
-				{{x-icon i='next'}}
+		{{else}}
+			<button class="Btn Btn--text" {{action 'togglePlay' target="player"}} title="Play track">
+				{{x-icon i='play'}}
 			</button>
-		</div>
-
-		<button class="Btn Btn--text Controls-videoBtn" {{action 'toggle'}} title="Toggle fullscreen video">
-			{{#if isMaximized}}
-				{{x-icon i='arrows-compress'}}
-			{{else}}
-				{{x-icon i='arrows-expand'}}
-			{{/if}}
+		{{/if}}
+		<button class="Btn Btn--text" {{action 'next' model}} title="Next track">
+			{{x-icon i='next'}}
 		</button>
 	</div>
-</div>
 
+	<button class="Playback-videoBtn Btn Btn--text" {{action 'toggle'}} title="Toggle fullscreen video">
+		{{#if isMaximized}}
+			{{x-icon i='arrows-compress'}}
+		{{else}}
+			{{x-icon i='arrows-expand'}}
+		{{/if}}
+	</button>
+</div>
