@@ -20,11 +20,8 @@
 
 // Controls
 .Controls {
-	bottom: 0;
-	// and no space in the sides, just between
+	// distribute items
 	justify-content: space-between;
-	padding-left: 1rem;
-	padding-right: 1rem;
 
 	// a shadow to show that it's above the content
 	box-shadow: 0 0px 5px 1px rgba(0,0,0,.4);
@@ -66,6 +63,7 @@
 .Controls-title {
 	@include size-1;
 	order: 2;
+	align-items: center;
 	@media (min-width: rem(700)) {
 		font-size: initial;
 	}
