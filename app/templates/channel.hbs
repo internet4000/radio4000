@@ -1,35 +1,40 @@
 <article class="Channel Channel--detail">
-	{{!-- <figure class="Thumbnail" {{bind-attr style=coverImage.background}}>
-
-		{{#if playback.player.isPlaying}}
-			<div class="Thumbnail-bg"></div>
-			<button class="Thumbnail-button" {{action "pause"}} title="Pause this channel">{{x-icon i="pause"}}</button>
-		{{else}}
-			<div class="Thumbnail-bg"></div>
-			<button class="Thumbnail-button" {{action "play"}} title="Play this channel">{{x-icon i="play"}}</button>
-		{{/if}}
-
-		{{#if canEdit}}
-			{{partial 'channel/editImage'}}
-		{{/if}}
-	</figure> --}}
 
 	<div class="Channel-header Section">
 		<div class="Container">
+
+			<div class="HideThumbnailForDevTools">
+				<figure class="Thumbnail" {{bind-attr style=coverImage.background}}>
+					{{#if playback.player.isPlaying}}
+						<div class="Thumbnail-bg"></div>
+						<button class="Thumbnail-button" {{action "pause"}} title="Pause this channel">{{x-icon i="pause"}}</button>
+					{{else}}
+						<div class="Thumbnail-bg"></div>
+						<button class="Thumbnail-button" {{action "play"}} title="Play this channel">{{x-icon i="play"}}</button>
+					{{/if}}
+					{{!-- {{#if canEdit}}
+						{{partial 'channel/editImage'}}
+					{{/if} --}}}
+				</figure>
+			</div>
+
 			<h1 class="Channel-title">
 				{{#link-to 'channel' this}}
 					{{title}}
 				{{/link-to}}
 			</h1>
-			<div class="Channel-contextual">
-				<div class="Muted LastUpdate">(updated {{lastUpdatedFormatted}})</div>
+
+			{{!-- <div class="Channel-contextual">
+			</div> --}}
+
+			{{#if session.authed}}
 				<div class="BtnGroup">
-					{{#if session.authed}}
-						{{x-favorite value=isFavorite action="toggleFavorite"}}
-					{{/if}}
+					{{x-favorite value=isFavorite action="toggleFavorite"}}
 				</div>
-			</div>
+			{{/if}}
+
 			<p class="Channel-description">{{body}}</p>
+			<p class="Muted LastUpdate">(updated {{lastUpdatedFormatted}})</p>
 
 			<div class="BtnGroupWrapper">
 				{{#if canEdit}}
