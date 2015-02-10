@@ -1,4 +1,4 @@
-<div class="EditImage" {{bind-attr class="isEditingImage:is-editingImage"}}>
+<div {{bind-attr class=":EditImage isEditingImage:is-editingImage"}}>
 	<button class="EditImage-btn"{{action 'editImage'}} title="Change image">{{x-icon i="camera"}}</button>
 	<form class="Form" {{action "saveImage" on="submit"}}>
 		<div class="Form-group">
