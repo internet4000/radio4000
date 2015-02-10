@@ -1,14 +1,14 @@
 <div class="OverlayManager" {{bind-attr class=':BreadAndCheese isMaximized'}} {{bind-attr class="isPanelOpen:is-panelOpen"}}>
 	<header class="SiteHeader">
 		<div class="Bar">
-			<i id="TogglePanel" class="TooglePanel" {{action "openPanel"}} title="Menu">☰</i>
+			<button id="TogglePanel" class="TooglePanel" {{action "openPanel"}} title="Menu">☰</button>
 			<h1 class="SiteLogo">
 				{{#link-to "index" title="Back to home"}}
 					<img src="images/logos/logo-radio4000.png" alt="Radio 4000">
 				{{/link-to}}
 			</h1>
 
-			<div class="ContextualNavigation u-alignRight">
+			<div class="ContextualNavigation">
 				{{#if session.authed}}
 					{{!-- {{#link-to 'channel.tracks.add' this class="" title="Add track"}} + Add track {{/link-to}} --}}
 				{{else}}

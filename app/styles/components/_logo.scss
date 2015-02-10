@@ -9,29 +9,22 @@
 
 
 .SiteLogo {
-	float: left;
+	flex: 1;
 	margin: 0;
 
 	a {
 		display: block;
-		width: 120px;
-		padding: 15px 1rem 8px;
+		width: 89px;
 		color: $bleach;
-
 		&:hover {
 			text-decoration: none;
 		}
 	}
+	img {
+		vertical-align: middle;
+		padding: 1.4rem 0; // makes the tap-area full bar height
+	}
 }
-
-.TooglePanel {
-	float: left;
-	font-size: 45px;
-	font-style: normal;
-	cursor: pointer;
-	padding-left: 12px;
-}
-
 
 // /**
 //  * Logo html

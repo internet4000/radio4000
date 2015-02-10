@@ -24,7 +24,8 @@ $font-25: 25px;
 $red:					hsl(0, 75%, 50%);
 $yellow:				hsl(59, 100%, 65%);
 $blue:				hsl(255, 95%, 39%);
-$purple:				hsl(260, 90%, 42%);
+// $purple:				hsl(260, 90%, 42%);
+$purple:				hsl(260, 80%, 50%); // nicer purple?
 $lighterblue: 		hsla(266, 36%, 84%, 0.8);
 $darkblue:			hsl(230, 50%, 23%);
 $verydarkblue:		hsl(255, 65%, 19%);
@@ -34,10 +35,9 @@ $green:				hsl(125, 82%, 35%);
 // $teal:				hsl(187, 85%, 35%);
 // $darkteal:			hsl(187, 75%, 25%);
 $sand:				hsl(46, 5%, 93%);
-// Grayscale
 $bleach:				hsl(72, 100%, 97%);
 $black:				hsl(0, 0%, 10%);
-$dark:			hsl(0, 0%, 30%);
+$dark:				hsl(0, 0%, 30%);
 $gray:				hsl(0, 0%, 50%);
 $mediumgray:		hsl(0, 0%, 70%);
 $mediumlightgray: hsl(0, 0%, 85%);
@@ -74,4 +74,4 @@ $layout-l: rem(1000);
 
 // Other stuff…
 $border-radius: 3px;
-$barHeight: 64px;
+$barHeight: 60px;

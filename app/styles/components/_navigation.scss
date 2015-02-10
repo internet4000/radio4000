@@ -9,7 +9,7 @@
 
 	li {
 		display: inline-block;
-		&:before {
+		&::before {
 			display: none;
 		}
 	}
@@ -27,13 +27,13 @@
 
 .ContextualNavigation {
 	display: none;
-	color: white;
-	padding: 1.2em .75em 1em;
 	@media (min-width: $layout-s) {
 		display: block;
 	}
 	a {
-		color: white;
+		display: block;
+		color: $white;
+		padding: 1.3rem 1rem;
 	}
 }
 
@@ -41,5 +41,16 @@
 // Muted in the header bar has a different look
 .SiteHeader .Bar .Muted {
 	font-size: 1em;
-	color: rgba(#fff, 0.5);
+	color: rgba($white, 0.5);
+}
+
+.TooglePanel {
+	font-size: 2rem;
+	padding: 0.8rem 1rem;
+	border: 0;
+	background: none;
+	color: $bleach;
+	&:hover {
+		color: $white;
+	}
 }

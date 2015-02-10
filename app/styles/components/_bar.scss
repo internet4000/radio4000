@@ -8,10 +8,13 @@
 	width: 100%;
 	z-index: 3;
 	min-height: $barHeight;
-	border-bottom: 1px solid hsla(0, 0%, 0%, 0.2);
-	color: $text-color-invert;
 	// background: linear-gradient(lighten($purple,10%), $purple);
-	background-color: lighten($purple,10%);
+	background-color: $purple;
+	border-bottom: 5px solid hsla(0, 0%, 0%, 0.15);
+	color: $text-color-invert;
+
+	display: flex;
+	align-items: center;
 
 	nav {
 		padding-left: 0.5rem;
