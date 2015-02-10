@@ -7,7 +7,7 @@
 </div>
 
 <div {{bind-attr class=':Playback model:is-active'}}>
-	<div class="Controls">
+	<div class="Bar Bar--bottom Controls">
 		<div class="Controls-title" title="Current track / go to current channel">
 			{{#link-to 'channel' model.channel}}
 				{{model.title}} <span class="Controls-channel">({{channel.title}})</span>

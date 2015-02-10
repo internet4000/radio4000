@@ -17,7 +17,8 @@
 	}
 }
 .Channel-description {
-	max-width: rem(510); // 10 words on 1 line
+	max-width: rem(350); // X words per line
+	margin-bottom: 2rem;
 }
 .Channel-body {
 	margin-bottom: 2rem;

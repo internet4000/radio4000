@@ -1,15 +1,11 @@
 <nav {{action "closePanel"}}>
 
+	{{#if session.userChannel}}
 	<div class="NavGroup">
-		{{#if session.authed}}
-			{{#if session.userChannel}}
-			<figure class="Thumbnail" {{bind-attr style=session.userChannel.coverImage.background}}>
-			</figure>
-			{{#link-to 'channel' session.userChannel title="Go to my channel"}}{{session.userChannel.title}}{{/link-to}}
-			{{else}}
-			{{/if}}
-		{{/if}}
+		<figure class="Thumbnail" {{bind-attr style=session.userChannel.coverImage.background}}></figure>
+		{{#link-to 'channel' session.userChannel title="Go to my channel"}}{{session.userChannel.title}}{{/link-to}}
 	</div>
+	{{/if}}
 
 	<div class="NavGroup">
 		{{#if session.authed}}

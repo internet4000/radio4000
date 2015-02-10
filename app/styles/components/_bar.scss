@@ -1,42 +1,34 @@
 /**
  *  The top bar
  */
+
 .Bar {
 	position: fixed;
-	top: 0;
 	left: 0;
 	width: 100%;
 	z-index: 3;
 	min-height: $barHeight;
-	// background: linear-gradient(lighten($purple,10%), $purple);
-	background-color: $purple;
-	border-bottom: 5px solid hsla(0, 0%, 0%, 0.15);
-	color: $text-color-invert;
 
 	display: flex;
-	align-items: stretch;
+	flex-flow: row nowrap; // items in one row, no wrapping
+	align-items: stretch; // full-height children
 
-	nav {
-		padding-left: 0.5rem;
-		padding-right: 0.5rem;
-		a {
-			display: inline-block;
-			color: $text-color-invert;
-			padding: 1.2em 0.25em 1em;
-			&.is-active {
-				text-decoration: underline;
-			}
+	// background: linear-gradient(lighten($purple,10%), $purple);
+	background-color: $purple;
+	color: $text-color-invert;
 
-			// center icons
-			[class^="icon-"],
-			[class*=" icon-"] {
-				position: relative;
-				top: 0.1em;
-			}
-
-			@media (min-width: $layout-s) {
-				padding: 1.2em 0.75em 1em;
-			}
+	a {
+		color: $bleach;
+		&.is-active {
+			text-decoration: underline;
 		}
 	}
+}
+.Bar--top {
+	top: 0;
+	border-bottom: 5px solid hsla(0, 0%, 0%, 0.15);
+}
+.Bar--bottom {
+	bottom: 0;
+	border-top: 5px solid hsla(0, 0%, 0%, 0.15);
 }

@@ -3,6 +3,8 @@
  */
 
 .Tab {
+	@extend %font-bold;
+	margin-bottom: 1rem;
 	clear: both;
 }
 

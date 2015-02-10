@@ -20,27 +20,14 @@
 
 // Controls
 .Controls {
-	// items in one row, no wrapping
+	bottom: 0;
 	// and no space in the sides, just between
-	display: flex;
-	flex-flow: row nowrap;
 	justify-content: space-between;
-	align-items: center;
 	padding-left: 1rem;
 	padding-right: 1rem;
 
-	min-height: $barHeight;
-	background-color: lighten($purple,10%);
-	// background: linear-gradient($primary-color, hsl(268, 90%, 42%));
-	color: $text-color-invert;
-	box-shadow: 0 -1px 2px hsla(0, 0%, 0%, 0.3);
-
-	a {
-		color: $bleach;
-		&.is-active {
-			text-decoration: underline;
-		}
-	}
+	// a shadow to show that it's above the content
+	box-shadow: 0 0px 5px 1px rgba(0,0,0,.4);
 
 	// icon size here
 	.Btn {

@@ -52,3 +52,27 @@
 	color: $white;
 	&:hover {}
 }
+
+// .Bar nav {
+// 	padding-left: 0.5rem;
+// 	padding-right: 0.5rem;
+// 	a {
+// 		display: inline-block;
+// 		color: $text-color-invert;
+// 		padding: 1.2em 0.25em 1em;
+// 		&.is-active {
+// 			text-decoration: underline;
+// 		}
+
+// 		// center icons
+// 		[class^="icon-"],
+// 		[class*=" icon-"] {
+// 			position: relative;
+// 			top: 0.1em;
+// 		}
+
+// 		@media (min-width: $layout-s) {
+// 			padding: 1.2em 0.75em 1em;
+// 		}
+// 	}
+// }
