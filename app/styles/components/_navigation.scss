@@ -46,11 +46,29 @@
 
 .TooglePanel {
 	font-size: 2rem;
-	padding: 0 1rem;
+	padding-top: 0;
+	padding-bottom: 0;
+	padding-left: 1rem;
+	padding-right: 1rem;
 	border: 0;
 	background: none;
 	color: $white;
-	&:hover {}
+	user-select: none;
+	transition: 400ms transform $easing;
+	transform-origin: 50% 54%; // so it feels like it stays in place
+	&:hover,
+	&:focus,
+	&:active {
+		outline: 0px solid white;
+	}
+	&:active {
+		color: $red;
+	}
+
+	.is-panelOpen & {
+		transform: rotate(90deg);
+	}
+
 }
 
 // .Bar nav {
