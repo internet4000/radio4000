@@ -15,7 +15,6 @@
 		{{#if session.authed}}
 			{{#if session.userChannel}}
 				{{#link-to 'channel' session.userChannel title="Go to my channel"}}→ My channel{{/link-to}}
-				{{!-- {{#link-to 'tracks.add' session.userChannel title="Add a track to my channel"}}{{x-icon i="plus"}} Add track{{/link-to}} --}}
 			{{else}}
 				{{#link-to 'new' title="Create your channel"}}My channel{{/link-to}}
 			{{/if}}
@@ -26,13 +25,8 @@
 	</div>
 
 	<div class="NavGroup">
-		{{!-- {{#link-to 'application' title="Back to home"}}Home{{/link-to}} --}}
 		{{#link-to 'about' title="Learn more about Radio4000"}}About{{/link-to}}
-		{{#link-to 'help' title="Answers to your questions"}}Help{{/link-to}}
-		{{!-- {{#link-to 'forum' title="Help us evolve. Join the Radio 4000 forum"}}Forum{{/link-to}}
-		 --}}
-		<a href="https://groups.google.com/forum/#!forum/radio4000" target="_blank">Forum</a>
-		{{#link-to 'log' title="See what's new in the changelog"}}Log{{/link-to}}
+		{{#link-to 'help' title="Answers to your questions"}}Help / FAQ{{/link-to}}
 	</div>
 
 	<div class="NavGroup">
