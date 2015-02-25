@@ -14,17 +14,17 @@ export default function() {
 
 	// NOTE! We currently don't transition between signin and the other pages.
 
-	this.transition(
-		this.fromRoute('index'),
-		this.toRoute('channels', 'channel'),
-		this.use('toLeft'),
-		this.reverse('toRight')
-	);
+	// this.transition(
+	// 	this.fromRoute('index'),
+	// 	this.toRoute('channels', 'channel'),
+	// 	this.use('toLeft'),
+	// 	this.reverse('toRight')
+	// );
 
-	this.transition(
-		this.fromRoute('channels'),
-		this.toRoute('channel'),
-		this.use('toLeft'),
-		this.reverse('toRight')
-	);
+	// this.transition(
+	// 	this.fromRoute('channels'),
+	// 	this.toRoute('channel'),
+	// 	this.use('toLeft'),
+	// 	this.reverse('toRight')
+	// );
 }
