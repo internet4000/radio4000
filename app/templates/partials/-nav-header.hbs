@@ -3,20 +3,20 @@
 	{{#if session.userChannel}}
 	<div class="NavGroup">
 		<figure class="Thumbnail" {{bind-attr style=session.userChannel.coverImage.background}}></figure>
-		{{#link-to 'channel' session.userChannel title="Go to my channel"}}{{session.userChannel.title}}{{/link-to}}
+		{{#link-to 'channel' session.userChannel title="Go to my channel"}}{{session.userChannel.title}} {{/link-to}}
 	</div>
 	{{/if}}
 
 	<div class="NavGroup">
 		{{#if session.authed}}
-			{{#link-to 'application' title="Discover channels"}}→ Dashboard{{/link-to}}
+			{{#link-to 'application' title="Discover channels"}}Dashboard{{/link-to}}
 		{{/if}}
-		{{#link-to 'channels' title="Discover channels"}}→ Discover{{/link-to}}
+		{{#link-to 'channels' title="Discover channels"}}Discover{{/link-to}}
 		{{#if session.authed}}
 			{{#if session.userChannel}}
-				{{#link-to 'channel' session.userChannel title="Go to my channel"}}→ My channel{{/link-to}}
+				{{!-- {{#link-to 'channel' session.userChannel title="Go to my channel"}}My channel{{/link-to}} --}}
 			{{else}}
-				{{#link-to 'new' title="Create your channel"}}My channel{{/link-to}}
+				{{!-- {{#link-to 'new' title="Create your channel"}}My channel{{/link-to}} --}}
 			{{/if}}
 		{{else}}
 			{{#link-to 'new' title="Create your channel"}}+ Create my channel{{/link-to}}
