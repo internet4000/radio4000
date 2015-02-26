@@ -22,8 +22,9 @@ module.exports = function(environment) {
   };
 
   ENV.contentSecurityPolicy = {
-    'script-src': "'self' 'unsafe-eval' https://www.youtube.com/iframe_api https://s.ytimg.com",
-    'frame-src': "'self' https://www.youtube.com"
+    'connect-src': "'self' wss://*.firebaseio.com",
+    'frame-src': "'self' https://www.youtube.com https://*.firebaseio.com",
+    'script-src': "'self' 'unsafe-eval' https://www.youtube.com/iframe_api https://s.ytimg.com https://*.firebaseio.com"
   };
 
   if (environment === 'development') {

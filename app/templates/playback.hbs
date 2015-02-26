@@ -1,4 +1,4 @@
-<div {{bind-attr class=':Player model::is-hidden isMaximized'}}>
+<div {{bind-attr class=":Player model::is-hidden isMaximized"}}>
 	{{ember-youtube ytid=model.ytid name=player
 		playing="ytPlaying"
 		paused="ytPaused"
@@ -6,7 +6,7 @@
 		error="ytError"}}
 </div>
 
-<div {{bind-attr class=':Bar :Bar--bottom :Playback model::is-hidden'}}>
+<div {{bind-attr class=":Bar :Bar--bottom :Playback model::is-hidden"}}>
 	<div class="Playback-title" title="Current track / go to current channel">
 		{{#link-to 'channel' model.channel}}
 			{{model.title}} <span class="Playback-channel">({{channel.title}})</span>
