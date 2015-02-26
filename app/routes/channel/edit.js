@@ -12,7 +12,10 @@ export default Ember.Route.extend({
 
 	// render into the channel template
 	renderTemplate: function() {
-		this.render({ outlet: 'channel-header'});
+		this.render({
+			into: 'channel',
+			outlet: 'channel-header'
+		});
 	},
 
 	setupController: function() {
