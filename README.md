@@ -72,3 +72,12 @@ Firebase rules are a bitch. With the [Blaze Compiler](https://github.com/firebas
 $ npm install -g blaze_compiler
 $ blaze rules/rules.yaml
 ```
+
+## How to update ember-cli
+
+Follow the instructions on [ember-cli/releases](https://github.com/ember-cli/ember-cli/releases) and remember to keep our own dependencies:
+
+```
+npm install --save-dev broccoli-sass broccoli-csso ember-youtube liquid-fire gulp rsyncwrapper ember-cli-autoprefixer
+bower install --save firebase js-md5 moment emberfire
+```
