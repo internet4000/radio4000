@@ -116,6 +116,10 @@
 		border-bottom: 4px solid $red;
 		@extend %font-bold;
 	}
+	&:active {
+		text-decoration: none;
+		border-bottom: 4px solid $red;
+	}
 	&:hover {
 		text-decoration: none;
 		border-bottom: 4px solid $red;

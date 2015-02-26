@@ -1,3 +1,9 @@
+<div class="NavigationTab Container Flex Container--full">
+	{{#link-to 'channel.index' title="Discover channels" class="NavigationTab-item"}}{{tracks.length}} tracks{{/link-to}}
+	{{#link-to 'channel.favorite-channels' title="Discover channels" class="NavigationTab-item"}}{{favoriteChannels.length}} favorite channels{{/link-to}}
+	{{#link-to 'channel.followers' title="Discover channels" class="NavigationTab-item"}}{{fans.length}} followers{{/link-to}}
+</div>
+
 <article class="Channel Channel--detail">
 
 	<div class="Channel-header Section">
@@ -57,39 +63,13 @@
 			{{outlet 'channel-header'}}
 
 			</div>
-			<div class="Tab">
-				<span class="Tab-item">{{tracks.length}} tracks</span>
-				<span class="Tab-item">{{favoriteChannels.length}} favorite channels</span>
-				<span class="Tab-item">{{fans.length}} followers</span>
-			</div>
 		</div>
 	</div>
 
-	{{outlet 'channel-body'}}
-
+	{{!-- {{outlet 'channel-body'}} --}}
 	<div class="Channel-body">
-		{{render 'tracks' tracks}}
+		{{outlet}}
 	</div>
-
-	{{#if favoriteChannels}}
-	<div class="Channel-favorites">
-		<div class="Container">
-			<h3>Favorite channels from {{title}}</h3>
-		</div>
-		<div class="Container Container--noPadding">
-			<ul class="List">
-			{{#each channel in favoriteChannels}}
-				<li>
-					{{#link-to "channel" channel class="ChannelTeaser" title="Go to this channel"}}
-						<h3 class="ChannelTeaser-title">{{channel.title}}</h3>
-						<p class="ChannelTeaser-description"> {{do-truncate channel.body 140}}</p>
-					{{/link-to}}
-				</li>
-			{{/each}}
-			</ul>
-		</div>
-	</div>
-	{{/if}}
 
 	{{!-- this page doesn't have a normal outlet to avoid rendering the track in to it --}}
 </article>

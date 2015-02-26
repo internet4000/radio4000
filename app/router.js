@@ -27,6 +27,8 @@ Router.map(function() {
 	// channel
 	this.resource('channel', { path: '/c/:channel_slug' }, function() {
 		this.route('edit');
+		this.route('favorite-channels');
+		this.route('followers');
 
 		// channel tracks
 		this.resource('tracks', function() {

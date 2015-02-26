@@ -1,0 +1,19 @@
+{{#if favoriteChannels}}
+	<div class="Channel-favorites">
+		<div class="Container">
+			<h3>Favorite channels from {{title}}</h3>
+		</div>
+		<div class="Container Container--noPadding">
+			<ul class="List">
+			{{#each channel in favoriteChannels}}
+				<li>
+					{{#link-to "channel" channel class="ChannelTeaser" title="Go to this channel"}}
+						<h3 class="ChannelTeaser-title">{{channel.title}}</h3>
+						<p class="ChannelTeaser-description"> {{do-truncate channel.body 140}}</p>
+					{{/link-to}}
+				</li>
+			{{/each}}
+			</ul>
+		</div>
+	</div>
+{{/if}}
