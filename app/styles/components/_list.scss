@@ -29,10 +29,15 @@
 	}
 	a,
 	li {
-		&:hover,
-		&:focus {
+		&:hover {
 			background-color: hsla(0, 100%, 100%, 0.2);
 			text-decoration: none;
+		}
+		&:focus,
+		&:active {
+			background-color: $purple;
+			text-decoration: none;
+			color: white;
 		}
 	}
 }

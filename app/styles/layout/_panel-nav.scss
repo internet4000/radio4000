@@ -89,7 +89,10 @@
 		@include clearfix;
 	}
 	&:hover {
-
+		.UserChannel-intro,
+		.UserChannel-body {
+			color: white;
+		}
 	}
 }
 
