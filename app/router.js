@@ -19,7 +19,12 @@ Router.map(function() {
 	this.route('new');
 
 	// all channels
-	this.resource('channels', { path: 'discover'}, function() {});
+	this.resource('channels', { path: 'discover'}, function() {
+		this.route('mostpopular');
+		this.route('lastcreated');
+		this.route('az');
+		this.route('search');
+	});
 
 	// channel
 	this.resource('channel', { path: '/c/:channel_slug' }, function() {

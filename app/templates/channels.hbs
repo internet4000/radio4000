@@ -1,8 +1,9 @@
 <div class="NavigationTab Container Flex Container--full">
-	<a href="#" class="NavigationTab-item is-active">Featured</a>
-	<a href="#" class="NavigationTab-item">Most popular</a>
-	<a href="#" class="NavigationTab-item">Lasted created</a>
-	<a href="#" class="NavigationTab-item">A/Z</a>
+	{{#link-to 'channels.index' title="Discover channels" class="NavigationTab-item"}}Featured{{/link-to}}
+	{{#link-to 'channels.mostpopular' title="Discover channels" class="NavigationTab-item"}}Most popular{{/link-to}}
+	{{#link-to 'channels.lastcreated' title="Discover channels" class="NavigationTab-item"}}Lasted created{{/link-to}}
+	{{#link-to 'channels.az' title="Discover channels" class="NavigationTab-item"}}A/Z{{/link-to}}
+	{{#link-to 'channels.search' title="Discover channels" class="NavigationTab-item"}}Search{{/link-to}}
 </div>
 <div class="Manchet Manchet--left">
 	<h1>Discover<small> — find radio channels you like</small></h1>

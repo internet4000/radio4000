@@ -12,6 +12,10 @@ body {
 	-webkit-overflow-scrolling: touch;
 }
 
+.SiteHeader {
+	@include clearfix;
+}
+
 .SiteMain {
 	margin-top: $barHeight;
 	margin-bottom: $barHeight;
