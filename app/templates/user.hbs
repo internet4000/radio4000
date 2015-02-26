@@ -3,20 +3,23 @@
 		<h2>Your channel</h2>
 	</div>
 	{{#if session.userChannel}}
-	<div class="Container Container--noPadding">
-		<ul class="List">
-			<li>{{#link-to "channel" session.userChannel title="Your channel"}}
-				<h3>{{session.userChannel.title}}</h3>
-			{{/link-to}}</li>
-		</ul>
-	</div>
+		<div class="Container">
+			{{x-cover model=session.userChannel}}
+		</div>
+		{{!-- <div class="Container Container--noPadding">
+			<ul class="List">
+				<li>{{#link-to "channel" session.userChannel title="Your channel"}}
+					<h3>{{session.userChannel.title}}</h3>
+				{{/link-to}}</li>
+			</ul>
+		</div> --}}
 	{{else}}
-	<div class="Container">
-		<p class="Muted">Welcome! Now you can create your channel.</p>
-		{{#link-to "new" class="BoxIcon BoxIcon--add" title="Create your channel"}}
-			Create your channel
-		{{/link-to}}
-	</div>
+		<div class="Container">
+			<p class="Muted">Welcome! Now you can create your channel.</p>
+			{{#link-to "new" class="BoxIcon BoxIcon--add" title="Create your channel"}}
+				Create your channel
+			{{/link-to}}
+		</div>
 	{{/if}}
 </section>
 
@@ -26,7 +29,7 @@
 	</div>
 	{{#if session.userChannel.favoriteChannels}}
 	<div class="Container Container--noPadding">
-		<ul class="List">
+		{{!-- <ul class="List">
 			{{#each channel in session.userChannel.favoriteChannels}}
 				<li>
 					{{#link-to "channel" channel title="Your favorite channel"}}
@@ -34,12 +37,12 @@
 					{{/link-to}}
 				</li>
 			{{/each}}
-		</ul>
-		{{!-- <section class="Flex">
+		</ul> --}}
+		<section class="Flex">
 			{{#each channel in session.userChannel.favoriteChannels}}
 				{{x-cover model=channel}}
 			{{/each}}
-		</section> --}}
+		</section>
 	</div>
 	{{else}}
 	<div class="Container">
