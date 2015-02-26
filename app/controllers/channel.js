@@ -71,26 +71,22 @@ export default Ember.Controller.extend({
 		},
 
 		toggleFavorite: function() {
-
-			var sessionUserChannel = this.get('session.userChannel');
-			var sessionUserFavorites = sessionUserChannel.get('favoriteChannels');
-
+			var userChannel = this.get('session.userChannel');
+			var userFavorites = userChannel.get('favoriteChannels');
 			var channel = this.get('model');
 			var channelFollowers = channel.get('fans');
-
 			var isFavorite = this.get('isFavorite');
 
 			if (isFavorite) {
-				sessionUserFavorites.removeObject(channel);
-				channelFollowers.removeObject(sessionUserChannel);
+				userFavorites.removeObject(channel);
+				channelFollowers.removeObject(userChannel);
 			} else {
-				sessionUserFavorites.addObject(channel);
-				channelFollowers.addObject(sessionUserChannel);
+				userFavorites.addObject(channel);
+				channelFollowers.addObject(userChannel);
 			}
 
-			sessionUserChannel.save();
+			userChannel.save();
 			channel.save();
-
 		}
 	},
 
@@ -101,12 +97,12 @@ export default Ember.Controller.extend({
 		 * loged in user favoriteChannels
 		 **/
 		var channel = this.get('model');
-		var sessionUserFavorites = this.get('session.userChannel.favoriteChannels');
+		var userFavorites = this.get('session.userChannel.favoriteChannels');
 
 		// todo: change the computed property so we don't need this check
-		if (!sessionUserFavorites) { return; }
+		if (!userFavorites) { return; }
 
-		return sessionUserFavorites.contains(channel);
+		return userFavorites.contains(channel);
 
 	}.property('session.userChannel.favoriteChannels.[]'),
 
