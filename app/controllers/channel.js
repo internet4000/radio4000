@@ -52,9 +52,10 @@ export default Ember.Controller.extend({
 					channel: this.get('model')
 				});
 
-				// save and add it to the channel and save that
+				// save and add it to the channel
 				image.save().then(function(image) {
 					channel.get('images').addObject(image);
+					// and save that
 					channel.save();
 				});
 			}
@@ -90,20 +91,16 @@ export default Ember.Controller.extend({
 		}
 	},
 
-	// Favorites
+	// If the current user's favoriteChannels contains this channel
+	// it's a favorite…
 	isFavorite: function() {
-
-		/**
-		 * loged in user favoriteChannels
-		 **/
 		var channel = this.get('model');
 		var userFavorites = this.get('session.userChannel.favoriteChannels');
 
-		// todo: change the computed property so we don't need this check
-		if (!userFavorites) { return; }
+		// guard because this functions runs before userChannel is defined
+		if (!userFavorites) { return false; }
 
 		return userFavorites.contains(channel);
-
-	}.property('session.userChannel.favoriteChannels.[]'),
+	}.property('session.userChannel.favoriteChannels.@each'),
 
 });

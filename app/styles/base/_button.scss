@@ -21,7 +21,7 @@
 	// -webkit-font-smoothing: antialiased;
 
 	&:hover,
-	&:focus,
+	// &:focus,
 	&:active {
 		text-decoration: none;
 		background-image: linear-gradient(to bottom, #fff 70%, hsla(0, 0%, 0%, 0.1));
@@ -39,12 +39,18 @@
 	}
 }
 
-// looks like it's pressed down
+// active (pressed down)
 .Btn:active,
-.Btn.is-active,
-.Btn:focus {
+.Btn.is-active {
 	outline: none;
 	box-shadow: hsla(0, 0%, 0%, 0.3) 2px 2px 4px inset;
+}
+
+// focus
+.Btn:focus {
+	outline: none;
+	border-color: $primary-color;
+	box-shadow: 0 0 5px rgba($primary-color, 0.3);
 }
 
 // Primary, colored button
