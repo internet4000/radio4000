@@ -77,3 +77,49 @@
 		background-color: rgba(0, 0, 0, 0.20);
 	}
 }
+
+
+/**
+ * UserChannel
+ **/
+
+.UserChannel {
+	@include clearfix;
+	a {
+		@include clearfix;
+	}
+	&:hover {
+
+	}
+}
+
+.UserChannel-media {
+	width: 40px;
+	height: 40px;
+	background-color: $red;
+	float: left;
+	margin-bottom: 0;
+}
+
+.UserChannel-body {
+	float: left;
+	width: 100%;
+	margin-left: -40px;
+	padding-left: 60px;
+
+	&.BoxIcon {
+		// when user is logged in but has no channel yet
+		padding-left: 0;
+
+		&:hover {
+			color: white;
+		}
+	}
+}
+
+.UserChannel-intro {
+	margin-bottom: 0;
+}
+.UserChannel-title {
+	margin-bottom: 0;
+}
