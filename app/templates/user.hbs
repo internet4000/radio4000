@@ -1,35 +1,52 @@
 <section class="Section">
 	<div class="Container">
 		<h2>Your channel</h2>
-
-		{{#if session.userChannel}}
-			{{x-cover model=session.userChannel}}
-		{{else}}
-			<p class="Muted">Welcome! Now you can create your channel.</p>
-			{{#link-to "new" class="BoxIcon BoxIcon--add" title="Create your channel"}}
-				Create your channel
-			{{/link-to}}
-		{{/if}}
 	</div>
+	{{#if session.userChannel}}
+	<div class="Container Container--noPadding">
+		<ul class="List">
+			<li>{{#link-to "channel" session.userChannel title="Your channel"}}
+				<h3>{{session.userChannel.title}}</h3>
+			{{/link-to}}</li>
+		</ul>
+	</div>
+	{{else}}
+	<div class="Container">
+		<p class="Muted">Welcome! Now you can create your channel.</p>
+		{{#link-to "new" class="BoxIcon BoxIcon--add" title="Create your channel"}}
+			Create your channel
+		{{/link-to}}
+	</div>
+	{{/if}}
 </section>
 
 <section class="Section">
 	<div class="Container">
 		<h2>Your favorite channels</h2>
-
+	</div>
 	{{#if session.userChannel.favoriteChannels}}
-		<section class="Flex">
+	<div class="Container Container--noPadding">
+		<ul class="List">
+			{{#each channel in session.userChannel.favoriteChannels}}
+				<li>
+					{{#link-to "channel" channel title="Your favorite channel"}}
+						<h3>{{channel.title}}</h3>
+					{{/link-to}}
+				</li>
+			{{/each}}
+		</ul>
+		{{!-- <section class="Flex">
 			{{#each channel in session.userChannel.favoriteChannels}}
 				{{x-cover model=channel}}
 			{{/each}}
-		</section>
-	{{/if}}
-
-	{{#unless session.userChannel.favoriteChannels}}
+		</section> --}}
+	</div>
+	{{else}}
+	<div class="Container">
 		<p class="Muted">You haven't got any favorites yet. Browse channels and favorite the ones you enjoy.</p>
 		{{#link-to "channels" class="BoxIcon BoxIcon--explore" title="Discover channels"}}
 			Discover channels
 		{{/link-to}}
-	{{/unless}}
 	</div>
+	{{/if}}
 </section>

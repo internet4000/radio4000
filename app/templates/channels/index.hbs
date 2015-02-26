@@ -3,6 +3,18 @@
 </div>
 
 <div class="Section">
+	<div class="Container Flex Container--full">
+		{{input type="text" value=search placeholder="Search channels"}}
+		{{#button-group}}
+			<h4 class="BtnGroup-label">Sort by</h4>
+			{{!-- <button class="Btn" {{action 'sortBy' 'lastUpdated'}}>Updated {{sort-indicator sortAscending=sortAscending}}</button> --}}
+			<button class="Btn" {{action 'sortBy' 'created'}}>Date {{sort-indicator sortAscending=sortAscending}}</button>
+			<button class="Btn" {{action 'sortBy' 'title'}}>Name {{sort-indicator sortAscending=sortAscending}}</button>
+			{{!-- <button class="Btn" {{action 'sortBy' 'tracks.length'}}>Tracks {{sort-indicator sortAscending=sortAscending}}</button> --}}
+		{{/button-group}}
+	</div>
+
+	{{!-- NORMAL LIST VIEW --}}
 	<div class="Container Container--full Container--noPadding">
 		<ul class="List">
 			{{#each channel in channels}}
@@ -22,12 +34,13 @@
 			{{/each}}
 		</ul>
 	</div>
-</div>
 
-{{!-- <div class="Container">
-	<div class="Flex">
-		{{#each channel in channels}}
-			{{x-cover model=channel}}
-		{{/each}}
-	</div>
-</div> --}}
+	{{!-- COVER GRID VIEW --}}
+	{{!-- <div class="Container">
+		<div class="Flex">
+			{{#each channel in channels}}
+				{{x-cover model=channel}}
+			{{/each}}
+		</div>
+	</div> --}}
+</div>
