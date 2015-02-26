@@ -14,22 +14,31 @@ export default Ember.Route.extend({
 		// 	return channels.findBy('slug', params.channel_slug);
 		// });
 
-		var ref = new Firebase("https://radio4000-dev.firebaseio.com/channels/");
-		var that = this;
-
 		// 3. firebase way but doesn't return an ember model
 		// but requires TWO queries: one with firebase to find id from slug
 		// and one from ember now that we have the ID, this way we get a "ember" model
+		var ref = new Firebase("https://radio4000-dev.firebaseio.com/channels/");
+		var that = this;
+		console.log("Start");
+
+		// find the channel by slug without emberfire, just firebase
 		var channelFromSlug = new Ember.RSVP.Promise(function(resolve, reject) {
 			ref.orderByChild('slug').equalTo(params.channel_slug).on('child_added', function(snapshot) {
+				console.log("Resolved");
 				resolve(snapshot.key());
 			}, function(error) {
 				reject(error);
 			});
 		});
 
+		// use that id to query using emberfire,
+		// so we get a real "ember" model (and not the pure firebase one)
 		return channelFromSlug.then(function(value) {
-			return that.store.find('channel', value);
+			console.log("Middle");
+			return that.store.find('channel', value).then(function(data) {
+				console.log("Channel found");
+				return data;
+			});
 		});
 	},
 
