@@ -94,3 +94,31 @@
 // 		}
 // 	}
 // }
+
+/**
+ * NavigationTab
+ **/
+
+.NavigationTab {
+	background-color: rgb(217, 217, 217);
+}
+
+.NavigationTab-item {
+	padding-top: 0.7em;
+	padding-bottom: 0.5em;
+	padding-left: 1em;
+	padding-right: 2em;
+	margin-right: 1em;
+	border-bottom: 4px solid transparent;
+	transition: border-bottom-color 400ms $easing;
+	&.is-active {
+		border-bottom: 4px solid black;
+	}
+	&:first-child {
+		padding-left: 0;
+	}
+	&:hover {
+		text-decoration: none;
+		border-bottom: 4px solid black;
+	}
+}
