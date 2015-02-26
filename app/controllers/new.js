@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import clean from 'radio4000/utils/clean';
 
-export default Ember.ObjectController.extend({
+export default Ember.Controller.extend({
 	cleanSlug: function() {
 		var cleaned = clean(this.get('title'));
 		return cleaned.dasherize() + '-' + this.getRandomText();

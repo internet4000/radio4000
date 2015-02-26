@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import youtube from 'radio4000/utils/youtube';
 
-export default Ember.ObjectController.extend({
+export default Ember.Controller.extend({
 	needs: ['channel'],
 	channel: Ember.computed.alias('controllers.channel.model'),
 	isExpanded: false,
