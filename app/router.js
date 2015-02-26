@@ -21,9 +21,7 @@ Router.map(function() {
 	// all channels
 	this.resource('channels', { path: 'discover'}, function() {
 		this.route('mostpopular');
-		this.route('lastcreated');
 		this.route('az');
-		this.route('search');
 	});
 
 	// channel

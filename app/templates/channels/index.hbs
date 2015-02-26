@@ -1,14 +1,8 @@
+<div class="Manchet Manchet--left">
+	<h1>Featured<small> — selected radios</small></h1>
+</div>
+
 <div class="Section">
-	{{!-- <div class="Container Flex Container--full">
-		{{input type="text" value=search placeholder="Search channels"}}
-		{{#button-group}}
-			<h4 class="BtnGroup-label">Sort by</h4>
-			<button class="Btn" {{action 'sortBy' 'created'}}>Date {{sort-indicator sortAscending=sortAscending}}</button>
-			<button class="Btn" {{action 'sortBy' 'title'}}>Name {{sort-indicator sortAscending=sortAscending}}</button>
-		{{/button-group}}
-	</div> --}}
-			{{!-- <button class="Btn" {{action 'sortBy' 'lastUpdated'}}>Updated {{sort-indicator sortAscending=sortAscending}}</button> --}}
-			{{!-- <button class="Btn" {{action 'sortBy' 'tracks.length'}}>Tracks {{sort-indicator sortAscending=sortAscending}}</button> --}}
 	<div class="Container Container--full Container--noPadding">
 		<ul class="List">
 			{{#each channel in channels}}
