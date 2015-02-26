@@ -17,7 +17,7 @@ export default DS.Model.extend({
 	// relationships
 	images: DS.hasMany('image', { async: true }),
 
-	// Set the last image as the cover image
+	// Set the latest image as the cover image
 	coverImage: function() {
 		return this.get('images.lastObject');
 	}.property('images.[]'),
