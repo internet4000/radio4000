@@ -42,9 +42,9 @@ h4 {
 }
 h1,
 .Title {
-	@include size-3;
+	@include size-4;
 	margin-bottom: 0.25rem;
-	@media (min-width: $layout-m) {
+	@media (min-width: $layout-l) {
 		@include size-4;
 	}
 	a {
