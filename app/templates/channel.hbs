@@ -1,11 +1,11 @@
 <div class="NavigationTab">
-	{{#link-to 'channels' title="Back to discover" class="BackArrow NavigationTab-item"}}
+	{{#link-to 'channels' title="Back to Discover" class="BackArrow NavigationTab-item"}}
 		<span class="BackArrow-item">←</span>
 		<span class="BackArrow-item">←</span>
 	{{/link-to}}
-	{{#link-to 'channel.index' title="" class="NavigationTab-item"}}{{model.tracks.length}} tracks{{/link-to}}
-	{{#link-to 'channel.favorite-channels' title="" class="NavigationTab-item"}}{{model.favoriteChannels.length}} favorite channels{{/link-to}}
-	{{#link-to 'channel.followers' title="" class="NavigationTab-item"}}{{model.fans.length}} followers{{/link-to}}
+	{{#link-to 'channel.index' title="All tracks" class="NavigationTab-item"}}{{model.tracks.length}} tracks{{/link-to}}
+	{{#link-to 'channel.favorite-channels' title="Favorites of this channel" class="NavigationTab-item"}}{{model.favoriteChannels.length}} favorite channels{{/link-to}}
+	{{#link-to 'channel.followers' title="Followers" class="NavigationTab-item"}}{{model.fans.length}} followers{{/link-to}}
 </div>
 
 <article class="Channel Channel--detail">
