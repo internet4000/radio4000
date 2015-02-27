@@ -107,6 +107,8 @@ export default {
 				// Set the user and user channel for easy access later
 				this.store.find('user', userId).then(function(user) {
 					user.get('channels').then(function(channels) {
+
+						// Proceed with existing user
 						var userChannel = channels.get('firstObject');
 						_this.set('userChannel', userChannel);
 						_this.set('user', user);
