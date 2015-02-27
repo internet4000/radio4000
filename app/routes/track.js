@@ -8,7 +8,10 @@ export default Ember.Route.extend({
 
 	// Instead, we want the channel and track in the playback controller
 	setupController: function(controller, model) {
-		var channel = this.controllerFor('channel').get('model');
+		var channel = this.modelFor('channel');
+
+		controller.set('content', model);
+
 		this.controllerFor('playback').set('model', model);
 		this.controllerFor('playback').set('channel', channel);
 	},
