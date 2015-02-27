@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
-	max: 5,
+	max: 10,
 
 	// what we use in our template
 	filteredContent: function() {
