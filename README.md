@@ -20,18 +20,21 @@ cd radio4000
 npm install; bower install
 ```
 
-## Watching, building and testing
+## Watching and testing
 
 - `ember s`  (short for `ember serve`, opens a dev server at 0.0.0.0:4000)
 - `ember test`
-- `ember build` (build will still include logs, warnings etc. for testing)
-- `ember build --environment=production` (hard to debug, only use this when it's ready for deploy)
 
 Also see http://www.ember-cli.com/
 
-## Deploying
+## Building and deploying
 
-You can only deploy if your SSH key is set up on the server. If it is, use:
+First build it:
+
+- `ember build` (build will still include logs, warnings etc. for testing)
+- `ember build --environment=production` (hard to debug, only use this when it's ready for deploy)
+
+Then deploy:
 
 `ember build --environment=production
 `gulp deploy-dev` (dev.radio4000.com)
