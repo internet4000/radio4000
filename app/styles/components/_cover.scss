@@ -10,18 +10,36 @@ $cover-size: 140px;
 		margin-left: 0.5rem;
 		margin-right: 0.5rem;
 	}
+
+	// hidden and centered loader
+	svg {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate3d(-50%,-50%,0);
+		opacity: 0;
+		transition: opacity 200ms;
+	}
+	// shown when you tap the cover
+	a:active svg {
+		opacity: 1;
+	}
 }
 .Cover-img {
 	background-color: $darkblue;
 	position: relative;
 	overflow: hidden;
 	height: $cover-size;
+	// stretch image
 	img {
 		object-fit: cover;
+		width: 100%;
 		height: 100%;
 	}
 }
-.Cover-title {}
+.Cover-title {
+	margin-top: 0.5em;
+}
 .Cover-button {
 	// reset button styles
 	background-image: none;
