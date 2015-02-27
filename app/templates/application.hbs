@@ -1,27 +1,10 @@
 <div {{bind-attr class=":OverlayManager :BreadAndCheese isMaximized isPanelOpen:is-panelOpen"}}>
 	<header class="SiteHeader">
-		<div class="Bar Bar--top">
-			<button id="TogglePanel" class="TooglePanel" {{action "openPanel"}} title="Menu">☰</button>
-			<h1 class="SiteLogo">
-				{{#link-to "channels" title="Back to home"}}
-					<img src="images/logos/logo-radio4000.png" alt="Radio 4000">
-				{{/link-to}}
-			</h1>
-
-			<div class="ContextualNavigation">
-
-				{{#if session.userChannel}}
-					{{#link-to 'channel.add' session.userChannel class="" title="Add track"}} + Add track {{/link-to}}
-					{{!-- {{#link-to 'channel' session.userChannel title="Your channel"}}{{session.userChannel.title}}{{/link-to}} --}}
-				{{/if}}
-				{{#unless session.authed}}
-					{{#link-to 'signin' title="Sign in to Radio 4000"}}Register or sign in{{/link-to}}
-				{{/unless}}
-			</div>
-		</div>
+		{{partial 'partials/nav-header'}}
 	</header>
+
 	<aside class="SitePanelNav">
-			{{partial 'partials/nav-header'}}
+			{{partial 'partials/nav-panel'}}
 	</aside>
 
 	<aside class="SitePanelNavOverlay" {{action "closePanel"}}></aside>
@@ -32,12 +15,6 @@
 
 	<aside class="SiteAside">
 		{{render 'playback'}}
-		{{!-- should do: {{outlet sidebar}} --}}
+		{{!-- should do: {{outlet sidebar}} + nested route instead of using render --}}
 	</aside>
-
-{{!-- 	<footer class="SiteFooter">
-		<div class="Container">
-			{{partial 'partials/nav-footer'}}
-		</div>
-	</footer> --}}
 </div>

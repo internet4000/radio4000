@@ -5,16 +5,9 @@ export default Ember.Controller.extend({
 	needs: ['playback'],
 	isMaximized: Ember.computed.alias('controllers.playback.isMaximized'),
 	isPanelOpen: false,
-
 	actions: {
-
-		// open panel
-		openPanel: function() {
-			this.toggleProperty('isPanelOpen');
-		},
-		closePanel: function() {
-			this.toggleProperty('isPanelOpen');
-		}
+		togglePanel: function() { this.toggleProperty('isPanelOpen'); },
+		openPanel: function() { this.set('isPanelOpen', true); },
+		closePanel: function() { this.set('isPanelOpen', false); }
 	}
-
 });
