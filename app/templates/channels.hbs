@@ -13,4 +13,11 @@
 	</div>
 {{/unless}}
 
+{{#unless session.userChannel}}
+	<div class="Container Container--full IntroMessage">
+		It seems you don't have a radio yet! Would you like to get started and
+		{{#link-to 'new' title="What is radio4000" class="IntroMessage-message"}}create your radio?{{/link-to}}.
+	</div>
+{{/unless}}
+
 {{outlet}}
