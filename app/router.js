@@ -20,7 +20,7 @@ Router.map(function() {
 
 	// all channels
 	this.resource('channels', { path: 'discover'}, function() {
-		this.route('mostpopular');
+		this.route('popular');
 		this.route('az');
 	});
 
