@@ -36,7 +36,6 @@ First build it:
 
 Then deploy:
 
-`ember build --environment=production
 `gulp deploy-dev` (dev.radio4000.com)
 `gulp deploy-live` (radio4000.com)
 
