@@ -25,5 +25,5 @@ export default DS.Model.extend({
 
 	tracks: DS.hasMany('track', { async: true }),
 	favoriteChannels: DS.hasMany('channel', { inverse: null, async: true }),
-	fans: DS.hasMany('channel', { inverse: null, async: true })
+	followers: DS.hasMany('channel', { inverse: null, async: true })
 });
