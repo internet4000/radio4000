@@ -7,7 +7,7 @@
 <article class="Channel Channel--detail">
 
 	<div class="Channel-header Section">
-		<div class="Container">
+		<div class="Container Container--full">
 
 			<div class="Channel-cover">
 				{{x-cover model=model hideTitle=true}}
@@ -60,7 +60,9 @@
 
 	{{!-- {{outlet 'channel-body'}} --}}
 	<div class="Channel-body">
-		{{outlet}}
+		<div class="Container Container--full">
+			{{outlet}}
+		</div>
 	</div>
 
 	{{!-- this page doesn't have a normal outlet to avoid rendering the track in to it --}}
