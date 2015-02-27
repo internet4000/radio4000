@@ -104,24 +104,25 @@
 }
 
 .NavigationTab-item {
-	padding-top: 0.7em;
+	padding-top: 0.8em;
 	padding-bottom: 0.5em;
-	padding-left: 0em;
+	padding-left: 0;
 	padding-right: 0;
 	margin-right: 2em;
 	border-bottom: 4px solid transparent;
 	transition: border-bottom-color 400ms $easing;
-	color: black;
+	color: $black;
+	&:hover,
+	&:active {
+		border-bottom: 4px solid $red;
+	}
+	&:hover,
+	&:active,
+	&:focus {
+		text-decoration: none;
+	}
 	&.is-active {
 		border-bottom: 4px solid $red;
 		@extend %font-bold;
-	}
-	&:active {
-		text-decoration: none;
-		border-bottom: 4px solid $red;
-	}
-	&:hover {
-		text-decoration: none;
-		border-bottom: 4px solid $red;
 	}
 }

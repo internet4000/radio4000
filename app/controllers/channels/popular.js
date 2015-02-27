@@ -15,7 +15,9 @@ export default Ember.ArrayController.extend({
 
 		for (var i = this.get('max'); i >= 1; i--) {
 			var random = Math.floor(Math.random() * content.get('length'));
-			randomContent.pushObject(content.objectAt(random));
+			if (!randomContent.contains(random)) {
+				randomContent.pushObject(content.objectAt(random));
+			}
 		}
 
 		return  randomContent;
