@@ -8,5 +8,9 @@ export default Ember.Route.extend({
 		logout: function() {
 			this.get('session').logout();
 		}
+	},
+
+	beforeModel: function() {
+		this.transitionTo('channels');
 	}
 });

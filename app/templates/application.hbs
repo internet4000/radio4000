@@ -3,17 +3,20 @@
 		<div class="Bar Bar--top">
 			<button id="TogglePanel" class="TooglePanel" {{action "openPanel"}} title="Menu">☰</button>
 			<h1 class="SiteLogo">
-				{{#link-to "index" title="Back to home"}}
+				{{#link-to "channels" title="Back to home"}}
 					<img src="images/logos/logo-radio4000.png" alt="Radio 4000">
 				{{/link-to}}
 			</h1>
 
 			<div class="ContextualNavigation">
-				{{#if session.authed}}
-					{{!-- {{#link-to 'channel.tracks.add' this class="" title="Add track"}} + Add track {{/link-to}} --}}
-				{{else}}
-					{{#link-to 'signin' title="Sign in to Radio 4000"}}Register or sign in{{/link-to}}
+
+				{{#if session.userChannel}}
+					{{#link-to 'channel.add' session.userChannel class="" title="Add track"}} + Add track {{/link-to}}
+					{{!-- {{#link-to 'channel' session.userChannel title="Your channel"}}{{session.userChannel.title}}{{/link-to}} --}}
 				{{/if}}
+				{{#unless session.authed}}
+					{{#link-to 'signin' title="Sign in to Radio 4000"}}Register or sign in{{/link-to}}
+				{{/unless}}
 			</div>
 		</div>
 	</header>

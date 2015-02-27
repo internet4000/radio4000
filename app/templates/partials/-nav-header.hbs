@@ -5,7 +5,8 @@
 			{{#if session.userChannel}}
 				{{#link-to 'channel' session.userChannel title="Go to my channel"}}
 
-					<figure class="UserChannel-media" {{bind-attr style=session.userChannel.coverImage.background}}></figure>
+					<img class= "UserChannel-media" src="{{session.userChannel.coverImage.src}}">
+
 					<div class="UserChannel-body">
 						<p class="UserChannel-intro Muted">Your radio channel</p>
 						<p class="UserChannel-title">{{session.userChannel.title}}</p>
@@ -22,20 +23,7 @@
 	</div>
 
 	<div class="NavGroup">
-		{{#if session.authed}}
-			{{#link-to 'dashboard' title="Your dashboard"}}Dashboard{{/link-to}}
-		{{/if}}
 		{{#link-to 'channels' title="Discover channels"}}Discover{{/link-to}}
-		{{#if session.authed}}
-			{{#if session.userChannel}}
-				{{!-- {{#link-to 'channel' session.userChannel title="Go to my channel"}}My channel{{/link-to}} --}}
-			{{else}}
-				{{!-- {{#link-to 'new' title="Create your channel"}}My channel{{/link-to}} --}}
-			{{/if}}
-		{{else}}
-			{{#link-to 'new' title="Create your channel"}}+ Create my channel{{/link-to}}
-		{{/if}}
-
 	</div>
 
 	<div class="NavGroup">

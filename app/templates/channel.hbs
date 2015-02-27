@@ -1,7 +1,8 @@
 <div class="NavigationTab Container Flex Container--full">
-	{{#link-to 'channel.index' title="Discover channels" class="NavigationTab-item"}}{{model.tracks.length}} tracks{{/link-to}}
-	{{#link-to 'channel.favorite-channels' title="Discover channels" class="NavigationTab-item"}}{{model.favoriteChannels.length}} favorite channels{{/link-to}}
-	{{#link-to 'channel.followers' title="Discover channels" class="NavigationTab-item"}}{{model.fans.length}} followers{{/link-to}}
+	{{#link-to 'channels' title="Discover channels" class="NavigationTab-item"}}←{{/link-to}}
+	{{#link-to 'channel.index' title="" class="NavigationTab-item"}}{{model.tracks.length}} tracks{{/link-to}}
+	{{#link-to 'channel.favorite-channels' title="" class="NavigationTab-item"}}{{model.favoriteChannels.length}} favorite channels{{/link-to}}
+	{{#link-to 'channel.followers' title="" class="NavigationTab-item"}}{{model.fans.length}} followers{{/link-to}}
 </div>
 
 <article class="Channel Channel--detail">
