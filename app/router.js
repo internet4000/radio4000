@@ -12,6 +12,7 @@ Router.map(function() {
 	this.route('stats');
 	this.route('styleguide');
 	this.route('dashboard');
+	this.route('introduction'); // a tour for newcomers
 
 	// about route
 	this.route('about', function() {

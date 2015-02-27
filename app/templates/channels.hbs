@@ -6,4 +6,11 @@
 	{{#link-to 'channels.all' title="Discover channels" class="NavigationTab-item"}}All{{/link-to}}
 </div>
 
+{{#unless session.authed}}
+	<div class="Container Container--full IntroMessage">
+		Welcome! Are you new to <strong>radio4000</strong>?
+		{{#link-to 'introduction' title="What is radio4000" class="IntroMessage-message"}}Do you want a short tour of what you can do?{{/link-to}}.
+	</div>
+{{/unless}}
+
 {{outlet}}
