@@ -14,6 +14,7 @@ Router.map(function() {
 	this.route('signin');
 	this.route('stats');
 	this.route('styleguide');
+	this.route('dashboard');
 
 	// new channel
 	this.route('new');

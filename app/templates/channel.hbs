@@ -23,14 +23,9 @@
 				{{/link-to}}
 			</h1>
 
-			{{#if session.authed}}
-				<div class="BtnGroup">
-					{{x-favorite value=isFavorite action="toggleFavorite"}}
-				</div>
-			{{/if}}
-
 			<p class="Channel-description">{{model.body}}</p>
-			<p class="Muted LastUpdate">(updated {{model.lastUpdatedFormatted}})</p>
+			<p class="Muted LastUpdate">(last update {{model.lastUpdatedFormatted}})</p>
+
 
 			<div class="BtnGroupWrapper">
 				{{#if canEdit}}
@@ -40,16 +35,21 @@
 						{{/link-to}}
 						{{#if isEditing}}
 							{{#link-to 'channel' model class="Btn" title="Cancel editing channel"}}
-								{{x-icon i="pencil"}} Edit
+								{{x-icon i="pencil"}} Edit channel
 							{{/link-to}}
 						{{else}}
 							{{#link-to 'channel.edit' model class="Btn" title="Edit your channel"}}
-								{{x-icon i="pencil"}} Edit
+								{{x-icon i="pencil"}} Edit channel
 							{{/link-to}}
 						{{/if}}
-				</div>
+					</div>
 				{{/if}}
 
+				{{#if session.authed}}
+					<div class="BtnGroup">
+						{{x-favorite value=isFavorite action="toggleFavorite"}}
+					</div>
+				{{/if}}
 
 			</div>
 
