@@ -1,14 +1,14 @@
 <div class="Manchet">
-	<h1>Sign in / Register</h1>
+	<h1>Register or sign in</h1>
 </div>
 
 <div class="Container Section">
 	<div class="LoginBox">
-	<p>Want to create a radio channel or manage yours? Sign in or register to radio400</p>
+	{{!-- <p>Do you want to create or manage your radio channel?</p> --}}
 		<p>
-			<button class="Btn" title="Login with Google" {{action 'login' 'google'}}>
+			<button class="Btn" title="Sign in with Google" {{action 'login' 'google'}}>
 				{{x-icon i="google-plus"}} Sign in with Google</button>
-			<button class="Btn" title="Login with Facebook" {{action 'login' 'facebook'}}>
+			<button class="Btn" title="Sign in with Facebook" {{action 'login' 'facebook'}}>
 				{{x-icon i="facebook"}} Sign in with Facebook</button>
 		</p>
 		<p class="Muted">Not using Google or Facebook? Sign in with e-mail is coming soon.</p>
