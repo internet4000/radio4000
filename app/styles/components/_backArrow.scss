@@ -27,7 +27,7 @@
 			transform: translateX(-9%);
 			&:first-of-type {
 				transform: translateX(5%);
-				color: $gray;
+				color: lighten($gray, 20%);
 			}
 		}
 	}
