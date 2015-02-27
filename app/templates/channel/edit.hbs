@@ -23,6 +23,14 @@
 		{{file-upload image=newImage}}
 	</div>
 
+	{{!-- {{#if isAdmin}}
+		<div class="Form-group">
+			<label for="image">Featured
+				{{input type="checkbox" checked=model.isFeatured}}
+			</label>
+		</div>
+	{{/if}} --}}
+
 	<div class="Form-group Form--save">
 		<button class="Btn Btn--primary" type="submit">Save</button>
 		{{#link-to 'channel' model class="Btn Btn--text"}}Cancel{{/link-to}}

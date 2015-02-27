@@ -112,6 +112,8 @@ export default {
 						var userChannel = channels.get('firstObject');
 						_this.set('userChannel', userChannel);
 						_this.set('user', user);
+
+						// _this.checkAdmin(user);
 					});
 				});
 			},
@@ -133,7 +135,13 @@ export default {
 					// Proceed with the newly create user
 					_this.set('user', user);
 				});
-			}
+			},
+
+			// checkAdmin: function(user) {
+			// 	if (user.id === 'facebook:10152422494934521' || 'google:109082707013786319045') {
+			// 		this.set('isAdmin', true);
+			// 	}
+			// }
 		});
 
 		// Register and inject the 'session' initializer into all controllers and routes
