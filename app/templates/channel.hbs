@@ -39,15 +39,9 @@
 						{{#link-to 'channel.add' model class="Btn" title="Add track"}}
 							{{x-icon i="plus"}} Add track
 						{{/link-to}}
-						{{#if isEditing}}
-							{{#link-to 'channel' model class="Btn" title="Cancel editing channel"}}
-								{{x-icon i="pencil"}} Edit channel
-							{{/link-to}}
-						{{else}}
-							{{#link-to 'channel.edit' model class="Btn" title="Edit your channel"}}
-								{{x-icon i="pencil"}} Edit channel
-							{{/link-to}}
-						{{/if}}
+						{{#link-to 'channel.edit' model class="Btn" title="Edit your channel"}}
+							{{x-icon i="pencil"}} Edit channel
+						{{/link-to}}
 					</div>
 				{{/if}}
 

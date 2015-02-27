@@ -18,14 +18,8 @@ export default Ember.Route.extend({
 	// 	});
 	// },
 
-	setupController: function() {
-		// indicate we're editing (used for changing buttons etc.)
-		this.controllerFor('channel').set('isEditing', true);
-	},
-
 	// clear any unsaved changes
 	deactivate: function() {
 		this.controllerFor('channel').get('model').rollback();
-		this.controllerFor('channel').set('isEditing', false);
 	}
 });

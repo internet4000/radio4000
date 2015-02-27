@@ -3,8 +3,6 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 	needs: ['playback'],
 	playback: Ember.computed.alias('controllers.playback'),
-	isEditing: false,
-	isEditingImage: false,
 
 	// True if session user matches channel user
 	canEdit: function() {
@@ -23,54 +21,6 @@ export default Ember.Controller.extend({
 		pause: function() {
 			this.get('playback.player').send('pause');
 		},
-
-		// Edit image actions
-		editImage: function() {
-			this.toggleProperty('isEditingImage');
-		},
-		cancelEditImage: function() {
-			this.send('editImage');
-			this.get('model').rollback();
-		},
-		saveImage: function() {
-			var channel = this.get('model');
-			var coverImage = this.get('coverImage');
-			var newImage = this.get('newImage');
-
-			// close dialog
-			this.set('isEditingImage', false);
-
-			// stop if the user didn't upload a new photo
-			if (!newImage) { return; }
-
-			// if we have no previous image
-			if (!coverImage) {
-
-				// create one
-				var image = this.store.createRecord('image', {
-					src: this.get('newImage'),
-					channel: this.get('model')
-				});
-
-				// save and add it to the channel
-				image.save().then(function(image) {
-					channel.get('images').addObject(image);
-					// and save that
-					channel.save();
-				});
-			}
-
-			// if we already have an image
-			if (coverImage) {
-				// and it's not the same one
-				if (coverImage.get('src') === newImage) { return; }
-
-				// update it
-				coverImage.set('src', this.get('newImage'));
-				coverImage.save();
-			}
-		},
-
 		toggleFavorite: function() {
 			var userChannel = this.get('session.userChannel');
 			var userFavorites = userChannel.get('favoriteChannels');
@@ -102,5 +52,4 @@ export default Ember.Controller.extend({
 
 		return userFavorites.contains(channel);
 	}.property('session.userChannel.favoriteChannels.@each'),
-
 });

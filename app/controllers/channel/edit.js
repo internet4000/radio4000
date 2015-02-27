@@ -3,8 +3,57 @@ import clean from 'radio4000/utils/clean';
 
 export default Ember.Controller.extend({
 
+	didCacheSlug: false,
+	cacheSlug: function() {
+		this.cachedSlug = this.get('model.slug');
+		this.toggleProperty('didCacheSlug');
+	}.observes('model.slug'),
+
+	updateImage: function() {
+		var newImage = this.get('newImage');
+		var channel = this.get('model');
+		var coverImage = this.get('model.coverImage');
+
+		// if we have no previous image
+		if (!coverImage) {
+			Ember.debug('Creating channel image.');
+
+			var image = this.store.createRecord('image', {
+				src: this.get('newImage'),
+				channel: channel
+			});
+
+			// save and add it to the channel
+			image.save().then(function(image) {
+				Ember.debug('Image saved.');
+
+				channel.get('images').addObject(image);
+				channel.save().then(function() {
+					Ember.debug('Saved channel with image');
+				});
+			});
+
+		// else if we have an image
+		} else {
+			Ember.debug('Updating channel image.');
+
+			// and it's not the same one
+			if (newImage === coverImage.get('src')) {
+				Ember.debug('Stopped updating because it is the same src property');
+				return;
+			}
+
+			// update it
+			coverImage.set('src', newImage);
+			channel.save().then(function() {
+				Ember.debug('Updated channel image.');
+			});
+		}
+	}.observes('newImage'),
+
 	// Makes sure the slug is valid e.g. not in use by any other channel
 	validateSlug: function() {
+		Ember.debug('Validating slug.');
 		var slugIsFree = false;
 		var model = this.get('model');
 		var slug = model.get('slug');
@@ -75,13 +124,23 @@ export default Ember.Controller.extend({
 	},
 
 	actions: {
-		// Initialize a save
 		trySave: function() {
-			if (!this.get('model.isDirty')) {
-				this.send('cancelEdit');
-			} else {
+			var slugDidChange = (this.get('cachedSlug') !== this.get('model.slug'));
+
+			// this avoid validating slugs uneccessary (because it's heavy)
+			if (slugDidChange) {
 				this.validateSlug();
+			} else if (this.get('model.isDirty')) {
+				this.send('save');
+			} else {
+				this.send('cancelEdit');
 			}
+		},
+
+		deleteImage: function() {
+			this.get('model.coverImage').destroyRecord().then(function() {
+				Ember.debug('Deleted channel image.');
+			});
 		},
 
 		// Saves the channel
