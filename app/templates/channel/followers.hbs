@@ -1,12 +1,12 @@
 <div class="Channel-favorites">
-	<h3>Followers from {{model.title}}</h3>
+	<h3>{{model.title}}'s followers</h3>
 
 	<ul class="List">
-	{{#each fan in model.followers}}
+	{{#each follower in model.followers}}
 		<li>
-			{{#link-to "channel" fan class="ChannelTeaser" title="Go to this channel"}}
-				<h3 class="ChannelTeaser-title">{{fan.title}}</h3>
-				<p class="ChannelTeaser-description"> {{do-truncate fan.body 140}}</p>
+			{{#link-to "channel" follower class="ChannelTeaser" title="Go to this channel"}}
+				<h3 class="ChannelTeaser-title">{{follower.title}}</h3>
+				<p class="ChannelTeaser-description">{{do-truncate follower.body 140}}</p>
 			{{/link-to}}
 		</li>
 	{{/each}}
