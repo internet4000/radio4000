@@ -28,7 +28,9 @@
 			</h1>
 
 			<p class="Channel-description">{{model.body}}</p>
-			<p class="Muted LastUpdate">(last update {{model.lastUpdatedFormatted}})</p>
+			{{#if model.lastUpdatedFormatted}}
+				<p class="Muted LastUpdate">(last update {{model.lastUpdatedFormatted}})</p>
+			{{/if}}
 
 
 			<div class="BtnGroupWrapper">
