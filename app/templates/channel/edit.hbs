@@ -1,6 +1,6 @@
 <h3>Edit your channel</h3>
 
-<form class="Form Channel-edit" {{action "trySave" on="submit"}}>
+<form class="Form Form--box" {{action "trySave" on="submit"}}>
 
 	<div class="Form-group">
 		<label for="title">Channel title</label>
@@ -25,7 +25,7 @@
 
 	<div class="Form-group Form--save">
 		<button class="Btn Btn--primary" type="submit">Save</button>
-		<button class="Btn Btn--text" {{action "cancelEdit"}}>Cancel</button>
+		{{#link-to 'channel' model class="Btn Btn--text"}}Cancel{{/link-to}}
 		<button class="Btn Btn--text Btn--danger u-alignRight Btn--delete" {{action 'tryDelete'}}>Delete channel (no way back)</button>
 	</div>
 </form>

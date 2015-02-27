@@ -73,33 +73,24 @@ label {
 	}
 }
 
-// Shared styles between the forms for adding a track and editing a track
-.AddTrack,
-.EditTrack,
-.Channel-edit {
+// Forms that stand out in a box
+.Form--box {
+	margin-top: 1rem; // for the box shadow to express itself
 	padding: 1rem;
-	margin-bottom: 0;
+	box-shadow: $mediumgray 0 0 1rem;
+	background-color: $superlightgray;
 	h3 {
 		margin: 1rem 0;
 	}
-	.Form {
-		margin-bottom: 0;
-	}
-}
-.AddTrack,
-.Channel-edit {
-	background-color: $superlightgray;
-	box-shadow: $mediumgray 0 0 1rem;
-	margin-top: 1rem; // for the box shadow to express itself
 	.Btn {
 		margin-bottom: 0;
 	}
 }
 .EditTrack {
-	padding-bottom: 0;
+	margin-bottom: 0;
+	padding: 1rem 1rem 0;
 	background-color: $superlightgray;
 }
-
 .Form-group label input {
 	@extend %font-regular;
 }

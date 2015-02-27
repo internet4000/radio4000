@@ -1,20 +1,30 @@
-<div class="Channel-add">
-	<div class="Section Container">
-		<form class="Form AddTrack" {{action "addTrack" on='submit'}}>
-			<h3>Add track</h3>
+<h3>Add track</h3>
 
-			{{#if formError}}
-				<p class="Warning">{{formError}}</p>
-			{{/if}}
+<form class="Form Form--box" {{action "addTrack" on='submit'}}>
 
-			{{input-url type="url" value=trackUrl placeholder="Paste in a link to a YouTube video" pasted="autoTitle" required="required"}}
-			{{input value=trackTitle placeholder="Title"}}<br>
-			{{input value=trackBody placeholder="Optional description"}}<br>
+	{{#if formError}}
+		<p class="Warning">{{formError}}</p>
+	{{/if}}
 
-			<button class="Btn Btn--primary" type='submit' title="add track to your channel">Add track</button>
-			{{#link-to "channel" channel}}
-				<button class="Btn Btn--text" title="cancel adding track" >Cancel editing</button>
-			{{/link-to}}
-		</form>
+	<div class="Form-group">
+		<label for="trackUrl">Track URL</label>
+		{{input-url id="trackUrl" type="url" value=trackUrl placeholder="Paste in a link to a YouTube video" pasted="autoTitle" required="required"}}
 	</div>
-</div>
+
+	<div class="Form-group">
+		<label for="trackTitle">Title</label>
+		{{input id="trackTitle" value=trackTitle placeholder="Title"}}<br>
+	</div>
+
+	<div class="Form-group">
+		<label for="trackBody">Description</label>
+		{{input id="trackBody" value=trackBody placeholder="Optional description"}}<br>
+	</div>
+
+	<div class="Form-group Form--save">
+		<button class="Btn Btn--primary" type='submit' title="add track to your channel">Add track</button>
+		{{#link-to "channel" channel}}
+			<button class="Btn Btn--text" title="cancel adding track" >Cancel editing</button>
+		{{/link-to}}
+	</div>
+</form>

@@ -48,7 +48,6 @@ export default Ember.Controller.extend({
 			this.validateSlug();
 		},
 		cancelEdit: function() {
-			// leaving the route also sets isexpanded to false
 			this.transitionToRoute('channel', this.get('model'));
 		},
 		// Saves the channel
