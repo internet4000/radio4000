@@ -2,6 +2,11 @@
 	display: flex;
 	flex-flow: row wrap;
 
+	// on mobile center items
+	@media (max-width: $layout-s) {
+		justify-content: space-between;
+	}
+
 	// todo: refactor
 	.BtnGroup:last-child {
 		margin-left: 1rem;
@@ -16,7 +21,6 @@
 	flex-flow: row wrap;
 	justify-content: center; // x-center
 	text-align: center;
-
 
 	// todo: refactor
 	.Subtitle {

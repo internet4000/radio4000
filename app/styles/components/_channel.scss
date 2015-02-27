@@ -15,6 +15,10 @@
 	float: left;
 	margin-right: 1rem;
 	margin-bottom: 1rem;
+	@media (max-width: $layout-s) {
+		width: 50px;
+		.Cover-img { height: 50px; }
+	}
 }
 .Channel-title {
 	margin-bottom: 0.5rem;

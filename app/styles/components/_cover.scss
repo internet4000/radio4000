@@ -3,11 +3,14 @@ $cover-size: 140px;
 .Cover {
 	position: relative;
 	width: $cover-size;
+	max-width: 100%;
 	text-align: left;
 
-	// inside a flex component
-	.Flex > & {
-		margin-right: 1rem;
+	.Flex & {
+		flex: 0 1 140px;
+		@media (min-width: $layout-s) {
+			margin-right: 1.5rem;
+		}
 	}
 
 	// hidden and centered loader
@@ -19,6 +22,12 @@ $cover-size: 140px;
 		opacity: 0;
 		transition: opacity 200ms;
 	}
+
+	// wrap link
+	> a {
+		display: block;
+	}
+
 	// shown when you tap the cover
 	a:active svg {
 		opacity: 1;
