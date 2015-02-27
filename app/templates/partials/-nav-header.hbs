@@ -2,7 +2,7 @@
 	<button id="TogglePanel" class="TooglePanel" title="Menu" {{action "togglePanel"}}>☰</button>
 	<h1 class="SiteLogo">
 		{{#link-to "channels" title="Back to home"}}
-			<img src="images/logos/logo-radio4000.png" alt="Radio 4000">
+			<img src="images/logos/logo-radio4000.png" alt="Radio4000">
 		{{/link-to}}
 	</h1>
 
@@ -13,7 +13,7 @@
 			{{!-- {{#link-to 'channel' session.userChannel title="Your channel"}}{{session.userChannel.title}}{{/link-to}} --}}
 		{{/if}}
 		{{#unless session.authed}}
-			{{#link-to 'signin' title="Sign in to Radio 4000"}}Register or sign in{{/link-to}}
+			{{#link-to 'signin' title="Sign in to Radio4000"}}Register or sign in{{/link-to}}
 		{{/unless}}
 	</div>
 </div>
