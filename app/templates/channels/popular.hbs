@@ -4,26 +4,8 @@
 
 <div class="Section Container Container--full">
 	<div class="Flex">
-		{{#each radio in filteredContent}}
-			{{x-cover model=radio}}
+		{{#each channel in filteredContent}}
+			{{x-cover model=channel}}
 		{{/each}}
 	</div>
 </div>
-
-{{!-- <div class="Section">
-	<div class="Container Container--full Container--noPadding">
-		<ul class="List">
-			{{#each channel in filteredContent}}
-				<li>
-					{{#link-to "channel" channel class="ChannelTeaser"}}
-						<h3 class="ChannelTeaser-title">
-							{{unbound channel.title}}
-						</h3>
-						<p class="ChannelTeaser-description">{{do-truncate channel.body 140}}</p>
-					{{/link-to}}
-				</li>
-			{{/each}}
-		</ul>
-	</div>
-</div>
- --}}

@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
+	// this page shows all channels
+	// and is filterable
 	sortProperties: ['created'],
 	sortAscending: false,
 
