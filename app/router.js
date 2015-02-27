@@ -45,11 +45,7 @@ Router.map(function() {
 		this.resource('tracks', function() {
 			this.resource('track', { path: ':track_id' }); // single track
 		});
-
 	});
-
-	// all tracks
-	this.resource('tracks', function() {});
 
 	// users
 	this.resource('users', function() {
