@@ -2,8 +2,6 @@ import Ember from 'ember';
 import youtube from 'radio4000/utils/youtube';
 
 export default Ember.Controller.extend({
-	needs: ['channel'],
-	channel: Ember.computed.alias('controllers.channel.model'),
 	formError: false,
 
 	// Check if the track is valid before saving
@@ -11,7 +9,7 @@ export default Ember.Controller.extend({
 		this.set('formError', false);
 
 		var isValid = true;
-		['trackUrl', 'trackTitle'].forEach(function(field) {
+		['url', 'title'].forEach(function(field) {
 			if (this.get(field) === '') {
 				isValid = false;
 				this.set('formError', 'Please enter a valid YouTube URL and a title.');
@@ -24,24 +22,10 @@ export default Ember.Controller.extend({
 		addTrack: function() {
 			if (!this.isValid()) { return false; }
 
-			var title = this.get('trackTitle');
-			if (Ember.isEmpty(title)) {
-				this.set('trackTitle', 'Untitled');
-			}
-
-			// Create a new child track
+			// Set extra properties
 			var track = this.get('model').setProperties({
-				url: this.get('trackUrl'),
-				title: this.get('trackTitle'),
-				body: this.get('trackBody'),
-				channel: this.get('channel'),
+				channel: this.modelFor('channel'),
 				created: new Date().getTime()
-			});
-
-			this.setProperties({
-				trackUrl: '',
-				trackTitle: '',
-				trackBody: ''
 			});
 
 			// leave it to the router to actually save the track
@@ -54,12 +38,15 @@ export default Ember.Controller.extend({
 			var apikey = 'AIzaSyCk5FiiPiyHON7PMLfLulM9GFmSYt6W5v4';
 			var id = youtube(url);
 
+			console.log(url);
+			console.log(id);
+
 			if (!id) {
 				Ember.debug('errrrror');
 			}
 
 			Ember.$.getJSON('https://www.googleapis.com/youtube/v3/videos?id='+id+'&key='+apikey+'&fields=items(id,snippet(title))&part=snippet').then(function(response) {
-				this.set('trackTitle', response.items[0].snippet.title);
+				this.set('model.title', response.items[0].snippet.title);
 			}.bind(this));
 		}
 	}

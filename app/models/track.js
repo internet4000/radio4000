@@ -3,7 +3,7 @@ import youtube from 'radio4000/utils/youtube';
 
 export default DS.Model.extend({
 	url: DS.attr('string'),
-	title: DS.attr('string', { defaultValue: 'Untitled' }),
+	title: DS.attr('string'),
 	body: DS.attr('string'),
 	created: DS.attr('number'),
 	channel: DS.belongsTo('channel', { async: true }),

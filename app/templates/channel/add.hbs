@@ -7,22 +7,22 @@
 	{{/if}}
 
 	<div class="Form-group">
-		<label for="trackUrl">Track URL</label>
-		{{input-url id="trackUrl" type="url" value=trackUrl placeholder="Paste in a link to a YouTube video" pasted="autoTitle" required="required"}}
+		<label for="trackUrl">URL</label>
+		{{input-url id="trackUrl" type="url" value=model.url placeholder="Paste in a link to a YouTube video" pasted="autoTitle" required="required"}}
 	</div>
 
 	<div class="Form-group">
 		<label for="trackTitle">Title</label>
-		{{input id="trackTitle" value=trackTitle placeholder="Title"}}<br>
+		{{input id="trackTitle" value=model.title placeholder="Title" required="required"}}<br>
 	</div>
 
 	<div class="Form-group">
 		<label for="trackBody">Description</label>
-		{{input id="trackBody" value=trackBody placeholder="Optional description"}}<br>
+		{{input id="trackBody" value=model.body placeholder="Optional description"}}<br>
 	</div>
 
 	<div class="Form-group Form--save">
-		<button class="Btn Btn--primary" type='submit' title="add track to your channel">Add track</button>
+		<button class="Btn Btn--primary" type='submit' title="Add track to your channel">Add track</button>
 		{{#link-to "channel" channel}}
 			<button class="Btn Btn--text" title="cancel adding track" >Cancel editing</button>
 		{{/link-to}}

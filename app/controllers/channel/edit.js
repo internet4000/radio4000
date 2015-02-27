@@ -2,10 +2,8 @@ import Ember from 'ember';
 import clean from 'radio4000/utils/clean';
 
 export default Ember.Controller.extend({
-	needs: ['channel'],
 
-	// Makes sure the slug is valid,
-	// e.g. not in use by any other channel
+	// Makes sure the slug is valid e.g. not in use by any other channel
 	validateSlug: function() {
 		var slugIsFree = false;
 		var model = this.get('model');
@@ -18,24 +16,56 @@ export default Ember.Controller.extend({
 		}
 
 		// Clean it
-		var newSlug = clean(slug);
+		var newSlug = clean(this.get('model.slug'));
 
 		// get all channels
 		var channels = this.store.find('channel');
 		channels.then(function(channels) {
 
+			console.log('');
+			console.log('all channel slugs:');
+			channels.forEach(function(channel) {
+				console.log(channel.get('slug'));
+			});
+
+			console.log('');
+			console.log('testing: ' + newSlug);
+
 			// and find duplicates
+			// var duplicates = channels.filter(function(item) {
+			// 	console.log(item.get('slug'));
+			// 	console.log(newSlug);
+			// 	return item.get('slug') === newSlug;
+			// });
+
 			var duplicates = channels.filterBy('slug', newSlug);
 
+			// console.log('');
+			// console.log('all ('+ duplicates.get('length') +') duplicates:');
+			// duplicates.forEach(function(item) {
+			// 	console.log(item.get('slug'));
+			// });
+
+			// filter out own model
+			// var filtered = duplicates.filter(function(item) {
+			// 	Ember.debug(item);
+			// 	Ember.debug(model);
+			// 	return item !== model;
+			// });
+
+			// console.log('filtered duplicates:');
+			// filtered.forEach(function(duplicate) {
+			// 	console.log(duplicate.get('slug'));
+			// });
+
 			// if there is only one duplicate (the same channel) it's free!
-			if (duplicates.get('length') === 1) {
+			if (duplicates.get('length') < 2) {
 				slugIsFree = true;
 			}
 
 			// 3. Set slug accordingly
 			if (slugIsFree) {
 				Ember.debug('Setting slug to: ' + newSlug);
-				this.set('slug', newSlug);
 				this.send('save');
 			} else {
 				alert('Sorry, that permalink is taken. Try another one.');

@@ -4,5 +4,6 @@ export default function clean(string) {
 	var cleaned = string.dasherize();
 
 	// and remove special (but normally safe) chars
-	return cleaned.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
+	// remember not do remove hyphens ----
+	return cleaned.replace(/[`~!@#$%^&*()_|+=?;:'",.<>\{\}\[\]\\\/]/gi, '');
 }
