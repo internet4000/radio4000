@@ -33,7 +33,8 @@ Also see http://www.ember-cli.com/
 
 You can only deploy if your SSH key is set up on the server. If it is, use:
 
-`gulp deploy` (dev.radio4000.com)
+`ember build --environment=production
+`gulp deploy-dev` (dev.radio4000.com)
 `gulp deploy-live` (radio4000.com)
 
 ## Important if you use Sublime Text
