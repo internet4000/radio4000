@@ -33,6 +33,7 @@
 
     "tracks": {
       ".read": true,
+      //".write": true,
       //".write": "auth != null", // todo: remove this when the below works
       "$trackID": {
         //".write": "!data.exists() || root.child('users/' + auth.uid + '/channels').val().contains(data.child('channel').val())"
@@ -43,9 +44,7 @@
         // if the 'channel' property is the same channel as the one in auth user
 
         //".write": "root.child('users/' + auth.uid + '/channels').child( newData.child('channel').val()  ).exists()"
-        ".write": "
-          root.child('users/' + auth.uid + '/channels').child( data.child('channel').val()  ).exists() ||
-          root.child('users/' + auth.uid + '/channels').child( newData.child('channel').val()  ).exists()"
+        ".write": "!newData.exists() || root.child('users/' + auth.uid + '/channels').child( newData.child('channel').val()  ).exists()"// || root.child('users/' + auth.uid + '/channels').child( data.child('channel').val()  ).exists()"
       }
     },
 
