@@ -5,6 +5,7 @@ export default DS.Model.extend({
 	slug: DS.attr('string'),
 	created: DS.attr('number'),
 	body: DS.attr('string'),
+	isFeatured: DS.attr('boolean'),
 
 	lastUpdated: function() {
 		return this.get('tracks.lastObject.created');
