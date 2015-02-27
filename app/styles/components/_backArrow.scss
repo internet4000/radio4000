@@ -3,6 +3,7 @@
  */
 
 .BackArrow {
+	flex-grow: 0; // don't stretch
 	font-size: 2em;
 	position: relative;
 	padding-top: 0.6em;

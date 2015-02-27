@@ -75,21 +75,23 @@
  **/
 
 .NavigationTab {
+	display: flex;
+	flex-flow: row nowrap;
 	background-color: white;
 }
 
 .NavigationTab-item {
-	padding-top: 0.8em;
-	padding-bottom: 0.5em;
-	padding-left: 0;
-	padding-right: 0;
-	margin-right: 2em;
+	flex: 1 1 auto; // stretch
+	padding: 0.9em 0.5em 0.7em; // bigger clickarea and vertical center
 	border-bottom: 4px solid transparent;
 	transition: border-bottom-color 400ms $easing;
 	color: $black;
-	&:hover,
+	text-align: center;
+	&:hover {
+		border-bottom-color: $lightgray;
+	}
 	&:active {
-		border-bottom: 4px solid $red;
+		border-bottom-color: $red;
 	}
 	&:hover,
 	&:active,
@@ -97,7 +99,8 @@
 		text-decoration: none;
 	}
 	&.is-active {
-		border-bottom: 4px solid $red;
 		@extend %font-bold;
+		@include negative-text;
+		border-bottom: 4px solid $red;
 	}
 }

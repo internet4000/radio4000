@@ -3,8 +3,8 @@
 		{{partial 'partials/nav-header'}}
 	</header>
 
-	<aside class="SitePanelNav">
-			{{partial 'partials/nav-panel'}}
+	<aside class="SitePanelNav" {{action "closePanel"}}>
+		{{partial 'partials/nav-panel'}}
 	</aside>
 
 	<aside class="SitePanelNavOverlay" {{action "closePanel"}}></aside>
