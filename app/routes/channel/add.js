@@ -10,19 +10,6 @@ export default Ember.Route.extend({
 	model: function() {
 		return this.store.createRecord('track');
 	},
-	setupController: function(controller, model) {
-		controller.set('model', model);
-		controller.set('isExpanded', true);
-	},
-	renderTemplate: function() {
-		this.render({
-			into: 'channel',
-			outlet: 'channel-body'
-		});
-	},
-	deactivate: function() {
-		this.controller.set('isExpanded', false);
-	},
 	actions: {
 		//  this action is triggered from the add.js controller/template
 		saveTrack: function(track) {

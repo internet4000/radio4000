@@ -10,7 +10,11 @@
 			{{input-url type="url" value=trackUrl placeholder="Paste in a link to a YouTube video" pasted="autoTitle" required="required"}}
 			{{input value=trackTitle placeholder="Title"}}<br>
 			{{input value=trackBody placeholder="Optional description"}}<br>
-			<button class="Btn Btn--primary" type='submit' title="add track to your channel">Add track</button> <button class="Btn Btn--text" title="cancel adding track" {{action 'cancel'}}>Cancel</button>
+
+			<button class="Btn Btn--primary" type='submit' title="add track to your channel">Add track</button>
+			{{#link-to "channel" channel}}
+				<button class="Btn Btn--text" title="cancel adding track" >Cancel editing</button>
+			{{/link-to}}
 		</form>
 	</div>
 </div>

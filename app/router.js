@@ -27,17 +27,16 @@ Router.map(function() {
 
 	// channel
 	this.resource('channel', { path: '/c/:channel_slug' }, function() {
-		this.route('edit');
 		this.route('favorite-channels');
 		this.route('followers');
+		this.route('edit'); // edit channel
+		this.route('add'); // add a track to a channel
 
 		// channel tracks
 		this.resource('tracks', function() {
-			this.route('add');
+			this.resource('track', { path: ':track_id' }); // single track
 		});
 
-		// single track
-		this.resource('track', { path: ':track_id' });
 	});
 
 	// all tracks

@@ -1,13 +1,14 @@
+<h3>Edit your channel</h3>
+
 <form class="Form Channel-edit" {{action "trySave" on="submit"}}>
-	<h3>Edit your channel</h3>
 
 	<div class="Form-group">
-		<label for="title">Title</label>
+		<label for="title">Channel title</label>
 		{{focus-input id="title" value=model.title placeholder="Title" autofocus='autofocus'}}
 	</div>
 
 	<div class="Form-group">
-		<label for="body">Description</label>
+		<label for="body">Channel description</label>
 		{{textarea id="body" value=model.body placeholder="What is your channel about?"}}
 	</div>
 

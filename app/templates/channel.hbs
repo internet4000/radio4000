@@ -30,7 +30,7 @@
 			<div class="BtnGroupWrapper">
 				{{#if canEdit}}
 					<div class="BtnGroup">
-						{{#link-to 'tracks.add' model class="Btn" title="Add track"}}
+						{{#link-to 'channel.add' model class="Btn" title="Add track"}}
 							{{x-icon i="plus"}} Add track
 						{{/link-to}}
 						{{#if isEditing}}
@@ -53,14 +53,14 @@
 
 			</div>
 
-			{{outlet 'channel-header'}}
+			{{!-- {{outlet 'channel-header'}} --}}
 
 		</div>
 	</div>
 
-	{{!-- {{outlet 'channel-body'}} --}}
 	<div class="Channel-body">
 		<div class="Container Container--full">
+			{{!-- {{outlet 'channel-body'}} --}}
 			{{outlet}}
 		</div>
 	</div>

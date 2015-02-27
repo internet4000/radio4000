@@ -4,7 +4,6 @@ import youtube from 'radio4000/utils/youtube';
 export default Ember.Controller.extend({
 	needs: ['channel'],
 	channel: Ember.computed.alias('controllers.channel.model'),
-	isExpanded: false,
 	formError: false,
 
 	// Check if the track is valid before saving
@@ -22,13 +21,6 @@ export default Ember.Controller.extend({
 	},
 
 	actions: {
-		expand: function() {
-			this.set('isExpanded', true);
-		},
-		cancel: function() {
-			// leaving the route also sets isexpanded to false
-			this.transitionToRoute('channel', this.get('channel'));
-		},
 		addTrack: function() {
 			if (!this.isValid()) { return false; }
 
@@ -46,8 +38,6 @@ export default Ember.Controller.extend({
 				created: new Date().getTime()
 			});
 
-			// Close the adding state and reset fields (ready for next track)
-			this.toggleProperty('isExpanded');
 			this.setProperties({
 				trackUrl: '',
 				trackTitle: '',

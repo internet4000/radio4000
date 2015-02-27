@@ -11,12 +11,12 @@ export default Ember.Route.extend({
 	// model gets set in the channel route
 
 	// render into the channel template
-	renderTemplate: function() {
-		this.render({
-			into: 'channel',
-			outlet: 'channel-header'
-		});
-	},
+	// renderTemplate: function() {
+	// 	this.render({
+	// 		into: 'channel',
+	// 		outlet: 'channel-header'
+	// 	});
+	// },
 
 	setupController: function() {
 		// indicate we're editing (used for changing buttons etc.)
