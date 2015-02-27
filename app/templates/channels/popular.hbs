@@ -1,8 +1,18 @@
 <div class="Manchet Manchet--left">
-	<h1>Most popular<small> — radios people really enjoy</small></h1>
+	<h1>Popular<small> — radios people really enjoy</small></h1>
 </div>
 
 <div class="Section">
+	<div class="Container">
+		<div class="Flex">
+			{{#each radio in filteredContent}}
+				{{x-cover model=radio}}
+			{{/each}}
+		</div>
+	</div>
+</div>
+
+{{!-- <div class="Section">
 	<div class="Container Container--full Container--noPadding">
 		<ul class="List">
 			{{#each channel in filteredContent}}
@@ -18,3 +28,4 @@
 		</ul>
 	</div>
 </div>
+ --}}
