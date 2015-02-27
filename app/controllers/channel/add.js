@@ -22,14 +22,8 @@ export default Ember.Controller.extend({
 		addTrack: function() {
 			if (!this.isValid()) { return false; }
 
-			// Set extra properties
-			var track = this.get('model').setProperties({
-				channel: this.modelFor('channel'),
-				created: new Date().getTime()
-			});
-
 			// leave it to the router to actually save the track
-			this.send('saveTrack', track);
+			this.send('saveTrack');
 		},
 
 		// This gets called when you paste something into the input-url component
@@ -38,15 +32,11 @@ export default Ember.Controller.extend({
 			var apikey = 'AIzaSyCk5FiiPiyHON7PMLfLulM9GFmSYt6W5v4';
 			var id = youtube(url);
 
-			console.log(url);
-			console.log(id);
-
-			if (!id) {
-				Ember.debug('errrrror');
-			}
+			if (!id) { Ember.debug('errrrror'); return; }
 
 			Ember.$.getJSON('https://www.googleapis.com/youtube/v3/videos?id='+id+'&key='+apikey+'&fields=items(id,snippet(title))&part=snippet').then(function(response) {
-				this.set('model.title', response.items[0].snippet.title);
+				var ytTitle = response.items[0].snippet.title;
+				this.set('model.title', ytTitle);
 			}.bind(this));
 		}
 	}

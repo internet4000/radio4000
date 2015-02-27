@@ -90,8 +90,6 @@ export default Ember.Controller.extend({
 			Ember.debug('channel route save');
 
 			channel.save().then(function() {
-				console.log(this.get('cachedSlug'));
-				console.log(this.get('model.slug'));
 				this.transitionToRoute('channel', this.get('model.slug'));
 			}.bind(this));
 		},

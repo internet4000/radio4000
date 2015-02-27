@@ -40,7 +40,7 @@ Router.map(function() {
 		this.route('favorite-channels');
 		this.route('followers');
 		this.route('edit'); // edit channel
-		this.route('add'); // add a track to a channel
+		this.route('add'); // add a track to channel
 
 		// channel tracks
 		this.resource('tracks', function() {
