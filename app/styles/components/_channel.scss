@@ -28,13 +28,9 @@
 }
 .Channel-description {
 	max-width: 32rem;
-	// margin-bottom: 2rem;
 }
 .Channel-body {
 	margin-bottom: 2rem;
-}
-.LastUpdate {
-	@extend %font-regular;
 }
 .Channel-contextual {
 	float: right;
@@ -42,22 +38,12 @@
 		float: right;
 	}
 }
-
-// Form to edit the playlist
-.Channel-edit {
-	margin-bottom: 1rem;
-}
-
-// Form to add a track
-.Channel-add {
-	margin-top: -4rem; // below buttons (with one line descriptions)
-}
-
-
-
 .ChannelTeaser-title small {
 	@extend %font-mono;
 	@include size-1;
 	float: right;
 	color: $mediumgray;
+}
+.LastUpdate {
+	@extend %font-regular;
 }
