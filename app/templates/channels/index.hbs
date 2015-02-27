@@ -17,7 +17,7 @@
 	{{!-- NORMAL LIST VIEW --}}
 	<div class="Container Container--full Container--noPadding">
 		<ul class="List">
-			{{#each channel in channels}}
+			{{#each channel in model}}
 				<li>
 					{{#link-to "channel" channel class="ChannelTeaser"}}
 						<h3 class="ChannelTeaser-title">

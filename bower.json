@@ -19,6 +19,7 @@
   },
   "resolutions": {
     "ember-data": "1.0.0-beta.14.1",
-    "firebase": "~2.2.x"
+    "firebase": "~2.2.x",
+    "ember": "1.11.0-beta.3"
   }
 }

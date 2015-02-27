@@ -18,8 +18,8 @@
 			{{/if} --}}
 
 			<h1 class="Channel-title">
-				{{#link-to 'channel' this}}
-					{{title}}
+				{{#link-to 'channel' model}}
+					{{model.title}}
 				{{/link-to}}
 			</h1>
 
@@ -29,8 +29,8 @@
 				</div>
 			{{/if}}
 
-			<p class="Channel-description">{{body}}</p>
-			<p class="Muted LastUpdate">(updated {{lastUpdatedFormatted}})</p>
+			<p class="Channel-description">{{model.body}}</p>
+			<p class="Muted LastUpdate">(updated {{model.lastUpdatedFormatted}})</p>
 
 			<div class="BtnGroupWrapper">
 				{{#if canEdit}}

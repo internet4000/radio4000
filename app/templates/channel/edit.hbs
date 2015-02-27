@@ -3,12 +3,12 @@
 
 	<div class="Form-group">
 		<label for="title">Title</label>
-		{{focus-input id="title" value=title placeholder="Title" autofocus='autofocus'}}
+		{{focus-input id="title" value=model.title placeholder="Title" autofocus='autofocus'}}
 	</div>
 
 	<div class="Form-group">
 		<label for="body">Description</label>
-		{{textarea id="body" value=body placeholder="What is your channel about?"}}
+		{{textarea id="body" value=model.body placeholder="What is your channel about?"}}
 	</div>
 
 	<div class="Form-group">
@@ -19,7 +19,7 @@
 	<div class="Form-group Form--playlistSlug">
 		<label for="slug">Permalink</label>
 		<span class="Permalink">radio4000.com/c/</span>
-		{{input id="slug" value=slug placeholder="channel-slug"}}
+		{{input id="slug" value=model.slug placeholder="channel-slug"}}
 	</div>
 
 	<div class="Form-group Form--save">
