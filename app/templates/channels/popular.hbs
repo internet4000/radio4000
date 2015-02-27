@@ -2,13 +2,11 @@
 	<h1>Popular<small> — radios people really enjoy</small></h1>
 </div>
 
-<div class="Section">
-	<div class="Container">
-		<div class="Flex">
-			{{#each radio in filteredContent}}
-				{{x-cover model=radio}}
-			{{/each}}
-		</div>
+<div class="Section Container">
+	<div class="Flex">
+		{{#each radio in filteredContent}}
+			{{x-cover model=radio}}
+		{{/each}}
 	</div>
 </div>
 
