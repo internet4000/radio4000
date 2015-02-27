@@ -5,7 +5,7 @@
 		</div>
 		<div class="Container Container--noPadding">
 			<ul class="List">
-			{{#each channel in favoriteChannels}}
+			{{#each channel in model.favoriteChannels}}
 				<li>
 					{{#link-to "channel" channel class="ChannelTeaser" title="Go to this channel"}}
 						<h3 class="ChannelTeaser-title">{{channel.title}}</h3>

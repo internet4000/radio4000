@@ -4,7 +4,7 @@
 		</div>
 	<div class="Container Container--noPadding">
 		<ul class="List">
-		{{#each fan in fans}}
+		{{#each fan in model.fans}}
 			<li>
 				{{#link-to "channel" fan class="ChannelTeaser" title="Go to this channel"}}
 					<h3 class="ChannelTeaser-title">{{fan.title}}</h3>
