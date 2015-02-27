@@ -5,10 +5,29 @@
 .BackArrow {
 	font-size: 2em;
 	position: relative;
+	padding-top: 0.6em;
+	padding-bottom: 0.7em;
+	padding-right: 1.6em;
+	margin-right: 0.5em;
+	@include clearfix;
 	.BackArrow-item {
 		position: absolute;
 		top: 3px;
 		left: 0;
 		font-weight: 700;
+		transform: translateX(0);
+		transition: all 400ms $easing;
+		&:first-of-type {
+			color: black;
+		}
+	}
+	&:hover {
+		.BackArrow-item {
+			transform: translateX(-9%);
+			&:first-of-type {
+				transform: translateX(5%);
+				color: gray;
+			}
+		}
 	}
 }
