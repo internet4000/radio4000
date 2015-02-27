@@ -1,11 +1,11 @@
 <div class="Manchet">
-	<h1>Step 1/1 - Name your new radio channel</h1>
+	<h1>Name your new radio channel<small> — Step 1/1</small></h1>
 </div>
 
 <div class="Container Section">
 	<form class="Form Form--newChannel" {{action "createChannel" on="submit"}}>
 		<div class="Form-group">
-			{{focus-input value=title placeholder='For instance "The Pirate Radio"'}}
+			{{focus-input value=model.title placeholder='For instance "The Pirate Radio"'}}
 		</div>
 		<div class="Form-group">
 			<button type="submit" class="Btn Btn--primary" title="Create your radio channel">Create your radio channel</button>

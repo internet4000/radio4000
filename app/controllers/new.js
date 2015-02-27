@@ -3,14 +3,14 @@ import clean from 'radio4000/utils/clean';
 
 export default Ember.Controller.extend({
 	cleanSlug: function() {
-		var cleaned = clean(this.get('title'));
-		return cleaned.dasherize() + '-' + this.getRandomText();
+		var cleaned = clean(this.get('model.title'));
+		return cleaned + '-' + this.getRandomText();
 	}.property('title'),
 
 	actions: {
 		createChannel: function() {
 			var channel = this.get('model');
-			var title = this.get('title');
+			var title = channel.get('title');
 			var user = this.get('session.user');
 
 			// we need a title
@@ -58,18 +58,4 @@ export default Ember.Controller.extend({
 
 		return text;
 	}
-
-	// slugIsTaken: function() {
-	// 	var _this = this;
-	// 	var slug = this.get('slug');
-	// 	var canIHazSlug = true;
-
-	// 	return this.store.find('channel').then(function(channels) {
-	// 		return channels.forEach(function(channel) {
-	// 			if (channel.get('slug') === slug) {
-	// 				return false;
-	// 			}
-	// 		});
-	// 	});
-	// },
 });
