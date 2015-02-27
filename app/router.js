@@ -7,7 +7,6 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
 	// pages
-	this.route('about');
 	this.route('forum');
 	this.route('help');
 	this.route('log');
@@ -15,6 +14,13 @@ Router.map(function() {
 	this.route('stats');
 	this.route('styleguide');
 	this.route('dashboard');
+
+	// about route
+	this.route('about', function() {
+		this.route('contact');
+		this.route('log');
+		this.route('technology');
+	});
 
 	// new channel
 	this.route('new');

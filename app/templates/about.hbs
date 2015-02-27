@@ -1,30 +1,8 @@
-<article class="Section">
+<div class="NavigationTab Container Flex Container--full">
+	{{#link-to 'about.index' title="About radio4000" class="NavigationTab-item"}}About radio4000{{/link-to}}
+	{{#link-to 'about.contact' title="Contact" class="NavigationTab-item"}}Contact{{/link-to}}
+	{{#link-to 'about.log' title="Log" class="NavigationTab-item"}}Log{{/link-to}}
+	{{#link-to 'about.technology' title="Technology stack" class="NavigationTab-item"}}Technology stack{{/link-to}}
+</div>
 
-	<header class="Manchet">
-		<h1>About<small> — Radio4000</small></h1>
-	</header>
-
-	<div class="Container">
-
-		<p>What if all the songs you like and play on different services like YouTube and Soundcloud were collected in a single channel? What if that channel was available everywhere, with your own URL and without having to log in or download an app?</p>
-		<p>No grouping of genres or playlists to manage. Just all the music you like together and a big fat play button.</p>
-
-
-		<h3>Contact</h3>
-		<p>You want to get in touch? <a href="mailto:contact@radio4000.com">contact@radio4000.com</a>.</p>
-
-		<h3>Log</h3>
-		<p>If you would like to see which feature we are currently working on, see our {{#link-to 'log' title="See what's new in the changelog"}}Log{{/link-to}}.</p>
-
-		<h3>Technology stack</h3>
-		<ul>
-			<li>Ember.js with Ember Data</li>
-			<li>Firebase as backend using the Emberfire adapter</li>
-			<li>Ember CLI with Sass and Autoprefixer</li>
-			<li>SVG icon sprites</li>
-			<li>Deployment to Webfaction using gulp and rsync</li>
-			<li>Groovy music</li>
-			<li>Lots of bread and cheese</li>
-		</ul>
-	</div>
-</article>
+{{outlet}}
