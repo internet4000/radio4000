@@ -9,7 +9,7 @@
 }
 
 .NavigationTab-item {
-	flex: 1 1 100%; // grow and shrink and attempt to have the same width
+	flex: 0 1 10em; // grow and shrink and attempt to have the same width
 	padding: 0.9em 0.5em 0.7em; // bigger clickarea and vertical center
 	border-bottom: 4px solid transparent;
 	transition: border-bottom-color 400ms $easing;
