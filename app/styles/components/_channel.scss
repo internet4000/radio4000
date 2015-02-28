@@ -43,11 +43,13 @@
 		float: right;
 	}
 }
-.ChannelTeaser-title small {
-	@extend %font-mono;
-	@include size-1;
-	float: right;
-	color: $mediumgray;
+.ChannelTeaser-title {
+	small {
+		@extend %font-mono;
+		@include size-1;
+		float: right;
+		color: $mediumgray;
+	}
 }
 .LastUpdate {
 	@extend %font-regular;

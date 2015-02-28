@@ -17,9 +17,9 @@
 	p {
 		margin: 0;
 	}
-	h3 {
-		@extend %font-regular;
-	}
+	// h3 {
+	// 	@extend %font-regular;
+	// }
 	p {
 		@include size-1;
 		max-width: 80%;
@@ -27,8 +27,12 @@
 	}
 	a {
 		display: block;
-		padding: 0.7rem 2rem 0.6rem;
+		padding: 0.7rem 1rem 0.6rem;
 		text-decoration: none;
+		@media (min-width: $layout-s) {
+			padding-left: 2rem;
+			padding-right: 2rem;
+		}
 	}
 	a,
 	li {
