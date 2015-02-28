@@ -1,10 +1,16 @@
 <div class="Bar Bar--top">
 	<button id="TogglePanel" class="TooglePanel" title="Menu" {{action "togglePanel"}}>☰</button>
-	<h1 class="SiteLogo">
-		{{#link-to "channels" title="Back to home"}}
-			<img src="images/logos/logo-radio4000.png" alt="Radio4000">
-		{{/link-to}}
-	</h1>
+
+
+		<h1 class="SiteLogo">
+			{{#link-to "channels" title="Back to home"}}
+				{{#if showBackButton}}
+					Back
+				{{else}}
+					<img src="images/logos/logo-radio4000.png" alt="Radio4000">
+				{{/if}}
+			{{/link-to}}
+		</h1>
 
 	<div class="ContextualNavigation">
 
