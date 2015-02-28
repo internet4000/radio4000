@@ -19,8 +19,7 @@ export default Ember.Route.extend({
 			var channel = this.modelFor('channel');
 			var track = this.modelFor('channel.add');
 
-			Ember.debug(channel);
-			Ember.debug(track);
+			track.updateProvider();
 
 			// Set extra properties
 			track.setProperties({
@@ -28,14 +27,14 @@ export default Ember.Route.extend({
 			});
 
 			track.save().then(function() {
-					// And add it to the tracks property of the channel
-					Ember.RSVP.Promise.cast(channel.get('tracks')).then(function(tracks) {
-						tracks.addObject(track);
-						channel.save().then(function() {
-							Ember.debug('Success: Track saved to channel');
-						});
+				// And add it to the tracks property of the channel
+				Ember.RSVP.Promise.cast(channel.get('tracks')).then(function(tracks) {
+					tracks.addObject(track);
+					channel.save().then(function() {
+						Ember.debug('Success: Track saved to channel');
 					});
 				});
+			});
 
 			// Go back!
 			this.transitionTo('channel', channel);

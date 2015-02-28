@@ -7,9 +7,10 @@ export default Ember.Route.extend({
 		Ember.debug(this.get('session.userChannel'));
 
 		if (this.get('session.authed') && !this.get('session.userChannel')) {
+			Ember.debug('back to new');
 			this.transitionTo('new');
 		}
-	}.observes('session.authed', 'session.userChannel.id'),
+	}.observes('session.userChannel.id'),
 
 	renderTemplate: function() {
 		// because we overwrite the renderTemplate method

@@ -23,11 +23,6 @@ export default Ember.Component.extend({
 		return this.get('currentTrackComponent') === this.get('elementId');
 	}.property('currentTrackComponent'),
 
-	onUrlChange: function() {
-		console.log('onUrlChange');
-		this.get('track').updateProvider();
-	}.observes('track.url'),
-
 	actions: {
 		edit: function() {
 			this.set('currentTrackComponent', this.get('elementId'));
@@ -37,6 +32,7 @@ export default Ember.Component.extend({
 		},
 		save: function() {
 			this.send('cancel');
+			this.get('track').updateProvider();
 			this.get('track').save().then(function() {
 				Ember.debug('Saved track');
 			});

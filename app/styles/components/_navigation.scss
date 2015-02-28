@@ -32,11 +32,6 @@
 		color: $white;
 		padding: 1.2rem 1rem 0.9rem;
 	}
-
-	// hidden on small screens
-	@media (max-width: $layout-s) {
-		display: none;
-	}
 }
 
 .TooglePanel {
