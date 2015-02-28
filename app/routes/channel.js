@@ -42,15 +42,22 @@ export default Ember.Route.extend({
 		});
 	},
 
-	// because we use slugs instead of ids in the url
-	serialize: function(model) {
-		return { channel_slug: model.get('slug') };
-	},
-
 	afterModel: function(model) {
 		window.scrollTo(0,0);
 		document.title = model.get('title') + ' - Radio4000';
 		this.controllerFor('channel.edit').set('model', model);
+	},
+
+	renderTemplate: function() {
+		this.render('contextual-navigation/cn-channel', {
+			into: 'application',
+			outlet: 'contextual-navigation'
+		});
+	},
+
+	// because we use slugs instead of ids in the url
+	serialize: function(model) {
+		return { channel_slug: model.get('slug') };
 	},
 
 	// Reset doc title when leaving the route

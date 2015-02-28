@@ -1,0 +1,8 @@
+{{#if session.authed}}
+	{{#if session.userChannel}}
+		{{#link-to 'channel.add' session.userChannel}}+ Add track{{/link-to}}
+	{{/if}}
+{{/if}}
+{{#unless session.authed}}
+	{{#link-to 'signin'}}Register or sign in{{/link-to}}
+{{/unless}}

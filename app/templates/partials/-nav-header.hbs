@@ -2,26 +2,16 @@
 	<button class="TooglePanel" title="Menu" {{action "togglePanel"}}>☰</button>
 
 	{{#if showBackButton}}
-		{{#link-to "channels" class="BackArrow" title="Back to home"}}&larr;{{/link-to}}
+		{{#link-to "channels" class="BackArrow" title="Back to discover"}}&larr;{{/link-to}}
 	{{else}}
 		<h1 class="SiteLogo">
-			{{#link-to "channels" title="Back to home"}}
+			{{#link-to "channels" title="Back to Discover"}}
 				<img src="images/logos/logo-radio4000.png" alt="Radio4000">
 			{{/link-to}}
 		</h1>
 	{{/if}}
 
 	<div class="ContextualNavigation">
-
 		{{outlet "contextual-navigation"}}
-
-		{{!-- {{#if session.authed}}
-			{{#if session.userChannel}}
-				{{#link-to 'channel.add' session.userChannel}}+ Add track{{/link-to}}
-			{{/if}}
-		{{/if}}
-		{{#unless session.authed}}
-			{{#link-to 'signin'}}Register or sign in{{/link-to}}
-		{{/unless}} --}}
 	</div>
 </div>

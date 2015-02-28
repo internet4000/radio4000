@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+
 	actions: {
 		login: function(provider) {
 			this.get('session').login(provider);
@@ -9,4 +10,5 @@ export default Ember.Route.extend({
 			this.get('session').logout();
 		}
 	}
+
 });

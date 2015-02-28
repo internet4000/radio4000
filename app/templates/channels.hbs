@@ -1,4 +1,16 @@
-{{!-- if not logged in display in intro message to check out a guide --}}
+<section class="Section Section--messaging Container Container--full">
+	{{#unless session.authed}}
+		<p class="IntroMessage">
+			Welcome to <strong>Radio4000</strong>! {{#link-to 'introduction'}}Get introduced{{/link-to}}.
+		</p>
+	{{/unless}}
+
+	{{#unless session.userChannel}}
+		<p class="IntroMessage">
+			It seems you don't have a radio yet. {{#link-to 'new'}}Create your radio{{/link-to}}.
+		</p>
+	{{/unless}}
+</section>
 
 <div class="NavigationTab">
 	{{#link-to 'channels.index' title="Discover channels" class="NavigationTab-item"}}Discover{{/link-to}}
@@ -6,4 +18,4 @@
 	{{#link-to 'channels.all' title="Discover channels" class="NavigationTab-item"}}All{{/link-to}}
 </div>
 
-{{outlet}}
+{{outlet "channels"}}
