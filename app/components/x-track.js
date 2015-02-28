@@ -23,6 +23,11 @@ export default Ember.Component.extend({
 		return this.get('currentTrackComponent') === this.get('elementId');
 	}.property('currentTrackComponent'),
 
+	onUrlChange: function() {
+		console.log('onUrlChange');
+		this.get('track').updateProvider();
+	}.observes('track.url'),
+
 	actions: {
 		edit: function() {
 			this.set('currentTrackComponent', this.get('elementId'));

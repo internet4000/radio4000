@@ -7,6 +7,7 @@ export default DS.Model.extend({
 	body: DS.attr('string'),
 	created: DS.attr('number'),
 	channel: DS.belongsTo('channel', { async: true }),
+	ytid: DS.attr('string'),
 
 	// Format the date
 	createdDate: function() {
@@ -17,8 +18,9 @@ export default DS.Model.extend({
 	// Returns a YouTube ID from an URL
 	// TODO: this should definitely be saved in the db
 	// and not computed every time like it is now
-	ytid: function() {
+	updateProvider: function() {
+		console.log('updateYtid');
 		var id = youtube(this.get('url'));
-		return id;
-	}.property('url')
+		this.set('ytid', id);
+	}
 });
