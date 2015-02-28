@@ -1,12 +1,15 @@
-// use .Container for vertical stacks (it could add padding)
+
+// use .Container for vertical stacks
+
 .Container,
 %Container {
+	position: relative;
+	// centered
 	max-width: 45em;
 	margin-left: auto;
 	margin-right: auto;
 	padding-right: 1rem;
 	padding-left: 1rem;
-	position: relative;
 	@media (min-width: $layout-m) {
 		padding-right: 2rem;
 		padding-left: 2rem;
