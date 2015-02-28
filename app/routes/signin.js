@@ -10,7 +10,7 @@ export default Ember.Route.extend({
 		if (userChannel) {
 			this.transitionTo('channel', userChannel);
 		} else {
-			this.transitionTo('new');
+			this.transitionTo('/');
 		}
 	}.observes('session.user.id')
 });
