@@ -8,16 +8,6 @@ export default Ember.Route.extend({
 		if (!canEdit) { this.transitionTo('channel', this.modelFor('channel')); }
 	},
 
-	// model gets set in the channel route
-
-	// render into the channel template
-	// renderTemplate: function() {
-	// 	this.render({
-	// 		into: 'channel',
-	// 		outlet: 'channel-header'
-	// 	});
-	// },
-
 	// clear any unsaved changes
 	deactivate: function() {
 		this.controllerFor('channel').get('model').rollback();

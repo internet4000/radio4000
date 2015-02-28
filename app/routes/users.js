@@ -6,7 +6,7 @@ export default Ember.Route.extend({
 	},
 	afterModel: function(model) {
 		model.forEach(function(user) {
-			console.log(this.get('name'));
+			console.log(user.get('name'));
 		});
 	}
 });

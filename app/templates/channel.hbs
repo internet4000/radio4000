@@ -48,17 +48,12 @@
 	</div>
 
 	<div class="NavigationTab">
-		{{#link-to 'channel.index' title="All tracks" class="NavigationTab-item"}}{{model.tracks.length}} tracks{{/link-to}}
-		{{#link-to 'channel.favorite-channels' title="Favorites of this channel" class="NavigationTab-item"}}{{model.favoriteChannels.length}} favorites{{/link-to}}
-		{{#link-to 'channel.followers' title="Followers" class="NavigationTab-item"}}{{model.followers.length}} followers{{/link-to}}
+		{{#link-to 'channel.index' class="NavigationTab-item" title="All tracks"}}{{model.tracks.length}} tracks{{/link-to}}
+		{{#link-to 'channel.favorite-channels' class="NavigationTab-item" title="Favorites of this channel"}}{{model.favoriteChannels.length}} favorites{{/link-to}}
+		{{#link-to 'channel.followers' class="NavigationTab-item" title="Followers"}}{{model.followers.length}} followers{{/link-to}}
 	</div>
 
 	<div class="Channel-body">
-		<div class="Container Container--full">
-			{{!-- {{outlet 'channel-body'}} --}}
-			{{outlet}}
-		</div>
+		{{outlet}}
 	</div>
-
-	{{!-- this page doesn't have a normal outlet to avoid rendering the track in to it --}}
 </article>
