@@ -17,7 +17,7 @@ export default Ember.Route.extend({
 
 		if (authed && !userChannel) {
 			// logged in without channel
-			this.transitionToRoute('new');
+			this.transitionTo('new');
 		}
 	}.observes('session.user.id'),
 

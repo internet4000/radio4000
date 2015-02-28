@@ -10,7 +10,7 @@ export default Ember.Route.extend({
 			this.transitionTo('channel', userChannel);
 		} else if (authed && !userChannel) {
 			// logged in without channel
-			this.transitionToRoute('new');
+			this.transitionTo('new');
 		} else if (!authed) {
 			// logged out
 			this.transitionTo('/');
