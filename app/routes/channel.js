@@ -48,12 +48,17 @@ export default Ember.Route.extend({
 		this.controllerFor('channel.edit').set('model', model);
 	},
 
-	// renderTemplate: function() {
-	// 	this.render('contextual-navigation/cn-channel', {
-	// 		into: 'application',
-	// 		outlet: 'contextual-navigation'
-	// 	});
-	// },
+	renderTemplate: function() {
+		// because we overwrite the renderTemplate method
+		// we need to tell it to also render the default template
+		this.render();
+
+		// and update nav bar
+		this.render('contextual-navigation/cn-channel', {
+			into: 'application',
+			outlet: 'contextual-navigation'
+		});
+	},
 
 	// because we use slugs instead of ids in the url
 	serialize: function(model) {
