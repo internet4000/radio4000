@@ -1,15 +1,3 @@
-<div class="Manchet Manchet--left">
-	<h1>Discover<small> — human radios</small></h1>
-</div>
-
-<div class="Container Container--full">
-	<div class="Flex">
-		{{#each channel in featured}}
-			{{x-cover model=channel}}
-		{{/each}}
-	</div>
-</div>
-
 <section class="Section">
 	{{#unless session.authed}}
 		{{!-- {{#link-to 'introduction' class="Box"}}
@@ -31,3 +19,16 @@
 		</p>
 	{{/unless}}
 </section>
+
+<div class="Manchet Manchet--left">
+	<h1>Discover<small> — human radios</small></h1>
+</div>
+
+<div class="Container Container--full">
+	<div class="Flex">
+		{{#each channel in featured}}
+			{{x-cover model=channel}}
+		{{/each}}
+	</div>
+</div>
+
