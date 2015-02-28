@@ -13,16 +13,13 @@
 		top: 0.7em;
 		display: none;
 	}
-
-	&.is-current {
-		// background-color: $superlightgray;
-	}
 }
+
 .Track-title {
 	@extend %font-regular;
 	@include size-1;
 }
-.Track-description.Track-description { // extra specificity
+.Track-description {
 	color: $gray;
 	font-style: italic;
 }
@@ -56,8 +53,11 @@ a.Track-link { // Link surrounding the track
 .Track.is-current {
 	.Track-link,
 	a.Track-link {
-		// border-left-color: $primary-color;
-		padding-left: 1rem;
+		background-color: $primary-color;
+		color: white;
+	}
+	.Track-description {
+		color: white;
 	}
 	.icon-play {
 		display: block;
