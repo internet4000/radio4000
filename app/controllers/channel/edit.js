@@ -193,14 +193,14 @@ export default Ember.Controller.extend({
 				});
 			}, function() {
 				//developer failed to save;
-				Ember.warn('Error');
+				Ember.warn('Error - could not get users');
 			});
 
 			// All favorites have been removed
 			Ember.RSVP.all(promises).then(function() {
-				_this.transitionToRoute('/');
+				_this.transitionToRoute('new');
 			}, function() {
-				Ember.warn('Error');
+				Ember.warn('Error - could not resolve all promises');
 				//one or more languages failed to save
 			});
 		}
