@@ -2,8 +2,6 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	beforeModel: function() {
-		// @todo: if session.user already hasChannel redirect to his channel (so can't create >1 channel)
-
 		// if not authenticated, redirect
 		if (!this.get('session.authed')) {
 			this.transitionTo('signin');
@@ -17,5 +15,14 @@ export default Ember.Route.extend({
 	},
 	deactivate: function() {
 		document.title = 'Radio4000';
+	},
+
+	actions: {
+		willTransition: function(transition) {
+			// stop the transition if you haven't got a channel
+			if (this.get('session.authed') && !this.get('session.userChannel')) {
+				transition.abort();
+			}
+		}
 	}
 });
