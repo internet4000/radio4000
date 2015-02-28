@@ -1,15 +1,16 @@
-<div class="Manchet">
+<div class="Manchet Manchet--left">
 	<h1>Register or sign in to Radio4000</h1>
 </div>
 
 <div class="Container">
-	<div class="LoginBox">
-		<p>
-			<button class="Btn" title="Sign in with Google" {{action 'login' 'google'}}>
-				{{x-icon i="google-plus"}} Sign in with Google</button>
-			<button class="Btn" title="Sign in with Facebook" {{action 'login' 'facebook'}}>
-				{{x-icon i="facebook"}} Sign in with Facebook</button>
-		</p>
-		<p class="Muted">Not using Google or Facebook? Sign in with e-mail is coming soon.</p>
-	</div>
+	<p>After you register or sign in, you'll be able to manage your own radio channel.</p>
+	<p>
+		<button class="Btn" title="Sign in with Google" {{action 'login' 'google'}}>
+			{{x-icon i="google-plus"}} Sign in with Google
+		</button>
+		<button class="Btn" title="Sign in with Facebook" {{action 'login' 'facebook'}}>
+			{{x-icon i="facebook"}} Sign in with Facebook
+		</button>
+	</p>
+	<p class="Muted">Not using Google or Facebook? Sign in with e-mail is coming soon.</p>
 </div>
