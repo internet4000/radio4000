@@ -26,22 +26,17 @@
 }
 
 .ContextualNavigation {
-	display: none;
-	@media (min-width: $layout-s) {
-		display: block;
-	}
+	margin-left: auto; // pushed to the right
 	a {
 		display: block;
 		color: $white;
 		padding: 1.2rem 1rem 0.9rem;
 	}
-}
 
-
-// Muted in the header bar has a different look
-.SiteHeader .Bar .Muted {
-	font-size: 1em;
-	color: rgba($white, 0.5);
+	// hidden on small screens
+	@media (max-width: $layout-s) {
+		display: none;
+	}
 }
 
 .TooglePanel {
