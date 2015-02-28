@@ -8,9 +8,11 @@
 
 	<div class="ContextualNavigation">
 
-		{{#if session.userChannel}}
-			{{#link-to 'channel.add' session.userChannel}}+ Add track{{/link-to}}
-			{{!-- {{#link-to 'channel' session.userChannel title="Your channel"}}{{session.userChannel.title}}{{/link-to}} --}}
+		{{#if session.authed}}
+			{{#if session.userChannel}}
+				{{#link-to 'channel.add' session.userChannel}}+ Add track{{/link-to}}
+				{{!-- {{#link-to 'channel' session.userChannel title="Your channel"}}{{session.userChannel.title}}{{/link-to}} --}}
+			{{/if}}
 		{{/if}}
 		{{#unless session.authed}}
 			{{#link-to 'signin'}}Register or sign in{{/link-to}}

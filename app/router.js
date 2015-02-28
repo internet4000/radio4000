@@ -30,7 +30,7 @@ Router.map(function() {
 	this.route('new');
 
 	// all channels
-	this.resource('channels', { path: 'discover'}, function() {
+	this.resource('channels', { path: '/'}, function() {
 		this.route('popular');
 		this.route('all');
 	});
