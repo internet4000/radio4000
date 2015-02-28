@@ -33,20 +33,21 @@ Router.map(function() {
 	this.resource('channels', { path: '/'}, function() {
 		this.route('popular');
 		this.route('all');
-	});
 
-	// channel
-	this.resource('channel', { path: '/c/:channel_slug' }, function() {
-		this.route('favorite-channels');
-		this.route('followers');
-		this.route('edit'); // edit channel
-		this.route('add'); // add a track to channel
+		// channel
+		this.resource('channel', { path: '/c/:channel_slug' }, function() {
+			this.route('favorite-channels');
+			this.route('followers');
+			this.route('edit'); // edit channel
+			this.route('add'); // add a track to channel
 
-		// channel tracks
-		this.resource('tracks', function() {
-			this.resource('track', { path: ':track_id' }); // single track
+			// channel tracks
+			this.resource('tracks', function() {
+				this.resource('track', { path: ':track_id' }); // single track
+			});
 		});
 	});
+
 
 	// users
 	this.resource('users', function() {
