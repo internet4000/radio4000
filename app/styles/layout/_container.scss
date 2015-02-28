@@ -1,0 +1,31 @@
+// use .Container for vertical stacks (it could add padding)
+.Container,
+%Container {
+	max-width: 45em;
+	margin-left: auto;
+	margin-right: auto;
+	padding-right: 1rem;
+	padding-left: 1rem;
+	position: relative;
+	@media (min-width: $layout-m) {
+		padding-right: 2rem;
+		padding-left: 2rem;
+	}
+}
+// Use this for lager max width
+.Container--large {
+	max-width: 83rem;
+}
+// Use this when it should be full width
+.Container--full {
+	max-width: none;
+}
+// remove padding
+.Container--noPadding {
+	padding-right: 0;
+	padding-left: 0;
+	@media (min-width: $layout-m) {
+		padding-right: 0;
+		padding-left: 0;
+	}
+}

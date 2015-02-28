@@ -3,7 +3,9 @@
  */
 
 .Manchet {
-	padding: 3rem 1rem 1rem;
+	@extend %Container;
+	padding-top: 3rem;
+	padding-bottom: 1rem;
 	text-align: center;
 
 	h1,
@@ -16,14 +18,14 @@
 
 // modifiers
 
-.Manchet.Manchet--bigger {
+.Manchet--bigger {
 	h1,
 	p {
 		max-width: 36rem;
 	}
 }
 
-.Manchet.Manchet--left {
+.Manchet--left {
 	text-align: left;
 	h1,
 	p {

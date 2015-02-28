@@ -1,35 +1,5 @@
-
-// use .Container for vertical stacks (it could add padding)
-// use .Section for extra margin bottom, essentially
-// + if you need two sections next to each other, use .Section-half
-
-.Container,
-%Container {
-	max-width: 45em;
-	margin-left: auto;
-	margin-right: auto;
-	padding-right: 1rem;
-	padding-left: 1rem;
-	position: relative;
-}
-// Use this for lager max width
-.Container--large {
-	max-width: 83rem;
-}
-// Use this when it should be full width
-.Container--full {
-	max-width: none;
-}
-// remove padding
-.Container--noPadding {
-	padding-right: 0;
-	padding-left: 0;
-}
-
-
-//
 // Sections
-// Use this when you need a bit of extra space
+// Use this when you need more vertical space
 //
 
 .Section {
@@ -41,22 +11,3 @@
 	padding-top: 1em;
 }
 
-
-// Two column section
-.Section-half {
-	clear: none;
-	overflow: visible;
-	margin-bottom: 1rem;
-	@media (min-width: $layout-s) {
-		width: 50%;
-		float: left;
-		margin-bottom: 0;
-
-		// 1rem between
-		padding-right: 0.5rem;
-		+ .Section-half {
-			padding-left: 0.5rem;
-			padding-right: 0;
-		}
-	}
-}

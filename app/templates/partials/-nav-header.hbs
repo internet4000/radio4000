@@ -9,11 +9,11 @@
 	<div class="ContextualNavigation">
 
 		{{#if session.userChannel}}
-			{{#link-to 'channel.add' session.userChannel class="" title="Add track"}} + Add track {{/link-to}}
+			{{#link-to 'channel.add' session.userChannel}}+ Add track{{/link-to}}
 			{{!-- {{#link-to 'channel' session.userChannel title="Your channel"}}{{session.userChannel.title}}{{/link-to}} --}}
 		{{/if}}
 		{{#unless session.authed}}
-			{{#link-to 'signin' title="Sign in to Radio4000"}}Register or sign in{{/link-to}}
+			{{#link-to 'signin'}}Register or sign in{{/link-to}}
 		{{/unless}}
 	</div>
 </div>
