@@ -1,3 +1,10 @@
+
+<div class="NavigationTab">
+	{{#link-to 'channels.index' title="Discover channels" class="NavigationTab-item"}}Discover{{/link-to}}
+	{{#link-to 'channels.popular' title="Discover channels" class="NavigationTab-item"}}Popular{{/link-to}}
+	{{#link-to 'channels.all' title="Discover channels" class="NavigationTab-item"}}All{{/link-to}}
+</div>
+
 <section class="Section Section--messaging Container Container--full">
 	{{#unless session.authed}}
 		<p class="IntroMessage">
@@ -12,10 +19,4 @@
 	{{/unless}}
 </section>
 
-<div class="NavigationTab">
-	{{#link-to 'channels.index' title="Discover channels" class="NavigationTab-item"}}Discover{{/link-to}}
-	{{#link-to 'channels.popular' title="Discover channels" class="NavigationTab-item"}}Popular{{/link-to}}
-	{{#link-to 'channels.all' title="Discover channels" class="NavigationTab-item"}}All{{/link-to}}
-</div>
-
-{{outlet "channels"}}
+{{outlet}}

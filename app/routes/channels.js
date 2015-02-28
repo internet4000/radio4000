@@ -6,11 +6,11 @@ export default Ember.Route.extend({
 		return this.store.find('channel');
 	},
 
-	renderTemplate: function() {
+	// renderTemplate: function() {
 
-		this.render('contextual-navigation/cn-channels', {
-			into: 'application',
-			outlet: 'contextual-navigation'
-		});
-	}
+	// 	this.render('contextual-navigation/cn-channels', {
+	// 		into: 'application',
+	// 		outlet: 'contextual-navigation'
+	// 	});
+	// }
 });
