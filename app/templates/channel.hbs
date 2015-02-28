@@ -34,15 +34,12 @@
 					</div>
 				{{/if}}
 
-				{{#if session.authed}}
+				{{#if session.userChannel}}
 					<div class="BtnGroup">
 						{{x-favorite value=isFavorite action="toggleFavorite"}}
 					</div>
 				{{/if}}
-
 			</div>
-
-			{{!-- {{outlet 'channel-header'}} --}}
 
 		</div>
 	</div>
