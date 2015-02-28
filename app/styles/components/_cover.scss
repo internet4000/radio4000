@@ -89,7 +89,7 @@ $cover-size: 140px;
 
 // 	&.is-editingImage {
 // 		.Form {
-// 			background-color: rgba(#fff, 0.8);
+// 			background-color: rgba($white, 0.8);
 // 			opacity: 1;
 // 			transform: translateX(0);
 // 		}
@@ -116,7 +116,7 @@ $cover-size: 140px;
 // 	border: 0;
 // 	font-size: 2rem;
 // 	padding: 0.8rem;
-// 	color: #fff;
+// 	color: $white;
 // 	// only show edit image button on hover
 // 	transition: opacity 300ms, transform 400ms $easing;
 // 	opacity: 0.4;

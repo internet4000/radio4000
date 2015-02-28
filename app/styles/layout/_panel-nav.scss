@@ -87,7 +87,7 @@
 	&:hover {
 		.UserChannel-intro,
 		.UserChannel-body {
-			color: white;
+			color: $white;
 		}
 	}
 }
@@ -111,7 +111,7 @@
 		padding-left: 0;
 
 		&:hover {
-			color: white;
+			color: $white;
 		}
 	}
 }

@@ -5,15 +5,15 @@
 .Channel--detail {
 	position: relative;
 	z-index: 2; // above the player
-	margin-top: 2rem;
 
 	.NavigationTab {
 		margin-bottom: 1rem;
-		background-color: $superlightgray;
 	}
 }
 .Channel-header {
 	overflow: auto; // contain floated Cover
+	padding-top: 2rem;
+	background-color: $superlightgray;
 }
 .Channel-cover {
 	position: relative;
@@ -32,7 +32,7 @@
 	}
 }
 .Channel-description {
-	max-width: 32rem;
+	max-width: 36rem;
 }
 .Channel-body {
 	margin-bottom: 2rem;

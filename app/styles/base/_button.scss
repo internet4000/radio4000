@@ -14,7 +14,7 @@
 	// Button styling
 	padding: 0.3em 0.8em 0.2em;
 	background-color: $slightgray;
-	background-image: linear-gradient(to bottom, #fff 60%, #ececec);
+	background-image: linear-gradient(to bottom, $white 60%, #ececec);
 	color: $text-color;
 	box-shadow: hsla(0, 0%, 0%, 0.2) 0 1px 0 0;
 	transition: border-color 200ms, background 200ms, box-shadow 200ms;
@@ -24,7 +24,7 @@
 	// &:focus,
 	&:active {
 		text-decoration: none;
-		background-image: linear-gradient(to bottom, #fff 70%, hsla(0, 0%, 0%, 0.1));
+		background-image: linear-gradient(to bottom, $white 70%, hsla(0, 0%, 0%, 0.1));
 		border-color: rgba(0,0,0,0.18);
 	}
 	&:disabled,
