@@ -7,15 +7,15 @@
 
 <section class="Section Section--messaging Container Container--full">
 	{{#unless session.authed}}
-		<p class="IntroMessage">
+		<span class="IntroMessage">
 			Welcome to <strong>Radio4000</strong>! {{#link-to 'introduction'}}Get introduced{{/link-to}}.
-		</p>
+		</span>
 	{{/unless}}
 
 	{{#unless session.userChannel}}
-		<p class="IntroMessage">
-			It seems you don't have a radio yet. {{#link-to 'new'}}Create your radio{{/link-to}}.
-		</p>
+		<span class="IntroMessage">
+			It seems you don't have a radio yet, {{#link-to 'new'}}create your radio{{/link-to}}.
+		</span>
 	{{/unless}}
 </section>
 
