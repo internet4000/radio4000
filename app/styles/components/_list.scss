@@ -17,6 +17,9 @@
 	p {
 		margin: 0;
 	}
+	h3 {
+		@extend %font-regular;
+	}
 	p {
 		@include size-1;
 		max-width: 80%;
