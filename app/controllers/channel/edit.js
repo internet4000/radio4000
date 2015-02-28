@@ -168,32 +168,31 @@ export default Ember.Controller.extend({
 		// Deletes the channel 4 real
 		deleteChannel: function() {
 			var _this = this;
+			var channels = this.store.find('channel');
 			var channel = this.get('model');
 			var user = this.get('session.user');
-			var users = this.store.find('user');
 			var promises = [];
 
-			// destroy the channel
+			// destroy the channel and remove it from the user
 			channel.destroyRecord().then(function() {
-				// and remove it from the user
 				user.get('channels').removeObject(channel);
 				user.save();
 			});
 
-			// remove it as favorite on all users
-			users.then(function(users) {
-				users.forEach(function(user) {
-					user.get('favoriteChannels').then(function(favs) {
-						favs.removeObject(channel);
-						if (favs.get('isDirty')) {
+			// remove it as favorite on all channels
+			channels.then(function(channels) {
+				channels.forEach(function(channel) {
+					channel.get('favoriteChannels').then(function(favorites) {
+						favorites.removeObject(channel);
+						if (favorites.get('isDirty')) {
 							Ember.debug('is dirty');
-							promises.push(favs.save());
+							promises.push(favorites.save());
 						}
 					});
 				});
 			}, function() {
 				//developer failed to save;
-				Ember.warn('Error - could not get users');
+				Ember.warn('Error - could not get channels');
 			});
 
 			// All favorites have been removed
