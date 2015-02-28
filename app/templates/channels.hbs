@@ -1,21 +1,12 @@
-
 <div class="NavigationTab">
 	{{#link-to 'channels.index' title="Discover channels" class="NavigationTab-item"}}Discover{{/link-to}}
 	{{#link-to 'channels.popular' title="Discover channels" class="NavigationTab-item"}}Popular{{/link-to}}
 	{{#link-to 'channels.all' title="Discover channels" class="NavigationTab-item"}}All{{/link-to}}
 </div>
 
-<section class="Section Section--messaging Container Container--full">
-	{{#unless session.authed}}
-		<span class="IntroMessage">
-			Welcome to <strong>Radio4000</strong>! {{#link-to 'introduction'}}Get introduced{{/link-to}}.
-		</span>
-	{{/unless}}
-
+<section class="Section Section--messaging Container">
 	{{#unless session.userChannel}}
-		<span class="IntroMessage">
-			It seems you don't have a radio yet, {{#link-to 'new'}}create your radio{{/link-to}}.
-		</span>
+		<span class="IntroMessage">Welcome to <strong>Radio4000</strong>! {{#link-to 'introduction'}}Get introduced{{/link-to}} or {{#link-to 'new'}}create your radio{{/link-to}}.</span>
 	{{/unless}}
 </section>
 
