@@ -2,7 +2,6 @@ import Ember from 'ember';
 import clean from 'radio4000/utils/clean';
 
 export default Ember.Controller.extend({
-
 	didCacheSlug: false,
 	cacheSlug: function() {
 		this.cachedSlug = this.get('model.slug');
@@ -168,7 +167,7 @@ export default Ember.Controller.extend({
 		// Deletes the channel 4 real
 		deleteChannel: function() {
 			var _this = this;
-			var channels = this.store.find('channel');
+			// var channels = this.get('channels');
 			var channel = this.get('model');
 			var user = this.get('session.user');
 			var promises = [];
@@ -179,29 +178,38 @@ export default Ember.Controller.extend({
 				user.save();
 			});
 
-			// remove it as favorite on all channels
-			channels.then(function(channels) {
-				channels.forEach(function(channel) {
-					channel.get('favoriteChannels').then(function(favorites) {
-						favorites.removeObject(channel);
-						if (favorites.get('isDirty')) {
-							Ember.debug('is dirty');
-							promises.push(favorites.save());
-						}
-					});
-				});
-			}, function() {
-				//developer failed to save;
-				Ember.warn('Error - could not get channels');
-			});
+			// notify our sesion because it's a shortcut
+			this.set('session.userChannel', null);
 
-			// All favorites have been removed
-			Ember.RSVP.all(promises).then(function() {
-				_this.transitionToRoute('new');
-			}, function() {
-				Ember.warn('Error - could not resolve all promises');
-				//one or more languages failed to save
-			});
+
+			this.transitionToRoute('new');
+
+			// Ember.debug(channels);
+
+			// remove it as favorite on all channels
+			// channels.then(function(channels) {
+			// 	Ember.debug(channels);
+			// 	channels.forEach(function(channel) {
+			// 		channel.get('favoriteChannels').then(function(favorites) {
+			// 			favorites.removeObject(channel);
+			// 			if (favorites.get('isDirty')) {
+			// 				Ember.debug('is dirty');
+			// 				promises.push(favorites.save());
+			// 			}
+			// 		});
+			// 	});
+			// }, function() {
+			// 	//developer failed to save;
+			// 	Ember.warn('Error - could not get channels');
+			// });
+
+			// // All favorites have been removed
+			// Ember.RSVP.all(promises).then(function() {
+			// 	_this.transitionToRoute('new');
+			// }, function() {
+			// 	Ember.warn('Error - could not resolve all promises');
+			// 	//one or more languages failed to save
+			// });
 		}
 	}
 });

@@ -4,11 +4,12 @@ export default Ember.Route.extend({
 
 	redirectWithoutChannel: function() {
 		Ember.debug('redirectWithoutChannel');
+		Ember.debug(this.get('session.userChannel'));
 
 		if (this.get('session.authed') && !this.get('session.userChannel')) {
 			this.transitionTo('new');
 		}
-	}.observes('session.authed', 'session.userChannel'),
+	}.observes('session.authed', 'session.userChannel.id'),
 
 	renderTemplate: function() {
 		// because we overwrite the renderTemplate method

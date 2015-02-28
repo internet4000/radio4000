@@ -40,5 +40,10 @@ export default Ember.Route.extend({
 			// Go back!
 			this.transitionTo('channel', channel);
 		}
+	},
+
+	// clear any unsaved changes
+	deactivate: function() {
+		this.get('currentModel').rollback();
 	}
 });
