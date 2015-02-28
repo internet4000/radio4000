@@ -3,6 +3,7 @@
  */
 
 .IntroMessage {
-	padding-top: 2em;
-	font-style: italic;
+	&:first-of-type {
+		margin-top: 2em;
+	}
 }

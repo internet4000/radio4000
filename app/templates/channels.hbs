@@ -6,18 +6,26 @@
 	{{#link-to 'channels.all' title="Discover channels" class="NavigationTab-item"}}All{{/link-to}}
 </div>
 
-{{#unless session.authed}}
-	<div class="Container Container--full IntroMessage">
-		Welcome! Are you new to <strong>radio4000</strong>?
-		{{#link-to 'introduction' title="What is Radio4000" class="IntroMessage-message"}}Do you want a short tour of what you can do?{{/link-to}}.
-	</div>
-{{/unless}}
-
-{{#unless session.userChannel}}
-	<div class="Container Container--full IntroMessage">
-		It seems you don't have a radio yet! Would you like to get started and
-		{{#link-to 'new' title="What is Radio4000" class="IntroMessage-message"}}create your radio?{{/link-to}}.
-	</div>
-{{/unless}}
-
 {{outlet}}
+
+<section class="Section">
+	{{#unless session.authed}}
+		{{!-- {{#link-to 'introduction' class="Box"}}
+			<h2 class="Title">Welcome to Radio4000!</h2>
+			<p>→ get introduced</p>
+		{{/link-to}} --}}
+		<p class="IntroMessage Container">
+			Welcome to <strong>Radio4000</strong>! {{#link-to 'introduction'}}Get introduced{{/link-to}}.
+		</p>
+	{{/unless}}
+
+	{{#unless session.userChannel}}
+		{{!-- {{#link-to 'new' class="Box" title="Register or sign in to create your channel"}}
+			<h2 class="Title">Create a radio</h2>
+			<p>→ register or sign in</p>
+		{{/link-to}} --}}
+		<p class="IntroMessage Container">
+			It seems you don't have a radio yet. {{#link-to 'new'}}Create your radio{{/link-to}}.
+		</p>
+	{{/unless}}
+</section>
