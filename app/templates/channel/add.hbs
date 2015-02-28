@@ -23,8 +23,6 @@
 
 	<div class="Form-group Form--save">
 		<button class="Btn Btn--primary" type='submit' title="Add track to your channel">Add track</button>
-		{{#link-to "channel" channel}}
-			<button class="Btn Btn--text" title="cancel adding track" >Cancel editing</button>
-		{{/link-to}}
+		{{#link-to "channel" channel class="Btn Btn--text" title="Cancel adding track"}}Cancel{{/link-to}}
 	</div>
 </form>
