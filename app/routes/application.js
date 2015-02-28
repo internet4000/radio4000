@@ -10,21 +10,15 @@ export default Ember.Route.extend({
 			this.get('session').logout();
 		}
 	},
-
-	beforeModel: function() {
-		// this.redirectIfNoChannel();
-	},
-
 	// force user to have a channel
 	redirectIfNoChannel: function() {
+		var authed = this.get('session.authed');
 		var userChannel = this.get('session.userChannel');
-		// Ember.debug('redirectIfNoChannel');
-		// Ember.debug(userChannel);
 
-		// redirects to either user.channel or /new once it detecs a user id
-		if (!userChannel) {
-			this.transitionTo('new');
+		if (authed && !userChannel) {
+			// logged in without channel
+			this.transitionToRoute('new');
 		}
-	}.observes('session.user.id')
+	}.observes('session.user.id'),
 
 });

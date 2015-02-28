@@ -14,17 +14,5 @@ export default Ember.Controller.extend({
 		togglePanel: function() { this.toggleProperty('isPanelOpen'); },
 		openPanel: function() { this.set('isPanelOpen', true); },
 		closePanel: function() { this.set('isPanelOpen', false); }
-	},
-
-	redirectIfLoggedIn: function() {
-		var authed = this.get('session.authed');
-		var userChannel = this.get('session.userChannel');
-
-		// forces you to create a channel
-		if (authed && !userChannel) {
-			this.transitionToRoute('new');
-		} else {
-			this.transitionToRoute('/');
-		}
-	}.observes('session.user.id')
+	}
 });
