@@ -5,10 +5,10 @@
 .Channel--detail {
 	position: relative;
 	z-index: 2; // above the player
+	margin-top: 2rem;
 }
 .Channel-header {
-	padding-top: 2rem;
-	padding-bottom: 0;
+	overflow: auto; // contain floated Cover
 }
 .Channel-cover {
 	position: relative;

@@ -2,36 +2,33 @@
 	<h1>All<small> — radios from A to Z</small></h1>
 </div>
 
-<div class="Section">
+<div class="Container Container--full Flex Flex--single">
+	{{input type="text" value=search placeholder="Search channels"}}
+	{{#button-group}}
+		<h4 class="BtnGroup-label">Sort by</h4>
+		<button class="Btn" {{action 'sortBy' 'created'}}>Date {{sort-indicator sortAscending=sortAscending}}</button>
+		<button class="Btn" {{action 'sortBy' 'title'}}>Name {{sort-indicator sortAscending=sortAscending}}</button>
+		{{!-- <button class="Btn" {{action 'sortBy' 'lastUpdated'}}>Updated {{sort-indicator sortAscending=sortAscending}}</button> --}}
+		{{!-- <button class="Btn" {{action 'sortBy' 'tracks.length'}}>Tracks {{sort-indicator sortAscending=sortAscending}}</button> --}}
+	{{/button-group}}
+</div>
 
-	<div class="Container Flex Flex--single Container--full">
-		{{input type="text" value=search placeholder="Search channels"}}
-		{{#button-group}}
-			<h4 class="BtnGroup-label">Sort by</h4>
-			<button class="Btn" {{action 'sortBy' 'created'}}>Date {{sort-indicator sortAscending=sortAscending}}</button>
-			<button class="Btn" {{action 'sortBy' 'title'}}>Name {{sort-indicator sortAscending=sortAscending}}</button>
-			{{!-- <button class="Btn" {{action 'sortBy' 'lastUpdated'}}>Updated {{sort-indicator sortAscending=sortAscending}}</button> --}}
-			{{!-- <button class="Btn" {{action 'sortBy' 'tracks.length'}}>Tracks {{sort-indicator sortAscending=sortAscending}}</button> --}}
-		{{/button-group}}
-	</div>
-
-	<div class="Container Container--full Container--noPadding">
-		<ul class="List">
-			{{#each channel in channels}}
-				<li>
-					{{#link-to "channel" channel class="ChannelTeaser"}}
-						<h3 class="ChannelTeaser-title">
-							{{unbound channel.title}}
-							{{!-- <small class="u-alignRight">
-								{{unbound channel.lastUpdated}} -
-								{{unbound channel.created}} -
-								{{unbound channel.tracks.length}}
-							</small> --}}
-						</h3>
-						<p class="ChannelTeaser-description">{{do-truncate channel.body 140}}</p>
-					{{/link-to}}
-				</li>
-			{{/each}}
-		</ul>
-	</div>
+<div class="Container Container--full Container--noPadding">
+	<ul class="List">
+		{{#each channel in channels}}
+			<li>
+				{{#link-to "channel" channel class="ChannelTeaser"}}
+					<h3 class="ChannelTeaser-title">
+						{{unbound channel.title}}
+						{{!-- <small class="u-alignRight">
+							{{unbound channel.lastUpdated}} -
+							{{unbound channel.created}} -
+							{{unbound channel.tracks.length}}
+						</small> --}}
+					</h3>
+					<p class="ChannelTeaser-description">{{do-truncate channel.body 140}}</p>
+				{{/link-to}}
+			</li>
+		{{/each}}
+	</ul>
 </div>
