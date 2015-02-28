@@ -8,14 +8,15 @@
 
 	<div class="ContextualNavigation">
 
-		{{#if session.authed}}
+		{{outlet "contextual-navigation"}}
+
+		{{!-- {{#if session.authed}}
 			{{#if session.userChannel}}
 				{{#link-to 'channel.add' session.userChannel}}+ Add track{{/link-to}}
-				{{!-- {{#link-to 'channel' session.userChannel title="Your channel"}}{{session.userChannel.title}}{{/link-to}} --}}
 			{{/if}}
 		{{/if}}
 		{{#unless session.authed}}
 			{{#link-to 'signin'}}Register or sign in{{/link-to}}
-		{{/unless}}
+		{{/unless}} --}}
 	</div>
 </div>
