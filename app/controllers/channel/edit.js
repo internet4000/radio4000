@@ -167,18 +167,21 @@ export default Ember.Controller.extend({
 		// Deletes the channel 4 real
 		deleteChannel: function() {
 			var _this = this;
-			// var channels = this.get('channels');
+			var channels = this.get('channels');
 			var channel = this.get('model');
 			var user = this.get('session.user');
 			var promises = [];
 
-			// destroy the channel and remove it from the user
+			// remove it from the user
 			channel.destroyRecord().then(function() {
-				user.get('channels').removeObject(channel);
-				user.save();
+				user.get('channels').then(function(userChannels) {
+					userChannels.removeObject(channel);
+					user.save();
+				});
 			});
 
 			// notify our sesion because it's a shortcut
+			// @todo with some refactor this shouldn't be necessary
 			this.set('session.userChannel', null);
 
 
