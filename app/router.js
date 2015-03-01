@@ -26,14 +26,12 @@ Router.map(function() {
 		this.route('forum');
 	});
 
-	// new channel
-	this.route('new');
 
 	// all channels
 	this.resource('channels', { path: '/'}, function() {
 		this.route('popular');
 		this.route('all');
-
+		this.route('new'); // new channel
 	});
 
 	// channel

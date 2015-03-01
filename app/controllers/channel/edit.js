@@ -166,11 +166,11 @@ export default Ember.Controller.extend({
 
 		// Deletes the channel 4 real
 		deleteChannel: function() {
-			var _this = this;
-			var channels = this.get('channels');
+			// var _this = this;
 			var channel = this.get('model');
 			var user = this.get('session.user');
-			var promises = [];
+			// var channels = this.get('channels');
+			// var promises = [];
 
 			// remove it from the user
 			channel.destroyRecord().then(function() {
@@ -184,8 +184,7 @@ export default Ember.Controller.extend({
 			// @todo with some refactor this shouldn't be necessary
 			this.set('session.userChannel', null);
 
-
-			this.transitionToRoute('new');
+			this.transitionToRoute('channels.new');
 
 			// Ember.debug(channels);
 
@@ -208,7 +207,7 @@ export default Ember.Controller.extend({
 
 			// // All favorites have been removed
 			// Ember.RSVP.all(promises).then(function() {
-			// 	_this.transitionToRoute('new');
+			// 	_this.transitionToRoute('channels.new');
 			// }, function() {
 			// 	Ember.warn('Error - could not resolve all promises');
 			// 	//one or more languages failed to save

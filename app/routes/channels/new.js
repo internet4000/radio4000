@@ -13,9 +13,16 @@ export default Ember.Route.extend({
 	afterModel: function() {
 		document.title = 'New - Radio4000';
 	},
+	renderTemplate: function() {
+		// don't render into channels outlet - this avoids the tabs we have on channels.hbs
+		this.render({
+			into: 'application'
+		});
+	},
 	deactivate: function() {
 		document.title = 'Radio4000';
 	},
+
 
 	actions: {
 		willTransition: function(transition) {

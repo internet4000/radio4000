@@ -8,7 +8,7 @@ export default Ember.Route.extend({
 
 		if (this.get('session.authed') && !this.get('session.userChannel')) {
 			Ember.debug('back to new');
-			this.transitionTo('new');
+			this.transitionTo('channels.new');
 		}
 	}.observes('session.userChannel.id'),
 
