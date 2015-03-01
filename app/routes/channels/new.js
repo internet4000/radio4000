@@ -22,8 +22,6 @@ export default Ember.Route.extend({
 	deactivate: function() {
 		document.title = 'Radio4000';
 	},
-
-
 	actions: {
 		willTransition: function(transition) {
 			// stop the transition if you haven't got a channel

@@ -8,16 +8,9 @@ export default Ember.Controller.extend({
 	}.property('title'),
 
 	actions: {
-		createChannel: function() {
-			var channel = this.get('model');
-			var title = channel.get('title');
+		create: function() {
 			var user = this.get('session.user');
-
-			// we need a title
-			if (title === '') {
-				Ember.warn('No title.');
-				return false;
-			}
+			var channel = this.get('model');
 
 			// we need a user
 			if (!user) {
@@ -25,22 +18,22 @@ export default Ember.Controller.extend({
 				return false;
 			}
 
-			// set and save
 			channel.setProperties({
-				user: user,
 				slug: this.get('cleanSlug'),
 				created: new Date().getTime()
-			}).save();
+			}).save().then(function(channel) {
+				// now the channel is saved
 
-			// set relationship on user
-			user.get('channels').then(function(channels) {
-				channels.addObject(channel);
-				user.save();
-			});
+				// set relationship on user
+				user.get('channels').then(function(channels) {
+					channels.addObject(channel);
+					user.save();
+				});
 
-			// set the user channel
-			// (otherwise index will be blank because we only set on login)
-			this.set('session.userChannel', channel);
+				// @todo refactor: set the user channel (should be automatic)
+				// (otherwise index will be blank because we only set on login)
+				this.set('session.userChannel', channel);
+			}.bind(this));
 
 			// Redirect to the new channel
 			this.transitionToRoute('channel', channel);
