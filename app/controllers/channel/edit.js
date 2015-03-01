@@ -169,6 +169,7 @@ export default Ember.Controller.extend({
 			// var _this = this;
 			var channel = this.get('model');
 			var user = this.get('session.user');
+			var favorites = channel.get('favoriteChannels');
 			// var channels = this.get('channels');
 			// var promises = [];
 
@@ -180,9 +181,23 @@ export default Ember.Controller.extend({
 				});
 			});
 
+			// remove what?!
+			favorites.then(function(favorites) {
+				favorites.forEach(function(fav) {
+					fav.get('followers').then(function(followers) {
+						followers.removeObject(channel);
+						fav.save().then(function() {
+							Ember.debug('follower removed');
+						});
+					});
+				});
+			});
+
 			// notify our sesion because it's a shortcut
 			// @todo with some refactor this shouldn't be necessary
 			this.set('session.userChannel', null);
+
+
 
 			this.transitionToRoute('channels.new');
 
