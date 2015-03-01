@@ -11,8 +11,9 @@
 	text-decoration: none;
 	user-select: none; /* 6 */
 	white-space: normal; /* 7 */
+
 	// Button styling
-	padding: 0.5em .8em 0.7em;
+	padding: 0.5em 0.8em 0.55em;
 	background-color: $slightgray;
 	background-image: linear-gradient(to bottom, $white 60%, #ececec);
 	color: $text-color;
