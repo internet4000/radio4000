@@ -181,9 +181,10 @@ export default Ember.Controller.extend({
 				});
 			});
 
-			// remove what?!
+			// get all this channel's favorite channels
 			favorites.then(function(favorites) {
 				favorites.forEach(function(fav) {
+					// unmark the current channel as follower on each of these favorites
 					fav.get('followers').then(function(followers) {
 						followers.removeObject(channel);
 						fav.save().then(function() {
@@ -197,12 +198,7 @@ export default Ember.Controller.extend({
 			// @todo with some refactor this shouldn't be necessary
 			this.set('session.userChannel', null);
 
-
-
 			this.transitionToRoute('channels.new');
-
-			// Ember.debug(channels);
-
 			// remove it as favorite on all channels
 			// channels.then(function(channels) {
 			// 	Ember.debug(channels);
