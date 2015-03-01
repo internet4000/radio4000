@@ -36,6 +36,7 @@ export default Ember.Controller.extend({
 			}.bind(this));
 
 			// Redirect to the new channel
+			Ember.debug('redirect to the new channel');
 			this.transitionToRoute('channel', channel);
 		}
 	},

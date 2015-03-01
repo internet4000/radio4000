@@ -51,5 +51,5 @@ export default Ember.Controller.extend({
 		if (!userFavorites) { return false; }
 
 		return userFavorites.contains(channel);
-	}.property('session.userChannel.favoriteChannels.@each'),
+	}.property('model', 'session.userChannel.favoriteChannels.@each'),
 });
