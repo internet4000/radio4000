@@ -24,6 +24,14 @@ export default Ember.Controller.extend({
 		});
 	}),
 
+	// generates a ytid if the model doesn't have one already
+	// @todo: this should be removed when no longer necessary
+	validateTrack: function() {
+		if (! this.get('model.ytid')) {
+			this.get('model').updateProvider();
+		}
+	}.observes('model.ytid'),
+
 	// unplayed: Ember.computed.filter('tracks', function(track, index) {
 	// 	return !this.get('history').contains(track);
 	// }),
@@ -144,9 +152,7 @@ export default Ember.Controller.extend({
 			this.send('playTrack', newTrack);
 		},
 
-		playPrev: function() {
-
-		},
+		playPrev: function() {},
 
 		playFirst: function() {
 			// first is last because we have newest on top

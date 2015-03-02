@@ -22,5 +22,6 @@ export default DS.Model.extend({
 		console.log('updateYtid');
 		var id = youtube(this.get('url'));
 		this.set('ytid', id);
+		this.save();
 	}
 });
