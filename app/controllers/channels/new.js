@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
 	actions: {
 		// make sure the title has the right length
 		checkCreate: function() {
-			if(this.get('model.title.length') <= this.titleMaxLength) {
+			if(this.get('model.title.length') <= this.get('titleMaxLength')) {
 				// good we can create the channel
 				this.send('create');
 			} else {
