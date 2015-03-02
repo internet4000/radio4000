@@ -36,16 +36,17 @@ export default Ember.Controller.extend({
 				user.get('channels').then(function(channels) {
 					channels.addObject(channel);
 					user.save();
-				});
 
-				// @todo refactor: set the user channel (should be automatic)
-				// (otherwise index will be blank because we only set on login)
-				this.set('session.userChannel', channel);
+					// @todo refactor: set the user channel (should be automatic)
+					// (otherwise index will be blank because we only set on login)
+					this.set('session.userChannel', channel);
+
+					// Redirect to the new channel
+					Ember.debug('redirect to the new channel');
+					this.transitionToRoute('channel', channel);
+				}.bind(this));
+
 			}.bind(this));
-
-			// Redirect to the new channel
-			Ember.debug('redirect to the new channel');
-			this.transitionToRoute('channel', channel);
 		}
 	},
 

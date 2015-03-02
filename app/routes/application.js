@@ -3,12 +3,13 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 
 	redirectWithoutChannel: function() {
-		Ember.debug('redirectWithoutChannel');
-		Ember.debug(this.get('session.userChannel'));
+		var channel = this.get('session.userChannel');
 
-		if (this.get('session.authed') && !this.get('session.userChannel')) {
-			Ember.debug('back to new');
+		if (!channel) {
+			// Ember.debug('authed without channel -> force ');
 			this.transitionTo('channels.new');
+		} else if (channel) {
+			// this.transitionTo('channel', channel);
 		}
 	}.observes('session.userChannel.id'),
 
