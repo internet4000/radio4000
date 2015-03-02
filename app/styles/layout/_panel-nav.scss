@@ -81,6 +81,7 @@
 
 .UserChannel {
 	@include clearfix;
+	overflow-x: hidden; // prevent channel name to go out of navBar if it is a single word
 	a {
 		@include clearfix;
 	}

@@ -2,12 +2,20 @@ import Ember from 'ember';
 import clean from 'radio4000/utils/clean';
 
 export default Ember.Controller.extend({
-	cleanSlug: function() {
-		var cleaned = clean(this.get('model.title'));
-		return cleaned + '-' + this.getRandomText();
-	}.property('title'),
+
+	titleMaxLength: 32,
 
 	actions: {
+		// make sure the title has the right length
+		checkCreate: function() {
+			if(this.get('model.title.length') <= this.titleMaxLength) {
+				// good we can create the channel
+				this.send('create');
+			} else {
+				// console.log(this.get('model.title.length'));
+			}
+		},
+
 		create: function() {
 			var user = this.get('session.user');
 			var channel = this.get('model');
@@ -40,6 +48,11 @@ export default Ember.Controller.extend({
 			this.transitionToRoute('channel', channel);
 		}
 	},
+
+	cleanSlug: function() {
+		var cleaned = clean(this.get('model.title'));
+		return cleaned + '-' + this.getRandomText();
+	}.property('title'),
 
 	// Returns a random string
 	getRandomText: function() {
