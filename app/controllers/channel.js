@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
 		if (userChannel === null) { return false; }
 
 		return channel.get('id') === userChannel.get('id');
-	}.property('session.userChannel.id'),
+	}.property('model', 'session.userChannel'),
 
 	actions: {
 		play: function() {
