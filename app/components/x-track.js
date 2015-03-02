@@ -31,17 +31,22 @@ export default Ember.Component.extend({
 			this.set('currentTrackComponent', null);
 		},
 		save: function() {
+			var track = this.get('track');
+			track.updateProvider();
 			this.send('cancel');
-			this.get('track').updateProvider();
-			this.get('track').save().then(function() {
+
+			track.save().then(function() {
 				Ember.debug('Saved track');
 			});
 		},
-		remove: function(track) {
+
+		// Delete the track object and the corresponding track object in channel.tracks
+		remove: function() {
+			var track = this.get('track');
+			var channel = this.get('track.channel');
+
 			Ember.debug('deleting');
 
-			// Delete the track object and the corresponding track object in channel.tracks
-			var channel = this.get('channel.model');
 			channel.get('tracks').then(function(tracks) {
 				Ember.debug(tracks);
 				tracks.removeObject(track);
