@@ -6,8 +6,14 @@ export default Ember.Controller.extend({
 
 	// True if session user's channel is the same as this model
 	canEdit: function() {
-		return this.get('model') === this.get('session.userChannel');
-	}.property('model', 'session.userChannel'),
+		var channel = this.get('model');
+		var userChannel = this.get('session.userChannel');
+
+		// avoid both props being null === null which equals true (lol)
+		if (userChannel === null) { return false; }
+
+		return channel.get('id') === userChannel.get('id');
+	}.property('session.userChannel.id'),
 
 	actions: {
 		play: function() {
@@ -53,3 +59,4 @@ export default Ember.Controller.extend({
 		return userFavorites.contains(channel);
 	}.property('model', 'session.userChannel.favoriteChannels.@each'),
 });
+
