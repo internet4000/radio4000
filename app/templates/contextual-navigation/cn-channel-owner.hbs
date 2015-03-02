@@ -1,6 +1,6 @@
 {{#if session.authed}}
 	{{#if session.userChannel}}
-		{{#link-to 'channel' session.userChannel}}My channel{{/link-to}}
+		{{#link-to 'channel.add' session.userChannel}}+ Add track{{/link-to}}
 	{{/if}}
 {{/if}}
 {{#unless session.authed}}

@@ -19,12 +19,10 @@ export default Ember.Route.extend({
 		// and one from ember now that we have the ID, this way we get a "ember" model
 		var ref = new Firebase("https://radio4000-dev.firebaseio.com/channels/");
 		var that = this;
-		console.log("Start");
 
 		// find the channel by slug without emberfire, just firebase
 		var channelFromSlug = new Ember.RSVP.Promise(function(resolve, reject) {
 			ref.orderByChild('slug').equalTo(params.channel_slug).on('child_added', function(snapshot) {
-				console.log("Resolved");
 				resolve(snapshot.key());
 			}, function(error) {
 				reject(error);
@@ -34,12 +32,10 @@ export default Ember.Route.extend({
 		// use that id to query using emberfire,
 		// so we get a real "ember" model (and not the pure firebase one)
 		return channelFromSlug.then(function(value) {
-			console.log("Middle");
 			return that.store.find('channel', value).then(function(data) {
-				console.log("Channel found");
 				return data;
 			}, function(error) {
-				console.log(error);
+				// console.log(error);
 			});
 		});
 	},
@@ -50,16 +46,34 @@ export default Ember.Route.extend({
 		this.controllerFor('channel.edit').set('model', model);
 	},
 
+	// True if session user matches channel user
+	canEdit: function() {
+		return this.get('model') === this.get('session.userChannel');
+	}.property('model', 'session.userChannel'),
+
 	renderTemplate: function() {
 		// because we overwrite the renderTemplate method
 		// we need to tell it to also render the default template
 		this.render();
 
+		// @todo render a different template if seession.user is on his channel
+		// var currentChannel = this.get('model');
+		// var currentUserChannel = this.get('session.user.channels.lastObject');
+
+		// if(!canEdit) {
+			this.render('contextual-navigation/cn-channel', {
+				into: 'application',
+				outlet: 'contextual-navigation'
+			});
+
+		// } else {
+		// 	this.render('contextual-navigation/cn-channel-owner', {
+		// 		into: 'application',
+		// 		outlet: 'contextual-navigation'
+		// 	});
+		// }
+
 		// and update nav bar
-		this.render('contextual-navigation/cn-channel', {
-			into: 'application',
-			outlet: 'contextual-navigation'
-		});
 	},
 
 	// because we use slugs instead of ids in the url
