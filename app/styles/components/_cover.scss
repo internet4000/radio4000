@@ -1,13 +1,12 @@
-$cover-size: 140px;
+$cover-size: 150px;
 
 .Cover {
 	position: relative;
-	width: $cover-size;
-	max-width: 100%;
+	max-width: $cover-size;
 	text-align: left;
 
 	.Flex & {
-		flex: 0 1 140px;
+		flex: 0 1 45%;
 		@media (min-width: $layout-s) {
 			margin-right: 1.5rem;
 		}
@@ -37,9 +36,14 @@ $cover-size: 140px;
 	background-color: $darkblue;
 	position: relative;
 	overflow: hidden;
-	height: $cover-size;
+	// height: $cover-size;
+	height: 0;
+	padding-bottom: 100%;
 	// stretch image
 	img {
+		position: absolute;
+		top: 0;
+		left: 0;
 		object-fit: cover;
 		width: 100%;
 		height: 100%;

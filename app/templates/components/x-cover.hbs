@@ -1,7 +1,7 @@
 {{#link-to 'channel' model}}
 
 	<figure class="Cover-img">
-		{{#if model.coverImage.src}}
+		{{#if model.coverImage}}
 			<img src={{model.coverImage.src}} alt={{model.title}}>
 		{{/if}}
 
@@ -10,6 +10,7 @@
 		{{else}}
 			<button class="Cover-button" {{action "play"}} title="Play this channel">{{x-icon i="play"}}</button>
 		{{/if}} --}}
+
 		<svg
 		version="1.1"
 		xmlns="http://www.w3.org/2000/svg"

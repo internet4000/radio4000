@@ -20,7 +20,7 @@ export default DS.Model.extend({
 
 	// Set the latest image as the cover image
 	coverImage: function() {
-		return this.get('images.lastObject');
+		return this.get('images.firstObject');
 	}.property('images.[]'),
 
 	tracks: DS.hasMany('track', { async: true }),
