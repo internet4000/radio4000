@@ -37,7 +37,6 @@
     "express": "^4.8.5",
     "glob": "^4.0.5",
     "gulp": "^3.8.11",
-    "liquid-fire": "^0.18.0",
     "rsyncwrapper": "^0.4.1"
   }
 }

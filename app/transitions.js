@@ -1,5 +1,9 @@
 export default function() {
 
+
+	// REMEMBER
+	//  to add liquid-fire to package.json so the scripts get loaded
+
 	// This is a map of our routes and how they transition.
 
 	/*

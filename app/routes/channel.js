@@ -35,7 +35,7 @@ export default Ember.Route.extend({
 			return that.store.find('channel', value).then(function(data) {
 				return data;
 			}, function(error) {
-				// console.log(error);
+				console.log(error);
 			});
 		});
 	},
