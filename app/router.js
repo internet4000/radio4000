@@ -29,7 +29,6 @@ Router.map(function() {
 
 	// all channels
 	this.resource('channels', { path: '/'}, function() {
-		this.route('popular');
 		this.route('all');
 		this.route('new'); // new channel
 	});

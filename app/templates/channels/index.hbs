@@ -1,12 +1,16 @@
 <div class="Manchet Manchet--left">
-	<h1>Discover<small> — human radios</small></h1>
+	<h1>Discover<small> — featured radios</small></h1>
 </div>
 
 <div class="Container Container--full">
-	<div class="Flex">
+	{{!-- <div class="Grid">
 		{{#each channel in featured}}
+			{{x-cover model=channel}}
+		{{/each}}
+	</div> --}}
+	<div class="Grid">
+		{{#each channel in popular}}
 			{{x-cover model=channel}}
 		{{/each}}
 	</div>
 </div>
-
