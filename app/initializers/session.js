@@ -29,7 +29,8 @@ export default {
 			store: container.lookup('store:main'),
 
 			init: function() {
-				// on init try to login
+
+				// this runs every time you log in or out
 				ref.onAuth(function(authData) {
 
 					// Not authenticated
@@ -37,6 +38,7 @@ export default {
 						this.set('authed', false);
 						this.set('authData', null);
 						this.set('user', null);
+						this.set('userChannel', null);
 						return false;
 					}
 
