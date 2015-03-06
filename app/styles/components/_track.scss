@@ -25,10 +25,10 @@
 }
 .Track-link,
 a.Track-link { // Link surrounding the track
-	// border-left: 4px solid transparent;
+	border-left: 5px solid transparent;
 	padding-right: rem(60);
 	color: $text-color;
-	// transition: border 250ms $easing5;
+	transition: border-color 250ms $easing;
 }
 
 // Track edit button
@@ -53,11 +53,12 @@ a.Track-link { // Link surrounding the track
 .Track.is-current {
 	.Track-link,
 	a.Track-link {
-		background-color: $primary-color;
-		color: white;
+		background-color: $white;
+		border-left-color: $red;
+		// color: white;
 	}
 	.Track-description {
-		color: white;
+		// color: white;
 	}
 	.icon-play {
 		display: block;

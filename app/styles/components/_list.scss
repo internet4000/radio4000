@@ -17,9 +17,6 @@
 	p {
 		margin: 0;
 	}
-	// h3 {
-	// 	@extend %font-regular;
-	// }
 	p {
 		@include size-1;
 		max-width: 80%;
@@ -42,10 +39,10 @@
 		}
 		&:focus,
 		&:active {
-			background-color: $purple;
+			background-color: $white;
 			text-decoration: none;
-			color: $white;
-			p { color: $white; }
+			// color: $white;
+			// p { color: $white; }
 		}
 	}
 }
