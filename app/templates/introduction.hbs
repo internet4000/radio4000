@@ -3,13 +3,13 @@
 </div>
 
 <div class="Container Container--large">
-	<section class="Section Section--space Grid">
+	<section class="Section Section--space Grid Grid--center">
 		<div>for music lovers by music lovers</div>
 	</section>
 </div>
 
 <div class="Container Container--large">
-	<section class="Section Section--space Grid">
+	<section class="Section Section--space Grid Grid--center">
 		<div class="Grid-item">
 			<h3 class="Subtitle">1 radio</h3>
 			<p>Add music to your radio and share your music tastes</p>
@@ -32,17 +32,19 @@
 	</section>
 </div>
 
-<section class="Container Grid Grid--full Section Section--space">
-	<div class="Grid-item">
-		{{#link-to 'channels.new' class="Box" title="Register or sign in to create your channel"}}
-			<h2 class="Title">Create a radio</h2>
-			<p>→ register or sign in</p>
-		{{/link-to}}
-	</div>
-	<div class="Grid-item">
-		{{#link-to 'channels' class="Box" title="Discover music by channels"}}
-			<h2 class="Title">Discover radios</h2>
-			<p>→ listen now</p>
-		{{/link-to}}
+<section class="Container Container--full Section Section--space">
+	<div class="Grid Grid--center Grid--full">
+		<div class="Grid-item">
+			{{#link-to 'channels.new' class="Box" title="Register or sign in to create your channel"}}
+				<h2 class="Title">Create a radio</h2>
+				<p>→ register or sign in</p>
+			{{/link-to}}
+		</div>
+		<div class="Grid-item">
+			{{#link-to 'channels' class="Box" title="Discover music by channels"}}
+				<h2 class="Title">Discover radios</h2>
+				<p>→ listen now</p>
+			{{/link-to}}
+		</div>
 	</div>
 </section>

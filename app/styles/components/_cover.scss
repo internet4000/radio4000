@@ -2,15 +2,8 @@ $cover-size: 150px;
 
 .Cover {
 	position: relative;
-	max-width: $cover-size;
+	// max-width: $cover-size;
 	text-align: left;
-
-	.Flex & {
-		flex: 0 1 45%;
-		@media (min-width: $layout-s) {
-			margin-right: 1.5rem;
-		}
-	}
 
 	// hidden and centered loader
 	svg {

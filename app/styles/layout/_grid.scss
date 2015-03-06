@@ -1,3 +1,63 @@
+.Grid {
+	display: flex;
+	flex-flow: row wrap;
+
+	// because items have gutters on both sides
+	margin-left: -0.5rem;
+	margin-right: -0.5rem;
+
+	// todo: refactor
+	.Subtitle {
+		margin-bottom: 0.5rem;
+	}
+
+	.Cover {
+		flex: 1 1 50%;
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+		@media (min-width: $layout-s) {
+			max-width: 33%;
+		}
+		@media (min-width: $layout-m) {
+			max-width: 25%;
+		}
+		@media (min-width: $layout-ml) {
+			max-width: 20%;
+		}
+		@media (min-width: $layout-l) {
+			max-width: 170px;
+		}
+	}
+}
+
+// Make a grid's items equal height
+.Grid--full {
+	align-items: stretch;
+	.Grid-item {
+		display: flex;
+	}
+}
+.Grid--center {
+	justify-content: center;
+	text-align: center;
+}
+.Grid-item {
+	flex: 0 0 100%; // first full, then split the space
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	margin-bottom: 1rem;
+
+	@media (min-width: $layout-s) {
+		flex: 1;
+	}
+
+	img {
+		max-width: 5rem;
+	}
+}
+
+
+
 .Flex {
 	display: flex;
 	flex-flow: row wrap;
@@ -14,38 +74,4 @@
 }
 .Flex--single {
 	flex-flow: row nowrap;
-}
-
-.Grid {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: center; // x-center
-	text-align: center;
-
-	// todo: refactor
-	.Subtitle {
-		margin-bottom: 0.5rem;
-	}
-}
-.Grid-item {
-	flex: 0 0 100%; // first full, then split the space
-	padding-left: 1rem;
-	padding-right: 1rem;
-	margin-bottom: 1rem;
-
-	@media (min-width: $layout-s) {
-		flex: 1;
-	}
-
-	img {
-		max-width: 5rem;
-	}
-}
-
-// Make a grid's items equal height
-.Grid--full {
-	align-items: stretch;
-	.Grid-item {
-		display: flex;
-	}
 }
