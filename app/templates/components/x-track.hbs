@@ -11,17 +11,17 @@
 		<form class="Form EditTrack">
 			<div class="Form-group">
 				<label>Title
-					{{focus-input value=track.title placeholder="Title"}}
+					{{focus-input value=track.title placeholder="Title" required="required"}}
 				</label>
 			</div>
 			<div class="Form-group">
 				<label>URL
-					{{input type="url" placeholder="YouTube or Soundcloud URL" value=track.url}}
+					{{input type="url" placeholder="YouTube or Soundcloud URL" value=track.url required="required"}}
 				</label>
 			</div>
 			<div class="Form-group">
 				<label>Description
-					{{textarea value=track.body placeholder="Description"}}
+					{{input type="text" value=track.body placeholder="Description"}}
 				</label>
 			</div>
 			<div class="Form-group">
