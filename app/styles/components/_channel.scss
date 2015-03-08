@@ -21,9 +21,11 @@
 	width: 10em;
 	margin-right: 1rem;
 	margin-bottom: 1rem;
+
+	// cover size on smaller screens
 	@media (max-width: $layout-s) {
-		width: 50px;
-		.Cover-img { height: 50px; }
+		width: 70px;
+		.Cover-img { height: 70px; }
 	}
 }
 .Channel-title {
