@@ -6,8 +6,11 @@ export default Ember.Controller.extend({
 	isMaximized: Ember.computed.alias('controllers.playback.isMaximized'),
 	isPanelOpen: false,
 
+	// show back button if we're on a nested channel (.) route
+	// or on a track
 	showBackButton: function() {
-		return !this.get('currentRouteName').indexOf('channel.');
+		var route = this.get('currentRouteName');
+		return route === 'track' || !route.indexOf('channel.');
 	}.property('currentRouteName'),
 
 	actions: {
