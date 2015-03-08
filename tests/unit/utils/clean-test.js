@@ -2,8 +2,11 @@ import clean from 'radio4000/utils/clean';
 
 module('clean');
 
-// Replace this with your real tests.
 test('it works', function() {
-  var result = clean();
-  ok(result);
+	var string = '&$#! S??omething// With UPPERCASE and SPACES and CH#$@#%(*!';
+	var result = clean(string);
+
+	ok(result.indexOf(' ') < 1, 'String can not contain spaces.');
+	ok(result.indexOf('/') < 1, 'String can not contain a slash.');
+	ok(result.indexOf('?') < 1, 'String can not contain a question mark.');
 });
