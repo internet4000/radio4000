@@ -10,6 +10,8 @@
 	<aside class="SitePanelNavOverlay" {{action "closePanel"}}></aside>
 
 	<main class="SiteMain">
+		{{#if iOS}}{{partial 'partials/ios-message'}}{{/if}}
+
 		{{!-- {{liquid-outlet name="main"}} --}}
 		{{outlet}}
 	</main>
