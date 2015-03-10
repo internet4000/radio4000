@@ -2,10 +2,10 @@
 
 module.exports = function(environment) {
   var ENV = {
-    firebaseURL: 'https://radio4000-dev.firebaseio.com/', // DEV
-    // firebaseURL: 'https://radio4000.firebaseio.com/', // LIVE
     modulePrefix: 'radio4000',
     environment: environment,
+    firebase: 'https://radio4000-dev.firebaseio.com/',
+    // firebase: 'https://radio4000.firebaseio.com/', // LIVE
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {

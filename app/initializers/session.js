@@ -9,10 +9,11 @@
  */
 
 import Ember from 'ember';
-import ENV from '../config/environment';
+import config from '../config/environment';
+import Firebase from 'firebase';
 
-// Since I've defined my url in environment.js I can do this
-var ref = new window.Firebase(ENV.firebaseURL);
+// New firebase instance (don't know how to get the one from the adapter)
+var ref = new Firebase(config.firebase);
 
 export default {
 	name: 'session',
