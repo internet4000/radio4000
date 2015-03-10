@@ -11,7 +11,6 @@ body {
 	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
 }
-
 .SiteHeader {
 	@include clearfix;
 }
@@ -20,13 +19,6 @@ body {
 	margin-top: $barHeight;
 	margin-bottom: $barHeight;
 }
-
-.SiteAside {
-	// fixes z-index issues; w/ animations etc.
-	position: relative;
-	z-index: 3;
-}
-
 .SiteFooter {
 	background-color: darken($bg-color, 6%);
 

@@ -1,3 +1,4 @@
+
 <div {{bind-attr class=":OverlayManager :BreadAndCheese isMaximized isPanelOpen:is-panelOpen"}}>
 	<header class="SiteHeader">
 		{{partial 'partials/nav-header'}}
@@ -16,8 +17,6 @@
 		{{outlet}}
 	</main>
 
-	<aside class="SiteAside">
-		{{render 'playback'}}
-		{{!-- should do: {{outlet sidebar}} + nested route instead of using render --}}
-	</aside>
+	{{render 'playback'}}
+	{{!-- should do: {{outlet sidebar}} + nested route instead of using render --}}
 </div>

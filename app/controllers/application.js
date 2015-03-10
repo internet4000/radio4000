@@ -16,7 +16,6 @@ export default Ember.Controller.extend({
 	// Detect iOS devices so we can tell it doesn't work
 	iOS: function() {
 		var iOS = /(iPad|iPhone|iPod)/g.test( navigator.userAgent );
-		console.log(navigator.userAgent);
 		return iOS;
 	}.property(),
 
