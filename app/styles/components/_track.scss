@@ -36,10 +36,11 @@ a.Track-link { // Link surrounding the track
 	@include size-1;
 	cursor: pointer;
 	position: absolute;
-	top: 0.26em;
+	top: 50%;
 	right: 1rem;
 	padding: em(4,13) em(7,13) em(3,13);
 	margin: 0;
+	transform: translateY(-50%);
 
 	.icon-pencil {
 		color: $mediumgray;
