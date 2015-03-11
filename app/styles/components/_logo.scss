@@ -45,6 +45,9 @@
 		}
 		img {
 			margin-left: 0;
+			@media (min-width: $layout-m) {
+				margin-left: 1rem;
+			}
 		}
 	}
 	img {
