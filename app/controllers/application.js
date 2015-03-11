@@ -10,7 +10,8 @@ export default Ember.Controller.extend({
 	// or on a track
 	showBackButton: function() {
 		var route = this.get('currentRouteName');
-		return route === 'track' || !route.indexOf('channel.');
+		var formatedRoute = 'is-route-' + route;
+		return route;
 	}.property('currentRouteName'),
 
 	// Detect iOS devices so we can tell it doesn't work

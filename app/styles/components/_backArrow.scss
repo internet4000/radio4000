@@ -4,12 +4,11 @@
 
 .BackArrow {
 	font-size: 1.6rem;
-	padding-left: 0.5rem;
 	// vertical center
 	align-self: center;
 	position: relative;
 	top: 0.1em;
-
+	text-decoration: none;
 	&:hover {
 		text-decoration: none;
 	}

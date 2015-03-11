@@ -16,11 +16,36 @@
 
 	a {
 		display: block;
-		padding-left: 2rem;
+		padding-left: 1rem;
 		width: 89px;
 		color: $bleach;
 		&:hover {
 			text-decoration: none;
+		}
+		&:before {
+			content: "←";
+			display: inline-block;
+			position: absolute;
+			top: 11px;
+			left: 8px;
+			font-size: 32px;
+			transform: translateX(0);
+			transition: transform 400ms $easing;
+		}
+		// logo itself, moved to make space for the arrow
+		img {
+			margin-left: 1rem;
+			transform: translateX(0);
+			transition: transform 400ms $easing;
+		}
+	}
+	// when logo is active, so on home, hidde arrow
+	a.is-active {
+		&:before {
+			transform: translateX(-200%);
+		}
+		img {
+			margin-left: 0;
 		}
 	}
 	img {
