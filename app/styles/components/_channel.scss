@@ -50,6 +50,9 @@
 		color: $mediumgray;
 	}
 }
+.ChannelTeaser-description {
+	color: $text-color;
+}
 .LastUpdate {
 	@extend %font-regular;
 }
