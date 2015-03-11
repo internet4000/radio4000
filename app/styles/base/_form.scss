@@ -88,9 +88,16 @@ label {
 }
 .EditTrack {
 	margin-bottom: 0;
-	padding: 1rem 2rem 0;
+	padding-top: 1rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	padding-bottom: 0;
 	background-color: $superlightgray;
 	border-left: 5px solid transparent; // so it rightly aligned with the tracks and their active borderbar
+	@media (min-width: $layout-s) {
+		padding-left: 2rem;
+		padding-right: 2rem;
+	}
 }
 .Form-group label input {
 	@extend %font-regular;
