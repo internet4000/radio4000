@@ -7,7 +7,7 @@ export default Ember.ArrayController.extend({
 	// }.property('model.@each.isFeatured'),
 
 	// sort by followers
-	maxPopular: 10,
+	maxPopular: 16,
 	sortProperties: ['followers.length'],
 	sortAscending: false,
 
@@ -16,4 +16,3 @@ export default Ember.ArrayController.extend({
 		return this.get('arrangedContent').slice(0,this.get('maxPopular'));
 	}.property('arrangedContent')
 });
-
