@@ -37,5 +37,13 @@
     "emberfire": "1.4.1",
     "gulp": "^3.8.11",
     "rsyncwrapper": "^0.4.2"
+  },
+  "dependencies": {
+    "ember-cli-app-version": "^0.3.3"
+  },
+  "main": "dist/index.html",
+  "window": {
+    "width": 960,
+    "height": 600
   }
 }
