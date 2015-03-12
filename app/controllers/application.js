@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
 	// or on a track
 	showBackButton: function() {
 		var route = this.get('currentRouteName');
-		var formatedRoute = 'is-route-' + route;
+		// var formatedRoute = 'is-route-' + route;
 		return route;
 	}.property('currentRouteName'),
 
