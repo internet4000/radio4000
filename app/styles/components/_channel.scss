@@ -23,6 +23,10 @@
 		width: 70px;
 		.Cover-img { height: 70px; }
 	}
+	@media (min-width: $layout-m) {
+		margin-right: 1.5rem;
+
+	}
 }
 .Channel-title {
 	margin-bottom: 0.5rem;

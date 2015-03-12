@@ -3,14 +3,10 @@
 </div>
 
 <div class="Container Container--full">
-	{{!-- <div class="Grid">
-		{{#each channel in featured}}
-			{{x-cover model=channel}}
-		{{/each}}
-	</div> --}}
-	<div class="Grid">
+	<div class="Grid Section">
 		{{#each channel in popular}}
 			{{x-cover model=channel}}
 		{{/each}}
 	</div>
+	<p>Want more radios? {{#link-to 'channels.all'}}See them all{{/link-to}}.</p>
 </div>

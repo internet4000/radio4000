@@ -47,9 +47,9 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
   }
 
-  // if (environment === 'production') {
-  //   ENV.firebaseURL = 'https://radio4000.firebaseio.com/';
-  // }
+  if (environment === 'production') {
+    ENV.firebase = 'https://radio4000.firebaseio.com/';
+  }
 
   return ENV;
 };

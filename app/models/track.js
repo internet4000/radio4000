@@ -11,8 +11,7 @@ export default DS.Model.extend({
 
 	// Format the date
 	createdDate: function() {
-		var m = window.moment(this.get('created'));
-		return m.fromNow(); // "19 hours ago"
+		return window.moment(this.get('created')).fromNow();
 	}.property('created'),
 
 	// Returns a YouTube ID from an URL

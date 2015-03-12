@@ -15,17 +15,19 @@
 		flex: 1 1 50%;
 		padding-left: 0.5rem;
 		padding-right: 0.5rem;
+		// edge-to-edge grid
 		@media (min-width: $layout-s) {
-			max-width: 33%;
+			flex: 1 1 33%;
 		}
 		@media (min-width: $layout-m) {
-			max-width: 25%;
+			flex: 1 1 25%;
 		}
 		@media (min-width: $layout-ml) {
-			max-width: 20%;
+			flex: 1 1 20%;
 		}
+		// left-aligned grid
 		@media (min-width: $layout-l) {
-			max-width: 170px;
+			flex: 0 1 170px;
 		}
 	}
 }

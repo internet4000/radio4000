@@ -6,19 +6,13 @@
 				{{x-cover model=model hideTitle=true}}
 			</div>
 
-			{{!-- {{#if canEdit}}
-				{{partial 'channel/editImage'}}
-			{{/if} --}}
-
 			<h1 class="Channel-title">
-				{{#link-to 'channel' model}}
-					{{model.title}}
-				{{/link-to}}
+				{{#link-to 'channel' model}}{{model.title}}{{/link-to}}
 			</h1>
 
 			<p class="Channel-description">{{model.body}}</p>
 			{{#if model.lastUpdatedFormatted}}
-				<p class="Muted LastUpdate">(last update {{unbound model.lastUpdatedFormatted}})</p>
+				<p class="Muted LastUpdate">(last update {{model.lastUpdatedFormatted}})</p>
 			{{/if}}
 
 			<div class="BtnGroupWrapper">
