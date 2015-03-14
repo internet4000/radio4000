@@ -2,16 +2,15 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 
-	// Normally a track would render into the outlet of the channel
-	// but we don't want that, so don't render anything:
-	renderTemplate: function() {},
+	// Track is nested inside channel.index
+	// but it doesn't have a template,
+	// which means it won't render anything.
 
-	// Instead, we want the channel and track in the playback controller
+	// Instead, we pass the channel and track to the playback controller
 	setupController: function(controller, model) {
 		var channel = this.modelFor('channel');
 
-		controller.set('content', model);
-
+		// controller.set('content', model);
 		this.controllerFor('playback').set('model', model);
 		this.controllerFor('playback').set('channel', channel);
 	},

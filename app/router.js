@@ -35,15 +35,13 @@ Router.map(function() {
 
 	// channel
 	this.resource('channel', { path: '/c/:channel_slug' }, function() {
+		this.route('index', { path: '/'}, function() {
+			this.resource('track', { path: ':track_id' });
+		});
 		this.route('favorite-channels');
 		this.route('followers');
 		this.route('edit'); // edit channel
 		this.route('add'); // add a track to channel
-
-		// channel tracks
-		this.resource('tracks', function() {
-			this.resource('track', { path: ':track_id' }); // single track
-		});
 	});
 
 	// users

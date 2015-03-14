@@ -1,3 +1,26 @@
-{{!-- <h3>Tracks from {{model.title}}</h3> --}}
+{{x-tracks
+	tracks=model.tracks
+	canEdit=canEdit
+	playback=playback
+	currentTrackComponent=currentTrackComponent}}
 
-{{render 'tracks' model.tracks}}
+<div class="Container">
+	{{#if showHelp}}
+		<div class="Note">
+			{{#if noTracks}}
+				<h2>Welcome to your new channel!</h2>
+				<p>To add a new track, tap <em>'Add track'</em> above and paste in a YouTube video URL.</p>
+			{{/if}}
+
+			{{#if oneTrack}}
+				<p><strong>Your first track!</strong> Why don't you add another?</p>
+			{{/if}}
+
+			{{#unless hasImage}}
+				<p>To add an image, edit your channel above.</p>
+			{{/unless}}
+		</div>
+	{{/if}}
+</div>
+
+{{outlet}}

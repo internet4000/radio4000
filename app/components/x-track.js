@@ -4,6 +4,9 @@ export default Ember.Component.extend({
 	classNames: ['Track'],
 	classNameBindings: ['isEditing', 'isCurrent'],
 
+	// keeping track of editing in a list, so only one track is edited at a time
+	currentTrackComponent: null,
+
 	// close 'add track' on esc key
 	keyDown: function(event) {
 		if (event.keyCode === 27) {
@@ -12,13 +15,10 @@ export default Ember.Component.extend({
 		}
 	},
 
-	// True if this track is the playback is using
 	isCurrent: function() {
 		return this.get('playback.model') === this.get('track');
 	}.property('playback.model', 'track'),
 
-	// Keeping track of editing in a list, so only one track is edited at a time
-	currentTrackComponent: null,
 	isEditing: function() {
 		return this.get('currentTrackComponent') === this.get('elementId');
 	}.property('currentTrackComponent'),
@@ -39,9 +39,8 @@ export default Ember.Component.extend({
 				Ember.debug('Saved track');
 			});
 		},
-
 		// Delete the track object and the corresponding track object in channel.tracks
-		remove: function() {
+		deleteTrack: function() {
 			var track = this.get('track');
 			var channel = this.get('track.channel');
 

@@ -1,0 +1,12 @@
+<ul class="List">
+	{{#each track in tracks}}
+		<li>
+			{{x-track track=track
+				canEdit=canEdit
+				playback=playback
+				currentTrackComponent=currentTrackComponent}}
+		</li>
+	{{/each}}
+</ul>
+
+{{yield}}

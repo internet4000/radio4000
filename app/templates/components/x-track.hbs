@@ -6,7 +6,7 @@
 	{{/link-to}}
 {{/unless}}
 
-{{#if channel.canEdit}}
+{{#if canEdit}}
 	{{#if isEditing}}
 		<form class="Form EditTrack">
 			<div class="Form-group">
@@ -25,15 +25,15 @@
 				</label>
 			</div>
 			<div class="Form-group">
-				<button class="Btn Btn--primary" {{action "save" title="save track"}}>Save track</button>
-				<button class="Btn Btn--text" {{action 'cancel' title="cancel editing track"}}>Cancel</button>
-				<button class="Btn Btn--text Btn--danger u-alignRight" {{action 'remove' title="remove track from channel"}}>Delete</button>
+				<button class="Btn Btn--primary" {{action "save" title="Save the track"}}>Save track</button>
+				<button class="Btn Btn--text" {{action 'cancel' title="Cancel editing the track"}}>Cancel</button>
+				<button class="Btn Btn--text Btn--danger u-alignRight" {{action 'removeTrack' title="Delete this track from your radio"}}>Delete</button>
 			</div>
 
 		</form>
 	{{else}}
 		<p class="Track-controls">
-			<span {{action 'edit'}} title="edit track">
+			<span {{action 'edit'}} title="Edit the track">
 				{{x-icon i="pencil"}}
 			</span>
 		</p>
