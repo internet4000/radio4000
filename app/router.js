@@ -23,7 +23,6 @@ Router.map(function() {
 
 	// help route
 	this.route('help', function() {
-		this.route('forum');
 	});
 
 
