@@ -18,16 +18,20 @@
 		// edge-to-edge grid
 		@media (min-width: $layout-s) {
 			flex: 1 1 33%;
+			max-width: 33%;
 		}
 		@media (min-width: $layout-m) {
 			flex: 1 1 25%;
+			max-width: 25%;
 		}
 		@media (min-width: $layout-ml) {
 			flex: 1 1 20%;
+			max-width: 20%;
 		}
 		// left-aligned grid
 		@media (min-width: $layout-l) {
 			flex: 0 1 170px;
+			max-width: 170px;
 		}
 	}
 }
