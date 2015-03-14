@@ -1,10 +1,25 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-	// Abort if user isn't allowed to edit
 	beforeModel: function() {
-		var canEdit = this.controllerFor('channel').get('canEdit');
-		if (!canEdit) { this.transitionTo('channel', this.modelFor('channel')); }
+		// var authed = this.get('session.authed');
+		// var userChannel = this.get('session.userChannel');
+		// var channelController = this.controllerFor('channel');
+		// // var canEdit = channelController.get('canEdit');
+
+		// // console.log(this.controllerFor('channel').get('canEdit'));
+
+		// Ember.debug(authed);
+		// Ember.debug(userChannel);
+		// Ember.debug(channelController);
+		// Ember.debug(canEdit);
+		// if (! || !) {
+		// 	// not authed or without channel
+		// 	this.transitionTo('signin');
+		// } else if (!) {
+		// 	// not allowed to edit
+		// 	this.transitionTo('channel', this.modelFor('channel'));
+		// }
 	},
 	// Create a new track for the channel
 	model: function() {

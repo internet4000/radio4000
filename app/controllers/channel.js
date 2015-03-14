@@ -4,7 +4,7 @@ export default Ember.Controller.extend({
 	needs: ['playback'],
 	playback: Ember.computed.alias('controllers.playback'),
 
-	// True if session user's channel is the same as this model
+	// canEdit: Ember.computed.equal('model.id', 'session.userChannel.id'),
 	canEdit: function() {
 		var channel = this.get('model');
 		var userChannel = this.get('session.userChannel');

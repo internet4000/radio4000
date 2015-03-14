@@ -46,11 +46,6 @@ export default Ember.Route.extend({
 		this.controllerFor('channel.edit').set('model', model);
 	},
 
-	// True if session user matches channel user
-	canEdit: function() {
-		return this.get('model') === this.get('session.userChannel');
-	}.property('model', 'session.userChannel'),
-
 	// because we use slugs instead of ids in the url
 	serialize: function(model) {
 		return { channel_slug: model.get('slug') };
