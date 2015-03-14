@@ -1,12 +1,12 @@
 import Ember from 'ember';
 import layout from '../templates/components/x-tracks';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(Ember.SortableMixin, {
 	layout: layout,
 
-	// Sort by newest on top
-	// sortProperties: ['created'],
-	// sortAscending: false,
+	// Newest on top
+	sortProperties: ['created'],
+	sortAscending: false,
 
 	// Keep track of which track we're currently editing
 	currentTrackComponent: null

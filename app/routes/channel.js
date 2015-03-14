@@ -51,34 +51,19 @@ export default Ember.Route.extend({
 		return this.get('model') === this.get('session.userChannel');
 	}.property('model', 'session.userChannel'),
 
-	renderTemplate: function() {
-		// because we overwrite the renderTemplate method
-		// we need to tell it to also render the default template
-		this.render();
-
-		// @todo render a different template if seession.user is on his channel
-		// var currentChannel = this.get('model');
-		// var currentUserChannel = this.get('session.user.channels.lastObject');
-
-		// if(!canEdit) {
-			this.render('contextual-navigation/cn-channel', {
-				into: 'application',
-				outlet: 'contextual-navigation'
-			});
-
-		// } else {
-		// 	this.render('contextual-navigation/cn-channel-owner', {
-		// 		into: 'application',
-		// 		outlet: 'contextual-navigation'
-		// 	});
-		// }
-
-		// and update nav bar
-	},
-
 	// because we use slugs instead of ids in the url
 	serialize: function(model) {
 		return { channel_slug: model.get('slug') };
+	},
+
+	renderTemplate: function() {
+		this._super();
+
+		// update contextual nav
+		this.render('contextual-navigation/cn-channel', {
+			into: 'application',
+			outlet: 'contextual-navigation'
+		});
 	},
 
 	// Reset doc title when leaving the route

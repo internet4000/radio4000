@@ -2,10 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	beforeModel: function() {
-		// redirect if you're not authed or already ahve a channel
 		if (!this.get('session.authed')) {
+			// redirect if you're not authed
 			this.transitionTo('signin');
 		} else if (this.get('session.userChannel')) {
+			// or already have a channel
 			this.transitionTo('channel', this.get('session.userChannel'));
 		}
 	},
