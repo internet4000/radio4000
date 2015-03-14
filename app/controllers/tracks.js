@@ -1,8 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
-
-	// Get access to other controllers (TODO: keep this minimal)
 	needs: ['channel', 'playback'],
 	canEdit: Ember.computed.alias('controllers.channel.canEdit'),
 	playback: Ember.computed.alias('controllers.playback'),

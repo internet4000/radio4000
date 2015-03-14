@@ -17,20 +17,22 @@ var ref = new Firebase(config.firebase);
 
 export default {
 	name: 'session',
-	after: 'store', // Run the initializer after the store is ready
+	// Run the initializer after the store is ready
+	after: 'store',
 
 	initialize: function(container, application) {
-		// session object is nested here as we need access to the container to get the store
+
+		// tell the app to pause loading until advanceReadiness is declared
+		// application.deferReadiness();
+
 		var session = Ember.Object.extend({
 			authed: false,
 			user: null,
 			userChannel: null,
 
-			// get access to the ember data store
-			store: container.lookup('store:main'),
+			// store: container.lookup('store:main'),
 
 			init: function() {
-
 				// this runs every time you log in or out
 				ref.onAuth(function(authData) {
 
@@ -96,7 +98,7 @@ export default {
 				var _this = this;
 
 				// Either reuse or create a user
-				this.store.find('user', userId).then(function() {
+				container.lookup('store:main').find('user', userId).then(function() {
 					_this.existingUser(userId);
 				}, function() {
 					_this.createUser(userId);
@@ -108,15 +110,15 @@ export default {
 				var _this = this;
 
 				// Set the user and user channel for easy access later
-				this.store.find('user', userId).then(function(user) {
+				container.lookup('store:main').find('user', userId).then(function(user) {
 					user.get('channels').then(function(channels) {
 
 						// Proceed with existing user
 						var userChannel = channels.get('firstObject');
 						_this.set('userChannel', userChannel);
 						_this.set('user', user);
-
-						// _this.checkAdmin(user);
+						console.log('we got a user');
+						_this.afterUser();
 					});
 				});
 			},
@@ -137,19 +139,20 @@ export default {
 
 					// Proceed with the newly create user
 					_this.set('user', user);
+					_this.afterUser();
 				});
 			},
 
-			// checkAdmin: function(user) {
-			// 	if (user.id === 'facebook:10152422494934521' || 'google:109082707013786319045') {
-			// 		this.set('isAdmin', true);
-			// 	}
-			// }
+			afterUser: function() {
+				console.log('afterUser');
+				console.log('advancing');
+				application.advanceReadiness();
+			}
 		});
 
 		// Register and inject the 'session' initializer into all controllers and routes
 		application.register('session:main', session);
-		application.inject('route', 'session', 'session:main');
 		application.inject('controller', 'session', 'session:main');
+		application.inject('route', 'session', 'session:main');
 	}
 };
