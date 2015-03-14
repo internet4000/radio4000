@@ -1,22 +1,22 @@
-
 <div {{bind-attr class=":OverlayManager :BreadAndCheese isMaximized isPanelOpen:is-panelOpen"}}>
 	<header class="SiteHeader">
 		{{partial 'partials/nav-header'}}
 	</header>
 
-	<aside class="SitePanelNav" {{action "closePanel"}}>
+	<aside class="SitePanelNav">
 		{{partial 'partials/nav-panel'}}
 	</aside>
 
-	<aside class="SitePanelNavOverlay" {{action "closePanel"}}></aside>
+	<aside class="SitePanelNavOverlay"></aside>
 
 	<main class="SiteMain">
-		{{#if iOS}}{{partial 'partials/ios-message'}}{{/if}}
+		{{#if iOS}}
+			{{partial 'partials/ios-message'}}
+		{{/if}}
 
 		{{!-- {{liquid-outlet name="main"}} --}}
 		{{outlet}}
 	</main>
 
 	{{render 'playback'}}
-	{{!-- should do: {{outlet sidebar}} + nested route instead of using render --}}
 </div>

@@ -8,21 +8,21 @@ export default Ember.Controller.extend({
 
 	// show back button if we're on a nested channel (.) route
 	// or on a track
-	showBackButton: function() {
+	showBackButton: () => {
 		var route = this.get('currentRouteName');
 		// var formatedRoute = 'is-route-' + route;
 		return route;
 	}.property('currentRouteName'),
 
 	// Detect iOS devices so we can tell it doesn't work
-	iOS: function() {
+	iOS: () => {
 		var iOS = /(iPad|iPhone|iPod)/g.test( navigator.userAgent );
 		return iOS;
 	}.property(),
 
 	actions: {
-		togglePanel: function() { this.toggleProperty('isPanelOpen'); },
-		openPanel: function() { this.set('isPanelOpen', true); },
-		closePanel: function() { this.set('isPanelOpen', false); }
+		togglePanel: function() {
+			this.toggleProperty('isPanelOpen');
+		}
 	}
 });
