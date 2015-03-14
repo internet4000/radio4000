@@ -1,6 +1,8 @@
 {{#if session.authed}}
 	{{#if session.userChannel}}
-		{{#link-to 'channel' session.userChannel title="Go to my channel"}}My channel{{/link-to}}
+		{{#link-to 'channel' session.userChannel title="Go to my channel"}}
+			{{session.userChannel.title}}
+		{{/link-to}}
 	{{/if}}
 {{/if}}
 {{#unless session.authed}}

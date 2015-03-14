@@ -32,6 +32,9 @@
 	a {
 		color: $white;
 		padding: 1.2rem 1rem 0.9rem;
+		// without this "+ add track" will break into two lines
+		min-width: 8em;
+		text-align: right;
 	}
 }
 
