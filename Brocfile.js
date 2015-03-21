@@ -3,9 +3,15 @@
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 var app = new EmberApp({
+	// dont pollute our index.html with meta data
+	storeConfigInMeta: false,
+
+	// needed until ember-cli updates 100% to HTMLbars
 	vendorFiles: {
 		'handlebars.js': null
 	},
+
+	// minify our styles using broccoli-csso
 	minifyCSS: {
 		enabled: true,
 		options: {}

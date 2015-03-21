@@ -31,13 +31,22 @@ Also see http://www.ember-cli.com/
 
 First build it:
 
-- `ember build` (build will still include logs, warnings etc. for testing)
-- `ember build --environment=production` (hard to debug, only use this when it's ready for deploy)
+- `$ ember build` (build will still include logs, warnings etc. for testing)
+- `$ ember build --environment=production` (hard to debug, only use this when it's ready for deploy)
 
 Then deploy:
 
-`gulp deploy-dev` (dev.radio4000.com)
-`gulp deploy-live` (radio4000.com)
+`$ gulp deploy-dev` (dev.radio4000.com)
+`$ gulp deploy-live` (radio4000.com)
+
+## Building a native OS X app
+
+First make sure `public/package.json` is up to date, then run:
+
+`$ ember build --environment=native`
+`$ gulp atom`
+
+The above packages the app and wraps it with atom-shell into the build folder.
 
 ## Important if you use Sublime Text
 

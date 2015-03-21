@@ -1,0 +1,15 @@
+{
+  "name": "Radio4000",
+  "description": "Collect, curate, play and share your own radio channel",
+  "version": "2.0.1",
+  "main": "index.html",
+  "chromium-args": "--enable-experimental-web-platform-features",
+  "window": {
+    "title": "Radio4000",
+    "width": 600,
+    "height": 700,
+    "toolbar": true,
+    "frame": true,
+    "position": "center"
+  }
+}

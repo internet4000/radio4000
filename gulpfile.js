@@ -1,10 +1,25 @@
 /*global require */
 var gulp = require('gulp');
 var rsync = require('rsyncwrapper').rsync;
+var atomshell = require('gulp-atom-shell');
 
-/**
- * Upload dist to dev
- */
+// Package into an OSX64 bit application using atom-shell
+gulp.task('atom', function () {
+	return gulp.src('dist/**')
+		.pipe(atomshell({
+			version: '0.22.1',
+			productName: 'Radio4000',
+			productVersion: '2.0.1',
+			platform: 'darwin',
+			darwinIcon: 'dist/images/logos/radio4000.icns',
+			name: 'Radio4000'
+		}))
+		.pipe(atomshell.zfsdest('build/radio4000-osx.zip'));
+});
+
+// Package
+
+// Upload dist to dev
 gulp.task('deploy-dev', function() {
 	rsync({
 		src: 'dist/',
@@ -22,9 +37,7 @@ gulp.task('deploy-dev', function() {
 	});
 });
 
-/**
- * Upload dist to live
- */
+// Upload dist to live
 gulp.task('deploy-live', function() {
 	rsync({
 		src: 'dist/',
