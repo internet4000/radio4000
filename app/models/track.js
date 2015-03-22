@@ -9,11 +9,6 @@ export default DS.Model.extend({
 	channel: DS.belongsTo('channel', { async: true }),
 	ytid: DS.attr('string'),
 
-	// Format the date
-	createdDate: function() {
-		return window.moment(this.get('created')).fromNow();
-	}.property('created'),
-
 	// Returns a YouTube ID from an URL
 	// TODO: this should definitely be saved in the db
 	// and not computed every time like it is now

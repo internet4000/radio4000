@@ -11,9 +11,13 @@ export default DS.Model.extend({
 		return this.get('tracks.lastObject.created');
 	}.property('tracks.@each.created'),
 
+		// createdDate: function() {
+	// 	return moment(this.get('created')).fromNow();
+	// }.property('created'),
 	lastUpdatedFormatted: function() {
-		return this.get('tracks.lastObject.createdDate');
-	}.property('tracks.@each.createdDate'),
+		var date = this.get('tracks.lastObject.created');
+		return window.moment(date).fromNow();
+	}.property('tracks.@each.created'),
 
 	// relationships
 	images: DS.hasMany('image', { async: true }),
