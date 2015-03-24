@@ -15,16 +15,14 @@
 
 	/* Sections */
 	.Annonce {
-		margin-top: 10rem;
+		margin-top: 5rem;
 	}
 	.Annonce--center {
 		text-align: center;
 	}
-	.Annonce--long {
-
-	}
 	.Annonce--fullHeight {
-		height: 100vh;
+		margin-top: 10rem;
+		height: 80vh;
 	}
 
 	/* Blocks */
@@ -36,7 +34,7 @@
 		background-color: white;
 	}
 	.Block--long {
-		padding-bottom: 10rem;
+		padding-bottom: 20rem;
 	}
 	.Block--left {
 	  margin-right: auto;
@@ -44,7 +42,7 @@
 	}
 	.Block--center {
 	  max-width: 8rem;
-   border-radius: 50%;
+ 	  border-radius: 50%;
 	  margin-left: auto;
 	  margin-right: auto;
 	}
