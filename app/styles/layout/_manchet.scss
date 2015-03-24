@@ -22,7 +22,18 @@
 }
 
 // modifiers
-
+.Manchet--biggest {
+	h1 {
+		font-size: 3rem;
+	}
+	p {
+		font-size: 2rem;
+	}
+	h1,
+	p {
+		max-width: 50rem;
+	}
+}
 .Manchet--bigger {
 	h1,
 	p {
