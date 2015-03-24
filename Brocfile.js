@@ -15,6 +15,12 @@ var app = new EmberApp({
 	minifyCSS: {
 		enabled: true,
 		options: {}
+	},
+
+	fingerprint: {
+		// enable for these environments
+		enabled: this.env === 'production' || 'native',
+		prepend: 'http://dyzwdli7efbh5.cloudfront.net/'
 	}
 });
 
