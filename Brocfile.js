@@ -19,7 +19,7 @@ var app = new EmberApp({
 
 	fingerprint: {
 		// enable for these environments
-		enabled: this.env === 'production' || 'native',
+		enabled: (this.env === 'production' || this.env === 'native'),
 		prepend: 'http://dyzwdli7efbh5.cloudfront.net/'
 	}
 });
