@@ -3,6 +3,17 @@ import youtube from 'radio4000/utils/youtube';
 
 export default Ember.Controller.extend({
 	formError: false,
+	// queryParams: ['bookmarkletUrl'],
+
+	// bookmarklet: function() {
+	//     var bookmarkletUrl = this.get('bookmarkletUrl');
+
+	//     if (bookmarkletUrl) {
+	//       console.log(bookmarkletUrl);
+	//     } else {
+	//       console.log("no bookmarkletUrl");
+	//     }
+	//   }.property('category', 'model'),
 
 	// Check if the track is valid before saving
 	isValid() {
