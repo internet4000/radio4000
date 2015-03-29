@@ -4,8 +4,7 @@
 
 <div class="Container">
 
-	<form class="Form" {{action "checkCreate" on="submit"}}>
-		<p class="Muted">+ name must be maximum {{titleMaxLength}} characters, yours is: {{model.title.length}}</p>
+	<form class="Form" {{action "create" on="submit"}}>
 
 		<div class="Form-group">
 			{{focus-input value=model.title
@@ -13,7 +12,11 @@
 							  required="required" maxlength=titleMaxLength}}
 		</div>
 
-		<p class="Muted">Don't worry, you can change this name <strong>anytime later</strong>!</p>
+		{{#if tooLong}}
+			<p class="Muted">Oops, please keep your name below {{titleMaxLength}} characters.</p>
+		{{/if}}
+
+		<p class="Muted">Don't worry, you can change this name <em>anytime later</em>!</p>
 
 		<div class="Form-group">
 			<button type="submit" class="Btn Btn--primary" title="Create your radio channel">Create your radio channel</button>
