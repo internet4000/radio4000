@@ -63,3 +63,18 @@
 		}
 	}
 }
+
+
+
+
+.List-title {
+	small {
+		@extend %font-mono;
+		@include size-1;
+		float: right;
+		color: $mediumgray;
+	}
+}
+.List-body {
+	color: $text-color;
+}

@@ -1,16 +1,1 @@
-<div class="Channel-favorites">
-	{{!-- <h3>{{model.title}}'s followers</h3> --}}
-
-	<ul class="List">
-	{{#each follower in model.followers}}
-		<li>
-			{{#link-to "channel" follower class="ChannelTeaser" title="Go to this channel"}}
-				<h3 class="ChannelTeaser-title">{{follower.title}}</h3>
-				<p class="ChannelTeaser-description">{{do-truncate follower.body 140}}</p>
-			{{/link-to}}
-		</li>
-	{{/each}}
-	</ul>
-
-</div>
-
+{{channels-list channels=model.followers}}

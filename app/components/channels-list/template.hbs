@@ -1,0 +1,10 @@
+<ul class="List">
+	{{#each channels as |channel|}}
+		<li>
+			{{#link-to "channel" channel}}
+				<h3 class="List-title">{{channel.title}}</h3>
+				<p class="List-body">{{do-truncate channel.body 140}}</p>
+			{{/link-to}}
+		</li>
+	{{/each}}
+</ul>

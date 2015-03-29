@@ -9,6 +9,7 @@
 [type='tel'],
 [type='password'],
 [type='url'],
+[type='search'],
 textarea {
 	@include negative-text;
 	border: 1px solid rgba(0,0,0,0.15);
@@ -21,6 +22,7 @@ textarea {
 [type='tel'],
 [type='password'],
 [type='url'],
+[type='search'],
 textarea,
 .Btn--textInput {
 	@include size-1;

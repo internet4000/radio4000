@@ -1,16 +1,1 @@
-<div class="Channel-favorites">
-	{{!-- <h3>{{model.title}}'s favorite radio channels.</h3> --}}
-
-	{{#if model.favoriteChannels}}
-		<ul class="List">
-		{{#each channel in model.favoriteChannels}}
-			<li>
-				{{#link-to "channel" channel class="ChannelTeaser" title="Go to this channel"}}
-					<h3 class="ChannelTeaser-title">{{channel.title}}</h3>
-					<p class="ChannelTeaser-description">{{do-truncate channel.body 140}}</p>
-				{{/link-to}}
-			</li>
-		{{/each}}
-		</ul>
-	{{/if}}
-</div>
+{{channels-list channels=model.favoriteChannels}}

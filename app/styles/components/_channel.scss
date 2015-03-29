@@ -46,17 +46,6 @@
 		float: right;
 	}
 }
-.ChannelTeaser-title {
-	small {
-		@extend %font-mono;
-		@include size-1;
-		float: right;
-		color: $mediumgray;
-	}
-}
-.ChannelTeaser-description {
-	color: $text-color;
-}
 .LastUpdate {
 	@extend %font-regular;
 }

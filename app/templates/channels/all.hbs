@@ -18,24 +18,9 @@
 </div>
 
 <div class="Container Container--full Container--noPadding">
-	<ul class="List">
-		{{#each channel in channels}}
-			<li>
-				{{#link-to "channel" channel class="ChannelTeaser"}}
-					<h3 class="ChannelTeaser-title">
-						{{unbound channel.title}}
-						{{!-- <small class="u-alignRight">
-							{{unbound channel.lastUpdated}} -
-							{{unbound channel.created}} -
-							{{unbound channel.tracks.length}}
-						</small> --}}
-					</h3>
-					<p class="ChannelTeaser-description">{{do-truncate channel.body 140}}</p>
-				{{/link-to}}
-			</li>
-		{{/each}}
-	</ul>
+	{{channels-list channels=channels}}
 </div>
+
 <div class="Container Container--full">
 	<p>Don't know which one to pick? {{#link-to 'channels.all'}}See currated radios{{/link-to}}.</p>
 </div>
