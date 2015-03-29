@@ -14,6 +14,15 @@ textarea {
 	@include negative-text;
 	border: 1px solid rgba(0,0,0,0.15);
 	border-radius: $border-radius;
+
+	// &:valid {}
+	// &:required {}
+	// &:not(:focus):invalid {
+	// 	border-color: $red;
+	// }
+	// &:not(:focus):invalid {
+	// 	color: $red;
+	// }
 }
 
 // Text inputs
@@ -81,6 +90,8 @@ label {
 	padding: 1rem;
 	box-shadow: $mediumgray 0 0 1rem;
 	background-color: $superlightgray;
+	border-radius: $border-radius;
+
 	h3 {
 		margin: 1rem 0;
 	}
