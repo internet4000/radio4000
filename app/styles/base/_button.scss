@@ -114,8 +114,42 @@
 	}
 }
 
+
+// Btn--fav
+.Btn--favorite,
+.Btn--removeFavorite {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 120px;
+	height: 120px;
+	margin-top: -72px;
+	margin-right: -75px;
+	transform: rotate(145deg);
+
+	background-image: none;
+	border: 0;
+	border-radius: 0;
+	color: transparent;
+}
+.Btn--favorite {
+	background-color: rgb(200, 200, 200);
+}
+.Btn--removeFavorite {
+	background-color: lighter(rgb(200, 200, 200), 10%);
+}
+
+
 // Button groups
 // (eliminates double-borders and extra spacing between buttons)
+.BtnGroupWrapper {
+	.BtnGroup {
+		display: inline-block;
+	}
+	.BtnGroup + .BtnGroup {
+		margin-left: rem(4); // because of inline-block it's not 1rem
+	}
+}
 .BtnGroup {
 	display: flex;
 	flex-shrink: 0;
@@ -147,45 +181,13 @@
 	color: $gray;
 }
 
-.BtnGroupWrapper {
-	.BtnGroup {
-		display: inline-block;
-	}
-	.BtnGroup + .BtnGroup {
-		margin-left: rem(4); // because of inline-block it's not 1rem
-	}
-}
 
-// Btn--fav
-.Btn--favorite,
-.Btn--removeFavorite {
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 120px;
-	height: 120px;
-	margin-top: -72px;
-	margin-right: -75px;
-	transform: rotate(145deg);
-
-	background-image: none;
-	border: 0;
-	border-radius: 0;
-	color: transparent;
-}
-.Btn--favorite {
-	background-color: rgb(200, 200, 200);
-}
-.Btn--removeFavorite {
-	background-color: lighter(rgb(200, 200, 200), 10%);
-}
-
-
-// Toggle sort-indicator according to button state
+// Shows either a up or down indicator
+// according to sorting method
 .SortIndicator {
 	display: none;
 	font-size: 0.7em;
-}
-.Btn.is-active .SortIndicator {
-	display: inline;
+	.Btn.is-active & {
+		display: inline;
+	}
 }

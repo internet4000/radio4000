@@ -3,14 +3,18 @@
 </div>
 
 <div class="Container Container--full Flex Flex--single">
-	{{input type="text" value=search placeholder="Search channels"}}
-	{{#button-group}}
+	{{input type="search" value=search placeholder="Search channels"}}
+
+	{{#btn-group}}
 		<h4 class="BtnGroup-label">Sort by</h4>
-		<button class="Btn" {{action 'sortBy' 'created'}}>Date {{sort-indicator sortAscending=sortAscending}}</button>
-		<button class="Btn" {{action 'sortBy' 'title'}}>Name {{sort-indicator sortAscending=sortAscending}}</button>
-		{{!-- <button class="Btn" {{action 'sortBy' 'lastUpdated'}}>Updated {{sort-indicator sortAscending=sortAscending}}</button> --}}
-		{{!-- <button class="Btn" {{action 'sortBy' 'tracks.length'}}>Tracks {{sort-indicator sortAscending=sortAscending}}</button> --}}
-	{{/button-group}}
+
+		<button class="Btn" {{action 'sortBy' 'created'}}>
+			Date {{sort-indicator ascending=sortAscending}}
+		</button>
+		<button class="Btn" {{action 'sortBy' 'title'}}>
+			Name {{sort-indicator ascending=sortAscending}}
+		</button>
+	{{/btn-group}}
 </div>
 
 <div class="Container Container--full Container--noPadding">

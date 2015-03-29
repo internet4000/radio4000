@@ -6,11 +6,13 @@ export default Ember.Component.extend({
 	classNames: ['BtnGroup'],
 
 	buttonHandlers: function() {
-		var that = this;
-		that.$('.Btn').on('click', function() {
+		var self = this;
+
+		self.$('.Btn').on('click', function() {
 			var $clicked = $(this);
-			that.$('.Btn').not($clicked).removeClass('is-active');
+
 			$clicked.addClass('is-active');
+			self.$('.Btn').not($clicked).removeClass('is-active');
 		});
 	}.on('didInsertElement')
 });
