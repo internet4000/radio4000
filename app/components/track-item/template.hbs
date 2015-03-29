@@ -10,13 +10,13 @@
 	{{#if isEditing}}
 		<form class="Form EditTrack">
 			<div class="Form-group">
-				<label>Title
-					{{focus-input value=track.title placeholder="Title" required="required"}}
+				<label>URL
+					{{input type="url" placeholder="Copy in a YouTube URL" value=track.url required="required"}}
 				</label>
 			</div>
 			<div class="Form-group">
-				<label>URL
-					{{input type="url" placeholder="YouTube or Soundcloud URL" value=track.url required="required"}}
+				<label>Title
+					{{focus-input value=track.title placeholder="Title" required="required"}}
 				</label>
 			</div>
 			<div class="Form-group">

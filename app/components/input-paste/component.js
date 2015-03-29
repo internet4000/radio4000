@@ -1,9 +1,10 @@
 import Ember from 'ember';
+import FocusInputComponent from '../focus-input/component';
 
-export default Ember.FocusInputComponent.extend({
+export default FocusInputComponent.extend({
 	capturePaste: function() {
 		var self = this;
-		var $input = this.$('input');
+		var $input = this.$();
 
 		// use jQuery's 'paste' event
 		$input.on('paste', function() {

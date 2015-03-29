@@ -8,7 +8,9 @@
 		<p class="Muted">+ name must be maximum {{titleMaxLength}} characters, yours is: {{model.title.length}}</p>
 
 		<div class="Form-group">
-			{{focus-input value=model.title placeholder='For instance "The Pirate Radio"' maxlength=titleMaxLength required="required"}}
+			{{focus-input value=model.title
+							  placeholder='For instance: "The Pirate Radio"'
+							  required="required" maxlength=titleMaxLength}}
 		</div>
 
 		<p class="Muted">Don't worry, you can change this name <strong>anytime later</strong>!</p>
