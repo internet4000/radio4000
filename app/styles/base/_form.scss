@@ -88,6 +88,7 @@ label {
 		margin-bottom: 0;
 	}
 }
+
 .EditTrack {
 	margin-bottom: 0;
 	padding-top: 1rem;
@@ -96,6 +97,7 @@ label {
 	padding-bottom: 0;
 	background-color: $superlightgray;
 	border-left: 5px solid transparent; // so it rightly aligned with the tracks and their active borderbar
+
 	@media (min-width: $layout-s) {
 		padding-left: 2rem;
 		padding-right: 2rem;
