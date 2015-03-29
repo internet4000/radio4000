@@ -2,7 +2,7 @@ import Ember from 'ember';
 import FocusInputComponent from '../focus-input/component';
 
 export default FocusInputComponent.extend({
-	capturePaste: function() {
+	capturePaste: Ember.on('didInsertElement', () => {
 		var self = this;
 		var $input = this.$();
 
@@ -17,5 +17,5 @@ export default FocusInputComponent.extend({
 				self.sendAction('pasted', $input.val());
 			}, 100);
 		});
-	}.on('didInsertElement')
+	})
 });

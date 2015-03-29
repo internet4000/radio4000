@@ -2,14 +2,14 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	// Create a new track for the channel
-	model: function() {
+	model() {
 		return this.store.createRecord('track', {
 			channel: this.modelFor('channel')
 		});
 	},
 
 	// Abort if user isn't allowed to edit
-	afterModel: function() {
+	afterModel() {
 		var canEdit = this.controllerFor('channel').get('canEdit');
 		if (!canEdit) { this.transitionTo('channel.index', this.modelFor('channel')); }
 	},
@@ -17,7 +17,7 @@ export default Ember.Route.extend({
 	actions: {
 
 		//  this action is triggered from the add.js controller/template
-		saveTrack: function() {
+		saveTrack() {
 			var channel = this.modelFor('channel');
 			var track = this.modelFor('channel.add');
 
@@ -44,7 +44,7 @@ export default Ember.Route.extend({
 	},
 
 	// clear any unsaved changes
-	deactivate: function() {
+	deactivate() {
 		this.get('currentModel').rollback();
 	}
 });

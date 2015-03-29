@@ -4,7 +4,7 @@ export default Ember.TextField.extend({
 	type: 'file',
 	accept: 'image/*',
 
-	change: function(event) {
+	change(event) {
 		var file = event.target.files[0];
 		var reader = new FileReader();
 

@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
 	formError: false,
 
 	// Check if the track is valid before saving
-	isValid: function() {
+	isValid() {
 		this.set('formError', false);
 
 		var isValid = true;
@@ -19,7 +19,8 @@ export default Ember.Controller.extend({
 	},
 
 	actions: {
-		addTrack: function() {
+
+		addTrack() {
 			if (!this.isValid()) { return false; }
 
 			// leave it to the router to actually save the track
@@ -28,7 +29,7 @@ export default Ember.Controller.extend({
 
 		// This gets called when you paste something into the input-url component
 		// it takes a URL and turns it into a YouTube ID which we use to query the API for a title
-		autoTitle: function(url) {
+		autoTitle(url) {
 			var apikey = 'AIzaSyCk5FiiPiyHON7PMLfLulM9GFmSYt6W5v4';
 			var id = youtube(url);
 

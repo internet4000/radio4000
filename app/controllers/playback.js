@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 	isMaximized: false,
 	isShuffled: false,
+	historyWasUpdated: false,
 
 	// channel gets set by the track route
 	channel: null,
@@ -26,34 +27,33 @@ export default Ember.Controller.extend({
 
 	// generates a ytid if the model doesn't have one already
 	// @todo: this should be removed when no longer necessary
-	validateTrack: function() {
-		if (! this.get('model.ytid')) {
+	validateTrack: Ember.observer('model.ytid', function() {
+		if (!this.get('model.ytid')) {
 			this.get('model').updateProvider();
 		}
-	}.observes('model.ytid'),
+	}),
 
 	// unplayed: Ember.computed.filter('tracks', function(track, index) {
 	// 	return !this.get('history').contains(track);
 	// }),
 
 	// tracks from the current channel
-	tracks: function() {
+	tracks: Ember.computed('channel.tracks.[]', () => {
 		return this.get('channel.tracks');
-	}.property('channel.tracks.[]'),
+	}),
 
 	// gets the index of the current track
-	getCurrentTrackIndex: function() {
+	getCurrentTrackIndex: Ember.computed('tracks', 'model', () => {
 		return this.get('tracks').indexOf(this.get('model'));
-	}.property('tracks', 'model'),
+	}),
 
 	// gets a random track
-	getRandomTrack: function() {
+	getRandomTrack() {
 		var random = Math.floor(Math.random() * this.get('tracks.length'));
 		return this.get('tracks').objectAt(random);
 	},
 
-	historyWasUpdated: false,
-	updateHistory: function() {
+	updateHistory: Ember.observer('model', () => {
 		var history = this.get('history');
 		var historyWasUpdated = this.get('historyWasUpdated');
 
@@ -62,23 +62,23 @@ export default Ember.Controller.extend({
 		history.pushObject(this.get('model'));
 		this.set('historyWasUpdated', true);
 		// Ember.debug('model changed');
-	}.observes('model'),
+	}),
 
 	// Clears history every time the channel changes
-	clearHistory: function() {
+	clearHistory: Ember.observer('channel', () => {
 		this.get('history').clear();
-	}.observes('channel'),
+	}),
 
 	actions: {
 
 		// use this to play a track, if you don't want the url to change
-		playTrack: function(track) {
+		playTrack(track) {
 			if (!track) { return false; }
 			// Ember.debug('Playing track: ' + track.get('title'));
 		 	this.transitionToRoute('track', track);
 		},
 
-		prev: function() {
+		prev() {
 			var isShuffled = this.get('isShuffled');
 			var history = this.get('history');
 			var tracks = this.get('tracks');
@@ -121,7 +121,7 @@ export default Ember.Controller.extend({
 			}
 		},
 
-		next: function() {
+		next() {
 			var unplayed = this.get('unplayed');
 			var len = unplayed.get('length');
 			var isShuffled = this.get('isShuffled');
@@ -152,16 +152,17 @@ export default Ember.Controller.extend({
 			this.send('playTrack', newTrack);
 		},
 
-		playPrev: function() {},
+		playPrev() {},
 
-		playFirst: function() {
+		playFirst() {
 			// first is last because we have newest on top
 			var firstTrack = this.get('tracks.lastObject');
 			// this.get('history').pushObject(firstTrack);
 			this.send('playTrack', firstTrack);
 			// Ember.debug('Playing first track');
 		},
-		playLast: function() {
+
+		playLast() {
 			// last is first because we have newest on top
 			var lastTrack = this.get('tracks.firstObject');
 			this.send('playTrack', lastTrack);
@@ -170,21 +171,22 @@ export default Ember.Controller.extend({
 		},
 
 		// Toggles "fullscreen mode"
-		toggle: function() {
+		toggle() {
 			this.toggleProperty('isMaximized');
 		},
 
-		ytPlaying: function() {
+		ytPlaying() {
 			// Ember.debug('on playing from controller');
 		},
-		ytPaused: function() {
+		ytPaused() {
 			// Ember.debug('on paused from controller');
 		},
-		ytEnded: function() {
+		ytEnded() {
 			// Ember.debug('on ended from controller');
 			this.send('next');
 		},
-		ytError: function(error) {
+
+		ytError(error) {
 			// Ember.debug('on yt error from controller');
 			console.log(error);
 
@@ -193,6 +195,6 @@ export default Ember.Controller.extend({
 
 			// otherwise play next
 			this.send('next');
-		},
+		}
 	}
 });

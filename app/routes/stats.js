@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 	favorites: 0,
 
-	setupController: function(controller) {
+	setupController(controller) {
 		var that = this;
 		var channels = this.store.find('channel');
 		var tracks = this.store.find('track');

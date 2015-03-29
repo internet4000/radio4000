@@ -12,9 +12,10 @@ export default DS.Model.extend({
 	// Returns a YouTube ID from an URL
 	// TODO: this should definitely be saved in the db
 	// and not computed every time like it is now
-	updateProvider: function() {
-		console.log('updateYtid');
+	updateProvider() {
 		var id = youtube(this.get('url'));
+		console.log('updateYtid');
+
 		this.set('ytid', id);
 		this.save();
 	}

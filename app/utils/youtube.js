@@ -40,6 +40,6 @@ export default function youtube(url) {
 // Get the ID from a YouTube URL
 // TODO: replace this non-reliable function with the one we have in the track model
 // the one from track model should probably be moved into a helper somewhere
-// getYouTubeID: function(url) {
+// getYouTubeID(url) {
 // 	return url.match(/(?:youtu\.be\/|youtube\.com(?:\/embed\/|\/v\/|\/watch\?v=|\/user\/\S+|\/ytscreeningroom\?v=|\/sandalsResorts#\w\/\w\/.*\/))([^\/&]{10,12})/)[1];
 // }

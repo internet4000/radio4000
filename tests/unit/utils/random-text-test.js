@@ -1,4 +1,4 @@
-import randomString from '../../../utils/random-text';
+import randomText from '../../../utils/random-text';
 import { module, test } from 'qunit';
 
 module('randomText');

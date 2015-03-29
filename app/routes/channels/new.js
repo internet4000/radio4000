@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-	beforeModel: function() {
+	beforeModel() {
 		if (!this.get('session.authed')) {
 			// redirect if you're not authed
 			this.transitionTo('signin');
@@ -10,34 +10,35 @@ export default Ember.Route.extend({
 			this.transitionTo('channel', this.get('session.userChannel'));
 		}
 	},
-	model: function() {
+	model() {
 		return this.store.createRecord('channel');
 	},
-	afterModel: function() {
+	afterModel() {
 		document.title = 'New - Radio4000';
 	},
-	renderTemplate: function() {
+	renderTemplate() {
 		// don't render into channels outlet - this avoids the tabs we have on channels.hbs
 		this.render({
 			into: 'application'
 		});
 	},
-	deactivate: function() {
+	deactivate() {
 		document.title = 'Radio4000';
 	},
+
+	// redirect to sign in
+	onLogout: Ember.observer('session.authed', function() {
+		if (!this.get('session.authed')) {
+			this.transitionTo('signin');
+		}
+	}),
+
 	actions: {
-		willTransition: function(transition) {
+		willTransition(transition) {
 			// stop the transition if you haven't got a channel
 			if (this.get('session.authed') && !this.get('session.userChannel')) {
 				transition.abort();
 			}
 		}
-	},
-
-	// redirect to sign in
-	onLogout: function() {
-		if (!this.get('session.authed')) {
-			this.transitionTo('signin');
-		}
-	}.observes('session.authed')
+	}
 });

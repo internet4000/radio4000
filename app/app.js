@@ -20,12 +20,12 @@ Ember.LinkView.reopen({
 
 // Notify Google Analytics of page transitions
 Ember.Router.reopen({
-  notifyGoogleAnalytics: function() {
+  notifyGoogleAnalytics: Ember.on('didTransition', function() {
     return ga('send', 'pageview', {
         'page': this.get('url'),
         'title': this.get('url')
       });
-  }.on('didTransition')
+  })
 });
 
 loadInitializers(App, config.modulePrefix);

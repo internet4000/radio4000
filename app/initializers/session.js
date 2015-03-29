@@ -20,7 +20,7 @@ export default {
 	// Run the initializer after the store is ready
 	after: 'store',
 
-	initialize: function(container, application) {
+	initialize(container, application) {
 
 		// tell the app to pause loading until advanceReadiness is declared
 		// application.deferReadiness();
@@ -32,7 +32,7 @@ export default {
 
 			// store: container.lookup('store:main'),
 
-			init: function() {
+			init() {
 				// this runs every time you log in or out
 				ref.onAuth(function(authData) {
 
@@ -54,17 +54,17 @@ export default {
 			},
 
 			// Call this from your Ember templates
-			login: function(provider) {
+			login(provider) {
 				this._loginWithPopup(provider);
 			},
 
 			// Call this from your Ember templates
-			logout: function() {
+			logout() {
 				ref.unauth();
 			},
 
 			// Default login method
-			_loginWithPopup: function(provider) {
+			_loginWithPopup(provider) {
 				var _this = this;
 				// Ember.debug('logging in with popup');
 				ref.authWithOAuthPopup(provider, function(error, authData) {
@@ -82,7 +82,7 @@ export default {
 			},
 
 			// Alternative login with redirect (needed for Chrome on iOS)
-			_loginWithRedirect: function(provider) {
+			_loginWithRedirect(provider) {
 				ref.authWithOAuthRedirect(provider, function(error, authData) {
 					if (error) {
 
@@ -94,7 +94,7 @@ export default {
 			},
 
 			// Runs after succesful auth
-			afterAuthentication: function(userId) {
+			afterAuthentication(userId) {
 				var _this = this;
 
 				// Either reuse or create a user
@@ -106,7 +106,7 @@ export default {
 			},
 
 			// Existing user
-			existingUser: function(userId) {
+			existingUser(userId) {
 				var _this = this;
 
 				// Set the user and user channel for easy access later
@@ -124,7 +124,7 @@ export default {
 			},
 
 			// Create a new user
-			createUser: function(userId) {
+			createUser(userId) {
 				var _this = this;
 
 				// Without this, Emberfire gives an error
@@ -143,7 +143,7 @@ export default {
 				});
 			},
 
-			afterUser: function() {
+			afterUser() {
 				console.log('afterUser');
 				console.log('advancing');
 				application.advanceReadiness();

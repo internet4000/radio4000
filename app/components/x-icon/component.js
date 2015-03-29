@@ -6,11 +6,11 @@ export default Ember.Component.extend({
 	// this creates a class name like "icon-iconName" (iconName comes from the variable "i")
 	classNameBindings: ['className'],
 
-	className: function() {
+	className: Ember.computed('i', function() {
 		return 'icon-' + this.get('i');
-	}.property('i'),
+	}),
 
-	url: function() {
+	url: Ember.computed('i', function() {
 		return 'images/icons/sprite.svg#icon-' + this.get('i');
-	}.property('i')
+	})
 });

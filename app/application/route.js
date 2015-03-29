@@ -1,8 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+	channelId: Ember.computed.alias('session.userChannel.id'),
 
-	redirectWithoutChannel: function() {
+	channelChanged: Ember.observer('channelId', function() {
 		var channel = this.get('session.userChannel');
 
 		if (!channel) {
@@ -11,9 +12,9 @@ export default Ember.Route.extend({
 		} else if (channel) {
 			// this.transitionTo('channel', channel);
 		}
-	}.observes('session.userChannel.id'),
+	}),
 
-	renderTemplate: function() {
+	renderTemplate() {
 		// because we overwrite the renderTemplate method
 		// we need to tell it to also render the default template
 		this.render();
@@ -26,10 +27,11 @@ export default Ember.Route.extend({
 	},
 
 	actions: {
-		login: function(provider) {
+		login(provider) {
 			this.get('session').login(provider);
 		},
-		logout: function() {
+
+		logout() {
 			this.get('session').logout();
 		}
 	}

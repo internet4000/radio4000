@@ -7,12 +7,12 @@ export default Ember.ArrayController.extend({
 	sortAscending: false,
 
 	// get the sorted content and limit it by our max
-	popular: function() {
+	popular: Ember.computed('arrangedContent', function() {
 		return this.get('arrangedContent').slice(0,this.get('maxPopular'));
-	}.property('arrangedContent')
+	})
 
-	// only show featured items
-	// ,featured: function() {
+	// // only show featured items
+	// featured: Ember.computed('model.@each.isFeatured', function() {
 	// 	return this.get('model').filterBy('isFeatured');
-	// }.property('model.@each.isFeatured')
+	// })
 });

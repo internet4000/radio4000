@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
 	playback: Ember.computed.alias('controllers.playback'),
 
 	// canEdit: Ember.computed.equal('model.id', 'session.userChannel.id'),
-	canEdit: function() {
+	canEdit: Ember.computed('model', 'session.userChannel', function() {
 		var channel = this.get('model');
 		var userChannel = this.get('session.userChannel');
 
@@ -13,10 +13,10 @@ export default Ember.Controller.extend({
 		if (userChannel === null) { return false; }
 
 		return channel.get('id') === userChannel.get('id');
-	}.property('model', 'session.userChannel'),
+	}),
 
 	actions: {
-		play: function() {
+		play() {
 			// Either continues play or plays the newest e.g. last track
 			if (this.get('playback.model')) {
 				this.get('playback.player').send('play');
@@ -24,10 +24,12 @@ export default Ember.Controller.extend({
 				this.transitionToRoute('track', this.get('tracks.lastObject'));
 			}
 		},
-		pause: function() {
+
+		pause() {
 			this.get('playback.player').send('pause');
 		},
-		toggleFavorite: function() {
+
+		toggleFavorite() {
 			var userChannel = this.get('session.userChannel');
 			var userFavorites = userChannel.get('favoriteChannels');
 			var channel = this.get('model');
@@ -49,7 +51,7 @@ export default Ember.Controller.extend({
 
 	// If the current user's favoriteChannels contains this channel
 	// it's a favorite…
-	isFavorite: function() {
+	isFavorite: Ember.computed('model', 'session.userChannel.favoriteChannels.@each', function() {
 		var channel = this.get('model');
 		var userFavorites = this.get('session.userChannel.favoriteChannels');
 
@@ -57,6 +59,5 @@ export default Ember.Controller.extend({
 		if (!userFavorites) { return false; }
 
 		return userFavorites.contains(channel);
-	}.property('model', 'session.userChannel.favoriteChannels.@each'),
+	})
 });
-

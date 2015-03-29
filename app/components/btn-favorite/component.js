@@ -5,7 +5,7 @@ export default Ember.Component.extend({
 	classNames: ['Btn'],
 	tagName: 'button',
 
-	click: function() {
+	click() {
 		this.sendAction(); // triggers the action specified on the component markup
 	}
 });

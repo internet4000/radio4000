@@ -6,16 +6,14 @@ export default Ember.Controller.extend({
 	isMaximized: Ember.computed.alias('controllers.playback.isMaximized'),
 	isPanelOpen: false,
 
-	// show back button if we're on a nested channel (.) route
-	// or on a track
-	showBackButton: () => {
+	// show back button if we're on a nested channel (.) route or on a track
+	showBackButton: Ember.computed('currentRouteName', () => {
 		var route = this.get('currentRouteName');
-		// var formatedRoute = 'is-route-' + route;
 		return route;
-	}.property('currentRouteName'),
+	}),
 
 	actions: {
-		togglePanel: function() {
+		togglePanel() {
 			this.toggleProperty('isPanelOpen');
 		}
 	}

@@ -8,29 +8,31 @@ export default Ember.Component.extend({
 	currentTrackComponent: null,
 
 	// close 'add track' on esc key
-	keyDown: function(event) {
+	keyDown(event) {
 		if (event.keyCode === 27) {
 			// @todo call the cancel action here instead
 			this.set('currentTrackComponent', null);
 		}
 	},
 
-	isCurrent: function() {
+	isCurrent: Ember.computed('playback.model', 'track', function() {
 		return this.get('playback.model') === this.get('track');
-	}.property('playback.model', 'track'),
+	}),
 
-	isEditing: function() {
+	isEditing: Ember.computed('currentTrackComponent', 'elementId', function() {
 		return this.get('currentTrackComponent') === this.get('elementId');
-	}.property('currentTrackComponent'),
+	}),
 
 	actions: {
-		edit: function() {
+		edit() {
 			this.set('currentTrackComponent', this.get('elementId'));
 		},
-		cancel: function() {
+
+		cancel() {
 			this.set('currentTrackComponent', null);
 		},
-		save: function() {
+
+		save() {
 			var track = this.get('track');
 			track.updateProvider();
 			this.send('cancel');
@@ -39,8 +41,9 @@ export default Ember.Component.extend({
 				Ember.debug('Saved track');
 			});
 		},
+
 		// Delete the track object and the corresponding track object in channel.tracks
-		deleteTrack: function() {
+		deleteTrack() {
 			var track = this.get('track');
 			var channel = this.get('track.channel');
 

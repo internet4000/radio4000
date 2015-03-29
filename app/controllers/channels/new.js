@@ -5,20 +5,19 @@ import randomText from 'radio4000/utils/random-text';
 export default Ember.Controller.extend({
 	titleMaxLength: 32,
 
-	tooLong: function() {
+	tooLong: Ember.computed('model.title', function() {
 		return this.get('model.title.length') >= this.get('titleMaxLength');
-	}.property('model.title'),
+	}),
 
 	actions: {
-		create: function() {
+		create() {
+			var user = this.get('session.user');
+			var channel = this.get('model');
 
 			// validate
 			if (this.get('tooLong')) {
 				return;
 			}
-
-			var user = this.get('session.user');
-			var channel = this.get('model');
 
 			// we need a user
 			if (!user) {
@@ -50,8 +49,8 @@ export default Ember.Controller.extend({
 		}
 	},
 
-	cleanSlug: function() {
+	cleanSlug: Ember.computed('title', function() {
 		var cleaned = clean(this.get('model.title'));
 		return cleaned + '-' + randomText();
-	}.property('title')
+	})
 });

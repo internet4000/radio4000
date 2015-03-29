@@ -3,12 +3,13 @@ import clean from 'radio4000/utils/clean';
 
 export default Ember.Controller.extend({
 	didCacheSlug: false,
-	cacheSlug: function() {
+
+	cacheSlug: Ember.computed('model.slug', () => {
 		this.cachedSlug = this.get('model.slug');
 		this.toggleProperty('didCacheSlug');
-	}.observes('model.slug'),
+	}),
 
-	updateImage: function() {
+	updateImage: Ember.observer('newImage', () => {
 		var newImage = this.get('newImage');
 		var channel = this.get('model');
 		var coverImage = this.get('model.coverImage');
@@ -48,10 +49,10 @@ export default Ember.Controller.extend({
 				Ember.debug('Updated channel image.');
 			});
 		}
-	}.observes('newImage'),
+	}),
 
 	// Makes sure the slug is valid e.g. not in use by any other channel
-	validateSlug: function() {
+	validateSlug() {
 		Ember.debug('Validating slug.');
 		var slugIsFree = false;
 		var model = this.get('model');
@@ -123,7 +124,7 @@ export default Ember.Controller.extend({
 	},
 
 	actions: {
-		trySave: function() {
+		trySave() {
 			var slugDidChange = (this.get('cachedSlug') !== this.get('model.slug'));
 
 			// this avoid validating slugs uneccessary (because it's heavy)
@@ -136,14 +137,14 @@ export default Ember.Controller.extend({
 			}
 		},
 
-		deleteImage: function() {
+		deleteImage() {
 			this.get('model.coverImage').destroyRecord().then(function() {
 				Ember.debug('Deleted channel image.');
 			});
 		},
 
 		// Saves the channel
-		save: function() {
+		save() {
 			var channel = this.get('model');
 			Ember.debug('channel route save');
 
@@ -153,11 +154,11 @@ export default Ember.Controller.extend({
 		},
 
 		// used by 'ESC' key in the view
-		cancelEdit: function() {
+		cancelEdit() {
 			this.transitionToRoute('channel', this.get('model'));
 		},
 
-		tryDelete: function() {
+		tryDelete() {
 			var confirmed = confirm('Are you sure? Your channel will be gone forever - you will lose all your tracks');
 			if (confirmed) {
 				this.send('deleteChannel');
@@ -165,13 +166,11 @@ export default Ember.Controller.extend({
 		},
 
 		// Deletes the channel 4 real
-		deleteChannel: function() {
+		deleteChannel() {
 			// var _this = this;
 			var channel = this.get('model');
 			var user = this.get('session.user');
 			var favorites = channel.get('favoriteChannels');
-			// var channels = this.get('channels');
-			// var promises = [];
 
 			// remove it from the user
 			channel.destroyRecord().then(function() {

@@ -1,10 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-	afterModel: function() {
+	afterModel() {
 		document.title = 'Log - Radio4000';
 	},
-	deactivate: function() {
+	deactivate() {
 		document.title = 'Radio4000';
 	}
 });

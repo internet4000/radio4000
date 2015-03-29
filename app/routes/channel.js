@@ -1,8 +1,7 @@
-/*global Firebase */
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-	model: function(params) {
+	model(params) {
 
 		// 1. This is how it should be
 		// but no findQuery support in Emberfire
@@ -17,7 +16,7 @@ export default Ember.Route.extend({
 		// 3. firebase way but doesn't return an ember model
 		// but requires TWO queries: one with firebase to find id from slug
 		// and one from ember now that we have the ID, this way we get a "ember" model
-		var ref = new Firebase("https://radio4000-dev.firebaseio.com/channels/");
+		var ref = new window.Firebase("https://radio4000-dev.firebaseio.com/channels/");
 		var that = this;
 
 		// find the channel by slug without emberfire, just firebase
@@ -40,18 +39,18 @@ export default Ember.Route.extend({
 		});
 	},
 
-	afterModel: function(model) {
+	afterModel(model) {
 		window.scrollTo(0,0);
 		document.title = model.get('title') + ' - Radio4000';
 		this.controllerFor('channel.edit').set('model', model);
 	},
 
 	// because we use slugs instead of ids in the url
-	serialize: function(model) {
+	serialize(model) {
 		return { channel_slug: model.get('slug') };
 	},
 
-	renderTemplate: function() {
+	renderTemplate() {
 		this._super();
 
 		// update contextual nav
@@ -62,7 +61,7 @@ export default Ember.Route.extend({
 	},
 
 	// Reset doc title when leaving the route
-	deactivate: function() {
+	deactivate() {
 		document.title = 'Radio4000';
 	}
 });
