@@ -14,12 +14,6 @@ export default Ember.Controller.extend({
 		return route;
 	}.property('currentRouteName'),
 
-	// Detect iOS devices so we can tell it doesn't work
-	iOS: () => {
-		var iOS = /(iPad|iPhone|iPod)/g.test( navigator.userAgent );
-		return iOS;
-	}.property(),
-
 	actions: {
 		togglePanel: function() {
 			this.toggleProperty('isPanelOpen');
