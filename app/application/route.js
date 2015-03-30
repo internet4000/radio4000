@@ -1,16 +1,15 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-	channelId: Ember.computed.alias('session.userChannel.id'),
-
-	channelChanged: Ember.observer('channelId', function() {
+	channelChanged: Ember.observer('session.userChannel.id', function() {
 		var channel = this.get('session.userChannel');
 
 		if (!channel) {
-			// Ember.debug('authed without channel -> force ');
+			// Ember.debug('channelChanged without channel -> force');
 			this.transitionTo('channels.new');
 		} else if (channel) {
-			// this.transitionTo('channel', channel);
+			// Ember.debug('channelChanged with channel');
+			this.transitionTo('channel', channel);
 		}
 	}),
 
