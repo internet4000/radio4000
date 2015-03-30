@@ -38,12 +38,12 @@ export default Ember.Controller.extend({
 	// }),
 
 	// tracks from the current channel
-	tracks: Ember.computed('channel.tracks.[]', () => {
+	tracks: Ember.computed('channel.tracks.[]', function() {
 		return this.get('channel.tracks');
 	}),
 
 	// gets the index of the current track
-	getCurrentTrackIndex: Ember.computed('tracks', 'model', () => {
+	getCurrentTrackIndex: Ember.computed('tracks', 'model', function() {
 		return this.get('tracks').indexOf(this.get('model'));
 	}),
 
@@ -53,7 +53,7 @@ export default Ember.Controller.extend({
 		return this.get('tracks').objectAt(random);
 	},
 
-	updateHistory: Ember.observer('model', () => {
+	updateHistory: Ember.observer('model', function() {
 		var history = this.get('history');
 		var historyWasUpdated = this.get('historyWasUpdated');
 
@@ -65,7 +65,7 @@ export default Ember.Controller.extend({
 	}),
 
 	// Clears history every time the channel changes
-	clearHistory: Ember.observer('channel', () => {
+	clearHistory: Ember.observer('channel', function() {
 		this.get('history').clear();
 	}),
 

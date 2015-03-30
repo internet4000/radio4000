@@ -7,7 +7,7 @@ export default Ember.Controller.extend({
 	isPanelOpen: false,
 
 	// show back button if we're on a nested channel (.) route or on a track
-	showBackButton: Ember.computed('currentRouteName', () => {
+	showBackButton: Ember.computed('currentRouteName', function() {
 		var route = this.get('currentRouteName');
 		return route;
 	}),

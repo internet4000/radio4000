@@ -4,12 +4,12 @@ import clean from 'radio4000/utils/clean';
 export default Ember.Controller.extend({
 	didCacheSlug: false,
 
-	cacheSlug: Ember.computed('model.slug', () => {
+	cacheSlug: Ember.computed('model.slug', function() {
 		this.cachedSlug = this.get('model.slug');
 		this.toggleProperty('didCacheSlug');
 	}),
 
-	updateImage: Ember.observer('newImage', () => {
+	updateImage: Ember.observer('newImage', function() {
 		var newImage = this.get('newImage');
 		var channel = this.get('model');
 		var coverImage = this.get('model.coverImage');
