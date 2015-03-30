@@ -128,9 +128,9 @@ export default {
 				var _this = this;
 
 				// Without this, Emberfire gives an error
-				this.store.unloadAll('user');
+				container.lookup('store:main').unloadAll('user');
 
-				this.get('store').createRecord('user', {
+				container.lookup('store:main').createRecord('user', {
 					id: userId,
 					provider: this.get('authData.provider'),
 					name: this.get('authData.facebook.displayName') || this.get('authData.google.displayName'),
