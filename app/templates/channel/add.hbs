@@ -5,10 +5,9 @@
 		{{#if formError}}
 			<p class="Warning">{{formError}}</p>
 		{{/if}}
-
 		<div class="Form-group">
 			<label for="trackUrl">URL</label>
-			{{input-paste id="trackUrl" type="url" value=model.url placeholder="Paste in a link to a YouTube video" pasted="autoTitle" required="required"}}
+			{{input-paste id="trackUrl" type="url" value=model.url valueBinding=controller.bookmarkletUrl placeholder="Paste in a link to a YouTube video" pasted="autoTitle" required="required"}}
 		</div>
 
 		<div class="Form-group">

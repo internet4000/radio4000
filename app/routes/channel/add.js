@@ -9,10 +9,12 @@ export default Ember.Route.extend({
 	},
 
 	// Abort if user isn't allowed to edit
-	afterModel() {
-		var canEdit = this.controllerFor('channel').get('canEdit');
-		if (!canEdit) { this.transitionTo('channel.index', this.modelFor('channel')); }
-	},
+	// this is the reason why we can't access channel/add directly, so I comment it out (hugo)
+	// afterModel: function() {
+	// afterModel() {
+	// 	var canEdit = this.controllerFor('channel').get('canEdit');
+	// 	if (!canEdit) { this.transitionTo('channel.index', this.modelFor('channel')); }
+	// },
 
 	actions: {
 

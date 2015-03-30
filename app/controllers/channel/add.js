@@ -3,17 +3,31 @@ import youtube from 'radio4000/utils/youtube';
 
 export default Ember.Controller.extend({
 	formError: false,
-	// queryParams: ['bookmarkletUrl'],
+	queryParams: ['bookmarkletUrl'],
+	bookmarkletUrl: null,
 
-	// bookmarklet: function() {
-	//     var bookmarkletUrl = this.get('bookmarkletUrl');
 
-	//     if (bookmarkletUrl) {
-	//       console.log(bookmarkletUrl);
-	//     } else {
-	//       console.log("no bookmarkletUrl");
-	//     }
-	//   }.property('category', 'model'),
+
+	bookmarklet: function() {
+	// knowledge base
+	// http://localhost:4000/c/200ok/add?bookmarklet=https://www.youtube.com/watch?v=doaQC-S8de8
+	// javascript:location.href='http://www.reddit.com/submit?url='
+	// +encodeURIComponent(location.href)
+	// +'&title='
+	// +encodeURIComponent(document.title)
+
+	//http://guides.emberjs.com/v1.10.0/routing/query-params/
+
+		var bookmarklet = this.get('bookmarklet');
+		console.log('bookmarklet tests:');
+		console.log(bookmarklet);
+
+		// if (bookmarklet) {
+		// 	console.log(bookmarklet);
+		// } else {
+		// 	console.log("no bookmarklet");
+		// }
+	}.property('bookmarkletUrl', 'model'),
 
 	// Check if the track is valid before saving
 	isValid() {
