@@ -19,58 +19,57 @@ export default Ember.Controller.extend({
 	}),
 
 	actions: {
-		create() {
-			var user = this.get('session.user');
-			var channel = this.get('model');
-			var channelPublic = null;
 
+		create() {
 
 			if (!this.get('validates')) {
 				return false;
 			}
 
-			// create new channel PRIVATE
-			channel.setProperties({
-				slug: this.get('cleanSlug'),
-				created: new Date().getTime()
-			}).save().then(function(channel) {
-				// now the channel is saved
+			var self = this;
+			var user = this.get('session.user');
+			var channel = this.get('model');
+			var slug = this.get('cleanSlug');
 
-				// set relationship on User (who created the channel)
-				user.get('channels').then(function(channels) {
-					channels.addObject(channel);
-					user.save();
+			// create public channel
+			this.store.createRecord('channelPublic', {
+				channel: channel
+			}).save().then(function(channelPublic) {
 
-					// @todo refactor: set the user channel (should be automatic)
-					// (otherwise index will be blank because we only set on login)
-					this.set('session.userChannel', channel);
+				// now the channelPublic is saved, has an ID and can be used
+				console.log('saved channelPublic');
 
-					// Redirect to the new channel
-					Ember.debug('redirect to the new channel');
-					this.transitionToRoute('channel', channel);
-				}.bind(this));
+				// set channel slug and relationship
+				channel.setProperties({
+					slug: slug,
+					channelPublic: channelPublic
+				});
 
+				// save it
+				channel.save().then(function(channel) {
 
-			}.bind(this));
+					// now the channel is saved
+					console.log('saved channel');
 
-			console.log("before channelPublic creation");
-			// create new channel PUBLIC
-			channelPublic = this.store.createRecord('channelPublic', {
-				// channelPrivate: channel
-			});
+					// set relationship on user (who created the channel)
+					user.get('channels').then(function(channels) {
+						channels.addObject(channel);
+						user.save().then(function() {
+							console.log('saved channel on user');
+						});
 
-			channelPublic.save().then(function(channelPublic) {
-				Ember.debug('channelPublic saved.');
-			// update private channel with relation
-				channel.get('channelPublic').addObject(channelPublic);
-				channel.save().then(function() {
-					Ember.debug('Saved channel with channelPublic');
+						// @todo refactor: set the user channel (should be automatic)
+						// (otherwise index will be blank because we only set on login)
+						self.set('session.userChannel', channel);
+
+						// Redirect to the new channel
+						Ember.debug('redirect to the new channel');
+						// this.transitionToRoute('channel', channel);
+					});
 				});
 			});
-			console.log("after channelPublic save");
 
-
-
+			console.log('hey');
 		}
 	},
 
