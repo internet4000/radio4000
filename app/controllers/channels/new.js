@@ -13,6 +13,7 @@ export default Ember.Controller.extend({
 		create() {
 			var user = this.get('session.user');
 			var channel = this.get('model');
+			var channelPublic = null;
 
 			// validate
 			if (this.get('tooLong')) {
@@ -25,13 +26,14 @@ export default Ember.Controller.extend({
 				return false;
 			}
 
+			// create new channel PRIVATE
 			channel.setProperties({
 				slug: this.get('cleanSlug'),
 				created: new Date().getTime()
 			}).save().then(function(channel) {
 				// now the channel is saved
 
-				// set relationship on user
+				// set relationship on User (who created the channel)
 				user.get('channels').then(function(channels) {
 					channels.addObject(channel);
 					user.save();
@@ -45,7 +47,28 @@ export default Ember.Controller.extend({
 					this.transitionToRoute('channel', channel);
 				}.bind(this));
 
+
 			}.bind(this));
+
+			console.log("before channelPublic creation");
+			// create new channel PUBLIC
+			channelPublic = this.store.createRecord('channelPublic', {
+				// channelPrivate: channel
+				created: new Date().getTime()
+			});
+
+			channelPublic.save().then(function(channelPublic) {
+				Ember.debug('channelPublic saved.');
+			// update private channel with relation
+				channel.get('channelPublic').addObject(channelPublic);
+				channel.save().then(function() {
+					Ember.debug('Saved channel with channelPublic');
+				});
+			});
+			console.log("after channelPublic save");
+
+
+
 		}
 	},
 
