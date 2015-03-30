@@ -9,20 +9,23 @@ export default Ember.Controller.extend({
 		return this.get('model.title.length') >= this.get('titleMaxLength');
 	}),
 
+	validates: Ember.computed('tooLong', 'session.user', function() {
+		if (this.get('tooLong') || !this.get('session.user')) {
+			Ember.warn('Tried to create channel but title too long or no user.');
+			return false;
+		} else {
+			return true;
+		}
+	}),
+
 	actions: {
 		create() {
 			var user = this.get('session.user');
 			var channel = this.get('model');
 			var channelPublic = null;
 
-			// validate
-			if (this.get('tooLong')) {
-				return;
-			}
 
-			// we need a user
-			if (!user) {
-				Ember.warn('No user.');
+			if (!this.get('validates')) {
 				return false;
 			}
 
