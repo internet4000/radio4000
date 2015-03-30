@@ -54,7 +54,6 @@ export default Ember.Controller.extend({
 			// create new channel PUBLIC
 			channelPublic = this.store.createRecord('channelPublic', {
 				// channelPrivate: channel
-				created: new Date().getTime()
 			});
 
 			channelPublic.save().then(function(channelPublic) {

@@ -9,9 +9,11 @@ import DS from 'ember-data';
 export default DS.Model.extend({
 	title: DS.attr('string'),
 	slug: DS.attr('string'),
-	created: DS.attr('number'),
 	body: DS.attr('string'),
 	isFeatured: DS.attr('boolean'),
+	created: DS.attr('string', {
+       defaultValue: function() { return new Date(); }
+   }),
 	images: DS.hasMany('image', { async: true }),
 
 	// dates

@@ -25,11 +25,6 @@ export default Ember.Route.extend({
 
 			track.updateProvider();
 
-			// Set extra properties
-			track.setProperties({
-				created: new Date().getTime()
-			});
-
 			track.save().then(function() {
 				// And add it to the tracks property of the channel
 				Ember.RSVP.Promise.cast(channel.get('tracks')).then(function(tracks) {
