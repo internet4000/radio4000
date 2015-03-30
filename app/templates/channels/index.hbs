@@ -4,7 +4,13 @@
 
 <div class="Container Container--full">
 	<div class="Section">
-		{{channels-grid channels=popular}}
+
+		{{#if channels}}
+			{{channels-grid channels=popular}}
+		{{else}}
+			<p>Oh, there are no curated channels yet.</p>
+		{{/if}}
+
 	</div>
 
 	<p>{{#link-to 'channels.all'}}See all radios &rarr; {{/link-to}}.</p>

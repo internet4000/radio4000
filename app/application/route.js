@@ -15,8 +15,8 @@ export default Ember.Route.extend({
 
 	renderTemplate() {
 		// because we overwrite the renderTemplate method
-		// we need to tell it to also render the default template
-		this.render();
+		// we need to run super
+		this._super();
 
 		// and update nav bar
 		this.render('contextual-navigation/cn-channels', {
