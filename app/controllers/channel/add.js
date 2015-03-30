@@ -3,31 +3,32 @@ import youtube from 'radio4000/utils/youtube';
 
 export default Ember.Controller.extend({
 	formError: false,
-	queryParams: ['bookmarkletUrl'],
-	bookmarkletUrl: null,
+	queryParams: ['providerTrackUrl', 'providerTrackTitle'],
+	providerTrackUrl: null,
+	providerTrackTitle: null,
 
 
 
-	bookmarklet: function() {
-	// knowledge base
-	// http://localhost:4000/c/200ok/add?bookmarklet=https://www.youtube.com/watch?v=doaQC-S8de8
-	// javascript:location.href='http://www.reddit.com/submit?url='
-	// +encodeURIComponent(location.href)
-	// +'&title='
-	// +encodeURIComponent(document.title)
+	// bookmarklet: function() {
+	// // knowledge base
+	// // http://localhost:4000/c/200ok/add?bookmarklet=https://www.youtube.com/watch?v=doaQC-S8de8
+	// // javascript:location.href='http://www.reddit.com/submit?url='
+	// // +encodeURIComponent(location.href)
+	// // +'&title='
+	// // +encodeURIComponent(document.title)
 
-	//http://guides.emberjs.com/v1.10.0/routing/query-params/
+	// //http://guides.emberjs.com/v1.10.0/routing/query-params/
 
-		var bookmarklet = this.get('bookmarklet');
-		console.log('bookmarklet tests:');
-		console.log(bookmarklet);
+	// 	var bookmarklet = this.get('bookmarklet');
+	// 	console.log('bookmarklet tests:');
+	// 	console.log(bookmarklet);
 
-		// if (bookmarklet) {
-		// 	console.log(bookmarklet);
-		// } else {
-		// 	console.log("no bookmarklet");
-		// }
-	}.property('bookmarkletUrl', 'model'),
+	// 	// if (bookmarklet) {
+	// 	// 	console.log(bookmarklet);
+	// 	// } else {
+	// 	// 	console.log("no bookmarklet");
+	// 	// }
+	// }.property('url', 'model'),
 
 	// Check if the track is valid before saving
 	isValid() {
