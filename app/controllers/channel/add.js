@@ -9,6 +9,7 @@ export default Ember.Controller.extend({
 
 
 
+	// javascript:location.href='http://localhost:4000/c/200ok/add?providerTrackUrl='+encodeURIComponent(location.href)+'&providerTrackTitle='+encodeURIComponent(document.title)
 	// bookmarklet: function() {
 	// // knowledge base
 	// // http://localhost:4000/c/200ok/add?bookmarklet=https://www.youtube.com/watch?v=doaQC-S8de8
