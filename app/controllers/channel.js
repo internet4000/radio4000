@@ -33,19 +33,32 @@ export default Ember.Controller.extend({
 			var userChannel = this.get('session.userChannel');
 			var userFavorites = userChannel.get('favoriteChannels');
 			var channel = this.get('model');
-			var channelFollowers = channel.get('followers');
+			var channelFollowers = null;
+
+			// 0- check if current.channel is already a session.user.favorite (to toggle it 'in' or 'out')
 			var isFavorite = this.get('isFavorite');
 
+			// 1- update user.session favorite channel list
 			if (isFavorite) {
 				userFavorites.removeObject(channel);
-				channelFollowers.removeObject(userChannel);
 			} else {
 				userFavorites.addObject(channel);
-				channelFollowers.addObject(userChannel);
 			}
-
 			userChannel.save();
-			channel.save();
+
+			// 2- update channelPublic with id of follower channel
+			var channelPublic = this.get('model.channelPublic').then(function(publicChannel) {
+				channelFollowers = publicChannel.get('followers');
+
+				if (isFavorite) {
+					channelFollowers.removeObject(userChannel);
+				} else {
+					channelFollowers.addObject(userChannel);
+				}
+				publicChannel.save(); // save on the promise object
+			});
+
+
 		}
 	},
 

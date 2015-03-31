@@ -36,9 +36,6 @@ export default DS.Model.extend({
 	images: DS.hasMany('image', { async: true }),
 	tracks: DS.hasMany('track', { async: true }),
 	favoriteChannels: DS.hasMany('channel', { inverse: null, async: true }),
-
 	// public because not only owner can edit it
-	channelPublic: DS.belongsTo('channelPublic', {
-		async: false // get this data at the same time as model
-	})
+	channelPublic: DS.belongsTo('channel-public', { async: true })
 });
