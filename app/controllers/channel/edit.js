@@ -165,37 +165,59 @@ export default Ember.Controller.extend({
 			}
 		},
 
-		// Deletes the channel 4 real
+		// Deletes the channel (definitive)
+		// @todo: move it to the user controller so a user can have multiple channels
 		deleteChannel() {
-			// var _this = this;
-			var channel = this.get('model');
+
+			/* Expected behavior
+			1- delete privateChannel
+			2- delete publicChannel
+			3- remove reference of privateChannel in user
+			   * this will never be automatic because we don't want any reference of the channelPrivate (or public)
+			   on the user, since we want the user to be annonymous (no relationship defined)
+			4- delete reference privateChannel in all users.privateChannel.favoriteChannels
+			*/
+
 			var user = this.get('session.user');
+			var channel = this.get('model');
 			var favorites = channel.get('favoriteChannels');
 
-			// remove it from the user
+			// 1- delete privateChannel
 			channel.destroyRecord().then(function() {
+				Ember.debug("privateChannel was deleted");
+
+				// 2- delete publicChannel
+				channel.get('channelPublic').then(function(publicChannel){
+					publicChannel.destroyRecord();
+					Ember.debug("publicChannel was deleted");
+				});
+
+				// 3- remove on user reference of this privateChannel
+				// let the possibility of multiple channels
 				user.get('channels').then(function(userChannels) {
 					userChannels.removeObject(channel);
 					user.save();
+					Ember.debug("privateChannel reference on user was removed");
 				});
 			});
 
+			// 4-
 			// get all this channel's favorite channels
-			favorites.then(function(favorites) {
-				favorites.forEach(function(fav) {
-					// unmark the current channel as follower on each of these favorites
-					fav.get('followers').then(function(followers) {
-						followers.removeObject(channel);
-						fav.save().then(function() {
-							Ember.debug('follower removed');
-						});
-					});
-				});
-			});
+			// favorites.then(function(favorites) {
+			// 	favorites.forEach(function(fav) {
+			// 		// unmark the current channel as follower on each of these favorites
+			// 		fav.get('followers').then(function(followers) {
+			// 			followers.removeObject(channel);
+			// 			fav.save().then(function() {
+			// 				Ember.debug('follower removed');
+			// 			});
+			// 		});
+			// 	});
+			// });
 
 			// notify our sesion because it's a shortcut
 			// @todo with some refactor this shouldn't be necessary
-			this.set('session.userChannel', null);
+			// this.set('session.userChannel', null);
 
 			this.transitionToRoute('channels.new');
 			// remove it as favorite on all channels
