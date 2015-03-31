@@ -166,7 +166,6 @@ export default Ember.Controller.extend({
 		},
 
 		// Deletes the channel (definitive)
-		// @todo: move it to the user controller so a user can have multiple channels
 		deleteChannel() {
 
 			/* Expected behavior
@@ -183,57 +182,68 @@ export default Ember.Controller.extend({
 			var user = this.get('session.user');
 			var channel = this.get('model');
 
-			// 1- remove privateChannel reference on user
 			user.get('channels').then(function(userChannels) {
+				console.log('// 1- remove privateChannel reference on user');
+				// 1- remove privateChannel reference on user
 				userChannels.removeObject(channel);
 				user.save().then(function() {
 					Ember.debug("privateChannel reference on user was removed");
 				});
+			}).then(function() {
+				console.log("// 2a- remove privateChannel reference other privateChannel.favoriteChannels");
+				// 2a- remove privateChannel reference other privateChannel.favoriteChannels
+				// channel.get('channelPublic.followers').then(function(favorites) {
+				// 	// get all this channel's favorite channels and for each...
+				// 	favorites.forEach(function(fav) {
+				// 		// remove reference of the privateChannel that is being deleted
+				// 		fav.get('favoriteChannels').then(function(following) {
+				// 			following.removeObject(channel);
+				// 			fav.save().then(function() {
+				// 				Ember.debug("channel reference on follower was removed");
+				// 			});
+				// 		});
+				// 	});
+				// });
+			}).then(function() {
+				console.log("// 2b- remove reference privateChannel in all users.publicChannel.followers");
+				// 2b- remove reference privateChannel in all users.publicChannel.followers
+				// channel.get('favoriteChannels').then(function(favorites) {
+				// 	// get all this channel's favorite channels and for each...
+				// 	favorites.forEach(function(fav) {
+				// 		// remove reference of the privateChannel that is being deleted
+				// 		fav.get('channelPublic.followers').then(function(follower) {
+				// 			follower.removeObject(channel);
+				// 			fav.save().then(function() {
+				// 				Ember.debug("channel reference as itself a follower was removed");
+				// 			});
+				// 		});
+				// 	});
+				// });
+			}).then(function() {
+				console.log("// 3- delete publicChannel");
+				// 3- delete publicChannel
+				// channel.get('channelPublic').then(function(publicChannel){
+				// 	publicChannel.destroyRecord();
+				// 	Ember.debug("publicChannel was deleted");
+				// });
+			}).then(function() {
+				console.log("// 4- delete privateChannel");
+				// 4- delete privateChannel
+				// channel.destroyRecord().then(function() {
+				// 	Ember.debug("privateChannel was deleted");
+				// });
+			}).then(function() {
+  				console.log("all channel references and model are now deleted");
 			});
 
-			// 2a- remove privateChannel reference other privateChannel.favoriteChannels
-			channel.get('channelPublic.followers').then(function(favorites) {
-				// get all this channel's favorite channels and for each...
-				favorites.forEach(function(fav) {
-					// remove reference of the privateChannel that is being deleted
-					fav.get('favoriteChannels').then(function(following) {
-						following.removeObject(channel);
-						fav.save().then(function() {
-							Ember.debug("channel reference on follower was removed");
-						});
-					});
-				});
-			});
-
-			// 2b- remove reference privateChannel in all users.publicChannel.followers
-			channel.get('favoriteChannels').then(function(favorites) {
-				// get all this channel's favorite channels and for each...
-				favorites.forEach(function(fav) {
-					// remove reference of the privateChannel that is being deleted
-					fav.get('channelPublic.followers').then(function(follower) {
-						follower.removeObject(channel);
-						fav.save().then(function() {
-							Ember.debug("channel reference as itself a follower was removed");
-						});
-					});
-				});
-			});
 
 
 
-			// 3- delete publicChannel
-			channel.get('channelPublic').then(function(publicChannel){
-				publicChannel.destroyRecord();
-				Ember.debug("publicChannel was deleted");
-			});
-
-			// 4- delete privateChannel
-			channel.destroyRecord().then(function() {
-				Ember.debug("privateChannel was deleted");
-			});
 
 
-						// notify our sesion because it's a shortcut
+
+
+			// notify our sesion because it's a shortcut
 			// @todo with some refactor this shouldn't be necessary
 			// this.set('session.userChannel', null);
 
