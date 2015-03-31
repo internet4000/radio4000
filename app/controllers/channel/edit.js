@@ -170,56 +170,74 @@ export default Ember.Controller.extend({
 		deleteChannel() {
 
 			/* Expected behavior
-			1- delete privateChannel
-			2- delete publicChannel
-			3- remove reference of privateChannel in user
+			1- remove reference of privateChannel in user
 			   * this will never be automatic because we don't want any reference of the channelPrivate (or public)
 			   on the user, since we want the user to be annonymous (no relationship defined)
-			4- delete reference privateChannel in all users.privateChannel.favoriteChannels
+			2- remove references of privateChannel:
+				2a- in all users.privateChannel.favoriteChannels
+				2b- in all users.publicChannel.followers
+			3- delete publicChannel
+			4- delete privateChannel
 			*/
 
 			var user = this.get('session.user');
 			var channel = this.get('model');
-			var favorites = channel.get('favoriteChannels');
 
-			// 1- delete privateChannel
-			channel.destroyRecord().then(function() {
-				Ember.debug("privateChannel was deleted");
-
-				// 2- delete publicChannel
-				channel.get('channelPublic').then(function(publicChannel){
-					publicChannel.destroyRecord();
-					Ember.debug("publicChannel was deleted");
-				});
-
-				// 3- remove on user reference of this privateChannel
-				// let the possibility of multiple channels
-				user.get('channels').then(function(userChannels) {
-					userChannels.removeObject(channel);
-					user.save();
+			// 1- remove privateChannel reference on user
+			user.get('channels').then(function(userChannels) {
+				userChannels.removeObject(channel);
+				user.save().then(function() {
 					Ember.debug("privateChannel reference on user was removed");
 				});
 			});
 
-			// 4-
-			// get all this channel's favorite channels
-			// favorites.then(function(favorites) {
-			// 	favorites.forEach(function(fav) {
-			// 		// unmark the current channel as follower on each of these favorites
-			// 		fav.get('followers').then(function(followers) {
-			// 			followers.removeObject(channel);
-			// 			fav.save().then(function() {
-			// 				Ember.debug('follower removed');
-			// 			});
-			// 		});
-			// 	});
-			// });
+			// 2a- remove privateChannel reference other privateChannel.favoriteChannels
+			channel.get('channelPublic.followers').then(function(favorites) {
+				// get all this channel's favorite channels and for each...
+				favorites.forEach(function(fav) {
+					// remove reference of the privateChannel that is being deleted
+					fav.get('favoriteChannels').then(function(following) {
+						following.removeObject(channel);
+						fav.save().then(function() {
+							Ember.debug("channel reference on follower was removed");
+						});
+					});
+				});
+			});
 
-			// notify our sesion because it's a shortcut
+			// 2b- remove reference privateChannel in all users.publicChannel.followers
+			channel.get('favoriteChannels').then(function(favorites) {
+				// get all this channel's favorite channels and for each...
+				favorites.forEach(function(fav) {
+					// remove reference of the privateChannel that is being deleted
+					fav.get('channelPublic.followers').then(function(follower) {
+						follower.removeObject(channel);
+						fav.save().then(function() {
+							Ember.debug("channel reference as itself a follower was removed");
+						});
+					});
+				});
+			});
+
+
+
+			// 3- delete publicChannel
+			channel.get('channelPublic').then(function(publicChannel){
+				publicChannel.destroyRecord();
+				Ember.debug("publicChannel was deleted");
+			});
+
+			// 4- delete privateChannel
+			channel.destroyRecord().then(function() {
+				Ember.debug("privateChannel was deleted");
+			});
+
+
+						// notify our sesion because it's a shortcut
 			// @todo with some refactor this shouldn't be necessary
 			// this.set('session.userChannel', null);
 
-			this.transitionToRoute('channels.new');
+			// this.transitionToRoute('channels.new');
 			// remove it as favorite on all channels
 			// channels.then(function(channels) {
 			// 	Ember.debug(channels);
@@ -244,6 +262,7 @@ export default Ember.Controller.extend({
 			// 	Ember.warn('Error - could not resolve all promises');
 			// 	//one or more languages failed to save
 			// });
+
 		}
 	}
 });
