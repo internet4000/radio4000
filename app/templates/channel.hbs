@@ -2,43 +2,45 @@
 	<div class="Channel-header">
 		<div class="Container Container--full">
 
-			<div class="Channel-cover">
-				{{channel-cover model=model hideTitle=true}}
+			<div class="Channel-media">
+				<div class="Channel-cover">
+					{{channel-cover model=model hideTitle=true}}
+				</div>
 			</div>
 
-			<h1 class="Channel-title">
-				{{#link-to 'channel' model}}{{model.title}}{{/link-to}}
-			</h1>
-
-
-			<div class="BtnGroupWrapper">
-				{{#if session.userChannel}}
-					<div class="BtnGroup">
-						{{btn-favorite value=isFavorite action="toggleFavorite"}}
-					</div>
+			<div class="Channel-body">
+				<h1 class="Channel-title">
+					{{#link-to 'channel' model}}{{model.title}}{{/link-to}}
+				</h1>
+				{{#if model.lastUpdatedFormatted}}
+					<p class="Muted LastUpdate">(last update {{model.lastUpdatedFormatted}})</p>
 				{{/if}}
-			</div>
-			<div class="BtnGroupWrapper">
+
 				{{#if canEdit}}
-					<div class="BtnGroup">
-						{{#link-to 'channel.add' model class="Btn" title="Add track"}}
-							{{x-icon i="plus"}} Add track
-						{{/link-to}}
-						{{#link-to 'channel.edit' model class="Btn" title="Edit your channel"}}
-							{{x-icon i="pencil"}} Edit channel
-						{{/link-to}}
+					<div class="BtnGroupWrapper">
+						<div class="BtnGroup">
+							{{#link-to 'channel.add' model class="Btn" title="Add track"}}
+								{{x-icon i="plus"}} Add track
+							{{/link-to}}
+							{{#link-to 'channel.edit' model class="Btn" title="Edit your channel"}}
+								{{x-icon i="pencil"}} Edit channel
+							{{/link-to}}
+						</div>
+					</div>
+				{{/if}}
+				{{#if session.userChannel}}
+					<div class="BtnGroupWrapper">
+						<div class="BtnGroup">
+							{{btn-favorite value=isFavorite action="toggleFavorite"}}
+						</div>
 					</div>
 				{{/if}}
 
+				{{#if model.body}}
+					<p class="Channel-description">{{model.body}}</p>
+				{{/if}}
+
 			</div>
-
-			{{#if model.body}}
-				<p class="Channel-description">{{model.body}}</p>
-			{{/if}}
-
-			{{#if model.lastUpdatedFormatted}}
-				<p class="Muted LastUpdate">(last update {{model.lastUpdatedFormatted}})</p>
-			{{/if}}
 		</div>
 	</div>
 
