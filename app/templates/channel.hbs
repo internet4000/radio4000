@@ -28,13 +28,13 @@
 						</div>
 					</div>
 				{{/if}}
-				{{#if session.userChannel}}
+				{{#unless canEdit}}
 					<div class="BtnGroupWrapper">
 						<div class="BtnGroup">
 							{{btn-favorite value=isFavorite action="toggleFavorite"}}
 						</div>
 					</div>
-				{{/if}}
+				{{/unless}}
 
 				{{#if model.body}}
 					<p class="Channel-description">{{model.body}}</p>
@@ -56,7 +56,7 @@
 		{{/link-to}}
 	</nav>
 
-	<div class="Channel-body">
+	<div class="Channel-outlet">
 		{{outlet}}
 	</div>
 </article>
