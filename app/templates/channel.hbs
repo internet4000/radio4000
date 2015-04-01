@@ -40,6 +40,11 @@
 				{{#if model.body}}
 					<p class="Channel-description">{{model.body}}</p>
 				{{/if}}
+				{{#if model.link}}
+					<p class="Channel-links">
+						<a href="{{model.link}}" target="_blank">{{model.link}}</a>
+					</p>
+				{{/if}}
 
 			</div>
 		</div>

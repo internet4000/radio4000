@@ -63,6 +63,12 @@
   	clear: both;
 	word-break: break-word;
 }
+.Channel-links {
+	a {
+		color: $gray;
+		@include size-1;
+	}
+}
 .LastUpdate {
 	@include size-1;
 }

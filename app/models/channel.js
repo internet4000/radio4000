@@ -14,6 +14,8 @@ export default DS.Model.extend({
 	created: DS.attr('string', {
        defaultValue: function() { return new Date(); }
    }),
+   link: DS.attr(),
+
 
 	// dates
 	lastUpdated: Ember.computed('tracks.@each.created', function() {

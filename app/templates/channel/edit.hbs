@@ -12,6 +12,13 @@
 			{{textarea id="body" value=model.body maxlength=channelDescriptionMaxLength placeholder="What is your channel about?"}}
 		</div>
 
+		<div class="Form-group">
+			<label for="image">Channel image</label>
+			{{file-upload image=newImage}}
+			{{#if model.coverImage}}
+				<button class="Btn" {{action 'deleteImage'}}>Delete image</button>
+			{{/if}}
+		</div>
 		<div class="Form-group Form--playlistSlug">
 			<label for="slug">Permalink</label>
 			<span class="Permalink">radio4000.com/c/</span>
@@ -19,11 +26,8 @@
 		</div>
 
 		<div class="Form-group">
-			<label for="image">Channel image</label>
-			{{file-upload image=newImage}}
-			{{#if model.coverImage}}
-				<button class="Btn" {{action 'deleteImage'}}>Delete image</button>
-			{{/if}}
+			<label for="link">Link</label>
+			{{input id="link" value=model.link placeholder="need a Link somewhere?" required="required"}}
 		</div>
 
 		{{!-- {{#if isAdmin}}
