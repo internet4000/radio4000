@@ -5,6 +5,10 @@
 .Channel-media {
 	width: 100%;
 	@include clearfix;
+	@media (min-width: $layout-s) {
+		width: 30%;
+		float: right;
+	}
 	@media (min-width: $layout-m) {
 		width: 50%;
 		float: right;
@@ -15,6 +19,10 @@
 	@include clearfix;
 	padding-right: 2rem;
 	margin-bottom: 1rem;
+	@media (min-width: $layout-s) {
+		width: 70%;
+		float: left;
+	}
 	@media (min-width: $layout-m) {
 		width: 50%;
 		float: left;
@@ -51,8 +59,9 @@
 }
 .Channel-description {
 	max-width: 36rem;
-  	margin-bottom: 0.1rem;
+  	margin-bottom: 1rem;
   	clear: both;
+	word-break: break-word;
 }
 .LastUpdate {
 	@include size-1;
