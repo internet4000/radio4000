@@ -14,19 +14,19 @@
 .Channel-cover {
 	position: relative;
 	float: left;
-	width: 10em;
-	margin-right: 1rem;
-	margin-bottom: 1rem;
+	width: 100%;
+	margin-right: 1.8rem;
 
-	// cover size on smaller screens
-	@media (max-width: $layout-s) {
-		width: 70px;
-		.Cover-img { height: 70px; }
-	}
-	@media (min-width: $layout-m) {
+	// // cover size on smaller screens
+	// @media (max-width: $layout-s) {
+	// 	width: 70px;
+	// 	.Cover-img { height: 70px; }
+	// }
+	@media (min-width: $layout-sm) {
 		margin-right: 1.5rem;
-
+		width: 9em;
 	}
+
 }
 .Channel-title {
 	margin-bottom: 0.5rem;
@@ -36,6 +36,11 @@
 }
 .Channel-description {
 	max-width: 36rem;
+  	margin-bottom: 0.1rem;
+  	clear: both;
+}
+.LastUpdate {
+	@include size-1;
 }
 .Channel-body {
 	margin-bottom: 2rem;
