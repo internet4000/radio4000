@@ -25,7 +25,8 @@ export default DS.Model.extend({
 	}),
 	lastUpdatedFormatted: Ember.computed('tracks.@each.created', function() {
 		var date = this.get('tracks.lastObject.created');
-		return window.moment(date).fromNow();
+		// return window.moment(date).fromNow();
+		return window.moment(date).add('days', 1).fromNow();
 	}),
 	// createdDate: Ember.computed('created', function() {
 	// 	return moment(this.get('created')).fromNow();
