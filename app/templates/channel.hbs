@@ -12,8 +12,8 @@
 				<h1 class="Channel-title">
 					{{#link-to 'channel' model}}{{model.title}}{{/link-to}}
 				</h1>
-				{{#if model.lastUpdatedFormatted}}
-					<p class="Muted LastUpdate">(updated {{model.lastUpdatedFormatted}})</p>
+				{{#if model.tracks}}
+					<p class="Muted LastUpdate">(updated {{lastUpdatedFormatted}})</p>
 				{{/if}}
 
 				{{#if canEdit}}

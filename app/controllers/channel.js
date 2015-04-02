@@ -4,6 +4,12 @@ export default Ember.Controller.extend({
 	needs: ['playback'],
 	playback: Ember.computed.alias('controllers.playback'),
 
+
+	lastUpdatedFormatted: Ember.computed('tracks.@each.created', function() {
+		var date = this.get('tracks.lastObject.created');
+		return window.moment(date).subtract(1, 'days').fromNow();
+	}),
+
 	// canEdit: Ember.computed.equal('model.id', 'session.userChannel.id'),
 	canEdit: Ember.computed('model', 'session.userChannel', function() {
 		var channel = this.get('model');

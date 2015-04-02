@@ -19,15 +19,15 @@ export default DS.Model.extend({
        defaultValue: function() { return new Date(); }
    }),
 
-	// dates
-	lastUpdated: Ember.computed('tracks.@each.created', function() {
-		return this.get('tracks.lastObject.created');
-	}),
-	lastUpdatedFormatted: Ember.computed('tracks.@each.created', function() {
-		var date = this.get('tracks.lastObject.created');
-		// return window.moment(date).fromNow();
-		return window.moment(date).add('days', 1).fromNow();
-	}),
+	// // dates
+	// lastUpdated: Ember.computed('tracks.@each.created', function() {
+	// 	return this.get('tracks.lastObject.created');
+	// }),
+	// lastUpdatedFormatted: Ember.computed('tracks.@each.created', function() {
+	// 	var date = this.get('tracks.lastObject.created');
+	// 	// return window.moment(date).fromNow();
+	// 	return window.moment(date).add('days', 1).fromNow();
+	// }),
 	// createdDate: Ember.computed('created', function() {
 	// 	return moment(this.get('created')).fromNow();
 	// }),
