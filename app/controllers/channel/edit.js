@@ -221,7 +221,7 @@ export default Ember.Controller.extend({
 									Ember.debug("channel reference as itself a follower was removed");
 								});
 							});
-						})
+						});
 					});
 				});
 			}).then(function() {
