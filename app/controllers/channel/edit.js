@@ -3,6 +3,7 @@ import clean from 'radio4000/utils/clean';
 
 export default Ember.Controller.extend({
 	didCacheSlug: false,
+	titleMaxLength: 32,
 	channelDescriptionMaxLength: 280,
 
 	cacheSlug: Ember.computed('model.slug', function() {

@@ -21,7 +21,7 @@
 		<div class="Channel-body">
 			<div class="Form-group">
 				<label for="title" >Channel title</label>
-				{{focus-input id="title" value=model.title placeholder="Title" autofocus='autofocus' required="required"}}
+				{{focus-input id="title" value=model.title placeholder="Title" autofocus='autofocus' required="required" maxlength=titleMaxLength}}
 			</div>
 
 			<div class="Form-group">
@@ -31,7 +31,7 @@
 
 			<div class="Form-group">
 				<label for="link">Link</label>
-				{{input id="link" value=model.link placeholder="need a Link somewhere?" required="required"}}
+				{{input id="link" value=model.link placeholder="need a Link somewhere?" }}
 			</div>
 
 			<div class="Form-group Form--playlistSlug">
