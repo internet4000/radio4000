@@ -3,7 +3,10 @@ import DS from 'ember-data';
 
 /*
  Channel model:
+
  There is no reference to the 'channel owner' because we want the user to be as anonymous as possible
+
+ There is also a channelPublic model, which can be edited by anyone
  */
 
 export default DS.Model.extend({
@@ -20,13 +23,13 @@ export default DS.Model.extend({
 	lastUpdated: Ember.computed('tracks.@each.created', function() {
 		return this.get('tracks.lastObject.created');
 	}),
-	// createdDate: Ember.computed('created', function() {
-	// 	return moment(this.get('created')).fromNow();
-	// }),
 	lastUpdatedFormatted: Ember.computed('tracks.@each.created', function() {
 		var date = this.get('tracks.lastObject.created');
 		return window.moment(date).fromNow();
 	}),
+	// createdDate: Ember.computed('created', function() {
+	// 	return moment(this.get('created')).fromNow();
+	// }),
 
 	// Set the latest image as the cover image
 	coverImage: Ember.computed('images.[]', function() {
@@ -37,5 +40,5 @@ export default DS.Model.extend({
 	images: DS.hasMany('image', { async: true }),
 	tracks: DS.hasMany('track', { async: true }),
 	favoriteChannels: DS.hasMany('channel', { inverse: null, async: true }),
-	channelPublic: DS.belongsTo('channelPublic', { async: true }) 	// 'public' because not only owner can edit it
+	channelPublic: DS.belongsTo('channelPublic', { async: true })
 });
