@@ -64,6 +64,7 @@ label {
 
 // Form design should be tigther than inputs alone
 .Form {
+	@include clearfix;
 	[type='text'],
 	[type='email'],
 	[type='tel'],
@@ -77,11 +78,27 @@ label {
 .Form-group {
 	// should wrap every label+input
 }
+.Form--save {
+	clear: both;
+	@include clearfix;
+}
 .Form-group--small {
 	max-width: 14em;
 	input {
 		padding: 0.5em 0.5em 0.3em;
 	}
+}
+
+.Form-left,
+.Form-right {
+	width: 50%;
+	float: left;
+}
+.Form-left {
+	padding-right: 1rem;
+}
+.Form-right {
+	padding-left: 1rem;
 }
 
 // Forms that stand out in a box

@@ -40,8 +40,9 @@ Router.map(function() {
       });
       this.route('favorite-channels');
       this.route('followers');
-      this.route('edit'); // edit channel
       this.route('add'); // add a track to channel
+      this.route('edit'); // edit channel
+      this.route('delete-channel'); // permanently remove channel and its referenes from DB
     });
 
   // users

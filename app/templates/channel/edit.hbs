@@ -1,33 +1,44 @@
-<div class="Container Section--space">
-	<h3>Edit your channel</h3>
+<div class="Manchet Manchet--left">
+	<h1>Edit your channel</h1>
+</div>
 
+<div class="Container Container--full">
 	<form class="Form Form--box" {{action "trySave" on="submit"}}>
-		<div class="Form-group">
-			<label for="title">Channel title</label>
-			{{focus-input id="title" value=model.title placeholder="Title" autofocus='autofocus' required="required"}}
+
+		<div class="Channel-media">
+			<div class="Channel-cover">
+				<div class="Form-group">
+					<label for="image">Channel image</label>
+					{{file-upload image=newImage}}
+					{{channel-cover model=model hideTitle=true}}
+					{{!-- {{#if model.coverImage}}
+						<button class="Btn Btn--text Btn--small u-alignRight" {{action 'deleteImage'}}>remove image</button>
+					{{/if}} --}}
+				</div>
+			</div>
 		</div>
 
-		<div class="Form-group">
-			<label for="body">Channel description</label>
-			{{textarea id="body" value=model.body maxlength=channelDescriptionMaxLength placeholder="What is your channel about?"}}
-		</div>
+		<div class="Channel-body">
+			<div class="Form-group">
+				<label for="title" >Channel title</label>
+				{{focus-input id="title" value=model.title placeholder="Title" autofocus='autofocus' required="required"}}
+			</div>
 
-		<div class="Form-group">
-			<label for="image">Channel image</label>
-			{{file-upload image=newImage}}
-			{{#if model.coverImage}}
-				<button class="Btn" {{action 'deleteImage'}}>Delete image</button>
-			{{/if}}
-		</div>
-		<div class="Form-group Form--playlistSlug">
-			<label for="slug">Permalink</label>
-			<span class="Permalink">radio4000.com/c/</span>
-			{{input id="slug" value=model.slug placeholder="channel-slug" required="required"}}
-		</div>
+			<div class="Form-group">
+				<label for="body" >Channel description</label>
+				{{textarea id="body" value=model.body maxlength=channelDescriptionMaxLength placeholder="What is your channel about?"}}
+			</div>
 
-		<div class="Form-group">
-			<label for="link">Link</label>
-			{{input id="link" value=model.link placeholder="need a Link somewhere?" required="required"}}
+			<div class="Form-group">
+				<label for="link">Link</label>
+				{{input id="link" value=model.link placeholder="need a Link somewhere?" required="required"}}
+			</div>
+
+			<div class="Form-group Form--playlistSlug">
+				<label for="slug">Permalink</label>
+				<span class="Permalink">radio4000.com/c/</span>
+				{{input id="slug" value=model.slug placeholder="channel-slug" required="required"}}
+			</div>
 		</div>
 
 		{{!-- {{#if isAdmin}}
@@ -39,9 +50,10 @@
 		{{/if}} --}}
 
 		<div class="Form-group Form--save">
-			<button class="Btn Btn--primary" type="submit">Save</button>
-			{{#link-to 'channel' model class="Btn Btn--text"}}Cancel{{/link-to}}
-			<button class="Btn Btn--text Btn--danger u-alignRight Btn--delete" {{action 'tryDelete'}}>Delete channel (no way back)</button>
+			<button class="Btn Btn--primary" type="submit">Save channel</button>
 		</div>
 	</form>
+
+	{{#link-to 'channel.delete-channel' model class="Btn Btn--text Muted"}}Delete channel{{/link-to}}
+
 </div>

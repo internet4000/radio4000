@@ -5,13 +5,12 @@
 .Channel-media {
 	width: 100%;
 	@include clearfix;
+	max-width: 18em;
+	width: 8em;
 	@media (min-width: $layout-s) {
 		width: 30%;
-		float: right;
-	}
-	@media (min-width: $layout-m) {
-		width: 50%;
-		float: right;
+		float: left;
+		margin-right: 1rem;
 	}
 }
 .Channel-body {
@@ -25,7 +24,6 @@
 	}
 	@media (min-width: $layout-m) {
 		width: 50%;
-		float: left;
 	}
 }
 
@@ -46,7 +44,6 @@
 	margin-right: 1.8rem;
 	@media (min-width: $layout-m) {
 		margin-right: 0;
-		max-width: 18em;
 		float: right;
 	}
 
