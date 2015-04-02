@@ -1,4 +1,4 @@
-/*global Handlebars */
+/* global Handlebars */
 
 /**
  * Truncate text helper
@@ -24,7 +24,7 @@ export default Ember.Handlebars.makeBoundHelper(function(str, len) {
 		new_str = str.substr (0, new_str.lastIndexOf(' '));
 		new_str = (new_str.length > 0) ? new_str : str.substr (0, len);
 
-		return new Handlebars.SafeString( new_str + ' […]' );
+		return new Ember.Handlebars.SafeString( new_str + ' […]' );
 	}
 	return str;
 });

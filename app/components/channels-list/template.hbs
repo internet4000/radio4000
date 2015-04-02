@@ -3,7 +3,9 @@
 		<li>
 			{{#link-to "channel" channel}}
 				<h3 class="List-title">{{channel.title}}</h3>
-				<p class="List-body">{{do-truncate channel.body 140}}</p>
+				{{#if channel.body}}
+					<p class="List-body">{{do-truncate channel.body 140}}</p>
+				{{/if}}
 			{{/link-to}}
 		</li>
 	{{/each}}
