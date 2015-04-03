@@ -12,8 +12,7 @@
 
 				<div class="Channel-titleSection">
 					<span class="Follow Follow--title">
-						{{x-icon i="star"}}
-						{{x-icon i="star-yellow"}}
+					 {{btn-favorite action="toggleFavorite"}}
 					</span>
 					<h1 class="Channel-title">
 						{{#link-to 'channel' model}}{{model.title}}{{/link-to}}
@@ -35,14 +34,6 @@
 						</div>
 					</div>
 				{{/if}}
-
-				{{#unless canEdit}}
-					<div class="BtnGroupWrapper">
-						<div class="BtnGroup">
-							{{btn-favorite value=isFavorite action="toggleFavorite"}}
-						</div>
-					</div>
-				{{/unless}}
 
 				{{#if model.body}}
 					<p class="Channel-description">{{model.body}}</p>

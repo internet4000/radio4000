@@ -1,7 +1,9 @@
-{{#if value}}
-	{{x-icon i="x"}} Unfollow
+{{#if isFavorite}}
+	{{!-- {{x-icon i="x"}} Unfollow --}}
+	{{x-icon i="star-yellow" action="toggleFavorite"}}
 {{else}}
-	{{x-icon i="plus"}} Follow
+	{{x-icon i="star" action="toggleFavorite"}}
+	{{!-- {{x-icon i="plus"}} Follow --}}
 {{/if}}
 
 {{!--

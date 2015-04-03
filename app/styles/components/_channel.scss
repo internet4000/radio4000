@@ -23,7 +23,7 @@
 		float: left;
 	}
 	@media (min-width: $layout-m) {
-		width: 50%;
+		width: 67%;
 	}
 }
 
@@ -80,4 +80,21 @@
 }
 .LastUpdate {
 	@extend %font-regular;
+}
+
+
+/**
+ * About favorites
+ **/
+
+.Channel-titleSection {
+	@include clearfix;
+}
+.Channel-title {
+	width: 80%;
+	float: left;
+}
+.Follow--title {
+	float: left;
+	margin-right: 1rem;
 }
