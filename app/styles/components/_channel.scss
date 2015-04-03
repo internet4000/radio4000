@@ -5,7 +5,7 @@
 .Channel-media {
 	width: 100%;
 	@include clearfix;
-	max-width: 18em;
+	max-width: 10em;
 	width: 8em;
 	@media (min-width: $layout-s) {
 		width: 30%;

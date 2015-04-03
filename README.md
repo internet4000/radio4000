@@ -27,6 +27,13 @@ npm install; bower install
 
 Also see http://www.ember-cli.com/
 
+## Updating sprite, new icons - svg only
+
+- go to public/images/icons
+- open sprite.svg in code editor
+- look how things are made
+- paste in your new svg icon
+
 ## Building and deploying
 
 First build it:
