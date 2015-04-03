@@ -9,9 +9,16 @@
 			</div>
 
 			<div class="Channel-body">
-				<h1 class="Channel-title">
-					{{#link-to 'channel' model}}{{model.title}}{{/link-to}}
-				</h1>
+
+				<div class="Channel-titleSection">
+					<span class="Follow Follow--title">
+						{{x-icon i="star"}}
+						{{x-icon i="star-yellow"}}
+					</span>
+					<h1 class="Channel-title">
+						{{#link-to 'channel' model}}{{model.title}}{{/link-to}}
+					</h1>
+				</div>
 				{{#if model.tracks}}
 					<p class="Muted LastUpdate">(updated {{lastUpdatedFormatted}})</p>
 				{{/if}}
@@ -28,8 +35,6 @@
 						</div>
 					</div>
 				{{/if}}
-
-				<p>stars are here {{x-icon i="star-yellow"}} and there {{x-icon i="star-yellow"}} and compress {{x-icon i='arrows-compress'}}</p>
 
 				{{#unless canEdit}}
 					<div class="BtnGroupWrapper">

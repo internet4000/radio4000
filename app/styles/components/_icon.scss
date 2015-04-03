@@ -28,3 +28,31 @@ svg,
 path {
 	fill: currentColor;
 }
+
+// star specific colors;
+$yellowStroke: #FFD67D;
+$yellowFill: #E2B962;
+$grayStroke: #EEEEEC;
+
+.icon-star,
+.icon-star-yellow {
+	font-size: 2rem;
+	stroke-width: 2;
+	transition: all 300ms $easing;
+}
+
+.icon-star {
+	fill: transparent;
+	stroke: $grayStroke;
+	&:hover {
+		stroke: $yellowStroke;
+	}
+}
+.icon-star-yellow {
+	fill: $yellowFill;
+	stroke: $yellowStroke;
+	&:hover {
+		fill: transparent;
+	}
+}
+
