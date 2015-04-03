@@ -45,10 +45,6 @@ Router.map(function() {
       this.route('delete-channel'); // permanently remove channel and its referenes from DB
     });
 
-  // users
-  this.resource('users', function() {
-      this.resource('user', { path: '/user/:user_id' });
-    });
   this.route('bookmarklet');
 });
 
