@@ -1,18 +1,5 @@
 {{#if isFavorite}}
-	{{x-icon i="star-yellow" action="toggleFavorite"}}
+	{{x-icon i="star-yellow"}}
 {{else}}
-	{{x-icon i="star" action="toggleFavorite"}}
+	{{x-icon i="star"}}
 {{/if}}
-
-{{!--
-<p>
-{{#if session.authed}}
-	{{#if isReallyFavorite}}
-		<button class="Btn Btn--removeFavorite" title="Remove this channel from your favorite" {{action 'removeFavorite'}}>Unfavorite</button></p>
-	{{else}}
-		<button class="Btn--favorite" title="Save this channel as your favorite" {{action 'favorite'}}>Favorite</button>
-	{{/if}}
-{{/if}}
- --}}
-
-{{yield}}

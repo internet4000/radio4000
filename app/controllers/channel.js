@@ -20,15 +20,15 @@ export default Ember.Controller.extend({
 		return channel.get('id') === userChannel.get('id');
 	}),
 
-	// If the current user's favoriteChannels contains this channel
-	// it's a favorite…
 	isFavorite: Ember.computed('model', 'session.userChannel.favoriteChannels.@each', function() {
 		var channel = this.get('model');
-		var userFavorites = this.get('session.userChannel.favoriteChannels');
+		var favorites = this.get('session.userChannel.favoriteChannels');
 
 		// guard because this functions runs before userChannel is defined
-		if (!userFavorites) { return false;}
-		return userFavorites.contains(channel);
+		if (!favorites) { return false;}
+
+		// true if this channel is a favorite of the user's favorites
+		return favorites.contains(channel);
 	}),
 
 	actions: {
@@ -46,34 +46,37 @@ export default Ember.Controller.extend({
 		},
 
 		toggleFavorite() {
+			var isFavorite = this.get('isFavorite');
+			var channel = this.get('model');
+			var followers = this.get('model.channelPublic.followers');
 			var userChannel = this.get('session.userChannel');
 			var userFavorites = userChannel.get('favoriteChannels');
-			var channel = this.get('model');
-			var channelFollowers = null;
 
-			// 0- check if current.channel is already a session.user.favorite (to toggle it 'in' or 'out')
-			var isFavorite = this.get('isFavorite');
-
-			// 1- update user.session favorite channel list
-			if (isFavorite) {
-				userFavorites.removeObject(channel);
-			} else {
-				userFavorites.addObject(channel);
-			}
-			userChannel.save();
-
-			// 2- update channelPublic with id of follower channel
-			var channelPublic = this.get('model.channelPublic').then(function(publicChannel) {
-				channelFollowers = publicChannel.get('followers');
-
-				if (isFavorite) {
-					channelFollowers.removeObject(userChannel);
+			// toggle this channel from user's favorites
+			userFavorites.then((uf) => {
+				if (!isFavorite) {
+					uf.addObject(channel);
 				} else {
-					channelFollowers.addObject(userChannel);
+					uf.removeObject(channel);
 				}
-				publicChannel.save(); // save on the promise object
+
+				uf.save().then(() => {
+					Ember.debug('Updated userFavorites.');
+				});
+			});
+
+			// toggle the userChannel from this channel's public followers
+			followers.then((f) => {
+				if (!isFavorite) {
+					f.addObject(userChannel);
+				} else {
+					f.removeObject(userChannel);
+				}
+
+				f.save().then(() => {
+					Ember.debug('Updated followers.');
+				});
 			});
 		}
 	}
-
 });
