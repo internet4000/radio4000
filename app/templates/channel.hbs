@@ -11,9 +11,11 @@
 			<div class="Channel-body">
 
 				<div class="Channel-titleSection">
-					<span class="Follow Follow--title">
-						{{btn-favorite action="toggleFavorite" isFavorite=isFavorite}}
-					</span>
+					{{#if canEdit}}
+						<span class="Follow Follow--title">
+							{{btn-favorite action="toggleFavorite" isFavorite=isFavorite}}
+						</span>
+					{{/if}}
 					<h1 class="Channel-title">
 						{{#link-to 'channel' model}}{{model.title}}{{/link-to}}
 					</h1>
