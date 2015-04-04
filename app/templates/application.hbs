@@ -15,16 +15,11 @@
 				<button class="TogglePanel" title="Menu" {{action "togglePanel"}}>⊚</button>
 			</div>
 		</div>
+
+		{{partial 'partials/panel-nav'}}
 	</header>
 
-	<aside class="SitePanelNav">
-		{{partial 'partials/nav-panel'}}
-	</aside>
-
-	<aside class="SitePanelNavOverlay"></aside>
-
 	<main class="SiteMain">
-
 		{{#if-ios}}
 			<div class="Note Note--full">
 				<p>We're sorry but because your iOS device doesn't support autoplay Radio4000 can't work properly.</p>
