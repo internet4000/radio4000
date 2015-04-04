@@ -79,6 +79,12 @@
 	padding: 0.5em 0.7em 0.3em;
 }
 
+
+// Danger buttons
+.Btn--danger {
+	color: $red;
+}
+
 // Buttons that looks like text
 // extra specificity hack
 .Btn.Btn--text {
@@ -97,59 +103,7 @@
 	}
 }
 
-// Danger buttons
-.Btn--danger {
-	color: $red;
-}
-
-// Button that looks like an input field
-.Btn--textInput {
-	background-image: none;
-	background-color: $white;
-	text-align: left;
-	box-shadow: none;
-	&:hover,
-	&:focus {
-		background-image: none;
-	}
-}
-
-
-// Btn--fav
-.Btn--favorite,
-.Btn--removeFavorite {
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 120px;
-	height: 120px;
-	margin-top: -72px;
-	margin-right: -75px;
-	transform: rotate(145deg);
-
-	background-image: none;
-	border: 0;
-	border-radius: 0;
-	color: transparent;
-}
-.Btn--favorite {
-	background-color: rgb(200, 200, 200);
-}
-.Btn--removeFavorite {
-	background-color: lighter(rgb(200, 200, 200), 10%);
-}
-
-
-// Button groups
-// (eliminates double-borders and extra spacing between buttons)
-.BtnGroupWrapper {
-	.BtnGroup {
-		display: inline-block;
-	}
-	.BtnGroup + .BtnGroup {
-		margin-left: rem(4); // because of inline-block it's not 1rem
-	}
-}
+// A group of buttons
 .BtnGroup {
 	display: flex;
 	flex-shrink: 0;
@@ -159,7 +113,7 @@
 
 	.Btn {
 		& + .Btn {
-			margin-left: em(-5, 14);
+			border-left: 0;
 			border-radius: 0;
 		}
 		&:first-child {
@@ -180,6 +134,20 @@
 	margin-bottom: 0;
 	color: $gray;
 }
+
+// Groups of BtnGroup
+// (eliminates double-borders and extra spacing between buttons)
+.BtnGroupWrapper {
+	display: flex;
+	flex-flow: wrap;
+	margin-bottom: 0.5rem;
+
+	.BtnGroup {
+		margin-bottom: 0.5rem;
+		margin-right: 0.5rem;
+	}
+}
+
 
 
 // Shows either a up or down indicator
