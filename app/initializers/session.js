@@ -22,9 +22,6 @@ export default {
 
 	initialize(container, application) {
 
-		// tell the app to pause loading until advanceReadiness is declared
-		// application.deferReadiness();
-
 		var session = Ember.Object.extend({
 			authed: false,
 			user: null,
@@ -94,59 +91,40 @@ export default {
 			},
 
 			// Runs after succesful auth
-			afterAuthentication(userId) {
-				var _this = this;
+			afterAuthentication(id) {
+				var self = this;
+				var store = container.lookup('store:main');
 
-				// Either reuse or create a user
-				container.lookup('store:main').find('user', userId).then(function() {
-					_this.existingUser(userId);
-				}, function() {
-					_this.createUser(userId);
-				});
-			},
+				store.find('user', id)
+					.then(function(u) {
+						console.log('found user with id', id);
 
-			// Existing user
-			existingUser(userId) {
-				var _this = this;
+						// set user's channel
+						u.get('channels').then(function(channels) {
+							self.set('userChannel', channels.get('firstObject'));
+						});
 
-				// Set the user and user channel for easy access later
-				container.lookup('store:main').find('user', userId).then(function(user) {
-					user.get('channels').then(function(channels) {
+						return u;
+					})
+					.catch(function () {
+						console.log('can create with id', id);
 
-						// Proceed with existing user
-						var userChannel = channels.get('firstObject');
-						_this.set('userChannel', userChannel);
-						_this.set('user', user);
-						console.log('we got a user');
-						_this.afterUser();
+						// remove the unresolved record
+						store.recordForId('user', id).unloadRecord();
+
+						// create user
+						return store.createRecord('user', {
+							id: userId,
+							provider: this.get('authData.provider'),
+							name: this.get('authData.facebook.displayName') || this.get('authData.google.displayName'),
+							created: new Date().getTime()
+						});
+					})
+					.then(function (user) {
+						// u = found or created user
+						console.log('found or created', user);
+						self.set('user', user);
 					});
-				});
-			},
-
-			// Create a new user
-			createUser(userId) {
-				var _this = this;
-
-				// Without this, Emberfire gives an error
-				container.lookup('store:main').unloadAll('user');
-
-				container.lookup('store:main').createRecord('user', {
-					id: userId,
-					provider: this.get('authData.provider'),
-					name: this.get('authData.facebook.displayName') || this.get('authData.google.displayName'),
-					created: new Date().getTime()
-				}).save().then(function(user) {
-
-					// Proceed with the newly create user
-					_this.set('user', user);
-					_this.afterUser();
-				});
-			},
-
-			afterUser() {
-				console.log('afterUser');
-				console.log('advancing');
-				application.advanceReadiness();
 			}
 		});
 
