@@ -8,7 +8,7 @@ export default Ember.View.extend({
 		Ember.$('.DummyApp').remove();
 
 		// close on top bar, links in the panel nav and on the overlay
-		this.$().on('click.app', '.SiteLogo, .SitePanelNav a, .SitePanelNavOverlay', function() {
+		this.$().on('click.app', '.SiteLogo, .PanelNav a, .PanelNavOverlay', function() {
 			Ember.run(function() {
 				self.set('controller.isPanelOpen', false);
 			});

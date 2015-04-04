@@ -2,7 +2,8 @@
  * Site Panel Nav
  **/
 
-.SitePanelNav {
+.PanelNav {}
+.PanelNav-inner {
 	position: fixed;
 	top: $barHeight;
 	right: 0;
@@ -14,62 +15,56 @@
 	border-right: 0;
 	background-color: $white;
 
-	a {
-		display: block;
-		padding-left: 1em;
-		padding-right: 1em;
-		padding-top: 0.5rem;
-		padding-bottom: 0.5rem;
-		&:hover {
-			background-color: $purple;
-			color: $white;
-		}
-		&.is-active {
-			text-decoration: underline;
-		}
+	// hidden
+	transform: translateX(100%);
+	transition: transform 400ms $easing;
+
+	// visible
+	.is-panelOpen & {
+		transform: translateX(0);
+	}
+}
+.PanelNav-overlay {
+	content: '';
+	display: block;
+	position: fixed;
+	top: $barHeight; // below the header
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 4; // below PanelNav
+
+	// hidden
+	pointer-events: none;
+	background-color: rgba(0, 0, 0, 0);
+	transition: background-color 400ms;
+
+	.is-panelOpen & {
+		background-color: rgba(0, 0, 0, 0.2);
 	}
 }
 
-.NavGroup {
+// Links inside
+.PanelNav a {
+	display: block;
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	&:hover {
+		background-color: $purple;
+		color: $white;
+		text-decoration: none;
+	}
+	&.is-active {
+		text-decoration: underline;
+	}
+}
+.PanelNav-group {
 	padding: 0.5rem 0;
 	border-top: 1px solid $mediumlightgray;
 	&:first-of-type {
 		border-top: 0;
-	}
-}
-
-.SitePanelNavOverlay {
-	background-color: rgba(0, 0, 0, 0);
-	transition: background-color 400ms;
-	visibility: hidden;
-	position: fixed;
-	z-index: 4;
-	top: $barHeight;
-	right: 0;
-	left: 0;
-	width: 0;
-	bottom: 0;
-	width: 100%;
-}
-
-/**
- * open/close panel
- */
-
-// is close
-.SitePanelNav {
-	transform: translateX(100%);
-	transition: transform 400ms $easing3;
-}
-
-// is open
-.OverlayManager.is-panelOpen {
-	.SitePanelNav {
-		transform: translateX(0);
-	}
-	.SitePanelNavOverlay {
-		visibility: visible;
-		background-color: rgba(0, 0, 0, 0.2);
 	}
 }
 
@@ -91,7 +86,6 @@
 		}
 	}
 }
-
 .UserChannel-media {
 	float: left;
 	width: 40px;
@@ -99,13 +93,12 @@
 	background-color: $darkblue;
 	margin-bottom: 0;
 }
-
 .UserChannel-body {
 	float: left;
 	width: 100%;
 	min-height: 1.4em;
 	margin-left: -40px;
-	padding-left: 60px;
+	padding-left: 55px;
 
 	&.BoxIcon {
 		// when user is logged in but has no channel yet
@@ -116,7 +109,6 @@
 		}
 	}
 }
-
 .UserChannel-intro {
 	margin-bottom: 0;
 }

@@ -1,0 +1,44 @@
+<aside class="PanelNav">
+	<div class="PanelNav-overlay"></div>
+
+	<div class="PanelNav-inner">
+		<div class="PanelNav-group">
+			<div class="UserChannel">
+				{{#if session.userChannel}}
+					{{#link-to 'channel' session.userChannel title="Go to my channel"}}
+
+						<img class= "UserChannel-media" src="{{session.userChannel.coverImage.src}}">
+
+						<div class="UserChannel-body">
+							<p class="UserChannel-intro Muted">Your radio</p>
+							<p class="UserChannel-title">{{session.userChannel.title}}</p>
+						</div>
+					{{/link-to}}
+				{{else}}
+					{{#link-to 'channels.new' class="" title="Create your channel"}}
+						<div class="UserChannel-body BoxIcon BoxIcon--add">
+							<p class="UserChannel-title">Create your channel</p>
+						</div>
+					{{/link-to}}
+				{{/if}}
+			</div>
+		</div>
+
+		{{!-- <div class="PanelNav-group">
+			{{#link-to 'channels' title="Discover channels"}}Discover{{/link-to}}
+		</div> --}}
+
+		<div class="PanelNav-group">
+			{{#link-to 'about' title="Learn more about Radio4000"}}About{{/link-to}}
+			{{#link-to 'help' title="Answers to your questions"}}Help{{/link-to}}
+		</div>
+
+		<div class="PanelNav-group">
+			{{#if session.authed}}
+				<a href="#" class="Muted" title="Sign out from Radio4000" {{action 'logout' this}}>Sign out</a>
+			{{else}}
+				{{#link-to 'signin' title="Sign in to Radio4000"}}Register or sign in{{/link-to}}
+			{{/if}}
+		</div>
+	</div>
+</aside>
