@@ -15,7 +15,7 @@ export default Ember.Controller.extend({
 		var userChannel = this.get('session.userChannel');
 
 		// avoid both props being null === null which equals true (lol)
-		if (userChannel === null) { return false; }
+		if (channel === null || userChannel === null) { return false; }
 
 		return channel.get('id') === userChannel.get('id');
 	}),
@@ -47,34 +47,37 @@ export default Ember.Controller.extend({
 
 		toggleFavorite() {
 			var isFavorite = this.get('isFavorite');
-			var channel = this.get('model');
-			var followers = this.get('model.channelPublic.followers');
 			var userChannel = this.get('session.userChannel');
-			var userFavorites = userChannel.get('favoriteChannels');
+			var favorites = this.get('session.userChannel.favoriteChannels');
+			var channel = this.get('model');
+			var channelPublic = channel.get('channelPublic');
+			var channelFollowers = channelPublic.get('followers');
 
-			// toggle this channel from user's favorites
-			userFavorites.then((uf) => {
-				if (!isFavorite) {
-					uf.addObject(channel);
+			favorites.then((favs) => {
+
+				// add or remove to user's channel's favorites
+				if (isFavorite) {
+					favs.removeObject(channel);
 				} else {
-					uf.removeObject(channel);
+					favs.addObject(channel);
 				}
 
-				uf.save().then(() => {
-					Ember.debug('Updated userFavorites.');
-				});
+				// save the parent
+				userChannel.save();
 			});
 
-			// toggle the userChannel from this channel's public followers
-			followers.then((f) => {
-				if (!isFavorite) {
-					f.addObject(userChannel);
+			channelFollowers.then((followers) => {
+
+				// toggle the userChannel from this channel's public followers
+				if (isFavorite) {
+					followers.removeObject(userChannel);
 				} else {
-					f.removeObject(userChannel);
+					followers.addObject(userChannel);
 				}
 
-				f.save().then(() => {
-					Ember.debug('Updated followers.');
+				// open and save the parent
+				channelPublic.then(function(cp) {
+					cp.save();
 				});
 			});
 		}

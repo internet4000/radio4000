@@ -5,15 +5,18 @@ export default Ember.Route.extend({
 		var channel = this.get('session.userChannel');
 
 		if (!channel) {
-			// Ember.debug('channelChanged without channel -> force');
+
+			// Force the user to have a channel
 			this.transitionTo('channels.new');
 		} else if (channel) {
-			// Ember.debug('channelChanged with channel');
-			this.transitionTo('channel', channel);
+
+			// Don't do anything here.
+			// We should only redirect if the user actively logged in
 		}
 	}),
 
 	renderTemplate() {
+
 		// because we overwrite the renderTemplate method
 		// we need to run super
 		this._super();

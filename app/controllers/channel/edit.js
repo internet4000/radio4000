@@ -159,5 +159,10 @@ export default Ember.Controller.extend({
 		cancelEdit() {
 			this.transitionToRoute('channel', this.get('model'));
 		}
+	},
+
+	// clear any unsaved changes
+	deactivate() {
+		this.controllerFor('channel').get('model').rollback();
 	}
 });
