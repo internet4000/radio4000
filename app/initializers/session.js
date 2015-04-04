@@ -114,7 +114,7 @@ export default {
 
 						// create user
 						return store.createRecord('user', {
-							id: userId,
+							id: id,
 							provider: this.get('authData.provider'),
 							name: this.get('authData.facebook.displayName') || this.get('authData.google.displayName'),
 							created: new Date().getTime()

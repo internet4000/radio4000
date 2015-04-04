@@ -1,4 +1,3 @@
-/* global Handlebars */
 
 /**
  * Truncate text helper
