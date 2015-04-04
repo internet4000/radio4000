@@ -4,14 +4,9 @@ export default Ember.Route.extend({
 	channelChanged: Ember.observer('session.userChannel.id', function() {
 		var channel = this.get('session.userChannel');
 
+		// Try to get the user to create a channel
 		if (!channel) {
-
-			// Force the user to have a channel
 			this.transitionTo('channels.new');
-		} else if (channel) {
-
-			// Don't do anything here.
-			// We should only redirect if the user actively logged in
 		}
 	}),
 
@@ -32,9 +27,11 @@ export default Ember.Route.extend({
 		login(provider) {
 			this.get('session').login(provider);
 		},
-
 		logout() {
 			this.get('session').logout();
+		},
+		back() {
+			window.history.back();
 		}
 	}
 });
