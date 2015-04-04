@@ -4,7 +4,6 @@ export default Ember.Controller.extend({
 	needs: ['playback'],
 	playback: Ember.computed.alias('controllers.playback'),
 
-
 	lastUpdatedFormatted: Ember.computed('tracks.@each.created', function() {
 		var date = this.get('tracks.lastObject.created');
 		return window.moment(date).subtract(1, 'days').fromNow();
@@ -19,6 +18,17 @@ export default Ember.Controller.extend({
 		if (userChannel === null) { return false; }
 
 		return channel.get('id') === userChannel.get('id');
+	}),
+
+	// If the current user's favoriteChannels contains this channel
+	// it's a favorite…
+	isFavorite: Ember.computed('model', 'session.userChannel.favoriteChannels.@each', function() {
+		var channel = this.get('model');
+		var userFavorites = this.get('session.userChannel.favoriteChannels');
+
+		// guard because this functions runs before userChannel is defined
+		if (!userFavorites) { return false;}
+		return userFavorites.contains(channel);
 	}),
 
 	actions: {
@@ -63,20 +73,7 @@ export default Ember.Controller.extend({
 				}
 				publicChannel.save(); // save on the promise object
 			});
-
-
 		}
-	},
+	}
 
-	// If the current user's favoriteChannels contains this channel
-	// it's a favorite…
-	isFavorite: Ember.computed('model', 'session.userChannel.favoriteChannels.@each', function() {
-		var channel = this.get('model');
-		var userFavorites = this.get('session.userChannel.favoriteChannels');
-
-		// guard because this functions runs before userChannel is defined
-		if (!userFavorites) { return false; }
-
-		return userFavorites.contains(channel);
-	})
 });
