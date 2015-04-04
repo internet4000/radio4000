@@ -37,6 +37,6 @@ export default Router.map(function() {
     this.route('followers');
     this.route('add'); // add a track to channel
     this.route('edit'); // edit channel
-    this.route('delete-channel'); // permanently remove channel and its referenes from DB
+    this.route('delete'); // permanently remove channel and its referenes from DB
   });
 });
