@@ -57,23 +57,7 @@ The above packages the app and wraps it with atom-shell into the build folder.
 
 ## Important if you use Sublime Text
 
-Sublime automatically watches all files in a folder. Because ember-cli is so huge your PC will slow down. To solve this, tell Sublime to ignore the `tmp` and `node_modules` folder:
-
-```
-{
-	"folders":
-	[
-		{
-			"follow_symlinks": true,
-			"path": ".",
-			 "folder_exclude_patterns": [
-             "tmp",
-             "node_modules"
-         ]
-		}
-	]
-}
-```
+Sublime automatically watches all files in a folder. Because ember-cli is so huge your PC will slow down. To solve this, tell Sublime to ignore the `tmp` and `node_modules` folder: http://www.ember-cli.com/#sublime-text
 
 ## Emberfire
 
@@ -85,7 +69,7 @@ We're using the YouTube API so you might run into trouble with permissions, doma
 
 ## Firebase security rules
 
-Firebase rules are a bitch. With the [Blaze Compiler](https://github.com/firebase/blaze_compiler) it's supposed to be easier, so.
+Firebase rules are a bitch. With the [Blaze Compiler](https://github.com/firebase/blaze_compiler) it's supposed to be easier, so:
 
 ```
 $ npm install -g blaze_compiler
@@ -97,6 +81,9 @@ $ blaze rules/rules.yaml
 Follow the instructions on [ember-cli/releases](https://github.com/ember-cli/ember-cli/releases) and remember to keep our own dependencies:
 
 ```
-npm install --save-dev broccoli-sass broccoli-csso ember-youtube liquid-fire gulp rsyncwrapper ember-cli-autoprefixer
-bower install --save firebase js-md5 moment emberfire
+npm install --save-dev npm install -save broccoli-sass broccoli-csso ember-cli-app-version ember-cli-autoprefixer gulp gulp-atom-shell rsyncwrapper ember-youtube
+npm uninstall ember-cli-content-security-policy
+bower install --save js-md5 moment emberfire
 ```
+
+Remove `ember-cli-content-security-policy` if it's in `package.json`.
