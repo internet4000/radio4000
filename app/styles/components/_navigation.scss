@@ -37,28 +37,3 @@
 		text-align: right;
 	}
 }
-
-.TogglePanel {
-	font-size: 2rem;
-	padding-top: 0;
-	padding-bottom: 0;
-	padding-left: 0.5rem;
-	border: 0;
-	background: none;
-	color: $white;
-	user-select: none;
-	transition: 400ms transform $easing;
-	transform-origin: 45% 50%; // so it feels like it stays in place
-	&:hover,
-	&:focus,
-	&:active {
-		outline: none;
-		text-decoration: none;
-	}
-	&:active {
-		color: $red;
-	}
-	.is-panelOpen & {
-		transform: rotate(90deg);
-	}
-}

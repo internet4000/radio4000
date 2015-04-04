@@ -1,6 +1,20 @@
-<div {{bind-attr class=":OverlayManager :BreadAndCheese isMaximized isPanelOpen:is-panelOpen"}}>
+<div {{bind-attr class=":BreadAndCheese isMaximized isPanelOpen:is-panelOpen"}}>
 	<header class="SiteHeader">
-		{{partial 'partials/nav-header'}}
+		<div class="Bar Bar--top">
+
+			{{!-- {{#link-to "channels" class="BackArrow"  title="Back to Discover"}}&larr;{{/link-to}} --}}
+			<h1 class="SiteLogo">
+				<!-- <a href="#" {{action 'back'}}></a> -->
+				{{#link-to "channels" title="Back to Discover"}}
+					<img src="images/logos/logo-radio4000.png" alt="Radio4000">
+				{{/link-to}}
+			</h1>
+
+			<div class="ContextualNavigation">
+				{{outlet "contextual-navigation"}}
+				<button class="TogglePanel" title="Menu" {{action "togglePanel"}}>⊚</button>
+			</div>
+		</div>
 	</header>
 
 	<aside class="SitePanelNav">

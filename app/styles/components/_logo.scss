@@ -3,83 +3,57 @@
  * our has an animation which is define here at the beginning
  **/
 
- /**
-  * actual site logo
-  **/
-
-
 .SiteLogo {
 	flex: 1;
 	display: flex;
 	align-items: center;
 	margin: 0;
 
+	img {
+		width: 89px;
+		vertical-align: middle;
+	}
+
 	a {
 		display: block;
-		width: 89px;
 		color: $bleach;
-		&:hover {
-			text-decoration: none;
-		}
+
+		// match .Container because we want padding here = bigger tap
+		padding-left: 1rem;
+
+		// arrow
 		&:before {
 			content: "←";
 			display: inline-block;
 			position: absolute;
-			top: 11px;
-			left: 8px;
-			font-size: 32px;
+			top: 20%;
+			left: 0.5rem;
+			font-size: 30px;
 			transform: translateX(0);
-			transition: transform 600ms $easing;
+			transition: transform 500ms $easing;
 		}
-		// logo itself, moved to make space for the arrow
+
+		// logo itself,
 		img {
-			margin-left: 2rem;
 			transform: translateX(0);
-			transition: transform 600ms $easing;
+			transition: transform 500ms $easing, margin 500ms $easing;
+
+			//moved to make space for the arrow
+			margin-left: 2rem;
 		}
 	}
-	// when logo is active, so on home, hidde arrow
+
+	a:hover {
+		text-decoration: none;
+	}
+
+	// when logo is active, so on home, hide arrow
 	a.is-active {
 		&:before {
 			transform: translateX(-200%);
 		}
 		img {
 			margin-left: 0;
-			@media (min-width: $layout-m) {
-				margin-left: 1rem;
-			}
 		}
 	}
-	img {
-		vertical-align: middle;
-	}
 }
-
-// /**
-//  * Logo html
-//  **/
-
-// .LogoHtml {
-// 	font-family: Helvetica;
-// 	position: fixed;
-// 	top: 20px;
-// 	left: -10px;
-// 	margin-right: 1rem;
-// 	padding-top: 24px;
-// 	padding-left: 24px;
-// 	text-transform: uppercase;
-// }
-
-// .LogoHtml-b,
-// .LogoHtml-c,
-// .LogoHtml-d,
-// .LogoHtml-e {
-// 	font-size: 2.7rem;
-// 	letter-spacing: -0.08rem;
-// 	position: relative;
-// }
-// .LogoHtml-a { // r
-// 	font-size: 1.5rem;
-// 	font-weight: 600;
-// 	letter-spacing: -0.1rem;
-// }
