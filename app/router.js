@@ -20,7 +20,11 @@ export default Router.map(function() {
   this.route('log');
   this.route('signin');
   this.route('stats');
-  this.route('styleguide');
+  this.route('styleguide', function() {
+     this.route('colors');
+     this.route('typography');
+     this.route('forms');
+ });
 
   // channels
   this.resource('channels', { path: '/'}, function() {
