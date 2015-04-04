@@ -52,7 +52,7 @@ $grayStroke: #EEEEEC;
 	fill: $yellowFill;
 	stroke: $yellowStroke;
 	&:hover {
-		fill: transparent;
+		stroke: $grayStroke;
 	}
 }
 
