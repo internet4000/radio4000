@@ -3,24 +3,19 @@
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 var app = new EmberApp({
+	fingerprint: {
+		// enable for these environments
+		enabled: (this.env === 'production' || this.env === 'native'),
+		prepend: 'http://dyzwdli7efbh5.cloudfront.net/'
+	},
+
 	// dont pollute our index.html with meta data
 	storeConfigInMeta: false,
-
-	// needed until ember-cli updates 100% to HTMLbars
-	vendorFiles: {
-		'handlebars.js': null
-	},
 
 	// minify our styles using broccoli-csso
 	minifyCSS: {
 		enabled: true,
 		options: {}
-	},
-
-	fingerprint: {
-		// enable for these environments
-		enabled: (this.env === 'production' || this.env === 'native'),
-		prepend: 'http://dyzwdli7efbh5.cloudfront.net/'
 	}
 });
 
