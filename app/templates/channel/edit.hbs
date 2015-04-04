@@ -50,8 +50,11 @@
 		{{/if}} --}}
 
 		<div class="Form-group Form--save">
-			<button class="Btn Btn--primary" type="submit">Save channel</button>
-			{{#link-to 'channel.index' model class="Btn Btn--text Muted"}}Cancel edit channel{{/link-to}}
+			<button type="submit" class="Btn Btn--primary" disabled={{isSaving}}>
+				{{#if isSaving}}Saving…{{else}}Save channel{{/if}}
+			</button>
+
+			{{#link-to 'channel.index' model class="Btn Btn--text Muted"}}Cancel editing{{/link-to}}
 		</div>
 	</form>
 

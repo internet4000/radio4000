@@ -97,7 +97,7 @@ export default {
 
 				store.find('user', id)
 					.then(function(u) {
-						console.log('found user with id', id);
+						// console.log('found user with id', id);
 
 						// set user's channel
 						u.get('channels').then(function(channels) {
@@ -107,7 +107,7 @@ export default {
 						return u;
 					})
 					.catch(function () {
-						console.log('can create with id', id);
+						// console.log('can create with id', id);
 
 						// remove the unresolved record
 						store.recordForId('user', id).unloadRecord();
@@ -121,8 +121,8 @@ export default {
 						});
 					})
 					.then(function (user) {
-						// u = found or created user
-						console.log('found or created', user);
+						// user = found or created user
+						// console.log('found or created', user);
 						self.set('user', user);
 					});
 			}

@@ -5,9 +5,10 @@ import randomText from 'radio4000/utils/random-text';
 export default Ember.Controller.extend({
 	titleMaxLength: 32,
 
-	cleanSlug: Ember.computed('title', function() {
-		var cleaned = clean(this.get('model.title'));
-		return cleaned + '-' + randomText();
+	cleanSlug: Ember.computed('model.title', function() {
+		var title = this.get('model.title');
+
+		return clean(title) + '-' + randomText();
 	}),
 
 	tooLong: Ember.computed('model.title', function() {
@@ -15,23 +16,17 @@ export default Ember.Controller.extend({
 	}),
 
 	validates: Ember.computed('tooLong', 'session.user', function() {
-		if (this.get('tooLong') || !this.get('session.user')) {
-			Ember.warn('Tried to create channel but title too long or no user.');
-			return false;
-		} else {
-			return true;
-		}
+		return !this.get('tooLong') || !this.get('session.user');
 	}),
 
 	actions: {
-
 		create() {
+			
 			if (!this.get('validates')) {
-				console.log('Channel did not validate.');
+				Ember.warn('Channel did not validate.');
 				return false;
 			}
 
-			var self = this;
 			var user = this.get('session.user');
 			var channel = this.get('model');
 			var slug = this.get('cleanSlug');

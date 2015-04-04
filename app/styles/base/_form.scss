@@ -42,7 +42,7 @@ textarea,
 	color: $text-color;
 
 	&:focus {
-		outline: $darkblue auto 4px;
+		outline: hsl(214, 95%, 64%) auto 4px;
 	}
 }
 

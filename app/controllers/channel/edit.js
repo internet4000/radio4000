@@ -121,6 +121,7 @@ export default Ember.Controller.extend({
 			} else {
 				alert('Sorry, that permalink is taken. Try another one.');
 				this.set('slug', ''); // empty slug
+				this.set('isSaving', false);
 			}
 		}.bind(this));
 	},
@@ -128,6 +129,8 @@ export default Ember.Controller.extend({
 	actions: {
 		trySave() {
 			var slugDidChange = (this.get('cachedSlug') !== this.get('model.slug'));
+
+			this.set('isSaving', true);
 
 			// this avoid validating slugs uneccessary (because it's heavy)
 			if (slugDidChange) {
@@ -152,12 +155,14 @@ export default Ember.Controller.extend({
 
 			channel.save().then(function() {
 				this.transitionToRoute('channel', this.get('model.slug'));
+				this.set('isSaving', false);
 			}.bind(this));
 		},
 
 		// used by 'ESC' key in the view
 		cancelEdit() {
 			this.transitionToRoute('channel', this.get('model'));
+			this.set('isSaving', false);
 		}
 	},
 
