@@ -19,8 +19,14 @@
 		<p class="Muted">Don't worry, you can change this name <em>anytime later</em>!</p>
 
 		<div class="Form-group">
-			<button type="submit" class="Btn Btn--primary" title="Create your radio channel">Create your radio channel</button>
+			<button disabled={{isSaving}} type="submit" class="Btn Btn--primary" title="Create your radio channel">
+				{{#if isSaving}}Creating…{{else}}Create your radio channel{{/if}}
+			</button>
+
+
 		</div>
+
+
 	</form>
 
 </div>

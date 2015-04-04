@@ -36,10 +36,12 @@ export default Ember.Controller.extend({
 			var channel = this.get('model');
 			var slug = this.get('cleanSlug');
 
+			this.set('isSaving', true);
+
 			// create public channel
 			this.store.createRecord('channelPublic', {
 				channel: channel
-			}).save().then(function(channelPublic) {
+			}).save().then((channelPublic) => {
 
 				// now the channelPublic is saved, has an ID and can be used
 				console.log('saved channelPublic');
@@ -51,30 +53,31 @@ export default Ember.Controller.extend({
 				});
 
 				// save it
-				channel.save().then(function(channel) {
+				channel.save().then((channel) => {
 
 					// now the channel is saved
 					console.log('saved channel');
 
+					// @todo use an observer somewhere
+					this.set('session.userChannel', channel);
+
 					// set relationship on user (who created the channel)
-					user.get('channels').then(function(channels) {
+					user.get('channels').then((channels) => {
+
 						channels.addObject(channel);
-						user.save().then(function() {
-							console.log('saved channel on user');
+						user.save().then(() => {
+							console.log('Saved channel on user.');
 						});
 
-						// @todo refactor: set the user channel (should be automatic)
-						// (otherwise index will be blank because we only set on login)
-						self.set('session.userChannel', channel);
+						// this.set('isSaving', 2);
 
 						// Redirect to the new channel
 						Ember.debug('redirect to the new channel');
-						// this.transitionToRoute('channel', channel);
+						this.transitionToRoute('channel', channel);
+						this.set('isSaving', false);
 					});
 				});
 			});
-
-			console.log('hey');
 		}
 	}
 });
