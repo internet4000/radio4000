@@ -9,7 +9,8 @@ html {
 	font-size: 15px; // important, specify in pixels here as all other font-size are re(m)lative to this
 	@media (min-width: $layout-m) { font-size: $base-font-size; }
 }
-strong {
+strong,
+b {
 	@extend %font-bold;
 }
 em {
