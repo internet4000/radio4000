@@ -3,24 +3,22 @@
  */
 
 .Channel-media {
-	width: 100%;
 	@include clearfix;
 	max-width: 10em;
 	width: 8em;
 	@media (min-width: $layout-s) {
-		width: 30%;
 		float: left;
-		margin-right: 2rem;
+		width: 30%;
+		padding-right: 2rem;
 	}
 }
 .Channel-body {
-	width: 100%;
 	@include clearfix;
 	padding-right: 2rem;
 	margin-bottom: 1rem;
 	@media (min-width: $layout-s) {
-		width: 70%;
 		float: left;
+		width: 70%;
 	}
 	@media (min-width: $layout-m) {
 		width: 67%;
