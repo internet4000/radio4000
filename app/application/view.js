@@ -4,6 +4,9 @@ export default Ember.View.extend({
 	didInsertElement() {
 		var self = this;
 
+		// Remove our dummy app with inline styles
+		Ember.$('.DummyApp').remove();
+
 		// close on top bar, links in the panel nav and on the overlay
 		this.$().on('click.app', '.SiteLogo, .SitePanelNav a, .SitePanelNavOverlay', function() {
 			Ember.run(function() {
