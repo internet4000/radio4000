@@ -12,7 +12,7 @@
 
 				<div class="Channel-titleSection">
 					<span class="Follow Follow--title">
-					 {{btn-favorite action="toggleFavorite"}}
+					 {{btn-favorite action="toggleFavorite" isFavorite=isFavorite}}
 					</span>
 					<h1 class="Channel-title">
 						{{#link-to 'channel' model}}{{model.title}}{{/link-to}}
