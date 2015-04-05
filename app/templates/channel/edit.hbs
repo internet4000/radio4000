@@ -9,11 +9,14 @@
 			<div class="Channel-cover">
 				<div class="Form-group">
 					<label for="image">Channel image</label>
-					{{file-upload image=newImage}}
 					{{channel-cover model=model hideTitle=true}}
-					{{!-- {{#if model.coverImage}}
-						<button class="Btn Btn--text Btn--small u-alignRight" {{action 'deleteImage'}}>remove image</button>
-					{{/if}} --}}
+
+					{{!-- {{file-upload image=newImage}} --}}
+					{{image-upload imageId=newImage}}
+
+					{{#if model.coverImage}}
+						<button class="Btn Btn--danger" {{action 'deleteImage'}}>Delete image</button>
+					{{/if}}
 				</div>
 			</div>
 		</div>
@@ -30,31 +33,23 @@
 			</div>
 
 			<div class="Form-group">
-				<label for="link">Link</label>
-				{{input id="link" value=model.link placeholder="need a Link somewhere?" }}
-			</div>
-
-			<div class="Form-group">
 				<label for="slug">Permalink</label>
 				<span class="Permalink">radio4000.com/c/{{model.slug}}</span>
 				{{input id="slug" value=model.slug placeholder="channel-slug" required="required"}}
 			</div>
-		</div>
 
-		{{!-- {{#if isAdmin}}
 			<div class="Form-group">
-				<label for="image">Featured
-					{{input type="checkbox" checked=model.isFeatured}}
-				</label>
+				<label for="link">Link</label>
+				{{input id="link" value=model.link placeholder="need a Link somewhere?" }}
 			</div>
-		{{/if}} --}}
 
-		<div class="Form-group Form--save">
-			<button type="submit" class="Btn Btn--primary" disabled={{isSaving}}>
-				{{#if isSaving}}Saving…{{else}}Save channel{{/if}}
-			</button>
+			<div class="Form-group Form--save">
+				<button type="submit" class="Btn Btn--primary" disabled={{isSaving}}>
+					{{#if isSaving}}Saving…{{else}}Save channel{{/if}}
+				</button>
 
-			{{#link-to 'channel.index' model class="Btn Btn--text Muted"}}Cancel editing{{/link-to}}
+				{{#link-to 'channel.index' model class="Btn Btn--text Muted"}}Cancel editing{{/link-to}}
+			</div>
 		</div>
 	</form>
 

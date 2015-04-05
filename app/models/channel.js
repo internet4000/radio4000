@@ -34,7 +34,7 @@ export default DS.Model.extend({
 
 	// Set the latest image as the cover image
 	coverImage: Ember.computed('images.[]', function() {
-		return this.get('images.firstObject');
+		return this.get('images.lastObject');
 	}),
 
 	// relationships

@@ -15,6 +15,8 @@
     "js-md5": "~1.1.0",
     "moment": "~2.9.0",
     "emberfire": "~1.4.4"
+    "cloudinary": "~1.0.23",
+    "jquery-file-upload": "~9.9.3"
   },
   "resolutions": {
     "ember-data": "1.0.0-beta.16.1"

@@ -51,7 +51,7 @@ textarea {
 	min-height: 5em;
 }
 
-// Label styles
+// Labels
 label {
 	@include size-1;
 	display: block;
@@ -66,6 +66,19 @@ label {
 		@extend %font-regular;
 		margin-top: 0.25rem;
 	}
+}
+
+// Progress bar
+progress {
+	width: 100%;
+}
+
+// File inputs
+input[type='file'] {
+	width: 100%;
+	border: 4px dashed $black;
+	padding: 2rem;
+	background-color: #FDFFB2;
 }
 
 // Form design should be tigther than inputs alone
@@ -178,5 +191,31 @@ label {
 		// 	outline: none;
 		// 	border-bottom: 2px solid $primary-color;
 		// }
+	}
+}
+
+.cloudinary_fileupload {
+	display: none;
+}
+
+#dropzone {
+	display: block;
+	width: 100%;
+	padding: 2rem;
+	text-align: center;
+	background-color: palegreen;
+	transition: background-color 300ms, color 300ms;
+
+	&.in {
+		min-height: 6rem;
+		font-size: larger;
+	}
+	&.hover {
+		background-color: $primary-color;
+		color: $white;
+	}
+	&.fade {
+		transition: all 0.3s ease-out;
+		/* opacity: 1; */
 	}
 }

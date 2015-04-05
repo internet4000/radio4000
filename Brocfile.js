@@ -36,4 +36,12 @@ var app = new EmberApp({
 app.import('bower_components/moment/moment.js');
 app.import('bower_components/js-md5/js/md5.js');
 
+// For file uploads with Cloudinary and jQuery
+app.import('bower_components/blueimp-file-upload/js/vendor/jquery.ui.widget.js');
+app.import('bower_components/blueimp-file-upload/js/jquery.iframe-transport.js');
+app.import('bower_components/blueimp-file-upload/js/jquery.fileupload.js');
+// app.import('bower_components/cloudinary/js/load-image.min.js'); // for xhr polyfill
+// app.import('bower_components/cloudinary/js/canvas-to-blob.min.js'); // for resizing client-side
+app.import('bower_components/cloudinary/js/jquery.cloudinary.js');
+
 module.exports = app.toTree();

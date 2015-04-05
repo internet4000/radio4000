@@ -33,6 +33,9 @@ module.exports = function(environment) {
     ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+
+    ENV.CLOUDINARY_NAME = 'radio4000';
+    ENV.CLOUDINARY_UPLOAD_PRESET = 'tc44ivjo';
   }
 
   if (environment === 'test') {
@@ -49,6 +52,8 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.firebase = 'https://radio4000.firebaseio.com/';
+    ENV.CLOUDINARY_NAME = 'radio4000';
+    ENV.CLOUDINARY_UPLOAD_PRESET = 'tc44ivjo';
   }
 
   if (environment === 'native') {
