@@ -8,6 +8,7 @@ a.Box,
 	display: inline-block;
 	width: 100%;
 	border: 1px solid hsla(0, 0%, 0%, 0.2);
+	border-radius: $border-radius;
 	text-align: center;
 	padding: 1.6rem 1rem;
 	transition: 150ms all ease-in-out;
