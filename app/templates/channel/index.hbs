@@ -1,13 +1,20 @@
-{{tracks-list content=model.tracks
-				  canEdit=canEdit
-				  playback=playback}}
+{{#if model.tracks}}
+	{{tracks-list content=model.tracks
+					canEdit=canEdit
+					playback=playback}}
+
+{{else}}
+	<div class="Container Section Section--messaging">
+		<p>This channel doesn't have any tracks, yet.</p>
+	</div>
+{{/if}}
 
 <div class="Container">
 	{{#if showHelp}}
 		<div class="Note">
 			{{#if noTracks}}
 				<h2>Welcome to your new channel!</h2>
-				<p>To add a new track, tap <em>'Add track'</em> above and paste in a YouTube video URL.</p>
+				<p>To add a new track, tap <em>'Add track'</em> above.</p>
 			{{/if}}
 
 			{{#if oneTrack}}
@@ -15,7 +22,7 @@
 			{{/if}}
 
 			{{#unless hasImage}}
-				<p>To add an image, edit your channel above.</p>
+				<p>To add an image, update the description of your channel, tap <em>'Edit channel'</em> above.</p>
 			{{/unless}}
 		</div>
 	{{/if}}
