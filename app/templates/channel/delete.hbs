@@ -1,21 +1,20 @@
 <div class="Manchet Manchet--left">
-	<h1>Delete Channel <small>— ciao!</small></h1>
+	<h1>You are about to permanently delete {{model.title}}<small>— your Radio4000 channel</small></h1>
 </div>
 
 <div class="Container Section--space">
-	<p>You are about to <strong>delete permanently</strong> your radio 4000 channel!</p>
-	<p>This means:</p>
-
 	<ul>
-		<li>All the music you added to your channel will be lost for ever!</li>
-		<li>Your list of favorite channels will be deleted.</li>
-		<li>Your list of followers will also be deleted.</li>
-		<li>Finnaly your channel <strong>{{model.title}}</strong> will be removed from our database.</li>
+		<li>All your music on your channel will be deleted</li>
+		<li>All your favorite channels will be deleted</li>
+		<li>All your followers will loose access to your channel</li>
 	</ul>
 
 	<p>If you are sure of your decision, farewell!</p>
 
-	<div>
-		<button class="Btn Btn--danger" {{action 'deleteChannel'}}>Yes, delete my channel :(</button>
-	</div>
+	<button class="Btn Btn--danger" {{action 'deleteChannel'}}>
+		Yes, delete {{model.title}} :(
+	</button>
+	<br>
+	<br>
+	{{#link-to 'channel.index' model class="Btn Btn--primary"}}No, I want to keep my channel!{{/link-to}}
 </div>
