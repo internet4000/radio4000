@@ -1,27 +1,29 @@
 <div class="Container Section--space">
 	<h3>Add track</h3>
 
-	<form class="Form Form--box" {{action "addTrack" on='submit'}}>
-		{{#if formError}}
-			<p class="Warning">{{formError}}</p>
-		{{/if}}
-		<div class="Form-group">
-			<label for="trackUrl">URL</label>
-			{{input-paste id="trackUrl" type="url" value=model.url placeholder="Paste in a link to a YouTube video" pasted="autoTitle" required="required"}}
-		</div>
+	{{#unless isValid}}
+		<p class="Warning">Enter the title of the track or paste in an URL.</p>
+	{{/unless}}
 
+	<form class="Form Form--box" {{action "addTrack" on='submit'}}>
 		<div class="Form-group">
 			<label for="trackTitle">Title</label>
-			{{input id="trackTitle" value=model.title placeholder="Title" required="required"}}<br>
+			{{input id="trackTitle" value=model.title placeholder="Search for a track" required="required" autofocus="autofocus"}}<br>
+			{{youtube-search query=model.title action="addFromSearch"}}
 		</div>
 
 		<div class="Form-group">
-			<label for="trackBody">Description</label>
+			<label for="trackUrl">URL</label>
+			{{input-paste id="trackUrl" type="url" value=model.url placeholder="Or paste in a YouTube link" pasted="autoTitle" required="required"}}
+		</div>
+
+		<div class="Form-group">
+			<label for="trackBody">description</label>
 			{{input id="trackBody" value=model.body placeholder="Optional description"}}<br>
 		</div>
 
-		<div class="Form-group Form--save">
-			<button class="Btn Btn--primary" type='submit' title="Add track to your channel">Add track</button>
+		<div class="Form-group">
+			<button {{bind-attr class=":Btn :Btn--primary justAdded:is-flashing"}} type='submit' title="Add track to your channel">Add track</button>
 			{{#link-to "channel.index" class="Btn Btn--text" title="Cancel adding track"}}Cancel{{/link-to}}
 		</div>
 	</form>
