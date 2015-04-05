@@ -6,6 +6,7 @@ export default Ember.Component.extend({
    progressValue: '0',
    isUploading: false,
    imageId: null,
+   enablePreview: false,
 
    startCloudinary: Ember.on('didInsertElement', function() {
       // var input = this.$('cloudinary_fileupload');
@@ -30,20 +31,19 @@ export default Ember.Component.extend({
    }),
 
    updatePreview: Ember.observer('imageId', function() {
+      if (!this.get('enablePreview')) { return; }
+
       var imageId = this.get('imageId');
 
       // get image from cloudinary
       var image = Ember.$.cloudinary.image(imageId, {
          format: 'jpg',
-         width: 150,
-         height: 150,
+         width: 200,
+         height: 200,
          crop: 'thumb',
          gravity: 'face',
          // effect: 'saturation:50'
       });
-
-      // save the id
-      image.attr('title', imageId);
 
       // insert it
       this.$('figure').append(image);
