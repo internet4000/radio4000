@@ -7,6 +7,7 @@
 	background-image: url('../images/bg-intro.jpg');
 	background-color: #000;
 	background-size: cover;
+	background-position: left center;
 
 	display: flex;
 	flex-flow: column nowrap;
@@ -40,7 +41,7 @@
 	@media (min-width: $layout-sm) {
 		font-size: 120px;
 	}
-	@media (min-width: $layout-l) {
+	@media (min-height: 1000px) {
 		font-size: 150px;
 	}
 }
@@ -62,7 +63,7 @@
 	@media (min-width: $layout-sm) {
 		font-size: 22px;
 	}
-	@media (min-width: $layout-l) {
+	@media (min-height: 1000px) {
 		font-size: 30px;
 	}
 }
@@ -90,9 +91,6 @@
 .Intro-btn:nth-child(2) {
 	clear: left;
 }
-
-
-
 
 
 

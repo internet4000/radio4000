@@ -6,7 +6,7 @@ export default Ember.Route.extend({
 
 		// Try to get the user to create a channel
 		if (!channel) {
-			this.transitionTo('channels.new');
+			this.transitionTo('introduction');
 		}
 	}),
 
