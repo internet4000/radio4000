@@ -20,10 +20,10 @@
 
 		<div class="Form-group">
 			<label for="image">Channel image</label>
-			{{file-upload image=newImage}}
-			{{#if model.coverImage}}
-				<button class="Btn" {{action 'deleteImage'}}>Delete image</button>
-			{{/if}}
+
+			{{image-upload imageId=newImage}}
+
+			<button class="Btn Btn--danger" {{action 'deleteImage'}}>Delete image</button>
 		</div>
 
 		{{!-- {{#if isAdmin}}

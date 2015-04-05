@@ -11,45 +11,50 @@ export default Ember.Controller.extend({
 
 	updateImage: Ember.observer('newImage', function() {
 		var newImage = this.get('newImage');
-		var channel = this.get('model');
-		var coverImage = this.get('model.coverImage');
 
-		// if we have no previous image
-		if (!coverImage) {
-			Ember.debug('Creating channel image.');
+		this.createImage(newImage);
 
-			var image = this.store.createRecord('image', {
-				src: this.get('newImage'),
-				channel: channel
-			});
-
-			// save and add it to the channel
-			image.save().then(function(image) {
-				Ember.debug('Image saved.');
-
-				channel.get('images').addObject(image);
-				channel.save().then(function() {
-					Ember.debug('Saved channel with image');
-				});
-			});
-
-		// else if we have an image
-		} else {
-			Ember.debug('Updating channel image.');
-
-			// and it's not the same one
-			if (newImage === coverImage.get('src')) {
-				Ember.debug('Stopped updating because it is the same src property');
-				return;
-			}
-
-			// update it
-			coverImage.set('src', newImage);
-			channel.save().then(function() {
-				Ember.debug('Updated channel image.');
-			});
-		}
+		// // if we have no previous image
+		// if (!coverImage) {
+		// 	Ember.debug('Creating channel image.');
+		//
+		// 	this.createImage();
+		//
+		// // else if we have an image
+		// } else {
+		// 	Ember.debug('Updating channel image.');
+		//
+		// 	// and it's not the same one
+		// 	if (newImage === coverImage.get('src')) {
+		// 		Ember.debug('Stopped updating because it is the same src property');
+		// 		return;
+		// 	}
+		//
+		// 	// update it
+		// 	coverImage.set('src', newImage);
+		// 	channel.save().then(function() {
+		// 		Ember.debug('Updated channel image.');
+		// 	});
+		// }
 	}),
+
+	createImage(src) {
+		var channel = this.get('model');
+		var image = this.store.createRecord('image', {
+			src: src,
+			channel: channel
+		});
+
+		// save and add it to the channel
+		image.save().then((image) => {
+			Ember.debug('Image saved.');
+
+			channel.get('images').addObject(image);
+			channel.save().then(() => {
+				Ember.debug('Saved channel with image');
+			});
+		});
+	},
 
 	// Makes sure the slug is valid e.g. not in use by any other channel
 	validateSlug() {
