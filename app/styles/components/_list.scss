@@ -46,14 +46,6 @@
 		}
 	}
 }
-
-// Smaller lists (good for long text)
-.SmallerList {
-	li {
-		@include size-1;
-	}
-}
-
 .List--noHover {
 	a,
 	li {
@@ -63,7 +55,6 @@
 		}
 	}
 }
-
 
 
 
@@ -77,4 +68,12 @@
 }
 .List-body {
 	color: $text-color;
+}
+
+
+// Smaller lists (good for long text)
+.SmallerList {
+	li {
+		@include size-1;
+	}
 }
