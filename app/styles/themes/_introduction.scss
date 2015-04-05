@@ -1,3 +1,104 @@
+// @include negative-text;
+
+.Intro {
+	@include negative-text;
+	min-height: 100vh;
+	min-height: calc(100vh - 60px);
+	background-image: url('../images/bg-intro.jpg');
+	background-color: #000;
+	background-size: cover;
+
+	display: flex;
+	flex-flow: column nowrap;
+	color: $white;
+	justify-content: center;
+	padding-left: 10%;
+	// position: relative;
+	// overflow: hidden;
+
+	// &:hover .Intro-bg {
+	// 	transform: rotate(10deg);
+	// }
+}
+// .Intro-bg {
+// 	position: absolute;
+// 	top: 0;
+// 	left: 0;
+// 	width: 100%;
+// 	height: 100%;
+// }
+
+
+.Intro-title {
+	margin-top: 2rem;
+	font-size: 80px;
+	line-height: 0.8;
+	span {
+		display: block;
+	}
+
+	@media (min-width: $layout-sm) {
+		font-size: 120px;
+	}
+	@media (min-width: $layout-l) {
+		font-size: 150px;
+	}
+}
+.Intro-radio {
+	@extend %font-bold-italic;
+	margin-left: 0.3em;
+}
+.Intro-slogan {
+	margin-top: 1rem;
+
+	@media (min-width: $layout-sm) {
+		margin-top: 3rem;
+		margin-bottom: 2rem;
+	}
+}
+.Intro-slogan,
+.Intro-btn {
+	font-size: 20px;
+	@media (min-width: $layout-sm) {
+		font-size: 22px;
+	}
+	@media (min-width: $layout-l) {
+		font-size: 30px;
+	}
+}
+.Intro-buttons {}
+.Intro-btn {
+	background-color: $white;
+	color: $text-color;
+	white-space: nowrap;
+	float: left;
+	padding: 0.6em 1.2rem 0.6em;
+	margin-right: 0.6em;
+	margin-bottom: 0.6em;
+	border-radius: $border-radius;
+
+	&:hover {
+		text-decoration: none;
+		cursor: pointer;
+		outline: 4px solid #000;
+	}
+}
+.Intro-btn--primary {
+	background-color: $primary-color;
+	color: $white;
+}
+.Intro-btn:nth-child(2) {
+	clear: left;
+}
+
+
+
+
+
+
+
+
+
 /**
  * Introduction design
  **/
@@ -27,7 +128,6 @@
 	.Annonce--long {
 		margin-top: 8rem;
 		margin-bottom: 3rem;
-
 	}
 
 	/* Blocks */

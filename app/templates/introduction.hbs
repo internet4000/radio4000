@@ -1,5 +1,31 @@
-<div class="Container Container--full">
-	<div class="Intro Intro--one">
+<div class="Intro">
+	{{!-- <img class="Intro-bg" src="images/bg-intro.jpg" alt=""> --}}
+	<h1 class="Intro-title">
+		<span class="Intro-radio">Radio</span>
+		<span class="Intro-4000">4000</span>
+	</h1>
+
+	<p class="Intro-slogan">One radio for every one and<br>an infinity of great tracks curated with love.</p>
+
+	<div class="Intro-buttons">
+		{{#unless session.userChannel}}
+		{{#link-to 'channels.new' class="Intro-btn Intro-btn--primary" title="Continue to create your radio"}}
+			Create your radio now
+		{{/link-to}}
+		{{/unless}}
+		{{#link-to 'channels' class="Intro-btn" title="Discover music by channels"}}
+			Discover radios
+		{{/link-to}}
+		{{#if session.userChannel}}
+			{{#link-to 'channel' session.userChannel class="Intro-btn" title="Manage your radio"}}
+				Your channel “{{session.userChannel.title}}”
+			{{/link-to}}
+		{{/if}}
+	</div>
+</div>
+
+{{!-- <div class="Container Container--full"> --}}
+	{{!-- <div class="Intro Intro--one">
 
 		<div class="Annonce Annonce--fullHeight">
 			<p class="Block Block--white">
@@ -19,9 +45,9 @@
 				an infinity of good tracks selected with love
 			</p>
 		</div>
-	</div>
+	</div> --}}
 
-	<section class="Container Container--full Section Section--space">
+	{{!-- <section class="Container Container--full Section Section--space">
 		<div class="Grid Grid--center Grid--full">
 			<div class="Grid-item">
 				{{#link-to 'channels.new' class="Box" title="Register or sign in to create your channel"}}
@@ -36,6 +62,5 @@
 				{{/link-to}}
 			</div>
 		</div>
-	</section>
-
-</div>
+	</section> --}}
+{{!-- </div> --}}
