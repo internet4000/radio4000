@@ -14,8 +14,7 @@ var app = new EmberApp({
 
 	// minify our styles using broccoli-csso
 	minifyCSS: {
-		enabled: true,
-		options: {}
+		enabled: (this.env === 'production' || this.env === 'native')
 	}
 });
 
