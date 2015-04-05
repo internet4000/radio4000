@@ -85,9 +85,9 @@ label {
 .Form-group {
 	// should wrap every label+input
 }
-.Form--save {
-	clear: both;
+.Form-group:last-child {
 	@include clearfix;
+	clear: both;
 }
 .Form-group--small {
 	max-width: 14em;
