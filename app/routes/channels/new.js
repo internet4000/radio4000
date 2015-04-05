@@ -23,11 +23,15 @@ export default Ember.Route.extend({
 		});
 	},
 	deactivate() {
+		var model = this.get('currentModel');
+
+		// reset document title
 		document.title = 'Radio4000';
 
 		// remove the record if it wasn't saved
-		if (this.get('model.isDirty')) {
-			this.get('model').deleteRecord();
+		if (model.get('isNew')) {
+			console.log('is new');
+			model.deleteRecord();
 		}
 	},
 
@@ -37,14 +41,4 @@ export default Ember.Route.extend({
 			this.transitionTo('signin');
 		}
 	})
-
-	// ,
-	// actions: {
-	// 	willTransition(transition) {
-	// 		// stop the transition if you haven't got a channel
-	// 		if (this.get('session.authed') && !this.get('session.userChannel')) {
-	// 			transition.abort();
-	// 		}
-	// 	}
-	// }
 });

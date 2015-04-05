@@ -94,37 +94,44 @@ export default {
 			afterAuthentication(id) {
 				var self = this;
 				var store = container.lookup('store:main');
+				var authData = this.get('authData');
 
-				store.find('user', id)
-					.then(function(u) {
-						// console.log('found user with id', id);
+				store.find('user', id).then((u) => {
+					// console.log('found user with id', id);
 
-						// set user's channel
-						u.get('channels').then(function(channels) {
-							self.set('userChannel', channels.get('firstObject'));
-						});
-
-						return u;
-					})
-					.catch(function () {
-						// console.log('can create with id', id);
-
-						// remove the unresolved record
-						store.recordForId('user', id).unloadRecord();
-
-						// create user
-						return store.createRecord('user', {
-							id: id,
-							provider: this.get('authData.provider'),
-							name: this.get('authData.facebook.displayName') || this.get('authData.google.displayName'),
-							created: new Date().getTime()
-						});
-					})
-					.then(function (user) {
-						// user = found or created user
-						// console.log('found or created', user);
-						self.set('user', user);
+					// set user's channel
+					u.get('channels').then((channels) => {
+						this.set('userChannel', channels.get('firstObject'));
 					});
+
+					return u;
+
+				}).catch(() => {
+					// can create with 'id'
+
+					// get name
+					var name;
+					if (authData.facebook) {
+						name = authData.facebook.displayName;
+					} else {
+						name = authData.google.displayName;
+					}
+
+					// remove the unresolved record
+					store.recordForId('user', id).unloadRecord();
+
+					// create user
+					return store.createRecord('user', {
+						id: id,
+						provider: authData.provider,
+						name: name
+					});
+
+				}).then(function (user) {
+					// user = found or created user
+					// console.log('found or created', user);
+					self.set('user', user);
+				});
 			}
 		});
 
