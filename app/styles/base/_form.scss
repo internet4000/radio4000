@@ -75,10 +75,10 @@ progress {
 
 // File inputs
 input[type='file'] {
-	width: 100%;
-	border: 4px dashed $black;
-	padding: 2rem;
-	background-color: #FDFFB2;
+	// width: 100%;
+	// border: 4px dashed $black;
+	// padding: 2rem;
+	// background-color: #FDFFB2;
 }
 
 // Form design should be tigther than inputs alone
@@ -155,74 +155,42 @@ input[type='file'] {
 	@extend %font-regular;
 }
 
-/**
- * Form playlist slug
- */
-.Form--playlistSlug {
-	@include clearfix;
-	position: relative;
-	.Permalink {
-		@include size-1;
-		color: $gray;
-		float: left;
-		padding-top: 0;
-	}
-	input {
-		max-width: 300px;
-		float: left;
+// /**
+//  * Form playlist slug
+//  */
+// .Form--playlistSlug {
+// 	@include clearfix;
+// 	position: relative;
+// 	.Permalink {
+// 		@include size-1;
+// 		color: $gray;
+// 		float: left;
+// 		padding-top: 0;
+// 	}
+// 	input {
+// 		max-width: 300px;
+// 		float: left;
 
-		// align with label
-		position: relative;
-		top: -0.82em;
-		left: 0.5em;
+// 		// align with label
+// 		position: relative;
+// 		top: -0.82em;
+// 		left: 0.5em;
 
-		// background-color: transparent;
-		// border: 0 solid transparent;
-		// box-shadow: 0 0 0 transparent;
-		// padding-top: 0;
-		// padding-bottom: 2px;
-		// margin-top: 0;
-		// padding-left: 1px;
-		// border-bottom: 2px solid transparent;
-		// border-radius: 0;
-		// color: $gray;
-		// &:focus {
-		// 	color: $black;
-		// 	outline: none;
-		// 	border-bottom: 2px solid $primary-color;
-		// }
-	}
-}
+// 		// background-color: transparent;
+// 		// border: 0 solid transparent;
+// 		// box-shadow: 0 0 0 transparent;
+// 		// padding-top: 0;
+// 		// padding-bottom: 2px;
+// 		// margin-top: 0;
+// 		// padding-left: 1px;
+// 		// border-bottom: 2px solid transparent;
+// 		// border-radius: 0;
+// 		// color: $gray;
+// 		// &:focus {
+// 		// 	color: $black;
+// 		// 	outline: none;
+// 		// 	border-bottom: 2px solid $primary-color;
+// 		// }
+// 	}
+// }
 
-.cloudinary_fileupload {
-	display: none;
-}
-
-#dropzone {
-	display: block;
-	width: 100%;
-	padding: 0.5rem;
-	text-align: center;
-	background-color: palegreen;
-	transition: background-color 300ms, color 300ms;
-
-	@media (min-width: $layout-m) {
-		padding: 1rem;
-	}
-	@media (min-width: $layout-l) {
-		padding: 2rem;
-	}
-
-	&.in {
-		min-height: 6rem;
-		font-size: larger;
-	}
-	&.hover {
-		background-color: $primary-color;
-		color: $white;
-	}
-	&.fade {
-		transition: all 0.3s ease-out;
-		/* opacity: 1; */
-	}
-}

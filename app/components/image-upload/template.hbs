@@ -1,8 +1,11 @@
-<label id="dropzone">
-	{{yield}}
-</label>
-
-{{cloudinary-input multiple=false}}
+<div id="dropzone" class="Dropzone">
+	<div class="Dropzone-inner">
+		<label>
+			{{yield}}
+			{{cloudinary-input multiple=false}}
+		</label>
+	</div>
+</div>
 
 {{#if isUploading}}
 	{{#if showProgress}}

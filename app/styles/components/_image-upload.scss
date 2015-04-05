@@ -1,0 +1,35 @@
+// A dropzone for file uploads
+.Dropzone {
+	padding: 0.5rem;
+	text-align: center;
+
+	.no-touchevents & {
+		border: 1px dashed;
+	}
+	// when the user is dragging something on the page
+	&.in {
+		background-color: palegreen;
+		animation-name: march;
+		animation-duration: 300ms;
+		animation-iteration-count: infinite;
+		animation-timing-function: linear;
+	}
+	// when the user is dragging on top
+	&.hover {
+		background-color: $primary-color;
+		color: $white;
+	}
+	&.fade {}
+}
+.Dropzone-inner {}
+
+
+// The default "Choose file" input
+.cloudinary_fileupload {
+	margin-top: 1rem;
+
+	// hide the file input on desktop because we use dragndrop
+	.no-touchevents & {
+		display: none;
+	}
+}

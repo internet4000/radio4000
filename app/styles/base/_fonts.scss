@@ -10,7 +10,6 @@
 	font-style: italic;
 }
 %font-bold {
-	@include negative-text;
 	font-family: 'maisonneue-bold', 'Maison Neue Bold', 'MaisonNeue-bold', 'Lucida Grande','Lucida Sans', sans-serif;
 	font-weight: normal;
 	font-style: normal;

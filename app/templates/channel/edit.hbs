@@ -3,54 +3,50 @@
 </div>
 
 <div class="Container Container--full">
-	<form class="Form Form--box" {{action "trySave" on="submit"}}>
 
-		<div class="Channel-media">
+	<div class="Form Form--box">
+
+		{{!-- left side, channel image --}}
+		<form class="Channel-media">
 			<div class="Form-group">
 				{{#image-upload imageId=newImage}}
-					<div class="Channel-cover">
-						{{channel-cover model=model hideTitle=true}}
-					</div>
-					<label for="image">Drag 'n drop your image here</label>
+					{{channel-cover model=model hideTitle=true}}
+					Drag 'n drop your image here
 				{{/image-upload}}
 
 				{{#if model.coverImage}}
-					<button class="Btn Btn--danger" {{action 'deleteImage'}}>Delete image</button>
+					<button class="Btn Btn--danger Btn--text" {{action 'deleteImage'}}>Delete image</button>
 				{{/if}}
 			</div>
-		</div>
+		</form>
 
-		<div class="Channel-body">
+		{{!-- right side, channel model --}}
+		<form class="Channel-body" {{action "trySave" on="submit"}}>
 			<div class="Form-group">
 				<label for="title" >Channel title</label>
 				{{focus-input id="title" value=model.title placeholder="Title" autofocus='autofocus' required="required" maxlength=titleMaxLength}}
 			</div>
-
 			<div class="Form-group">
 				<label for="body" >Channel description</label>
 				{{textarea id="body" value=model.body maxlength=channelDescriptionMaxLength placeholder="What is your channel about?"}}
 			</div>
-
 			<div class="Form-group">
 				<label for="slug">Permalink</label>
 				<span class="Permalink">radio4000.com/c/{{model.slug}}</span>
 				{{input id="slug" value=model.slug placeholder="channel-slug" required="required"}}
 			</div>
-
 			<div class="Form-group">
 				<label for="link">Link</label>
-				{{input id="link" value=model.link placeholder="need a Link somewhere?" }}
+				{{input id="link" value=model.link placeholder="Your homepage" }}
 			</div>
-
 			<div class="Form-group Form--save">
 				<button type="submit" class="Btn Btn--primary" disabled={{isSaving}}>
 					{{#if isSaving}}Saving…{{else}}Save channel{{/if}}
 				</button>
-
 				{{#link-to 'channel.index' model class="Btn Btn--text Muted"}}Cancel editing{{/link-to}}
 			</div>
-		</div>
-	</form>
+		</form>
+	</div>
 
 	{{#link-to 'channel.delete' model class="Btn Btn--text Muted"}}Delete your channel{{/link-to}}
 

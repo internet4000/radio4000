@@ -150,7 +150,7 @@ export default Ember.Controller.extend({
 		},
 
 		deleteImage() {
-			this.get('model.coverImage').destroyRecord().save().then(function() {
+			this.get('model.coverImage').destroyRecord().then(function() {
 				Ember.debug('Deleted channel image.');
 			});
 		},
