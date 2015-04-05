@@ -1,24 +1,22 @@
-{{!-- <div class="Manchet Manchet--left">
-	<h1>Continue to in to Radio4000</h1>
-</div> --}}
-
-<br><br><br>
+<div class="Manchet Manchet--left">
+	<h1>Continue to Radio4000</h1>
+</div>
 
 <div class="Container">
-	{{!-- <p>Create a new radio channel or manage an already existing channel.</p> --}}
+	<p>To create a new radio channel or manage the one you have, you now need to choose a service:</p>
 
-	<p><strong>Continue to Radio4000 with my…</strong></p>
+	{{!-- <p><strong>Continue to Radio4000 with my…</strong></p> --}}
 
 	<form class="Form Form--box Form--boxSmall">
 		<div class="Form-group FlexRow">
 			<button type="submit" class="Btn" title="Continue with your Google account" {{action 'login' 'google'}}>
-				{{x-icon i="google-plus"}} Google account
+				{{x-icon i="google-plus"}} Google
 			</button>
 
 			<p>or</p>
 
 			<button type="submit" class="Btn" title="Continue with your Facebook account" {{action 'login' 'facebook'}}>
-				{{x-icon i="facebook"}} Facebook account
+				{{x-icon i="facebook"}} Facebook
 			</button>
 		</div>
 	</form>

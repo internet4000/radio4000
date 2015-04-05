@@ -18,11 +18,19 @@
 					{{/unless}}
 					<h1 class="Channel-title">
 						{{#link-to 'channel' model}}{{model.title}}{{/link-to}}
+						{{#if model.tracks}}
+							<span class="Muted LastUpdate">(updated {{lastUpdatedFormatted}})</span>
+						{{/if}}
 					</h1>
 				</div>
 
-				{{#if model.tracks}}
-					<p class="Muted LastUpdate">(updated {{lastUpdatedFormatted}})</p>
+				{{#if model.body}}
+					<p class="Channel-description">{{model.body}}</p>
+				{{/if}}
+				{{#if model.link}}
+					<p class="Channel-links">
+						<a href="{{model.link}}" target="_blank">{{model.link}}</a>
+					</p>
 				{{/if}}
 
 				{{#if canEdit}}
@@ -36,15 +44,6 @@
 							{{/link-to}}
 						</div>
 					</div>
-				{{/if}}
-
-				{{#if model.body}}
-					<p class="Channel-description">{{model.body}}</p>
-				{{/if}}
-				{{#if model.link}}
-					<p class="Channel-links">
-						<a href="{{model.link}}" target="_blank">{{model.link}}</a>
-					</p>
 				{{/if}}
 
 			</div>
