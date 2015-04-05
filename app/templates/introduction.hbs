@@ -9,20 +9,9 @@
 
 	<div class="Intro-buttons">
 		{{#unless session.userChannel}}
-		{{#link-to 'channels.new' class="Intro-btn Intro-btn--primary" title="Continue to create your radio"}}
-			Create your radio now
-		{{/link-to}}
-			<button type="submit" class="Btn" title="Continue with your Google account" {{action 'login' 'google'}}>
-				{{x-icon i="google-plus"}} Google account
-			</button>
-
-			<p>or</p>
-
-			<button type="submit" class="Btn" title="Continue with your Facebook account" {{action 'login' 'facebook'}}>
-				{{x-icon i="facebook"}} Facebook account
-			</button>
-		</div> --}}
-
+			{{#link-to 'channels.new' class="Intro-btn Intro-btn--primary" title="Continue to create your radio"}}
+				Create your radio now
+			{{/link-to}}
 		{{/unless}}
 		{{#link-to 'channels' class="Intro-btn" title="Discover music by channels"}}
 			Discover radios
@@ -33,8 +22,6 @@
 			{{/link-to}}
 		{{/if}}
 	</div>
-
-
 </div>
 
 {{!-- <div class="Container Container--full"> --}}
