@@ -68,6 +68,11 @@ export default Ember.Controller.extend({
 				var ytTitle = response.items[0].snippet.title;
 				this.set('model.title', ytTitle);
 			}.bind(this));
+		},
+
+		// used by 'ESC' key in the view
+		cancelEdit() {
+			this.transitionToRoute('channel.index', this.get('session.userChannel'));
 		}
 	}
 });
