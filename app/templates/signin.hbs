@@ -1,16 +1,27 @@
-<div class="Manchet Manchet--left">
-	<h1>Register or sign in to Radio4000</h1>
-</div>
+{{!-- <div class="Manchet Manchet--left">
+	<h1>Continue to in to Radio4000</h1>
+</div> --}}
+
+<br><br><br>
 
 <div class="Container">
-	<p>After you register or sign in, you'll be able to manage your own radio channel.</p>
-	<p>
-		<button class="Btn" title="Sign in with Google" {{action 'login' 'google'}}>
-			{{x-icon i="google-plus"}} Sign in with Google
-		</button>
-		<button class="Btn" title="Sign in with Facebook" {{action 'login' 'facebook'}}>
-			{{x-icon i="facebook"}} Sign in with Facebook
-		</button>
-	</p>
+	{{!-- <p>Create a new radio channel or manage an already existing channel.</p> --}}
+
+	<p><strong>Continue to Radio4000 with my…</strong></p>
+
+	<form class="Form Form--box Form--boxSmall">
+		<div class="Form-group FlexRow">
+			<button type="submit" class="Btn" title="Continue with your Google account" {{action 'login' 'google'}}>
+				{{x-icon i="google-plus"}} Google account
+			</button>
+
+			<p>or</p>
+
+			<button type="submit" class="Btn" title="Continue with your Facebook account" {{action 'login' 'facebook'}}>
+				{{x-icon i="facebook"}} Facebook account
+			</button>
+		</div>
+	</form>
+
 	<p class="Muted">Not using Google or Facebook? Sign in with e-mail is coming soon.</p>
 </div>

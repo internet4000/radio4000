@@ -81,3 +81,10 @@
 .Flex--single {
 	flex-flow: row nowrap;
 }
+
+
+.FlexRow {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+}
