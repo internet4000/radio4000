@@ -14,10 +14,10 @@ export default DS.Model.extend({
 	slug: DS.attr('string'),
 	body: DS.attr('string'),
 	isFeatured: DS.attr('boolean'),
-   link: DS.attr('string'),
+	link: DS.attr('string'),
 	created: DS.attr('string', {
-       defaultValue: function() { return new Date(); }
-   }),
+		defaultValue: function() { return new Date(); }
+	}),
 
 	// // dates
 	// lastUpdated: Ember.computed('tracks.@each.created', function() {

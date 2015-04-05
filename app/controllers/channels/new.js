@@ -7,7 +7,6 @@ export default Ember.Controller.extend({
 
 	cleanSlug: Ember.computed('model.title', function() {
 		var title = this.get('model.title');
-
 		return clean(title) + '-' + randomText();
 	}),
 
@@ -21,7 +20,7 @@ export default Ember.Controller.extend({
 
 	actions: {
 		create() {
-			
+
 			if (!this.get('validates')) {
 				Ember.warn('Channel did not validate.');
 				return false;

@@ -7,8 +7,6 @@ export default Ember.Controller.extend({
 	providerTrackUrl: null,
 	providerTrackTitle: null,
 
-
-
 	// javascript:location.href='http://localhost:4000/c/200ok/add?providerTrackUrl='+encodeURIComponent(location.href)+'&providerTrackTitle='+encodeURIComponent(document.title)
 	// bookmarklet: function() {
 	// // knowledge base
@@ -59,10 +57,14 @@ export default Ember.Controller.extend({
 		autoTitle(url) {
 			var apikey = 'AIzaSyCk5FiiPiyHON7PMLfLulM9GFmSYt6W5v4';
 			var id = youtube(url);
+			var endpoint = 'https://www.googleapis.com/youtube/v3/videos?id='+id+'&key='+apikey+'&fields=items(id,snippet(title))&part=snippet';
 
-			if (!id) { Ember.debug('errrrror'); return; }
+			if (!id) {
+				Ember.debug('errrrror');
+				return;
+			}
 
-			Ember.$.getJSON('https://www.googleapis.com/youtube/v3/videos?id='+id+'&key='+apikey+'&fields=items(id,snippet(title))&part=snippet').then(function(response) {
+			Ember.$.getJSON(endpoint).then(function(response) {
 				var ytTitle = response.items[0].snippet.title;
 				this.set('model.title', ytTitle);
 			}.bind(this));

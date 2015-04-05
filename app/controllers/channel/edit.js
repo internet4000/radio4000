@@ -62,7 +62,7 @@ export default Ember.Controller.extend({
 
 		// Make sure the new one isn't empty
 		if (Ember.isEmpty(slug)) {
-			alert("Hey, the URL can't be empty. Please enter the URL you'd like your channel to have. If you have no clue, just enter the title.");
+			alert('Hey, the URL can not be empty. Please enter the URL you would like your channel to have. If you have no clue, just enter the title.');
 			return false;
 		}
 
@@ -120,7 +120,9 @@ export default Ember.Controller.extend({
 				this.send('save');
 			} else {
 				alert('Sorry, that permalink is taken. Try another one.');
-				this.set('slug', ''); // empty slug
+
+				// reset the slug
+				this.set('slug', '');
 				this.set('isSaving', false);
 			}
 		}.bind(this));

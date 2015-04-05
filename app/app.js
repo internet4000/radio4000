@@ -7,10 +7,10 @@ import config from './config/environment';
 Ember.MODEL_FACTORY_INJECTIONS = true;
 
 var App = Ember.Application.extend({
-  rootElement: '#Radio4000',
-  modulePrefix: config.modulePrefix,
-  podModulePrefix: config.podModulePrefix,
-  Resolver: Resolver
+   rootElement: '#Radio4000',
+   modulePrefix: config.modulePrefix,
+   podModulePrefix: config.podModulePrefix,
+   Resolver: Resolver
 });
 
 // Change the class Ember adds to active elements

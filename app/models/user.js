@@ -5,8 +5,8 @@ export default DS.Model.extend({
 	email: DS.attr('string'),
 	provider: DS.attr('string'),
 	created: DS.attr('string', {
-       defaultValue: function() { return new Date(); }
-   }),
+		defaultValue: function() { return new Date(); }
+	}),
 	channels: DS.hasMany('channel', {
 		async: true
 	})

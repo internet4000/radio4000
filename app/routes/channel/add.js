@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+
 	// Create a new track for the channel
 	model() {
 		return this.store.createRecord('track', {

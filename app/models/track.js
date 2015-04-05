@@ -6,8 +6,8 @@ export default DS.Model.extend({
 	title: DS.attr('string'),
 	body: DS.attr('string'),
 	created: DS.attr('string', {
-       defaultValue: function() { return new Date(); }
-   }),
+		defaultValue: function() { return new Date(); }
+	}),
 	channel: DS.belongsTo('channel', { async: true }),
 	ytid: DS.attr('string'),
 

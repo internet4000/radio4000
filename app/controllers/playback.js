@@ -74,8 +74,9 @@ export default Ember.Controller.extend({
 		// use this to play a track, if you don't want the url to change
 		playTrack(track) {
 			if (!track) { return false; }
+
 			// Ember.debug('Playing track: ' + track.get('title'));
-		 	this.transitionToRoute('track', track);
+			this.transitionToRoute('track', track);
 		},
 
 		prev() {
@@ -185,7 +186,6 @@ export default Ember.Controller.extend({
 			// Ember.debug('on ended from controller');
 			this.send('next');
 		},
-
 		ytError(error) {
 			// Ember.debug('on yt error from controller');
 			console.log(error);

@@ -14,7 +14,7 @@ export default Ember.ArrayController.extend({
 	// filters the array with our search value
 	filteredChannels: Ember.computed('search', function() {
 		var filter = this.get('search');
-    	var rx = new RegExp(filter, 'gi');
+		var rx = new RegExp(filter, 'gi');
 
 		if (!filter) { return; }
 
