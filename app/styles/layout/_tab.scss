@@ -6,24 +6,23 @@
 	display: flex;
 	flex-flow: row nowrap;
 	background-color: $superlightgray;
+	text-align: center;
 }
 
 .NavigationTab-item {
 	flex: 0 1 10em; // grow and shrink and attempt to have the same width
-	padding: 0.9em 0.5em 0.7em; // bigger clickarea and vertical center
+	padding: 0.7em 0.5em 0.5em; // bigger clickarea and vertical center
 	border-bottom: 4px solid transparent;
 	transition: border-bottom-color 400ms $easing;
 	color: $black;
-	text-align: center;
-	&:hover {
+
+	&:hover,
+	&:focus {
 		border-bottom-color: $lightgray;
+		text-decoration: none;
 	}
 	&:active {
 		border-bottom-color: $red;
-	}
-	&:hover,
-	&:active,
-	&:focus {
 		text-decoration: none;
 	}
 	&.is-active {

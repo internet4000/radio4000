@@ -9,9 +9,12 @@
 
 	.icon-play {
 		position: absolute;
-		left: 0.8em;
+		left: 0.46em;
 		top: 1em;
 		display: none;
+		@media (min-width: $layout-s) {
+			left: 0.8em;
+		}
 	}
 }
 

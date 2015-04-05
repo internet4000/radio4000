@@ -1,1 +1,7 @@
-{{channels-list channels=model.favoriteChannels}}
+{{#if model.favoriteChannels}}
+	{{channels-list channels=model.favoriteChannels}}
+{{else}}
+	<div class="Container Section Section--messaging">
+		<p>This channel doesn't have any favorites, yet.</p>
+	</div>
+{{/if}}

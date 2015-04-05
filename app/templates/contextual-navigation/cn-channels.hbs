@@ -1,10 +1,15 @@
 {{#if session.authed}}
 	{{#if session.userChannel}}
+		{{#link-to 'channel.add' session.userChannel title="Add track"}}
+			{{x-icon i="plus"}} Add track
+		{{/link-to}}
+
 		{{#link-to 'channel' session.userChannel title="Go to my channel"}}
 			{{session.userChannel.title}}
 		{{/link-to}}
 	{{/if}}
 {{/if}}
+
 {{#unless session.authed}}
 	{{#link-to 'signin'}}Register or sign in{{/link-to}}
 {{/unless}}
