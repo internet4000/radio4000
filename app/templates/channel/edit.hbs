@@ -6,18 +6,17 @@
 	<form class="Form Form--box" {{action "trySave" on="submit"}}>
 
 		<div class="Channel-media">
-			<div class="Channel-cover">
-				<div class="Form-group">
-					<label for="image">Channel image</label>
-					{{channel-cover model=model hideTitle=true}}
+			<div class="Form-group">
+				{{#image-upload imageId=newImage}}
+					<div class="Channel-cover">
+						{{channel-cover model=model hideTitle=true}}
+					</div>
+					<label for="image">Drag 'n drop your image here</label>
+				{{/image-upload}}
 
-					{{!-- {{file-upload image=newImage}} --}}
-					{{image-upload imageId=newImage}}
-
-					{{#if model.coverImage}}
-						<button class="Btn Btn--danger" {{action 'deleteImage'}}>Delete image</button>
-					{{/if}}
-				</div>
+				{{#if model.coverImage}}
+					<button class="Btn Btn--danger" {{action 'deleteImage'}}>Delete image</button>
+				{{/if}}
 			</div>
 		</div>
 

@@ -1,11 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-   tagName: 'form',
-   classNames: ['Form', 'Form--box'],
+   imageId: null,
    progressValue: '0',
    isUploading: false,
-   imageId: null,
+
+   // options
+   showProgress: true,
    enablePreview: false,
 
    startCloudinary: Ember.on('didInsertElement', function() {
@@ -18,6 +19,9 @@ export default Ember.Component.extend({
       // indicate progress
       this.$().on('fileuploadprogress', function(e, data) {
          var value = Math.round((data.loaded * 100.0) / data.total);
+
+         // indicate we're uploading
+         component.set('isUploading', true);
          component.set('progressValue', value);
       });
 
@@ -25,8 +29,9 @@ export default Ember.Component.extend({
       this.$().on('fileuploaddone', function (e, data) {
          component.set('imageId', data.result.public_id);
 
-         // reset progress bar
+         // reset progress
          component.set('progressValue', 0);
+         component.set('isUploading', false);
       });
    }),
 

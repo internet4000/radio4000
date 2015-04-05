@@ -1,9 +1,16 @@
-<label id="dropzone">Drag 'n drop some images here. Try it. Yea. Go ahead. Do it!</label>
+<label id="dropzone">
+	{{yield}}
+</label>
 
-{{cloudinary-input multiple=true}}
+{{cloudinary-input multiple=false}}
 
-<progress value="{{progressValue}}" max="100"></progress>
+{{#if isUploading}}
+	{{#if showProgress}}
+		<progress value="{{progressValue}}" max="100"></progress>
+	{{/if}}
+	<p>Just a second…</p>
+{{/if}}
 
-<figure></figure>
-
-{{yield}}
+{{#if showPreview}}
+	<figure></figure>
+{{/if}}

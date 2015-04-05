@@ -201,10 +201,17 @@ input[type='file'] {
 #dropzone {
 	display: block;
 	width: 100%;
-	padding: 2rem;
+	padding: 0.5rem;
 	text-align: center;
 	background-color: palegreen;
 	transition: background-color 300ms, color 300ms;
+
+	@media (min-width: $layout-m) {
+		padding: 1rem;
+	}
+	@media (min-width: $layout-l) {
+		padding: 2rem;
+	}
 
 	&.in {
 		min-height: 6rem;

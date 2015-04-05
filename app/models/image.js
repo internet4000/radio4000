@@ -9,7 +9,7 @@ export default DS.Model.extend({
 	thumb: Ember.computed('src', function() {
 		var src = this.get('src');
 
-		if (!src) { return '' }
+		if (!src) { return ''; }
 
 		return 'http://res.cloudinary.com/radio4000/image/upload/c_thumb,h_300,w_300/v1428245306/'+
 		 src +'.jpg';
