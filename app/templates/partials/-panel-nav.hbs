@@ -4,14 +4,14 @@
 	<div class="PanelNav-inner">
 		<div class="PanelNav-group">
 			<div class="UserChannel">
-				{{#if session.userChannel}}
-					{{#link-to 'channel' session.userChannel title="Go to my channel"}}
+				{{#if session.currentUser.channels.firstObject}}
+					{{#link-to 'channel' session.currentUser.channels.firstObject title="Go to my channel"}}
 
-						<img class= "UserChannel-media" src="{{session.userChannel.coverImage.thumb}}">
+						<img class= "UserChannel-media" src="{{session.currentUser.channels.firstObject.coverImage.thumb}}">
 
 						<div class="UserChannel-body">
 							<p class="UserChannel-intro Muted">Your radio</p>
-							<p class="UserChannel-title">{{session.userChannel.title}}</p>
+							<p class="UserChannel-title">{{session.currentUser.channels.firstObject.title}}</p>
 						</div>
 					{{/link-to}}
 				{{else}}
@@ -35,10 +35,10 @@
 		</div>
 
 		<div class="PanelNav-group">
-			{{#if session.authed}}
+			{{#if session.isAuthenticated}}
 				<a href="#" class="Muted" title="Sign out from Radio4000" {{action 'logout' this}}>Sign out</a>
 			{{else}}
-				{{#link-to 'signin' title="Sign in to Radio4000"}}Register or sign in{{/link-to}}
+				{{#link-to 'signin' title="Sign in to Radio4000"}}Sign in{{/link-to}}
 			{{/if}}
 		</div>
 	</div>

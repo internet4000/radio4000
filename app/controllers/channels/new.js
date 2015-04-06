@@ -14,8 +14,8 @@ export default Ember.Controller.extend({
 		return this.get('model.title.length') >= this.get('titleMaxLength');
 	}),
 
-	validates: Ember.computed('tooLong', 'session.user', function() {
-		return !this.get('tooLong') || !this.get('session.user');
+	validates: Ember.computed('tooLong', 'session.currentUser', function() {
+		return !this.get('tooLong') || !this.get('session.currentUser');
 	}),
 
 	actions: {
@@ -26,7 +26,7 @@ export default Ember.Controller.extend({
 				return false;
 			}
 
-			var user = this.get('session.user');
+			var user = this.get('session.currentUser');
 			var channel = this.get('model');
 			var slug = this.get('cleanSlug');
 
@@ -52,9 +52,6 @@ export default Ember.Controller.extend({
 					// now the channel is saved
 					console.log('saved channel');
 
-					// @todo use an observer somewhere
-					this.set('session.userChannel', channel);
-
 					// set relationship on user (who created the channel)
 					user.get('channels').then((channels) => {
 
@@ -62,8 +59,6 @@ export default Ember.Controller.extend({
 						user.save().then(() => {
 							console.log('Saved channel on user.');
 						});
-
-						// this.set('isSaving', 2);
 
 						// Redirect to the new channel
 						Ember.debug('redirect to the new channel');

@@ -4,8 +4,8 @@
 
 <section class="Section Container Container--full">
 		<h2>Your channel</h2>
-		{{#if session.userChannel}}
-			{{channel-cover model=session.userChannel}}
+		{{#if session.currentUser.channels.firstObject}}
+			{{channel-cover model=session.currentUser.channels.firstObject}}
 		{{else}}
 			<p class="Muted">Welcome! Go ahead…</p>
 			{{#link-to 'channels.new' class="BoxIcon BoxIcon--add" title="Create your channel"}}
@@ -15,9 +15,9 @@
 </section>
 
 <div class="Section Container Container--full">
-	{{#if session.userChannel.favoriteChannels}}
+	{{#if session.currentUser.channels.firstObject.favoriteChannels}}
 		<h2>Your favorite channels</h2>
-		{{channels-grid channels=session.userChannel.favoriteChannels}}
+		{{channels-grid channels=session.currentUser.channels.firstObject.favoriteChannels}}
 	{{else}}
 		<p class="Muted">You haven't got any favorites yet. Browse channels and favorite the ones you enjoy.</p>
 		{{#link-to "channels" class="BoxIcon BoxIcon--explore" title="Discover channels"}}

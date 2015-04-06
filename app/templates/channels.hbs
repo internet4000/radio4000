@@ -4,7 +4,7 @@
 </div>
 
 <section class="Section Section--messaging Container">
-	{{#unless session.userChannel}}
+	{{#unless session.currentUser.channels.firstObject}}
 		<span class="IntroMessage"><strong>Welcome!</strong> {{#link-to 'intro'}}Get introduced to Radio4000.{{/link-to}}</span>
 	{{/unless}}
 </section>

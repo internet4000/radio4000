@@ -61,7 +61,7 @@ export default Ember.Controller.extend({
 
 		// used by 'ESC' key in the view
 		cancelEdit() {
-			this.transitionToRoute('channel.index', this.get('session.userChannel'));
+			this.transitionToRoute('channel.index', this.get('session.currentUser.channels.firstObject'));
 		}
 	}
 });

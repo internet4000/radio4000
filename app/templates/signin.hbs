@@ -3,22 +3,25 @@
 </div>
 
 <div class="Container">
-	<p>To create a new radio channel or manage the one you have, you now need to choose a service:</p>
-
-	{{!-- <p><strong>Continue to Radio4000 with my…</strong></p> --}}
-
+	<p>To create a new radio channel or manage the one you have, please choose a service to sign in with.</p>
+	<br>
+	<br>
 	<form class="Form Form--box Form--boxSmall">
-		<div class="Form-group FlexRow">
-			<button type="submit" class="Btn" title="Continue with your Google account" {{action 'login' 'google'}}>
-				{{x-icon i="google-plus"}} Google
-			</button>
+		{{#unless session.isWorking}}
+			<div class="Form-group FlexRow">
+				<button type="submit" class="Btn" title="Continue with your Google account" {{action 'signIn' 'google'}}>
+					{{x-icon i="google-plus"}} Google
+				</button>
 
-			<p>or</p>
+				<p>or</p>
 
-			<button type="submit" class="Btn" title="Continue with your Facebook account" {{action 'login' 'facebook'}}>
-				{{x-icon i="facebook"}} Facebook
-			</button>
-		</div>
+				<button type="submit" class="Btn" title="Continue with your Facebook account" {{action 'signIn' 'facebook'}}>
+					{{x-icon i="facebook"}} Facebook
+				</button>
+			</div>
+		{{else}}
+			<p>One second while we sign you in…</p>
+		{{/unless}}
 	</form>
 
 	<p class="Muted">Not using Google or Facebook? Sign in with e-mail is coming soon.</p>

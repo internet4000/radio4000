@@ -1,14 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-	channelChanged: Ember.observer('session.userChannel.id', function() {
-		var channel = this.get('session.userChannel');
-
-		// Try to get the user to create a channel
-		if (!channel) {
-			this.transitionTo('intro');
-		}
-	}),
+	beforeModel: function() {
+		this.get('session').fetch().catch(function() {
+			Ember.debug('when is this called');
+		});
+	},
 
 	renderTemplate() {
 
@@ -24,11 +21,22 @@ export default Ember.Route.extend({
 	},
 
 	actions: {
-		login(provider) {
-			this.get('session').login(provider);
+		signIn(authWith) {
+			this.get('session').open('firebase', { authWith: authWith }).then(() => {
+				var userChannel = this.get('session.currentUser.channels');
+
+				Ember.debug('logged in!');
+
+				// if the user doesn't have a channel, incite him to create one
+				if (userChannel) {
+					// this.transitionTo('channel', userChannel);
+				} else {
+					this.transitionTo('channels.new');
+				}
+			});
 		},
 		logout() {
-			this.get('session').logout();
+			this.get('session').close();
 		},
 		back() {
 			window.history.back();

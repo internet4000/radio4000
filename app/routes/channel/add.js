@@ -4,6 +4,7 @@ export default Ember.Route.extend({
 
 	// Create a new track for the channel
 	model() {
+		Ember.debug('add model');
 		return this.store.createRecord('track', {
 			channel: this.modelFor('channel')
 		});
@@ -11,11 +12,13 @@ export default Ember.Route.extend({
 
 	// Abort if user isn't allowed to edit
 	// this is the reason why we can't access channel/add directly, so I comment it out (hugo)
-	// afterModel: function() {
-	// afterModel() {
-	// 	var canEdit = this.controllerFor('channel').get('canEdit');
-	// 	if (!canEdit) { this.transitionTo('channel.index', this.modelFor('channel')); }
-	// },
+	afterModel() {
+		var canEdit = this.controllerFor('channel').get('canEdit');
+
+		Ember.debug('channel.add afterModel');
+		Ember.debug(canEdit);
+		// if (!canEdit) { this.transitionTo('channel.index', this.modelFor('channel')); }
+	},
 
 	actions: {
 

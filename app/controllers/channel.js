@@ -9,20 +9,31 @@ export default Ember.Controller.extend({
 		return window.moment(date).subtract(1, 'days').fromNow();
 	}),
 
-	// canEdit: Ember.computed.equal('model.id', 'session.userChannel.id'),
-	canEdit: Ember.computed('model', 'session.userChannel', function() {
+	// canEdit: Ember.computed.equal('model.id', 'session.currentUser.channels.firstObject.id'),
+	canEdit: Ember.computed('model', 'session.currentUser.channels.firstObject', function() {
 		var channel = this.get('model');
-		var userChannel = this.get('session.userChannel');
+		var userChannel = this.get('session.currentUser.channels.firstObject');
 
-		// avoid both props being null === null which equals true (lol)
-		if (channel === null || userChannel === null) { return false; }
+		Ember.debug(channel);
+		Ember.debug(userChannel);
 
-		return channel.get('id') === userChannel.get('id');
+		// first avoid both props being null === null which equals true (lol)
+		if (channel === null || userChannel === null || userChannel === undefined) {
+			Ember.debug('something is null');
+			return false;
+		}
+
+		// then check
+		Ember.debug('checking canEdit');
+		var canEdit = (channel.get('id') === userChannel.get('id'));
+		Ember.debug(canEdit);
+
+		return canEdit;
 	}),
 
-	isFavorite: Ember.computed('model', 'session.userChannel.favoriteChannels.@each', function() {
+	isFavorite: Ember.computed('model', 'session.currentUser.channels.firstObject.favoriteChannels.@each', function() {
 		var channel = this.get('model');
-		var favorites = this.get('session.userChannel.favoriteChannels');
+		var favorites = this.get('session.currentUser.channels.firstObject.favoriteChannels');
 
 		// guard because this functions runs before userChannel is defined
 		if (!favorites) { return false;}
@@ -47,8 +58,8 @@ export default Ember.Controller.extend({
 
 		toggleFavorite() {
 			var isFavorite = this.get('isFavorite');
-			var userChannel = this.get('session.userChannel');
-			var favorites = this.get('session.userChannel.favoriteChannels');
+			var userChannel = this.get('session.currentUser.channels.firstObject');
+			var favorites = this.get('session.currentUser.channels.firstObject.favoriteChannels');
 			var channel = this.get('model');
 			var channelPublic = channel.get('channelPublic');
 			var channelFollowers = channelPublic.get('followers');

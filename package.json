@@ -38,7 +38,9 @@
     "gulp-atom-shell": "^0.2.0",
     "install": "^0.1.8",
     "npm": "^2.7.5",
-    "rsyncwrapper": "^0.4.2"
+    "rsyncwrapper": "^0.4.2",
+    "torii": "0.3.3",
+    "torii-fire": "0.2.2"
   },
   "dependencies": {
     "emberfire": "^1.4.4",

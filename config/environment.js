@@ -6,6 +6,10 @@ module.exports = function(environment) {
     environment: environment,
     firebase: 'https://radio4000-dev.firebaseio.com/',
     // firebase: 'https://radio4000.firebaseio.com/', // LIVE
+    torii: {
+      // a 'session' property will be injected on routes and controllers
+      sessionServiceName: 'session'
+    },
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {

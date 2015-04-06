@@ -1,27 +1,32 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+	beforeModel() {
+		if (this.get('session.isAuthenticated')) {
+			this.transitionTo('introduction');
+		}
+	},
 
-	userChanged: Ember.observer('session.user.id', function() {
-		var authed = this.get('session.authed');
-		var userChannel = this.get('session.userChannel');
+	userChanged: Ember.observer('session.currentUser.id', function() {
+		var authed = this.get('session.isAuthenticated');
+		var userChannel = this.get('session.currentUser.channels.firstObject');
 
 		// Ember.debug('authed: ' + authed);
 		// Ember.debug('channel: ' + userChannel);
 
-		// authed with channel
 		if (authed && userChannel) {
-			// Ember.debug('logged in with channel');
-			this.transitionTo('channel', userChannel);
+			Ember.debug('authed with channel');
 
-		// authed without channel
+			// but we can't transition here because the user
+			// might not have actively authenticated in
+
 		} else if (authed && !userChannel) {
+			Ember.debug('authed without channel');
 			this.transitionTo('channels.new');
 
-		// not authed
 		} else if (!authed) {
-			// Ember.debug('logged out');
-			this.transitionTo('/');
+			Ember.debug('not authed');
+			// this.transitionTo('/');
 		}
 	})
 });

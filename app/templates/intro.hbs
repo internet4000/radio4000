@@ -8,10 +8,10 @@
 	<p class="Intro-slogan">One radio for every one and an infinity<br>of great tracks curated with love.</p>
 
 	<div class="Intro-buttons">
-		{{#if session.userChannel}}
-			{{!-- {{channel-cover model=session.userChannel}} --}}
-			{{#link-to 'channel' session.userChannel class="Intro-btn Intro-btn--primary" title="Your radio"}}
-				Go to your “{{session.userChannel.title}}”
+		{{#if session.currentUser.channels.firstObject}}
+			{{!-- {{channel-cover model=session.currentUser.channels.firstObject}} --}}
+			{{#link-to 'channel' session.currentUser.channels.firstObject class="Intro-btn Intro-btn--primary" title="Your radio"}}
+				Go to your “{{session.currentUser.channels.firstObject.title}}”
 			{{/link-to}}
 		{{else}}
 			{{#link-to 'channels.new' class="Intro-btn Intro-btn--primary" title="Continue to create your radio"}}

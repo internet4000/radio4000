@@ -2,12 +2,12 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	beforeModel() {
-		if (!this.get('session.authed')) {
+		if (!this.get('session.isAuthenticated')) {
 			// redirect if you're not authed
 			this.transitionTo('signin');
-		} else if (this.get('session.userChannel')) {
+		} else if (this.get('session.currentUser.channels.firstObject')) {
 			// or already have a channel
-			this.transitionTo('channel', this.get('session.userChannel'));
+			this.transitionTo('channel', this.get('session.currentUser.channels.firstObject'));
 		}
 	},
 	model() {
@@ -36,8 +36,8 @@ export default Ember.Route.extend({
 	},
 
 	// redirect to sign in
-	onLogout: Ember.observer('session.authed', function() {
-		if (!this.get('session.authed')) {
+	onLogout: Ember.observer('session.isAuthenticated', function() {
+		if (!this.get('session.isAuthenticated')) {
 			this.transitionTo('signin');
 		}
 	})

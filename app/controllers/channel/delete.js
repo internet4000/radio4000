@@ -37,7 +37,7 @@ export default Ember.Controller.extend({
 	// Delete this channel on the session user
 	deleteUserRelationship() {
 		var channel = this.get('model');
-		var user = this.get('session.user');
+		var user = this.get('session.currentUser');
 
 		user.get('channels').then((channels) => {
 			channels.removeObject(channel);
@@ -64,7 +64,8 @@ export default Ember.Controller.extend({
 
 					channel.destroyRecord().then(() => {
 						Ember.debug('destroyed channel');
-						this.set('session.userChannel', null);
+						this.transitionToRoute('channels.new');
+						// this.set('session.currentUser.channels.firstObject', null);
 					});
 				});
 			});
