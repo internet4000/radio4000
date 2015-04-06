@@ -23,13 +23,13 @@ export default Ember.Route.extend({
 	actions: {
 		signIn(authWith) {
 			this.get('session').open('firebase', { authWith: authWith }).then(() => {
-				var userChannel = this.get('session.currentUser.channels');
+				var userChannel = this.get('session.currentUser.channels.firstObject');
 
 				Ember.debug('logged in!');
 
 				// if the user doesn't have a channel, incite him to create one
 				if (userChannel) {
-					// this.transitionTo('channel', userChannel);
+					this.transitionTo('channel', userChannel);
 				} else {
 					this.transitionTo('channels.new');
 				}
