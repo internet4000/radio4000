@@ -29,30 +29,26 @@ path {
 	fill: currentColor;
 }
 
-// star specific colors;
-$yellowStroke: #FFD67D;
-$yellowFill: #E2B962;
-$grayStroke: #EEEEEC;
-
+// // star specific colors;
+// $yellowStroke: #FFD67D;
+// $yellowFill: #E2B962;
 .icon-star,
 .icon-star-yellow {
 	font-size: 2rem;
 	stroke-width: 2;
-	transition: all 300ms $easing;
+	transition: all 150ms $easing;
 }
-
 .icon-star {
-	fill: transparent;
-	stroke: $grayStroke;
-	&:hover {
-		stroke: $yellowStroke;
-	}
+	fill: $mediumgray;
+	stroke: $mediumgray;
+	// &:hover {
+	// 	stroke: $yellowStroke;
+	// }
 }
 .icon-star-yellow {
-	fill: $yellowFill;
-	stroke: $yellowStroke;
-	&:hover {
-		stroke: $grayStroke;
-	}
+	fill: $yellow;
+	stroke: $yellow;
+	// &:hover {
+	// 	stroke: $mediumgray;
+	// }
 }
-

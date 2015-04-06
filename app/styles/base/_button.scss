@@ -1,17 +1,23 @@
+// Button reset (inspired by https://github.com/suitcss/components-button)
+// this allows us to use semantic button elements for other things
+button,
 .Btn {
-	// Button reset (inspired by https://github.com/suitcss/components-button)
 	-webkit-appearance: none; /* 1 */
 	background: transparent;
 	cursor: pointer;
 	display: inline-block;
 	line-height: normal; /* 6 */
 	margin: 0;
+	border: 0;
+	padding: 0;
 	position: relative;
 	text-align: center;
 	text-decoration: none;
 	user-select: none; /* 6 */
 	white-space: normal; /* 7 */
+}
 
+.Btn {
 	// Button styling
 	padding: 0.55em 0.8em 0.5em;
 	background-color: $slightgray;
