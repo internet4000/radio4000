@@ -32,7 +32,7 @@ $boxIconSize: 35px;
 		content: '→';
 		padding-left: 9px;
 		padding-top: 6px;
-		font-size: 16px;
+		@include size-2;
 	}
 }
 .BoxIcon--white {

@@ -28,7 +28,7 @@
 			position: absolute;
 			top: 20%;
 			left: 0.5rem;
-			font-size: 30px;
+			@include size-5;
 			transform: translateX(0);
 			transition: transform 500ms $easing;
 		}

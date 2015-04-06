@@ -9,7 +9,7 @@
 	@media (min-width: $layout-s) {
 		float: left;
 		width: 30%;
-		padding-right: 2rem;
+		padding-right: 1.5rem;
 	}
 }
 .Channel-body {
@@ -96,4 +96,8 @@
 .Follow--title {
 	float: left;
 	margin-right: 1rem;
+
+	// optical aligned with channel title
+	position: relative;
+	top: 0.1em;
 }
