@@ -57,14 +57,22 @@ export default Ember.Controller.extend({
 		},
 
 		toggleFavorite() {
-			var isFavorite = this.get('isFavorite');
 			var userChannel = this.get('session.currentUser.channels.firstObject');
-			var favorites = this.get('session.currentUser.channels.firstObject.favoriteChannels');
+
+			if (!userChannel) {
+				this.transitionToRoute('signin');
+				return false;
+			}
+
 			var channel = this.get('model');
 			var channelPublic = channel.get('channelPublic');
 			var channelFollowers = channelPublic.get('followers');
+			var isFavorite = this.get('isFavorite');
+			var favorites = userChannel.get('favoriteChannels');
 
 			favorites.then((favs) => {
+
+				Ember.debug(favs);
 
 				// add or remove to user's channel's favorites
 				if (isFavorite) {
