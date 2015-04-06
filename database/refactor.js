@@ -49,14 +49,6 @@ filteredUsers.forEach(function(user) {
 
 		favoriteChannel.followers[channelId] = true;
 	}
-
-	// favorite.followers = user.channels;
-	// channelFollowers.addObject(userChannel);
-
-
-	// console.log(.title);
-	// console.log(channelId);
-	// delete user.favoriteChannels;
 });
 
 // delete channel user

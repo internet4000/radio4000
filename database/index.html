@@ -2,44 +2,15 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<script src="db.js"></script>
-	<script src="refactor.js"></script>
+	<script src="console-save.js"></script>
+	<script src="generate-firebase-id.js"></script>
+	<script src="db-favorites.js"></script>
+	<script src="refactor-favorites.js"></script>
 </head>
 <body>
 
-<h1>Hey</h1>
-
-<script>
-
-	// console.save(javascriptobject)
-
-	(function(console){
-	  console.save = function(data, filename){
-	    if(!data) {
-	      console.error('Console.save: No data')
-	      return;
-	    }
-
-	    if(!filename) filename = 'console.json'
-
-	    if(typeof data === "object"){
-	      data = JSON.stringify(data, undefined, 4)
-	    }
-
-	    var blob = new Blob([data], {type: 'text/json'}),
-	        e    = document.createEvent('MouseEvents'),
-	        a    = document.createElement('a')
-
-	    a.download = filename
-	    a.href = window.URL.createObjectURL(blob)
-	    a.dataset.downloadurl =  ['text/json', a.download, a.href].join(':')
-	    e.initMouseEvent('click', true, false,
-	                     window, 0, 0, 0, 0, 0,
-	                     false, false, false, false, 0, null)
-	    a.dispatchEvent(e)
-	}
-	})(console)
-</script>
+<h1>Radio4000 database refactoring</h1>
+<p>Open the console and inspect the <code>db</code> var.</p>
 
 </body>
 </html>
