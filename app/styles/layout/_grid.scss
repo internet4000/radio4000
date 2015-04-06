@@ -87,4 +87,14 @@
 	display: flex;
 	align-items: baseline;
 	justify-content: space-between;
+
+	> .Btn {
+		flex: 1;
+	}
+	> p {
+		margin-left: 1rem;
+		margin-right: 1rem;
+		margin-bottom: 0;
+		color: $gray;
+	}
 }
