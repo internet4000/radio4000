@@ -11,7 +11,7 @@ export default DS.Model.extend({
 
 		if (!src) { return ''; }
 
-		return 'http://res.cloudinary.com/radio4000/image/upload/c_thumb,h_300,w_300/v1428245306/'+
+		return 'http://res.cloudinary.com/radio4000/image/upload/c_thumb,h_200,w_200/v1428245306/'+
 		 src +'.jpg';
 	})
 });

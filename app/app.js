@@ -28,6 +28,22 @@ Ember.Router.reopen({
   })
 });
 
+Ember.EventDispatcher.reopen({
+   setup: function () {
+      var events = this.get('events');
+      var ignoreEvents = ['touchmove', 'touchstart', 'touchend', 'touchcancel', 'mousemove', 'mouseenter', 'mouseleave'];
+
+      Ember.$.each(ignoreEvents, function (index, value) {
+         events[value] = null;
+         delete events[value];
+      });
+
+      this.set('events', events);
+
+      return this._super(Array.prototype.slice.call(arguments));
+   }
+  });
+
 loadInitializers(App, config.modulePrefix);
 
 export default App;

@@ -2,11 +2,13 @@
 	{{tracks-list content=model.tracks
 					canEdit=canEdit
 					playback=playback}}
-
 {{else}}
+	{{!-- only show once real model is loaded  --}}
+	{{#if model.title}}
 	<div class="Container Section Section--messaging">
 		<p>This channel doesn't have any tracks, yet.</p>
 	</div>
+	{{/if}}
 {{/if}}
 
 <div class="Container">
