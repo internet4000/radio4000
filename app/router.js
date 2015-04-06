@@ -27,14 +27,14 @@ export default Router.map(function() {
  });
 
   // channels
-  this.resource('channels', { path: '/'}, function() {
+  this.resource('channels', { path: '/' }, function() {
     this.route('all');
     this.route('new');
   });
 
   // channel
-  this.resource('channel', { path: '/c/:channel_slug' }, function() {
-    this.route('index', { path: '/'}, function() {
+  this.resource('channel', { path: '/c/:slug' }, function() {
+    this.route('index', { path: '/' }, function() {
         this.resource('track', { path: ':track_id' });
     });
     this.route('favorite-channels');

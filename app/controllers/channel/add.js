@@ -50,8 +50,7 @@ export default Ember.Controller.extend({
 			var endpoint = 'https://www.googleapis.com/youtube/v3/videos?id='+id+'&key='+apikey+'&fields=items(id,snippet(title))&part=snippet';
 
 			if (!id) {
-				console.log(id);
-				Ember.debug('errrrror');
+				Ember.warn('autoTitle couldnt create an id from: ' + url);
 				return;
 			}
 

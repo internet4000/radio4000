@@ -2,52 +2,28 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	model(params) {
+		var slug = params.slug;
 
-		// 1. This is how it should be
-		// but no findQuery support in Emberfire
-		// return this.store.find('channel', { slug: params.channel_slug });
-
-		// 2. Alternative solution
-		// but loads all channels………
-		// return this.store.find('channel').then(function(channels) {
-		// 	return channels.findBy('slug', params.channel_slug);
-		// });
-
-		// 3. firebase way but doesn't return an ember model
-		// but requires TWO queries: one with firebase to find id from slug
-		// and one from ember now that we have the ID, this way we get a "ember" model
-		var ref = new window.Firebase("https://radio4000-dev.firebaseio.com/channels/");
-		var that = this;
-
-		// find the channel by slug without emberfire, just firebase
-		var channelFromSlug = new Ember.RSVP.Promise(function(resolve, reject) {
-			ref.orderByChild('slug').equalTo(params.channel_slug).on('child_added', function(snapshot) {
-				resolve(snapshot.key());
-			}, function(error) {
-				reject(error);
-			});
+		return this.store.find('channel', {
+			orderBy: 'slug',
+			equalTo: slug
+		})
+		// this part is needed because emberfire: https://github.com/firebase/emberfire/issues/235
+		.then((channels) => {
+			return channels.findBy('slug', slug);
 		});
+	},
 
-		// use that id to query using emberfire,
-		// so we get a real "ember" model (and not the pure firebase one)
-		return channelFromSlug.then(function(value) {
-			return that.store.find('channel', value).then(function(data) {
-				return data;
-			}, function(error) {
-				console.log(error);
-			});
-		});
+	// because we use slugs instead of ids in the url
+	// tell ember what the 'slug' param maps to on our model
+	serialize(model) {
+		return { slug: model.get('slug') };
 	},
 
 	afterModel(model) {
 		window.scrollTo(0, 0);
 		document.title = model.get('title') + ' - Radio4000';
 		this.controllerFor('channel.edit').set('model', model);
-	},
-
-	// because we use slugs instead of ids in the url
-	serialize(model) {
-		return { channel_slug: model.get('slug') };
 	},
 
 	renderTemplate() {
