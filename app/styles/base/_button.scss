@@ -66,11 +66,16 @@ button,
 	background-image: linear-gradient(to bottom, rgba($white, 0.1) 40%, $green);
 	color: $bleach;
 
+
 	&:hover,
 	&:focus,
 	&:active {
 		background-image: linear-gradient(to bottom, rgba($white, 0.1) 40%, hsla(0,0%,0%,0.1));
 	}
+	&.is-flashing {
+		background-color: $yellow;
+	}
+
 }
 
 // Small buttons

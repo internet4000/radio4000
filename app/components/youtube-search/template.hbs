@@ -1,0 +1,15 @@
+<!-- {{input type="search" value=query}} -->
+
+{{#if results}}
+	<p class="Muted">Tap a track to add it.</p>
+
+	<ul class="SmallerList">
+		{{#each item in results}}
+			<li {{action 'add' item}}>
+				<a href="#">{{item.title}}</a>
+			</li>
+		{{/each}}
+	</ul>
+{{/if}}
+
+{{yield}}
