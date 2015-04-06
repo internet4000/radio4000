@@ -1,0 +1,7 @@
+{{#each colors as |color|}}
+<div class="Color" style="background-color: {{{color.value}}};">
+	<p>{{color.title}}</p>
+</div>
+{{/each}}
+
+{{yield}}
