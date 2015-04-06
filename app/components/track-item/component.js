@@ -44,17 +44,17 @@ export default Ember.Component.extend({
 
 		// Delete the track object and the corresponding track object in channel.tracks
 		deleteTrack() {
-			var track = this.get('track');
 			var channel = this.get('track.channel');
+			var channelTracks = channel.get('tracks');
+			var track = this.get('track');
 
-			Ember.debug('deleting');
+			Ember.debug('Deleting track');
 
-			channel.get('tracks').then(function(tracks) {
-				Ember.debug(tracks);
+			channelTracks.then((tracks) => {
 				tracks.removeObject(track);
-				track.destroyRecord();
 				channel.save();
-				Ember.debug('Deleted the track');
+
+				track.destroyRecord();
 			});
 		}
 	}
