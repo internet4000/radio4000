@@ -11,7 +11,13 @@ export default Ember.Component.extend({
 		var query = this.get('query');
 		var endpoint = 'http://gdata.youtube.com/feeds/api/videos?q=' + encodeURIComponent(query) + '&format=5&max-results=5&v=2&alt=jsonc';
 
+		// guard being called too early
+		if (!query) {
+			return;
+		}
+
 		// don't query short (useless) strings
+		// and clear any previous results
 		if (query.length < 4) {
 			this.get('results').clear();
 			return;

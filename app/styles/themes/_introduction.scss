@@ -48,7 +48,7 @@
 	@media (min-width: $layout-sm) {
 		font-size: 120px;
 	}
-	@media (min-height: 1000px) {
+	@media (min-width: $layout-m) and (min-height: 1000px) {
 		font-size: 150px;
 	}
 
