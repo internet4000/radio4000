@@ -2,6 +2,6 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	model() {
-		return this.store.find('channel', { limitToLast: 12 });
+		return this.store.find('channel');
 	}
 });

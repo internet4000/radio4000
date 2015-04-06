@@ -2,8 +2,10 @@ import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
 
+	// this value should match what we fetch in the route
+	maxPopular: 12,
+
 	// sort by followers
-	maxPopular: 16,
 	sortProperties: ['followers.length'],
 	sortAscending: false,
 
