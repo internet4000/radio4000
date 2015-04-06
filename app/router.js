@@ -16,7 +16,7 @@ export default Router.map(function() {
   this.route('bookmarklet');
   this.route('dashboard');
   this.route('help', function() { /* help.index */ });
-  this.route('introduction');
+  this.route('intro');
   this.route('log');
   this.route('signin');
   this.route('stats');

@@ -1,5 +1,5 @@
 <div class="Intro">
-	{{!-- <img class="Intro-bg" src="images/bg-intro.jpg" alt=""> --}}
+	<img class="Intro-bg" src="images/bg-intro.jpg" alt="">
 	<h1 class="Intro-title">
 		<span class="Intro-radio">Radio</span>
 		<span class="Intro-4000">4000</span>
@@ -8,19 +8,20 @@
 	<p class="Intro-slogan">One radio for every one and an infinity<br>of great tracks curated with love.</p>
 
 	<div class="Intro-buttons">
-		{{#unless session.userChannel}}
+		{{#if session.userChannel}}
+			{{!-- {{channel-cover model=session.userChannel}} --}}
+			{{#link-to 'channel' session.userChannel class="Intro-btn Intro-btn--primary" title="Your radio"}}
+				Go to your “{{session.userChannel.title}}”
+			{{/link-to}}
+		{{else}}
 			{{#link-to 'channels.new' class="Intro-btn Intro-btn--primary" title="Continue to create your radio"}}
 				Create your radio now
 			{{/link-to}}
-		{{/unless}}
-		{{#link-to 'channels' class="Intro-btn" title="Discover music by channels"}}
-			Discover radios
-		{{/link-to}}
-		{{#if session.userChannel}}
-			{{#link-to 'channel' session.userChannel class="Intro-btn" title="Manage your radio"}}
-				Your channel “{{session.userChannel.title}}”
-			{{/link-to}}
 		{{/if}}
+		{{#link-to 'channels' class="Intro-btn" title="Discover music by channels"}}
+			Discover radios &rarr;
+		{{/link-to}}
+
 	</div>
 </div>
 
