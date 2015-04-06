@@ -35,12 +35,14 @@
 	z-index: 4; // below PanelNav
 
 	// hidden
-	pointer-events: none;
+	// pointer-events: none;
+	visibility: hidden;
 	background-color: rgba(0, 0, 0, 0);
 	transition: background-color 400ms;
 
 	.is-panelOpen & {
-		background-color: rgba(0, 0, 0, 0.2);
+		visibility: visible;
+		background-color: rgba(0, 0, 0, 0.3);
 	}
 }
 
