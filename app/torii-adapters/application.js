@@ -67,7 +67,7 @@ export default Ember.Object.extend({
 		// This is what should be done to teardown a session. Here I am unloading my
 		// models and setting currentUser to null.
 		let firebase = this.get('container').lookup('adapter:application').firebase;
-		let store = this.get('container').lookup('store:main');
+		// let store = this.get('container').lookup('store:main');
 
 		return new Ember.RSVP.Promise(function(resolve) {
 			// store.unloadAll('user');
