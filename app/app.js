@@ -21,6 +21,8 @@ Ember.LinkView.reopen({
 // Notify Google Analytics of page transitions
 Ember.Router.reopen({
   notifyGoogleAnalytics: Ember.on('didTransition', function() {
+    if (!ga) { return false; }
+
     return ga('send', 'pageview', {
         'page': this.get('url'),
         'title': this.get('url')
