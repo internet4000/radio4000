@@ -5,13 +5,13 @@ export default DS.Model.extend({
 	channel: DS.belongsTo('channel'),
 	src: DS.attr('string'),
 
-	// returns a 300x300 cropped thumb with facial detection
+	// returns a cropped thumb with facial detection
 	thumb: Ember.computed('src', function() {
+		var base = 'http://res.cloudinary.com/radio4000/image/upload/c_thumb,h_200,w_200/v1428245306/';
 		var src = this.get('src');
 
 		if (!src) { return ''; }
 
-		return 'http://res.cloudinary.com/radio4000/image/upload/c_thumb,h_200,w_200/v1428245306/'+
-		 src +'.jpg';
+		return base + src;
 	})
 });
