@@ -14,7 +14,6 @@
     "qunit": "~1.17.1",
     "cloudinary": "~1.0.23",
     "emberfire": "~1.4.4",
-    "js-md5": "~1.1.0",
     "jquery-file-upload": "~9.9.3",
     "moment": "~2.9.0"
   },
