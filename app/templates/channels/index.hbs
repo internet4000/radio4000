@@ -5,10 +5,11 @@
 <div class="Container Container--full">
 	<div class="Section">
 
-		{{#if popular}}
-			{{channels-grid channels=popular}}
+		{{#if model}}
+			{{channels-grid channels=model}}
 		{{else}}
-			<p>Oh, there are no curated channels yet. {{#link-to 'channels.new'}}Create the first!{{/link-to}}</p>
+			<p>Finding channels…</p>
+			{{!-- <p>Oh, there are no curated channels yet. {{#link-to 'channels.new'}}Create the first!{{/link-to}}</p> --}}
 		{{/if}}
 	</div>
 
