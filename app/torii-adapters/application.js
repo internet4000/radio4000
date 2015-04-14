@@ -44,19 +44,25 @@ export default Ember.Object.extend({
 		let authData = firebase.getAuth();
 		let store = this.get('container').lookup('store:main');
 
-		Ember.debug('fetch');
+		// Ember.debug('fetch');
 
 		return new Ember.RSVP.Promise(function(resolve, reject) {
+
+			// we have something
 			if (authData) {
+
+				// look for a user
 				store.find('user', authData.uid).then(function(user) {
-
-					// we have a user, set it
 					Ember.run.bind(null, resolve({ currentUser: user }));
-
 				}, function() {
+
+					// no user
 					Ember.run.bind(null, reject('no session'));
 				});
+
 			} else {
+
+				// we have nothing
 				Ember.run.bind(null, reject('no session'));
 			}
 		});
