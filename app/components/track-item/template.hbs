@@ -1,42 +1,37 @@
-{{#unless isEditing}}
-	{{#link-to 'track' track class="Track-link"}}
-		{{x-icon i="play"}}
-		<h3 class="Track-title">{{track.title}}</h3>
-		{{#if track.body}}<p class="Track-description">{{track.body}}</p>{{/if}}
-	{{/link-to}}
-{{/unless}}
+{{#link-to 'track' track class="Track-link"}}
+	{{!-- {{x-icon i="play"}} --}}
+	<h3 class="Track-title">{{track.title}}</h3>
+	{{#if track.body}}<p class="Track-description">{{track.body}}</p>{{/if}}
+{{/link-to}}
 
 {{#if canEdit}}
-	{{#if isEditing}}
-		<form class="Form EditTrack">
-			<div class="Form-group">
-				<label>URL
-					{{input type="url" placeholder="Copy in a YouTube URL" value=track.url required="required"}}
-				</label>
-			</div>
-			<div class="Form-group">
-				<label>Title
-					{{focus-input value=track.title placeholder="Title" required="required"}}
-				</label>
-			</div>
-			<div class="Form-group">
-				<label>Description
-					{{input type="text" value=track.body placeholder="Description"}}
-				</label>
-			</div>
-			<div class="Form-group">
-				<button class="Btn Btn--primary" {{action "save" title="Save the track"}}>Save track</button>
-				<button class="Btn Btn--text" {{action 'cancel' title="Cancel editing the track"}}>Cancel</button>
-				<button class="Btn Btn--text Btn--danger u-alignRight" {{action 'deleteTrack' title="Delete this track from your radio"}}>Delete</button>
-			</div>
-		</form>
-	{{else}}
-		<p class="Track-controls">
-			<span {{action 'edit'}} title="Edit the track">
-				{{x-icon i="pencil"}}
-			</span>
-		</p>
-	{{/if}}
+	<p class="Track-controls">
+		<span {{action 'edit'}} title="Edit the track">
+			{{x-icon i="pencil"}}
+		</span>
+	</p>
+
+	<form class="Form EditTrack">
+		<div class="Form-group">
+			<label>URL
+				{{input type="url" placeholder="Copy in a YouTube URL" value=track.url required="required"}}
+			</label>
+		</div>
+		<div class="Form-group">
+			<label>Title
+				{{focus-input value=track.title placeholder="Title" required="required"}}
+			</label>
+		</div>
+		<div class="Form-group">
+			<label>Description
+				{{input type="text" value=track.body placeholder="Description"}}
+			</label>
+		</div>
+		<div class="Form-group">
+			<button class="Btn Btn--primary" {{action "save" title="Save the track"}}>Save track</button>
+			<button class="Btn Btn--text" {{action 'cancel' title="Cancel editing the track"}}>Cancel</button>
+			<button class="Btn Btn--text Btn--danger u-alignRight" {{action 'deleteTrack' title="Delete this track from your radio"}}>Delete</button>
+		</div>
+	</form>
 {{/if}}
 
-{{yield}}

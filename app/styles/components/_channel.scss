@@ -33,11 +33,11 @@
 }
 .Channel-header {
 	overflow: auto; // contain floated Cover
+	background-color: $superlightgray;
 	padding-top: 1rem;
-	@media (min-width: $layout-m) {
+	@media (min-width: $layout-s) {
 		padding-top: 2rem;
 	}
-	background-color: $superlightgray;
 }
 .Channel-cover {
 	position: relative;

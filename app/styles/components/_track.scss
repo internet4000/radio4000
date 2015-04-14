@@ -73,8 +73,20 @@ a.Track-link { // Link surrounding the track
 .Track.is-editing {
 	background-color: $superlightgray;
 	box-shadow: $lighterblue 0 0 10px;
+
 	.Track-link:hover {
 		background-color: transparent;
 		background-image: none;
+	}
+
+	.Track-link,
+	.Track-controls {
+		display: none;
+	}
+}
+.EditTrack {
+	display: none;
+	.Track.is-editing & {
+		display: block;
 	}
 }

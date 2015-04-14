@@ -9,7 +9,6 @@
 			</div>
 
 			<div class="Channel-body">
-
 				<div class="Channel-titleSection">
 					{{#unless canEdit}}
 						<span class="Follow Follow--title">
@@ -18,15 +17,16 @@
 					{{/unless}}
 					<h1 class="Channel-title">
 						{{#link-to 'channel' model}}{{model.title}}{{/link-to}}
-						{{#if model.tracks}}
+						{{!-- {{#if model.tracks}}
 							<span class="Muted LastUpdate">(updated {{lastUpdatedFormatted}})</span>
-						{{/if}}
+						{{/if}} --}}
 					</h1>
 				</div>
 
 				{{#if model.body}}
 					<p class="Channel-description">{{model.body}}</p>
 				{{/if}}
+
 				{{#if model.link}}
 					<p class="Channel-links">
 						<a href="{{model.link}}" target="_blank">{{model.link}}</a>
@@ -45,21 +45,20 @@
 						</div>
 					</div>
 				{{/if}}
-
 			</div>
 		</div>
 	</div>
 
 	<nav class="NavigationTab">
 		{{#link-to 'channel.index' class="NavigationTab-item" title="All tracks"}}
-			{{model.tracks.length}} tracks
+			Tracks
 		{{/link-to}}
 		{{#link-to 'channel.favorite-channels' class="NavigationTab-item" title="Favorites of this channel"}}
-			{{model.favoriteChannels.length}} favorites
+			Favorites
 		{{/link-to}}
-		{{#link-to 'channel.followers' class="NavigationTab-item" title="Followers"}}
+		{{!-- {{#link-to 'channel.followers' class="NavigationTab-item" title="Followers"}}
 			{{model.channelPublic.followers.length}} followers
-		{{/link-to}}
+		{{/link-to}} --}}
 	</nav>
 
 	<div class="Channel-outlet">
