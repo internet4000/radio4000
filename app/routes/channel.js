@@ -2,22 +2,22 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	model(params) {
-		var model = Ember.ObjectProxy.create({});
+		// var model = Ember.ObjectProxy.create({});
 		var slug = params.slug;
 
-		this.store.find('channel', {
+		return this.store.find('channel', {
 			orderBy: 'slug',
 			equalTo: slug
 		})
 
 		// this part is needed because emberfire: https://github.com/firebase/emberfire/issues/235
 		.then((channels) => {
-			model.set('content', channels.findBy('slug', slug));
+			return channels.findBy('slug', slug);
 		});
 
 		// initially returns the empty proxy
 		// later the real model
-		return model;
+		// return model;
 	},
 
 	// because we use slugs instead of ids in the url
@@ -29,18 +29,17 @@ export default Ember.Route.extend({
 	afterModel(model) {
 		window.scrollTo(0, 0);
 		document.title = model.get('title') + ' - Radio4000';
-		this.controllerFor('channel.edit').set('model', model);
 	},
 
-	renderTemplate() {
-		this._super();
+	// renderTemplate() {
+	// 	this._super();
 
-		// update contextual nav
-		this.render('contextual-navigation/cn-channel', {
-			into: 'application',
-			outlet: 'contextual-navigation'
-		});
-	},
+	// 	// update contextual nav
+	// 	this.render('contextual-navigation/cn-channel', {
+	// 		into: 'application',
+	// 		outlet: 'contextual-navigation'
+	// 	});
+	// },
 
 	// Reset doc title when leaving the route
 	deactivate() {
