@@ -8,6 +8,16 @@ export default Ember.Controller.extend({
 	// channel gets set by the track route
 	channel: null,
 
+	// tracks from the current channel
+	tracks: Ember.computed('channel.tracks.[]', function() {
+		return this.get('channel.tracks');
+	}),
+
+	// gets the index of the current track
+	getCurrentTrackIndex: Ember.computed('tracks', 'model', function() {
+		return this.get('tracks').indexOf(this.get('model'));
+	}),
+
 	// all listened tracks
 	// history: [],
 	history: Ember.A([]),
@@ -20,42 +30,20 @@ export default Ember.Controller.extend({
 
 		if (!tracks) { return; }
 
-		return tracks.filter(function(track) {
+		return tracks.filter((track) => {
 			return !history.contains(track);
 		});
-	}),
-
-	// generates a ytid if the model doesn't have one already
-	// @todo: this should be removed when no longer necessary
-	validateTrack: Ember.observer('model.ytid', function() {
-		if (!this.get('model.ytid')) {
-			this.get('model').updateProvider();
-		}
 	}),
 
 	// unplayed: Ember.computed.filter('tracks', function(track, index) {
 	// 	return !this.get('history').contains(track);
 	// }),
 
-	// tracks from the current channel
-	tracks: Ember.computed('channel.tracks.[]', function() {
-		return this.get('channel.tracks');
-	}),
-
-	// gets the index of the current track
-	getCurrentTrackIndex: Ember.computed('tracks', 'model', function() {
-		return this.get('tracks').indexOf(this.get('model'));
-	}),
-
-	// gets a random track
-	getRandomTrack() {
-		var random = Math.floor(Math.random() * this.get('tracks.length'));
-		return this.get('tracks').objectAt(random);
-	},
-
 	updateHistory: Ember.observer('model', function() {
-		var history = this.get('history');
-		var historyWasUpdated = this.get('historyWasUpdated');
+		console.log('updateHistory: model changed');
+
+		let history = this.get('history');
+		let historyWasUpdated = this.get('historyWasUpdated');
 
 		if (historyWasUpdated) { return; }
 
@@ -66,8 +54,23 @@ export default Ember.Controller.extend({
 
 	// Clears history every time the channel changes
 	clearHistory: Ember.observer('channel', function() {
+		console.log('clearHistory: channel observer');
 		this.get('history').clear();
 	}),
+
+	// generates a ytid if the model doesn't have one already
+	// @todo: this should be removed when all tracks have an ytid
+	validateTrack: Ember.observer('model.ytid', function() {
+		if (!this.get('model.ytid')) {
+			this.get('model').updateProvider();
+		}
+	}),
+
+	// gets a random track
+	getRandomTrack() {
+		let random = Math.floor(Math.random() * this.get('tracks.length'));
+		return this.get('tracks').objectAt(random);
+	},
 
 	actions: {
 

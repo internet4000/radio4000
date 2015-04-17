@@ -2,11 +2,10 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 
-	// we return an empty array so that
-	// the template renders immediately
+	// we don't return the promise which in turn
+	// renders the template immediately (faster yay!)
+	// return this.modelFor('channel').get('tracks');
 	model() {
-		// return this.modelFor('channel').get('tracks');
-
 		let model = Ember.A([]);
 
 		// "20" is the number of tracks it takes to fill up a 24" viewport
