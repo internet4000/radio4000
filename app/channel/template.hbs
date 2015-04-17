@@ -9,19 +9,15 @@
 			</div>
 
 			<div class="Channel-body">
-				<div class="Channel-titleSection">
-					{{#unless canEdit}}
-						<span class="Follow Follow--title">
-							{{btn-favorite action="toggleFavorite" isFavorite=isFavorite}}
-						</span>
-					{{/unless}}
-					<h1 class="Channel-title">
-						{{#link-to 'channel' model}}{{model.title}}{{/link-to}}
-						{{!-- {{#if model.tracks}}
-							<span class="Muted LastUpdate">(updated {{lastUpdatedFormatted}})</span>
-						{{/if}} --}}
-					</h1>
-				</div>
+
+				<span class="Follow Follow--title">
+					{{!-- {{btn-favorite action="toggleFavorite" isFavorite=isFavorite}} --}}
+				</span>
+
+				<h1 class="Channel-title">
+					{{#link-to 'channel' model}}{{model.title}}{{/link-to}}
+					<span class="Muted LastUpdate">(updated {{lastUpdatedFormatted}})</span>
+				</h1>
 
 				{{#if model.body}}
 					<p class="Channel-description">{{model.body}}</p>
