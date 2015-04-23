@@ -32,10 +32,10 @@ export default DS.Model.extend({
 
 		if (!hashtags) { return; }
 
-		// // remove spaces on each item
-		// return hashtags.map(function(tag) {
-		// 	return tag.trim();
-		// });
+		// remove spaces on each item
+		return hashtags.map(function(tag) {
+			return tag.trim();
+		});
 
 		return hashtags;
 	})
