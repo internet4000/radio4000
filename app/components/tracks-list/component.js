@@ -4,7 +4,7 @@ export default Ember.Component.extend({
 	filter: '',
 
 	// Returns either all tracks or the filtered tracks by hashtag
-	filtered: function() {
+	filtered: Ember.computed('filter', 'model', function() {
 		let filter = this.get('filter');
 		let model = this.get('model');
 
@@ -19,10 +19,10 @@ export default Ember.Component.extend({
 		} else {
 			return model;
 		}
-	}.property('filter', 'model'),
+	}),
 
 	// not sure how to set up SortableMixin
-	sorted: Ember.computed('', function() {
+	sortedandfiltered: Ember.computed('filtered', function() {
 		return Ember.ArrayController.create({
 			content: this.get('filtered'),
 
