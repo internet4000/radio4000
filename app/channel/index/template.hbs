@@ -2,6 +2,12 @@
 				canEdit=canEdit
 				playback=playback}}
 
+{{#unless model}}
+	<div class="Container">
+		<p>Loading tracks…</p>
+	</div>
+{{/unless}}
+
 {{!-- <div class="Container">
 	{{#if showHelp}}
 		<div class="Note">
