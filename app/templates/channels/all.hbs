@@ -5,7 +5,7 @@
 <div class="Container Container--full Flex Flex--single">
 	{{input type="search" value=search placeholder="Search channels"}}
 
-	{{#btn-group}}
+	{{!-- {{#btn-group}}
 		<h4 class="BtnGroup-label">Sort by</h4>
 
 		<button class="Btn" {{action 'sortBy' 'created'}}>
@@ -14,11 +14,11 @@
 		<button class="Btn" {{action 'sortBy' 'title'}}>
 			Name {{sort-indicator ascending=sortAscending}}
 		</button>
-	{{/btn-group}}
+	{{/btn-group}} --}}
 </div>
 
 <div class="Section Container Container--full Container--noPadding">
-	{{channels-list channels=channels}}
+	{{channels-list model=channels}}
 </div>
 
 <div class="Container">
