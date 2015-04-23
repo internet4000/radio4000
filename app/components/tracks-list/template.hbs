@@ -1,5 +1,9 @@
+<menu class="BtnGroup">
+	{{view "select" content=tags prompt="All tags" value=filter}}
+</menu>
+
 <ul class="List">
-	{{#each sorted as |track|}}
+	{{#each filtered as |track|}}
 		<li>
 			{{track-item track=track
 							 canEdit=canEdit
