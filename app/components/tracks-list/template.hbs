@@ -1,6 +1,10 @@
-<menu class="BtnGroup">
-	{{view "select" content=tags prompt="All tags" value=filter}}
-</menu>
+{{#if tags}}
+	<div class="Container Section--space">
+		<div class="CustomSelect">
+			{{view "select" content=tags prompt="All tracks" value=filter}}
+		</div>
+	</div>
+{{/if}}
 
 <ul class="List">
 	{{#each sortedandfiltered as |track|}}
