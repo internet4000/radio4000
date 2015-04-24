@@ -1,6 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+	queryParams: ['tags'],
+
+	// these are needed to pass some props down to tracks-list component
 	needs: ['channel', 'playback'],
 	playback: Ember.computed.alias('controllers.playback'),
 	canEdit: Ember.computed.alias('controllers.channel.canEdit'),
