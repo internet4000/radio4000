@@ -79,7 +79,7 @@ export default Ember.Controller.extend({
 			if (!track) { return false; }
 
 			// Ember.debug('Playing track: ' + track.get('title'));
-			this.transitionToRoute('track', track);
+			this.transitionToRoute('track', this.channel, track);
 		},
 
 		prev() {
@@ -131,11 +131,15 @@ export default Ember.Controller.extend({
 			var isShuffled = this.get('isShuffled');
 			var tracks = this.get('tracks');
 			var model = this.get('model');
+			console.log(model, 'playback: current model');
 			var newTrack;
 
-			// go to a random item from the unplayed items
+
+			// define which track is the next track
 			if (isShuffled) {
+				// go to a random item from the unplayed items
 				newTrack = unplayed.objectAt(Math.floor(Math.random() * len));
+				this.get('history').pushObject(newTrack);
 			} else if (model) {
 				// or go to next
 				newTrack = tracks.objectAt(tracks.indexOf(model) - 1);
@@ -144,16 +148,14 @@ export default Ember.Controller.extend({
 				newTrack = unplayed.get('lastObject');
 			}
 
+			// play the new track
 			if (!newTrack) {
 				this.clearHistory();
 				return this.send('playFirst');
+			} else {
+				console.log(newTrack, "playback: newTrack")
+				this.send('playTrack', newTrack);
 			}
-
-			if (isShuffled) {
-				this.get('history').pushObject(newTrack);
-			}
-
-			this.send('playTrack', newTrack);
 		},
 
 		playPrev() {},
