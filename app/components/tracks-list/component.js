@@ -3,9 +3,9 @@ import Ember from 'ember';
 export default Ember.Component.extend({
 
 	// not sure how to set up SortableMixin
-	sorted: Ember.computed('', function() {
+	sorted: Ember.computed('model', function() {
 		return Ember.ArrayController.create({
-			content : this.get('model'),
+			content: this.get('model'),
 
 			// Newest on top
 			sortProperties: ['created'],

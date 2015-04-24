@@ -8,10 +8,15 @@ export default Ember.Route.extend({
 	model() {
 		let model = Ember.A([]);
 
-		// "20" is the number of tracks it takes to fill up a 24" viewport
-		this.findLimited(model, 20);
+		Ember.debug('model hook');
 
 		return model;
+	},
+
+	afterModel(model) {
+		Ember.debug('afterModel hook');
+		// "20" is the number of tracks it takes to fill up a 24" viewport
+		this.findLimited(model, 20);
 	},
 
 	// finds the last, limited models to improve initial render times
@@ -20,6 +25,8 @@ export default Ember.Route.extend({
 	findLimited(model, limit) {
 		let id = this.modelFor('channel').get('id');
 		let adapter = this.store.adapterFor('channel');
+
+		console.log(this.modelFor('channel').get('title'));
 
 
 		adapter._getRef('channel').child(id).child('tracks')
@@ -36,12 +43,16 @@ export default Ember.Route.extend({
 				// go through them
 				Ember.RSVP.all(requests).then((tracks) => {
 
+					console.log('adding first tracks');
+
 					// might need an Ember.run wrap
 					model.addObjects(tracks);
 				}).then(() => {
 
 					// load the rest
 					this.modelFor('channel').get('tracks').then((tracks) => {
+
+						console.log('adding all tracks');
 						model.addObjects(tracks);
 					});
 				});
