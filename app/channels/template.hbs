@@ -1,9 +1,12 @@
 <div class="NavigationTab">
 	{{#link-to 'channels.index' title="Discover channels" class="NavigationTab-item"}}Discover{{/link-to}}
 	{{#link-to 'channels.all' title="Discover channels" class="NavigationTab-item"}}All{{/link-to}}
-	{{#link-to 'channel' session.currentUser.channels.firstObject title="Go to my channel" class="NavigationTab-item"}}
-		My channel
-	{{/link-to}}
+
+	{{#if session.currentUser.channels.firstObject}}
+		{{#link-to 'channel' session.currentUser.channels.firstObject title="Go to my channel" class="NavigationTab-item"}}
+			My channel
+		{{/link-to}}
+	{{/if}}
 </div>
 
 <section class="Section Section--messaging Container">
