@@ -7,10 +7,8 @@
 {{/link-to}}
 
 {{#if canEdit}}
-	<p class="Track-controls">
-		<span {{action 'edit'}} title="Edit the track">
-			{{x-icon i="pencil"}}
-		</span>
+	<p class="Track-controls" {{action 'edit'}} title="Edit the track">
+		{{x-icon i="pencil"}}
 	</p>
 
 	<form class="Form EditTrack">
