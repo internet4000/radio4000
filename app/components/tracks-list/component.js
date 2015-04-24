@@ -14,7 +14,7 @@ export default Ember.Component.extend({
 
 		// returns models which has the filter (the tag)
 		// in their hashtags property
-		return model.filter(function(track) {
+		return model.filter((track) => {
 			let hashtags = track.get('hashtags');
 
 			if (!hashtags) { return false; }
@@ -38,6 +38,8 @@ export default Ember.Component.extend({
 	tags: Ember.computed('model.@each.hashtags', function() {
 		let model = this.get('model');
 		let tags = model.getEach('hashtags');
+
+		Ember.debug('tags computed (keep this low)');
 
 		// Remove tracks without hashtags
 		tags = tags.compact();
