@@ -77,8 +77,10 @@ export default Ember.Controller.extend({
 		// use this to play a track, if you don't want the url to change
 		playTrack(track) {
 			if (!track) { return false; }
-			// this.transitionToRoute('track', this.channel, track);
-			this.set('channel', this.channel);
+
+			channel = this.get('channel');
+
+			this.set('channel', channel);
 			this.set('model', track);
 		},
 
