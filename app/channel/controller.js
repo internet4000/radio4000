@@ -4,8 +4,9 @@ export default Ember.Controller.extend({
 	needs: ['playback'],
 	playback: Ember.computed.alias('controllers.playback'),
 
-	lastUpdatedFormatted: Ember.computed('tracks.@each.created', function() {
-		var date = this.get('tracks.lastObject.created');
+	lastUpdatedFormatted: Ember.computed('model.tracks.@each.created', function() {
+		var date = this.get('model.tracks.lastObject.created');
+		console.log(date, 'date');
 		return window.moment(date).subtract(1, 'days').fromNow();
 	}),
 
