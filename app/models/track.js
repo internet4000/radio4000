@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 import youtube from 'radio4000/utils/youtube';
 
@@ -36,8 +37,6 @@ export default DS.Model.extend({
 		return hashtags.map(function(tag) {
 			return tag.trim();
 		});
-
-		return hashtags;
 	})
 
 	// bodyPlusMentions: function() {
