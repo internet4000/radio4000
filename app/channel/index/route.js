@@ -9,7 +9,7 @@ export default Ember.Route.extend({
 		let model = Ember.A([]);
 
 		// "20" is the number of tracks it takes to fill up a 24" viewport
-		this.findLimited(model, 5);
+		this.findLimited(model, 20);
 
 		return model;
 	},
