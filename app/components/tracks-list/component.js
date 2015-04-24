@@ -8,17 +8,19 @@ export default Ember.Component.extend({
 		let filter = this.get('filter');
 		let model = this.get('model');
 
-		if (filter) {
-			return model.filter(function(track) {
-				let hashtags = track.get('hashtags');
-
-				if (!hashtags) { return false; }
-
-				return hashtags.contains(filter);
-			});
-		} else {
+		if (!filter) {
 			return model;
 		}
+
+		// returns models which has the filter (the tag)
+		// in their hashtags property
+		return model.filter(function(track) {
+			let hashtags = track.get('hashtags');
+
+			if (!hashtags) { return false; }
+
+			return hashtags.contains(filter);
+		});
 	}),
 
 	// not sure how to set up SortableMixin
