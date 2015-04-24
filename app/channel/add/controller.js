@@ -2,9 +2,20 @@ import Ember from 'ember';
 import youtube from 'radio4000/utils/youtube';
 
 export default Ember.Controller.extend({
-	queryParams: ['providerTrackUrl', 'providerTrackTitle'],
-	providerTrackUrl: null,
-	providerTrackTitle: null,
+
+	// http://guides.emberjs.com/v1.10.0/routing/query-params/#toc_map-a-controller-s-property-to-a-different-query-param-key
+	queryParams: {
+		bookmarkletUrl: "providerTrackUrl"
+	},
+	bookmarkletUrl: null,
+
+	// bookmarklet
+	// todo: make it work? why no console.log?
+	// javascript:location.href='http://localhost:4000/c/200ok/add?providerTrackUrl='+encodeURIComponent(location.href)
+	bookmarklet: Ember.computed('bookmarkletUrl', function() {
+		var queryParamUrl = this.get('bookmarkletUrl');
+		console.log(queryParamUrl, 'queryParamUrl');
+	}),
 
 	// Check if the track is valid before saving
 	isValid: Ember.computed('model.url', 'model.title', function() {

@@ -32,9 +32,6 @@
 				{{#if canEdit}}
 					<div class="BtnGroupWrapper">
 						<div class="BtnGroup">
-							{{#link-to 'channel.add' model class="Btn" title="Add track"}}
-								{{x-icon i="plus"}} Add track
-							{{/link-to}}
 							{{#link-to 'channel.edit' model class="Btn" title="Edit your channel"}}
 								{{x-icon i="pencil"}} Edit channel
 							{{/link-to}}
@@ -55,6 +52,9 @@
 		{{!-- {{#link-to 'channel.followers' class="NavigationTab-item" title="Followers"}}
 			{{model.channelPublic.followers.length}} followers
 		{{/link-to}} --}}
+		{{#link-to 'channel.add' model class="NavigationTab-item" title="Add track"}}
+			{{x-icon i="plus"}} Add track
+		{{/link-to}}
 	</nav>
 
 	<div class="Channel-outlet">
