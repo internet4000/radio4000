@@ -1,10 +1,6 @@
 <div class="Container Section--space">
 	<h3>Add track</h3>
 
-	{{#unless isValid}}
-		<p class="Warning">Enter the title of the track or paste in an URL.</p>
-	{{/unless}}
-
 	<form class="Form Form--box" {{action "addTrack" on='submit'}}>
 		<div class="Form-group">
 			<label for="trackTitle">Title</label>
@@ -27,4 +23,8 @@
 			{{#link-to "channel.index" class="Btn Btn--text" title="Cancel adding track"}}Cancel{{/link-to}}
 		</div>
 	</form>
+
+	{{#unless isValid}}
+		<p class="Warning">Enter the title of the track or paste in an URL.</p>
+	{{/unless}}
 </div>
