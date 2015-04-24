@@ -25,6 +25,15 @@
 		color: $red;
 	}
 	.is-panelOpen & {
-		transform: rotate(90deg);
+	}
+
+	.TogglePanel-square {
+		width: 5px;
+		height: 5px;
+		background-color: white;
+		margin-top: 4px;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
 	}
 }

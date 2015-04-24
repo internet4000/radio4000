@@ -5,30 +5,32 @@
 .PanelNav {}
 .PanelNav-inner {
 	position: fixed;
-	top: $barHeight;
-	right: 0;
+	top: 0.5em;
+	right: 0.5em;
 	width: 80%;
 	max-width: 240px;
 	z-index: 5;
-	border: 2px solid $black;
+	box-shadow: -4px 4px 12px rgb(88, 88, 88);
 	border-top: 0;
 	border-right: 0;
 	background-color: $white;
 
 	// hidden
-	transform: translateX(100%);
-	transition: transform 400ms $easing;
+	display: none;
+	opacity: 0;
+	transition: opacity 400ms $easing;
 
 	// visible
 	.is-panelOpen & {
-		transform: translateX(0);
+		display: block;
+		opacity: 1;
 	}
 }
 .PanelNav-overlay {
 	content: '';
 	display: block;
 	position: fixed;
-	top: $barHeight; // below the header
+	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
@@ -38,11 +40,9 @@
 	// pointer-events: none;
 	visibility: hidden;
 	background-color: rgba(0, 0, 0, 0);
-	transition: background-color 400ms;
 
 	.is-panelOpen & {
 		visibility: visible;
-		background-color: rgba(0, 0, 0, 0.3);
 	}
 }
 

@@ -13,7 +13,11 @@
 			<div class="ContextualNavigation">
 				{{outlet "contextual-navigation"}}
 
-				<button class="TogglePanel" title="Menu" {{action "togglePanel"}}>⊚</button>
+				<button class="TogglePanel" title="Menu" {{action "togglePanel"}}>
+					<span class="TogglePanel-square"></span>
+					<span class="TogglePanel-square"></span>
+					<span class="TogglePanel-square"></span>
+				</button>
 			</div>
 		</div>
 
