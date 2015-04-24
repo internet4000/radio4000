@@ -53,9 +53,7 @@
 			{{model.channelPublic.followers.length}} followers
 		{{/link-to}} --}}
 		{{#if canEdit}}
-			{{#link-to 'channel.add' model class="NavigationTab-item" title="Add track"}}
-				{{x-icon i="plus"}} Add track
-			{{/link-to}}
+			{{#link-to 'channel.add' model class="NavigationTab-item" title="Add track"}}Add track{{/link-to}}
 		{{/if}}
 	</nav>
 
