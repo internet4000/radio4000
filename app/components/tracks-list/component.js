@@ -48,9 +48,9 @@ export default Ember.Component.extend({
 		tags = tags.uniq();
 
 		// Remove more empty ones (todo: shouldn't be necessary)
-		// tags = tags.reject(function(tag) {
-		// 	return tag === '';
-		// });
+		tags = tags.filter((tag) => {
+			return tag !== '';
+		});
 
 		return tags;
 	}),

@@ -29,7 +29,7 @@
 .Channel--detail {
 	position: relative;
 	z-index: 2; // above the player
-	margin-bottom: 14rem; // avoid player overlapping first track
+	margin-bottom: 20rem; // avoid player overlapping first track
 }
 .Channel-header {
 	overflow: auto; // contain floated Cover
