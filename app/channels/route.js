@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	model() {
-		var items = [];
+		let items = Ember.A([]);
 
 		this.store.find('channel', {
 			orderBy: 'tracks',

@@ -36,7 +36,7 @@ export default Router.map(function() {
     this.route('index', { path: '/' }, function() {
         this.resource('track', { path: ':track_id' });
     });
-    this.route('favorite-channels');
+    this.route('favorites');
     this.route('followers');
     this.route('add'); // add a track to channel
     this.route('edit'); // edit channel
