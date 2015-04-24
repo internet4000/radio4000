@@ -15,6 +15,23 @@
 		flex: 1 1 50%;
 		padding-left: 0.5rem;
 		padding-right: 0.5rem;
+		margin-bottom: 1em;
+
+		// card style
+		a {
+			background-color: white;
+			padding-bottom: 0.5em;
+		}
+		.Cover-img {
+			margin-bottom: 0;
+		}
+		.Cover-title {
+			padding-left: 0.5em;
+			padding-right: 0.5em;
+			word-break: break-word;
+		}
+
+
 		// edge-to-edge grid
 		@media (min-width: $layout-s) {
 			flex: 1 1 33%;

@@ -26,7 +26,8 @@ $cover-size: 190px;
 	}
 }
 .Cover-img {
-	background-color: $darkblue;
+	// background-color: $darkblue;
+	background-color: rgba(190, 197, 233, 0.19);
 	position: relative;
 	overflow: hidden;
 	// height: $cover-size;
