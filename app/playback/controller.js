@@ -151,7 +151,7 @@ export default Ember.Controller.extend({
 				this.clearHistory();
 				return this.send('playFirst');
 			} else {
-				console.log(newTrack, "playback: newTrack")
+				console.log(newTrack, 'playback: newTrack');
 				this.send('playTrack', newTrack);
 			}
 		},
@@ -174,7 +174,7 @@ export default Ember.Controller.extend({
 			// Ember.debug('Playing last track');
 		},
 
-		// Toggles "fullscreen mode"
+		// Toggles 'fullscreen mode'
 		toggle() {
 			this.toggleProperty('isMaximized');
 		},
