@@ -18,6 +18,7 @@ export default Ember.Controller.extend({
 		console.log(queryParamUrl, 'queryParamUrl');
 	}),
 
+
 	// Check if the track is valid before saving
 	isValid: Ember.computed('model.url', 'model.title', function() {
 		if (this.get('model.url') && this.get('model.title')) {
@@ -29,8 +30,8 @@ export default Ember.Controller.extend({
 
 	actions: {
 
-		log() {
-			console.log('hugo');
+		queryParamsDidChange() {
+			this.send('autoTitle', this.get('bookmarkletUrl'));
 		},
 
 		addFromSearch(item) {

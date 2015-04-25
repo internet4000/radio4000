@@ -1,7 +1,15 @@
 <div class="Container Section--space">
 	<h3>Add track</h3>
 
-	{{input id="bookmarklet" value=bookmarkletUrl placeholder="" required="required" autofocus="autofocus"}}<br>
+	<div>
+		Bookmarklet:
+		<a href="javascript:location.href='http://localhost:4000/c/{{session.currentUser.channels.firstObject.slug}}/add?providerTrackUrl='+encodeURIComponent(location.href)" class="Bookmarklet">Add to my channel</a>
+		(<a href="https://support.mozilla.org/en-US/kb/bookmarklets-perform-common-web-page-tasks#w_how-do-i-install-a-bookmarklet" target="_blank">?</a>)
+	</div>
+
+	{{!-- {{#unless isValid}}
+		<p class="Warning">Enter the title of the track or paste in an URL.</p>
+	{{/unless}} --}}
 
 	<form class="Form Form--box" {{action "addTrack" on='submit'}}>
 		<div class="Form-group">
@@ -12,7 +20,7 @@
 
 		<div class="Form-group">
 			<label for="trackUrl">URL</label>
-			{{input-paste id="trackUrl" type="url" value=model.url placeholder="Or paste in a YouTube link" pasted="autoTitle" required="required"}}
+			{{input-paste id="trackUrl" type="url" value=model.url placeholder="Or paste in a YouTube link" action="autoTitle" required="required"}}
 		</div>
 
 		<div class="Form-group">
@@ -26,7 +34,4 @@
 		</div>
 	</form>
 
-	{{#unless isValid}}
-		<p class="Warning">Enter the title of the track or paste in an URL.</p>
-	{{/unless}}
 </div>
