@@ -10,8 +10,9 @@ export default Ember.Controller.extend({
 	bookmarkletUrl: null,
 
 	// bookmarklet
-	// todo: make it work? why no console.log?
 	// javascript:location.href='http://localhost:4000/c/200ok/add?providerTrackUrl='+encodeURIComponent(location.href)
+	// queryParam and computedProperty do not work -> works with input binding on queryParam
+	// https://github.com/emberjs/ember.js/issues/9819
 	bookmarklet: Ember.computed('bookmarkletUrl', function() {
 		var queryParamUrl = this.get('bookmarkletUrl');
 		console.log(queryParamUrl, 'queryParamUrl');
@@ -27,6 +28,11 @@ export default Ember.Controller.extend({
 	}),
 
 	actions: {
+
+		log() {
+			console.log('hugo');
+		},
+
 		addFromSearch(item) {
 			var title = item.get('title');
 			var url = item.get('url');
@@ -76,26 +82,3 @@ export default Ember.Controller.extend({
 		}
 	}
 });
-
-
-// javascript:location.href='http://localhost:4000/c/200ok/add?providerTrackUrl='+encodeURIComponent(location.href)+'&providerTrackTitle='+encodeURIComponent(document.title)
-// bookmarklet: function() {
-// // knowledge base
-// // http://localhost:4000/c/200ok/add?bookmarklet=https://www.youtube.com/watch?v=doaQC-S8de8
-// // javascript:location.href='http://www.reddit.com/submit?url='
-// // +encodeURIComponent(location.href)
-// // +'&title='
-// // +encodeURIComponent(document.title)
-
-// //http://guides.emberjs.com/v1.10.0/routing/query-params/
-
-// 	var bookmarklet = this.get('bookmarklet');
-// 	console.log('bookmarklet tests:');
-// 	console.log(bookmarklet);
-
-// 	// if (bookmarklet) {
-// 	// 	console.log(bookmarklet);
-// 	// } else {
-// 	// 	console.log("no bookmarklet");
-// 	// }
-// }.property('url', 'model'),

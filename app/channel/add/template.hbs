@@ -1,6 +1,8 @@
 <div class="Container Section--space">
 	<h3>Add track</h3>
 
+	{{input id="bookmarklet" value=bookmarkletUrl placeholder="" required="required" autofocus="autofocus"}}<br>
+
 	<form class="Form Form--box" {{action "addTrack" on='submit'}}>
 		<div class="Form-group">
 			<label for="trackTitle">Title</label>
@@ -15,7 +17,7 @@
 
 		<div class="Form-group">
 			<label for="trackBody">Description</label>
-			{{input id="trackBody" value=model.body placeholder="Optional description"}}<br>
+			{{input id="trackBody" value=model.body placeholder="Fantastic track! #fantastic (optional)"}}<br>
 		</div>
 
 		<div class="Form-group">

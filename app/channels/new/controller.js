@@ -4,6 +4,7 @@ import randomText from 'radio4000/utils/random-text';
 
 export default Ember.Controller.extend({
 	titleMaxLength: 32,
+	titleMinLength: 4,
 
 	cleanSlug: Ember.computed('model.title', function() {
 		var title = this.get('model.title');
