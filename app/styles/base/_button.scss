@@ -17,8 +17,9 @@ button,
 	white-space: normal; /* 7 */
 }
 
+
+.CustomSelect,
 .Btn {
-	// Button styling
 	padding: 0.55em 0.8em 0.5em;
 	background-color: $slightgray;
 	background-image: linear-gradient(to bottom, $white 60%, #ececec);
@@ -27,13 +28,29 @@ button,
 	transition: border-color 200ms, background 200ms, box-shadow 200ms;
 	vertical-align: top;
 
+	// hover and active
 	&:hover,
-	// &:focus,
 	&:active {
 		text-decoration: none;
 		background-image: linear-gradient(to bottom, $white 70%, hsla(0, 0%, 0%, 0.1));
 		border-color: rgba(0,0,0,0.18);
 	}
+
+	// active (pressed down)
+	&:active,
+	&.is-active {
+		outline: none;
+		box-shadow: hsla(0, 0%, 0%, 0.3) 2px 2px 4px inset;
+	}
+
+	// focus
+	&:focus {
+		outline: none;
+		border-color: $primary-color;
+		box-shadow: 0 0 5px rgba($primary-color, 0.3);
+	}
+
+	// disabled
 	&:disabled,
 	&.is-disabled {
 		cursor: default;
@@ -44,20 +61,6 @@ button,
 	div {
 		display: inline;
 	}
-}
-
-// active (pressed down)
-.Btn:active,
-.Btn.is-active {
-	outline: none;
-	box-shadow: hsla(0, 0%, 0%, 0.3) 2px 2px 4px inset;
-}
-
-// focus
-.Btn:focus {
-	outline: none;
-	border-color: $primary-color;
-	box-shadow: 0 0 5px rgba($primary-color, 0.3);
 }
 
 // Primary, colored button

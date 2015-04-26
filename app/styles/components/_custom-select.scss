@@ -8,22 +8,20 @@
 
 .CustomSelect {
 	max-width: 15em;
-	border: 1px solid #bbb;
-	border-radius: 0.3em;
-	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
-	background: #f3f3f3; // Old browsers
-	background: linear-gradient(to bottom, #fff 0%,#e5e5e5 100%); // W3C
+	// border: 1px solid #bbb;
+	// border-radius: $border-radius;
+	// box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+	// background: #f3f3f3; // Old browsers
+	// background: linear-gradient(to bottom, #fff 0%,#e5e5e5 100%); // W3C
 
-	&:hover {
-		border: 1px solid #888;
-	}
+	// &:hover {
+	// 	border: 1px solid #888;
+	// }
 
 	select {
 		// Font size must the 16px or larger to prevent iOS page zoom on focus
 		font-size: 1em;
-		font-family: sans-serif;
-		color: #444;
-		padding: 0.4em 1.9em 0.3em 0.5em;
+		padding: 0.4rem 2rem 0.3rem 0.5em;
 		line-height:1.3;
 
 		&:focus {
@@ -72,16 +70,25 @@
 // Custom arrow sits on top of the select - could be an image, SVG, icon font, etc. or the arrow could just baked into the bg image on the select.
 
 .CustomSelect::after {
-	content: '\25BC';
+	// content: '\25BC';
+	content: '';
+
+	font-size: 0.5em;
+
 	position: absolute;
 	top: 50%;
-	font-size: 0.7em;
-	right: 1em;
-	margin-top: -0.5em;
+	margin-top: -0.45em;
+	right: 1rem;
 	z-index: 2;
+
+	// circle
+	width: 1em;
+	height: 1em;
+	border-radius: 50%;
+	background-color: $primary-color;
+
 	// This hack make the select behind the arrow clickable in some browsers
 	pointer-events: none;
-	background: url('#');
 }
 
 // Make sure options have normal weight
