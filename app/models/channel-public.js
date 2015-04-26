@@ -5,6 +5,7 @@ export default DS.Model.extend({
 	channel: DS.belongsTo('channel', {
 		// tell Ember which relationship this matches on the other side
 		// e.g. on the channel model.
-		inverse: 'channelPublic'
+		inverse: 'channelPublic',
+		async: true
 	})
 });

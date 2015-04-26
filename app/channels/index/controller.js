@@ -1,21 +1,17 @@
 import Ember from 'ember';
 
-export default Ember.ArrayController.extend({
+export default Ember.Controller.extend({
+	// 1. filter out the featured models
+	filtered: Ember.computed.filter('model.popular', function(item) {
+		return !item.get('isFeatured');
+	}),
 
-	// this value should match what we fetch in the route
-	// maxPopular: 12
+	// 2. sort them by followers
+	sortProperties: ['channelPublic.followers.length:desc'],
+	sorted: Ember.computed.sort('filtered', 'sortProperties'),
 
-	// sort by followers
-	// sortProperties: ['followers.length'],
-	// sortAscending: false,
-
-	// get the sorted content and limit it by our max
-	// popular: Ember.computed('arrangedContent', function() {
-	// 	return this.get('arrangedContent').slice(0, this.get('maxPopular'));
-	// })
-
-	// // only show featured items
-	// featured: Ember.computed('model.@each.isFeatured', function() {
-	// 	return this.get('model').filterBy('isFeatured');
-	// })
+	// 3. return the top X items
+	popular: Ember.computed('sorted.[]', function() {
+		return this.get('sorted').slice(0, 10);
+	})
 });

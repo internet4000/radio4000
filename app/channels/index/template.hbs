@@ -4,14 +4,26 @@
 
 <div class="Container Container--full">
 	<div class="Section">
-
 		{{#if model}}
-			{{channels-grid channels=model}}
+			{{channels-list model=model.featured}}
 		{{else}}
-			<p>Finding channels…</p>
-			{{!-- <p>Oh, there are no curated channels yet. {{#link-to 'channels.new'}}Create the first!{{/link-to}}</p> --}}
+			<p>Finding curated radios…</p>
 		{{/if}}
+	</div>
+
+	<div class="Section">
+		<h2>Popular radios</h2>
+		{{#if model}}
+			{{channels-list model=popular}}
+		{{else}}
+			<p>Finding popular radios…</p>
+		{{/if}}
+		{{!-- this is just for debugging --}}
+		{{!-- {{#each popular as |channel|}}
+			<p>{{channel.title}}{{channel.channel.title}} - {{channel.channelPublic.followers.length}}/{{channel.followers.length}}</p>
+		{{/each}} --}}
 	</div>
 
 	<p>{{#link-to 'channels.all'}}See all radios &rarr;{{/link-to}}</p>
 </div>
+
