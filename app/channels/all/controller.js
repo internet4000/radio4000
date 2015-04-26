@@ -1,32 +1,35 @@
 import Ember from 'ember';
 
-export default Ember.ArrayController.extend({
-	// this page shows all channels
-	// and is filterable
-	sortProperties: ['created'],
-	sortAscending: false,
-
-	// if we're searching, return those filtered channels otherwise all
-	channels: Ember.computed('search', 'filteredChannels', function() {
-		return this.get('search') ? this.get('filteredChannels') : this;
-	}),
+export default Ember.Controller.extend({
+	queryParams: ['filter'],
+	sortProperties: ['title:asc'],
+	alphabetical: Ember.computed.sort('model', 'sortProperties'),
 
 	// filters the array with our search value
-	filteredChannels: Ember.computed('search', function() {
-		var filter = this.get('search');
-		var rx = new RegExp(filter, 'gi');
+	filtered: Ember.computed('filter', function() {
+		let filter = this.get('filter');
+		let rx = new RegExp(filter, 'gi');
 
 		if (!filter) { return; }
 
-		return this.filter(function(channel) {
-			return rx.test(channel.get('title')) || rx.test(channel.get('body'));
+		return this.get('model').filter((item) => {
+			return rx.test(item.get('title')) || rx.test(item.get('body'));
 		});
 	}),
 
-	actions: {
-		sortBy(property) {
-			this.set('sortProperties', [property]);
-			this.set('sortAscending', !this.get('sortAscending'));
+	// if we're searching, return those filtered channels otherwise all
+	channels: Ember.computed('filter', function() {
+		if (this.get('filter')) {
+			return this.get('filtered');
+		} else {
+			return this.get('alphabetical');
 		}
-	}
+	})
+
+	// actions: {
+	// 	sortBy(property) {
+	// 		this.set('sortProperties', [property]);
+	// 		this.set('sortAscending', !this.get('sortAscending'));
+	// 	}
+	// }
 });
