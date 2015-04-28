@@ -29,6 +29,12 @@ export default Ember.Route.extend({
 			.orderByKey()
 			.limitToLast(limit)
 			.on('value', (snapshot) => {
+
+				// break if we have nothing
+				if (!snapshot.val()) {
+					return false;
+				}
+
 				let ids = Object.keys(snapshot.val());
 
 				// create an array of Promises (that's what find returns)

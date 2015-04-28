@@ -3,6 +3,7 @@
 
 .Container,
 %Container {
+	@include clearfix;
 	position: relative;
 	max-width: 45em;
 

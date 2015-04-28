@@ -32,7 +32,6 @@
 	margin-bottom: 20rem; // avoid player overlapping first track
 }
 .Channel-header {
-	overflow: auto; // contain floated Cover
 	background-color: $superlightgray;
 	padding-top: 1rem;
 	@media (min-width: $layout-s) {
