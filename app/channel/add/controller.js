@@ -8,6 +8,8 @@ export default Ember.Controller.extend({
 	// javascript:location.href='http://localhost:4000/c/200ok/add?url='+encodeURIComponent(location.href)
 	// http://guides.emberjs.com/v1.10.0/routing/query-params/#toc_map-a-controller-s-property-to-a-different-query-param-key
 	queryParams: ['url'],
+
+	// proxy for model.url
 	url: null,
 
 	// Check if the track is valid before saving
@@ -19,57 +21,64 @@ export default Ember.Controller.extend({
 		}
 	}),
 
-	urlDidChange: Ember.observer('url', function() {
-		Ember.run.debounce(() => {
-			let tempUrl = this.get('url');
-			this.send('autoTitle', tempUrl );
-		}, 300)
+	// This gets called when you paste something into the input-url component
+	// it takes a URL and turns it into a YouTube ID which we use to query the API for a title
+	urlChanged: Ember.observer('url', function() {
+		let url = this.get('url');
+		let id = youtube(url);
+
+		if (!id) {
+			Ember.warn('Could not detect a YouTube ID from this URL: ' + url);
+			return false;
+		}
+
+		// Ember.run.debounce(this, this.setTitleFromID(id), 1000);
+		this.setTitleFromID(id);
 	}),
+
+	// This gets called when you paste something into the input-url component
+	// it takes a URL and turns it into a YouTube ID which we use to query the API for a title
+	setTitleFromID(id) {
+		let endpoint = 'https://www.googleapis.com/youtube/v3/videos?id='+id+'&key='+config.youtubeApiKey+'&fields=items(id,snippet(title))&part=snippet';
+
+		Ember.$.getJSON(endpoint).then((response) => {
+			console.log(id);
+
+			if (!response.items.length) {
+				Ember.debug('Could not find a title');
+				return false;
+			}
+
+			let title = response.items[0].snippet.title;
+
+			Ember.debug('Setting title to: ' + title);
+			this.set('model.title', title);
+		});
+	},
 
 	actions: {
 
-
+		// this get's called from our youtube-search component
 		addFromSearch(item) {
-			var title = item.get('title');
-			var url = item.get('url');
+			let title = item.get('title');
+			let url = item.get('url');
 
 			// clean the url
 			url = url.replace('&feature=youtube_gdata_player', '');
 
 			// update current model with properties from the chosen search
 			this.set('model.title', title);
-			this.set('model.url', url);
-
-			Ember.run.later( () => {
-				this.set('justAdded', true);
-			}, 250);
-
-			Ember.run.later(() => {
-				this.set('justAdded', false);
-			}, 500);
+			this.set('url', url);
 		},
 
 		addTrack() {
+			// now we take the proxy url and use it
+			this.set('model.url', this.get('url'));
+
 			if (!this.get('isValid')) { return false; }
 
 			// leave it to the router to actually save the track
 			this.send('saveTrack');
-		},
-
-		// This gets called when you paste something into the input-url component
-		// it takes a URL and turns it into a YouTube ID which we use to query the API for a title
-		autoTitle(url) {
-			var id = youtube(url);
-
-			if (!id) {
-				Ember.warn('autoTitle couldnt create an id from: ' + url);
-				return;
-			}
-			var endpoint = 'https://www.googleapis.com/youtube/v3/videos?id='+id+'&key='+config.youtubeApiKey+'&fields=items(id,snippet(title))&part=snippet';
-
-			Ember.$.getJSON(endpoint).then((response) => {
-				this.set('model.title', response.items[0].snippet.title);
-			});
 		},
 
 		// used by 'ESC' key in the view
