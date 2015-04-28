@@ -1,12 +1,6 @@
 <div class="Container Section--space">
 	<h3>Add track</h3>
 
-	<div>
-		Bookmarklet:
-		<a href="javascript:location.href='http://localhost:4000/c/{{session.currentUser.channels.firstObject.slug}}/add?providerTrackUrl='+encodeURIComponent(location.href)" class="Bookmarklet">Add to my channel</a>
-		(<a href="https://support.mozilla.org/en-US/kb/bookmarklets-perform-common-web-page-tasks#w_how-do-i-install-a-bookmarklet" target="_blank">?</a>)
-	</div>
-
 	{{!-- {{#unless isValid}}
 		<p class="Warning">Enter the title of the track or paste in an URL.</p>
 	{{/unless}} --}}
@@ -34,5 +28,14 @@
 			{{#link-to "channel.index" class="Btn Btn--text" title="Cancel adding track"}}Cancel{{/link-to}}
 		</div>
 	</form>
+
+	<div class="Section--space">
+		<h2>Quickly save tracks with this bookmarklet</h2>
+		<p>Save it to your bookmarks and tap on it while you're browsing YouTube. Easy! (<a href="https://support.mozilla.org/en-US/kb/bookmarklets-perform-common-web-page-tasks#w_how-do-i-install-a-bookmarklet" target="_blank">?</a>)</p>
+
+		<p>
+			<a class="Btn" title="Drag me to your bookmarks" href="javascript:location.href='http://localhost:4000/c/{{session.currentUser.channels.firstObject.slug}}/add?url='+encodeURIComponent(location.href)">
+			Add to {{model.channel.title}}</a> </p>
+	</div>
 
 </div>
