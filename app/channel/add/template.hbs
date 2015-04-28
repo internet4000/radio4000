@@ -12,15 +12,16 @@
 	{{/unless}} --}}
 
 	<form class="Form Form--box" {{action "addTrack" on='submit'}}>
-		<div class="Form-group">
+		<div class="Form-group Form-group--relative">
 			<label for="trackTitle">Title</label>
 			{{input id="trackTitle" value=model.title placeholder="Search for a track" required="required" autofocus="autofocus"}}<br>
+			{{#if isFetchingTitle}}<p class="Form-groupStatus">Updating…</p>{{/if}}
 			{{youtube-search query=model.title action="addFromSearch"}}
 		</div>
 
 		<div class="Form-group">
 			<label for="trackUrl">URL</label>
-			{{input-paste id="trackUrl" type="url" value=controller.url placeholder="Or paste in a YouTube link" pasted="autoTitle" required="required"}}
+			{{input id="trackUrl" type="url" value=controller.url placeholder="Or paste in a YouTube link" required="required"}}
 		</div>
 
 		<div class="Form-group">

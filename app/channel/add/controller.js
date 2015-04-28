@@ -41,18 +41,30 @@ export default Ember.Controller.extend({
 	setTitleFromID(id) {
 		let endpoint = 'https://www.googleapis.com/youtube/v3/videos?id='+id+'&key='+config.youtubeApiKey+'&fields=items(id,snippet(title))&part=snippet';
 
+		// Use cache if we have it
+		if (this.get('cachedId') === id) {
+			// Ember.debug('Setting cached title');
+			return this.set('model.title', this.get('cachedTitle'));
+		}
+
+		this.set('isFetchingTitle', true);
+
 		Ember.$.getJSON(endpoint).then((response) => {
-			console.log(id);
+			this.set('isFetchingTitle', false);
 
 			if (!response.items.length) {
-				Ember.debug('Could not find a title');
+				// Ember.debug('Could not find a title');
 				return false;
 			}
 
 			let title = response.items[0].snippet.title;
 
-			Ember.debug('Setting title to: ' + title);
+			// Ember.debug('Setting title to: ' + title);
 			this.set('model.title', title);
+
+			// cache our title and ID so we don't request the same video twice
+			this.set('cachedTitle', title);
+			this.set('cachedId', id);
 		});
 	},
 
