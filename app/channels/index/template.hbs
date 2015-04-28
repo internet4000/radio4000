@@ -10,9 +10,14 @@
 			<p>Finding curated radios…</p>
 		{{/if}}
 	</div>
+</div>
 
+<div class="Manchet Manchet--left">
+	<h2>Popular <small> — hall of fame</small></h2>
+</div>
+
+<div class="Container Container--full">
 	<div class="Section">
-		<h2>Popular radios</h2>
 		{{#if model}}
 			{{channels-grid model=popular}}
 		{{else}}
@@ -22,4 +27,3 @@
 
 	<p>{{#link-to 'channels.all'}}See all radios &rarr;{{/link-to}}</p>
 </div>
-
