@@ -1,23 +1,14 @@
+import config from '../../config/environment';
 import Ember from 'ember';
 import youtube from 'radio4000/utils/youtube';
 
 export default Ember.Controller.extend({
 
-	// http://guides.emberjs.com/v1.10.0/routing/query-params/#toc_map-a-controller-s-property-to-a-different-query-param-key
-	queryParams: {
-		bookmarkletUrl: "providerTrackUrl"
-	},
-	bookmarkletUrl: null,
-
 	// bookmarklet
-	// javascript:location.href='http://localhost:4000/c/200ok/add?providerTrackUrl='+encodeURIComponent(location.href)
-	// queryParam and computedProperty do not work -> works with input binding on queryParam
-	// https://github.com/emberjs/ember.js/issues/9819
-	bookmarklet: Ember.computed('bookmarkletUrl', function() {
-		var queryParamUrl = this.get('bookmarkletUrl');
-		console.log(queryParamUrl, 'queryParamUrl');
-	}),
-
+	// javascript:location.href='http://localhost:4000/c/200ok/add?url='+encodeURIComponent(location.href)
+	// http://guides.emberjs.com/v1.10.0/routing/query-params/#toc_map-a-controller-s-property-to-a-different-query-param-key
+	queryParams: ['url'],
+	url: null,
 
 	// Check if the track is valid before saving
 	isValid: Ember.computed('model.url', 'model.title', function() {
@@ -28,11 +19,15 @@ export default Ember.Controller.extend({
 		}
 	}),
 
+	urlDidChange: Ember.observer('url', function() {
+		Ember.run.debounce(() => {
+			let tempUrl = this.get('url');
+			this.send('autoTitle', tempUrl );
+		}, 300)
+	}),
+
 	actions: {
 
-		queryParamsDidChange() {
-			this.send('autoTitle', this.get('bookmarkletUrl'));
-		},
 
 		addFromSearch(item) {
 			var title = item.get('title');
@@ -45,10 +40,11 @@ export default Ember.Controller.extend({
 			this.set('model.title', title);
 			this.set('model.url', url);
 
-			setTimeout(() => {
+			Ember.run.later( () => {
 				this.set('justAdded', true);
 			}, 250);
-			setTimeout(() => {
+
+			Ember.run.later(() => {
 				this.set('justAdded', false);
 			}, 500);
 		},
@@ -63,18 +59,17 @@ export default Ember.Controller.extend({
 		// This gets called when you paste something into the input-url component
 		// it takes a URL and turns it into a YouTube ID which we use to query the API for a title
 		autoTitle(url) {
-			var apikey = 'AIzaSyCk5FiiPiyHON7PMLfLulM9GFmSYt6W5v4';
 			var id = youtube(url);
-			var endpoint = 'https://www.googleapis.com/youtube/v3/videos?id='+id+'&key='+apikey+'&fields=items(id,snippet(title))&part=snippet';
 
 			if (!id) {
 				Ember.warn('autoTitle couldnt create an id from: ' + url);
 				return;
 			}
+			var endpoint = 'https://www.googleapis.com/youtube/v3/videos?id='+id+'&key='+config.youtubeApiKey+'&fields=items(id,snippet(title))&part=snippet';
 
-			Ember.$.getJSON(endpoint).then(function(response) {
+			Ember.$.getJSON(endpoint).then((response) => {
 				this.set('model.title', response.items[0].snippet.title);
-			}.bind(this));
+			});
 		},
 
 		// used by 'ESC' key in the view
