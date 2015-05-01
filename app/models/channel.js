@@ -37,6 +37,10 @@ export default DS.Model.extend({
 		return this.get('images.lastObject');
 	}),
 
+	// for the remote
+	listeningToTrack: DS.attr('string'),
+	listeningToChannel: DS.attr('string'),
+
 	// relationships
 	images: DS.hasMany('image', { async: true }),
 	tracks: DS.hasMany('track', { async: true }),

@@ -66,6 +66,13 @@ export default Ember.Controller.extend({
 		}
 	}),
 
+	remoteOrder: Ember.observer('session.currentUser.channels.firstObject.listeningToTrack', function() {
+		console.log('remotely changed track');
+
+		var remoteTrackOrder = this.get('session.currentUser.channels.firstObject.listeningToTrack');
+		this.set('model', remoteTrackOrder);
+	}),
+
 	// gets a random track
 	getRandomTrack() {
 		let random = Math.floor(Math.random() * this.get('tracks.length'));

@@ -13,6 +13,10 @@ export default Ember.Route.extend({
 		// controller.set('content', model);
 		this.controllerFor('playback').set('model', model);
 		this.controllerFor('playback').set('channel', channel);
+
+		// update the remote controller
+		channel.set('listeningToTrack', model);
+		channel.set('listeningToChannel', channel);
 	},
 
 	// make sure fullscreen video is off when you leave the track
