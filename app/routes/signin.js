@@ -8,8 +8,8 @@ export default Ember.Route.extend({
 	},
 
 	userChanged: Ember.observer('session.currentUser.id', function() {
-		var authed = this.get('session.isAuthenticated');
-		var userChannel = this.get('session.currentUser.channels.firstObject');
+		let authed = this.get('session.isAuthenticated');
+		let userChannel = this.get('session.currentUser.channels.firstObject');
 
 		// Ember.debug('authed: ' + authed);
 		// Ember.debug('channel: ' + userChannel);

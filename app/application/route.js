@@ -8,7 +8,6 @@ export default Ember.Route.extend({
 	},
 
 	renderTemplate() {
-
 		// because we overwrite the renderTemplate method
 		// we need to run super
 		this._super();
@@ -23,16 +22,22 @@ export default Ember.Route.extend({
 	actions: {
 		signIn(authWith) {
 			this.get('session').open('firebase', { authWith: authWith }).then(() => {
-				var userChannel = this.get('session.currentUser.channels.firstObject');
+				const userChannels = this.get('session.currentUser.channels');
 
 				Ember.debug('logged in!');
 
-				// if the user doesn't have a channel, incite him to create one
-				if (userChannel) {
-					this.transitionTo('channel', userChannel);
-				} else {
-					this.transitionTo('channels.new');
-				}
+				userChannels.then((channels) => {
+
+					let channel = channels.get('firstObject');
+					// if the user doesn't have a channel, incite him to create one
+					if (channel) {
+						console.log(channel.get('title'));
+						console.log(channel.get('slug'));
+						this.transitionTo('channel', channel);
+					} else {
+						this.transitionTo('channels.new');
+					}
+				});
 			});
 		},
 		logout() {
