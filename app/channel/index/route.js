@@ -6,12 +6,14 @@ export default Ember.Route.extend({
 	// renders the template immediately (faster yay!)
 	// return this.modelFor('channel').get('tracks');
 	model() {
-		let model = Ember.A([]);
+		return this.modelFor('channel').get('tracks');
 
-		// "20" is the number of tracks it takes to fill up a 24" viewport
-		this.findLimited(model, 20);
-
-		return model;
+		// TODO
+		// this version doesn't live update when deleting tracks, for instance
+		// let model = Ember.A([]);
+		// // "20" is the number of tracks it takes to fill up a 24" viewport
+		// this.findLimited(model, 20);
+		// return model;
 	},
 
 	// afterModel(model) {
