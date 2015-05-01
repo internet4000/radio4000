@@ -12,10 +12,13 @@
 	img {
 		width: 89px;
 		vertical-align: middle;
+		position: relative;
+		top: 21%; // vertical center
 	}
 
 	a {
 		display: block;
+		height: 100%;
 		color: $bleach;
 
 		// match .Container because we want padding here = bigger tap

@@ -6,8 +6,9 @@
 html {
 	@extend %font-regular;
 	line-height: $base-line-height;
-	font-size: 15px; // important, specify in pixels here as all other font-size are re(m)lative to this
+	font-size: 15px;
 	@media (min-width: $layout-m) { font-size: $base-font-size; }
+	@media (min-width: $layout-xl) { font-size: 18px; }
 }
 strong,
 b {
