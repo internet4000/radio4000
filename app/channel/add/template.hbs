@@ -8,7 +8,7 @@
 	<form class="Form Form--box" {{action "addTrack" on='submit'}}>
 		<div class="Form-group Form-group--relative">
 			<label for="trackTitle">Title</label>
-			{{input id="trackTitle" value=model.title placeholder="Search for a track" required="required" autofocus="autofocus"}}<br>
+			{{focus-input id="trackTitle" value=model.title placeholder="Search for a track" required="required" autofocus="autofocus"}}<br>
 			{{#if isFetchingTitle}}<p class="Form-groupStatus">Updating…</p>{{/if}}
 			{{youtube-search query=model.title action="addFromSearch"}}
 		</div>
@@ -25,7 +25,7 @@
 
 		<div class="Form-group">
 			<button {{bind-attr class=":Btn :Btn--primary justAdded:is-flashing"}} type='submit' title="Add track to your radio">Add track</button>
-			{{#link-to "channel.index" class="Btn Btn--text" title="Cancel adding track"}}Cancel{{/link-to}}
+			{{#link-to "channel.index" class="Btn Btn--text" title="Don't add the track"}}Cancel{{/link-to}}
 		</div>
 	</form>
 

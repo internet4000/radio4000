@@ -47,9 +47,15 @@ export default Ember.Component.extend({
 
 	actions: {
 		add(item) {
+			let $input = this.$().parents('form').find('input').eq(0);
+
 			this.set('cachedQuery', item.get('title'));
 			this.get('results').clear();
 			this.sendAction('action', item);
+
+			// this is a bit dirty, but puts focus back on the form
+			// after selecting a search result, so the user can tap "enter" immediately to submit
+			$input.focus();
 		}
 	}
 });

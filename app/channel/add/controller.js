@@ -89,6 +89,9 @@ export default Ember.Controller.extend({
 
 			if (!this.get('isValid')) { return false; }
 
+			// reset the query param
+			this.set('url', '');
+
 			// leave it to the router to actually save the track
 			this.send('saveTrack');
 		},
