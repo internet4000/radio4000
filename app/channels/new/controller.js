@@ -5,18 +5,46 @@ import randomText from 'radio4000/utils/random-text';
 export default Ember.Controller.extend({
 	titleMaxLength: 32,
 	titleMinLength: 4,
+	isSaving: false,
+	titleError: false,
 
 	cleanSlug: Ember.computed('model.title', function() {
 		var title = this.get('model.title');
 		return clean(title) + '-' + randomText();
 	}),
 
-	tooLong: Ember.computed('model.title', function() {
-		return this.get('model.title.length') >= this.get('titleMaxLength');
+	titleSize: Ember.computed('model.title', function() {
+		// check channel.title.length, if not in our size limit, return NOPE
+		var titleLength = this.get('model.title.length');
+		var tooLong = titleLength >= this.get('titleMaxLength');
+		var tooShort = titleLength <= this.get('titleMinLength');
+
+		if (tooLong) {
+			Ember.debug("Title is too long");
+			this.set('titleError', true);
+			return false;
+		} else if (tooShort) {
+			Ember.debug("Title is too short");
+			this.set('titleError', true);
+			return false;
+		} else {
+			Ember.debug("Title has the right length");
+			this.set('titleError', false);
+			return true;
+		}
 	}),
 
-	validates: Ember.computed('tooLong', 'session.currentUser', function() {
-		return !this.get('tooLong') || !this.get('session.currentUser');
+	validates: Ember.computed('titleSize', 'session.currentUser', function() {
+		if (!this.get('session.currentUser')) {
+			Ember.debug("validates fail, no user");
+			return false;
+		} else if (!this.get('titleSize')) {
+			Ember.debug("validates fail, title not right size");
+			return false;
+		} else {
+			Ember.debug("validates sucess! title has the right size and there is a user");
+			return true;
+		}
 	}),
 
 	actions: {

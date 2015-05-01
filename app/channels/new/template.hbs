@@ -9,14 +9,14 @@
 		<div class="Form-group">
 			{{focus-input value=model.title
 							  placeholder='For instance: “The Pirate Radio”'
-							  required="required" maxlength=titleMaxLength}}
+							  required="required" maxlength=titleMaxLength minlength=titleMinLength}}
 		</div>
 
-		{{#if tooLong}}
-			<p class="Muted">Oops, please keep your name below {{titleMaxLength}} characters.</p>
+		{{#if titleError}}
+			<p class="Muted">Oops, please keep your name betzeen {{titleMinLength}} and {{titleMaxLength}} characters. Currently {{model.title.length}}</p>
 		{{/if}}
 
-		<p class="Muted">Don't worry, you can change this name <em>anytime later</em>!</p>
+		<p class="Muted">Don't worry, you can change it <em>anytime later</em>!</p>
 
 		<div class="Form-group">
 			<button disabled={{isSaving}} type="submit" class="Btn Btn--primary" title="Create your radio channel">
