@@ -5,14 +5,15 @@ export default Ember.Component.extend({
 	tagName: 'menu',
 	classNames: ['BtnGroup'],
 
-	buttonHandlers: Ember.on('didInsertElement', function() {
-		var self = this;
+	attachButtonHandlers: Ember.on('didInsertElement', function() {
+		this.$().on('click', '.Btn', (event) => {
+			let $clicked = $(event.currentTarget);
 
-		this.$('.Btn').on('click', function() {
-			var $clicked = $(this);
+			$clicked
+				.addClass('is-active');
 
-			$clicked.addClass('is-active');
-			self.$('.Btn').not($clicked).removeClass('is-active');
+			this.$('.Btn').not($clicked)
+				.removeClass('is-active');
 		});
 	})
 });

@@ -25,8 +25,8 @@ export default Ember.Controller.extend({
 	// all tracks not in the history array
 	// there is probably a computed macro to handle this.
 	unplayed: Ember.computed('history.[]', 'tracks.[]', function () {
-		var history = this.get('history');
-		var tracks = this.get('tracks');
+		const history = this.get('history');
+		const tracks = this.get('tracks');
 
 		if (!tracks) { return; }
 
@@ -40,16 +40,15 @@ export default Ember.Controller.extend({
 	// }),
 
 	updateHistory: Ember.observer('model', function() {
-		console.log('updateHistory: model changed');
-
 		let history = this.get('history');
 		let historyWasUpdated = this.get('historyWasUpdated');
+
+		console.log('updateHistory: model changed');
 
 		if (historyWasUpdated) { return; }
 
 		history.pushObject(this.get('model'));
 		this.set('historyWasUpdated', true);
-		// Ember.debug('model changed');
 	}),
 
 	// Clears history every time the channel changes
@@ -88,11 +87,11 @@ export default Ember.Controller.extend({
 		},
 
 		prev() {
-			var isShuffled = this.get('isShuffled');
-			var history = this.get('history');
-			var tracks = this.get('tracks');
-			var model = this.get('model');
-			var newTrack;
+			const isShuffled = this.get('isShuffled');
+			const history = this.get('history');
+			const tracks = this.get('tracks');
+			const model = this.get('model');
+			let newTrack;
 
 			// without shuffle
 			if (!isShuffled) {
@@ -131,14 +130,14 @@ export default Ember.Controller.extend({
 		},
 
 		next() {
-			var unplayed = this.get('unplayed');
-			var len = unplayed.get('length');
-			var isShuffled = this.get('isShuffled');
-			var tracks = this.get('tracks');
-			var model = this.get('model');
-			console.log(model, 'playback: current model');
-			var newTrack;
+			let unplayed = this.get('unplayed');
+			let len = unplayed.get('length');
+			let isShuffled = this.get('isShuffled');
+			let tracks = this.get('tracks');
+			let model = this.get('model');
+			let newTrack;
 
+			console.log(model, 'playback: current model');
 
 			// define which track is the next track
 			if (isShuffled) {
@@ -165,9 +164,9 @@ export default Ember.Controller.extend({
 
 		playPrev() {},
 
+		// first is last because we have newest on top
 		playFirst() {
-			// first is last because we have newest on top
-			var firstTrack = this.get('tracks.lastObject');
+			let firstTrack = this.get('tracks.lastObject');
 			// this.get('history').pushObject(firstTrack);
 			this.send('playTrack', firstTrack);
 			// Ember.debug('Playing first track');
@@ -175,7 +174,7 @@ export default Ember.Controller.extend({
 
 		playLast() {
 			// last is first because we have newest on top
-			var lastTrack = this.get('tracks.firstObject');
+			let lastTrack = this.get('tracks.firstObject');
 			this.send('playTrack', lastTrack);
 			// this.get('history').pushObject(lastTrack);
 			// Ember.debug('Playing last track');

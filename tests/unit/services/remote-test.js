@@ -4,12 +4,12 @@ import {
 } from 'ember-qunit';
 
 moduleFor('service:remote', {
-  // Specify the other units that are required for this test.
-  // needs: ['service:foo']
+	// Specify the other units that are required for this test.
+	// needs: ['service:foo']
 });
 
 // Replace this with your real tests.
 test('it exists', function(assert) {
-  var service = this.subject();
-  assert.ok(service);
+	let service = this.subject();
+	assert.ok(service);
 });

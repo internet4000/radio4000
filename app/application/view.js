@@ -9,7 +9,7 @@ export default Ember.View.extend({
 
 		// close on top bar, links in the panel nav and on the overlay
 		this.$().on('click.app', '.SiteLogo, .PanelNav a, .PanelNav-overlay', function() {
-			Ember.run(function() {
+			Ember.run.schedule('afterRender', () => {
 				self.set('controller.isPanelOpen', false);
 			});
 		});

@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-var userChannel = Ember.Object.extend({
+let userChannel = Ember.Object.extend({
 	hello: 'world'
 });
 

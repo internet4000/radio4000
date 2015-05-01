@@ -13,17 +13,16 @@
 import Ember from 'ember';
 
 export default Ember.Handlebars.makeBoundHelper(function(str, len) {
-
 	if (!str) { return ''; }
 
 	if (str.length > len && str.length > 0) {
-		var new_str = str + ' ';
+		let newString = str + ' ';
 
-		new_str = str.substr(0, len);
-		new_str = str.substr(0, new_str.lastIndexOf(' '));
-		new_str = (new_str.length > 0) ? new_str : str.substr(0, len);
+		newString = str.substr(0, len);
+		newString = str.substr(0, newString.lastIndexOf(' '));
+		newString = (newString.length > 0) ? newString : str.substr(0, len);
 
-		return new Ember.Handlebars.SafeString( new_str + ' […]' );
+		return new Ember.Handlebars.SafeString( newString + ' […]' );
 	}
 
 	return str;

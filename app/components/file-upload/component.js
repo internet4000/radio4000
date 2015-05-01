@@ -5,11 +5,11 @@ export default Ember.TextField.extend({
 	accept: 'image/*',
 
 	change(event) {
-		var file = event.target.files[0];
-		var reader = new FileReader();
+		const reader = new FileReader();
+		let file = event.target.files[0];
 
 		// limit images to 500kb
-		if ((file.size/1000) >= 500) {
+		if ((file.size / 1000) >= 500) {
 			alert('Sorry, too big! For now please use an image below 500kb');
 			return false;
 		}

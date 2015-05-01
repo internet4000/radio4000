@@ -7,6 +7,6 @@ moduleFor('view:application');
 
 // Replace this with your real tests.
 test('it exists', function(assert) {
-  var view = this.subject();
-  assert.ok(view);
+	let view = this.subject();
+	assert.ok(view);
 });

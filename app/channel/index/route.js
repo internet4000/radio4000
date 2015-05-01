@@ -6,11 +6,11 @@ export default Ember.Route.extend({
 	// renders the template immediately (faster yay!)
 	// return this.modelFor('channel').get('tracks');
 	model() {
+		// let model = Ember.A([]);
 		return this.modelFor('channel').get('tracks');
 
 		// TODO
 		// this version doesn't live update when deleting tracks, for instance
-		// let model = Ember.A([]);
 		// // "20" is the number of tracks it takes to fill up a 24" viewport
 		// this.findLimited(model, 20);
 		// return model;
@@ -65,30 +65,3 @@ export default Ember.Route.extend({
 			});
 	}
 });
-
-// return this.store.find('channel', {
-// 	orderBy: 'slug',
-// 	equalTo: slug
-// })
-//
-// // this part is needed because emberfire: https://github.com/firebase/emberfire/issues/235
-// .then((channels) => {
-// 	return channels.findBy('slug', slug);
-// });
-//
-
-// this.store.find('track', {
-// 	// orderBy: 'channel',
-// 	// equalTo: '-J_Mp1OhyLuo4tJozPAV'
-// 	// startAt: 200
-// 	// orderBy: 'title',
-// 	// equalTo: 'Nino Nardini - Tropicola',
-//
-// 	orderBy: 'channel',
-// 	equalTo: '-J_Mp1OhyLuo4tJozPAV',
-// 	limitToLast: 5
-//
-// }).then((tracks) => {
-// 	Ember.debug(tracks);
-// 	model.addObjects(tracks);
-// });

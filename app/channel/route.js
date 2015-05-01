@@ -2,8 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	model(params) {
-		// var model = Ember.ObjectProxy.create({});
-		var slug = params.slug;
+		// let model = Ember.ObjectProxy.create({});
+		let slug = params.slug;
 
 		return this.store.find('channel', {
 			orderBy: 'slug',
