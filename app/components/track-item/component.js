@@ -10,8 +10,7 @@ export default Ember.Component.extend({
 	// close 'add track' on esc key
 	keyDown(event) {
 		if (event.keyCode === 27) {
-			// @todo call the cancel action here instead
-			this.set('currentTrackComponent', null);
+			this.send('cancelEdit');
 		}
 	},
 
@@ -28,33 +27,38 @@ export default Ember.Component.extend({
 			this.set('currentTrackComponent', this.get('elementId'));
 		},
 
-		cancel() {
+		cancelEdit() {
 			this.set('currentTrackComponent', null);
 		},
 
-		save() {
-			var track = this.get('track');
-			track.updateProvider();
-			this.send('cancel');
+		saveTrack() {
+			const track = this.get('track');
 
-			track.save().then(function() {
+			// todo: this shouldn't be necessary
+			track.updateProvider();
+
+			this.send('cancelEdit');
+			track.save().then(() => {
 				Ember.debug('Saved track');
 			});
 		},
 
-		// Delete the track object and the corresponding track object in channel.tracks
 		deleteTrack() {
-			var channel = this.get('track.channel');
-			var channelTracks = channel.get('tracks');
-			var track = this.get('track');
+			let track = this.get('track');
+			// let channel = this.get('track.channel');
 
-			Ember.debug('Deleting track');
+			track.get('channel').then((channel) => {
+				// channel.save();
+				// // first remove from parent
+				channel.get('tracks').then((tracks) => {
+					tracks.removeObject(track);
+					channel.save();
 
-			channelTracks.then((tracks) => {
-				tracks.removeObject(track);
-				channel.save();
+					this.send('cancelEdit');
 
-				track.destroyRecord();
+					// then itself
+					track.destroyRecord();
+				});
 			});
 		}
 	}

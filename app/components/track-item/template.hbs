@@ -1,7 +1,7 @@
 {{#link-to 'track' track class="Track-link"}}
 	{{!-- {{x-icon i="play"}} --}}
 	<h3 class="Track-title">
-		{{unbound track.title}}
+		{{track.title}}
 	</h3>
 	{{#if track.body}}<p class="Track-description">{{track.body}}</p>{{/if}}
 {{/link-to}}
@@ -11,7 +11,7 @@
 		{{x-icon i="pencil"}}
 	</p>
 
-	<form class="Form EditTrack">
+	<form class="Form EditTrack" {{action "saveTrack" on="submit"}}>
 		<div class="Form-group">
 			<label>URL
 				{{input type="url" placeholder="Copy in a YouTube URL" value=track.url required="required"}}
@@ -28,10 +28,10 @@
 			</label>
 		</div>
 		<div class="Form-group">
-			<button class="Btn Btn--primary" {{action "save" title="Save the track"}}>
+			<button type="submit" class="Btn Btn--primary" title="Save the track">
 				Save track
 			</button>
-			<button class="Btn Btn--text" {{action 'cancel' title="Cancel editing the track"}}>
+			<button class="Btn Btn--text" {{action 'cancelEdit' title="Cancel editing the track"}}>
 				Cancel
 			</button>
 			<button class="Btn Btn--text Btn--danger u-alignRight" {{action 'deleteTrack' title="Delete this track from your radio"}}>
