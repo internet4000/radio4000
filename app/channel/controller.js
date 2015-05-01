@@ -6,7 +6,13 @@ export default Ember.Controller.extend({
 
 	lastUpdatedFormatted: Ember.computed('model.tracks.@each.created', function() {
 		var date = this.get('model.tracks.lastObject.created');
-		return window.moment(date).subtract(1, 'days').fromNow();
+
+		// only the channel owner can see the exact time (privacy)
+		if (this.get('canEdit')) {
+			return window.moment(date).fromNow();
+		} else {
+			return window.moment(date).subtract(1, 'days').fromNow();
+		}
 	}),
 
 	// canEdit: Ember.computed.equal('model.id', 'session.currentUser.channels.firstObject.id'),

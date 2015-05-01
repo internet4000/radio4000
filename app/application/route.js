@@ -20,19 +20,16 @@ export default Ember.Route.extend({
 	// },
 
 	actions: {
+		// Signs a user in and redirect to either her channel
+		// or the form to create a channel
 		signIn(authWith) {
 			this.get('session').open('firebase', { authWith: authWith }).then(() => {
 				const userChannels = this.get('session.currentUser.channels');
 
-				Ember.debug('logged in!');
-
 				userChannels.then((channels) => {
-
 					let channel = channels.get('firstObject');
-					// if the user doesn't have a channel, incite him to create one
+
 					if (channel) {
-						console.log(channel.get('title'));
-						console.log(channel.get('slug'));
 						this.transitionTo('channel', channel);
 					} else {
 						this.transitionTo('channels.new');
