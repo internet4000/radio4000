@@ -32,8 +32,8 @@
 				{{#if canEdit}}
 					<div class="BtnGroupWrapper">
 						<div class="BtnGroup">
-							{{#link-to 'channel.edit' model class="Btn" title="Edit your channel"}}
-								{{x-icon i="pencil"}} Edit channel
+							{{#link-to 'channel.edit' model class="Btn" title="Edit your radio"}}
+								{{x-icon i="pencil"}} Edit radio
 							{{/link-to}}
 						</div>
 					</div>
@@ -46,15 +46,12 @@
 		{{#link-to 'channel.index' class="NavigationTab-item" title="All tracks"}}
 			Tracks
 		{{/link-to}}
-		{{#link-to 'channel.favorites' class="NavigationTab-item" title="Favorites of this channel"}}
+		{{#link-to 'channel.favorites' class="NavigationTab-item" title="Favorites of this radio"}}
 			Favorites
 		{{/link-to}}
-		{{#link-to 'channel.followers' class="NavigationTab-item" title="Followers of this channel"}}
+		{{#link-to 'channel.followers' class="NavigationTab-item" title="Followers of this radio"}}
 			Followers
 		{{/link-to}}
-		{{!-- {{#if canEdit}}
-			{{#link-to 'channel.add' model class="NavigationTab-item" title="Add track"}}Add track{{/link-to}}
-		{{/if}} --}}
 	</nav>
 
 	<div class="Channel-outlet">

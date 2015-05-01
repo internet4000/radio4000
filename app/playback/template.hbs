@@ -7,7 +7,7 @@
 </div>
 
 <div {{bind-attr class=":Bar :Bar--bottom :Playback model::is-hidden"}}>
-	<div class="Playback-title" title="Current track / go to current channel">
+	<div class="Playback-title" title="Current track / go to current radio">
 		{{#link-to 'channel' model.channel}}
 			{{model.title}} <span class="Playback-channel">({{channel.title}})</span>
 		{{/link-to}}

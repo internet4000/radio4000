@@ -5,7 +5,7 @@
 		<div class="PanelNav-group">
 			<div class="UserChannel">
 				{{#if session.currentUser.channels.firstObject}}
-					{{#link-to 'channel' session.currentUser.channels.firstObject title="Go to my channel"}}
+					{{#link-to 'channel' session.currentUser.channels.firstObject title="Go to my radio"}}
 
 						<img class= "UserChannel-media" src="{{session.currentUser.channels.firstObject.coverImage.thumb}}">
 
@@ -15,9 +15,9 @@
 						</div>
 					{{/link-to}}
 				{{else}}
-					{{#link-to 'channels.new' class="" title="Create your channel"}}
+					{{#link-to 'channels.new' class="" title="Create your radio"}}
 						<div class="UserChannel-body BoxIcon BoxIcon--add">
-							<p class="UserChannel-title">Create your channel</p>
+							<p class="UserChannel-title">Create your radio</p>
 						</div>
 					{{/link-to}}
 				{{/if}}
@@ -25,7 +25,7 @@
 		</div>
 
 		{{!-- <div class="PanelNav-group">
-			{{#link-to 'channels' title="Discover channels"}}Discover{{/link-to}}
+			{{#link-to 'channels' title="Discover radios"}}Discover{{/link-to}}
 		</div> --}}
 
 		<div class="PanelNav-group">
