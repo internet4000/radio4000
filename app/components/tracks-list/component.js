@@ -3,62 +3,63 @@ import Ember from 'ember';
 export default Ember.Component.extend({
 	filter: '',
 
-	// Returns either all tracks or the filtered tracks by hashtag
-	filtered: Ember.computed('filter', 'model', function() {
-		let filter = this.get('filter');
-		let model = this.get('model');
+	// Keep track of which track we're currently editing
+	currentTrackComponent: null,
 
-		if (!filter) {
-			return model;
-		}
+	// // Returns either all tracks or the filtered tracks by hashtag
+	// filtered: Ember.computed('filter', 'model', function() {
+	// 	let filter = this.get('filter');
+	// 	let model = this.get('model');
 
-		// returns models which has the filter (the tag)
-		// in their hashtags property
-		return model.filter((track) => {
-			let hashtags = track.get('hashtags');
+	// 	if (!filter) {
+	// 		return model;
+	// 	}
 
-			if (!hashtags) { return false; }
+	// 	// returns models which has the filter (the tag)
+	// 	// in their hashtags property
+	// 	return model.filter((track) => {
+	// 		let hashtags = track.get('hashtags');
 
-			return hashtags.contains(filter);
-		});
-	}),
+	// 		if (!hashtags) { return false; }
+
+	// 		return hashtags.contains(filter);
+	// 	});
+	// }),
 
 	// not sure how to set up SortableMixin
-	sortedandfiltered: Ember.computed('filtered', function() {
+	// sortedandfiltered: Ember.computed('filtered', function() {
+	sortedandfiltered: Ember.computed('model', function() {
 		return Ember.ArrayController.create({
-			content: this.get('filtered'),
+			// content: this.get('filtered'),
+			content: this.get('model'),
 
 			// Newest on top
 			sortProperties: ['created'],
 			sortAscending: false
 		});
-	}),
+	})
 
-	// Returns the unique tags from all models
-	tags: Ember.computed('model.@each.hashtags', function() {
-		let model = this.get('model');
-		let tags = model.getEach('hashtags');
+	// // Returns the unique tags from all models
+	// tags: Ember.computed('model.@each.hashtags', function() {
+	// 	let model = this.get('model');
+	// 	let tags = model.getEach('hashtags');
 
-		Ember.debug('tags computed (keep this low)');
+	// 	Ember.debug('tags computed (keep this low)');
 
-		// Remove tracks without hashtags
-		tags = tags.compact();
+	// 	// Remove tracks without hashtags
+	// 	tags = tags.compact();
 
-		// Flatten the array
-		tags = (tags.join(',')).split(','); // js version
-		// tags = _.flatten(tags); // lodash version
+	// 	// Flatten the array
+	// 	tags = (tags.join(',')).split(','); // js version (lodash: _.flatten)
 
-		// Only keep uniques
-		tags = tags.uniq();
+	// 	// Only keep uniques
+	// 	tags = tags.uniq();
 
-		// Remove more empty ones (todo: shouldn't be necessary)
-		tags = tags.filter((tag) => {
-			return tag !== '';
-		});
+	// 	// Remove more empty ones (todo: shouldn't be necessary)
+	// 	tags = tags.filter((tag) => {
+	// 		return tag !== '';
+	// 	});
 
-		return tags;
-	}),
-
-	// Keep track of which track we're currently editing
-	currentTrackComponent: null
+	// 	return tags;
+	// })
 });
