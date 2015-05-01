@@ -7,17 +7,17 @@ export default Ember.Route.extend({
 		});
 	},
 
-	renderTemplate() {
-		// because we overwrite the renderTemplate method
-		// we need to run super
-		this._super();
+	// renderTemplate() {
+	// 	// because we overwrite the renderTemplate method
+	// 	// we need to run super
+	// 	this._super();
 
-		// and update nav bar
-		this.render('contextual-navigation/cn-channels', {
-			into: 'application',
-			outlet: 'contextual-navigation'
-		});
-	},
+	// 	// and update nav bar
+	// 	this.render('contextual-navigation/cn-channels', {
+	// 		into: 'application',
+	// 		outlet: 'contextual-navigation'
+	// 	});
+	// },
 
 	actions: {
 		signIn(authWith) {

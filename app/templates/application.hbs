@@ -11,7 +11,16 @@
 			</h1>
 
 			<div class="ContextualNavigation">
-				{{outlet "contextual-navigation"}}
+				{{!-- {{outlet "contextual-navigation"}} --}}
+				{{#if session.isAuthenticated}}
+					{{#if session.currentUser.channels.firstObject}}
+						{{#link-to 'channel.add' session.currentUser.channels.firstObject class="ContextualNavigation-addTrack" title="Add track"}}
+							{{x-icon i="plus" title="Add track"}} <span>Add</span> <span>track</span>
+						{{/link-to}}
+					{{/if}}
+				{{else}}
+					{{#link-to 'signin'}}Register or sign in{{/link-to}}
+				{{/if}}
 
 				<button class="TogglePanel" title="Menu" {{action "togglePanel"}}>
 					<span class="TogglePanel-square"></span>

@@ -33,7 +33,6 @@ export default Ember.Route.extend({
 
 	// renderTemplate() {
 	// 	this._super();
-
 	// 	// update contextual nav
 	// 	this.render('contextual-navigation/cn-channel', {
 	// 		into: 'application',

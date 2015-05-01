@@ -1,15 +1,1 @@
-{{#if session.isAuthenticated}}
-	{{#if session.currentUser.channels.firstObject}}
-
-		{{!-- {{#link-to 'channel' session.currentUser.channels.firstObject title="Go to my channel"}}
-			{{session.currentUser.channels.firstObject.title}}
-		{{/link-to}} --}}
-		{{#link-to 'channel.add' session.currentUser.channels.firstObject title="Add track"}}
-			{{x-icon i="plus" title="Add track"}}
-		{{/link-to}}
-	{{/if}}
-{{/if}}
-
-{{#unless session.isAuthenticated}}
-	{{#link-to 'signin'}}Register or sign in{{/link-to}}
-{{/unless}}
+<p>ch-channels</p>
