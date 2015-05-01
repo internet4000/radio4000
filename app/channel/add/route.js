@@ -1,12 +1,22 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+	// todo: this is repeated for channel/[add,edit,delete]
 	beforeModel(transition) {
 		const authed = this.get('session.isAuthenticated');
-		const userChannel = this.get('session.currentUser.channels.firstObject');
-		const canEdit = (userChannel.get('id') === this.modelFor('channel').get('id'));
+		if (!authed) {
+			transition.abort();
+			this.transitionTo('signin');
+		}
 
-		if (!authed || !canEdit) {
+		const userChannel = this.get('session.currentUser.channels.firstObject');
+		if (!userChannel) {
+			transition.abort();
+			this.transitionTo('signin');
+		}
+
+		const canEdit = userChannel.get('id') === this.modelFor('channel').get('id');
+		if (!canEdit) {
 			transition.abort();
 			this.transitionTo('signin');
 		}
