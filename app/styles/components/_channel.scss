@@ -46,13 +46,33 @@
 		margin-right: 0;
 		float: right;
 	}
+}
+.Channel-titleSection {
+	@include clearfix;
+}
+.Follow--title {
+	float: left;
+	margin-right: 0.6rem;
 
+	// optical aligned with channel title
+	position: relative;
+	top: -0.15em;
+
+	@media (min-width: $layout-s) {
+		margin-right: 1rem;
+		top: 0.05em;
+	}
 }
 .Channel-title {
 	margin-bottom: 0.5rem;
 	@media (min-width: $layout-m) {
 		@include size-5;
+		max-width: 80%;
 	}
+}
+.LastUpdate {
+	@extend %font-regular;
+	@include size-1;
 }
 .Channel-description {
 	max-width: 36rem;
@@ -66,36 +86,9 @@
 		@include size-1;
 	}
 }
-.LastUpdate {
-	@include size-1;
-}
 .Channel-contextual {
 	float: right;
 	.BtnGroup {
 		float: right;
 	}
-}
-.LastUpdate {
-	@extend %font-regular;
-}
-
-
-/**
- * About favorites
- **/
-
-.Channel-titleSection {
-	@include clearfix;
-}
-.Channel-title {
-	width: 80%;
-	float: left;
-}
-.Follow--title {
-	float: left;
-	margin-right: 1rem;
-
-	// optical aligned with channel title
-	position: relative;
-	top: 0.1em;
 }
