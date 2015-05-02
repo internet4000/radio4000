@@ -10,7 +10,7 @@ export default Ember.Component.extend({
 	enablePreview: false,
 
 	startCloudinary: Ember.on('didInsertElement', function() {
-		// var input = this.$('cloudinary_fileupload');
+		// const input = this.$('cloudinary_fileupload');
 		const component = this;
 
 		// here we bind to the events sent by our child cloudinary-input component
@@ -26,7 +26,7 @@ export default Ember.Component.extend({
 		});
 
 		// once it's uploaded
-		this.$().on('fileuploaddone', function (e, data) {
+		this.$().on('fileuploaddone', function(e, data) {
 			component.set('imageId', data.result.public_id);
 
 			// reset progress

@@ -3,23 +3,20 @@ import Ember from 'ember';
 import youtube from 'radio4000/utils/youtube';
 
 export default Ember.Controller.extend({
-
-	// bookmarklet
-	// javascript:location.href='http://localhost:4000/c/200ok/add?url='+encodeURIComponent(location.href)
-	// http://guides.emberjs.com/v1.10.0/routing/query-params/#toc_map-a-controller-s-property-to-a-different-query-param-key
 	queryParams: ['url'],
 
 	// proxy for model.url
 	url: null,
 
+	// bookmarklet
+	// http://guides.emberjs.com/v1.10.0/routing/query-params/#toc_map-a-controller-s-property-to-a-different-query-param-key
 	bookmarklet: Ember.computed('session.currentUser.channels.firstObject', function() {
 		let slug = this.get('session.currentUser.channels.firstObject.slug');
 		return `javascript:(function() {
 						location.href='
 							http://localhost:4000/c/${slug}/add
-							?url=
-								'+encodeURIComponent(location.href)+
-								'&title='+encodeURIComponent(document.title)
+							?url=' + encodeURIComponent(location.href) +
+								'&title=' + encodeURIComponent(document.title)
 					;})();`;
 	}),
 

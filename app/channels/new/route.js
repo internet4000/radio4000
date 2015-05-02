@@ -25,7 +25,7 @@ export default Ember.Route.extend({
 		});
 	},
 	deactivate() {
-		var model = this.get('currentModel');
+		const model = this.get('currentModel');
 
 		// reset document title
 		document.title = 'Radio4000';

@@ -24,7 +24,7 @@ export default DS.Model.extend({
 	// 	return this.get('tracks.lastObject.created');
 	// }),
 	// lastUpdatedFormatted: Ember.computed('tracks.@each.created', function() {
-	// 	var date = this.get('tracks.lastObject.created');
+	// 	let date = this.get('tracks.lastObject.created');
 	// 	// return window.moment(date).fromNow();
 	// 	return window.moment(date).add('days', 1).fromNow();
 	// }),

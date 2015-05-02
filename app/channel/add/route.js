@@ -33,8 +33,8 @@ export default Ember.Route.extend({
 	actions: {
 		//  this action is triggered from the add.js controller/template
 		saveTrack() {
-			var channel = this.modelFor('channel');
-			var track = this.modelFor('channel.add');
+			const channel = this.modelFor('channel');
+			const track = this.modelFor('channel.add');
 
 			track.updateProvider();
 

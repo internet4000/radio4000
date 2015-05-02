@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.View.extend({
 	didInsertElement() {
-		var self = this;
+		const self = this;
 
 		// Remove our dummy app with inline styles
 		Ember.$('.DummyApp').remove();

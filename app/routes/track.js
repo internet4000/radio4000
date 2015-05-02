@@ -7,7 +7,7 @@ export default Ember.Route.extend({
 	// which means it won't render anything.
 
 	// Instead, we pass the channel and track to the playback controller
-	setupController (controller, model) {
+	setupController(controller, model) {
 		const channel = this.modelFor('channel');
 
 		this.controllerFor('playback').setProperties({

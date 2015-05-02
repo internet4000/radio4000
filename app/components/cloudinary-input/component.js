@@ -23,7 +23,7 @@ export default Ember.Component.extend({
 		});
 
 		// https://github.com/blueimp/jQuery-File-Upload/wiki/Drop-zone-effects
-		Ember.$(document).bind('dragover', function (e) {
+		Ember.$(document).bind('dragover', function(e) {
 			let dropZone = Ember.$('#dropzone');
 			let timeout = window.dropZoneTimeout;
 
@@ -53,7 +53,7 @@ export default Ember.Component.extend({
 				dropZone.removeClass('hover');
 			}
 
-			window.dropZoneTimeout = setTimeout(function () {
+			window.dropZoneTimeout = setTimeout(function() {
 				window.dropZoneTimeout = null;
 				dropZone.removeClass('in hover');
 			}, 100);

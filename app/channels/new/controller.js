@@ -9,8 +9,12 @@ export default Ember.Controller.extend({
 	titleError: false,
 
 	cleanSlug: Ember.computed('model.title', function() {
-		const title = this.get('model.title');
-		return clean(title) + '-' + randomText();
+		let random = randomText();
+		let title = this.get('model.title');
+
+		title = clean(title);
+
+		return `${title}-${random}`;
 	}),
 
 	titleSize: Ember.computed('model.title', function() {
@@ -20,15 +24,15 @@ export default Ember.Controller.extend({
 		const tooShort = titleLength < this.get('titleMinLength');
 
 		if (tooLong) {
-			Ember.debug("Title is too long");
+			Ember.debug('Title is too long');
 			this.set('titleError', true);
 			return false;
 		} else if (tooShort) {
-			Ember.debug("Title is too short");
+			Ember.debug('Title is too short');
 			this.set('titleError', true);
 			return false;
 		} else {
-			Ember.debug("Title has the right length");
+			Ember.debug('Title has the right length');
 			this.set('titleError', false);
 			return true;
 		}
@@ -36,28 +40,27 @@ export default Ember.Controller.extend({
 
 	validates: Ember.computed('titleSize', 'session.currentUser', function() {
 		if (!this.get('session.currentUser')) {
-			Ember.debug("validates fail, no user");
+			Ember.debug('validates fail, no user');
 			return false;
 		} else if (!this.get('titleSize')) {
-			Ember.debug("validates fail, title not right size");
+			Ember.debug('validates fail, title not right size');
 			return false;
 		} else {
-			Ember.debug("validates sucess! title has the right size and there is a user");
+			Ember.debug('validates sucess! title has the right size and there is a user');
 			return true;
 		}
 	}),
 
 	actions: {
 		create() {
+			const user = this.get('session.currentUser');
+			const channel = this.get('model');
+			const slug = this.get('cleanSlug');
 
 			if (!this.get('validates')) {
 				Ember.warn('Channel did not validate.');
 				return false;
 			}
-
-			var user = this.get('session.currentUser');
-			var channel = this.get('model');
-			var slug = this.get('cleanSlug');
 
 			this.set('isSaving', true);
 
@@ -67,7 +70,7 @@ export default Ember.Controller.extend({
 			}).save().then((channelPublic) => {
 
 				// now the channelPublic is saved, has an ID and can be used
-				console.log('saved channelPublic');
+				Ember.debug('saved channelPublic');
 
 				// set channel slug and relationship
 				channel.setProperties({
@@ -79,14 +82,14 @@ export default Ember.Controller.extend({
 				channel.save().then((channel) => {
 
 					// now the channel is saved
-					console.log('saved channel');
+					Ember.debug('saved channel');
 
 					// set relationship on user (who created the channel)
 					user.get('channels').then((channels) => {
 
 						channels.addObject(channel);
 						user.save().then(() => {
-							console.log('Saved channel on user.');
+							Ember.debug('Saved channel on user.');
 						});
 
 						// Redirect to the new channel

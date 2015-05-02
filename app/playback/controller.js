@@ -24,7 +24,7 @@ export default Ember.Controller.extend({
 
 	// all tracks not in the history array
 	// there is probably a computed macro to handle this.
-	unplayed: Ember.computed('history.[]', 'tracks.[]', function () {
+	unplayed: Ember.computed('history.[]', 'tracks.[]', function() {
 		const history = this.get('history');
 		const tracks = this.get('tracks');
 

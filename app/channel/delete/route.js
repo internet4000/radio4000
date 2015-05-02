@@ -23,7 +23,7 @@ export default Ember.Route.extend({
 	},
 
 	// don't render into channel because we don't want channel templates here
-	renderTemplate: function() {
+	renderTemplate() {
 		this.render({
 			into: 'application'
 		});

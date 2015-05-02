@@ -1,9 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-	beforeModel() {
 
-		// if already authenticated, redirect to intro
+	// if already authenticated, redirect to intro
+	beforeModel() {
 		if (this.get('session.isAuthenticated')) {
 			this.transitionTo('intro');
 		}
@@ -19,8 +19,6 @@ export default Ember.Route.extend({
 	// 	if (!authed) {
 	// 		return;
 	// 	}
-
-
 
 	// 	userChannels.then((channels) => {
 	// 		let channel = channels.get('firstObject');

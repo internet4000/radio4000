@@ -7,10 +7,12 @@ export default Ember.Component.extend({
 	classNameBindings: ['className'],
 
 	className: Ember.computed('i', function() {
-		return 'icon-' + this.get('i');
+		let iconName = this.get('i');
+		return `icon-${iconName}`;
 	}),
 
 	url: Ember.computed('i', function() {
-		return 'images/icons/sprite.svg#icon-' + this.get('i');
+		let iconName = this.get('i');
+		return `images/icons/sprite.svg#icon-${iconName}`;
 	})
 });

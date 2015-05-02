@@ -7,8 +7,8 @@ export default DS.Model.extend({
 
 	// returns a cropped thumb with facial detection
 	thumb: Ember.computed('src', function() {
-		var base = 'http://res.cloudinary.com/radio4000/image/upload/c_thumb,h_200,w_200/v1428245306/';
-		var src = this.get('src');
+		const base = 'http://res.cloudinary.com/radio4000/image/upload/c_thumb,h_200,w_200/v1428245306/';
+		const src = this.get('src');
 
 		if (!src) { return ''; }
 
