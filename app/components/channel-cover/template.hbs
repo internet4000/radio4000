@@ -3,11 +3,9 @@
 		<img src={{model.coverImage.thumb}}>
 	{{/if}}
 
-	{{#if playback.player.isPlaying}}
-		{{!-- <button class="Cover-button" {{action "pause"}} title="Pause radio">{{x-icon i="pause"}}</button> --}}
-	{{else}}
+	{{#unless hideControls}}
 		<button class="Cover-button" {{action "play"}} title="Play radio">{{x-icon i="play"}}</button>
-	{{/if}}
+	{{/unless}}
 </figure>
 
 {{#unless hideTitle}}
