@@ -12,6 +12,17 @@ export default Ember.Controller.extend({
 	// proxy for model.url
 	url: null,
 
+	bookmarklet: Ember.computed('session.currentUser.channels.firstObject', function() {
+		let slug = this.get('session.currentUser.channels.firstObject.slug');
+		return `javascript:(function() {
+						location.href='
+							http://localhost:4000/c/${slug}/add
+							?url=
+								'+encodeURIComponent(location.href)+
+								'&title='+encodeURIComponent(document.title)
+					;})();`;
+	}),
+
 	// Check if the track is valid before saving
 	isValid: Ember.computed('model.url', 'model.title', function() {
 		if (this.get('model.url') && this.get('model.title')) {

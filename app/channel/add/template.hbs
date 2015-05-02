@@ -34,7 +34,7 @@
 		<p>Save it to your bookmarks and tap on it while you're browsing YouTube. Easy! (<a href="https://support.mozilla.org/en-US/kb/bookmarklets-perform-common-web-page-tasks#w_how-do-i-install-a-bookmarklet" target="_blank">?</a>)</p>
 
 		<p>
-			<a class="Btn" title="Drag me to your bookmarks" href="javascript:location.href='http://localhost:4000/c/{{session.currentUser.channels.firstObject.slug}}/add?url='+encodeURIComponent(location.href)">
+			<a class="Btn" title="Drag me to your bookmarks" href="{{bookmarklet}}">
 			Add to {{model.channel.title}}</a> </p>
 	</div>
 
