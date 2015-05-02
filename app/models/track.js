@@ -1,4 +1,4 @@
-// import Ember from 'ember';
+import Ember from 'ember';
 import DS from 'ember-data';
 import youtube from 'radio4000/utils/youtube';
 
@@ -20,7 +20,7 @@ export default DS.Model.extend({
 	updateProvider() {
 		let id = youtube(this.get('url'));
 
-		console.log('updateYtid');
+		Ember.debug('updateYtid');
 		this.set('ytid', id);
 		this.save();
 	}

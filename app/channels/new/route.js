@@ -32,7 +32,7 @@ export default Ember.Route.extend({
 
 		// remove the record if it wasn't saved
 		if (model.get('isNew')) {
-			console.log('is new');
+			Ember.debug('is new');
 			model.deleteRecord();
 		}
 	},

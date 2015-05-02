@@ -43,7 +43,7 @@ export default Ember.Controller.extend({
 		let history = this.get('history');
 		let historyWasUpdated = this.get('historyWasUpdated');
 
-		console.log('updateHistory: model changed');
+		Ember.debug('updateHistory: model changed');
 
 		if (historyWasUpdated) { return; }
 
@@ -53,22 +53,22 @@ export default Ember.Controller.extend({
 
 	// Clears history every time the channel changes
 	clearHistory: Ember.observer('channel', function() {
-		console.log('clearHistory: channel observer');
+		Ember.debug('clearHistory: channel observer');
 		this.get('history').clear();
 	}),
 
 	// generates a ytid if the model doesn't have one already
 	// @todo: this should be removed when all tracks have an ytid
 	validateTrack: Ember.observer('model', function() {
-		console.log('validateTrack');
+		Ember.debug('validateTrack');
 
 		if (!this.get('model')) {
 			Ember.debug('validating without model……');
 			return;
 		}
-		if (!this.get('model.ytid')) {
-			this.get('model').updateProvider();
-		}
+		// if (!this.get('model.ytid')) {
+		// 	this.get('model').updateProvider();
+		// }
 	}),
 
 	// resetRemote: Ember.on('init', function() {

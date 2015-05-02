@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
 			this.get('model.channelPublic').then((channelPublic) => {
 
 				channelPublic.destroyRecord().then(() => {
-					console.log('destroyed public');
+					Ember.debug('destroyed public');
 
 					channel.destroyRecord().then(() => {
 						Ember.debug('destroyed channel');
@@ -39,7 +39,7 @@ export default Ember.Controller.extend({
 
 				// iterate
 				followers.forEach(function(follower) {
-					console.log('Found follower:');
+					Ember.debug('Found follower:');
 					Ember.debug(follower.get('title'));
 
 					// open
@@ -49,7 +49,7 @@ export default Ember.Controller.extend({
 						favs.removeObject(channel);
 						Ember.debug(favs.contains(channel));
 						follower.save().then(() => {
-							console.log('saved follower');
+							Ember.debug('saved follower');
 						});
 					});
 				});

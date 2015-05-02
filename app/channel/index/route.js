@@ -46,8 +46,7 @@ export default Ember.Route.extend({
 
 				// go through them
 				Ember.RSVP.all(requests).then((tracks) => {
-
-					console.log('adding first tracks');
+					Ember.debug('adding first tracks');
 
 					// might need an Ember.run wrap
 					model.addObjects(tracks);
@@ -57,7 +56,7 @@ export default Ember.Route.extend({
 
 						// load the rest
 						this.modelFor('channel').get('tracks').then((tracks) => {
-							console.log('adding all tracks');
+							Ember.debug('adding all tracks');
 							model.addObjects(tracks);
 						});
 					});
