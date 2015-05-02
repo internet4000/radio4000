@@ -37,9 +37,9 @@ export default DS.Model.extend({
 		return this.get('images.lastObject');
 	}),
 
-	// for the remote
-	listeningToTrack: DS.attr('string'),
-	listeningToChannel: DS.attr('string'),
+	// remote control
+	// listeningToTrack: DS.belongsTo('track', { async: true }),
+	// listeningToChannel: DS.belongsTo('channel', { async: true, inverse: null }),
 
 	// relationships
 	images: DS.hasMany('image', { async: true }),

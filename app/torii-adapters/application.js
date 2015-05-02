@@ -1,16 +1,16 @@
 import Ember from 'ember';
 
 export default Ember.Object.extend({
+
 	// creating a new authorization or authenticating a new session
 	open: function(authorization) {
 		Ember.debug('open');
 
-		// This is what should be done after authentication. As an example, I'm
-		// finding current user here.
+		// This is what should be done after authentication
 		let store = this.get('container').lookup('store:main');
 
 		return new Ember.RSVP.Promise((resolve) => {
-			return store.find('user', authorization.uid).then(function(user) {
+			return store.find('user', authorization.uid).then((user) => {
 
 				// we have a user, set it and channel
 				Ember.debug('open with user');
@@ -18,6 +18,7 @@ export default Ember.Object.extend({
 
 			}, () => {
 				// no user found, create one
+				Ember.debug('open without user');
 
 				// but first avoid this bug about unresolved record
 				store.recordForId('user', authorization.uid).unloadRecord();
@@ -28,7 +29,7 @@ export default Ember.Object.extend({
 					name: this._nameFor(authorization)
 				});
 
-				newUser.save().then(function(user) {
+				newUser.save().then((user) => {
 					Ember.run.bind(null, resolve({ currentUser: user }));
 				});
 			});

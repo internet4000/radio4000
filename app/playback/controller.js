@@ -60,17 +60,41 @@ export default Ember.Controller.extend({
 	// generates a ytid if the model doesn't have one already
 	// @todo: this should be removed when all tracks have an ytid
 	validateTrack: Ember.observer('model.ytid', function() {
+		console.log('validateTrack');
+
 		if (!this.get('model.ytid')) {
 			this.get('model').updateProvider();
 		}
 	}),
 
-	remoteOrder: Ember.observer('session.currentUser.channels.firstObject.listeningToTrack', function() {
-		console.log('remotely changed track');
+	// resetRemote: Ember.on('init', function() {
+	// 	let channel = this.get('session.currentUser.channels.firstObject');
+	// }),
 
-		var remoteTrackOrder = this.get('session.currentUser.channels.firstObject.listeningToTrack');
-		this.set('model', remoteTrackOrder);
-	}),
+	// // TODO: this should only be active if the user enabled "remote control" setting
+	// // (which doesn't exist yet)
+	// updateFromRemote: Ember.observer('session.currentUser.channels.firstObject.listeningToTrack', function() {
+
+	// 	if (!this.get('session.currentUser')) {
+	// 		Ember.warn('updated without user');
+	// 		return;
+	// 	}
+
+	// 	const channel = this.get('session.currentUser.channels.firstObject');
+	// 	const track = channel.get('listeningToTrack');
+
+	// 	Ember.debug(channel);
+	// 	Ember.debug(track);
+
+	// 	if (!track) {
+	// 		Ember.warn('updated without track');
+	// 		return;
+	// 	}
+
+	// 	console.log('remotely changed track');
+	// 	this.set('channel', channel);
+	// 	this.set('model', track);
+	// }),
 
 	// gets a random track
 	getRandomTrack() {

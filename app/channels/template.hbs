@@ -1,7 +1,6 @@
 <div class="NavigationTab">
 	{{#link-to 'channels.index' title="Discover channels" class="NavigationTab-item"}}Discover{{/link-to}}
 	{{#link-to 'channels.all' title="Discover channels" class="NavigationTab-item"}}All{{/link-to}}
-
 	{{#if session.currentUser.channels.firstObject}}
 		{{#link-to 'channel' session.currentUser.channels.firstObject title="Go to my radio" class="NavigationTab-item"}}
 			My radio

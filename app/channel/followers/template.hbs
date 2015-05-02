@@ -1,5 +1,8 @@
 {{#if model.channelPublic.followers}}
-	{{channels-list channels=model.channelPublic.followers}}
+	<div class="Container Section Section--messaging">
+		<p>{{model.channelPublic.followers.length}} followers.</p>
+	</div>
+	{{channels-list model=model.channelPublic.followers}}
 {{else}}
 	<div class="Container Section Section--messaging">
 		<p>This channel doesn't have any followers, yet.</p>

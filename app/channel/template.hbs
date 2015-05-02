@@ -10,14 +10,17 @@
 
 			<div class="Channel-body">
 
-				<span class="Follow Follow--title">
-					{{btn-favorite action="toggleFavorite" isFavorite=isFavorite}}
-				</span>
+				<div class="Channel-titleSection">
+					<span class="Follow Follow--title">
+						{{btn-favorite action="toggleFavorite" isFavorite=isFavorite}}
+					</span>
 
-				<h1 class="Channel-title">
-					{{#link-to 'channel' model}}{{model.title}}{{/link-to}}
-					<span class="Muted LastUpdate">(updated {{lastUpdatedFormatted}})</span>
-				</h1>
+					<h1 class="Channel-title">
+						{{#link-to 'channel' model}}{{model.title}}{{/link-to}}
+					</h1>
+
+					<p class="Muted LastUpdate">(updated {{lastUpdatedFormatted}})</p>
+				</div>
 
 				{{#if model.body}}
 					<p class="Channel-description">{{model.body}}</p>
@@ -44,7 +47,7 @@
 
 	<nav class="NavigationTab">
 		{{#link-to 'channel.index' class="NavigationTab-item" title="All tracks"}}
-			Tracks
+			{{model.tracks.length}} Tracks
 		{{/link-to}}
 		{{#link-to 'channel.favorites' class="NavigationTab-item" title="Favorites of this radio"}}
 			Favorites

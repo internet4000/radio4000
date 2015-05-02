@@ -1,4 +1,7 @@
 {{#if model.favoriteChannels}}
+	<div class="Container Section Section--messaging">
+		<p>{{model.favoriteChannels.length}} favorites.</p>
+	</div>
 	{{channels-list model=model.favoriteChannels}}
 {{else}}
 	<div class="Container Section Section--messaging">

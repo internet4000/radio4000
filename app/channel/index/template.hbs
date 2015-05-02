@@ -1,13 +1,13 @@
-{{tracks-list model=model
-				canEdit=canEdit
-				playback=controllers.playback
-				filter=tags}}
-
-{{#unless model}}
-	<div class="Container">
-		<p>Loading tracks…</p>
+{{#if model.length}}
+	{{tracks-list model=model
+					canEdit=canEdit
+					playback=controllers.playback
+					filter=tags}}
+{{else}}
+	<div class="Container Section--space">
+		<p>No tracks yet.</p>
 	</div>
-{{/unless}}
+{{/if}}
 
 {{!-- <div class="Container">
 	{{#if showHelp}}

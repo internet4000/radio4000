@@ -15,7 +15,6 @@ export default Ember.Controller.extend({
 		}
 	}),
 
-	// canEdit: Ember.computed.equal('model.id', 'session.currentUser.channels.firstObject.id'),
 	canEdit: Ember.computed('model', 'session.currentUser.channels.firstObject', function() {
 		const channel = this.get('model');
 		const userChannel = this.get('session.currentUser.channels.firstObject');

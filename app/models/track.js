@@ -9,8 +9,10 @@ export default DS.Model.extend({
 	created: DS.attr('number', {
 		defaultValue: function() { return new Date().getTime(); }
 	}),
-	channel: DS.belongsTo('channel', { async: true }),
 	ytid: DS.attr('string'),
+
+	// relationships
+	channel: DS.belongsTo('channel', { async: true, inverse: 'tracks' }),
 
 	// Returns a YouTube ID from an URL
 	// TODO: this should definitely be saved in the db

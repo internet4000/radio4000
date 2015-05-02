@@ -3,12 +3,11 @@
  */
 
 .Channel-media {
-	@include clearfix;
-	max-width: 10em;
-	width: 8em;
 	@media (min-width: $layout-s) {
+		@include clearfix;
 		float: left;
 		width: 30%;
+		max-width: 10em;
 		padding-right: 1.5rem;
 	}
 }
@@ -25,7 +24,7 @@
 	}
 }
 
-
+// .Channel-titleSection
 .Channel--detail {
 	position: relative;
 	z-index: 2; // above the player

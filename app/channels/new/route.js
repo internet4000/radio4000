@@ -2,11 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	beforeModel() {
+
+		// redirect if you're not authed
 		if (!this.get('session.isAuthenticated')) {
-			// redirect if you're not authed
 			this.transitionTo('signin');
+
 		} else if (this.get('session.currentUser.channels.firstObject')) {
-			// or already have a channel
+			Ember.debug('aready have channel');
 			this.transitionTo('channel', this.get('session.currentUser.channels.firstObject'));
 		}
 	},

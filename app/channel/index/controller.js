@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
 
 	// these are needed to pass some props down to tracks-list component
 	needs: ['channel', 'playback'],
-	canEdit: Ember.computed.alias('controllers.channel.canEdit'),
+	canEdit: Ember.computed.oneWay('controllers.channel.canEdit'),
 
 	// Helpers to show contextual UI helpers
 	hasImage: Ember.computed.notEmpty('model.coverImage')
