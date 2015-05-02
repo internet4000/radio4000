@@ -16,7 +16,7 @@ body {
 	@include clearfix;
 }
 .SiteMain {
-	margin-top: $barHeight;
+	margin-top: rem($barHeight);
 
 	> *:last-child {
 		margin-bottom: rem(200);

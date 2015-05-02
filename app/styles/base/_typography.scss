@@ -8,7 +8,7 @@ html {
 	line-height: $base-line-height;
 	font-size: 15px;
 	@media (min-width: $layout-m) { font-size: $base-font-size; }
-	@media (min-width: $layout-xl) { font-size: 18px; }
+	@media (min-width: $layout-xl) { font-size: 20px; }
 }
 strong,
 b {
@@ -26,7 +26,7 @@ label {
 }
 .Muted {
 	@include size-1;
-	color: $mediumgray;
+	color: $gray;
 
 	// inside h1 it needs to be pulled up a bit
 	h1 & {
