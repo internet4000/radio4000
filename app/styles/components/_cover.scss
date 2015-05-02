@@ -5,16 +5,6 @@ $cover-size: 190px;
 	// max-width: $cover-size;
 	text-align: left;
 
-	// hidden and centered loader
-	svg {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate3d(-50%,-50%,0);
-		opacity: 0;
-		transition: opacity 200ms;
-	}
-
 	// wrap link
 	> a {
 		display: block;
@@ -43,9 +33,18 @@ $cover-size: 190px;
 		height: 100%;
 	}
 }
+
+// hidden and centered svg loader
+.Cover-loader {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate3d(-50%,-50%,0);
+	opacity: 0;
+	transition: opacity 200ms;
+}
 .Cover-title {
 	margin-top: 0.5em;
-	// @extend %font-regular;
 }
 .Cover-button {
 	// reset button styles
@@ -55,18 +54,23 @@ $cover-size: 190px;
 	// centered
 	position: absolute;
 	z-index: 4;
-	font-size: 4rem;
-	top: 50%;
-	left: 50%;
-	transform: translate3d(-50%,-50%,0);
-	width: 60px;
-	height: 60px;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 	text-align: center;
-	line-height: 1.9;
 	color: hsl(0, 100%, 100%);
 
+	// toggle on hover
+	opacity: 0;
+	transition: opacity 200ms;
+	&:hover {
+		opacity: 1;
+	}
+
+	// icon inside
 	svg {
-		float: left;
+		font-size: 5rem;
 		transition: 300ms;
 	}
 

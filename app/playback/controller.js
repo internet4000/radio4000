@@ -59,9 +59,13 @@ export default Ember.Controller.extend({
 
 	// generates a ytid if the model doesn't have one already
 	// @todo: this should be removed when all tracks have an ytid
-	validateTrack: Ember.observer('model.ytid', function() {
+	validateTrack: Ember.observer('model', function() {
 		console.log('validateTrack');
 
+		if (!this.get('model')) {
+			Ember.debug('validating without model……');
+			return;
+		}
 		if (!this.get('model.ytid')) {
 			this.get('model').updateProvider();
 		}

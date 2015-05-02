@@ -6,10 +6,10 @@ export default Ember.Component.extend({
 	hideLink: false,
 	actions: {
 		play() {
-			this.transitionToRoute('track', this.get('model.tracks.lastObject'));
-		},
-		pause() {
-			this.get('playback.player').send('pause');
+			this.sendAction('play');
 		}
+		// ,pause() {
+		// 	this.get('playback.player').send('pause');
+		// }
 	}
 });

@@ -49,12 +49,7 @@ export default Ember.Controller.extend({
 
 	actions: {
 		play() {
-			// Either continues play or plays the newest e.g. last track
-			if (this.get('playback.model')) {
-				this.get('playback.player').send('play');
-			} else {
-				this.transitionToRoute('track', this.get('tracks.lastObject'));
-			}
+			this.transitionToRoute('track', this.get('model.tracks.lastObject'));
 		},
 
 		pause() {

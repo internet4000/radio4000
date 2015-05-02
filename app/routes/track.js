@@ -10,7 +10,6 @@ export default Ember.Route.extend({
 	setupController (controller, model) {
 		const channel = this.modelFor('channel');
 
-		// controller.set('content', model);
 		this.controllerFor('playback').setProperties({
 			model: model,
 			channel: channel

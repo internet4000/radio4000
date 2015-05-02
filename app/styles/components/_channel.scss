@@ -64,7 +64,7 @@
 	}
 }
 .Channel-title {
-	margin-bottom: 0.5rem;
+	margin-bottom: 0.2em;
 	@media (min-width: $layout-m) {
 		@include size-5;
 		max-width: 80%;
@@ -82,8 +82,9 @@
 }
 .Channel-links {
 	a {
-		color: $gray;
 		@include size-1;
+		word-wrap: break-word;
+		color: $gray;
 	}
 }
 .Channel-contextual {
