@@ -38,7 +38,8 @@ path {
 	stroke-width: 2;
 	transition: all 150ms $easing;
 }
-.icon-star {
+.icon-star,
+.icon-star path {
 	fill: $mediumgray;
 	stroke: $mediumgray;
 	// &:hover {
