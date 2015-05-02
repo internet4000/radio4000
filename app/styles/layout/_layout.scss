@@ -17,6 +17,13 @@ body {
 }
 .SiteMain {
 	margin-top: $barHeight;
+
+	> *:last-child {
+		margin-bottom: rem(200);
+		@media (min-width: $layout-s) {
+			margin-bottom: rem(270);
+		}
+	}
 }
 .SiteFooter {
 	background-color: darken($bg-color, 6%);

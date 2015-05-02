@@ -4,6 +4,7 @@
 	@include negative-text;
 	min-height: 100vh;
 	min-height: calc(100vh - 60px);
+	margin-bottom: 0;
 
 	background-color: #000;
 	// background-image: url('../images/bg-intro.jpg');

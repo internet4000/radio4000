@@ -28,7 +28,6 @@
 .Channel--detail {
 	position: relative;
 	z-index: 2; // above the player
-	margin-bottom: 20rem; // avoid player overlapping first track
 }
 .Channel-header {
 	background-color: $superlightgray;
