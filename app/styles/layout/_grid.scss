@@ -45,8 +45,12 @@
 			flex: 1 1 20%;
 			max-width: 20%;
 		}
-		// left-aligned grid
 		@media (min-width: $layout-xl) {
+			flex: 1 1 14.28%;
+			max-width: 14.28%;
+		}
+		// left-aligned grid
+		@media (min-width: $layout-xxl) {
 			flex: 0 1 12.5%;
 			max-width: 12.5%;
 		}

@@ -8,7 +8,7 @@ html {
 	line-height: $base-line-height;
 	font-size: 15px;
 	@media (min-width: $layout-m) { font-size: $base-font-size; }
-	@media (min-width: $layout-xl) { font-size: 20px; }
+	@media (min-width: $layout-xxl) { font-size: 19px; }
 }
 strong,
 b {
