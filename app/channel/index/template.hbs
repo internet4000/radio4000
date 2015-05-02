@@ -1,8 +1,5 @@
 {{#if model.length}}
-	{{tracks-list model=model
-					canEdit=canEdit
-					playback=controllers.playback
-					filter=tags}}
+	{{tracks-list model=filteredModel canEdit=canEdit playback=controllers.playback}}
 {{else}}
 	<div class="Container Section--space">
 		<p>No tracks yet.</p>
