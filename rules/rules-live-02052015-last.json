@@ -1,0 +1,58 @@
+{
+  "rules": {
+
+    // by default rules are false
+    // nested rules can not change rules above
+
+    "users": {
+      // no one can read user list
+      ".read": false,
+      ".write": false,
+
+      "$userID": {
+        // only auth user can read themselves
+        ".read": "$userID === auth.uid",
+        ".write": "(!data.exists() && auth === null) || (!newData.exists() && auth === null) || $userID === auth.uid"
+      }
+    },
+
+    "channels": {
+      ".indexOn": ["slug"], // this allows us to query by slug (normally it's only by ID)
+      ".read": true,
+      ".write": "auth != null", // todo: remove this when the below works
+
+      "$channelID": {
+        // ".write": "(auth.uid !== null && !data.exists() || !newData.exists()) || data.child('user').val() === auth.uid"
+        //".write": "auth.uid !== null && 1data.child('user').val() === auth.uid || !data.exists()"
+        //".write": "root.child('users/' + auth.uid + '/channels').val() === $channelID"
+
+        // Allow write if the auth user has a channel equal to the one we're trying to write here
+        //".write": "root.child('users/' + auth.uid + '/channels').child($channelID).exists()"
+      }
+    },
+
+    "tracks": {
+      ".read": true,
+      ".write": true, // otherwise we can't update ytid dynamically
+
+      //".write": "auth != null", // todo: remove this when the below works
+      "$trackID": {
+        //".write": "!data.exists() || root.child('users/' + auth.uid + '/channels').val().contains(data.child('channel').val())"
+        // todo: here we need to allow write if track.channel.user === auth.uid
+        // ".write": "!data.exists() || !newData.exists() || data.child('user').val() === auth.uid"
+
+        // Allows write if there is no prev data OR
+        // if the 'channel' property is the same channel as the one in auth user
+        //".write": "!newData.exists() || root.child('users/' + auth.uid + '/channels').child( newData.child('channel').val()  ).exists()"// || root.child('users/' + auth.uid + '/channels').child( data.child('channel').val()  ).exists()"
+      }
+    },
+
+    "images": {
+      ".read": true,
+      ".write": "auth != null", // todo: remove this when the below works
+      "$imageID": {
+        // todo: here we need to allow write if $imageID.child('channel').val() === auth.uid
+      }
+    }
+  }
+}
