@@ -2,9 +2,32 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
+	actions: {
+		deleteChannel() {
+			const channel = this.get('model');
+
+			this.deleteFavorites();
+			this.deleteUserRelationship();
+
+			// open public
+			this.get('model.channelPublic').then((channelPublic) => {
+
+				channelPublic.destroyRecord().then(() => {
+					console.log('destroyed public');
+
+					channel.destroyRecord().then(() => {
+						Ember.debug('destroyed channel');
+						this.transitionToRoute('channels.new');
+						// this.set('session.currentUser.channels.firstObject', null);
+					});
+				});
+			});
+		}
+	},
+
 	// Deletes all references of this channel on its followers' favorite channels
 	deleteFavorites() {
-		var channel = this.get('model');
+		const channel = this.get('model');
 
 		// open
 		this.get('model.channelPublic').then((channelPublic) => {
@@ -36,8 +59,8 @@ export default Ember.Controller.extend({
 
 	// Delete this channel on the session user
 	deleteUserRelationship() {
-		var channel = this.get('model');
-		var user = this.get('session.currentUser');
+		const channel = this.get('model');
+		const user = this.get('session.currentUser');
 
 		user.get('channels').then((channels) => {
 			channels.removeObject(channel);
@@ -45,30 +68,5 @@ export default Ember.Controller.extend({
 				Ember.debug('Removed channel on user');
 			});
 		});
-	},
-
-	actions: {
-
-		// Deletes the channel (definitive)
-		deleteChannel() {
-			var channel = this.get('model');
-
-			this.deleteFavorites();
-			this.deleteUserRelationship();
-
-			// open public
-			this.get('model.channelPublic').then((channelPublic) => {
-
-				channelPublic.destroyRecord().then(() => {
-					console.log('destroyed public');
-
-					channel.destroyRecord().then(() => {
-						Ember.debug('destroyed channel');
-						this.transitionToRoute('channels.new');
-						// this.set('session.currentUser.channels.firstObject', null);
-					});
-				});
-			});
-		}
 	}
 });

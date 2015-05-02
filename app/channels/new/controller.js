@@ -9,15 +9,15 @@ export default Ember.Controller.extend({
 	titleError: false,
 
 	cleanSlug: Ember.computed('model.title', function() {
-		var title = this.get('model.title');
+		const title = this.get('model.title');
 		return clean(title) + '-' + randomText();
 	}),
 
 	titleSize: Ember.computed('model.title', function() {
 		// check channel.title.length, if not in our size limit, return NOPE
-		var titleLength = this.get('model.title.length');
-		var tooLong = titleLength >= this.get('titleMaxLength');
-		var tooShort = titleLength <= this.get('titleMinLength');
+		const titleLength = this.get('model.title.length');
+		const tooLong = titleLength >= this.get('titleMaxLength');
+		const tooShort = titleLength < this.get('titleMinLength');
 
 		if (tooLong) {
 			Ember.debug("Title is too long");
