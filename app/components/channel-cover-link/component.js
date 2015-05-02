@@ -1,15 +1,4 @@
 import Ember from 'ember';
+import ChannelCoverComponent from 'radio4000/components/channel-cover/component';
 
-export default Ember.Component.extend({
-	classNames: ['Cover'],
-	hideTitle: false,
-	hideLink: false,
-	actions: {
-		play() {
-			this.transitionToRoute('track', this.get('model.tracks.lastObject'));
-		},
-		pause() {
-			this.get('playback.player').send('pause');
-		}
-	}
-});
+export default ChannelCoverComponent.extend({});
