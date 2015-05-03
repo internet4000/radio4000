@@ -9,7 +9,13 @@ export default Ember.Component.extend({
 
 	isCurrent: Ember.computed('playback.model', 'track', function() {
 		return this.get('playback.model') === this.get('track');
-	})
+	}),
+
+	actions: {
+		edit() {
+			this.sendAction('edit', this.get('track'));
+		}
+	}
 
 	// isEditing: Ember.computed('currentTrackComponent', 'elementId', function() {
 	// 	return this.get('currentTrackComponent') === this.get('elementId');

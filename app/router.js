@@ -33,8 +33,6 @@ export default Router.map(function() {
 	this.resource('channel', { path: '/c/:slug' }, function() {
 		this.route('index', { path: '/' }, function() {
 			this.resource('track', { path: ':track_id' });
-			// not nested because it's rendered in a modal
-			this.route('edit-track', { path: '/edit-track/:id' });
 		});
 		this.route('favorites');
 		this.route('followers');

@@ -2,23 +2,6 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 
-	// beforeModel() {
-	// 	let channel = this.modelFor('channel');
-	// 	// let tracks = channel.get('tracks.isLoaded');
-
-
-	// 	// let isCached = this.store.getById('channel', channel.get('id'));
-	// 	// .get('tracks');
-	// 	// console.log(tracks);
-	// 	// console.log(tracks.get('length'));
-	// 	// console.log(tracks.get('isLoaded'));
-
-	// 	// Ember.debug(isCached.get('tracks'));
-	// 	// Ember.debug(isCached.get('tracks.firstObject'));
-	// 	// Ember.debug(isCached.get('tracks.lastObject'));
-	// 	// this.set('isCached', isCached);
-	// },
-
 	// we don't return the promise which in turn
 	// renders the template immediately (faster yay!)
 	model() {
@@ -31,31 +14,31 @@ export default Ember.Route.extend({
 		// return items;
 
 		// b) NORMAL MODEL (but really slow rendering)
-		return this.modelFor('channel').get('tracks');
+		// return this.modelFor('channel').get('tracks');
 
 		// c) FAST HACKY (smart) METHOD
-	// 	let model = Ember.A([]);
+		let model = Ember.A([]);
 
-	// 	this.getFirstTracks(model, 50).then((tracks) => {
+		this.getFirstTracks(model, 50).then((tracks) => {
 
-	// 		// might need an Ember.run wrap
-	// 		Ember.run.schedule('render', () => {
-	// 			Ember.debug('adding first tracks');
-	// 			model.addObjects(tracks);
-	// 		});
+			// might need an Ember.run wrap
+			Ember.run.schedule('render', () => {
+				Ember.debug('adding first tracks');
+				model.addObjects(tracks);
+			});
 
-	// 		// without this run loop, it runs before the first tracks are rendeed
-	// 		Ember.run.later(() => {
-	// 			this.modelFor('channel').get('tracks').then((tracks) => {
-	// 				Ember.debug('adding all tracks');
-	// 				model.addObjects(tracks);
-	// 			});
-	// 		});
-	// 	}, (error) => {
-	// 		Ember.debug(error);
-	// 	});
+			// without this run loop, it runs before the first tracks are rendeed
+			Ember.run.later(() => {
+				this.modelFor('channel').get('tracks').then((tracks) => {
+					Ember.debug('adding all tracks');
+					model.addObjects(tracks);
+				});
+			});
+		}, (error) => {
+			Ember.debug(error);
+		});
 
-	// 	return model;
+		return model;
 	},
 
 	// finds the last, limited models to improve initial render times
