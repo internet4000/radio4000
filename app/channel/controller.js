@@ -4,23 +4,23 @@ export default Ember.Controller.extend({
 	needs: ['playback'],
 	playback: Ember.computed.alias('controllers.playback'),
 
-	lastUpdatedFormatted: Ember.computed('model.tracks.@each.created', function() {
-		const date = this.get('model.tracks.lastObject.created');
+	// lastUpdatedFormatted: Ember.computed('model.tracks.@each.created', function() {
+	// 	const date = this.get('model.tracks.lastObject.created');
 
-		// only the channel owner can see the exact time (privacy)
-		if (this.get('canEdit')) {
-			return window.moment(date).fromNow();
-		} else {
-			return window.moment(date).subtract(1, 'days').fromNow();
-		}
-	}),
+	// 	// only the channel owner can see the exact time (privacy)
+	// 	if (this.get('canEdit')) {
+	// 		return window.moment(date).fromNow();
+	// 	} else {
+	// 		return window.moment(date).subtract(1, 'days').fromNow();
+	// 	}
+	// }),
 
 	canEdit: Ember.computed('model', 'session.currentUser.channels.firstObject', function() {
 		const channel = this.get('model');
 		const userChannel = this.get('session.currentUser.channels.firstObject');
 
-		Ember.debug(channel);
-		Ember.debug(userChannel);
+		// Ember.debug(channel);
+		// Ember.debug(userChannel);
 
 		// first avoid both props being null === null which equals true (lol)
 		if (channel === null || userChannel === null || userChannel === undefined) {
@@ -29,9 +29,9 @@ export default Ember.Controller.extend({
 		}
 
 		// then check
-		Ember.debug('checking canEdit');
 		const canEdit = (channel.get('id') === userChannel.get('id'));
-		Ember.debug(canEdit);
+		// Ember.debug('checking canEdit');
+		// Ember.debug(canEdit);
 
 		return canEdit;
 	}),
