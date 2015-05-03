@@ -2,17 +2,20 @@
  * List (only allows one single link in each <li>)
  */
 
-.List {
+.List,
+.ember-list-view {
 	list-style: none;
 	padding-left: 0;
 
-	li {
+	li,
+	.ember-list-item-view {
 		border-bottom: 1px solid $mediumlightgray;
 		line-height: normal;
 		&:before {
 			display: none;
 		}
 	}
+
 	h3,
 	p {
 		margin: 0;
@@ -31,6 +34,7 @@
 			padding-right: 2rem;
 		}
 	}
+
 	a,
 	li {
 		&:hover {
@@ -56,8 +60,6 @@
 	}
 }
 
-
-
 .List-title {
 	small {
 		@extend %font-mono;
@@ -70,10 +72,24 @@
 	color: $text-color;
 }
 
-
 // Smaller lists (good for long text)
 .SmallerList {
 	li {
 		@include size-1;
+	}
+}
+
+
+.ember-list-view {
+	overflow: auto;
+	position: relative;
+}
+.ember-list-item-view {
+	position: absolute;
+	width: 100%;
+
+	.Track-link {
+		display: block;
+		// min-height: 56px;
 	}
 }
