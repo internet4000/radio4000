@@ -155,23 +155,22 @@ input[type='file'] {
 }
 
 .EditTrack {
-	margin-bottom: 0;
-	padding-top: 1rem;
-	padding-left: 1rem;
-	padding-right: 1rem;
-	padding-bottom: 0;
-	background-color: $superlightgray;
-	border-left: 5px solid transparent; // so it rightly aligned with the tracks and their active borderbar
-
-	@media (min-width: $layout-s) {
-		padding-left: 2rem;
-		padding-right: 2rem;
+	.ember-modal-dialog & {
+		width: 500px;
+		max-width: 100%;
+		margin-bottom: 0;
 	}
 }
 .Form-group label input {
 	@extend %font-regular;
 }
 
+
+.ember-modal-dialog {
+	padding: 2rem 1rem 0.5rem;
+	border-radius: $border-radius;
+	box-shadow: -4px 4px 12px rgba(88, 88, 88, 0.25);
+}
 // /**
 //  * Form playlist slug
 //  */

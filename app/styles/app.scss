@@ -3,6 +3,10 @@
 	by Hugo Vieilledent and Oskar Rough Mosumgaard
 */
 
+// third party
+@import 'ember-modal-dialog/ember-modal-structure';
+@import 'ember-modal-dialog/ember-modal-appearance';
+
 // 1. Utilities (mixins and functions)
 @import 'utilities/align';
 @import 'utilities/clearfix';

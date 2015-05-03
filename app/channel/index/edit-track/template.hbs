@@ -1,0 +1,40 @@
+{{!-- {{#if isShowingModal}}
+	{{#modal-dialog alignment='center' translucentOverlay=true}}
+		<p>This is our modal</p>
+	{{/modal-dialog}}
+{{/if}} --}}
+
+{{#modal-dialog alignment='center' translucentOverlay=true}}
+	<form class="Form EditTrack" {{action "saveTrack" on="submit"}}>
+		<div class="Form-group">
+			<label>URL
+				{{input type="url" placeholder="Copy in a YouTube URL" value=model.url required="required"}}
+			</label>
+		</div>
+		<div class="Form-group">
+			<label>Title
+				{{focus-input value=model.title placeholder="Title" required="required"}}
+			</label>
+		</div>
+		<div class="Form-group">
+			<label>Description
+				{{input type="text" value=model.body placeholder="Description"}}
+			</label>
+		</div>
+		<div class="Form-group">
+			<button type="submit" class="Btn Btn--primary" title="Save the track">
+				Save track
+			</button>
+			{{#link-to 'channel.index' model.channel class="Btn Btn--text"}}
+				{{!-- <button class="Btn Btn--text" {{action 'cancelEdit' title="Cancel editing the track"}}> --}}
+				Cancel
+				{{!-- </button> --}}
+			{{/link-to}}
+			<button class="Btn Btn--text Btn--danger u-alignRight" {{action 'deleteTrack' title="Delete this track from your radio"}}>
+				Delete
+			</button>
+		</div>
+	</form>
+{{/modal-dialog}}
+
+{{outlet}}

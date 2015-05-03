@@ -84,9 +84,3 @@ a.Track-link { // Link surrounding the track
 		display: none;
 	}
 }
-.EditTrack {
-	display: none;
-	.Track.is-editing & {
-		display: block;
-	}
-}

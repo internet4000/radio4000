@@ -6,39 +6,12 @@
 	{{#if track.body}}<p class="Track-description">{{track.body}}</p>{{/if}}
 {{/link-to}}
 
-{{#if canEdit}}
-	<p class="Track-controls" {{action 'edit'}} title="Edit the track">
+{{!-- {{#if canEdit}} --}}
+<p class="Track-controls" title="Edit the track">
+	{{#link-to 'channel.index.edit-track' track}}
 		{{x-icon i="pencil"}}
-	</p>
+	{{/link-to}}
+</p>
+{{!-- {{/if}} --}}
 
-	<form class="Form EditTrack" {{action "saveTrack" on="submit"}}>
-		<div class="Form-group">
-			<label>URL
-				{{input type="url" placeholder="Copy in a YouTube URL" value=track.url required="required"}}
-			</label>
-		</div>
-		<div class="Form-group">
-			<label>Title
-				{{focus-input value=track.title placeholder="Title" required="required"}}
-			</label>
-		</div>
-		<div class="Form-group">
-			<label>Description
-				{{input type="text" value=track.body placeholder="Description"}}
-			</label>
-		</div>
-		<div class="Form-group">
-			<button type="submit" class="Btn Btn--primary" title="Save the track">
-				Save track
-			</button>
-			<button class="Btn Btn--text" {{action 'cancelEdit' title="Cancel editing the track"}}>
-				Cancel
-			</button>
-			<button class="Btn Btn--text Btn--danger u-alignRight" {{action 'deleteTrack' title="Delete this track from your radio"}}>
-				Delete
-			</button>
-		</div>
-	</form>
-{{/if}}
-
-{{outlet}}
+{{!-- {{outlet}} --}}
