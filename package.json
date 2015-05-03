@@ -36,7 +36,6 @@
     "ember-export-application-global": "^1.0.2",
     "ember-list-view": "0.0.6",
     "ember-modal-dialog": "0.5.0",
-    "ember-suave": "0.1.8",
     "gulp": "^3.8.11",
     "gulp-atom-shell": "^0.9.0",
     "install": "^0.1.8",
