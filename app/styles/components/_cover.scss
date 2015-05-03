@@ -64,7 +64,8 @@ $cover-size: 190px;
 	// toggle on hover
 	opacity: 0;
 	transition: opacity 200ms;
-	&:hover {
+	&:hover,
+	&:focus {
 		opacity: 1;
 	}
 
@@ -82,54 +83,3 @@ $cover-size: 190px;
 		cursor: default;
 	}
 }
-
-// .EditImage {
-// 	position: absolute;
-// 	z-index: 2; // above thumbnail button
-// 	height: 100%;
-// 	width: 200px;
-// 	margin-bottom: 0;
-
-// 	&.is-editingImage {
-// 		.Form {
-// 			background-color: rgba($white, 0.8);
-// 			opacity: 1;
-// 			transform: translateX(0);
-// 		}
-// 		.Form-group {
-// 			opacity: 1;
-// 		}
-// 	}
-
-// 	.Form {
-// 		transition: background-color 200ms, transform 300ms;
-// 		padding: 1rem 1rem 0;
-// 		transform: translateX(-100%);
-// 	}
-// 	.Form-group {
-// 		opacity: 0;
-// 		transition: opacity 300ms 300ms;
-// 		&:last-child {
-// 			transition-delay: 350ms;
-// 		}
-// 	}
-// }
-// .EditImage-btn {
-// 	background: none;
-// 	border: 0;
-// 	font-size: 2rem;
-// 	padding: 0.8rem;
-// 	color: $white;
-// 	// only show edit image button on hover
-// 	transition: opacity 300ms, transform 400ms $easing;
-// 	opacity: 0.4;
-// 	transform-origin: 50%;
-// 	transform: scale(0.95);
-// 	&:hover {
-// 		opacity: 1;
-// 		transform: scale(1);
-// 	}
-// 	&:focus {
-// 		outline: 0;
-// 	}
-// }
