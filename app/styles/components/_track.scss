@@ -45,6 +45,11 @@ a.Track-link { // Link surrounding the track
 	padding: 0.75rem 1.5rem em(3,13) 0.5rem;
 	margin: 0;
 
+	// only show for users who can edit
+	// this is to avoid an if
+	display: none;
+	.canEdit & { display: block; }
+
 	.icon-pencil {
 		color: $mediumgray;
 		.Track:hover & {

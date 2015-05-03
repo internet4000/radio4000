@@ -3,14 +3,14 @@
 	<h3 class="Track-title">
 		{{track.title}}
 	</h3>
-	{{#if track.body}}<p class="Track-description">{{track.body}}</p>{{/if}}
+	{{!-- {{#if track.body}}<p class="Track-description">{{track.body}}</p>{{/if}} --}}
 {{/link-to}}
 
-{{#if canEdit}}
-	<p class="Track-controls" {{action 'edit'}} title="Edit the track">
-		{{x-icon i="pencil"}}
-	</p>
+<p class="Track-controls" {{action 'edit'}} title="Edit the track">
+	{{x-icon i="pencil"}}
+</p>
 
+{{#if canEdit}}
 	<form class="Form EditTrack" {{action "saveTrack" on="submit"}}>
 		<div class="Form-group">
 			<label>URL
