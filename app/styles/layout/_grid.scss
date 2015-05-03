@@ -5,21 +5,49 @@
 	// because items have gutters on both sides
 	margin-left: -0.5rem;
 	margin-right: -0.5rem;
-
-	// todo: refactor
-	.Subtitle {
-		margin-bottom: 0.5rem;
+	@media (min-width: $layout-m) {
+		margin-left: -0.75rem;
+		margin-right: -0.75rem;
 	}
 
 	.Cover {
-		flex: 1 1 50%;
+		flex: 0 1 50%;
 		padding-left: 0.5rem;
 		padding-right: 0.5rem;
 		margin-bottom: 1em;
 
+		// bigger version
+		@media (min-width: $layout-m) {
+			padding-left: 0.75rem;
+			padding-right: 0.75rem;
+			margin-bottom: 1.5em;
+		}
+
+		// edge-to-edge grid (also max-width for crossbrowser support)
+		@media (min-width: $layout-sm) {
+			flex-basis: 33%;
+			.no-flexbox & { max-width: 33%; }
+		}
+		@media (min-width: $layout-l) {
+			flex-basis: 25%;
+			.no-flexbox & { max-width: 25%; }
+		}
+		@media (min-width: $layout-xl) {
+			flex-basis: 20%;
+			.no-flexbox & { max-width: 20%; }
+		}
+		@media (min-width: $layout-xxl) {
+			flex-basis: 14.28%;
+			.no-flexbox & { max-width: 14.28%; }
+		}
+		// @media (min-width: $layout-xxl) {
+		// 	flex-basis: 12.5%;
+		// 	.no-flexbox & { max-width: 12.5%; }
+		// }
+
 		// card style
 		a {
-			background-color: white;
+			background-color: $white;
 			padding-bottom: 0.5em;
 		}
 		.Cover-img {
@@ -29,30 +57,10 @@
 			padding-left: 0.5em;
 			padding-right: 0.5em;
 			word-break: break-word;
-		}
 
-
-		// edge-to-edge grid
-		@media (min-width: $layout-s) {
-			flex: 1 1 33%;
-			max-width: 33%;
-		}
-		@media (min-width: $layout-m) {
-			flex: 1 1 25%;
-			max-width: 25%;
-		}
-		@media (min-width: $layout-ml) {
-			flex: 1 1 20%;
-			max-width: 20%;
-		}
-		@media (min-width: $layout-xl) {
-			flex: 1 1 14.28%;
-			max-width: 14.28%;
-		}
-		// left-aligned grid
-		@media (min-width: $layout-xxl) {
-			flex: 0 1 12.5%;
-			max-width: 12.5%;
+			@media (min-width: $layout-m) {
+				padding-left: 1em;
+			}
 		}
 	}
 }
@@ -83,8 +91,6 @@
 	}
 }
 
-
-
 .Flex {
 	display: flex;
 	flex-flow: row wrap;
@@ -102,7 +108,6 @@
 .Flex--single {
 	flex-flow: row nowrap;
 }
-
 
 .FlexRow {
 	display: flex;
