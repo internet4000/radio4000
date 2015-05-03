@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
 
 	// these are needed to pass some props down to tracks-list component
 	needs: ['channel', 'playback'],
-	canEdit: Ember.computed.oneWay('controllers.channel.canEdit'),
+	// canEdit: Ember.computed.alias('controllers.channel.canEdit'),
 
 	// Helpers to show contextual UI helpers
 	hasImage: Ember.computed.notEmpty('model.coverImage'),
@@ -13,8 +13,11 @@ export default Ember.Controller.extend({
 	// todo remove this
 	// it's only needed because of our model hook which doesn't update deleted tracks
 	filteredModel: Ember.computed.filter('model.@each.isDeleted', function(item) {
-		return !item.get('isDeleted');
-	})
+		return true;// !item.get('isDeleted');
+	}),
+
+	sortProperties: ['created:desc'],
+	sortedModel: Ember.computed.sort('model', 'sortProperties')
 
 	// noTracks: Ember.computed.equal('model.tracks.length', 0),
 	// oneTrack: Ember.computed.equal('model.tracks.length', 1),
