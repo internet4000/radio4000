@@ -5,7 +5,7 @@ export default function randomText() {
 	const maxLength = 4;
 	let text = '';
 
-	for (let i=0; i<maxLength; i++) {
+	for (let i = 0; i < maxLength; i++) {
 		text += chars.charAt(Math.floor(Math.random() * chars.length));
 	}
 

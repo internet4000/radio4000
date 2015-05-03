@@ -16,7 +16,7 @@ export default DS.Model.extend({
 	isFeatured: DS.attr('boolean'),
 	link: DS.attr('string'),
 	created: DS.attr('number', {
-		defaultValue: function() { return new Date().getTime(); }
+		defaultValue() { return new Date().getTime(); }
 	}),
 
 	// // dates

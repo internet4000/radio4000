@@ -9,7 +9,8 @@ export default Ember.Component.extend({
 	// Updates our results with YouTube videos from a query string
 	findAll: Ember.observer('query', function() {
 		let query = this.get('query');
-		let endpoint = 'http://gdata.youtube.com/feeds/api/videos?q=' + encodeURIComponent(query) + '&format=5&max-results=5&v=2&alt=jsonc';
+		let url = encodeURIComponent(query);
+		let endpoint = `http://gdata.youtube.com/feeds/api/videos?q=${url}&format=5&max-results=5&v=2&alt=jsonc`;
 
 		// guard being called too early
 		if (!query) {

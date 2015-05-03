@@ -1,6 +1,5 @@
 export default function() {
 
-
 	// REMEMBER
 	//  to add liquid-fire to package.json so the scripts get loaded
 

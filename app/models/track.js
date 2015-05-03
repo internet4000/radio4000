@@ -7,7 +7,7 @@ export default DS.Model.extend({
 	title: DS.attr('string'),
 	body: DS.attr('string'),
 	created: DS.attr('number', {
-		defaultValue: function() { return new Date().getTime(); }
+		defaultValue() { return new Date().getTime(); }
 	}),
 	ytid: DS.attr('string'),
 

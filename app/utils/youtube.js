@@ -20,8 +20,7 @@ export default function youtube(url) {
 			 // have the real query string URI encoded behind a ';'.
 			 // at this point, `id is 'pxa6goHqzaA;u=%2Fwatch%3Fv%3DdPdgx30w9sU%26feature%3Dshare'
 			 let uriComponent = decodeURIComponent(id.split(';')[1]);
-			 id = ('http://youtube.com' + uriComponent)
-						.replace(youTubeRegexp, '$1');
+			 id = (`http://youtube.com${uriComponent}`).replace(youTubeRegexp, '$1');
 		} else {
 
 			 // https://www.youtube.com/watch?v=VbNF9X1waSc&amp;feature=youtu.be
