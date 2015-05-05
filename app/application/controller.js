@@ -19,6 +19,10 @@ export default Ember.Controller.extend({
 		// },
 		togglePanel() {
 			this.toggleProperty('isPanelOpen');
+		},
+
+		activateRemote() {
+			console.log('remote activated');
 		}
 	}
 });

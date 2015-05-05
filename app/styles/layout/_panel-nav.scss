@@ -2,7 +2,6 @@
  * Site Panel Nav
  **/
 
-.PanelNav {}
 .PanelNav-inner {
 	position: fixed;
 	top: 0.5em;
@@ -67,6 +66,31 @@
 	border-top: 1px solid $mediumlightgray;
 	&:first-of-type {
 		border-top: 0;
+	}
+}
+
+
+/**
+ * Remote control checkbox (radio in fact), that activates the remote fn
+ **/
+
+.CheckboxRemote {
+	padding: 0;
+	margin-bottom: 0;
+	label {
+		@extend %font-regular;
+		padding-left: 3em;
+		padding-right: 1em;
+		padding-bottom: 0; // reset
+		position: relative;
+		cursor: pointer;
+	}
+	input {
+		margin-bottom: 0;
+		position: absolute;
+		left: 1.4em;
+		top: 50%;
+		transform: translateY(-50%);
 	}
 }
 
