@@ -8,7 +8,7 @@ export default Ember.Route.extend({
 
 		// a) FOR TESTING EMBER-LIST-VIEW
 		// let items = [];
-		// for (var i = 0; i < 40; i++) {
+		// for (var i = 0; i < 41; i++) {
 		// 	items.push({ title: `Item ${i}` });
 		// }
 		// return items;
