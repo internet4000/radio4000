@@ -1,15 +1,15 @@
 {{#link-to 'track' track class="Track-link"}}
-	{{!-- {{x-icon i="play"}} --}}
 	<h3 class="Track-title">
 		{{track.title}}
 	</h3>
-	{{!-- {{#if track.body}}<p class="Track-description">{{track.body}}</p>{{/if}} --}}
+	{{#if track.body}}<p class="Track-description">{{track.body}}</p>{{/if}}
 {{/link-to}}
 
 {{!-- {{#if canEdit}} --}}
 <p class="Track-controls" title="Edit the track" {{action 'edit'}}>
-	{{x-icon i="pencil"}}
+	Edit
+	{{!-- {{x-icon i="pencil"}} --}}
 </p>
 {{!-- {{/if}} --}}
 
-{{outlet}}
+{{!-- {{outlet}} --}}
