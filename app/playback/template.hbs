@@ -1,4 +1,4 @@
-<div {{bind-attr class=":Player model::is-hidden isMaximized"}}>
+<div class="Player {{if model '' 'is-hidden'}} {{if isMaximized 'is-maximized'}}">
 	{{ember-youtube ytid=model.ytid name=player
 		playing="ytPlaying"
 		paused="ytPaused"
@@ -6,7 +6,7 @@
 		error="ytError"}}
 </div>
 
-<div {{bind-attr class=":Bar :Bar--bottom :Playback model::is-hidden"}}>
+<div class="Playback Bar Bar--bottom {{if model '' 'is-hidden'}}">
 	<div class="Playback-title" title="Current track / go to current radio">
 		{{#link-to 'channel' model.channel}}
 			{{model.title}} <span class="Playback-channel">({{channel.title}})</span>
@@ -14,7 +14,9 @@
 	</div>
 
 	<div class="Playback-buttons">
-		<label {{bind-attr class=":Playback-shuffle :Btn :Btn--text isShuffled:is-active"}} for="isShuffled" title="Toggle shuffle playback">{{x-icon i='shuffle'}}</label>
+		<label class="Playback-shuffle Btn Btn--text {{if isShuffled 'is-active'}}" for="isShuffled" title="Toggle shuffle playback">
+			{{x-icon i='shuffle'}}
+		</label>
 		{{input type="checkbox" id="isShuffled" checked=isShuffled class="is-hidden"}}
 		<button class="Btn Btn--text" {{action 'prev' model}} title="Previous track">
 			{{x-icon i='previous'}}

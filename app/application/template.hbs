@@ -1,47 +1,45 @@
-<div {{bind-attr class=":BreadAndCheese isMaximized isPanelOpen:is-panelOpen"}}>
-	<header class="SiteHeader">
-		<div class="Bar Bar--top">
+<header class="SiteHeader">
+	<div class="Bar Bar--top">
 
-			{{!-- {{#link-to "channels" class="BackArrow"  title="Back to Discover"}}&larr;{{/link-to}} --}}
-			<h1 class="SiteLogo">
-				<!-- <a href="#" {{action 'back'}}></a> -->
-				{{#link-to "channels" title="Back to Discover"}}
-					<img src="images/logos/logo-radio4000.png" alt="Radio4000">
-				{{/link-to}}
-			</h1>
+		{{!-- {{#link-to "channels" class="BackArrow"  title="Back to Discover"}}&larr;{{/link-to}} --}}
+		<h1 class="SiteLogo">
+			<!-- <a href="#" {{action 'back'}}></a> -->
+			{{#link-to "channels" title="Back to Discover"}}
+				<img src="images/logos/logo-radio4000.png" alt="Radio4000">
+			{{/link-to}}
+		</h1>
 
-			<div class="ContextualNavigation">
-				{{!-- {{outlet "contextual-navigation"}} --}}
-				{{#if session.isAuthenticated}}
-					{{#if session.currentUser.channels.firstObject}}
-						{{#link-to 'channel.add' session.currentUser.channels.firstObject class="ContextualNavigation-addTrack" title="Add track"}}
-							{{x-icon i="plus" title="Add track"}} <span>Add</span> <span>track</span>
-						{{/link-to}}
-					{{/if}}
-				{{else}}
-					{{#link-to 'signin'}}Register or sign in{{/link-to}}
+		<div class="ContextualNavigation">
+			{{!-- {{outlet "contextual-navigation"}} --}}
+			{{#if session.isAuthenticated}}
+				{{#if session.currentUser.channels.firstObject}}
+					{{#link-to 'channel.add' session.currentUser.channels.firstObject class="ContextualNavigation-addTrack" title="Add track"}}
+						{{x-icon i="plus" title="Add track"}} <span>Add</span> <span>track</span>
+					{{/link-to}}
 				{{/if}}
+			{{else}}
+				{{#link-to 'signin'}}Register or sign in{{/link-to}}
+			{{/if}}
 
-				<button class="TogglePanel" title="Menu" {{action "togglePanel"}}>
-					<span class="TogglePanel-square"></span>
-					<span class="TogglePanel-square"></span>
-					<span class="TogglePanel-square"></span>
-				</button>
-			</div>
+			<button class="TogglePanel" title="Menu" {{action "togglePanel"}}>
+				<span class="TogglePanel-square"></span>
+				<span class="TogglePanel-square"></span>
+				<span class="TogglePanel-square"></span>
+			</button>
 		</div>
+	</div>
 
-		{{partial 'partials/panel-nav'}}
-	</header>
+	{{partial 'partials/panel-nav'}}
+</header>
 
-	<main class="SiteMain">
-		{{#if-ios}}
-			<div class="Note Note--full">
-				<p>We're sorry but because your iOS device doesn't support autoplay Radio4000 can't work properly.</p>
-			</div>
-		{{/if-ios}}
+<main class="SiteMain">
+	{{#if-ios}}
+		<div class="Note Note--full">
+			<p>We're sorry but because your iOS device doesn't support autoplay Radio4000 can't work properly.</p>
+		</div>
+	{{/if-ios}}
 
-		{{outlet}}
-	</main>
+	{{outlet}}
+</main>
 
-	{{render 'playback'}}
-</div>
+{{render 'playback'}}
