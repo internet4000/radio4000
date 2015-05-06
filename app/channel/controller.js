@@ -49,6 +49,7 @@ export default Ember.Controller.extend({
 
 	actions: {
 		play() {
+			Ember.debug('transitioning to newest track');
 			this.transitionToRoute('track', this.get('model.tracks.lastObject'));
 		},
 
@@ -60,6 +61,7 @@ export default Ember.Controller.extend({
 			const userChannel = this.get('session.currentUser.channels.firstObject');
 
 			if (!userChannel) {
+				Ember.debug('no user channel - transitioning to sigin');
 				this.transitionToRoute('signin');
 				return false;
 			}
