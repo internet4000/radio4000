@@ -1,0 +1,15 @@
+// These styles are a bit funky but required to make it work
+// (yes we have to declare each selector by its own)
+progress {
+	height: 8px;
+	background-color: hsla(0, 100%, 100%, 0.05);
+}
+progress::-webkit-progress-bar {
+	background-color: hsla(0, 100%, 100%, 0.05);
+}
+progress::-moz-progress-bar {
+	background-color: hsla(0, 100%, 100%, 0.28);
+}
+progress::-webkit-progress-value {
+	background-color: hsla(0, 100%, 100%, 0.28);
+}

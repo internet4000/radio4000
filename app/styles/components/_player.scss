@@ -2,7 +2,7 @@
  * Wrapper for the embed video/audio player
  */
 
-.Player {
+#EmberYoutube-player {
 	position: fixed;
 	z-index: 3;
 	right: 0;
@@ -20,25 +20,25 @@
 		width: 290px; // wide enough to show volume
 		height: 290px;
 	}
+}
+.EmberYoutube-progress {
+	position: fixed;
+	bottom: 29px;
+	left: 0;
+	right: 0;
+	z-index: 10;
+}
 
-	// hide it when there's no model
-	&.is-hidden {
-		visibility: hidden;
-	}
+// hide it when there's no model
+.Player.is-hidden {
+	visibility: hidden;
+}
 
-	// the youtube iframe
-	.ember-view,
-	iframe {
-		width: 100%;
-		height: 100%;
-	}
-
-	// maximized state
-	&.is-maximized {
-		top: $barHeight;
-		left: 0;
-		width: auto;
-		height: auto;
-		z-index: 3; // on top of channel
-	}
+// maximized state
+.Player.is-maximized {
+	top: $barHeight;
+	left: 0;
+	width: auto;
+	height: auto;
+	z-index: 3; // on top of channel
 }
