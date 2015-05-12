@@ -40,14 +40,17 @@ export default Ember.Controller.extend({
 			return false;
 		}
 
-		// Ember.run.debounce(this, this.setTitleFromID(id), 1000);
-		this.setTitleFromID(id);
+		// call set title but throttle it so it doesn't happen on every key-stroke
+		this.set('youtubeId', id);
+		Ember.run.throttle(this, this.setTitle, 1000);
 	}),
 
 	// This gets called when you paste something into the input-url component
 	// it takes a URL and turns it into a YouTube ID which we use to query the API for a title
-	setTitleFromID(id) {
+	setTitle() {
+		let id = this.get('youtubeId');
 		let endpoint = 'https://www.googleapis.com/youtube/v3/videos?id='+id+'&key='+config.youtubeApiKey+'&fields=items(id,snippet(title))&part=snippet';
+		Ember.debug('setTitle');
 
 		// Use cache if we have it
 		if (this.get('cachedId') === id) {
