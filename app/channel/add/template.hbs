@@ -6,18 +6,16 @@
 	{{/unless}} --}}
 
 	<form class="Form Form--box" {{action "addTrack" on='submit'}}>
+		<div class="Form-group">
+			<label for="trackUrl">URL</label>
+			{{focus-input id="trackUrl" type="url" value=controller.url placeholder="Or paste in a YouTube link" required="required" autofocus="autofocus"}}
+		</div>
 		<div class="Form-group Form-group--relative">
 			<label for="trackTitle">Title</label>
-			{{focus-input id="trackTitle" value=model.title placeholder="Search for a track" required="required" autofocus="autofocus"}}<br>
+			{{input id="trackTitle" value=model.title placeholder="Search for a track" required="required"}}<br>
 			{{#if isFetchingTitle}}<p class="Form-groupStatus">Updating…</p>{{/if}}
 			{{youtube-search query=model.title action="addFromSearch"}}
 		</div>
-
-		<div class="Form-group">
-			<label for="trackUrl">URL</label>
-			{{input id="trackUrl" type="url" value=controller.url placeholder="Or paste in a YouTube link" required="required"}}
-		</div>
-
 		<div class="Form-group">
 			<label for="trackBody">Description</label>
 			{{input id="trackBody" value=model.body placeholder="Fantastic track! #fantastic (optional)"}}<br>
