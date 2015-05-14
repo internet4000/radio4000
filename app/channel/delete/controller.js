@@ -16,7 +16,7 @@ export default Ember.Controller.extend({
 					Ember.debug('destroyed public');
 
 					channel.destroyRecord().then(() => {
-						Ember.debug('destroyed channel');
+						Ember.debug('destroyed channel, back to new');
 						this.transitionToRoute('channels.new');
 						// this.set('session.currentUser.channels.firstObject', null);
 					});

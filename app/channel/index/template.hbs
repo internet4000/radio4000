@@ -1,10 +1,14 @@
 {{#if model.length}}
-	{{#ember-list items=sortedModel height=800 rowHeight=40}}
-		{{track-item track=content
-			canEdit=controllers.channel.canEdit
-			playback=controllers.playback
-			edit="editTrack"}}
-	{{/ember-list}}
+	{{!-- {{#ember-list items=sortedModel height=800 rowHeight=40}} --}}
+	{{!-- {{/ember-list}} --}}
+	<ul class="List">
+		{{#each sortedModel as |model|}}
+			{{track-item track=model
+				canEdit=controllers.channel.canEdit
+				playback=controllers.playback
+				edit="editTrack"}}
+		{{/each}}
+	</ul>
 {{else}}
 	<div class="Container Section--space">
 		<p>No tracks yet.</p>

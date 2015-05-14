@@ -22,7 +22,7 @@
 		</div>
 
 		<div class="Form-group">
-			<button {{bind-attr class=":Btn :Btn--primary justAdded:is-flashing"}} type='submit' title="Add track to your radio">Add track</button>
+			<button class="Btn Btn--primary {{if justAdded 'is-flashing'}}" type='submit' title="Add track to your radio">Add track</button>
 			{{#link-to "channel.index" class="Btn Btn--text" title="Don't add the track"}}Cancel{{/link-to}}
 		</div>
 	</form>

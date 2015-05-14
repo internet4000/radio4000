@@ -104,6 +104,7 @@ export default Ember.Controller.extend({
 			Ember.debug('channel route save');
 
 			channel.save().then(() => {
+				Ember.debug('Saved --> channel');
 				this.transitionToRoute('channel', this.get('model.slug'));
 				this.set('isSaving', false);
 			});
@@ -111,6 +112,7 @@ export default Ember.Controller.extend({
 
 		// used by 'ESC' key in the view
 		cancelEdit() {
+			Ember.debug('Cancel edit --> channel');
 			this.transitionToRoute('channel', this.get('model'));
 			this.set('isSaving', false);
 		}
