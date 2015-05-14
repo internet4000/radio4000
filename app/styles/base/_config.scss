@@ -4,6 +4,34 @@
 
 $base-font-size: 16px;
 $base-line-height: (21/16);
+$sans-fallback: 'Lucida Grande','Lucida Sans', sans-serif;
+
+%font-regular {
+	font-family: 'maisonneue-book', 'Maison Neue Book', 'MaisonNeue-book', $sans-fallback;
+	font-weight: normal;
+}
+%font-regularItalic {
+	font-family: 'maisonneue-book-italic', 'MaisonNeue-bookItalic', 'Maison Neue Book', 'MaisonNeue-book', $sans-fallback;
+	font-weight: normal;
+	font-style: italic;
+}
+%font-bold {
+	font-family: 'maisonneue-bold', 'Maison Neue Bold', 'MaisonNeue-bold', $sans-fallback;
+	font-weight: normal;
+	font-style: normal;
+}
+%font-bold-italic {
+	font-family: 'maisonneue-bold-italic', 'maisonneue-bold', 'MaisonNeue-boldItalic', 'Maison Neue Bold', 'MaisonNeue-bold', ;
+	font-weight: normal;
+	font-style: normal;
+}
+%font-mono {
+	letter-spacing: 0.05em;
+	// text-transform: uppercase;
+	// font-family: 'maisonneue-mono', monospace;
+	// font-weight: normal;
+	// font-style: normal;
+}
 
 // Always use variables for font-sizes:
 // allowed font-sizes:
