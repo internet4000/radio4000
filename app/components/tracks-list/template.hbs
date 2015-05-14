@@ -9,10 +9,7 @@
 <ul class="List">
 	{{#each sortedandfiltered as |track|}}
 		<li>
-			{{track-item track=track
-							 canEdit=canEdit
-							 playback=playback
-							 currentTrackComponent=currentTrackComponent}}
+			{{track-item track=track playback=playback}}
 		</li>
 	{{/each}}
 </ul>

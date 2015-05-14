@@ -1,11 +1,20 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-	filter: '',
+	// not sure how to set up SortableMixin
+	// sortedandfiltered: Ember.computed('filtered', function() {
+	sortedandfiltered: Ember.computed('model', function() {
+		return Ember.ArrayController.create({
+			// content: this.get('filtered'),
+			content: this.get('model'),
 
-	// Keep track of which track we're currently editing
-	currentTrackComponent: null,
+			// Newest on top
+			sortProperties: ['created'],
+			sortAscending: false
+		});
+	})
 
+	// filter: '',
 	// // Returns either all tracks or the filtered tracks by hashtag
 	// filtered: Ember.computed('filter', 'model', function() {
 	// 	let filter = this.get('filter');
@@ -25,19 +34,6 @@ export default Ember.Component.extend({
 	// 		return hashtags.contains(filter);
 	// 	});
 	// }),
-
-	// not sure how to set up SortableMixin
-	// sortedandfiltered: Ember.computed('filtered', function() {
-	sortedandfiltered: Ember.computed('model', function() {
-		return Ember.ArrayController.create({
-			// content: this.get('filtered'),
-			content: this.get('model'),
-
-			// Newest on top
-			sortProperties: ['created'],
-			sortAscending: false
-		});
-	})
 
 	// // Returns the unique tags from all models
 	// tags: Ember.computed('model.@each.hashtags', function() {
