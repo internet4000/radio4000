@@ -34,6 +34,7 @@ var app = new EmberApp({
 
 // Extra scripts to incude
 app.import('bower_components/moment/moment.js');
+app.import('bower_components/lazysizes/lazysizes.js');
 
 // For file uploads with Cloudinary and jQuery
 app.import('bower_components/blueimp-file-upload/js/vendor/jquery.ui.widget.js');

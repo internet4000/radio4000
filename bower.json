@@ -15,7 +15,8 @@
     "cloudinary": "~1.0.23",
     "emberfire": "~1.4.4",
     "jquery-file-upload": "~9.9.3",
-    "moment": "~2.9.0"
+    "moment": "~2.9.0",
+    "lazysizes": "~1.1.2"
   },
   "resolutions": {
     "ember-data": "1.0.0-beta.16.1"
