@@ -156,9 +156,11 @@ input[type='file'] {
 
 .EditTrack {
 	.ember-modal-dialog & {
-		width: 500px;
 		max-width: 100%;
 		margin-bottom: 0;
+		@media (min-width: 600px) {
+			width: 500px;
+		}
 	}
 }
 .Form-group label input {

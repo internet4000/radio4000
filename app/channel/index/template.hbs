@@ -1,3 +1,9 @@
+{{#if isShowingModal}}
+  {{#modal-dialog alignment='center' translucentOverlay=true}}
+    {{track-edit model=trackToEdit saveTrack="saveTrack" deleteTrack="deleteTrack" cancelEdit="closeModal"}}
+  {{/modal-dialog}}
+{{/if}}
+
 {{#if model.length}}
 	{{!-- {{#ember-list items=sortedModel height=800 rowHeight=40}} --}}
 	{{!-- {{/ember-list}} --}}
@@ -16,12 +22,6 @@
 			<p>Why don't you {{#link-to 'channel.add'}}add one?{{/link-to}}</p>
 		{{/if}}
 	</div>
-{{/if}}
-
-{{#if isShowingModal}}
-  {{#modal-dialog alignment='center' translucentOverlay=true}}
-    {{track-edit model=trackToEdit saveTrack="saveTrack" deleteTrack="deleteTrack" cancelEdit="closeModal"}}
-  {{/modal-dialog}}
 {{/if}}
 
 {{!-- <div class="Container">
