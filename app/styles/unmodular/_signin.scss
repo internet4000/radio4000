@@ -4,7 +4,6 @@
 
 // pre body-class
 .SiteMain {
-	transition: background-color 300ms $easing2;
 }
 .ContextualNavigation {
 	transition: transform 400ms $easing;
@@ -13,6 +12,7 @@
 // body class added with signin.route and application.view
 .is-OnSignIn {
 	.SiteMain {
+		transition: background-color 300ms $easing2;
 		background-color: $primary-color;
 	}
 	.ContextualNavigation {
@@ -33,6 +33,12 @@
 	left: 0;
 	right: 0;
 	transform: translateY(-50%);
+	.Loader {
+		font-size: 2rem;
+		margin-left: auto;
+		margin-right: auto;
+		color: white;
+	}
 }
 
 .SignIn-container {

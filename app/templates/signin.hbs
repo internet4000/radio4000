@@ -1,11 +1,11 @@
 <div class="SignIn">
 	<div class="SignIn-container">
 
-		<h1 class="SignIn-title">Sign in to Radio 4000</h1>
-
-		<p class="SignIn-subTitle">to create your radio or manage the one you have</p>
-
 		{{#unless session.isWorking}}
+			<h1 class="SignIn-title">Sign in Radio4000</h1>
+
+			<p class="SignIn-subTitle">to create or manage your radio</p>
+
 			<div class="SignIn-buttons">
 				<button type="submit" class="Btn" title="Sign in with your Google account" {{action 'signIn' 'google'}}>
 					Google
@@ -15,9 +15,10 @@
 					Facebook
 				</button>
 			</div>
-		{{else}}
-			<loading></loading>
-		{{/unless}}
 
+		{{else}}
+		<p class="SignIn-subTitle">Please wait while we sign you in</p>
+			<is-loading></is-loading>
+		{{/unless}}
 	</div>
 </div>
