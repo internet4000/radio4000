@@ -3,8 +3,11 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 	beforeModel() {
 		if (this.get('session.isAuthenticated')) {
-			Ember.debug('not authed --> home');
+			Ember.debug('already authed --> home');
 			this.transitionTo('application');
+		}
+		else {
+			Ember.debug('not authenticated');
 		}
 	},
 

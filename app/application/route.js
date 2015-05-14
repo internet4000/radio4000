@@ -2,8 +2,12 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	beforeModel: function() {
-		this.get('session').fetch().catch(function() {
-			// Ember.debug('when is this called');
+		// sign the user in
+		console.log('application beforemodel');
+		return this.get('session').fetch(function(){
+			console.log('sucess');
+		}, function(){
+			console.log('fail');
 		});
 	},
 
