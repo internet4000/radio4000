@@ -153,16 +153,6 @@ input[type='file'] {
 .Form--boxSmall {
 	max-width: 27rem;
 }
-
-.EditTrack {
-	.ember-modal-dialog & {
-		max-width: 100%;
-		margin-bottom: 0;
-		@media (min-width: 600px) {
-			width: 500px;
-		}
-	}
-}
 .Form-group label input {
 	@extend %font-regular;
 }
@@ -172,7 +162,17 @@ input[type='file'] {
 	padding: 2rem 1rem 0.5rem;
 	border-radius: $border-radius;
 	box-shadow: -4px 4px 12px rgba(88, 88, 88, 0.25);
+
+	// forms inside modals
+	.Form {
+		max-width: 100%;
+		margin-bottom: 0;
+		@media (min-width: 520px) {
+			width: 500px;
+		}
+	}
 }
+
 // /**
 //  * Form playlist slug
 //  */

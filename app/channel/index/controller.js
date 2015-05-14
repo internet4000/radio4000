@@ -3,14 +3,27 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 	isShowingModal: false,
 	actions: {
-		editTrack(track) {
-			this.set('trackToEdit', track);
-			this.toggleProperty('isShowingModal');
+		addTrack() {
+			let url = this.get('newTrackUrl');
+			let newTrack = this.store.createRecord('track', {
+				url: url
+			});
+
+			this.set('newTrack', newTrack);
+			this.set('isShowingAdd', true);
 		},
 
-		closeModal() {
-			this.set('isShowingModal', false);
-			this.set('trackToEdit', null);
+		editTrack(track) {
+			this.set('trackToEdit', track);
+			this.set('isShowingModal', true);
+		},
+
+		closeModals() {
+			this.setProperties({
+				isShowingModal: false,
+				isShowingAdd: false,
+				trackToEdit: null
+			});
 		},
 
 		saveTrack(track) {
@@ -20,7 +33,8 @@ export default Ember.Controller.extend({
 				Ember.debug('Saved track');
 			});
 
-			this.send('closeModal');
+			this.send('closeModals');
+			this.set('newTrackUrl', '');
 		},
 
 		deleteTrack(track) {
@@ -38,7 +52,7 @@ export default Ember.Controller.extend({
 
 					// then itself
 					track.destroyRecord();
-					this.send('closeModal');
+					this.send('closeModals');
 				});
 			});
 		}

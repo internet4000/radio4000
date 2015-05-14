@@ -1,6 +1,18 @@
+{{!-- <div class="Container Section--space">
+	<form {{action 'addTrack' on='submit'}}>
+		{{input type="url" value=newTrackUrl placeholder="Paste in a YouTube link to add a track" required="required"}}
+	</form>
+</div>
+
+{{#if isShowingAdd}}
+	{{#modal-dialog alignment='center' translucentOverlay=true}}
+		{{track-add model=newTrack saveTrack="saveTrack" cancelEdit="closeModals"}}
+  {{/modal-dialog}}
+{{/if}} --}}
+
 {{#if isShowingModal}}
   {{#modal-dialog alignment='center' translucentOverlay=true}}
-    {{track-edit model=trackToEdit saveTrack="saveTrack" deleteTrack="deleteTrack" cancelEdit="closeModal"}}
+    {{track-edit model=trackToEdit saveTrack="saveTrack" deleteTrack="deleteTrack" cancelEdit="closeModals"}}
   {{/modal-dialog}}
 {{/if}}
 
