@@ -33,6 +33,14 @@
 	left: 0;
 	right: 0;
 	transform: translateY(-50%);
+
+	.SignIn-goto {
+		color: white;
+		text-decoration: none;
+		transition: border-bottom-color 300ms $easing2;
+		border-bottom: 2px solid white;
+	}
+
 	.Loader {
 		font-size: 2rem;
 		margin-left: auto;

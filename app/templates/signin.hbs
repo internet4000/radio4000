@@ -1,24 +1,33 @@
 <div class="SignIn">
 	<div class="SignIn-container">
 
-		{{#unless session.isWorking}}
-			<h1 class="SignIn-title">Sign in Radio4000</h1>
-
-			<p class="SignIn-subTitle">to create or manage your radio</p>
-
-			<div class="SignIn-buttons">
-				<button type="submit" class="Btn" title="Sign in with your Google account" {{action 'signIn' 'google'}}>
-					Google
-				</button>
-
-				<button type="submit" class="Btn" title="Sign in with your Facebook account" {{action 'signIn' 'facebook'}}>
-					Facebook
-				</button>
-			</div>
-
+		{{#if session.isAuthenticated}}
+			<h1 class="SignIn-title">Your radio</h1>
+			<p class="SignIn-subTitle">
+				{{#link-to 'channel' session.currentUser.channels.firstObject class="SignIn-goto" title="Your radio"}}
+					{{session.currentUser.channels.firstObject.title}}
+				{{/link-to}}
+			</p>
 		{{else}}
-		<p class="SignIn-subTitle">Please wait while we sign you in</p>
-			<is-loading></is-loading>
-		{{/unless}}
+			{{#unless session.isWorking}}
+				<h1 class="SignIn-title">Sign in Radio4000</h1>
+
+				<p class="SignIn-subTitle">to create or manage your radio</p>
+
+				<div class="SignIn-buttons">
+					<button type="submit" class="Btn" title="Sign in with your Google account" {{action 'signIn' 'google'}}>
+						Google
+					</button>
+
+					<button type="submit" class="Btn" title="Sign in with your Facebook account" {{action 'signIn' 'facebook'}}>
+						Facebook
+					</button>
+				</div>
+
+			{{else}}
+			<p class="SignIn-subTitle">Please wait</p>
+				<is-loading></is-loading>
+			{{/unless}}
+		{{/if}}
 	</div>
 </div>
