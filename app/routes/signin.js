@@ -8,5 +8,12 @@ export default Ember.Route.extend({
 			Ember.debug('not authed --> intro');
 			this.transitionTo('intro');
 		}
+	},
+
+	activate() {
+		this.controllerFor('application').set('isOnSignIn', true);
+	},
+	deactivate() {
+		this.controllerFor('application').set('isOnSignIn', false);
 	}
 });

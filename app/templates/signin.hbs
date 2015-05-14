@@ -1,27 +1,23 @@
-<div class="Manchet Manchet--left">
-	<h1>Continue to Radio4000</h1>
-</div>
+<div class="SignIn">
+	<div class="SignIn-container">
 
-<div class="Container">
-	<p>To create a new radio or manage the one you have, please sign in.</p>
-	<br>
-	<form class="Form Form--box Form--boxSmall">
+		<h1 class="SignIn-title">Sign in to Radio 4000</h1>
+
+		<p class="SignIn-subTitle">to create your radio or manage the one you have</p>
+
 		{{#unless session.isWorking}}
-			<div class="Form-group FlexRow">
-				<button type="submit" class="Btn" title="Continue with your Google account" {{action 'signIn' 'google'}}>
-					{{x-icon i="google-plus"}} Google
+			<div class="SignIn-buttons">
+				<button type="submit" class="Btn" title="Sign in with your Google account" {{action 'signIn' 'google'}}>
+					Google
 				</button>
 
-				<p>or</p>
-
-				<button type="submit" class="Btn" title="Continue with your Facebook account" {{action 'signIn' 'facebook'}}>
-					{{x-icon i="facebook"}} Facebook
+				<button type="submit" class="Btn" title="Sign in with your Facebook account" {{action 'signIn' 'facebook'}}>
+					Facebook
 				</button>
 			</div>
 		{{else}}
-			<p>One second while we sign you in…</p>
+			<loading></loading>
 		{{/unless}}
-	</form>
 
-	<p class="Muted">Not using Google or Facebook? Sign in with e-mail is coming soon.</p>
+	</div>
 </div>

@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.View.extend({
 	classNames: ['BreadAndCheese'],
-	classNameBindings: ['isMaximized', 'controller.isPanelOpen:is-panelOpen'],
+	classNameBindings: ['isMaximized', 'controller.isPanelOpen:is-panelOpen', 'controller.isOnSignIn:is-OnSignIn'],
 
 	didInsertElement() {
 		const self = this;

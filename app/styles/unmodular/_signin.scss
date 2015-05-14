@@ -1,0 +1,66 @@
+/**
+ * Sign-in page
+ **/
+
+// pre body-class
+.SiteMain {
+	transition: background-color 300ms $easing2;
+}
+.ContextualNavigation {
+	transition: transform 400ms $easing;
+}
+
+// body class added with signin.route and application.view
+.is-OnSignIn {
+	.SiteMain {
+		background-color: $primary-color;
+	}
+	.ContextualNavigation {
+		/* display: none; */
+		transform: translateX(100%);
+	}
+	.Bar--top {
+		border-bottom-color: $primary-color;
+	}
+}
+
+.SignIn {
+	color: white;
+	text-align: center;
+
+	position: fixed;
+	top: 50%;
+	left: 0;
+	right: 0;
+	transform: translateY(-50%);
+}
+
+.SignIn-container {
+	max-width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.SignIn-title {
+	margin-bottom: 1rem;
+	font-size: 2.4rem;
+}
+.SignIn-subTitle {
+	font-size: 1.3rem;
+}
+
+.SignIn-buttons {
+	margin-top: 2.7rem;
+	.Btn {
+		border: 0px solid transparent;
+		background-image: none;
+		color: white;
+		padding: 0.6rem 1.8rem;
+		background-color: transparent;
+		margin-left: 1rem;
+		margin-right: 1rem;
+		border: 2px solid white;
+		min-width: 8rem;
+		font-size: 1rem;
+	}
+}
