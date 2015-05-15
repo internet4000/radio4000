@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
 		},
 
 		activateRemote() {
-			console.log('remote activated');
+			Ember.debug('remote activated');
 		}
 	}
 });

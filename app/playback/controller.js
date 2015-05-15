@@ -95,7 +95,7 @@ export default Ember.Controller.extend({
 	// 		return;
 	// 	}
 
-	// 	console.log('remotely changed track');
+	// 	Ember.debug('remotely changed track');
 	// 	this.set('channel', channel);
 	// 	this.set('model', track);
 	// }),
@@ -165,7 +165,7 @@ export default Ember.Controller.extend({
 			let model = this.get('model');
 			let newTrack;
 
-			console.log(model, 'playback: current model');
+			Ember.debug(model, 'playback: current model');
 
 			// define which track is the next track
 			if (isShuffled) {
@@ -185,7 +185,7 @@ export default Ember.Controller.extend({
 				this.clearHistory();
 				return this.send('playFirst');
 			} else {
-				console.log(newTrack, 'playback: newTrack');
+				Ember.debug(newTrack, 'playback: newTrack');
 				this.send('playTrack', newTrack);
 			}
 		},
@@ -225,7 +225,7 @@ export default Ember.Controller.extend({
 		},
 		ytError(error) {
 			// Ember.debug('on yt error from controller');
-			console.log(error);
+			Ember.debug(error);
 
 			// dont do anything on 'invalid parameter'
 			if (error === 2) { return; }
