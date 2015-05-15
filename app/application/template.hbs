@@ -16,9 +16,13 @@
 					{{#link-to 'channel.add' session.currentUser.channels.firstObject class="ContextualNavigation-addTrack" title="Add track"}}
 						{{x-icon i="plus" title="Add track"}} <span>Add</span> <span>track</span>
 					{{/link-to}}
+				{{else}}
+					{{#link-to 'channels.new' session.currentUser.channels.firstObject class="ContextualNavigation-addTrack" title="Create your radio"}}
+						{{x-icon i="plus" title="Create your radio"}} <span>Create your radio</span>
+					{{/link-to}}
 				{{/if}}
 			{{else}}
-				{{#link-to 'signin'}}Register or sign in{{/link-to}}
+				{{#link-to 'login'}}Register or log in{{/link-to}}
 			{{/if}}
 
 			<button class="TogglePanel" title="Menu" {{action "togglePanel"}}>

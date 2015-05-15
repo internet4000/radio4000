@@ -7,21 +7,21 @@ export default Ember.Route.extend({
 		if (!authed) {
 			Ember.debug('no authed --> channel');
 			transition.abort();
-			this.transitionTo('signin');
+			this.transitionTo('login');
 		}
 
 		const userChannel = this.get('session.currentUser.channels.firstObject');
 		if (!userChannel) {
 			Ember.debug('no userChannel --> channel');
 			transition.abort();
-			this.transitionTo('signin');
+			this.transitionTo('login');
 		}
 
 		const canEdit = userChannel.get('id') === this.modelFor('channel').get('id');
 		if (!canEdit) {
 			Ember.debug('no canEdit --> channel');
 			transition.abort();
-			this.transitionTo('signin');
+			this.transitionTo('login');
 		}
 	},
 

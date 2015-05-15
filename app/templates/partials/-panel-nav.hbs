@@ -41,9 +41,9 @@
 
 		<div class="PanelNav-group">
 			{{#if session.isAuthenticated}}
-				<a href="#" class="Muted" title="Sign out from Radio4000" {{action 'logout' this}}>Sign out</a>
+				<a href="#" class="Muted" title="Log out from Radio4000" {{action 'logout' this}}>Log out</a>
 			{{else}}
-				{{#link-to 'signin' title="Sign in to Radio4000"}}Sign in{{/link-to}}
+				{{#link-to 'login' title="Log in to Radio4000"}}Log in{{/link-to}}
 			{{/if}}
 		</div>
 	</div>

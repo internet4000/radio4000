@@ -12,16 +12,16 @@ export default Ember.Route.extend({
 	},
 
 	activate() {
-		this.controllerFor('application').set('isOnSignIn', true);
+		this.controllerFor('application').set('isOnLogIn', true);
 	},
 	deactivate() {
-		this.controllerFor('application').set('isOnSignIn', false);
+		this.controllerFor('application').set('isOnLogIn', false);
 	},
 
 	actions: {
 		// Signs a user in and redirect to either her channel
 		// or the form to create a channel
-		signIn(authWith) {
+		logIn(authWith) {
 			this.get('session').open('firebase', { authWith: authWith }).then(() => {
 				const userChannels = this.get('session.currentUser.channels');
 

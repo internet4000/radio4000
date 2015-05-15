@@ -7,7 +7,7 @@ export default function() {
 
 	/*
 	----------------------------------------
-	|            |   signin   |            |
+	|            |   login   |            |
 	----------------------------------------
 	| index      |  channels  | channel    |
 	----------------------------------------
@@ -15,7 +15,7 @@ export default function() {
 	----------------------------------------
 	*/
 
-	// NOTE! We currently don't transition between signin and the other pages.
+	// NOTE! We currently don't transition between login and the other pages.
 
 	// this.transition(
 	// 	this.fromRoute('index'),

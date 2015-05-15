@@ -9,8 +9,8 @@
 	transition: transform 400ms $easing;
 }
 
-// body class added with signin.route and application.view
-.is-OnSignIn {
+// body class added with login.route and application.view
+.is-OnLogIn {
 	.SiteMain {
 		transition: background-color 300ms $easing2;
 		background-color: $primary-color;
@@ -24,7 +24,7 @@
 	}
 }
 
-.SignIn {
+.LogIn {
 	color: white;
 	text-align: center;
 
@@ -34,7 +34,7 @@
 	right: 0;
 	transform: translateY(-50%);
 
-	.SignIn-goto {
+	.LogIn-goto {
 		color: white;
 		text-decoration: none;
 		transition: border-bottom-color 300ms $easing2;
@@ -49,21 +49,21 @@
 	}
 }
 
-.SignIn-container {
+.LogIn-container {
 	max-width: 50%;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.SignIn-title {
+.LogIn-title {
 	margin-bottom: 1rem;
 	font-size: 2.4rem;
 }
-.SignIn-subTitle {
+.LogIn-subTitle {
 	font-size: 1.3rem;
 }
 
-.SignIn-buttons {
+.LogIn-buttons {
 	margin-top: 2.7rem;
 	.Btn {
 		border: 0px solid transparent;

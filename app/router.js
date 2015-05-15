@@ -15,7 +15,7 @@ export default Router.map(function() {
 	this.route('dashboard');
 	this.route('help', function() { /* help.index */ });
 	this.route('intro');
-	this.route('signin');
+	this.route('login');
 	this.route('stats');
 	this.route('styleguide', function() {
 		this.route('colors');

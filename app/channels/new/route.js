@@ -5,7 +5,7 @@ export default Ember.Route.extend({
 
 		// redirect if you're not authed
 		if (!this.get('session.isAuthenticated')) {
-			this.transitionTo('signin');
+			this.transitionTo('login');
 
 		} else if (this.get('session.currentUser.channels.firstObject')) {
 			Ember.debug('aready have channel');
@@ -37,10 +37,10 @@ export default Ember.Route.extend({
 		}
 	},
 
-	// redirect to sign in
+	// redirect to log in
 	onLogout: Ember.observer('session.isAuthenticated', function() {
 		if (!this.get('session.isAuthenticated')) {
-			this.transitionTo('signin');
+			this.transitionTo('login');
 		}
 	})
 });
