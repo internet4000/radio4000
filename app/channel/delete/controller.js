@@ -2,8 +2,12 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
+	// so user does not click two times
+	isDeleting: false,
+
 	actions: {
 		deleteChannel() {
+			this.set('isDeleting', true)
 			const channel = this.get('model');
 
 			this.deleteFavorites();
@@ -16,7 +20,7 @@ export default Ember.Controller.extend({
 					Ember.debug('destroyed public');
 
 					channel.destroyRecord().then(() => {
-						Ember.debug('destroyed channel, back to new');
+						Ember.debug('destroyed channel, back to application.index');
 						this.transitionToRoute('channels');
 						// this.set('session.currentUser.channels.firstObject', null);
 					});

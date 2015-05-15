@@ -11,10 +11,16 @@
 
 	<p>If you are sure of your decision, farewell!</p>
 
-	<button class="Btn Btn--danger" {{action 'deleteChannel'}}>
-		Yes, delete {{model.title}} :(
+	<button disabled={{isDeleting}} class="Btn Btn--danger" {{action 'deleteChannel'}}>
+		{{#if isDeleting}}
+			Deleting…
+		{{else}}
+			Yes, delete {{model.title}} :(
+		{{/if}}
 	</button>
 	<br>
 	<br>
-	{{#link-to 'channel.index' model class="Btn Btn--primary"}}No, I want to keep my radio!{{/link-to}}
+	{{#unless isDeleting}}
+		{{#link-to 'channel.index' model class="Btn Btn--primary"}}No, I want to keep my radio!{{/link-to}}
+	{{/unless}}
 </div>
