@@ -1,21 +1,23 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-	beforeModel() {
-		if (this.get('session.isAuthenticated')) {
-			Ember.debug('already authed --> home');
-			this.transitionTo('application');
-		}
-		else {
-			Ember.debug('not authenticated');
-		}
-	},
+	// beforeModel() {
+	// 	if (this.get('session.isAuthenticated')) {
+	// 		Ember.debug('already authed --> home');
+	// 		this.transitionTo('application');
+	// 	}
+	// 	else {
+	// 		Ember.debug('not authenticated');
+	// 	}
+	// },
 
 	activate() {
-		this.controllerFor('application').set('isOnLogIn', true);
+		// set minimal ui style
+		this.controllerFor('application').set('isMinimalUi', true);
 	},
 	deactivate() {
-		this.controllerFor('application').set('isOnLogIn', false);
+		// remove minimal ui style
+		this.controllerFor('application').set('isMinimalUi', false);
 	},
 
 	actions: {

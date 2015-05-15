@@ -24,8 +24,16 @@ export default Ember.Route.extend({
 			into: 'application'
 		});
 	},
+
+	activate() {
+		// set minimal ui style
+		this.controllerFor('application').set('isMinimalUi', true);
+	},
 	deactivate() {
 		const model = this.get('currentModel');
+
+		// remove minimal ui style
+		this.controllerFor('application').set('isMinimalUi', false);
 
 		// reset document title
 		document.title = 'Radio4000';

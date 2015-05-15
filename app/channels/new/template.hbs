@@ -1,8 +1,7 @@
-<div class="Manchet Manchet--left">
-	<h1>Give your radio a name<small> — Step 1 of 1</small></h1>
-</div>
+<div class="BigStep">
+	<div class="BigStep-container">
 
-<div class="Container">
+		<h1 class="BigStep-title">Just <span class="u-underline">name</span> your radio</h1>
 
 	<form class="Form" {{action "create" on="submit"}}>
 
@@ -16,17 +15,17 @@
 			<p class="Muted">Oops, please keep your name betzeen {{titleMinLength}} and {{titleMaxLength}} characters. Currently {{model.title.length}}</p>
 		{{/if}}
 
-		<p class="Muted">Don't worry, you can change it <em>anytime later</em>!</p>
+		<p>Don't worry, you can change it <em>anytime later</em>!</p>
 
 		<div class="Form-group">
-			<button disabled={{isSaving}} type="submit" class="Btn Btn--primary" title="Create your radio channel">
-				{{#if isSaving}}Creating…{{else}}Create your radio{{/if}}
-			</button>
+			<div class="BigStep-buttons">
+				<button disabled={{isSaving}} type="submit" class="Btn " title="Create your radio channel">
+					{{#if isSaving}}Creating…{{else}}Create my radio{{/if}}
+				</button>
+			</div>
 		</div>
 
-		{{#link-to 'application.index'}}
-			<p class="Muted">No really, I want to create my radio later.</p>
-		{{/link-to}}
-
 	</form>
+
+	</div>
 </div>

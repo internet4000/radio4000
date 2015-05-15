@@ -1,20 +1,20 @@
-<div class="LogIn">
-	<div class="LogIn-container">
+<div class="BigStep">
+	<div class="BigStep-container">
 
 		{{#if session.isAuthenticated}}
-			<h1 class="LogIn-title">Your radio</h1>
-			<p class="LogIn-subTitle">
-				{{#link-to 'channel' session.currentUser.channels.firstObject class="LogIn-goto" title="Your radio"}}
+			<h1 class="BigStep-title">Your radio</h1>
+			<p class="BigStep-subTitle">
+				{{#link-to 'channel' session.currentUser.channels.firstObject class="BigStep-goto" title="Your radio"}}
 					{{session.currentUser.channels.firstObject.title}}
 				{{/link-to}}
 			</p>
 		{{else}}
 			{{#unless session.isWorking}}
-				<h1 class="LogIn-title">Log in Radio4000</h1>
+				<h1 class="BigStep-title">Log in Radio4000</h1>
 
-				<p class="LogIn-subTitle">to create or manage your radio</p>
+				<p class="BigStep-subTitle">to create or manage your radio</p>
 
-				<div class="LogIn-buttons">
+				<div class="BigStep-buttons">
 					<button type="submit" class="Btn" title="Log in with your Google account" {{action 'logIn' 'google'}}>
 						Google
 					</button>
@@ -25,7 +25,7 @@
 				</div>
 
 			{{else}}
-			<p class="LogIn-subTitle">Please wait</p>
+			<p class="BigStep-subTitle">Please wait</p>
 				<is-loading></is-loading>
 			{{/unless}}
 		{{/if}}

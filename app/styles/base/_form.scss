@@ -35,7 +35,7 @@ textarea {
 [type='search'],
 textarea,
 .Btn--textInput {
-	@include size-1;
+	/* @include size-1; */
 	padding: em(10,13) em(8,13) em(8,13);
 	width: 100%;
 	max-width: 100%;
@@ -211,4 +211,3 @@ input[type='file'] {
 // 		// }
 // 	}
 // }
-

@@ -1,5 +1,6 @@
 /**
- * Sign-in page
+ * Big Step is for the very important steps in our app
+ * used on: 'login' and 'new'
  **/
 
 // pre body-class
@@ -10,7 +11,7 @@
 }
 
 // body class added with login.route and application.view
-.is-OnLogIn {
+.is-minimalUi {
 	.SiteMain {
 		transition: background-color 300ms $easing2;
 		background-color: $primary-color;
@@ -24,9 +25,10 @@
 	}
 }
 
-.LogIn {
+.BigStep {
 	color: white;
 	text-align: center;
+	padding: 2rem;
 
 	position: fixed;
 	top: 50%;
@@ -34,7 +36,7 @@
 	right: 0;
 	transform: translateY(-50%);
 
-	.LogIn-goto {
+	.BigStep-goto {
 		color: white;
 		text-decoration: none;
 		transition: border-bottom-color 300ms $easing2;
@@ -47,25 +49,31 @@
 		margin-right: auto;
 		color: white;
 	}
+	input:active {
+		outline: none;
+	}
 }
 
-.LogIn-container {
-	max-width: 50%;
-	margin-left: auto;
-	margin-right: auto;
+.BigStep-container {
+	@media (min-width: $layout-m) {
+		max-width: 60%;
+		margin-left: auto;
+		margin-right: auto;
+	}
 }
 
-.LogIn-title {
+.BigStep-title {
 	margin-bottom: 1rem;
 	font-size: 2.4rem;
 }
-.LogIn-subTitle {
+.BigStep-subTitle {
 	font-size: 1.3rem;
 }
 
-.LogIn-buttons {
+.BigStep-buttons {
 	margin-top: 2.7rem;
 	.Btn {
+		@include size-2;
 		border: 0px solid transparent;
 		background-image: none;
 		color: white;
@@ -74,7 +82,7 @@
 		margin-left: 1rem;
 		margin-right: 1rem;
 		border: 2px solid white;
-		min-width: 8rem;
-		font-size: 1rem;
+		min-width: 9rem;
+		margin-bottom: 1rem;
 	}
 }
