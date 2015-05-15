@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	beforeModel: function() {
+		// @todo, what the fuck here?
 		// sign the user in
 		console.log('application beforemodel');
 		return this.get('session').fetch(function(){

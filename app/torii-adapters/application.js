@@ -39,32 +39,40 @@ export default Ember.Object.extend({
 	// validating an existing authorization (like a session stored in cookies)
 	fetch: function() {
 		// This is what should be done to determine how to fetch a session. Here I am
-		// retrieving the auth from firebase and checking if I have a user for that
-		// auth. If so, I set currentUser.
+		// retrieving the auth from firebase and checking if I have a user for that auth.
+		// If so, I set currentUser.
 		let firebase = this.get('container').lookup('adapter:application').firebase;
-		let authData = firebase.getAuth();
 		let store = this.get('container').lookup('store:main');
 
+		// Ember.debug('firebase');
 		// Ember.debug('fetch');
+		let firebaseAuthAnswer = firebase.getAuth();
+		// Ember.debug('firebaseAuthAnswer');
 
 		return new Ember.RSVP.Promise(function(resolve, reject) {
 
-			// we have something
-			if (authData) {
+			// Ember.debug(firebaseAuthAnswer, 'firebaseAuthAnswer is null');
 
-				// look for a user
-				store.find('user', authData.uid).then(function(user) {
+			// we have something
+			if (firebaseAuthAnswer) {
+
+				// look for a user, then assign in to the session
+				store.find('user', firebaseAuthAnswer.uid).then(function(user) {
+
 					Ember.run.bind(null, resolve({ currentUser: user }));
 				}, function() {
 
 					// no user
+					// Ember.debug('callback store.find.user from authdata');
 					Ember.run.bind(null, reject('no session'));
 				});
 
 			} else {
-
-				// we have nothing
-				Ember.run.bind(null, reject('no session'));
+				// return a null user because user is not logged in
+				// The object containing the currentUser is merged onto the session. Because the session is injected onto controllers and routes, these values will be available to templates.
+				// https://github.com/Vestorly/torii#adapters-in-torii
+				// Ember.debug('no firebaseAuthAnswer');
+				Ember.run.bind(null, resolve({ currentUser: null }));
 			}
 		});
 	},
