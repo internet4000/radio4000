@@ -1,0 +1,24 @@
+/**
+ * Minimal ui styles for some of our major steps
+ * body class is added with application.view property isMinimalUi
+ **/
+
+.is-minimalUi {
+	.SiteMain {
+		transition: background-color 300ms $easing2;
+		background-color: $primary-color;
+	}
+	.ContextualNavigation {
+		transform: translateX(100%);
+	}
+	.Bar--top {
+		border-bottom-color: $primary-color;
+	}
+	.Player {
+		transform: translateY(-100%);
+	}
+	.Bar--bottom {
+		background-color: red;
+		transform: translateY(100%);
+	}
+}

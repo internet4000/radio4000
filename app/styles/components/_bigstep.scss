@@ -3,28 +3,6 @@
  * used on: 'login' and 'new'
  **/
 
-// pre body-class
-.SiteMain {
-}
-.ContextualNavigation {
-	transition: transform 400ms $easing;
-}
-
-// body class added with login.route and application.view
-.is-minimalUi {
-	.SiteMain {
-		transition: background-color 300ms $easing2;
-		background-color: $primary-color;
-	}
-	.ContextualNavigation {
-		/* display: none; */
-		transform: translateX(100%);
-	}
-	.Bar--top {
-		border-bottom-color: $primary-color;
-	}
-}
-
 .BigStep {
 	color: white;
 	text-align: center;

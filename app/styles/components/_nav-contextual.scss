@@ -1,4 +1,6 @@
 .ContextualNavigation {
+	transition: transform 400ms $easing;
+
 	margin-left: auto; // pushed to the right
 	display: flex;
 	align-items: center;
