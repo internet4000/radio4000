@@ -9,7 +9,6 @@ export default Ember.Route.extend({
 
 	// Instead, we pass the channel and track to the playback controller
 	setupController(controller, model) {
-		const channel = this.modelFor('channel');
 
 		Ember.debug('setting player model');
 		this.get('player').setProperties({
@@ -18,6 +17,7 @@ export default Ember.Route.extend({
 
 		// update the remote controller
 		// which is currently on the channel model
+		// const channel = this.modelFor('channel');
 		// channel.setProperties({
 		// 	listeningToTrack: model,
 		// 	listeningToChannel: channel

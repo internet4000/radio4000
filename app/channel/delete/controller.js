@@ -7,7 +7,7 @@ export default Ember.Controller.extend({
 
 	actions: {
 		deleteChannel() {
-			this.set('isDeleting', true)
+			this.set('isDeleting', true);
 			const channel = this.get('model');
 
 			this.deleteFavorites();

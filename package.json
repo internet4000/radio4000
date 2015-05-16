@@ -41,5 +41,8 @@
     "rsyncwrapper": "^0.4.2",
     "torii": "^0.3.5",
     "torii-fire": "^0.2.2"
+  },
+  "dependencies": {
+    "ember-key-responder": "^0.3.0"
   }
 }

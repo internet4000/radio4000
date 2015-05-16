@@ -11,7 +11,7 @@
 {{/if}} --}}
 
 {{#if isShowingModal}}
-  {{#modal-dialog alignment='center' translucentOverlay=true}}
+  {{#modal-dialog close="closeModals"}}
     {{track-edit model=trackToEdit saveTrack="saveTrack" deleteTrack="deleteTrack" cancelEdit="closeModals"}}
   {{/modal-dialog}}
 {{/if}}

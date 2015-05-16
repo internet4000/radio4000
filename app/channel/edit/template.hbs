@@ -11,7 +11,7 @@
 			<div class="Form-group">
 				{{#image-upload imageId=newImage}}
 					{{channel-cover model=model hideControls=true hideTitle=true}}
-					Drag 'n drop your image here
+					Drag 'n drop an image for your radio here
 				{{/image-upload}}
 
 				{{#if model.coverImage}}
@@ -28,7 +28,7 @@
 			</div>
 			<div class="Form-group">
 				<label for="body" >Description</label>
-				{{textarea id="body" value=model.body maxlength=channelDescriptionMaxLength placeholder="What is your radio about?"}}
+				{{input id="body" value=model.body maxlength=channelDescriptionMaxLength placeholder="What is your radio about?"}}
 			</div>
 			<div class="Form-group">
 				<label for="slug">Permalink</label>
@@ -48,6 +48,7 @@
 		</form>
 	</div>
 
-	{{#link-to 'channel.delete' model class="Btn Btn--text Muted"}}Delete your radio{{/link-to}}
-
+	{{#link-to 'channel.delete' model class="Btn Btn--text Muted"}}
+		Delete your radio
+	{{/link-to}}
 </div>
