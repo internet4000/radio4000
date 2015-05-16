@@ -9,5 +9,8 @@ export default DS.Model.extend({
 	}),
 	channels: DS.hasMany('channel', {
 		async: true
+	}),
+	settings: DS.belongsTo('user-setting', {
+		async: true
 	})
 });

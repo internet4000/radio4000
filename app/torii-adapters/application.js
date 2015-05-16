@@ -3,6 +3,19 @@ import Ember from 'ember';
 // reading: http://www.webhook.com/blog/how-we-use-firebases-simple-login-with-ember-to-manage-authentication/
 
 export default Ember.Object.extend({
+	store: Ember.computed('', function() {
+		return this.get('container').lookup('store:main');
+	}),
+
+	createSettings(user) {
+		let newSettings = this.get('store').createRecord('user-setting', {
+			user: user
+		});
+
+		newSettings.save().then((settings) => {
+			user.set('settings', settings).save();
+		});
+	},
 
 	// creating a new authorization or authenticating a new session
 	open: function(authorization) {
@@ -13,6 +26,15 @@ export default Ember.Object.extend({
 
 		return new Ember.RSVP.Promise((resolve) => {
 			return store.find('user', authorization.uid).then((user) => {
+
+				// create settings for old users
+				// now we create settings on user create
+				let settings = user.get('settings').then((settings) => {
+					Ember.debug(settings);
+					if (!settings) {
+						this.createSettings(user);
+					}
+				});
 
 				// we have a user, set it and channel
 				Ember.debug('open with user');
@@ -32,6 +54,8 @@ export default Ember.Object.extend({
 				});
 
 				newUser.save().then((user) => {
+					this.createSettings(user);
+
 					Ember.run.bind(null, resolve({ currentUser: user }));
 				});
 			});
