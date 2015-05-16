@@ -20,7 +20,7 @@ export default DS.Model.extend({
 	updateProvider() {
 		let id = youtube(this.get('url'));
 
-		Ember.debug('updateYtid');
+		Ember.debug('Updated track.ytid');
 		this.set('ytid', id);
 		this.save();
 	}

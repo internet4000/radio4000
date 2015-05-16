@@ -43,6 +43,13 @@
 		</div>
 	{{/if-ios}}
 
+	<button class="Btn Btn--text" {{action 'togglePlay' target="emberYoutube"}} title="Pause track">
+		{{x-icon i='pause'}}
+	</button>
+	<button class="Btn Btn--text" {{action 'togglePlay' target="emberYoutube"}} title="Play track">
+		{{x-icon i='play'}}
+	</button>
+
 	{{outlet}}
 </main>
 

@@ -2,7 +2,11 @@ import Ember from 'ember';
 
 export default Ember.View.extend({
 	classNames: ['BreadAndCheese'],
-	classNameBindings: ['isMaximized', 'controller.isPanelOpen:is-panelOpen', 'controller.isMinimalUi:is-minimalUi'],
+	classNameBindings: [
+		'controller.isFullscreen',
+		'controller.isPanelOpen:is-panelOpen',
+		'controller.isMinimalUi:is-minimalUi'
+	],
 
 	didInsertElement() {
 		const self = this;

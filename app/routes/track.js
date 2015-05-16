@@ -27,6 +27,6 @@ export default Ember.Route.extend({
 
 	// make sure fullscreen video is off when you leave the track
 	deactivate() {
-		this.controllerFor('playback').set('isMaximized', false);
+		this.controllerFor('application').set('isFullscreen', false);
 	}
 });

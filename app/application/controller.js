@@ -1,13 +1,19 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	isMaximized: Ember.computed.oneWay('controllers.playback.isMaximized'),
+	player: Ember.inject.service(),
 	isMinimalUi: false,
+	isFullscreen: false,
 	isPanelOpen: false,
+	isOnSignIn: false,
 
 	actions: {
 		togglePanel() {
 			this.toggleProperty('isPanelOpen');
+		},
+
+		toggleFullscreen() {
+			this.toggleProperty('isFullscreen');
 		},
 
 		activateRemote() {
