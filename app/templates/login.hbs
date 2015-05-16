@@ -2,12 +2,21 @@
 	<div class="BigStep-container">
 
 		{{#if session.isAuthenticated}}
-			<h1 class="BigStep-title">Your radio</h1>
-			<p class="BigStep-subTitle">
-				{{#link-to 'channel' session.currentUser.channels.firstObject class="BigStep-goto" title="Your radio"}}
-					{{session.currentUser.channels.firstObject.title}}
-				{{/link-to}}
-			</p>
+			{{#if session.currentUser.channels.firstObject}}
+				<h1 class="BigStep-title">Your radio</h1>
+				<p class="BigStep-subTitle">
+					{{#link-to 'channel' session.currentUser.channels.firstObject class="BigStep-goto" title="Your radio"}}
+						{{session.currentUser.channels.firstObject.title}}
+					{{/link-to}}
+				</p>
+			{{else}}
+				<p>You're already logged in.</p>
+				<p class="BigStep-buttons">
+					{{#link-to 'channels.new' class="Btn" title="Your radio"}}
+						Create your radio!
+					{{/link-to}}
+				</p>
+			{{/if}}
 		{{else}}
 			{{#unless session.isWorking}}
 				<h1 class="BigStep-title">Log in Radio4000</h1>
