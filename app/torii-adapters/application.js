@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+// reading: http://www.webhook.com/blog/how-we-use-firebases-simple-login-with-ember-to-manage-authentication/
+
 export default Ember.Object.extend({
 
 	// creating a new authorization or authenticating a new session
