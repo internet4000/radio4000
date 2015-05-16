@@ -14,7 +14,11 @@ export default Ember.Route.extend({
 
 	actions: {
 		logout() {
-			this.get('session').close();
+			this.get('session').close().then( () =>{
+				// todo: why does before this it: "Preparing to transition from 'channels.index' to ' login'"
+				Ember.debug('logged out, application.route.action.logout');
+				this.transitionTo('application');
+			});
 		},
 		back() {
 			window.history.back();
