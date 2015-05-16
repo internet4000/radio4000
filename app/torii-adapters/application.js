@@ -80,10 +80,13 @@ export default Ember.Object.extend({
 				});
 
 			} else {
+
+				Ember.run.bind(null, reject('no session'));
+
 				// return a null user because user is not logged in
-				Ember.debug('firebaseAuthAnswer is empty, user is not logged in');
-				// Ember.run.bind(null, resolve({ currentUser: null }));
-				Ember.run.bind(null, reject('firebaseAuthAnswer is empty, user is not logged in'));
+				// Ember.debug('firebaseAuthAnswer is empty, user is not logged in');
+				// // Ember.run.bind(null, resolve({ currentUser: null }));
+				// Ember.run.bind(null, reject('firebaseAuthAnswer is empty, user is not logged in'));
 			}
 		});
 	},
