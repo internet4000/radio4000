@@ -18,4 +18,3 @@ npm-debug.log
 testem.log
 *.sublime-project
 *.sublime-workspace
-.divshot-cache

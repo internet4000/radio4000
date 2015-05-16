@@ -5,7 +5,7 @@ let Router = Ember.Router.extend({
 	location: config.locationType
 });
 
-export default Router.map(function() {
+Router.map(function() {
 	// pages
 	this.route('about', function() {
 		this.route('contact');
@@ -41,3 +41,5 @@ export default Router.map(function() {
 		this.route('delete'); // permanently remove channel and its referenes from DB
 	});
 });
+
+export default Router;

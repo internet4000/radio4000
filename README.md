@@ -81,9 +81,8 @@ $ blaze rules/rules.yaml
 Follow the instructions on [ember-cli/releases](https://github.com/ember-cli/ember-cli/releases) and remember to keep our own dependencies:
 
 ```
-npm install --save-dev npm install -save broccoli-sass broccoli-csso ember-cli-app-version ember-cli-autoprefixer gulp gulp-atom-shell rsyncwrapper ember-youtube
+npm install --save-dev ember-modal-dialog ember-cli-sass broccoli-csso ember-cli-app-version ember-cli-autoprefixer gulp rsyncwrapper emberfire ember-youtube torii torii-fire
 npm uninstall ember-cli-content-security-policy
-bower install --save js-md5 moment emberfire
 ```
 
 Remove `ember-cli-content-security-policy` if it's in `package.json`.
