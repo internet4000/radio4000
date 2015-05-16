@@ -14,6 +14,8 @@ export default Ember.Route.extend({
 	activate() {
 		// set minimal ui style
 		this.controllerFor('application').set('isMinimalUi', true);
+		// prepares animation on action.login
+		// this.controllerFor('application').set('isMinimalUiAnimation', false);
 	},
 	deactivate() {
 		// remove minimal ui style
@@ -24,6 +26,10 @@ export default Ember.Route.extend({
 		// Signs a user in and redirect to either her channel
 		// or the form to create a channel
 		logIn(authWith) {
+			//
+			this.send('animateUi');
+			this.controllerFor('application').set('isMinimalUiAnimation', true);
+
 			this.get('session').open('firebase', { authWith: authWith }).then(() => {
 				const userChannels = this.get('session.currentUser.channels');
 
@@ -39,6 +45,10 @@ export default Ember.Route.extend({
 					}
 				});
 			});
+		},
+
+		animateUi() {
+			this.controllerFor('application').set('isMinimalUiAnimation', true);
 		}
 	}
 });

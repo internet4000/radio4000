@@ -58,6 +58,7 @@ export default Ember.Route.extend({
 	deactivate() {
 		// remove minimal ui style
 		this.controllerFor('application').set('isMinimalUi', false);
+		this.controllerFor('application').set('isMinimalUiAnimation', false);
 
 		// reset document title
 		document.title = 'Radio4000';

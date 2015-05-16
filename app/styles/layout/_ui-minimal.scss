@@ -8,7 +8,6 @@
 		transition: background-color 300ms $easing2;
 		background-color: $primary-color;
 		color: $white;
-
 		.Muted {
 			color: rgba($white, 0.6);
 	}
@@ -25,5 +24,14 @@
 	.Bar--bottom {
 		background-color: red;
 		transform: translateY(100%);
+	}
+}
+
+.is-minimalUiAnimation {
+	.SiteMain {
+		background-image: url(http://res.cloudinary.com/radio4000/image/upload/c_thumb,h_600,w_600/v1428245306/m94tslxxykohgojpjh5s);
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center center;
 	}
 }
