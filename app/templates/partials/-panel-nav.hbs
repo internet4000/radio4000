@@ -2,27 +2,30 @@
 	<div class="PanelNav-overlay"></div>
 
 	<div class="PanelNav-inner">
-		<div class="PanelNav-group">
-			<div class="UserChannel">
-				{{#if session.currentUser.channels.firstObject}}
-					{{#link-to 'channel' session.currentUser.channels.firstObject title="Go to my radio"}}
+		{{#if session.isAuthenticated}}
+			<div class="PanelNav-group">
+				<div class="UserChannel">
+					{{#if session.currentUser.channels.firstObject}}
+						{{#link-to 'channel' session.currentUser.channels.firstObject title="Go to my radio"}}
 
-						<img class= "UserChannel-media" src="{{session.currentUser.channels.firstObject.coverImage.thumb}}">
+							<img class= "UserChannel-media" src="{{session.currentUser.channels.firstObject.coverImage.thumb}}">
 
-						<div class="UserChannel-body">
-							<p class="UserChannel-intro Muted">Your radio</p>
-							<p class="UserChannel-title">{{session.currentUser.channels.firstObject.title}}</p>
-						</div>
-					{{/link-to}}
-				{{else}}
-					{{#link-to 'channels.new' class="" title="Create your radio"}}
-						<div class="UserChannel-body BoxIcon BoxIcon--add">
-							<p class="UserChannel-title">Create your radio</p>
-						</div>
-					{{/link-to}}
-				{{/if}}
+							<div class="UserChannel-body">
+								<p class="UserChannel-intro Muted">Your radio</p>
+								<p class="UserChannel-title">{{session.currentUser.channels.firstObject.title}}</p>
+							</div>
+						{{/link-to}}
+					{{else}}
+
+							{{#link-to "channels.new" title="Create your radio"}}
+								<div class="UserChannel-body BoxIcon BoxIcon--add">
+									<p class="UserChannel-title">Create your radio</p>
+								</div>
+							{{/link-to}}
+					{{/if}}
+				</div>
 			</div>
-		</div>
+		{{/if}}
 
 		<div class="PanelNav-group">
 			{{#link-to 'intro' title="Get introduced Radio4000"}}Introduction{{/link-to}}
@@ -43,7 +46,7 @@
 			{{#if session.isAuthenticated}}
 				<a href="#" class="Muted" title="Log out from Radio4000" {{action 'logout' this}}>Log out</a>
 			{{else}}
-				{{#link-to 'login' title="Log in to Radio4000"}}Log in{{/link-to}}
+				{{#link-to 'login' title="Register or log in to Radio4000"}}Register or log in{{/link-to}}
 			{{/if}}
 		</div>
 	</div>
