@@ -15,17 +15,17 @@
 	transform: translateY(-50%);
 
 	.BigStep-goto {
-		color: white;
+		color: $white;
 		text-decoration: none;
 		transition: border-bottom-color 300ms $easing2;
-		border-bottom: 2px solid white;
+		border-bottom: 2px solid $white;
 	}
 
 	.Loader {
 		font-size: 2rem;
 		margin-left: auto;
 		margin-right: auto;
-		color: white;
+		color: $white;
 	}
 	input:active {
 		outline: none;
@@ -42,25 +42,23 @@
 
 .BigStep-title {
 	margin-bottom: 1rem;
-	font-size: 2.4rem;
 }
 .BigStep-subTitle {
-	font-size: 1.3rem;
+	@include size-2;
 }
 
 .BigStep-buttons {
 	margin-top: 2.7rem;
 	.Btn {
 		@include size-2;
-		border: 0px solid transparent;
-		background-image: none;
-		color: white;
 		padding: 0.6rem 1.8rem;
-		background-color: transparent;
+		min-width: 9rem;
 		margin-left: 1rem;
 		margin-right: 1rem;
-		border: 2px solid white;
-		min-width: 9rem;
 		margin-bottom: 1rem;
+		border: 2px solid $white;
+		background-image: none;
+		background-color: transparent;
+		color: $white;
 	}
 }

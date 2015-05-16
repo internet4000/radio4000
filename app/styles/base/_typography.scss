@@ -46,9 +46,11 @@ h1,
 .Title {
 	@include size-4;
 	margin-bottom: 0.25rem;
+
 	@media (min-width: $layout-l) {
-		@include size-4;
+		@include size-5;
 	}
+
 	a {
 		color: $text-color;
 	}

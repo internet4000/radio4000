@@ -7,6 +7,11 @@
 	.SiteMain {
 		transition: background-color 300ms $easing2;
 		background-color: $primary-color;
+		color: $white;
+
+		.Muted {
+			color: rgba($white, 0.6);
+		}
 	}
 	.ContextualNavigation {
 		transform: translateX(100%);
