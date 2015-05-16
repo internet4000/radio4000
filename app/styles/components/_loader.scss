@@ -18,7 +18,8 @@
 	path,
 	rect {
 		fill: $red;
-		.DummyApp & {
+		.DummyApp &,
+		.is-minimalUi & {
 			fill: white;
 		}
 	}
