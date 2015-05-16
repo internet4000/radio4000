@@ -3,7 +3,7 @@ import clean from 'radio4000/utils/clean';
 import randomText from 'radio4000/utils/random-text';
 
 export default Ember.Controller.extend({
-	titleMaxLength: 32,
+	titleMaxLength: 33,
 	titleMinLength: 4,
 	isSaving: false,
 	titleError: false,
@@ -54,7 +54,7 @@ export default Ember.Controller.extend({
 	actions: {
 		create() {
 			const user = this.get('session.currentUser');
-			const channel = this.get('model');
+			const channel = this.store.createRecord('channel');;
 			const slug = this.get('cleanSlug');
 
 			if (!this.get('validates')) {

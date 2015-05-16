@@ -13,7 +13,7 @@ export default Ember.Route.extend({
 		}
 	},
 	model() {
-		return this.store.createRecord('channel');
+		// return this.store.createRecord('channel');
 	},
 	afterModel() {
 		document.title = 'New - Radio4000';

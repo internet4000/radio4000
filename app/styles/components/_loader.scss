@@ -18,6 +18,9 @@
 	path,
 	rect {
 		fill: $red;
+		.DummyApp & {
+			fill: white;
+		}
 	}
 }
 .Loader--center {
