@@ -9,10 +9,6 @@
 	z-index: 3;
 	min-height: $barHeight;
 
-	display: flex;
-	flex-flow: row nowrap; // items in one row, no wrapping
-	align-items: stretch; // full-height children
-
 	// background: linear-gradient(lighten($purple,10%), $purple);
 	background-color: $purple;
 	color: $text-color-invert;
@@ -29,7 +25,7 @@
 	}
 
 	// Darken the bar colors when maximized
-	.is-maximized & {
+	.is-fullscreen & {
 		background-color: #1b1b1b;
 		// background-image: linear-gradient(#1B1B1B,#121212); // fits youtube colors
 	}
@@ -37,6 +33,11 @@
 .Bar--top {
 	top: 0;
 	border-bottom: 5px solid hsla(0, 0%, 0%, 0.2);
+
+	// todo refactor this
+	display: flex;
+	flex-flow: row nowrap; // items in one row, no wrapping
+	align-items: stretch; // full-height children
 }
 .Bar--bottom {
 	bottom: 0;

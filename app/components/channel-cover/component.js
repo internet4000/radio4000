@@ -9,8 +9,5 @@ export default Ember.Component.extend({
 		play() {
 			this.sendAction('play');
 		}
-		// ,pause() {
-		// 	this.get('playback.player').send('pause');
-		// }
 	}
 });

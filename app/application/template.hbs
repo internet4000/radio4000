@@ -46,4 +46,15 @@
 	{{outlet}}
 </main>
 
-{{render 'playback'}}
+<div class="Player">
+	{{ember-youtube ytid=player.model.ytid name=emberYoutube
+		playing="ytPlaying"
+		paused="ytPaused"
+		ended="ytEnded"
+		error="ytError"
+		showProgress="true"}}
+</div>
+
+<div class="Bar Bar--bottom">
+	{{x-playback emberYoutube=emberYoutube isFullscreen=isFullscreen}}
+</div>

@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+	player: Ember.inject.service(),
 
 	// Track is nested inside channel.index
 	// but it doesn't have a template,
@@ -10,9 +11,9 @@ export default Ember.Route.extend({
 	setupController(controller, model) {
 		const channel = this.modelFor('channel');
 
-		this.controllerFor('playback').setProperties({
-			model: model,
-			channel: channel
+		Ember.debug('setting player model');
+		this.get('player').setProperties({
+			model
 		});
 
 		// update the remote controller

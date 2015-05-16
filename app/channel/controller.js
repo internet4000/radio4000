@@ -1,8 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	needs: ['playback'],
-	playback: Ember.computed.alias('controllers.playback'),
+	player: Ember.inject.service(),
 
 	// lastUpdatedFormatted: Ember.computed('model.tracks.@each.created', function() {
 	// 	const date = this.get('model.tracks.lastObject.created');
@@ -54,7 +53,7 @@ export default Ember.Controller.extend({
 		},
 
 		pause() {
-			this.get('playback.player').send('pause');
+			this.get('player').pause();
 		},
 
 		toggleFavorite() {
