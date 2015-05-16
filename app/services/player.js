@@ -33,12 +33,35 @@ export default Ember.Service.extend({
 	// 	return !this.get('history').contains(track);
 	// }),
 
-	// modelChanged: Ember.observer('model', function() {
-	// 	Ember.run.schedule('sync', () => {
-	// 		this.addInitialTrackToHistory();
-	// 		this.tryUpdateProvider();
-	// 	});
-	// }),
+	modelChanged: Ember.observer('model', function() {
+		let session = this.get('session');
+
+		Ember.debug('player model changed');
+		Ember.debug(session);
+
+		let user = this.get('session.currentUser');
+		Ember.debug(user);
+
+		let settings = user.get('settings');
+		Ember.debug(settings);
+
+		// settings.then((s) => {
+		// 	s.set('trackForRemote', this.get('model'));
+		// 	s.save().then(() => {
+		// 		Ember.debug('saved settings with track');
+		// 	});
+		// });
+
+
+		// Ember.run.schedule('sync', () => {
+		// 	this.addInitialTrackToHistory();
+		// 	this.tryUpdateProvider();
+		// });
+
+		// if (!settings.get('remoteActive')) { return; }
+
+
+	}),
 
 	// Clears history every time the channel changes
 	clearHistory: Ember.observer('channel', function() {

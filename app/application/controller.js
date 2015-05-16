@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	player: Ember.inject.service(),
+	remoteControl: Ember.inject.service(),
 	isMinimalUi: false,
 	isMinimalUiAnimation: false,
 	isFullscreen: false,
@@ -15,10 +16,6 @@ export default Ember.Controller.extend({
 
 		toggleFullscreen() {
 			this.toggleProperty('isFullscreen');
-		},
-
-		activateRemote() {
-			Ember.debug('remote activated');
 		},
 
 		ytPlaying() {
