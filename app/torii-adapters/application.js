@@ -6,7 +6,7 @@ export default Ember.Object.extend({
 
 	// creating a new authorization or authenticating a new session
 	open: function(authorization) {
-		Ember.debug('open');
+		Ember.debug('torii:open');
 
 		// This is what should be done after authentication
 		let store = this.get('container').lookup('store:main');
@@ -40,41 +40,48 @@ export default Ember.Object.extend({
 
 	// validating an existing authorization (like a session stored in cookies)
 	fetch: function() {
+		Ember.debug('torii:fetch');
+
 		// This is what should be done to determine how to fetch a session. Here I am
 		// retrieving the auth from firebase and checking if I have a user for that auth.
 		// If so, I set currentUser.
 		let firebase = this.get('container').lookup('adapter:application').firebase;
 		let store = this.get('container').lookup('store:main');
 
-		// Ember.debug('firebase');
-		// Ember.debug('fetch');
 		let firebaseAuthAnswer = firebase.getAuth();
-		// Ember.debug('firebaseAuthAnswer');
+		Ember.debug('firebase answers getAuth()');
 
+		// hugo tests to compare  objects: 'session' and 'firebaseAuthAnswer'
+		var session = this.get('session');
+		console.log('session', session);
+		console.log('firebaseAuthAnswer', firebaseAuthAnswer);
+
+		// The object containing the currentUser is merged onto the session.
+		// Because the session is injected onto controllers and routes,
+		// these values will be available to templates.
+		// https://github.com/Vestorly/torii#adapters-in-torii
 		return new Ember.RSVP.Promise(function(resolve, reject) {
+			Ember.debug('triggers fetch:return:promise, before if:firebaseAuthAnswer check');
 
-			// Ember.debug(firebaseAuthAnswer, 'firebaseAuthAnswer is null');
-
-			// we have something
+			// what do we have in firebaseAuthAnswer
 			if (firebaseAuthAnswer) {
 
 				// look for a user, then assign in to the session
+				Ember.debug('store.find.user with firebaseAuthAnswer.uid, promise');
 				store.find('user', firebaseAuthAnswer.uid).then(function(user) {
-
+					Ember.debug('store.find.user with firebaseAuthAnswer.uid, promise succeeds');
 					Ember.run.bind(null, resolve({ currentUser: user }));
 				}, function() {
 
 					// no user
-					// Ember.debug('callback store.find.user from authdata');
 					// todo: seems to fail sometimes
-					Ember.run.bind(null, reject('no session'));
+					Ember.debug('store.find.user with firebaseAuthAnswer.uid, promise failed');
+					Ember.run.bind(null, reject('store.find.user with firebaseAuthAnswer.uid, promise failed'));
 				});
 
 			} else {
 				// return a null user because user is not logged in
-				// The object containing the currentUser is merged onto the session. Because the session is injected onto controllers and routes, these values will be available to templates.
-				// https://github.com/Vestorly/torii#adapters-in-torii
-				// Ember.debug('no firebaseAuthAnswer');
+				Ember.debug('firebaseAuthAnswer is empty, user is not logged in');
 				Ember.run.bind(null, resolve({ currentUser: null }));
 			}
 		});
@@ -82,6 +89,7 @@ export default Ember.Object.extend({
 
 	// here an authorization is destroyed
 	close: function() {
+		Ember.debug('torii:close');
 		// This is what should be done to teardown a session. Here I am unloading my
 		// models and setting currentUser to null.
 		let firebase = this.get('container').lookup('adapter:application').firebase;
