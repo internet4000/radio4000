@@ -98,8 +98,8 @@ export default Ember.Controller.extend({
 							Ember.debug('Saved channel on user.');
 						});
 
-						// // clean new radio (title) input
-						// this.set('newRadioTitle', '');
+						// clean new radio (title) input
+						this.set('newRadioTitle', '');
 
 						// Redirect to the new channel
 						Ember.debug('redirect to the new channel');

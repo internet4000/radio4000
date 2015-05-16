@@ -12,14 +12,18 @@ export default Ember.Route.extend({
 	// },
 
 	activate() {
-		// set minimal ui style
-		this.controllerFor('application').set('isMinimalUi', true);
-		// prepares animation on action.login
-		// this.controllerFor('application').set('isMinimalUiAnimation', false);
+		// set minimal ui style and prepares animation on action.login
+		this.controllerFor('application').setProperties({
+			isMinimalUi: true,
+			isMinimalUiAnimation: false
+		});
 	},
 	deactivate() {
-		// remove minimal ui style
-		this.controllerFor('application').set('isMinimalUi', false);
+		// remove minimal ui style and animation
+		this.controllerFor('application').setProperties({
+			isMinimalUi: false,
+			isMinimalUiAnimation: false
+		});
 	},
 
 	actions: {
