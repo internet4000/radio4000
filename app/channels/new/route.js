@@ -38,11 +38,11 @@ export default Ember.Route.extend({
 		// reset document title
 		document.title = 'Radio4000';
 
-		// remove the record if it wasn't saved
-		if (model.get('isNew')) {
-			Ember.debug('is new');
-			model.deleteRecord();
-		}
+		// // remove the record if it wasn't saved
+		// if (model.get('isNew')) {
+		// 	Ember.debug('is new');
+		// 	model.deleteRecord();
+		// }
 	},
 
 	// redirect to log in

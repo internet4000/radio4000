@@ -8,18 +8,20 @@ export default Ember.Controller.extend({
 	isSaving: false,
 	titleError: false,
 
+	newRadioTitle: '',
+
 	cleanSlug: Ember.computed('model.title', function() {
 		let random = randomText();
-		let title = this.get('model.title');
+		let title = this.get('newRadioTitle');
 
 		title = clean(title);
 
 		return `${title}-${random}`;
 	}),
 
-	titleSize: Ember.computed('model.title', function() {
+	titleValidate: Ember.computed('newRadioTitle', function() {
 		// check channel.title.length, if not in our size limit, return NOPE
-		const titleLength = this.get('model.title.length');
+		const titleLength = this.get('newRadioTitle.length');
 		const tooLong = titleLength >= this.get('titleMaxLength');
 		const tooShort = titleLength < this.get('titleMinLength');
 
@@ -38,29 +40,33 @@ export default Ember.Controller.extend({
 		}
 	}),
 
-	validates: Ember.computed('titleSize', 'session.currentUser', function() {
+	userCanCreateRadio: Ember.computed('titleValidate', 'session.currentUser', function() {
 		if (!this.get('session.currentUser')) {
-			Ember.debug('validates fail, no user');
+			Ember.debug('userCanCreateRadio fails, no user');
 			return false;
-		} else if (!this.get('titleSize')) {
-			Ember.debug('validates fail, title not right size');
+		} else if (!this.get('titleValidate')) {
+			Ember.debug('userCanCreateRadio fails, title not right size');
 			return false;
 		} else {
-			Ember.debug('validates sucess! title has the right size and there is a user');
+			Ember.debug('userCanCreateRadio sucess! title has the right size and there is a user');
 			return true;
 		}
 	}),
 
 	actions: {
 		create() {
+			const radioTitle = this.get('newRadioTitle');
 			const user = this.get('session.currentUser');
-			const channel = this.store.createRecord('channel');;
+			const channel = this.store.createRecord('channel', {
+				title: radioTitle
+			});
 			const slug = this.get('cleanSlug');
 
-			if (!this.get('validates')) {
-				Ember.warn('Channel did not validate.');
+			if (!this.get('userCanCreateRadio')) {
+				Ember.warn('user cannot create radio');
 				return false;
 			}
+
 
 			this.set('isSaving', true);
 
@@ -91,6 +97,9 @@ export default Ember.Controller.extend({
 						user.save().then(() => {
 							Ember.debug('Saved channel on user.');
 						});
+
+						// // clean new radio (title) input
+						// this.set('newRadioTitle', '');
 
 						// Redirect to the new channel
 						Ember.debug('redirect to the new channel');
