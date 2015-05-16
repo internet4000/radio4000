@@ -31,7 +31,7 @@ export default Ember.Controller.extend({
 
 	// This gets called when you paste something into the input-url component
 	// it takes a URL and turns it into a YouTube ID which we use to query the API for a title
-	urlChanged: Ember.observer('url', function() {
+	automaticSetTitle: Ember.observer('url', function() {
 		let url = this.get('url');
 		let id = youtube(url);
 
