@@ -4,6 +4,7 @@ export default Ember.View.extend({
 	classNames: ['BreadAndCheese'],
 	classNameBindings: [
 		'controller.isFullscreen',
+		'controller.player.model::is-withoutPlayer',
 		'controller.isPanelOpen:is-panelOpen',
 		'controller.isMinimalUi:is-minimalUi'
 	],

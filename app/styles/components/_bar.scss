@@ -13,21 +13,15 @@
 	background-color: $purple;
 	color: $text-color-invert;
 	backface-visibility: hidden; // perf
+	transition: transform 400ms $easing2, background-color 400ms;
 
 	a {
 		color: $bleach;
 	}
 
-	// toggle
-	transition: transform 400ms $easing2, background-color 400ms;
-	&.is-hidden {
-		transform: translateY(100%);
-	}
-
 	// Darken the bar colors when maximized
 	.is-fullscreen & {
-		background-color: #1b1b1b;
-		// background-image: linear-gradient(#1B1B1B,#121212); // fits youtube colors
+		background-color: #1b1b1b; // youtube bar color
 	}
 }
 .Bar--top {

@@ -29,12 +29,7 @@
 	z-index: 10;
 }
 
-// hide it when there's no model
-.Player.is-hidden {
-	visibility: hidden;
-}
-
-// maximized state
+// fullscreen state
 .is-fullscreen #EmberYoutube-player {
 	top: $barHeight;
 	left: 0;
@@ -43,4 +38,14 @@
 	height: calc(100% - 120px);
 	bottom: $barHeight;
 	z-index: 3; // on top of channel
+}
+
+// without player state
+.is-withoutPlayer {
+	.Player {
+		visibility: hidden;
+	}
+	.Bar--bottom {
+		transform: translateY(100%);
+	}
 }
