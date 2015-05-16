@@ -2,15 +2,41 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	beforeModel() {
+		let channels = this.get('session.currentUser.channels');
 
-		// redirect if you're not authed
+		// if not authed, go back to login
 		if (!this.get('session.isAuthenticated')) {
-			this.transitionTo('login');
-
-		} else if (this.get('session.currentUser.channels.firstObject')) {
-			Ember.debug('aready have channel');
-			this.transitionTo('channel', this.get('session.currentUser.channels.firstObject'));
+			Ember.debug('not authed --> login')
+			return this.transitionTo('login');
 		}
+
+		// else check if the user has a channel already
+		return channels.then((channels) => {
+			let channel = channels.get('firstObject');
+
+			if (channel) {
+				Ember.debug('transition to ' + channel.get('title'));
+				return this.transitionTo('channel', channel);
+			}
+		});
+
+		// return this.get('session').fetch().then(() => {
+		// 	Ember.debug('fetch from new');
+		// });
+		// channels.get('firstObject').then(() => {
+		// 	Ember.debug('got uc');
+		// }, () => {
+		// 	Ember.debug('no uc');
+		// });
+
+		 // else if (userChannel) {
+		// 	Ember.debug('aready have channel --> channel');
+		//
+
+		// 	userChannel.then()
+
+		//
+		// }
 	},
 	model() {
 		// return this.store.createRecord('channel');
@@ -35,12 +61,5 @@ export default Ember.Route.extend({
 
 		// reset document title
 		document.title = 'Radio4000';
-	},
-
-	// redirect to log in
-	onLogout: Ember.observer('session.isAuthenticated', function() {
-		if (!this.get('session.isAuthenticated')) {
-			this.transitionTo('login');
-		}
-	})
+	}
 });

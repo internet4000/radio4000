@@ -4,8 +4,7 @@ export default Ember.Route.extend({
 	beforeModel: function() {
 		// @todo, what the fuck here?
 		// sign the user in
-		Ember.debug('application:beforemodel');
-		this.get('session').fetch().then(() => {
+		return this.get('session').fetch().then(() => {
 			Ember.debug('fetched success?');
 		}, () => {
 			Ember.debug('fetched fail?');
