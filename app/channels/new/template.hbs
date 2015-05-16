@@ -7,12 +7,13 @@
 
 		<div class="Form-group">
 			{{focus-input value=newRadioTitle
+							  required="required"
 							  placeholder='For instance: “The Pirate Radio”'
-							  required="required" maxlength=titleMaxLength minlength=titleMinLength}}
+							  maxlength=titleMaxLength minlength=titleMinLength}}
 		</div>
 
 		{{#if titleError}}
-			<p class="u-underline">Oops, please keep your name betzeen {{titleMinLength}} and {{titleMaxLength}} characters. Currently {{model.title.length}}</p>
+			<p class="u-underline">Please keep your name between {{titleMinLength}} and {{titleMaxLength}} characters.</p>
 		{{/if}}
 
 		<p>Don't worry, you can change it <em>anytime later</em>!</p>
