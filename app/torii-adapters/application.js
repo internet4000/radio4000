@@ -66,6 +66,7 @@ export default Ember.Object.extend({
 
 					// no user
 					// Ember.debug('callback store.find.user from authdata');
+					// todo: seems to fail sometimes
 					Ember.run.bind(null, reject('no session'));
 				});
 
