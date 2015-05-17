@@ -69,12 +69,12 @@ export default Ember.Controller.extend({
 
 	// todo remove this
 	// it's only needed because of our model hook which doesn't update deleted tracks
-	filteredModel: Ember.computed.filter('model.@each.isDeleted', function(item) {
-		return !item.get('isDeleted');
-	}),
+	// filteredModel: Ember.computed.filter('model.@each.isDeleted', function(item) {
+	// 	return !item.get('isDeleted');
+	// }),
 
 	sortProperties: ['created:desc'],
-	sortedModel: Ember.computed.sort('filteredModel', 'sortProperties')
+	sortedModel: Ember.computed.sort('model', 'sortProperties')
 
 	// noTracks: Ember.computed.equal('model.tracks.length', 0),
 	// oneTrack: Ember.computed.equal('model.tracks.length', 1),
