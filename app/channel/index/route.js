@@ -1,6 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+	beforeModel() {
+		let channel = this.modelFor('channel');
+		if (!channel) {
+			this.transitionTo('404');
+		}
+	},
 
 	// we don't return the promise which in turn
 	// renders the template immediately (faster yay!)
