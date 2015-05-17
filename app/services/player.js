@@ -4,13 +4,7 @@ export default Ember.Service.extend({
 	isPlaying: false,
 	isShuffled: false,
 	historyWasUpdated: false,
-	model: Ember.observer('session.currentUser.settings.trackForRemote', function() {
-
-		track = this.get('session.currentUser.settings.trackForRemote').then( (track) => {
-			Ember.debug('service:player model updated');
-			return track;
-		});
-	}),
+	model: null,
 
 	// we use the tracks fom our model's channel as playlist
 	playlist: Ember.computed('model.channel.tracks.[]', function() {

@@ -9,6 +9,12 @@ export default Ember.Controller.extend({
 	isPanelOpen: false,
 	isOnSignIn: false,
 
+	remoteTrackHasChanged: Ember.observer('session.currentUser.settings.trackForRemote', function() {
+		var remoteTrack = this.get('session.currentUser.settings.trackForRemote');
+		this.set('player.model', remoteTrack);
+		Ember.debug('application:controller remoteTrackHasChanged updated player:model');
+	}),
+
 	actions: {
 		togglePanel() {
 			this.toggleProperty('isPanelOpen');
