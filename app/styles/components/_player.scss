@@ -16,7 +16,7 @@
 		height: 210px;
 		transform: translateZ(0);
 	}
-	@media (min-width: 1300px) {
+	@media (min-width: $layout-l) {
 		width: 290px; // wide enough to show volume
 		height: 290px;
 	}

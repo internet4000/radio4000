@@ -47,7 +47,8 @@
 </main>
 
 <div class="Player">
-	{{ember-youtube ytid=player.model.ytid name=emberYoutube
+
+	{{ember-youtube ytid=player.model.ytid delegate=controller delegate-property="emberYoutube"
 		autoplay="true"
 		playing="ytPlaying"
 		paused="ytPaused"

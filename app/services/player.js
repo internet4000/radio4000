@@ -109,9 +109,7 @@ export default Ember.Service.extend({
 		// this.get('history').pushObject(firstTrack);
 		this.playTrack(firstTrack);
 		// Ember.debug('Playing first track');
-	},
-
-	playLast() {
+	},playLast() {
 		// last is first because we have newest on top
 		let lastTrack = this.get('playlist.firstObject');
 		this.playTrack(lastTrack);
@@ -131,11 +129,10 @@ export default Ember.Service.extend({
 			newTrack = playlist.objectAt(playlist.indexOf(model) + 1);
 
 			if (newTrack) {
-				return this.playTrack(newTrack);
+				this.playTrack(newTrack);
 			} else {
 				// or play last
-				this.send('playLast');
-				return;
+				this.playLast();
 			}
 		}
 
@@ -188,7 +185,7 @@ export default Ember.Service.extend({
 		// play the new track
 		if (!newTrack) {
 			this.clearHistory();
-			return this.send('playFirst');
+			this.playFirst();
 		} else {
 			console.log(newTrack, 'playback: newTrack');
 			this.playTrack(newTrack);
