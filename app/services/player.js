@@ -4,7 +4,13 @@ export default Ember.Service.extend({
 	isPlaying: false,
 	isShuffled: false,
 	historyWasUpdated: false,
-	model: null,
+	model: Ember.observer('session.currentUser.settings.trackForRemote', function() {
+
+		track = this.get('session.currentUser.settings.trackForRemote').then( (track) => {
+			Ember.debug('service:player model updated');
+			return track;
+		});
+	}),
 
 	// we use the tracks fom our model's channel as playlist
 	playlist: Ember.computed('model.channel.tracks.[]', function() {
@@ -33,35 +39,35 @@ export default Ember.Service.extend({
 	// 	return !this.get('history').contains(track);
 	// }),
 
-	modelChanged: Ember.observer('model', function() {
-		let session = this.get('session');
-
-		Ember.debug('player model changed');
-		Ember.debug(session);
-
-		let user = this.get('session.currentUser');
-		Ember.debug(user);
-
-		let settings = user.get('settings');
-		Ember.debug(settings);
-
-		// settings.then((s) => {
-		// 	s.set('trackForRemote', this.get('model'));
-		// 	s.save().then(() => {
-		// 		Ember.debug('saved settings with track');
-		// 	});
-		// });
-
-
-		// Ember.run.schedule('sync', () => {
-		// 	this.addInitialTrackToHistory();
-		// 	this.tryUpdateProvider();
-		// });
-
-		// if (!settings.get('remoteActive')) { return; }
-
-
-	}),
+	// modelChanged: Ember.observer('session.currentUser.settings.trackForRemote', function() {
+	// 	let session = this.get('session');
+	//
+	// 	Ember.debug('player model changed');
+	// 	Ember.debug(session);
+	//
+	// 	let user = this.get('session.currentUser');
+	// 	Ember.debug(user);
+	//
+	// 	let settings = user.get('settings');
+	// 	Ember.debug(settings);
+	//
+	// 	// settings.then((s) => {
+	// 	// 	s.set('trackForRemote', this.get('model'));
+	// 	// 	s.save().then(() => {
+	// 	// 		Ember.debug('saved settings with track');
+	// 	// 	});
+	// 	// });
+	//
+	//
+	// 	// Ember.run.schedule('sync', () => {
+	// 	// 	this.addInitialTrackToHistory();
+	// 	// 	this.tryUpdateProvider();
+	// 	// });
+	//
+	// 	// if (!settings.get('remoteActive')) { return; }
+	//
+	//
+	// }),
 
 	// Clears history every time the channel changes
 	clearHistory: Ember.observer('channel', function() {
