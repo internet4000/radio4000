@@ -33,68 +33,11 @@ export default Ember.Service.extend({
 	// 	return !this.get('history').contains(track);
 	// }),
 
-	// modelChanged: Ember.observer('session.currentUser.settings.trackForRemote', function() {
-	// 	let session = this.get('session');
-	//
-	// 	Ember.debug('player model changed');
-	// 	Ember.debug(session);
-	//
-	// 	let user = this.get('session.currentUser');
-	// 	Ember.debug(user);
-	//
-	// 	let settings = user.get('settings');
-	// 	Ember.debug(settings);
-	//
-	// 	// settings.then((s) => {
-	// 	// 	s.set('trackForRemote', this.get('model'));
-	// 	// 	s.save().then(() => {
-	// 	// 		Ember.debug('saved settings with track');
-	// 	// 	});
-	// 	// });
-	//
-	//
-	// 	// Ember.run.schedule('sync', () => {
-	// 	// 	this.addInitialTrackToHistory();
-	// 	// 	this.tryUpdateProvider();
-	// 	// });
-	//
-	// 	// if (!settings.get('remoteActive')) { return; }
-	//
-	//
-	// }),
-
 	// Clears history every time the channel changes
 	clearHistory: Ember.observer('channel', function() {
 		Ember.debug('Channel changed: clearing history.');
 		this.get('history').clear();
 	}),
-
-	// // not why we need this anymore (probably something with history/shuffle)
-	// addInitialTrackToHistory: function() {
-	// 	let history = this.get('history');
-	// 	let historyWasUpdated = this.get('historyWasUpdated');
-
-	// 	Ember.debug('addToHistory: model changed');
-
-	// 	if (historyWasUpdated) { return; }
-
-	// 	history.pushObject(this.get('model'));
-	// 	this.set('historyWasUpdated', true);
-	// },
-
-	// // Generates a ytid if the model doesn't have one already
-	// // @todo: this should be removed when all tracks have an ytid
-	// tryUpdateProvider: function() {
-	// 	Ember.debug('validateTrack');
-
-	// 	if (!this.get('model')) {
-	// 		return;
-	// 	}
-
-	// 	if (!this.get('model.ytid')) {
-	// 		this.get('model').updateProvider();
-	// 	}
-	// },
 
 	// gets a random track
 	getRandomTrack() {
@@ -103,19 +46,30 @@ export default Ember.Service.extend({
 		return playlist.objectAt(random);
 	},
 
+	// If you don't want the URL to change, use this to play a track
+	play(track) {
+		if (!track) {
+			Ember.warn('Play called without a track.');
+			return false;
+		}
+
+		this.set('model', track);
+	},
+
 	// first is last because we have newest on top
 	playFirst() {
 		let firstTrack = this.get('playlist.lastObject');
-		// this.get('history').pushObject(firstTrack);
-		this.playTrack(firstTrack);
+		this.play(firstTrack);
 		// Ember.debug('Playing first track');
-	},playLast() {
+	},
+
+	playLast() {
 		// last is first because we have newest on top
 		let lastTrack = this.get('playlist.firstObject');
-		this.playTrack(lastTrack);
-		// this.get('history').pushObject(lastTrack);
+		this.play(lastTrack);
 		// Ember.debug('Playing last track');
 	},
+
 	prev() {
 		const isShuffled = this.get('isShuffled');
 		const history = this.get('history');
@@ -129,7 +83,7 @@ export default Ember.Service.extend({
 			newTrack = playlist.objectAt(playlist.indexOf(model) + 1);
 
 			if (newTrack) {
-				this.playTrack(newTrack);
+				this.play(newTrack);
 			} else {
 				// or play last
 				this.playLast();
@@ -142,14 +96,14 @@ export default Ember.Service.extend({
 			newTrack = history.objectAt(history.indexOf(model) - 1);
 
 			if (newTrack) {
-				return this.playTrack(newTrack);
+				return this.play(newTrack);
 			} else {
 				// or play prev in playlist
 				newTrack = playlist.objectAt(playlist.indexOf(model) + 1);
 			}
 
 			if (newTrack) {
-				return this.playTrack(newTrack);
+				return this.play(newTrack);
 			} else {
 				// or reset
 				// Ember.debug('resetting');
@@ -188,16 +142,64 @@ export default Ember.Service.extend({
 			this.playFirst();
 		} else {
 			// Ember.debug(newTrack, 'playback: newTrack');
-			this.playTrack(newTrack);
+			this.play(newTrack);
 		}
-	},
-
-	// use this to play a track, if you don't want the url to change
-	playTrack(track) {
-		if (!track) {
-			Ember.warn('playTrack called without a track.');
-			return false;
-		}
-		this.set('model', track);
 	}
+
+	// // not why we need this anymore (probably something with history/shuffle)
+	// addInitialTrackToHistory: function() {
+	// 	let history = this.get('history');
+	// 	let historyWasUpdated = this.get('historyWasUpdated');
+
+	// 	Ember.debug('addToHistory: model changed');
+
+	// 	if (historyWasUpdated) { return; }
+
+	// 	history.pushObject(this.get('model'));
+	// 	this.set('historyWasUpdated', true);
+	// },
+
+	// // Generates a ytid if the model doesn't have one already
+	// // @todo: this should be removed when all tracks have an ytid
+	// tryUpdateProvider: function() {
+	// 	Ember.debug('validateTrack');
+
+	// 	if (!this.get('model')) {
+	// 		return;
+	// 	}
+
+	// 	if (!this.get('model.ytid')) {
+	// 		this.get('model').updateProvider();
+	// 	}
+	// },
+
+	// modelChanged: Ember.observer('session.currentUser.settings.trackForRemote', function() {
+	// 	let session = this.get('session');
+	//
+	// 	Ember.debug('player model changed');
+	// 	Ember.debug(session);
+	//
+	// 	let user = this.get('session.currentUser');
+	// 	Ember.debug(user);
+	//
+	// 	let settings = user.get('settings');
+	// 	Ember.debug(settings);
+	//
+	// 	// settings.then((s) => {
+	// 	// 	s.set('trackForRemote', this.get('model'));
+	// 	// 	s.save().then(() => {
+	// 	// 		Ember.debug('saved settings with track');
+	// 	// 	});
+	// 	// });
+	//
+	//
+	// 	// Ember.run.schedule('sync', () => {
+	// 	// 	this.addInitialTrackToHistory();
+	// 	// 	this.tryUpdateProvider();
+	// 	// });
+	//
+	// 	// if (!settings.get('remoteActive')) { return; }
+	//
+	//
+	// }),
 });

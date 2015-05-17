@@ -11,7 +11,9 @@ export default Ember.Controller.extend({
 
 	remoteTrackHasChanged: Ember.observer('session.currentUser.settings.trackForRemote', function() {
 		var remoteTrack = this.get('session.currentUser.settings.trackForRemote');
+
 		this.set('player.model', remoteTrack);
+
 		Ember.debug('application:controller remoteTrackHasChanged updated player:model');
 	}),
 
@@ -19,11 +21,9 @@ export default Ember.Controller.extend({
 		togglePanel() {
 			this.toggleProperty('isPanelOpen');
 		},
-
 		toggleFullscreen() {
 			this.toggleProperty('isFullscreen');
 		},
-
 		ytPlaying() {
 			// Ember.debug('on playing from controller');
 			this.set('player.isPlaying', true);
