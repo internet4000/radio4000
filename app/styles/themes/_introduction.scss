@@ -2,26 +2,15 @@
 
 .Intro {
 	@include negative-text;
-	min-height: 100vh;
-	min-height: calc(100vh - 60px);
+	min-height: 80vh;
 	margin-bottom: 0;
-
 	background-color: #000;
-	// background-image: url('../images/bg-intro.jpg');
-	// background-size: cover;
-	// background-position: left center;
 
 	display: flex;
 	flex-flow: column nowrap;
 	color: $white;
 	justify-content: center;
 	padding-left: 10%;
-	// position: relative;
-	// overflow: hidden;
-
-	// &:hover .Intro-bg {
-	// 	transform: rotate(10deg);
-	// }
 
 	// on top of bg
 	> * {
