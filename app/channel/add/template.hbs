@@ -1,11 +1,11 @@
-<div class="Container Section--space">
+<div class="Container Section Section--space">
 	<h3>Add track</h3>
 
 	{{!-- {{#unless isValid}}
 		<p class="Warning">Enter the title of the track or paste in an URL.</p>
 	{{/unless}} --}}
 
-	<form class="Form Form--box" {{action "addTrack" on='submit'}}>
+	<form class="SecForm Form--box" {{action "addTrack" on='submit'}}>
 		<div class="Form-group">
 			<label for="trackUrl">URL</label>
 			{{focus-input id="trackUrl" type="url" value=controller.url placeholder="Paste in a YouTube link" required="required" autofocus="autofocus"}}
@@ -26,15 +26,14 @@
 			{{#link-to "channel.index" class="Btn Btn--text" title="Don't add the track"}}Cancel{{/link-to}}
 		</div>
 	</form>
+</div>
+<div class="Container Section--space">
+	<h2>A quicker way to add tracks</h2>
+	<p>Save this bookmarklet and tap on it while you're browsing a YouTube video to add it to your radio. Easy! (<a href="https://support.mozilla.org/en-US/kb/bookmarklets-perform-common-web-page-tasks#w_how-do-i-install-a-bookmarklet" target="_blank">?</a>)</p>
 
-	<div class="Section--space">
-		{{!-- <h2>Quickly save tracks with this bookmarklet</h2> --}}
-		<p>Save it to your bookmarks and tap on it while you're browsing a YouTube video to add it to your radio. Easy! (<a href="https://support.mozilla.org/en-US/kb/bookmarklets-perform-common-web-page-tasks#w_how-do-i-install-a-bookmarklet" target="_blank">?</a>)</p>
-
-		<p>
-			<a class="Btn Bookmarklet" data-slug="{{model.channel.slug}}" title="Drag me to your bookmarks" href="javascript:(function() { location.href='http://localhost:4000/c/TOBESLUGGED/add?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title);})();">
-			Add to {{model.channel.title}}</a>
-		</p>
-	</div>
-
+	<p>
+		<a class="Btn Bookmarklet" data-slug="{{model.channel.slug}}" title="Drag me to your bookmarks" href="javascript:(function() { location.href='http://localhost:4000/c/TOBESLUGGED/add?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title);})();">
+		Add to {{model.channel.title}}</a>
+	</p>
+	<p class="Muted">Tip: you need to drag it to your bookmarks bar.</p>
 </div>

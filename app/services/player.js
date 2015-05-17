@@ -187,7 +187,7 @@ export default Ember.Service.extend({
 			this.clearHistory();
 			this.playFirst();
 		} else {
-			console.log(newTrack, 'playback: newTrack');
+			// Ember.debug(newTrack, 'playback: newTrack');
 			this.playTrack(newTrack);
 		}
 	},

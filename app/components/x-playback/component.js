@@ -51,7 +51,7 @@ export default Ember.Component.extend({
 // 		return;
 // 	}
 
-// 	console.log('remotely changed track');
+// 	Ember.debug('remotely changed track');
 // 	this.set('channel', channel);
 // 	this.set('model', track);
 // }),
