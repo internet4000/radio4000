@@ -75,11 +75,6 @@ export default Ember.Object.extend({
 		let firebaseAuthAnswer = firebase.getAuth();
 		Ember.debug('firebase answers getAuth()');
 
-		// hugo tests to compare  objects: 'session' and 'firebaseAuthAnswer'
-		var session = this.get('session');
-		console.log('session', session);
-		console.log('firebaseAuthAnswer', firebaseAuthAnswer);
-
 		// The object containing the currentUser is merged onto the session.
 		// Because the session is injected onto controllers and routes,
 		// these values will be available to templates.
