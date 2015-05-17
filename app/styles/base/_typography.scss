@@ -47,9 +47,13 @@ h1,
 	@include size-4;
 	margin-bottom: 0.25rem;
 
-	@media (min-width: $layout-l) {
+	@media (min-width: $layout-sm) {
 		@include size-5;
 	}
+
+	// @media (min-width: $layout-l) {
+	// 	@include size-5;
+	// }
 
 	a {
 		color: $text-color;

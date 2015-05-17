@@ -7,7 +7,7 @@
 	top: 0.5em;
 	right: 0.5em;
 	width: 80%;
-	max-width: 240px;
+	max-width: 16rem;
 	z-index: 5;
 	box-shadow: -4px 4px 12px rgba(88, 88, 88, 0.25);
 	border-top: 0;
@@ -23,6 +23,14 @@
 	.is-panelOpen & {
 		display: block;
 		opacity: 1;
+	}
+
+	a,
+	label {
+		padding-top: 0.6rem;
+		padding-bottom: 0.6rem;
+		padding-left: 0.7rem;
+		padding-right: 0.7rem;
 	}
 }
 .PanelNav-overlay {
@@ -50,8 +58,6 @@
 	display: block;
 	padding-left: 1em;
 	padding-right: 1em;
-	padding-top: 0.5rem;
-	padding-bottom: 0.5rem;
 	&:hover {
 		background-color: $purple;
 		color: $white;
@@ -62,7 +68,6 @@
 	}
 }
 .PanelNav-group {
-	padding: 0.5rem 0;
 	border-top: 1px solid $mediumlightgray;
 	&:first-of-type {
 		border-top: 0;
@@ -81,7 +86,6 @@
 		@extend %font-regular;
 		padding-left: 3em;
 		padding-right: 1em;
-		padding-bottom: 0; // reset
 		position: relative;
 		cursor: pointer;
 	}

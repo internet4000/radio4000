@@ -2,13 +2,18 @@
  * Player
  */
 
+$progress-height: 8px;
+
 // Controls
 .Playback {
 	display: flex;
 	flex-flow: row nowrap; // items in one row, no wrapping
 	align-items: stretch; // full-height children
 	justify-content: space-between; // distribute items
-	min-height: $bar-height;
+
+	// move it a bit down because of progress
+	min-height: $bar-height - $progress-height;
+	margin-top: $progress-height;
 
 	// a shadow to show that it's above the content
 	// box-shadow: 0 0px 5px 1px rgba(0,0,0,.4);

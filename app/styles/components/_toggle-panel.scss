@@ -23,16 +23,13 @@
 	&:active {
 		color: $red;
 	}
-	.is-panelOpen & {
-	}
-
-	.TogglePanel-square {
-		width: 5px;
-		height: 5px;
-		background-color: white;
-		margin-top: 4px;
-		display: block;
-		margin-left: auto;
-		margin-right: auto;
-	}
+	.is-panelOpen & {}
+}
+.TogglePanel-square {
+	display: block;
+	width: 5px;
+	height: 5px;
+	margin: 3px auto;
+	// border-radius: 50%;
+	background-color: white;
 }

@@ -12,14 +12,17 @@
 
 	img {
 		width: 89px;
-		vertical-align: middle;
+		// vertical-align: middle;
 		position: relative;
-		top: 21%; // vertical center
+		top: 16px; // vertical center
+		@media (min-width: $layout-sm) {
+			top: 9px;
+		}
 	}
 
 	a {
 		display: block;
-		height: 100%;
+		height: 55px;
 		color: $bleach;
 
 		// match .Container because we want padding here = bigger tap
