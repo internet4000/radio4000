@@ -111,7 +111,8 @@ export default Ember.Service.extend({
 				return this.playTrack(newTrack);
 			} else {
 				// or play last
-				return this.send('playLast');
+				this.send('playLast');
+				return;
 			}
 		}
 

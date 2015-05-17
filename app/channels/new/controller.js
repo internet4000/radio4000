@@ -7,7 +7,6 @@ export default Ember.Controller.extend({
 	titleMinLength: 4,
 	isSaving: false,
 	titleError: false,
-
 	newRadioTitle: '',
 
 	cleanSlug: Ember.computed('model.title', function() {
