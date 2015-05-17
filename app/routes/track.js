@@ -13,10 +13,25 @@ export default Ember.Route.extend({
 		this.get('player').setProperties({
 			model
 		});
+		let settings = this.get('session.currentUser.settings');
+		settings.then( (settings) => {
+			settings.set('trackForRemote', model);
+			settings.save();
+			Ember.debug('track:route settings trackForRemote - saved -')
+		});
+
+
 	},
 
 	// make sure fullscreen video is off when you leave the track
 	deactivate() {
 		this.controllerFor('application').set('isFullscreen', false);
+	},
+
+	actions: {
+		updateRemote() {
+			Ember.debug('track:route updateRemote.action');
+			return false;
+		}
 	}
 });
