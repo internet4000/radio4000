@@ -19,14 +19,14 @@ body {
 	height: 100vh;
 	overflow: auto;
 	-webkit-overflow-scrolling: touch;
-	padding-top: rem($barHeight);
-	padding-bottom: rem($barHeight);
+	padding-top: rem($bar-height);
+	padding-bottom: rem($bar-height);
 }
 .SiteFooter {
 	background-color: darken($bg-color, 6%);
 
 	// make room for the fixed bottom bar
-	padding-bottom: $barHeight;
+	padding-bottom: $bar-height;
 
 	.Nav {
 		// pull out so it aligns with the rest of the site
