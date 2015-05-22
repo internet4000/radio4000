@@ -1,14 +1,21 @@
-{{!-- <div class="Container Section--space">
-	<form {{action 'addTrack' on='submit'}}>
-		{{input type="url" value=newTrackUrl placeholder="Paste in a YouTube link to add a track" required="required"}}
+<div class="Container Section--space">
+	<form class="Form" {{action 'addTrack' on='submit'}}>
+		<div class="Form-group Form-group--relative">
+         {{input-paste type="url" value=newTrackUrl placeholder="Paste in a YouTube link to add a track" required="required" pasted="addTrack"}}
+         <button type="submit" class="Btn Form-groupStatus">Add</button>
+      </div>
 	</form>
 </div>
 
-{{#if isShowingAdd}}
+{{!-- {{#if isShowingAdd}}
 	{{#modal-dialog alignment='center' translucentOverlay=true}}
 		{{track-add model=newTrack saveTrack="saveTrack" cancelEdit="closeModals"}}
   {{/modal-dialog}}
 {{/if}} --}}
+
+{{!-- <div class="Container Section--space">
+	<p>{{#link-to 'channel.add' class="Btn"}}Add track{{/link-to}}</p>
+</div> --}}
 
 {{#if isShowingModal}}
   {{#modal-dialog close="closeModals"}}

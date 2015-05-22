@@ -12,6 +12,7 @@
 [type='url'],
 [type='search'],
 textarea {
+	@include size-1;
 	@include negative-text;
 	border: 1px solid rgba(0,0,0,0.15);
 	border-radius: $border-radius;
@@ -121,6 +122,13 @@ input[type='file'] {
 	right: 0.7rem;
 	font-size: rem(12);
 	color: $gray;
+
+	&.Btn {
+		top: 0;
+		right: 0;
+		padding-top: rem(9);
+		padding-bottom: rem(9);
+	}
 }
 
 .Form-left,

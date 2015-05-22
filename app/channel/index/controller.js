@@ -5,12 +5,17 @@ export default Ember.Controller.extend({
 	actions: {
 		addTrack() {
 			let url = this.get('newTrackUrl');
-			let newTrack = this.store.createRecord('track', {
-				url: url
+
+			this.transitionToRoute('channel.add', {
+				queryParams: { url: url }
 			});
 
-			this.set('newTrack', newTrack);
-			this.set('isShowingAdd', true);
+			this.set('newTrackUrl', '');
+			// let newTrack = this.store.createRecord('track', {
+			// 	url: url
+			// });
+			// this.set('newTrack', newTrack);
+			// this.set('isShowingAdd', true);
 		},
 
 		editTrack(track) {
