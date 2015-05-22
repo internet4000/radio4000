@@ -6,7 +6,7 @@ export default Ember.Route.extend({
 
 		// if not authed, go back to login
 		if (!this.get('session.isAuthenticated')) {
-			Ember.debug('not authed --> login')
+			Ember.debug('not authed --> login');
 			return this.transitionTo('login');
 		}
 

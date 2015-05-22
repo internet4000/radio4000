@@ -3,7 +3,6 @@ import Ember from 'ember';
 export default Ember.Service.extend({
 	isPlaying: false,
 	isShuffled: false,
-	historyWasUpdated: false,
 	model: null,
 
 	// we use the tracks fom our model's channel as playlist
@@ -33,18 +32,11 @@ export default Ember.Service.extend({
 	// 	return !this.get('history').contains(track);
 	// }),
 
-	// Clears history every time the channel changes
-	clearHistory: Ember.observer('channel', function() {
-		Ember.debug('Channel changed: clearing history.');
+	// Clears history every time the playlist changes
+	clearHistory: Ember.observer('playlist', function() {
+		Ember.debug('Playlist changed: clearing player history.');
 		this.get('history').clear();
 	}),
-
-	// gets a random track
-	getRandomTrack() {
-		let playlist = this.get('playlist');
-		let random = Math.floor(Math.random() * playlist.get('length'));
-		return playlist.objectAt(random);
-	},
 
 	// If you don't want the URL to change, use this to play a track
 	play(track) {
@@ -53,7 +45,8 @@ export default Ember.Service.extend({
 			return false;
 		}
 
-		this.set('model', track);
+		// the router is injected with the 'player-route' initializer
+		this.get('router').transitionTo('track', track);
 	},
 
 	// first is last because we have newest on top
@@ -144,9 +137,17 @@ export default Ember.Service.extend({
 			// Ember.debug(newTrack, 'playback: newTrack');
 			this.play(newTrack);
 		}
+	},
+
+	// gets a random track
+	getRandomTrack() {
+		let playlist = this.get('playlist');
+		let random = Math.floor(Math.random() * playlist.get('length'));
+		return playlist.objectAt(random);
 	}
 
 	// // not why we need this anymore (probably something with history/shuffle)
+	// historyWasUpdated: false,
 	// addInitialTrackToHistory: function() {
 	// 	let history = this.get('history');
 	// 	let historyWasUpdated = this.get('historyWasUpdated');
