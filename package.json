@@ -35,7 +35,7 @@
     "ember-disable-proxy-controllers": "^0.7.0",
     "ember-export-application-global": "^1.0.2",
     "ember-modal-dialog": "^0.7.0",
-    "ember-youtube": "^0.2.1",
+    "ember-youtube": "^0.3.0",
     "emberfire": "^1.4.5",
     "gulp": "^3.8.11",
     "rsyncwrapper": "^0.4.2",
