@@ -20,7 +20,6 @@ export default Ember.Route.extend({
 		const canEdit = userChannel.get('id') === this.modelFor('channel').get('id');
 		if (!canEdit) {
 			Ember.debug('cant edit - transitioning to log in');
-			transition.abort();
 			this.transitionTo('login');
 		}
 	},
