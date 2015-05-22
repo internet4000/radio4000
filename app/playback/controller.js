@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+const { debug, computed } = Ember;
+
 export default Ember.Controller.extend({
 	isMaximized: false,
 	isShuffled: false,
@@ -9,12 +11,12 @@ export default Ember.Controller.extend({
 	channel: null,
 
 	// tracks from the current channel
-	tracks: Ember.computed('channel.tracks.[]', function() {
+	tracks: computed('channel.tracks.[]', function() {
 		return this.get('channel.tracks');
 	}),
 
 	// gets the index of the current track
-	getCurrentTrackIndex: Ember.computed('tracks', 'model', function() {
+	getCurrentTrackIndex: computed('tracks', 'model', function() {
 		return this.get('tracks').indexOf(this.get('model'));
 	}),
 
@@ -24,7 +26,7 @@ export default Ember.Controller.extend({
 
 	// all tracks not in the history array
 	// there is probably a computed macro to handle this.
-	unplayed: Ember.computed('history.[]', 'tracks.[]', function() {
+	unplayed: computed('history.[]', 'tracks.[]', function() {
 		const history = this.get('history');
 		const tracks = this.get('tracks');
 
@@ -35,7 +37,7 @@ export default Ember.Controller.extend({
 		});
 	}),
 
-	// unplayed: Ember.computed.filter('tracks', function(track, index) {
+	// unplayed: computed.filter('tracks', function(track, index) {
 	// 	return !this.get('history').contains(track);
 	// }),
 
@@ -43,7 +45,7 @@ export default Ember.Controller.extend({
 		let history = this.get('history');
 		let historyWasUpdated = this.get('historyWasUpdated');
 
-		Ember.debug('updateHistory: model changed');
+		debug('updateHistory: model changed');
 
 		if (historyWasUpdated) { return; }
 
@@ -53,17 +55,17 @@ export default Ember.Controller.extend({
 
 	// Clears history every time the channel changes
 	clearHistory: Ember.observer('channel', function() {
-		Ember.debug('clearHistory: channel observer');
+		debug('clearHistory: channel observer');
 		this.get('history').clear();
 	}),
 
 	// generates a ytid if the model doesn't have one already
 	// @todo: this should be removed when all tracks have an ytid
 	validateTrack: Ember.observer('model', function() {
-		Ember.debug('validateTrack');
+		debug('validateTrack');
 
 		if (!this.get('model')) {
-			Ember.debug('validating without model……');
+			debug('validating without model……');
 			return;
 		}
 		// if (!this.get('model.ytid')) {
@@ -87,15 +89,15 @@ export default Ember.Controller.extend({
 	// 	const channel = this.get('session.currentUser.channels.firstObject');
 	// 	const track = channel.get('listeningToTrack');
 
-	// 	Ember.debug(channel);
-	// 	Ember.debug(track);
+	// 	debug(channel);
+	// 	debug(track);
 
 	// 	if (!track) {
 	// 		Ember.warn('updated without track');
 	// 		return;
 	// 	}
 
-	// 	Ember.debug('remotely changed track');
+	// 	debug('remotely changed track');
 	// 	this.set('channel', channel);
 	// 	this.set('model', track);
 	// }),
@@ -150,7 +152,7 @@ export default Ember.Controller.extend({
 					return this.send('playTrack', newTrack);
 				} else {
 					// or reset
-					// Ember.debug('resetting');
+					// debug('resetting');
 					this.clearHistory();
 					return this.set('model', null);
 				}
@@ -165,7 +167,7 @@ export default Ember.Controller.extend({
 			let model = this.get('model');
 			let newTrack;
 
-			Ember.debug(model, 'playback: current model');
+			debug(model, 'playback: current model');
 
 			// define which track is the next track
 			if (isShuffled) {
@@ -185,7 +187,7 @@ export default Ember.Controller.extend({
 				this.clearHistory();
 				return this.send('playFirst');
 			} else {
-				Ember.debug(newTrack, 'playback: newTrack');
+				debug(newTrack, 'playback: newTrack');
 				this.send('playTrack', newTrack);
 			}
 		},
@@ -197,7 +199,7 @@ export default Ember.Controller.extend({
 			let firstTrack = this.get('tracks.lastObject');
 			// this.get('history').pushObject(firstTrack);
 			this.send('playTrack', firstTrack);
-			// Ember.debug('Playing first track');
+			// debug('Playing first track');
 		},
 
 		playLast() {
@@ -205,7 +207,7 @@ export default Ember.Controller.extend({
 			let lastTrack = this.get('tracks.firstObject');
 			this.send('playTrack', lastTrack);
 			// this.get('history').pushObject(lastTrack);
-			// Ember.debug('Playing last track');
+			// debug('Playing last track');
 		},
 
 		// Toggles 'fullscreen mode'
@@ -214,18 +216,18 @@ export default Ember.Controller.extend({
 		},
 
 		ytPlaying() {
-			// Ember.debug('on playing from controller');
+			// debug('on playing from controller');
 		},
 		ytPaused() {
-			// Ember.debug('on paused from controller');
+			// debug('on paused from controller');
 		},
 		ytEnded() {
-			// Ember.debug('on ended from controller');
+			// debug('on ended from controller');
 			this.send('next');
 		},
 		ytError(error) {
-			// Ember.debug('on yt error from controller');
-			Ember.debug(error);
+			// debug('on yt error from controller');
+			debug(error);
 
 			// dont do anything on 'invalid parameter'
 			if (error === 2) { return; }

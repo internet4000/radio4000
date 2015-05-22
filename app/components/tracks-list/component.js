@@ -1,9 +1,11 @@
 import Ember from 'ember';
 
+const { computed, debug } = Ember;
+
 export default Ember.Component.extend({
 	// not sure how to set up SortableMixin
-	// sortedandfiltered: Ember.computed('filtered', function() {
-	sortedandfiltered: Ember.computed('model', function() {
+	// sortedandfiltered: computed('filtered', function() {
+	sortedandfiltered: computed('model', function() {
 		return Ember.ArrayController.create({
 			// content: this.get('filtered'),
 			content: this.get('model'),
@@ -16,7 +18,7 @@ export default Ember.Component.extend({
 
 	// filter: '',
 	// // Returns either all tracks or the filtered tracks by hashtag
-	// filtered: Ember.computed('filter', 'model', function() {
+	// filtered: computed('filter', 'model', function() {
 	// 	let filter = this.get('filter');
 	// 	let model = this.get('model');
 
@@ -36,11 +38,11 @@ export default Ember.Component.extend({
 	// }),
 
 	// // Returns the unique tags from all models
-	// tags: Ember.computed('model.@each.hashtags', function() {
+	// tags: computed('model.@each.hashtags', function() {
 	// 	let model = this.get('model');
 	// 	let tags = model.getEach('hashtags');
 
-	// 	Ember.debug('tags computed (keep this low)');
+	// 	debug('tags computed (keep this low)');
 
 	// 	// Remove tracks without hashtags
 	// 	tags = tags.compact();

@@ -1,7 +1,16 @@
 import Ember from 'ember';
 
+const { computed, debug } = Ember;
+
 export default Ember.Controller.extend({
 	isShowingModal: false,
+
+	// needed to access canEdit
+	needs: ['channel'],
+
+	sortProperties: ['created:desc'],
+	sortedModel: computed.sort('model', 'sortProperties'),
+
 	actions: {
 		addTrack() {
 			let url = this.get('newTrackUrl');
@@ -35,7 +44,7 @@ export default Ember.Controller.extend({
 			// in case url changed, we need to set the ytid
 			track.updateProvider();
 			track.save().then(() => {
-				Ember.debug('Saved track');
+				debug('Saved track');
 			});
 
 			this.send('closeModals');
@@ -49,10 +58,10 @@ export default Ember.Controller.extend({
 				channel.get('tracks').then((tracks) => {
 					tracks.removeObject(track);
 
-					Ember.debug('Removing track from channel.');
+					debug('Removing track from channel.');
 
 					channel.save().then(() => {
-						Ember.debug('Saved channel.');
+						debug('Saved channel.');
 					});
 
 					// then itself
@@ -65,26 +74,19 @@ export default Ember.Controller.extend({
 
 	// queryParams: ['tags'],
 
-	// these are needed to pass some props down to tracks-list component
-	needs: ['channel'],
-	// canEdit: Ember.computed.alias('controllers.channel.canEdit'),
-
 	// Helpers to show contextual UI helpers
-	// hasImage: Ember.computed.notEmpty('model.coverImage'),
+	// hasImage: computed.notEmpty('model.coverImage'),
 
 	// todo remove this
 	// it's only needed because of our model hook which doesn't update deleted tracks
-	// filteredModel: Ember.computed.filter('model.@each.isDeleted', function(item) {
+	// filteredModel: computed.filter('model.@each.isDeleted', function(item) {
 	// 	return !item.get('isDeleted');
 	// }),
 
-	sortProperties: ['created:desc'],
-	sortedModel: Ember.computed.sort('model', 'sortProperties')
-
-	// noTracks: Ember.computed.equal('model.tracks.length', 0),
-	// oneTrack: Ember.computed.equal('model.tracks.length', 1),
-	// moreTracks: Ember.computed.gt('model.tracks.length', 0),
-	// showHelp: Ember.computed('canEdit', 'model.tracks.[]', function() {
+	// noTracks: computed.equal('model.tracks.length', 0),
+	// oneTrack: computed.equal('model.tracks.length', 1),
+	// moreTracks: computed.gt('model.tracks.length', 0),
+	// showHelp: computed('canEdit', 'model.tracks.[]', function() {
 	// 	return this.get('canEdit') && this.get('model.tracks.length') < 2;
 	// })
 });

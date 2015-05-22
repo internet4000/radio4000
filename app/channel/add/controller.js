@@ -2,6 +2,8 @@ import config from '../../config/environment';
 import Ember from 'ember';
 import youtube from 'radio4000/utils/youtube';
 
+const { debug, computed, observer } = Ember;
+
 export default Ember.Controller.extend({
 	queryParams: ['url'],
 
@@ -10,7 +12,7 @@ export default Ember.Controller.extend({
 
 	// bookmarklet
 	// http://guides.emberjs.com/v1.10.0/routing/query-params/#toc_map-a-controller-s-property-to-a-different-query-param-key
-	bookmarklet: Ember.computed('session.currentUser.channels.firstObject', function() {
+	bookmarklet: computed('session.currentUser.channels.firstObject', function() {
 		let slug = this.get('session.currentUser.channels.firstObject.slug');
 		return `javascript:(function() {
 						location.href='
@@ -21,7 +23,7 @@ export default Ember.Controller.extend({
 	}),
 
 	// Check if the track is valid before saving
-	isValid: Ember.computed('model.url', 'model.title', function() {
+	isValid: computed('model.url', 'model.title', function() {
 		if (this.get('model.url') && this.get('model.title')) {
 			return true;
 		} else {
@@ -31,7 +33,7 @@ export default Ember.Controller.extend({
 
 	// This gets called when you paste something into the input-url component
 	// it takes a URL and turns it into a YouTube ID which we use to query the API for a title
-	automaticSetTitle: Ember.observer('url', function() {
+	automaticSetTitle: observer('url', function() {
 		let url = this.get('url');
 		let id = youtube(url);
 
@@ -50,11 +52,11 @@ export default Ember.Controller.extend({
 	setTitle() {
 		let id = this.get('youtubeId');
 		let endpoint = 'https://www.googleapis.com/youtube/v3/videos?id='+id+'&key='+config.youtubeApiKey+'&fields=items(id,snippet(title))&part=snippet';
-		Ember.debug('setTitle');
+		debug('setTitle');
 
 		// Use cache if we have it
 		if (this.get('cachedId') === id) {
-			// Ember.debug('Setting cached title');
+			// debug('Setting cached title');
 			return this.set('model.title', this.get('cachedTitle'));
 		}
 
@@ -64,13 +66,13 @@ export default Ember.Controller.extend({
 			this.set('isFetchingTitle', false);
 
 			if (!response.items.length) {
-				// Ember.debug('Could not find a title');
+				// debug('Could not find a title');
 				return false;
 			}
 
 			let title = response.items[0].snippet.title;
 
-			// Ember.debug('Setting title to: ' + title);
+			// debug('Setting title to: ' + title);
 			this.set('model.title', title);
 
 			// cache our title and ID so we don't request the same video twice

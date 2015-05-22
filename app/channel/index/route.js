@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+const { debug } = Ember;
+
 export default Ember.Route.extend({
 	beforeModel() {
 		let channel = this.modelFor('channel');
@@ -29,19 +31,19 @@ export default Ember.Route.extend({
 		//
 		// 	// might need an Ember.run wrap
 		// 	Ember.run.schedule('render', () => {
-		// 		Ember.debug('adding first tracks');
+		// 		debug('adding first tracks');
 		// 		model.addObjects(tracks);
 		// 	});
 		//
 		// 	// without this run loop, it runs before the first tracks are rendeed
 		// 	Ember.run.later(() => {
 		// 		this.modelFor('channel').get('tracks').then((tracks) => {
-		// 			Ember.debug('adding all tracks');
+		// 			debug('adding all tracks');
 		// 			model.addObjects(tracks);
 		// 		});
 		// 	});
 		// }, (error) => {
-		// 	Ember.debug(error);
+		// 	debug(error);
 		// });
 		//
 		// return model;
@@ -64,7 +66,7 @@ export default Ember.Route.extend({
 
 					// break if we have nothing
 					if (!snapshot.val()) {
-						Ember.debug('no value');
+						debug('no value');
 						return false;
 					}
 

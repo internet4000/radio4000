@@ -1,13 +1,15 @@
 import Ember from 'ember';
 
+const { debug } = Ember;
+
 export default Ember.Route.extend({
 	beforeModel: function() {
 		// @todo, what the fuck here?
 		// sign the user in
 		return this.get('session').fetch().then(() => {
-			Ember.debug('fetched success?');
+			debug('fetched success?');
 		}, () => {
-			Ember.debug('fetched fail?');
+			debug('fetched fail?');
 		});
 	},
 
@@ -15,7 +17,7 @@ export default Ember.Route.extend({
 		logout() {
 			this.get('session').close().then(() => {
 				// todo: why does before this it: "Preparing to transition from 'channels.index' to ' login'"
-				Ember.debug('logged out, application.route.action.logout');
+				debug('logged out, application.route.action.logout');
 				this.transitionTo('application');
 			});
 		},

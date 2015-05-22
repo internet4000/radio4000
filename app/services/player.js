@@ -1,14 +1,16 @@
 import Ember from 'ember';
 
+const { computed, debug, observer } = Ember;
+
 export default Ember.Service.extend({
 	isPlaying: false,
 	isShuffled: false,
 	model: null,
 
 	// we use the tracks fom our model's channel as playlist
-	playlist: Ember.computed('model.channel.tracks.[]', function() {
+	playlist: computed('model.channel.tracks.[]', function() {
 		let playlist = this.get('model.channel.tracks');
-		Ember.debug(playlist);
+		debug(playlist);
 		return playlist;
 	}),
 
@@ -17,7 +19,7 @@ export default Ember.Service.extend({
 
 	// all tracks not in the history array
 	// there is probably a computed macro to handle this.
-	unplayed: Ember.computed('history.[]', 'playlist.[]', function() {
+	unplayed: computed('history.[]', 'playlist.[]', function() {
 		const history = this.get('history');
 		const playlist = this.get('playlist');
 
@@ -28,13 +30,13 @@ export default Ember.Service.extend({
 		});
 	}),
 
-	// unplayed2: Ember.computed.filter('playlist', function(track, index) {
+	// unplayed2: computed.filter('playlist', function(track, index) {
 	// 	return !this.get('history').contains(track);
 	// }),
 
 	// Clears history every time the playlist changes
-	clearHistory: Ember.observer('playlist', function() {
-		Ember.debug('Playlist changed: clearing player history.');
+	clearHistory: observer('playlist', function() {
+		debug('Playlist changed: clearing player history.');
 		this.get('history').clear();
 	}),
 
@@ -53,14 +55,14 @@ export default Ember.Service.extend({
 	playFirst() {
 		let firstTrack = this.get('playlist.lastObject');
 		this.play(firstTrack);
-		// Ember.debug('Playing first track');
+		// debug('Playing first track');
 	},
 
 	playLast() {
 		// last is first because we have newest on top
 		let lastTrack = this.get('playlist.firstObject');
 		this.play(lastTrack);
-		// Ember.debug('Playing last track');
+		// debug('Playing last track');
 	},
 
 	prev() {
@@ -99,7 +101,7 @@ export default Ember.Service.extend({
 				return this.play(newTrack);
 			} else {
 				// or reset
-				// Ember.debug('resetting');
+				// debug('resetting');
 				this.clearHistory();
 				return this.set('model', null);
 			}
@@ -134,7 +136,7 @@ export default Ember.Service.extend({
 			this.clearHistory();
 			this.playFirst();
 		} else {
-			// Ember.debug(newTrack, 'playback: newTrack');
+			// debug(newTrack, 'playback: newTrack');
 			this.play(newTrack);
 		}
 	},
@@ -152,7 +154,7 @@ export default Ember.Service.extend({
 	// 	let history = this.get('history');
 	// 	let historyWasUpdated = this.get('historyWasUpdated');
 
-	// 	Ember.debug('addToHistory: model changed');
+	// 	debug('addToHistory: model changed');
 
 	// 	if (historyWasUpdated) { return; }
 
@@ -163,7 +165,7 @@ export default Ember.Service.extend({
 	// // Generates a ytid if the model doesn't have one already
 	// // @todo: this should be removed when all tracks have an ytid
 	// tryUpdateProvider: function() {
-	// 	Ember.debug('validateTrack');
+	// 	debug('validateTrack');
 
 	// 	if (!this.get('model')) {
 	// 		return;
@@ -174,22 +176,22 @@ export default Ember.Service.extend({
 	// 	}
 	// },
 
-	// modelChanged: Ember.observer('session.currentUser.settings.trackForRemote', function() {
+	// modelChanged: observer('session.currentUser.settings.trackForRemote', function() {
 	// 	let session = this.get('session');
 	//
-	// 	Ember.debug('player model changed');
-	// 	Ember.debug(session);
+	// 	debug('player model changed');
+	// 	debug(session);
 	//
 	// 	let user = this.get('session.currentUser');
-	// 	Ember.debug(user);
+	// 	debug(user);
 	//
 	// 	let settings = user.get('settings');
-	// 	Ember.debug(settings);
+	// 	debug(settings);
 	//
 	// 	// settings.then((s) => {
 	// 	// 	s.set('trackForRemote', this.get('model'));
 	// 	// 	s.save().then(() => {
-	// 	// 		Ember.debug('saved settings with track');
+	// 	// 		debug('saved settings with track');
 	// 	// 	});
 	// 	// });
 	//

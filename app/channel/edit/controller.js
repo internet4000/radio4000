@@ -1,18 +1,20 @@
 import Ember from 'ember';
 import clean from 'radio4000/utils/clean';
 
+const { debug, computed, observer } = Ember;
+
 export default Ember.Controller.extend({
 	didCacheSlug: false,
 	titleMaxLength: 32,
 	titleMinLength: 4,
 	channelDescriptionMaxLength: 280,
 
-	cacheSlug: Ember.computed('model.slug', function() {
+	cacheSlug: computed('model.slug', function() {
 		this.cachedSlug = this.get('model.slug');
 		this.toggleProperty('didCacheSlug');
 	}),
 
-	updateImage: Ember.observer('newImage', function() {
+	updateImage: observer('newImage', function() {
 		const newImage = this.get('newImage');
 		this.createImage(newImage);
 	}),
@@ -26,18 +28,18 @@ export default Ember.Controller.extend({
 
 		// save and add it to the channel
 		image.save().then((image) => {
-			Ember.debug('Image saved.');
+			debug('Image saved.');
 
 			channel.get('images').addObject(image);
 			channel.save().then(() => {
-				Ember.debug('Saved channel with image');
+				debug('Saved channel with image');
 			});
 		});
 	},
 
 	// Makes sure the slug is valid e.g. not in use by any other channel
 	validateSlug() {
-		Ember.debug('Validating slug.');
+		debug('Validating slug.');
 		const channels = this.store.find('channel');
 		const model = this.get('model');
 		const slug = model.get('slug');
@@ -64,7 +66,7 @@ export default Ember.Controller.extend({
 
 			// 3. Set slug accordingly
 			if (slugIsFree) {
-				Ember.debug('Setting slug to: ' + newSlug);
+				debug('Setting slug to: ' + newSlug);
 				this.send('save');
 			} else {
 				alert('Sorry, that permalink is taken. Try another one.');
@@ -74,6 +76,11 @@ export default Ember.Controller.extend({
 				this.set('isSaving', false);
 			}
 		});
+	},
+
+	// clear any unsaved changes
+	deactivate() {
+		this.controllerFor('channel').get('model').rollback();
 	},
 
 	actions: {
@@ -94,17 +101,17 @@ export default Ember.Controller.extend({
 
 		deleteImage() {
 			this.get('model.coverImage').destroyRecord().then(function() {
-				Ember.debug('Deleted channel image.');
+				debug('Deleted channel image.');
 			});
 		},
 
 		// Saves the channel
 		save() {
 			const channel = this.get('model');
-			Ember.debug('channel route save');
+			debug('channel route save');
 
 			channel.save().then(() => {
-				Ember.debug('Saved --> channel');
+				debug('Saved --> channel');
 				this.transitionToRoute('channel', this.get('model.slug'));
 				this.set('isSaving', false);
 			});
@@ -112,14 +119,9 @@ export default Ember.Controller.extend({
 
 		// used by 'ESC' key in the view
 		cancelEdit() {
-			Ember.debug('Cancel edit --> channel');
+			debug('Cancel edit --> channel');
 			this.transitionToRoute('channel', this.get('model'));
 			this.set('isSaving', false);
 		}
-	},
-
-	// clear any unsaved changes
-	deactivate() {
-		this.controllerFor('channel').get('model').rollback();
 	}
 });

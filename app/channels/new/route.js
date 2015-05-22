@@ -1,12 +1,14 @@
 import Ember from 'ember';
 
+const { debug } = Ember;
+
 export default Ember.Route.extend({
 	beforeModel() {
 		let channels = this.get('session.currentUser.channels');
 
 		// if not authed, go back to login
 		if (!this.get('session.isAuthenticated')) {
-			Ember.debug('not authed --> login');
+			debug('not authed --> login');
 			return this.transitionTo('login');
 		}
 
@@ -15,22 +17,22 @@ export default Ember.Route.extend({
 			let channel = channels.get('firstObject');
 
 			if (channel) {
-				Ember.debug('transition to ' + channel.get('title'));
+				debug('transition to ' + channel.get('title'));
 				return this.transitionTo('channel', channel);
 			}
 		});
 
 		// return this.get('session').fetch().then(() => {
-		// 	Ember.debug('fetch from new');
+		// 	debug('fetch from new');
 		// });
 		// channels.get('firstObject').then(() => {
-		// 	Ember.debug('got uc');
+		// 	debug('got uc');
 		// }, () => {
-		// 	Ember.debug('no uc');
+		// 	debug('no uc');
 		// });
 
 		 // else if (userChannel) {
-		// 	Ember.debug('aready have channel --> channel');
+		// 	debug('aready have channel --> channel');
 		//
 
 		// 	userChannel.then()

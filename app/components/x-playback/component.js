@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+const { debug } = Ember;
+
 export default Ember.Component.extend({
 	player: Ember.inject.service(),
 	actions: {
@@ -16,7 +18,7 @@ export default Ember.Component.extend({
 			this.get('player').play();
 		},
 		toggleFullscreen() {
-			Ember.debug('toggleFullscreen');
+			debug('toggleFullscreen');
 			this.toggleProperty('isFullscreen');
 		}
 	}
@@ -43,15 +45,15 @@ export default Ember.Component.extend({
 // 	const channel = this.get('session.currentUser.channels.firstObject');
 // 	const track = channel.get('listeningToTrack');
 
-// 	Ember.debug(channel);
-// 	Ember.debug(track);
+// 	debug(channel);
+// 	debug(track);
 
 // 	if (!track) {
 // 		Ember.warn('updated without track');
 // 		return;
 // 	}
 
-// 	Ember.debug('remotely changed track');
+// 	debug('remotely changed track');
 // 	this.set('channel', channel);
 // 	this.set('model', track);
 // }),

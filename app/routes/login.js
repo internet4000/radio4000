@@ -1,13 +1,15 @@
 import Ember from 'ember';
 
+const { debug } = Ember;
+
 export default Ember.Route.extend({
 	// beforeModel() {
 	// 	if (this.get('session.isAuthenticated')) {
-	// 		Ember.debug('already authed --> home');
+	// 		debug('already authed --> home');
 	// 		this.transitionTo('application');
 	// 	}
 	// 	else {
-	// 		Ember.debug('not authenticated');
+	// 		debug('not authenticated');
 	// 	}
 	// },
 
@@ -41,10 +43,10 @@ export default Ember.Route.extend({
 					let channel = channels.get('firstObject');
 
 					if (channel) {
-						Ember.debug('user signed in with channel, redirecting to it');
+						debug('user signed in with channel, redirecting to it');
 						this.transitionTo('channel', channel);
 					} else {
-						Ember.debug('user signed in without channel, redirecting to /new');
+						debug('user signed in without channel, redirecting to /new');
 						this.transitionTo('channels.new');
 					}
 				});

@@ -1,9 +1,11 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 
+const { attr, belongsTo } = DS;
+
 export default DS.Model.extend({
-	channel: DS.belongsTo('channel'),
-	src: DS.attr('string'),
+	channel: belongsTo('channel'),
+	src: attr('string'),
 
 	// returns a cropped thumb with facial detection
 	thumb: Ember.computed('src', function() {

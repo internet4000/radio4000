@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+const { debug } = Ember;
+
 export default Ember.Controller.extend({
 
 	// so user does not click two times
@@ -17,10 +19,10 @@ export default Ember.Controller.extend({
 			this.get('model.channelPublic').then((channelPublic) => {
 
 				channelPublic.destroyRecord().then(() => {
-					Ember.debug('destroyed public');
+					debug('destroyed public');
 
 					channel.destroyRecord().then(() => {
-						Ember.debug('destroyed channel, back to application.index');
+						debug('destroyed channel, back to application.index');
 						this.transitionToRoute('channels');
 						// this.set('session.currentUser.channels.firstObject', null);
 					});
@@ -35,25 +37,25 @@ export default Ember.Controller.extend({
 
 		// open
 		this.get('model.channelPublic').then((channelPublic) => {
-			Ember.debug(channelPublic);
+			debug(channelPublic);
 
 			// open followers
 			channelPublic.get('followers').then((followers) => {
-				Ember.debug(followers);
+				debug(followers);
 
 				// iterate
 				followers.forEach(function(follower) {
-					Ember.debug('Found follower:');
-					Ember.debug(follower.get('title'));
+					debug('Found follower:');
+					debug(follower.get('title'));
 
 					// open
 					follower.get('favoriteChannels').then((favs) => {
-						Ember.debug(favs);
-						Ember.debug(favs.contains(channel));
+						debug(favs);
+						debug(favs.contains(channel));
 						favs.removeObject(channel);
-						Ember.debug(favs.contains(channel));
+						debug(favs.contains(channel));
 						follower.save().then(() => {
-							Ember.debug('saved follower');
+							debug('saved follower');
 						});
 					});
 				});
@@ -69,7 +71,7 @@ export default Ember.Controller.extend({
 		user.get('channels').then((channels) => {
 			channels.removeObject(channel);
 			user.save().then(() => {
-				Ember.debug('Removed channel on user');
+				debug('Removed channel on user');
 			});
 		});
 	}

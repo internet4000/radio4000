@@ -1,9 +1,11 @@
 import Ember from 'ember';
 
+const { debug, computed } = Ember;
+
 export default Ember.Controller.extend({
 	player: Ember.inject.service(),
 
-	// lastUpdatedFormatted: Ember.computed('model.tracks.@each.created', function() {
+	// lastUpdatedFormatted: computed('model.tracks.@each.created', function() {
 	// 	const date = this.get('model.tracks.lastObject.created');
 
 	// 	// only the channel owner can see the exact time (privacy)
@@ -14,28 +16,28 @@ export default Ember.Controller.extend({
 	// 	}
 	// }),
 
-	canEdit: Ember.computed('model', 'session.currentUser.channels.firstObject', function() {
+	canEdit: computed('model', 'session.currentUser.channels.firstObject', function() {
 		const channel = this.get('model');
 		const userChannel = this.get('session.currentUser.channels.firstObject');
 
-		// Ember.debug(channel);
-		// Ember.debug(userChannel);
+		// debug(channel);
+		// debug(userChannel);
 
 		// first avoid both props being null === null which equals true (lol)
 		if (channel === null || userChannel === null || userChannel === undefined) {
-			Ember.debug('something is null');
+			debug('something is null');
 			return false;
 		}
 
 		// then check
 		const canEdit = (channel.get('id') === userChannel.get('id'));
-		// Ember.debug('checking canEdit');
-		// Ember.debug(canEdit);
+		// debug('checking canEdit');
+		// debug(canEdit);
 
 		return canEdit;
 	}),
 
-	isFavorite: Ember.computed('model', 'session.currentUser.channels.firstObject.favoriteChannels.@each', function() {
+	isFavorite: computed('model', 'session.currentUser.channels.firstObject.favoriteChannels.@each', function() {
 		const channel = this.get('model');
 		const favorites = this.get('session.currentUser.channels.firstObject.favoriteChannels');
 
@@ -48,7 +50,7 @@ export default Ember.Controller.extend({
 
 	actions: {
 		play() {
-			Ember.debug('transitioning to newest track');
+			debug('transitioning to newest track');
 			this.transitionToRoute('track', this.get('model.tracks.lastObject'));
 		},
 
@@ -60,7 +62,7 @@ export default Ember.Controller.extend({
 			const userChannel = this.get('session.currentUser.channels.firstObject');
 
 			if (!userChannel) {
-				Ember.debug('no user channel - transitioning to sigin');
+				debug('no user channel - transitioning to sigin');
 				this.transitionToRoute('login');
 				return false;
 			}
@@ -73,7 +75,7 @@ export default Ember.Controller.extend({
 
 			favorites.then((favs) => {
 
-				Ember.debug(favs);
+				debug(favs);
 
 				// add or remove to user's channel's favorites
 				if (isFavorite) {

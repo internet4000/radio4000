@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+const { computed, observer, debug } = Ember;
+
 export default Ember.Controller.extend({
 	player: Ember.inject.service(),
 	remoteControl: Ember.inject.service(),
@@ -9,12 +11,13 @@ export default Ember.Controller.extend({
 	isPanelOpen: false,
 	isOnSignIn: false,
 
-	remoteTrackHasChanged: Ember.observer('session.currentUser.settings.trackForRemote', function() {
-		var remoteTrack = this.get('session.currentUser.settings.trackForRemote');
+	trackForRemote: computed.alias('session.currentUser.settings.trackForRemote'),
 
+	remoteTrackHasChanged: observer('trackForRemote', function() {
+		let remoteTrack = this.get('trackForRemote');
+
+		debug('application:controller remoteTrackHasChanged updated player:model');
 		this.set('player.model', remoteTrack);
-
-		Ember.debug('application:controller remoteTrackHasChanged updated player:model');
 	}),
 
 	actions: {
@@ -25,22 +28,18 @@ export default Ember.Controller.extend({
 			this.toggleProperty('isFullscreen');
 		},
 		ytPlaying() {
-			// Ember.debug('on playing from controller');
 			this.set('player.isPlaying', true);
 		},
 		ytPaused() {
 			this.set('player.isPlaying', false);
-			// Ember.debug('on paused from controller');
 		},
 		ytEnded() {
 			this.set('player.isPlaying', false);
-			// Ember.debug('on ended from controller');
 			this.get('player').next();
 		},
 		ytError(error) {
 			this.set('player.isPlaying', false);
-			// Ember.debug('on yt error from controller');
-			Ember.debug(error);
+			debug(error);
 
 			// dont do anything on 'invalid parameter'
 			if (error === 2) { return; }

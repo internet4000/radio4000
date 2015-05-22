@@ -1,6 +1,8 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 
+const { attr, hasMany, belongsTo } = DS;
+
 /*
  Channel model:
 
@@ -10,14 +12,25 @@ import DS from 'ember-data';
  */
 
 export default DS.Model.extend({
-	title: DS.attr('string'),
-	slug: DS.attr('string'),
-	body: DS.attr('string'),
-	isFeatured: DS.attr('boolean'),
-	link: DS.attr('string'),
-	created: DS.attr('number', {
+	title: attr('string'),
+	slug: attr('string'),
+	body: attr('string'),
+	isFeatured: attr('boolean'),
+	link: attr('string'),
+	created: attr('number', {
 		defaultValue() { return new Date().getTime(); }
 	}),
+
+	// Set the latest image as the cover image
+	coverImage: Ember.computed('images.[]', function() {
+		return this.get('images.lastObject');
+	}),
+
+	// relationships
+	images: hasMany('image', { async: true }),
+	tracks: hasMany('track', { async: true }),
+	favoriteChannels: hasMany('channel', { inverse: null, async: true }),
+	channelPublic: belongsTo('channelPublic', { async: true })
 
 	// // dates
 	// lastUpdated: Ember.computed('tracks.@each.created', function() {
@@ -31,19 +44,4 @@ export default DS.Model.extend({
 	// createdDate: Ember.computed('created', function() {
 	// 	return moment(this.get('created')).fromNow();
 	// }),
-
-	// Set the latest image as the cover image
-	coverImage: Ember.computed('images.[]', function() {
-		return this.get('images.lastObject');
-	}),
-
-	// remote control
-	// listeningToTrack: DS.belongsTo('track', { async: true }),
-	// listeningToChannel: DS.belongsTo('channel', { async: true, inverse: null }),
-
-	// relationships
-	images: DS.hasMany('image', { async: true }),
-	tracks: DS.hasMany('track', { async: true }),
-	favoriteChannels: DS.hasMany('channel', { inverse: null, async: true }),
-	channelPublic: DS.belongsTo('channelPublic', { async: true })
 });

@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+const { debug } = Ember;
+
 export default Ember.Route.extend({
 	model(params) {
 		let slug = params.slug;
@@ -23,7 +25,7 @@ export default Ember.Route.extend({
 	afterModel(model) {
 		window.scrollTo(0, 0);
 
-		Ember.debug(model);
+		debug(model);
 		if (model) {
 			document.title = model.get('title') + ' - Radio4000';
 		}

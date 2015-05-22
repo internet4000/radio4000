@@ -1,7 +1,9 @@
 import DS from 'ember-data';
 
+const { attr, belongsTo } = DS;
+
 export default DS.Model.extend({
-   user: DS.belongsTo('user'),
-   remoteActive: DS.attr('boolean'),
-   trackForRemote: DS.belongsTo('track', { async: true })
+   user: belongsTo('user'),
+   remoteActive: attr('boolean'),
+   trackForRemote: belongsTo('track', { async: true })
 });

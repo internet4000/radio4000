@@ -1,16 +1,18 @@
 import DS from 'ember-data';
 
+const { attr, hasMany, belongsTo } = DS;
+
 export default DS.Model.extend({
-	name: DS.attr('string'),
-	email: DS.attr('string'),
-	provider: DS.attr('string'),
-	created: DS.attr('number', {
+	name: attr('string'),
+	email: attr('string'),
+	provider: attr('string'),
+	created: attr('number', {
 		defaultValue() { return new Date().getTime(); }
 	}),
-	channels: DS.hasMany('channel', {
+	channels: hasMany('channel', {
 		async: true
 	}),
-	settings: DS.belongsTo('user-setting', {
+	settings: belongsTo('user-setting', {
 		async: true
 	})
 });

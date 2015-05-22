@@ -2,17 +2,20 @@ import Ember from 'ember';
 import DS from 'ember-data';
 import youtube from 'radio4000/utils/youtube';
 
+const { debug } = Ember;
+const { attr, belongsTo } = DS;
+
 export default DS.Model.extend({
-	url: DS.attr('string'),
-	title: DS.attr('string'),
-	body: DS.attr('string'),
-	created: DS.attr('number', {
+	url: attr('string'),
+	title: attr('string'),
+	body: attr('string'),
+	created: attr('number', {
 		defaultValue() { return new Date().getTime(); }
 	}),
-	ytid: DS.attr('string'),
+	ytid: attr('string'),
 
 	// relationships
-	channel: DS.belongsTo('channel', { async: true, inverse: 'tracks' }),
+	channel: belongsTo('channel', { async: true, inverse: 'tracks' }),
 
 	// Returns a YouTube ID from an URL
 	// TODO: this should definitely be saved in the db
@@ -20,7 +23,7 @@ export default DS.Model.extend({
 	updateProvider() {
 		let id = youtube(this.get('url'));
 
-		Ember.debug('Updated track.ytid');
+		debug('Updated track.ytid');
 		this.set('ytid', id);
 		this.save();
 	}
