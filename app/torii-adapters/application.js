@@ -29,7 +29,7 @@ export default Ember.Object.extend({
 
 				// create settings for old users
 				// now we create settings on user create
-				let settings = user.get('settings').then((settings) => {
+				user.get('settings').then((settings) => {
 					Ember.debug(settings);
 					if (!settings) {
 						this.createSettings(user);
