@@ -11,18 +11,31 @@ export default Ember.Route.extend({
 	// Instead, we pass the channel and track to the playback controller
 	setupController(controller, model) {
 
-		// set track on user settings
-		let settings = this.get('session.currentUser.settings');
-		settings.then((settings) => {
-			settings.set('trackForRemote', model);
-			settings.save();
-			Ember.debug('track:route settings trackForRemote - saved -')
-		});
+		Ember.debug('track route setupController');
 
-		// // set track on player
-		// this.get('player').setProperties({
-		// 	model
-		// });
+		if (this.get('sessionisAuthenticated')) {
+			Ember.debug('authed, setting track on settings');
+
+			// set track on user settings
+			// which triggers an observer in application controller
+			let settings = this.get('session.currentUser.settings');
+			Ember.debug(settings);
+			settings.then((settings) => {
+				settings.set('trackForRemote', model);
+				settings.save();
+				Ember.debug('track:route settings trackForRemote - saved -');
+			});
+		} else {
+
+			Ember.debug('no user, setting track directly on player');
+
+			// set track on player
+			this.get('player').setProperties({
+				model
+			});
+		}
+
+
 	},
 
 	// make sure fullscreen video is off when you leave the track
