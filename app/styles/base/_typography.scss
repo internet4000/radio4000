@@ -10,6 +10,12 @@ html {
 	@media (min-width: $layout-m) { font-size: $base-font-size; }
 	@media (min-width: $layout-xl) { font-size: 17px; }
 }
+
+// apparently it can be bad to use this on the html element, so:
+h1,h2,h3,h4,p,ul,ol,blockquote {
+	text-rendering: optimizeLegibility;
+}
+
 strong,
 b {
 	@extend %font-bold;
