@@ -8,49 +8,26 @@ export default Ember.Route.extend({
 		if (!channel) { this.transitionTo('404'); }
 	},
 
-	// we don't return the promise which in turn
-	// renders the template immediately (faster yay!)
 	model() {
+		return this.findMax(40).then((tracks) => {
+			debug('returning already fetched tracks');
 
-		// a) FOR TESTING EMBER-LIST-VIEW
-		// let items = [];
-		// for (var i = 0; i < 41; i++) {
-		// 	items.push({ title: `Item ${i}` });
-		// }
-		// return items;
-
-		// b) NORMAL MODEL (but really slow rendering)
-		return this.modelFor('channel').get('tracks');
-
-		// c) FAST HACKY (smart) METHOD
-		// let model = Ember.A([]);
-		//
-		// this.getFirstTracks(model, 50).then((tracks) => {
-		//
-		// 	// might need an Ember.run wrap
-		// 	Ember.run.schedule('render', () => {
-		// 		debug('adding first tracks');
-		// 		model.addObjects(tracks);
-		// 	});
-		//
-		// 	// without this run loop, it runs before the first tracks are rendeed
-		// 	Ember.run.later(() => {
-		// 		this.modelFor('channel').get('tracks').then((tracks) => {
-		// 			debug('adding all tracks');
-		// 			model.addObjects(tracks);
-		// 		});
-		// 	});
-		// }, (error) => {
-		// 	debug(error);
-		// });
-		//
-		// return model;
+			// "all" doesn't do a request
+			return this.store.all('track', { channel: this.modelFor('channel') });
+		}, (error) => {
+			debug(error);
+		});
 	},
 
-	// finds the last, limited models to improve initial render times
-	// then loads the rest
+	afterModel() {
+
+		// here we request all tracks
+		this.modelFor('channel').get('tracks');
+	},
+
+	// returns a promose to the last (e.g. newest) X models
 	// see: https://github.com/firebase/emberfire/issues/243#issuecomment-94038081
-	getFirstTracks(model, limit) {
+	findMax(limit) {
 		let id = this.modelFor('channel').get('id');
 		let adapter = this.store.adapterFor('channel');
 
