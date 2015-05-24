@@ -1,9 +1,13 @@
 <div class="Playback">
-	<div class="Playback-title" title="Current track / go to current radio">
-		{{#link-to 'channel' model.channel}}
-			{{player.model.title}} <span class="Playback-channel">({{player.model.channel.title}})</span>
-		{{/link-to}}
-	</div>
+
+	{{#if player.model}}
+		<div class="Playback-title" title="Current track / go to current radio">
+			{{#link-to 'channel' model.channel}}
+				{{player.model.title}}
+				<span class="Playback-channel">({{player.model.channel.title}})</span>
+			{{/link-to}}
+		</div>
+	{{/if}}
 
 	<div class="Playback-buttons">
 

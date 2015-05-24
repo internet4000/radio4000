@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { debug, computed } = Ember;
+const { computed } = Ember;
 
 export default Ember.Controller.extend({
 	queryParams: ['filter'],

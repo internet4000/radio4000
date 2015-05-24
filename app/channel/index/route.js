@@ -5,9 +5,7 @@ const { debug } = Ember;
 export default Ember.Route.extend({
 	beforeModel() {
 		let channel = this.modelFor('channel');
-		if (!channel) {
-			this.transitionTo('404');
-		}
+		if (!channel) { this.transitionTo('404'); }
 	},
 
 	// we don't return the promise which in turn
