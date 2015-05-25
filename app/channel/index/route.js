@@ -4,25 +4,33 @@ const { debug } = Ember;
 
 export default Ember.Route.extend({
 	beforeModel() {
+		// 404 page
 		let channel = this.modelFor('channel');
 		if (!channel) { this.transitionTo('404'); }
 	},
 
 	model() {
-		return this.findMax(40).then((tracks) => {
-			debug('returning already fetched tracks');
 
-			// "all" doesn't do a request
-			return this.store.all('track', { channel: this.modelFor('channel') });
-		}, (error) => {
-			debug(error);
+		// we don't use model.tracks because it's too slow to render
+		// all tracks immediately
+		let channel = this.modelFor('channel');
+
+		// here we make requests for the first X models
+		// and then return store.all so that we'll also
+		// recieve any future model changes
+		return this.findMax(30).then(() => {
+
+			// "all" doesn't make a request
+			return this.store.all('track', { channel: channel });
 		});
 	},
 
 	afterModel() {
-
-		// here we request all tracks
-		this.modelFor('channel').get('tracks');
+		// we don't return a promise here in order to render what
+		// the model hook returns first
+		this.modelFor('channel').get('tracks').then((tracks) => {
+			// now the tracks are loaded
+		});
 	},
 
 	// returns a promose to the last (e.g. newest) X models

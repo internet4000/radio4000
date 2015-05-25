@@ -25,14 +25,10 @@
   {{/modal-dialog}}
 {{/if}}
 
-{{#if model.length}}
-	{{!-- {{#ember-list items=sortedModel height=800 rowHeight=40}} --}}
-	{{!-- {{/ember-list}} --}}
+{{#if sortedModel}}
 	<ul class="List">
 		{{#each sortedModel as |model|}}
-			{{track-item track=model
-				canEdit=controllers.channel.canEdit
-				edit="editTrack"}}
+			{{track-item track=model canEdit=controllers.channel.canEdit edit="editTrack"}}
 		{{/each}}
 	</ul>
 {{else}}
