@@ -1,12 +1,17 @@
 <ul class="List">
-	{{#each model as |channel|}}
+	{{#each model as |item|}}
 		<li>
+
+			{{!-- link-to slows down rendering quite a lot --}}
 			{{#link-to "channel" channel}}
-				<h3 class="List-title">{{channel.title}}</h3>
-				{{#if channel.body}}
-					<p class="List-body">{{do-truncate channel.body 140}}</p>
+			{{!-- <a href="#" {{action 'linkTo' item}}> --}}
+				<h3 class="List-title">{{unbound item.title}}</h3>
+				{{#if item.body}}
+					<p class="List-body">{{unbound item.body}}</p>
 				{{/if}}
+			{{!-- </a> --}}
 			{{/link-to}}
+
 		</li>
 	{{/each}}
 </ul>

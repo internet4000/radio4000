@@ -3,12 +3,17 @@ import Ember from 'ember';
 const { computed } = Ember;
 
 export default Ember.Controller.extend({
+	sortProperties: ['channelPublic.followers.length:desc'],
+
 	// 1. filter out the featured models
-	filtered: computed.filter('model.popular', function(item) {
+	featured: computed.filterBy('model', 'isFeatured'),
+
+	// 1. filter out the featured models
+	filtered: computed.filter('model', function(item) {
 		return !item.get('isFeatured');
 	}),
+
 	// 2. sort them by followers
-	sortProperties: ['channelPublic.followers.length:desc'],
 	sorted: computed.sort('filtered', 'sortProperties'),
 
 	// 3. return the top X items

@@ -3,28 +3,32 @@ import Ember from 'ember';
 const { computed } = Ember;
 
 export default Ember.Controller.extend({
-	queryParams: ['filter'],
+	// queryParams: ['search'],
 	sortProperties: ['title:asc'],
-	alphabetical: computed.sort('model', 'sortProperties'),
+	sorted: computed.sort('model', 'sortProperties')
 
-	// filters the array with our search value
-	filtered: computed('filter', function() {
-		let filter = this.get('filter');
-		let rx = new RegExp(filter, 'gi');
+	// the below doesn't work anymore
+	// titles and descriptions are jumping from one model to another when filtering
+	// weird.
 
-		if (!filter) { return; }
-
-		return this.get('model').filter((item) => {
-			return rx.test(item.get('title')) || rx.test(item.get('body'));
-		});
-	}),
-
-	// if we're searching, return those filtered channels otherwise all
-	channels: computed('filter', function() {
-		if (this.get('filter')) {
-			return this.get('filtered');
-		} else {
-			return this.get('alphabetical');
-		}
-	})
+	// // filters the array with our search value
+	// filtered: computed('search', function() {
+	// 	let search = this.get('search');
+	// 	let rx = new RegExp(search, 'gi');
+	//
+	// 	if (!search) { return; }
+	//
+	// 	return this.get('sorted').filter((item) => {
+	// 		return rx.test(item.get('title')) || rx.test(item.get('body'));
+	// 	});
+	// }),
+	//
+	// // if we're searching, return those filtered channels otherwise all
+	// channels: computed('search', function() {
+	// 	if (this.get('search')) {
+	// 		return this.get('filtered');
+	// 	} else {
+	// 		return this.get('sorted');
+	// 	}
+	// })
 });
