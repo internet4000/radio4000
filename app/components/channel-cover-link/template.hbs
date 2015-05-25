@@ -3,7 +3,7 @@
 	<figure class="Cover-img">
 
 		{{#if model.coverImage}}
-			<img class="lazyload" data-src={{model.coverImage.thumb}}>
+			<img src="{{model.coverImage.thumb}}" alt="{{model.title}}">
 		{{/if}}
 
 		<svg class="Cover-loader"
