@@ -28,7 +28,7 @@ export default Ember.Route.extend({
 	afterModel() {
 		// we don't return a promise here in order to render what
 		// the model hook returns first
-		this.modelFor('channel').get('tracks').then((tracks) => {
+		this.modelFor('channel').get('tracks').then(() => {
 			// now the tracks are loaded
 		});
 	},
