@@ -17,8 +17,9 @@ body {
 .SiteMain {
 	// scroll here instead of on body
 	height: 100vh;
-	overflow: auto;
+	overflow-y: scroll; // has to be scroll
 	-webkit-overflow-scrolling: touch;
+
 	padding-top: rem($bar-height);
 	padding-bottom: rem($bar-height);
 }
