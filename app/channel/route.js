@@ -26,6 +26,7 @@ export default Ember.Route.extend({
 		window.scrollTo(0, 0);
 
 		debug(model);
+
 		if (model) {
 			document.title = model.get('title') + ' - Radio4000';
 		}
