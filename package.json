@@ -20,9 +20,9 @@
   "devDependencies": {
     "broccoli-asset-rev": "^2.0.2",
     "broccoli-csso": "^1.0.0",
-    "ember-cli-autoprefixer": "^0.3.0",
-    "ember-cli": "0.2.6",
+    "ember-cli": "0.2.7",
     "ember-cli-app-version": "0.3.3",
+    "ember-cli-autoprefixer": "^0.4.1",
     "ember-cli-babel": "^5.0.0",
     "ember-cli-dependency-checker": "^1.0.0",
     "ember-cli-htmlbars": "0.7.6",
@@ -32,15 +32,15 @@
     "ember-cli-sass": "^4.0.0",
     "ember-cli-uglify": "^1.0.1",
     "ember-data": "1.0.0-beta.18",
+    "ember-disable-proxy-controllers": "^1.0.0",
+    "ember-export-application-global": "^1.0.2",
+    "ember-key-responder": "^0.3.0",
     "ember-modal-dialog": "^0.7.0",
     "ember-youtube": "^0.3.0",
     "emberfire": "^1.4.5",
     "gulp": "^3.8.11",
     "rsyncwrapper": "^0.4.2",
     "torii": "^0.3.5",
-    "ember-key-responder": "^0.3.0",
-    "torii-fire": "^0.2.2",
-    "ember-disable-proxy-controllers": "^1.0.0",
-    "ember-export-application-global": "^1.0.2"
+    "torii-fire": "^0.2.2"
   }
 }

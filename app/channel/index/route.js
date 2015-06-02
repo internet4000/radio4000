@@ -22,7 +22,7 @@ export default Ember.Route.extend({
 		// return this.store.all('track', { channel: channel });
 	},
 
-	afterModel(model) {
+	afterModel() {
 		// let channel = this.modelFor('channel');
 		// let hasTracks = model.get('length');
 		//
