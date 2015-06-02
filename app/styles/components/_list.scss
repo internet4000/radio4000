@@ -2,13 +2,11 @@
  * List (only allows one single link in each <li>)
  */
 
-.List,
-.ember-list-view {
+.List {
 	list-style: none;
 	padding-left: 0;
 
-	li,
-	.ember-list-item-view {
+	li {
 		border-bottom: 1px solid $mediumlightgray;
 		line-height: normal;
 		&:before {
@@ -43,7 +41,6 @@
 		}
 		&:focus,
 		&:active {
-			background-color: $white;
 			text-decoration: none;
 			// color: $white;
 			// p { color: $white; }

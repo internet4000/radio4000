@@ -8,6 +8,11 @@
 		transition: background-color 300ms $easing2;
 		background-color: $primary-color;
 		color: $white;
+
+		// on top of player
+		position: relative;
+		z-index: 1;
+
 		.Muted {
 			color: rgba($white, 0.6);
 		}
