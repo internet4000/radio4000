@@ -6,8 +6,7 @@ export default Ember.View.extend({
 		'controller.isFullscreen',
 		'controller.player.model:is-withPlayer:is-withoutPlayer',
 		'controller.isPanelOpen:is-panelOpen',
-		'controller.isMinimalUi:is-minimalUi',
-		'controller.isMinimalUiAnimation:is-minimalUiAnimation'
+		'controller.isMinimalUi:is-minimalUi'
 	],
 
 	didInsertElement() {
