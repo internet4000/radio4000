@@ -11,25 +11,45 @@ export default Ember.Route.extend({
 
 	model() {
 
+		return this.modelFor('channel').get('tracks');
 		// we don't use model.tracks because it's too slow to render
 		// all tracks immediately
+		// let channel = this.modelFor('channel');
+
+		// debug('Returning model from: ' + channel.get('title'));
+
+		// "all" doesn't make a request
+		// return this.store.all('track', { channel: channel });
+	},
+
+	afterModel(model) {
+		// let channel = this.modelFor('channel');
+		// let hasTracks = model.get('length');
+		//
+		// debug(channel.get('title') + ' has ' + hasTracks + ' tracks');
+		//
+		// if (!hasTracks) {
+		// 	this.something();
+		// }
+	},
+
+	something() {
 		let channel = this.modelFor('channel');
 
 		// here we make requests for the first X models
 		// and then return store.all so that we'll also
 		// recieve any future model changes
-		return this.findMax(30).then(() => {
+		this.findMax(30).then(() => {
+			debug('Got tracks from: ' + channel.get('title'));
 
-			// "all" doesn't make a request
-			return this.store.all('track', { channel: channel });
-		});
-	},
+			// we don't return a promise here in order to render what
+			// the model hook returns first
+			channel.get('tracks').then(() => {
+				// now the tracks are loaded
 
-	afterModel() {
-		// we don't return a promise here in order to render what
-		// the model hook returns first
-		this.modelFor('channel').get('tracks').then(() => {
-			// now the tracks are loaded
+				debug('Got all tracks');
+
+			});
 		});
 	},
 
