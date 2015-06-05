@@ -1,7 +1,20 @@
-/*global require */
+/* global require */
 var gulp = require('gulp');
 var rsync = require('rsyncwrapper').rsync;
 var atomshell = require('gulp-atom-shell');
+var critical = require('critical');
+
+// Extracts the necessary CSS to render the specified viewport,
+// inlines it in the header and loads the rest of the CSS async
+gulp.task('critical', function() {
+	critical.generateInline({
+		base: 'dist/',
+		src: 'index.html',
+		htmlTarget: 'index.html',
+		width: 1300,
+		height: 900
+	});
+});
 
 // Package into an OSX64 bit application using atom-shell
 gulp.task('atom', function () {
@@ -16,8 +29,6 @@ gulp.task('atom', function () {
 		}))
 		.pipe(atomshell.zfsdest('build/radio4000-osx.zip'));
 });
-
-// Package
 
 // Upload dist to dev
 gulp.task('deploy-dev', function() {

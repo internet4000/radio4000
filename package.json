@@ -20,6 +20,7 @@
   "devDependencies": {
     "broccoli-asset-rev": "^2.0.2",
     "broccoli-csso": "^1.0.0",
+    "critical": "^0.5.7",
     "ember-cli": "0.2.7",
     "ember-cli-app-version": "0.3.3",
     "ember-cli-autoprefixer": "^0.4.1",
