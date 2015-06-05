@@ -8,6 +8,7 @@
 			{{channels-grid channels=controller.featured}}
 		{{else}}
 			<p>Finding curated radios…</p>
+			{{partial 'partials/loader'}}
 		{{/if}}
 	</div>
 </div>
@@ -22,6 +23,7 @@
 			{{channels-grid channels=controller.popular}}
 		{{else}}
 			<p>Finding popular radios…</p>
+			{{partial 'partials/loader'}}
 		{{/if}}
 	</div>
 
