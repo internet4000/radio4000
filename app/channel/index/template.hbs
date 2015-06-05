@@ -1,5 +1,5 @@
 {{#if controllers.channel.canEdit}}
-	<div class="Container Section--space">
+	<div class="Container">
 		<form class="Form" {{action 'addTrack' on='submit'}}>
 			<div class="Form-group Form-group--relative">
 				{{input-paste type="url" value=newTrackUrl placeholder="Paste in a YouTube link to add a track" required="required" pasted="addTrack"}}
