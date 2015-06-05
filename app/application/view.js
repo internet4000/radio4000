@@ -13,7 +13,16 @@ export default Ember.View.extend({
 		const self = this;
 
 		// Remove our dummy app with inline styles
-		Ember.$('.DummyApp').remove();
+		let $dummy = Ember.$('.DummyApp');
+		$dummy.fadeOut({
+			duration: 200,
+			easing: 'linear',
+			complete: function() {
+				Ember.run.schedule('afterRender', () => {
+					$dummy.remove();
+				});
+			}
+		});
 
 		// close on top bar, links in the panel nav and on the overlay
 		this.$().on('click.app', '.SiteLogo, .PanelNav a, .PanelNav-overlay', function() {
