@@ -9,22 +9,28 @@ export default Ember.Controller.extend({
 
 	actions: {
 		deleteChannel() {
-			this.set('isDeleting', true);
-			const channel = this.get('model');
+			let channel = this.get('model');
+			let channelPublic = this.get('model.channelPublic');
 
-			this.deleteFavorites();
-			this.deleteUserRelationship();
+			this.set('isDeleting', true);
 
 			// open public
-			this.get('model.channelPublic').then((channelPublic) => {
+			channelPublic.then((channelPublic) => {
+
+				// start deleting favorites in parallel
+				this.deleteFavoritesFrom(channel);
 
 				channelPublic.destroyRecord().then(() => {
 					debug('destroyed public');
 
 					channel.destroyRecord().then(() => {
-						debug('destroyed channel, back to application.index');
+						debug('destroyed channel, transitioning to chanels');
+
+						// this needs to happen after deleting the channel
+						// because of our firebase rules which use the user relationship
+						this.deleteUserRelationshipFrom(channel);
+						this.set('isDeleting', false);
 						this.transitionToRoute('channels');
-						// this.set('session.currentUser.channels.firstObject', null);
 					});
 				});
 			});
@@ -32,31 +38,19 @@ export default Ember.Controller.extend({
 	},
 
 	// Deletes all references of this channel on its followers' favorite channels
-	deleteFavorites() {
-		const channel = this.get('model');
+	deleteFavoritesFrom(channel) {
+		channel.get('channelPublic').get('followers').then((followers) => {
 
-		// open
-		this.get('model.channelPublic').then((channelPublic) => {
-			debug(channelPublic);
+			followers.forEach((follower) => {
+				debug('Found follower: ' + follower.get('title'));
 
-			// open followers
-			channelPublic.get('followers').then((followers) => {
-				debug(followers);
-
-				// iterate
-				followers.forEach(function(follower) {
-					debug('Found follower:');
-					debug(follower.get('title'));
-
-					// open
-					follower.get('favoriteChannels').then((favs) => {
-						debug(favs);
-						debug(favs.contains(channel));
-						favs.removeObject(channel);
-						debug(favs.contains(channel));
-						follower.save().then(() => {
-							debug('saved follower');
-						});
+				follower.get('favoriteChannels').then((favs) => {
+					// debug(favs);
+					// debug(favs.contains(channel));
+					favs.removeObject(channel);
+					// debug(favs.contains(channel));
+					follower.save().then(() => {
+						debug('saved follower');
 					});
 				});
 			});
@@ -64,8 +58,7 @@ export default Ember.Controller.extend({
 	},
 
 	// Delete this channel on the session user
-	deleteUserRelationship() {
-		const channel = this.get('model');
+	deleteUserRelationshipFrom(channel) {
 		const user = this.get('session.currentUser');
 
 		user.get('channels').then((channels) => {
