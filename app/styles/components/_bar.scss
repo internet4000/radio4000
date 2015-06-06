@@ -13,7 +13,7 @@
 	background-color: $purple;
 	color: $text-color-invert;
 	backface-visibility: hidden; // perf
-	transition: transform 400ms $easing2, background-color 400ms;
+	transition: transform 400ms $easing2, background-color 200ms;
 
 	a {
 		color: $bleach;

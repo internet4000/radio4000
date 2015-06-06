@@ -68,45 +68,45 @@ export default Ember.Controller.extend({
 				return false;
 			}
 
-
 			this.set('isSaving', true);
 
-			// create public channel
-			this.store.createRecord('channelPublic', {
-				channel: channel
-			}).save().then((channelPublic) => {
+			channel.save().then((channel) => {
+				// now the channel is saved
+				debug('saved channel');
 
-				// now the channelPublic is saved, has an ID and can be used
-				debug('saved channelPublic');
+				// set relationship on user (who created the channel)
+				user.get('channels').then((channels) => {
 
-				// set channel slug and relationship
-				channel.setProperties({
-					slug: slug,
-					channelPublic: channelPublic
-				});
+					channels.addObject(channel);
+					user.save().then(() => {
+						debug('Saved channel on user.');
 
-				// save it
-				channel.save().then((channel) => {
+						// create public channel
+						this.store.createRecord('channelPublic', {
+							channel: channel
+						}).save().then((channelPublic) => {
 
-					// now the channel is saved
-					debug('saved channel');
+							// now the channelPublic is saved, has an ID and can be used
+							debug('saved channelPublic');
 
-					// set relationship on user (who created the channel)
-					user.get('channels').then((channels) => {
+							// set channel slug and relationship
+							channel.setProperties({
+								slug: slug,
+								channelPublic: channelPublic
+							});
 
-						channels.addObject(channel);
-						user.save().then(() => {
-							debug('Saved channel on user.');
+							// save it
+							channel.save().then((channel) => {
+								// Redirect to the new channel
+								debug('redirect to the new channel');
+								this.transitionToRoute('channel', channel);
+								this.set('isSaving', false);
+							});
 						});
-
-						// clean new radio (title) input
-						this.set('newRadioTitle', '');
-
-						// Redirect to the new channel
-						debug('redirect to the new channel');
-						this.transitionToRoute('channel', channel);
-						this.set('isSaving', false);
 					});
+
+					// clean new radio (title) input
+					this.set('newRadioTitle', '');
 				});
 			});
 		}

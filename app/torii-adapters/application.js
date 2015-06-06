@@ -73,9 +73,7 @@ export default Ember.Object.extend({
 		// If so, I set currentUser.
 		let firebase = this.get('container').lookup('adapter:application').firebase;
 		let store = this.get('container').lookup('store:main');
-
 		let firebaseAuthAnswer = firebase.getAuth();
-		debug('firebase answers getAuth()');
 
 		// The object containing the currentUser is merged onto the session.
 		// Because the session is injected onto controllers and routes,

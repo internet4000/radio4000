@@ -38,7 +38,7 @@
     "ember-key-responder": "^0.3.0",
     "ember-modal-dialog": "^0.7.2",
     "ember-youtube": "^0.3.1",
-    "emberfire": "^1.4.5",
+    "emberfire": "0.0.0",
     "gulp": "^3.9.0",
     "gulp-atom-shell": "^0.10.0",
     "rsyncwrapper": "^0.4.2",
