@@ -26,6 +26,7 @@
 .Track-body {
 	color: $gray;
 	font-style: italic;
+	margin-bottom: 0;
 
 	&:empty {
 		display: none;
