@@ -1,34 +1,58 @@
 import Ember from 'ember';
 
-const { computed } = Ember;
+const { computed, debug, observer, run } = Ember;
 
 export default Ember.Controller.extend({
-	// queryParams: ['search'],
-	sortProperties: ['title:asc'],
-	sorted: computed.sort('model', 'sortProperties')
+	search: '',
+	queryParams: ['search'],
 
-	// the below doesn't work anymore
-	// titles and descriptions are jumping from one model to another when filtering
-	// weird.
+	// this little pattern makes sets a property
+	// maximum every X ms for performance
+	watchSearch: observer('search', function() {
+		run.throttle(this, this.runSearch, 500);
+	}),
 
-	// // filters the array with our search value
-	// filtered: computed('search', function() {
-	// 	let search = this.get('search');
-	// 	let rx = new RegExp(search, 'gi');
-	//
-	// 	if (!search) { return; }
-	//
-	// 	return this.get('sorted').filter((item) => {
-	// 		return rx.test(item.get('title')) || rx.test(item.get('body'));
-	// 	});
-	// }),
-	//
-	// // if we're searching, return those filtered channels otherwise all
-	// channels: computed('search', function() {
-	// 	if (this.get('search')) {
-	// 		return this.get('filtered');
-	// 	} else {
-	// 		return this.get('sorted');
-	// 	}
-	// })
+	// the property triggers the computed property to, well, compute!
+	runSearch() {
+		this.set('realSearch', this.get('search'));
+	},
+
+	// filters out models where title or body matches the search
+	// it watches 'realSearch' instead of 'search' so we can
+	// debounce for performance
+	channels: computed('realSearch', function() {
+		let search = this.get('search');
+		let model = this.get('model');
+
+		if (!search) { return model; }
+
+		let stringContains = function(string) {
+			if (!string) { return false; }
+			return string.toLowerCase().indexOf(search.toLowerCase()) >= 0;
+		};
+
+		return model.filter((item) => {
+			return stringContains(item.get('title')) || stringContains(item.get('body'));
+		});
+	}),
+
+	// sorts our filtered model
+	sortedChannels: Ember.computed('channels.[]', function() {
+    return Ember.ArrayProxy.createWithMixins(Ember.SortableMixin, {
+      sortProperties: ['created'],
+      sortAscending: false,
+      content: this.get('channels')
+    });
+  }),
+
+	actions: {
+		sortBy(property) {
+			let items = this.get('sortedChannels');
+
+			items.setProperties({
+				sortAscending: !items.get('sortAscending'),
+				sortProperties: [property]
+			});
+		}
+	}
 });

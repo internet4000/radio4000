@@ -2,25 +2,24 @@
 	<h1>All<small> — radios from A to Z</small></h1>
 </div>
 
-{{!-- <div class="Container Container--full Flex Flex--single">
+<div class="Container Container--full Flex Flex--single">
 	{{input type="search" value=search placeholder="Search radios"}}
-</div> --}}
+	{{#btn-group}}
+		<h4 class="BtnGroup-label">Sort by</h4>
+
+		<button class="Btn is-active" {{action 'sortBy' 'created'}}>
+			Date {{sort-indicator ascending=sortedChannels.sortAscending}}
+		</button>
+		<button class="Btn" {{action 'sortBy' 'title'}}>
+			Name {{sort-indicator ascending=sortedChannels.sortAscending}}
+		</button>
+	{{/btn-group}}
+</div>
 
 <div class="Section Container Container--full">
-	{{channels-grid channels=sorted showCover=true}}
+	{{channels-list channels=sortedChannels showCover=false}}
 </div>
 
 <div class="Container">
 	<p>{{#link-to 'channels'}}See all curated radios &rarr;{{/link-to}}</p>
 </div>
-
-{{!-- {{#btn-group}}
-	<h4 class="BtnGroup-label">Sort by</h4>
-
-	<button class="Btn" {{action 'sortBy' 'created'}}>
-		Date {{sort-indicator ascending=sortAscending}}
-	</button>
-	<button class="Btn" {{action 'sortBy' 'title'}}>
-		Name {{sort-indicator ascending=sortAscending}}
-	</button>
-{{/btn-group}} --}}

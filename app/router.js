@@ -10,7 +10,7 @@ Router.map(function() {
   this.route('about', function() {
       this.route('contact');
       this.route('technology');
-	});
+    });
   this.route('bookmarklet');
   this.route('dashboard');
   this.route('help', function() { /* help.index */ });
@@ -21,13 +21,13 @@ Router.map(function() {
       this.route('colors');
       this.route('typography');
       this.route('forms');
-	});
+    });
 
   // channels
   this.resource('channels', { path: '/' }, function() {
       this.route('all');
       this.route('new');
-	});
+    });
 
   // channel
   this.resource('channel', { path: '/c/:slug' }, function() {
@@ -39,8 +39,12 @@ Router.map(function() {
       this.route('add'); // add a track to channel
       this.route('edit'); // edit channel
       this.route('delete'); // permanently remove channel and its referenes from DB
-	});
+    });
   this.route('404');
+
+  this.route('channels', function() {
+    this.route('all');
+  });
 });
 
 export default Router;
