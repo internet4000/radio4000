@@ -2,26 +2,33 @@
 	<div class="BigStep-container">
 
 		{{#if session.isAuthenticated}}
+
 			{{#if session.currentUser.channels.firstObject}}
+
 				<h1 class="BigStep-title">Your radio</h1>
 				<p class="BigStep-subTitle">
 					{{#link-to 'channel' session.currentUser.channels.firstObject class="BigStep-goto" title="Your radio"}}
 						{{session.currentUser.channels.firstObject.title}}
 					{{/link-to}}
 				</p>
+
 			{{else}}
+
 				<p>You're already logged in.</p>
 				<p class="BigStep-buttons">
 					{{#link-to 'channels.new' class="Btn" title="Your radio"}}
 						Create my radio
 					{{/link-to}}
 				</p>
-			{{/if}}
-		{{else}}
-			{{#unless session.isWorking}}
-				<h1 class="BigStep-title">Log in Radio4000</h1>
 
-				<p class="BigStep-subTitle">to create or manage your radio</p>
+			{{/if}}
+
+		{{else}}
+
+			{{#unless session.isWorking}}
+				<h1 class="BigStep-title">Log in to Radio4000</h1>
+
+				<p class="BigStep-subTitle">and create or manage your radio.</p>
 
 				<div class="BigStep-buttons">
 					<button type="submit" class="Btn" title="Log in with your Google account" {{action 'logIn' 'google'}}>
@@ -34,9 +41,12 @@
 				</div>
 
 			{{else}}
-			<p class="BigStep-subTitle">Please wait</p>
+
+				<p class="BigStep-subTitle">Please wait</p>
 				{{is-loading}}
+
 			{{/unless}}
+
 		{{/if}}
 	</div>
 </div>

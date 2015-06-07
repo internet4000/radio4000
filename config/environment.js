@@ -33,15 +33,15 @@ module.exports = function(environment) {
     'script-src': "'self' 'unsafe-eval' https://www.youtube.com/iframe_api https://s.ytimg.com https://*.firebaseio.com"
   };
 
+  ENV.CLOUDINARY_NAME = 'radio4000';
+  ENV.CLOUDINARY_UPLOAD_PRESET = 'tc44ivjo';
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
-
-    ENV.CLOUDINARY_NAME = 'radio4000';
-    ENV.CLOUDINARY_UPLOAD_PRESET = 'tc44ivjo';
   }
 
   if (environment === 'test') {
@@ -58,8 +58,6 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.firebase = 'https://radio4000.firebaseio.com/';
-    ENV.CLOUDINARY_NAME = 'radio4000';
-    ENV.CLOUDINARY_UPLOAD_PRESET = 'tc44ivjo';
   }
 
   if (environment === 'native') {

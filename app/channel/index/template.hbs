@@ -9,16 +9,6 @@
 	</div>
 {{/if}}
 
-{{!-- {{#if isShowingAdd}}
-	{{#modal-dialog alignment='center' translucentOverlay=true}}
-		{{track-add model=newTrack saveTrack="saveTrack" cancelEdit="closeModals"}}
-  {{/modal-dialog}}
-{{/if}} --}}
-
-{{!-- <div class="Container Section--space">
-	<p>{{#link-to 'channel.add' class="Btn"}}Add track{{/link-to}}</p>
-</div> --}}
-
 {{#if isShowingModal}}
   {{#modal-dialog close="closeModals"}}
     {{track-edit model=trackToEdit saveTrack="saveTrack" deleteTrack="deleteTrack" cancelEdit="closeModals"}}
@@ -41,24 +31,5 @@
 		{{/if}}
 	</div>
 {{/if}}
-
-{{!-- <div class="Container">
-	{{#if showHelp}}
-		<div class="Note">
-			{{#if noTracks}}
-				<h2>Welcome to your new radio!</h2>
-				<p>To add a new track, tap <em>'Add track'</em> above.</p>
-			{{/if}}
-
-			{{#if oneTrack}}
-				<p><strong>Your first track!</strong> Why don't you add another?</p>
-			{{/if}}
-
-			{{#unless hasImage}}
-				<p>To add an image, update the description of your radio, tap <em>'Edit'</em> above.</p>
-			{{/unless}}
-		</div>
-	{{/if}}
-</div> --}}
 
 {{outlet}}
