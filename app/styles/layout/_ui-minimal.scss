@@ -8,6 +8,7 @@
 		transition: background-color 300ms $easing2;
 		background-color: $primary-color;
 		color: $white;
+		min-height: 100vh;
 
 		// on top of player
 		position: relative;
