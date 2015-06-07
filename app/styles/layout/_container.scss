@@ -35,3 +35,17 @@
 		padding-left: 0;
 	}
 }
+
+.Container--left {
+	@media (min-width: $layout-m) {
+		float: left;
+		width: 60%;
+	}
+}
+.Container--right {
+	@media (min-width: $layout-m) {
+		float: left;
+		width: 40%;
+		max-width: 25em;
+	}
+}
