@@ -75,4 +75,8 @@ $progress-height: 8px;
 	font-size: 1.4rem;
 	padding-right: 1rem !important;
 	color: $bleach;
+
+	svg {
+		vertical-align: middle;
+	}
 }
