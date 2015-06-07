@@ -23,12 +23,19 @@ export default Ember.Route.extend({
 	},
 
 	afterModel(model) {
-		window.scrollTo(0, 0);
-
 		if (model) {
 			document.title = model.get('title') + ' - Radio4000';
 		}
 	},
+
+	activate: function() {
+		window.scrollTo(0, 0);
+	},
+
+	deactivate() {
+		// Reset doc title when leaving the route
+		document.title = 'Radio4000';
+	}
 
 	// renderTemplate() {
 	// 	this._super();
@@ -37,10 +44,5 @@ export default Ember.Route.extend({
 	// 		into: 'application',
 	// 		outlet: 'contextual-navigation'
 	// 	});
-	// },
-
-	// Reset doc title when leaving the route
-	deactivate() {
-		document.title = 'Radio4000';
-	}
+	// }
 });

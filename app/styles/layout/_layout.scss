@@ -7,19 +7,11 @@ html {
 	background-color: $bg-color;
 	color: $text-color;
 }
-body {
-	overflow: hidden;
-}
 
 .SiteHeader {
 	@include clearfix;
 }
 .SiteMain {
-	// scroll here instead of on body
-	height: 100vh;
-	overflow-y: scroll; // has to be scroll
-	-webkit-overflow-scrolling: touch;
-
 	padding-top: rem($bar-height);
 	padding-bottom: rem($bar-height);
 }
