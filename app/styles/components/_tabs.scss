@@ -1,15 +1,15 @@
 /**
-* NavigationTab
+* Tabs
 **/
 
-.NavigationTab {
+.Tabs {
 	display: flex;
 	flex-flow: row nowrap;
 	background-color: $superlightgray;
 	text-align: center;
 }
 
-.NavigationTab-item {
+.Tabs-item {
 	flex: 0 1 10em; // grow and shrink and attempt to have the same width
 	padding: 1em 0.5em 0.6em;
 	border-bottom: 4px solid transparent;
