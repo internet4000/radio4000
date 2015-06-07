@@ -47,25 +47,26 @@ $sans-fallback: 'Lucida Grande','Lucida Sans', sans-serif;
  * Colors
  */
 
-$red:					hsl(0, 75%, 50%);
-$yellow:				hsl(52, 100%, 67%); //hsl(59, 100%, 65%);
-$blue:				hsl(255, 95%, 39%);
-$purple:				hsl(260, 80%, 50%);
+$red:							hsl(0, 75%, 50%);
+$yellow:					hsl(52, 100%, 67%);
+$blue:						hsl(255, 95%, 39%);
+$purple:					hsl(260, 80%, 50%);
 $lighterblue: 		hsla(266, 36%, 84%, 0.8);
-$darkblue:			hsl(230, 50%, 23%);
+$darkblue:				hsl(230, 50%, 23%);
 $verydarkblue:		hsl(255, 65%, 19%);
-$green:				hsl(125, 82%, 35%);
-$sand:				hsl(46, 5%, 91%);
-$bleach:				hsl(72, 100%, 98%);
-$black:				hsl(0, 0%, 10%);
-$dark:				hsl(0, 0%, 30%);
-$gray:				hsl(0, 0%, 50%);
-$mediumgray:		hsl(0, 0%, 70%);
+$green:						hsl(125, 82%, 35%);
+$sand:						hsl(46, 5%, 91%);
+$bleach:					hsl(72, 100%, 98%);
+$black:						hsl(0, 0%, 10%);
+$dark:						hsl(0, 0%, 30%);
+$gray:						hsl(0, 0%, 50%);
+$mediumgray:			hsl(0, 0%, 70%);
 $mediumlightgray: hsl(0, 0%, 85%);
-$lightgray:			hsl(0, 0%, 91%);
-$slightgray:		hsl(0, 0%, 95%);
+$lightgray:				hsl(0, 0%, 91%);
+$slightgray:			hsl(0, 0%, 95%);
 $superlightgray:	hsl(0, 0%, 98%);
-$white:				hsl(0, 0%, 100%);
+$white:						hsl(0, 0%, 100%);
+
 // Color definitions
 $primary-color: $purple;
 $secondary-color: rgba(82, 136, 156, 0.36);
@@ -73,7 +74,8 @@ $bg-color: $sand;
 $text-color: $black;
 $text-color-invert: $superlightgray;
 $link-color: $red;
-// partners colors
+
+// Partners colors
 $google: red;
 $facebook: blue;
 
@@ -82,7 +84,6 @@ $facebook: blue;
  * Easing and animations
  */
 
-// Good looking easings for animation
 $easing:  cubic-bezier(0.165, 0.840, 0.400, 1.000); // fast, good looking
 $easing2: cubic-bezier(0.300, 0.000, 0.000, 1.300); // nice for things that pop up (dropdown etc)
 $easing3: cubic-bezier(0.860, 0.000, 0.070, 1.000); // nice again?

@@ -1,11 +1,6 @@
 <div class="Tabs">
 	{{#link-to 'channels.index' title="Discover channels" class="Tabs-item"}}Discover{{/link-to}}
 	{{#link-to 'channels.all' title="Discover channels" class="Tabs-item"}}All{{/link-to}}
-	{{#if session.currentUser.channels.firstObject}}
-		{{#link-to 'channel' session.currentUser.channels.firstObject title="Go to my radio" class="Tabs-item"}}
-			My radio
-		{{/link-to}}
-	{{/if}}
 </div>
 
 <section class="Section Section--messaging Container">
