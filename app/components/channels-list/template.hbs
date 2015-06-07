@@ -1,4 +1,4 @@
-<ul class="List">
+<ul class="List {{if showCover 'List--cover'}}">
 
 	{{#each channels as |channel|}}
 		<li>
@@ -6,6 +6,10 @@
 			{{!-- link-to slows down rendering quite a lot --}}
 			{{#link-to "channel" channel}}
 			{{!-- <a href="#" {{action 'linkTo' channel}}> --}}
+
+				{{#if showCover}}
+					{{channel-cover model=channel hideControls=true hideTitle=true}}
+				{{/if}}
 
 				<h3 class="List-title">{{channel.title}}</h3>
 				{{#if channel.body}}

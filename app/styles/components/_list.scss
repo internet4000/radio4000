@@ -5,59 +5,34 @@
 .List {
 	list-style: none;
 	padding-left: 0;
-
-	li {
-		border-bottom: 1px solid $mediumlightgray;
-		line-height: normal;
-		&:before {
-			display: none;
-		}
+}
+.List li {
+	border-bottom: 1px solid $mediumlightgray;
+	line-height: normal;
+	&:before {
+		display: none;
+	}
+}
+.List a {
+	display: block;
+	padding: 0.8rem 1rem 0.7rem;
+	text-decoration: none;
+	@media (min-width: $layout-s) {
+		padding-left: 2rem;
+		padding-right: 2rem;
 	}
 
-	h3,
-	p {
-		margin: 0;
-	}
-	p {
-		@include size-1;
-		max-width: 80%;
-		// color: $text-color;
-	}
-	a {
-		display: block;
-		padding: 0.8rem 1rem 0.7rem;
+	&:hover {
+		background-color: hsla(0, 100%, 100%, 0.2);
 		text-decoration: none;
-		@media (min-width: $layout-s) {
-			padding-left: 2rem;
-			padding-right: 2rem;
-		}
 	}
-
-	a,
-	li {
-		&:hover {
-			background-color: hsla(0, 100%, 100%, 0.2);
-			text-decoration: none;
-		}
-		&:focus,
-		&:active {
-			text-decoration: none;
-			// color: $white;
-			// p { color: $white; }
-		}
+	&:focus,
+	&:active {
+		text-decoration: none;
 	}
 }
-.List--noHover {
-	a,
-	li {
-		&:hover,
-		&:focus {
-			background-color: initial;
-		}
-	}
-}
-
 .List-title {
+	margin: 0;
 	small {
 		@extend %font-mono;
 		@include size-1;
@@ -66,6 +41,9 @@
 	}
 }
 .List-body {
+	@include size-1;
+	max-width: 80%;
+	margin: 0;
 	color: $text-color;
 }
 
@@ -77,16 +55,25 @@
 }
 
 
-.ember-list-view {
-	overflow: auto;
-	position: relative;
+// List without hover
+.List--noHover {
+	a {
+		&:hover,
+		&:focus {
+			background-color: initial;
+		}
+	}
 }
-.ember-list-item-view {
-	position: absolute;
-	width: 100%;
 
-	.Track-link {
-		display: block;
-		// min-height: 56px;
+// List with cover images
+.List--cover {
+	a {
+		overflow: auto;
+	}
+	.Cover {
+		float: left;
+		width: 3rem;
+		margin-right: 1rem;
+		margin-bottom: 0;
 	}
 }
