@@ -8,9 +8,9 @@ var Router = Ember.Router.extend({
 Router.map(function() {
   // pages
   this.route('about', function() {
-      this.route('contact');
-      this.route('technology');
-    });
+    this.route('contact');
+    this.route('technology');
+  });
   this.route('bookmarklet');
   this.route('dashboard');
   this.route('help', function() { /* help.index */ });
@@ -18,33 +18,29 @@ Router.map(function() {
   this.route('login');
   this.route('stats');
   this.route('styleguide', function() {
-      this.route('colors');
-      this.route('typography');
-      this.route('forms');
-    });
+    this.route('colors');
+    this.route('typography');
+    this.route('forms');
+  });
 
   // channels
-  this.resource('channels', { path: '/' }, function() {
-      this.route('all');
-      this.route('new');
-    });
+  this.route('channels', { path: '/' }, function() {
+    this.route('all');
+    this.route('new');
+  });
 
   // channel
-  this.resource('channel', { path: '/c/:slug' }, function() {
-      this.route('index', { path: '/' }, function() {
-          this.resource('track', { path: ':track_id' });
-      });
-      this.route('favorites');
-      this.route('followers');
-      this.route('add'); // add a track to channel
-      this.route('edit'); // edit channel
-      this.route('delete'); // permanently remove channel and its referenes from DB
+  this.route('channel', { path: '/c/:slug' }, function() {
+    this.route('index', { path: '/' }, function() {
+        this.resource('track', { path: ':track_id' });
     });
-  this.route('404');
-
-  this.route('channels', function() {
-    this.route('all');
+    this.route('favorites');
+    this.route('followers');
+    this.route('add'); // add a track to channel
+    this.route('edit'); // edit channel
+    this.route('delete'); // permanently remove channel and its referenes from DB
   });
+  this.route('404');
 });
 
 export default Router;
