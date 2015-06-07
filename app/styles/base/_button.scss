@@ -139,6 +139,10 @@ button,
 			border-bottom-right-radius: $border-radius;
 		}
 	}
+
+	.Btn + .BtnGroup-label {
+		margin-left: 1rem;
+	}
 }
 .BtnGroup-label {
 	align-self: center;

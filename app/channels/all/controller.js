@@ -53,6 +53,9 @@ export default Ember.Controller.extend({
 				sortAscending: !items.get('sortAscending'),
 				sortProperties: [property]
 			});
+		},
+		toggleView() {
+			this.toggleProperty('isGrid');
 		}
 	}
 });
