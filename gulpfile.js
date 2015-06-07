@@ -1,7 +1,7 @@
 /* global require */
 var gulp = require('gulp');
 var rsync = require('rsyncwrapper').rsync;
-var atomshell = require('gulp-atom-shell');
+var electron = require('gulp-atom-electron');
 var critical = require('critical');
 
 // Extracts the necessary CSS to render the specified viewport,
@@ -17,17 +17,16 @@ gulp.task('critical', function() {
 });
 
 // Package into an OSX64 bit application using atom-shell
-gulp.task('atom', function () {
+gulp.task('electron', function() {
 	return gulp.src('dist/**')
-		.pipe(atomshell({
-			version: '0.22.1',
-			productName: 'Radio4000',
-			productVersion: '2.0.1',
+		.pipe(electron({
+			version: '0.27.2',
+			productVersion: '3.0.0',
 			platform: 'darwin',
 			darwinIcon: 'dist/images/logos/radio4000.icns',
 			name: 'Radio4000'
 		}))
-		.pipe(atomshell.zfsdest('build/radio4000-osx.zip'));
+		.pipe(electron.zfsdest('dist/radio4000-osx.zip'));
 });
 
 // Upload dist to dev
