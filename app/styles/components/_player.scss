@@ -23,11 +23,12 @@
 }
 .EmberYoutube-progress {
 	position: fixed;
-	bottom: 30px;
+	bottom: -5px;
 	left: 0;
 	right: 0;
 	z-index: 10;
-	
+	margin-bottom: 0;
+
 	progress {
 		background-color: hsla(0, 100%, 100%, 0.05);
 	}

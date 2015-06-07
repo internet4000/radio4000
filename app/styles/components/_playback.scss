@@ -13,7 +13,7 @@ $progress-height: 8px;
 
 	// move it a bit down because of progress
 	min-height: $bar-height - $progress-height;
-	margin-top: $progress-height;
+	margin-top: 2px;
 
 	// a shadow to show that it's above the content
 	// box-shadow: 0 0px 5px 1px rgba(0,0,0,.4);
