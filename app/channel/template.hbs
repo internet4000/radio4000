@@ -35,13 +35,9 @@
 				{{/if}}
 
 				{{#if canEdit}}
-					<div class="BtnGroupWrapper">
-						<div class="BtnGroup">
-							{{#link-to 'channel.edit' model class="Btn" title="Edit your radio"}}
-								{{x-icon i="pencil"}} Edit radio
-							{{/link-to}}
-						</div>
-					</div>
+					{{#link-to 'channel.edit' model class="Btn Channel-edit" title="Edit your radio"}}
+						{{x-icon i="pencil"}} Edit radio
+					{{/link-to}}
 				{{/if}}
 			</div>
 		</div>
