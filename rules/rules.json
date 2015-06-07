@@ -44,12 +44,15 @@
 
     "channelPublics": {
       ".read": true,
-      ".write": true, // true until we figure out how to make sure only you can delete?
 
       "$channelPublicID": {
-        //".write": "!newData.exists() && || auth != null"
-        // (1) channel has to stay the same. (2) if new, you have to own the channel you're adding a channelPublic for
-        //".validate": "!data.exists() && root.child('users').child(auth.uid).child('channels').child(newData.child('channel').val()).exists()"
+
+        // delete is allowed if you own the channel relationship OR create/update is allowed if you're authed
+        // this means you can change channel — but we can't validate and check for equality because that won't validate
+        // on create/delete
+        ".write": "!newData.exists() && root.child('users').child(auth.uid).child('channels').child(data.child('channel').val()).exists()
+                 || newData.exists() && auth != null"
+        //".validate": "data.child('channel').val() === newData.child('channel').val()"
       }
     },
 
