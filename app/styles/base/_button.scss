@@ -20,20 +20,21 @@ button,
 
 .CustomSelect,
 .Btn {
-	padding: 0.55em 0.8em 0.5em;
+	padding: em(5,13) 1rem em(4,13);
 	background-color: $slightgray;
 	background-image: linear-gradient(to bottom, $white 60%, #ececec);
 	color: $text-color;
-	box-shadow: hsla(0, 0%, 0%, 0.2) 0 1px 0 0;
+	box-shadow: hsla(0, 0%, 0%, 0.2) 2px 3px 0 0;
 	transition: border-color 200ms, background 200ms, box-shadow 200ms;
 	vertical-align: top;
+	border-color: hsla(0, 0%, 50%, 0.15);
 
 	// hover and active
 	&:hover,
 	&:active {
 		text-decoration: none;
 		background-image: linear-gradient(to bottom, $white 70%, hsla(0, 0%, 0%, 0.1));
-		border-color: rgba(0,0,0,0.18);
+		// border-color: rgba(0,0,0,0.18);
 	}
 
 	// active (pressed down)
@@ -90,7 +91,6 @@ button,
 // Large buttons
 .Btn--large {
 	@include size-2;
-	padding: 0.5em 0.7em 0.3em;
 }
 
 
