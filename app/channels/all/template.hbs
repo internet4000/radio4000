@@ -22,11 +22,13 @@
 
 <div class="Section">
 	{{#if isGrid}}
-		<div class="Container">
+		<div class="Container Container--full">
 			{{channels-grid channels=sortedChannels}}
 		</div>
 	{{else}}
-		{{channels-list channels=sortedChannels showCover=true}}
+		<div class="Container Container--full Container--noPadding">
+			{{channels-list channels=sortedChannels showCover=true}}
+		</div>
 	{{/if}}
 </div>
 
