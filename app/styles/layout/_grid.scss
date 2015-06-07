@@ -9,60 +9,36 @@
 		margin-left: -0.75rem;
 		margin-right: -0.75rem;
 	}
+}
+.Grid-item {
+	flex: 0 1 50%;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	margin-bottom: 1em;
 
-	.Cover {
-		flex: 0 1 50%;
-		padding-left: 0.5rem;
-		padding-right: 0.5rem;
-		margin-bottom: 1em;
+	// bigger version
+	@media (min-width: $layout-m) {
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
+		margin-bottom: 1.5em;
+	}
 
-		// bigger version
-		@media (min-width: $layout-m) {
-			padding-left: 0.75rem;
-			padding-right: 0.75rem;
-			margin-bottom: 1.5em;
-		}
-
-		// edge-to-edge grid (also max-width for crossbrowser support)
-		@media (min-width: $layout-sm) {
-			flex-basis: 33%;
-			.no-flexbox & { max-width: 33%; }
-		}
-		@media (min-width: $layout-l) {
-			flex-basis: 25%;
-			.no-flexbox & { max-width: 25%; }
-		}
-		@media (min-width: $layout-xl) {
-			flex-basis: 20%;
-			.no-flexbox & { max-width: 20%; }
-		}
-		@media (min-width: $layout-xxl) {
-			flex-basis: 14.28%;
-			.no-flexbox & { max-width: 14.28%; }
-		}
-		// @media (min-width: $layout-xxl) {
-		// 	flex-basis: 12.5%;
-		// 	.no-flexbox & { max-width: 12.5%; }
-		// }
-
-		// card style
-		a {
-			@include negative-text;
-			background-color: $white;
-			padding-bottom: 0.5em;
-		}
-		.Cover-img {
-			margin-bottom: 0;
-		}
-		.Cover-title {
-			padding-left: 0.5em;
-			padding-right: 0.5em;
-			word-break: break-word;
-
-			@media (min-width: $layout-m) {
-				padding-left: 1em;
-			}
-		}
+	// edge-to-edge grid (also max-width for crossbrowser support)
+	@media (min-width: $layout-sm) {
+		flex-basis: 33%;
+		.no-flexbox & { max-width: 33%; }
+	}
+	@media (min-width: $layout-l) {
+		flex-basis: 25%;
+		.no-flexbox & { max-width: 25%; }
+	}
+	@media (min-width: $layout-xl) {
+		flex-basis: 20%;
+		.no-flexbox & { max-width: 20%; }
+	}
+	@media (min-width: $layout-xxl) {
+		flex-basis: 14.28%;
+		.no-flexbox & { max-width: 14.28%; }
 	}
 }
 
@@ -76,20 +52,6 @@
 .Grid--center {
 	justify-content: center;
 	text-align: center;
-}
-.Grid-item {
-	flex: 0 0 100%; // first full, then split the space
-	padding-left: 0.5rem;
-	padding-right: 0.5rem;
-	margin-bottom: 1rem;
-
-	@media (min-width: $layout-s) {
-		flex: 1;
-	}
-
-	img {
-		max-width: 5rem;
-	}
 }
 
 .Flex {

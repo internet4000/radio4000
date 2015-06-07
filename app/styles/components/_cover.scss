@@ -83,3 +83,26 @@ $cover-size: 190px;
 		cursor: default;
 	}
 }
+
+
+// Cover has 'Card style' inside grids
+.Cover--card {
+	a {
+		@include negative-text;
+		background-color: $white;
+		padding-bottom: 0.5em;
+	}
+	.Cover-img {
+		margin-bottom: 0;
+	}
+	.Cover-title {
+		padding-left: 0.5em;
+		padding-right: 0.5em;
+		word-break: break-word;
+
+		@media (min-width: $layout-m) {
+			padding-left: 1em;
+		}
+	}
+
+}

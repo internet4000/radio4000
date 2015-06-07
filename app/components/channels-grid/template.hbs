@@ -1,5 +1,7 @@
 <div class="Grid">
 	{{#each channels as |channel|}}
-		{{channel-cover-link model=channel}}
+		<div class="Grid-item">
+			{{channel-cover-link model=channel isCard=true}}
+		</div>
 	{{/each}}
 </div>
