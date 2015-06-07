@@ -201,7 +201,7 @@ export default Ember.Service.extend({
 	// 	// 	this.tryUpdateProvider();
 	// 	// });
 	//
-	// 	// if (!settings.get('remoteActive')) { return; }
+	// 	// if (!settings.get('isRemoteActive')) { return; }
 	//
 	//
 	// }),

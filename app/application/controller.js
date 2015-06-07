@@ -12,12 +12,45 @@ export default Ember.Controller.extend({
 
 	trackForRemote: computed.alias('session.currentUser.settings.trackForRemote'),
 
-	remoteTrackHasChanged: observer('trackForRemote', function() {
-		let remoteTrack = this.get('trackForRemote');
+	onTrackForRemoteChange: observer('trackForRemote', function() {
+		let settings = this.get('session.currentUser.settings');
+		let track = this.get('trackForRemote');
 
-		debug('application:controller remoteTrackHasChanged updated player:model');
-		this.set('player.model', remoteTrack);
+		// debug(track);
+
+		if (!settings || !track) {
+			debug('remote track changed but no settings or track');
+			return;
+		}
+
+		// Ember.run.throttle(this, this.setTrack, 1000);
+		Ember.run.once(this, this.setTrack);
 	}),
+
+	setTrack() {
+		let settings = this.get('session.currentUser.settings');
+		let track = this.get('trackForRemote');
+
+		// check settings
+		// settings.then(() => {
+		// 	let remote = settings.get('isRemoteActive');
+		// 	console.log('remote is ' + remote);
+		// });
+
+		// open the track (it's a relationship)
+		track.then((track) => {
+
+			// it can also be null after opening
+			if (!track) {
+				debug('no track to set from remote');
+				return;
+			}
+
+			// make sure it doesn't run too often
+			debug('setting track from remote');
+			this.set('player.model', track);
+		});
+	},
 
 	actions: {
 		togglePanel() {
