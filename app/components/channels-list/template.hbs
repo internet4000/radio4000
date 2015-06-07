@@ -13,7 +13,7 @@
 
 				<h3 class="List-title">{{channel.title}}</h3>
 				{{#if channel.body}}
-					<p class="List-body">{{channel.body}}</p>
+					<p class="List-body">{{do-truncate channel.body 120}}</p>
 				{{/if}}
 
 			{{!-- </a> --}}

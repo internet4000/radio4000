@@ -17,7 +17,7 @@
 	// Set the color of the icon
 	path,
 	rect {
-		fill: $red;
+		fill: $secondary-color;
 		.DummyApp &,
 		.is-minimalUi & {
 			fill: white;

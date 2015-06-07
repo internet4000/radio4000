@@ -22,7 +22,7 @@ export default Ember.Handlebars.makeBoundHelper(function(str, len) {
 		newString = str.substr(0, newString.lastIndexOf(' '));
 		newString = (newString.length > 0) ? newString : str.substr(0, len);
 
-		return new Ember.Handlebars.SafeString(`${newString} […]`);
+		return new Ember.Handlebars.SafeString(`${newString}…`);
 	}
 
 	return str;

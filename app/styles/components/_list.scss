@@ -44,7 +44,8 @@
 	@include size-1;
 	max-width: 80%;
 	margin: 0;
-	color: $text-color;
+	// color: $text-color;
+	color: $gray;
 }
 
 // Smaller lists (good for long text)
@@ -72,8 +73,11 @@
 	}
 	.Cover {
 		float: left;
-		width: 3rem;
+		width: rem(51); // fits with two lines of description
 		margin-right: 1rem;
 		margin-bottom: 0;
+	}
+	.List-title {
+		margin-top: -3px; // align with cover
 	}
 }

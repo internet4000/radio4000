@@ -28,7 +28,9 @@
 {{#if sortedModel}}
 	<ul class="List">
 		{{#each sortedModel as |model|}}
-			{{track-item track=model canEdit=controllers.channel.canEdit edit="editTrack"}}
+			<li>
+				{{track-item track=model canEdit=controllers.channel.canEdit edit="editTrack"}}
+			</li>
 		{{/each}}
 	</ul>
 {{else}}

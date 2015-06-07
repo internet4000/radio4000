@@ -22,12 +22,12 @@
 		text-decoration: none;
 	}
 	&:active {
-		border-bottom-color: $red;
+		border-bottom-color: $secondary-color;
 		text-decoration: none;
 	}
 	&.is-active {
 		@extend %font-bold;
 		@include negative-text;
-		border-bottom: 4px solid $red;
+		border-bottom: 4px solid $secondary-color;
 	}
 }
