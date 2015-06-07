@@ -1,0 +1,57 @@
+{
+  "rules":{
+    ".write":"false",
+    ".read":"false",
+    "users": {
+      ".write":"false",
+      ".read":"false",
+      "$userid": {
+        ".write":"(false)",
+        ".read":"($userid===auth.username)",
+        "inbox": {
+          ".write":"(false)",
+          ".read":"(($userid===auth.username))",
+          "$message": {
+            ".write":"((((!newData.exists()||newData.hasChildren())&&(newData.val()==null||newData.child('from').exists()&&newData.child('to').exists()&&newData.child('message').exists())&&(auth.username==newData.child('from').val()&&newData.child('from').exists()&&!data.child('from').exists()||$userid===auth.username&&data.child('from').exists()&&!newData.child('from').exists())&&(!newData.child('from').exists()||newData.child('from').isString())&&(newData.child('to').exists()&&!data.child('to').exists()||data.child('to').exists()&&!newData.child('to').exists())&&(!newData.child('to').exists()||newData.child('to').isString())&&(newData.child('message').exists()&&!data.child('message').exists()||data.child('message').exists()&&!newData.child('message').exists())&&(!newData.child('message').exists()||newData.child('message').isString())&&(newData.parent().exists()&&!data.parent().exists()&&auth.username!==null||data.parent().exists()&&!newData.parent().exists()&&$userid===auth.username))))",
+            ".read":"(($userid===auth.username))",
+            "from": {
+              ".write":"((((newData.parent().val()==null||newData.parent().child('from').exists()&&newData.parent().child('to').exists()&&newData.parent().child('message').exists())&&(auth.username==newData.val()&&newData.exists()&&!data.exists()||$userid===auth.username&&data.exists()&&!newData.exists())&&(!newData.exists()||newData.isString())&&(newData.parent().parent().exists()&&!data.parent().parent().exists()&&auth.username!==null||data.parent().parent().exists()&&!newData.parent().parent().exists()&&$userid===auth.username))))",
+              ".read":"(($userid===auth.username))"
+            },
+            "to": {
+              ".write":"((((newData.parent().val()==null||newData.parent().child('from').exists()&&newData.parent().child('to').exists()&&newData.parent().child('message').exists())&&(newData.exists()&&!data.exists()||data.exists()&&!newData.exists())&&(!newData.exists()||newData.isString())&&(newData.parent().parent().exists()&&!data.parent().parent().exists()&&auth.username!==null||data.parent().parent().exists()&&!newData.parent().parent().exists()&&$userid===auth.username))))",
+              ".read":"(($userid===auth.username))"
+            },
+            "message": {
+              ".write":"((((newData.parent().val()==null||newData.parent().child('from').exists()&&newData.parent().child('to').exists()&&newData.parent().child('message').exists())&&(newData.exists()&&!data.exists()||data.exists()&&!newData.exists())&&(!newData.exists()||newData.isString())&&(newData.parent().parent().exists()&&!data.parent().parent().exists()&&auth.username!==null||data.parent().parent().exists()&&!newData.parent().parent().exists()&&$userid===auth.username))))",
+              ".read":"(($userid===auth.username))"
+            },
+            "$other":{".validate":"false"}
+          }
+        },
+        "outbox": {
+          ".write":"(false)",
+          ".read":"(($userid===auth.username))",
+          "$message": {
+            ".write":"((((!newData.exists()||newData.hasChildren())&&(newData.val()==null||newData.child('from').exists()&&newData.child('to').exists()&&newData.child('message').exists())&&(auth.username==newData.child('from').val()&&newData.child('from').exists()&&!data.child('from').exists()||$userid===auth.username&&data.child('from').exists()&&!newData.child('from').exists())&&(!newData.child('from').exists()||newData.child('from').isString())&&(newData.child('to').exists()&&!data.child('to').exists()||data.child('to').exists()&&!newData.child('to').exists())&&(!newData.child('to').exists()||newData.child('to').isString())&&(newData.child('message').exists()&&!data.child('message').exists()||data.child('message').exists()&&!newData.child('message').exists())&&(!newData.child('message').exists()||newData.child('message').isString()))))",
+            ".read":"(($userid===auth.username))",
+            "from": {
+              ".write":"((((newData.parent().val()==null||newData.parent().child('from').exists()&&newData.parent().child('to').exists()&&newData.parent().child('message').exists())&&(auth.username==newData.val()&&newData.exists()&&!data.exists()||$userid===auth.username&&data.exists()&&!newData.exists())&&(!newData.exists()||newData.isString()))))",
+              ".read":"(($userid===auth.username))"
+            },
+            "to": {
+              ".write":"((((newData.parent().val()==null||newData.parent().child('from').exists()&&newData.parent().child('to').exists()&&newData.parent().child('message').exists())&&(newData.exists()&&!data.exists()||data.exists()&&!newData.exists())&&(!newData.exists()||newData.isString()))))",
+              ".read":"(($userid===auth.username))"
+            },
+            "message": {
+              ".write":"((((newData.parent().val()==null||newData.parent().child('from').exists()&&newData.parent().child('to').exists()&&newData.parent().child('message').exists())&&(newData.exists()&&!data.exists()||data.exists()&&!newData.exists())&&(!newData.exists()||newData.isString()))))",
+              ".read":"(($userid===auth.username))"
+            },
+            "$other":{".validate":"false"}
+          }
+        }
+      }
+    },
+    "$other":{".validate":"false"}
+  }
+}
