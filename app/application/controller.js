@@ -1,56 +1,51 @@
 import Ember from 'ember';
 
-const { computed, observer, debug } = Ember;
+const { debug } = Ember;
 
 export default Ember.Controller.extend({
 	player: Ember.inject.service(),
-	remoteControl: Ember.inject.service(),
 	isMinimalUi: false,
 	isFullscreen: false,
 	isPanelOpen: false,
 	isOnSignIn: false,
 
-	trackForRemote: computed.alias('session.currentUser.settings.trackForRemote'),
+	// START REMOTE TRACK
 
-	onTrackForRemoteChange: observer('trackForRemote', function() {
-		let settings = this.get('session.currentUser.settings');
-		let track = this.get('trackForRemote');
+	// onTrackForRemoteChange: Ember.observer('session.currentUser.settings.trackForRemote', function() {
+	// 	let settings = this.get('session.currentUser.settings');
+	//
+	// 	if (!this.get('player.didPlay')) {
+	// 		debug('didnt activate play')
+	// 	}
+	//
+	// 	if (!settings) {
+	// 		debug('remote track changed but no settings');
+	// 		return;
+	// 	}
+	//
+	// 	settings.then((settings) => {
+	//
+	// 		// make sure it doesn't run too often
+	// 		Ember.run.debounce(this, this.setTrackFromRemote, 400, true);
+	// 	});
+	// }),
+	//
+	// setTrackFromRemote() {
+	// 	let track = this.get('session.currentUser.settings.trackForRemote');
+	//
+	// 	if (!track) {
+	// 		debug('cant set track without a track!');
+	// 		return;
+	// 	}
+	//
+	// 	// open the track (it's a relationship)
+	// 	track.then((track) => {
+	// 		debug('setting track from remote to ' + track.get('title'));
+	// 		this.set('player.model', track);
+	// 	});
+	// },
 
-		// debug(track);
-
-		if (!settings || !track) {
-			debug('remote track changed but no settings or track');
-			return;
-		}
-
-		// Ember.run.throttle(this, this.setTrack, 1000);
-		Ember.run.once(this, this.setTrack);
-	}),
-
-	setTrack() {
-		let settings = this.get('session.currentUser.settings');
-		let track = this.get('trackForRemote');
-
-		// check settings
-		// settings.then(() => {
-		// 	let remote = settings.get('isRemoteActive');
-		// 	console.log('remote is ' + remote);
-		// });
-
-		// open the track (it's a relationship)
-		track.then((track) => {
-
-			// it can also be null after opening
-			if (!track) {
-				debug('no track to set from remote');
-				return;
-			}
-
-			// make sure it doesn't run too often
-			debug('setting track from remote');
-			this.set('player.model', track);
-		});
-	},
+	// END REMOTE TRACK
 
 	actions: {
 		togglePanel() {

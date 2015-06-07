@@ -34,13 +34,13 @@
 			{{#link-to 'help' title="Answers to your questions"}}Help{{/link-to}}
 		</div>
 
-		{{#if session.isAuthenticated}}
+		{{!-- {{#if session.isAuthenticated}}
 			<div class="PanelNav-group">
 				<form class="CheckboxRemote">
 					<label title="Your radio will automatically play the tracks you play on another device.">{{input type="checkbox" checked=session.currentUser.settings.isRemoteActive}}Remote control</label>
 				</form>
 			</div>
-		{{/if}}
+		{{/if}} --}}
 
 		<div class="PanelNav-group">
 			{{#if session.isAuthenticated}}

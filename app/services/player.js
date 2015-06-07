@@ -175,34 +175,4 @@ export default Ember.Service.extend({
 	// 		this.get('model').updateProvider();
 	// 	}
 	// },
-
-	// modelChanged: observer('session.currentUser.settings.trackForRemote', function() {
-	// 	let session = this.get('session');
-	//
-	// 	debug('player model changed');
-	// 	debug(session);
-	//
-	// 	let user = this.get('session.currentUser');
-	// 	debug(user);
-	//
-	// 	let settings = user.get('settings');
-	// 	debug(settings);
-	//
-	// 	// settings.then((s) => {
-	// 	// 	s.set('trackForRemote', this.get('model'));
-	// 	// 	s.save().then(() => {
-	// 	// 		debug('saved settings with track');
-	// 	// 	});
-	// 	// });
-	//
-	//
-	// 	// Ember.run.schedule('sync', () => {
-	// 	// 	this.addInitialTrackToHistory();
-	// 	// 	this.tryUpdateProvider();
-	// 	// });
-	//
-	// 	// if (!settings.get('isRemoteActive')) { return; }
-	//
-	//
-	// }),
 });
