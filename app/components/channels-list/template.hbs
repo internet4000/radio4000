@@ -1,25 +1,21 @@
-<ul class="List {{if showCover 'List--cover'}}">
+{{#each channels as |channel|}}
+	<li>
 
-	{{#each channels as |channel|}}
-		<li>
+		{{!-- link-to slows down rendering quite a lot --}}
+		{{#link-to "channel" channel}}
+		{{!-- <a href="#" {{action 'linkTo' channel}}> --}}
 
-			{{!-- link-to slows down rendering quite a lot --}}
-			{{#link-to "channel" channel}}
-			{{!-- <a href="#" {{action 'linkTo' channel}}> --}}
+			{{#if showCover}}
+				{{channel-cover model=channel hideControls=true hideTitle=true}}
+			{{/if}}
 
-				{{#if showCover}}
-					{{channel-cover model=channel hideControls=true hideTitle=true}}
-				{{/if}}
+			<h3 class="List-title">{{channel.title}}</h3>
+			{{#if channel.body}}
+				<p class="List-body">{{do-truncate channel.body 120}}</p>
+			{{/if}}
 
-				<h3 class="List-title">{{channel.title}}</h3>
-				{{#if channel.body}}
-					<p class="List-body">{{do-truncate channel.body 120}}</p>
-				{{/if}}
+		{{!-- </a> --}}
+		{{/link-to}}
 
-			{{!-- </a> --}}
-			{{/link-to}}
-
-		</li>
-	{{/each}}
-
-</ul>
+	</li>
+{{/each}}
