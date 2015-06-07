@@ -1,9 +1,12 @@
 .ContextualNavigation {
-	transition: transform 400ms $easing;
-
+	transition: transform 400ms $easing, opacity 200ms;
 	margin-left: auto; // pushed to the right
 	display: flex;
 	align-items: center;
+
+	.is-fullscreen & {
+		opacity: 0;
+	}
 
 	a {
 		padding: 1.2rem 1rem 0.9rem;

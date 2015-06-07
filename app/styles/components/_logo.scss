@@ -10,6 +10,12 @@
 	margin: 0;
 	user-select: none; // nope
 
+	// fullscreen state
+	transition: opacity 200ms;
+	.is-fullscreen & {
+		opacity: 0.25;
+	}
+
 	img {
 		width: 89px;
 		// vertical-align: middle;
