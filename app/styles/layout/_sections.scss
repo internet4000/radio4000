@@ -7,11 +7,11 @@
 	padding-bottom: 2rem; // padding instead of margin - otherwise it cuts the box-shadow of .Box -_-
 }
 
-.Section--space,
-.Section--messaging {
+.Section--space {
 	padding-top: 1em;
 }
 
 .Section--messaging {
 	padding-bottom: 0;
+	padding-top: 1.6em;
 }
