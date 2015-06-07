@@ -17,6 +17,7 @@ gulp.task('critical', function() {
 });
 
 // Package into an OSX64 bit application using atom-shell
+// make sure to run `ember build` first
 gulp.task('electron', function() {
 	return gulp.src('dist/**')
 		.pipe(electron({

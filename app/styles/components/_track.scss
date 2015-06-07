@@ -21,10 +21,15 @@
 .Track-title {
 	@extend %font-regular;
 	@include size-1;
+	margin-bottom: 0;
 }
-.Track-description {
+.Track-body {
 	color: $gray;
 	font-style: italic;
+
+	&:empty {
+		display: none;
+	}
 }
 .Track-link,
 a.Track-link { // Link surrounding the track
@@ -66,7 +71,7 @@ a.Track-link { // Link surrounding the track
 		border-left-color: $red;
 		// color: white;
 	}
-	.Track-description {
+	.Track-body {
 		// color: white;
 	}
 	.icon-play {
