@@ -16,7 +16,8 @@ Router.map(function() {
   this.route('help', function() { /* help.index */ });
   this.route('intro');
   this.route('login');
-  this.route('stats');
+  this.route('404');
+  this.route('bunker');
   this.route('styleguide', function() {
     this.route('colors');
     this.route('typography');
@@ -40,7 +41,6 @@ Router.map(function() {
     this.route('edit'); // edit channel
     this.route('delete'); // permanently remove channel and its referenes from DB
   });
-  this.route('404');
 });
 
 export default Router;
