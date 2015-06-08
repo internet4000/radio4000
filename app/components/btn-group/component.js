@@ -1,4 +1,3 @@
-/*global $*/
 import Ember from 'ember';
 
 export default Ember.Component.extend({
@@ -6,9 +5,11 @@ export default Ember.Component.extend({
 	classNames: ['BtnGroup'],
 
 	attachButtonHandlers: Ember.on('didInsertElement', function() {
-		this.$('Btn').on('click', (event) => {
-			let $clicked = $(event.currentTarget);
-			let $notClicked = this.$('.Btn').not($clicked);
+		let $buttons = this.$().find('.Btn');
+
+		$buttons.on('click', (event) => {
+			let $clicked = Ember.$(event.currentTarget);
+			let $notClicked = $buttons.not($clicked);
 
 			$clicked.addClass('is-active');
 			$notClicked.removeClass('is-active');

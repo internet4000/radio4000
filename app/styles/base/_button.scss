@@ -24,10 +24,10 @@ button,
 	background-color: $slightgray;
 	background-image: linear-gradient(to bottom, $white 60%, #ececec);
 	color: $text-color;
-	box-shadow: hsla(0, 0%, 0%, 0.2) 2px 3px 0 0;
+	box-shadow: hsla(0, 0%, 0%, 0.15) 2px 3px 0 0;
 	transition: border-color 200ms, background 200ms, box-shadow 200ms;
 	vertical-align: top;
-	border-color: hsla(0, 0%, 50%, 0.15);
+	border-color: hsla(0, 0%, 50%, 0.2);
 
 	// hover and active
 	&:hover,
@@ -41,14 +41,14 @@ button,
 	&:active,
 	&.is-active {
 		outline: none;
-		box-shadow: hsla(0, 0%, 0%, 0.3) 2px 2px 4px inset;
+		box-shadow: hsla(0, 0%, 0%, 0.2) 2px 3px 0 0, inset hsla(0, 0%, 0%, 0.2) 2px 1px 3px 0;
 	}
 
 	// focus
 	&:focus {
 		outline: none;
 		border-color: $primary-color;
-		box-shadow: 0 0 5px rgba($primary-color, 0.3);
+		box-shadow: hsla(0, 0%, 0%, 0.4) 2px 3px 0 0;
 	}
 
 	// disabled
