@@ -6,12 +6,18 @@ export default Ember.Service.extend({
 	isPlaying: false,
 	isShuffled: false,
 	model: null,
+	playlist: null,
 
-	// we use the tracks fom our model's channel as playlist
-	playlist: computed('model.channel.tracks.[]', function() {
-		let playlist = this.get('model.channel.tracks');
-		debug(playlist);
-		return playlist;
+	setPlaylist: observer('model.channel.tracks', function() {
+		let playlist = this.get('playlist');
+		let newPlaylist = this.get('model.channel.tracks');
+
+		// if it's a new playlist, set it and clear history (for shuffle)
+		if (!Ember.isEqual(playlist, newPlaylist)) {
+			debug('setting new playlist');
+			this.set('playlist', newPlaylist);
+			this.get('history').clear();
+		}
 	}),
 
 	// all listened tracks
@@ -33,12 +39,6 @@ export default Ember.Service.extend({
 	// unplayed2: computed.filter('playlist', function(track, index) {
 	// 	return !this.get('history').contains(track);
 	// }),
-
-	// Clears history every time the playlist changes
-	clearHistory: observer('playlist', function() {
-		debug('Playlist changed: clearing player history.');
-		this.get('history').clear();
-	}),
 
 	// If you don't want the URL to change, use this to play a track
 	play(track) {
