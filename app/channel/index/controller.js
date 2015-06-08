@@ -8,6 +8,8 @@ export default Ember.Controller.extend({
 	// needed to access canEdit
 	needs: ['channel'],
 
+	canEdit: computed.alias('controllers.channel.canEdit'),
+
 	sortProperties: ['created:desc'],
 	sortedModel: computed.sort('model', 'sortProperties'),
 
