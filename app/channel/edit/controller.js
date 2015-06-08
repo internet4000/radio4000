@@ -1,13 +1,11 @@
 import Ember from 'ember';
 import clean from 'radio4000/utils/clean';
+import channelConst from 'radio4000/utils/channel-const';
 
 const { debug, computed, observer } = Ember;
 
 export default Ember.Controller.extend({
 	didCacheSlug: false,
-	titleMaxLength: 32,
-	titleMinLength: 4,
-	channelDescriptionMaxLength: 280,
 
 	cacheSlug: computed('model.slug', function() {
 		this.cachedSlug = this.get('model.slug');

@@ -1,12 +1,13 @@
 import Ember from 'ember';
 import clean from 'radio4000/utils/clean';
 import randomText from 'radio4000/utils/random-text';
+import channelConst from 'radio4000/utils/channel-const';
 
 const { debug, computed } = Ember;
 
 export default Ember.Controller.extend({
-	titleMaxLength: 33,
-	titleMinLength: 4,
+	titleMaxLength: channelConst.titleMaxLength,
+	titleMinLength: channelConst.titleMinLength,
 	isSaving: false,
 	titleError: false,
 	newRadioTitle: '',
