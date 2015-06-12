@@ -37,7 +37,7 @@
     "ember-export-application-global": "^1.0.2",
     "ember-key-responder": "^0.3.0",
     "ember-modal-dialog": "^0.7.2",
-    "ember-youtube": "0.4.0",
+    "ember-youtube": "0.4.1",
     "emberfire": "0.0.0",
     "gulp": "^3.9.0",
     "gulp-atom-electron": "^0.12.0",
