@@ -46,6 +46,10 @@ Then deploy:
 `$ gulp deploy-dev` (dev.radio4000.com)
 `$ gulp deploy-live` (radio4000.com)
 
+## Using our CDN
+
+To serve a file from our CDN, prepend the file of the URL (from our live domain radio4000.com) with `http://dyzwdli7efbh5.cloudfront.net` and it'll automatically pull and serve the file from the CDN.
+
 ## Building a native OS X app
 
 First make sure `public/package.json` is up to date, then run:
