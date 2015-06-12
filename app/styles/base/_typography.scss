@@ -23,13 +23,6 @@ b {
 em {
 	font-style: italic;
 }
-label {
-	@extend %font-bold;
-}
-.Btn {
-	@extend %font-bold;
-	@include size-1;
-}
 .Muted {
 	@include size-1;
 	color: $gray;

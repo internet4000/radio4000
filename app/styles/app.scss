@@ -19,8 +19,8 @@
 // @import 'base/normalize-opentype';
 @import 'base/config';
 @import 'base/base';
-@import 'base/button';
 @import 'base/form';
+@import 'base/button';
 @import 'base/typography';
 
 // 3. Layout (site and minimal page layout)
@@ -36,6 +36,7 @@
 
 // 4. Components (reusable components)
 @import 'utilities/content-states';
+@import 'components/btn-group';
 @import 'components/custom-select';
 @import 'components/icon';
 @import 'components/form-progress';

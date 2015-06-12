@@ -15,7 +15,7 @@
 			<br><br>
 			<button class="Btn Btn--primary">Primary button</button>
 			<br><br>
-			<button class="Btn--text">Text button</button>
+			<button class="Btn Btn--text">Text button</button>
 		</p>
 		<p>
 			<button class="Btn Btn--large">Large button</button>
@@ -25,25 +25,28 @@
 
 		<h3>Button group</h3>
 
-		<div class="BtnGroup">
+		{{#btn-group}}
 			<button class="Btn">Sir</button>
 			<button class="Btn">Alex</button>
+			<button class="Btn is-active">Active Button</button>
 			<button class="Btn">Ferguson</button>
-		</div>
+		{{/btn-group}}
 
 		<h3>A group of button groups</h3>
 
 		<div class="BtnGroupWrapper">
-			<div class="BtnGroup">
+			{{#btn-group}}
 				<button class="Btn">Cheese</button>
 				<button class="Btn">And</button>
 				<button class="Btn">Bread</button>
-			</div>
-			<div class="BtnGroup">
+			{{/btn-group}}
+			{{#btn-group}}
 				<button class="Btn">Another</button>
 				<button class="Btn">Button</button>
 				<button class="Btn">Group</button>
-			</div>
+				<button class="Btn">With</button>
+				<button class="Btn">Tuna</button>
+			{{/btn-group}}
 		</div>
 
 		<h2>Forms</h2>

@@ -14,7 +14,11 @@
 textarea {
 	@include size-1;
 	@include negative-text;
-	border: 1px solid rgba(0,0,0,0.15);
+	border: 1px solid;
+	border-color: rgba(0,0,0,0.15);
+	border-color: hsla(0, 0%, 50%, 0.2);
+	border-color: hsl(0, 0%, 89%);
+	border-color: hsl(0, 0%, 80%);
 	border-radius: $border-radius;
 
 	// &:valid {}
@@ -55,6 +59,7 @@ textarea {
 
 // Labels
 label {
+	@extend %font-bold;
 	@include size-1;
 	display: block;
 	padding-bottom: 5px;
