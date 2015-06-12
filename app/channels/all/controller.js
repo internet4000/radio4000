@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { computed, debug, observer, run } = Ember;
+const { computed, observer, run } = Ember;
 
 export default Ember.Controller.extend({
 	search: '',

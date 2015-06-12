@@ -1,7 +1,5 @@
 import Ember from 'ember';
 
-const { debug } = Ember;
-
 export default Ember.Route.extend({
 	model(params) {
 		let slug = params.slug;

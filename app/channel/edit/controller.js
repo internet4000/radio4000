@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import clean from 'radio4000/utils/clean';
-import channelConst from 'radio4000/utils/channel-const';
+// import channelConst from 'radio4000/utils/channel-const';
 
 const { debug, computed, observer } = Ember;
 
