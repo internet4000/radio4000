@@ -17,6 +17,7 @@ export default Ember.Controller.extend({
 		let title = this.get('newRadioTitle');
 
 		title = clean(title);
+		title = title.trim();
 
 		return `${title}-${random}`;
 	}),
@@ -59,8 +60,9 @@ export default Ember.Controller.extend({
 		create() {
 			const radioTitle = this.get('newRadioTitle');
 			const user = this.get('session.currentUser');
+
 			const channel = this.store.createRecord('channel', {
-				title: radioTitle
+				title: radioTitle.trim()
 			});
 			const slug = this.get('cleanSlug');
 
