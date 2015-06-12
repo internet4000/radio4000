@@ -23,6 +23,12 @@ export default Ember.Service.extend({
 	// all listened tracks
 	history: Ember.A([]),
 
+	clearHistory() {
+		let history = this.get('history');
+		history.clear();
+		Ember.debug('Player history was cleared');
+	},
+
 	// all tracks not in the history array
 	// there is probably a computed macro to handle this.
 	unplayed: computed('history.[]', 'playlist.[]', function() {
@@ -48,7 +54,8 @@ export default Ember.Service.extend({
 		}
 
 		// the router is injected with the 'player-route' initializer
-		this.get('router').transitionTo('track', track);
+		// this.get('router').transitionTo('track', track);
+		this.set('model', track);
 	},
 
 	// first is last because we have newest on top
