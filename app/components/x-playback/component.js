@@ -4,6 +4,7 @@ const { debug } = Ember;
 
 export default Ember.Component.extend({
 	player: Ember.inject.service(),
+
 	actions: {
 		prev() {
 			this.get('player').prev();

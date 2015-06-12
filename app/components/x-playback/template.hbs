@@ -2,7 +2,7 @@
 
 	{{#if player.model}}
 		<div class="Playback-title" title="Current track / go to current radio">
-			{{#link-to 'channel.index' model.channel}}
+			{{#link-to 'channel.index' player.model.channel}}
 				{{player.model.title}}
 				<span class="Playback-channel">({{player.model.channel.title}})</span>
 			{{/link-to}}
