@@ -2,22 +2,24 @@
 	<h1>All<small> — radios from A to Z</small></h1>
 </div>
 
-<div class="Container Container--full Flex Flex--single">
-	{{input type="search" value=search placeholder="Search radios"}}
+<div class="Section">
+	<div class="Container Container--full Flex Flex--single">
+		{{input type="search" value=search placeholder="Search radios"}}
 
-	{{#btn-group}}
-		<button class="Btn" {{action 'toggleView'}}>
-			{{if isGrid 'List' 'Grid'}}
-		</button>
+		{{#btn-group}}
+			<button class="Btn" {{action 'toggleView'}}>
+				{{if isGrid 'List' 'Grid'}}
+			</button>
 
-		<h4 class="BtnGroup-label">Sort by</h4>
-		<button class="Btn is-active" {{action 'sortBy' 'created'}}>
-			Date {{sort-indicator ascending=sortedChannels.sortAscending}}
-		</button>
-		<button class="Btn" {{action 'sortBy' 'title'}}>
-			Name {{sort-indicator ascending=sortedChannels.sortAscending}}
-		</button>
-	{{/btn-group}}
+			<h4 class="BtnGroup-label">Sort by</h4>
+			<button class="Btn is-active" {{action 'sortBy' 'created'}}>
+				Date {{sort-indicator ascending=sortedChannels.sortAscending}}
+			</button>
+			<button class="Btn" {{action 'sortBy' 'title'}}>
+				Name {{sort-indicator ascending=sortedChannels.sortAscending}}
+			</button>
+		{{/btn-group}}
+	</div>
 </div>
 
 <div class="Section">
