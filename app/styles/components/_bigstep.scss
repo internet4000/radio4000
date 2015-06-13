@@ -61,4 +61,8 @@
 		background-color: transparent;
 		color: $white;
 	}
+	a.Btn {
+		// otherwise it goes in two lines
+		min-width: 13rem;
+	}
 }
