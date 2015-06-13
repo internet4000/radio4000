@@ -24,6 +24,7 @@
 	box-shadow: 0 3px 2px 0 hsla(0, 0%, 0%, 0.06), inset -1px -1px 1px 0 hsla(0, 0%, 0%, 0.02);
 	transition: border-color 200ms, background 200ms, box-shadow 200ms;
 	vertical-align: top;
+	border: 0px solid transparent;
 
 	// hover and active
 	&:hover,
