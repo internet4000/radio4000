@@ -1,25 +1,22 @@
 import Ember from 'ember';
 
-const { debug } = Ember;
-
 export default Ember.Component.extend({
 	player: Ember.inject.service(),
 
 	actions: {
+		play() {
+			this.get('player').play();
+		},
+		pause() {
+			this.get('player').pause();
+		},
 		prev() {
 			this.get('player').prev();
 		},
 		next() {
 			this.get('player').next();
 		},
-		pause() {
-			this.get('player').pause();
-		},
-		play() {
-			this.get('player').play();
-		},
 		toggleFullscreen() {
-			debug('toggleFullscreen');
 			this.toggleProperty('isFullscreen');
 		}
 	}

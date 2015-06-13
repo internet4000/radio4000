@@ -3,11 +3,11 @@ import Ember from 'ember';
 const { computed, debug } = Ember;
 
 export default Ember.Controller.extend({
+	// player: Ember.inject.service(), // used for debugging unplayed + history
 	isShowingModal: false,
 
 	// needed to access canEdit
 	needs: ['channel'],
-
 	canEdit: computed.alias('controllers.channel.canEdit'),
 
 	sortProperties: ['created:desc'],
