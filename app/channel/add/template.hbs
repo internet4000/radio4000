@@ -29,11 +29,12 @@
 </div>
 <div class="Container Container--right Section--space">
 	<h2>Bookmarklet, add music faster</h2>
-	<p>Save this bookmarklet and tap on it while you're browsing a YouTube video to add it to your radio. Easy! (<a href="https://support.mozilla.org/en-US/kb/bookmarklets-perform-common-web-page-tasks#w_how-do-i-install-a-bookmarklet" target="_blank">?</a>)</p>
+	<p>Save this bookmarklet to your bookmark bar and tap on it while you're browsing a YouTube video to add it to your radio. Easy!</p>
 
 	<p>
 		<a class="Btn Bookmarklet" data-slug="{{model.channel.slug}}" title="Drag me to your bookmarks" href="javascript:(function() { location.href='http://radio4000.com/c/TOBESLUGGED/add?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title);})();">
 		Add to {{model.channel.title}}</a>
 	</p>
 	<p class="Muted">Tip: you need to drag it to your bookmarks bar.</p>
+	<p class="Muted"><a href="https://www.youtube.com/watch?v=-E6h7Z5fPlg" target="_blank">I don't understand, explain me again</a></p>
 </div>

@@ -4,9 +4,11 @@
 </div>
 
 <section class="Section Section--messaging Container">
-	{{#unless session.currentUser.channels.firstObject}}
+	{{#if session.currentUser.channels.firstObject}}
+		<span class="IntroMessage"><strong>New!</strong> Add a track in a second with the {{#link-to 'channel.add' session.currentUser.channels.firstObject}}Bookmarklet{{/link-to}}</span>
+	{{else}}
 		<span class="IntroMessage"><strong>Welcome!</strong> {{#link-to 'intro'}}Get introduced to Radio4000.{{/link-to}}</span>
-	{{/unless}}
+	{{/if}}
 </section>
 
 {{outlet}}
