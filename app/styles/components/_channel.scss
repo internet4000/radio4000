@@ -8,7 +8,7 @@
 		float: left;
 		width: 30%;
 		max-width: 10em;
-		padding-right: 1.5rem;
+		padding-right: 1rem;
 	}
 }
 .Channel-body {
@@ -60,16 +60,10 @@
 }
 .Follow--title {
 	float: left;
-	margin-right: 0.6rem;
 
 	// optical aligned with channel title
 	position: relative;
 	top: -0.15em;
-
-	@media (min-width: $layout-s) {
-		margin-right: 1rem;
-		top: 0.05em;
-	}
 }
 .Channel-title {
 	margin-bottom: 0.2em;

@@ -119,3 +119,16 @@
 		display: inline;
 	}
 }
+
+
+/**
+ * Non Buttons
+ * like follow button star
+ * aka, html buttons that should not look like them
+ **/
+
+.NonBtn {
+	border: 1px solid transparent;
+	background-color: transparent;
+	outline: none;
+}
