@@ -32,7 +32,8 @@
 	<p>Save this bookmarklet to your bookmark bar and tap on it while you're browsing a YouTube video to add it to your radio. Easy!</p>
 
 	<p>
-		<a class="Btn Bookmarklet" data-slug="{{model.channel.slug}}" title="Drag me to your bookmarks" href="javascript:(function() { location.href='http://radio4000.com/c/TOBESLUGGED/add?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title);})();">
+		<a class="Btn Bookmarklet" data-slug="{{model.channel.slug}}" title="Drag me to your bookmarks" href="
+		javascript:(function() {window.open('http://radio4000.com/c/TOBESLUGGED/add?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title))})();">
 		Add to {{model.channel.title}}</a>
 	</p>
 	<p class="Muted">Tip: you need to drag it to your bookmarks bar.</p>
