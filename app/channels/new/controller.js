@@ -6,112 +6,60 @@ import channelConst from 'radio4000/utils/channel-const';
 const { debug, computed } = Ember;
 
 export default Ember.Controller.extend({
+	title: '',
 	titleMaxLength: channelConst.titleMaxLength,
 	titleMinLength: channelConst.titleMinLength,
 	isSaving: false,
-	titleError: false,
-	newRadioTitle: '',
+	showValidation: false, // because we don't want it to show before clicking
 
-	cleanSlug: computed('model.title', function() {
+	cleanSlug: computed('title', function() {
+		let title = clean(this.get('title'));
 		let random = randomText();
-		let title = this.get('newRadioTitle');
-
-		title = clean(title);
-		title = title.trim();
 
 		return `${title}-${random}`;
 	}),
 
-	titleValidate: computed('newRadioTitle', function() {
-		// check channel.title.length, if not in our size limit, return NOPE
-		const titleLength = this.get('newRadioTitle.length');
+	// check channel.title.length, if not in our size limit, return NOPE
+	isValid: computed('title', function() {
+		const titleLength = this.get('title.length');
 		const tooLong = titleLength >= this.get('titleMaxLength');
 		const tooShort = titleLength < this.get('titleMinLength');
 
-		if (tooLong) {
-			debug('Title is too long');
-			this.set('titleError', true);
-			return false;
-		} else if (tooShort) {
-			debug('Title is too short');
-			this.set('titleError', true);
-			return false;
-		} else {
+		if (!tooLong && !tooShort) {
 			debug('Title has the right length');
-			this.set('titleError', false);
 			return true;
-		}
-	}),
-
-	userCanCreateRadio: computed('titleValidate', 'session.currentUser', function() {
-		if (!this.get('session.currentUser')) {
-			debug('userCanCreateRadio fails, no user');
-			return false;
-		} else if (!this.get('titleValidate')) {
-			debug('userCanCreateRadio fails, title not right size');
-			return false;
 		} else {
-			debug('userCanCreateRadio sucess! title has the right size and there is a user');
-			return true;
+			debug('Title is either too long or short');
+			return false;
 		}
 	}),
 
 	actions: {
 		create() {
-			const radioTitle = this.get('newRadioTitle');
-			const user = this.get('session.currentUser');
+			let slug = this.get('cleanSlug');
+			let title = this.get('title');
 
-			const channel = this.store.createRecord('channel', {
-				title: radioTitle.trim()
-			});
-			const slug = this.get('cleanSlug');
+			this.set('showValidation', true);
 
-			if (!this.get('userCanCreateRadio')) {
-				Ember.warn('user cannot create radio');
-				return false;
+			if (!this.get('isValid')) {
+				return;
 			}
 
-			this.set('isSaving', true);
+			debug(title);
+			debug(title.trim());
 
-			channel.save().then((channel) => {
-				// now the channel is saved
-				debug('saved channel');
+			title = title.trim();
 
-				// set relationship on user (who created the channel)
-				user.get('channels').then((channels) => {
+			debug('can create?');
 
-					channels.addObject(channel);
-					user.save().then(() => {
-						debug('Saved channel on user.');
-
-						// create public channel
-						this.store.createRecord('channelPublic', {
-							channel: channel
-						}).save().then((channelPublic) => {
-
-							// now the channelPublic is saved, has an ID and can be used
-							debug('saved channelPublic');
-
-							// set channel slug and relationship
-							channel.setProperties({
-								slug: slug,
-								channelPublic: channelPublic
-							});
-
-							// save it
-							channel.save().then((channel) => {
-								// Redirect to the new channel
-								debug('redirect to the new channel');
-								this.transitionToRoute('channel', channel);
-								this.set('isSaving', false);
-							});
-						});
-					});
-
-					// clean new radio (title) input
-					this.set('newRadioTitle', '');
-				});
+			// create channel and start saving
+			const channel = this.store.createRecord('channel', {
+				title: title,
+				slug: slug
 			});
+
+			this.set('isSaving', true);
+			this.send('saveChannel', channel);
 		}
 	}
 });
