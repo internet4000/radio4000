@@ -14,11 +14,8 @@
 textarea {
 	@include size-1;
 	@include negative-text;
-	border: 0px solid;
-	border-color: rgba(0,0,0,0.15);
-	border-color: hsla(0, 0%, 50%, 0.2);
-	border-color: hsl(0, 0%, 89%);
-	border-color: hsl(0, 0%, 80%);
+	border: 1px solid;
+	border-color: rgba($gray, 0.3);
 	border-radius: $border-radius;
 
 	// &:valid {}
@@ -40,11 +37,10 @@ textarea {
 [type='search'],
 textarea,
 .Btn--textInput {
-	/* @include size-1; */
-	padding: em(10,13) em(8,13) em(8,13);
+	padding: em(10,13) 0.8rem em(8,13);
 	width: 100%;
 	max-width: 100%;
-	box-shadow: 1px 2px 2px hsl(0, 0%, 90%) inset;
+	box-shadow: 1px 2px 2px hsl(0, 0%, 85%) inset;
 	color: $text-color;
 
 	&:focus {
@@ -105,9 +101,6 @@ input[type='file'] {
 .Form-group {
 	// should wrap every label+input
 }
-.Form-group--relative {
-	position: relative;
-}
 .Form-group:last-child {
 	@include clearfix;
 	clear: both;
@@ -119,9 +112,11 @@ input[type='file'] {
 	}
 }
 
-// can be used loader loader
-// and fits into an input
-.Form-groupStatus {
+// fixes an element into a formgroup
+.Form-group--relative {
+	position: relative;
+}
+.Form-group .Form-groupStatus {
 	position: absolute;
 	top: 2.3rem;
 	right: 0.7rem;
@@ -130,9 +125,8 @@ input[type='file'] {
 
 	&.Btn {
 		top: 0;
+		bottom: 0;
 		right: 0;
-		padding-top: rem(9);
-		padding-bottom: rem(9);
 	}
 }
 

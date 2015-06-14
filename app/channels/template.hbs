@@ -5,7 +5,7 @@
 
 <section class="Section Section--messaging Container">
 	{{#if session.currentUser.channels.firstObject}}
-		<span class="IntroMessage"><strong>New!</strong> Add a track in a second with the {{#link-to 'channel.add' session.currentUser.channels.firstObject}}Bookmarklet{{/link-to}}</span>
+		<span class="IntroMessage"><strong>New!</strong> Add a track in a second with the {{#link-to 'channel.add' session.currentUser.channels.firstObject}}bookmarklet{{/link-to}}.</span>
 	{{else}}
 		<span class="IntroMessage"><strong>Welcome!</strong> {{#link-to 'intro'}}Get introduced to Radio4000.{{/link-to}}</span>
 	{{/if}}

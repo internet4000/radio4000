@@ -16,24 +16,18 @@
 .CustomSelect,
 .Btn {
 	@extend %font-bold;
-	padding: em(5,13) 1rem em(4,13);
-	// background-color: $white;
-	background-color: $slightgray;
-	// background-image: linear-gradient(to bottom, $white 60%, #ececec);
+	padding: em(6,13) 0.8rem em(5,13);
+	background-color: $superlightgray;
 	color: $text-color;
 	box-shadow: 0 3px 2px 0 hsla(0, 0%, 0%, 0.06), inset -1px -1px 1px 0 hsla(0, 0%, 0%, 0.02);
 	transition: border-color 200ms, background 200ms, box-shadow 200ms;
 	vertical-align: top;
-	border: 0px solid transparent;
 
 	// hover and active
 	&:hover,
 	&:active {
+		box-shadow: 0 3px 2px 0 hsla(0, 0%, 0%, 0.12), inset -1px -1px 1px 0 hsla(0, 0%, 0%, 0.02);
 		text-decoration: none;
-		// background-image: linear-gradient(to bottom, $white 70%, hsla(0, 0%, 0%, 0.1));
-		// border-color: rgba(0,0,0,0.18);
-		background-color: hsl(60, 11%, 96%);
-		background-color: $slightgray;
 	}
 
 	// active (pressed down)
