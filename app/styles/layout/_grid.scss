@@ -57,19 +57,20 @@
 .Flex {
 	display: flex;
 	flex-flow: row wrap;
-
-	// on mobile center items
-	@media (max-width: $layout-s) {
-		justify-content: space-between;
-	}
-
+	
 	// todo: refactor
-	.BtnGroup:last-child {
-		margin-left: 1rem;
+	@media (min-width: $layout-s) {
+		.BtnGroup:last-child {
+			margin-left: 1rem;
+		}
 	}
 }
+
+// forces items to be
 .Flex--single {
-	flex-flow: row nowrap;
+	@media (min-width: $layout-s) {
+		flex-wrap: nowrap;
+	}
 }
 
 .FlexRow {

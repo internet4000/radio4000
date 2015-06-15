@@ -7,16 +7,15 @@
 		{{input type="search" value=search placeholder="Search radios"}}
 
 		{{#btn-group}}
-			<button class="Btn" {{action 'toggleView'}}>
-				{{if isGrid 'List' 'Grid'}}
-			</button>
-
 			<h4 class="BtnGroup-label">Sort by</h4>
 			<button class="Btn is-active" {{action 'sortBy' 'created'}}>
 				Date {{sort-indicator ascending=sortedChannels.sortAscending}}
 			</button>
 			<button class="Btn" {{action 'sortBy' 'title'}}>
 				Name {{sort-indicator ascending=sortedChannels.sortAscending}}
+			</button>
+			<button class="Btn" {{action 'toggleView'}}>
+				{{if isGrid 'List' 'Grid'}}
 			</button>
 		{{/btn-group}}
 	</div>
