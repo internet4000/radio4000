@@ -25,7 +25,7 @@
 		border-bottom-color: $secondary-color;
 		text-decoration: none;
 	}
-	&.active {
+	&.is-active {
 		@extend %font-bold;
 		@include negative-text;
 		border-bottom: 4px solid $secondary-color;
