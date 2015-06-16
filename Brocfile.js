@@ -5,18 +5,13 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 var app = new EmberApp({
 
 	// dont pollute our index.html with meta data
-	storeConfigInMeta: false
+	storeConfigInMeta: false,
 
-	// fingerprint: {
-	// 	// enable for these environments
-	// 	enabled: this.env === 'production' || this.env === 'native',
-	// 	prepend: 'http://dyzwdli7efbh5.cloudfront.net/'
-	// },
-
-	// minify our styles using broccoli-csso
-	// minifyCSS: {
-	// 	enabled: (this.env === 'production' || this.env === 'native')
-	// }
+	// add our CDN to assets (but not favicons)
+	fingerprint: {
+		// prepend: 'http://dyzwdli7efbh5.cloudfront.net/',
+		exclude: ['apple-touch-icon', 'favicon', 'mstile']
+	}
 });
 
 // Use `app.import` to add additional libraries to the generated
