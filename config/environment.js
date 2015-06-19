@@ -5,8 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'radio4000',
     // podModulePrefix: 'radio4000/pods',
     environment: environment,
-    // firebase: 'https://radio4000-dev.firebaseio.com/',
-    firebase: 'https://radio4000.firebaseio.com/', // LIVE
+    firebase: 'https://radio4000-dev.firebaseio.com/',
     youtubeApiKey: 'AIzaSyCk5FiiPiyHON7PMLfLulM9GFmSYt6W5v4',
     torii: {
       // a 'session' property will be injected on routes and controllers
