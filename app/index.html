@@ -28,14 +28,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <link rel="manifest" href="manifest.json">
+  <meta name="og:image" content="http://radio4000.com/images/logos/radio4000-square.png">
 
   <script>
-	 // leave the require namespace to ember and make it work with atom-shell + nw.js
-	 window.node_require = window.require;
-	 delete window.require;
-	 // window.requireNode = window.require;
-	 // window.require = undefined;
-	 // window.module = undefined;
+   // leave the require namespace to ember and make it work with electron-appz
+   window.node_require = window.require;
+   delete window.require;
+   // window.requireNode = window.require;
+   // window.require = undefined;
+   // window.module = undefined;
   </script>
 
   {{content-for 'head'}}
@@ -43,7 +44,6 @@
   <link rel="stylesheet" href="assets/vendor.css">
   <link rel="stylesheet" href="assets/radio4000.css">
 
-  <meta name="og:image" content="/images/logos/radio4000-square.png">
   <link rel="apple-touch-icon" sizes="57x57" href="/images/favicons/apple-touch-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="/images/favicons/apple-touch-icon-60x60.png">
   <link rel="apple-touch-icon" sizes="72x72" href="/images/favicons/apple-touch-icon-72x72.png">
