@@ -3,21 +3,28 @@ import Ember from 'ember';
 const { computed } = Ember;
 
 export default Ember.Controller.extend({
-	sortProperties: ['channelPublic.followers.length:desc'],
 
-	// 1. filter out the featured models
-	featured: computed.filterBy('model', 'isFeatured'),
-
-	// 1. filter out the featured models
-	filtered: computed.filter('model', function(item) {
-		return !item.get('isFeatured');
+	// note: this depends on getting all public channels
+	// which we currently do in channel:route afterModel()
+	channels: computed(function() {
+		return this.store.findAll('channel');
 	}),
 
-	// 2. sort them by followers
-	sorted: computed.sort('filtered', 'sortProperties'),
+	// filter out channels with more than five followers, image and not featured
+	filtered: computed('channels.[]', function() {
+		return this.get('channels').filter((items) => {
+			return items.get('channelPublic.followers.length') > 5 &&
+				 	 items.get('coverImage') &&
+				 	 !items.get('isFeatured');
+		});
+	}),
 
-	// 3. return the top X items
-	popular: computed('sorted.[]', function() {
-		return this.get('sorted').slice(0, 10);
-	})
+	// sort by followers
+	sortProperties: ['channelPublic.followers.length:desc'],
+	popular: computed.sort('filtered', 'sortProperties')
+
+	// optional slice (to limit max popular items)
+	// popularLimited: computed('popular.[]', function() {
+	// 	return this.get('popular').slice(0, 10);
+	// })
 });

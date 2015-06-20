@@ -4,8 +4,8 @@
 
 <div class="Container Container--full">
 	<div class="Section">
-		{{#if model}}
-			{{channels-grid channels=controller.featured}}
+		{{#if model.featured}}
+			{{channels-grid channels=model.featured}}
 		{{else}}
 			<p>Finding curated radios…</p>
 			{{partial 'partials/loader'}}
@@ -20,7 +20,7 @@
 <div class="Container Container--full">
 	<div class="Section">
 		{{#if model}}
-			{{channels-grid channels=controller.popular}}
+			{{channels-grid channels=popular}}
 		{{else}}
 			<p>Finding popular radios…</p>
 			{{partial 'partials/loader'}}
@@ -29,3 +29,4 @@
 
 	<p>{{#link-to 'channels.all'}}See all radios &rarr;{{/link-to}}</p>
 </div>
+
