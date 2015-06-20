@@ -40,6 +40,31 @@
 	transform: translateX(-50%);
 }
 
+
+
+
+
+
+$LoaderCircle-size: 25px;
+
+.LoaderCircle {
+	width: $LoaderCircle-size;
+	height: $LoaderCircle-size;
+	// background-color: rgba($superlightgray, 0.5);
+	// box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05);
+	border-bottom: $LoaderCircle-size / 5 solid $superlightgray; //$primary-color;
+	border-radius: 50%;
+	animation: spin 700ms linear infinite;
+}
+
+@keyframes spin {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+
+
+
+
 // $loader-size: 50px;
 // $loader-color: $white;//$primary-color;
 // $loader-speed: 1000ms;
@@ -83,26 +108,3 @@
 // 		transform: rotate(140deg);
 // 	}
 // }
-
-
-
-$LoaderCircle-size: 25px;
-
-.LoaderCircle {
-    width: $LoaderCircle-size;
-    height: $LoaderCircle-size;
-    // background-color: rgba($superlightgray, 0.5);
-    border-bottom: $LoaderCircle-size / 5 solid $superlightgray; //$primary-color;
-    border-radius: 50%;
-    // box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05);
-    animation: spin 800ms $easing infinite;
-  }
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
