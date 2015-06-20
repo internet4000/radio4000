@@ -6,9 +6,7 @@ const { computed, debug, run } = Ember;
 // reading: http://www.webhook.com/blog/how-we-use-firebases-simple-login-with-ember-to-manage-authentication/
 
 export default Ember.Object.extend({
-	store: computed('', function() {
-		return this.get('container').lookup('store:main');
-	}),
+	store: Ember.inject.service(),
 
 	createSettings(user) {
 		let newSettings = this.get('store').createRecord('user-setting', {
@@ -73,14 +71,13 @@ export default Ember.Object.extend({
 		// retrieving the auth from firebase and checking if I have a user for that auth.
 		// If so, I set currentUser.
 		let firebase = this.get('container').lookup('adapter:application').firebase;
-		let store = this.get('container').lookup('store:main');
 		let firebaseAuthAnswer = firebase.getAuth();
 
 		// The object containing the currentUser is merged onto the session.
 		// Because the session is injected onto controllers and routes,
 		// these values will be available to templates.
 		// https://github.com/Vestorly/torii#adapters-in-torii
-		return new Ember.RSVP.Promise(function(resolve, reject) {
+		return new Ember.RSVP.Promise((resolve, reject) => {
 			// debug('triggers fetch:return:promise, before if:firebaseAuthAnswer check');
 
 			// what do we have in firebaseAuthAnswer
@@ -88,7 +85,7 @@ export default Ember.Object.extend({
 
 				// look for a user, then assign in to the session
 				// debug('store.find.user with firebaseAuthAnswer.uid, promise');
-				store.find('user', firebaseAuthAnswer.uid).then(function(user) {
+				this.get('store').find('user', firebaseAuthAnswer.uid).then(function(user) {
 					// debug('store.find.user with firebaseAuthAnswer.uid, promise succeeds');
 					run.bind(null, resolve({ currentUser: user }));
 				}, function() {
@@ -117,7 +114,7 @@ export default Ember.Object.extend({
 		// This is what should be done to teardown a session. Here I am unloading my
 		// models and setting currentUser to null.
 		let firebase = this.get('container').lookup('adapter:application').firebase;
-		let store = this.get('container').lookup('store:main');
+		let store = this.get('store');
 
 		return new Ember.RSVP.Promise(function(resolve) {
 			store.unloadAll('user');
