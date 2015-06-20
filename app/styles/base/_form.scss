@@ -130,6 +130,10 @@ input[type='file'] {
 	}
 }
 
+.Form-bigInput {
+	@include size-3;
+}
+
 .Form-left,
 .Form-right {
 	width: 50%;

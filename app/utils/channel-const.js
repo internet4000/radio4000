@@ -1,7 +1,7 @@
 let channelConst = {
-   titleMaxLength: 32,
-	titleMinLength: 4,
-	descriptionMaxLength: 280,
+  titleMinLength: 4,
+  titleMaxLength: 32,
+  descriptionMaxLength: 280
 };
 
 export default channelConst;

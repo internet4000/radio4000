@@ -4,15 +4,14 @@
  **/
 
 .BigStep {
-	color: white;
-	text-align: center;
-	padding: 2rem;
-
 	position: fixed;
 	top: 50%;
 	left: 0;
 	right: 0;
 	transform: translateY(-50%);
+
+	text-align: center;
+	color: white;
 
 	.BigStep-goto {
 		color: $white;
@@ -33,8 +32,8 @@
 }
 
 .BigStep-container {
-	@media (min-width: $layout-m) {
-		max-width: 60%;
+	@media (min-width: $layout-s) {
+		max-width: 30rem;
 		margin-left: auto;
 		margin-right: auto;
 	}
