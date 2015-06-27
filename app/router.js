@@ -30,8 +30,10 @@ Router.map(function() {
     this.route('new');
   });
 
-  // channel
-  this.route('channel', { path: '/c/:slug' }, function() {
+  // channel - IMPORTANT! This definition needs to come last —
+  // otherwise it'll overwrite the above routes. We want the opposite.
+  this.route('channel-alias', { path: '/c/:slug' });
+  this.route('channel', { path: '/:slug' }, function() {
     this.route('index', { path: '/' }, function() {
         this.resource('track', { path: ':track_id' });
     });

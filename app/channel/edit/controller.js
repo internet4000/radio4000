@@ -36,17 +36,29 @@ export default Ember.Controller.extend({
 	},
 
 	// Makes sure the slug is valid e.g. not in use by any other channel
+	// not protected and not empty
 	validateSlug() {
 		debug('Validating slug.');
 		const channels = this.store.find('channel');
 		const model = this.get('model');
 		const slug = model.get('slug');
+		const protectedSlugs = ['about', 'job', 'jobs', 'blog', 'bookmarklet', 'dashboard', 'help', 'intro', 'login', '404', 'bunker', 'styleguide'];
+
 		let slugIsFree = false;
 		let newSlug = '';
 
-		// Make sure the new one isn't empty
+		// Make sure the new slug isn't empty or already taken
 		if (Ember.isEmpty(slug)) {
 			alert('Hey, the URL can not be empty. Please enter the URL you would like your channel to have. If you have no clue, just enter the title.');
+			this.set('slug', '');
+			this.set('isSaving', false);
+			return false;
+		}
+
+		if (protectedSlugs.any((s) => slug === s)) {
+			alert(`Sorry, ${slug} is already taken.\n\nPlease try another url.`);
+			this.set('slug', '');
+			this.set('isSaving', false);
 			return false;
 		}
 
@@ -67,7 +79,7 @@ export default Ember.Controller.extend({
 				debug('Setting slug to: ' + newSlug);
 				this.send('save');
 			} else {
-				alert('Sorry, that permalink is taken. Try another one.');
+				alert('Sorry, that url is taken. Try another one.');
 
 				// reset the slug
 				this.set('slug', '');
