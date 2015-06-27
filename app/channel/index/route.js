@@ -9,7 +9,7 @@ export default Ember.Route.extend({
 		if (!channel) { this.transitionTo('404'); }
 	},
 
-	model() {
+	/*model() {
 
 		return this.modelFor('channel').get('tracks');
 		// we don't use model.tracks because it's too slow to render
@@ -20,7 +20,7 @@ export default Ember.Route.extend({
 
 		// "all" doesn't make a request
 		// return this.store.all('track', { channel: channel });
-	},
+	},*/
 
 	afterModel() {
 		// let channel = this.modelFor('channel');

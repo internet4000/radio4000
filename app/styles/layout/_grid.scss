@@ -28,15 +28,15 @@
 		flex-basis: 33%;
 		.no-flexbox & { max-width: 33%; }
 	}
-	@media (min-width: $layout-l) {
+	@media (min-width: $layout-ml) {
 		flex-basis: 25%;
 		.no-flexbox & { max-width: 25%; }
 	}
-	@media (min-width: $layout-xl) {
+	@media (min-width: $layout-l) {
 		flex-basis: 20%;
 		.no-flexbox & { max-width: 20%; }
 	}
-	@media (min-width: $layout-xxl) {
+	@media (min-width: $layout-xl) {
 		flex-basis: 14.28%;
 		.no-flexbox & { max-width: 14.28%; }
 	}
@@ -57,7 +57,7 @@
 .Flex {
 	display: flex;
 	flex-flow: row wrap;
-	
+
 	// todo: refactor
 	@media (min-width: $layout-s) {
 		.BtnGroup:last-child {

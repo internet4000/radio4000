@@ -5,6 +5,7 @@ const { computed, observer, run } = Ember;
 export default Ember.Controller.extend({
 	search: '',
 	queryParams: ['search'],
+	isGrid: true,
 
 	// this little pattern makes sets a property
 	// maximum every X ms for performance

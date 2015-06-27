@@ -116,6 +116,14 @@ input[type='file'] {
 .Form-group--relative {
 	position: relative;
 }
+.Form-group--inline {
+	display: flex;
+	max-width: 30rem;
+
+	>	.Btn {
+		flex-shrink: 0;
+	}
+}
 .Form-group .Form-groupStatus {
 	position: absolute;
 	top: 2.3rem;

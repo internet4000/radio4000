@@ -11,7 +11,7 @@ export default Ember.Controller.extend({
 	canEdit: computed.alias('controllers.channel.canEdit'),
 
 	sortProperties: ['created:desc'],
-	sortedModel: computed.sort('model', 'sortProperties'),
+	sortedModel: computed.sort('model.tracks', 'sortProperties'),
 
 	actions: {
 		addTrack() {

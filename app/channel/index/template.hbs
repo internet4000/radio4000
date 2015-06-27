@@ -17,9 +17,9 @@
 
 {{#if sortedModel}}
 	<ul class="List">
-		{{#each sortedModel as |model|}}
+		{{#each sortedModel as |trackItem|}}
 			<li>
-				{{track-item track=model canEdit=canEdit edit="editTrack"}}
+				{{track-item track=trackItem canEdit=canEdit edit="editTrack"}}
 			</li>
 		{{/each}}
 	</ul>
@@ -47,5 +47,11 @@
 		<p>No tracks yet.{{if canEdit " Why don't you add one above?"}}</p>
 	</div>
 {{/if}}
+
+{{#if canEdit}}{{#unless model.coverImage}}
+	<div class="Container">
+		<p>Go ahead, {{#link-to 'channel.edit' model}}choose a nice cover image{{/link-to}} for your radio.</p>
+	</div>
+{{/unless}}{{/if}}
 
 {{outlet}}
