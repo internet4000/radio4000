@@ -33,6 +33,6 @@ export default Ember.Route.extend({
 
 	// clear any unsaved changes
 	deactivate() {
-		this.modelFor('channel').rollback();
+		this.modelFor('channel').rollbackAttributes();
 	}
 });

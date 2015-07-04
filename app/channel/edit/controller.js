@@ -90,7 +90,7 @@ export default Ember.Controller.extend({
 
 	// clear any unsaved changes
 	deactivate() {
-		this.controllerFor('channel').get('model').rollback();
+		this.controllerFor('channel').get('model').rollbackAttributes();
 	},
 
 	actions: {
@@ -102,7 +102,7 @@ export default Ember.Controller.extend({
 			// this avoid validating slugs uneccessary (because it's heavy)
 			if (slugDidChange) {
 				this.validateSlug();
-			} else if (this.get('model.isDirty')) {
+			} else if (this.get('model.hasDirtyAttributes')) {
 				this.send('save');
 			} else {
 				this.send('cancelEdit');
