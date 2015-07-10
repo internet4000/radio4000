@@ -1,8 +1,8 @@
 /* global require */
 var gulp = require('gulp');
 var rsync = require('rsyncwrapper').rsync;
-var electron = require('gulp-atom-electron');
 var critical = require('critical');
+var shell = require('gulp-shell');
 
 // Extracts the necessary CSS to render the specified viewport,
 // inlines it in the header and loads the rest of the CSS async
@@ -16,19 +16,16 @@ gulp.task('critical', function() {
 	});
 });
 
-// Package into an OSX64 bit application using atom-shell
-// make sure to run `ember build` first
-gulp.task('electron', function() {
-	return gulp.src('dist/**')
-		.pipe(electron({
-			version: '0.27.2',
-			productVersion: '3.0.0',
-			platform: 'darwin',
-			darwinIcon: 'dist/images/logos/radio4000.icns',
-			name: 'Radio4000'
-		}))
-		.pipe(electron.zfsdest('dist/radio4000-osx.zip'));
-});
+// Create a native Linux, OS X and Windows app using electron.
+// Before doing this, install `npm i -g electron-packager` and
+// make sure to run `ember build --environment=electron`
+gulp.task('electron', ['build-electron'], shell.task([
+	'electron-packager dist Radio4000 --out=dist --platform=all --arch=x64 --asar --prune --version=0.29.2 --overwrite --icon=dist/images/logos/radio4000.icns'
+]));
+
+gulp.task('build-electron', shell.task([
+	'ember build --environment=electron'
+]));
 
 // Upload dist to dev
 gulp.task('deploy-dev', function() {

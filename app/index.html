@@ -23,8 +23,6 @@
 
   <title>Radio4000</title>
   <meta name="description" content="Collect, curate, play and share your own radio channel">
-
-  <!-- improve mobile experience -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <link rel="manifest" href="manifest.json">
@@ -32,11 +30,11 @@
 
   <script>
    // leave the require namespace to ember and make it work with electron-appz
-   window.node_require = window.require;
-   delete window.require;
+   // window.node_require = window.require;
+   // delete window.require;
    // window.requireNode = window.require;
    // window.require = undefined;
-   // window.module = undefined;
+   window.module = undefined;
   </script>
 
   {{content-for 'head'}}

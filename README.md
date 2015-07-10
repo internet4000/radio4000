@@ -17,7 +17,8 @@ then clone the project repository and install it
 ```
 git clone https://github.com/hugovieilledent/radio4000.git
 cd radio4000
-npm install; bower install
+npm install
+bower install
 ```
 
 ## Watching and testing
@@ -50,14 +51,25 @@ Then deploy:
 
 To serve a file from our CDN, prepend the file of the URL (from our live domain radio4000.com) with `http://dyzwdli7efbh5.cloudfront.net` and it'll automatically pull and serve the file from the CDN.
 
-## Building a native OS X app
+## Building native apps
 
-First make sure `public/package.json` is up to date, then run:
+First, make sure production environment in `config/environment.js` looks like this:
 
-`$ ember build --environment=native`
-`$ gulp atom`
+```javascript
+if (environment === 'electron') {
+  ENV.baseURL = './';
+  ENV.locationType = 'hash';
+  ENV.firebase = 'https://radio4000.firebaseio.com/';
+}
+```
 
-The above packages the app and wraps it with atom-shell into the build folder.
+… then run:
+
+```
+gulp electron
+```
+
+Check the dist folder where you'll now have all the apps. Be sure to change environment back afterwards.
 
 ## Important if you use Sublime Text
 
