@@ -58,7 +58,7 @@ module.exports = function(environment) {
     ENV.firebase = 'https://radio4000.firebaseio.com/';
   }
 
-  if (environment === 'native') {
+  if (environment === 'electron') {
     ENV.baseURL = './';
     ENV.locationType = 'hash';
     ENV.firebase = 'https://radio4000.firebaseio.com/';

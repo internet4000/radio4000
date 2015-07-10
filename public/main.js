@@ -1,39 +1,57 @@
-var app = require('app');  // Module to control application life.
-var BrowserWindow = require('browser-window');  // Module to create native browser window.
+'use strict';
+var app = require('app');
+var BrowserWindow = require('browser-window');
 
-// Report crashes to our server.
+// report crashes to the Electron project
 require('crash-reporter').start();
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the javascript object is GCed.
-var mainWindow = null;
+// adds debug features like hotkeys for triggering dev tools and reload
+require('electron-debug')();
 
-// Quit when all windows are closed.
+function createMainWindow() {
+	// see https://github.com/atom/electron/blob/master/docs/api/browser-window.md
+	var win = new BrowserWindow({
+		width: 800,
+		height: 700,
+		'min-width': 320,
+		'min-height': 400,
+		resizable: true,
+		toolbar: true,
+		frame: true
+	});
+
+	// Either load up whatever is in the dist folder
+	win.loadUrl('file://' + __dirname + '/index.html');
+
+	// or load the real app, online
+	// win.loadUrl('http://radio4000.com');
+
+	win.on('closed', onClosed);
+
+	return win;
+}
+
+function onClosed() {
+	// deref the window
+	// for multiple windows store them in an array
+	mainWindow = null;
+}
+
+// prevent window being GC'd
+var mainWindow;
+
 app.on('window-all-closed', function() {
-	if (process.platform != 'darwin') {
+	if (process.platform !== 'darwin') {
 		app.quit();
 	}
 });
 
-// This method will be called when atom-shell has done everything
-// initialization and ready for creating browser windows.
+app.on('activate-with-no-open-windows', function() {
+	if (!mainWindow) {
+		mainWindow = createMainWindow();
+	}
+});
+
 app.on('ready', function() {
-
-	// Create the browser window.
-	mainWindow = new BrowserWindow({ width: 600, height: 800 });
-
-	// and load the index.html of the app.
-	// mainWindow.loadUrl('file://' + __dirname + '/index.html');
-
-	// or live version
-	mainWindow.loadUrl('http://dev.radio4000.com');
-
-	// Emitted when the window is closed.
-	mainWindow.on('closed', function() {
-
-		// Dereference the window object, usually you would store windows
-		// in an array if your app supports multi windows, this is the time
-		// when you should delete the corresponding element.
-		mainWindow = null;
-	});
+	mainWindow = createMainWindow();
 });

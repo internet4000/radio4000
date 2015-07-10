@@ -2,18 +2,28 @@
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
+  // var production = (app.env === 'production' || app.env === 'electron');
   var app = new EmberApp(defaults, {
 
     // dont pollute our index.html with meta data
     storeConfigInMeta: false,
 
     fingerprint: {
-      // don't rev favicons
-      exclude: ['apple-touch-icon', 'favicon', 'mstile']
+      // enabled: production,
+
+      exclude: ['apple-touch-icon', 'favicon', 'mstile', 'main.js']
 
       // add our CDN to assets (but not favicons)
       // prepend: 'http://dyzwdli7efbh5.cloudfront.net/'
     }
+
+    // ,
+    // minifyCSS: {
+    //   enabled: production
+    // },
+    // minifyJS: {
+    //   enabled: production
+    // }
   });
 
   // Use `app.import` to add additional libraries to the generated
