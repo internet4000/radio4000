@@ -43,8 +43,8 @@ export default Ember.Component.extend({
 		// get image from cloudinary
 		let image = Ember.$.cloudinary.image(imageId, {
 			format: 'jpg',
-			width: 200,
-			height: 200,
+			width: 240,
+			height: 240,
 			crop: 'thumb',
 			gravity: 'face'
 			// effect: 'saturation:50'
