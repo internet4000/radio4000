@@ -10,7 +10,8 @@
 		<form class="Channel-media">
 			<div class="Form-group">
 				{{#image-upload imageId=newImage}}
-					{{channel-cover model=model hideControls=true hideTitle=true}}
+					{{channel-cover image=model.coverImage}}
+
 					Drag 'n drop an image for your radio here
 				{{/image-upload}}
 
