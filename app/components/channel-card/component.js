@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-	tagName: 'ul',
-	classNames: ['List']
+	tagName: 'article',
+	classNames: ['ChannelCard']
 });

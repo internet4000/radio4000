@@ -24,11 +24,15 @@
 <div class="Section">
 	{{#if isGrid}}
 		<div class="Container Container--full">
-			{{channels-grid channels=sortedChannels}}
+			{{#each-grid items=sortedChannels as |item|}}
+				{{#link-to 'channel' item}}
+					{{channel-card channel=item}}
+				{{/link-to}}
+			{{/each-grid}}
 		</div>
 	{{else}}
 		<div class="Container Container--full Container--noPadding">
-			{{channels-list channels=sortedChannels showCover=true}}
+			{{channels-list channels=sortedChannels}}
 		</div>
 	{{/if}}
 </div>

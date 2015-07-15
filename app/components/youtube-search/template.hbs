@@ -3,7 +3,7 @@
 {{#if results}}
 	<p class="Muted">Tap a track to add it.</p>
 
-	<ul class="SmallerList">
+	<ul class="List">
 		{{#each results as |item|}}
 			<li {{action 'add' item}}>
 				<a href="#">{{item.title}}</a>
