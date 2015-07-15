@@ -58,19 +58,20 @@
 .Channel-titleSection {
 	@include clearfix;
 }
-.Follow--title {
-	float: left;
-
-	// optical aligned with channel title
-	position: relative;
-	top: -0.15em;
-}
 .Channel-title {
+	display: inline-block;
 	margin-bottom: 0.2em;
 	@media (min-width: $layout-m) {
 		@include size-5;
+		position: relative;
+		top: -0.4em;
 		max-width: 80%;
 	}
+}
+.Follow--title {
+	// optical aligned with .Channel-title
+	position: relative;
+	top: -0.45em;
 }
 .LastUpdate {
 	@extend %font-regular;
