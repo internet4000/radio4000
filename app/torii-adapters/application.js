@@ -1,12 +1,13 @@
 /* jshint unused:false */
 import Ember from 'ember';
 
-const { computed, debug, run } = Ember;
+const { computed, debug, inject, run } = Ember;
 
 // reading: http://www.webhook.com/blog/how-we-use-firebases-simple-login-with-ember-to-manage-authentication/
 
 export default Ember.Object.extend({
-	store: Ember.inject.service(),
+	firebase: inject.service(),
+	store: inject.service(),
 
 	createSettings(user) {
 		let newSettings = this.get('store').createRecord('user-setting', {
@@ -19,14 +20,13 @@ export default Ember.Object.extend({
 	},
 
 	// creating a new authorization or authenticating a new session
-	open: function(authorization) {
-		// debug('torii:open');
+	open: function(options) {
+		const self = this;
+		const store = this.get('store');
 
-		// This is what should be done after authentication
-		let store = this.get('container').lookup('store:main');
+		return new Ember.RSVP.Promise((resolve, reject) => {
 
-		return new Ember.RSVP.Promise((resolve) => {
-			return store.find('user', authorization.uid).then((user) => {
+			return store.find('user', options.uid).then((user) => {
 
 				// create settings for old users
 				// now we create settings on user create
@@ -46,12 +46,12 @@ export default Ember.Object.extend({
 				// debug('open without user');
 
 				// but first avoid this bug about unresolved record
-				store.recordForId('user', authorization.uid).unloadRecord();
+				store.recordForId('user', options.uid).unloadRecord();
 
 				let newUser = store.createRecord('user', {
-					id: authorization.uid,
-					provider: authorization.provider,
-					name: this._nameFor(authorization)
+					id: options.uid,
+					provider: options.provider,
+					name: this._nameFor(options)
 				});
 
 				newUser.save().then((user) => {

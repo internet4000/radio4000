@@ -60,6 +60,6 @@ export default Ember.Route.extend({
 
 	// clear any unsaved changes
 	deactivate() {
-		this.get('currentModel').rollback();
+		this.get('currentModel').rollbackAttributes();
 	}
 });
