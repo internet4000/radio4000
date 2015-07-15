@@ -3,8 +3,9 @@ import Ember from 'ember';
 const { debug } = Ember;
 
 export default Ember.Route.extend({
+
 	// todo: this is repeated for channel/[add,edit,delete]
-	beforeModel(transition) {
+	beforeModel() {
 		const authed = this.get('session.isAuthenticated');
 		if (!authed) {
 			debug('no authed --> channel');
