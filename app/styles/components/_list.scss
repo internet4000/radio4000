@@ -5,30 +5,33 @@
 .List {
 	list-style: none;
 	padding-left: 0;
-}
-.List li {
-	border-bottom: 1px solid $mediumlightgray;
-	line-height: normal;
-	&:before {
-		display: none;
-	}
-}
-.List a {
-	display: block;
-	padding: 0.8rem 1rem 0.7rem;
-	text-decoration: none;
-	@media (min-width: $layout-s) {
-		padding-left: 2rem;
-		padding-right: 2rem;
+
+	li {
+		border-bottom: 1px solid $mediumlightgray;
+		line-height: normal;
+		&:before {
+			display: none;
+		}
 	}
 
-	&:hover {
-		background-color: hsla(0, 100%, 100%, 0.2);
+	a {
+		display: block;
+		overflow: auto;
+		padding: 0.8rem 1rem 0.7rem;
 		text-decoration: none;
-	}
-	&:focus,
-	&:active {
-		text-decoration: none;
+		@media (min-width: $layout-s) {
+			padding-left: 2rem;
+			padding-right: 2rem;
+		}
+
+		&:hover {
+			background-color: hsla(0, 100%, 100%, 0.2);
+			text-decoration: none;
+		}
+		&:focus,
+		&:active {
+			text-decoration: none;
+		}
 	}
 }
 .List-title {
@@ -48,14 +51,6 @@
 	color: $gray;
 }
 
-// Smaller lists (good for long text)
-.SmallerList {
-	li {
-		@include size-1;
-	}
-}
-
-
 // List without hover
 .List--noHover {
 	a {
@@ -66,18 +61,13 @@
 	}
 }
 
-// List with cover images
-.List--cover {
-	a {
-		overflow: auto;
-	}
-	.Cover {
-		float: left;
-		width: rem(51); // fits with two lines of description
-		margin-right: 1rem;
-		margin-bottom: 0;
-	}
-	.List-title {
-		margin-top: -3px; // align with cover
-	}
+// Lists with cover images
+.List .Cover {
+	float: left;
+	width: rem(51); // fits with two lines of description
+	margin-right: 1rem;
+	margin-bottom: 0;
+}
+.List .Cover + .List-title {
+	margin-top: -3px; // align with cover
 }

@@ -1,17 +1,11 @@
 <div class="Cover-img">
-	{{#if model.coverImage}}
-		<img src={{model.coverImage.thumb}}>
+	{{#if image}}
+		<img src={{image.thumb}}>
 	{{/if}}
 
-	{{#unless hideControls}}
-		<button class="Cover-button" {{action "play"}} title="Play radio">
+	{{#if canPlay}}
+		<button class="Cover-button" {{action "play"}} title="Play">
 			{{x-icon i="play"}}
 		</button>
-	{{/unless}}
+	{{/if}}
 </div>
-
-{{#unless hideTitle}}
-	<h3 class="Cover-title">
-		{{model.title}}
-	</h3>
-{{/unless}}

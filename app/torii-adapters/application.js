@@ -3,8 +3,6 @@ import Ember from 'ember';
 
 const { computed, debug, inject, run } = Ember;
 
-// reading: http://www.webhook.com/blog/how-we-use-firebases-simple-login-with-ember-to-manage-authentication/
-
 export default Ember.Object.extend({
 	firebase: inject.service(),
 	store: inject.service(),
@@ -15,112 +13,87 @@ export default Ember.Object.extend({
 		});
 
 		newSettings.save().then((settings) => {
-			user.set('settings', settings).save();
+			user.set('settings', settings).save().then(() => {
+				Ember.debug('saved user settings');
+			});
 		});
 	},
 
 	// creating a new authorization or authenticating a new session
-	open: function(options) {
-		const self = this;
+	open: function(auth) {
+		var self = this;
 		const store = this.get('store');
 
 		return new Ember.RSVP.Promise((resolve, reject) => {
 
-			return store.find('user', options.uid).then((user) => {
+			return store.find('user', auth.uid)
 
-				// create settings for old users
-				// now we create settings on user create
-				user.get('settings').then((settings) => {
-					// debug(settings);
-					if (!settings) {
+				// we have a user, create settings if needed
+				// and resolve
+				.then((user) => {
+					user.get('settings').then((settings) => {
+						if (settings) { return; }
 						this.createSettings(user);
-					}
-				});
-
-				// we have a user, set it and channel
-				// debug('open with user');
-				run.bind(null, resolve({ currentUser: user }));
-
-			}, () => {
-				// no user found, create one
-				// debug('open without user');
-
-				// but first avoid this bug about unresolved record
-				store.recordForId('user', options.uid).unloadRecord();
-
-				let newUser = store.createRecord('user', {
-					id: options.uid,
-					provider: options.provider,
-					name: this._nameFor(options)
-				});
-
-				newUser.save().then((user) => {
-					this.createSettings(user);
+					});
 
 					run.bind(null, resolve({ currentUser: user }));
-				});
+				})
+
+				// no user, so create one
+				.catch(() => {
+
+					// but first avoid this bug about unresolved record
+					// @todo maybe nut needed anymore?!
+					store.recordForId('user', auth.uid).unloadRecord();
+
+					let newUser = store.createRecord('user', {
+						id: auth.uid,
+						provider: auth.provider,
+						name: this._nameFor(auth)
+					}).save().then((newUser) => {
+						this.createSettings(newUser);
+						run.bind(null, resolve({ currentUser: newUser }));
+					});
 			});
 		});
 	},
 
 	// validating an existing authorization (like a session stored in cookies)
 	fetch: function() {
-		// debug('torii:fetch');
+		let firebase = this.get('firebase');
 
 		// This is what should be done to determine how to fetch a session. Here I am
 		// retrieving the auth from firebase and checking if I have a user for that auth.
 		// If so, I set currentUser.
-		let firebase = this.get('container').lookup('adapter:application').firebase;
-		let firebaseAuthAnswer = firebase.getAuth();
 
 		// The object containing the currentUser is merged onto the session.
 		// Because the session is injected onto controllers and routes,
 		// these values will be available to templates.
 		// https://github.com/Vestorly/torii#adapters-in-torii
+
 		return new Ember.RSVP.Promise((resolve, reject) => {
-			// debug('triggers fetch:return:promise, before if:firebaseAuthAnswer check');
+			let auth = firebase.getAuth();
 
-			// what do we have in firebaseAuthAnswer
-			if (firebaseAuthAnswer) {
-
-				// look for a user, then assign in to the session
-				// debug('store.find.user with firebaseAuthAnswer.uid, promise');
-				this.get('store').find('user', firebaseAuthAnswer.uid).then(function(user) {
-					// debug('store.find.user with firebaseAuthAnswer.uid, promise succeeds');
-					run.bind(null, resolve({ currentUser: user }));
-				}, function() {
-
-					// no user
-					// todo: seems to fail sometimes
-					// debug('store.find.user with firebaseAuthAnswer.uid, promise failed');
-					run.bind(null, reject('store.find.user with firebaseAuthAnswer.uid, promise failed'));
-				});
-
+			if (auth == null) {
+				reject('No session available');
 			} else {
-
-				run.bind(null, reject('no session'));
-
-				// return a null user because user is not logged in
-				// debug('firebaseAuthAnswer is empty, user is not logged in');
-				// // run.bind(null, resolve({ currentUser: null }));
-				// run.bind(null, reject('firebaseAuthAnswer is empty, user is not logged in'));
+				resolve(this.open(auth));
 			}
 		});
 	},
 
-	// here an authorization is destroyed
+	// This is what should be done to teardown a session. Here I am unloading my
+	// models and setting currentUser to null. here an authorization is destroyed
 	close: function() {
-		// debug('torii:close');
-		// This is what should be done to teardown a session. Here I am unloading my
-		// models and setting currentUser to null.
-		let firebase = this.get('container').lookup('adapter:application').firebase;
-		let store = this.get('store');
+		let firebase = this.get('firebase');
 
-		return new Ember.RSVP.Promise(function(resolve) {
-			store.unloadAll('user');
-			firebase.unauth();
-			resolve({ currentUser: null });
-		});
+		firebase.unauth();
+
+		// @todo keep this until sure we don't need it
+		// let store = this.get('store');
+		// store.unloadAll('user');
+
+		return Ember.RSVP.resolve();
 	},
 
 	_nameFor: function(auth) {

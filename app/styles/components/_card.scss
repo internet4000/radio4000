@@ -1,0 +1,13 @@
+.ChannelCard {
+	background-color: $white;
+}
+.ChannelCard-title {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	padding-bottom: 0.7em;
+	word-break: break-word;
+
+	@media (min-width: $layout-m) {
+		padding-left: 1em;
+	}
+}

@@ -64,9 +64,9 @@ h1,
 
 h2,
 .Subtitle {
-	@include size-2;
-	@media (min-width: $layout-m) {
-		@include size-3;
+	@include size-3;
+	@media (min-width: $layout-sm) {
+		@include size-4;
 	}
 }
 h3 {

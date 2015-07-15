@@ -5,7 +5,13 @@
 <div class="Container Container--full">
 	<div class="Section">
 		{{#if model.featured}}
-			{{channels-grid channels=model.featured}}
+
+			{{#each-grid items=model.featured as |item|}}
+				{{#link-to 'channel' item}}
+					{{channel-card channel=item}}
+				{{/link-to}}
+			{{/each-grid}}
+
 		{{else}}
 			<p>Finding curated radios…</p>
 			{{partial 'partials/loader'}}
@@ -19,8 +25,12 @@
 
 <div class="Container Container--full">
 	<div class="Section">
-		{{#if model}}
-			{{channels-grid channels=popular}}
+		{{#if popular}}
+			{{#each-grid items=popular as |item|}}
+				{{#link-to 'channel' item}}
+					{{channel-card channel=item}}
+				{{/link-to}}
+			{{/each-grid}}
 		{{else}}
 			<p>Finding popular radios…</p>
 			{{partial 'partials/loader'}}

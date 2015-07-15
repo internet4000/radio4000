@@ -9,7 +9,6 @@
 
 	<div class="Intro-buttons">
 		{{#if session.currentUser.channels.firstObject}}
-			{{!-- {{channel-cover model=session.currentUser.channels.firstObject}} --}}
 			{{#link-to 'channel' session.currentUser.channels.firstObject class="Intro-btn Intro-btn--primary" title="Your radio"}}
 				Go to your “{{session.currentUser.channels.firstObject.title}}”
 			{{/link-to}}
