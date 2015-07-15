@@ -6,6 +6,7 @@
 				<div class="Channel-cover">
 					{{channel-cover image=model.coverImage onPlay="play"}}
 				</div>
+				<button class="Btn" {{action 'play'}}>{{x-icon i="play"}} Play now</button>
 			</div>
 
 			<div class="Channel-body">
@@ -21,7 +22,7 @@
 						</span>
 					{{/unless}}
 
-					{{!-- <p class="Muted LastUpdate">(updated {{lastUpdatedFormatted}})</p> --}}
+					<p class="Muted LastUpdate">(updated {{lastUpdatedFormatted}})</p>
 				</div>
 
 				{{#if model.body}}

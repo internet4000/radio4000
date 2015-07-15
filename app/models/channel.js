@@ -32,15 +32,7 @@ export default DS.Model.extend({
 	favoriteChannels: hasMany('channel', { inverse: null, async: true }),
 	channelPublic: belongsTo('channelPublic', { async: true })
 
-	// // dates
-	// lastUpdated: Ember.computed('tracks.@each.created', function() {
-	// 	return this.get('tracks.lastObject.created');
-	// }),
-	// lastUpdatedFormatted: Ember.computed('tracks.@each.created', function() {
-	// 	let date = this.get('tracks.lastObject.created');
-	// 	// return window.moment(date).fromNow();
-	// 	return window.moment(date).add('days', 1).fromNow();
-	// }),
+	// dates
 	// createdDate: Ember.computed('created', function() {
 	// 	return moment(this.get('created')).fromNow();
 	// }),

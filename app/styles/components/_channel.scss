@@ -61,10 +61,10 @@
 .Channel-title {
 	display: inline-block;
 	margin-bottom: 0.2em;
+	position: relative;
+	top: -0.4em;
 	@media (min-width: $layout-m) {
 		@include size-5;
-		position: relative;
-		top: -0.4em;
 		max-width: 80%;
 	}
 }

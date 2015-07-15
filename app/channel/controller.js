@@ -5,16 +5,17 @@ const { debug, computed } = Ember;
 export default Ember.Controller.extend({
 	player: Ember.inject.service(),
 
-	// lastUpdatedFormatted: computed('model.tracks.@each.created', function() {
-	// 	const date = this.get('model.tracks.lastObject.created');
+	// @todo: this is very slow!!
+	lastUpdatedFormatted: computed('model.tracks.@each.created', function() {
+		const date = this.get('model.tracks.lastObject.created');
 
-	// 	// only the channel owner can see the exact time (privacy)
-	// 	if (this.get('canEdit')) {
-	// 		return window.moment(date).fromNow();
-	// 	} else {
-	// 		return window.moment(date).subtract(1, 'days').fromNow();
-	// 	}
-	// }),
+		// only the channel owner can see the exact time (privacy)
+		if (this.get('canEdit')) {
+			return window.moment(date).fromNow();
+		} else {
+			return window.moment(date).subtract(1, 'days').fromNow();
+		}
+	}),
 
 	canEdit: computed('model', 'session.currentUser.channels.firstObject', function() {
 		const channel = this.get('model');
