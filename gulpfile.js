@@ -16,9 +16,19 @@ gulp.task('critical', function() {
 	});
 });
 
-// Create a native Linux, OS X and Windows app using electron.
-// Before doing this, install `npm i -g electron-packager` and
-// make sure to run `ember build --environment=electron`
+/**
+ * Create a native Linux, OS X and Windows app using electron.
+
+ * IMPORTANT! Before doing this, you have to:
+
+ * - check public/main.js and choose if you want to use radio4000.com
+ 	  or a local version of the app for building
+ * - install `npm i -g electron-packager`
+ * - `ember build --environment=electron`
+ */
+
+//
+
 gulp.task('electron', ['build-electron'], shell.task([
 	'electron-packager dist Radio4000 --out=dist --platform=all --arch=x64 --asar --prune --version=0.29.2 --overwrite --icon=dist/images/logos/radio4000.icns'
 ]));

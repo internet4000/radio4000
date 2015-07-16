@@ -3,12 +3,5 @@
   "productName": "Radio4000",
   "version": "3.1.0",
   "description": "Collect, curate, play and share your own radio channel",
-  "main": "main.js",
-  "devDependencies": {
-    "electron-packager": "^5.0.0",
-    "electron-prebuilt": "^0.29.2",
-  },
-  "dependencies": {
-    "electron-debug": "^0.1.1"
-  }
+  "main": "main.js"
 }
