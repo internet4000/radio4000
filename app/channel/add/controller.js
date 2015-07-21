@@ -16,7 +16,7 @@ export default Ember.Controller.extend({
 		let slug = this.get('session.currentUser.channels.firstObject.slug');
 		return `javascript:(function() {
 						location.href='
-							http://localhost:4000/c/${slug}/add
+							http://localhost:4000/${slug}/add
 							?url=' + encodeURIComponent(location.href) +
 								'&title=' + encodeURIComponent(document.title)
 					;})();`;
