@@ -39,11 +39,11 @@ export default Ember.Controller.extend({
 
 	// sorts our filtered model
 	sortedChannels: Ember.computed('channels.[]', function() {
-    return Ember.ArrayProxy.createWithMixins(Ember.SortableMixin, {
-      sortProperties: ['created'],
-      sortAscending: false,
-      content: this.get('channels')
-    });
+		return Ember.ArrayProxy.create({
+			sortProperties: ['created'],
+			sortAscending: false,
+			content: this.get('channels')
+		});
   }),
 
 	actions: {

@@ -1,3 +1,3 @@
-import DS from 'ember-data';
+import FirebaseSerializer from 'emberfire/serializers/firebase';
 
-export default DS.FirebaseSerializer.extend();
+export default FirebaseSerializer.extend();
