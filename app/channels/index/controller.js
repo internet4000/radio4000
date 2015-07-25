@@ -10,12 +10,12 @@ export default Ember.Controller.extend({
 		return this.store.findAll('channel');
 	}),
 
-	// filter out channels with more than five followers, image and not featured
+	// only include non-featured channels an image and minimum 5 followers
 	filtered: computed('channels.[]', function() {
 		return this.get('channels').filter((items) => {
-			return items.get('channelPublic.followers.length') > 5 &&
-				 	 items.get('coverImage') &&
-				 	 !items.get('isFeatured');
+			return !items.get('isFeatured') &&
+				 	 	 items.get('coverImage') &&
+						 items.get('channelPublic.followers.length') > 5;
 		});
 	}),
 
