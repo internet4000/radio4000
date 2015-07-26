@@ -6,14 +6,18 @@
 				<div class="Channel-cover">
 					{{channel-cover image=model.coverImage onPlay="play"}}
 				</div>
-				<button class="Btn" {{action 'play'}}>{{x-icon i="play"}} Play now</button>
+				<button class="Btn" {{action 'play'}}>
+					{{x-icon i="play"}} Play now
+				</button>
 			</div>
 
 			<div class="Channel-body">
 
 				<div class="Channel-titleSection">
 					<h1 class="Channel-title">
-						{{#link-to 'channel' model}}{{model.title}}{{/link-to}}
+						{{#link-to 'channel' model}}
+							{{model.title}}
+						{{/link-to}}
 					</h1>
 
 					{{#unless canEdit}}

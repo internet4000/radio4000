@@ -13,6 +13,7 @@ export default Ember.Route.extend({
 		});
 	},
 
+	// Used to determine where the back button goes
 	recordInitialHistoryLength: Ember.on('init', function() {
     this.set('initialHistoryLength', window.history.length);
   }),
@@ -33,7 +34,7 @@ export default Ember.Route.extend({
 			if (history.state.path === '/') {
 				debug('already at root');
 				// this.transitionTo('application');
-			} else if (wouldExit) {
+			} else if (!wouldExit) {
 				debug('window back');
         history.back();
       } else {
