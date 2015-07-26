@@ -10,9 +10,6 @@ export default Ember.Controller.extend({
 	needs: ['channel'],
 	canEdit: computed.alias('controllers.channel.canEdit'),
 
-	sortProperties: ['created:desc'],
-	sortedModel: computed.sort('model.tracks', 'sortProperties'),
-
 	actions: {
 		addTrack() {
 			let url = this.get('newTrackUrl');
@@ -20,26 +17,11 @@ export default Ember.Controller.extend({
 			this.transitionToRoute('channel.add', {
 				queryParams: { url: url }
 			});
-
-			this.set('newTrackUrl', '');
-			// let newTrack = this.store.createRecord('track', {
-			// 	url: url
-			// });
-			// this.set('newTrack', newTrack);
-			// this.set('isShowingAdd', true);
 		},
 
 		editTrack(track) {
 			this.set('trackToEdit', track);
 			this.set('isShowingModal', true);
-		},
-
-		closeModals() {
-			this.setProperties({
-				isShowingModal: false,
-				isShowingAdd: false,
-				trackToEdit: null
-			});
 		},
 
 		saveTrack(track) {
@@ -70,6 +52,14 @@ export default Ember.Controller.extend({
 					track.destroyRecord();
 					this.send('closeModals');
 				});
+			});
+		},
+
+		closeModals() {
+			this.setProperties({
+				isShowingModal: false,
+				isShowingAdd: false,
+				trackToEdit: null
 			});
 		}
 	}

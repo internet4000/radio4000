@@ -15,14 +15,11 @@
   {{/modal-dialog}}
 {{/if}}
 
-{{#if sortedModel}}
-	<ul class="List">
-		{{#each sortedModel as |trackItem|}}
-			<li>
-				{{track-item track=trackItem canEdit=canEdit edit="editTrack"}}
-			</li>
-		{{/each}}
-	</ul>
+{{#if model}}
+
+	{{#tracks-list items=model as |item|}}
+		{{track-item track=item canEdit=canEdit edit="editTrack"}}
+	{{/tracks-list}}
 
 	{{!-- <h2>history (debug)</h2>
 	<ul class="List">

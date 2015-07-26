@@ -1,0 +1,11 @@
+<ul class="List">
+	{{#each sortedItems as |item|}}
+		<li class="List-item">
+			{{#if hasBlock}}
+				{{yield item}}
+			{{else}}
+				{{item.title}}
+			{{/if}}
+		</li>
+	{{/each}}
+</ul>
