@@ -10,8 +10,8 @@
 }
 
 .Tabs-item {
-	flex: 0 1 10em; // grow and shrink and attempt to have the same width
-	padding: 1em 0.5em 0.7em;
+	flex: 0 1 14em; // grow and shrink and stretch 3x14 so it's full width on tablet
+	padding: 1em 0.5em 0.5em;
 	border-bottom: 4px solid transparent;
 	transition: border-bottom-color 400ms $easing;
 	color: $black;

@@ -21,9 +21,9 @@
 							{{btn-favorite action="toggleFavorite" isFavorite=isFavorite class="NonBtn"}}
 						</span>
 					{{/unless}}
-
-					<p class="Muted LastUpdate">(updated {{lastUpdatedFormatted}})</p>
 				</div>
+
+				<p class="Muted LastUpdated">(updated {{lastUpdatedFormatted}})</p>
 
 				{{#if model.body}}
 					<p class="Channel-description">{{model.body}}</p>

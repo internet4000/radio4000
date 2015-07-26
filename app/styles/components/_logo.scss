@@ -27,46 +27,25 @@
 	}
 
 	a {
+		float: left;
 		display: block;
 		height: 55px;
 		color: $bleach;
 
 		// match .Container because we want padding here = bigger tap
-		padding-left: 1rem;
+		padding-left: 0.5rem;
+		padding-right: 0.7rem;
+		padding-top: 0.85rem;
+		transition: margin 500ms $easing, padding 500ms $easing;
 
-		// arrow
-		&:before {
-			content: "←";
-			display: inline-block;
-			position: absolute;
-			top: 20%;
-			left: 0.5rem;
-			@include size-5;
-			transform: translateX(0);
-			transition: transform 500ms $easing;
+		&:hover {
+			text-decoration: none;
 		}
 
-		// logo itself,
-		img {
-			transform: translateX(0);
-			transition: transform 500ms $easing, margin 500ms $easing;
-
-			//moved to make space for the arrow
-			margin-left: 2rem;
-		}
-	}
-
-	a:hover {
-		text-decoration: none;
-	}
-
-	// when logo is active, so on home, hide arrow
-	a.is-active {
-		&:before {
-			transform: translateX(-200%);
-		}
-		img {
-			margin-left: 0;
+		// when logo is active, so on home, hide arrow
+		&.is-active {
+			margin-left: -3rem;
+			padding-right: 2rem;
 		}
 	}
 }

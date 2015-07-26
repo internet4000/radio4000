@@ -20,7 +20,7 @@
 	background-color: $superlightgray;
 	color: $text-color;
 	box-shadow: 0 3px 2px 0 hsla(0, 0%, 0%, 0.06), inset -1px -1px 1px 0 hsla(0, 0%, 0%, 0.02);
-	transition: border-color 200ms, background 200ms, box-shadow 200ms;
+	transition: border-color 150ms, background 150ms, box-shadow 150ms;
 	vertical-align: top;
 
 	// hover and active
@@ -131,4 +131,8 @@
 	border: 1px solid transparent;
 	background-color: transparent;
 	outline: none;
+
+	&:hover {
+		cursor: pointer;
+	}
 }
