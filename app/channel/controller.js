@@ -26,7 +26,6 @@ export default Ember.Controller.extend({
 
 		// first avoid both props being null === null which equals true (lol)
 		if (channel === null || userChannel === null || userChannel === undefined) {
-			debug('something is null');
 			return false;
 		}
 
