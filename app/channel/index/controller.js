@@ -7,8 +7,8 @@ export default Ember.Controller.extend({
 	isShowingModal: false,
 
 	// needed to access canEdit
-	needs: ['channel'],
-	canEdit: computed.alias('controllers.channel.canEdit'),
+	channel: Ember.inject.controller(),
+	canEdit: computed.alias('channel.canEdit'),
 
 	actions: {
 		addTrack() {
