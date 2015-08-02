@@ -15,26 +15,26 @@
   {{/modal-dialog}}
 {{/if}}
 
-{{#if model}}
+{{#if model.tracks}}
 
-	{{#tracks-list items=model as |item|}}
+	{{#tracks-list items=model.tracks as |item|}}
 		{{track-item track=item canEdit=canEdit edit="editTrack"}}
 	{{/tracks-list}}
 
 	{{!-- <h2>history (debug)</h2>
 	<ul class="List">
-		{{#each player.history as |model|}}
+		{{#each player.history as |track|}}
 			<li>
-				{{track-item track=model canEdit=canEdit edit="editTrack"}}
+				{{track-item track=track canEdit=canEdit edit="editTrack"}}
 			</li>
 		{{/each}}
 	</ul>
 
 	<h2>unplayed (debug)</h2>
 	<ul class="List">
-		{{#each player.unplayed as |model|}}
+		{{#each player.unplayed as |track|}}
 			<li>
-				{{track-item track=model canEdit=canEdit edit="editTrack"}}
+				{{track-item track=track canEdit=canEdit edit="editTrack"}}
 			</li>
 		{{/each}}
 	</ul> --}}
@@ -45,9 +45,9 @@
 	</div>
 {{/if}}
 
-{{#if canEdit}}{{#unless model.coverImage}}
+{{#if canEdit}}{{#unless model.channel.coverImage}}
 	<div class="Container">
-		<p>Go ahead, {{#link-to 'channel.edit' model}}choose a nice cover image{{/link-to}} for your radio.</p>
+		<p>Go ahead, {{#link-to 'channel.edit' model.channel}}choose a nice cover image{{/link-to}} for your radio.</p>
 	</div>
 {{/unless}}{{/if}}
 

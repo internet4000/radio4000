@@ -8,6 +8,10 @@
 }
 .Channel-header {
 	background-color: $superlightgray;
+
+	> .Container {
+		padding-left: 0;
+	}
 }
 .Channel-cover {
 	position: relative;
@@ -24,8 +28,11 @@
 		@include clearfix;
 		float: left;
 		width: 30%;
-		max-width: 10em;
+		max-width: 13em;
 		padding-right: 1rem;
+	}
+	@media (min-width: $layout-l) {
+		padding-right: 1.5rem;
 	}
 
 	// remove margin between cover and button
@@ -64,9 +71,6 @@
 }
 .Channel-title {
 	display: inline-block;
-	margin-bottom: 0.2em;
-	position: relative;
-	top: -0.4em;
 	@media (min-width: $layout-m) {
 		@include size-5;
 		max-width: 80%;
@@ -75,12 +79,12 @@
 .Follow--title {
 	// optical aligned with .Channel-title
 	position: relative;
-	top: -0.45em;
+	// top: -0.45em;
+	top: 0.2em;
 }
 .LastUpdated {
 	@extend %font-regular;
 	@include size-1;
-	margin-top: -0.8rem;
 }
 .Channel-description {
 	max-width: 36rem;

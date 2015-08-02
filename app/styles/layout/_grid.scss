@@ -40,6 +40,10 @@
 		flex-basis: 14.28%;
 		.no-flexbox & { max-width: 14.28%; }
 	}
+
+	a:hover {
+		text-decoration: none;
+	}
 }
 
 // Make a grid's items equal height

@@ -11,7 +11,11 @@ export default Ember.Route.extend({
 
 	model() {
 		let channel = this.modelFor('channel');
-		return channel.get('tracks');
+
+		return Ember.RSVP.hash({
+				channel: channel,
+				tracks: channel.get('tracks')
+		});
 	},
 
 	// returns a promise to the last (e.g. newest) X models

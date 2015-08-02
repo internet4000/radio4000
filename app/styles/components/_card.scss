@@ -1,13 +1,25 @@
 .ChannelCard {
+	overflow: hidden;
+	padding-bottom: 1rem;
 	background-color: $white;
 }
-.ChannelCard-title {
+.ChannelCard-title,
+.ChannelCard-body {
 	padding-left: 0.5em;
-	padding-right: 0.5em;
-	padding-bottom: 0.7em;
+	padding-right: 0.5rem;
+	margin-bottom: 0;
+	@media (min-width: $layout-m) {
+		padding-left: 1rem;
+	}
+}
+.ChannelCard-title {
 	word-break: break-word;
 
-	@media (min-width: $layout-m) {
-		padding-left: 1em;
+	a:hover & {
+		text-decoration: underline;
 	}
+}
+.ChannelCard-body {
+	@include size-1;
+	color: $text-color;
 }
