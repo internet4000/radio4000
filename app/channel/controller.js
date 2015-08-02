@@ -54,10 +54,6 @@ export default Ember.Controller.extend({
 			this.transitionToRoute('track', this.get('model.tracks.lastObject'));
 		},
 
-		pause() {
-			this.get('player').pause();
-		},
-
 		toggleFavorite() {
 			const userChannel = this.get('session.currentUser.channels.firstObject');
 

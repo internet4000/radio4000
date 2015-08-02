@@ -5,10 +5,10 @@ export default Ember.Route.extend({
 
 	// Track is nested inside channel.index and doesn't have a template,
 	// which means it won't render anything. Instead, we pass the channel
-	// and track to the playback controller
+	// and track to the playback service, which in turn delegates the track
+	// to our playback component
 	setupController(controller, model) {
 		this.set('player.model', model);
-
 		// this.syncTrack(model);
 	},
 
