@@ -26,7 +26,7 @@ export default Ember.Object.extend({
 
 		return new Ember.RSVP.Promise((resolve, reject) => {
 
-			return store.find('user', auth.uid)
+			return store.findRecord('user', auth.uid)
 
 				// we have a user, create settings if needed
 				// and resolve
@@ -75,8 +75,10 @@ export default Ember.Object.extend({
 			let auth = firebase.getAuth();
 
 			if (auth == null) {
+				debug('no auth');
 				reject('No session available');
 			} else {
+				debug('fetch >> open');
 				resolve(this.open(auth));
 			}
 		});

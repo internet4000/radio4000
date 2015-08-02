@@ -47,6 +47,6 @@ export default DS.Model.extend({
 	// bodyPlusMentions: function() {
 	// 	let body = this.get('body');
 	// 	// find " @channel" (with space)
-	// 	return body.replace(/(^|\s)(@[a-z\d-]+)/ig,'$1<a href="http://radio4000.com/c/$2" class="Mention">$2</a>');
+	// 	return body.replace(/(^|\s)(@[a-z\d-]+)/ig,'$1<a href="http://radio4000.com/$2" class="Mention">$2</a>');
 	// }.property('body')
 });

@@ -12,4 +12,4 @@ export default Ember.Route.extend({
 //     .orderByKey()
 //     .limitToLast(5);
 
-// return this.store.find('track', { ref: last5query }); // <-- not yet possible
+// return this.store.findAll('track', { ref: last5query }); // <-- not yet possible

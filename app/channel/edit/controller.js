@@ -39,7 +39,7 @@ export default Ember.Controller.extend({
 	// not protected and not empty
 	validateSlug() {
 		debug('Validating slug.');
-		const channels = this.store.find('channel');
+		const channels = this.store.findAll('channel');
 		const model = this.get('model');
 		const slug = model.get('slug');
 		const protectedSlugs = ['about', 'job', 'jobs', 'blog', 'bookmarklet', 'dashboard', 'help', 'intro', 'login', '404', 'bunker', 'styleguide'];

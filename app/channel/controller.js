@@ -50,7 +50,7 @@ export default Ember.Controller.extend({
 
 	actions: {
 		play() {
-			debug('transitioning to newest track');
+			debug('playing newest track');
 			this.transitionToRoute('track', this.get('model.tracks.lastObject'));
 		},
 

@@ -35,7 +35,7 @@ export default Ember.Route.extend({
 					}
 
 					snapshot.forEach((s) => {
-						requests.push(this.store.find('track', s.key()));
+						requests.push(this.store.findRecord('track', s.key()));
 					});
 
 					// go through them
