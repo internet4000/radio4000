@@ -2,6 +2,12 @@
 	overflow: hidden;
 	padding-bottom: 1rem;
 	background-color: $white;
+	.LoaderCircle {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
 }
 .ChannelCard-title,
 .ChannelCard-body {
@@ -14,6 +20,7 @@
 }
 .ChannelCard-title {
 	word-break: break-word;
+	color: $red;
 
 	a:hover & {
 		text-decoration: underline;
@@ -22,4 +29,20 @@
 .ChannelCard-body {
 	@include size-1;
 	color: $text-color;
+}
+
+/**
+ * modifier
+ **/
+
+.ChannelCard {
+	&.ChannelCard--text {
+		position: relative;
+		color: $gray;
+		padding: 1rem;
+
+		p:last-child {
+			margin-bottom: 0;
+		}
+	}
 }
