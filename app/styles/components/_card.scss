@@ -39,8 +39,9 @@
 	&.ChannelCard--text {
 		@include size-1;
 		position: relative;
-		color: $gray;
 		padding: 1rem;
+		color: $gray;
+		background-color: transparent;
 
 		p:last-child {
 			margin-bottom: 0;

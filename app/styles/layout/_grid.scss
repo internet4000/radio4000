@@ -9,6 +9,11 @@
 		margin-left: -0.75rem;
 		margin-right: -0.75rem;
 	}
+	&.Grid--firstHidden {
+		.Grid-item:first-child {
+			display: none;
+		}
+	}
 }
 .Grid-item {
 	flex: 0 1 50%;
@@ -90,5 +95,17 @@
 		margin-right: 1rem;
 		margin-bottom: 0;
 		color: $gray;
+	}
+}
+
+
+/**
+ * Modifier
+ **/
+
+.Grid--1 {
+	min-width: 8rem;
+	.Grid-item {
+		flex-basis: 100%;
 	}
 }

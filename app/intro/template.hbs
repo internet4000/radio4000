@@ -1,0 +1,99 @@
+<div class="Intro">
+	<div class="Intro-bg">
+		<div class="Section">
+			<h1 class="Intro-title">
+				<span class="Intro-radio">Radio</span>
+				<span class="Intro-4000">4000</span>
+			</h1>
+
+			<p class="Intro-slogan">One radio for every one and an infinity<br>of great tracks curated with love.</p>
+
+			<div class="Intro-buttons">
+				{{#if session.currentUser.channels.firstObject}}
+					{{#link-to 'channel' session.currentUser.channels.firstObject class="Intro-btn Intro-btn--primary" title="Your radio"}}
+						Go to your “{{session.currentUser.channels.firstObject.title}}”
+					{{/link-to}}
+				{{else}}
+					{{#link-to 'channels.new' class="Intro-btn Intro-btn--primary" title="Continue to create your radio"}}
+						Create your radio now
+					{{/link-to}}
+				{{/if}}
+				{{#link-to 'channels' class="Intro-btn" title="Discover music by channels"}}
+					Discover radios &rarr;
+				{{/link-to}}
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="Manchet Manchet--left">
+	<h1>Radio4000<small> — is radio for thousands</small></h1>
+</div>
+
+
+<div class="Container Container--full">
+	<p></p>
+	<div class="Section">
+		<div class="Grid Grid--firstHidden">
+			{{#each model.featured as |item|}}
+				<div class="Grid-item">
+					{{#link-to 'channel' item}}
+						{{channel-card channel=item}}
+					{{/link-to}}
+				</div>
+			{{/each}}
+			<div class="Grid-item">
+				<div class="ChannelCard ChannelCard--text">
+					<p>Those are radios, click them and they will start playing music for you!</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="Manchet Manchet--left">
+	<h1>One radio<small> — everyone only gets one radio</small></h1>
+</div>
+
+<div class="Container Container--full">
+	<div class="Section">
+			<div class="Grid">
+				<div class="Grid-item">
+					{{#link-to 'channel' model.featured.firstObject}}
+						{{channel-card channel=model.featured.firstObject}}
+					{{/link-to}}
+				</div>
+				<div class="Grid-item">
+					<div class="ChannelCard ChannelCard--text">
+						<p>This radio's name is <strong>{{model.featured.firstObject.title}}</strong>.</p>
+						<p>Like every other radios, all music inside make a lot of sence together because they have been selected by the same person.</p>
+					</div>
+				</div>
+
+			</div>
+	</div>
+</div>
+
+
+<div class="Container Container--full">
+		<div class="Section">
+
+			<p class="Intro-slogan">A radio for year 4000, let's build together</p>
+
+			<div class="Intro-buttons">
+				{{#if session.currentUser.channels.firstObject}}
+					{{#link-to 'channel' session.currentUser.channels.firstObject class="Intro-btn Intro-btn--primary" title="Your radio"}}
+						Go to your “{{session.currentUser.channels.firstObject.title}}”
+					{{/link-to}}
+				{{else}}
+					{{#link-to 'channels.new' class="Intro-btn Intro-btn--primary" title="Continue to create your radio"}}
+						Create your radio now
+					{{/link-to}}
+				{{/if}}
+				{{#link-to 'channels' class="Intro-btn" title="Discover music by channels"}}
+					Discover radios &rarr;
+				{{/link-to}}
+			</div>
+		</div>
+</div>
