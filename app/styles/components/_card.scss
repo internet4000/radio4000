@@ -37,6 +37,7 @@
 
 .ChannelCard {
 	&.ChannelCard--text {
+		@include size-1;
 		position: relative;
 		color: $gray;
 		padding: 1rem;
