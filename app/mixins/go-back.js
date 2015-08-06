@@ -1,7 +1,5 @@
 import Ember from 'ember';
 
-const { debug } = Ember;
-
 export default Ember.Mixin.create({
 
 	// Used to determine when the window.history.back() would take
@@ -16,13 +14,13 @@ export default Ember.Mixin.create({
 			let wouldExit = history.length > this.get('initialHistoryLength');
 
 			if (history.state.path === '/') {
-				// debug('already at root');
+				// Ember.debug('already at root');
 				this.transitionTo('application');
 			} else if (!wouldExit) {
-				// debug('not at last history yet so we go back');
+				// Ember.debug('not at last history yet so we go back');
 			  history.back();
 			} else {
-				// debug('to application');
+				// Ember.debug('to application');
 				this.transitionTo('application');
 			}
 		}
