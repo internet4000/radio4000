@@ -9,10 +9,11 @@
 	}
 
 	a {
-		padding: 1.2rem 1rem 0.9rem;
-	}
-	button {
-		padding: 0.9rem 2rem 0.8rem;
+		padding: 1.2rem 0.5rem 0.9rem;
+		@media (min-width: $layout-s) {
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
 	}
 	.icon-plus {
 		// vertical center

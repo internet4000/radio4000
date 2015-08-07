@@ -2,27 +2,27 @@
 
 .TogglePanel {
 	font-size: 2rem;
-	padding-top: 0;
-	padding-right: 1rem;
-	padding-bottom: 0;
-	padding-left: 0.5rem;
+	padding: 0.9rem 1rem 0.8rem;
 	border: 0;
 	background: none;
 	color: $white;
 	user-select: none;
 	transition: 400ms transform $easing;
 	transform-origin: 45% 50%; // so it feels like it stays in place
+
+	@media (min-width: $layout-s) {
+		padding-right: 2rem; // same as container
+	}
+
 	&:hover,
 	&:active {
 		outline: none;
 		text-decoration: none;
 	}
-	&:hover {
-		cursor: pointer;
-	}
 	&:active {
 		color: $red;
 	}
+	// active state
 	.is-panelOpen & {}
 }
 .TogglePanel-square {

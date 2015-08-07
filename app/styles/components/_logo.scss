@@ -4,9 +4,6 @@
  **/
 
 .SiteLogo {
-	flex: 1;
-	display: flex;
-	align-items: center;
 	margin: 0;
 	user-select: none; // nope
 
@@ -15,6 +12,12 @@
 	.is-fullscreen & {
 		opacity: 0.25;
 	}
+
+	// > .NonBtn {
+	// 	flex: 1;
+	// 	display: flex;
+	// 	align-items: center;
+	// }
 
 	img {
 		width: 89px;

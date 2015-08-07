@@ -28,10 +28,15 @@
 	top: 0;
 	border-bottom: 4px solid hsla(0, 0%, 0%, 0.2);
 
-	// todo refactor this
+	// @todo refactor to something like .TopBar
 	display: flex;
 	flex-flow: row nowrap; // items in one row, no wrapping
 	align-items: stretch; // full-height children
+
+	// stretch logo
+	> .SiteLogo {
+		flex: 1;
+	}
 }
 .Bar--bottom {
 	bottom: 0;
