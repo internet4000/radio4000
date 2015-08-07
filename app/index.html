@@ -64,9 +64,9 @@
 <body>
   {{content-for 'body'}}
 
-  <noscript>Sorry, you need to enable JavaScript in your browser to use the internet.</noscript>
+  <noscript>Sorry, you need to enable JavaScript in your browser to use Radio4000.</noscript>
 
-  <!-- a loader that can appear before ember loads, we remove it afterwards in app view -->
+  <!-- a loader that appears independetly from ember and is removed by ember as soon as possible -->
   <div class="DummyApp" style="z-index: 2; position: fixed; top: 0; right: 0; bottom: 0; left: 0;">
      <div class="Bar Bar--top"></div>
      <div class="Loader" style="position: absolute; top: 50%; left: 0; right: 0; width: 100%; text-align: center; font-size: 3rem; margin: 0;">
@@ -75,8 +75,8 @@
 			</h1>
       <p id="R4Slogan"></p>
       <script>
+        var sentences = ['One moment, please', 'Un momento por favor', 'لحظة واحدة من فضلك', 'Une batez, mesedez', 'এক মিনিট, প্লিজ', 'Един момент моля', '稍等一会儿', 'Et øjeblik', 'Een ogenblik alstublieft', 'Unu momenton, bonvolu', 'Hetkinen', 'Un instant s\'il vous plaît', 'Einen Moment bitte', 'Μια στιγμή παρακαλώ', 'Yon sèl moman, tanpri', 'कृपया एक क्षण', 'Nóiméad amháin, le do thoil', 'Un momento per favore', '少々お待ちください', 'Uno momento, placet', 'Et øyeblikk', 'Chwileczkę', 'Um momento por favor', 'Один момент, пожалуйста', 'Wakati mmoja, tafadhali', 'Ett ögonblick tack', 'กรุณารอสักครู่', 'Bir dakika lütfen', 'Un funud, os gwelwch yn dda', 'Omunye mzuzu, sicela'];
         var tempLoader = document.querySelectorAll('#R4Slogan');
-        var sentences = ['one moment, please', 'un momento por favor', 'لحظة واحدة من فضلك', 'Une batez, mesedez', 'এক মিনিট, প্লিজ', 'един момент моля', '稍等一会儿', 'et øjeblik', 'een ogenblik alstublieft', 'unu momenton, bonvolu', 'hetkinen', 'un instant s\'il vous plaît', 'einen Moment bitte', 'μια στιγμή παρακαλώ', 'yon sèl moman, tanpri', 'कृपया एक क्षण', 'nóiméad amháin, le do thoil', 'un momento per favore', '少々お待ちください', 'uno momento, placet', 'Et øyeblikk', 'chwileczkę', 'um momento por favor', 'один момент, пожалуйста', 'wakati mmoja, tafadhali', 'ett ögonblick tack', 'กรุณารอสักครู่', 'bir dakika lütfen', 'un funud, os gwelwch yn dda', 'omunye mzuzu, sicela'];
         var rand = sentences[Math.floor(Math.random() * sentences.length)];
         tempLoader[0].innerHTML = rand + '…';
       </script>
