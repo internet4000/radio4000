@@ -15,30 +15,30 @@
 					{{/each}}
 
 				{{else}}
-				<div class="Grid-item">
-					<div class="ChannelCard">
-						<figure class="Cover-img">
-								{{partial 'partials/loader'}}
-						</figure>
-						<h3 class="ChannelCard-title">
-							Loading radios…
-						</h3>
-						<p class="ChannelCard-body">
-							These Radios have been handpicked for their -beyond doubt- quality
-						</p>
+					<div class="Grid-item">
+						<div class="ChannelCard">
+							<figure class="Cover-img">
+									{{partial 'partials/loader'}}
+							</figure>
+							<h3 class="ChannelCard-title">
+								Loading radios…
+							</h3>
+							<p class="ChannelCard-body">
+								Radio handpicked for their unquestionable quality
+							</p>
+						</div>
 					</div>
-				</div>
 				{{/if}}
 
 				<div class="Grid-item">
-					{{#link-to 'channels.new'}}
-						<div class="ChannelCard ChannelCard--text">
-							<p><span class="is-highlighted is-black">Tip</span></p>
-							<p>Each box here is a Radio.</p>
-							<p>Each Radio is full of music currated with heart by a human hand.</p>
-							<p>Listen to music you will love, it's free, no need to register.</p>
+						<h3>Tip</h3>
+						<div class="Muted">
+							<p>Each box you see here is a radio full of curated music by human hands.</p>
+							<p>Listen to music you'll love, it's free!.</p>
+							{{#link-to 'channels.new' class="Btn"}}
+								Get my own radio
+							{{/link-to}}
 						</div>
-					{{/link-to}}
 				</div>
 			</div>
 	</div>
@@ -52,14 +52,14 @@
 	<div class="Section">
 			<div class="Grid">
 				<div class="Grid-item">
-					{{#link-to 'channels.new'}}
-						<div class="ChannelCard ChannelCard--text">
-							<p><span class="is-highlighted is-black">Tip</span></p>
-							<p>You are welcome to contribute with your music selection.</p>
-							<p>Different music tastes are at the foundation of Radio4000</p>
-							<p>Each human only gets one radio, start yours!</p>
+						<h3>Tip</h3>
+						<div class="Muted">
+							<p>Different music tastes are at the foundation of Radio4000.</p>
+							<p>Each human gets one single radio — you're welcome to contribute your music taste!</p>
+							{{#link-to 'channels.new' class="Btn"}}
+								Get my own radio
+							{{/link-to}}
 						</div>
-					{{/link-to}}
 				</div>
 				{{#if popular}}
 					{{#each popular as |item|}}
@@ -79,7 +79,7 @@
 								Loading radios…
 							</h3>
 							<p class="ChannelCard-body">
-								These Radios have been added as favorite by many listeners
+								These radios have been added as favorite by many listeners
 							</p>
 						</div>
 					</div>

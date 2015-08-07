@@ -35,6 +35,7 @@ $sans-fallback: 'Lucida Grande','Lucida Sans', sans-serif;
 
 // Always use variables for font-sizes:
 // allowed font-sizes:
+@mixin size-0 { font-size: rem(13px); }
 @mixin size-1 { font-size: rem(14px); }
 @mixin size-2 { font-size: rem(16px); }
 @mixin size-3 { font-size: rem(21px); }

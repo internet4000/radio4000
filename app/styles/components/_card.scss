@@ -27,8 +27,8 @@
 	}
 }
 .ChannelCard-body {
-	@include size-1;
-	color: $text-color;
+	@include size-0;
+	color: $dark;
 }
 
 /**

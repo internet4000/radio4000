@@ -8,8 +8,5 @@ export default Ember.Route.extend({
 				equalTo: true
 			})
 		});
-	},
-	afterModel() {
-		return this.store.findAll('channel-public');
 	}
 });

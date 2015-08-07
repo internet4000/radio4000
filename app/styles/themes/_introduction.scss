@@ -1,7 +1,5 @@
-// @include negative-text;
-
 .Intro {
-	@include negative-text;
+	@include negative-text; // because of the dark image bg
 	position: relative;
 	min-height: 80vh;
 	margin-bottom: 0;
@@ -32,8 +30,6 @@
 	right: 0;
 	bottom: 0;
 }
-
-
 .Intro-title {
 	margin-top: 2rem;
 	font-size: 80px;
@@ -69,11 +65,10 @@
 	@media (min-width: $layout-m) {
 		@include size-4;
 	}
-	@media (min-height: 1000px) {
+	@media (min-width: $layout-sm) and (min-height: 1000px) {
 		@include size-5;
 	}
 }
-.Intro-buttons {}
 .Intro-btn {
 	background-color: $superlightgray;
 	color: $text-color;
