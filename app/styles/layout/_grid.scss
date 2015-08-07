@@ -50,6 +50,24 @@
 		text-decoration: none;
 	}
 }
+.Grid-item--double {
+	@media (min-width: $layout-sm) {
+		flex-basis: 66%;
+		.no-flexbox & { max-width: 66%; }
+	}
+	@media (min-width: $layout-ml) {
+		flex-basis: 50%;
+		.no-flexbox & { max-width: 50%; }
+	}
+	@media (min-width: $layout-l) {
+		flex-basis: 40%;
+		.no-flexbox & { max-width: 40%; }
+	}
+	@media (min-width: $layout-xl) {
+		flex-basis: 2 * 14.28%;
+		.no-flexbox & { max-width: 2 * 14.28%; }
+	}
+}
 
 // Make a grid's items equal height
 .Grid--full {
