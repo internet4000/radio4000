@@ -39,7 +39,7 @@
         //".write": "root.child('users/' + auth.uid + '/channels').child($channelID).exists()"
 
         // validation for each key
-        "body": {
+       "body": {
           ".validate": "newData.isString() && newData.val().length > 3 && newData.val().length < 300"
         },
         "channelPublic": {
@@ -60,23 +60,23 @@
         "isFeatured": {
           ".validate": "newData.isBoolean()"
         },
-        "link": {
+        /*"link": {
           ".validate": "newData.isString() && newData.val().length > 7 && newData.val().length < 100"
-        },
+        },*/
         "slug": {
           ".validate": "newData.isString() && newData.val().length > 2 && newData.val().length < 100"
         },
         "title": {
           ".validate": "newData.isString() && newData.val().length > 2 && newData.val().length < 32"
         },
-        "tracks": {
+       "tracks": {
           // todo
           ".validate": true
-        },
+        }/*,
         // a channel cannot have other child paths than the one allowed above
         "$other": {
           ".validate": false
-        }
+        }*/
       }
     },
 
