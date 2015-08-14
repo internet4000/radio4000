@@ -15,7 +15,7 @@ export default Ember.Controller.extend({
 		return this.get('channels').filter((items) => {
 			return !items.get('isFeatured') &&
 				 	 	 items.get('coverImage') &&
-						 items.get('channelPublic.followers.length') > 5;
+						 items.get('channelPublic.followers.length') > 6;
 		});
 	}),
 
