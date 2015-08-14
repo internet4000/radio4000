@@ -42,9 +42,9 @@
     "rsyncwrapper": "^0.4.3"
   },
   "dependencies": {
-    "ember-data": "1.13.6",
+    "ember-data": "1.13.9",
     "ember-key-responder": "^0.4.0",
-    "ember-modal-dialog": "^0.7.5",
+    "ember-modal-dialog": "^0.7.7",
     "ember-youtube": "^0.5.0",
     "emberfire": "1.5.0",
     "torii": "^0.5.1",

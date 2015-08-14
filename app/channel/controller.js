@@ -37,7 +37,7 @@ export default Ember.Controller.extend({
 		return canEdit;
 	}),
 
-	isFavorite: computed('model', 'session.currentUser.channels.firstObject.favoriteChannels.@each', function() {
+	isFavorite: computed('model', 'session.currentUser.channels.firstObject.favoriteChannels.[]', function() {
 		const channel = this.get('model');
 		const favorites = this.get('session.currentUser.channels.firstObject.favoriteChannels');
 

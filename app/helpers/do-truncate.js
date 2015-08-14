@@ -12,7 +12,7 @@
 
 import Ember from 'ember';
 
-export default Ember.Handlebars.makeBoundHelper(function(str, len) {
+export default Ember.Helper.helper(function([str, len]) {
 	if (!str) { return ''; }
 
 	if (str.length > len && str.length > 0) {
