@@ -3,78 +3,114 @@
 
     // by default rules are false
     // nested rules can not change rules above
-    ".read": false,
-    ".write": false,
 
     "users": {
-      // no one can read user list,
+      // no one can read user list
+      ".read": false,
+      ".write": false,
 
       "$userID": {
         // only auth user can read themselves
         ".read": "$userID === auth.uid",
-
-        // if no prev data and authed (create) OR you are the user
-        ".write": "(!data.exists() && auth != null) || $userID === auth.uid",
-        ".validate": "newData.hasChildren(['provider', 'created'])"
+        ".write": "(!data.exists() && auth === null) || (!newData.exists() && auth === null) || $userID === auth.uid"
       }
     },
 
     "userSettings": {
-      "$settingID": {
-        // only auth user can read themselves
-        ".read": "auth != null && (data.child('user').val() === auth.uid)",
-
-        // can write if it is you, or creating a new one
-        ".write": "auth != null && !data.exists() || (data.child('user').val() === auth.uid)",
-        ".validate": "newData.child('user').val() === auth.uid"
-      }
+      ".read": true,
+      ".write": true
     },
 
     "channels": {
+      // this allows us to query by slug (normally it's only by ID)
+      ".indexOn": ["slug", "isFeatured"],
+
       ".read": true,
 
-      // this allows us to query by slug (normally it's only by ID)
-      ".indexOn": ["slug", "tracks", "isFeatured"],
+      // todo: remove this when the below works
+      ".write": "auth != null",
 
       "$channelID": {
-        // if your user has the channel OR no previous data and authenticated (create)
-        ".write": "root.child('users').child(auth.uid).child('channels').child($channelID).exists() || auth != null && !data.exists()"
+        // ".write": "(auth.uid !== null && !data.exists() || !newData.exists()) || data.child('user').val() === auth.uid"
+        //".write": "auth.uid !== null && 1data.child('user').val() === auth.uid || !data.exists()"
+        //".write": "root.child('users/' + auth.uid + '/channels').val() === $channelID"
+
+        // Allow write if the auth user has a channel equal to the one we're trying to write here
+        //".write": "root.child('users/' + auth.uid + '/channels').child($channelID).exists()"
+
+        // validation for each key
+        "body": {
+          ".validate": "newData.isString() && newData.val().length > 3 && newData.val().length < 300"
+        },
+        "channelPublic": {
+          // todo
+          ".validate": true
+        },
+        "created": {
+          ".validate": "newData.isNumber()"
+        },
+        "favoriteChannels": {
+          // todo
+          ".validate": true
+        },
+        "images": {
+          // todo
+          ".validate": true
+        },
+        "isFeatured": {
+          ".validate": "newData.isBoolean()"
+        },
+        "link": {
+          ".validate": "newData.isString() && newData.val().length > 7 && newData.val().length < 100"
+        },
+        "slug": {
+          ".validate": "newData.isString() && newData.val().length > 2 && newData.val().length < 100"
+        },
+        "title": {
+          ".validate": "newData.isString() && newData.val().length > 2 && newData.val().length < 32"
+        },
+        "tracks": {
+          // todo
+          ".validate": true
+        },
+        // a channel cannot have other child paths than the one allowed above
+        "$other": {
+          ".validate": false
+        }
       }
     },
 
     "channelPublics": {
       ".read": true,
-
-      "$channelPublicID": {
-
-        // delete is allowed if you own the channel relationship OR create/update is allowed if you're authed
-        // this means you can change channel — but we can't validate and check for equality because that won't validate
-        // on create/delete
-        ".write": "!newData.exists() && root.child('users').child(auth.uid).child('channels').child(data.child('channel').val()).exists()
-                 || newData.exists() && auth != null"
-        //".validate": "data.child('channel').val() === newData.child('channel').val()"
-      }
+      ".write": true,
+       ".indexOn": ["followers"]
+      //"$channelPublic": {}
     },
 
     "tracks": {
       ".read": true,
+
+      // otherwise we can't update ytid dynamically
+      ".write": true,
+
       ".indexOn": ["channel", "title"],
 
       "$trackID": {
-        // you have to be authed
-        ".write": "auth != null",
-        // and you have to own the track's channel
-        ".validate": "root.child('users').child(auth.uid).child('channels').child(newData.child('channel').val()).exists()"
+        //".write": "!data.exists() || root.child('users/' + auth.uid + '/channels').val().contains(data.child('channel').val())"
+        // todo: here we need to allow write if track.channel.user === auth.uid
+        // ".write": "!data.exists() || !newData.exists() || data.child('user').val() === auth.uid"
+
+        // Allows write if there is no prev data OR
+        // if the 'channel' property is the same channel as the one in auth user
+        //".write": "!newData.exists() || root.child('users/' + auth.uid + '/channels').child( newData.child('channel').val()  ).exists()"// || root.child('users/' + auth.uid + '/channels').child( data.child('channel').val()  ).exists()"
       }
     },
 
     "images": {
       ".read": true,
+      ".write": "auth != null", // todo: remove this when the below works
       "$imageID": {
-        // you have to be authed
-        ".write": "auth != null",
-        // and you have to own the track's channel
-        ".validate": "root.child('users').child(auth.uid).child('channels').child(newData.child('channel').val()).exists()"
+        // todo: here we need to allow write if $imageID.child('channel').val() === auth.uid
       }
     }
   }
