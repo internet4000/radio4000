@@ -1,15 +1,17 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+	track: null,
+
 	actions: {
-		saveTrack() {
-			this.sendAction('saveTrack', this.get('model'));
+		submit() {
+			this.sendAction('submit', this.get('track'));
 		},
-		cancelEdit() {
-			this.sendAction('cancelEdit', this.get('model'));
+		cancel() {
+			this.sendAction('cancel');
 		},
 		deleteTrack() {
-			this.sendAction('deleteTrack', this.get('model'));
+			this.sendAction('deleteTrack', this.get('track'));
 		}
 	}
 });

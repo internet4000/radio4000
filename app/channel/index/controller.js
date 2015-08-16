@@ -4,7 +4,8 @@ const { computed, debug } = Ember;
 
 export default Ember.Controller.extend({
 	// player: Ember.inject.service(), // used for debugging unplayed + history
-	isShowingModal: false,
+	isAdding: false,
+	isEditing: false,
 
 	// needed to access canEdit
 	channel: Ember.inject.controller(),
@@ -12,27 +13,24 @@ export default Ember.Controller.extend({
 
 	actions: {
 		addTrack() {
-			let url = this.get('newTrackUrl');
+			this.set('isAdding', true);
+			// let url = this.get('addTrackUrl');
 
-			this.transitionToRoute('channel.add', {
-				queryParams: { url: url }
-			});
+
+			// this.transitionToRoute('channel.add', {
+			// 	queryParams: { url: url }
+			// });
 		},
-
 		editTrack(track) {
 			this.set('trackToEdit', track);
-			this.set('isShowingModal', true);
+			this.set('isEditing', true);
 		},
-
 		saveTrack(track) {
-			// in case url changed, we need to set the ytid
-			track.updateProvider();
-			track.save().then(() => {
-				debug('Saved track');
-			});
-
+			debug('save track from controller');
 			this.send('closeModals');
-			this.set('newTrackUrl', '');
+			this.set('addTrackUrl', null);
+
+			return true; // bubble up!
 		},
 
 		deleteTrack(track) {
@@ -42,10 +40,10 @@ export default Ember.Controller.extend({
 				channel.get('tracks').then((tracks) => {
 					tracks.removeObject(track);
 
-					debug('Removing track from channel.');
+					debug('removing track from channel');
 
 					channel.save().then(() => {
-						debug('Saved channel.');
+						debug('saved channel');
 					});
 
 					// then itself
@@ -57,8 +55,8 @@ export default Ember.Controller.extend({
 
 		closeModals() {
 			this.setProperties({
-				isShowingModal: false,
-				isShowingAdd: false,
+				isEditing: false,
+				isAdding: false,
 				trackToEdit: null
 			});
 		}

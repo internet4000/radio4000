@@ -27,5 +27,28 @@ export default Ember.Route.extend({
 	deactivate() {
 		// Reset doc title when leaving the route
 		document.title = 'Radio4000';
+	},
+
+	actions: {
+		saveTrack(object) {
+			const channel = this.get('currentModel');
+			const track = this.store.createRecord('track', object);
+
+			// set channel on track
+			track.set('channel', channel);
+
+			// in case url changed, we need to set the ytid
+			track.updateProvider();
+
+			// Save and add it to the tracks relationship on the channel
+			track.save().then(function() {
+				channel.get('tracks').then(function(tracks) {
+					tracks.addObject(track);
+					channel.save().then(function() {
+						Ember.debug('Success: Track saved to channel');
+					});
+				});
+			});
+		}
 	}
 });

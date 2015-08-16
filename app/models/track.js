@@ -18,14 +18,13 @@ export default DS.Model.extend({
 	channel: belongsTo('channel', { async: true, inverse: 'tracks' }),
 
 	// Returns a YouTube ID from an URL
-	// TODO: this should definitely be saved in the db
+	// @TODO: this should definitely be saved in the db
 	// and not computed every time like it is now
 	updateProvider() {
 		let id = youtube(this.get('url'));
-
-		debug('Updated track.ytid');
 		this.set('ytid', id);
 		this.save();
+		debug('Updated track.ytid');
 	}
 
 	// // Finds an array of all " #hashtags " from the body property

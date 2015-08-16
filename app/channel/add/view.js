@@ -1,11 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.View.extend({
-	keyDown(event) {
-		if (event.keyCode === 27) { // ESC
-			this.get('controller').send('cancelEdit');
-		}
-	},
 
 	// binding properties with :javascript in templates is forbidden because of XSS
 	// so we do this instead

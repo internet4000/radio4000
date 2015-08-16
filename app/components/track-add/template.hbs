@@ -1,25 +1,27 @@
-<form class="Form AddTrack" {{action "saveTrack" on='submit'}}>
+<form class="Form{{if box ' Form--box'}}" {{action 'submit' on='submit'}}>
 	<div class="Form-group">
-		<label for="trackUrl">URL</label>
-		{{focus-input id="trackUrl" type="url" value=model.url placeholder="Or paste in a YouTube link" required="required" autofocus="autofocus"}}
+		<label>URL
+			{{focus-input id="trackUrl" type="url" value=url placeholder="Paste in a YouTube link" required="required" autofocus="autofocus"}}
+		</label>
 	</div>
+
 	<div class="Form-group Form-group--relative">
-		<label for="trackTitle">Title</label>
-		{{input id="trackTitle" value=model.title placeholder="Search for a track" required="required"}}<br>
-		{{#if isFetchingTitle}}<p class="Form-groupStatus">Updating…</p>{{/if}}
-		{{youtube-search query=model.title action="addFromSearch"}}
+		<label>Title
+			{{input id="trackTitle" value=title placeholder="Enter the track title" required="required"}}<br>
+		</label>
+		{{!-- DONT DELETE {{#if isFetchingTitle}}<p class="Form-groupStatus">Updating…</p>{{/if}}
+		{{youtube-search query=model.title action="addFromSearch"}} --}}
 	</div>
+
 	<div class="Form-group">
-		<label for="trackBody">Description</label>
-		{{input id="trackBody" value=model.body placeholder="Fantastic track! #fantastic (optional)"}}<br>
+		<label>Description
+			{{input id="trackBody" value=body placeholder="Fantastic track! #fantastic (optional)"}}<br>
+		</label>
 	</div>
 
 	<div class="Form-group">
 		<button class="Btn Btn--primary {{if justAdded 'is-flashing'}}" type='submit' title="Add track to your radio">Add track</button>
-		<button class="Btn Btn--text" {{action 'cancelEdit' title="Stop editing the track"}}>
-			Cancel
-		</button>
+		<button class="Btn Btn--text" {{action 'cancel' title="Nevermind, do not add the track"}}>Cancel</button>
+		{{!-- {{#link-to "channel.index" class="Btn Btn--text" title="Don't add the track"}}Cancel{{/link-to}} --}}
 	</div>
 </form>
-
- {{yield}}

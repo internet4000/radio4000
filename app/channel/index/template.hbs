@@ -2,21 +2,26 @@
 	<div class="Container">
 		<form class="Form" {{action 'addTrack' on='submit'}}>
 			<div class="Form-group Form-group--relative">
-				{{input-paste type="url" value=newTrackUrl placeholder="Paste in a YouTube link to add a track" required="required" pasted="addTrack"}}
+				{{input-paste type="url" value=addTrackUrl required="required" pasted="addTrack" placeholder="Paste in a YouTube link to add a track"}}
 				<button type="submit" class="Btn Form-groupStatus" title="Tip: Press enter to add!">Add</button>
 			</div>
 		</form>
 	</div>
 {{/if}}
 
-{{#if isShowingModal}}
+{{#if isAdding}}
   {{#modal-dialog close="closeModals"}}
-    {{track-edit model=trackToEdit saveTrack="saveTrack" deleteTrack="deleteTrack" cancelEdit="closeModals"}}
+    {{track-add url=addTrackUrl submit="saveTrack" cancel="closeModals"}}
+  {{/modal-dialog}}
+{{/if}}
+
+{{#if isEditing}}
+  {{#modal-dialog close="closeModals"}}
+    {{track-edit track=trackToEdit submit="saveTrack" deleteTrack="deleteTrack" cancel="closeModals"}}
   {{/modal-dialog}}
 {{/if}}
 
 {{#if model.tracks}}
-
 	{{#tracks-list items=model.tracks as |item|}}
 		{{track-item track=item canEdit=canEdit edit="editTrack"}}
 	{{/tracks-list}}
@@ -29,7 +34,6 @@
 			</li>
 		{{/each}}
 	</ul>
-
 	<h2>unplayed (debug)</h2>
 	<ul class="List">
 		{{#each player.unplayed as |track|}}
@@ -38,17 +42,18 @@
 			</li>
 		{{/each}}
 	</ul> --}}
-
 {{else}}
 	<div class="Container Section--space">
 		<p>No tracks yet.{{if canEdit " Why don't you add one above?"}}</p>
 	</div>
 {{/if}}
 
-{{#if canEdit}}{{#unless model.channel.coverImage}}
-	<div class="Container">
-		<p>Go ahead, {{#link-to 'channel.edit' model.channel}}choose a nice cover image{{/link-to}} for your radio.</p>
-	</div>
-{{/unless}}{{/if}}
+{{#if canEdit}}
+	{{#unless model.channel.coverImage}}
+		<div class="Container Section--space">
+			<p>Go ahead, {{#link-to 'channel.edit' model.channel}}choose a nice cover image{{/link-to}} for your radio.</p>
+		</div>
+	{{/unless}}
+{{/if}}
 
 {{outlet}}
