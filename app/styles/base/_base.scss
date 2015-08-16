@@ -1,14 +1,17 @@
-// Links
+/**
+ * Links
+ */
 a {
 	color: $link-color;
 	text-decoration: none;
 }
-a:hover,
-a:focus {
+a:hover {
 	text-decoration: underline;
 }
 
-// Set a consistent margin between elements
+/**
+ * Set a consistent margin between elements
+ */
 h1,
 h2,
 h3,
@@ -33,7 +36,9 @@ menu {
 	margin: 0 0 1rem;
 }
 
-// Responsive media
+/**
+ * Responsive media
+ */
 iframe,
 img,
 canvas,
@@ -42,7 +47,9 @@ embed {
 	max-width: 100%;
 }
 
-// Seperators
+/**
+ * Seperators
+ */
 hr {
 	margin: 2rem 0;
 }

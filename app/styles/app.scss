@@ -24,43 +24,48 @@
 
 // 3. Layout (site and minimal page layout)
 @import 'layout/layout';
-@import 'layout/grid';
-@import 'layout/sticky-footer';
-@import 'layout/sections';
 @import 'layout/container';
 @import 'layout/manchet';
-@import 'layout/new';
-@import 'layout/panel-nav';
+@import 'layout/sections';
+@import 'layout/grid'; // @todo refactor
+@import 'layout/sticky-footer'; // @todo refactor
+@import 'layout/new'; // @todo refactor - mix with bigstep?
+
 
 // 4. Components (reusable components)
-@import 'utilities/content-states';
-@import 'components/btn-group';
-@import 'components/custom-select';
+// @import 'utilities/content-states';
 @import 'components/icon';
-@import 'components/form-progress';
-@import 'components/list';
-@import 'components/loader';
-@import 'components/logo';
-@import 'components/navigation';
-@import 'components/nav-contextual';
-@import 'components/tabs';
-@import 'components/toggle-panel';
-// @import 'components/annoncement';
-@import 'components/note';
+
+// Header area
 @import 'components/bar';
+@import 'components/nav-bar';
+@import 'components/logo';
+@import 'components/toggle-panel';
+@import 'components/panel-nav';
+
+// UI components
+@import 'components/tabs';
+@import 'components/note';
+@import 'components/btn-group'; // @todo refactor
+@import 'components/custom-select';
+@import 'components/form-progress';
+@import 'components/list'; // @todo refactor
+@import 'components/loader';
+@import 'components/playback';
+@import 'components/player';
+
+
+// @import 'components/navigation';
 @import 'components/box-icon';
 @import 'components/image-upload';
-@import 'components/messages';
 @import 'components/channel';
 @import 'components/cover';
 @import 'components/track';
-@import 'components/playback';
-@import 'components/player';
-@import 'components/bigstep';
+@import 'components/bigstep'; // @todo refactor - mix with layout/new??
 @import 'components/card';
+// // @import 'components/annoncement';
 
 // 5. Themes
 @import 'layout/is-fullscreen'; // everything dark and big player
 @import 'layout/is-minimal'; // full bg color
 @import 'layout/intro';
-// @import 'themes/sidebar';

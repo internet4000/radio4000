@@ -9,34 +9,16 @@
 	z-index: 3;
 	min-height: rem($bar-height);
 
-	// background: linear-gradient(lighten($purple,10%), $purple);
-	background-color: $purple;
+	// background: linear-gradient(lighten($primary-color,10%), $primary-color);
+	background-color: $primary-color;
 	color: $text-color-invert;
 	backface-visibility: hidden; // perf
 	transition: transform 400ms $easing2, background-color 200ms;
 
-	a {
-		color: $bleach;
-	}
-
-	// Darken the bar colors when maximized
-	.is-fullscreen & {
-		background-color: #1b1b1b; // youtube bar color
-	}
 }
 .Bar--top {
 	top: 0;
-	border-bottom: 4px solid hsla(0, 0%, 0%, 0.2);
-
-	// @todo refactor to something like .TopBar
-	display: flex;
-	flex-flow: row nowrap; // items in one row, no wrapping
-	align-items: stretch; // full-height children
-
-	// stretch logo
-	> .SiteLogo {
-		flex: 1;
-	}
+	border-bottom: 3px solid hsla(0, 0%, 0%, 0.2);
 }
 .Bar--bottom {
 	bottom: 0;

@@ -1,54 +1,44 @@
 /**
- * Site Logo
- * our has an animation which is define here at the beginning
+ * Logo
  **/
 
-.SiteLogo {
-	margin: 0;
-	user-select: none; // nope
+.Logo {
+	display: block;
+	padding-left: 0.4rem;
+	padding-right: 1rem;
+	user-select: none; // don't highlight
 
-	// fullscreen state
-	transition: opacity 200ms;
-	.is-fullscreen & {
-		opacity: 0.25;
+	// vertical center
+	font-size: 1.5rem;
+	display: flex;
+	align-items: center;
+
+	&:hover {
+		text-decoration: none;
 	}
 
-	// > .NonBtn {
-	// 	flex: 1;
-	// 	display: flex;
-	// 	align-items: center;
-	// }
-
-	img {
-		width: 89px;
-		// vertical-align: middle;
-		position: relative;
-		top: 16px; // vertical center
-		@media (min-width: $layout-sm) {
-			top: 9px;
-		}
+	// when logo is active, so on home, hide arrow
+	transition: transform 400ms $easing, padding 400ms $easing;
+	transform: translateX(0);
+	&.is-active {
+		transform: translateX(-2.1rem);
 	}
+}
+.Logo h1 {
+	margin-bottom: 0;
+	font-size: inherit;
+}
+.Logo-arrow {
+	position: relative;
+	top: 0.15em;
+	transition: margin 400ms $easing;
+	margin-right: 0.3rem;
 
-	a {
-		float: left;
-		display: block;
-		height: 55px;
-		color: $bleach;
-
-		// match .Container because we want padding here = bigger tap
-		padding-left: 0.5rem;
-		padding-right: 0.7rem;
-		padding-top: 0.85rem;
-		transition: margin 500ms $easing, padding 500ms $easing;
-
-		&:hover {
-			text-decoration: none;
-		}
-
-		// when logo is active, so on home, hide arrow
-		&.is-active {
-			margin-left: -3rem;
-			padding-right: 2rem;
-		}
+	.Logo.is-active & {
+		margin-right: 1rem;
 	}
+}
+.Logo-img {
+	vertical-align: middle;
+	max-height: 25px;
 }
