@@ -11,30 +11,12 @@ body {
 	overflow-y: scroll;
 	overflow-x: hidden;
 }
-.SiteHeader {
-	@include clearfix;
-}
+.SiteHeader {}
 .SiteMain {
 	padding-top: rem($bar-height);
 	padding-bottom: rem($bar-height);
 }
 .SiteFooter {
 	background-color: darken($bg-color, 6%);
-
-	// make room for the fixed bottom bar
-	padding-bottom: $bar-height;
-
-	.Nav {
-		// pull out so it aligns with the rest of the site
-		margin-left: -0.5rem;
-		margin-right: -0.5rem;
-		a {
-			color: $dark;
-			display: block;
-			padding: 2em 0.3em 0.5em;
-			@media (min-width: $layout-s) {
-				padding: 2em 0.5em 0.5em;
-			}
-		}
-	}
 }
+

@@ -1,0 +1,41 @@
+// fullscreen state
+@mixin fullscreen {
+	.is-fullscreen & {
+		@content;
+	}
+}
+
+// Stretch the player fullscreen
+#EmberYoutube-player {
+	@include fullscreen {
+		top: $bar-height;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		height: calc(100% - 130px);
+		bottom: $bar-height;
+		z-index: 3; // on top of channel
+	}
+}
+
+// Fade out logo
+.SiteLogo {
+	transition: opacity 200ms;
+	@include fullscreen {
+		opacity: 0.25;
+	}
+}
+
+// Darken the bar colors when maximized
+.Bar {
+	@include fullscreen {
+		background-color: #1b1b1b; // youtube bar color
+	}
+}
+
+// Hide nav
+.ContextualNav {
+	@include fullscreen {
+		opacity: 0;
+	}
+}

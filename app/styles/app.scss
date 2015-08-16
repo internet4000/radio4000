@@ -31,7 +31,6 @@
 @import 'layout/manchet';
 @import 'layout/new';
 @import 'layout/panel-nav';
-@import 'layout/ui-minimal';
 
 // 4. Components (reusable components)
 @import 'utilities/content-states';
@@ -61,5 +60,7 @@
 @import 'components/card';
 
 // 5. Themes
+@import 'layout/is-fullscreen'; // everything dark and big player
+@import 'layout/is-minimal'; // full bg color
+@import 'layout/intro';
 // @import 'themes/sidebar';
-@import 'themes/introduction';
