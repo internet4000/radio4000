@@ -26,13 +26,17 @@ export default Ember.Object.extend({
 
 		return new Ember.RSVP.Promise((resolve, reject) => {
 
+			debug('finding user');
 			return store.findRecord('user', auth.uid)
 
 				// we have a user, create settings if needed
 				// and resolve
 				.then((user) => {
+					debug('found user');
+
 					user.get('settings').then((settings) => {
 						if (settings) { return; }
+						debug('no settings for user, creating them');
 						this.createSettings(user);
 					});
 
@@ -41,6 +45,8 @@ export default Ember.Object.extend({
 
 				// no user, so create one
 				.catch(() => {
+
+					debug('no user found, creating one');
 
 					// but first avoid this bug about unresolved record
 					// @todo maybe nut needed anymore?!
@@ -51,6 +57,7 @@ export default Ember.Object.extend({
 						provider: auth.provider,
 						name: this._nameFor(auth)
 					}).save().then((newUser) => {
+						debug('created user');
 						this.createSettings(newUser);
 						run.bind(null, resolve({ currentUser: newUser }));
 					});

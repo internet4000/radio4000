@@ -1,38 +1,7 @@
 <header class="SiteHeader">
 	<div class="Bar Bar--top">
-
-		<h1 class="SiteLogo">
-			<button class="NonBtn" {{action 'goBack'}}>
-				{{#link-to "channels"}}&larr;{{/link-to}}
-				<img src="images/logos/logo-radio4000.png" alt="Radio4000">
-			</button>
-		</h1>
-
-		<div class="ContextualNav">
-			{{!-- {{outlet "contextual-navigation"}} --}}
-			{{#if session.isAuthenticated}}
-				{{#if session.currentUser.channels.firstObject}}
-					{{#link-to 'channel.add' session.currentUser.channels.firstObject class="ContextualNav-addTrack" title="Add track"}}
-						{{x-icon i="plus" title="Add track"}} Add track
-					{{/link-to}}
-				{{else}}
-					{{#link-to 'channels.new' class="ContextualNav-addTrack" title="Create your radio"}}
-						{{x-icon i="plus" title="Create your radio"}} <span>Create your radio</span>
-					{{/link-to}}
-				{{/if}}
-			{{else}}
-				{{#link-to 'login'}}Register or log in{{/link-to}}
-			{{/if}}
-
-			<button class="TogglePanel" title="Menu" {{action "togglePanel"}}>
-				<span class="TogglePanel-square"></span>
-				<span class="TogglePanel-square"></span>
-				<span class="TogglePanel-square"></span>
-			</button>
-		</div>
+		{{nav-bar}}
 	</div>
-
-	{{partial 'partials/panel-nav'}}
 </header>
 
 <main class="SiteMain">

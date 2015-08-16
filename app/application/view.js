@@ -5,7 +5,6 @@ export default Ember.View.extend({
 	classNameBindings: [
 		'controller.isFullscreen',
 		'controller.player.model:is-withPlayer:is-withoutPlayer',
-		'controller.isPanelOpen:is-panelOpen',
 		'controller.isMinimalUi:is-minimalUi'
 	],
 
@@ -23,16 +22,5 @@ export default Ember.View.extend({
 				});
 			}
 		});
-
-		// close on top bar, links in the panel nav and on the overlay
-		this.$().on('click.app', '.SiteLogo, .PanelNav a, .PanelNav-overlay', function() {
-			Ember.run.schedule('afterRender', () => {
-				self.set('controller.isPanelOpen', false);
-			});
-		});
-	},
-
-	willDestroyElement() {
-		this.$().off('click.app');
 	}
 });

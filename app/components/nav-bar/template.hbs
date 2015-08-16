@@ -1,0 +1,34 @@
+{{#link-to "channels" class="Logo"}}
+	<h1 {{action 'goBack' bubbles=false}}>
+		<span class="Logo-arrow">&larr;</span>
+		<img class="Logo-img" src="images/logos/logo-radio4000.png" alt="Radio4000">
+	</h1>
+{{/link-to}}
+
+<div class="NavBar-right">
+	{{!-- {{outlet "contextual-navigation"}} --}}
+	{{#if session.isAuthenticated}}
+		{{#if session.currentUser.channels.firstObject}}
+			{{#link-to 'channel.add' session.currentUser.channels.firstObject class="BarNav-addTrack" title="Add track"}}
+				{{x-icon i="plus" title="Add track"}} Add track
+			{{/link-to}}
+		{{else}}
+			{{#link-to 'channels.new' class="BarNav-addTrack" title="Create your radio"}}
+				{{x-icon i="plus" title="Create your radio"}} <span>Create your radio</span>
+			{{/link-to}}
+		{{/if}}
+	{{else}}
+		{{#link-to 'login'}}Register or log in{{/link-to}}
+	{{/if}}
+
+	<button class="TogglePanel" title="Menu" {{action "togglePanel"}}>
+		<span class="TogglePanel-text">Menu</span>
+		<span class="TogglePanel-square"></span>
+		<span class="TogglePanel-square"></span>
+		<span class="TogglePanel-square"></span>
+	</button>
+</div>
+
+{{partial 'partials/panel-nav'}}
+
+{{yield}}

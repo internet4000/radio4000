@@ -13,29 +13,29 @@
 
 		<label class="Playback-shuffle Btn Btn--text {{if player.isShuffled 'is-active'}}" for="isShuffled" title="Toggle shuffle playback">
 			{{x-icon i='shuffle'}}
+			{{input type="checkbox" id="isShuffled" checked=player.isShuffled class="is-hidden"}}
 		</label>
-		{{input type="checkbox" id="isShuffled" checked=player.isShuffled class="is-hidden"}}
 
-		<button class="Btn Btn--text" {{action 'prev' model}} title="Previous track">
+		<button class="NonBtn" {{action 'prev' model}} title="Previous track">
 			{{x-icon i='previous'}}
 		</button>
 
 		{{#if player.isPlaying}}
-			<button class="Btn Btn--text" {{action 'togglePlay' target="emberYoutube"}} title="Pause track">
+			<button class="NonBtn" {{action 'togglePlay' target="emberYoutube"}} title="Pause track">
 				{{x-icon i='pause'}}
 			</button>
 		{{else}}
-			<button class="Btn Btn--text" {{action 'togglePlay' target="emberYoutube"}} title="Play track">
+			<button class="NonBtn" {{action 'togglePlay' target="emberYoutube"}} title="Play track">
 				{{x-icon i='play'}}
 			</button>
 		{{/if}}
 
-		<button class="Btn Btn--text" {{action 'next' model}} title="Next track">
+		<button class="NonBtn" {{action 'next' model}} title="Next track">
 			{{x-icon i='next'}}
 		</button>
 	</div>
 
-	<button class="Playback-videoBtn Btn Btn--text" {{action 'toggleFullscreen'}} title="Toggle fullscreen video">
+	<button class="Playback-videoBtn NonBtn" {{action 'toggleFullscreen'}} title="Toggle fullscreen video">
 		{{#if isFullscreen}}
 			{{x-icon i='arrows-compress'}}
 		{{else}}

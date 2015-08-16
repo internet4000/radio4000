@@ -13,14 +13,16 @@ export default Ember.Mixin.create({
 			let history = window.history;
 			let wouldExit = history.length > this.get('initialHistoryLength');
 
+			Ember.debug('going back');
+
 			if (history.state.path === '/') {
-				// Ember.debug('already at root');
+				Ember.debug('already at root');
 				this.transitionTo('application');
 			} else if (!wouldExit) {
-				// Ember.debug('not at last history yet so we go back');
+				Ember.debug('not at last history yet so we go back');
 			  history.back();
 			} else {
-				// Ember.debug('to application');
+				Ember.debug('to application');
 				this.transitionTo('application');
 			}
 		}
