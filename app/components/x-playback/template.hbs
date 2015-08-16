@@ -36,12 +36,10 @@
 	</div>
 
 	<button class="Playback-videoBtn NonBtn" {{action 'toggleFullscreen'}} title="Toggle fullscreen video">
-		{{#if isFullscreen}}
+		{{#if uiStates.isFullscreen}}
 			{{x-icon i='arrows-compress'}}
 		{{else}}
 			{{x-icon i='arrows-expand'}}
 		{{/if}}
 	</button>
 </div>
-
-{{yield}}

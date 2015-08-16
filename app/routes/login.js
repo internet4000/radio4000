@@ -3,37 +3,22 @@ import Ember from 'ember';
 const { debug } = Ember;
 
 export default Ember.Route.extend({
-	// beforeModel() {
-	// 	if (this.get('session.isAuthenticated')) {
-	// 		debug('already authed --> home');
-	// 		this.transitionTo('application');
-	// 	}
-	// 	else {
-	// 		debug('not authenticated');
-	// 	}
-	// },
+	uiStates: Ember.inject.service(),
 
 	activate() {
-		// set minimal ui style and prepares animation on action.login
-		this.controllerFor('application').setProperties({
-			isMinimalUi: true
-		});
+		// enable minimal layout
+		this.set('uiStates.isMinimal', true);
 	},
 	deactivate() {
-		// remove minimal ui style and animation
-		this.controllerFor('application').setProperties({
-			isMinimalUi: false
-		});
+		// remove minimal layout
+		this.set('uiStates.isMinimal', false);
 	},
 
 	actions: {
+
 		// Signs a user in and redirect to either her channel
 		// or the form to create a channel
 		logIn(authWith) {
-			//
-			this.send('animateUi');
-			this.controllerFor('application').set('isMinimalUi', true);
-
 			this.get('session').open('firebase', { authWith: authWith }).then(() => {
 				const userChannels = this.get('session.currentUser.channels');
 
@@ -49,10 +34,6 @@ export default Ember.Route.extend({
 					}
 				});
 			});
-		},
-
-		animateUi() {
-			this.controllerFor('application').set('isMinimalUiAnimation', true);
 		}
 	}
 });

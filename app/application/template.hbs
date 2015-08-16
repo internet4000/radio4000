@@ -1,29 +1,31 @@
-<header class="SiteHeader">
-	<div class="Bar Bar--top">
-		{{nav-bar}}
-	</div>
-</header>
-
-<main class="SiteMain">
-	{{#if-ios}}
-		<div class="Note Note--full">
-			<p>We're sorry but because your iOS device doesn't support autoplay Radio4000 can't work properly.</p>
+{{#app-root}}
+	<header class="SiteHeader">
+		<div class="Bar Bar--top">
+			{{nav-bar authed=session.isAuthenticated userChannel=session.currentUser.channels.firstObject goBack="transitionToHome"}}
 		</div>
-	{{/if-ios}}
+	</header>
 
-	{{outlet}}
-</main>
+	<main class="SiteMain">
+		{{#if-ios}}
+			<div class="Note Note--full">
+				<p>We're sorry but because your iOS device doesn't support autoplay Radio4000 can't work properly.</p>
+			</div>
+		{{/if-ios}}
 
-<div class="Player">
-	{{ember-youtube ytid=player.model.ytid delegate=this delegate-as="emberYoutube"
-		autoplay="true"
-		playing="ytPlaying"
-		paused="ytPaused"
-		ended="ytEnded"
-		error="ytError"
-		showProgress="true"}}
-</div>
+		{{outlet}}
+	</main>
 
-<div class="Bar Bar--bottom">
-	{{x-playback emberYoutube=emberYoutube isFullscreen=isFullscreen}}
-</div>
+	<div class="Player">
+		{{ember-youtube ytid=player.model.ytid delegate=this delegate-as="emberYoutube"
+			autoplay="true"
+			playing="ytPlaying"
+			paused="ytPaused"
+			ended="ytEnded"
+			error="ytError"
+			showProgress="true"}}
+	</div>
+
+	<div class="Bar Bar--bottom">
+		{{x-playback emberYoutube=emberYoutube}}
+	</div>
+{{/app-root}}

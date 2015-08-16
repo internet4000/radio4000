@@ -3,6 +3,8 @@ import Ember from 'ember';
 const { debug } = Ember;
 
 export default Ember.Route.extend({
+	uiStates: Ember.inject.service(),
+
 	beforeModel() {
 		const authed = this.get('session.isAuthenticated');
 		const userChannels = this.get('session.currentUser.channels');
@@ -26,16 +28,12 @@ export default Ember.Route.extend({
 		});
 	},
 
-	model() {
-		// return this.store.createRecord('channel');
-	},
-
 	afterModel() {
 		document.title = 'New - Radio4000';
 	},
 
 	activate() {
-		this.controllerFor('application').set('isMinimalUi', true);
+		this.set('uiStates.isMinimal', true);
 	},
 
 	// don't render into the channels outlet
@@ -45,7 +43,7 @@ export default Ember.Route.extend({
 	},
 
 	deactivate() {
-		this.controllerFor('application').set('isMinimalUi', false);
+		this.set('uiStates.isMinimal', false);
 
 		// reset document title
 		document.title = 'Radio4000';

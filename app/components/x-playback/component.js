@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 	player: Ember.inject.service(),
+	uiStates: Ember.inject.service(),
 
 	actions: {
 		play() {
@@ -17,7 +18,7 @@ export default Ember.Component.extend({
 			this.get('player').next();
 		},
 		toggleFullscreen() {
-			this.toggleProperty('isFullscreen');
+			this.toggleProperty('uiStates.isFullscreen');
 		}
 	}
 });
@@ -31,7 +32,7 @@ export default Ember.Component.extend({
 // 	let channel = this.get('session.currentUser.channels.firstObject');
 // }),
 
-// // TODO: this should only be active if the user enabled "remote control" setting
+// // @TODO: this should only be active if the user enabled "remote control" setting
 // // (which doesn't exist yet)
 // updateFromRemote: Ember.observer('session.currentUser.channels.firstObject.listeningToTrack', function() {
 
