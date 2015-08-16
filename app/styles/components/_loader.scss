@@ -19,7 +19,7 @@
 	rect {
 		fill: $secondary-color;
 		.DummyApp &,
-		.is-minimalUi & {
+		.is-minimal & {
 			fill: white;
 		}
 	}

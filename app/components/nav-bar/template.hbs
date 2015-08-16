@@ -1,15 +1,18 @@
 {{#link-to "channels" class="Logo"}}
+	{{!-- @todo goBack doesn't work from a component yet  --}}
 	<h1 {{action 'goBack' bubbles=false}}>
+	{{!-- <h1> --}}
 		<span class="Logo-arrow">&larr;</span>
 		<img class="Logo-img" src="images/logos/logo-radio4000.png" alt="Radio4000">
 	</h1>
 {{/link-to}}
 
 <div class="NavBar-right">
-	{{!-- {{outlet "contextual-navigation"}} --}}
-	{{#if session.isAuthenticated}}
-		{{#if session.currentUser.channels.firstObject}}
-			{{#link-to 'channel.add' session.currentUser.channels.firstObject class="BarNav-addTrack" title="Add track"}}
+
+	{{!-- @todo refactor this --}}
+	{{#if authed}}
+		{{#if userChannel}}
+			{{#link-to 'channel.add' userChannel class="BarNav-addTrack" title="Add track"}}
 				{{x-icon i="plus" title="Add track"}} Add track
 			{{/link-to}}
 		{{else}}
@@ -29,6 +32,8 @@
 	</button>
 </div>
 
-{{partial 'partials/panel-nav'}}
+<div {{action 'closePanel' preventDefault=false bubbles=false}}>
+	{{partial 'partials/panel-nav'}}
+</div>
 
 {{yield}}

@@ -6,44 +6,31 @@
 	position: fixed;
 	z-index: 3;
 	right: 0;
-	bottom: $bar-height;
+	bottom: rem($bar-height + $progress-height);
 	width: 100px;
 	height: 100px;
 	max-width: 100%;
 
 	@media (min-width: $layout-m) {
-		width: 210px;
-		height: 210px;
+		width: 224px; // this is the minimum width required to show YouTube volume button
+		height: 224px;
 		transform: translateZ(0);
 	}
 	@media (min-width: $layout-l) {
-		width: 290px; // wide enough to show volume
+		width: 290px;
 		height: 290px;
 	}
 }
 .EmberYoutube-progress {
 	position: fixed;
-	bottom: -5px;
+	bottom: 0;
 	left: 0;
 	right: 0;
 	z-index: 10;
-	margin-bottom: 0;
-
-	progress {
-		background-color: hsla(0, 100%, 100%, 0.05);
-	}
-	progress::-webkit-progress-bar {
-		background-color: hsla(0, 100%, 100%, 0.05);
-	}
-	progress::-moz-progress-bar {
-		background-color: hsla(0, 100%, 100%, 0.28);
-	}
-	progress::-webkit-progress-value {
-		background-color: hsla(0, 100%, 100%, 0.28);
-	}
+	margin-bottom: 0; // @todo: change to div-tag in Ember YouTube
 }
 
-// without player state
+// initially, the player is hidden
 .is-withoutPlayer {
 	.Player {
 		visibility: hidden;

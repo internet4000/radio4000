@@ -2,22 +2,31 @@
  * Player
  */
 
-$progress-height: 8px;
-
 // Controls
 .Playback {
 	display: flex;
 	flex-flow: row nowrap; // items in one row, no wrapping
 	align-items: stretch; // full-height children
 	justify-content: space-between; // distribute items
-	min-height: $bar-height - $progress-height;
+	min-height: $bar-height + $progress-height;
+	padding-bottom: $progress-height;
 
 	// icon size here
 	.Btn {
 		border-width: 0;
 	}
 }
+.Playback-title {
+	@include size-1;
+	order: 2;
+	display: flex;
+	align-items: center;
 
+	a {
+		display: block;
+		color: $bleach;
+	}
+}
 .Playback-buttons {
 	// no shrinking to avoid icons scaling down
 	flex-shrink: 0;
@@ -46,23 +55,6 @@ $progress-height: 8px;
 		}
 	}
 }
-.Playback-title {
-	@include size-1;
-	order: 2;
-	display: flex;
-	align-items: center;
-	@media (min-width: rem(700)) {
-		font-size: initial;
-	}
-
-	a {
-		display: block;
-		&.is-active {
-			text-decoration: none;
-		}
-	}
-}
-
 .Playback-videoBtn {
 	order: 3;
 	font-size: 1.4rem;

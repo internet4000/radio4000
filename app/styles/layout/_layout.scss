@@ -8,18 +8,19 @@ html {
 	color: $text-color;
 }
 body {
+	//
 	overflow-y: scroll;
-	overflow-x: hidden;
+	overflow-x: hidden; // our response design doesn't need scrollbars x
 }
+
 .SiteHeader {}
 .SiteMain {
-	padding-top: rem($bar-height);
-	padding-bottom: rem($bar-height);
+	padding-top: rem($bar-height + 3px); // border
+	padding-bottom: rem($bar-height); // no border
 }
 .SiteFooter {
 	background-color: darken($bg-color, 6%);
 }
-
 
 .is-hidden {
 	display: none;

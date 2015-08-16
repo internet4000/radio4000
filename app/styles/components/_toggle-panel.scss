@@ -23,12 +23,12 @@
 }
 .TogglePanel-square {
 	display: block;
-	width: 5px;
-	height: 5px;
-	margin: 3px auto;
+	width: rem(5);
+	height: rem(5);
+	margin: rem(3) auto;
 	// border-radius: 50%;
 	background-color: white;
 }
 .TogglePanel-text {
-	display: none;
+	display: none; // accessiblity
 }

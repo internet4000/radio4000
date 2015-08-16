@@ -1,5 +1,5 @@
 .NavBar {
-	min-height: $bar-height;
+	min-height: rem($bar-height);
 	display: flex;
 	flex-flow: row nowrap; // items in one row, no wrapping
 	align-items: stretch; // full-height children
@@ -14,6 +14,7 @@
 	a {
 		display: flex;
 		align-items: center;
+		color: $bleach;
 		padding-top: 0.1em; // optical center
 		padding-left: 0.5rem;
 		padding-right: 0.5rem;
@@ -21,7 +22,6 @@
 			padding-left: 1rem;
 			padding-right: 1rem;
 		}
-		color: $bleach;
 	}
 
 	// @todo refactor
