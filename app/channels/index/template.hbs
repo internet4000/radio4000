@@ -1,88 +1,65 @@
-<div class="Manchet Manchet--left">
-	<h1>Discover<small> — curated radios</small></h1>
-</div>
-
-<div class="Container Container--full">
-	<div class="Section">
-			<div class="Grid">
-				{{#if model.featured}}
-					{{#each model.featured as |item|}}
-						<div class="Grid-item">
-							{{#link-to 'channel' item}}
-								{{channel-card channel=item}}
-							{{/link-to}}
-						</div>
-					{{/each}}
-
-				{{else}}
-					<div class="Grid-item">
-						<div class="ChannelCard">
-							<figure class="Cover-img">
-									{{partial 'partials/loader'}}
-							</figure>
-							<h3 class="ChannelCard-title">
-								Loading radios…
-							</h3>
-							<p class="ChannelCard-body">
-								Radio handpicked for their unquestionable quality
-							</p>
-						</div>
-					</div>
-				{{/if}}
-
-				<div class="Grid-item">
-						<h3>Tip</h3>
-						<div class="Muted">
-							<p>Each box you see here is a radio full of curated music by human hands.</p>
-							<p>Listen to music you'll love, it's free!.</p>
-						</div>
-				</div>
-			</div>
-	</div>
-</div>
-
-<div class="Manchet Manchet--left">
-	<h2>Popular <small> — hall of fame</small></h2>
-</div>
-
-<div class="Container Container--full">
-	<div class="Section">
-			<div class="Grid">
-				<div class="Grid-item">
-						<h3>Tip</h3>
-						<div class="Muted">
-							<p>Different music tastes are at the foundation of Radio4000.</p>
-							<p>Each human gets one single radio — you're welcome to contribute your music taste!</p>
-							{{#link-to 'channels.new' class="Btn"}}
-								Get my own radio
-							{{/link-to}}
-						</div>
-				</div>
-				{{#if popular}}
-					{{#each popular as |item|}}
-						<div class="Grid-item">
-							{{#link-to 'channel' item}}
-								{{channel-card channel=item}}
-							{{/link-to}}
-						</div>
-					{{/each}}
-				{{else}}
-					<div class="Grid-item">
-						<div class="ChannelCard">
-							<figure class="Cover-img">
-									{{partial 'partials/loader'}}
-							</figure>
-							<h3 class="ChannelCard-title">
-								Loading radios…
-							</h3>
-							<p class="ChannelCard-body">
-								These radios have been added as favorite by many listeners
-							</p>
-						</div>
-					</div>
-				{{/if}}
-			</div>
+<section class="Section">
+	<div class="Manchet Manchet--left">
+		<h1>Discover<small> — curated radios</small></h1>
 	</div>
 
+	{{#if model.featured}}
+		<div class="Container Container--full">
+
+			<div class="Grid">
+				{{#each model.featured as |item|}}
+					<div class="Grid-item">
+						{{#link-to 'channel' item}}
+							{{channel-card channel=item}}
+						{{/link-to}}
+					</div>
+				{{/each}}
+				<div class="Grid-item">
+					<h3>Tip</h3>
+					<p class="Muted">Each box you see here represents a radio, curated by human hands and hackpicked by us for their unquestionable quality..</p>
+					<p class="Muted">Listen to music you'll love, it's free!.</p>
+				</div>
+			</div>
+
+		</div>
+	{{else}}
+		<p></p>
+	{{/if}}
+</section>
+
+{{#if popular}}
+	<section class="Section">
+		<div class="Manchet Manchet--left">
+			<h2>Popular <small> — hall of fame</small></h2>
+		</div>
+
+		<div class="Container Container--full">
+
+			<div class="Grid">
+				<div class="Grid-item">
+					<h3>Tip</h3>
+					<div class="Muted">
+						<p>These radios have been added as favorite by many listeners. Different music tastes are at the foundation of Radio4000.</p>
+						<p>Each human gets one single radio — you're welcome to contribute your music taste!</p>
+						{{#link-to 'channels.new' class="Btn"}}
+						Get my own radio
+						{{/link-to}}
+					</div>
+				</div>
+
+				{{#each popular as |item|}}
+					<div class="Grid-item">
+						{{#link-to 'channel' item}}
+							{{channel-card channel=item}}
+						{{/link-to}}
+					</div>
+				{{/each}}
+			</div>
+
+		</div>
+	</section>
+{{/if}}
+
+<div class="Container">
 	<p>{{#link-to 'channels.all'}}See all radios &rarr;{{/link-to}}</p>
 </div>
