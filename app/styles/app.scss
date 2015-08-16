@@ -16,7 +16,6 @@
 // 2. Base (config and everything else without classes)
 @import 'base/fonts';
 @import 'base/normalize-custom';
-// @import 'base/normalize-opentype';
 @import 'base/config';
 @import 'base/base';
 @import 'base/form';
@@ -50,8 +49,6 @@
 // @import 'components/annoncement';
 @import 'components/note';
 @import 'components/bar';
-@import 'components/backArrow';
-@import 'components/box';
 @import 'components/box-icon';
 @import 'components/image-upload';
 @import 'components/messages';
@@ -65,5 +62,4 @@
 
 // 5. Themes
 // @import 'themes/sidebar';
-// @import 'components/intro-demo';
 @import 'themes/introduction';

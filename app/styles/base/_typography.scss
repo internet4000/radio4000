@@ -58,10 +58,6 @@ h1,
 		color: $text-color;
 	}
 }
-.Title--centered {
-	text-align: center;
-}
-
 h2,
 .Subtitle {
 	@include size-3;
@@ -76,7 +72,6 @@ h4 {
 	@include size-1;
 	margin-bottom: 0;
 }
-
 .Title,
 h1,
 h2,
