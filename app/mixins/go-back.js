@@ -10,21 +10,16 @@ export default Ember.Mixin.create({
 
 	actions: {
 		goBack() {
-			let history = window.history;
-			let wouldExit = history.length > this.get('initialHistoryLength');
 
-			Ember.debug('going back');
+			Ember.debug('attempting to go back');
+			Ember.debug(`current history: ${history.length}`);
+			Ember.debug(`initial history: ${this.get('initialHistoryLength')}`);
 
-			if (history.state.path === '/') {
-				Ember.debug('already at root');
-				this.transitionTo('application');
-			} else if (!wouldExit) {
-				Ember.debug('not at last history yet so we go back');
-			  history.back();
-			} else {
-				Ember.debug('to application');
-				this.transitionTo('application');
-			}
+			if (window.history.length > this.get('initialHistoryLength')) {
+        window.history.back();
+      } else {
+				this.sendAction('goBack');
+      }
 		}
 	}
 });
