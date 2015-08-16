@@ -10,10 +10,10 @@
 }
 
 .Tabs-item {
-	flex: 0 1 14em; // grow and shrink and stretch 3x14 so it's full width on tablet
-	padding: 1em 0.5em 0.5em;
-	border-bottom: 4px solid transparent;
-	transition: border-bottom-color 400ms $easing;
+	flex: 0 1 12em; // grow and shrink and stretch 3x12 so it's full width on tablet
+	padding: 0.9em 1rem 0.7em;
+	border-bottom: 3px solid transparent;
+	transition: border-bottom-color 200ms $easing;
 	color: $black;
 
 	&:hover,
@@ -28,6 +28,6 @@
 	&.is-active {
 		@extend %font-bold;
 		@include negative-text;
-		border-bottom: 4px solid $secondary-color;
+		border-bottom: 3px solid $secondary-color;
 	}
 }

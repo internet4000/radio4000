@@ -6,11 +6,6 @@
 	@include clearfix;
 	position: relative;
 	max-width: 45em;
-
-	// centered
-	// margin-left: auto;
-	// margin-right: auto;
-
 	padding-left: 1rem;
 	padding-right: 1rem;
 	@media (min-width: $layout-m) {
@@ -18,15 +13,17 @@
 		padding-right: 2rem;
 	}
 }
-// Use this for lager max width
+
+.Container--centered {
+	margin-left: auto;
+	margin-right: auto;
+}
 .Container--large {
 	max-width: 83rem;
 }
-// Use this when it should be full width
 .Container--full {
 	max-width: none;
 }
-// remove padding
 .Container--noPadding {
 	padding-right: 0;
 	padding-left: 0;
@@ -36,6 +33,7 @@
 	}
 }
 
+// @todo this should be in .Grid
 .Container--left {
 	@media (min-width: $layout-m) {
 		float: left;
@@ -48,8 +46,4 @@
 		width: 40%;
 		max-width: 25em;
 	}
-}
-.Container--center {
-	margin-left: auto;
-	margin-right: auto;
 }

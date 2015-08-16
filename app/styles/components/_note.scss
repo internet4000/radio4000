@@ -1,5 +1,14 @@
+/**
+ * System notes, passive messaging system
+ */
 
-// A colored box for important notices
+.SingleNote {
+	margin-top: 1rem;
+}
+
+/**
+ * A colored box for important notices
+ */
 .Note {
 	position: relative;
 	max-width: 24rem;
@@ -30,7 +39,6 @@
 		background: rgba($white, 0.8);
 	}
 }
-
 .Note--full {
 	max-width: none;
 }

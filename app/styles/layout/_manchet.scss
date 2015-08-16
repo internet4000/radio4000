@@ -1,17 +1,14 @@
 /**
  * Manchet
+ * used for title+subtitle blocks (mimics .Section and .Container as well)
  */
 
 .Manchet {
+	@extend %Container;
+
 	text-align: center;
 	padding-top: 2rem;
 	padding-bottom: 1rem;
-	padding-right: 1rem;
-	padding-left: 1rem;
-	@media (min-width: $layout-m) {
-		padding-right: 2rem;
-		padding-left: 2rem;
-	}
 
 	h1,
 	p {
@@ -22,6 +19,12 @@
 }
 
 // modifiers
+.Manchet--bigger {
+	h1,
+	p {
+		max-width: 36rem;
+	}
+}
 .Manchet--biggest {
 	h1 {
 		font-size: 3rem;
@@ -34,13 +37,6 @@
 		max-width: 50rem;
 	}
 }
-.Manchet--bigger {
-	h1,
-	p {
-		max-width: 36rem;
-	}
-}
-
 .Manchet--left {
 	text-align: left;
 	h1,

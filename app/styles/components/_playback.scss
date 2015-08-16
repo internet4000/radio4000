@@ -10,17 +10,10 @@ $progress-height: 8px;
 	flex-flow: row nowrap; // items in one row, no wrapping
 	align-items: stretch; // full-height children
 	justify-content: space-between; // distribute items
-
-	// move it a bit down because of progress
 	min-height: $bar-height - $progress-height;
-	margin-top: 2px;
-
-	// a shadow to show that it's above the content
-	// box-shadow: 0 0px 5px 1px rgba(0,0,0,.4);
 
 	// icon size here
 	.Btn {
-		font-size: 20px;
 		border-width: 0;
 	}
 }
@@ -31,15 +24,16 @@ $progress-height: 8px;
 	display: flex; // this works
 	margin-right: 0.5rem;
 
-	.Btn {
+	.NonBtn {
+		align-content: center;
 		display: flex;
+		font-size: 1.9rem;
 	}
 	.Btn--text {
 		padding: 0;
 		font-size: 2rem;
 		color: $bleach;
 	}
-
 	.Playback-shuffle {
 		font-size: 1.5rem;
 		display: flex;
@@ -52,7 +46,6 @@ $progress-height: 8px;
 		}
 	}
 }
-
 .Playback-title {
 	@include size-1;
 	order: 2;
@@ -73,8 +66,7 @@ $progress-height: 8px;
 .Playback-videoBtn {
 	order: 3;
 	font-size: 1.4rem;
-	padding-right: 1rem !important;
-	color: $bleach;
+	padding-right: 1rem;
 
 	svg {
 		vertical-align: middle;
