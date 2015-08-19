@@ -9,13 +9,5 @@ export default Ember.Route.extend({
 		}, () => {
 			// debug('no user');
 		});
-	},
-
-	actions: {
-		logout() {
-			this.get('session').close().then(() => {
-				this.transitionTo('application');
-			});
-		}
 	}
 });

@@ -44,7 +44,7 @@
 
 		<div class="PanelNav-group">
 			{{#if authed}}
-				<a href="#" class="Muted" title="Log out from Radio4000" {{action 'logout' this}}>Log out</a>
+				{{#link-to 'logout' class="Muted" title="Log out from Radio4000"}}Log out{{/link-to}}
 			{{else}}
 				{{#link-to 'login' title="Register or log in to Radio4000"}}Register or log in{{/link-to}}
 			{{/if}}

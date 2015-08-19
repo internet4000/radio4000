@@ -15,7 +15,6 @@ Router.map(function() {
   this.route('dashboard');
   this.route('help', function() { /* help.index */ });
   this.route('intro');
-  this.route('login');
   this.route('404');
   this.route('bunker');
   this.route('styleguide', function() {
@@ -23,6 +22,8 @@ Router.map(function() {
     this.route('typography');
     this.route('forms');
   });
+  this.route('login');
+  this.route('logout');
 
   // channels
   this.route('channels', { path: '/' }, function() {
