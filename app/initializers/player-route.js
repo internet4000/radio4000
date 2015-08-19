@@ -7,7 +7,7 @@ export function initialize(/* container, application */) {
 
 export default {
 	name: 'player-route',
-	initialize: function(_, app) {
+	initialize(_, app) {
 		app.inject('service:player', 'router', 'router:main');
 	}
 };

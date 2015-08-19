@@ -33,7 +33,7 @@ Ember.Router.reopen({
 });
 
 Ember.EventDispatcher.reopen({
-	setup: function() {
+	setup() {
 		const ignoreEvents = ['touchmove', 'touchstart', 'touchend', 'touchcancel', 'mousemove', 'mouseenter', 'mouseleave'];
 		let events = this.get('events');
 

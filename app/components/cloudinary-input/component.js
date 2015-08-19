@@ -10,7 +10,7 @@ export default Ember.Component.extend({
 	multiple: false,
 	maxFileSize: 500000, // 5MB
 
-	didInsertElement: function() {
+	didInsertElement() {
 
 		// enable cloudinary on our file field
 		this.$().unsigned_cloudinary_upload(ENV.CLOUDINARY_UPLOAD_PRESET, {

@@ -20,7 +20,7 @@ export default Ember.Object.extend({
 	},
 
 	// creating a new authorization or authenticating a new session
-	open: function(auth) {
+	open(auth) {
 		var self = this;
 		const store = this.get('store');
 
@@ -66,7 +66,7 @@ export default Ember.Object.extend({
 	},
 
 	// validating an existing authorization (like a session stored in cookies)
-	fetch: function() {
+	fetch() {
 		let firebase = this.get('firebase');
 
 		// This is what should be done to determine how to fetch a session. Here I am
@@ -93,7 +93,7 @@ export default Ember.Object.extend({
 
 	// This is what should be done to teardown a session. Here I am unloading my
 	// models and setting currentUser to null. here an authorization is destroyed
-	close: function() {
+	close() {
 		let firebase = this.get('firebase');
 
 		firebase.unauth();
@@ -105,7 +105,7 @@ export default Ember.Object.extend({
 		return Ember.RSVP.resolve();
 	},
 
-	_nameFor: function(auth) {
+	_nameFor(auth) {
 		if (auth.github) {
 			return auth.github.username;
 		} else if (auth.facebook) {

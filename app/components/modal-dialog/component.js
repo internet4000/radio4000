@@ -16,7 +16,7 @@ export default ModalDialog.extend({
 		this.resignKeyResponder();
 	}),
 
-	cancel: function() {
+	cancel() {
 		this.sendAction('close');
 	}
 });
