@@ -1,18 +1,19 @@
-<div class="Container Container--left Section Section--space">
-	<h2>Add track</h2>
+<div class="Container">
+	<div class="Section Section--space">
+		<h2>Add track</h2>
 
-	{{track-add box=true url=url submit="saveTrack" cancel="backToChannel"}}
-</div>
+		{{track-add box=true url=url submit="saveTrack" cancel="backToChannel"}}
+	</div>
 
-<div class="Container Container--right Section--space">
-	<h2>Bookmarklet, add music faster</h2>
-	<p>Save this bookmarklet to your bookmark bar and tap on it while you're browsing a YouTube video to add it to your radio. Easy!</p>
+	<h2>Add more, faster, better</h2>
+	<p>Save this bookmarklet to your bookmarks and tap on it while you're browsing a YouTube video to instantly add it to your radio. Easy!</p>
 
 	<p>
-		<a class="Btn Bookmarklet" data-slug="{{model.channel.slug}}" title="Drag me to your bookmarks" href="
-		javascript:(function() {window.open('http://radio4000.com/TOBESLUGGED/add?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title))})();">
-		Add to {{model.channel.title}}</a>
+		{{#bookmarklet-link slug=model.slug}}
+			Add to {{model.title}}
+		{{/bookmarklet-link}}
 	</p>
+
 	<p class="Muted">Tip: you need to drag it to your bookmarks bar.</p>
 	<p class="Muted"><a href="https://www.youtube.com/watch?v=-E6h7Z5fPlg" target="_blank">I don't understand, explain me again</a></p>
 </div>

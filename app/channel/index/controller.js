@@ -14,9 +14,8 @@ export default Ember.Controller.extend({
 	actions: {
 		addTrack() {
 			this.set('isAdding', true);
+
 			// let url = this.get('addTrackUrl');
-
-
 			// this.transitionToRoute('channel.add', {
 			// 	queryParams: { url: url }
 			// });
@@ -25,7 +24,7 @@ export default Ember.Controller.extend({
 			this.set('trackToEdit', track);
 			this.set('isEditing', true);
 		},
-		saveTrack(track) {
+		saveTrack() {
 			debug('save track from controller');
 			this.send('closeModals');
 			this.set('addTrackUrl', null);
@@ -61,22 +60,22 @@ export default Ember.Controller.extend({
 			});
 		}
 	}
-
-	// queryParams: ['tags'],
-
-	// Helpers to show contextual UI helpers
-	// hasImage: computed.notEmpty('model.coverImage'),
-
-	// todo remove this
-	// it's only needed because of our model hook which doesn't update deleted tracks
-	// filteredModel: computed.filter('model.@each.isDeleted', function(item) {
-	// 	return !item.get('isDeleted');
-	// }),
-
-	// noTracks: computed.equal('model.tracks.length', 0),
-	// oneTrack: computed.equal('model.tracks.length', 1),
-	// moreTracks: computed.gt('model.tracks.length', 0),
-	// showHelp: computed('canEdit', 'model.tracks.[]', function() {
-	// 	return this.get('canEdit') && this.get('model.tracks.length') < 2;
-	// })
 });
+
+// queryParams: ['tags'],
+
+// Helpers to show contextual UI helpers
+// hasImage: computed.notEmpty('model.coverImage'),
+
+// todo remove this
+// it's only needed because of our model hook which doesn't update deleted tracks
+// filteredModel: computed.filter('model.@each.isDeleted', function(item) {
+// 	return !item.get('isDeleted');
+// }),
+
+// noTracks: computed.equal('model.tracks.length', 0),
+// oneTrack: computed.equal('model.tracks.length', 1),
+// moreTracks: computed.gt('model.tracks.length', 0),
+// showHelp: computed('canEdit', 'model.tracks.[]', function() {
+// 	return this.get('canEdit') && this.get('model.tracks.length') < 2;
+// })
