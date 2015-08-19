@@ -3,30 +3,29 @@ import Ember from 'ember';
 const { debug } = Ember;
 
 export default Ember.Route.extend({
-
-	// todo: this is repeated for channel/[add,edit,delete]
+	// todo: this is repeated for channel/[add,edit,delete] routes
 	beforeModel() {
 		const authed = this.get('session.isAuthenticated');
-		if (!authed) {
-			debug('no authed --> channel');
-			this.transitionTo('login');
-		}
-
 		const userChannel = this.get('session.currentUser.channels.firstObject');
-		if (!userChannel) {
-			debug('no userChannel --> channel');
+
+		if (!authed || !userChannel) {
+			debug('not authed or no channel --> login');
 			this.transitionTo('login');
 		}
+	},
 
-		const canEdit = userChannel.get('id') === this.modelFor('channel').get('id');
-		if (!canEdit) {
-			debug('no canEdit --> channel');
+	afterModel(model) {
+		const userChannelId = this.get('session.currentUser.channels.firstObject.id');
+		const userOwnsTheChannel = model.get('id') === userChannelId;
+
+		if (!userOwnsTheChannel) {
+			debug('not allowed to edit --> login');
 			this.transitionTo('login');
 		}
 	},
 
 	// don't render into channel because we don't want channel templates here
-	renderTemplate: function() {
+	renderTemplate() {
 		this.render({
 			into: 'application'
 		});
