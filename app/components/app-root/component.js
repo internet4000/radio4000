@@ -4,6 +4,7 @@ export default Ember.Component.extend({
 	uiStates: Ember.inject.service(),
 	player: Ember.inject.service(),
 
+	classNames: ['Root'],
 	classNameBindings: [
 		'uiStates.isFullscreen',
 		'uiStates.isMinimal',

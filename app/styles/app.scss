@@ -3,17 +3,17 @@
 	by Hugo Vieilledent and Oskar Rough Mosumgaard
 */
 
-// third party
+// Third party
 @import 'ember-modal-dialog/ember-modal-structure';
 @import 'ember-modal-dialog/ember-modal-appearance';
 
-// 1. Utilities (mixins and functions)
+// Utilities
 @import 'utilities/align';
 @import 'utilities/clearfix';
 @import 'utilities/functions';
 @import 'utilities/negative-text';
 
-// 2. Base (config and everything else without classes)
+// Base (config and everything else without classes)
 @import 'base/fonts';
 @import 'base/normalize-custom';
 @import 'base/config';
@@ -22,7 +22,7 @@
 @import 'base/button';
 @import 'base/typography';
 
-// 3. Layout (site and minimal page layout)
+// Layout (site and minimal page layout)
 @import 'layout/layout';
 @import 'layout/container';
 @import 'layout/manchet';
@@ -30,11 +30,26 @@
 @import 'layout/grid'; // @todo refactor
 @import 'layout/sticky-footer'; // @todo refactor
 @import 'layout/new'; // @todo refactor - mix with bigstep?
+@import 'layout/intro';
 
-
-// 4. Components (reusable components)
-// @import 'utilities/content-states';
+// UI components
 @import 'components/icon';
+@import 'components/tabs';
+@import 'components/btn-group'; // @todo refactor
+@import 'components/custom-select';
+@import 'components/form-progress';
+@import 'components/note';
+@import 'components/list'; // @todo refactor
+@import 'components/loader';
+@import 'components/card';
+@import 'components/box-icon';
+@import 'components/cover';
+@import 'components/image-upload';
+@import 'components/channel';
+@import 'components/track';
+@import 'components/bigstep'; // @todo refactor - mix with layout/new??
+// @import 'components/navigation';
+// @import 'components/annoncement';
 
 // Header area
 @import 'components/bar';
@@ -43,29 +58,10 @@
 @import 'components/toggle-panel';
 @import 'components/panel-nav';
 
-// UI components
-@import 'components/tabs';
-@import 'components/note';
-@import 'components/btn-group'; // @todo refactor
-@import 'components/custom-select';
-@import 'components/form-progress';
-@import 'components/list'; // @todo refactor
-@import 'components/loader';
+// Footer area
 @import 'components/playback';
 @import 'components/player';
 
-
-// @import 'components/navigation';
-@import 'components/box-icon';
-@import 'components/image-upload';
-@import 'components/channel';
-@import 'components/cover';
-@import 'components/track';
-@import 'components/bigstep'; // @todo refactor - mix with layout/new??
-@import 'components/card';
-// // @import 'components/annoncement';
-
-// 5. Themes
+// States
 @import 'layout/is-fullscreen'; // everything dark and big player
 @import 'layout/is-minimal'; // full bg color
-@import 'layout/intro';

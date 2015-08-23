@@ -29,7 +29,7 @@
 // Darken the bar colors when maximized
 .Bar {
 	@include fullscreen {
-		background-color: #1b1b1b; // youtube bar color
+		background-color: #000; // match youtube player ui color
 	}
 }
 

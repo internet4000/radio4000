@@ -16,9 +16,9 @@
 		height: 224px;
 		transform: translateZ(0);
 	}
-	@media (min-width: $layout-l) {
-		width: 290px;
-		height: 290px;
+	@media (min-width: $layout-xl) {
+		width: 300px;
+		height: 300px;
 	}
 }
 .EmberYoutube-progress {

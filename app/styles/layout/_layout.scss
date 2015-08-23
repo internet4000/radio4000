@@ -17,6 +17,7 @@ body {
 .SiteMain {
 	padding-top: rem($bar-height + 3px); // border
 	padding-bottom: rem($bar-height); // no border
+	min-height: 100vh;
 }
 .SiteFooter {
 	background-color: darken($bg-color, 6%);
@@ -24,4 +25,9 @@ body {
 
 .is-hidden {
 	display: none;
+}
+
+// Set background for modals
+.ember-modal-overlay.translucent {
+	background-color: #090513;
 }

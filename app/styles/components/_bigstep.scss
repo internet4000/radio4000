@@ -5,11 +5,10 @@
 
 .BigStep {
 	position: fixed;
-	top: 50%;
 	left: 0;
 	right: 0;
+	top: 50%;
 	transform: translateY(-50%);
-
 	text-align: center;
 	color: white;
 
@@ -30,7 +29,6 @@
 		outline: none;
 	}
 }
-
 .BigStep-container {
 	@media (min-width: $layout-s) {
 		max-width: 30rem;
@@ -38,14 +36,12 @@
 		margin-right: auto;
 	}
 }
-
 .BigStep-title {
 	margin-bottom: 1rem;
 }
 .BigStep-subTitle {
 	@include size-2;
 }
-
 .BigStep-buttons {
 	margin-top: 2.7rem;
 	.Btn {

@@ -12,6 +12,9 @@
 		&:before {
 			display: none;
 		}
+		&:last-child {
+			border-bottom: 0;
+		}
 	}
 
 	a {
