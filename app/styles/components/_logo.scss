@@ -33,10 +33,9 @@
 	position: relative;
 	top: 0.15em;
 	transition: margin 400ms $easing;
-	margin-right: 0.3rem;
 
 	.Logo.is-active & {
-		margin-right: 1rem;
+		margin-right: 0.3rem;
 	}
 }
 .Logo-img {

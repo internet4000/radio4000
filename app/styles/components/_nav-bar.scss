@@ -24,10 +24,11 @@
 		}
 	}
 
-	// @todo refactor
+	// @todo refactor into some button icon modifier??
 	.icon-plus {
 		// vertical center
 		position: relative;
-		top: 0.1em;
+		top: -0.03em;
+		margin-right: 0.3em;
 	}
 }
