@@ -10,16 +10,15 @@ export default Ember.Mixin.create({
 
 	actions: {
 		goBack() {
-
 			Ember.debug('attempting to go back');
 			Ember.debug(`current history: ${history.length}`);
 			Ember.debug(`initial history: ${this.get('initialHistoryLength')}`);
 
 			if (window.history.length > this.get('initialHistoryLength')) {
-        window.history.back();
-      } else {
+				window.history.back();
+			} else {
 				this.sendAction('goBack');
-      }
+			}
 		}
 	}
 });

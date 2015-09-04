@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import goBackMixin from 'radio4000/mixins/go-back';
+// import goBackMixin from 'radio4000/mixins/go-back';
 
-export default Ember.Component.extend(goBackMixin, {
+export default Ember.Component.extend(/*goBackMixin, */{
 	tagName: 'nav',
 	classNames: ['NavBar'],
 	classNameBindings: ['isPanelOpen:is-panelOpen'],
