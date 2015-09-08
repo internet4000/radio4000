@@ -2,38 +2,23 @@
 
 This is an Ember.js application scaffolded with ember-cli.
 
-## How to install
+## How to develop
 
 Please follow this guide step-by-step to make sure everything works. It assumes you're on OS X with node installed.
 
 ### Install Radio4000 dependencies
 
-First install Ember CLI, which is used as development server and to build the project.
-
-`npm install -g ember-cli`
-
-then clone the project repository and install it
+Make sure Ember CLI is installed globally, then clone this project and install it's dependencies:
 
 ```
+npm install -g ember-cli
 git clone https://github.com/hugovieilledent/radio4000.git
 cd radio4000
-npm install
-bower install
+npm install; bower install
+ember serve
 ```
 
-## Watching and testing
-
-- `ember s`  (short for `ember serve`, opens a dev server at 0.0.0.0:4000)
-- `ember test`
-
 Also see http://www.ember-cli.com/
-
-## Updating sprite, new icons - svg only
-
-- go to public/images/icons
-- open sprite.svg in code editor
-- look how things are made
-- paste in your new svg icon
 
 ## Building and deploying
 
@@ -42,18 +27,27 @@ First build it:
 - `$ ember build` (build will still include logs, warnings etc. for testing)
 - `$ ember build --environment=production` (hard to debug, only use this when it's ready for deploy)
 
-Then deploy:
+Then deploy to one of our hosts:
 
 `$ gulp deploy-dev` (dev.radio4000.com)
 `$ gulp deploy-live` (radio4000.com)
 
+## Updating icons
+
+@todo: use grunticon ala magnus-winter
+
+- go to public/images/icons
+- open sprite.svg in code editor
+- look how things are made
+- paste in your new svg icon
+
 ## Using our CDN
 
-To serve a file from our CDN, prepend the file of the URL (from our live domain radio4000.com) with `http://dyzwdli7efbh5.cloudfront.net` and it'll automatically pull and serve the file from the CDN.
+To serve a file from our CDN, prepend the file of the URL (only works for http://radio4000.com) with `http://dyzwdli7efbh5.cloudfront.net` and the CDN will automatically pull and serve the file.
 
 ## Building native apps
 
-First, make sure production environment in `config/environment.js` looks like this:
+Make sure the production environment in `config/environment.js` looks like this:
 
 ```javascript
 if (environment === 'electron') {
@@ -85,20 +79,4 @@ We're using the YouTube API so you might run into trouble with permissions, doma
 
 ## Firebase security rules
 
-Firebase rules are a bitch. With the [Blaze Compiler](https://github.com/firebase/blaze_compiler) it's supposed to be easier, so:
-
-```
-$ npm install -g blaze_compiler
-$ blaze rules/rules.yaml
-```
-
-## How to update ember-cli
-
-Follow the instructions on [ember-cli/releases](https://github.com/ember-cli/ember-cli/releases) and remember to keep our own dependencies:
-
-```
-npm install --save-dev ember-modal-dialog ember-cli-sass broccoli-csso ember-cli-app-version ember-cli-autoprefixer gulp rsyncwrapper emberfire ember-youtube torii torii-fire
-npm uninstall ember-cli-content-security-policy
-```
-
-Remove `ember-cli-content-security-policy` if it's in `package.json`.
+Firebase rules are a bitch but see the `rules` folder.
