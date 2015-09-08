@@ -4,7 +4,7 @@
 			<span class="Intro-radio">Radio</span>
 			<span class="Intro-4000">4000</span>
 		</h1>
-		<p class="Intro-slogan">One radio for every one and an infinity<br>of great tracks curated with love.</p>
+		<p class="Intro-slogan">A single channel for everyone<br>and an infinity of great tracks curated with love.</p>
 		{{!-- <div class="Intro-buttons">
 			{{#link-to 'channels' class="Intro-btn" title="Discover music by channels"}}
 				Discover radios &rarr;
@@ -24,7 +24,7 @@
 
 <section class="Section">
 	<div class="Manchet Manchet--left">
-		<h1>Radio4000<small> — is radio for the thousands</small></h1>
+		<h1>Radio4000<small> — a radio the future</small></h1>
 	</div>
 	<div class="Container Container--full">
 		<div class="Grid Grid--firstHidden">
@@ -37,8 +37,8 @@
 			{{/each}}
 			<div class="Grid-item">
 				<div class="ChannelCard ChannelCard--text">
-					<p>These are radios, tap one to play it!</p>
-					<p>Each radio is as unique as the person behind it.</p>
+					<p>Simply tap a channel to play it!</p>
+					<p>Each channel is as unique as the person who crafted it.</p>
 				</div>
 			</div>
 		</div>
@@ -50,14 +50,14 @@
 		<h1>The three commandments of Radio4000</h1>
 	</div>
 	<div class="Container">
-		<h3>1. You shall flourish with a single Radio4000</h3>
-		<p>It's not about music genres, it's about the music you like. And if you don't want a radio - no problem - you can just keep listening!</p>
+		<h3>1. 1. Thou shalt each have one channel.</h3>
+		<p>It's not about finicky playlists or genres. Radio4000 is about the music you love, plain and simple. No sorting. No shame. And if you'd rather just listen, no problem. Everyone loves a good listener.</p>
 
-		<h3>2. You shall only add music you love</h3>
-		<p>Do not make it complex for yourself; don't try to divide the music you add by genre, style, release date, color, intensity, country… it is just about music <em>you</em> like.</p>
+		<h3>2. Thou shalt add music you love.</h3>
+		<p>If you love a song, add it. Don't let themes, evil colour schemes, genres or transitions hold you back. Don't get all meta(tag) about it.</p>
 
-		<h3>3. You shall stay anonymous (if you want)</h3>
-		<p>Privacy is for the future peace of mind — your music is who you are and you can keep it like that, if you want. This place is about pleasing people with the most intimate music you love. Not who you are.</p>
+		<h3>3. Thou identity shalt remain mysterious (if you want it to)</h3>
+		<p>Privacy is important to us. Your music is who you are and if you're a closet cat lover or the president of a large country, we respect your need to stay anonymous. Radio4000 is about the music and, by extension, protecting the people who share it.</p>
 	</div>
 </section>
 
@@ -74,9 +74,11 @@
 			</div>
 			<div class="Grid-item Grid-item--double">
 				<div class="Muted">
-					<p>This radio's name is <strong>{{model.featured.firstObject.title}}</strong>.</p>=
-					<p>Because the person behind it only has one radio, like every other radios, all music inside make a lot of sense together because they have been selected by one unique person.</p>
-					<p>And if that person added those music inside, it is only because he loved them all!</p>
+					<p>This channel is called <strong>{{model.featured.firstObject.title}}</strong>.</p>
+					<p>Because the human behind can only have one channel, there's nowhere for the good music to hide. Highs and lows, ebbs and flows, Cambodian funk and techno. Each mix is exactly that — a mix.</p>
+					<p>{{#link-to 'channel' model.featured.firstObject}}
+						Listen to {{model.featured.firstObject.title}}
+					{{/link-to}} now!</p>
 				</div>
 			</div>
 		</div>

@@ -4,13 +4,13 @@ const { computed } = Ember;
 
 export default Ember.Controller.extend({
 
-	// note: this depends on getting all public channels
-	// which we currently do in channel:route afterModel()
+	// This depends on getting all public channels
+	// which we currently do in channel:route afterModel().
 	channels: computed(function() {
 		return this.store.findAll('channel');
 	}),
 
-	// only include non-featured channels an image and minimum 5 followers
+	// Only include non-featured channels an image and minimum X followers.
 	filtered: computed('channels.[]', function() {
 		return this.get('channels').filter((items) => {
 			return !items.get('isFeatured') &&
@@ -19,7 +19,6 @@ export default Ember.Controller.extend({
 		});
 	}),
 
-	// sort by followers
 	sortProperties: ['channelPublic.followers.length:desc'],
 	popular: computed.sort('filtered', 'sortProperties')
 
