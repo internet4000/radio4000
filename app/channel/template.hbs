@@ -27,7 +27,7 @@
 					{{/unless}}
 				</div>
 
-				<p class="Muted LastUpdated">({{lastUpdatedFormatted}})</p>
+				{{!-- <p class="Muted LastUpdated">({{lastUpdatedFormatted}})</p> --}}
 
 				{{#if model.body}}
 					<p class="Channel-description">{{model.body}}</p>
@@ -50,7 +50,7 @@
 
 	<nav class="Tabs">
 		{{#link-to 'channel.index' class="Tabs-item" title="All tracks"}}
-			{{model.tracks.length}} Tracks
+			{{!-- {{model.tracks.length}} --}} Tracks
 		{{/link-to}}
 		{{#link-to 'channel.favorites' class="Tabs-item" title="Favorites of this radio"}}
 			Favorites

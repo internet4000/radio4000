@@ -12,6 +12,13 @@ export default Ember.Controller.extend({
 	canEdit: computed.alias('channel.canEdit'),
 
 	actions: {
+		closeModals() {
+			this.setProperties({
+				isEditing: false,
+				isAdding: false,
+				trackToEdit: null
+			});
+		},
 		addTrack() {
 			this.set('isAdding', true);
 
@@ -31,7 +38,6 @@ export default Ember.Controller.extend({
 
 			return true; // bubble up!
 		},
-
 		deleteTrack(track) {
 			track.get('channel').then((channel) => {
 
@@ -49,14 +55,6 @@ export default Ember.Controller.extend({
 					track.destroyRecord();
 					this.send('closeModals');
 				});
-			});
-		},
-
-		closeModals() {
-			this.setProperties({
-				isEditing: false,
-				isAdding: false,
-				trackToEdit: null
 			});
 		}
 	}

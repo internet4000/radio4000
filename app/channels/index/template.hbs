@@ -16,7 +16,7 @@
 				<div class="Grid-item">
 					<h3>Tip</h3>
 					<p class="Muted">Each selected channel has been curated by human ears and handpicked for its unquestionable quality.</p>
-					<p class="Muted">Listen to music you'll love, it's free!</p>
+					<p class="Muted">Listen to music you'll love, it's free! {{link-to 'See all channels' 'channels.all'}}.</p>
 				</div>
 			</div>
 		</div>
@@ -25,7 +25,7 @@
 	{{/if}}
 </section>
 
-{{#if popular}}
+{{#if topSortedChannels}}
 	<section class="Section">
 		<div class="Manchet Manchet--left">
 			<h2>Popular <small> — listener favorites</small></h2>
@@ -45,7 +45,7 @@
 					</div>
 				</div>
 
-				{{#each popular as |item|}}
+				{{#each topSortedChannels as |item|}}
 					<div class="Grid-item">
 						{{#link-to 'channel' item}}
 							{{channel-card channel=item}}

@@ -13,8 +13,18 @@ export default Ember.Route.extend({
 		let channel = this.modelFor('channel');
 
 		return Ember.RSVP.hash({
-				channel: channel,
-				tracks: channel.get('tracks')
+				channel: channel
+		});
+	},
+
+	setupController(controller, models) {
+		controller.setProperties(models);
+		console.log('starting to find tracks');
+
+		// let tracks = models.channel.get('tracks');
+		// controller.set('tracks', tracks);
+		models.channel.get('tracks').then((tracks) => {
+			controller.set('tracks', tracks);
 		});
 	},
 
