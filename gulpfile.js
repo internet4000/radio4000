@@ -1,19 +1,15 @@
 /* global require */
 var gulp = require('gulp');
 var rsync = require('rsyncwrapper').rsync;
-var critical = require('critical');
+var critical = require('critical').stream;
 var shell = require('gulp-shell');
 
 // Extracts the necessary CSS to render the specified viewport,
 // inlines it in the header and loads the rest of the CSS async
 gulp.task('critical', function() {
-	critical.generateInline({
-		base: 'dist/',
-		src: 'index.html',
-		htmlTarget: 'index.html',
-		width: 1300,
-		height: 900
-	});
+	return gulp.src('dist/index.html')
+		.pipe(critical({ base: 'dist/', inline: true }))
+		.pipe(gulp.dest('dist'));
 });
 
 /**
