@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	player: Ember.inject.service(),
+	uiStates: Ember.inject.service(),
 
 	// Track is nested inside channel.index and doesn't have a template,
 	// which means it won't render anything. Instead, we pass the channel
@@ -14,7 +15,7 @@ export default Ember.Route.extend({
 
 	// make sure fullscreen video is off when you leave the track
 	deactivate() {
-		this.controllerFor('application').set('isFullscreen', false);
+		this.get('uiStates').set('isFullscreen', false);
 	}
 
 	// syncTrack(model) {
