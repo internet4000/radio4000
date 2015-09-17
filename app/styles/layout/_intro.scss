@@ -17,7 +17,7 @@
 	}
 }
 .Intro-bg {
-	padding-top: 10%;
+	padding-top: 4%;
 	padding-left: 10%;
 	background-image: url('../images/bg-intro.jpg');
 	background-size: cover;
@@ -29,13 +29,17 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
+
+	@media (min-height: 780px) {
+		padding-top: 10%;
+	}
 }
 .Intro-title {
 	margin-top: 2rem;
 	font-size: 80px;
 	line-height: 0.8;
 	letter-spacing: -0.02em;
-	@media (min-width: $layout-sm) {
+	@media (min-width: $layout-sm) and (min-height: 740px) {
 		font-size: 120px;
 	}
 	@media (min-width: $layout-m) and (min-height: 1000px) {

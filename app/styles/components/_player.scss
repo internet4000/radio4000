@@ -7,10 +7,14 @@
 	z-index: 3;
 	right: 0;
 	bottom: rem($bar-height + $progress-height);
-	width: 100px;
-	height: 100px;
+	width: 80px;
+	height: 80px;
 	max-width: 100%;
 
+	@media (min-width: $layout-s) {
+		width: 100px;
+		height: 100px;
+	}
 	@media (min-width: $layout-m) {
 		width: 224px; // this is the minimum width required to show YouTube volume button
 		height: 224px;

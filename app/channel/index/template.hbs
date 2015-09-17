@@ -21,8 +21,8 @@
   {{/modal-dialog}}
 {{/if}}
 
-{{#if model.tracks}}
-	{{#tracks-list items=model.tracks as |item|}}
+{{#if tracks}}
+	{{#tracks-list items=tracks as |item|}}
 		{{track-item track=item canEdit=canEdit edit="editTrack"}}
 	{{/tracks-list}}
 
@@ -44,14 +44,18 @@
 	</ul> --}}
 {{else}}
 	<div class="Container Section--space">
-		<p>No tracks yet.{{if canEdit " Why don't you add one above?"}}</p>
+		{{#if canEdit}}
+			<p>No tracks yet. Why don't you add one above?</p>
+		{{else}}
+			<div class="LoaderCircle"><span></span></div>
+		{{/if}}
 	</div>
 {{/if}}
 
 {{#if canEdit}}
-	{{#unless model.channel.coverImage}}
+	{{#unless channel.coverImage}}
 		<div class="Container Section--space">
-			<p>Go ahead, {{#link-to 'channel.edit' model.channel}}choose a nice cover image{{/link-to}} for your radio.</p>
+			<p>Go ahead, {{#link-to 'channel.edit' channel}}choose a nice cover image{{/link-to}} for your radio.</p>
 		</div>
 	{{/unless}}
 {{/if}}

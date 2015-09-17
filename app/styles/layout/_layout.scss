@@ -8,15 +8,15 @@ html {
 	color: $text-color;
 }
 body {
-	//
 	overflow-y: scroll;
-	overflow-x: hidden; // our response design doesn't need scrollbars x
+	// our responsive design doesn't need to scroll horizontally
+	overflow-x: hidden;
 }
 
 .SiteHeader {}
 .SiteMain {
-	padding-top: rem($bar-height + 3px); // border
-	padding-bottom: rem($bar-height); // no border
+	padding-top: rem($bar-height + 3px); // with border
+	padding-bottom: rem($bar-height); // without border
 	min-height: 100vh;
 }
 .SiteFooter {
@@ -25,4 +25,9 @@ body {
 
 .is-hidden {
 	display: none;
+}
+
+// Set background for ember-modals
+.ember-modal-overlay.translucent {
+	background-color: rgba(43, 43, 43, 0.64);
 }

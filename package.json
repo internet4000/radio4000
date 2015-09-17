@@ -39,14 +39,13 @@
     "ember-data": "1.13.11",
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "^1.0.2",
-    "ember-modal-dialog": "0.7.7",
     "gulp": "^3.9.0",
     "gulp-shell": "^0.4.2",
     "rsyncwrapper": "^0.4.3"
   },
   "dependencies": {
     "ember-key-responder": "^0.4.0",
-    "ember-modal-dialog": "^0.7.7",
+    "ember-modal-dialog": "0.8.0",
     "ember-youtube": "^0.5.0",
     "emberfire": "1.5.0",
     "torii": "^0.5.1",
