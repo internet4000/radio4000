@@ -1,9 +1,11 @@
-{{#link-to 'track' track class="Track-link"}}
+<a class="Track-link" href="#" {{action 'transitionToTrack' track}}>
+{{!-- {{#link-to 'track' track class="Track-link"}} --}}
 	<h3 class="Track-title">
 		{{track.title}}
 	</h3>
 	<p class="Track-body">{{track.body}}</p>
-{{/link-to}}
+{{!-- {{/link-to}} --}}
+</a>
 
 <p class="Track-controls Muted" title="Edit the track" {{action 'edit'}}>
 

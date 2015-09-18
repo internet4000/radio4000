@@ -12,6 +12,9 @@ export default Ember.Controller.extend({
 	canEdit: computed.alias('channelController.canEdit'),
 
 	actions: {
+		transitionToTrack(track) {
+			this.transitionToRoute('track', track);
+		},
 		closeModals() {
 			this.setProperties({
 				isEditing: false,

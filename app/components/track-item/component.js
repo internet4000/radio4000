@@ -14,6 +14,9 @@ export default Ember.Component.extend({
 	actions: {
 		edit() {
 			this.sendAction('edit', this.get('track'));
+		},
+		transitionToTrack(track) {
+			this.sendAction('onTransition', track);
 		}
 	}
 });
