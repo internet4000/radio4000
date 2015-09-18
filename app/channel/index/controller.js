@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { computed, debug } = Ember;
+const { computed, debug, inject } = Ember;
 
 export default Ember.Controller.extend({
 	// player: Ember.inject.service(), // used for debugging unplayed + history
@@ -8,8 +8,8 @@ export default Ember.Controller.extend({
 	isEditing: false,
 
 	// needed to access canEdit
-	channelController: Ember.inject.controller('channel'),
-	canEdit: Ember.computed.alias('channelController.canEdit'),
+	channelController: inject.controller('channel'),
+	canEdit: computed.alias('channelController.canEdit'),
 
 	actions: {
 		closeModals() {
