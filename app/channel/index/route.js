@@ -6,14 +6,16 @@ export default Ember.Route.extend({
 	beforeModel() {
 		// 404 page
 		let channel = this.modelFor('channel');
-		if (!channel) { this.transitionTo('404'); }
+		if (!channel) {
+			this.transitionTo('404');
+		}
 	},
 
 	model() {
 		let channel = this.modelFor('channel');
 
 		return Ember.RSVP.hash({
-				channel: channel
+			channel
 		});
 	},
 
@@ -23,7 +25,7 @@ export default Ember.Route.extend({
 
 		// let tracks = models.channel.get('tracks');
 		// controller.set('tracks', tracks);
-		models.channel.get('tracks').then((tracks) => {
+		models.channel.get('tracks').then(tracks => {
 			controller.set('tracks', tracks);
 		});
 	},

@@ -8,8 +8,8 @@ export default Ember.Controller.extend({
 	isEditing: false,
 
 	// needed to access canEdit
-	channel: Ember.inject.controller(),
-	canEdit: computed.alias('channel.canEdit'),
+	channelController: Ember.inject.controller('channel'),
+	canEdit: Ember.computed.alias('channelController.canEdit'),
 
 	actions: {
 		closeModals() {
@@ -74,6 +74,6 @@ export default Ember.Controller.extend({
 // noTracks: computed.equal('model.tracks.length', 0),
 // oneTrack: computed.equal('model.tracks.length', 1),
 // moreTracks: computed.gt('model.tracks.length', 0),
-// showHelp: computed('canEdit', 'model.tracks.[]', function() {
-// 	return this.get('canEdit') && this.get('model.tracks.length') < 2;
+// showHelp: computed('channel.canEdit', 'model.tracks.[]', function() {
+// 	return this.get('channel.canEdit') && this.get('model.tracks.length') < 2;
 // })
