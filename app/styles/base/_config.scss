@@ -44,30 +44,27 @@ $sans-fallback: 'Lucida Grande','Lucida Sans', sans-serif;
 @mixin size-6 { font-size: rem(39px); }
 @mixin size-7 { font-size: rem(49px); }
 
-/**
- * Colors
- */
-
-$red:							hsl(0, 75%, 50%);
-$yellow:					hsl(52, 100%, 67%);
-$blue:						hsl(255, 95%, 39%);
-$purple:					hsl(260, 80%, 50%);
-$fadedblue:				hsl(231, 48%, 95%);
-$lighterblue: 		hsla(266, 36%, 84%, 0.8);
-$darkblue:				hsl(230, 50%, 23%);
-$verydarkblue:		hsl(255, 65%, 19%);
-$green:						hsl(125, 82%, 35%);
-$sand:						hsl(46, 5%, 91%);
-$bleach:					hsl(72, 100%, 98%);
-$black:						hsl(0, 0%, 10%);
-$dark:						hsl(0, 0%, 30%);
-$gray:						hsl(0, 0%, 50%);
-$mediumgray:			hsl(0, 0%, 70%);
+// Colors
+$red: hsl(0, 75%, 50%);
+$yellow: hsl(52, 100%, 67%);
+$blue: hsl(255, 95%, 39%);
+$purple: hsl(260, 80%, 50%);
+$fadedblue: hsl(231, 48%, 95%);
+$lighterblue: hsla(266, 36%, 84%, 0.8);
+$darkblue: hsl(230, 50%, 23%);
+$verydarkblue: hsl(255, 65%, 19%);
+$green: hsl(125, 82%, 35%);
+$sand: hsl(46, 5%, 91%);
+$bleach: hsl(72, 100%, 98%);
+$black: hsl(0, 0%, 10%);
+$dark: hsl(0, 0%, 30%);
+$gray: hsl(0, 0%, 50%);
+$mediumgray: hsl(0, 0%, 70%);
 $mediumlightgray: hsl(0, 0%, 85%);
-$lightgray:				hsl(0, 0%, 91%);
-$slightgray:			hsl(0, 0%, 95%);
-$superlightgray:	hsl(0, 0%, 98%);
-$white:						hsl(0, 0%, 100%);
+$lightgray: hsl(0, 0%, 91%);
+$slightgray: hsl(0, 0%, 95%);
+$superlightgray: hsl(0, 0%, 98%);
+$white: hsl(0, 0%, 100%);
 
 // Color definitions
 $primary-color: $purple;
@@ -81,19 +78,13 @@ $link-color: $red;
 $google: red;
 $facebook: blue;
 
-/**
- * Easing and animations
- */
-
+// Easing and animations
 $easing:  cubic-bezier(0.165, 0.840, 0.400, 1.000); // fast, good looking
 $easing2: cubic-bezier(0.300, 0.000, 0.000, 1.300); // nice for things that pop up (dropdown etc)
 $easing3: cubic-bezier(0.860, 0.000, 0.070, 1.000); // nice again?
 $easing4: cubic-bezier(0.250, 1.400, 0.180, 1.000); // try with 200ms
 
-/**
- * Layout: Breakpoints
- */
-
+// Layout: Breakpoints
 $layout-s: rem(480);
 $layout-sm: rem(550);
 $layout-m: rem(650);
