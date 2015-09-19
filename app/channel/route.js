@@ -49,6 +49,15 @@ export default Ember.Route.extend({
 					});
 				});
 			});
+		},
+		deleteTrack(track) {
+			track.get('channel').then(channel => {
+				channel.get('tracks').then(tracks => {
+					tracks.removeObject(track);
+					channel.save();
+					track.destroyRecord();
+				});
+			});
 		}
 	}
 });

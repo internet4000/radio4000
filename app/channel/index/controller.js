@@ -38,27 +38,11 @@ export default Ember.Controller.extend({
 			debug('save track from controller');
 			this.send('closeModals');
 			this.set('addTrackUrl', null);
-
-			return true; // bubble up!
+			return true;
 		},
 		deleteTrack(track) {
-			track.get('channel').then((channel) => {
-
-				// first remove from parent
-				channel.get('tracks').then((tracks) => {
-					tracks.removeObject(track);
-
-					debug('removing track from channel');
-
-					channel.save().then(() => {
-						debug('saved channel');
-					});
-
-					// then itself
-					track.destroyRecord();
-					this.send('closeModals');
-				});
-			});
+			this.send('closeModals');
+			return true;
 		}
 	}
 });

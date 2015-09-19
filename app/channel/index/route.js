@@ -12,59 +12,66 @@ export default Ember.Route.extend({
 	},
 
 	model() {
-		let channel = this.modelFor('channel');
-
 		return Ember.RSVP.hash({
-			channel
+			channel: this.modelFor('channel'),
+			tracks:
+			// we load tracks seperately in setupController
 		});
 	},
 
-	setupController(controller, models) {
-		controller.setProperties(models);
-		console.log('starting to find tracks');
+	setupController(controller, channel) {
+		let cid = controller.get('model.id');
 
-		// let tracks = models.channel.get('tracks');
-		// controller.set('tracks', tracks);
-		models.channel.get('tracks').then(tracks => {
+		if (cid && cid === channel.id) {
+			console.log('same channel, no need to query');
+			controller.set('tracks', []);
+		} else {
+			console.log('no cid');
+		}
+
+		// Immediately set the channel model
+		// controller.setProperties(models);
+		controller.set('model', channel);
+
+		// Start finding tracks and set them when available
+		channel.get('tracks').then(tracks => {
 			controller.set('tracks', tracks);
 		});
-	},
+
+		this._super(...arguments);
+	}
 
 	// returns a promise to the last (e.g. newest) X models
 	// see: https://github.com/firebase/emberfire/issues/243#issuecomment-94038081
-	findMax(limit) {
-		let id = this.modelFor('channel').get('id');
-		let adapter = this.store.adapterFor('channel');
+	// findMax(limit) {
+	// 	let id = this.modelFor('channel').get('id');
+	// 	let adapter = this.store.adapterFor('channel');
 
-		return new Ember.RSVP.Promise((resolve, reject) => {
+	// 	return new Ember.RSVP.Promise((resolve, reject) => {
 
-			adapter._getRef('channel').child(id).child('tracks')
-				.orderByKey()
-				.limitToLast(limit)
-				.on('value', (snapshot) => {
-					let requests = [];
+	// 		adapter._getRef('channel').child(id).child('tracks')
+	// 			.orderByKey()
+	// 			.limitToLast(limit)
+	// 			.on('value', (snapshot) => {
+	// 				let requests = [];
 
-					// break if we have nothing
-					if (!snapshot.val()) {
-						debug('no value');
-						return false;
-					}
+	// 				// break if we have nothing
+	// 				if (!snapshot.val()) {
+	// 					debug('no value');
+	// 					return false;
+	// 				}
 
-					snapshot.forEach((s) => {
-						requests.push(this.store.findRecord('track', s.key()));
-					});
+	// 				snapshot.forEach((s) => {
+	// 					requests.push(this.store.findRecord('track', s.key()));
+	// 				});
 
-					// go through them
-					Ember.RSVP.all(requests).then((tracks) => {
-						resolve(tracks);
-					}, (reason) => {
-						reject(reason);
-					});
-				});
-		});
-	},
-
-	deactivate() {
-		this.set('controller.newTrackUrl', '');
-	}
+	// 				// go through them
+	// 				Ember.RSVP.all(requests).then((tracks) => {
+	// 					resolve(tracks);
+	// 				}, (reason) => {
+	// 					reject(reason);
+	// 				});
+	// 			});
+	// 	});
+	// }
 });

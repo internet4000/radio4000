@@ -11,6 +11,7 @@ export default Ember.Route.extend({
 	setupController(controller, model) {
 		this.set('player.model', model);
 		// this.syncTrack(model);
+		this._super(...arguments);
 	},
 
 	// make sure fullscreen video is off when you leave the track
