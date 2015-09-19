@@ -12,29 +12,23 @@ export default Ember.Route.extend({
 	},
 
 	model() {
-		return Ember.RSVP.hash({
-			channel: this.modelFor('channel'),
-			tracks:
-			// we load tracks seperately in setupController
-		});
+		return this.modelFor('channel');
 	},
 
-	setupController(controller, channel) {
-		let cid = controller.get('model.id');
-
-		if (cid && cid === channel.id) {
-			console.log('same channel, no need to query');
+	setupController(controller, model) {
+		// Because controllers are singleton,
+		// they keep the tracks between channels.
+		// This avoids it.
+		let cachedId = controller.get('model.id');
+		if (cachedId && cachedId !== model.id) {
 			controller.set('tracks', []);
-		} else {
-			console.log('no cid');
 		}
 
 		// Immediately set the channel model
-		// controller.setProperties(models);
-		controller.set('model', channel);
+		controller.set('model', model);
 
 		// Start finding tracks and set them when available
-		channel.get('tracks').then(tracks => {
+		model.get('tracks').then(tracks => {
 			controller.set('tracks', tracks);
 		});
 
