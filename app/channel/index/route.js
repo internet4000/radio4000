@@ -1,7 +1,5 @@
 import Ember from 'ember';
 
-const { debug } = Ember;
-
 export default Ember.Route.extend({
 	beforeModel() {
 		// 404 page
@@ -51,7 +49,7 @@ export default Ember.Route.extend({
 
 	// 				// break if we have nothing
 	// 				if (!snapshot.val()) {
-	// 					debug('no value');
+	// 					Ember.debug('no value');
 	// 					return false;
 	// 				}
 

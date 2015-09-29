@@ -40,7 +40,7 @@ export default Ember.Controller.extend({
 			this.set('addTrackUrl', null);
 			return true;
 		},
-		deleteTrack(track) {
+		deleteTrack() {
 			this.send('closeModals');
 			return true;
 		}
