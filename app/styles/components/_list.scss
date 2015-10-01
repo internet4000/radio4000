@@ -7,7 +7,7 @@
 	padding-left: 0;
 
 	li {
-		border-bottom: 1px solid $mediumlightgray;
+		border-bottom: 1px solid hsl(0, 0%, 91%); // $mediumlightgray
 		line-height: normal;
 		&:before {
 			display: none;

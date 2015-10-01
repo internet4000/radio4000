@@ -5,6 +5,17 @@
 .Channel--detail {
 	position: relative;
 	z-index: 2; // above the player
+	@media (min-width: $layout-s) {
+		width: rem(1000);
+		max-width: 80%;
+	}
+	background-color: $slightgray;
+	border-top: 1px solid hsl(0, 0%, 98%);
+	border-right: 2px solid hsl(0, 0%, 88%);
+	border-bottom: 3px solid hsl(0, 0%, 88%);
+	border-left: 1px solid hsl(0, 0%, 98%);
+	border-radius: $border-radius;
+	margin: 2rem 0 0 1rem;
 }
 .Channel-header {
 	background-color: $superlightgray;
