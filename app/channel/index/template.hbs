@@ -21,43 +21,29 @@
   {{/modal-dialog}}
 {{/if}}
 
-{{#if tracks}}
+{{#if tracks.isLoaded}}
 	{{#tracks-list items=tracks as |item|}}
 		{{track-item track=item canEdit=canEdit edit="editTrack" onTransition="transitionToTrack"}}
 	{{/tracks-list}}
 
-	{{!-- <h2>history (debug)</h2>
-	<ul class="List">
-		{{#each player.history as |track|}}
-			<li>
-				{{track-item track=track canEdit=canEdit edit="editTrack"}}
-			</li>
-		{{/each}}
-	</ul>
-	<h2>unplayed (debug)</h2>
-	<ul class="List">
-		{{#each player.unplayed as |track|}}
-			<li>
-				{{track-item track=track canEdit=canEdit edit="editTrack"}}
-			</li>
-		{{/each}}
-	</ul> --}}
+	<div class="Container Section--space">
+	{{#if canEdit}}
+		{{#if hasFewTracks}}
+			<p>Why don't you add another track?</p>
+		{{/if}}
+		{{#unless model.coverImage}}
+			<p>Go ahead, {{#link-to 'channel.edit' model}}choose a nice cover image{{/link-to}} for your radio.</p>
+		{{/unless}}
+	{{else}}
+		{{#unless tracks.length}}
+		  <p>Ooh, there are no tracks in this radio yet.</p>
+		{{/unless}}
+	{{/if}}
+	</div>
 {{else}}
 	<div class="Container Section--space">
-		{{#if canEdit}}
-			<p>No tracks yet. Why don't you add one above?</p>
-		{{else}}
-			<div class="LoaderCircle"><span></span></div>
-		{{/if}}
+		<div class="LoaderCircle"><span></span></div>
 	</div>
-{{/if}}
-
-{{#if canEdit}}
-	{{#unless channel.coverImage}}
-		<div class="Container Section--space">
-			<p>Go ahead, {{#link-to 'channel.edit' channel}}choose a nice cover image{{/link-to}} for your radio.</p>
-		</div>
-	{{/unless}}
 {{/if}}
 
 {{outlet}}

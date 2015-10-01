@@ -54,7 +54,7 @@ $LoaderCircle-size: 25px;
 		height: $LoaderCircle-size;
 		// background-color: rgba($superlightgray, 0.5);
 		// box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.05);
-		border-bottom: $LoaderCircle-size / 5 solid $superlightgray; //$primary-color;
+		border-bottom: $LoaderCircle-size / 5 solid rgba($primary-color, 0.5);
 		border-radius: 50%;
 		animation: spin 700ms linear infinite;
 	}

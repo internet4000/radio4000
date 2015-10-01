@@ -10,6 +10,7 @@ export default Ember.Controller.extend({
 	// needed to access canEdit
 	channelController: inject.controller('channel'),
 	canEdit: computed.alias('channelController.canEdit'),
+	hasFewTracks: computed.lte('tracks.length', 2),
 
 	actions: {
 		transitionToTrack(track) {

@@ -26,7 +26,7 @@ export default Ember.Object.extend({
 
 		return new Ember.RSVP.Promise((resolve, reject) => {
 
-			debug('finding user');
+			debug('finding user', auth.uid);
 			return store.findRecord('user', auth.uid)
 
 				// we have a user, create settings if needed
@@ -50,16 +50,10 @@ export default Ember.Object.extend({
 
 					// but first avoid this bug about unresolved record
 					// @todo maybe nut needed anymore?!
-					store.recordForId('user', auth.uid).unloadRecord();
-
-					let newUser = store.createRecord('user', {
-						id: auth.uid,
-						provider: auth.provider,
-						name: this._nameFor(auth)
-					}).save().then((newUser) => {
-						debug('created user');
-						this.createSettings(newUser);
-						run.bind(null, resolve({ currentUser: newUser }));
+					// store.recordForId('user', auth.uid).unloadRecord();
+					this.createUser(auth).then((user) => {
+						debug('created a user');
+						run.bind(null, resolve({ currentUser: user }));
 					});
 			});
 		});
@@ -84,10 +78,15 @@ export default Ember.Object.extend({
 			if (auth == null) {
 				debug('no auth');
 				reject('No session available');
-			} else {
-				debug('fetch >> open');
-				resolve(this.open(auth));
 			}
+
+			debug('fetch resolving, looking for user');
+			this.store.findRecord('user', auth.uid).then((user) => {
+				debug('found user');
+				resolve({ currentUser: user });
+			}, () => {
+				debug('no user found');
+			});
 		});
 	},
 
@@ -103,6 +102,22 @@ export default Ember.Object.extend({
 		// store.unloadAll('user');
 
 		return Ember.RSVP.resolve();
+	},
+
+	createUser(auth) {
+		let user = this.store.createRecord('user', {
+			id: auth.uid,
+			provider: auth.provider,
+			name: this._nameFor(auth)
+		});
+
+		return user.save().then((user) => {
+			debug('created user');
+			this.createSettings(user);
+			return user;
+		}, () => {
+			debug('couldnt create user');
+		});
 	},
 
 	_nameFor(auth) {
