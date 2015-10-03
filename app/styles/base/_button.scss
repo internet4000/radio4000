@@ -137,3 +137,34 @@
 		cursor: pointer;
 	}
 }
+
+/**
+ * Play
+ **/
+
+.Btn-play {
+	.Channel-header & {
+		font-size: 2rem;
+		position: absolute;
+		top: 2.2rem;
+		right: -2.7rem;
+	}
+}
+
+.Btn-play--round {
+	border-radius: 50%;
+	padding-top: 1.7rem;
+	padding-right: 1.3rem;
+	padding-bottom: 2rem;
+	padding-left: 2.5rem;
+}
+.Btn-play--shuffle {
+	.Channel-header & {
+		top: 8.6rem;
+		right: -2.1rem;
+		padding-top: 0.9rem;
+		padding-right: 0.8rem;
+		padding-left: 1.6rem;
+		padding-bottom: 1.3rem;
+	}
+}

@@ -1,23 +1,22 @@
 import Ember from 'ember';
 
-const { debug, computed } = Ember;
+const {debug, computed} = Ember;
 
 export default Ember.Controller.extend({
 	player: Ember.inject.service(),
 
 	// @todo: this is very slow!!
-	lastUpdatedFormatted: computed('model.tracks.@each.created', function() {
+	lastUpdatedFormatted: computed('model.tracks.@each.created', function () {
 		const date = this.get('model.tracks.lastObject.created');
 
 		// only the channel owner can see the exact time (privacy)
 		if (this.get('canEdit')) {
 			return window.moment(date).fromNow();
-		} else {
-			return window.moment(date).subtract(1, 'days').fromNow();
 		}
+		return window.moment(date).subtract(1, 'days').fromNow();
 	}),
 
-	canEdit: computed('model', 'session.currentUser.channels.firstObject', function() {
+	canEdit: computed('model', 'session.currentUser.channels.firstObject', function () {
 		const channel = this.get('model');
 		const userChannel = this.get('session.currentUser.channels.firstObject');
 
@@ -37,12 +36,14 @@ export default Ember.Controller.extend({
 		return canEdit;
 	}),
 
-	isFavorite: computed('model', 'session.currentUser.channels.firstObject.favoriteChannels.[]', function() {
+	isFavorite: computed('model', 'session.currentUser.channels.firstObject.favoriteChannels.[]', function () {
 		const channel = this.get('model');
 		const favorites = this.get('session.currentUser.channels.firstObject.favoriteChannels');
 
 		// guard because this functions runs before userChannel is defined
-		if (!favorites) { return false;}
+		if (!favorites) {
+			return false;
+		}
 
 		// true if this channel is a favorite of the user's favorites
 		return favorites.contains(channel);
@@ -52,6 +53,11 @@ export default Ember.Controller.extend({
 		play() {
 			debug('playing newest track');
 			this.transitionToRoute('track', this.get('model.tracks.lastObject'));
+		},
+		shuffle() {
+			debug('playing newest track');
+			this.transitionToRoute('track', this.get('model.tracks.lastObject'));
+			this.set('player.isShuffled', true);
 		},
 
 		toggleFavorite() {
@@ -69,8 +75,7 @@ export default Ember.Controller.extend({
 			const isFavorite = this.get('isFavorite');
 			const favorites = userChannel.get('favoriteChannels');
 
-			favorites.then((favs) => {
-
+			favorites.then(favs => {
 				debug(favs);
 
 				// add or remove to user's channel's favorites
@@ -84,8 +89,7 @@ export default Ember.Controller.extend({
 				userChannel.save();
 			});
 
-			channelFollowers.then((followers) => {
-
+			channelFollowers.then(followers => {
 				// toggle the userChannel from this channel's public followers
 				if (isFavorite) {
 					followers.removeObject(userChannel);
@@ -94,7 +98,7 @@ export default Ember.Controller.extend({
 				}
 
 				// open and save the parent
-				channelPublic.then(function(cp) {
+				channelPublic.then(cp => {
 					cp.save();
 				});
 			});

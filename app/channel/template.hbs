@@ -1,17 +1,22 @@
 <article class="Channel Channel--detail {{if canEdit 'canEdit'}}">
 	<div class="Channel-header">
-		<div class="Container Container--full">
+		<div class="Container Container--full Container--tight">
 
 			<div class="Channel-media">
 				<div class="Channel-cover">
 					{{channel-cover image=model.coverImage onPlay="play"}}
 				</div>
-				<button class="Btn" {{action 'play'}}>
-					{{x-icon i="play"}} Play now
-				</button>
 			</div>
 
 			<div class="Channel-body">
+
+				<button class="Btn Btn-play Btn-play--round" {{action 'play'}}>
+					{{x-icon i="play"}}
+				</button>
+
+				<button class="Btn Btn-play Btn-play--round Btn-play--shuffle" {{action 'shuffle'}}>
+					{{x-icon i="shuffle"}}
+				</button>
 
 				<div class="Channel-titleSection">
 					<h1 class="Channel-title">
