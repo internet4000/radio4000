@@ -55,8 +55,8 @@ export default Ember.Controller.extend({
 			this.transitionToRoute('track', this.get('model.tracks.lastObject'));
 		},
 		shuffle() {
-			debug('playing newest track');
 			this.transitionToRoute('track', this.get('model.tracks.lastObject'));
+			debug('shuffling');
 			this.set('player.isShuffled', true);
 		},
 

@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { debug } = Ember;
+const {debug} = Ember;
 
 export default Ember.Controller.extend({
 
@@ -15,8 +15,7 @@ export default Ember.Controller.extend({
 			this.set('isDeleting', true);
 
 			// open public
-			channelPublic.then((channelPublic) => {
-
+			channelPublic.then(channelPublic => {
 				// start deleting favorites in parallel
 				this.deleteFavoritesFrom(channel);
 
@@ -39,12 +38,11 @@ export default Ember.Controller.extend({
 
 	// Deletes all references of this channel on its followers' favorite channels
 	deleteFavoritesFrom(channel) {
-		channel.get('channelPublic').get('followers').then((followers) => {
-
-			followers.forEach((follower) => {
+		channel.get('channelPublic').get('followers').then(followers => {
+			followers.forEach(follower => {
 				debug('Found follower: ' + follower.get('title'));
 
-				follower.get('favoriteChannels').then((favs) => {
+				follower.get('favoriteChannels').then(favs => {
 					// debug(favs);
 					// debug(favs.contains(channel));
 					favs.removeObject(channel);
@@ -60,8 +58,7 @@ export default Ember.Controller.extend({
 	// Delete this channel on the session user
 	deleteUserRelationshipFrom(channel) {
 		const user = this.get('session.currentUser');
-
-		user.get('channels').then((channels) => {
+		user.get('channels').then(channels => {
 			channels.removeObject(channel);
 			user.save().then(() => {
 				debug('Removed channel on user');

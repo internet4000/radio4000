@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { computed, debug, inject } = Ember;
+const {computed, debug, inject} = Ember;
 
 export default Ember.Controller.extend({
 	// player: Ember.inject.service(), // used for debugging unplayed + history

@@ -1,9 +1,9 @@
 import Ember from 'ember';
 
-const { debug } = Ember;
+const {debug} = Ember;
 
 export default Ember.Route.extend({
-	// todo: this is repeated for channel/[add,edit,delete] routes
+	// @TODO this is repeated for channel/[add,edit,delete] routes
 	beforeModel() {
 		const authed = this.get('session.isAuthenticated');
 		const userChannel = this.get('session.currentUser.channels.firstObject');

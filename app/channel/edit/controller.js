@@ -2,19 +2,19 @@ import Ember from 'ember';
 import clean from 'radio4000/utils/clean';
 import channelConst from 'radio4000/utils/channel-const';
 
-const { debug, computed, observer } = Ember;
+const {debug, computed, observer} = Ember;
 
 export default Ember.Controller.extend({
 	didCacheSlug: false,
 	titleMaxLength: channelConst.titleMaxLength,
 	titleMinLength: channelConst.titleMinLength,
 
-	cacheSlug: computed('model.slug', function() {
+	cacheSlug: computed('model.slug', function () {
 		this.cachedSlug = this.get('model.slug');
 		this.toggleProperty('didCacheSlug');
 	}),
 
-	updateImage: observer('newImage', function() {
+	updateImage: observer('newImage', function () {
 		const newImage = this.get('newImage');
 		this.createImage(newImage);
 	}),
@@ -27,7 +27,7 @@ export default Ember.Controller.extend({
 		});
 
 		// save and add it to the channel
-		image.save().then((image) => {
+		image.save().then(image => {
 			debug('Image saved.');
 
 			channel.get('images').addObject(image);
@@ -37,28 +37,26 @@ export default Ember.Controller.extend({
 		});
 	},
 
-	slugisTooShort: computed('model.slug', function() {
+	slugisTooShort: computed('model.slug', function () {
 		return this.get('model.slug.length') < this.get('titleMinLength');
 	}),
 
-	slugisTooLong: computed('model.slug', function() {
+	slugisTooLong: computed('model.slug', function () {
 		return this.get('model.slug.length') >= this.get('titleMaxLength');
 	}),
 
-	slugisTaken: computed('model.slug', function() {
+	slugisTaken: computed('model.slug', function () {
 		const protectedSlugs = ['about', 'job', 'jobs',
 			'blog', 'bookmarklet', 'dashboard', 'help',
 			'intro', 'login', '404', 'bunker', 'styleguide'];
 
-		return protectedSlugs.any((slug) => slug === this.get('model.slug'));
+		return protectedSlugs.any(slug => slug === this.get('model.slug'));
 	}),
 
-	slugIsFree: computed('model.slug', function() {
+	slugIsFree: computed('model.slug', function () {
 		let cleanedSlug = clean(this.get('model.slug'));
-
 		return new Ember.RSVP.Promise((resolve, reject) => {
-
-			this.store.findAll('channel').then((channels) => {
+			this.store.findAll('channel').then(channels => {
 				// If there is 1 (same channel) or 0 duplicates we're good
 				let duplicates = channels.filterBy('slug', cleanedSlug);
 				if (duplicates.get('length') < 2) {
@@ -89,9 +87,9 @@ export default Ember.Controller.extend({
 				reject(new Error(`Sorry, ${slug} is already taken.\n\nPlease try another url.`));
 			}
 
-			this.get('slugIsFree').then((slug) => {
+			this.get('slugIsFree').then(slug => {
 				resolve(slug);
-			}, (error) => {
+			}, error => {
 				reject(error);
 			});
 		});
@@ -108,10 +106,10 @@ export default Ember.Controller.extend({
 			this.set('isSaving', true);
 
 			if (slugDidChange) {
-				this.validateSlug().then((cleanedSlug) => {
+				this.validateSlug().then(cleanedSlug => {
 					this.set('model.slug', cleanedSlug);
 					this.send('save');
-				}, (error) => {
+				}, error => {
 					Ember.debug(error);
 					alert(error);
 					// reset the slug
@@ -126,7 +124,7 @@ export default Ember.Controller.extend({
 		},
 
 		deleteImage() {
-			this.get('model.coverImage').destroyRecord().then(function() {
+			this.get('model.coverImage').destroyRecord().then(function () {
 				debug('Deleted channel image.');
 			});
 		},

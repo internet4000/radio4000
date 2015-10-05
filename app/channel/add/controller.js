@@ -6,13 +6,10 @@ export default Ember.Controller.extend({
 
 	actions: {
 		saveTrack() {
-
 			// reset the query param
 			this.set('url', '');
-
 			// transition out
 			this.send('backToChannel');
-
 			// leave it to the channel route to actually save the track
 			return true;
 		},

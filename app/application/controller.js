@@ -1,13 +1,13 @@
 import Ember from 'ember';
 
-const { debug } = Ember;
+const {debug} = Ember;
 
 export default Ember.Controller.extend({
 	player: Ember.inject.service(),
 
 	actions: {
 		transitionToHome() {
-			Ember.debug('transitionToHome');
+			debug('transitionToHome');
 			this.transitionToRoute('application');
 		},
 		ytPlaying() {
@@ -25,7 +25,9 @@ export default Ember.Controller.extend({
 			debug(error);
 
 			// dont do anything on 'invalid parameter'
-			if (error === 2) { return; }
+			if (error === 2) {
+				return;
+			}
 
 			// otherwise play next
 			this.get('player').next();

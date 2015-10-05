@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { computed, debug, observer } = Ember;
+const {computed, debug, observer} = Ember;
 
 export default Ember.Service.extend({
 	isPlaying: false,
@@ -11,23 +11,22 @@ export default Ember.Service.extend({
 
 	// this caches the current playlist and sets it
 	// if it really did change (through the model)
-	setPlaylist: observer('model.channel.tracks', function() {
+	setPlaylist: observer('model.channel.tracks', function () {
 		let playlist = this.get('playlist');
 		let newPlaylist = this.get('model.channel.tracks');
 
 		if (!Ember.isEqual(playlist, newPlaylist)) {
-
 			debug('setting new playlist');
 			this.set('playlist', newPlaylist);
-			this.clearHistory(); // for shuffle
+			this.clearHistory();
 		}
 	}),
 
 	// all listened tracks
-	history: Ember.A([]),
+	history: new Ember.A([]),
 
 	// all playlist items not in the history array
-	unplayed: computed.filter('playlist', function(item) {
+	unplayed: computed.filter('playlist', function (item) {
 		return !this.get('history').contains(item);
 	}),
 
@@ -52,22 +51,20 @@ export default Ember.Service.extend({
 
 		// without shuffle
 		if (!isShuffled) {
-			if (prev) {
-				return this.play(prev);
-			} else {
+			if (!prev) {
 				return this.play(playlist.get('firstObject'));
 			}
+
+			return this.play(prev);
 		}
 
-		// with shuffle
 		if (isShuffled) {
-
-			// when there's no more tracks to go back to
-			// we have to do nothing
+			// when there are no more tracks to go back to
+			// we stop playback and reset the history
 			if (Ember.isEmpty(history)) {
 				debug('resetting');
 				this.clearHistory();
-				return;
+				return false;
 			}
 
 			prev = this.getPrev(history);
@@ -85,8 +82,8 @@ export default Ember.Service.extend({
 			let nextRandom = this.getRandom();
 
 			if (!nextRandom) {
-					this.clearHistory();
-					nextRandom = this.getRandom();
+				this.clearHistory();
+				nextRandom = this.getRandom();
 			}
 
 			this.get('history').pushObject(nextRandom);
@@ -95,7 +92,8 @@ export default Ember.Service.extend({
 
 		if (!next) {
 			this.clearHistory();
-			return this.play(playlist.get('lastObject')); // first is last because we have newest on top
+			// first is last because we have newest on top
+			return this.play(playlist.get('lastObject'));
 		}
 
 		return this.play(next);
