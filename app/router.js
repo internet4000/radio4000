@@ -16,7 +16,6 @@ Router.map(function() {
   this.route('help', function() { /* help.index */ });
   this.route('intro');
   this.route('404');
-  this.route('bunker');
   this.route('styleguide', function() {
     this.route('colors');
     this.route('typography');
