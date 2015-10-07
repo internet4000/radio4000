@@ -1,6 +1,9 @@
 {{#if canEdit}}
 	<div class="Container">
-		<form class="Form" {{action 'addTrack' on='submit'}}>
+		<form class="Form Form--addTrack" {{action 'addTrack' on='submit'}}>
+			{{#if hasFewTracks}}
+				<label class="">Why don't you add your first tracks?</label>
+			{{/if}}
 			<div class="Form-group Form-group--relative">
 				{{input-paste type="url" value=addTrackUrl required="required" pasted="addTrack" placeholder="Paste in a YouTube link to add a track"}}
 				<button type="submit" class="Btn Form-groupStatus" title="Tip: Press enter to add!">Add</button>
@@ -28,9 +31,6 @@
 
 	<div class="Container Section--space">
 	{{#if canEdit}}
-		{{#if hasFewTracks}}
-			<p>Why don't you add another track?</p>
-		{{/if}}
 		{{#unless model.coverImage}}
 			<p>Go ahead, {{#link-to 'channel.edit' model}}choose a nice cover image{{/link-to}} for your radio.</p>
 		{{/unless}}

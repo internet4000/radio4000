@@ -176,6 +176,12 @@ input[type='file'] {
 	@extend %font-regular;
 }
 
+/**
+ * On the channel index to add a track as a logged in user
+ **/
+.Form--addTrack {
+	margin-top: 1rem;
+}
 
 .ember-modal-dialog {
 	padding: 2rem 1rem 0.5rem;

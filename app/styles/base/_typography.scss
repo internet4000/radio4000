@@ -5,6 +5,7 @@
 
 html {
 	@extend %font-regular;
+	font-family: 'maisonneue-book', 'Maison Neue Book', 'MaisonNeue-book', $sans-fallback;
 	line-height: $base-line-height;
 	font-size: 15px;
 	@media (min-width: $layout-m) { font-size: $base-font-size; }
