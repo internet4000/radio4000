@@ -86,6 +86,7 @@ export default Ember.Object.extend({
 				resolve({ currentUser: user });
 			}, () => {
 				debug('no user found');
+				reject(new Error('no user found'));
 			});
 		});
 	},
