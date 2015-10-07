@@ -39,11 +39,16 @@ export default Ember.Route.extend({
 	// don't render into the channels outlet
 	// this avoids the tabs we have on channels.hbs
 	renderTemplate() {
-		this.render({ into: 'application' });
+		this.render({into: 'application'});
 	},
 
 	deactivate() {
 		this.set('uiStates.isMinimal', false);
+		// Reset title if user creates two channels in the same session.
+		this.setProperties({
+			'controller.title': '',
+			'controller.didCreate': false
+		});
 
 		// reset document title
 		document.title = 'Radio4000';
@@ -73,29 +78,35 @@ export default Ember.Route.extend({
 
 						// create public channel
 						this.store.createRecord('channelPublic', {
-							channel: channel
-						}).save().then((channelPublic) => {
+							channel
+						}).save()
 
-							// now the channelPublic is saved, has an ID and can be used
-							debug('saved channelPublic');
+							.then((channelPublic) => {
+								// now the channelPublic is saved, has an ID and can be used
+								debug('saved channelPublic');
 
-							// set relationships
-							channel.setProperties({
-								channelPublic: channelPublic
-							});
-
-							// save it again because of new relationships
-							channel.save().then((channel) => {
-
-								// Clean up controller
-								this.controller.setProperties({
-									isSaving: false,
-									newRadioTitle: ''
+								// set relationships
+								channel.setProperties({
+									channelPublic
 								});
 
-								// Redirect to the new channel and
-								debug('redirect to the new channel');
-								this.transitionTo('channel', channel);
+								// save it again because of new relationships
+								channel.save().then((channel) => {
+
+									// Redirect to the new channel and
+									debug('redirect to the new channel');
+									this.transitionTo('channel', channel);
+									return channel;
+
+								}, (error) => {
+									return new Error('Could not create a new channel with its relationships.');
+								})
+
+							.then(() => {
+								// Clean up controller
+								this.controller.setProperties({
+									isSaving: false
+								});
 							});
 						});
 					});

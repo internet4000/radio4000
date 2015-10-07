@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
 	titleMaxLength: channelConst.titleMaxLength,
 	titleMinLength: channelConst.titleMinLength,
 	isSaving: false,
-	showValidation: false, // because we don't want it to show before clicking
+	didCreate: false, // because we don't want it to show before clicking
 
 	cleanSlug: computed('title', function() {
 		let title = clean(this.get('title'));
@@ -19,19 +19,17 @@ export default Ember.Controller.extend({
 		return `${title}-${random}`;
 	}),
 
-	// check channel.title.length, if not in our size limit, return NOPE
-	isValid: computed('title', function() {
-		const titleLength = this.get('title.length');
-		const tooLong = titleLength >= this.get('titleMaxLength');
-		const tooShort = titleLength < this.get('titleMinLength');
+	isTitleTooShort: computed('title', function () {
+		return this.get('title.length') < this.get('titleMinLength');
+	}),
 
-		if (!tooLong && !tooShort) {
-			debug('Title has the right length');
-			return true;
-		} else {
-			debug('Title is either too long or short');
-			return false;
-		}
+	isTitleTooLong: computed('title', function () {
+		return this.get('title.length') >= this.get('titleMaxLength');
+	}),
+
+	// check channel.title.length, if not in our size limit, return NOPE
+	titleIsValid: computed('title', function() {
+		return !this.get('isTitleTooShort') && !this.get('isTitleTooLong');
 	}),
 
 	actions: {
@@ -39,9 +37,9 @@ export default Ember.Controller.extend({
 			let slug = this.get('cleanSlug');
 			let title = this.get('title');
 
-			this.set('showValidation', true);
+			this.set('didCreate', true);
 
-			if (!this.get('isValid')) {
+			if (!this.get('titleIsValid')) {
 				return;
 			}
 
@@ -57,6 +55,7 @@ export default Ember.Controller.extend({
 				title: title,
 				slug: slug
 			});
+
 
 			this.set('isSaving', true);
 			this.send('saveChannel', channel);

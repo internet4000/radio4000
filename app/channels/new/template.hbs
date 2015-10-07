@@ -8,9 +8,11 @@
 				{{focus-input value=title required="required" placeholder='For instance: “The Pirate Radio”'
 					maxlength=titleMaxLength minlength=titleMinLength class="Form-bigInput u-alignCenter"}}
 
-				{{#if showValidation}}
-					{{#unless isValid}}
-						<p class="Muted"><span class="Warning">Please keep it between {{titleMinLength}} and {{titleMaxLength}} characters.</span></p>
+				{{#if didCreate}}
+					{{#unless titleIsValid}}
+						<p class="Muted">
+							<span class="Warning">Please keep it between {{titleMinLength}} and {{titleMaxLength}} characters.</span>
+						</p>
 					{{/unless}}
 				{{/if}}
 
