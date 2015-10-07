@@ -37,15 +37,15 @@ export default Ember.Controller.extend({
 		});
 	},
 
-	slugisTooShort: computed('model.slug', function () {
+	isSlugTooShort: computed('model.slug', function () {
 		return this.get('model.slug.length') < this.get('titleMinLength');
 	}),
 
-	slugisTooLong: computed('model.slug', function () {
+	isSlugTooLong: computed('model.slug', function () {
 		return this.get('model.slug.length') >= this.get('titleMaxLength');
 	}),
 
-	slugisTaken: computed('model.slug', function () {
+	isSlugTaken: computed('model.slug', function () {
 		const protectedSlugs = ['about', 'job', 'jobs',
 			'blog', 'bookmarklet', 'dashboard', 'help',
 			'intro', 'login', '404', 'bunker', 'styleguide'];
@@ -53,16 +53,22 @@ export default Ember.Controller.extend({
 		return protectedSlugs.any(slug => slug === this.get('model.slug'));
 	}),
 
-	slugIsFree: computed('model.slug', function () {
+	isSlugFree: computed('model.slug', function () {
 		let cleanedSlug = clean(this.get('model.slug'));
+
 		return new Ember.RSVP.Promise((resolve, reject) => {
-			this.store.findAll('channel').then(channels => {
-				// If there is 1 (same channel) or 0 duplicates we're good
-				let duplicates = channels.filterBy('slug', cleanedSlug);
-				if (duplicates.get('length') < 2) {
+			this.store.query('channel', {
+				orderBy: 'slug',
+				equalsTo: cleanedSlug
+			}).then(channels => {
+				// This filter should not be neccesary because query should do it.
+				const duplicates = channels.filterBy('slug', cleanedSlug);
+
+				// Since slug is already set on the channel there can be 1 duplicate
+				if (duplicates.length <= 1) {
 					resolve(cleanedSlug);
 				} else {
-					reject(new Error(`Sorry, that url is taken. Try another one.`));
+					reject(new Error('There is another existing channel with the same slug.'));
 				}
 			});
 		});
@@ -79,15 +85,15 @@ export default Ember.Controller.extend({
 			// Make sure the new slug isn't empty or already taken
 			if (Ember.isEmpty(slug)) {
 				reject(new Error(`Sorry, the URL can not be empty. Please enter a URL you'd like for your radio. If you have no clue, enter the title.`));
-			} else if (this.get('slugisTooLong')) {
+			} else if (this.get('isSlugTooLong')) {
 				reject(new Error(`Too long. Keep it below ${this.titleMaxLength}, please.`));
-			} else if (this.get('slugisTooShort')) {
+			} else if (this.get('isSlugTooShort')) {
 				reject(new Error(`Too short. Keep it above ${this.titleMinLength}, please.`));
 			} else if (this.get('slugIsTaken')) {
 				reject(new Error(`Sorry, ${slug} is already taken.\n\nPlease try another url.`));
 			}
 
-			this.get('slugIsFree').then(slug => {
+			this.get('isSlugFree').then(slug => {
 				resolve(slug);
 			}, error => {
 				reject(error);
@@ -111,7 +117,6 @@ export default Ember.Controller.extend({
 					this.send('save');
 				}, error => {
 					Ember.debug(error);
-					alert(error);
 					// reset the slug
 					this.set('slug', '');
 					this.set('isSaving', false);
