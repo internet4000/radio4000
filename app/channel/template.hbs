@@ -7,11 +7,17 @@
 		<div class="Container Container--full Container--tight">
 
 			<div class="Channel-media">
-				{{#link-to 'channel.edit' model}}
+				{{#if canEdit}}
+					{{#link-to 'channel.edit' model}}
+						<div class="Channel-cover">
+							{{channel-cover image=model.coverImage onPlay="play"}}
+						</div>
+					{{/link-to}}
+				{{else}}
 					<div class="Channel-cover">
 						{{channel-cover image=model.coverImage onPlay="play"}}
 					</div>
-				{{/link-to}}
+				{{/if}}
 			</div>
 
 			<div class="Channel-body">
