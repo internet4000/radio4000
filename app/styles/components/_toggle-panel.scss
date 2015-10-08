@@ -6,7 +6,7 @@
 	padding-right: 1.2rem;
 	border: 0;
 	background: none;
-	color: $white;
+	color: $dark;
 	user-select: none;
 	transition: 400ms transform $easing;
 	transform-origin: 45% 50%; // so it feels like it stays in place
@@ -27,7 +27,7 @@
 	height: rem(5);
 	margin: rem(3) auto;
 	// border-radius: 50%;
-	background-color: white;
+	background-color: $dark;
 }
 .TogglePanel-text {
 	display: none; // accessiblity

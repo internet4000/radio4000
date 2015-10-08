@@ -6,17 +6,21 @@
 	position: relative;
 	z-index: 2; // above the player
 	background-color: $slightgray;
-	@media (min-width: $layout-s) {
-		width: rem(800);
-		max-width: 80%;
-	}
 	border-top: 1px solid hsl(0, 0%, 98%);
 	border-right: 2px solid hsl(0, 0%, 88%);
 	border-bottom: 3px solid hsl(0, 0%, 88%);
 	border-left: 1px solid hsl(0, 0%, 98%);
 	border-radius: $border-radius;
-	margin: 2rem 0 0 1rem;
+	margin: 3rem 0 0 1rem;
 	margin-bottom: 5rem;
+
+	@media (min-width: $layout-s) {
+		width: 40rem;
+		max-width: 80%;
+	}
+	@media (min-width: $layout-sm) {
+		margin: 3rem 0 0 2rem;
+	}
 }
 .Channel-header {
 	background-color: $superlightgray;
@@ -38,6 +42,7 @@
 		width: 30%;
 		max-width: 13em;
 		padding-right: 1rem;
+		margin-top: -1.5rem;
 	}
 	@media (min-width: $layout-l) {
 		padding-right: 1.5rem;
@@ -46,6 +51,9 @@
 	// remove margin between cover and button
 	.Cover {
 		margin-bottom: 0;
+	}
+	.Dropzone .Cover {
+		margin-bottom: 0.5rem;
 	}
 	.Btn {
 		width: 100%;
@@ -111,5 +119,26 @@
 	float: right;
 	.BtnGroup {
 		float: right;
+	}
+}
+.Channel-sidebar {
+	position: absolute;
+	top: 3rem;
+	right: -220px;
+	font-size: 14px;
+	width: 200px;
+
+	a {
+		display: block;
+	}
+}
+
+/**
+ * on channel/edit route
+ **/
+
+.Channel--edit {
+	.Channel-media {
+		margin-top: 0;
 	}
 }

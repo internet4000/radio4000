@@ -18,7 +18,12 @@
 }
 .Bar--top {
 	top: 0;
-	border-bottom: 3px solid hsla(0, 0%, 0%, 0.2);
+	// border-bottom: 3px solid hsla(0, 0%, 0%, 0.2);
+	background-color: transparent;
+	color: $dark;
+	a {
+		color: $dark;
+	}
 }
 .Bar--bottom {
 	bottom: 0;
