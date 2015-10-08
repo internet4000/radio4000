@@ -50,16 +50,6 @@ export default Ember.Controller.extend({
 	}),
 
 	actions: {
-		play() {
-			debug('playing newest track');
-			this.transitionToRoute('track', this.get('model.tracks.lastObject'));
-		},
-		shuffle() {
-			this.transitionToRoute('track', this.get('model.tracks.lastObject'));
-			debug('shuffling');
-			this.set('player.isShuffled', true);
-		},
-
 		toggleFavorite() {
 			const userChannel = this.get('session.currentUser.channels.firstObject');
 

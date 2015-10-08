@@ -4,7 +4,7 @@ const {computed, debug, observer} = Ember;
 
 export default Ember.Service.extend({
 	isPlaying: false,
-	isShuffled: false,
+	isShuffling: false,
 	isLooped: true,
 	model: null,
 	playlist: null,
@@ -42,15 +42,21 @@ export default Ember.Service.extend({
 		this.set('model', track);
 	},
 
+	// Plays a random track from the playlist array
+	playShuffle() {
+		this.set('isShuffling', true);
+		return this.play(this.getRandom(this.get('playlist')));
+	},
+
 	// plays the previous track and stays at first
 	prev() {
 		const playlist = this.get('playlist');
 		const history = this.get('history');
-		const isShuffled = this.get('isShuffled');
+		const isShuffling = this.get('isShuffling');
 		let prev = this.getNext();
 
 		// without shuffle
-		if (!isShuffled) {
+		if (!isShuffling) {
 			if (!prev) {
 				return this.play(playlist.get('firstObject'));
 			}
@@ -58,7 +64,7 @@ export default Ember.Service.extend({
 			return this.play(prev);
 		}
 
-		if (isShuffled) {
+		if (isShuffling) {
 			// when there are no more tracks to go back to
 			// we stop playback and reset the history
 			if (Ember.isEmpty(history)) {
@@ -75,10 +81,10 @@ export default Ember.Service.extend({
 	// plays the next track
 	next() {
 		const playlist = this.get('playlist');
-		const isShuffled = this.get('isShuffled');
+		const isShuffling = this.get('isShuffling');
 		let next = this.getPrev();
 
-		if (isShuffled) {
+		if (isShuffling) {
 			let nextRandom = this.getRandom();
 
 			if (!nextRandom) {
