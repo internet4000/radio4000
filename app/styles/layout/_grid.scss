@@ -34,17 +34,17 @@
 		.no-flexbox & { max-width: 33%; }
 	}
 	@media (min-width: $layout-ml) {
-		flex-basis: 25%;
+		flex-basis: 20%;
 		.no-flexbox & { max-width: 25%; }
 	}
 	@media (min-width: $layout-l) {
-		flex-basis: 20%;
+		flex-basis: 14.28%;
 		.no-flexbox & { max-width: 20%; }
 	}
-	@media (min-width: $layout-xl) {
-		flex-basis: 14.28%;
-		.no-flexbox & { max-width: 14.28%; }
-	}
+	// @media (min-width: $layout-xl) {
+	// 	flex-basis: 14.28%;
+	// 	.no-flexbox & { max-width: 14.28%; }
+	// }
 
 	a:hover,
 	a:focus {

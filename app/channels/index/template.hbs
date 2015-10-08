@@ -25,38 +25,66 @@
 	{{/if}}
 </section>
 
-{{#if topSortedChannels}}
-	<section class="Section">
-		<div class="Manchet Manchet--left">
-			<h2>Popular <small> — listener favorites</small></h2>
+<section class="Section">
+	<div class="Manchet Manchet--left">
+		<h2>Popular <small> — listener favorites</small></h2>
+	</div>
+
+	<div class="Container Container--full">
+
+		<div class="Grid">
+			<div class="Grid-item">
+				<h3>Tip</h3>
+				<div class="Muted">
+					<p>These are the most popular channels as rated by listeners. Diverse music tastes are the foundation of Radio4000.</p>
+					<p>Each human gets a single, ongoing channel - a blank slate to be shaped by their own music taste!</p>
+					{{#link-to 'channels.new' class="Btn"}}
+					Get my own radio
+					{{/link-to}}
+				</div>
+			</div>
+
+			{{#each topSortedChannels as |item|}}
+				<div class="Grid-item">
+					{{#link-to 'channel' item}}
+						{{channel-card channel=item}}
+					{{/link-to}}
+				</div>
+			{{/each}}
 		</div>
 
-		<div class="Container Container--full">
+	</div>
+</section>
 
-			<div class="Grid">
+<section class="Section">
+	<div class="Manchet Manchet--left">
+		<h2>Your favorite Radios <small> — "la crème"</small></h2>
+	</div>
+
+	<div class="Container Container--full">
+
+		<div class="Grid">
+			{{#unless loggedInUserFavorites}}
 				<div class="Grid-item">
 					<h3>Tip</h3>
 					<div class="Muted">
-						<p>These are the most popular channels as rated by listeners. Diverse music tastes are the foundation of Radio4000.</p>
-						<p>Each human gets a single, ongoing channel - a blank slate to be shaped by their own music taste!</p>
-						{{#link-to 'channels.new' class="Btn"}}
-						Get my own radio
-						{{/link-to}}
+						<p>Visit other radios to start finding your favorites</p>
 					</div>
 				</div>
+			{{/unless}}
 
-				{{#each topSortedChannels as |item|}}
-					<div class="Grid-item">
-						{{#link-to 'channel' item}}
-							{{channel-card channel=item}}
-						{{/link-to}}
-					</div>
-				{{/each}}
-			</div>
 
+			{{#each loggedInUserFavorites as |item|}}
+				<div class="Grid-item">
+					{{#link-to 'channel' item}}
+						{{channel-card channel=item}}
+					{{/link-to}}
+				</div>
+			{{/each}}
 		</div>
-	</section>
-{{/if}}
+
+	</div>
+</section>
 
 <div class="Container">
 	<p>{{#link-to 'channels.all'}}See all radios &rarr;{{/link-to}}</p>
