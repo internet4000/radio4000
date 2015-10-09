@@ -75,6 +75,11 @@
 
 }
 
+.Btn--full {
+	width: 100%;
+	text-align: center;
+}
+
 // Small buttons
 .Btn--small {
 	font-size: rem(11);
@@ -99,7 +104,6 @@
 	background-image: none;
 	background-color: transparent;
 	box-shadow: none;
-	text-align: left;
 	padding-left: 0.4em;
 	padding-right: 0.4em;
 	&:hover,

@@ -7,11 +7,13 @@
 {{!-- {{/link-to}} --}}
 </a>
 
-<p class="Track-controls Muted" title="Edit the track" {{action 'edit'}}>
+{{#unless trackWidget}}
+	<p class="Track-controls Muted" title="Edit the track" {{action 'edit'}}>
 
-	{{!-- using static icon to avoid an extra component for performance
-	{{x-icon i="pencil"}} --}}
-	<svg class="icon-pencil">
-		<use xlink:href="images/icons/sprite.svg#icon-pencil"></use>
-	</svg>
-</p>
+		{{!-- using static icon to avoid an extra component for performance
+		{{x-icon i="pencil"}} --}}
+		<svg class="icon-pencil">
+			<use xlink:href="images/icons/sprite.svg#icon-pencil"></use>
+		</svg>
+	</p>
+{{/unless}}

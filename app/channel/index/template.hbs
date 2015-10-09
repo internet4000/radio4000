@@ -1,49 +1,51 @@
-{{#if canEdit}}
-	<div class="Container">
-		<form class="Form Form--addTrack" {{action 'addTrack' on='submit'}}>
-			{{#if hasFewTracks}}
-				<label class="">Why don't you add your first tracks?</label>
-			{{/if}}
-			<div class="Form-group Form-group--relative">
-				{{input-paste type="url" value=addTrackUrl required="required" pasted="addTrack" placeholder="Paste in a YouTube link to add a track"}}
-				<button type="submit" class="Btn Form-groupStatus" title="Tip: Press enter to add!">Add</button>
-			</div>
-		</form>
-	</div>
-{{/if}}
-
-{{#if isAdding}}
-  {{#modal-dialog close="closeModals"}}
-    {{track-add url=addTrackUrl submit="saveTrack" cancel="closeModals"}}
-  {{/modal-dialog}}
-{{/if}}
-
-{{#if isEditing}}
-  {{#modal-dialog close="closeModals"}}
-    {{track-edit track=trackToEdit submit="saveTrack" deleteTrack="deleteTrack" cancel="closeModals"}}
-  {{/modal-dialog}}
-{{/if}}
-
-{{#if tracks.isLoaded}}
-	{{#tracks-list items=tracks as |item|}}
-		{{track-item track=item canEdit=canEdit edit="editTrack" onTransition="transitionToTrack"}}
-	{{/tracks-list}}
-
-	<div class="Container Section--space">
+<div class="Channel-outlet">
 	{{#if canEdit}}
-		{{#unless model.coverImage}}
-			<p>Go ahead, {{#link-to 'channel.edit' model}}choose a nice cover image{{/link-to}} for your radio.</p>
-		{{/unless}}
-	{{else}}
-		{{#unless tracks.length}}
-		  <p>Ooh, there are no tracks in this radio yet.</p>
-		{{/unless}}
+		<div class="Container">
+			<form class="Form Form--addTrack" {{action 'addTrack' on='submit'}}>
+				{{#if hasFewTracks}}
+					<label class="">Why don't you add your first tracks?</label>
+				{{/if}}
+				<div class="Form-group Form-group--relative">
+					{{input-paste type="url" value=addTrackUrl required="required" pasted="addTrack" placeholder="Paste in a YouTube link to add a track"}}
+					<button type="submit" class="Btn Form-groupStatus" title="Tip: Press enter to add!">Add</button>
+				</div>
+			</form>
+		</div>
 	{{/if}}
-	</div>
-{{else}}
-	<div class="Container Section--space">
-		<div class="LoaderCircle"><span></span></div>
-	</div>
-{{/if}}
 
-{{outlet}}
+	{{#if isAdding}}
+	  {{#modal-dialog close="closeModals"}}
+	    {{track-add url=addTrackUrl submit="saveTrack" cancel="closeModals"}}
+	  {{/modal-dialog}}
+	{{/if}}
+
+	{{#if isEditing}}
+	  {{#modal-dialog close="closeModals"}}
+	    {{track-edit track=trackToEdit submit="saveTrack" deleteTrack="deleteTrack" cancel="closeModals"}}
+	  {{/modal-dialog}}
+	{{/if}}
+
+	{{#if tracks.isLoaded}}
+		{{#tracks-list items=tracks as |item|}}
+			{{track-item track=item canEdit=canEdit edit="editTrack" onTransition="transitionToTrack"}}
+		{{/tracks-list}}
+
+		<div class="Container Section--space">
+		{{#if canEdit}}
+			{{#unless model.coverImage}}
+				<p>Go ahead, {{#link-to 'channel.edit' model}}choose a nice cover image{{/link-to}} for your radio.</p>
+			{{/unless}}
+		{{else}}
+			{{#unless tracks.length}}
+			  <p>Ooh, there are no tracks in this radio yet.</p>
+			{{/unless}}
+		{{/if}}
+		</div>
+	{{else}}
+		<div class="Container Section--space">
+			<div class="LoaderCircle"><span></span></div>
+		</div>
+	{{/if}}
+
+	{{outlet}}
+</div>

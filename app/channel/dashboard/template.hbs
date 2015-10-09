@@ -1,0 +1,19 @@
+{{#if model.tracks.length}}
+	<div class="Container Section Section--messaging">
+		<p>An overview of the music in this Radio Channel</p>
+	</div>
+
+	<div class="Section">
+		<div class="Widgets Widgets--tracks">
+			{{channel/widgets/x-tracks tracks=model.tracks title="Newest"}}
+
+			{{channel/widgets/x-tracks tracks=model.tracks reverse=true title="Oldest"}}
+		</div>
+	</div>
+{{else}}
+	<div class="Container Section Section--messaging">
+		<p>This radio is empty, no data to analyse!</p>
+	</div>
+{{/if}}
+
+{{outlet}}

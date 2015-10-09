@@ -24,9 +24,15 @@ export default DS.Model.extend({
 			return new Date().getTime();
 		}
 	}),
-	lastUpdated: Ember.computed('tracks.[]', function () {
-		return new Date().getTime();
-	}),
+
+	/**
+	 * why this is not working?
+	 * it should update with a date each time a new track added to tracks
+	 * right?
+	 **/
+	// lastUpdated: Ember.computed('tracks.[]', function () {
+	// 	return new Date().getTime();
+	// }),
 
 	// Set the latest image as the cover image
 	coverImage: Ember.computed('images.[]', function () {

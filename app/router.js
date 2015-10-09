@@ -39,9 +39,13 @@ Router.map(function() {
     });
     this.route('favorites');
     this.route('followers');
-    this.route('add'); // add a track to channel
-    this.route('edit'); // edit channel
-    this.route('delete'); // permanently remove channel and its referenes from DB
+    // add a track to channel
+    this.route('add');
+    // edit channel
+    this.route('edit');
+    // permanently remove channel and its referenes from DB
+    this.route('delete');
+    this.route('dashboard', {});
   });
 });
 

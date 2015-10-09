@@ -1,0 +1,22 @@
+/**
+ * Widgets
+ **/
+
+.Widgets {
+   display: flex;
+   flex-direction: row;
+}
+.Widget {
+   padding: 1rem;
+   flex-basis: 50%;
+}
+.Widget-container {
+   background-color: white;
+   padding-top: 0.5rem;
+}
+.Widget-title {
+   text-align: center;
+   &:hover {
+      cursor: pointer;
+   }
+}
