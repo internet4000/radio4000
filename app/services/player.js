@@ -42,12 +42,6 @@ export default Ember.Service.extend({
 		this.set('model', track);
 	},
 
-	// Plays a random track from the playlist array
-	playShuffle() {
-		this.set('isShuffling', true);
-		return this.play(this.getRandom(this.get('playlist')));
-	},
-
 	// plays the previous track and stays at first
 	prev() {
 		const playlist = this.get('playlist');
