@@ -15,9 +15,8 @@ export default Ember.Component.extend({
 		edit() {
 			this.sendAction('edit', this.get('track'));
 		},
-		transitionToTrack(track) {
-			Ember.debug('track-item: transitionToTrack clicked')
-			this.sendAction('onTransition', track);
+		play(track) {
+			this.set('player.model', track);
 		}
 	}
 });
