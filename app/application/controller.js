@@ -29,6 +29,11 @@ export default Ember.Controller.extend({
 				return;
 			}
 
+			// dont do anything on 'invalid parameter'
+			if (error === 150) {
+				// @TODO mark track as georestricted
+			}
+
 			// otherwise play next
 			this.get('player').next();
 		}

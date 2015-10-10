@@ -35,7 +35,7 @@ Router.map(function() {
   this.route('channel-alias', { path: '/c/:slug' });
   this.route('channel', { path: '/:slug' }, function() {
     this.route('index', { path: '/' }, function() {
-        this.resource('track', { path: ':track_id' });
+        this.route('track', { path: ':track_id', resetNamespace: true });
     });
     this.route('favorites');
     this.route('followers');
