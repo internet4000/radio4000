@@ -19,7 +19,6 @@ export default Ember.Controller.extend({
 	loggedInUserFavorites: computed('session', function () {
 		// find logged in user favorite channels
 		return this.get('session.currentUser.channels.firstObject.favoriteChannels');
-
 	}),
 
 	// Sort them by followers
