@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-	classNames: ['PlaybackExternal'], 
+	classNames: ['PlaybackExternal'],
 	player: Ember.inject.service(''),
 	actions: {
 		play() {
