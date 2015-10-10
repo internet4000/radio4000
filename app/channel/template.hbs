@@ -1,8 +1,4 @@
 <article class="Channel Channel--detail {{if canEdit 'canEdit'}}">
-	<aside class="Channel-sidebar">
-		<span>Play this radio from</span><span class="Tplay-options"> {{#link-to 'track' model.tracks.firstObject}}the beginning{{/link-to}} {{#link-to 'track' model.tracks.lastObject}}the end{{/link-to}} <a {{action "playShuffle" target="player"}}>a random point in time</a>
-		</span>
-	</aside>
 	<div class="Channel-header">
 		<div class="Container Container--full Container--tight">
 
@@ -73,3 +69,7 @@
 
 	{{outlet}}
 </article>
+
+<div class="Widgets Widgets--tracks Container Container--full Section Section--space">
+	{{outlet 'channel-widgets'}}
+</div>
