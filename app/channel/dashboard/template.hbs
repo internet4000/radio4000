@@ -2,7 +2,8 @@
 
 	<div class="Widgets-separator">
 		<div class="Widget">
-				<span>Play this radio from</span><span class="Tplay-options"> {{#link-to 'track' model.tracks.firstObject}}the beginning{{/link-to}} {{#link-to 'track' model.tracks.lastObject}}the end{{/link-to}} <a {{action "playShuffle" target="player"}}>a random point in time</a></span>
+			{{playback/play-first track=model.tracks.firstObject}}
+			<span>Play this radio from</span><span class="Tplay-options"> {{#link-to 'track' model.tracks.firstObject}}the beginning{{/link-to}} {{#link-to 'track' model.tracks.lastObject}}the end{{/link-to}} <a {{action "playShuffle" target="player"}}>a random point in time</a></span>
 		</div>
 	</div>
 
