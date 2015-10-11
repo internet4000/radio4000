@@ -1,10 +1,15 @@
 {{#if model.tracks.length}}
-
 	<div class="Widgets-separator">
 		<div class="Widget">
-			{{playback/play-oldest track=model.tracks.firstObject}}
-			{{playback/play-newest track=model.tracks.lastObject}}
-
+			<div class="BtnGroup">
+				{{playback/play-button track=model.tracks.firstObject reverse=true}}
+				{{#playback/play-button track=model.tracks.firstObject shuffle=true}}
+					{{x-icon i='shuffle'}}Play shuffle
+				{{/playback/play-button}}
+				{{#playback/play-button track=model.tracks.lastObject}}
+					{{x-icon i='play'}}Play from earliest track
+				{{/playback/play-button}}
+			</div>
 		</div>
 	</div>
 

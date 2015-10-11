@@ -15,11 +15,14 @@ export default Ember.Service.extend({
 		let playlist = this.get('playlist');
 		let newPlaylist = this.get('model.channel.tracks');
 
-		if (!Ember.isEqual(playlist, newPlaylist)) {
-			debug('setting new playlist');
-			this.set('playlist', newPlaylist);
-			this.clearHistory();
+		if (Ember.isEqual(playlist, newPlaylist)) {
+			debug('Playlist already set.');
+			return false;
 		}
+
+		debug('setting new playlist');
+		this.set('playlist', newPlaylist);
+		this.clearHistory();
 	}),
 
 	// all listened tracks
@@ -43,9 +46,12 @@ export default Ember.Service.extend({
 	},
 
 	// Plays a random track from the playlist array
-	playShuffle() {
-		this.set('isShuffling', true);
-		return this.play(this.getRandom(this.get('playlist')));
+	playShuffle(track) {
+		track.get('channel.tracks').then(tracks => {
+			this.set('isShuffling', true);
+			console.log(this.get('isShuffling'));
+			this.play(this.getRandom(tracks));
+		});
 	},
 
 	// plays the previous track and stays at first
