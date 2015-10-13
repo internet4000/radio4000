@@ -1,25 +1,22 @@
 {{#if model.tracks.length}}
-	<div class="Widgets-separator">
-		<div class="Widget">
-			<div class="BtnGroup">
-				{{playback/play-button track=model.tracks.firstObject reverse=true}}
-				{{#playback/play-button track=model.tracks.firstObject shuffle=true}}
-					{{x-icon i='shuffle'}}Play shuffle
-				{{/playback/play-button}}
-				{{#playback/play-button track=model.tracks.lastObject}}
-					{{x-icon i='play'}}Play from earliest track
-				{{/playback/play-button}}
-			</div>
+
+	<div class="Widget Widget--full">
+		<div class="BtnGroup">
+			{{playback/play-button track=model.tracks.firstObject reverse=true}}
+			{{#playback/play-button track=model.tracks.firstObject shuffle=true}}
+				{{x-icon i='shuffle'}}Play shuffle
+			{{/playback/play-button}}
+			{{#playback/play-button track=model.tracks.lastObject}}
+				{{x-icon i='play'}}Play from earliest track
+			{{/playback/play-button}}
 		</div>
 	</div>
 
-	<div class="Section">
-		<div class="Widgets Widgets--tracks">
-			{{widgets/x-tracks tracks=model.tracks title="Newest"}}
+	{{widgets/x-tracks tracks=model.tracks title="Newest"}}
 
-			{{widgets/x-tracks tracks=model.tracks reverse=true title="Oldest"}}
-		</div>
-	</div>
+	{{widgets/x-tracks tracks=model.tracks reverse=true title="Oldest"}}
+
+
 {{else}}
 	<div class="Container Section Section--messaging">
 		<p>This radio is empty, no data to analyse!</p>

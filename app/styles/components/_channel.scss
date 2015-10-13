@@ -11,9 +11,8 @@
 	border-bottom: 3px solid hsl(0, 0%, 88%);
 	border-left: 1px solid hsl(0, 0%, 98%);
 	border-radius: $border-radius;
-	margin: 3rem 0 0 1rem;
-	margin-bottom: 5rem;
-
+	margin-top: 3rem;
+	margin-left: 1rem;
 	@media (min-width: $layout-s) {
 		width: 40rem;
 		max-width: 80%;

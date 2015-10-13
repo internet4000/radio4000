@@ -14,8 +14,12 @@
 
 .Widget {
    padding: 1rem;
-   width: 18rem;
-   flex-basis: 18rem;
+   width: 100%;
+   flex-basis: 100%;
+   @media (min-width: $layout-sm) {
+      width: 18rem;
+      flex-basis: 18rem;
+   }
 }
 .Widget--full {
    flex-basis: 100%;
