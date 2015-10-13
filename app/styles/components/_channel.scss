@@ -2,7 +2,7 @@
  * Channel
  */
 
-.Channel--detail {
+.Channel--detail, {
 	position: relative;
 	z-index: 2; // above the player
 	background-color: $slightgray;
@@ -21,6 +21,16 @@
 		margin: 3rem 0 0 2rem;
 	}
 }
+
+.Channel--edit {
+	@media (min-width: $layout-s) {
+		max-width: 50rem;
+	}
+	.Form	{
+		margin-top: 0;
+	}
+}
+
 .Channel-header {
 	background-color: $superlightgray;
 	padding-bottom: 1rem;
