@@ -2,7 +2,7 @@
 	<h1>Edit your radio</h1>
 </div>
 
-<div class="Container Container--full">
+<div class="Channel Channel--edit Container Container--full">
 
 	<div class="Form Form--box">
 		<div class="Channel Channel--edit">
@@ -35,7 +35,7 @@
 				</div>
 				<div class="Form-group">
 					<label for="body" >Description</label>
-					{{input id="body"
+					{{textarea id="body"
 						value=model.body
 						maxlength=channelDescriptionMaxLength
 						placeholder="What is your radio about?"}}
