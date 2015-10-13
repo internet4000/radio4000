@@ -3,7 +3,7 @@
 .BtnGroup {
 	display: flex;
 	flex-shrink: 0;
-	flex-flow: row nowrap;
+	flex-flow: row wrap;
 	align-items: center;
 	margin-bottom: 1rem;
 

@@ -20,6 +20,7 @@
 @import 'base/base';
 @import 'base/form';
 @import 'base/button';
+@import 'base/button-group'; // @todo refactor
 @import 'base/typography';
 
 // Layout (site and minimal page layout)
@@ -35,7 +36,6 @@
 // UI components
 @import 'components/icon';
 @import 'components/tabs';
-@import 'components/btn-group'; // @todo refactor
 @import 'components/custom-select';
 @import 'components/form-progress';
 @import 'components/note';
