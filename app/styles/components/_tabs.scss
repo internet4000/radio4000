@@ -8,6 +8,26 @@
 	background-color: $superlightgray;
 	text-align: center;
 }
+// yeah it is shit
+.Tabs--toHorizontal {
+	@media (max-width: $layout-s) {
+		flex-flow: row wrap;
+		.Tabs-item {
+			flex: 0 1 100%;
+			&:hover,
+			&:focus {
+				border-left-color: $bg-color;
+			}
+			&:active {
+				border-left-color: $secondary-color;
+			}
+			&.is-active {
+				border-left: 3px solid $secondary-color;
+				border-bottom-color: transparent;
+			}
+		}
+	}
+}
 
 .Tabs-item {
 	flex: 0 1 12em; // grow and shrink and stretch 3x12 so it's full width on tablet
