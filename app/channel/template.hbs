@@ -1,3 +1,30 @@
+{{#if canEdit}}
+	{{#unless isWelcomed}}
+		<div class="Blankstate">
+			<h4 class="Blankstate-title">Welcome to Radio4000</h4>
+			<p>Your radio has been created!</p>
+			<p>Here is what you could do to start broadcasting 🚀</p>
+			<div class="Blankstate-actions">
+				{{#link-to 'channel.add' (query-params url="https://www.youtube.com/watch?v=ymdssZOAx3Q")}}
+					<label>
+						{{input type='checkbox' checked=model.tracks.firstObject}} Add your first track
+					</label>
+				{{/link-to}}
+				{{#link-to 'channel.edit'}}
+					<label>
+						{{input type='checkbox' checked=model.images.firstObject}} Customize your radio with an image
+					</label>
+				{{/link-to}}
+				{{#link-to 'channels' }}
+					<label>
+						{{input type='checkbox' checked=model.favoriteChannels.firstObject}} Find a radio you like and add it to your favorites
+					</label>
+				{{/link-to}}
+			</div>
+		</div>
+	{{/unless}}
+{{/if}}
+
 <article class="Channel Channel--detail {{if canEdit 'canEdit'}}">
 	<div class="Channel-header">
 		<div class="Container Container--full Container--tight">

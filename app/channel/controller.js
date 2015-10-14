@@ -36,6 +36,17 @@ export default Ember.Controller.extend({
 		return canEdit;
 	}),
 
+	isWelcomed: computed('model.tracks.firstObject', 'model.images.firstObject', 'model.favoriteChannels.firstObject', 'canEdit', function () {
+		let canEdit = this.get('canEdit');
+		let hasTrack = this.get('model.tracks.firstObject');
+		let hasImage = this.get('model.images.firstObject');
+		let hasFavorite = this.get('model.favoriteChannels.firstObject');
+		if (canEdit && hasTrack && hasImage && hasFavorite) {
+			return true;
+		}
+		return false;
+	}),
+
 	isFavorite: computed('model', 'session.currentUser.channels.firstObject.favoriteChannels.[]', function () {
 		const channel = this.get('model');
 		const favorites = this.get('session.currentUser.channels.firstObject.favoriteChannels');
