@@ -13,6 +13,7 @@
 	@media (max-width: $layout-s) {
 		flex-flow: row wrap;
 		.Tabs-item {
+			text-align: left;
 			flex: 0 1 100%;
 			&:hover,
 			&:focus {
