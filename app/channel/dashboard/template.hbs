@@ -2,12 +2,11 @@
 
 	<div class="Widget Widget--full">
 		<div class="BtnGroup">
-			{{playback/play-button track=model.tracks.firstObject reverse=true}}
-			{{#playback/play-button track=model.tracks.firstObject shuffle=true}}
-				{{x-icon i='shuffle'}}Play shuffle
-			{{/playback/play-button}}
 			{{#playback/play-button track=model.tracks.lastObject}}
 				{{x-icon i='play'}}Play from earliest track
+			{{/playback/play-button}}
+			{{#playback/play-button track=model.tracks.firstObject shuffle=true}}
+				{{x-icon i='shuffle'}}Play shuffle
 			{{/playback/play-button}}
 		</div>
 	</div>
