@@ -25,9 +25,9 @@
 	{{#if isGrid}}
 		<div class="Container Container--full">
 			{{#each-grid items=sortedChannels as |item|}}
-				{{#link-to 'channel' item}}
+				{{!-- {{#link-to 'channel' item}} --}}
 					{{channel-card channel=item}}
-				{{/link-to}}
+				{{!-- {{/link-to}} --}}
 			{{/each-grid}}
 		</div>
 	{{else}}

@@ -1,8 +1,24 @@
-{{channel-cover image=channel.coverImage}}
+{{#link-to 'channel' channel}}
+	{{channel-cover image=channel.coverImage}}
+{{/link-to}}
 
 <h3 class="ChannelCard-title">
-	{{channel.title}}
+	{{#link-to 'channel' channel}}
+		{{channel.title}}
+	{{/link-to}}
 </h3>
+
 <p class="ChannelCard-body">
 	{{do-truncate channel.body 300}}
 </p>
+
+{{#if channel.tracks}}
+	<div class="ChannelCard-playback BtnGroup">
+		{{#playback/play-button track=channel.tracks.lastObject}}
+			{{x-icon i='play'}} play
+		{{/playback/play-button}}
+		{{#playback/play-button track=channel.tracks.firstObject shuffle=true}}
+			{{x-icon i='shuffle'}} shuffle
+		{{/playback/play-button}}
+	</div>
+{{/if}}
