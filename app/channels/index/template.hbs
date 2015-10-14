@@ -8,9 +8,7 @@
 			<div class="Grid">
 				{{#each model.featured as |item|}}
 					<div class="Grid-item">
-						{{#link-to 'channel' item}}
-							{{channel-card channel=item}}
-						{{/link-to}}
+						{{channel-card channel=item}}
 					</div>
 				{{/each}}
 				<div class="Grid-item">
@@ -46,9 +44,7 @@
 
 			{{#each topSortedChannels as |item|}}
 				<div class="Grid-item">
-					{{#link-to 'channel' item}}
-						{{channel-card channel=item}}
-					{{/link-to}}
+					{{channel-card channel=item}}
 				</div>
 			{{/each}}
 		</div>
@@ -76,9 +72,7 @@
 
 			{{#each loggedInUserFavorites as |item|}}
 				<div class="Grid-item">
-					{{#link-to 'channel' item}}
-						{{channel-card channel=item}}
-					{{/link-to}}
+					{{channel-card channel=item}}
 				</div>
 			{{/each}}
 		</div>
