@@ -1,27 +1,27 @@
 import Ember from 'ember';
 
 /**
- * @function (track)
- * sends plays with the oldest track
- * reverses the channel array so it keeps going from the oldest
- * @param reverse:bool
+ * @function
+ * @param {object: track model}
+ * @param  {bool} shuffle
+ * sends plays with a track
  **/
 
 export default Ember.Component.extend({
 	tagName: 'button',
 	classNames: ['Btn'],
-
 	player: Ember.inject.service(''),
 
 	click() {
+		let player = this.get('player');
+		// get the track passed as argument
 		let track = this.get('track');
+		// see if there is a play method
 		let shuffle = this.get('shuffle');
-
 		if (shuffle) {
-			this.get('player').playShuffle(track);
+			player.playShuffle(track);
 			return;
 		}
-
-		this.get('player').play(track);
+		player.play(track);
 	}
 });
