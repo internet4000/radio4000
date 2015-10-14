@@ -13,13 +13,8 @@
 	border-radius: $border-radius;
 	margin-top: 3rem;
 	margin-left: 1rem;
-	@media (min-width: $layout-s) {
-		width: 40rem;
-		max-width: 80%;
-	}
-	@media (min-width: $layout-sm) {
-		margin: 3rem 0 0 2rem;
-	}
+	margin-right: 1rem;
+	max-width: 40rem;
 }
 
 .Channel--edit {
@@ -46,13 +41,16 @@
 	}
 }
 .Channel-media {
+	margin-top: -1.5rem;
+	max-width: 10rem;
+	margin-left: auto;
+	margin-right: auto;
 	@media (min-width: $layout-s) {
 		@include clearfix;
 		float: left;
 		width: 30%;
-		max-width: 13em;
+		max-width: 13rem;
 		padding-right: 1rem;
-		margin-top: -1.5rem;
 	}
 	@media (min-width: $layout-l) {
 		padding-right: 1.5rem;
@@ -72,9 +70,10 @@
 }
 .Channel-body {
 	@include clearfix;
-	padding-right: 2rem;
+	text-align: center;
 	margin-bottom: 1rem;
 	@media (min-width: $layout-s) {
+		text-align: left;
 		float: left;
 		width: 70%;
 		margin-top: 2rem;
@@ -103,10 +102,9 @@
 	}
 }
 .Follow--title {
-	// optical aligned with .Channel-title
-	position: relative;
-	// top: -0.45em;
-	top: 0.2em;
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
 }
 .LastUpdated {
 	@extend %font-regular;
