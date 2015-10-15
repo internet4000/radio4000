@@ -48,8 +48,13 @@
 $LoaderCircle-size: 25px;
 
 .LoaderCircle {
+	width: 100%;
 	span {
 		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 2rem;
+		margin-top: 1rem;
 		width: $LoaderCircle-size;
 		height: $LoaderCircle-size;
 		// background-color: rgba($superlightgray, 0.5);
