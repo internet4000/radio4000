@@ -16,7 +16,7 @@
 .CustomSelect,
 .Btn {
 	@extend %font-bold;
-	padding: em(6,13) 0.8rem em(5,13);
+	padding: rem(5) 0.8rem rem(6);
 	background-color: $superlightgray;
 	color: $text-color;
 	box-shadow: 0 3px 2px 0 hsla(0, 0%, 0%, 0.06), inset -1px -1px 1px 0 hsla(0, 0%, 0%, 0.02);

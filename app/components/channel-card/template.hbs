@@ -15,10 +15,12 @@
 {{#if channel.tracks}}
 	<div class="ChannelCard-playback BtnGroup">
 		{{#playback/play-button track=channel.tracks.lastObject}}
-			{{x-icon i='play'}} play
+			{{x-icon i='play'}} Play
 		{{/playback/play-button}}
-		{{#playback/play-button track=channel.tracks.firstObject shuffle=true}}
-			{{x-icon i='shuffle'}} shuffle
+	</div>
+	<div class="ChannelCard-overlayBtn">
+		{{#playback/play-button class="Btn Btn--text" track=channel.tracks.firstObject shuffle=true}}
+			{{x-icon i='shuffle'}}
 		{{/playback/play-button}}
 	</div>
 {{/if}}
