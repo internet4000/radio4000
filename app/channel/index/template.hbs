@@ -30,17 +30,19 @@
 			{{track-item track=item canEdit=canEdit edit="editTrack" onTransition="transitionToTrack"}}
 		{{/tracks-list}}
 
-		<div class="Container Section--space">
 		{{#if canEdit}}
 			{{#unless model.coverImage}}
-				<p>Go ahead, {{#link-to 'channel.edit' model}}choose a nice cover image{{/link-to}} for your radio.</p>
+				<div class="Container Section--space">
+					<p>Go ahead, {{#link-to 'channel.edit' model}}choose a nice cover image{{/link-to}} for your radio.</p>
+				</div>
 			{{/unless}}
 		{{else}}
 			{{#unless tracks.length}}
-			  <p>Ooh, there are no tracks in this radio yet.</p>
+				<div class="Container Section--space">
+				  <p>Ooh, there are no tracks in this radio yet.</p>
+				</div>
 			{{/unless}}
 		{{/if}}
-		</div>
 	{{else}}
 		<div class="Container Section--space">
 			<div class="LoaderCircle"><span></span></div>
