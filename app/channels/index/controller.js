@@ -16,17 +16,17 @@ export default Ember.Controller.extend({
            channel.get('channelPublic.followers.length') > 6;
 	}),
 
-	loggedInUserFavorites: computed('session', function () {
-		// find logged in user favorite channels
-		return this.get('session.currentUser.channels.firstObject.favoriteChannels');
-	}),
-
-	// Sort them by followers
+	// Sort the filteredChannels by followers
 	sortProperties: ['channelPublic.followers.length:desc'],
 	sortedChannels: computed.sort('filteredChannels', 'sortProperties'),
 
 	// And only show top X
 	topSortedChannels: computed('sortedChannels.[]', function () {
 		return this.get('sortedChannels').slice(0, 4);
+	}),
+
+	currentUserFavorites: computed('session', function () {
+		// find logged in user favorite channels
+		return this.get('session.currentUser.channels.firstObject.favoriteChannels');
 	})
 });

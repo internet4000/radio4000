@@ -18,8 +18,6 @@
 				</div>
 			</div>
 		</div>
-	{{else}}
-		<p></p>
 	{{/if}}
 </section>
 
@@ -29,7 +27,6 @@
 	</div>
 
 	<div class="Container Container--full">
-
 		<div class="Grid">
 			<div class="Grid-item">
 				<h3>Tip</h3>
@@ -48,7 +45,6 @@
 				</div>
 			{{/each}}
 		</div>
-
 	</div>
 </section>
 
@@ -58,25 +54,22 @@
 	</div>
 
 	<div class="Container Container--full">
-
 		<div class="Grid">
-			{{#unless loggedInUserFavorites}}
+			{{#unless currentUserFavorites}}
 				<div class="Grid-item">
 					<h3>Tip</h3>
 					<div class="Muted">
-						<p>Visit other radios to start finding your favorites</p>
+						<p>Play other radios and find more favorites</p>
 					</div>
 				</div>
 			{{/unless}}
 
-
-			{{#each loggedInUserFavorites as |item|}}
+			{{#each currentUserFavorites as |item|}}
 				<div class="Grid-item">
 					{{channel-card channel=item}}
 				</div>
 			{{/each}}
 		</div>
-
 	</div>
 </section>
 
