@@ -14,14 +14,23 @@ export default Ember.Component.extend({
 
 	click() {
 		let player = this.get('player');
-		// get the track passed as argument
 		let track = this.get('track');
-		// see if there is a play method
+		let channel = this.get('channel');
 		let shuffle = this.get('shuffle');
+
+		if (channel) {
+			this.set('isLoading', true);
+			channel.get('tracks').then(tracks => {
+				this.set('isLoading', false);
+				return player.play(tracks.get('lastObject'));
+			});
+		}
+
 		if (shuffle) {
 			player.playShuffle(track);
 			return;
 		}
+
 		player.play(track);
 	}
 });
