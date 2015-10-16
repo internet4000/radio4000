@@ -8,9 +8,10 @@ import Ember from 'ember';
  **/
 
 export default Ember.Component.extend({
+	player: Ember.inject.service(),
 	tagName: 'button',
 	classNames: ['Btn'],
-	player: Ember.inject.service(''),
+	classNameBindings: ['isLoading'],
 
 	click() {
 		let player = this.get('player');
@@ -18,19 +19,22 @@ export default Ember.Component.extend({
 		let channel = this.get('channel');
 		let shuffle = this.get('shuffle');
 
-		if (channel) {
-			this.set('isLoading', true);
+		if (track) {
+			return player.play(track);
+		}
+
+		this.set('isLoading', true);
+
+		Ember.run.scheduleOnce('afterRender', this, function () {
 			channel.get('tracks').then(tracks => {
 				this.set('isLoading', false);
+
+				if (shuffle) {
+					return player.playShuffleFromTracks(tracks);
+				}
+
 				return player.play(tracks.get('lastObject'));
 			});
-		}
-
-		if (shuffle) {
-			player.playShuffle(track);
-			return;
-		}
-
-		player.play(track);
+		});
 	}
 });

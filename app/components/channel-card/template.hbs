@@ -14,16 +14,17 @@
 
 <div class="ChannelCard-playback BtnGroup">
 	{{#playback/play-button channel=channel as |btn|}}
-		{{x-icon i='play'}} {{if btn.isLoading 'Playing…' 'Play'}}
+		{{x-icon i='play'}} {{if btn.isLoading 'Loading…' 'Play'}}
+	{{/playback/play-button}}
+</div>
+
+<div class="ChannelCard-overlayBtn">
+	{{#playback/play-button channel=channel shuffle=true class="Btn Btn--text"}}
+		{{x-icon i='shuffle'}}
 	{{/playback/play-button}}
 </div>
 
 {{!-- {{#if channel.tracks}}
-	<p>has tracks</p>
-	<div class="ChannelCard-overlayBtn">
-		{{#playback/play-button class="Btn Btn--text" track=channel.tracks.firstObject shuffle=true}}
-			{{x-icon i='shuffle'}}
-		{{/playback/play-button}}
-	</div>
+	unfortunately this loads ALL tracks
 {{/if}}
  --}}

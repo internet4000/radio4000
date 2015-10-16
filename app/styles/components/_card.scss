@@ -57,7 +57,8 @@
 		left: auto !important;
 		top: auto !important;
 	}
-	&:hover {
+	&:hover,
+	&.is-loading {
 		background: rgba(black, 0.4);
 		color: rgba(white, 1);
 		transform: scale(1);
@@ -65,6 +66,10 @@
 	}
 	&:active {
 		transform: scale(0.98);
+	}
+	&.is-loading {
+		transition-duration: 800ms;
+		background-color: $primary-color;
 	}
 }
 
