@@ -20,17 +20,26 @@ ember serve
 
 Also see http://www.ember-cli.com/
 
-## Building and deploying
+## Building
 
 First build it:
 
 - `$ ember build` (build will still include logs, warnings etc. for testing)
 - `$ ember build --environment=production` (hard to debug, only use this when it's ready for deploy)
 
+## Deploying
+
 Then deploy to one of our hosts:
 
-`$ gulp deploy-dev` (dev.radio4000.com)
-`$ gulp deploy-live` (radio4000.com)
+```
+surge dist dev2.radio4000.com
+```
+
+or put it live:
+
+```
+gulp deploy-live`
+```
 
 ## Updating icons
 
