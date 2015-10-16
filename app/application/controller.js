@@ -42,7 +42,7 @@ export default Ember.Controller.extend({
 
 // START REMOTE TRACK
 
-// onTrackForRemoteChange: Ember.observer('session.currentUser.settings.trackForRemote', function() {
+// onTrackForRemoteChange: Ember.observer('session.currentUser.settings.trackForRemote', function () {
 // 	let settings = this.get('session.currentUser.settings');
 //
 // 	if (!this.get('player.didPlay')) {
@@ -54,7 +54,7 @@ export default Ember.Controller.extend({
 // 		return;
 // 	}
 //
-// 	settings.then((settings) => {
+// 	settings.then(settings => {
 //
 // 		// make sure it doesn't run too often
 // 		Ember.run.debounce(this, this.setTrackFromRemote, 400, true);
@@ -70,7 +70,7 @@ export default Ember.Controller.extend({
 // 	}
 //
 // 	// open the track (it's a relationship)
-// 	track.then((track) => {
+// 	track.then(track => {
 // 		debug('setting track from remote to ' + track.get('title'));
 // 		this.set('player.model', track);
 // 	});

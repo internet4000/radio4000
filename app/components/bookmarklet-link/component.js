@@ -12,7 +12,7 @@ export default Ember.Component.extend({
 
 	// binding properties with :javascript in templates is forbidden because of XSS
 	// so we do this instead
-	fixBookmarklet: Ember.on('didInsertElement', function() {
+	fixBookmarklet: Ember.on('didInsertElement', function () {
 		const $link = this.$().children('a');
 		const slug = $link.data('slug');
 		const newHref = $link.attr('href').replace('TOBESLUGGED', slug);

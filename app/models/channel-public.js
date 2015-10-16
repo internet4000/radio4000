@@ -1,6 +1,6 @@
 import DS from 'ember-data';
 
-const { hasMany, belongsTo } = DS;
+const {hasMany, belongsTo} = DS;
 
 // inverse tells Ember which relationship this matches on the other model
 

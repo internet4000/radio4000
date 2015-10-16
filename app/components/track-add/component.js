@@ -2,19 +2,19 @@ import Ember from 'ember';
 import config from '../../config/environment';
 import youtube from 'radio4000/utils/youtube';
 
-const { debug, computed, observer } = Ember;
+const {debug, computed, observer} = Ember;
 
 export default Ember.Component.extend({
 	box: false,
 
 	// Check if the track is valid before saving
-	isValid: computed('url', 'title', function() {
+	isValid: computed('url', 'title', function () {
 		return this.get('url') && this.get('title');
 	}),
 
 	// This gets called when you paste something into the input-url component
 	// it takes a URL and turns it into a YouTube ID which we use to query the API for a title
-	automaticSetTitle: Ember.on('init', observer('url', function() {
+	automaticSetTitle: Ember.on('init', observer('url', function () {
 		let url = this.get('url');
 
 		if (!url) {
@@ -38,7 +38,7 @@ export default Ember.Component.extend({
 	// it takes a URL and turns it into a YouTube ID which we use to query the API for a title
 	setTitle() {
 		let id = this.get('youtubeId');
-		let endpoint = 'https://www.googleapis.com/youtube/v3/videos?id='+id+'&key='+config.youtubeApiKey+'&fields=items(id,snippet(title))&part=snippet';
+		let endpoint = `https://www.googleapis.com/youtube/v3/videos?id=${id}&key=${config.youtubeApiKey}&fields=items(id,snippet(title))&part=snippet`;
 		debug('setTitle');
 
 		// Use cache if we have it
@@ -49,7 +49,7 @@ export default Ember.Component.extend({
 
 		this.set('isFetchingTitle', true);
 
-		Ember.$.getJSON(endpoint).then((response) => {
+		Ember.$.getJSON(endpoint).then(response => {
 			this.set('isFetchingTitle', false);
 
 			if (!response.items.length) {
@@ -70,7 +70,10 @@ export default Ember.Component.extend({
 
 	actions: {
 		submit() {
-			if (!this.get('isValid')) { Ember.debug('not valid'); return; }
+			if (!this.get('isValid')) {
+				Ember.debug('not valid');
+				return;
+			}
 
 			// we let the route decide which model to use
 			let trackObject = {

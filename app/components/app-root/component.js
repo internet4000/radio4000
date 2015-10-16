@@ -22,8 +22,7 @@ export default Ember.Component.extend({
 		$dummy.fadeOut({
 			duration: 200,
 			easing: 'linear',
-			complete: function() {
-
+			complete: function () {
 				// wrap it in a run loop to ensure template is rendered
 				Ember.run.schedule('afterRender', () => {
 					$dummy.remove();

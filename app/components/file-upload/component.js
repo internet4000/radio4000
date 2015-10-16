@@ -16,7 +16,7 @@ export default Ember.TextField.extend({
 
 		// Once image has loaded, set it to the model
 		// we can do this because image is passed to this component
-		reader.onloadend = function() {
+		reader.onloadend = function () {
 			this.set('image', reader.result);
 		}.bind(this);
 

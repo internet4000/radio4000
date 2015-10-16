@@ -1,17 +1,19 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 
-const { attr, belongsTo } = DS;
+const {attr, belongsTo} = DS;
 
 export default DS.Model.extend({
 	channel: belongsTo('channel'),
 	src: attr('string'),
 
 	// returns a cropped thumb with facial detection
-	thumb: Ember.computed('src', function() {
+	thumb: Ember.computed('src', function () {
 		const src = this.get('src');
 
-		if (!src) { return ''; }
+		if (!src) {
+			return '';
+		}
 
 		// let isGif = !src.match(/\.(jpg|jpeg|png|gif)$/);
 

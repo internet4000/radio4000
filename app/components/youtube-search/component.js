@@ -1,13 +1,15 @@
 import Ember from 'ember';
 
+const {observer} = Ember;
+
 export default Ember.Component.extend({
 	cachedQuery: '',
 
 	// Wrap our results in an array we can use in our template
-	results: Ember.A(),
+	results: [],
 
 	// Updates our results with YouTube videos from a query string
-	findAll: Ember.observer('query', function() {
+	findAll: observer('query', function () {
 		let query = this.get('query');
 		let url = encodeURIComponent(query);
 		let endpoint = `http://gdata.youtube.com/feeds/api/videos?q=${url}&format=5&max-results=5&v=2&alt=jsonc`;
@@ -27,12 +29,12 @@ export default Ember.Component.extend({
 		// don't query the same string twice
 		if (query === this.get('cachedQuery')) {
 			this.get('results').clear();
-			return false;
+			return;
 		}
 
 		// query!
-		Ember.$.getJSON(endpoint).then((response) => {
-			let tracks = response.data.items.map((item) => {
+		Ember.$.getJSON(endpoint).then(response => {
+			let tracks = response.data.items.map(item => {
 				return Ember.Object.create({
 					url: item.player.default,
 					title: item.title,

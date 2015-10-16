@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 
-const { attr, hasMany, belongsTo } = DS;
+const {attr, hasMany, belongsTo} = DS;
 
 /*
  Channel model:
@@ -46,7 +46,7 @@ export default DS.Model.extend({
 	channelPublic: belongsTo('channelPublic', {async: true})
 
 	// dates
-	// createdDate: Ember.computed('created', function() {
+	// createdDate: Ember.computed('created', function () {
 	// 	return moment(this.get('created')).fromNow();
 	// }),
 });

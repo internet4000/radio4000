@@ -7,16 +7,16 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   // pages
-  this.route('about', function() {
+  this.route('about', function () {
     this.route('contact');
     this.route('technology');
   });
   this.route('bookmarklet');
   this.route('dashboard');
-  this.route('help', function() { /* help.index */ });
+  this.route('help', function () { /* help.index */ });
   this.route('intro');
   this.route('404');
-  this.route('styleguide', function() {
+  this.route('styleguide', function () {
     this.route('colors');
     this.route('typography');
     this.route('forms');
@@ -25,7 +25,7 @@ Router.map(function() {
   this.route('logout');
 
   // channels
-  this.route('channels', { path: '/' }, function() {
+  this.route('channels', { path: '/' }, function () {
     this.route('all');
     this.route('new');
   });
@@ -33,8 +33,8 @@ Router.map(function() {
   // channel - IMPORTANT! This definition needs to come last —
   // otherwise it'll overwrite the above routes. We want the opposite.
   this.route('channel-alias', { path: '/c/:slug' });
-  this.route('channel', { path: '/:slug' }, function() {
-    this.route('index', { path: '/' }, function() {
+  this.route('channel', { path: '/:slug' }, function () {
+    this.route('index', { path: '/' }, function () {
         this.route('track', { path: ':track_id', resetNamespace: true });
     });
     this.route('favorites');

@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { computed, debug } = Ember;
+const {computed, debug} = Ember;
 
 // This component enables a list of tracks to be filtered by hashtags
 
@@ -8,7 +8,7 @@ export default Ember.Component.extend({
 	filter: '',
 
 	// Returns either all tracks or the filtered tracks by hashtag
-	filtered: computed('filter', 'tracks', function() {
+	filtered: computed('filter', 'tracks', function () {
 		let filter = this.get('filter');
 		let tracks = this.get('tracks');
 
@@ -18,18 +18,20 @@ export default Ember.Component.extend({
 
 		// returns models which has the filter (the tag)
 		// in their hashtags property
-		return tracks.filter((track) => {
+		return tracks.filter(track => {
 			let hashtags = track.get('hashtags');
 
-			if (!hashtags) { return false; }
+			if (!hashtags) {
+				return false;
+			}
 
 			return hashtags.contains(filter);
 		});
 	}),
 
 	// not sure how to set up SortableMixin
-	// sortedandfiltered: computed('filtered', function() {
-	sortedAndFiltered: computed('tracks', function() {
+	// sortedandfiltered: computed('filtered', function () {
+	sortedAndFiltered: computed('tracks', function () {
 		return Ember.ArrayController.create({
 			// content: this.get('filtered'),
 			content: this.get('tracks'),
@@ -41,7 +43,7 @@ export default Ember.Component.extend({
 	}),
 
 	// Returns the unique tags from all models
-	tags: computed('tracks.@each.hashtags', function() {
+	tags: computed('tracks.@each.hashtags', function () {
 		let tracks = this.get('tracks');
 		let tags = tracks.getEach('hashtags');
 
@@ -51,15 +53,14 @@ export default Ember.Component.extend({
 		tags = tags.compact();
 
 		// Flatten the array
-		tags = (tags.join(',')).split(','); // js version (lodash: _.flatten)
+		// or alternative lodash version: _.flatten
+		tags = (tags.join(',')).split(',');
 
 		// Only keep uniques
 		tags = tags.uniq();
 
 		// Remove more empty ones (todo: shouldn't be necessary)
-		tags = tags.filter((tag) => {
-			return tag !== '';
-		});
+		tags = tags.filter(tag => tag !== '');
 
 		return tags;
 	})

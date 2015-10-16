@@ -1,6 +1,5 @@
 import Ember from 'ember';
-
-const { debug } = Ember;
+const {debug} = Ember;
 
 export default Ember.Route.extend({
 	uiStates: Ember.inject.service(),
@@ -16,8 +15,7 @@ export default Ember.Route.extend({
 		}
 
 		// else check if the user already has a channel
-		return userChannels.then((channels) => {
-
+		return userChannels.then(channels => {
 			// as users are only allowed one channel, we only check the first
 			let channel = channels.get('firstObject');
 
@@ -63,14 +61,12 @@ export default Ember.Route.extend({
 		saveChannel(channel) {
 			const user = this.get('session.currentUser');
 
-			channel.save().then((channel) => {
-
+			channel.save().then(channel => {
 				// now the channel is saved
 				debug('saved channel');
 
 				// set relationship on user (who created the channel)
-				user.get('channels').then((userChannels) => {
-
+				user.get('channels').then(userChannels => {
 					userChannels.addObject(channel);
 
 					user.save().then(() => {
@@ -81,7 +77,7 @@ export default Ember.Route.extend({
 							channel
 						}).save()
 
-							.then((channelPublic) => {
+							.then(channelPublic => {
 								// now the channelPublic is saved, has an ID and can be used
 								debug('saved channelPublic');
 
@@ -91,14 +87,12 @@ export default Ember.Route.extend({
 								});
 
 								// save it again because of new relationships
-								channel.save().then((channel) => {
-
+								channel.save().then(channel => {
 									// Redirect to the new channel and
 									debug('redirect to the new channel');
 									this.transitionTo('channel', channel);
 									return channel;
-
-								}, (error) => {
+								}, error => {
 									return new Error('Could not create a new channel with its relationships.');
 								})
 

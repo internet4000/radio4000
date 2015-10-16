@@ -58,7 +58,7 @@ export default Ember.Route.extend({
 	// 				});
 
 	// 				// go through them
-	// 				Ember.RSVP.all(requests).then((tracks) => {
+	// 				Ember.RSVP.all(requests).then(tracks => {
 	// 					resolve(tracks);
 	// 				}, (reason) => {
 	// 					reject(reason);

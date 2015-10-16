@@ -1,3 +1,4 @@
+/* global document window */
 import Ember from 'ember';
 
 export default Ember.Route.extend({
@@ -5,7 +6,7 @@ export default Ember.Route.extend({
 		return this.store.query('channel', {
 			orderBy: 'slug',
 			equalTo: params.slug
-		}).then((data) => data.get('firstObject'));
+		}).then(data => data.get('firstObject'));
 	},
 
 	afterModel(model) {
@@ -17,7 +18,7 @@ export default Ember.Route.extend({
 	// because we use slugs instead of ids in the url
 	// tell ember what the 'slug' param maps to on our model
 	serialize(model) {
-		return { slug: model.get('slug') };
+		return {slug: model.get('slug')};
 	},
 
 	activate() {
@@ -41,10 +42,10 @@ export default Ember.Route.extend({
 			track.updateProvider();
 
 			// Save and add it to the tracks relationship on the channel
-			track.save().then(function() {
-				channel.get('tracks').then(function(tracks) {
+			track.save().then(track => {
+				channel.get('tracks').then(tracks => {
 					tracks.addObject(track);
-					channel.save().then(function() {
+					channel.save().then(() => {
 						Ember.debug('Success: Track saved to channel');
 					});
 				});

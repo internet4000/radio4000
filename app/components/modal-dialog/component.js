@@ -6,13 +6,13 @@ import ModalDialog from 'ember-modal-dialog/components/modal-dialog';
 
 export default ModalDialog.extend({
 	translucentOverlay: true,
-	overlayClassNames: ['ember-modal-overlay'], // set this in a subclass definition
+	overlayClassNames: ['ember-modal-overlay'],
 	acceptsKeyResponder: true,
-	becomeKeyResponderWhenInserted: Ember.on('didInsertElement', function() {
+	becomeKeyResponderWhenInserted: Ember.on('didInsertElement', function () {
 		this.becomeKeyResponder();
 	}),
 
-	resignKeyResponderWhenDestroyed: Ember.on('willDestroyElement', function() {
+	resignKeyResponderWhenDestroyed: Ember.on('willDestroyElement', function () {
 		this.resignKeyResponder();
 	}),
 

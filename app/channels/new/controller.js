@@ -3,16 +3,17 @@ import clean from 'radio4000/utils/clean';
 import randomText from 'radio4000/utils/random-text';
 import channelConst from 'radio4000/utils/channel-const';
 
-const { debug, computed } = Ember;
+const {debug, computed} = Ember;
 
 export default Ember.Controller.extend({
 	title: '',
 	titleMaxLength: channelConst.titleMaxLength,
 	titleMinLength: channelConst.titleMinLength,
 	isSaving: false,
-	didCreate: false, // because we don't want it to show before clicking
+	// because we don't want it to show before clicking
+	didCreate: false,
 
-	cleanSlug: computed('title', function() {
+	cleanSlug: computed('title', function () {
 		let title = clean(this.get('title'));
 		let random = randomText();
 
@@ -28,7 +29,7 @@ export default Ember.Controller.extend({
 	}),
 
 	// check channel.title.length, if not in our size limit, return NOPE
-	titleIsValid: computed('title', function() {
+	titleIsValid: computed('title', function () {
 		return !this.get('isTitleTooShort') && !this.get('isTitleTooLong');
 	}),
 
@@ -45,7 +46,6 @@ export default Ember.Controller.extend({
 
 			debug(title);
 			debug(title.trim());
-
 			title = title.trim();
 
 			debug('can create?');
@@ -55,7 +55,6 @@ export default Ember.Controller.extend({
 				title: title,
 				slug: slug
 			});
-
 
 			this.set('isSaving', true);
 			this.send('saveChannel', channel);
