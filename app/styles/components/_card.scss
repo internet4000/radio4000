@@ -1,6 +1,6 @@
 .ChannelCard {
 	position: relative;
-	overflow: hidden;
+	// overflow: hidden;
 	padding-bottom: 1rem;
 	background-color: $white;
 	.LoaderCircle {
@@ -32,9 +32,17 @@
 	color: $dark;
 }
 .ChannelCard-playback {
-	padding-left: 0.9rem;
-	padding-top: 1rem;
-	margin-bottom: 0;
+	margin-top: -2rem;
+	margin-left: -5px;
+	margin-bottom: 1rem;
+}
+.ChannelCard-playback,
+.Channel-playback {
+	// remove default margin because icon is alone
+	[class^="icon-"],
+	[class*=" icon-"] {
+		margin-right: auto;
+	}
 }
 .ChannelCard-overlayBtn {
 	position: absolute;
@@ -77,16 +85,14 @@
  * modifier
  **/
 
-.ChannelCard {
-	&.ChannelCard--text {
-		@include size-1;
-		position: relative;
-		padding: 1rem;
-		color: $gray;
-		background-color: transparent;
+.ChannelCard--text {
+	@include size-1;
+	position: relative;
+	padding: 1rem;
+	color: $gray;
+	background-color: transparent;
 
-		p:last-child {
-			margin-bottom: 0;
-		}
+	p:last-child {
+		margin-bottom: 0;
 	}
 }

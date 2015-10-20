@@ -2,6 +2,10 @@
 	{{channel-cover image=channel.coverImage}}
 {{/link-to}}
 
+<div class="ChannelCard-playback">
+	{{playback/play-shuffle-btn channel=channel}}
+</div>
+
 <h3 class="ChannelCard-title">
 	{{#link-to 'channel.dashboard' channel}}
 		{{channel.title}}
@@ -9,22 +13,5 @@
 </h3>
 
 <p class="ChannelCard-body">
-	{{do-truncate channel.body 300}}
+	{{do-truncate channel.body 200}}
 </p>
-
-<div class="ChannelCard-playback BtnGroup">
-	{{#playback/play-button channel=channel as |btn|}}
-		{{x-icon i='play'}} {{if btn.isLoading 'Loading…' 'Play'}}
-	{{/playback/play-button}}
-</div>
-
-<div class="ChannelCard-overlayBtn">
-	{{#playback/play-button channel=channel shuffle=true class="Btn Btn--text"}}
-		{{x-icon i='shuffle'}}
-	{{/playback/play-button}}
-</div>
-
-{{!-- {{#if channel.tracks}}
-	unfortunately this loads ALL tracks
-{{/if}}
- --}}

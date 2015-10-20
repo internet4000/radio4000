@@ -58,6 +58,10 @@
 					{{/unless}}
 				</div>
 
+				<div class="Channel-playback">
+					{{playback/play-shuffle-btn channel=model}}
+				</div>
+
 				{{!-- <p class="Muted LastUpdated">({{lastUpdatedFormatted}})</p> --}}
 
 				{{#if model.body}}
