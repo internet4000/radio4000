@@ -38,7 +38,7 @@
 	// active (pressed down)
 	&:active,
 	&.is-active {
-		background-color: $white;
+		// background-color: $white;
 		outline: none;
 		box-shadow: 0 1px 2px 0 hsla(0, 0% , 0, 0.12),
 						inset -1px -1px 1px 0 hsla(0, 0% , 0, 0.02)
