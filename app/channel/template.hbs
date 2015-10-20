@@ -1,4 +1,4 @@
-{{#if canEdit}}
+{{!-- {{#if canEdit}}
 	{{#unless isWelcomed}}
 		<div class="Blankstate">
 			<h4 class="Blankstate-title">Welcome to Radio4000</h4>
@@ -24,6 +24,7 @@
 		</div>
 	{{/unless}}
 {{/if}}
+ --}}
 
 <article class="Channel Channel--detail {{if canEdit 'canEdit'}}">
 	<div class="Channel-header">
@@ -83,10 +84,10 @@
 		</div>
 	</div>
 
-	<nav class="Tabs Tabs--toHorizontal">
-		{{#link-to 'channel.dashboard' class="Tabs-item" title="Dashboard, a summary of this radio"}}
+	<nav class="Tabs{{!--  Tabs--toHorizontal --}}">
+		{{!-- {{#link-to 'channel.dashboard' class="Tabs-item" title="Dashboard, a summary of this radio"}}
 			Dashboard
-		{{/link-to}}
+		{{/link-to}} --}}
 		{{#link-to 'channel.index' class="Tabs-item" title="All tracks"}}
 			{{!-- {{model.tracks.length}} --}} Tracks
 		{{/link-to}}
