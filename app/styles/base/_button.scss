@@ -20,7 +20,7 @@
 	@extend %font-bold;
 	// proper tap areas
 	min-height: 2em;
-	min-width: 2.5em;
+	// min-width: 2.5em;
 	background-color: $superlightgray;
 	color: $text-color;
 	box-shadow: 0 3px 2px 0 hsla(0, 0%, 0%, 0.06),

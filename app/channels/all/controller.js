@@ -24,6 +24,10 @@ export default Ember.Controller.extend({
 		this.set('realSearch', this.get('search'));
 	},
 
+	// filteredChannels: computed.filter('model', function (channel) {
+	// 	return channel.get('coverImage');
+	// }),
+
 	// Filters out models where title or body matches the search
 	// it watches 'realSearch' instead of 'search' so we can
 	// debounce for performance.
