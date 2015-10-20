@@ -20,8 +20,14 @@
 	</div>
 
 	<div class="Form-group">
-		<button class="Btn Btn--primary {{if justAdded 'is-flashing'}}" type='submit' title="Add track to your radio">Add track</button>
-		<button class="Btn Btn--text" {{action 'cancel' title="Nevermind, do not add the track"}}>Cancel</button>
-		{{!-- {{#link-to "channel.index" class="Btn Btn--text" title="Don't add the track"}}Cancel{{/link-to}} --}}
+		<div class="BtnGroupWrapper BtnGroupWrapper--full">
+			{{#btn-group}}
+				<button class="Btn Btn--primary {{if justAdded 'is-flashing'}}" type='submit' title="Add track to your radio">Add track</button>
+				<button class="Btn Btn--text" {{action 'cancel' title="Nevermind, do not add the track"}}>Cancel</button>
+			{{/btn-group}}
+			{{#btn-group}}
+				{{#link-to "channel.add.bookmarklet" class="Btn Btn--text" title="Add tracks faster to your radio!"}}Want to add faster?{{/link-to}}
+			{{/btn-group}}
+		</div>
 	</div>
 </form>

@@ -40,7 +40,9 @@ Router.map(function() {
     this.route('favorites');
     this.route('followers');
     // add a track to channel
-    this.route('add');
+    this.route('add', function() {
+      this.route('bookmarklet', {});
+    });
     // edit channel
     this.route('edit');
     // permanently remove channel and its referenes from DB
