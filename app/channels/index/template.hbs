@@ -18,6 +18,8 @@
 				</div>
 			</div>
 		</div>
+	{{else}}
+		{{is-loading}}
 	{{/if}}
 </section>
 
@@ -39,36 +41,42 @@
 				</div>
 			</div>
 
-			{{#each topSortedChannels as |item|}}
-				<div class="Grid-item">
-					{{channel-card channel=item}}
-				</div>
-			{{/each}}
+			{{#if topSortedChannels}}
+				{{#each topSortedChannels as |item|}}
+					<div class="Grid-item">
+						{{channel-card channel=item}}
+					</div>
+				{{/each}}
+			{{else}}
+				{{is-loading}}
+			{{/if}}
 		</div>
 	</div>
 </section>
 
 <section class="Section">
 	<div class="Manchet Manchet--left">
-		<h2>Your favorite radios <small> — "la crème"</small></h2>
+		<h2>Your favorite radios</h2>
 	</div>
 
 	<div class="Container Container--full">
 		<div class="Grid">
-			{{#unless currentUserFavorites}}
+			{{#if currentUserFavorites}}
+				{{#each currentUserFavorites as |item|}}
+					<div class="Grid-item">
+						{{channel-card channel=item}}
+					</div>
+				{{/each}}
+			{{else}}
 				<div class="Grid-item">
 					<h3>Tip</h3>
 					<div class="Muted">
-						<p>Play other radios and find more favorites</p>
+						<p>You don't have any favorite Radio channel yet.</p>
+						<p>Play other radios to find some you'll like.</p>
 					</div>
 				</div>
-			{{/unless}}
+			{{/if}}
 
-			{{#each currentUserFavorites as |item|}}
-				<div class="Grid-item">
-					{{channel-card channel=item}}
-				</div>
-			{{/each}}
 		</div>
 	</div>
 </section>
