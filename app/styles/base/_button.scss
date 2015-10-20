@@ -2,31 +2,36 @@
 // this allows us to use semantic button elements for other things
 .Btn {
 	-webkit-appearance: none; /* 1 */
-	background: transparent;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0 0.65rem;
+	line-height: 1;
 	cursor: pointer;
-	display: inline-block;
-	line-height: normal; /* 6 */
 	position: relative;
-	text-align: center;
 	text-decoration: none;
 	user-select: none; /* 6 */
 	white-space: normal; /* 7 */
+	background: transparent;
 }
 
 .CustomSelect,
 .Btn {
 	@extend %font-bold;
-	padding: rem(5) 0.8rem rem(6);
+	// proper tap areas
+	min-height: 2em;
+	min-width: 2.5em;
 	background-color: $superlightgray;
 	color: $text-color;
-	box-shadow: 0 3px 2px 0 hsla(0, 0%, 0%, 0.06), inset -1px -1px 1px 0 hsla(0, 0%, 0%, 0.02);
+	box-shadow: 0 3px 2px 0 hsla(0, 0%, 0%, 0.06),
+					inset -1px -1px 1px 0 hsla(0, 0%, 0%, 0.02);
 	transition: border-color 100ms, background 100ms, box-shadow 100ms;
-	vertical-align: top;
 
 	// hover and active
 	&:hover,
 	&:active {
-		box-shadow: 0 3px 2px 0 hsla(0, 0%, 0%, 0.12), inset -1px -1px 1px 0 hsla(0, 0%, 0%, 0.02);
+		box-shadow: 0 2px 2px 0 hsla(0, 0%, 0%, 0.12),
+						inset -1px -1px 1px 0 hsla(0, 0%, 0%, 0.02);
 		text-decoration: none;
 	}
 
@@ -35,13 +40,15 @@
 	&.is-active {
 		background-color: $white;
 		outline: none;
+		box-shadow: 0 1px 2px 0 hsla(0, 0% , 0, 0.12),
+						inset -1px -1px 1px 0 hsla(0, 0% , 0, 0.02)
 	}
 
 	// focus
 	&:focus {
 		outline: none;
 		border-color: $primary-color;
-		box-shadow: hsla(0, 0%, 0%, 0.4) 2px 3px 0 0;
+		box-shadow: 0px 2px 2px 0 hsla(0, 0%, 0%, 0.3);
 	}
 
 	// disabled
@@ -136,6 +143,7 @@
 	border: 0 solid transparent;
 	background-color: transparent;
 	outline: none;
+	box-shadow: none;
 
 	&:hover {
 		cursor: pointer;
