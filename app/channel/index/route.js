@@ -2,8 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	beforeModel() {
-		// 404 page
-		let channel = this.modelFor('channel');
+		const channel = this.modelFor('channel');
 		if (!channel) {
 			this.transitionTo('404');
 		}
@@ -17,7 +16,7 @@ export default Ember.Route.extend({
 		// Because controllers are singleton,
 		// they keep the tracks between channels.
 		// This avoids it.
-		let cachedId = controller.get('model.id');
+		const cachedId = controller.get('model.id');
 		if (cachedId && cachedId !== model.id) {
 			controller.set('tracks', []);
 		}

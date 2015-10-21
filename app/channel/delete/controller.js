@@ -42,13 +42,10 @@ export default Ember.Controller.extend({
 			followers.forEach(follower => {
 				debug('Found follower: ' + follower.get('title'));
 
-				follower.get('favoriteChannels').then(favs => {
-					// debug(favs);
-					// debug(favs.contains(channel));
-					favs.removeObject(channel);
-					// debug(favs.contains(channel));
+				follower.get('favoriteChannels').then(favoriteChannels => {
+					favoriteChannels.removeObject(channel);
 					follower.save().then(() => {
-						debug('saved follower');
+						debug('Removed this channel as favorite on a follower');
 					});
 				});
 			});
@@ -58,8 +55,8 @@ export default Ember.Controller.extend({
 	// Delete this channel on the session user
 	deleteUserRelationshipFrom(channel) {
 		const user = this.get('session.currentUser');
-		user.get('channels').then(channels => {
-			channels.removeObject(channel);
+		user.get('channels').then(userChannels => {
+			userChannels.removeObject(channel);
 			user.save().then(() => {
 				debug('Removed channel on user');
 			});
