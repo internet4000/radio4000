@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
 			return true;
 		},
 
-		// used by 'ESC' key in the view
+		// used by the modal
 		backToChannel() {
 			this.transitionToRoute('channel.index', this.get('session.currentUser.channels.firstObject'));
 		}
