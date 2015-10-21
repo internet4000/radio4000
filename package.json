@@ -40,8 +40,12 @@
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "^1.0.2",
     "emberfire": "1.6.0",
+    "fs": "0.0.2",
+    "grunticon-lib": "^1.0.3",
     "gulp": "^3.9.0",
     "gulp-shell": "^0.4.2",
+    "path": "^0.12.7",
+    "q": "^1.4.1",
     "rsyncwrapper": "^0.4.3"
   },
   "dependencies": {
@@ -49,7 +53,6 @@
     "ember-key-responder": "^0.4.0",
     "ember-modal-dialog": "0.8.0",
     "ember-youtube": "^0.5.0",
-    "grunt": "^0.4.5",
     "torii": "^0.5.1"
   }
 }
