@@ -5,7 +5,7 @@
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
-	padding: 0 0.65rem;
+	padding: 0 0.6rem;
 	line-height: 1;
 	cursor: pointer;
 	position: relative;
@@ -19,7 +19,7 @@
 .Btn {
 	@extend %font-bold;
 	// proper tap areas
-	min-height: 2em;
+	min-height: 2.1em;
 	// min-width: 2.5em;
 	background-color: $superlightgray;
 	color: $text-color;
@@ -30,15 +30,16 @@
 	// hover and active
 	&:hover,
 	&:active {
-		box-shadow: 0 2px 2px 0 hsla(0, 0%, 0%, 0.12),
-						inset -1px -1px 1px 0 hsla(0, 0%, 0%, 0.02);
 		text-decoration: none;
+		box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.2),
+						inset -1px -1px 1px 0 rgba(0, 0, 0, 0.02);
+		// box-shadow: 0 2px 2px 0 hsla(0, 0%, 0%, 0.12),
+		// 				inset -1px -1px 1px 0 hsla(0, 0%, 0%, 0.02);
 	}
 
 	// active (pressed down)
 	&:active,
 	&.is-active {
-		// background-color: $white;
 		outline: none;
 		box-shadow: 0 1px 2px 0 hsla(0, 0% , 0, 0.12),
 						inset -1px -1px 1px 0 hsla(0, 0% , 0, 0.02)
@@ -79,29 +80,26 @@
 	&.is-flashing {
 		background-color: $yellow;
 	}
-
 }
 
 .Btn--full {
 	width: 100%;
 	text-align: center;
 }
-
-// Small buttons
 .Btn--small {
-	font-size: rem(11);
-	padding: em(4,11) em(7,11) em(1,11);
+	font-size: rem(12);
 }
-
-// Large buttons
 .Btn--large {
 	@include size-2;
 }
-
-
-// Danger buttons
 .Btn--danger {
 	color: $red;
+}
+.Btn--transparent {
+	border: 2px solid $white;
+	background-image: none;
+	background-color: transparent;
+	color: $white;
 }
 
 // Buttons that looks like text

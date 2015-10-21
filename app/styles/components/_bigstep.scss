@@ -45,19 +45,8 @@
 .BigStep-buttons {
 	margin-top: 2.7rem;
 	.Btn {
-		@include size-2;
-		padding: 0.5rem 1.8rem 0.6rem;
-		min-width: 9rem;
+		min-width: 8rem;
 		margin-left: 1rem;
 		margin-right: 1rem;
-		margin-bottom: 1rem;
-		border: 2px solid $white;
-		background-image: none;
-		background-color: transparent;
-		color: $white;
-	}
-	a.Btn {
-		// otherwise it goes in two lines
-		min-width: 13rem;
 	}
 }
