@@ -2,7 +2,7 @@
 	{{#if canEdit}}
 		{{#if hasFewTracks}}
 			<div class="Container Section--space">
-				<p>Why don't you add your first tracks? It's just below, paste in a Youtube Video URL and see the result</p>
+				<p>Why don't you add your first tracks? It's just below — try to paste in the URL of a YouTube video!</p>
 			</div>
 		{{/if}}
 		<div class="Container">
@@ -36,7 +36,7 @@
 		{{#if canEdit}}
 			{{#unless model.coverImage}}
 				<div class="Container Section--space">
-					<p>Wouldn't it be nicer with an image? {{#link-to 'channel.edit' model}}Choose a nice cover image{{/link-to}} for your radio.</p>
+					<p>Wouldn't it be nicer with an image for your radio? {{#link-to 'channel.edit' model}}Edit your radio to upload one{{/link-to}}.</p>
 				</div>
 			{{/unless}}
 		{{else}}
