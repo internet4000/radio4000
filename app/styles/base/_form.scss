@@ -46,6 +46,9 @@ textarea,
 	&:focus {
 		outline: hsl(214, 95%, 64%) auto 4px;
 	}
+	&:focus:invalid {
+		border-color: $red;
+	}
 }
 
 // Textareas
