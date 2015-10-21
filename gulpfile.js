@@ -12,45 +12,13 @@ gulp.task('critical', function () {
 		.pipe(gulp.dest('dist'));
 });
 
-/**
- * Create a native Linux, OS X and Windows app using electron.
-
- * IMPORTANT! Before doing this, you have to:
-
- * - check public/main.js and choose if you want to use radio4000.com
-		or a local version of the app for building
- * - install `npm i -g electron-packager`
- * - `ember build --environment=electron`
- */
-
-gulp.task('electron', ['build-electron'], shell.task([
-	'electron-packager dist Radio4000 --out=dist --platform=all --arch=x64 --asar --prune --version=0.29.2 --overwrite --icon=dist/images/logos/radio4000.icns'
+gulp.task('deploy:dev', ['critical'], shell.task([
+	'mv dist/index.html dist/200.html',
+	'surge dist much.radio4000.com'
 ]));
-
-gulp.task('build-electron', shell.task([
-	'ember build --environment=electron'
-]));
-
-// Upload dist to dev
-gulp.task('deploy-dev', function () {
-	rsync({
-		src: 'dist/',
-		dest: 'oskarrough@web461.webfaction.com:/home/oskarrough/webapps/radio_dev',
-		ssh: true,
-		recursive: true
-		// deleteAll: true // Careful, this could cause data loss
-	}, function (error) {
-		if (error) {
-			console.log(error.message);
-		} else {
-			console.log('Successfully deployed to dev.radio4000.com');
-			console.log('Note: make sure you deployed using the correct "firebaseURL" in environement.js');
-		}
-	});
-});
 
 // Upload dist to live
-gulp.task('deploy-live', function () {
+gulp.task('deploy:live', function () {
 	rsync({
 		src: 'dist/',
 		dest: 'oskarrough@web461.webfaction.com:/home/oskarrough/webapps/radio',
@@ -66,3 +34,22 @@ gulp.task('deploy-live', function () {
 		}
 	});
 });
+
+/**
+ * Create a native Linux, OS X and Windows app using electron.
+
+	IMPORTANT! Before doing this, you have to:
+
+	- check public/main.js and choose if you want to use radio4000.com
+	or a local version of the app for building
+	- install `npm i -g electron-packager`
+	- `ember build --environment=electron`
+ */
+
+gulp.task('electron', ['build-electron'], shell.task([
+	'electron-packager dist Radio4000 --out=dist --platform=all --arch=x64 --asar --prune --version=0.29.2 --overwrite --icon=dist/images/logos/radio4000.icns'
+]));
+
+gulp.task('build-electron', shell.task([
+	'ember build --environment=electron'
+]));
