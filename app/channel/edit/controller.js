@@ -162,6 +162,12 @@ export default Ember.Controller.extend(EmberValidations, {
 			channel.save().then(() => {
 				debug('Saved --> channel');
 				this.transitionToRoute('channel', this.get('model.slug'));
+			}).catch(() => {
+				// This get triggered for exemple when firebase.security do not validate
+				// TODO make server errors better handled
+				debug('Channel did NOT save, probably firebase.securityRules');
+			}).finally(() => {
+				// anyways, reset UI
 				this.set('isSaving', false);
 			});
 		},
