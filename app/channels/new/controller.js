@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import clean from 'radio4000/utils/clean';
 import randomText from 'radio4000/utils/random-text';
+import channelConst from 'radio4000/utils/channel-const';
 import EmberValidations from 'ember-validations';
 
 const {debug, computed} = Ember;
@@ -13,8 +14,8 @@ export default Ember.Controller.extend(EmberValidations, {
 	validations: {
 		title: {
 			length: {
-				minimum: 4,
-				maximum: 32
+				minimum: channelConst.titleMinLength,
+				maximum: channelConst.titleMaxLength
 			}
 		}
 	},

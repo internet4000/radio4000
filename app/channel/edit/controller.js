@@ -1,13 +1,39 @@
 import Ember from 'ember';
 import clean from 'radio4000/utils/clean';
 import channelConst from 'radio4000/utils/channel-const';
+import EmberValidations from 'ember-validations';
 
 const {debug, computed, observer} = Ember;
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(EmberValidations, {
 	didCacheSlug: false,
 	titleMaxLength: channelConst.titleMaxLength,
 	titleMinLength: channelConst.titleMinLength,
+
+	// form validations and resulting errors
+	showErrors: false,
+	validations: {
+		'model.title': {
+			length: {
+				minimum: channelConst.titleMinLength,
+				maximum: channelConst.titleMaxLength
+			}
+		},
+		'model.slug': {
+			length: {
+				minimum: channelConst.titleMinLength,
+				maximum: channelConst.titleMaxLength
+			}
+		},
+		'model.body': {
+			length: {
+				maximum: channelConst.descriptionMaxLength
+			}
+		}
+		// TODO use a custom regex validation
+		// 'model.url': {
+		// }
+	},
 
 	cacheSlug: computed('model.slug', function () {
 		this.cachedSlug = this.get('model.slug');
@@ -36,14 +62,6 @@ export default Ember.Controller.extend({
 			});
 		});
 	},
-
-	isSlugTooShort: computed('model.slug', function () {
-		return this.get('model.slug.length') < this.get('titleMinLength');
-	}),
-
-	isSlugTooLong: computed('model.slug', function () {
-		return this.get('model.slug.length') >= this.get('titleMaxLength');
-	}),
 
 	isSlugTaken: computed('model.slug', function () {
 		const protectedSlugs = ['about', 'job', 'jobs',
@@ -83,13 +101,7 @@ export default Ember.Controller.extend({
 
 		return new Ember.RSVP.Promise((resolve, reject) => {
 			// Make sure the new slug isn't empty or already taken
-			if (Ember.isEmpty(slug)) {
-				reject(new Error(`Sorry, the URL can not be empty. Please enter a URL you'd like for your radio. If you have no clue, enter the title.`));
-			} else if (this.get('isSlugTooLong')) {
-				reject(new Error(`Too long. Keep it below ${this.titleMaxLength}, please.`));
-			} else if (this.get('isSlugTooShort')) {
-				reject(new Error(`Too short. Keep it above ${this.titleMinLength}, please.`));
-			} else if (this.get('slugIsTaken')) {
+			if (this.get('slugIsTaken')) {
 				reject(new Error(`Sorry, ${slug} is already taken.\n\nPlease try another url.`));
 			}
 
@@ -108,24 +120,32 @@ export default Ember.Controller.extend({
 
 	actions: {
 		trySave() {
-			let slugDidChange = (this.get('cachedSlug') !== this.get('model.slug'));
-			this.set('isSaving', true);
+			this.validate().then(() => {
+				debug('form validates!!!');
 
-			if (slugDidChange) {
-				this.validateSlug().then(cleanedSlug => {
-					this.set('model.slug', cleanedSlug);
+				let slugDidChange = (this.get('cachedSlug') !== this.get('model.slug'));
+				this.set('isSaving', true);
+
+				if (slugDidChange) {
+					this.validateSlug().then(cleanedSlug => {
+						this.set('model.slug', cleanedSlug);
+						this.send('save');
+					}, error => {
+						Ember.debug(error);
+						// reset the slug
+						this.set('slug', '');
+						this.set('isSaving', false);
+					});
+				} else if (this.get('model.hasDirtyAttributes')) {
 					this.send('save');
-				}, error => {
-					Ember.debug(error);
-					// reset the slug
-					this.set('slug', '');
-					this.set('isSaving', false);
-				});
-			} else if (this.get('model.hasDirtyAttributes')) {
-				this.send('save');
-			} else {
-				this.send('cancelEdit');
-			}
+				} else {
+					this.send('cancelEdit');
+				}
+			}).catch(() => {
+				// show errors on forms, why does it not validate
+				debug('form not validating…');
+				this.set('showErrors', true);
+			});
 		},
 
 		deleteImage() {

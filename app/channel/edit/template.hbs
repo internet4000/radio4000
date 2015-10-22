@@ -32,6 +32,7 @@
 						required="required"
 						maxlength=titleMaxLength
 						minlength=titleMinLength}}
+					{{errors-display showErrors=showErrors errors=errors.model.title}}
 				</div>
 				<div class="Form-group">
 					<label for="body" >Description</label>
@@ -39,6 +40,7 @@
 						value=model.body
 						maxlength=channelDescriptionMaxLength
 						placeholder="What is your radio about?"}}
+					{{errors-display showErrors=showErrors errors=errors.model.body}}
 				</div>
 				<div class="Form-group">
 					<label for="slug">URL</label>
@@ -49,6 +51,7 @@
 						value=model.slug
 						placeholder="channel-slug"
 						required="required"}}
+					{{errors-display showErrors=showErrors errors=errors.model.slug}}
 				</div>
 				<div class="Form-group">
 					<label for="link">Link</label>
@@ -56,7 +59,9 @@
 						id="link"
 						value=model.link
 						placeholder="Your homepage" }}
+					{{errors-display showErrors=showErrors errors=errors.model.url}}
 				</div>
+
 				<div class="Form-group Form--save">
 					<button type="submit" class="Btn Btn--primary" disabled={{isSaving}}>
 						{{#if isSaving}}Saving…{{else}}Save radio{{/if}}
