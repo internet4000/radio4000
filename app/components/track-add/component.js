@@ -1,16 +1,38 @@
 import Ember from 'ember';
 import config from '../../config/environment';
 import youtube from 'radio4000/utils/youtube';
+import EmberValidations from 'ember-validations';
 
 const {debug, computed, observer} = Ember;
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(EmberValidations, {
 	box: false,
 
-	// Check if the track is valid before saving
-	isValid: computed('url', 'title', function () {
-		return this.get('url') && this.get('title');
-	}),
+	// validations
+	showErrors: false,
+	validations: {
+		url: {
+			presence: true,
+			// TODO make a check for utube URL regex
+			length: {
+				// http://you.be
+				minimum: 13
+			}
+		},
+		title: {
+			presence: true,
+			length: {
+				// http://dougscripts.com/itunes/itinfo/id3tags00.php
+				// artist + songTitle
+				maximum: 60
+			}
+		},
+		body: {
+			length: {
+				maximum: 300
+			}
+		}
+	},
 
 	// This gets called when you paste something into the input-url component
 	// it takes a URL and turns it into a YouTube ID which we use to query the API for a title
@@ -25,6 +47,7 @@ export default Ember.Component.extend({
 		let id = youtube(url);
 
 		if (!id) {
+			// TODO make this warn become part of the validation error messages
 			Ember.warn('Could not detect a YouTube ID from this URL: ' + url);
 			return false;
 		}
@@ -37,6 +60,7 @@ export default Ember.Component.extend({
 	// This gets called when you paste something into the input-url component
 	// it takes a URL and turns it into a YouTube ID which we use to query the API for a title
 	setTitle() {
+		// TODO make this a service?
 		let id = this.get('youtubeId');
 		let endpoint = `https://www.googleapis.com/youtube/v3/videos?id=${id}&key=${config.youtubeApiKey}&fields=items(id,snippet(title))&part=snippet`;
 		debug('setTitle');
@@ -70,19 +94,21 @@ export default Ember.Component.extend({
 
 	actions: {
 		submit() {
-			if (!this.get('isValid')) {
-				Ember.debug('not valid');
+			// first validate the track object
+			this.validate().then(() => {
+				Ember.debug('Track validates!');
+				// we let the route decide which model to use
+				let trackObject = {
+					url: this.get('url'),
+					title: this.get('title'),
+					body: this.get('body')
+				};
+				this.sendAction('submit', trackObject);
+			}).catch(() => {
+				this.set('showErrors', true);
+				Ember.debug('Track does not validate…');
 				return;
-			}
-
-			// we let the route decide which model to use
-			let trackObject = {
-				url: this.get('url'),
-				title: this.get('title'),
-				body: this.get('body')
-			};
-
-			this.sendAction('submit', trackObject);
+			});
 		},
 		cancel() {
 			this.sendAction('cancel');

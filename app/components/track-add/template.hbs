@@ -2,12 +2,14 @@
 	<div class="Form-group">
 		<label>URL
 			{{focus-input id="trackUrl" type="url" value=url placeholder="Paste in a YouTube link" required="required" autofocus="autofocus"}}
+			{{errors-display showErrors=showErrors errors=errors.url}}
 		</label>
 	</div>
 
 	<div class="Form-group Form-group--relative">
 		<label>Title
 			{{input id="trackTitle" value=title placeholder="Enter the track title" required="required"}}<br>
+			{{errors-display showErrors=showErrors errors=errors.title}}
 		</label>
 		{{!-- DONT DELETE {{#if isFetchingTitle}}<p class="Form-groupStatus">Updating…</p>{{/if}}
 		{{youtube-search query=model.title action="addFromSearch"}} --}}
@@ -16,6 +18,7 @@
 	<div class="Form-group">
 		<label>Description
 			{{input id="trackBody" value=body placeholder="Fantastic track! #fantastic (optional)"}}<br>
+			{{errors-display showErrors=showErrors errors=errors.body}}
 		</label>
 	</div>
 
