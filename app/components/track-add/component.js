@@ -9,6 +9,7 @@ export default Ember.Component.extend(EmberValidations, {
 	box: false,
 
 	// validations
+	// TODO make this a mixin with track.edit
 	showErrors: false,
 	validations: {
 		url: {

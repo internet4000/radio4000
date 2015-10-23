@@ -6,6 +6,7 @@ export default Ember.Component.extend(EmberValidations, {
 
 	// validations
 	showErrors: false,
+	// TODO make this a mixin with track.add
 	validations: {
 		'track.url': {
 			presence: true,
