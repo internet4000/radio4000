@@ -43,6 +43,7 @@ h4 {
 	@extend %font-bold;
 }
 h1,
+h2,
 .Title {
 	@include size-4;
 	margin-bottom: 0.25rem;
@@ -59,7 +60,6 @@ h1,
 		color: $text-color;
 	}
 }
-h2,
 .Subtitle {
 	@include size-3;
 	@media (min-width: $layout-sm) {
