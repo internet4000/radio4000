@@ -5,11 +5,9 @@
 
 <section class="Container">
 	<p class="SingleNote">
-		{{#if session.currentUser.channels.firstObject}}
-			<strong>New!</strong> Add a track in a second with the {{#link-to 'channel.add' session.currentUser.channels.firstObject}}bookmarklet{{/link-to}}.
-		{{else}}
-			<strong>Welcome!</strong> {{#link-to 'intro'}}Get introduced to Radio4000.{{/link-to}}
-		{{/if}}
+		{{#unless session.currentUser.channels.firstObject}}
+			Welcome! Start exploring radios or {{#link-to 'intro'}}get introduced to Radio4000.{{/link-to}}
+		{{/unless}}
 	</p>
 </section>
 
