@@ -1,12 +1,15 @@
 import Ember from 'ember';
 
-export default Ember.Route.extend({
+const {Route, RSVP} = Ember;
+
+export default Route.extend({
 	model() {
-		return Ember.RSVP.hash({
+		return RSVP.hash({
 			featured: this.store.query('channel', {
 				orderBy: 'isFeatured',
 				equalTo: true
-			})
+			}),
+			userChannel: this.get('session.currentUser.channels.firstObject')
 		});
 	}
 });
