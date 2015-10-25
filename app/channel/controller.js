@@ -16,25 +16,25 @@ export default Ember.Controller.extend({
 	// 	return window.moment(date).subtract(1, 'days').fromNow();
 	// }),
 
-	// canEdit: computed('model', 'session.currentUser.channels.firstObject', function () {
-	// 	const channel = this.get('model');
-	// 	const userChannel = this.get('session.currentUser.channels.firstObject');
+	canEdit: computed('model', 'session.currentUser.channels.firstObject', function () {
+		const channel = this.get('model');
+		const userChannel = this.get('session.currentUser.channels.firstObject');
 
-	// 	// debug(channel);
-	// 	// debug(userChannel);
+		// debug(channel);
+		// debug(userChannel);
 
-	// 	// first avoid both props being null === null which equals true (lol)
-	// 	if (channel === null || userChannel === null || userChannel === undefined) {
-	// 		return false;
-	// 	}
+		// first avoid both props being null === null which equals true (lol)
+		if (channel === null || userChannel === null || userChannel === undefined) {
+			return false;
+		}
 
-	// 	// then check
-	// 	const canEdit = (channel.get('id') === userChannel.get('id'));
-	// 	// debug('checking canEdit');
-	// 	// debug(canEdit);
+		// then check
+		const canEdit = (channel.get('id') === userChannel.get('id'));
 
-	// 	return canEdit;
-	// }),
+		// debug('checking canEdit');
+		// debug(canEdit);
+		return canEdit;
+	}),
 
 	// isWelcomed: computed('model.tracks.firstObject', 'model.images.firstObject', 'model.favoriteChannels.firstObject', 'canEdit', function () {
 	// 	let canEdit = this.get('canEdit');
