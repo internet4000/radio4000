@@ -8,11 +8,11 @@
 // Stretch the player fullscreen
 #EmberYoutube-player {
 	@include fullscreen {
-		top: rem($bar-height);
+		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
-		height: calc(100% - 108px); // $bar-height*2 + $progress-height
+		height: calc(100% - 60px); // $bar-height*2 + $progress-height
 		bottom: rem($bar-height);
 		z-index: 3; // on top of channel
 	}
@@ -30,6 +30,7 @@
 .Bar {
 	@include fullscreen {
 		background-color: #000; // match youtube player ui color
+		background: linear-gradient(#000, #000);
 	}
 }
 

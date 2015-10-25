@@ -32,6 +32,14 @@
 		padding-left: 0;
 	}
 }
+.Container--tight {
+	padding-right: 0.5rem;
+	padding-left: 0.5rem;
+	@media (min-width: $layout-m) {
+		padding-right: 1rem;
+		padding-left: 1rem;
+	}
+}
 
 // @todo this should be in .Grid
 .Container--left {

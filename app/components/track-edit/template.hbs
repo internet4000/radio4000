@@ -2,18 +2,21 @@
 	<div class="Form-group">
 		<label>URL
 			{{input type="url" placeholder="Copy in a YouTube URL" value=track.url required="required"}}
+			{{errors-display showErrors=showErrors errors=errors.track.url}}
 		</label>
 	</div>
 
 	<div class="Form-group">
 		<label>Title
 			{{input value=track.title placeholder="Title" required="required"}}
+			{{errors-display showErrors=showErrors errors=errors.track.title}}
 		</label>
 	</div>
 
 	<div class="Form-group">
 		<label>Description
 			{{input type="text" value=track.body placeholder="Description"}}
+			{{errors-display showErrors=showErrors errors=errors.track.body}}
 		</label>
 	</div>
 

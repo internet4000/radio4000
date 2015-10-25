@@ -10,5 +10,5 @@ export default Ember.Route.extend({
 		search: {
 			replace: true
 		}
-  }
+	}
 });

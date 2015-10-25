@@ -2,7 +2,7 @@
 
 	{{#if player.model}}
 		<div class="Playback-title" title="Current track / go to current radio">
-			{{#link-to 'channel.index' player.model.channel}}
+			{{#link-to 'track' player.model.channel player.model}}
 				{{player.model.title}}
 				<span class="Playback-channel">({{player.model.channel.title}})</span>
 			{{/link-to}}
@@ -10,20 +10,21 @@
 	{{/if}}
 
 	<div class="Playback-buttons">
-		<label class="Playback-shuffle Btn Btn--text {{if player.isShuffled 'is-active'}}" for="isShuffled" title="Toggle shuffle playback">
+		<label class="Playback-shuffle Btn Btn--text {{if player.isShuffling 'is-active'}}" for="isShuffling" title="Toggle shuffle playback">
 			{{x-icon i='shuffle'}}
-			{{input type="checkbox" id="isShuffled" checked=player.isShuffled class="is-hidden"}}
+			{{input type="checkbox" id="isShuffling" checked=player.isShuffling class="is-hidden"}}
 		</label>
 		<button class="NonBtn" {{action 'prev' model}} title="Previous track">
 			{{x-icon i='previous'}}
 		</button>
 
+		{{!-- {{player/play-pause}} --}}
 		{{#if player.isPlaying}}
-			<button class="NonBtn" {{action 'togglePlay' target="emberYoutube"}} title="Pause track">
+			<button class="NonBtn" {{action 'togglePlay' target="radioDevice"}} title="Pause track">
 				{{x-icon i='pause'}}
 			</button>
 		{{else}}
-			<button class="NonBtn" {{action 'togglePlay' target="emberYoutube"}} title="Play track">
+			<button class="NonBtn" {{action 'togglePlay' target="radioDevice"}} title="Play track">
 				{{x-icon i='play'}}
 			</button>
 		{{/if}}

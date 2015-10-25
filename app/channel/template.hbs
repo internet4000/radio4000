@@ -1,19 +1,55 @@
+{{!-- {{#if canEdit}}
+	{{#unless isWelcomed}}
+		<div class="Blankstate">
+			<h4 class="Blankstate-title">Welcome to Radio4000</h4>
+			<p>Your radio has been created!</p>
+			<p>Here is what you could do to start broadcasting 🚀</p>
+			<div class="Blankstate-actions">
+				{{#link-to 'channel.add' (query-params url="https://www.youtube.com/watch?v=ymdssZOAx3Q")}}
+					<label>
+						{{input type='checkbox' checked=model.tracks.firstObject}} Add your first track
+					</label>
+				{{/link-to}}
+				{{#link-to 'channel.edit'}}
+					<label>
+						{{input type='checkbox' checked=model.images.firstObject}} Customize your radio with an image
+					</label>
+				{{/link-to}}
+				{{#link-to 'channels' }}
+					<label>
+						{{input type='checkbox' checked=model.favoriteChannels.firstObject}} Find a radio you like and add it to your favorites
+					</label>
+				{{/link-to}}
+			</div>
+		</div>
+	{{/unless}}
+{{/if}}
+ --}}
+
 <article class="Channel Channel--detail {{if canEdit 'canEdit'}}">
 	<div class="Channel-header">
-		<div class="Container Container--full">
+		<div class="Container Container--full Container--tight">
 
 			<div class="Channel-media">
-				<div class="Channel-cover">
-					{{channel-cover image=model.coverImage onPlay="play"}}
-				</div>
-				<button class="Btn" {{action 'play'}}>
-					{{x-icon i="play"}} Play now
-				</button>
+				{{#if canEdit}}
+					{{#link-to 'channel.edit' model}}
+						<div class="Channel-cover">
+							{{channel-cover image=model.coverImage onPlay="play"}}
+						</div>
+					{{/link-to}}
+				{{else}}
+					<div class="Channel-cover">
+						{{channel-cover image=model.coverImage onPlay="play"}}
+					</div>
+				{{/if}}
 			</div>
 
 			<div class="Channel-body">
-
 				<div class="Channel-titleSection">
+					<div class="Channel-playback">
+						{{playback/play-shuffle-btn channel=model}}
+					</div>
+
 					<h1 class="Channel-title">
 						{{#link-to 'channel' model}}
 							{{model.title}}
@@ -26,6 +62,8 @@
 						</span>
 					{{/unless}}
 				</div>
+
+
 
 				{{!-- <p class="Muted LastUpdated">({{lastUpdatedFormatted}})</p> --}}
 
@@ -48,7 +86,10 @@
 		</div>
 	</div>
 
-	<nav class="Tabs">
+	<nav class="Tabs{{!--  Tabs--toHorizontal --}}">
+		{{!-- {{#link-to 'channel.dashboard' class="Tabs-item" title="Dashboard, a summary of this radio"}}
+			Dashboard
+		{{/link-to}} --}}
 		{{#link-to 'channel.index' class="Tabs-item" title="All tracks"}}
 			{{!-- {{model.tracks.length}} --}} Tracks
 		{{/link-to}}
@@ -60,7 +101,9 @@
 		{{/link-to}}
 	</nav>
 
-	<div class="Channel-outlet">
-		{{outlet}}
-	</div>
+	{{outlet}}
 </article>
+
+<div class="Widgets Widgets--tracks Container Container--full Section Section--space">
+	{{outlet 'channel-widgets'}}
+</div>

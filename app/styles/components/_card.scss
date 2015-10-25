@@ -1,13 +1,7 @@
 .ChannelCard {
-	overflow: hidden;
+	position: relative;
 	padding-bottom: 1rem;
 	background-color: $white;
-	.LoaderCircle {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-	}
 }
 .ChannelCard-title,
 .ChannelCard-body {
@@ -30,21 +24,68 @@
 	@include size-0;
 	color: $dark;
 }
+.ChannelCard-playback {
+	margin-top: -2rem;
+	margin-left: -5px;
+	margin-bottom: 1rem;
+}
+.ChannelCard-playback,
+.Channel-playback {
+	// remove default margin because icon is alone
+	[class^="icon-"],
+	[class*=" icon-"] {
+		margin-right: auto;
+	}
+}
+.ChannelCard-overlayBtn {
+	position: absolute;
+	top: 0.3rem;
+	right: 0.3rem;
+}
+.ChannelCard-overlayBtn .Btn {
+	display: flex;
+	font-size: 1.4rem;
+	background: none;
+	font-size: 1.4rem;
+	border: 0;
+	border-radius: 50%;
+	padding: 0.6rem;
+	background: rgba(black, 0);
+	color: rgba(white,0.8);
+	transition: background 200ms, transform 200ms $easing4;
+	transform: scale(0.95);
+	svg {
+		left: auto !important;
+		top: auto !important;
+	}
+	&:hover,
+	&.is-loading {
+		background: rgba(black, 0.4);
+		color: rgba(white, 1);
+		transform: scale(1);
+		border-radius: 50%;
+	}
+	&:active {
+		transform: scale(0.98);
+	}
+	&.is-loading {
+		transition-duration: 800ms;
+		background-color: $primary-color;
+	}
+}
 
 /**
  * modifier
  **/
 
-.ChannelCard {
-	&.ChannelCard--text {
-		@include size-1;
-		position: relative;
-		padding: 1rem;
-		color: $gray;
-		background-color: transparent;
+.ChannelCard--text {
+	@include size-1;
+	position: relative;
+	padding: 1rem;
+	color: $gray;
+	background-color: transparent;
 
-		p:last-child {
-			margin-bottom: 0;
-		}
+	p:last-child {
+		margin-bottom: 0;
 	}
 }

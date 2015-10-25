@@ -24,11 +24,14 @@
 <div class="Section">
 	{{#if isGrid}}
 		<div class="Container Container--full">
-			{{#each-grid items=sortedChannels as |item|}}
-				{{#link-to 'channel' item}}
+			{{#if sortedChannels}}
+				{{#each-grid items=sortedChannels as |item|}}
 					{{channel-card channel=item}}
-				{{/link-to}}
-			{{/each-grid}}
+				{{/each-grid}}
+			{{else}}
+				<p>Tuning radios…</p>
+				{{!-- <p><img src="images/spinner.png" width="16" alt="Loading radios…"></p> --}}
+			{{/if}}
 		</div>
 	{{else}}
 		{{channels-list channels=sortedChannels}}

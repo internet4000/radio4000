@@ -40,5 +40,11 @@
 }
 .Logo-img {
 	vertical-align: middle;
-	max-height: 36px;
+	max-height: 21px;
+	@media (min-width: $layout-s) {
+		max-height: 28px;
+	}
+	@media (min-width: $layout-sm) {
+		max-height: 32px;
+	}
 }

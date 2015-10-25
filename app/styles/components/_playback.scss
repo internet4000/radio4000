@@ -15,6 +15,10 @@
 	.Btn {
 		border-width: 0;
 	}
+	[class^="icon-"],
+	[class*=" icon-"] {
+		margin-right: 0;
+	}
 }
 .Playback-title {
 	@include size-1;

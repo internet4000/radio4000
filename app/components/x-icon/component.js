@@ -1,4 +1,10 @@
+/**
+ * {{x-icon i='play'}}
+ **/
+
 import Ember from 'ember';
+
+const {computed} = Ember;
 
 export default Ember.Component.extend({
 	tagName: 'svg',
@@ -6,12 +12,12 @@ export default Ember.Component.extend({
 	// this creates a class name like "icon-iconName" (iconName comes from the variable "i")
 	classNameBindings: ['className'],
 
-	className: Ember.computed('i', function() {
+	className: computed('i', function () {
 		let iconName = this.get('i');
 		return `icon-${iconName}`;
 	}),
 
-	url: Ember.computed('i', function() {
+	url: computed('i', function () {
 		let iconName = this.get('i');
 		return `images/icons/sprite.svg#icon-${iconName}`;
 	})

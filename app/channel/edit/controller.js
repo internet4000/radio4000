@@ -1,18 +1,43 @@
 import Ember from 'ember';
 import clean from 'radio4000/utils/clean';
-// import channelConst from 'radio4000/utils/channel-const';
+import channelConst from 'radio4000/utils/channel-const';
+import EmberValidations from 'ember-validations';
 
-const { debug, computed, observer } = Ember;
+const {debug, Controller, computed, observer} = Ember;
 
-export default Ember.Controller.extend({
+export default Controller.extend(EmberValidations, {
 	didCacheSlug: false,
 
-	cacheSlug: computed('model.slug', function() {
+	// form validations and resulting errors
+	showErrors: false,
+	validations: {
+		'model.title': {
+			length: {
+				minimum: channelConst.titleMinLength,
+				maximum: channelConst.titleMaxLength
+			}
+		},
+		'model.slug': {
+			length: {
+				minimum: channelConst.titleMinLength,
+				maximum: channelConst.titleMaxLength
+			}
+		},
+		'model.body': {
+			length: {
+				maximum: channelConst.descriptionMaxLength
+			}
+		}
+		// TODO use a custom regex validation
+		// 'model.url': {}
+	},
+
+	cacheSlug: computed('model.slug', function () {
 		this.cachedSlug = this.get('model.slug');
 		this.toggleProperty('didCacheSlug');
 	}),
 
-	updateImage: observer('newImage', function() {
+	updateImage: observer('newImage', function () {
 		const newImage = this.get('newImage');
 		this.createImage(newImage);
 	}),
@@ -25,7 +50,7 @@ export default Ember.Controller.extend({
 		});
 
 		// save and add it to the channel
-		image.save().then((image) => {
+		image.save().then(image => {
 			debug('Image saved.');
 
 			channel.get('images').addObject(image);
@@ -35,56 +60,53 @@ export default Ember.Controller.extend({
 		});
 	},
 
+	isSlugTaken: computed('model.slug', function () {
+		const protectedSlugs = ['about', 'job', 'jobs',
+			'blog', 'bookmarklet', 'dashboard', 'help',
+			'intro', 'login', '404', 'bunker', 'styleguide'];
+
+		return protectedSlugs.any(slug => slug === this.get('model.slug'));
+	}),
+
+	isSlugFree: computed('model.slug', function () {
+		let cleanedSlug = clean(this.get('model.slug'));
+
+		return new Ember.RSVP.Promise((resolve, reject) => {
+			this.store.query('channel', {
+				orderBy: 'slug',
+				equalsTo: cleanedSlug
+			}).then(channels => {
+				// This filter should not be neccesary because query should do it.
+				const duplicates = channels.filterBy('slug', cleanedSlug);
+
+				// Since slug is already set on the channel there can be 1 duplicate
+				if (duplicates.length <= 1) {
+					resolve(cleanedSlug);
+				} else {
+					reject(new Error('There is another existing channel with the same slug.'));
+				}
+			});
+		});
+	}),
+
 	// Makes sure the slug is valid e.g. not in use by any other channel
 	// not protected and not empty
 	validateSlug() {
+		const slug = this.get('model.slug');
+
 		debug('Validating slug.');
-		const channels = this.store.findAll('channel');
-		const model = this.get('model');
-		const slug = model.get('slug');
-		const protectedSlugs = ['about', 'job', 'jobs', 'blog', 'bookmarklet', 'dashboard', 'help', 'intro', 'login', '404', 'bunker', 'styleguide'];
 
-		let slugIsFree = false;
-		let newSlug = '';
-
-		// Make sure the new slug isn't empty or already taken
-		if (Ember.isEmpty(slug)) {
-			alert('Hey, the URL can not be empty. Please enter the URL you would like your channel to have. If you have no clue, just enter the title.');
-			this.set('slug', '');
-			this.set('isSaving', false);
-			return false;
-		}
-
-		if (protectedSlugs.any((s) => slug === s)) {
-			alert(`Sorry, ${slug} is already taken.\n\nPlease try another url.`);
-			this.set('slug', '');
-			this.set('isSaving', false);
-			return false;
-		}
-
-		// Clean it
-		newSlug = clean(slug);
-
-		// get all channels
-		channels.then((channels) => {
-			let duplicates = channels.filterBy('slug', newSlug);
-
-			// if there is only one duplicate (the same channel) it's free!
-			if (duplicates.get('length') < 2) {
-				slugIsFree = true;
+		return new Ember.RSVP.Promise((resolve, reject) => {
+			// Make sure the new slug isn't empty or already taken
+			if (this.get('slugIsTaken')) {
+				reject(new Error(`Sorry, ${slug} is already taken.\n\nPlease try another url.`));
 			}
 
-			// 3. Set slug accordingly
-			if (slugIsFree) {
-				debug('Setting slug to: ' + newSlug);
-				this.send('save');
-			} else {
-				alert('Sorry, that url is taken. Try another one.');
-
-				// reset the slug
-				this.set('slug', '');
-				this.set('isSaving', false);
-			}
+			this.get('isSlugFree').then(slug => {
+				resolve(slug);
+			}, error => {
+				reject(error);
+			});
 		});
 	},
 
@@ -95,22 +117,36 @@ export default Ember.Controller.extend({
 
 	actions: {
 		trySave() {
-			let slugDidChange = (this.get('cachedSlug') !== this.get('model.slug'));
+			this.validate().then(() => {
+				debug('form validates!!!');
 
-			this.set('isSaving', true);
+				let slugDidChange = (this.get('cachedSlug') !== this.get('model.slug'));
+				this.set('isSaving', true);
 
-			// this avoid validating slugs uneccessary (because it's heavy)
-			if (slugDidChange) {
-				this.validateSlug();
-			} else if (this.get('model.hasDirtyAttributes')) {
-				this.send('save');
-			} else {
-				this.send('cancelEdit');
-			}
+				if (slugDidChange) {
+					this.validateSlug().then(cleanedSlug => {
+						this.set('model.slug', cleanedSlug);
+						this.send('save');
+					}, error => {
+						Ember.debug(error);
+						// reset the slug
+						this.set('slug', '');
+						this.set('isSaving', false);
+					});
+				} else if (this.get('model.hasDirtyAttributes')) {
+					this.send('save');
+				} else {
+					this.send('cancelEdit');
+				}
+			}).catch(() => {
+				// show errors on forms, why does it not validate
+				debug('form not validating…');
+				this.set('showErrors', true);
+			});
 		},
 
 		deleteImage() {
-			this.get('model.coverImage').destroyRecord().then(function() {
+			this.get('model.coverImage').destroyRecord().then(function () {
 				debug('Deleted channel image.');
 			});
 		},
@@ -123,6 +159,12 @@ export default Ember.Controller.extend({
 			channel.save().then(() => {
 				debug('Saved --> channel');
 				this.transitionToRoute('channel', this.get('model.slug'));
+			}).catch(() => {
+				// This get triggered for exemple when firebase.security do not validate
+				// TODO make server errors better handled
+				debug('Channel did NOT save, probably firebase.securityRules');
+			}).finally(() => {
+				// anyways, reset UI
 				this.set('isSaving', false);
 			});
 		},

@@ -1,11 +1,8 @@
 import Ember from 'ember';
 
-const { debug } = Ember;
-
 export default Ember.Route.extend({
 	beforeModel() {
-		// 404 page
-		let channel = this.modelFor('channel');
+		const channel = this.modelFor('channel');
 		if (!channel) {
 			this.transitionTo('404');
 		}
@@ -19,7 +16,7 @@ export default Ember.Route.extend({
 		// Because controllers are singleton,
 		// they keep the tracks between channels.
 		// This avoids it.
-		let cachedId = controller.get('model.id');
+		const cachedId = controller.get('model.id');
 		if (cachedId && cachedId !== model.id) {
 			controller.set('tracks', []);
 		}
@@ -51,7 +48,7 @@ export default Ember.Route.extend({
 
 	// 				// break if we have nothing
 	// 				if (!snapshot.val()) {
-	// 					debug('no value');
+	// 					Ember.debug('no value');
 	// 					return false;
 	// 				}
 
@@ -60,7 +57,7 @@ export default Ember.Route.extend({
 	// 				});
 
 	// 				// go through them
-	// 				Ember.RSVP.all(requests).then((tracks) => {
+	// 				Ember.RSVP.all(requests).then(tracks => {
 	// 					resolve(tracks);
 	// 				}, (reason) => {
 	// 					reject(reason);

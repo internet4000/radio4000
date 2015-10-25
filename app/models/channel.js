@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 
-const { attr, hasMany, belongsTo } = DS;
+const {attr, hasMany, belongsTo} = DS;
 
 /*
  Channel model:
@@ -17,23 +17,36 @@ export default DS.Model.extend({
 	body: attr('string'),
 	isFeatured: attr('boolean'),
 	link: attr('string'),
+
+	// time stamps
 	created: attr('number', {
-		defaultValue() { return new Date().getTime(); }
+		defaultValue() {
+			return new Date().getTime();
+		}
 	}),
 
+	/**
+	 * why this is not working?
+	 * it should update with a date each time a new track added to tracks
+	 * right?
+	 **/
+	// lastUpdated: Ember.computed('tracks.[]', function () {
+	// 	return new Date().getTime();
+	// }),
+
 	// Set the latest image as the cover image
-	coverImage: Ember.computed('images.[]', function() {
+	coverImage: Ember.computed('images.[]', function () {
 		return this.get('images.lastObject');
 	}),
 
 	// relationships
-	images: hasMany('image', { async: true }),
-	tracks: hasMany('track', { async: true }),
-	favoriteChannels: hasMany('channel', { inverse: null, async: true }),
-	channelPublic: belongsTo('channelPublic', { async: true })
+	images: hasMany('image', {async: true}),
+	tracks: hasMany('track', {async: true}),
+	favoriteChannels: hasMany('channel', {inverse: null, async: true}),
+	channelPublic: belongsTo('channelPublic', {async: true})
 
 	// dates
-	// createdDate: Ember.computed('created', function() {
+	// createdDate: Ember.computed('created', function () {
 	// 	return moment(this.get('created')).fromNow();
 	// }),
 });

@@ -2,64 +2,61 @@ import Ember from 'ember';
 import clean from 'radio4000/utils/clean';
 import randomText from 'radio4000/utils/random-text';
 import channelConst from 'radio4000/utils/channel-const';
+import EmberValidations from 'ember-validations';
 
-const { debug, computed } = Ember;
+const {debug, computed} = Ember;
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(EmberValidations, {
 	title: '',
-	titleMaxLength: channelConst.titleMaxLength,
-	titleMinLength: channelConst.titleMinLength,
 	isSaving: false,
-	showValidation: false, // because we don't want it to show before clicking
 
-	cleanSlug: computed('title', function() {
+	// form validation
+	validations: {
+		title: {
+			length: {
+				minimum: channelConst.titleMinLength,
+				maximum: channelConst.titleMaxLength
+			}
+		}
+	},
+	// errors from form validation
+	showErrors: false,
+
+	// cleans the slug from bad things and suffix it with a random string
+	cleanSlug: computed('title', function () {
 		let title = clean(this.get('title'));
 		let random = randomText();
 
 		return `${title}-${random}`;
 	}),
 
-	// check channel.title.length, if not in our size limit, return NOPE
-	isValid: computed('title', function() {
-		const titleLength = this.get('title.length');
-		const tooLong = titleLength >= this.get('titleMaxLength');
-		const tooShort = titleLength < this.get('titleMinLength');
-
-		if (!tooLong && !tooShort) {
-			debug('Title has the right length');
-			return true;
-		} else {
-			debug('Title is either too long or short');
-			return false;
-		}
-	}),
-
 	actions: {
+		// Create a channel record and sends order to save it on parent route
 		create() {
-			let slug = this.get('cleanSlug');
-			let title = this.get('title');
+			// first we do a form validation on channel.title
+			this.validate().then(() => {
+				debug('Form validates!');
+				this.set('isSaving', true);
 
-			this.set('showValidation', true);
+				let slug = this.get('cleanSlug');
+				let title = this.get('title');
+				debug(`title: ${title}`);
 
-			if (!this.get('isValid')) {
-				return;
-			}
+				title = title.trim();
+				debug(`title.trim(): ${title}`);
 
-			debug(title);
-			debug(title.trim());
-
-			title = title.trim();
-
-			debug('can create?');
-
-			// create channel and start saving
-			const channel = this.store.createRecord('channel', {
-				title: title,
-				slug: slug
+				// create channel record
+				const channel = this.store.createRecord('channel', {
+					title: title,
+					slug: slug
+				});
+				// save it on the parent route
+				this.send('saveChannel', channel);
+			}).catch(() => {
+				this.set('showErrors', true);
+				debug('Form does not validate');
+				console.log(this.get('errors'));
 			});
-
-			this.set('isSaving', true);
-			this.send('saveChannel', channel);
 		}
 	}
 });

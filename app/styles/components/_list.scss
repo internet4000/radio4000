@@ -7,7 +7,7 @@
 	padding-left: 0;
 
 	li {
-		border-bottom: 1px solid $mediumlightgray;
+		border-bottom: 1px solid hsl(0, 0%, 91%); // $mediumlightgray
 		line-height: normal;
 		&:before {
 			display: none;
@@ -27,7 +27,8 @@
 			padding-right: 2rem;
 		}
 
-		&:hover {
+		&:hover,
+		&:focus {
 			background-color: hsla(0, 100%, 100%, 0.2);
 			text-decoration: none;
 		}
@@ -50,7 +51,6 @@
 	@include size-1;
 	max-width: 80%;
 	margin: 0;
-	// color: $text-color;
 	color: $gray;
 }
 
@@ -67,10 +67,12 @@
 // Lists with cover images
 .List .Cover {
 	float: left;
-	width: rem(51); // fits with two lines of description
+	// fits with two lines of description
+	width: rem(51);
 	margin-right: 1rem;
 	margin-bottom: 0;
-}
-.List .Cover + .List-title {
-	margin-top: -3px; // align with cover
+	// align with cover
+	+ .List-title {
+		margin-top: -3px;
+	}
 }

@@ -1,12 +1,12 @@
 import Ember from 'ember';
 
-// const { debug, observer } = Ember;
+// const {debug, observer} = Ember;
 
 // in the panel-nav:partial
 export default Ember.Service.extend({
 	// player: Ember.inject.service(),
 
-	// onModelChange: Ember.observer('player.model', function() {
+	// onModelChange: Ember.observer('player.model', function () {
 	// 	let settings = this.get('session.currentUser.settings');
 	//
 	// 	debug('remote control player model changed');
@@ -20,7 +20,7 @@ export default Ember.Service.extend({
 	// 	});
 	// });
 
-	// onRemoteActiveChange: observer('session.currentUser.settings.trackForRemote', function() {
+	// onRemoteActiveChange: observer('session.currentUser.settings.trackForRemote', function () {
 	// 	let settings = this.get('session.currentUser.settings');
 	// 	let track = this.get('session.currentUser.settings.trackForRemote');
 	//

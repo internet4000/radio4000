@@ -21,18 +21,21 @@
 // modifiers
 .Manchet--bigger {
 	h1,
+	h2,
 	p {
 		max-width: 36rem;
 	}
 }
 .Manchet--biggest {
-	h1 {
+	h1,
+	h2 {
 		font-size: 3rem;
 	}
 	p {
 		font-size: 2rem;
 	}
 	h1,
+	h2,
 	p {
 		max-width: 50rem;
 	}

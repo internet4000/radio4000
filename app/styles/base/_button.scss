@@ -2,46 +2,54 @@
 // this allows us to use semantic button elements for other things
 .Btn {
 	-webkit-appearance: none; /* 1 */
-	background: transparent;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0 0.6rem;
+	line-height: 1;
 	cursor: pointer;
-	display: inline-block;
-	line-height: normal; /* 6 */
 	position: relative;
-	text-align: center;
 	text-decoration: none;
 	user-select: none; /* 6 */
 	white-space: normal; /* 7 */
+	background: transparent;
 }
 
 .CustomSelect,
 .Btn {
 	@extend %font-bold;
-	padding: em(6,13) 0.8rem em(5,13);
+	// proper tap areas
+	min-height: 2.1em;
+	// min-width: 2.5em;
 	background-color: $superlightgray;
 	color: $text-color;
-	box-shadow: 0 3px 2px 0 hsla(0, 0%, 0%, 0.06), inset -1px -1px 1px 0 hsla(0, 0%, 0%, 0.02);
-	transition: border-color 150ms, background 150ms, box-shadow 150ms;
-	vertical-align: top;
+	box-shadow: 0 3px 2px 0 hsla(0, 0%, 0%, 0.06),
+					inset -1px -1px 1px 0 hsla(0, 0%, 0%, 0.02);
+	transition: border-color 100ms, background 100ms, box-shadow 100ms;
 
 	// hover and active
 	&:hover,
 	&:active {
-		box-shadow: 0 3px 2px 0 hsla(0, 0%, 0%, 0.12), inset -1px -1px 1px 0 hsla(0, 0%, 0%, 0.02);
 		text-decoration: none;
+		box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.2),
+						inset -1px -1px 1px 0 rgba(0, 0, 0, 0.02);
+		// box-shadow: 0 2px 2px 0 hsla(0, 0%, 0%, 0.12),
+		// 				inset -1px -1px 1px 0 hsla(0, 0%, 0%, 0.02);
 	}
 
 	// active (pressed down)
 	&:active,
 	&.is-active {
-		background-color: $white;
 		outline: none;
+		box-shadow: 0 1px 2px 0 hsla(0, 0% , 0, 0.12),
+						inset -1px -1px 1px 0 hsla(0, 0% , 0, 0.02)
 	}
 
 	// focus
 	&:focus {
 		outline: none;
 		border-color: $primary-color;
-		box-shadow: hsla(0, 0%, 0%, 0.4) 2px 3px 0 0;
+		box-shadow: 0px 2px 2px 0 hsla(0, 0%, 0%, 0.3);
 	}
 
 	// disabled
@@ -72,24 +80,29 @@
 	&.is-flashing {
 		background-color: $yellow;
 	}
-
 }
 
-// Small buttons
+.Btn--full {
+	width: 100%;
+	text-align: center;
+}
 .Btn--small {
-	font-size: rem(11);
-	padding: em(4,11) em(7,11) em(1,11);
+	font-size: rem(12);
 }
-
-// Large buttons
 .Btn--large {
 	@include size-2;
 }
-
-
-// Danger buttons
 .Btn--danger {
 	color: $red;
+}
+.Btn--transparent {
+	border: 2px solid $white;
+	background-image: none;
+	background-color: transparent;
+	color: $white;
+	&:focus {
+		border-color: $white;
+	}
 }
 
 // Buttons that looks like text
@@ -99,7 +112,6 @@
 	background-image: none;
 	background-color: transparent;
 	box-shadow: none;
-	text-align: left;
 	padding-left: 0.4em;
 	padding-right: 0.4em;
 	&:hover,
@@ -132,8 +144,40 @@
 	border: 0 solid transparent;
 	background-color: transparent;
 	outline: none;
+	box-shadow: none;
 
 	&:hover {
 		cursor: pointer;
+	}
+}
+
+/**
+ * Play
+ **/
+
+.Btn-play {
+	.Channel-header & {
+		font-size: 2rem;
+		position: absolute;
+		top: 2.2rem;
+		right: -2.7rem;
+	}
+}
+
+.Btn-play--round {
+	border-radius: 50%;
+	padding-top: 1.7rem;
+	padding-right: 1.3rem;
+	padding-bottom: 2rem;
+	padding-left: 2.5rem;
+}
+.Btn-play--shuffle {
+	.Channel-header & {
+		top: 8.6rem;
+		right: -2.1rem;
+		padding-top: 0.9rem;
+		padding-right: 0.8rem;
+		padding-left: 1.6rem;
+		padding-bottom: 1.3rem;
 	}
 }

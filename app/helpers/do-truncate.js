@@ -12,10 +12,13 @@
 
 import Ember from 'ember';
 
-export default Ember.Helper.helper(function([str, len]) {
-	if (!str) { return ''; }
+export default Ember.Helper.helper(([str, len]) => {
+	if (!str) {
+		return '';
+	}
 
-	if (str.length > len && str.length > 0) {
+	const shouldTruncate = str.length > len && str.length > 0;
+	if (shouldTruncate) {
 		let newString = str + ' ';
 
 		newString = str.substr(0, len);

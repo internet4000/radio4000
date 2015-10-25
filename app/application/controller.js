@@ -1,13 +1,13 @@
 import Ember from 'ember';
 
-const { debug } = Ember;
+const {debug} = Ember;
 
 export default Ember.Controller.extend({
 	player: Ember.inject.service(),
 
 	actions: {
 		transitionToHome() {
-			Ember.debug('transitionToHome');
+			debug('transitionToHome');
 			this.transitionToRoute('application');
 		},
 		ytPlaying() {
@@ -25,7 +25,14 @@ export default Ember.Controller.extend({
 			debug(error);
 
 			// dont do anything on 'invalid parameter'
-			if (error === 2) { return; }
+			if (error === 2) {
+				return;
+			}
+
+			// dont do anything on 'invalid parameter'
+			if (error === 150) {
+				// @TODO mark track as georestricted
+			}
 
 			// otherwise play next
 			this.get('player').next();
@@ -35,7 +42,7 @@ export default Ember.Controller.extend({
 
 // START REMOTE TRACK
 
-// onTrackForRemoteChange: Ember.observer('session.currentUser.settings.trackForRemote', function() {
+// onTrackForRemoteChange: Ember.observer('session.currentUser.settings.trackForRemote', function () {
 // 	let settings = this.get('session.currentUser.settings');
 //
 // 	if (!this.get('player.didPlay')) {
@@ -47,7 +54,7 @@ export default Ember.Controller.extend({
 // 		return;
 // 	}
 //
-// 	settings.then((settings) => {
+// 	settings.then(settings => {
 //
 // 		// make sure it doesn't run too often
 // 		Ember.run.debounce(this, this.setTrackFromRemote, 400, true);
@@ -63,7 +70,7 @@ export default Ember.Controller.extend({
 // 	}
 //
 // 	// open the track (it's a relationship)
-// 	track.then((track) => {
+// 	track.then(track => {
 // 		debug('setting track from remote to ' + track.get('title'));
 // 		this.set('player.model', track);
 // 	});

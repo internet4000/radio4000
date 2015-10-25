@@ -1,25 +1,18 @@
 <div class="BigStep">
 	<div class="BigStep-container Container">
-		<h2 class="BigStep-title">Name your radio</h2>
+		<h2 class="BigStep-title">Give a name to your radio</h2>
 
 		<form class="Form" {{action "create" on="submit"}}>
 
 			<div class="Form-group">
-				{{focus-input value=title required="required" placeholder='For instance: “The Pirate Radio”'
-					maxlength=titleMaxLength minlength=titleMinLength class="Form-bigInput u-alignCenter"}}
-
-				{{#if showValidation}}
-					{{#unless isValid}}
-						<p class="Muted"><span class="Warning">Please keep it between {{titleMinLength}} and {{titleMaxLength}} characters.</span></p>
-					{{/unless}}
-				{{/if}}
-
+				{{focus-input value=title required="required" placeholder='For instance: “The Pirate Radio”' class="Form-bigInput u-alignCenter"}}
+				{{errors-display showErrors=showErrors errors=errors.title}}
 				<p class="Muted">Don't worry, you can change it <em>anytime later!</em></p>
 			</div>
 
 			<div class="Form-group">
 				<div class="BigStep-buttons">
-					<button disabled={{isSaving}} type="submit" class="Btn" title="Create your radio channel">
+					<button disabled={{isSaving}} type="submit" class="Btn Btn--transparent Btn--large" title="Create your radio channel">
 						{{if isSaving 'Creating…' 'Create my radio'}}
 					</button>
 				</div>

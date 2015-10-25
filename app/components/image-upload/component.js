@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+const {observer, on} = Ember;
+
 export default Ember.Component.extend({
 	imageId: null,
 	progressValue: '0',
@@ -9,7 +11,7 @@ export default Ember.Component.extend({
 	showProgress: true,
 	enablePreview: false,
 
-	startCloudinary: Ember.on('didInsertElement', function() {
+	startCloudinary: on('didInsertElement', function () {
 		// const input = this.$('cloudinary_fileupload');
 		const component = this;
 
@@ -17,7 +19,7 @@ export default Ember.Component.extend({
 		// we could listen to these events directly on that component as well, if we like
 
 		// indicate progress
-		this.$().on('fileuploadprogress', function(e, data) {
+		this.$().on('fileuploadprogress', function (e, data) {
 			let value = Math.round((data.loaded * 100.0) / data.total);
 
 			// indicate we're uploading
@@ -26,7 +28,7 @@ export default Ember.Component.extend({
 		});
 
 		// once it's uploaded
-		this.$().on('fileuploaddone', function(e, data) {
+		this.$().on('fileuploaddone', function (e, data) {
 			component.set('imageId', data.result.public_id);
 
 			// reset progress
@@ -35,13 +37,13 @@ export default Ember.Component.extend({
 		});
 	}),
 
-	updatePreview: Ember.observer('imageId', function() {
-		if (!this.get('enablePreview')) { return; }
-
-		let imageId = this.get('imageId');
+	updatePreview: observer('imageId', function () {
+		if (!this.get('enablePreview')) {
+			return;
+		}
 
 		// get image from cloudinary
-		let image = Ember.$.cloudinary.image(imageId, {
+		const image = Ember.$.cloudinary.image(this.get('imageId'), {
 			format: 'jpg',
 			width: 240,
 			height: 240,

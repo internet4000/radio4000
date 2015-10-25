@@ -1,63 +1,56 @@
-{{#if canEdit}}
-	<div class="Container">
-		<form class="Form" {{action 'addTrack' on='submit'}}>
-			<div class="Form-group Form-group--relative">
-				{{input-paste type="url" value=addTrackUrl required="required" pasted="addTrack" placeholder="Paste in a YouTube link to add a track"}}
-				<button type="submit" class="Btn Form-groupStatus" title="Tip: Press enter to add!">Add</button>
+<div class="Channel-outlet">
+	{{#if canEdit}}
+		{{#if hasFewTracks}}
+			<div class="Container">
+				<p>Why don't you add your first tracks? It's just below — try to paste in the URL of a YouTube video!</p>
 			</div>
-		</form>
-	</div>
-{{/if}}
-
-{{#if isAdding}}
-  {{#modal-dialog close="closeModals"}}
-    {{track-add url=addTrackUrl submit="saveTrack" cancel="closeModals"}}
-  {{/modal-dialog}}
-{{/if}}
-
-{{#if isEditing}}
-  {{#modal-dialog close="closeModals"}}
-    {{track-edit track=trackToEdit submit="saveTrack" deleteTrack="deleteTrack" cancel="closeModals"}}
-  {{/modal-dialog}}
-{{/if}}
-
-{{#if tracks}}
-	{{#tracks-list items=tracks as |item|}}
-		{{track-item track=item canEdit=canEdit edit="editTrack" onTransition="transitionToTrack"}}
-	{{/tracks-list}}
-
-	{{!-- <h2>history (debug)</h2>
-	<ul class="List">
-		{{#each player.history as |track|}}
-			<li>
-				{{track-item track=track canEdit=canEdit edit="editTrack"}}
-			</li>
-		{{/each}}
-	</ul>
-	<h2>unplayed (debug)</h2>
-	<ul class="List">
-		{{#each player.unplayed as |track|}}
-			<li>
-				{{track-item track=track canEdit=canEdit edit="editTrack"}}
-			</li>
-		{{/each}}
-	</ul> --}}
-{{else}}
-	<div class="Container Section--space">
-		{{#if canEdit}}
-			<p>No tracks yet. Why don't you add one above?</p>
-		{{else}}
-			<div class="LoaderCircle"><span></span></div>
 		{{/if}}
-	</div>
-{{/if}}
-
-{{#if canEdit}}
-	{{#unless channel.coverImage}}
-		<div class="Container Section--space">
-			<p>Go ahead, {{#link-to 'channel.edit' channel}}choose a nice cover image{{/link-to}} for your radio.</p>
+		<div class="Container">
+			<form class="Form Form--addTrack" {{action 'addTrack' on='submit'}}>
+				<label class="">Add a new track to your radio</label>
+				<div class="Form-group Form-group--relative">
+					{{input-paste type="url" value=addTrackUrl required="required" pasted="addTrack" placeholder="Paste in a YouTube link to add a track"}}
+					<button type="submit" class="Btn Form-groupStatus" title="Tip: Press enter to add!">Add</button>
+				</div>
+			</form>
 		</div>
-	{{/unless}}
-{{/if}}
+	{{/if}}
 
-{{outlet}}
+	{{#if isAdding}}
+	  {{#modal-dialog close="closeModals"}}
+	    {{track-add url=addTrackUrl submit="saveTrack" cancel="closeModals"}}
+	  {{/modal-dialog}}
+	{{/if}}
+
+	{{#if isEditing}}
+	  {{#modal-dialog close="closeModals"}}
+	    {{track-edit track=trackToEdit submit="saveTrack" deleteTrack="deleteTrack" cancel="closeModals"}}
+	  {{/modal-dialog}}
+	{{/if}}
+
+	{{#if tracks.isLoaded}}
+		{{#tracks-list items=tracks as |item|}}
+			{{track-item track=item canEdit=canEdit edit="editTrack" onTransition="transitionToTrack"}}
+		{{/tracks-list}}
+
+		{{#if canEdit}}
+			{{#unless model.coverImage}}
+				<div class="Container Section--space">
+					<p>Wouldn't it be nicer with an image for your radio? {{#link-to 'channel.edit' model}}Edit your radio to upload one{{/link-to}}.</p>
+				</div>
+			{{/unless}}
+		{{else}}
+			{{#unless tracks.length}}
+				<div class="Container Section--space">
+				  <p>Ooh, there are no tracks in this radio yet.</p>
+				</div>
+			{{/unless}}
+		{{/if}}
+	{{else}}
+		<div class="Container Section--space">
+			{{is-loading}}
+		</div>
+	{{/if}}
+
+	{{outlet}}
+</div>

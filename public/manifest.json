@@ -9,6 +9,7 @@
   "start_url": "index.html",
   "display": "standalone",
   "orientation": "portrait",
+  "background_color": "#5d1ae6",
 
   "app": {
     "launch": {

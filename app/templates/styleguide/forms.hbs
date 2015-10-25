@@ -9,18 +9,42 @@
 		<h2>Buttons</h2>
 
 		<p>
-			<button class="Btn">Button</button>
-			<br><br>
-			<button class="Btn Btn--danger">Danger button</button>
-			<br><br>
-			<button class="Btn Btn--primary">Primary button</button>
-			<br><br>
-			<button class="Btn Btn--text">Text button</button>
-		</p>
-		<p>
+			<button class="Btn">Button</button><br>
+			<button class="Btn Btn--primary">Primary button</button><br>
+			<button class="Btn Btn--danger">Danger button</button><br>
+			<button class="Btn Btn--full">Full button</button><br>
+			<button class="Btn Btn--small">Small button</button><br>
+			<button class="Btn Btn--text">Text button</button><br>
+			<button class="Btn NonBtn">Btn + NonBtn</button><br>
+			<button class="NonBtn">NonBtn</button>
 			<button class="Btn Btn--large">Large button</button>
-			<br><br>
-			<button class="Btn Btn--primary Btn--large">Large and primary button</button>
+			<button class="Btn Btn--primary Btn--large">Primary and large</button>
+		</p>
+
+		<p>
+			<button class="Btn">{{x-icon i="play"}} Button</button><br>
+			<button class="Btn Btn--primary">{{x-icon i="play"}} Primary button</button><br>
+			<button class="Btn Btn--danger">{{x-icon i="play"}} Danger button</button><br>
+			<button class="Btn Btn--full">{{x-icon i="play"}} Full button</button><br>
+			<button class="Btn Btn--small">{{x-icon i="play"}} Small button</button><br>
+			<button class="Btn Btn--text">{{x-icon i="play"}} Text button</button><br>
+			<button class="Btn NonBtn">{{x-icon i="play"}} Btn + NonBtn</button><br>
+			<button class="NonBtn">{{x-icon i="play"}} NonBtn</button>
+			<button class="Btn Btn--large">{{x-icon i="play"}} Large button</button>
+			<button class="Btn Btn--primary Btn--large">{{x-icon i="play"}} Primary and large</button>
+		</p>
+
+		<p>
+			<button class="Btn">{{x-icon i="play"}} Button</button><br>
+			<button class="Btn Btn--primary">{{x-icon i="shuffle"}} Primary button</button><br>
+			<button class="Btn Btn--danger">{{x-icon i="pause"}} Danger button</button><br>
+			<button class="Btn Btn--full">{{x-icon i="play"}} Full button</button><br>
+			<button class="Btn Btn--small">{{x-icon i="shuffle"}} Small button</button><br>
+			<button class="Btn Btn--text">{{x-icon i="play"}} Text button</button><br>
+			<button class="Btn NonBtn">{{x-icon i="shuffle"}} Btn + NonBtn</button><br>
+			<button class="NonBtn">{{x-icon i="play"}} NonBtn</button>
+			<button class="Btn Btn--large">{{x-icon i="shuffle"}} Large button</button>
+			<button class="Btn Btn--primary Btn--large">{{x-icon i="shuffle"}} Primary and large</button>
 		</p>
 
 		<h3>Button group</h3>
@@ -35,6 +59,23 @@
 		<h3>A group of button groups</h3>
 
 		<div class="BtnGroupWrapper">
+			{{#btn-group}}
+				<button class="Btn">Cheese</button>
+				<button class="Btn">And</button>
+				<button class="Btn">Bread</button>
+			{{/btn-group}}
+			{{#btn-group}}
+				<button class="Btn">Another</button>
+				<button class="Btn">Button</button>
+				<button class="Btn">Group</button>
+				<button class="Btn">With</button>
+				<button class="Btn">Tuna</button>
+			{{/btn-group}}
+		</div>
+
+		<h3>A group of button groups, flex-box: justify-content</h3>
+
+		<div class="BtnGroupWrapper BtnGroupWrapper--full">
 			{{#btn-group}}
 				<button class="Btn">Cheese</button>
 				<button class="Btn">And</button>
@@ -66,6 +107,16 @@
 				<button class="Btn" type="submit">Submit</button>
 			</div>
 		</form>
+
+		<h2>Custom select</h2>
+		<div class="CustomSelect">
+			<select>
+				<option value="0">Hey</option>
+				<option value="0">This is me</option>
+				<option value="0">And my</option>
+				<option value="0">Shadow</option>
+			</select>
+		</div>
 
 	</div>
 </article>

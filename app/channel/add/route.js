@@ -1,31 +1,8 @@
 import Ember from 'ember';
+import ownerRouteMixin from 'radio4000/mixins/owner-route';
 
-const { debug } = Ember;
+const {Route} = Ember;
 
-export default Ember.Route.extend({
-	// todo: this is repeated for channel/[add,edit,delete] routes
-	beforeModel() {
-		const authed = this.get('session.isAuthenticated');
-		const userChannel = this.get('session.currentUser.channels.firstObject');
+export default Route.extend(ownerRouteMixin, {
 
-		if (!authed || !userChannel) {
-			debug('not authed or no channel --> login');
-			this.transitionTo('login');
-		}
-	},
-
-	afterModel(model) {
-		const userChannelId = this.get('session.currentUser.channels.firstObject.id');
-		const userOwnsTheChannel = model.get('id') === userChannelId;
-
-		if (!userOwnsTheChannel) {
-			debug('not allowed to edit --> login');
-			this.transitionTo('login');
-		}
-	},
-
-	// clear any unsaved changes
-	deactivate() {
-		this.get('currentModel').rollbackAttributes();
-	}
 });

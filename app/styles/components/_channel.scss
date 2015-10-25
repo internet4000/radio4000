@@ -2,12 +2,33 @@
  * Channel
  */
 
-.Channel--detail {
+.Channel--detail, {
 	position: relative;
 	z-index: 2; // above the player
+	background-color: $slightgray;
+	border-top: 1px solid hsl(0, 0%, 98%);
+	border-right: 2px solid hsl(0, 0%, 88%);
+	border-bottom: 3px solid hsl(0, 0%, 88%);
+	border-left: 1px solid hsl(0, 0%, 98%);
+	border-radius: $border-radius;
+	margin-top: 3rem;
+	margin-left: 1rem;
+	margin-right: 1rem;
+	max-width: 40rem;
 }
+
+.Channel--edit {
+	@media (min-width: $layout-s) {
+		max-width: 50rem;
+	}
+	.Form	{
+		margin-top: 0;
+	}
+}
+
 .Channel-header {
 	background-color: $superlightgray;
+	padding-bottom: 1rem;
 }
 .Channel-cover {
 	position: relative;
@@ -20,20 +41,25 @@
 	}
 }
 .Channel-media {
+	margin-top: -1rem;
+	max-width: 10rem;
+	margin-left: auto;
+	margin-right: auto;
 	@media (min-width: $layout-s) {
 		@include clearfix;
 		float: left;
 		width: 30%;
-		max-width: 13em;
+		max-width: 13rem;
 		padding-right: 1rem;
+		margin-top: -1.5rem;
 	}
 	@media (min-width: $layout-l) {
 		padding-right: 1.5rem;
 	}
 
 	// remove margin between cover and button
-	.Cover {
-		margin-bottom: 0;
+	.Dropzone .Cover {
+		margin-bottom: 0.5rem;
 	}
 	.Btn {
 		width: 100%;
@@ -42,24 +68,28 @@
 }
 .Channel-body {
 	@include clearfix;
-	padding-right: 2rem;
-	margin-bottom: 1rem;
+	text-align: center;
 	@media (min-width: $layout-s) {
+		margin-bottom: 1rem;
+		text-align: left;
 		float: left;
 		width: 70%;
-		margin-top: 2rem;
+		margin-top: 1.5rem;
 	}
 	@media (min-width: $layout-m) {
 		width: 67%;
 	}
 }
+.Channel-playback {
+	margin-bottom: 1rem;
+}
 .Channel-outlet {
-	margin-top: 1rem;
+	margin-top: 2rem;
 }
 .Channel-edit {
 	position: absolute;
-	top: 0;
-	right: 1rem;
+	top: -0.6rem;
+	right: -0.5rem;
 	z-index: 4; // above media
 }
 .Channel-titleSection {
@@ -73,10 +103,9 @@
 	}
 }
 .Follow--title {
-	// optical aligned with .Channel-title
-	position: relative;
-	// top: -0.45em;
-	top: 0.2em;
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
 }
 .LastUpdated {
 	@extend %font-regular;
@@ -99,5 +128,15 @@
 	float: right;
 	.BtnGroup {
 		float: right;
+	}
+}
+
+/**
+ * on channel/edit route
+ **/
+
+.Channel--edit {
+	.Channel-media {
+		margin-top: 0;
 	}
 }

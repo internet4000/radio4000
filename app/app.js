@@ -1,4 +1,4 @@
-/*global ga*/
+/* global ga */
 import Ember from 'ember';
 import Resolver from 'ember/resolver';
 import loadInitializers from 'ember/load-initializers';
@@ -22,13 +22,13 @@ Ember.LinkComponent.reopen({
 
 // Notify Google Analytics of page transitions
 Ember.Router.reopen({
-	notifyGoogleAnalytics: Ember.on('didTransition', function() {
-		if (!ga) { return false; }
-
-		return ga('send', 'pageview', {
-			'page': this.get('url'),
-			'title': this.get('url')
-		});
+	notifyGoogleAnalytics: Ember.on('didTransition', function () {
+		if (ga) {
+			ga('send', 'pageview', {
+				'page': this.get('url'),
+				'title': this.get('url')
+			});
+		}
 	})
 });
 
@@ -37,7 +37,7 @@ Ember.EventDispatcher.reopen({
 		const ignoreEvents = ['touchmove', 'touchstart', 'touchend', 'touchcancel', 'mousemove', 'mouseenter', 'mouseleave'];
 		let events = this.get('events');
 
-		Ember.$.each(ignoreEvents, function(index, value) {
+		Ember.$.each(ignoreEvents, function (index, value) {
 			events[value] = null;
 			delete events[value];
 		});

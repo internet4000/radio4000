@@ -1,6 +1,5 @@
 import Ember from 'ember';
-
-const { debug } = Ember;
+const {debug} = Ember;
 
 export default Ember.Route.extend({
 	uiStates: Ember.inject.service(),
@@ -16,8 +15,7 @@ export default Ember.Route.extend({
 		}
 
 		// else check if the user already has a channel
-		return userChannels.then((channels) => {
-
+		return userChannels.then(channels => {
 			// as users are only allowed one channel, we only check the first
 			let channel = channels.get('firstObject');
 
@@ -39,11 +37,16 @@ export default Ember.Route.extend({
 	// don't render into the channels outlet
 	// this avoids the tabs we have on channels.hbs
 	renderTemplate() {
-		this.render({ into: 'application' });
+		this.render({into: 'application'});
 	},
 
 	deactivate() {
 		this.set('uiStates.isMinimal', false);
+		// Reset title if user creates two channels in the same session.
+		this.setProperties({
+			'controller.title': '',
+			'controller.didCreate': false
+		});
 
 		// reset document title
 		document.title = 'Radio4000';
@@ -58,14 +61,12 @@ export default Ember.Route.extend({
 		saveChannel(channel) {
 			const user = this.get('session.currentUser');
 
-			channel.save().then((channel) => {
-
+			channel.save().then(channel => {
 				// now the channel is saved
 				debug('saved channel');
 
 				// set relationship on user (who created the channel)
-				user.get('channels').then((userChannels) => {
-
+				user.get('channels').then(userChannels => {
 					userChannels.addObject(channel);
 
 					user.save().then(() => {
@@ -73,29 +74,33 @@ export default Ember.Route.extend({
 
 						// create public channel
 						this.store.createRecord('channelPublic', {
-							channel: channel
-						}).save().then((channelPublic) => {
+							channel
+						}).save()
 
-							// now the channelPublic is saved, has an ID and can be used
-							debug('saved channelPublic');
+							.then(channelPublic => {
+								// now the channelPublic is saved, has an ID and can be used
+								debug('saved channelPublic');
 
-							// set relationships
-							channel.setProperties({
-								channelPublic: channelPublic
-							});
-
-							// save it again because of new relationships
-							channel.save().then((channel) => {
-
-								// Clean up controller
-								this.controller.setProperties({
-									isSaving: false,
-									newRadioTitle: ''
+								// set relationships
+								channel.setProperties({
+									channelPublic
 								});
 
-								// Redirect to the new channel and
-								debug('redirect to the new channel');
-								this.transitionTo('channel', channel);
+								// save it again because of new relationships
+								channel.save().then(channel => {
+									// Redirect to the new channel and
+									debug('redirect to the new channel');
+									this.transitionTo('channel', channel);
+									return channel;
+								}, error => {
+									return new Error('Could not create a new channel with its relationships.');
+								})
+
+							.then(() => {
+								// Clean up controller
+								this.controller.setProperties({
+									isSaving: false
+								});
 							});
 						});
 					});
