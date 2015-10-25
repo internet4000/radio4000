@@ -17,6 +17,6 @@ export default DS.Model.extend({
 
 		// let isGif = !src.match(/\.(jpg|jpeg|png|gif)$/);
 
-		return `http://res.cloudinary.com/radio4000/image/upload/c_thumb,h_240,w_240/v1428245306/${src}`;
+		return `//res.cloudinary.com/radio4000/image/upload/c_thumb,h_240,w_240/v1428245306/${src}`;
 	})
 });
