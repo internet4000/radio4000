@@ -1,15 +1,17 @@
 import Ember from 'ember';
 
-const {computed, observer, run} = Ember;
+const {Controller, computed, observer, run} = Ember;
 
-const stringContains = function (string, contains) {
+// Returns true if {string} contains {search}
+const stringContains = function (string, search) {
 	if (!string) {
 		return false;
 	}
-	return string.toLowerCase().indexOf(contains.toLowerCase()) >= 0;
+
+	return string.toLowerCase().indexOf(search.toLowerCase()) >= 0;
 };
 
-export default Ember.Controller.extend({
+export default Controller.extend({
 	search: '',
 	queryParams: ['search'],
 	isGrid: true,
@@ -40,7 +42,7 @@ export default Ember.Controller.extend({
 		}
 
 		return model.filter(item => {
-			return stringContains(search, item.get('title')) || stringContains(item.get('body'));
+			return stringContains(item.get('title'), search) || stringContains(item.get('body'), search);
 		});
 	}),
 
