@@ -41,7 +41,7 @@
 	}
 }
 .Channel-media {
-	margin-top: -1.5rem;
+	margin-top: -1rem;
 	max-width: 10rem;
 	margin-left: auto;
 	margin-right: auto;
@@ -51,15 +51,13 @@
 		width: 30%;
 		max-width: 13rem;
 		padding-right: 1rem;
+		margin-top: -1.5rem;
 	}
 	@media (min-width: $layout-l) {
 		padding-right: 1.5rem;
 	}
 
 	// remove margin between cover and button
-	.Cover {
-		margin-bottom: 0;
-	}
 	.Dropzone .Cover {
 		margin-bottom: 0.5rem;
 	}
@@ -76,7 +74,7 @@
 		text-align: left;
 		float: left;
 		width: 70%;
-		margin-top: 2rem;
+		margin-top: 1.5rem;
 	}
 	@media (min-width: $layout-m) {
 		width: 67%;

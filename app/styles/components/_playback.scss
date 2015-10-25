@@ -14,9 +14,10 @@
 	// icon size here
 	.Btn {
 		border-width: 0;
-		svg {
-			margin-right: 0;
-		}
+	}
+	[class^="icon-"],
+	[class*=" icon-"] {
+		margin-right: 0;
 	}
 }
 .Playback-title {
