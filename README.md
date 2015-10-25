@@ -41,6 +41,33 @@ or put it live:
 gulp deploy-live`
 ```
 
+## How to deploy (for real)
+
+We follow a git convention where new features and fixes are never developed in the `master` branch. Instead you either work directly in `dev` or create a new branch off it.
+
+Do some commits (never in master). If not already in `dev` branch. Merge into it:
+
+```
+git checkout dev; git merge [YOUR-BRANCH]
+```
+
+Now open a pull request on BitBucket/GitHub using their interface. It should merge `dev` into `master`. Now you discuss and make sure it's ready to merge. Remember to lint as well
+
+```
+xo app/**/*.js
+```
+
+
+Merge it into master. Now deploy it.
+
+```
+release-it [minor/major] (defaults to patch)
+ember build --environment=production
+gulp critical
+```
+
+Now you can upload it using FTP or `gulp deploy:live`.
+
 ## Updating icons
 
 @todo: use grunticon ala magnus-winter
