@@ -23,37 +23,6 @@
 	{{/if}}
 </section>
 
-{{!-- <section class="Section">
-	<div class="Manchet Manchet--left">
-		<h2>Popular <small> — listener favorites</small></h2>
-	</div>
-
-	<div class="Container Container--full">
-		<div class="Grid">
-			<div class="Grid-item">
-				<h3>Tip</h3>
-				<div class="Muted">
-					<p>These are the most popular channels as rated by listeners. Diverse music tastes are the foundation of Radio4000.</p>
-					<p>Each human gets a single, ongoing channel - a blank slate to be shaped by their own music taste!</p>
-					{{#link-to 'channels.new' class="Btn"}}
-					Get my own radio
-					{{/link-to}}
-				</div>
-			</div>
-
-			{{#if topSortedChannels}}
-				{{#each topSortedChannels as |item|}}
-					<div class="Grid-item">
-						{{channel-card channel=item}}
-					</div>
-				{{/each}}
-			{{else}}
-				{{is-loading}}
-			{{/if}}
-		</div>
-	</div>
-</section> --}}
-
 <section class="Section">
 	<div class="Manchet Manchet--left">
 		<h2><small>Your</small> favorite <small>radios</small></h2>
@@ -61,8 +30,10 @@
 
 	<div class="Container Container--full">
 		<div class="Grid">
-			{{#if currentUserFavorites}}
-				{{#each currentUserFavorites as |item|}}
+
+			{{#if model.userChannel}}
+				{{#each model.userChannel.favoriteChannels as |item|}}
+
 					<div class="Grid-item">
 						{{channel-card channel=item}}
 					</div>
@@ -71,8 +42,8 @@
 				<div class="Grid-item">
 					<h3>Tip</h3>
 					<div class="Muted">
-						<p>You don't have any favorite Radio channel yet.</p>
-						<p>Play other radios to find some you'll like.</p>
+						<p>You don't have any favorite radio channels yet.</p>
+						<p>{{link-to 'Register or log in' 'login'}} and {{link-to 'play radios' 'channels.all'}} to find some you'll enjoy.</p>
 					</div>
 				</div>
 			{{/if}}
@@ -80,7 +51,3 @@
 		</div>
 	</div>
 </section>
-
-<div class="Container">
-	<p>{{#link-to 'channels.all'}}See all radios &rarr;{{/link-to}}</p>
-</div>
