@@ -3,9 +3,9 @@ import config from '../../config/environment';
 import youtube from 'radio4000/utils/youtube';
 import EmberValidations from 'ember-validations';
 
-const {debug, computed, observer} = Ember;
+const {debug, Component, observer, on, run, warn} = Ember;
 
-export default Ember.Component.extend(EmberValidations, {
+export default Component.extend(EmberValidations, {
 	box: false,
 
 	// validations
@@ -37,11 +37,11 @@ export default Ember.Component.extend(EmberValidations, {
 
 	// This gets called when you paste something into the input-url component
 	// it takes a URL and turns it into a YouTube ID which we use to query the API for a title
-	automaticSetTitle: Ember.on('init', observer('url', function () {
+	automaticSetTitle: on('init', observer('url', function () {
 		let url = this.get('url');
 
 		if (!url) {
-			Ember.warn('No URL to find a YT ID: ' + url);
+			warn('No URL to find a YT ID: ' + url);
 			return false;
 		}
 
@@ -49,13 +49,13 @@ export default Ember.Component.extend(EmberValidations, {
 
 		if (!id) {
 			// TODO make this warn become part of the validation error messages
-			Ember.warn('Could not detect a YouTube ID from this URL: ' + url);
+			warn('Could not detect a YouTube ID from this URL: ' + url);
 			return false;
 		}
 
 		// call set title but throttle it so it doesn't happen on every key-stroke
 		this.set('youtubeId', id);
-		Ember.run.throttle(this, this.setTitle, 1000);
+		run.throttle(this, this.setTitle, 1000);
 	})),
 
 	// This gets called when you paste something into the input-url component
@@ -97,7 +97,7 @@ export default Ember.Component.extend(EmberValidations, {
 		submit() {
 			// first validate the track object
 			this.validate().then(() => {
-				Ember.debug('Track validates!');
+				debug('Track validates!');
 				// we let the route decide which model to use
 				let trackObject = {
 					url: this.get('url'),
@@ -107,7 +107,7 @@ export default Ember.Component.extend(EmberValidations, {
 				this.sendAction('submit', trackObject);
 			}).catch(() => {
 				this.set('showErrors', true);
-				Ember.debug('Track does not validate…');
+				debug('Track does not validate…');
 				return;
 			});
 		},

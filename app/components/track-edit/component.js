@@ -1,7 +1,9 @@
 import Ember from 'ember';
 import EmberValidations from 'ember-validations';
 
-export default Ember.Component.extend(EmberValidations, {
+const {debug, Component} = Ember;
+
+export default Component.extend(EmberValidations, {
 	track: null,
 
 	// validations
@@ -34,10 +36,10 @@ export default Ember.Component.extend(EmberValidations, {
 	actions: {
 		submit() {
 			this.validate().then(() => {
-				Ember.debug('Edit track validates!')
+				debug('Edit track validates!');
 				this.sendAction('submit', this.get('track'));
 			}).catch(() => {
-				Ember.debug('Edit does not validate…')
+				debug('Edit does not validate…');
 				this.set('showErrors', true);
 			});
 		},

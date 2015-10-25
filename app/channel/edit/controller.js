@@ -3,12 +3,10 @@ import clean from 'radio4000/utils/clean';
 import channelConst from 'radio4000/utils/channel-const';
 import EmberValidations from 'ember-validations';
 
-const {debug, computed, observer} = Ember;
+const {debug, Controller, computed, observer} = Ember;
 
-export default Ember.Controller.extend(EmberValidations, {
+export default Controller.extend(EmberValidations, {
 	didCacheSlug: false,
-	titleMaxLength: channelConst.titleMaxLength,
-	titleMinLength: channelConst.titleMinLength,
 
 	// form validations and resulting errors
 	showErrors: false,
@@ -31,8 +29,7 @@ export default Ember.Controller.extend(EmberValidations, {
 			}
 		}
 		// TODO use a custom regex validation
-		// 'model.url': {
-		// }
+		// 'model.url': {}
 	},
 
 	cacheSlug: computed('model.slug', function () {
