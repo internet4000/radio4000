@@ -19,9 +19,10 @@
 
 	a {
 		display: block;
-		overflow: auto;
+		@include clearfix;
 		padding: 0.8rem 1rem 0.7rem;
 		text-decoration: none;
+
 		@media (min-width: $layout-s) {
 			padding-left: 2rem;
 			padding-right: 2rem;
