@@ -2,16 +2,20 @@
 import Ember from 'ember';
 import ENV from '../../config/environment';
 
-export default Ember.Component.extend({
+const {$, Component, on} = Ember;
+
+export default Component.extend({
 	tagName: 'input',
 	name: 'file',
 	type: 'file',
 	classNames: ['cloudinary_fileupload'],
 	attributeBindings: ['name', 'type'],
-	multiple: false,
-	maxFileSize: 500000, // 5MB
 
-	didInsertElement() {
+	// Cloudinary settings
+	multiple: false,
+	maxFileSize: 500000,
+
+	enableCloudinary: on('didInsertElement', function () {
 		// enable cloudinary on our file field
 		this.$().unsigned_cloudinary_upload(ENV.CLOUDINARY_UPLOAD_PRESET, {
 			cloud_name: ENV.CLOUDINARY_NAME
@@ -19,12 +23,12 @@ export default Ember.Component.extend({
 			// jQuery file upload settings
 			maxFileSize: this.get('maxFileSize'),
 			multiple: this.get('multiple'),
-			dropZone: Ember.$('#dropzone')
+			dropZone: $('#dropzone')
 		});
 
 		// https://github.com/blueimp/jQuery-File-Upload/wiki/Drop-zone-effects
-		Ember.$(document).bind('dragover', function (e) {
-			let dropZone = Ember.$('#dropzone');
+		$(document).bind('dragover', function (e) {
+			let dropZone = $('#dropzone');
 			let timeout = window.dropZoneTimeout;
 
 			if (!timeout) {
@@ -58,5 +62,5 @@ export default Ember.Component.extend({
 				dropZone.removeClass('in hover');
 			}, 100);
 		});
-	}
+	})
 });

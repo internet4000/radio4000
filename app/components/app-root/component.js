@@ -1,8 +1,10 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
-	uiStates: Ember.inject.service(),
-	player: Ember.inject.service(),
+const {$, Component, inject, run} = Ember;
+
+export default Component.extend({
+	uiStates: inject.service(),
+	player: inject.service(),
 
 	classNames: ['Root'],
 	classNameBindings: [
@@ -12,16 +14,18 @@ export default Ember.Component.extend({
 	],
 
 	didInsertElement() {
-		this.removeDummyHTML();
+		run.scheduleOnce('afterRender', () => {
+			this.removeDummyHTML();
+		});
 	},
 
 	// Remove our dummy app with inline styles
 	removeDummyHTML() {
-		let $dummy = Ember.$('.DummyApp');
+		let $dummy = $('.DummyApp');
 
 		$dummy.fadeTo(200, 0, 'linear', function () {
 			// wrap it in a run loop to ensure template is rendered
-			Ember.run.schedule('afterRender', () => {
+			run.schedule('afterRender', () => {
 				$dummy.remove();
 			});
 		});
