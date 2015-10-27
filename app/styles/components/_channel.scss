@@ -41,6 +41,7 @@
 	}
 }
 .Channel-media {
+	@include clearfix;
 	margin-top: -1rem;
 	max-width: 10rem;
 	margin-left: auto;
