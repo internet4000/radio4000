@@ -13,7 +13,7 @@ export default Ember.Component.extend({
 
 	actions: {
 		edit() {
-			this.sendAction('edit', this.get('track'));
+			this.get('edit')(this.get('track'));
 		},
 		play(track) {
 			this.set('player.model', track);

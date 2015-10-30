@@ -1,30 +1,28 @@
-<form class="Form EditTrack" {{action 'submit' on='submit'}}>
-	<div class="Form-group">
-		<label>URL
-			{{input type="url" placeholder="Copy in a YouTube URL" value=track.url required="required"}}
-			{{errors-display showErrors=showErrors errors=errors.track.url}}
-		</label>
-	</div>
+<div class="Form-group">
+	<label>URL
+		{{focus-input type="url" value=track.url required="required" placeholder="Copy in a YouTube URL"}}
+		{{errors-display showErrors=showErrors errors=errors.track.url}}
+	</label>
+</div>
 
-	<div class="Form-group">
-		<label>Title
-			{{input value=track.title placeholder="Title" required="required"}}
-			{{errors-display showErrors=showErrors errors=errors.track.title}}
-		</label>
-	</div>
+<div class="Form-group">
+	<label>Title
+		{{input value=track.title placeholder="Track title" required="required"}}
+		{{errors-display showErrors=showErrors errors=errors.track.title}}
+	</label>
+</div>
 
-	<div class="Form-group">
-		<label>Description
-			{{input type="text" value=track.body placeholder="Description"}}
-			{{errors-display showErrors=showErrors errors=errors.track.body}}
-		</label>
-	</div>
+<div class="Form-group">
+	<label>Description
+		{{input value=track.body placeholder="Track description"}}
+		{{errors-display showErrors=showErrors errors=errors.track.body}}
+	</label>
+</div>
 
-	<div class="Form-group">
-		<button type="submit" class="Btn Btn--primary" title="Save the track">Save track</button>
-		<button class="Btn Btn--text" {{action 'cancel' title="Stop editing the track"}}>Cancel</button>
-		<button class="Btn Btn--text Btn--danger u-alignRight" {{action 'deleteTrack' title="Delete this track from your radio"}}>Delete</button>
-	</div>
-</form>
+<div class="Form-group">
+	<button {{action 'submit'}} type="submit" class="Btn Btn--primary" title="Save the track">Save track</button>
+	<button {{action 'cancel'}} class="Btn Btn--text" title="Stop editing the track">Cancel</button>
+	<button {{action 'deleteTrack'}} class="Btn Btn--text Btn--danger u-alignRight" title="Delete this track from your radio">Delete</button>
+</div>
 
 {{yield}}
