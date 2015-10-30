@@ -22,6 +22,7 @@
     "broccoli-csso": "^1.1.0",
     "critical": "^0.6.0",
     "electron-packager": "^5.0.1",
+    "ember-browserify": "1.1.1",
     "ember-cli": "1.13.8",
     "ember-cli-app-version": "^1.0.0",
     "ember-cli-autoprefixer": "^0.5.0",
@@ -55,6 +56,7 @@
     "ember-key-responder": "^0.4.0",
     "ember-modal-dialog": "^0.8.0",
     "ember-youtube": "^0.5.0",
-    "torii": "^0.6.0"
+    "torii": "^0.6.0",
+    "youtube-regex": "^1.0.4"
   }
 }
