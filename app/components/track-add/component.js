@@ -25,7 +25,7 @@ export default Component.extend(EmberValidations, {
 			length: {
 				// http://dougscripts.com/itunes/itinfo/id3tags00.php
 				// artist + songTitle
-				maximum: 60
+				maximum: 120
 			}
 		},
 		body: {
