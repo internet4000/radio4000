@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import DS from 'ember-data';
-import youtube from 'radio4000/utils/youtube';
+import youtubeRegex from 'npm:youtube-regex';
 
 const {debug} = Ember;
 const {attr, belongsTo} = DS;
@@ -22,11 +22,14 @@ export default DS.Model.extend({
 		inverse: 'tracks'
 	}),
 
-	// Returns a YouTube ID from an URL
-	// @TODO: this should definitely be saved in the db
-	// and not computed every time like it is now
+	// Updates provider Id automatically from the URL
 	updateProvider() {
-		let id = youtube(this.get('url'));
+		let id = youtubeRegex().exec(this.get('url'))[1];
+
+		if (!id) {
+			return false;
+		}
+
 		this.set('ytid', id);
 		this.save();
 		debug('Updated track.ytid');

@@ -2,7 +2,7 @@
 	{{#if canEdit}}
 		{{#if hasFewTracks}}
 			<div class="Container">
-				<p>Why don't you add your first tracks? It's just below — try to paste in the URL of a YouTube video!</p>
+				<p>Why don't you add your first tracks? It's just below.<br>Paste in the URL of a YouTube video!</p>
 			</div>
 		{{/if}}
 		<div class="Container">
@@ -18,19 +18,19 @@
 
 	{{#if isAdding}}
 	  {{#modal-dialog close="closeModals"}}
-	    {{track-add url=addTrackUrl submit="saveNewTrack" cancel="closeModals"}}
+	    {{track-add newUrl=addTrackUrl submit="createNewTrack" cancel="closeModals"}}
 	  {{/modal-dialog}}
 	{{/if}}
 
 	{{#if isEditing}}
 	  {{#modal-dialog close="closeModals"}}
-	    {{track-edit track=trackToEdit submit="updateTrack" deleteTrack="deleteTrack" cancel="closeModals"}}
+	    {{track-edit track=trackToEdit submit="saveTrack" cancel="closeModals" deleteTrack="deleteTrack"}}
 	  {{/modal-dialog}}
 	{{/if}}
 
 	{{#if tracks.isLoaded}}
 		{{#tracks-list items=tracks as |item|}}
-			{{track-item track=item canEdit=canEdit edit=(action "startEditing") onTransition="transitionToTrack"}}
+			{{track-item track=item canEdit=canEdit edit=(action "startEditingTrack") onTransition="transitionToTrack"}}
 		{{/tracks-list}}
 
 		{{#if canEdit}}

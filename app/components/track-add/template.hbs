@@ -1,36 +1,36 @@
-<form class="Form{{if box ' Form--box'}}" {{action 'submit' on='submit'}}>
-	<div class="Form-group">
-		<label>URL
-			{{focus-input id="trackUrl" type="url" value=url placeholder="Paste in a YouTube link" required="required" autofocus="autofocus"}}
-			{{errors-display showErrors=showErrors errors=errors.url}}
-		</label>
-	</div>
+<div class="Form-group">
+	<label>URL
+		{{focus-input type="url" value=track.url placeholder="Paste in a YouTube link" required="required" autofocus="autofocus"}}
+		{{errors-display showErrors=showErrors errors=errors.track.url}}
+	</label>
+</div>
 
-	<div class="Form-group Form-group--relative">
-		<label>Title
-			{{input id="trackTitle" value=title placeholder="Enter the track title" required="required"}}<br>
-			{{errors-display showErrors=showErrors errors=errors.title}}
-		</label>
-		{{!-- DONT DELETE {{#if isFetchingTitle}}<p class="Form-groupStatus">Updating…</p>{{/if}}
-		{{youtube-search query=model.title action="addFromSearch"}} --}}
-	</div>
+<div class="Form-group Form-group--relative">
+	<label>Title
+		{{input value=track.title placeholder="Enter the track title" required="required"}}<br>
+		{{errors-display showErrors=showErrors errors=errors.track.title}}
+	</label>
+	{{#if isFetchingTitle}}<p class="Form-groupStatus">Updating…</p>{{/if}}
+	{{!-- {{youtube-search query=model.title action="addFromSearch"}} --}}
+</div>
 
-	<div class="Form-group">
-		<label>Description
-			{{input id="trackBody" value=body placeholder="Fantastic track! #fantastic (optional)"}}<br>
-			{{errors-display showErrors=showErrors errors=errors.body}}
-		</label>
-	</div>
+<div class="Form-group">
+	<label>Description
+		{{input value=track.body placeholder="Fantastic track! #fantastic (optional)"}}<br>
+		{{errors-display showErrors=showErrors errors=errors.track.body}}
+	</label>
+</div>
 
-	<div class="Form-group">
-		<div class="BtnGroupWrapper BtnGroupWrapper--full">
-			{{#btn-group}}
-				<button class="Btn Btn--primary {{if justAdded 'is-flashing'}}" type='submit' title="Add track to your radio">Add track</button>
-				<button class="Btn Btn--text" {{action 'cancel' title="Nevermind, do not add the track"}}>Cancel</button>
-			{{/btn-group}}
-			{{#btn-group}}
-				{{#link-to "channel.add.bookmarklet" class="Btn Btn--text" title="Add tracks faster to your radio!"}}Want to add faster?{{/link-to}}
-			{{/btn-group}}
-		</div>
+<div class="Form-group">
+	<div class="BtnGroupWrapper BtnGroupWrapper--full">
+		{{#btn-group}}
+			<button {{action 'submit'}} type='submit' class="Btn Btn--primary {{if justAdded 'is-flashing'}}" title="Add track to your radio">Add track</button>
+			<button {{action 'cancel'}} class="Btn Btn--text" title="Nevermind, do not add the track">Cancel</button>
+		{{/btn-group}}
+		{{#btn-group}}
+			{{#link-to "channel.add.bookmarklet" class="Btn Btn--text" title="Add tracks faster to your radio!"}}Want to add faster?{{/link-to}}
+		{{/btn-group}}
 	</div>
-</form>
+</div>
+
+{{yield}}

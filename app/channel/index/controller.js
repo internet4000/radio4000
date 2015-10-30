@@ -1,8 +1,9 @@
 import Ember from 'ember';
+import EmberValidations from 'ember-validations';
 
-const {computed, debug, inject} = Ember;
+const {computed, debug, inject, warn} = Ember;
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(EmberValidations, {
 	// player: Ember.inject.service(), // used for debugging unplayed + history
 	// queryParams: ['tags'],
 	isAdding: false,
@@ -24,47 +25,61 @@ export default Ember.Controller.extend({
 				trackToEdit: null
 			});
 		},
+
 		addTrack() {
 			this.set('isAdding', true);
-
-			// let url = this.get('addTrackUrl');
-			// this.transitionToRoute('channel.add', {
-			// 	queryParams: { url: url }
-			// });
 		},
-		startEditing(track) {
+
+		startEditingTrack(track) {
 			this.set('trackToEdit', track);
 			this.set('isEditing', true);
 		},
-		saveNewTrack(track) {
-			this.set('addTrackUrl', null);
 
-			debug('save new track');
-
-			// leave it to the parent route to create the new track
-			return true;
-		},
-
-		updateTrack(track) {
+		saveTrack(track) {
 			this.send('closeModals');
 
-			if (!track) {
-				Ember.warn('updateTrack was called without a track');
+			if (!track.get('hasDirtyAttributes')) {
+				debug('nothing to save on track');
 				return;
 			}
 
-			debug('Updating track from controller.');
-
 			// in case url changed, we need to set the ytid
+			debug('saving track');
 			track.updateProvider();
+			track.save();
+		},
 
-			// Save and add it to the tracks relationship on the channel
+		createNewTrack(obj) {
+			const channel = this.get('model');
+			const track = this.store.createRecord('track', obj);
+
+			// clear ui
+			this.set('addTrackUrl', null);
+			this.send('closeModals');
+
+			// set channel on track and save
+			debug('create new track');
+			track.set('channel', channel);
+			track.updateProvider();
 			track.save().then(() => {
-				debug('updated track');
-			}, () => {
-				debug('could not update track');
+				debug('saved track');
+
+				// Add it to the tracks relationship on the channel
+				channel.get('tracks').then(tracks => {
+					tracks.addObject(track);
+					channel.save().then(() => {
+						debug('Saved new track.');
+					}, error => {
+						warn('Could not create track.');
+						debug(error);
+					});
+				});
+			}, error => {
+				warn('could not save track');
+				debug(error);
 			});
 		},
+
 		deleteTrack() {
 			this.send('closeModals');
 			return true;

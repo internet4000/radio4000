@@ -55,7 +55,6 @@ export default Ember.Controller.extend(EmberValidations, {
 			}).catch(() => {
 				this.set('showErrors', true);
 				debug('Form does not validate');
-				console.log(this.get('errors'));
 			});
 		}
 	}
