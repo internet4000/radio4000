@@ -18,19 +18,19 @@
 
 	{{#if isAdding}}
 	  {{#modal-dialog close="closeModals"}}
-	    {{track-add url=addTrackUrl submit="saveTrack" cancel="closeModals"}}
+	    {{track-add url=addTrackUrl submit="saveNewTrack" cancel="closeModals"}}
 	  {{/modal-dialog}}
 	{{/if}}
 
 	{{#if isEditing}}
 	  {{#modal-dialog close="closeModals"}}
-	    {{track-edit track=trackToEdit submit="saveTrack" deleteTrack="deleteTrack" cancel="closeModals"}}
+	    {{track-edit track=trackToEdit submit="updateTrack" deleteTrack="deleteTrack" cancel="closeModals"}}
 	  {{/modal-dialog}}
 	{{/if}}
 
 	{{#if tracks.isLoaded}}
 		{{#tracks-list items=tracks as |item|}}
-			{{track-item track=item canEdit=canEdit edit="editTrack" onTransition="transitionToTrack"}}
+			{{track-item track=item canEdit=canEdit edit=(action "startEditing") onTransition="transitionToTrack"}}
 		{{/tracks-list}}
 
 		{{#if canEdit}}

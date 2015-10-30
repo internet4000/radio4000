@@ -32,15 +32,38 @@ export default Ember.Controller.extend({
 			// 	queryParams: { url: url }
 			// });
 		},
-		editTrack(track) {
+		startEditing(track) {
 			this.set('trackToEdit', track);
 			this.set('isEditing', true);
 		},
-		saveTrack() {
-			debug('save track from controller');
-			this.send('closeModals');
+		saveNewTrack(track) {
 			this.set('addTrackUrl', null);
+
+			debug('save new track');
+
+			// leave it to the parent route to create the new track
 			return true;
+		},
+
+		updateTrack(track) {
+			this.send('closeModals');
+
+			if (!track) {
+				Ember.warn('updateTrack was called without a track');
+				return;
+			}
+
+			debug('Updating track from controller.');
+
+			// in case url changed, we need to set the ytid
+			track.updateProvider();
+
+			// Save and add it to the tracks relationship on the channel
+			track.save().then(() => {
+				debug('updated track');
+			}, () => {
+				debug('could not update track');
+			});
 		},
 		deleteTrack() {
 			this.send('closeModals');

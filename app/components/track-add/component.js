@@ -105,11 +105,13 @@ export default Component.extend(EmberValidations, {
 					body: this.get('body')
 				};
 				this.sendAction('submit', trackObject);
+
 			}).catch(() => {
 				this.set('showErrors', true);
 				debug('Track does not validate…');
-				return;
 			});
+
+			this.send('cancel');
 		},
 		cancel() {
 			this.sendAction('cancel');

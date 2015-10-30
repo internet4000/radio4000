@@ -1,7 +1,9 @@
 /* global document window */
 import Ember from 'ember';
 
-export default Ember.Route.extend({
+const {Route, debug} = Ember;
+
+export default Route.extend({
 	model(params) {
 		return this.store.query('channel', {
 			orderBy: 'slug',
@@ -31,9 +33,11 @@ export default Ember.Route.extend({
 	},
 
 	actions: {
-		saveTrack(object) {
+		saveNewTrack(object) {
 			const channel = this.get('currentModel');
 			const track = this.store.createRecord('track', object);
+
+			debug('saving new track');
 
 			// set channel on track
 			track.set('channel', channel);
@@ -46,7 +50,7 @@ export default Ember.Route.extend({
 				channel.get('tracks').then(tracks => {
 					tracks.addObject(track);
 					channel.save().then(() => {
-						Ember.debug('Success: Track saved to channel');
+						debug('Success: Track saved to channel');
 					});
 				});
 			});
