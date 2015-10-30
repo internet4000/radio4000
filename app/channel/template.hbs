@@ -77,12 +77,12 @@
 					</p>
 				{{/if}}
 
-				{{#if canEdit}}
-					{{#link-to 'channel.edit' model class="Btn Channel-edit" title="Edit your radio"}}
-						{{x-icon i="pencil"}} Edit radio
-					{{/link-to}}
-				{{/if}}
 			</div>
+			{{#if canEdit}}
+				{{#link-to 'channel.edit' model class="Channel-edit Btn" title="Edit your radio"}}
+					{{x-icon i="pencil"}} Edit radio
+				{{/link-to}}
+			{{/if}}
 		</div>
 	</div>
 

@@ -31,8 +31,6 @@ export default Ember.Controller.extend({
 		// then check
 		const canEdit = (channel.get('id') === userChannel.get('id'));
 
-		// debug('checking canEdit');
-		// debug(canEdit);
 		return canEdit;
 	}),
 
