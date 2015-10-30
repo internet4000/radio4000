@@ -110,10 +110,10 @@
 		max-width: 80%;
 	}
 }
-.Follow--title {
+.Channel-follow {
 	position: absolute;
-	top: -1rem;
-	right: -2rem;
+	top: 0.3rem;
+	right: -0.2rem;
 }
 .LastUpdated {
 	@extend %font-regular;

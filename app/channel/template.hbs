@@ -44,6 +44,12 @@
 				{{/if}}
 			</div>
 
+			{{#unless canEdit}}
+				<span class="Channel-follow Follow">
+					{{btn-favorite action="toggleFavorite" isFavorite=isFavorite class="NonBtn"}}
+				</span>
+			{{/unless}}
+
 			<div class="Channel-body">
 				<div class="Channel-titleSection">
 					<div class="Channel-playback">
@@ -56,11 +62,6 @@
 						{{/link-to}}
 					</h1>
 
-					{{#unless canEdit}}
-						<span class="Follow Follow--title">
-							{{btn-favorite action="toggleFavorite" isFavorite=isFavorite class="NonBtn"}}
-						</span>
-					{{/unless}}
 				</div>
 
 
