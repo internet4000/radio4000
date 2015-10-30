@@ -29,6 +29,7 @@
 .Channel-header {
 	background-color: $superlightgray;
 	padding-bottom: 1rem;
+	min-height: 10rem; // visual perf
 }
 .Channel-cover {
 	position: relative;
@@ -93,6 +94,7 @@
 }
 .Channel-outlet {
 	margin-top: 2rem;
+	min-height: 2rem;
 }
 .Channel-edit {
 	position: absolute;

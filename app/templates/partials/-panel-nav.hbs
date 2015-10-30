@@ -3,9 +3,9 @@
 
 	<div class="PanelNav-inner">
 		{{#if authed}}
-			<div class="PanelNav-group">
-				<div class="UserChannel">
-					{{#if userChannel}}
+			{{#if userChannel}}
+				<div class="PanelNav-group">
+					<div class="UserChannel">
 						{{#link-to 'channel' userChannel title="Go to my radio"}}
 
 							<img class= "UserChannel-media" src="{{userChannel.coverImage.thumb}}">
@@ -15,16 +15,9 @@
 								<p class="UserChannel-title">{{userChannel.title}}</p>
 							</div>
 						{{/link-to}}
-					{{else}}
-
-							{{#link-to "channels.new" title="Create your radio"}}
-								<div class="UserChannel-body BoxIcon BoxIcon--add">
-									<p class="UserChannel-title">Create your radio</p>
-								</div>
-							{{/link-to}}
-					{{/if}}
+					</div>
 				</div>
-			</div>
+			{{/if}}
 		{{/if}}
 
 		<div class="PanelNav-group">
