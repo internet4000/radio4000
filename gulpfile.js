@@ -62,8 +62,8 @@ const fs = require('fs');
 
 gulp.task('icons', function () {
 	const deferred = q.defer();
-	const inputDir = 'public/images/icons/';
-	const outputDir = 'assets/images/icons/';
+	const inputDir = 'public/assets/images/icons/';
+	const outputDir = 'public/assets/images/icons/grunticon';
 	const options = {enhanceSVG: true};
 	const files = fs.readdirSync(inputDir).map(function(fileName) {
 		return path.join(inputDir, fileName);
