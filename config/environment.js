@@ -57,6 +57,9 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.firebase = 'https://radio4000.firebaseio.com/';
+    ENV.googleAnalytics = {
+        webPropertyId: 'UA-3906535-23'
+    };
   }
 
   if (environment === 'electron') {
