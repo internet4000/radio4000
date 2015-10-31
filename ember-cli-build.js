@@ -9,9 +9,6 @@ module.exports = function(defaults) {
 
     fingerprint: {
       exclude: ['apple-touch-icon', 'favicon', 'mstile', 'main.js']
-
-      // add our CDN to assets (but not favicons)
-      // prepend: 'http://dyzwdli7efbh5.cloudfront.net/'
     }
   });
 
