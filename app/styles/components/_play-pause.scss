@@ -1,0 +1,74 @@
+// An animated play/pause toggle button.
+//
+// It uses a label and checkbox so we can bind to a value.
+// Also it would work without js.
+
+$PlayPause-size: 18px;
+$PlayPause-width: 1em;
+$PlayPause-height: 1.2em;
+$PlayPause-transition-duration: 100ms;
+$PlayPause-transition-delay: 50ms;
+$PlayPause-bg-color: $white;
+$PlayPause-easing: linear;//$easing3;
+
+.PlayPause {}
+.PlayPause::selection {
+	background-color: transparent;
+}
+.PlayPause-state {
+	width: 0;
+	height: 0;
+	border: none;
+	visibility: hidden;
+}
+.PlayPause-controller {
+	display: inline-block;
+	position: relative;
+	font-size: $PlayPause-size;
+	width: $PlayPause-width;
+	height: $PlayPause-height;
+	padding: 0;
+	margin: auto;
+	cursor: pointer;
+}
+.PlayPause-controller::before,
+.PlayPause-controller::after {
+	box-sizing: content-box;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	content: "";
+	border-top: ($PlayPause-height/4/$PlayPause-width)*1em solid transparent;
+	border-bottom: ($PlayPause-height/4/$PlayPause-width)*1em solid transparent;
+	border-left: 0.5em solid $PlayPause-bg-color;
+}
+.PlayPause-controller::before {
+	left: 0;
+	transition: all $PlayPause-transition-duration $PlayPause-easing;
+	width: 0;
+	height: ($PlayPause-height/2/$PlayPause-width)*1em;
+}
+.PlayPause-controller::after {
+	right: 0;
+	transition: all $PlayPause-transition-duration + $PlayPause-transition-delay $PlayPause-easing;
+	width: 0;
+	height: 0;
+}
+
+// Change to pause icon
+.PlayPause-state:checked + .PlayPause-controller::before,
+.PlayPause-state:checked + .PlayPause-controller::after {
+	border-top-width: 0;
+	border-bottom-width: 0;
+	border-left-width: 0.38em;
+	height: 100%;
+}
+
+
+.PlayPause-controller {
+	float: left;
+	transform: translateY(50%);
+	top: 1px;
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+}

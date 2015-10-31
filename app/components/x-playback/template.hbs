@@ -18,16 +18,7 @@
 			{{x-icon i='previous'}}
 		</button>
 
-		{{!-- {{player/play-pause}} --}}
-		{{#if player.isPlaying}}
-			<button class="NonBtn" {{action 'togglePlay' target="radioDevice"}} title="Pause track">
-				{{x-icon i='pause'}}
-			</button>
-		{{else}}
-			<button class="NonBtn" {{action 'togglePlay' target="radioDevice"}} title="Play track">
-				{{x-icon i='play'}}
-			</button>
-		{{/if}}
+		{{player/play-pause isPlaying=player.isPlaying play=(action "play") pause=(action "pause")}}
 
 		<button class="NonBtn" {{action 'next' model}} title="Next track">
 			{{x-icon i='next'}}

@@ -1,11 +1,4 @@
-{{#if player.isPlaying}}
-	<button class="Btn Btn-play Btn-play--round" {{action 'pause' target="player"}} title="Start playback from the newest track">
-		{{x-icon i="pause"}}
-	</button>
-{{else}}
-	<button class="Btn Btn-play Btn-play--round" {{action 'play' value=model.tracks.lastObject target="player"}} title="Start playback from the newest track">
-		{{x-icon i="play"}}
-	</button>
-{{/if}}
+<input type="checkbox" id="PlayPause-state" class="PlayPause-state"
+	checked={{isPlaying}} onchange={{action "togglePlayback"}} />
 
-{{yield}}
+<label for="PlayPause-state" title="Toggle playback" class="PlayPause-controller"></label>

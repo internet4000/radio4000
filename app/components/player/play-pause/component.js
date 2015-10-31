@@ -1,5 +1,16 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-	player: Ember.inject.service()
+	classNames: ['PlayPause'],
+
+	actions: {
+		togglePlayback() {
+			// this.sendAction('togglePlay')
+			if (this.get('isPlaying')) {
+				this.sendAction('pause');
+			} else {
+				this.sendAction('play');
+			}
+		}
+	}
 });
