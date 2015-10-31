@@ -1,14 +1,14 @@
 /* global document window */
 import Ember from 'ember';
-import ENV from '../../config/environment';
+import ENV from 'radio4000/config/environment';
 
-const {$, Component, on} = Ember;
+const {Component, $, on} = Ember;
 
 export default Component.extend({
 	tagName: 'input',
 	name: 'file',
 	type: 'file',
-	classNames: ['cloudinary_fileupload'],
+	classNames: ['cloudinary-fileupload'],
 	attributeBindings: ['name', 'type'],
 
 	// Cloudinary settings
@@ -16,6 +16,8 @@ export default Component.extend({
 	maxFileSize: 500000,
 
 	enableCloudinary: on('didInsertElement', function () {
+		console.log('enableCloudinary');
+
 		// enable cloudinary on our file field
 		this.$().unsigned_cloudinary_upload(ENV.CLOUDINARY_UPLOAD_PRESET, {
 			cloud_name: ENV.CLOUDINARY_NAME
@@ -27,14 +29,14 @@ export default Component.extend({
 		});
 
 		// https://github.com/blueimp/jQuery-File-Upload/wiki/Drop-zone-effects
-		$(document).bind('dragover', function (e) {
+		$(document).bind('dragover.r4', function (e) {
 			let dropZone = $('#dropzone');
 			let timeout = window.dropZoneTimeout;
 
-			if (!timeout) {
-				dropZone.addClass('in');
-			} else {
+			if (timeout) {
 				clearTimeout(timeout);
+			} else {
+				dropZone.addClass('in');
 			}
 
 			let found = false;
@@ -62,5 +64,9 @@ export default Component.extend({
 				dropZone.removeClass('in hover');
 			}, 100);
 		});
-	})
+	}),
+
+	willDestroyElement() {
+		$(document).off('dragover.r4');
+	}
 });

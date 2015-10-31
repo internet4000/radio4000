@@ -2,7 +2,9 @@
 	<div class="Dropzone-inner">
 		<label>
 			{{yield}}
-			{{cloudinary-input multiple=false}}
+			{{#if gotScripts}}
+				{{cloudinary-input multiple=false}}
+			{{/if}}
 		</label>
 	</div>
 </div>
