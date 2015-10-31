@@ -46,25 +46,11 @@ export default Controller.extend({
 		});
 	}),
 
-	// Sorts our filtered model.
-	sortedChannels: Ember.computed('channels.[]', function () {
-		return Ember.ArrayProxy.extend(Ember.SortableMixin).create({
-			sortProperties: ['created'],
-			sortAscending: false,
-			content: this.get('channels')
-		});
-	}),
+	sortKeys: ['created:desc'],
+	sortedChannels: computed.sort('channels', 'sortKeys'),
 
 	actions: {
-		sortBy(property) {
-			let items = this.get('sortedChannels');
-
-			items.setProperties({
-				sortAscending: !items.get('sortAscending'),
-				sortProperties: [property]
-			});
-		},
-		toggleView() {
+		toggleGrid() {
 			this.toggleProperty('isGrid');
 		}
 	}
