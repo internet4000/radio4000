@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import TrackFormComponent from 'radio4000/components/track-form/component';
-import config from '../../config/environment';
+import config from 'radio4000/config/environment';
 
 const {debug, observer, on, run} = Ember;
 
@@ -17,7 +17,7 @@ export default TrackFormComponent.extend({
 	// This gets called when you paste something into the input-url component
 	// it takes a URL and turns it into a YouTube ID which we use to query the API for a title
 	automaticSetTitle: on('init', observer('track.url', function () {
-		const url = this.get('url');
+		const url = this.get('track.url');
 		const ytid = this.getYoutubeId(url);
 
 		if (!ytid) {
