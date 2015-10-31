@@ -70,11 +70,9 @@
 }
 .Channel-body {
 	@include clearfix;
-	text-align: center;
 	@media (min-width: $layout-s) {
 		position: relative;
 		margin-bottom: 1rem;
-		text-align: left;
 		float: left;
 		width: 70%;
 		margin-top: 1.5rem;
