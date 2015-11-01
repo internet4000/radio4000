@@ -11,7 +11,9 @@ $PlayPause-transition-delay: 50ms;
 $PlayPause-bg-color: $white;
 $PlayPause-easing: linear;//$easing3;
 
-.PlayPause {}
+.PlayPause {
+	display: flex;
+}
 .PlayPause::selection {
 	background-color: transparent;
 }
@@ -66,9 +68,6 @@ $PlayPause-easing: linear;//$easing3;
 
 
 .PlayPause-controller {
-	float: left;
-	transform: translateY(50%);
-	top: 1px;
 	margin-left: 0.5rem;
 	margin-right: 0.5rem;
 }

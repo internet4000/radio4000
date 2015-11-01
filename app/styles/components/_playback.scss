@@ -8,8 +8,11 @@
 	flex-flow: row nowrap; // items in one row, no wrapping
 	align-items: stretch; // full-height children
 	justify-content: space-between; // distribute items
-	min-height: rem($bar-height + $progress-height);
-	padding-bottom: rem($progress-height);
+
+	.Bar--bottom & {
+		min-height: rem($bar-height + $progress-height);
+		padding-bottom: rem($progress-height);
+	}
 
 	// icon size here
 	.Btn {

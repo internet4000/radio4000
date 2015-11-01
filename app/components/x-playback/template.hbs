@@ -1,35 +1,32 @@
-<div class="Playback">
-
-	{{#if player.model}}
-		<div class="Playback-title" title="Current track / go to current radio">
-			{{#link-to 'track' player.model.channel player.model}}
-				{{player.model.title}}
-				<span class="Playback-channel">({{player.model.channel.title}})</span>
-			{{/link-to}}
-		</div>
-	{{/if}}
-
-	<div class="Playback-buttons">
-		<label class="Playback-shuffle Btn Btn--text {{if player.isShuffling 'is-active'}}" for="isShuffling" title="Toggle shuffle playback">
-			{{x-icon i='shuffle'}}
-			{{input type="checkbox" id="isShuffling" checked=player.isShuffling class="is-hidden"}}
-		</label>
-		<button class="NonBtn" {{action 'prev' model}} title="Previous track">
-			{{x-icon i='previous'}}
-		</button>
-
-		{{player/play-pause isPlaying=player.isPlaying play=(action "play") pause=(action "pause")}}
-
-		<button class="NonBtn" {{action 'next' model}} title="Next track">
-			{{x-icon i='next'}}
-		</button>
+{{#if player.model}}
+	<div class="Playback-title" title="Current track / go to current radio">
+		{{#link-to 'track' player.model.channel player.model}}
+			{{player.model.title}}
+			<span class="Playback-channel">({{player.model.channel.title}})</span>
+		{{/link-to}}
 	</div>
+{{/if}}
 
-	<button class="Playback-videoBtn NonBtn" {{action 'toggleFullscreen'}} title="Toggle fullscreen video">
-		{{#if uiStates.isFullscreen}}
-			{{x-icon i='arrows-compress'}}
-		{{else}}
-			{{x-icon i='arrows-expand'}}
-		{{/if}}
+<div class="Playback-buttons">
+	<label class="Playback-shuffle Btn Btn--text {{if player.isShuffling 'is-active'}}" for="isShuffling" title="Toggle shuffle playback">
+		{{x-icon i='shuffle'}}
+		{{input type="checkbox" id="isShuffling" checked=player.isShuffling class="is-hidden"}}
+	</label>
+	<button class="NonBtn" {{action 'prev' model}} title="Previous track">
+		{{x-icon i='previous'}}
+	</button>
+
+	{{player/play-pause isPlaying=player.isPlaying play=(action "play") pause=(action "pause")}}
+
+	<button class="NonBtn" {{action 'next' model}} title="Next track">
+		{{x-icon i='next'}}
 	</button>
 </div>
+
+<button class="Playback-videoBtn NonBtn" {{action 'toggleFullscreen'}} title="Toggle fullscreen video">
+	{{#if uiStates.isFullscreen}}
+		{{x-icon i='arrows-compress'}}
+	{{else}}
+		{{x-icon i='arrows-expand'}}
+	{{/if}}
+</button>

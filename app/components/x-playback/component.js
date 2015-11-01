@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+	classNames: ['Playback'],
 	player: Ember.inject.service(),
 	uiStates: Ember.inject.service(),
 
