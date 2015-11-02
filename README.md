@@ -12,7 +12,7 @@ Make sure Ember CLI is installed globally, then clone this project and install i
 
 ```
 npm install -g ember-cli
-git clone https://github.com/hugovieilledent/radio4000.git
+git clone git@bitbucket.org:radio4000/radio4000.git
 cd radio4000
 npm install; bower install
 ember serve
@@ -20,66 +20,29 @@ ember serve
 
 Also see http://www.ember-cli.com/
 
-## Building
+## Deploy to development
 
-First build it:
+1. `ember build`
+2. `gulp deploy:dev`
 
-- `$ ember build` (build will still include logs, warnings etc. for testing)
-- `$ ember build --environment=production` (hard to debug, only use this when it's ready for deploy)
+## Deploy to live
 
-## Deploying
+Then deploy to either live or dev:
 
-Then deploy to one of our hosts:
+1. `git checkout master; git pull --rebase; git merge dev`
+2. `release-it`
+3. `ember build --environment=production`
+4. `gulp deploy`
 
-```
-surge dist dev2.radio4000.com
-```
-
-or put it live:
-
-```
-gulp deploy-live`
-```
-
-## How to deploy (for real)
-
-We follow a git convention where new features and fixes are never developed in the `master` branch. Instead you either work directly in `dev` or create a new branch off it.
-
-Do some commits (never in master). If not already in `dev` branch. Merge into it:
-
-```
-git checkout dev; git merge [YOUR-BRANCH]
-```
-
-Now open a pull request on BitBucket/GitHub using their interface. It should merge `dev` into `master`. Now you discuss and make sure it's ready to merge. Remember to lint as well
+## Testing
 
 ```
 xo app/**/*.js
 ```
 
+## Icons
 
-Merge it into master. Now deploy it.
-
-```
-release-it [minor/major] (defaults to patch)
-ember build --environment=production
-gulp critical
-```
-
-Now you can upload it using FTP or `gulp deploy:live`.
-
-## Updating icons
-
-@todo: use grunticon ala magnus-winter
-
-- go to public/images/icons
-- open sprite.svg in code editor
-- look how things are made
-- paste in your new svg icon
-
-## Using our CDN
-
-To serve a file from our CDN, prepend the file of the URL (only works for http://radio4000.com) with `http://dyzwdli7efbh5.cloudfront.net` and the CDN will automatically pull and serve the file.
+Add .svg icons to `public/assets/images/icons` and run `gulp icons`.
 
 ## Building native apps
 

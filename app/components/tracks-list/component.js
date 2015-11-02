@@ -1,13 +1,11 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
+const {Component, computed} = Ember;
+
+export default Component.extend({
+	items: null,
 
 	// sorts our items newest on top
-	sortedItems: Ember.computed('items', function () {
-		return Ember.ArrayProxy.extend(Ember.SortableMixin).create({
-			sortProperties: ['created'],
-			sortAscending: false,
-			content: this.get('items')
-		});
-	})
+	sortKeys: ['created:desc'],
+	sortedItems: computed.sort('items', 'sortKeys')
 });

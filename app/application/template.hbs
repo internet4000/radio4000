@@ -1,7 +1,10 @@
 {{#app-root}}
 	<header class="SiteHeader">
 		<div class="Bar Bar--top">
-			{{nav-bar authed=session.isAuthenticated userChannel=session.currentUser.channels.firstObject goBack="transitionToHome"}}
+			{{nav-bar
+				radioDevice=emberYoutube
+				authed=session.isAuthenticated
+				userChannel=session.currentUser.channels.firstObject}}
 		</div>
 	</header>
 

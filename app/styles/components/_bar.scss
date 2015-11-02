@@ -14,15 +14,14 @@
 	color: $text-color-invert;
 	backface-visibility: hidden; // perf
 	transition: transform 400ms $easing2, background-color 200ms;
-
 }
 .Bar--top {
 	top: 0;
-	border-bottom: 2px solid hsla(0, 0%, 0%, 0.4);
-	background-color: transparent;
-	color: white;
+	// border-bottom: 2px solid hsla(0, 0%, 0%, 0.4);
+	// background-image: none;
+	color: $text-color-invert; // $dark
 	a {
-		color: white;
+		color: $text-color-invert; // $dark
 	}
 }
 .Bar--bottom {

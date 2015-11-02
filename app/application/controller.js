@@ -6,10 +6,6 @@ export default Ember.Controller.extend({
 	player: Ember.inject.service(),
 
 	actions: {
-		transitionToHome() {
-			debug('transitionToHome');
-			this.transitionToRoute('application');
-		},
 		ytPlaying() {
 			this.set('player.isPlaying', true);
 		},

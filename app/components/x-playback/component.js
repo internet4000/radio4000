@@ -1,15 +1,19 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+	classNames: ['Playback'],
 	player: Ember.inject.service(),
 	uiStates: Ember.inject.service(),
 
 	actions: {
+		togglePlay() {
+			this.attrs.radioDevice.value.send('togglePlay');
+		},
 		play() {
-			this.get('player').play();
+			this.attrs.radioDevice.value.send('play');
 		},
 		pause() {
-			this.get('player').pause();
+			this.attrs.radioDevice.value.send('pause');
 		},
 		prev() {
 			this.get('player').prev();

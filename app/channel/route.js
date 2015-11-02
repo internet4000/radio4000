@@ -1,7 +1,9 @@
 /* global document window */
 import Ember from 'ember';
 
-export default Ember.Route.extend({
+const {Route, debug, warn} = Ember;
+
+export default Route.extend({
 	model(params) {
 		return this.store.query('channel', {
 			orderBy: 'slug',
@@ -31,32 +33,17 @@ export default Ember.Route.extend({
 	},
 
 	actions: {
-		saveTrack(object) {
-			const channel = this.get('currentModel');
-			const track = this.store.createRecord('track', object);
-
-			// set channel on track
-			track.set('channel', channel);
-
-			// in case url changed, we need to set the ytid
-			track.updateProvider();
-
-			// Save and add it to the tracks relationship on the channel
-			track.save().then(track => {
-				channel.get('tracks').then(tracks => {
-					tracks.addObject(track);
-					channel.save().then(() => {
-						Ember.debug('Success: Track saved to channel');
-					});
-				});
-			});
-		},
 		deleteTrack(track) {
 			track.get('channel').then(channel => {
 				channel.get('tracks').then(tracks => {
 					tracks.removeObject(track);
 					channel.save();
-					track.destroyRecord();
+
+					track.destroyRecord().then(() => {
+						debug('Deleted track');
+					}, () => {
+						warn('Could not delete track');
+					});
 				});
 			});
 		}

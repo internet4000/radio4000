@@ -31,3 +31,11 @@
 		margin-right: 0.3em;
 	}
 }
+.NavBar {
+	> .Logo {
+		flex-shrink: 0;
+	}
+	.Playback {
+		flex: 1;
+	}
+}

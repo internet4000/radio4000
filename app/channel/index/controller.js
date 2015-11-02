@@ -1,8 +1,9 @@
 import Ember from 'ember';
+import EmberValidations from 'ember-validations';
 
-const {computed, debug, inject} = Ember;
+const {computed, debug, inject, warn} = Ember;
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(EmberValidations, {
 	// player: Ember.inject.service(), // used for debugging unplayed + history
 	// queryParams: ['tags'],
 	isAdding: false,
@@ -24,24 +25,61 @@ export default Ember.Controller.extend({
 				trackToEdit: null
 			});
 		},
+
 		addTrack() {
 			this.set('isAdding', true);
-
-			// let url = this.get('addTrackUrl');
-			// this.transitionToRoute('channel.add', {
-			// 	queryParams: { url: url }
-			// });
 		},
-		editTrack(track) {
+
+		startEditingTrack(track) {
 			this.set('trackToEdit', track);
 			this.set('isEditing', true);
 		},
-		saveTrack() {
-			debug('save track from controller');
+
+		saveTrack(track) {
 			this.send('closeModals');
-			this.set('addTrackUrl', null);
-			return true;
+
+			if (!track.get('hasDirtyAttributes')) {
+				debug('nothing to save on track');
+				return;
+			}
+
+			// in case url changed, we need to set the ytid
+			debug('saving track');
+			track.updateProvider();
+			track.save();
 		},
+
+		createNewTrack(obj) {
+			const channel = this.get('model');
+			const track = this.store.createRecord('track', obj);
+
+			// clear ui
+			this.set('addTrackUrl', null);
+			this.send('closeModals');
+
+			// set channel on track and save
+			debug('create new track');
+			track.set('channel', channel);
+			track.updateProvider();
+			track.save().then(() => {
+				debug('saved track');
+
+				// Add it to the tracks relationship on the channel
+				channel.get('tracks').then(tracks => {
+					tracks.addObject(track);
+					channel.save().then(() => {
+						debug('Saved new track.');
+					}, error => {
+						warn('Could not create track.');
+						debug(error);
+					});
+				});
+			}, error => {
+				warn('could not save track');
+				debug(error);
+			});
+		},
+
 		deleteTrack() {
 			this.send('closeModals');
 			return true;

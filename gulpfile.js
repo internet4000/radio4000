@@ -17,23 +17,10 @@ gulp.task('deploy:dev', ['critical'], shell.task([
 	'surge dist much.radio4000.com'
 ]));
 
-// Upload dist to live
-gulp.task('deploy:live', function () {
-	rsync({
-		src: 'dist/',
-		dest: 'oskarrough@web461.webfaction.com:/home/oskarrough/webapps/radio',
-		ssh: true,
-		recursive: true
-		// deleteAll: true // Careful, this could cause data loss
-	}, function (error) {
-		if (error) {
-			console.log(error.message);
-		} else {
-			console.log('Successfully deployed to radio4000.com');
-			console.log('Note: make sure you deployed using the correct "firebaseURL" in environement.js');
-		}
-	});
-});
+gulp.task('deploy', ['critical'], shell.task([
+	'mv dist/index.html dist/200.html',
+	'surge dist https://radio4000.com'
+]));
 
 /**
  * Create a native Linux, OS X and Windows app using electron.
@@ -62,8 +49,8 @@ const fs = require('fs');
 
 gulp.task('icons', function () {
 	const deferred = q.defer();
-	const inputDir = 'public/images/icons/';
-	const outputDir = 'assets/images/icons/';
+	const inputDir = 'public/assets/images/icons/';
+	const outputDir = 'public/assets/images/icons/grunticon';
 	const options = {enhanceSVG: true};
 	const files = fs.readdirSync(inputDir).map(function(fileName) {
 		return path.join(inputDir, fileName);

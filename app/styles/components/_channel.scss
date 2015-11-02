@@ -29,6 +29,7 @@
 .Channel-header {
 	background-color: $superlightgray;
 	padding-bottom: 1rem;
+	min-height: 10rem; // visual perf
 }
 .Channel-cover {
 	position: relative;
@@ -69,11 +70,9 @@
 }
 .Channel-body {
 	@include clearfix;
-	text-align: center;
 	@media (min-width: $layout-s) {
 		position: relative;
 		margin-bottom: 1rem;
-		text-align: left;
 		float: left;
 		width: 70%;
 		margin-top: 1.5rem;
@@ -93,6 +92,8 @@
 }
 .Channel-outlet {
 	margin-top: 2rem;
+	min-height: 2rem;
+	padding-bottom: 1.3rem;
 }
 .Channel-edit {
 	position: absolute;
@@ -114,6 +115,7 @@
 	position: absolute;
 	top: 0.3rem;
 	right: -0.2rem;
+	z-index: 1;
 }
 .LastUpdated {
 	@extend %font-regular;

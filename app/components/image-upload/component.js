@@ -1,8 +1,21 @@
 import Ember from 'ember';
+import ENV from 'radio4000/config/environment';
 
-const {observer, on} = Ember;
+const {Component, observer, on, $} = Ember;
 
-export default Ember.Component.extend({
+// $.getMultiScripts = function (arr, path) {
+// 	var _arr = $.map(arr, function (scr) {
+// 		return $.getScript((path ||'') + scr);
+// 	});
+
+// 	_arr.push($.Deferred(function (deferred) {
+// 		$(deferred.resolve);
+// 	}));
+
+// 	return $.when.apply($, _arr);
+// };
+
+export default Component.extend({
 	imageId: null,
 	progressValue: '0',
 	isUploading: false,
@@ -11,15 +24,37 @@ export default Ember.Component.extend({
 	showProgress: true,
 	enablePreview: false,
 
-	startCloudinary: on('didInsertElement', function () {
-		// const input = this.$('cloudinary_fileupload');
-		const component = this;
+	// Load all required scripts async
+	startCloudinary: on('init', function () {
+		console.log('startCloudinary');
 
+		$.getScript('assets/scripts/image-upload-r4.js')
+		// $.getMultiScripts([
+		// 	'assets/scripts/jquery.iframe-transport.js',
+		// 	'assets/scripts/jquery.ui.widget.js',
+		// 	'assets/scripts/jquery.fileupload.js',
+		// 	'assets/scripts/jquery.cloudinary.js'
+		// ])
+		.done(() => {
+			console.log('done');
+			$.cloudinary.config({cloud_name: ENV.CLOUDINARY_NAME});
+			Ember.run.schedule('afterRender', () => {
+				this.set('gotScripts', true);
+			});
+		}).fail(error => {
+			// one or more scripts failed to load
+			console.log(error);
+		});
+	}),
+
+	enableEvents: on('didInsertElement', function () {
+		const $input = this.$();
+		const component = this;
 		// here we bind to the events sent by our child cloudinary-input component
 		// we could listen to these events directly on that component as well, if we like
 
 		// indicate progress
-		this.$().on('fileuploadprogress', function (e, data) {
+		$input.on('fileuploadprogress', function (e, data) {
 			let value = Math.round((data.loaded * 100.0) / data.total);
 
 			// indicate we're uploading
@@ -28,7 +63,7 @@ export default Ember.Component.extend({
 		});
 
 		// once it's uploaded
-		this.$().on('fileuploaddone', function (e, data) {
+		$input.on('fileuploaddone', function (e, data) {
 			component.set('imageId', data.result.public_id);
 
 			// reset progress
@@ -43,7 +78,7 @@ export default Ember.Component.extend({
 		}
 
 		// get image from cloudinary
-		const image = Ember.$.cloudinary.image(this.get('imageId'), {
+		const image = $.cloudinary.image(this.get('imageId'), {
 			format: 'jpg',
 			width: 240,
 			height: 240,

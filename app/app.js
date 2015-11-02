@@ -20,18 +20,6 @@ Ember.LinkComponent.reopen({
 	activeClass: 'is-active'
 });
 
-// Notify Google Analytics of page transitions
-Ember.Router.reopen({
-	notifyGoogleAnalytics: Ember.on('didTransition', function () {
-		if (ga) {
-			ga('send', 'pageview', {
-				'page': this.get('url'),
-				'title': this.get('url')
-			});
-		}
-	})
-});
-
 Ember.EventDispatcher.reopen({
 	setup() {
 		const ignoreEvents = ['touchmove', 'touchstart', 'touchend', 'touchcancel', 'mousemove', 'mouseenter', 'mouseleave'];

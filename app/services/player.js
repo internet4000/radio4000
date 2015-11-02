@@ -48,7 +48,6 @@ export default Ember.Service.extend({
 	// Plays a random track from the playlist array
 	playShuffleFromTracks(tracks) {
 		this.set('isShuffling', true);
-		console.log(this.get('isShuffling'));
 		this.play(this.getRandom(tracks));
 	},
 
