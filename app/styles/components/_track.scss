@@ -27,6 +27,7 @@
 	color: $gray;
 	font-style: italic;
 	margin-bottom: 0;
+	word-break: break-word;
 
 	&:empty {
 		display: none;
