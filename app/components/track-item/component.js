@@ -1,13 +1,15 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
-	player: Ember.inject.service(),
+const {Component, computed, inject} = Ember;
+
+export default Component.extend({
+	player: inject.service(),
 	classNames: ['Track'],
 	classNameBindings: ['isCurrent'],
 
 	// true if the current track is loaded in the player
-	// isCurrent: Ember.computed.equal('player.model', 'track'),
-	isCurrent: Ember.computed('player.model', 'track', function () {
+	// isCurrent: computed.equal('player.model', 'track'),
+	isCurrent: computed('player.model', 'track', function () {
 		return this.get('player.model') === this.get('track');
 	}),
 
