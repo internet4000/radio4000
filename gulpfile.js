@@ -1,6 +1,5 @@
 /* global require */
 var gulp = require('gulp');
-var rsync = require('rsyncwrapper').rsync;
 var critical = require('critical').stream;
 var shell = require('gulp-shell');
 
@@ -52,7 +51,7 @@ gulp.task('icons', function () {
 	const inputDir = 'public/assets/images/icons/';
 	const outputDir = 'public/assets/images/icons/grunticon';
 	const options = {enhanceSVG: true};
-	const files = fs.readdirSync(inputDir).map(function(fileName) {
+	const files = fs.readdirSync(inputDir).map(function (fileName) {
 		return path.join(inputDir, fileName);
 	});
 	const grunticon = new Grunticon(files, outputDir, options);
