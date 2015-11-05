@@ -5,13 +5,16 @@ import config from 'radio4000/config/environment';
 const {debug, observer, on, run} = Ember;
 
 export default TrackFormComponent.extend({
+
+	// By passing a `newUrl` property to this component,
+	// we'll here set it to `track.url` (needed for ?add=queryParams)
 	init() {
-		this._super(this, arguments);
+		let url = this.get('newUrl');
 
 		// Create a track object that we later turn it to real track model
-		this.set('track', {
-			url: this.get('newUrl')
-		});
+		this.set('track', {url});
+
+		this._super(...arguments);
 	},
 
 	// This gets called when you paste something into the input-url component

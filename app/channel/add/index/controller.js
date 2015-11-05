@@ -8,7 +8,7 @@ export default Ember.Controller.extend(createTrackMixin, {
 	actions: {
 		saveTrack(trackProperties) {
 			// Reset the query param.
-			this.set('url', '');
+			this.set('url', null);
 
 			// Save via our mixin.
 			this.createTrack(trackProperties, this.get('model'));
