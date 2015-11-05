@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
 	classNames: ['Widget'],
 	smallList: false,
+
 	// reverse the array of tracks
 	reverse: false,
 

@@ -25,6 +25,9 @@ export default Component.extend({
 		},
 		toggleFullscreen() {
 			this.toggleProperty('uiStates.isFullscreen');
+		},
+		scrollTo() {
+			this.get('scrollTo')(this.get('player.model'));
 		}
 	}
 });

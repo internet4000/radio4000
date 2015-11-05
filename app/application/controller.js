@@ -1,11 +1,30 @@
 import Ember from 'ember';
 
-const {debug} = Ember;
+const {Controller, debug, inject, run, $} = Ember;
 
-export default Ember.Controller.extend({
-	player: Ember.inject.service(),
+export default Controller.extend({
+	player: inject.service(),
 
 	actions: {
+		scrollToTrack(track) {
+			track.get('channel').then(channel => {
+				// replaceRoute instead of transitionToRoute because it shouldn't be added to window history
+				this.replaceRoute('track', channel, track);
+
+				// only scroll if we're on track route
+				if (this.get('currentRouteName') !== 'track') {
+					return;
+				}
+
+				console.log('todo scroll now!!');
+				run.scheduleOnce('afterRender', function () {
+					let headerHeight = 62; // offset
+					$('html, body').animate({
+						scrollTop: $('.Track.is-current').offset().top - headerHeight
+					}, 500, 'swing');
+				});
+			});
+		},
 		ytPlaying() {
 			this.set('player.isPlaying', true);
 		},
@@ -25,10 +44,8 @@ export default Ember.Controller.extend({
 				return;
 			}
 
-			// dont do anything on 'invalid parameter'
-			if (error === 150) {
-				// @TODO mark track as georestricted
-			}
+			// @TODO mark track as georestricted on 'invalid parameter'
+			// if (error === 150) {}
 
 			// otherwise play next
 			this.get('player').next();
@@ -38,7 +55,7 @@ export default Ember.Controller.extend({
 
 // START REMOTE TRACK
 
-// onTrackForRemoteChange: Ember.observer('session.currentUser.settings.trackForRemote', function () {
+// onTrackForRemoteChange: observer('session.currentUser.settings.trackForRemote', function () {
 // 	let settings = this.get('session.currentUser.settings');
 //
 // 	if (!this.get('player.didPlay')) {
@@ -53,7 +70,7 @@ export default Ember.Controller.extend({
 // 	settings.then(settings => {
 //
 // 		// make sure it doesn't run too often
-// 		Ember.run.debounce(this, this.setTrackFromRemote, 400, true);
+// 		run.debounce(this, this.setTrackFromRemote, 400, true);
 // 	});
 // }),
 //
