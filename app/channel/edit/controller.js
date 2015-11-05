@@ -154,11 +154,13 @@ export default Controller.extend(EmberValidations, {
 		// Saves the channel
 		save() {
 			const channel = this.get('model');
+			const flashMessages = Ember.get(this, 'flashMessages');
 			debug('channel route save');
 
 			channel.save().then(() => {
 				debug('Saved --> channel');
 				this.transitionToRoute('channel', this.get('model.slug'));
+				flashMessages.info('Changes saved')
 			}).catch(() => {
 				// This get triggered for exemple when firebase.security do not validate
 				// TODO make server errors better handled
