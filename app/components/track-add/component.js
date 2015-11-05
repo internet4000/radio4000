@@ -5,13 +5,16 @@ import config from 'radio4000/config/environment';
 const {debug, observer, on, run} = Ember;
 
 export default TrackFormComponent.extend({
+
+	// By passing a `newUrl` property to this component,
+	// we'll here set it to `track.url` (needed for ?add=queryParams)
 	init() {
-		this._super(this, arguments);
+		let url = this.get('newUrl');
 
 		// Create a track object that we later turn it to real track model
-		this.set('track', {
-			url: this.get('newUrl')
-		});
+		this.set('track', {url});
+
+		this._super(...arguments);
 	},
 
 	// This gets called when you paste something into the input-url component
@@ -42,7 +45,8 @@ export default TrackFormComponent.extend({
 		// Use cache if we have it
 		if (this.get('cachedId') === id) {
 			debug('Setting cached title');
-			return this.set('title', this.get('cachedTitle'));
+			this.set('track.title', this.get('cachedTitle'));
+			return;
 		}
 
 		this.set('isFetchingTitle', true);
@@ -52,7 +56,7 @@ export default TrackFormComponent.extend({
 
 			if (!response.items.length) {
 				debug('Could not find a title');
-				return false;
+				return;
 			}
 
 			let title = response.items[0].snippet.title;
@@ -68,7 +72,7 @@ export default TrackFormComponent.extend({
 });
 
 // @todo save this, DONT DELETE THIS!
-// this get's called from our youtube-search component
+// this could get called from our youtube-search component
 // addFromSearch(item) {
 // 	let title = item.get('title');
 // 	let url = item.get('url');

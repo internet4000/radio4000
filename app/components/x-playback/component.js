@@ -1,9 +1,11 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
+const {Component, inject} = Ember;
+
+export default Component.extend({
 	classNames: ['Playback'],
-	player: Ember.inject.service(),
-	uiStates: Ember.inject.service(),
+	player: inject.service(),
+	uiStates: inject.service(),
 
 	actions: {
 		togglePlay() {

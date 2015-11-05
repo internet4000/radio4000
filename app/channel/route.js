@@ -1,4 +1,3 @@
-/* global document window */
 import Ember from 'ember';
 
 const {Route, debug, warn} = Ember;

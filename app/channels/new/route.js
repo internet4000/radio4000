@@ -92,7 +92,7 @@ export default Ember.Route.extend({
 									debug('redirect to the new channel');
 									this.transitionTo('channel', channel);
 									return channel;
-								}, error => {
+								}, () => {
 									return new Error('Could not create a new channel with its relationships.');
 								})
 
