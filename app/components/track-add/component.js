@@ -42,7 +42,8 @@ export default TrackFormComponent.extend({
 		// Use cache if we have it
 		if (this.get('cachedId') === id) {
 			debug('Setting cached title');
-			return this.set('title', this.get('cachedTitle'));
+			this.set('track.title', this.get('cachedTitle'));
+			return;
 		}
 
 		this.set('isFetchingTitle', true);
@@ -52,7 +53,7 @@ export default TrackFormComponent.extend({
 
 			if (!response.items.length) {
 				debug('Could not find a title');
-				return false;
+				return;
 			}
 
 			let title = response.items[0].snippet.title;
