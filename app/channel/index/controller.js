@@ -1,9 +1,10 @@
 import Ember from 'ember';
 import EmberValidations from 'ember-validations';
+import createTrackMixin from 'radio4000/mixins/create-track';
 
-const {computed, debug, inject, warn} = Ember;
+const {computed, debug, inject} = Ember;
 
-export default Ember.Controller.extend(EmberValidations, {
+export default Ember.Controller.extend(EmberValidations, createTrackMixin, {
 	// player: Ember.inject.service(), // used for debugging unplayed + history
 	// queryParams: ['tags'],
 	isAdding: false,
@@ -27,6 +28,7 @@ export default Ember.Controller.extend(EmberValidations, {
 		},
 
 		addTrack() {
+			console.log(this.get('addTrackUrl'));
 			this.set('isAdding', true);
 		},
 
@@ -53,37 +55,16 @@ export default Ember.Controller.extend(EmberValidations, {
 			});
 		},
 
-		createNewTrack(obj) {
-			const flashMessages = Ember.get(this, 'flashMessages');
-			const channel = this.get('model');
-			const track = this.store.createRecord('track', obj);
 
-			// clear ui
+		createNewTrack(trackProperties) {
+			const channel = this.get('model');
+
+			// Clear the UI so we can continue
 			this.set('addTrackUrl', null);
 			this.send('closeModals');
 
-			// set channel on track and save
-			debug('create new track');
-			track.set('channel', channel);
-			track.updateProvider();
-			track.save().then(() => {
-				debug('saved track');
-
-				// Add it to the tracks relationship on the channel
-				channel.get('tracks').then(tracks => {
-					tracks.addObject(track);
-					channel.save().then(() => {
-						debug('Saved new track.');
-						flashMessages.info('New track added');
-					}, error => {
-						warn('Could not create track.');
-						debug(error);
-					});
-				});
-			}, error => {
-				warn('could not save track');
-				debug(error);
-			});
+			// Save via our mixin.
+			this.createTrack(trackProperties, channel);
 		},
 
 		deleteTrack() {

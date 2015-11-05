@@ -96,7 +96,7 @@ export default Ember.Route.extend({
 										timeout: 10000
 									});
 									return channel;
-								}, error => {
+								}, () => {
 									return new Error('Could not create a new channel with its relationships.');
 								})
 
