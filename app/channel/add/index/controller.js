@@ -1,17 +1,20 @@
 import Ember from 'ember';
+import createTrackMixin from 'radio4000/mixins/create-track';
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(createTrackMixin, {
 	queryParams: ['url'],
 	url: null,
 
 	actions: {
-		saveTrack() {
-			// reset the query param
+		saveTrack(trackProperties) {
+			// Reset the query param.
 			this.set('url', '');
-			// transition out
+
+			// Save via our mixin.
+			this.createTrack(trackProperties, this.get('model'));
+
+			// Transition out.
 			this.send('backToChannel');
-			// leave it to the channel route to actually save the track
-			return true;
 		},
 
 		// used by the modal
