@@ -34,6 +34,7 @@ export default Route.extend({
 
 	actions: {
 		deleteTrack(track) {
+			const flashMessages = Ember.get(this, 'flashMessages');
 			track.get('channel').then(channel => {
 				channel.get('tracks').then(tracks => {
 					tracks.removeObject(track);
@@ -41,6 +42,7 @@ export default Route.extend({
 
 					track.destroyRecord().then(() => {
 						debug('Deleted track');
+						flashMessages.warning('Track deleted');
 					}, () => {
 						warn('Could not delete track');
 					});

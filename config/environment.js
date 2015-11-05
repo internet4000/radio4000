@@ -25,10 +25,9 @@ module.exports = function(environment) {
       // when it is created
    },
    flashMessageDefaults: {
-      timeout: 5000,
-      extendedTimeout: 200
+      timeout: 3000,
+      extendedTimeout: 1000
       // injectionFactories: [],
-      // sticky: true
     }
   };
 

@@ -59,6 +59,7 @@ export default Ember.Route.extend({
 		// Follow the comments and you'll be ok!
 
 		saveChannel(channel) {
+			const flashMessages = Ember.get(this, 'flashMessages');
 			const user = this.get('session.currentUser');
 
 			channel.save().then(channel => {
@@ -91,6 +92,9 @@ export default Ember.Route.extend({
 									// Redirect to the new channel and
 									debug('redirect to the new channel');
 									this.transitionTo('channel', channel);
+									flashMessages.warning('Voilà! You now have a Radio4000 📻', {
+										timeout: 10000
+									});
 									return channel;
 								}, error => {
 									return new Error('Could not create a new channel with its relationships.');

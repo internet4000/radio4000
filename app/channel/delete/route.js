@@ -9,5 +9,20 @@ export default Route.extend(ownerRouteMixin, {
 		this.render({
 			into: 'application'
 		});
+	},
+	afterModel() {
+		const flashMessages = Ember.get(this, 'flashMessages');
+		flashMessages.danger("You'll be missed! 🌇", {
+			sticky: true
+		})
+	},
+
+	actions: {
+		willTransition() {
+			const flashMessages = Ember.get(this, 'flashMessages');
+			flashMessages.clearMessages().info('fiou…', {
+				timeout: 400
+			})
+		}
 	}
 });

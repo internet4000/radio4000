@@ -10,11 +10,15 @@
 .alert {
 	padding: 0.2rem 0.5rem 0.2rem 0.5rem;
 	color: white;
-	background-color: $purple;
+	background-color: $gray;
 	opacity: 0;
 	transform: translateX(-50%);
 	transition: opacity 200ms $easing, transform 300ms $easing;
 	margin-bottom: 0.2rem;
+	display: table;
+	float: right;
+	clear: both;
+
 	&.active {
 		opacity: 1;
 		transform: translateX(0);
@@ -24,11 +28,15 @@
 		transform: translateX(100%);
 	}
 }
-
-.success {}
-.info {
-
+.alert-info {
+	background-color: lighten($purple, 20%);
 }
-.warning {}
-.danger {}
-.secondary {}
+.alert-warning {
+	background-color: $purple;
+}
+.alert-danger {
+	background-color: $red;
+}
+
+.alert-success {}
+.alert-secondary {}

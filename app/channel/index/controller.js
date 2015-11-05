@@ -49,9 +49,7 @@ export default Ember.Controller.extend(EmberValidations, {
 			track.updateProvider();
 			track.save().then(() => {
 				this.send('closeModals');
-				flashMessages.add({
-					message: 'Track saved!'
-				});
+				flashMessages.info('Track saved');
 			});
 		},
 
@@ -76,9 +74,7 @@ export default Ember.Controller.extend(EmberValidations, {
 					tracks.addObject(track);
 					channel.save().then(() => {
 						debug('Saved new track.');
-						flashMessages.add({
-							message: 'New track added!'
-						});
+						flashMessages.info('New track added');
 					}, error => {
 						warn('Could not create track.');
 						debug(error);
