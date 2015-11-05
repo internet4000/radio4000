@@ -1,0 +1,34 @@
+
+.FlashMessages {
+	z-index: 3;
+	position: fixed;
+	top: 4.2rem;
+	right: 0;
+	max-width: 20rem;
+	@include size-1;
+}
+.alert {
+	padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+	color: white;
+	background-color: $purple;
+	opacity: 0;
+	transform: translateX(-50%);
+	transition: opacity 200ms $easing, transform 300ms $easing;
+	margin-bottom: 0.2rem;
+	&.active {
+		opacity: 1;
+		transform: translateX(0);
+	}
+	&.exiting {
+		opacity: 0;
+		transform: translateX(100%);
+	}
+}
+
+.success {}
+.info {
+
+}
+.warning {}
+.danger {}
+.secondary {}

@@ -36,20 +36,27 @@ export default Ember.Controller.extend(EmberValidations, {
 		},
 
 		saveTrack(track) {
-			this.send('closeModals');
+			const flashMessages = Ember.get(this, 'flashMessages');
 
 			if (!track.get('hasDirtyAttributes')) {
 				debug('nothing to save on track');
+				this.send('closeModals');
 				return;
 			}
 
 			// in case url changed, we need to set the ytid
 			debug('saving track');
 			track.updateProvider();
-			track.save();
+			track.save().then(() => {
+				this.send('closeModals');
+				flashMessages.add({
+					message: 'Track saved!'
+				});
+			});
 		},
 
 		createNewTrack(obj) {
+			const flashMessages = Ember.get(this, 'flashMessages');
 			const channel = this.get('model');
 			const track = this.store.createRecord('track', obj);
 
@@ -69,6 +76,9 @@ export default Ember.Controller.extend(EmberValidations, {
 					tracks.addObject(track);
 					channel.save().then(() => {
 						debug('Saved new track.');
+						flashMessages.add({
+							message: 'New track added!'
+						});
 					}, error => {
 						warn('Could not create track.');
 						debug(error);
