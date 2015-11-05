@@ -68,7 +68,7 @@ export default TrackFormComponent.extend({
 });
 
 // @todo save this, DONT DELETE THIS!
-// this get's called from our youtube-search component
+// this could get called from our youtube-search component
 // addFromSearch(item) {
 // 	let title = item.get('title');
 // 	let url = item.get('url');

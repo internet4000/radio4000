@@ -1,8 +1,9 @@
 import Ember from 'ember';
-// import FocusInputComponent from '../focus-input/component';
 
-export default Ember.TextField.extend({
-	capturePaste: Ember.on('didInsertElement', function () {
+const {TextField, on, run, debug} = Ember;
+
+export default TextField.extend({
+	capturePaste: on('didInsertElement', function () {
 		let self = this;
 		let input = this.element;
 		let $input = this.$();
@@ -10,15 +11,15 @@ export default Ember.TextField.extend({
 		// use jQuery's 'paste' event
 		$input.on('paste', function () {
 			// without run loop, the pasted value isn't available yet
-			Ember.run.schedule('afterRender', function () {
+			run.schedule('afterRender', function () {
 				// don't submit if field is invalid
 				if (input.validity.typeMismatch) {
-					Ember.debug('input not valid');
+					debug('input not valid');
 					return;
 				}
 
 				// actions up!
-				self.sendAction('pasted', $input.val());
+				self.sendAction('onPaste', $input.val());
 			});
 		});
 	})
