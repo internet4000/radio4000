@@ -1,30 +1,11 @@
 import Ember from 'ember';
 
-const {Controller, debug, inject, run, $} = Ember;
+const {Controller, debug, inject} = Ember;
 
 export default Controller.extend({
 	player: inject.service(),
 
 	actions: {
-		scrollToTrack(track) {
-			track.get('channel').then(channel => {
-				// replaceRoute instead of transitionToRoute because it shouldn't be added to window history
-				this.replaceRoute('track', channel, track);
-
-				// only scroll if we're on track route
-				if (this.get('currentRouteName') !== 'track') {
-					return;
-				}
-
-				console.log('todo scroll now!!');
-				run.scheduleOnce('afterRender', function () {
-					let headerHeight = 62; // offset
-					$('html, body').animate({
-						scrollTop: $('.Track.is-current').offset().top - headerHeight
-					}, 500, 'swing');
-				});
-			});
-		},
 		ytPlaying() {
 			this.set('player.isPlaying', true);
 		},
