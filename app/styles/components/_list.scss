@@ -39,6 +39,28 @@
 		}
 	}
 }
+
+// Numbered list
+.List--numbered {
+	counter-reset: counter(list-counter);
+}
+.List--numbered li {
+	counter-increment: list-counter;
+	&:before {
+		// decimal (1 2 3)
+		// decimal-leading-zero (01, 02, 03)
+		// lower-roman (i ii iii)
+		// upper-roman (I II III)
+		content: counter(list-counter, upper-roman);
+		font-size: 10px;
+		position: absolute;
+		display: inline-block;
+		margin-left: 0.45rem;
+		margin-top: 6px;
+		color: $mediumgray;
+	}
+}
+
 .List-title {
 	margin: 0;
 	small {
