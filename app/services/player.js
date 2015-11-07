@@ -1,8 +1,9 @@
 import Ember from 'ember';
 
-const {computed, debug, observer} = Ember;
+const {computed, debug, observer, inject} = Ember;
 
 export default Ember.Service.extend({
+	userHistory: inject.service(),
 	isPlaying: false,
 	isShuffling: false,
 	isLooped: true,
@@ -86,6 +87,11 @@ export default Ember.Service.extend({
 		const playlist = this.get('playlist');
 		const isShuffling = this.get('isShuffling');
 		let next = this.getPrev();
+
+		// first notify service:userHistory
+		// @TODO it adds the channel to history if you shuffle it from card
+		// which is wrong since there you are 'just trying out the channel'
+		this.get('userHistory').historyManager(playlist);
 
 		if (isShuffling) {
 			let nextRandom = this.getRandom();
