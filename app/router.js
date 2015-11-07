@@ -30,7 +30,7 @@ Router.map(function () {
 	this.route('channels', {path: '/'}, function () {
 		this.route('all');
 		this.route('new');
-		this.route('history');
+		this.authenticatedRoute('history');
 	});
 
 	// Support deprecated channels urls. Needs to be defined before 'channel' route.
