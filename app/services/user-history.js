@@ -6,6 +6,16 @@ export default Service.extend({
 	session: inject.service(),
 	store: inject.service(),
 
+	clearHistory() {
+		let settings = this.get('session.currentUser.settings');
+		settings.then(settings => {
+			settings.get('playedChannels').then(history => {
+				history.removeObjects();
+				settings.save();
+			});
+		});
+	},
+
 	didPlayChannel(channel) {
 		let settings = this.get('session.currentUser.settings');
 

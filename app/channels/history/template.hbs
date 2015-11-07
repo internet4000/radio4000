@@ -4,6 +4,10 @@
 		<p class="Muted">Only you can see this section</p>
 	</div>
 
+	{{#btn-group class="Container"}}
+		<button class="Btn" {{action 'clearHistory'}}>Clear history</button>
+	{{/btn-group}}
+
 	<div class="Container Container--full">
 		{{#if model}}
 			{{#each-grid items=model as |item|}}
