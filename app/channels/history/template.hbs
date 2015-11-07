@@ -3,14 +3,14 @@
 		<h1>Your listening <small>history</small></h1>
 		<p class="Muted">Only you can see this section</p>
 	</div>
-	<div class="Container">
 
-	{{#if model}}
-		{{#each model as |item|}}
-		  {{channel-card channel=item}}
-		{{/each}}
-	{{else}}
-		<p>There are no channel in your history yet</p>
-	{{/if}}
+	<div class="Container Container--full">
+		{{#if model}}
+			{{#each-grid items=model as |item|}}
+				{{channel-card channel=item}}
+			{{/each-grid}}
+		{{else}}
+			<p>You haven't played any radios yet.</p>
+		{{/if}}
 	</div>
 </section>

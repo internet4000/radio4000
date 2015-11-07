@@ -1,18 +1,21 @@
 import Ember from 'ember';
 
-const {Service, inject, debug} = Ember;
+const {Service, inject} = Ember;
 
 export default Service.extend({
 	session: inject.service(),
 	store: inject.service(),
 
-	historyManager(playlist) {
-		Ember.debug('a playlist was passed to historyManager');
-		this.get('session.currentUser.settings').then(settings => {
-			settings.get('channelsHistory').then(history => {
-				history.addObject(playlist);
-				settings.save().then(() => {
-					Ember.debug('playlist was saved to currentUser.settings.channelsHistory');
+	didPlayChannel(channel) {
+		let settings = this.get('session.currentUser.settings');
+
+		channel.then(channel => {
+			settings.then(settings => {
+				settings.get('playedChannels').then(history => {
+					history.addObject(channel);
+					settings.save().then(() => {
+						Ember.debug('playlist was added to currentUser played');
+					});
 				});
 			});
 		});

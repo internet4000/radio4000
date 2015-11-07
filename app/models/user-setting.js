@@ -8,7 +8,7 @@ export default DS.Model.extend({
 	trackForRemote: belongsTo('track', {
 		async: true
 	}),
-	channelsHistory: hasMany('channel', {
+	playedChannels: hasMany('channel', {
 		async: true
 	})
 });
