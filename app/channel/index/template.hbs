@@ -1,10 +1,5 @@
 <div class="Channel-outlet">
 	{{#if canEdit}}
-		{{#if hasFewTracks}}
-			<div class="Container">
-				<p>Why don't you add your first tracks? It's just below.<br>Paste in the URL of a YouTube video!</p>
-			</div>
-		{{/if}}
 		<div class="Container">
 			{{track-add-inline addTrackUrl=addTrackUrl onSubmit=(action 'addTrack')}}
 		</div>
@@ -27,19 +22,13 @@
 			{{track-item track=item canEdit=canEdit edit=(action "startEditingTrack") onTransition="transitionToTrack"}}
 		{{/tracks-list}}
 
-		{{#if canEdit}}
-			{{#unless model.coverImage}}
-				<div class="Container Section--space">
-					<p>Wouldn't it be nicer with an image for your radio? {{#link-to 'channel.edit' model}}Edit your radio to upload one{{/link-to}}.</p>
-				</div>
-			{{/unless}}
-		{{else}}
+		{{#unless canEdit}}
 			{{#unless tracks.length}}
 				<div class="Container Section--space">
 				  <p>Ooh, there are no tracks in this radio yet.</p>
 				</div>
 			{{/unless}}
-		{{/if}}
+		{{/unless}}
 	{{else}}
 		<div class="Container Section--space">
 			{{is-loading}}
