@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {Component, inject} = Ember;
+const {Component, inject, run, $} = Ember;
 
 export default Component.extend({
 	classNames: ['Playback'],
@@ -25,6 +25,16 @@ export default Component.extend({
 		},
 		toggleFullscreen() {
 			this.toggleProperty('uiStates.isFullscreen');
+		},
+		scrollToTrack() {
+			// Scroll afterRender and a bit later to not jank the computer
+			run.scheduleOnce('afterRender', function () {
+				run.later(() => {
+					$('html, body').animate({
+						scrollTop: $('.Track.is-current').offset().top - 90
+					}, 700, 'swing');
+				}, 100);
+			});
 		}
 	}
 });

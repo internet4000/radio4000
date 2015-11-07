@@ -1,9 +1,9 @@
 import Ember from 'ember';
 
-const {debug} = Ember;
+const {Controller, debug, inject} = Ember;
 
-export default Ember.Controller.extend({
-	player: Ember.inject.service(),
+export default Controller.extend({
+	player: inject.service(),
 
 	actions: {
 		ytPlaying() {
@@ -25,10 +25,8 @@ export default Ember.Controller.extend({
 				return;
 			}
 
-			// dont do anything on 'invalid parameter'
-			if (error === 150) {
-				// @TODO mark track as georestricted
-			}
+			// @TODO mark track as georestricted on 'invalid parameter'
+			// if (error === 150) {}
 
 			// otherwise play next
 			this.get('player').next();
@@ -38,7 +36,7 @@ export default Ember.Controller.extend({
 
 // START REMOTE TRACK
 
-// onTrackForRemoteChange: Ember.observer('session.currentUser.settings.trackForRemote', function () {
+// onTrackForRemoteChange: observer('session.currentUser.settings.trackForRemote', function () {
 // 	let settings = this.get('session.currentUser.settings');
 //
 // 	if (!this.get('player.didPlay')) {
@@ -53,7 +51,7 @@ export default Ember.Controller.extend({
 // 	settings.then(settings => {
 //
 // 		// make sure it doesn't run too often
-// 		Ember.run.debounce(this, this.setTrackFromRemote, 400, true);
+// 		run.debounce(this, this.setTrackFromRemote, 400, true);
 // 	});
 // }),
 //
