@@ -88,11 +88,6 @@ export default Ember.Service.extend({
 		const isShuffling = this.get('isShuffling');
 		let next = this.getPrev();
 
-		// first notify service:userHistory
-		// @TODO it adds the channel to history if you shuffle it from card
-		// which is wrong since there you are 'just trying out the channel'
-		this.get('userHistory').historyManager(playlist);
-
 		if (isShuffling) {
 			let nextRandom = this.getRandom();
 
@@ -105,8 +100,12 @@ export default Ember.Service.extend({
 			return this.play(nextRandom);
 		}
 
+		// if we're not shuffling, add the playlist to user history
+		this.get('userHistory').didPlayChannel(this.get('model.channel'));
+
 		if (!next) {
 			this.clearHistory();
+
 			// first is last because we have newest on top
 			return this.play(playlist.get('lastObject'));
 		}
