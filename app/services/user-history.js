@@ -9,10 +9,7 @@ export default Service.extend({
 	clearHistory() {
 		let settings = this.get('session.currentUser.settings');
 		settings.then(settings => {
-			settings.get('playedChannels').then(history => {
-				history.removeObjects();
-				settings.save();
-			});
+			settings.set('playedChannels', []);
 		});
 	},
 
