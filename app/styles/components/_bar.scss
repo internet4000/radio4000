@@ -17,8 +17,7 @@
 }
 .Bar--top {
 	top: 0;
-	// border-bottom: 2px solid hsla(0, 0%, 0%, 0.4);
-	// background-image: none;
+	border-bottom: $bar-border-size solid hsla(0, 0%, 0%, 0.4);
 	color: $text-color-invert; // $dark
 	a {
 		color: $text-color-invert; // $dark

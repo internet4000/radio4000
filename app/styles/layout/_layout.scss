@@ -15,8 +15,8 @@ body {
 
 .SiteHeader {}
 .SiteMain {
-	padding-top: rem($bar-height + 3px); // with border
-	padding-bottom: rem($bar-height); // without border
+	padding-top: rem($bar-height + $bar-border-size); // with border
+	padding-bottom: rem($bar-height * 1.5); // bar + a bit more
 	min-height: 100vh;
 }
 .SiteFooter {
