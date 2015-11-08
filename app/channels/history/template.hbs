@@ -5,16 +5,20 @@
 	</div>
 
 	<div class="Container Container--full">
-		{{#if model}}
-			{{#each-grid items=model as |item|}}
+		{{#if model.userSettings.playedChannels}}
+			{{#each-grid items=model.userSettings.playedChannels as |item|}}
 				{{channel-card channel=item}}
 			{{/each-grid}}
+			{{#btn-group}}
+				<button class="Btn" {{action 'clearHistory'}}>Clear history</button>
+			{{/btn-group}}
 		{{else}}
 			<p>You haven't played any radios yet.</p>
+			{{#unless session.isAuthenticated}}
+				<p>{{#link-to 'login'}}Register or log in{{/link-to}}.</p>
+			{{/unless}}
 		{{/if}}
 	</div>
 
-	{{#btn-group class="Container"}}
-		<button class="Btn" {{action 'clearHistory'}}>Clear history</button>
-	{{/btn-group}}
+
 </section>

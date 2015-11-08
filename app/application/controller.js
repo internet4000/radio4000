@@ -1,35 +1,27 @@
 import Ember from 'ember';
 
-const {Controller, debug, inject} = Ember;
+const {Controller, inject} = Ember;
 
 export default Controller.extend({
 	player: inject.service(),
+	userHistory: inject.service(),
 
 	actions: {
 		ytPlaying() {
 			this.set('player.isPlaying', true);
 		},
 		ytPaused() {
-			this.set('player.isPlaying', false);
+			this.get('player').pause();
 		},
 		ytEnded() {
-			this.set('player.isPlaying', false);
-			this.get('player').next();
+			this.get('player').trackEnded();
+
+			if (!this.get('player.isShuffling')) {
+				this.get('userHistory').didPlayChannel(this.get('player.model.channel'));
+			}
 		},
 		ytError(error) {
-			this.set('player.isPlaying', false);
-			debug(error);
-
-			// dont do anything on 'invalid parameter'
-			if (error === 2) {
-				return;
-			}
-
-			// @TODO mark track as georestricted on 'invalid parameter'
-			// if (error === 150) {}
-
-			// otherwise play next
-			this.get('player').next();
+			this.get('player').onError(error);
 		}
 	}
 });

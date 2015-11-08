@@ -1,9 +1,8 @@
 import Ember from 'ember';
 
-const {computed, debug, observer, inject} = Ember;
+const {computed, debug, observer} = Ember;
 
 export default Ember.Service.extend({
-	userHistory: inject.service(),
 	isPlaying: false,
 	isShuffling: false,
 	isLooped: true,
@@ -34,6 +33,10 @@ export default Ember.Service.extend({
 		return !this.get('history').contains(item);
 	}),
 
+	trackEnded() {
+		this.set('isPlaying', false);
+	},
+
 	// If you don't want the URL to change, use this to play a track
 	play(track) {
 		if (!track) {
@@ -50,6 +53,10 @@ export default Ember.Service.extend({
 	playShuffleFromTracks(tracks) {
 		this.set('isShuffling', true);
 		this.play(this.getRandom(tracks));
+	},
+
+	pause() {
+		this.set('isPlaying', false);
 	},
 
 	// plays the previous track and stays at first
@@ -100,9 +107,6 @@ export default Ember.Service.extend({
 			return this.play(nextRandom);
 		}
 
-		// if we're not shuffling, add the playlist to user history
-		this.get('userHistory').didPlayChannel(this.get('model.channel'));
-
 		if (!next) {
 			this.clearHistory();
 
@@ -131,5 +135,25 @@ export default Ember.Service.extend({
 		let history = this.get('history');
 		Ember.debug('Player history was cleared');
 		history.clear();
+	},
+
+	// On YouTube player error
+	onError(error) {
+		this.set('isPlaying', false);
+
+		debug(error);
+
+		// dont do anything on 'invalid parameter'
+		if (error === 2) {
+			return;
+		}
+
+		// dont do anything on 'invalid parameter'
+		if (error === 150) {
+			// @TODO mark track as georestricted
+		}
+
+		// otherwise play next
+		this.get('player').next();
 	}
 });

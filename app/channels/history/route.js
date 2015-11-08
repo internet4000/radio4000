@@ -1,12 +1,12 @@
 import Ember from 'ember';
 
-const {inject} = Ember
+const {inject, RSVP} = Ember;
 
 export default Ember.Route.extend({
 	userHistory: inject.service(),
 	model() {
-		return this.get('session.currentUser.settings').then(settings => {
-			return settings.get('playedChannels');
+		return RSVP.hash({
+			userSettings: this.get('session.currentUser.settings')
 		});
 	},
 	actions: {
