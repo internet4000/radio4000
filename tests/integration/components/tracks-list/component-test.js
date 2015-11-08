@@ -16,5 +16,5 @@ test('it renders with items and sorting works', function (assert) {
 		{{/tracks-list}}
 	`);
 
-	assert.equal(this.$().find('h2:first').text().trim(), 'Jackson');
+	assert.equal(this.$().find('h2:first').text().trim(), 'Jackson', 'it renders newest item on top');
 });

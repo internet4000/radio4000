@@ -3,6 +3,8 @@ import {
 } from '../../../helpers/format-date';
 import {module, test} from 'qunit';
 
+// TODO: make "moment" available in this test.
+
 module('FormatDateHelper');
 
 // Replace this with your real tests.

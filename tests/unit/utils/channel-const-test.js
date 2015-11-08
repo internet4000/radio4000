@@ -5,6 +5,6 @@ module('Unit | Utility | channel const');
 
 // Replace this with your real tests.
 test('it works', function (assert) {
-  var result = channelConst();
-  assert.ok(result);
+	var result = channelConst;
+	assert.equal(typeof result.titleMinLength, 'number', 'The minimum titel length is a number');
 });
