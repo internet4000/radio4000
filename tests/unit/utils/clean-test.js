@@ -4,7 +4,7 @@ import {module, test} from 'qunit';
 
 module('clean');
 
-test('it works', function(assert) {
+test('it works', function (assert) {
 	let string = '&$#! S??omething// With UPPERCASE and SPACES and CH#$@#%(*!';
 	let result = clean(string);
 

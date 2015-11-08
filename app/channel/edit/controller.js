@@ -160,7 +160,7 @@ export default Controller.extend(EmberValidations, {
 			channel.save().then(() => {
 				debug('Saved --> channel');
 				this.transitionToRoute('channel', this.get('model.slug'));
-				flashMessages.info('Changes saved')
+				flashMessages.info('Changes saved');
 			}).catch(() => {
 				// This get triggered for exemple when firebase.security do not validate
 				// TODO make server errors better handled
