@@ -4,7 +4,6 @@ const {Controller, inject} = Ember;
 
 export default Controller.extend({
 	player: inject.service(),
-	userHistory: inject.service(),
 
 	actions: {
 		ytPlaying() {
@@ -15,10 +14,6 @@ export default Controller.extend({
 		},
 		ytEnded() {
 			this.get('player').trackEnded();
-
-			if (!this.get('player.isShuffling')) {
-				this.get('userHistory').didPlayChannel(this.get('player.model.channel'));
-			}
 		},
 		ytError(error) {
 			this.get('player').onError(error);

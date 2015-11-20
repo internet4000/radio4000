@@ -1,10 +1,12 @@
 import Ember from 'ember';
 
-const {computed, debug, observer} = Ember;
+const {A, computed, debug, observer, inject} = Ember;
 
 export default Ember.Service.extend({
+	playerRandom: inject.service(),
+	userHistory: inject.service(),
 	isPlaying: false,
-	isShuffling: false,
+	// isShuffling: false,
 	isLooped: true,
 	model: null,
 	playlist: null,
@@ -26,15 +28,26 @@ export default Ember.Service.extend({
 	}),
 
 	// all listened tracks
-	history: new Ember.A([]),
+	history: new A([]),
 
 	// all playlist items not in the history array
 	unplayed: computed.filter('playlist', function (item) {
 		return !this.get('history').contains(item);
 	}),
 
+	// a track from the player ended (no user action, it played all the track)
 	trackEnded() {
+		// ui
+		// @TODO refactor playerIsInLoadingState
 		this.set('isPlaying', false);
+
+		// if random, nextRandom
+		if (!this.get('playerRandom.isShuffling')) {
+			this.nextRandom();
+			this.get('userHistory').trackEnded(this.get('player.model.channel'));
+		}
+		// if normal play next mode
+		this.next();
 	},
 
 	// If you don't want the URL to change, use this to play a track
@@ -51,7 +64,7 @@ export default Ember.Service.extend({
 
 	// Plays a random track from the playlist array
 	playShuffleFromTracks(tracks) {
-		this.set('isShuffling', true);
+		this.set('playerRandom.isShuffling', true);
 		this.play(this.getRandom(tracks));
 	},
 
@@ -63,7 +76,7 @@ export default Ember.Service.extend({
 	prev() {
 		const playlist = this.get('playlist');
 		const history = this.get('history');
-		const isShuffling = this.get('isShuffling');
+
 		let prev = this.getNext();
 
 		// without shuffle
@@ -91,21 +104,18 @@ export default Ember.Service.extend({
 
 	// plays the next track
 	next() {
-		const playlist = this.get('playlist');
-		const isShuffling = this.get('isShuffling');
-		let next = this.getPrev();
+		const isShuffling = this.get('playerRandom.isShuffling');
 
 		if (isShuffling) {
-			let nextRandom = this.getRandom();
-
-			if (!nextRandom) {
-				this.clearHistory();
-				nextRandom = this.getRandom();
-			}
-
-			this.get('history').pushObject(nextRandom);
-			return this.play(nextRandom);
+			return this.nextRandom();
 		}
+		return this.nextNormal();
+	},
+
+	// which track to play when in normal mode (no random)
+	nextNormal() {
+		const playlist = this.get('playlist');
+		let next = this.getPrev();
 
 		if (!next) {
 			this.clearHistory();
@@ -115,6 +125,19 @@ export default Ember.Service.extend({
 		}
 
 		return this.play(next);
+	},
+
+	// which track to play when player is in random mode
+	nextRandom() {
+		let nextRandom = this.getRandom();
+
+		if (!nextRandom) {
+			this.clearHistory();
+			nextRandom = this.getRandom();
+		}
+
+		this.get('history').pushObject(nextRandom);
+		return this.play(nextRandom);
 	},
 
 	// gets a random track
