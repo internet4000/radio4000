@@ -22,6 +22,7 @@ export default Service.extend(randomHelpers, {
 	},
 	refreshRandomPool() {
 		// @TODO clear all tracks.usedInCurrentPlayer
+		this.get('player').clearPlayedTracksStatus();
 		this.setRandomPool();
 	},
 

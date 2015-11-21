@@ -39,6 +39,14 @@ export default Ember.Service.extend({
 		// play next track
 		return this.next();
 	},
+	clearPlayedTracksStatus() {
+		debug('clearPlayedTracksStatus started');
+		this.get('playlist.tracks').then(tracks => {
+			tracks.forEach(track => {
+				track.set('usedInCurrentPlayer', false);
+			});
+		});
+	},
 
 	// If you don't want the URL to change, use this to play a track
 	play(track) {
@@ -46,6 +54,7 @@ export default Ember.Service.extend({
 			Ember.warn('Play called without a track.');
 			return false;
 		}
+		this.get('userHistory').setTrackHasPlayed(track);
 		track.set('usedInCurrentPlayer', true);
 		// the router is injected with the 'player-route' initializer
 		// this.get('router').transitionTo('track', track);

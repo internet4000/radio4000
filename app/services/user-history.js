@@ -11,7 +11,9 @@ export default Service.extend({
 	trackEnded(channel) {
 		this.didPlayChannel(channel);
 	},
-
+	setTrackHasPlayed(track) {
+		track.set('usedInCurrentPlayer', true);
+	},
 	clearHistory() {
 		let settings = this.get('session.currentUser.settings');
 		settings.get('playedChannels').then(playedChannels => {
@@ -19,7 +21,6 @@ export default Service.extend({
 			settings.save();
 		});
 	},
-
 	didPlayChannel() {
 		let currentChannelModel = this.get('player.model.channel');
 		let settings = this.get('session.currentUser.settings');
