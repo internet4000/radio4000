@@ -23,7 +23,7 @@ export default Ember.Service.extend({
 				return false;
 			}
 
-			debug('playlist was set');
+			debug('Playlist was set');
 			this.set('playlist', newPlaylist);
 			this.get('playerRandom').clearRandomHistory();
 		});
@@ -115,7 +115,7 @@ export default Ember.Service.extend({
 			this.get('playerRandom').clearRandomHistory();
 
 			// first is last because we have newest on top
-			return this.play(playlist.get('lastObject'));
+			return this.play(playlist.get('tracks.lastObject'));
 		}
 
 		return this.play(next);

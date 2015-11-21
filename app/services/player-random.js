@@ -10,7 +10,7 @@ export default Service.extend({
 	randomHistory: new A([]),
 
 	// all playlist items not in the history array
-	randomUnplayed: computed.filter('player.playlist', function (item) {
+	randomUnplayed: computed.filter('player.playlist.tracks', function (item) {
 		return !this.get('randomHistory').contains(item);
 	}),
 
