@@ -10,7 +10,7 @@ export default Service.extend(randomHelpers, {
 	// Pool of available = all track to be listened to
 	randomPool: new A([]),
 
-	randomWasActivated: observer('isRandom', function () {
+	randomWasActivated: observer('isRandom', 'player.playlist.model', function () {
 		if (this.get('isRandom')) {
 			debug('randomWasActivated: new channel to random');
 			this.setRandomPool();
