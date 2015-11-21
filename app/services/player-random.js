@@ -1,40 +1,70 @@
 import Ember from 'ember';
+import randomHelpers from 'radio4000/mixins/random-helpers';
 
-const {Service, A, inject, computed} = Ember;
+const {Service, A, inject, observer, debug} = Ember;
 
-export default Service.extend({
+export default Service.extend(randomHelpers, {
 	player: inject.service(),
 	isRandom: false,
 
 	// all listened tracks
-	randomHistory: new A([]),
+	randomHistory: null,
+	// Pool of available = all track to be listened to
+	randomPool: new A([]),
 
-	// all playlist items not in the history array
-	randomUnplayed: computed.filter('player.playlist.tracks', function (item) {
-		return !this.get('randomHistory').contains(item);
+	setRandomPool() {
+		let original = this.get('originalArray');
+		this.set('randomPool', original.slice(0));
+	},
+	refreshRandomPool() {
+		debug('refreshRandomPool was called');
+		this.setRandomPool();
+	},
+
+	/**
+		@property originalArray
+		@type array
+		all playlist items not in the history array
+	*/
+	originalArray: observer('player.playlist.tracks', function () {
+		debug('originalArray = new channel to random');
+		let items = this.get('player.playlist.tracks');
+		this.setRandomPool();
+		return items;
 	}),
 
-	// gets a random track
-	getRandom(array = this.get('randomUnplayed')) {
-		// get random number to get random track
-		let randomNumberInPlaylist = Math.floor(Math.random() * array.get('length'));
-		let randomTrackInPlaylist = array.objectAt(randomNumberInPlaylist);
+	/**
+	 @method
+	 @returns @track model that has to be played, to the player@nextRandom
+	 @param {pool} array of tracks available to be played
+	*/
+	getRandom(pool = this.get('randomPool')) {
+		debug('getRandom started');
 
-		// if no track, clear history and start again
-		if (!randomTrackInPlaylist) {
-			this.clearRandomHistory();
-			randomTrackInPlaylist = this.getRandom();
+		let poolLength = pool.get('length');
+
+		if (!poolLength) {
+			debug('pool is empty!');
+			this.refreshRandomPool();
 		}
 
-		// notify history
-		this.get('randomHistory').pushObject(randomTrackInPlaylist);
-
-		// return it to the nextRandom
-		return array.objectAt(randomNumberInPlaylist);
-	},
-	clearRandomHistory() {
-		let history = this.get('randomHistory');
-		Ember.debug('Player history was cleared');
-		history.clear();
+		// get random number to get random track
+		let randomNumberInPool = this.randomNumberInArray(poolLength);
+		let randomTrackInPool = pool.objectAt(randomNumberInPool);
+		console.log('randomNumberInPool:', randomNumberInPool);
+		console.log('poolLength:', poolLength);
+		//
+		// // if no track, clear pool and start again
+		// if (!randomTrackInPool) {
+		// 	this.refreshRandomPool();
+		// 	randomTrackInPool = this.getRandom();
+		// }
+		//
+		// update pool & history
+		// this.get('randomHistory').pushObject(randomTrackInPool);
+		this.get('randomPool').removeObject(randomTrackInPool);
+		//
+		// // return the @track
+		// return randomTrackInPool;
 	}
 });
