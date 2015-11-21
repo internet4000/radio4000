@@ -81,6 +81,7 @@ export default Ember.Service.extend({
 
 		// without shuffle
 		if (!isRandom) {
+			// if there is nothing to play, we need to start again
 			if (!prev) {
 				return this.play(playlist.get('firstObject'));
 			}
@@ -119,6 +120,7 @@ export default Ember.Service.extend({
 		let next = this.getPrev();
 
 		if (!next) {
+			this.clearPlayedTracksStatus();
 			// first is last because we have newest on top
 			return this.play(playlist.get('tracks.lastObject'));
 		}
