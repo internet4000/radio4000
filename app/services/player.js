@@ -6,7 +6,6 @@ export default Ember.Service.extend({
 	playerRandom: inject.service(),
 	userHistory: inject.service(),
 	isPlaying: false,
-	// isShuffling: false,
 	isLooped: true,
 	model: null,
 	playlist: null,
@@ -24,30 +23,17 @@ export default Ember.Service.extend({
 
 		debug('setting new playlist');
 		this.set('playlist', newPlaylist);
-		this.clearHistory();
-	}),
-
-	// all listened tracks
-	history: new A([]),
-
-	// all playlist items not in the history array
-	unplayed: computed.filter('playlist', function (item) {
-		return !this.get('history').contains(item);
+		this.get('playerRandom').clearRandomHistory();
 	}),
 
 	// a track from the player ended (no user action, it played all the track)
 	trackEnded() {
-		// ui
-		// @TODO refactor playerIsInLoadingState
+		// ui: @TODO refactor playerIsInLoadingState
 		this.set('isPlaying', false);
-
-		// if random, nextRandom
-		if (!this.get('playerRandom.isShuffling')) {
-			this.nextRandom();
-			this.get('userHistory').trackEnded(this.get('player.model.channel'));
-		}
-		// if normal play next mode
-		this.next();
+		// whatever the case, add the radio to userHistory
+		this.get('userHistory').trackEnded(this.get('player.model.channel'));
+		// play next track
+		return this.next();
 	},
 
 	// If you don't want the URL to change, use this to play a track
@@ -64,7 +50,7 @@ export default Ember.Service.extend({
 
 	// Plays a random track from the playlist array
 	playShuffleFromTracks(tracks) {
-		this.set('playerRandom.isShuffling', true);
+		this.set('playerRandom.isRandom', true);
 		this.play(this.getRandom(tracks));
 	},
 
@@ -75,12 +61,12 @@ export default Ember.Service.extend({
 	// plays the previous track and stays at first
 	prev() {
 		const playlist = this.get('playlist');
-		const history = this.get('history');
-
+		const history = this.get('randomHistory');
+		const isRandom = this.get('playerRandom.isRandom');
 		let prev = this.getNext();
 
 		// without shuffle
-		if (!isShuffling) {
+		if (!isRandom) {
 			if (!prev) {
 				return this.play(playlist.get('firstObject'));
 			}
@@ -88,12 +74,12 @@ export default Ember.Service.extend({
 			return this.play(prev);
 		}
 
-		if (isShuffling) {
+		if (isRandom) {
 			// when there are no more tracks to go back to
 			// we stop playback and reset the history
 			if (Ember.isEmpty(history)) {
 				debug('resetting');
-				this.clearHistory();
+				this.clearRandomHistory();
 				return false;
 			}
 
@@ -102,11 +88,11 @@ export default Ember.Service.extend({
 		}
 	},
 
-	// plays the next track
+	// decide which next track is going to play, depending on the play mode
 	next() {
-		const isShuffling = this.get('playerRandom.isShuffling');
+		const isRandom = this.get('playerRandom.isRandom');
 
-		if (isShuffling) {
+		if (isRandom) {
 			return this.nextRandom();
 		}
 		return this.nextNormal();
@@ -118,7 +104,7 @@ export default Ember.Service.extend({
 		let next = this.getPrev();
 
 		if (!next) {
-			this.clearHistory();
+			this.get('playerRandom').clearRandomHistory();
 
 			// first is last because we have newest on top
 			return this.play(playlist.get('lastObject'));
@@ -129,21 +115,8 @@ export default Ember.Service.extend({
 
 	// which track to play when player is in random mode
 	nextRandom() {
-		let nextRandom = this.getRandom();
-
-		if (!nextRandom) {
-			this.clearHistory();
-			nextRandom = this.getRandom();
-		}
-
-		this.get('history').pushObject(nextRandom);
+		let nextRandom = this.get('playerRandom').getRandom();
 		return this.play(nextRandom);
-	},
-
-	// gets a random track
-	getRandom(array = this.get('unplayed')) {
-		let random = Math.floor(Math.random() * array.get('length'));
-		return array.objectAt(random);
 	},
 
 	getPrev(array = this.get('playlist')) {
@@ -152,12 +125,6 @@ export default Ember.Service.extend({
 
 	getNext(array = this.get('playlist')) {
 		return array.objectAt(array.indexOf(this.get('model')) + 1);
-	},
-
-	clearHistory() {
-		let history = this.get('history');
-		Ember.debug('Player history was cleared');
-		history.clear();
 	},
 
 	// On YouTube player error

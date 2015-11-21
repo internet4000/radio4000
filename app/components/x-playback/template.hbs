@@ -11,9 +11,9 @@
 {{/if}}
 
 <div class="Playback-buttons">
-	<label class="Playback-shuffle Btn Btn--text {{if playerRandom.isShuffling 'is-active'}}" for="isShuffling" title="Toggle shuffle playback">
+	<label class="Playback-shuffle Btn Btn--text {{if playerRandom.isRandom 'is-active'}}" for="isRandom" title="Toggle shuffle playback">
 		{{x-icon i='shuffle'}}
-		{{input type="checkbox" id="isShuffling" checked=playerRandom.isShuffling class="is-hidden"}}
+		{{input type="checkbox" id="isRandom" checked=playerRandom.isRandom class="is-hidden"}}
 	</label>
 	{{!-- <button class="NonBtn" {{action 'prev' model}} title="Previous track">
 		{{x-icon i='previous'}}
