@@ -33,7 +33,10 @@ export default DS.Model.extend({
 		this.set('ytid', id);
 		this.save();
 		debug('Updated track.ytid');
-	}
+	},
+
+	// property for local use only, not planned to save them
+	usedInCurrentPlayer: false
 
 	// // Finds an array of all " #hashtags " from the body property
 	// hashtags: Ember.computed('body', function () {
