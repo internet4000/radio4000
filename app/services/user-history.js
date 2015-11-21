@@ -3,6 +3,7 @@ import Ember from 'ember';
 const {Service, inject} = Ember;
 
 export default Service.extend({
+	player: inject.service(),
 	session: inject.service(),
 	store: inject.service(),
 
@@ -19,10 +20,11 @@ export default Service.extend({
 		});
 	},
 
-	didPlayChannel(channel) {
+	didPlayChannel() {
+		let currentChannelModel = this.get('player.model.channel');
 		let settings = this.get('session.currentUser.settings');
-
-		channel.then(channel => {
+		// add the channel to the current user settings
+		currentChannelModel.then(channel => {
 			settings.then(settings => {
 				settings.get('playedChannels').then(history => {
 					history.addObject(channel);

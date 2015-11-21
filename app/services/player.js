@@ -26,12 +26,15 @@ export default Ember.Service.extend({
 		this.get('playerRandom').clearRandomHistory();
 	}),
 
-	// a track from the player ended (no user action, it played all the track)
+	/**
+		Application route called this.
+		A track from the player ended, without user action. Tt played naturally untill the end
+	*/
 	trackEnded() {
 		// ui: @TODO refactor playerIsInLoadingState
 		this.set('isPlaying', false);
 		// whatever the case, add the radio to userHistory
-		this.get('userHistory').trackEnded(this.get('player.model.channel'));
+		this.get('userHistory').didPlayChannel();
 		// play next track
 		return this.next();
 	},
@@ -46,6 +49,7 @@ export default Ember.Service.extend({
 		// the router is injected with the 'player-route' initializer
 		// this.get('router').transitionTo('track', track);
 		this.set('model', track);
+		this.set('isPlaying', true);
 	},
 
 	// Plays a random track from the playlist array
