@@ -1,37 +1,29 @@
 import Ember from 'ember';
 import randomHelpers from 'radio4000/mixins/random-helpers';
 
-const {Service, A, inject, observer, debug} = Ember;
+const {Service, A, inject, computed, observer, debug} = Ember;
 
 export default Service.extend(randomHelpers, {
 	player: inject.service(),
 	isRandom: false,
 
-	// all listened tracks
-	randomHistory: null,
 	// Pool of available = all track to be listened to
 	randomPool: new A([]),
 
+	randomWasActivated: observer('isRandom', function () {
+		if (this.get('isRandom')) {
+			debug('randomWasActivated: new channel to random');
+			this.setRandomPool();
+		}
+	}),
 	setRandomPool() {
-		let original = this.get('originalArray');
-		this.set('randomPool', original.slice(0));
+		let array = this.get('player.playlist.tracks');
+		this.set('randomPool', array.slice(0));
 	},
 	refreshRandomPool() {
-		debug('refreshRandomPool was called');
+		// @TODO clear all tracks.usedInCurrentPlayer
 		this.setRandomPool();
 	},
-
-	/**
-		@property originalArray
-		@type array
-		all playlist items not in the history array
-	*/
-	originalArray: observer('player.playlist.tracks', function () {
-		debug('originalArray = new channel to random');
-		let items = this.get('player.playlist.tracks');
-		this.setRandomPool();
-		return items;
-	}),
 
 	/**
 	 @method
@@ -41,30 +33,24 @@ export default Service.extend(randomHelpers, {
 	getRandom(pool = this.get('randomPool')) {
 		debug('getRandom started');
 
+		// get random number to get random track
 		let poolLength = pool.get('length');
 
+		// if no object in pool, refresh it
 		if (!poolLength) {
 			debug('pool is empty!');
 			this.refreshRandomPool();
+			this.getRandom();
 		}
 
-		// get random number to get random track
+		// otherwise, find a random track in the pool and return it to nextRandom
 		let randomNumberInPool = this.randomNumberInArray(poolLength);
 		let randomTrackInPool = pool.objectAt(randomNumberInPool);
-		console.log('randomNumberInPool:', randomNumberInPool);
-		console.log('poolLength:', poolLength);
-		//
-		// // if no track, clear pool and start again
-		// if (!randomTrackInPool) {
-		// 	this.refreshRandomPool();
-		// 	randomTrackInPool = this.getRandom();
-		// }
-		//
-		// update pool & history
-		// this.get('randomHistory').pushObject(randomTrackInPool);
+
+		console.log('- poolLength:', poolLength, 'randomNumberInPool:', randomNumberInPool);
+
 		this.get('randomPool').removeObject(randomTrackInPool);
-		//
-		// // return the @track
-		// return randomTrackInPool;
+
+		return randomTrackInPool;
 	}
 });
