@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {A, computed, debug, observer, inject} = Ember;
+const {debug, observer, inject} = Ember;
 
 export default Ember.Service.extend({
 	playerRandom: inject.service(),
@@ -13,17 +13,20 @@ export default Ember.Service.extend({
 	// this caches the current playlist and sets it
 	// if it really did change (through the model)
 	setPlaylist: observer('model.channel.tracks', function () {
-		let playlist = this.get('playlist');
-		let newPlaylist = this.get('model.channel.tracks');
+		let playlistId = this.get('playlist.id');
 
-		if (Ember.isEqual(playlist, newPlaylist)) {
-			debug('Playlist already set.');
-			return false;
-		}
+		this.get('model.channel').then(newPlaylist => {
+			let newPlaylistId = newPlaylist.get('id');
 
-		debug('setting new playlist');
-		this.set('playlist', newPlaylist);
-		this.get('playerRandom').clearRandomHistory();
+			if (Ember.isEqual(playlistId, newPlaylistId)) {
+				debug('Playlist already set.');
+				return false;
+			}
+
+			debug('playlist was set');
+			this.set('playlist', newPlaylist);
+			this.get('playerRandom').clearRandomHistory();
+		});
 	}),
 
 	/**
@@ -104,6 +107,7 @@ export default Ember.Service.extend({
 
 	// which track to play when in normal mode (no random)
 	nextNormal() {
+		debug('nextNormal started');
 		const playlist = this.get('playlist');
 		let next = this.getPrev();
 
@@ -119,15 +123,16 @@ export default Ember.Service.extend({
 
 	// which track to play when player is in random mode
 	nextRandom() {
+		debug('nextRandom started');
 		let nextRandom = this.get('playerRandom').getRandom();
 		return this.play(nextRandom);
 	},
 
-	getPrev(array = this.get('playlist')) {
+	getPrev(array = this.get('playlist.tracks')) {
 		return array.objectAt(array.indexOf(this.get('model')) - 1);
 	},
 
-	getNext(array = this.get('playlist')) {
+	getNext(array = this.get('playlist.tracks')) {
 		return array.objectAt(array.indexOf(this.get('model')) + 1);
 	},
 
