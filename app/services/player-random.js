@@ -7,20 +7,26 @@ export default Service.extend(randomHelpers, {
 	player: inject.service(),
 	isRandom: false,
 
-	// Pool of available = all track to be listened to
+	// Pool of available = all track we did not listen to
 	randomPool: new A([]),
 
 	randomWasActivated: observer('isRandom', 'player.playlist.model', function () {
+		// 1- visualy clear played tracks in the current channel
+		this.get('player').clearPlayedTracksStatus();
+		// 2- set pool of tracks to be used
 		if (this.get('isRandom')) {
 			debug('randomWasActivated: new channel to random');
 			this.setRandomPool();
 		}
 	}),
 	setRandomPool() {
+		// get track list from player
 		let array = this.get('player.playlist.tracks');
+		// set them has available pool
 		this.set('randomPool', array.slice(0));
 	},
 	refreshRandomPool() {
+		debug('refreshRandomPool started');
 		// @TODO clear all tracks.usedInCurrentPlayer
 		this.get('player').clearPlayedTracksStatus();
 		this.setRandomPool();
@@ -41,7 +47,7 @@ export default Service.extend(randomHelpers, {
 		if (!poolLength) {
 			debug('pool is empty!');
 			this.refreshRandomPool();
-			this.getRandom();
+			return this.getRandom();
 		}
 
 		// otherwise, find a random track in the pool and return it to nextRandom

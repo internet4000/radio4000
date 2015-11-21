@@ -130,6 +130,7 @@ export default Ember.Service.extend({
 	nextRandom() {
 		debug('nextRandom started');
 		let nextRandom = this.get('playerRandom').getRandom();
+		console.log('nextRandom track:', nextRandom);
 		return this.play(nextRandom);
 	},
 
