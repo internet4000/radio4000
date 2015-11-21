@@ -17,6 +17,9 @@
 		}
 	}
 }
+.Track--used {
+	opacity: 0.3;
+}
 
 .Track-title {
 	@extend %font-regular;
