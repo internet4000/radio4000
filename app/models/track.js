@@ -35,6 +35,7 @@ export default DS.Model.extend({
 		debug('Updated track.ytid');
 	},
 
+	// Own properties
 	// property for local use only, not planned to save them
 	usedInCurrentPlayer: false
 
