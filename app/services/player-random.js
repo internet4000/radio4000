@@ -23,6 +23,7 @@ export default Service.extend(randomHelpers, {
 		// get track list from player
 		let array = this.get('player.playlist.tracks');
 		// set them has available pool
+		// creates a new array (the slice stuff)
 		this.set('randomPool', array.slice(0));
 	},
 	refreshRandomPool() {
@@ -44,10 +45,9 @@ export default Service.extend(randomHelpers, {
 		let poolLength = pool.get('length');
 
 		// if no object in pool, refresh it
-		if (!poolLength) {
+		if (poolLength <= 1) {
 			debug('pool is empty!');
 			this.refreshRandomPool();
-			return this.getRandom();
 		}
 
 		// otherwise, find a random track in the pool and return it to nextRandom
