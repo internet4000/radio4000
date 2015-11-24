@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - app/channel/controller.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>app/channel/controller.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">96.88</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">112</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">1.00</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">0.00</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">import Ember from &#039;ember&#039;;
+
+const {debug, computed} = Ember;
+
+export default Ember.Controller.extend({
+	player: Ember.inject.service(),
+
+	// @todo: this is very slow!!
+	// lastUpdatedFormatted: computed(&#039;model.tracks.@each.created&#039;, function () {
+	// 	const date = this.get(&#039;model.tracks.lastObject.created&#039;);
+
+	// 	// only the channel owner can see the exact time (privacy)
+	// 	if (this.get(&#039;canEdit&#039;)) {
+	// 		return window.moment(date).fromNow();
+	// 	}
+	// 	return window.moment(date).subtract(1, &#039;days&#039;).fromNow();
+	// }),
+
+	canEdit: computed(&#039;model&#039;, &#039;session.currentUser.channels.firstObject&#039;, function () {
+		const channel = this.get(&#039;model&#039;);
+		const userChannel = this.get(&#039;session.currentUser.channels.firstObject&#039;);
+
+		// debug(channel);
+		// debug(userChannel);
+
+		// first avoid both props being null === null which equals true (lol)
+		if (channel === null || userChannel === null || userChannel === undefined) {
+			return false;
+		}
+
+		// then check
+		const canEdit = (channel.get(&#039;id&#039;) === userChannel.get(&#039;id&#039;));
+
+		return canEdit;
+	}),
+
+	// isWelcomed: computed(&#039;model.tracks.firstObject&#039;, &#039;model.images.firstObject&#039;, &#039;model.favoriteChannels.firstObject&#039;, &#039;canEdit&#039;, function () {
+	// 	let canEdit = this.get(&#039;canEdit&#039;);
+	// 	let hasTrack = this.get(&#039;model.tracks.firstObject&#039;);
+	// 	let hasImage = this.get(&#039;model.images.firstObject&#039;);
+	// 	let hasFavorite = this.get(&#039;model.favoriteChannels.firstObject&#039;);
+	// 	if (canEdit &amp;&amp; hasTrack &amp;&amp; hasImage &amp;&amp; hasFavorite) {
+	// 		return true;
+	// 	}
+	// 	return false;
+	// }),
+
+	isFavorite: computed(&#039;model&#039;, &#039;session.currentUser.channels.firstObject.favoriteChannels.[]&#039;, function () {
+		const channel = this.get(&#039;model&#039;);
+		const favorites = this.get(&#039;session.currentUser.channels.firstObject.favoriteChannels&#039;);
+
+		// guard because this functions runs before userChannel is defined
+		if (!favorites) {
+			return false;
+		}
+
+		// true if this channel is a favorite of the user&#039;s favorites
+		return favorites.contains(channel);
+	}),
+
+	actions: {
+		toggleFavorite() {
+			const userChannel = this.get(&#039;session.currentUser.channels.firstObject&#039;);
+
+			if (!userChannel) {
+				debug(&#039;no user channel - transitioning to sigin&#039;);
+				this.transitionToRoute(&#039;login&#039;);
+				return;
+			}
+
+			const channel = this.get(&#039;model&#039;);
+			const channelPublic = channel.get(&#039;channelPublic&#039;);
+			const channelFollowers = channelPublic.get(&#039;followers&#039;);
+			const isFavorite = this.get(&#039;isFavorite&#039;);
+			const userFavorites = userChannel.get(&#039;favoriteChannels&#039;);
+
+			userFavorites.then(userfavs =&gt; {
+				debug(userfavs);
+
+				// add or remove to user&#039;s channel&#039;s favorites
+				if (isFavorite) {
+					debug(&#039;removing this channel from user favorites&#039;);
+					userfavs.removeObject(channel);
+				} else {
+					debug(&#039;adding this channel from user favorites&#039;);
+					userfavs.addObject(channel);
+				}
+
+				// save the parent
+				userChannel.save();
+			});
+
+			channelFollowers.then(followers =&gt; {
+				// toggle the userChannel from this channel&#039;s public followers
+				if (isFavorite) {
+					debug(&#039;removing user channel from channel followers&#039;);
+					followers.removeObject(userChannel);
+				} else {
+					debug(&#039;adding user channel from channel followers&#039;);
+					followers.addObject(userChannel);
+				}
+
+				// open and save the parent
+				channelPublic.then(cp =&gt; {
+					cp.save().then(() =&gt; {
+						debug(&#039;saved channel public&#039;);
+					});
+				});
+			});
+		}
+	}
+});</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

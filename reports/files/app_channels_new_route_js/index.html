@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - app/channels/new/route.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>app/channels/new/route.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">96.88</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">115</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">1.00</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">0.00</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">import Ember from &#039;ember&#039;;
+const {debug} = Ember;
+
+export default Ember.Route.extend({
+	uiStates: Ember.inject.service(),
+
+	beforeModel() {
+		const authed = this.get(&#039;session.isAuthenticated&#039;);
+		const userChannels = this.get(&#039;session.currentUser.channels&#039;);
+
+		// if not authed, go back to login
+		if (!authed) {
+			debug(&#039;not authed -&gt; login&#039;);
+			return this.transitionTo(&#039;login&#039;);
+		}
+
+		// else check if the user already has a channel
+		return userChannels.then(channels =&gt; {
+			// as users are only allowed one channel, we only check the first
+			let channel = channels.get(&#039;firstObject&#039;);
+
+			if (channel) {
+				debug(&#039;already got channel -&gt; transition to &#039; + channel.get(&#039;title&#039;));
+				this.transitionTo(&#039;channel&#039;, channel);
+			}
+		});
+	},
+
+	afterModel() {
+		document.title = &#039;New - Radio4000&#039;;
+	},
+
+	activate() {
+		this.set(&#039;uiStates.isMinimal&#039;, true);
+	},
+
+	// don&#039;t render into the channels outlet
+	// this avoids the tabs we have on channels.hbs
+	renderTemplate() {
+		this.render({into: &#039;application&#039;});
+	},
+
+	deactivate() {
+		this.set(&#039;uiStates.isMinimal&#039;, false);
+		// Reset title if user creates two channels in the same session.
+		this.setProperties({
+			&#039;controller.title&#039;: &#039;&#039;,
+			&#039;controller.didCreate&#039;: false
+		});
+
+		// reset document title
+		document.title = &#039;Radio4000&#039;;
+	},
+
+	actions: {
+
+		// OK, saving a channel is a bit crazy because it involves
+		// creating a channelPublic as well as setting those relationships.
+		// Follow the comments and you&#039;ll be ok!
+
+		saveChannel(channel) {
+			const flashMessages = Ember.get(this, &#039;flashMessages&#039;);
+			const user = this.get(&#039;session.currentUser&#039;);
+
+			channel.save().then(channel =&gt; {
+				// now the channel is saved
+				debug(&#039;saved channel&#039;);
+
+				// set relationship on user (who created the channel)
+				user.get(&#039;channels&#039;).then(userChannels =&gt; {
+					userChannels.addObject(channel);
+
+					user.save().then(() =&gt; {
+						debug(&#039;Saved channel on user.&#039;);
+
+						// create public channel
+						this.store.createRecord(&#039;channelPublic&#039;, {
+							channel
+						}).save()
+
+							.then(channelPublic =&gt; {
+								// now the channelPublic is saved, has an ID and can be used
+								debug(&#039;saved channelPublic&#039;);
+
+								// set relationships
+								channel.setProperties({
+									channelPublic
+								});
+
+								// save it again because of new relationships
+								channel.save().then(channel =&gt; {
+									// Redirect to the new channel and
+									debug(&#039;redirect to the new channel&#039;);
+									this.transitionTo(&#039;channel&#039;, channel);
+									flashMessages.warning(&#039;Voilà! You now have a Radio4000 📻&#039;, {
+										timeout: 10000
+									});
+									return channel;
+								}, () =&gt; {
+									return new Error(&#039;Could not create a new channel with its relationships.&#039;);
+								})
+
+							.then(() =&gt; {
+								// Clean up controller
+								this.controller.setProperties({
+									isSaving: false
+								});
+							});
+						});
+					});
+				});
+			});
+		}
+	}
+});</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>
