@@ -80,16 +80,20 @@
             <p id="R4Slogan" style="opacity: 0.4;"></p>
          </div>
          <script>
-            /* waiting room */
-            var sentences = ['One moment, please', 'Un momento por favor', 'لحظة واحدة من فضلك', 'Une batez, mesedez', 'এক মিনিট, প্লিজ', 'Един момент моля', '稍等一会儿', 'Et øjeblik', 'Een ogenblik alstublieft', 'Unu momenton, bonvolu', 'Hetkinen', 'Un instant s\'il vous plaît', 'Einen Moment bitte', 'Μια στιγμή παρακαλώ', 'Yon sèl moman, tanpri', 'कृपया एक क्षण', 'Nóiméad amháin, le do thoil', 'Un momento per favore', '少々お待ちください', 'Uno momento, placet', 'Et øyeblikk', 'Chwileczkę', 'Um momento por favor', 'Один момент, пожалуйста', 'Wakati mmoja, tafadhali', 'Ett ögonblick tack', 'กรุณารอสักครู่', 'Bir dakika lütfen', 'Un funud, os gwelwch yn dda', 'Omunye mzuzu, sicela'];
-            var tempLoader = document.querySelectorAll('#R4Slogan');
-            var rand = sentences[Math.floor(Math.random() * sentences.length)];
-            tempLoader[0].innerHTML = rand + '…';
-            /* internet connection check */
-            var loaderBody = document.querySelectorAll('.Loader-body');
-            if (!navigator.onLine) {
-               loaderBody[0].innerHTML = '<p>It seems you are offline -_- find internet and reload this page!</p>';
-            }
+            const radio4000dummy = function() {
+               console.log('A human feel.');
+               /* waiting room */
+               var sentences = ['One moment, please', 'Un momento por favor', 'لحظة واحدة من فضلك', 'Une batez, mesedez', 'এক মিনিট, প্লিজ', 'Един момент моля', '稍等一会儿', 'Et øjeblik', 'Een ogenblik alstublieft', 'Unu momenton, bonvolu', 'Hetkinen', 'Un instant s\'il vous plaît', 'Einen Moment bitte', 'Μια στιγμή παρακαλώ', 'Yon sèl moman, tanpri', 'कृपया एक क्षण', 'Nóiméad amháin, le do thoil', 'Un momento per favore', '少々お待ちください', 'Uno momento, placet', 'Et øyeblikk', 'Chwileczkę', 'Um momento por favor', 'Один момент, пожалуйста', 'Wakati mmoja, tafadhali', 'Ett ögonblick tack', 'กรุณารอสักครู่', 'Bir dakika lütfen', 'Un funud, os gwelwch yn dda', 'Omunye mzuzu, sicela'];
+               var tempLoader = document.querySelectorAll('#R4Slogan');
+               var rand = sentences[Math.floor(Math.random() * sentences.length)];
+               tempLoader[0].innerHTML = rand + '…';
+
+               /* internet connection check */
+               var loaderBody = document.querySelectorAll('.Loader-body');
+               if (!navigator.onLine) {
+                  loaderBody[0].innerHTML = '<p>It seems you are offline -_- find internet and reload this page!</p>';
+               };
+            }();
          </script>
 	  </div>
   </div>
