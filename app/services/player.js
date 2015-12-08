@@ -48,7 +48,11 @@ export default Ember.Service.extend({
 		});
 	},
 
-	// If you don't want the URL to change, use this to play a track
+	/**
+		Plays a track
+		Give it a track, and he'll know what to do with it
+		If you don't want the URL to change, use this to play a track
+	*/
 	play(track) {
 		if (!track) {
 			Ember.warn('Play called without a track.');
@@ -70,38 +74,35 @@ export default Ember.Service.extend({
 		this.set('isPlaying', false);
 	},
 
-	// plays the previous track and stays at first
+
+	/**
+		prev
+		decides which track to play when next is clicked
+	*/
 	prev() {
-		const playlist = this.get('playlist');
-		const history = this.get('randomHistory');
 		const isRandom = this.get('playerRandom.isRandom');
-		let prev = this.getNext();
-
-		// without shuffle
-		if (!isRandom) {
-			// if there is nothing to play, we need to start again
-			if (!prev) {
-				return this.play(playlist.get('firstObject'));
-			}
-
-			return this.play(prev);
-		}
 
 		if (isRandom) {
-			// when there are no more tracks to go back to
-			// we stop playback and reset the history
-			if (Ember.isEmpty(history)) {
-				debug('resetting');
-				this.refreshRandomPool();
-				return false;
-			}
-
-			prev = this.getPrev(history);
-			return this.play(prev);
+			return this.prevRandom();
 		}
+		return this.prevNormal();
 	},
 
-	// decide which next track is going to play, depending on the play mode
+	prevNormal() {
+		let prev = this.getPrev();
+		return this.play(prev);
+	},
+	prevRandom() {
+		let prev = this.get('playerRandom').getPrevious();
+		return this.play(prev);
+	},
+
+
+	/**
+		next
+		decide which next track is going to play, depending on the play mode
+	*/
+
 	next() {
 		const isRandom = this.get('playerRandom.isRandom');
 
@@ -115,7 +116,7 @@ export default Ember.Service.extend({
 	nextNormal() {
 		debug('nextNormal started');
 		const playlist = this.get('playlist');
-		let next = this.getPrev();
+		let next = this.getNext();
 
 		if (!next) {
 			this.clearPlayedTracksStatus();
@@ -130,19 +131,26 @@ export default Ember.Service.extend({
 	nextRandom() {
 		debug('nextRandom started');
 		let nextRandom = this.get('playerRandom').getRandom();
-		console.log('nextRandom track:', nextRandom);
 		return this.play(nextRandom);
 	},
 
-	getPrev(array = this.get('playlist.tracks')) {
+
+	/**
+		Find out which actual item has to be played
+	*/
+
+	getNext(array = this.get('playlist.tracks')) {
 		return array.objectAt(array.indexOf(this.get('model')) - 1);
 	},
 
-	getNext(array = this.get('playlist.tracks')) {
+	getPrev(array = this.get('playlist.tracks')) {
 		return array.objectAt(array.indexOf(this.get('model')) + 1);
 	},
 
-	// On YouTube player error
+
+	/**
+		On YouTube player error
+	*/
 	onError(error) {
 		this.set('isPlaying', false);
 

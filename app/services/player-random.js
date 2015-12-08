@@ -9,7 +9,11 @@ export default Service.extend(randomHelpers, {
 
 	// Pool of available = all track we did not listen to
 	randomPool: new A([]),
+	randomHistory: new A([]),
 
+	// random was activated
+	// - from clicking on shuffle in playback
+	// - @TODO from shuffling on a channel card
 	randomWasActivated: observer('isRandom', 'player.playlist.model', function () {
 		// 1- visualy clear played tracks in the current channel
 		this.get('player').clearPlayedTracksStatus();
@@ -19,13 +23,17 @@ export default Service.extend(randomHelpers, {
 			this.setRandomPool();
 		}
 	}),
+	// sets a new random pool from the playlist in the player
 	setRandomPool() {
 		// get track list from player
 		let array = this.get('player.playlist.tracks');
+		// clean randomHistory by setting it to an empty array
 		// set them has available pool
+		this.set('randomHistory', []);
 		this.set('randomPool', array.slice(0));
 	},
-	refreshRandomPool() {
+	// manages what to do when random has to be refreshed/reset
+	refreshRandom() {
 		debug('refreshRandomPool started');
 		// @TODO clear all tracks.usedInCurrentPlayer
 		this.get('player').clearPlayedTracksStatus();
@@ -46,7 +54,7 @@ export default Service.extend(randomHelpers, {
 		// if no object in pool, refresh it
 		if (!poolLength) {
 			debug('pool is empty!');
-			this.refreshRandomPool();
+			this.refreshRandom();
 			return this.getRandom();
 		}
 
@@ -56,8 +64,20 @@ export default Service.extend(randomHelpers, {
 
 		console.log('- poolLength:', poolLength, 'randomNumberInPool:', randomNumberInPool);
 
+		// update the pool, and history
 		this.get('randomPool').removeObject(randomTrackInPool);
+		this.get('randomPool').addObject(randomTrackInPool);
 
 		return randomTrackInPool;
+	},
+
+	/**
+		@method getPrevious
+		@returns the track previously played in random mode
+	*/
+	getPrevious() {
+		let item = this.get('randomHistory');
+		console.log('randomHistory: ', item);
+		return item;
 	}
 });
