@@ -4,7 +4,7 @@ const {debug, observer, inject} = Ember;
 
 export default Ember.Service.extend({
 	playerRandom: inject.service(),
-	userHistory: inject.service(),
+	playerHistory: inject.service(),
 	isPlaying: false,
 	isLooped: true,
 	model: null,
@@ -34,8 +34,8 @@ export default Ember.Service.extend({
 	trackEnded() {
 		// ui: @TODO refactor playerIsInLoadingState
 		this.set('isPlaying', false);
-		// whatever the case, add the radio to userHistory
-		this.get('userHistory').didPlayChannel();
+		// whatever the case, add the radio to playerHistory
+		this.get('playerHistory').didPlayChannel();
 		// play next track
 		return this.next();
 	},
@@ -60,20 +60,14 @@ export default Ember.Service.extend({
 		}
 		// the router is injected with the 'player-route' initializer
 		// this.get('router').transitionTo('track', track);
+		this.get('playerHistory').setTrackHasPlayed(track);
 		this.set('model', track);
 		this.set('isPlaying', true);
-	},
-
-	// Plays a random track from the playlist array
-	playShuffleFromTracks(tracks) {
-		this.set('playerRandom.isRandom', true);
-		this.play(this.getRandom(tracks));
 	},
 
 	pause() {
 		this.set('isPlaying', false);
 	},
-
 
 	/**
 		prev
