@@ -1,29 +1,17 @@
 import Ember from 'ember';
 import randomHelpers from 'radio4000/mixins/random-helpers';
 
-const {Service, A, inject, observer, debug} = Ember;
+const {Service, A, inject, observer, computed, debug} = Ember;
 
 export default Service.extend(randomHelpers, {
 	player: inject.service(),
-	isRandom: false,
 
 	// Pool of shuffled tracks: those availabled to be picked form
 	randomPool: [],
 	// which one are we currently playing
 	randomIndex: 0,
+	canPrevious: computed.bool('randomIndex'),
 
-	// random was activated
-	// - from clicking on shuffle in playback
-	// - @TODO from shuffling on a channel card
-	randomWasActivated: observer('isRandom', 'player.playlist.model', function () {
-		if (this.get('isRandom')) {
-			// 1- visualy clear played tracks in the current channel
-			this.get('player').clearPlayedTracksStatus();
-			// 2- set pool of tracks to be used
-			debug('randomWasActivated: new channel to random');
-			this.setNewRandomPool();
-		}
-	}),
 	// sets a new random pool from the playlist in the player
 	// takes the player array and shuffles it
 	setNewRandomPool() {
@@ -39,10 +27,11 @@ export default Service.extend(randomHelpers, {
 	refreshRandom() {
 		debug('refreshRandomPool started');
 		// @TODO clear all tracks.usedInCurrentPlayer
-		this.get('player').clearPlayedTracksStatus();
+		this.get('player').clearPlayerHistory();
 		this.setNewRandomPool();
 	},
-	randomPoolIsEmpty() {
+	shuffleSequenceIsFinished() {
+		debug('shuffleSequenceIsFinished');
 		this.set('randomIndex', 0);
 	},
 
@@ -54,13 +43,10 @@ export default Service.extend(randomHelpers, {
 	getNext() {
 		let index = this.get('randomIndex');
 		let pool = this.get('randomPool');
-		console.log(pool);
 		// increment index to select the next one
-		console.log(index);
 		index++;
-		console.log(index);
-
 		this.set('randomIndex', index);
+
 		// if there are next track available
 		if (index <= pool.length) {
 			let track = pool[index];
@@ -68,7 +54,7 @@ export default Service.extend(randomHelpers, {
 		}
 		// if no next, play first track in shuffle
 		// and reset random index
-		this.randomPoolIsEmpty();
+		this.shuffleSequenceIsFinished();
 		let track = pool[0];
 		return track;
 	},
@@ -80,8 +66,16 @@ export default Service.extend(randomHelpers, {
 	getPrevious() {
 		let index = this.get('randomIndex');
 		let pool = this.get('randomPool');
-		this.set('randomIndex', index - 1);
+		// decrement index
+		index--;
+		this.set('randomIndex', index);
 
-		return pool[index - 1];
+		// if there are no more tracks previous
+		if (index <= 0) {
+			// reset random to a new random
+			this.shuffleSequenceIsFinished();
+		}
+		// otherwise, normal take the previous track
+		return pool[index];
 	}
 });

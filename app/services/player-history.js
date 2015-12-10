@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {Service, inject} = Ember;
+const {Service, inject, debug} = Ember;
 
 export default Service.extend({
 	player: inject.service(),
@@ -22,7 +22,15 @@ export default Service.extend({
 
 	// Clears the History of played channels
 	clearPlayerHistory() {
-
+		debug('clearPlayerHistory started');
+		this.get('player.playlist.tracks').then(tracks => {
+			tracks.forEach(track => {
+				track.setProperties({
+					usedInCurrentPlayer: false,
+					finishedInCurrentPlayer: false
+				});
+			});
+		});
 	},
 
 	// Clears the History of played channels
@@ -43,7 +51,7 @@ export default Service.extend({
 				settings.get('playedChannels').then(history => {
 					history.addObject(channel);
 					settings.save().then(() => {
-						Ember.debug('playlist was added to currentUser played');
+						debug('playlist was added to currentUser played');
 					});
 				});
 			});
