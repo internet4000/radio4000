@@ -3,7 +3,7 @@ import Ember from 'ember';
 const {Controller, inject} = Ember;
 
 export default Controller.extend({
-	userHistory: inject.service(),
+	playerHistory: inject.service(),
 	player: inject.service(),
 
 	actions: {
@@ -15,7 +15,7 @@ export default Controller.extend({
 		},
 		ytEnded() {
 			let trackFinished = this.get('player.model');
-			this.get('userHistory').setTrackHasPlayed(trackFinished);
+			this.get('playerHistory').setTrackHasFinished(trackFinished);
 			this.get('player').trackEnded();
 		},
 		ytError(error) {
