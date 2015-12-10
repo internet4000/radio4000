@@ -3,6 +3,11 @@ import Ember from 'ember';
 const {Controller, inject} = Ember;
 
 export default Controller.extend({
+	queryParams: ['test'],
+	test: null,
+	// queryParams: {
+	// 	'player.model': 'track'
+	// },
 	playerHistory: inject.service(),
 	player: inject.service(),
 

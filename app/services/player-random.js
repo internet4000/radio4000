@@ -14,15 +14,14 @@ export default Service.extend(randomHelpers, {
 
 	// sets a new random pool from the playlist in the player
 	// takes the player array and shuffles it
-	setNewRandomPool() {
+	setNewRandomPool(items) {
 		let shuffledItems = [];
-		this.get('player.playlist.tracks').then(items => {
-			items.forEach(item => {
-				shuffledItems.pushObject(item);
-			});
-			this.set('randomPool', this.shuffle(shuffledItems));
+		items.forEach(item => {
+			shuffledItems.pushObject(item);
 		});
+		this.set('randomPool', this.shuffle(shuffledItems));
 	},
+
 	// manages what to do when random has to be refreshed/reset
 	refreshRandom() {
 		debug('refreshRandomPool started');
@@ -32,7 +31,7 @@ export default Service.extend(randomHelpers, {
 	},
 	shuffleSequenceIsFinished() {
 		debug('shuffleSequenceIsFinished');
-		this.set('randomIndex', 0);
+		this.get('player').randomEnded();
 	},
 
 	/**
@@ -48,15 +47,12 @@ export default Service.extend(randomHelpers, {
 		this.set('randomIndex', index);
 
 		// if there are next track available
+		// note that index starts at 0, and .length at 1
 		if (index <= pool.length) {
 			let track = pool[index];
 			return track;
 		}
-		// if no next, play first track in shuffle
-		// and reset random index
 		this.shuffleSequenceIsFinished();
-		let track = pool[0];
-		return track;
 	},
 
 	/**
@@ -71,11 +67,11 @@ export default Service.extend(randomHelpers, {
 		this.set('randomIndex', index);
 
 		// if there are no more tracks previous
-		if (index <= 0) {
-			// reset random to a new random
-			this.shuffleSequenceIsFinished();
+		if (index >= 0) {
+			// normal take the previous track
+			return pool[index];
 		}
-		// otherwise, normal take the previous track
-		return pool[index];
+		// else reset random to a new random
+		this.shuffleSequenceIsFinished();
 	}
 });

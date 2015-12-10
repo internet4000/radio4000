@@ -54,7 +54,7 @@ export default Ember.Service.extend({
 		depends on the active play mode
 	*/
 	prev() {
-		const isRandom = this.get('playerRandom.isRandom');
+		const isRandom = this.get('isRandom');
 
 		if (isRandom) {
 			return this.prevRandom();
@@ -84,7 +84,7 @@ export default Ember.Service.extend({
 		depends on the active play mode
 	*/
 	next() {
-		const isRandom = this.get('playerRandom.isRandom');
+		const isRandom = this.get('isRandom');
 		if (isRandom) {
 			return this.nextRandom();
 		}
@@ -103,7 +103,6 @@ export default Ember.Service.extend({
 		return this.play(next);
 	},
 	nextRandom() {
-		debug('nextRandom started');
 		let nextRandom = this.get('playerRandom').getNext();
 		return this.play(nextRandom);
 	},
@@ -146,13 +145,23 @@ export default Ember.Service.extend({
 	 */
 	randomWasActivated: observer('isRandom', 'playlist.model', function () {
 		if (this.get('isRandom')) {
+			debug('randomWasActivated');
 			// 1- visualy clear played tracks in the current channel
-			this.get('playerHistory').clearPlayedTracksStatus();
+			this.get('playerHistory').clearPlayerHistory();
 			// 2- set pool of tracks to be used
-			debug('randomWasActivated: new channel to random');
-			this.get('playerRandom').setNewRandomPool();
+			this.get('playlist.tracks').then(items => {
+				this.get('playerRandom').setNewRandomPool(items);
+			});
 		}
 	}),
+	randomEnded() {
+		debug('player.randomEnded');
+		this.get('playlist.tracks').then(items => {
+			let item = items.slice(0, 1)[0];
+			console.log(item);
+			this.play(item);
+		});
+	},
 
 	/**
 		A track ended naturally

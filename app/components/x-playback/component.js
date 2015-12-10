@@ -5,7 +5,6 @@ const {Component, inject, run, $} = Ember;
 export default Component.extend({
 	classNames: ['Playback'],
 	player: inject.service(),
-	playerRandom: inject.service(),
 	uiStates: inject.service(),
 
 	actions: {
