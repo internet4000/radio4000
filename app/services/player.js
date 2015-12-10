@@ -91,7 +91,6 @@ export default Ember.Service.extend({
 		return this.play(prev);
 	},
 
-
 	/**
 		next
 		decide which next track is going to play, depending on the play mode
@@ -124,10 +123,9 @@ export default Ember.Service.extend({
 	// which track to play when player is in random mode
 	nextRandom() {
 		debug('nextRandom started');
-		let nextRandom = this.get('playerRandom').getRandom();
+		let nextRandom = this.get('playerRandom').getNext();
 		return this.play(nextRandom);
 	},
-
 
 	/**
 		Find out which actual item has to be played
@@ -140,7 +138,6 @@ export default Ember.Service.extend({
 	getPrev(array = this.get('playlist.tracks')) {
 		return array.objectAt(array.indexOf(this.get('model')) + 1);
 	},
-
 
 	/**
 		On YouTube player error
