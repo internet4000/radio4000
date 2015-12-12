@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {debug, observer, inject} = Ember;
+const {debug, observer, inject, warn} = Ember;
 
 export default Ember.Service.extend({
 	playerRandom: inject.service(),
@@ -34,7 +34,7 @@ export default Ember.Service.extend({
 	*/
 	play(track) {
 		if (!track) {
-			Ember.warn('Play called without a track.');
+			warn('Play called without a track.');
 			return false;
 		}
 		// the router is injected with the 'player-route' initializer
@@ -175,5 +175,5 @@ export default Ember.Service.extend({
 		this.get('playerHistory').didPlayChannel();
 		// play next track
 		return this.next();
-	},
+	}
 });

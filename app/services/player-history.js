@@ -45,6 +45,12 @@ export default Service.extend({
 	didPlayChannel() {
 		let currentChannelModel = this.get('player.model.channel');
 		let settings = this.get('session.currentUser.settings');
+
+		// user is logged out
+		if (!settings) {
+			return false;
+		}
+
 		// add the channel to the current user settings
 		currentChannelModel.then(channel => {
 			settings.then(settings => {
@@ -56,6 +62,6 @@ export default Service.extend({
 				});
 			});
 		});
-	},
+	}
 	// @TODO the user finished this channel entirely (all tracks were naturally finished)
 });

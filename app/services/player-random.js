@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import randomHelpers from 'radio4000/mixins/random-helpers';
 
-const {Service, A, inject, observer, computed, debug} = Ember;
+const {Service, inject, computed, debug} = Ember;
 
 export default Service.extend(randomHelpers, {
 	player: inject.service(),
