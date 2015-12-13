@@ -28,27 +28,30 @@ export default Ember.Service.extend({
 		});
 	},
 
+	play() {
+		this.set('isPlaying', true);
+		this.get('playerHistory').setTrackAsPlayed();
+	},
+	pause() {
+		this.set('isPlaying', false);
+	},
+
 	/**
-		Plays a track
-		Give it a track, and he'll know what to do with it
+	Plays a track
+	Give it a track, and he'll know what to do with it
 	*/
-	play(track) {
+	playTrack(track) {
 		if (!track) {
 			warn('Play called without a track.');
 			return false;
 		}
 		// the router is injected with the 'player-route' initializer
 		// this.get('router').transitionTo('track', track);
-		this.get('playerHistory').setTrackAsPlayed(track);
 		this.setProperties({
 			model: track,
 			isPlaying: true
 		});
 		this.setPlaylist();
-	},
-
-	pause() {
-		this.set('isPlaying', false);
 	},
 
 	/**
@@ -71,14 +74,14 @@ export default Ember.Service.extend({
 		if (!prev) {
 			this.get('playerHistory').clearPlayerHistory();
 			// first is last because we have newest on top
-			return this.play(playlist.get('tracks.firstObject'));
+			return this.playTrack(playlist.get('tracks.firstObject'));
 		}
 
-		return this.play(prev);
+		return this.playTrack(prev);
 	},
 	prevRandom() {
 		let prev = this.get('playerRandom').getPrevious();
-		return this.play(prev);
+		return this.playTrack(prev);
 	},
 
 	/**
@@ -100,14 +103,14 @@ export default Ember.Service.extend({
 		if (!next) {
 			this.get('playerHistory').clearPlayerHistory();
 			// first is last because we have newest on top
-			return this.play(playlist.get('tracks.lastObject'));
+			return this.playTrack(playlist.get('tracks.lastObject'));
 		}
 
-		return this.play(next);
+		return this.playTrack(next);
 	},
 	nextRandom() {
 		let nextRandom = this.get('playerRandom').getNext();
-		return this.play(nextRandom);
+		return this.playTrack(nextRandom);
 	},
 
 	// Find out which actual item has to be played
@@ -162,7 +165,7 @@ export default Ember.Service.extend({
 		this.get('playlist.tracks').then(items => {
 			let item = items.slice(0, 1)[0];
 			console.log(item);
-			this.play(item);
+			this.playTrack(item);
 		});
 	},
 
