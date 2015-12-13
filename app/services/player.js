@@ -28,9 +28,10 @@ export default Ember.Service.extend({
 		});
 	},
 
-	play() {
+	// just play/pause activations for the current track in player (and metrics)
+	play(currentTrack = this.get('model')) {
 		this.set('isPlaying', true);
-		this.get('playerHistory').setTrackAsPlayed();
+		this.get('playerHistory').setTrackAsPlayed(currentTrack);
 	},
 	pause() {
 		this.set('isPlaying', false);
