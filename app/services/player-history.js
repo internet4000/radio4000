@@ -22,27 +22,6 @@ export default Service.extend({
 	setTrackAsFinished(track) {
 		track.set('finishedInCurrentPlayer', true);
 	},
-
-	// Clears the History of played channels
-	clearPlayerHistory() {
-		debug('clearPlayerHistory started');
-		this.get('player.playlist.tracks').then(tracks => {
-			tracks.forEach(track => {
-				track.setProperties({
-					usedInCurrentPlayer: false,
-					finishedInCurrentPlayer: false
-				});
-			});
-		});
-	},
-
-	// Clears the History of played channels
-	clearChannelHistory() {
-		console.log('clear history');
-		this.get('session.currentUser.settings').then(settings => {
-			settings.set('playedChannels', []).save();
-		});
-	},
 	// the user played this channel entirely
 	setChannelAsPlayed() {
 		let currentChannelModel = this.get('player.model.channel');
@@ -64,6 +43,26 @@ export default Service.extend({
 				});
 			});
 		});
-	}
+	},
+
 	// @TODO the user finished this channel entirely (all tracks were naturally finished)
+	// Clears the History of played channels
+	clearPlayerHistory() {
+		debug('clearPlayerHistory started');
+		this.get('player.playlist.tracks').then(tracks => {
+			tracks.forEach(track => {
+				track.setProperties({
+					usedInCurrentPlayer: false,
+					finishedInCurrentPlayer: false
+				});
+			});
+		});
+	},
+
+	// Clears the History of played channels
+	clearChannelHistory() {
+		this.get('session.currentUser.settings').then(settings => {
+			settings.set('playedChannels', []).save();
+		});
+	}
 });
