@@ -171,11 +171,10 @@ export default Ember.Service.extend({
 		Application route called this.
 		A track from the player ended, without user action. It played naturally untill the end
 	*/
-	trackEnded() {
-		// ui: @TODO refactor playerIsInLoadingState
+	trackEnded(finishedTrack = this.get('model')) {
 		this.set('isPlaying', false);
-		// whatever the case, add the radio to playerHistory
-		this.get('playerHistory').didPlayChannel();
+		// mark this track has finished
+		this.get('playerHistory').trackEnded(finishedTrack);
 		// play next track
 		return this.next();
 	}

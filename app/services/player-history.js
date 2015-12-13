@@ -8,8 +8,11 @@ export default Service.extend({
 	store: inject.service(),
 
 	// a track from the player ended (no user action, it played all the track)
-	trackEnded(channel) {
-		this.didPlayChannel(channel);
+	trackEnded(track) {
+		this.setTrackAsFinished(track);
+		track.get('channel').then(channel => {
+			this.setChannelAsPlayed(channel);
+		});
 	},
 	// the track has been inserted in the player (not, or not yet finished)
 	setTrackAsPlayed(track) {
@@ -35,14 +38,13 @@ export default Service.extend({
 
 	// Clears the History of played channels
 	clearChannelHistory() {
-		let settings = this.get('session.currentUser.settings');
-		settings.get('playedChannels').then(playedChannels => {
-			playedChannels.set([]);
-			settings.save();
+		console.log('clear history');
+		this.get('session.currentUser.settings').then(settings => {
+			settings.set('playedChannels', []).save();
 		});
 	},
 	// the user played this channel entirely
-	didPlayChannel() {
+	setChannelAsPlayed() {
 		let currentChannelModel = this.get('player.model.channel');
 		let settings = this.get('session.currentUser.settings');
 
