@@ -39,39 +39,24 @@ export default Service.extend(randomHelpers, {
 	 @returns @track model that has to be played, to the player@nextRandom
 	 @param {pool} array of tracks available to be played
 	*/
-	getNext() {
-		let index = this.get('randomIndex');
-		let pool = this.get('randomPool');
-		// increment index to select the next one
-		index++;
-		this.set('randomIndex', index);
-
-		// if there are next track available
-		// note that index starts at 0, and .length at 1
-		if (index <= pool.length) {
-			let track = pool[index];
-			return track;
+	getNext(array = this.get('randomPool')) {
+		let item = array.objectAt(array.indexOf(this.get('player.model')) + 1);
+		if (!item) {
+			return array.objectAt(0);
 		}
-		this.shuffleSequenceIsFinished();
+		return item;
 	},
 
 	/**
 		@method getPrevious
 		@returns the track previously played in random mode
 	*/
-	getPrevious() {
-		let index = this.get('randomIndex');
-		let pool = this.get('randomPool');
-		// decrement index
-		index--;
-		this.set('randomIndex', index);
-
-		// if there are no more tracks previous
-		if (index >= 0) {
-			// normal take the previous track
-			return pool[index];
+	getPrevious(array = this.get('randomPool')) {
+		console.log('get prevvzz');
+		let item = array.objectAt(array.indexOf(this.get('player.model')) - 1);
+		if (!item) {
+			return array.objectAt(array.length - 1);
 		}
-		// else reset random to a new random
-		this.shuffleSequenceIsFinished();
+		return item;
 	}
 });

@@ -38,8 +38,8 @@ export default Ember.Service.extend({
 	},
 
 	/**
-	Plays a track
-	Give it a track, and he'll know what to do with it
+		Plays a track
+		Give it a track, and he'll know what to do with it
 	*/
 	playTrack(track) {
 		if (!track) {
