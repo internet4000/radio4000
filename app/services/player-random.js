@@ -8,9 +8,6 @@ export default Service.extend(randomHelpers, {
 
 	// Pool of shuffled tracks: those availabled to be picked form
 	randomPool: [],
-	// which one are we currently playing
-	randomIndex: 0,
-	canPrevious: computed.bool('randomIndex'),
 
 	// sets a new random pool from the playlist in the player
 	// takes the player array and shuffles it
@@ -20,18 +17,6 @@ export default Service.extend(randomHelpers, {
 			shuffledItems.pushObject(item);
 		});
 		this.set('randomPool', this.shuffle(shuffledItems));
-	},
-
-	// manages what to do when random has to be refreshed/reset
-	refreshRandom() {
-		debug('refreshRandomPool started');
-		// @TODO clear all tracks.usedInCurrentPlayer
-		this.get('player').clearPlayerHistory();
-		this.setNewRandomPool();
-	},
-	shuffleSequenceIsFinished() {
-		debug('shuffleSequenceIsFinished');
-		this.get('player').randomEnded();
 	},
 
 	/**
@@ -52,7 +37,6 @@ export default Service.extend(randomHelpers, {
 		@returns the track previously played in random mode
 	*/
 	getPrevious(array = this.get('randomPool')) {
-		console.log('get prevvzz');
 		let item = array.objectAt(array.indexOf(this.get('player.model')) - 1);
 		if (!item) {
 			return array.objectAt(array.length - 1);
