@@ -20,7 +20,7 @@ export default Controller.extend({
 		},
 		ytEnded() {
 			let trackFinished = this.get('player.model');
-			this.get('playerHistory').setTrackHasFinished(trackFinished);
+			this.get('playerHistory').setTrackAsFinished(trackFinished);
 			this.get('player').trackEnded();
 		},
 		ytError(error) {

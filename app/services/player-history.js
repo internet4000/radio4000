@@ -12,11 +12,11 @@ export default Service.extend({
 		this.didPlayChannel(channel);
 	},
 	// the track has been inserted in the player (not, or not yet finished)
-	setTrackHasPlayed(track) {
+	setTrackAsPlayed(track) {
 		track.set('usedInCurrentPlayer', true);
 	},
 	// the tracks has been played till the end
-	setTrackHasFinished(track) {
+	setTrackAsFinished(track) {
 		track.set('finishedInCurrentPlayer', true);
 	},
 

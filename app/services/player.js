@@ -13,7 +13,7 @@ export default Ember.Service.extend({
 
 	// this caches the current playlist and sets it
 	// if it really did change (through the model)
-	setPlaylist: observer('model.channel.tracks', function () {
+	setPlaylist() {
 		let playlistId = this.get('playlist.id');
 
 		this.get('model.channel').then(newPlaylist => {
@@ -26,7 +26,7 @@ export default Ember.Service.extend({
 			this.set('playlist', newPlaylist);
 			debug('Playlist was set');
 		});
-	}),
+	},
 
 	/**
 		Plays a track
@@ -39,9 +39,12 @@ export default Ember.Service.extend({
 		}
 		// the router is injected with the 'player-route' initializer
 		// this.get('router').transitionTo('track', track);
-		this.get('playerHistory').setTrackHasPlayed(track);
-		this.set('model', track);
-		this.set('isPlaying', true);
+		this.get('playerHistory').setTrackAsPlayed(track);
+		this.setProperties({
+			model: track,
+			isPlaying: true
+		});
+		this.setPlaylist();
 	},
 
 	pause() {
