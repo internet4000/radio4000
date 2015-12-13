@@ -150,7 +150,7 @@ export default Ember.Service.extend({
 		from clicking on shuffle in playback
 		@TODO from shuffling on a channel card
 	 */
-	randomWasActivated: observer('isRandom', 'playlist.model', function () {
+	randomWasActivated: observer('isRandom', 'playlist', function () {
 		if (this.get('isRandom')) {
 			debug('randomWasActivated');
 			// 1- visualy clear played tracks in the current channel
@@ -161,14 +161,6 @@ export default Ember.Service.extend({
 			});
 		}
 	}),
-	randomEnded() {
-		debug('player.randomEnded');
-		this.get('playlist.tracks').then(items => {
-			let item = items.slice(0, 1)[0];
-			console.log(item);
-			this.playTrack(item);
-		});
-	},
 
 	/**
 		A track ended naturally
