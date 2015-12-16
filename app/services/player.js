@@ -13,7 +13,9 @@ export default Ember.Service.extend({
 
 	// this caches the current playlist and sets it
 	// if it really did change (through the model)
+	// also sets the old one as inactive, and new as… active!
 	setPlaylist() {
+		let playlist = this.get('playlist');
 		let playlistId = this.get('playlist.id');
 
 		this.get('model.channel').then(newPlaylist => {
@@ -23,7 +25,11 @@ export default Ember.Service.extend({
 				debug('Playlist already set.');
 				return false;
 			}
+			if (playlist) {
+				playlist.set('isInPlayer', false);
+			}
 			this.set('playlist', newPlaylist);
+			newPlaylist.set('isInPlayer', true);
 			debug('Playlist was set');
 		});
 	},
@@ -110,6 +116,7 @@ export default Ember.Service.extend({
 		return this.playTrack(next);
 	},
 	nextRandom() {
+		this.set('isRandom', true);
 		let nextRandom = this.get('playerRandom').getNext();
 		return this.playTrack(nextRandom);
 	},
@@ -142,7 +149,7 @@ export default Ember.Service.extend({
 		}
 
 		// otherwise play next
-		this.get('player').next();
+		this.next();
 	},
 
 	/**

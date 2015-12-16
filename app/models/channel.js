@@ -2,6 +2,7 @@ import Ember from 'ember';
 import DS from 'ember-data';
 
 const {attr, hasMany, belongsTo} = DS;
+const {computed} = Ember;
 
 /*
  Channel model:
@@ -35,9 +36,12 @@ export default DS.Model.extend({
 	// }),
 
 	// Set the latest image as the cover image
-	coverImage: Ember.computed('images.[]', function () {
+	coverImage: computed('images.[]', function () {
 		return this.get('images.lastObject');
 	}),
+
+	// this property is toggled by the player setChannel
+	isInPlayer: false,
 
 	// relationships
 	images: hasMany('image', {async: true}),
