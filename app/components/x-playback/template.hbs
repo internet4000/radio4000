@@ -11,17 +11,17 @@
 {{/if}}
 
 <div class="Playback-buttons">
-	<label class="Playback-shuffle Btn Btn--text {{if playerRandom.isRandom 'is-active'}}" for="isRandom" title="Toggle shuffle playback">
+	<label class="Playback-shuffle Btn Btn--text {{if player.isRandom 'is-active'}}" for="isRandom" title="Toggle shuffle playback">
 		{{x-icon i='shuffle'}}
-		{{input type="checkbox" id="isRandom" checked=playerRandom.isRandom class="is-hidden"}}
+		{{input type="checkbox" id="isRandom" checked=player.isRandom class="is-hidden"}}
 	</label>
-	{{!-- <button class="NonBtn" {{action 'prev' model}} title="Previous track">
+	<button class="NonBtn" {{action 'prev'}} title="Previous track">
 		{{x-icon i='previous'}}
-	</button> --}}
+	</button>
 
 	{{player/play-pause isPlaying=player.isPlaying play=(action "play") pause=(action "pause")}}
 
-	<button class="NonBtn" {{action 'next' model}} title="Next track">
+	<button class="NonBtn" {{action 'next'}} title="Next track">
 		{{x-icon i='next'}}
 	</button>
 </div>

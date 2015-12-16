@@ -6,6 +6,7 @@
 	@include size-1;
 	position: relative;
 	overflow: hidden; // hide controls
+	border: 1px solid transparent;
 
 	.icon-play {
 		position: absolute;
@@ -18,7 +19,10 @@
 	}
 }
 .Track--used {
-	opacity: 0.3;
+	border-left-color: $red;
+}
+.Track--finsihed {
+	border-right-color: $red;
 }
 
 .Track-title {

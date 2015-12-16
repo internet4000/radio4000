@@ -3,19 +3,19 @@ import Ember from 'ember';
 const {Controller, inject} = Ember;
 
 export default Controller.extend({
-	userHistory: inject.service(),
+	queryParams: ['test'],
+	test: null,
 	player: inject.service(),
+	playerHistory: inject.service(),
 
 	actions: {
 		ytPlaying() {
-			this.set('player.isPlaying', true);
+			this.get('player').play();
 		},
 		ytPaused() {
 			this.get('player').pause();
 		},
 		ytEnded() {
-			let trackFinished = this.get('player.model');
-			this.get('userHistory').setTrackHasPlayed(trackFinished);
 			this.get('player').trackEnded();
 		},
 		ytError(error) {

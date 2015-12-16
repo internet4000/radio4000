@@ -6,6 +6,6 @@ export default Ember.Route.extend({
 		return this.store.findRecord('track', params.track_id);
 	},
 	afterModel(track) {
-		this.set('player.model', track);
+		this.get('player').playTrack(track);
 	}
 });

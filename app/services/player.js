@@ -1,18 +1,21 @@
 import Ember from 'ember';
 
-const {debug, observer, inject} = Ember;
+const {debug, observer, inject, warn} = Ember;
 
 export default Ember.Service.extend({
 	playerRandom: inject.service(),
-	userHistory: inject.service(),
+	playerHistory: inject.service(),
 	isPlaying: false,
 	isLooped: true,
+	isRandom: false,
 	model: null,
 	playlist: null,
 
 	// this caches the current playlist and sets it
 	// if it really did change (through the model)
-	setPlaylist: observer('model.channel.tracks', function () {
+	// also sets the old one as inactive, and new as… active!
+	setPlaylist() {
+		let playlist = this.get('playlist');
 		let playlistId = this.get('playlist.id');
 
 		this.get('model.channel').then(newPlaylist => {
@@ -22,127 +25,114 @@ export default Ember.Service.extend({
 				debug('Playlist already set.');
 				return false;
 			}
+			if (playlist) {
+				playlist.set('isInPlayer', false);
+			}
 			this.set('playlist', newPlaylist);
+			newPlaylist.set('isInPlayer', true);
 			debug('Playlist was set');
 		});
-	}),
-
-	/**
-		Application route called this.
-		A track from the player ended, without user action. Tt played naturally untill the end
-	*/
-	trackEnded() {
-		// ui: @TODO refactor playerIsInLoadingState
-		this.set('isPlaying', false);
-		// whatever the case, add the radio to userHistory
-		this.get('userHistory').didPlayChannel();
-		// play next track
-		return this.next();
-	},
-	clearPlayedTracksStatus() {
-		debug('clearPlayedTracksStatus started');
-		this.get('playlist.tracks').then(tracks => {
-			tracks.forEach(track => {
-				track.set('usedInCurrentPlayer', false);
-			});
-		});
 	},
 
-	// If you don't want the URL to change, use this to play a track
-	play(track) {
-		if (!track) {
-			Ember.warn('Play called without a track.');
-			return false;
-		}
-		// the router is injected with the 'player-route' initializer
-		// this.get('router').transitionTo('track', track);
-		this.set('model', track);
+	// just play/pause activations for the current track in player (and metrics)
+	play(currentTrack = this.get('model')) {
 		this.set('isPlaying', true);
+		this.get('playerHistory').setTrackAsPlayed(currentTrack);
 	},
-
-	// Plays a random track from the playlist array
-	playShuffleFromTracks(tracks) {
-		this.set('playerRandom.isRandom', true);
-		this.play(this.getRandom(tracks));
-	},
-
 	pause() {
 		this.set('isPlaying', false);
 	},
 
-	// plays the previous track and stays at first
-	prev() {
-		const playlist = this.get('playlist');
-		const history = this.get('randomHistory');
-		const isRandom = this.get('playerRandom.isRandom');
-		let prev = this.getNext();
-
-		// without shuffle
-		if (!isRandom) {
-			// if there is nothing to play, we need to start again
-			if (!prev) {
-				return this.play(playlist.get('firstObject'));
-			}
-
-			return this.play(prev);
+	/**
+		Plays a track
+		Give it a track, and he'll know what to do with it
+	*/
+	playTrack(track) {
+		if (!track) {
+			warn('Play called without a track.');
+			return false;
 		}
-
-		if (isRandom) {
-			// when there are no more tracks to go back to
-			// we stop playback and reset the history
-			if (Ember.isEmpty(history)) {
-				debug('resetting');
-				this.refreshRandomPool();
-				return false;
-			}
-
-			prev = this.getPrev(history);
-			return this.play(prev);
-		}
+		// the router is injected with the 'player-route' initializer
+		// this.get('router').transitionTo('track', track);
+		this.setProperties({
+			model: track,
+			isPlaying: true
+		});
+		this.setPlaylist();
 	},
 
-	// decide which next track is going to play, depending on the play mode
-	next() {
-		const isRandom = this.get('playerRandom.isRandom');
+	/**
+		prev
+		decides which track to play
+		depends on the active play mode
+	*/
+	prev() {
+		const isRandom = this.get('isRandom');
 
+		if (isRandom) {
+			return this.prevRandom();
+		}
+		return this.prevNormal();
+	},
+	prevNormal() {
+		const playlist = this.get('playlist');
+		let prev = this.getPrev();
+
+		if (!prev) {
+			this.get('playerHistory').clearPlayerHistory();
+			// first is last because we have newest on top
+			return this.playTrack(playlist.get('tracks.firstObject'));
+		}
+
+		return this.playTrack(prev);
+	},
+	prevRandom() {
+		let prev = this.get('playerRandom').getPrevious();
+		return this.playTrack(prev);
+	},
+
+	/**
+		next
+		decide which next track is going to play
+		depends on the active play mode
+	*/
+	next() {
+		const isRandom = this.get('isRandom');
 		if (isRandom) {
 			return this.nextRandom();
 		}
 		return this.nextNormal();
 	},
-
-	// which track to play when in normal mode (no random)
 	nextNormal() {
-		debug('nextNormal started');
 		const playlist = this.get('playlist');
-		let next = this.getPrev();
+		let next = this.getNext();
 
 		if (!next) {
-			this.clearPlayedTracksStatus();
+			this.get('playerHistory').clearPlayerHistory();
 			// first is last because we have newest on top
-			return this.play(playlist.get('tracks.lastObject'));
+			return this.playTrack(playlist.get('tracks.lastObject'));
 		}
 
-		return this.play(next);
+		return this.playTrack(next);
 	},
-
-	// which track to play when player is in random mode
 	nextRandom() {
-		debug('nextRandom started');
-		let nextRandom = this.get('playerRandom').getRandom();
-		console.log('nextRandom track:', nextRandom);
-		return this.play(nextRandom);
+		this.set('isRandom', true);
+		let nextRandom = this.get('playerRandom').getNext();
+		return this.playTrack(nextRandom);
 	},
 
-	getPrev(array = this.get('playlist.tracks')) {
+	// Find out which actual item has to be played
+	getNext(array = this.get('playlist.tracks')) {
 		return array.objectAt(array.indexOf(this.get('model')) - 1);
 	},
 
-	getNext(array = this.get('playlist.tracks')) {
+	getPrev(array = this.get('playlist.tracks')) {
 		return array.objectAt(array.indexOf(this.get('model')) + 1);
 	},
 
-	// On YouTube player error
+	/**
+		On YouTube player error
+	*/
 	onError(error) {
 		this.set('isPlaying', false);
 
@@ -159,6 +149,36 @@ export default Ember.Service.extend({
 		}
 
 		// otherwise play next
-		this.get('player').next();
+		this.next();
+	},
+
+	/**
+		Random was activated
+		from clicking on shuffle in playback
+		@TODO from shuffling on a channel card
+	 */
+	randomWasActivated: observer('isRandom', 'playlist', function () {
+		if (this.get('isRandom')) {
+			debug('randomWasActivated');
+			// 1- visualy clear played tracks in the current channel
+			this.get('playerHistory').clearPlayerHistory();
+			// 2- set pool of tracks to be used
+			this.get('playlist.tracks').then(items => {
+				this.get('playerRandom').setNewRandomPool(items);
+			});
+		}
+	}),
+
+	/**
+		A track ended naturally
+		Application route called this.
+		A track from the player ended, without user action. It played naturally untill the end
+	*/
+	trackEnded(finishedTrack = this.get('model')) {
+		this.set('isPlaying', false);
+		// mark this track has finished
+		this.get('playerHistory').trackEnded(finishedTrack);
+		// play next track
+		return this.next();
 	}
 });

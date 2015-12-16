@@ -1,36 +1,23 @@
 import Ember from 'ember';
 import randomHelpers from 'radio4000/mixins/random-helpers';
 
-const {Service, A, inject, computed, observer, debug} = Ember;
+const {Service, inject, computed, debug} = Ember;
 
 export default Service.extend(randomHelpers, {
 	player: inject.service(),
-	isRandom: false,
 
-	// Pool of available = all track we did not listen to
-	randomPool: new A([]),
+	// Pool of shuffled tracks: those availabled to be picked form
+	randomPool: [],
 
-	randomWasActivated: observer('isRandom', 'player.playlist.model', function () {
-		// 1- visualy clear played tracks in the current channel
-		this.get('player').clearPlayedTracksStatus();
-		// 2- set pool of tracks to be used
-		if (this.get('isRandom')) {
-			debug('randomWasActivated: new channel to random');
-			this.setRandomPool();
-		}
-	}),
-	setRandomPool() {
-		// get track list from player
-		let array = this.get('player.playlist.tracks');
-		// set them has available pool
-		// creates a new array (the slice stuff)
-		this.set('randomPool', array.slice(0));
-	},
-	refreshRandomPool() {
-		debug('refreshRandomPool started');
-		// @TODO clear all tracks.usedInCurrentPlayer
-		this.get('player').clearPlayedTracksStatus();
-		this.setRandomPool();
+	// sets a new random pool from the playlist in the player
+	// takes the player array and shuffles it
+	setNewRandomPool(items) {
+		debug('setNewRandomPool');
+		let shuffledItems = [];
+		items.forEach(item => {
+			shuffledItems.pushObject(item);
+		});
+		this.set('randomPool', this.shuffle(shuffledItems));
 	},
 
 	/**
@@ -38,26 +25,23 @@ export default Service.extend(randomHelpers, {
 	 @returns @track model that has to be played, to the player@nextRandom
 	 @param {pool} array of tracks available to be played
 	*/
-	getRandom(pool = this.get('randomPool')) {
-		debug('getRandom started');
-
-		// get random number to get random track
-		let poolLength = pool.get('length');
-
-		// if no object in pool, refresh it
-		if (poolLength <= 1) {
-			debug('pool is empty!');
-			this.refreshRandomPool();
+	getNext(array = this.get('randomPool')) {
+		let item = array.objectAt(array.indexOf(this.get('player.model')) + 1);
+		if (!item) {
+			return array.objectAt(0);
 		}
+		return item;
+	},
 
-		// otherwise, find a random track in the pool and return it to nextRandom
-		let randomNumberInPool = this.randomNumberInArray(poolLength);
-		let randomTrackInPool = pool.objectAt(randomNumberInPool);
-
-		console.log('- poolLength:', poolLength, 'randomNumberInPool:', randomNumberInPool);
-
-		this.get('randomPool').removeObject(randomTrackInPool);
-
-		return randomTrackInPool;
+	/**
+		@method getPrevious
+		@returns the track previously played in random mode
+	*/
+	getPrevious(array = this.get('randomPool')) {
+		let item = array.objectAt(array.indexOf(this.get('player.model')) - 1);
+		if (!item) {
+			return array.objectAt(array.length - 1);
+		}
+		return item;
 	}
 });
