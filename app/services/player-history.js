@@ -47,9 +47,12 @@ export default Service.extend({
 
 	// @TODO the user finished this channel entirely (all tracks were naturally finished)
 	// Clears the History of played channels
-	clearPlayerHistory() {
+	clearPlayerHistory(usedTracks = this.get('player.playlist.tracks')) {
 		debug('clearPlayerHistory started');
-		this.get('player.playlist.tracks').then(tracks => {
+		if (!usedTracks) {
+			return;
+		}
+		usedTracks.then(tracks => {
 			tracks.forEach(track => {
 				track.setProperties({
 					usedInCurrentPlayer: false,
