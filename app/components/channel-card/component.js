@@ -1,6 +1,10 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
+const {Component, computed} = Ember;
+
+export default Component.extend({
 	tagName: 'article',
-	classNames: ['ChannelCard']
+	classNames: ['ChannelCard'],
+	classNameBindings: ['isActive'],
+	isActive: computed.reads('channel.isInPlayer')
 });

@@ -2,6 +2,11 @@
 	position: relative;
 	padding-bottom: 1rem;
 	background-color: $white;
+	outline: 2px solid transparent;
+	transition: outline 1000ms $easing;
+	&.is-active {
+		outline-color: $red;
+	}
 }
 .ChannelCard-title,
 .ChannelCard-body {
