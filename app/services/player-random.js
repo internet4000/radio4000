@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import randomHelpers from 'radio4000/mixins/random-helpers';
 
-const {Service, inject, computed, debug} = Ember;
+const {Service, inject, debug, computed} = Ember;
 
 export default Service.extend(randomHelpers, {
 	player: inject.service(),
@@ -22,26 +22,32 @@ export default Service.extend(randomHelpers, {
 
 	/**
 	 @method
-	 @returns @track model that has to be played, to the player@nextRandom
-	 @param {pool} array of tracks available to be played
+	 @returns @promise {track} model that has to be played, to the player@nextRandom
+	 promise so it waits there is a track found to play it
 	*/
-	getNext(array = this.get('randomPool')) {
-		let item = array.objectAt(array.indexOf(this.get('player.model')) + 1);
-		if (!item) {
-			return array.objectAt(0);
-		}
-		return item;
+	getNext() {
+		let array = this.get('randomPool');
+		return new Promise(resolve => {
+			let item = array.objectAt(array.indexOf(this.get('player.model')) + 1);
+			if (!item) {
+				resolve(array.objectAt(0));
+			}
+			resolve(item);
+		});
 	},
 
 	/**
 		@method getPrevious
 		@returns the track previously played in random mode
 	*/
-	getPrevious(array = this.get('randomPool')) {
-		let item = array.objectAt(array.indexOf(this.get('player.model')) - 1);
-		if (!item) {
-			return array.objectAt(array.length - 1);
-		}
-		return item;
+	getPrevious() {
+		let array = this.get('randomPool');
+		return new Promise(resolve => {
+			let item = array.objectAt(array.indexOf(this.get('player.model')) - 1);
+			if (!item) {
+				resolve(array.objectAt(array.length - 1));
+			}
+			resolve(item);
+		});
 	}
 });

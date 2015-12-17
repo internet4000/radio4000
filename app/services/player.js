@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {debug, observer, inject, warn} = Ember;
+const {debug, inject, warn} = Ember;
 
 export default Ember.Service.extend({
 	playerRandom: inject.service(),
@@ -87,8 +87,9 @@ export default Ember.Service.extend({
 		return this.playTrack(prev);
 	},
 	prevRandom() {
-		let prev = this.get('playerRandom').getPrevious();
-		return this.playTrack(prev);
+		this.get('playerRandom').getPrevious().then(prev => {
+			return this.playTrack(prev);
+		});
 	},
 
 	/**
@@ -116,9 +117,9 @@ export default Ember.Service.extend({
 		return this.playTrack(next);
 	},
 	nextRandom() {
-		this.set('isRandom', true);
-		let nextRandom = this.get('playerRandom').getNext();
-		return this.playTrack(nextRandom);
+		this.get('playerRandom').getNext().then(nextRandom => {
+			return this.playTrack(nextRandom);
+		});
 	},
 
 	// Find out which actual item has to be played
@@ -153,23 +154,6 @@ export default Ember.Service.extend({
 	},
 
 	/**
-		Random was activated
-		from clicking on shuffle in playback
-		@TODO from shuffling on a channel card
-	 */
-	randomWasActivated: observer('isRandom', 'playlist', function () {
-		if (this.get('isRandom')) {
-			debug('randomWasActivated');
-			// 1- visualy clear played tracks in the current channel
-			this.get('playerHistory').clearPlayerHistory();
-			// 2- set pool of tracks to be used
-			this.get('playlist.tracks').then(items => {
-				this.get('playerRandom').setNewRandomPool(items);
-			});
-		}
-	}),
-
-	/**
 		A track ended naturally
 		Application route called this.
 		A track from the player ended, without user action. It played naturally untill the end
@@ -180,5 +164,22 @@ export default Ember.Service.extend({
 		this.get('playerHistory').trackEnded(finishedTrack);
 		// play next track
 		return this.next();
+	},
+
+	/**
+		@method activateRandom
+		Random was activated
+		from clicking on shuffle in playback
+		@TODO from shuffling on a channel card
+		1- visualy clear played tracks in the current channel
+		2- set pool of tracks to be used
+		and return it so we can use it as a promise
+	 */
+	activateRandom() {
+		this.set('isRandom', true);
+		this.get('playerHistory').clearPlayerHistory();
+		return this.get('playlist.tracks').then(items => {
+			this.get('playerRandom').setNewRandomPool(items);
+		});
 	}
 });

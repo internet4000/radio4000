@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {Component, inject, run, computed} = Ember;
+const {Component, inject, debug, computed} = Ember;
 
 // Pass it a track to play it.
 // Pass it a channel to play latest track.
@@ -15,9 +15,15 @@ export default Component.extend({
 	isInPlayer: computed.reads('channel.isInPlayer'),
 	isShuffle: computed.reads('isInPlayer'),
 
+	// if it is in the player
+	// that mean clicking again should play a random track
 	click() {
+		let player = this.get('player');
 		if (this.get('isInPlayer')) {
-			return this.get('player').nextRandom();
+			debug('isInPlayer -> nextRandom');
+			return player.activateRandom().then(() => {
+				player.next();
+			});
 		}
 		return this.playChannel();
 	},
@@ -29,6 +35,7 @@ export default Component.extend({
 		and makes it play in this order:
 	*/
 	playChannel(channel = this.get('channel')) {
+		debug('play channel');
 		this.set('isLoading', true);
 		let track = this.loadTracks(channel).then(tracks => {
 			this.set('isLoading', false);
