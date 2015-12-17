@@ -1,5 +1,5 @@
 import randomText from '../../../utils/random-text';
-import { module, test } from 'qunit';
+import {module, test} from 'qunit';
 
 module('randomText');
 
@@ -17,12 +17,12 @@ test('Generate a random string of 4 characters for the newChannel.url', function
 
 		// if the string is in the array, we have a duplicate
 		// so don't push it to the array, to see how many duplicated
-		if (testedResults.indexOf(result) < -1) {
+		if (testedResults.indexOf(result) == -1) {
 			testedResults.push('result');
 		}
 
-		assert.ok(typeof result === 'string', 'It is a string');
-		assert.ok(result.length === 4, 'It is a string of 4 characters');
+		assert.equal(typeof result, 'string', 'It is a string');
+		assert.equal(result.length, 4, 'It is a string of 4 characters');
 	}
 
 	assert.ok(testedResults.length > timesToSuccess, 'At least 8 of the random strings were different');

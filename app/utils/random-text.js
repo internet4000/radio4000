@@ -1,19 +1,9 @@
 // Returns a random string from a specified list of characters.
 
 export default function randomText() {
-	const chars = '0ab1cd2ef3gh4ij5kl6mn7op8q9rstuvwxyz';
-	const maxLength = 4;
-	let text = '';
-
-	for (let i = 0; i < maxLength; i++) {
-		text += chars.charAt(Math.floor(Math.random() * chars.length));
-	}
-
-	return text;
-
-	// let chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-	// let len = 4;
-	// Array(len).join().split(',').map(() => chars.charAt(Math.floor(Math.random() * chars.length))).join('');
+	const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+	const len = 4;
+	return Array(len).join().split(',').map(() => chars.charAt(Math.floor(Math.random() * chars.length))).join('');
 }
 
 // in that case read it as follows:
