@@ -181,5 +181,9 @@ export default Ember.Service.extend({
 		return this.get('playlist.tracks').then(items => {
 			this.get('playerRandom').setNewRandomPool(items);
 		});
+	},
+	deactivateRandom() {
+		debug('deactivateRandom');
+		this.set('isRandom', false);
 	}
 });

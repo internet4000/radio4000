@@ -17,6 +17,13 @@ export default Component.extend({
 		pause() {
 			this.attrs.radioDevice.value.send('pause');
 		},
+		toggleRandom(player = this.get('player')) {
+			if (player.get('isRandom')) {
+				player.deactivateRandom();
+			} else {
+				player.activateRandom();
+			}
+		},
 		prev() {
 			this.get('player').prev();
 		},
