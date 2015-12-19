@@ -4,12 +4,12 @@
 	{{#link-to 'channels.history' title="Your listening history" class="Tabs-item"}}History{{/link-to}}
 </div>
 
-<section class="Container">
-	<p class="SingleNote">
-		{{#unless session.currentUser.channels.firstObject}}
-			Welcome! Start exploring radios or {{#link-to 'intro'}}get introduced to Radio4000.{{/link-to}}
-		{{/unless}}
-	</p>
-</section>
+{{#unless session.currentUser.channels.firstObject}}
+	<section class="Container">
+		<p class="SingleNote">
+				Welcome! Start exploring radios or {{#link-to 'intro'}}get introduced to Radio4000.{{/link-to}}
+		</p>
+	</section>
+{{/unless}}
 
 {{outlet}}
