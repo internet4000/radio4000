@@ -69,6 +69,24 @@
 		.no-flexbox & { max-width: 2 * 14.28%; }
 	}
 }
+.Grid-item--triple {
+	@media (min-width: $layout-sm) {
+		flex-basis: 100%;
+		.no-flexbox & { max-width: 100%; }
+	}
+	@media (min-width: $layout-ml) {
+		flex-basis: 75%;
+		.no-flexbox & { max-width: 75%; }
+	}
+	@media (min-width: $layout-l) {
+		flex-basis: 60%;
+		.no-flexbox & { max-width: 60%; }
+	}
+	@media (min-width: $layout-xl) {
+		flex-basis: 3 * 14.28%;
+		.no-flexbox & { max-width: 3 * 14.28%; }
+	}
+}
 
 // Make a grid's items equal height
 .Grid--full {

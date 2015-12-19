@@ -1,55 +1,57 @@
-<section class="Section">
-	<div class="Manchet Manchet--left">
-		<h1>Discover<small> — editor's selection</small></h1>
-	</div>
+<div class="Sections">
+	<section class="Section">
+		<div class="Manchet Manchet--left">
+			<h1>Discover<small> — editor's selection</small></h1>
+		</div>
 
-	{{#if model.featured}}
-		<div class="Container Container--full">
-			<div class="Grid">
-				{{#each model.featured as |item|}}
+		{{#if model.featured}}
+			<div class="Container Container--full">
+				<div class="Grid">
+					{{#each model.featured as |item|}}
+						<div class="Grid-item">
+							{{channel-card channel=item}}
+						</div>
+					{{/each}}
 					<div class="Grid-item">
-						{{channel-card channel=item}}
+						<h3>Tip</h3>
+						<p class="Muted">Each selected channel has been curated by human ears and handpicked for its unquestionable quality.</p>
+						<p class="Muted">Listen to music you'll love, it's free! {{link-to 'See all channels' 'channels.all'}}.</p>
 					</div>
-				{{/each}}
-				<div class="Grid-item">
-					<h3>Tip</h3>
-					<p class="Muted">Each selected channel has been curated by human ears and handpicked for its unquestionable quality.</p>
-					<p class="Muted">Listen to music you'll love, it's free! {{link-to 'See all channels' 'channels.all'}}.</p>
 				</div>
 			</div>
+		{{else}}
+			<div class="Container">
+				{{is-loading}}
+			</div>
+		{{/if}}
+	</section>
+
+	<section class="Section">
+		<div class="Manchet Manchet--left">
+			<h2><small>Your</small> favorite <small>radios</small></h2>
 		</div>
-	{{else}}
-		<div class="Container">
-			{{is-loading}}
-		</div>
-	{{/if}}
-</section>
 
-<section class="Section">
-	<div class="Manchet Manchet--left">
-		<h2><small>Your</small> favorite <small>radios</small></h2>
-	</div>
+		<div class="Container Container--full">
+			<div class="Grid">
 
-	<div class="Container Container--full">
-		<div class="Grid">
+				{{#if model.userChannel}}
+					{{#each model.userChannel.favoriteChannels as |item|}}
 
-			{{#if model.userChannel}}
-				{{#each model.userChannel.favoriteChannels as |item|}}
-
+						<div class="Grid-item">
+							{{channel-card channel=item}}
+						</div>
+					{{/each}}
+				{{else}}
 					<div class="Grid-item">
-						{{channel-card channel=item}}
+						<h3>Tip</h3>
+						<div class="Muted">
+							<p>You don't have any favorite radio channels yet.</p>
+							<p>{{link-to 'Register or log in' 'login'}} and {{link-to 'play radios' 'channels.all'}} to find some you'll enjoy.</p>
+						</div>
 					</div>
-				{{/each}}
-			{{else}}
-				<div class="Grid-item">
-					<h3>Tip</h3>
-					<div class="Muted">
-						<p>You don't have any favorite radio channels yet.</p>
-						<p>{{link-to 'Register or log in' 'login'}} and {{link-to 'play radios' 'channels.all'}} to find some you'll enjoy.</p>
-					</div>
-				</div>
-			{{/if}}
+				{{/if}}
 
+			</div>
 		</div>
-	</div>
-</section>
+	</section>
+</div>

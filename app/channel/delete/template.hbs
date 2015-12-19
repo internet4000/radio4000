@@ -1,26 +1,30 @@
-<div class="Manchet Manchet--left">
-	<h1>You are about to permanently delete {{model.title}}</h1>
-</div>
+<div class="Sections">
+	<section class="Section">
+		<div class="Manchet Manchet--left">
+			<h1>You are about to permanently delete {{model.title}}</h1>
+		</div>
 
-<div class="Container Section--space">
-	<ul>
-		<li>All your music on your radio will be deleted</li>
-		<li>All your saved radio favorites will be deleted</li>
-		<li>All your followers will loose access to your radio</li>
-	</ul>
+		<div class="Container Section--space">
+			<ul>
+				<li>All your music on your radio will be deleted</li>
+				<li>All your saved radio favorites will be deleted</li>
+				<li>All your followers will loose access to your radio</li>
+			</ul>
 
-	<p>If you are sure of your decision, farewell!</p>
+			<p>If you are sure of your decision, farewell!</p>
 
-	<button disabled={{isDeleting}} class="Btn Btn--danger" {{action 'deleteChannel'}}>
-		{{#if isDeleting}}
-			Deleting…
-		{{else}}
-			Yes, delete {{model.title}} :(
-		{{/if}}
-	</button>
-	<br>
-	<br>
-	{{#unless isDeleting}}
-		{{#link-to 'channel.index' model class="Btn Btn--primary"}}No, I want to keep my radio!{{/link-to}}
-	{{/unless}}
+			<button disabled={{isDeleting}} class="Btn Btn--danger" {{action 'deleteChannel'}}>
+				{{#if isDeleting}}
+				Deleting…
+				{{else}}
+				Yes, delete {{model.title}} :(
+				{{/if}}
+			</button>
+			<br>
+			<br>
+			{{#unless isDeleting}}
+			{{#link-to 'channel.index' model class="Btn Btn--primary"}}No, I want to keep my radio!{{/link-to}}
+			{{/unless}}
+		</div>
+	</section>
 </div>

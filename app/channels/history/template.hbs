@@ -1,24 +1,24 @@
-<section class="Section">
-	<div class="Manchet Manchet--left">
-		<h1>Your listening <small>history</small></h1>
-		<p class="Muted">Only you can see this section</p>
-	</div>
+<div class="Sections">
+	<section class="Section">
+		<div class="Manchet Manchet--left">
+			<h1>Your listening <small>history</small></h1>
+			<p class="Muted">Only you can see this section</p>
+		</div>
 
-	<div class="Container Container--full">
-		{{#if model.userSettings.playedChannels}}
+		<div class="Container Container--full">
+			{{#if model.userSettings.playedChannels}}
 			{{#each-grid items=model.userSettings.playedChannels as |item|}}
-				{{channel-card channel=item}}
+			{{channel-card channel=item}}
 			{{/each-grid}}
 			{{#btn-group}}
-				<button class="Btn" {{action 'clearChannelHistory'}}>Clear history</button>
+			<button class="Btn" {{action 'clearChannelHistory'}}>Clear history</button>
 			{{/btn-group}}
-		{{else}}
+			{{else}}
 			<p>You haven't played any radios yet.</p>
 			{{#unless session.isAuthenticated}}
-				<p>{{#link-to 'login'}}Register or log in{{/link-to}}.</p>
+			<p>{{#link-to 'login'}}Register or log in{{/link-to}}.</p>
 			{{/unless}}
-		{{/if}}
-	</div>
-
-
-</section>
+			{{/if}}
+		</div>
+	</section>
+</div>

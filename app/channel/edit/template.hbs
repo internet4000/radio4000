@@ -1,80 +1,85 @@
-<div class="Manchet Manchet--left">
-	<h1>Edit your radio</h1>
-</div>
-
-<div class="Channel Channel--edit Container Container--full">
-
-	<div class="Form Form--box">
-		<div class="Channel Channel--edit">
-		{{!-- left side, channel image --}}
-			<form class="Channel-media">
-				<div class="Form-group">
-					{{#image-upload imageId=newImage}}
-						{{channel-cover image=model.coverImage}}
-						Drag 'n drop an image for your radio here
-					{{/image-upload}}
-
-					{{#if model.coverImage}}
-						<button class="Btn Btn--danger Btn--text" {{action 'deleteImage'}}>Delete image</button>
-					{{/if}}
-				</div>
-			</form>
-
-			{{!-- right side, channel model --}}
-			<form class="Channel-body" {{action "trySave" on="submit"}}>
-				<div class="Form-group">
-					<label for="title" >Title</label>
-					{{focus-input id="title"
-						value=model.title
-						placeholder="Title"
-						autofocus='autofocus'
-						required="required"
-						maxlength=titleMaxLength
-						minlength=titleMinLength}}
-					{{errors-display showErrors=showErrors errors=errors.model.title}}
-				</div>
-				<div class="Form-group">
-					<label for="body" >Description</label>
-					{{textarea id="body"
-						value=model.body
-						maxlength=channelDescriptionMaxLength
-						placeholder="What is your radio about?"}}
-					{{errors-display showErrors=showErrors errors=errors.model.body}}
-				</div>
-				<div class="Form-group">
-					<label for="slug">URL</label>
-					<span class="Permalink">radio4000.com/{{model.slug}}</span>
-					{{input id="slug"
-						maxlength=titleMaxLength
-						minlength=titleMinLength
-						value=model.slug
-						placeholder="channel-slug"
-						required="required"}}
-					{{errors-display showErrors=showErrors errors=errors.model.slug}}
-				</div>
-				<div class="Form-group">
-					<label for="link">Link</label>
-					{{input type="url"
-						id="link"
-						value=model.link
-						placeholder="Your homepage" }}
-					{{errors-display showErrors=showErrors errors=errors.model.url}}
-				</div>
-
-				<div class="Form-group Form--save">
-					<button type="submit" class="Btn Btn--primary" disabled={{isSaving}}>
-						{{#if isSaving}}Saving…{{else}}Save radio{{/if}}
-					</button>
-					{{#link-to 'channel.index' model class="Btn Btn--text Muted"}}Cancel editing{{/link-to}}
-				</div>
-			</form>
-			{{errors-display showErrors=showErrors errors=errors.server}}
+<div class="Sections">	
+	<section class="Section">
+		<div class="Manchet Manchet--left">
+			<h1>Edit your radio</h1>
 		</div>
-	</div>
 
-	<p>
-		{{#link-to 'channel.delete' model class="Btn Btn--text Muted"}}
-			Delete your radio
-		{{/link-to}}
-	</p>
+		<div class="Channel Channel--edit Container Container--full">
+
+			<div class="Form Form--box">
+				<div class="Channel Channel--edit">
+					{{!-- left side, channel image --}}
+					<form class="Channel-media">
+						<div class="Form-group">
+							{{#image-upload imageId=newImage}}
+							{{channel-cover image=model.coverImage}}
+							Drag 'n drop an image for your radio here
+							{{/image-upload}}
+
+							{{#if model.coverImage}}
+							<button class="Btn Btn--danger Btn--text" {{action 'deleteImage'}}>Delete image</button>
+							{{/if}}
+						</div>
+					</form>
+
+					{{!-- right side, channel model --}}
+					<form class="Channel-body" {{action "trySave" on="submit"}}>
+						<div class="Form-group">
+							<label for="title" >Title</label>
+							{{focus-input id="title"
+							value=model.title
+							placeholder="Title"
+							autofocus='autofocus'
+							required="required"
+							maxlength=titleMaxLength
+							minlength=titleMinLength}}
+							{{errors-display showErrors=showErrors errors=errors.model.title}}
+						</div>
+						<div class="Form-group">
+							<label for="body" >Description</label>
+							{{textarea id="body"
+							value=model.body
+							maxlength=channelDescriptionMaxLength
+							placeholder="What is your radio about?"}}
+							{{errors-display showErrors=showErrors errors=errors.model.body}}
+						</div>
+						<div class="Form-group">
+							<label for="slug">URL</label>
+							<span class="Permalink">radio4000.com/{{model.slug}}</span>
+							{{input id="slug"
+							maxlength=titleMaxLength
+							minlength=titleMinLength
+							value=model.slug
+							placeholder="channel-slug"
+							required="required"}}
+							{{errors-display showErrors=showErrors errors=errors.model.slug}}
+						</div>
+						<div class="Form-group">
+							<label for="link">Link</label>
+							{{input type="url"
+							id="link"
+							value=model.link
+							placeholder="Your homepage" }}
+							{{errors-display showErrors=showErrors errors=errors.model.url}}
+						</div>
+
+						<div class="Form-group Form--save">
+							<button type="submit" class="Btn Btn--primary" disabled={{isSaving}}>
+								{{#if isSaving}}Saving…{{else}}Save radio{{/if}}
+							</button>
+							{{#link-to 'channel.index' model class="Btn Btn--text Muted"}}Cancel editing{{/link-to}}
+						</div>
+					</form>
+					{{errors-display showErrors=showErrors errors=errors.server}}
+				</div>
+			</div>
+
+			<p>
+				{{#link-to 'channel.delete' model class="Btn Btn--text Muted"}}
+				Delete your radio
+				{{/link-to}}
+			</p>
+		</div>
+	</section>
+
 </div>

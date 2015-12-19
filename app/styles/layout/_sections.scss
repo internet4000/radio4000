@@ -2,6 +2,10 @@
 // Use this when you need more vertical space
 //
 
+.Sections {
+	padding-top: 3rem;
+}
+
 .Section {
 	clear: both;
 	padding-bottom: 2rem; // padding instead of margin - otherwise it cuts the box-shadow of .Box -_-
