@@ -1,23 +1,23 @@
 /**
- *  Blankstate
+ *  ChannelWelcome
  */
 
-.Blankstate {
-	margin-left: 1rem;
-	margin-right: 1rem;
+.PageWelcome {
 	margin-top: 1rem;
 	p {
 		margin-bottom: 0;
 	}
-
+	a {
+	}
 }
-.Blankstate-title {
+.PageWelcome-title {
 	font-size: 2rem;
 }
 
-.Blankstate-actions {
+.PageWelcome-actions {
 	padding-top: 0.7rem;
 	input {
 		margin-bottom: 0;
+		cursor: pointer;
 	}
 }
