@@ -14,7 +14,6 @@
 	margin-top: 3rem;
 	margin-left: 1rem;
 	margin-right: 1rem;
-	max-width: 40rem;
 }
 
 .Channel--edit {
@@ -149,4 +148,14 @@
 	.Channel-media {
 		margin-top: 0;
 	}
+}
+
+
+/**
+ Channel-introduction
+ */
+
+.Channel-introduction {
+	// it is flexbox because of the Grid it is in (Grid-item)
+	order: 1;
 }
