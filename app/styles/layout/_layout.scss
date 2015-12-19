@@ -13,11 +13,25 @@ body {
 	overflow-x: hidden;
 }
 
-.SiteHeader {}
+.Root {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
+
+.SiteHeader {
+
+}
+.SiteAside {
+	min-width: 12rem;
+}
 .SiteMain {
 	padding-top: rem($bar-height + $bar-border-size); // with border
 	padding-bottom: rem($bar-height * 1.5); // bar + a bit more
-	min-height: 100vh;
+	height: 100vh;
+	overflow-y: scroll;
+	width: 100%;
+
 }
 .SiteFooter {
 	background-color: darken($bg-color, 6%);

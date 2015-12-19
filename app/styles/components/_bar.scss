@@ -18,6 +18,7 @@
 .Bar--top {
 	top: 0;
 	border-bottom: $bar-border-size solid hsla(0, 0%, 0%, 0.4);
+	box-shadow: 0px 3px 6px hsla(0, 0%, 0%, 0.4);
 	color: $text-color-invert; // $dark
 	a {
 		color: $text-color-invert; // $dark

@@ -29,11 +29,11 @@
 @import 'layout/manchet';
 @import 'layout/sections';
 @import 'layout/grid'; // @todo refactor
-@import 'layout/sticky-footer'; // @todo refactor
 @import 'layout/new'; // @todo refactor - mix with bigstep?
 @import 'layout/intro';
 
 // UI components
+@import 'components/aside';
 @import 'components/icon';
 @import 'components/tabs';
 @import 'components/custom-select';

@@ -1,0 +1,18 @@
+/**
+	Site Aside
+ */
+
+.Aside {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	height: 100vh;
+	overflow-y: scroll;
+	padding-top: 4.3rem;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+}
+
+.Aside-item {
+
+}

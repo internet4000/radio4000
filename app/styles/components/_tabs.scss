@@ -4,38 +4,21 @@
 
 .Tabs {
 	display: flex;
-	flex-flow: row nowrap;
-	background-color: $superlightgray;
-	text-align: center;
-}
-// yeah it is shit
-.Tabs--toHorizontal {
-	@media (max-width: $layout-s) {
-		flex-flow: row wrap;
-		.Tabs-item {
-			text-align: left;
-			flex: 0 1 100%;
-			&:hover,
-			&:focus {
-				border-left-color: $bg-color;
-			}
-			&:active {
-				border-left-color: $secondary-color;
-			}
-			&.is-active {
-				border-left: 3px solid $secondary-color;
-				border-bottom-color: transparent;
-			}
-		}
+	flex-direction: column;
+	flex-wrap: wrap;
+	// background-color: $superlightgray;
+	padding-bottom: 0.4rem;
+	width: 100%;
+	// tab groups following each other
+	&+.Tabs {
+		border-top: 1px solid #ddd;
 	}
 }
 
 .Tabs-item {
-	flex: 0 1 12em; // grow and shrink and stretch 3x12 so it's full width on tablet
 	padding: 0.8em 1rem 0.7em;
-	border-bottom: 3px solid transparent;
-	transition: border-bottom-color 200ms $easing;
-	color: $black;
+	color: $gray;
+	border-radius: 2px;
 
 	&:hover,
 	&:focus {
@@ -49,6 +32,31 @@
 	&.is-active {
 		@extend %font-bold;
 		@include negative-text;
-		border-bottom: 3px solid $secondary-color;
+		background-color: $slightgray;
+	}
+	&.is-active {
+		@extend %font-bold;
+		@include negative-text;
+	}
+
+}
+
+/**
+	Modifiers
+ */
+
+.Tabs--horizontal {
+	text-align: center;
+	flex-flow: row wrap;
+	color: $black;
+	.Tab-item {
+		border-radius: 0;
+		flex: 0 1 12em; // grow and shrink and stretch 3x12 so it's full width on tablet
+		border-bottom: 3px solid transparent;
+		transition: border-bottom-color 200ms $easing;
+		&.is-active {
+			border-bottom: 3px solid $secondary-color;
+			background-color: transparent;
+		}
 	}
 }
