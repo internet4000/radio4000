@@ -12,6 +12,7 @@
 	// tab groups following each other
 	&+.Tabs {
 		border-top: 1px solid #ddd;
+		padding-top: 0.4rem;
 	}
 }
 
@@ -48,15 +49,19 @@
 .Tabs--horizontal {
 	text-align: center;
 	flex-flow: row wrap;
-	color: $black;
-	.Tab-item {
+	.Tabs-item {
 		border-radius: 0;
 		flex: 0 1 12em; // grow and shrink and stretch 3x12 so it's full width on tablet
 		border-bottom: 3px solid transparent;
+		color: $black;
 		transition: border-bottom-color 200ms $easing;
 		&.is-active {
 			border-bottom: 3px solid $secondary-color;
 			background-color: transparent;
 		}
 	}
+}
+
+.Tabs--centered {
+	justify-content: center;
 }
