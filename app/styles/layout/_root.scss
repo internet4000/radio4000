@@ -1,0 +1,73 @@
+/**
+ * Minimal ui styles for some of our major steps
+ * body class is added with the service 'uiStates'
+ **/
+
+.Root {
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: column;
+	@media (min-width: $layout-l) {
+		flex-direction: raw;
+	}
+}
+
+.Root.is-minimal {
+	.SiteMain {
+		padding-bottom: 0;
+		transition: background-color 300ms $easing2;
+		background-color: $primary-color;
+		color: $white;
+		min-height: 100vh;
+		/* flex */
+		display: flex;
+		box-align: center;
+		align-items: center;
+		align-content: center;
+		justify-content: center;
+		.Muted {
+			color: rgba($white, 0.6);
+		}
+	}
+	.ContextualNav {
+		transform: translateX(100%);
+	}
+	.Bar--top {
+		background-color: transparent;
+		border-bottom-color: transparent;
+	}
+	.Player {
+		opacity: 0;
+		transform: translateY(100%);
+	}
+	.Bar--bottom {
+		background-color: red;
+		transform: translateY(100%);
+	}
+}
+
+/**
+	Player is showing
+ */
+.Root.is-withPlayer {
+	.SiteMain {
+		order: 2;
+		padding-top: 0;
+	}
+	.Player {
+		order: 1;
+	}
+}
+
+.Root.is-panelLeftVisible {
+	.Aside--left {
+		transform: translateX(0);
+	}
+	.SiteMain {
+		padding-top: 0rem;
+		padding-left: 13rem;
+	}
+	.Player {
+		padding-left: 13rem;
+	}
+}

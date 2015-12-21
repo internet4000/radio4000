@@ -68,6 +68,5 @@
 @import 'components/playback';
 @import 'components/player';
 
-// States
-@import 'layout/is-fullscreen'; // everything dark and big player
-@import 'layout/is-minimal'; // full bg color
+// Major UI States or the UI
+@import 'layout/root';
