@@ -59,7 +59,53 @@
 
   <script src="assets/modernizr-custom.min.js"></script>
   <script src="assets/images/icons/grunticon/grunticon.loader.js"></script>
-	<link rel="stylesheet" href="assets/images/icons/grunticon/icons.data.svg.css">
+   <link rel="stylesheet" href="assets/images/icons/grunticon/icons.data.svg.css">
+   <style>
+      /*@keyframes Appear {
+         0% {
+            color: transparent;
+         }
+         100% {
+            color: inherit
+         }
+      }*/
+      .DummyApp {
+         z-index: 2;
+         position: fixed;
+         top: 0;
+         right: 0;
+         bottom: 0;
+         left: 0;
+         /*animation-name: Appear;
+         animation-duration: 2s;
+         animation-iteration-count: 1;*/
+         background-color: hsla(60, 4%, 91%, 1);
+      }
+      .DummyApp .Loader {
+         position: absolute;
+         top: 50%;
+         left: 0;
+         right: 0;
+         width: 100%;
+         transform: translateY(-50%);
+         -webkit-transform: translateY(-50%);
+         -moz-transform: translateY(-50%);
+         text-align: center;
+         font-size: 3rem;
+         margin: 0;
+         height: auto;
+      }
+      .DummyApp h1,
+      .DummyApp p {
+         max-width: 20rem;
+         margin-left: auto;
+         margin-right: auto;
+      }
+      .DummyApp p {
+         opacity: 0.4;
+         margin-bottom: 0.3rem;
+      }
+   </style>
 
   {{content-for 'head-footer'}}
 </head>
@@ -69,15 +115,14 @@
   <noscript>Sorry, you need to enable JavaScript in your browser to use Radio4000.</noscript>
 
   <!-- a loader that appears independently from ember and is removed by ember as soon as possible -->
-  <div class="DummyApp" style="z-index: 2; position: fixed; top: 0; right: 0; bottom: 0; left: 0; background-color: #E9E9E7;">
-     <div class="Bar Bar--top"></div>
-     <div class="Loader" style="position: absolute; top: 50%; left: 0; right: 0; width: 100%; text-align: center; font-size: 3rem; margin: 0; height: auto;">
-			<h1 style=" width: 9rem; margin-left: auto; margin-right: auto;">
+  <div class="DummyApp">
+     <div class="Loader">
+			<h1 >
 				<img src="assets/images/logos/radio4000-logo.png" alt="Radio4000">
 			</h1>
          <div class="Loader-body">
-            <p style="opacity: 0.4;">Looking for good tunes</p>
-            <p id="R4Slogan" style="opacity: 0.4;"></p>
+            <p>Looking for good tunes</p>
+            <p id="R4Slogan"></p>
          </div>
          <script>
             var radio4000dummy = function() {
@@ -91,7 +136,7 @@
                /* internet connection check */
                var loaderBody = document.querySelectorAll('.Loader-body');
                if (!navigator.onLine) {
-                  loaderBody[0].innerHTML = '<p>It seems you are offline -_- find internet and reload this page!</p>';
+                  loaderBody[0].innerHTML = '<p>It seems you are <strong>offline</strong> -_-</p> <p>Find internet and reload this page!</p>';
                };
             }();
          </script>
