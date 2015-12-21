@@ -30,9 +30,9 @@
 	margin-bottom: 0;
 	font-size: inherit;
 }
-.Logo-arrow {
+.Logo-burger {
 	position: relative;
-	top: 0.15em;
+	top: 0.25em;
 	transition: margin 400ms $easing;
 
 	.Logo.is-active & {
