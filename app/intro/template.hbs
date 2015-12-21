@@ -22,6 +22,7 @@
 	</div>
 </section>
 
+<div class="Sections">
 <section class="Section">
 	<div class="Manchet Manchet--left">
 		<h1>Radio4000<small> — a radio the future</small></h1>
@@ -29,11 +30,11 @@
 	<div class="Container Container--full">
 		<div class="Grid Grid--firstHidden">
 			{{#each model.featured as |item|}}
-				<div class="Grid-item">
-					{{#link-to 'channel' item}}
-						{{channel-card channel=item}}
-					{{/link-to}}
-				</div>
+			<div class="Grid-item">
+				{{#link-to 'channel' item}}
+				{{channel-card channel=item}}
+				{{/link-to}}
+			</div>
 			{{/each}}
 			<div class="Grid-item">
 				<div class="ChannelCard ChannelCard--text">
@@ -69,7 +70,7 @@
 		<div class="Grid">
 			<div class="Grid-item">
 				{{#link-to 'channel' model.featured.firstObject}}
-					{{channel-card channel=model.featured.firstObject}}
+				{{channel-card channel=model.featured.firstObject}}
 				{{/link-to}}
 			</div>
 			<div class="Grid-item Grid-item--double">
@@ -78,33 +79,34 @@
 					<p>Because the human behind can only have one channel, there's nowhere for the good music to hide. Highs and lows, ebbs and flows, Cambodian funk and techno. Each mix is exactly that — a mix.</p>
 					<p>{{#link-to 'channel' model.featured.firstObject}}
 						Listen to {{model.featured.firstObject.title}}
-					{{/link-to}} now!</p>
+						{{/link-to}} now!</p>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
 
-<section>
-	<div class="Manchet Manchet--left">
-		<h1>Let's build a radio for year 4000 together!</h1>
-	</div>
-	<div class="Container Container--full">
-		<div class="Section">
-			<div class="Intro-buttons">
-				{{#link-to 'channels' class="Intro-btn" title="Discover music by channels"}}
+	<section>
+		<div class="Manchet Manchet--left">
+			<h1>Let's build a radio for year 4000 together!</h1>
+		</div>
+		<div class="Container Container--full">
+			<div class="Section">
+				<div class="Intro-buttons">
+					{{#link-to 'channels' class="Intro-btn" title="Discover music by channels"}}
 					Discover radios &rarr;
-				{{/link-to}}
-				{{#if session.currentUser.channels.firstObject}}
+					{{/link-to}}
+					{{#if session.currentUser.channels.firstObject}}
 					{{#link-to 'channel' session.currentUser.channels.firstObject class="Intro-btn Intro-btn--primary" title="Your radio"}}
-						Go to your “{{session.currentUser.channels.firstObject.title}}”
+					Go to your “{{session.currentUser.channels.firstObject.title}}”
 					{{/link-to}}
-				{{else}}
+					{{else}}
 					{{#link-to 'channels.new' class="Intro-btn Intro-btn--primary" title="Continue to create your radio"}}
-						Create your radio now
+					Create your radio now
 					{{/link-to}}
-				{{/if}}
+					{{/if}}
+				</div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
+</div>
