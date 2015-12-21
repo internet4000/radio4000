@@ -10,6 +10,7 @@ export default Component.extend({
 	classNameBindings: [
 		'uiStates.isFullscreen',
 		'uiStates.isMinimal',
+		'uiStates.isPanelLeftVisible:is-panelLeftVisible',
 		'player.model:is-withPlayer:is-withoutPlayer'
 	],
 

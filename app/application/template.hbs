@@ -17,8 +17,11 @@
 	{{/if}}
 
 	<div class="SiteAside">
-		{{x-aside class="Aside--left"}}
+		{{x-aside class="Aside--left"
+			authed=session.isAuthenticated
+			userChannel=session.currentUser.channels.firstObject}}
 	</div>
+
 
 	<main class="SiteMain">
 		{{#if-ios}}
@@ -31,13 +34,15 @@
 	</main>
 
 	<div class="Player">
-		{{ember-youtube ytid=player.model.ytid delegate=this delegate-as="emberYoutube"
-			autoplay="true"
-			playing="ytPlaying"
-			paused="ytPaused"
-			ended="ytEnded"
-			error="ytError"
-			showProgress="true"}}
+		<div class="Container">
+			{{ember-youtube ytid=player.model.ytid delegate=this delegate-as="emberYoutube"
+				autoplay="true"
+				playing="ytPlaying"
+				paused="ytPaused"
+				ended="ytEnded"
+				error="ytError"
+				showProgress="true"}}
+		</div>
 	</div>
 
 	<div class="Bar Bar--bottom">

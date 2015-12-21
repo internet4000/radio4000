@@ -10,3 +10,10 @@
 	{{#link-to 'help' title="Answers to your questions" class="Tabs-item"}}Help{{/link-to}}
 	<a class="Tabs-item" href="http://blog.radio4000.com" target="_blank" title="How is the weather at Radio4000?">&rarr; Blog</a>
 </div>
+<div class="Tabs">
+	{{#if authed}}
+		{{#link-to 'logout' class="Tabs-item Muted" title="Log out from Radio4000"}}Log out{{/link-to}}
+	{{else}}
+		{{#link-to 'login' class="Tabs-item" title="Register or log in to Radio4000"}}Register or log in{{/link-to}}
+	{{/if}}
+</div>

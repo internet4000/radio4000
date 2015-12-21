@@ -2,14 +2,23 @@
  * Wrapper for the embed video/audio player
  */
 
+.Player {
+	transition: padding 400ms $easing;
+	z-index: 0;
+}
+
 #EmberYoutube-player {
-	position: fixed;
-	z-index: 3;
-	right: 0;
-	bottom: rem($bar-height + $progress-height);
-	width: 80px;
-	height: 80px;
-	max-width: 100%;
+	width: 100% !important;
+	min-height: 30vh;
+	background-color: black;
+	@media (max-width: $layout-s) {
+		position: fixed;
+		z-index: 3;
+		right: 0;
+		bottom: rem($bar-height + $progress-height);
+		width: 80px;
+		height: 80px;
+	}
 
 	@media (min-width: $layout-s) {
 		width: 100px;
@@ -37,7 +46,7 @@
 // initially, the player is hidden
 .is-withoutPlayer {
 	.Player {
-		visibility: hidden;
+		display: none;
 	}
 	.Bar--bottom {
 		transform: translateY(100%);

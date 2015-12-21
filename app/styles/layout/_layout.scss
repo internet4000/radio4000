@@ -13,24 +13,29 @@ body {
 	overflow-x: hidden;
 }
 
-.Root {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-}
+
+/**
+	In _root.scss, it is displayed flex
+	So all child of .Root bellow follow this behavior
+ */
 
 .SiteHeader {
 
 }
 .SiteAside {
-	min-width: 12rem;
+	min-width: 13rem;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
 }
 .SiteMain {
-	padding-top: rem($bar-height + $bar-border-size); // with border
+	padding-top: 3rem;
 	padding-bottom: rem($bar-height * 1.5); // bar + a bit more
-	height: 100vh;
-	overflow-y: scroll;
+	min-height: 100vh;
 	width: 100%;
+	transition: padding 450ms $easing;
 
 }
 .SiteFooter {
