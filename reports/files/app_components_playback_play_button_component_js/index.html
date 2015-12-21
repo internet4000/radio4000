@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">54</p>
+      <p class="stat">59</p>
     </div>
   </div>
   <div class="row historical">
@@ -91,56 +91,61 @@
   <div class="row">
     <textarea id="file-source" class="col-md-12">import Ember from &#039;ember&#039;;
 
-const {Component, inject, run} = Ember;
+const {Component, inject, debug, computed} = Ember;
 
 // Pass it a track to play it.
 // Pass it a channel to play latest track.
-// Set shuffle to true it will play random and enable shuffle on the player.
+// Set isShuffle to true it will play random and enable isShuffle on the player.
 // It will load all tracks async (use isLoading in templates)
 
 export default Component.extend({
 	player: inject.service(),
 	tagName: &#039;button&#039;,
 	classNames: [&#039;Btn&#039;],
-	classNameBindings: [&#039;isLoading&#039;],
-	shuffle: false,
+	classNameBindings: [&#039;isLoading&#039;, &#039;isInPlayer&#039;],
+	isInPlayer: computed.reads(&#039;channel.isInPlayer&#039;),
+	isShuffle: computed.reads(&#039;isInPlayer&#039;),
 
+	// if it is in the player
+	// that mean clicking again should play a random track
 	click() {
-		const track = this.get(&#039;track&#039;);
-		const channel = this.get(&#039;channel&#039;);
-
-		if (track) {
-			return this.get(&#039;player&#039;).play(track);
-		} else if (channel) {
-			return this.playChannel(channel);
+		let player = this.get(&#039;player&#039;);
+		if (this.get(&#039;isInPlayer&#039;)) {
+			debug(&#039;isInPlayer -&gt; nextRandom&#039;);
+			return player.activateRandom().then(() =&gt; {
+				player.next();
+			});
 		}
+		return this.playChannel();
 	},
 
-	playChannel(channel) {
-		const player = this.get(&#039;player&#039;);
-
-		this.loadTracks(channel).then(tracks =&gt; {
-			run.scheduleOnce(&#039;afterRender&#039;, this, function () {
-				// Either play shuffle
-				if (this.get(&#039;shuffle&#039;)) {
-					player.playShuffleFromTracks(tracks);
-					return;
-				}
-
-				// Or latest track.
-				player.play(tracks.get(&#039;lastObject&#039;));
-				// Enable shuffle automatically for any next clicks.
-				this.set(&#039;shuffle&#039;, true);
-			});
+	/**
+		@method playChannel
+		@returns none
+		manages the loading state of the track to be played
+		and makes it play in this order:
+	*/
+	playChannel(channel = this.get(&#039;channel&#039;)) {
+		debug(&#039;play channel&#039;);
+		this.set(&#039;isLoading&#039;, true);
+		let track = this.loadTracks(channel).then(tracks =&gt; {
+			this.set(&#039;isLoading&#039;, false);
+			return tracks.get(&#039;lastObject&#039;);
+		});
+		track.then(item =&gt; {
+			this.set(&#039;isLoading&#039;, false);
+			this.get(&#039;player&#039;).playTrack(item);
 		});
 	},
-
+	/**
+		@method loadTracks
+		@returns promise {tracks}
+		so we can display a loading state
+		and show the player only when the track is ready to be played
+	*/
 	loadTracks(channel) {
 		this.set(&#039;isLoading&#039;, true);
-		return channel.get(&#039;tracks&#039;).then(tracks =&gt; {
-			this.set(&#039;isLoading&#039;, false);
-			return tracks;
-		});
+		return channel.get(&#039;tracks&#039;);
 	}
 });</textarea>
   </div>

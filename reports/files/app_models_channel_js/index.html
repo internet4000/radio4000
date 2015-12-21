@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">96.88</p>
+      <p class="stat">88.46</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">52</p>
+      <p class="stat">56</p>
     </div>
   </div>
   <div class="row historical">
@@ -93,6 +93,7 @@
 import DS from &#039;ember-data&#039;;
 
 const {attr, hasMany, belongsTo} = DS;
+const {computed} = Ember;
 
 /*
  Channel model:
@@ -126,9 +127,12 @@ export default DS.Model.extend({
 	// }),
 
 	// Set the latest image as the cover image
-	coverImage: Ember.computed(&#039;images.[]&#039;, function () {
+	coverImage: computed(&#039;images.[]&#039;, function () {
 		return this.get(&#039;images.lastObject&#039;);
 	}),
+
+	// this property is toggled by the player setChannel
+	isInPlayer: false,
 
 	// relationships
 	images: hasMany(&#039;image&#039;, {async: true}),

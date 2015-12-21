@@ -94,19 +94,19 @@
 const {Controller, inject} = Ember;
 
 export default Controller.extend({
-	userHistory: inject.service(),
+	queryParams: [&#039;test&#039;],
+	test: null,
 	player: inject.service(),
+	playerHistory: inject.service(),
 
 	actions: {
 		ytPlaying() {
-			this.set(&#039;player.isPlaying&#039;, true);
+			this.get(&#039;player&#039;).play();
 		},
 		ytPaused() {
 			this.get(&#039;player&#039;).pause();
 		},
 		ytEnded() {
-			let trackFinished = this.get(&#039;player.model&#039;);
-			this.get(&#039;userHistory&#039;).setTrackHasPlayed(trackFinished);
 			this.get(&#039;player&#039;).trackEnded();
 		},
 		ytError(error) {

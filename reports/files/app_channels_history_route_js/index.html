@@ -94,15 +94,15 @@
 const {inject, RSVP} = Ember;
 
 export default Ember.Route.extend({
-	userHistory: inject.service(),
+	playerHistory: inject.service(),
 	model() {
 		return RSVP.hash({
 			userSettings: this.get(&#039;session.currentUser.settings&#039;)
 		});
 	},
 	actions: {
-		clearHistory() {
-			this.get(&#039;userHistory&#039;).clearHistory();
+		clearChannelHistory() {
+			this.get(&#039;playerHistory&#039;).clearChannelHistory();
 		}
 	}
 });</textarea>
