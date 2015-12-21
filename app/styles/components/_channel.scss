@@ -7,6 +7,8 @@
 .Channel--detail, {
 	position: relative;
 	z-index: 2; // above the player
+	// because the channel image is a bit outside (negative margin)
+	margin-top: 1.5rem;
 	background-color: $slightgray;
 	border-top: 1px solid hsl(0, 0%, 98%);
 	border-right: 2px solid hsl(0, 0%, 88%);
