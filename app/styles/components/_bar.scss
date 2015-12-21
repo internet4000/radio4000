@@ -5,7 +5,6 @@
 .Bar {
 	position: fixed;
 	left: 0;
-	width: 100%;
 	z-index: 3;
 	min-height: rem($bar-height);
 
@@ -17,8 +16,12 @@
 }
 .Bar--top {
 	top: 0;
-	border-bottom: $bar-border-size solid hsla(0, 0%, 0%, 0.4);
-	box-shadow: 0px 3px 6px hsla(0, 0%, 0%, 0.4);
+	left: 0;
+	width: 10rem;
+	background: transparent;
+	// border-bottom: $bar-border-size solid hsla(0, 0%, 0%, 0.4);
+	// border-right: $bar-border-size solid hsla(0, 0%, 0%, 0.4);
+	// box-shadow: 2px 2px 4px hsla(0, 0%, 0%, 0.4);
 	color: $text-color-invert; // $dark
 	a {
 		color: $text-color-invert; // $dark
@@ -26,4 +29,5 @@
 }
 .Bar--bottom {
 	bottom: 0;
+	width: 100%;
 }

@@ -9,10 +9,15 @@
 	height: 100vh;
 	overflow-y: scroll;
 	padding-top: 4.3rem;
-	padding-left: 0.5rem;
-	padding-right: 0.5rem;
+	padding-left: 0.4rem;
+	padding-right: 0.8rem;
 }
 
 .Aside-item {
 
+}
+
+.Aside--left {
+	transition: transform 400ms $easing;
+	transform: translateX(-100%);
 }
