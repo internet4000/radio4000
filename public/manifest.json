@@ -1,10 +1,7 @@
 {
   "name": "Radio4000",
-  "description": "Collect, curate, play and share your own radio channel",
   "short_name": "Radio4000",
-
-  "version": "1",
-  "manifest_version": 2,
+  "description": "Collect, curate, play and share your own radio channel",
 
   "start_url": "index.html",
   "display": "standalone",
@@ -13,11 +10,11 @@
 
   "app": {
     "launch": {
-      "web_url": "http://radio4000.com/"
+      "web_url": "https://radio4000.com/"
     }
   },
 
-  "icons": {
+  "icons": [
       {
          "src": "\/images\/favicons\/android-chrome-36x36.png",
          "sizes": "36x36",
@@ -54,5 +51,5 @@
          "type": "image\/png",
          "density": "4.0"
       }
-   }
+   ]
 }

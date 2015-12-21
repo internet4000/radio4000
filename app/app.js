@@ -3,7 +3,7 @@ import Resolver from 'ember/resolver';
 import loadInitializers from 'ember/load-initializers';
 import config from './config/environment';
 
-var App;
+let App;
 
 Ember.MODEL_FACTORY_INJECTIONS = true;
 
@@ -11,7 +11,7 @@ App = Ember.Application.extend({
 	rootElement: '#Radio4000',
 	modulePrefix: config.modulePrefix,
 	podModulePrefix: config.podModulePrefix,
-	Resolver: Resolver
+	Resolver
 });
 
 // Change the class Ember adds to active elements
