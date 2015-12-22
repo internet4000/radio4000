@@ -1,11 +1,10 @@
-<div {{action 'click'}}>
-	{{#unless hasBlock}}
+{{#unless hasBlock}}
 	<h1>
 		{{!-- <span class="Logo-icon">&larr;</span> --}}
-		<span class="Logo-icon">{{x-icon i='burger'}}</span>
+		{{!-- <span class="Logo-icon">{{x-icon i='burger'}}</span> --}}
+		<div class="Logo-dot"></div>
 		<img class="Logo-img" src="assets/images/logos/radio4000-logo.png" alt="Radio4000">
 	</h1>
-	{{else}}
+{{else}}
 	{{yield}}
-	{{/unless}}
-</div>
+{{/unless}}

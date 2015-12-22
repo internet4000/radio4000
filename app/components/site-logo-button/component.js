@@ -1,11 +1,11 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
-	uiStates: Ember.inject.service(),
+const {Component, inject} = Ember;
+
+export default Component.extend({
+	uiStates: inject.service(),
 	classNames: ['Logo'],
-	actions: {
-		click() {
-			this.get('uiStates').togglePanelLeft();
-		}
+	click() {
+		this.get('uiStates').togglePanelLeft();
 	}
 });

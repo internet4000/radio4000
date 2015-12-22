@@ -1,12 +1,10 @@
 {{#app-root}}
-	<header class="SiteHeader">
-		<div class="Bar Bar--top">
-			{{nav-bar
-				radioDevice=emberYoutube
-				authed=session.isAuthenticated
-				userChannel=session.currentUser.channels.firstObject}}
-		</div>
-	</header>
+	<div class="Bar Bar--top">
+		{{nav-bar
+			radioDevice=emberYoutube
+			authed=session.isAuthenticated
+			userChannel=session.currentUser.channels.firstObject}}
+	</div>
 
 	{{#if flashMessages.queue}}
 		<aside class="FlashMessages">
