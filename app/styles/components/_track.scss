@@ -6,7 +6,10 @@
 	@include size-1;
 	position: relative;
 	overflow: hidden; // hide controls
-	border: 1px solid transparent;
+
+	// define empty borders so it doesn't jump
+	border-left: 1px solid transparent;
+	border-right: 1px solid transparent;
 
 	.icon-play {
 		position: absolute;
@@ -18,11 +21,42 @@
 		}
 	}
 }
-.Track--used {
-	border-left-color: $red;
+
+// Active state
+.Track.is-current {
+	.Track-link,
+	a.Track-link {
+		background-color: $white;
+		border-left-color: $secondary-color;
+	}
+	.icon-play {
+		display: block;
+	}
 }
-.Track--finsihed {
-	border-right-color: $red;
+
+// Conflicts with is-current border
+// .Track--used {
+// 	border-left-color: $yellow;
+// }
+
+.Track--finished {
+	border-right-color: $green;
+}
+
+// Edit state
+.Track.is-editing {
+	background-color: $superlightgray;
+	box-shadow: $lighterblue 0 0 10px;
+
+	.Track-link:hover {
+		background-color: transparent;
+		background-image: none;
+	}
+
+	.Track-link,
+	.Track-controls {
+		display: none;
+	}
 }
 
 .Track-title {
@@ -40,9 +74,11 @@
 		display: none;
 	}
 }
+
+// Link surrounding the track.
 .Track-link,
-a.Track-link { // Link surrounding the track
-	border-left: 5px solid transparent;
+a.Track-link {
+	border-left: 3px solid transparent;
 	padding-right: rem(60);
 	color: $text-color;
 	transition: border-color 250ms $easing;
@@ -52,7 +88,7 @@ a.Track-link { // Link surrounding the track
 	}
 }
 
-// Track edit button
+// Track edit button.
 .Track-controls {
 	@include size-1;
 	cursor: pointer;
@@ -73,37 +109,5 @@ a.Track-link { // Link surrounding the track
 		.Track:hover & {
 			color: $text-color;
 		}
-	}
-}
-
-// Active state
-.Track.is-current {
-	.Track-link,
-	a.Track-link {
-		background-color: $white;
-		border-left-color: $secondary-color;
-		// color: white;
-	}
-	.Track-body {
-		// color: white;
-	}
-	.icon-play {
-		display: block;
-	}
-}
-
-// Edit state
-.Track.is-editing {
-	background-color: $superlightgray;
-	box-shadow: $lighterblue 0 0 10px;
-
-	.Track-link:hover {
-		background-color: transparent;
-		background-image: none;
-	}
-
-	.Track-link,
-	.Track-controls {
-		display: none;
 	}
 }
