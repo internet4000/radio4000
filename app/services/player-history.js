@@ -24,10 +24,10 @@ export default Service.extend({
 	},
 	// the user played this channel entirely
 	setChannelAsPlayed() {
-		let currentChannelModel = this.get('player.model.channel');
-		let settings = this.get('session.currentUser.settings');
+		const currentChannelModel = this.get('player.model.channel');
+		const settings = this.get('session.currentUser.settings');
 
-		// user is logged out
+		// Break if the user does not have settings (= logged out)
 		if (!settings) {
 			return false;
 		}

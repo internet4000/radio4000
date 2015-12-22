@@ -1,9 +1,10 @@
 {{#app-root}}
 	<div class="Bar Bar--top">
-		{{nav-bar
-			radioDevice=emberYoutube
+		{{#nav-bar radioDevice=emberYoutube
 			authed=session.isAuthenticated
 			userChannel=session.currentUser.channels.firstObject}}
+			{{site-logo-button}}
+		{{/nav-bar}}
 	</div>
 
 	{{#if flashMessages.queue}}

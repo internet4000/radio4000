@@ -5,7 +5,7 @@
 	outline: 2px solid transparent;
 	transition: outline 1000ms $easing;
 	&.is-active {
-		outline-color: $red;
+		outline-color: $secondary-color;
 	}
 }
 .ChannelCard-title,
@@ -19,7 +19,7 @@
 }
 .ChannelCard-title {
 	word-break: break-word;
-	color: $red;
+	color: $secondary-color;
 
 	a:hover & {
 		text-decoration: underline;

@@ -22,9 +22,9 @@ Ember.LinkComponent.reopen({
 Ember.EventDispatcher.reopen({
 	setup() {
 		const ignoreEvents = ['touchmove', 'touchstart', 'touchend', 'touchcancel', 'mousemove', 'mouseenter', 'mouseleave'];
-		let events = this.get('events');
+		const events = this.get('events');
 
-		Ember.$.each(ignoreEvents, function (index, value) {
+		Ember.$.each(ignoreEvents, (index, value) => {
 			events[value] = null;
 			delete events[value];
 		});

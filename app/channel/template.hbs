@@ -12,25 +12,24 @@
 			<article class="Channel Channel--detail {{if canEdit 'canEdit'}}">
 				<div class="Channel-header">
 					<div class="Container Container--full Container--tight">
-
 						<div class="Channel-media">
 							{{#if canEdit}}
-							{{#link-to 'channel.edit' model}}
-							<div class="Channel-cover">
-								{{channel-cover image=model.coverImage onPlay="play"}}
-							</div>
-							{{/link-to}}
+								{{#link-to 'channel.edit' model}}
+									<div class="Channel-cover">
+										{{channel-cover image=model.coverImage onPlay="play"}}
+									</div>
+								{{/link-to}}
 							{{else}}
-							<div class="Channel-cover">
-								{{channel-cover image=model.coverImage onPlay="play"}}
-							</div>
+								<div class="Channel-cover">
+									{{channel-cover image=model.coverImage onPlay="play"}}
+								</div>
 							{{/if}}
 						</div>
 
 						{{#unless canEdit}}
-						<span class="Channel-follow Follow">
-							{{btn-favorite action="toggleFavorite" isFavorite=isFavorite class="NonBtn"}}
-						</span>
+							<span class="Channel-follow Follow">
+								{{btn-favorite action="toggleFavorite" isFavorite=isFavorite class="NonBtn"}}
+							</span>
 						{{/unless}}
 
 						<div class="Channel-body">
@@ -38,34 +37,30 @@
 								<div class="Channel-playback">
 									{{playback/play-shuffle-btn channel=model}}
 								</div>
-
 								<h1 class="Channel-title">
 									{{#link-to 'channel' model}}
-									{{model.title}}
+										{{model.title}}
 									{{/link-to}}
 								</h1>
-
 							</div>
-
-
 
 							{{!-- <p class="Muted LastUpdated">({{lastUpdatedFormatted}})</p> --}}
 
 							{{#if model.body}}
-							<p class="Channel-description">{{model.body}}</p>
+								<p class="Channel-description">{{model.body}}</p>
 							{{/if}}
 
 							{{#if model.link}}
-							<p class="Channel-links">
-								<a href="{{model.link}}" target="_blank">{{model.link}}</a>
-							</p>
+								<p class="Channel-links">
+									<a href="{{model.link}}" target="_blank">{{model.link}}</a>
+								</p>
 							{{/if}}
-
 						</div>
+
 						{{#if canEdit}}
-						{{#link-to 'channel.edit' model class="Channel-edit Btn" title="Edit your radio"}}
-						{{x-icon i="pencil"}} Edit radio
-						{{/link-to}}
+							{{#link-to 'channel.edit' model class="Channel-edit Btn" title="Edit your radio"}}
+								{{x-icon i="pencil"}} Edit radio
+							{{/link-to}}
 						{{/if}}
 					</div>
 				</div>
@@ -75,13 +70,13 @@
 					Dashboard
 					{{/link-to}} --}}
 					{{#link-to 'channel.index' class="Tabs-item" title="All tracks"}}
-					{{!-- {{model.tracks.length}} --}} Tracks
+						{{!-- {{model.tracks.length}} --}}Tracks
 					{{/link-to}}
 					{{#link-to 'channel.favorites' class="Tabs-item" title="Favorites of this radio"}}
-					Favorites
+						Favorites
 					{{/link-to}}
 					{{#link-to 'channel.followers' class="Tabs-item" title="Followers of this radio"}}
-					Followers
+						Followers
 					{{/link-to}}
 				</nav>
 
