@@ -32,12 +32,15 @@
 @import 'layout/new'; // @todo refactor - mix with bigstep?
 @import 'layout/intro';
 
+// Forms
+@import 'components/custom-select';
+@import 'components/form-progress';
+@import 'components/checkbox-remote';
+
 // UI components
 @import 'components/aside';
 @import 'components/icon';
 @import 'components/tabs';
-@import 'components/custom-select';
-@import 'components/form-progress';
 @import 'components/note';
 @import 'components/list'; // @todo refactor
 @import 'components/loader';
@@ -52,8 +55,8 @@
 @import 'components/playback-external';
 @import 'components/search';
 @import 'components/play-pause';
-// @import 'components/widget';
 @import 'components/flash-messages';
+// @import 'components/widget';
 // @import 'components/navigation';
 // @import 'components/annoncement';
 
@@ -63,6 +66,7 @@
 @import 'components/logo';
 @import 'components/toggle-panel';
 @import 'components/panel-nav';
+@import 'components/user-channel';
 
 // Footer area
 @import 'components/playback';

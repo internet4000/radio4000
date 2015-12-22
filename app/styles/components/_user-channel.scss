@@ -1,0 +1,46 @@
+/**
+ * UserChannel
+ **/
+
+.UserChannel {
+	@include clearfix;
+	overflow-x: hidden; // prevent channel name to go out of navBar if it is a single word
+	a {
+		@include clearfix;
+	}
+	&:hover {
+		.UserChannel-intro,
+		.UserChannel-body {
+			color: $white;
+		}
+	}
+}
+.UserChannel-media {
+	float: left;
+	width: 40px;
+	height: 40px;
+	background-color: $darkblue;
+	margin-bottom: 0;
+}
+.UserChannel-body {
+	float: left;
+	width: 100%;
+	min-height: 1.4em;
+	margin-left: -40px;
+	padding-left: 55px;
+
+	&.BoxIcon {
+		// when user is logged in but has no channel yet
+		padding-left: 0;
+
+		&:hover {
+			color: $white;
+		}
+	}
+}
+.UserChannel-intro {
+	margin-bottom: 0;
+}
+.UserChannel-title {
+	margin-bottom: 0;
+}
