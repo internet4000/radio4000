@@ -62,7 +62,7 @@ h1,
 h2,
 .Subtitle {
 	@include size-3;
-	@media (min-width: $layout-sm) {
+	@media (min-width: $layout-m) {
 		@include size-4;
 	}
 }

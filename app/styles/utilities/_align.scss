@@ -1,3 +1,7 @@
+/**
+ * Utilities for aligning components
+ */
+
 .u-alignCenter {
 	text-align: center;
 }
@@ -7,17 +11,6 @@
 .u-alignRight {
 	float: right;
 }
-
-.u-underline {
-	border-bottom: 2px solid white;
-}
-/**
- * Vertical align elements with an unknown height
- * works in IE9+
- */
-
-.u-alignMiddle {
-	position: relative;
-	top: 50%;
-	transform: translateY(-50%);
+.u-pushDown {
+	margin-top: 2rem;
 }
