@@ -29,7 +29,6 @@
 @import 'layout/manchet';
 @import 'layout/sections';
 @import 'layout/grid'; // @todo refactor
-@import 'layout/new'; // @todo refactor - mix with bigstep?
 @import 'layout/intro';
 
 // Forms
@@ -45,7 +44,6 @@
 @import 'components/list'; // @todo refactor
 @import 'components/loader';
 @import 'components/card';
-@import 'components/box-icon';
 @import 'components/cover';
 @import 'components/image-upload';
 @import 'components/channel';
@@ -56,17 +54,11 @@
 @import 'components/search';
 @import 'components/play-pause';
 @import 'components/flash-messages';
-// @import 'components/widget';
-// @import 'components/navigation';
-// @import 'components/annoncement';
 
 // Header area
 @import 'components/bar';
 @import 'components/nav-bar';
 @import 'components/logo';
-@import 'components/toggle-panel';
-@import 'components/panel-nav';
-@import 'components/user-channel';
 
 // Footer area
 @import 'components/playback';
@@ -74,3 +66,8 @@
 
 // Major UI States or the UI
 @import 'layout/root';
+
+// @import 'components/widget';
+// @import 'components/navigation';
+// @import 'components/annoncement';
+// @import 'components/toggle-panel';
