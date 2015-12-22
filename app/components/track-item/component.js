@@ -5,7 +5,7 @@ const {Component, computed, inject} = Ember;
 export default Component.extend({
 	player: inject.service(),
 	classNames: ['Track'],
-	classNameBindings: ['isCurrent', 'track.usedInCurrentPlayer:Track--used', 'track.FinsihedInCurrentPlayer:Track--finished'],
+	classNameBindings: ['isCurrent', 'track.usedInCurrentPlayer:Track--used', 'track.finishedInCurrentPlayer:Track--finished'],
 
 	// true if the current track is loaded in the player
 	// isCurrent: computed.equal('player.model', 'track'),
