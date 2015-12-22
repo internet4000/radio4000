@@ -2,7 +2,8 @@
 {{!-- <div class="Cover-img" style="background-image: url({{image.thumb}})"> --}}
 <div class="Cover-img">
 	{{#if image}}
-		<img src={{image.thumb}}>
+		<img src="{{image.thumbnail}}" alt="">
+		{{!-- <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{{image.thumbnail}}" class="lazysizes" alt=""> --}}
 	{{/if}}
 
 	{{#if canPlay}}

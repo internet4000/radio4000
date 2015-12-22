@@ -8,15 +8,15 @@ export default Model.extend({
 	channel: belongsTo('channel'),
 	src: attr('string'),
 
-	// returns a cropped thumb with facial detection
-	thumb: Ember.computed('src', function () {
+	// Returns a cropped thumb optimized for gifs
+	thumbnail: computed('src', function () {
 		const src = this.get('src');
 
 		if (!src) {
 			return '';
 		}
 
-		return `//res.cloudinary.com/radio4000/image/upload/c_thumb,h_240,w_240/v1428245306/${src}`;
+		return `//res.cloudinary.com/radio4000/image/upload/c_thumb,h_240,w_240,c_fill,fl_lossy,q_60/v1428245306/${src}`;
 	})
 });
 
