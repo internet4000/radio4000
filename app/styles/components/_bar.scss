@@ -12,12 +12,12 @@
 	// background-color: $primary-color;
 	color: $text-color-invert;
 	backface-visibility: hidden; // perf
-	transition: transform 400ms $easing2, background-color 200ms;
+	transition: transform 300ms $easing2, background-color 200ms;
 }
 .Bar--top {
 	top: 0;
 	left: 0;
-	width: 10rem;
+	width: $sidebar-width;
 	background: transparent;
 	// border-bottom: $bar-border-size solid hsla(0, 0%, 0%, 0.4);
 	// border-right: $bar-border-size solid hsla(0, 0%, 0%, 0.4);

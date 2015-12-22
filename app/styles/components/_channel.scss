@@ -51,7 +51,7 @@
 		@include clearfix;
 		float: left;
 		width: 30%;
-		max-width: 13rem;
+		max-width: $sidebar-width;
 		padding-right: 1rem;
 		margin-top: -1.5rem;
 	}
