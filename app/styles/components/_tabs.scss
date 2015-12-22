@@ -8,9 +8,15 @@
 
 	// A bit of depth.
 	border-top: 1px solid hsl(0, 0%, 97%);
-	border-bottom: 1px solid $mediumlightgray;
 	background-color: $slightgray;
 	border-radius: $border-radius;
+	// can't use border because we use it for active state
+	&::after {
+		content: '';
+		display: block;
+		height: 1px;
+		background-color: $mediumlightgray;
+	}
 
 	// When several tabs follow each other.
 	& + .Tabs {
@@ -44,6 +50,7 @@
 .Tabs--horizontal {
 	flex-flow: row wrap;
 	text-align: center;
+	max-width: 90%;
 
 	.Tabs-item {
 		border-radius: 0;
@@ -64,4 +71,38 @@
 
 .Tabs--centered {
 	justify-content: center;
+}
+
+// Used where the background is considered "higher",
+// for instance on a light bg as channel header.
+.Tabs--lighter {
+	max-width: none;
+	background-color: $superlightgray;
+
+}
+
+// Animated border
+.Tabs--animated {
+	.Tabs-item {
+		position: relative;
+		// remove previous borders
+		border-bottom: 0 !important;
+		// align border vertically
+		padding-top: 0;
+		padding-bottom: 0;
+		line-height: 2;
+	}
+	// the border
+	.Tabs-item::after {
+		content: '';
+		display: block;
+		margin: auto;
+		height: 3px;
+		width: 0;
+		background: $secondary-color;
+		transition: width 400ms ease;
+	}
+	.Tabs-item.is-active::after {
+		width: 100%;
+	}
 }
