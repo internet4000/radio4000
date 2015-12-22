@@ -1,91 +1,85 @@
 <section class="Intro">
 	<div class="Intro-bg">
 		<h1 class="Intro-title">
-			<span class="Intro-radio">Radio</span>
-			<span class="Intro-4000">4000</span>
+		<span class="Intro-radio">Radio</span>
+		<span class="Intro-4000">4000</span>
 		</h1>
 		<p class="Intro-slogan">A single channel for everyone<br>and an infinity of great tracks curated with love.</p>
 		{{!-- <div class="Intro-buttons">
 			{{#link-to 'channels' class="Intro-btn" title="Discover music by channels"}}
-				Discover radios &rarr;
+			Discover radios &rarr;
 			{{/link-to}}
 			{{#if session.currentUser.channels.firstObject}}
-				{{#link-to 'channel' session.currentUser.channels.firstObject class="Intro-btn Intro-btn--primary" title="Your radio"}}
-					Go to your “{{session.currentUser.channels.firstObject.title}}”
-				{{/link-to}}
+			{{#link-to 'channel' session.currentUser.channels.firstObject class="Intro-btn Intro-btn--primary" title="Your radio"}}
+			Go to your “{{session.currentUser.channels.firstObject.title}}”
+			{{/link-to}}
 			{{else}}
-				{{#link-to 'channels.new' class="Intro-btn Intro-btn--primary" title="Continue to create your radio"}}
-					Create your radio now
-				{{/link-to}}
+			{{#link-to 'channels.new' class="Intro-btn Intro-btn--primary" title="Continue to create your radio"}}
+			Create your radio now
+			{{/link-to}}
 			{{/if}}
 		</div> --}}
 	</div>
 </section>
-
 <div class="Sections">
-<section class="Section">
-	<div class="Manchet Manchet--left">
-		<h1>Radio4000<small> — a radio the future</small></h1>
-	</div>
-	<div class="Container Container--full">
-		<div class="Grid Grid--firstHidden">
-			{{#each model.featured as |item|}}
-			<div class="Grid-item">
-				{{#link-to 'channel' item}}
-				{{channel-card channel=item}}
-				{{/link-to}}
-			</div>
-			{{/each}}
-			<div class="Grid-item">
-				<div class="ChannelCard ChannelCard--text">
-					<p>Simply tap a channel to play it!</p>
-					<p>Each channel is as unique as the person who crafted it.</p>
+	<section class="Section">
+		<div class="Manchet Manchet--left">
+			<h1>Radio4000<small> — a radio the future</small></h1>
+		</div>
+		<div class="Container Container--full">
+			<div class="Grid Grid--firstHidden">
+				{{#each model.featured as |item|}}
+				<div class="Grid-item">
+					{{#link-to 'channel' item}}
+					{{channel-card channel=item}}
+					{{/link-to}}
+				</div>
+				{{/each}}
+				<div class="Grid-item">
+					<div class="ChannelCard ChannelCard--text">
+						<p>Simply tap a channel to play it!</p>
+						<p>Each channel is as unique as the person who crafted it.</p>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
-
-<section class="Section">
-	<div class="Manchet Manchet--left">
-		<h1>The three commandments of Radio4000</h1>
-	</div>
-	<div class="Container">
-		<h3>1. 1. Thou shalt each have one channel.</h3>
-		<p>It's not about finicky playlists or genres. Radio4000 is about the music you love, plain and simple. No sorting. No shame. And if you'd rather just listen, no problem. Everyone loves a good listener.</p>
-
-		<h3>2. Thou shalt add music you love.</h3>
-		<p>If you love a song, add it. Don't let themes, evil colour schemes, genres or transitions hold you back. Don't get all meta(tag) about it.</p>
-
-		<h3>3. Thou identity shalt remain mysterious (if you want it to)</h3>
-		<p>Privacy is important to us. Your music is who you are and if you're a closet cat lover or the president of a large country, we respect your need to stay anonymous. Radio4000 is about the music and, by extension, protecting the people who share it.</p>
-	</div>
-</section>
-
-<section class="Section">
-	<div class="Manchet Manchet--left">
-		<h1>One radio<small> — everyone gets one</small></h1>
-	</div>
-	<div class="Container Container--full">
-		<div class="Grid">
-			<div class="Grid-item">
-				{{#link-to 'channel' model.featured.firstObject}}
-				{{channel-card channel=model.featured.firstObject}}
-				{{/link-to}}
-			</div>
-			<div class="Grid-item Grid-item--double">
-				<div class="Muted">
-					<p>This channel is called <strong>{{model.featured.firstObject.title}}</strong>.</p>
-					<p>Because the human behind can only have one channel, there's nowhere for the good music to hide. Highs and lows, ebbs and flows, Cambodian funk and techno. Each mix is exactly that — a mix.</p>
-					<p>{{#link-to 'channel' model.featured.firstObject}}
-						Listen to {{model.featured.firstObject.title}}
+	</section>
+	<section class="Section">
+		<div class="Manchet Manchet--left">
+			<h1>The three commandments of Radio4000</h1>
+		</div>
+		<div class="Container">
+			<h3>1. Thou shalt each have one channel.</h3>
+			<p>It's not about finicky playlists or genres. Radio4000 is about the music you love, plain and simple. No sorting. No shame. And if you'd rather just listen, no problem. Everyone loves a good listener.</p>
+			<h3>2. Thou shalt add music you love.</h3>
+			<p>If you love a song, add it. Don't let themes, evil colour schemes, genres or transitions hold you back. Don't get all meta(tag) about it.</p>
+			<h3>3. Thou identity shalt remain mysterious (if you want it to)</h3>
+			<p>Privacy is important to us. Your music is who you are and if you're a closet cat lover or the president of a large country, we respect your need to stay anonymous. Radio4000 is about the music and, by extension, protecting the people who share it.</p>
+		</div>
+	</section>
+	<section class="Section">
+		<div class="Manchet Manchet--left">
+			<h1>One radio<small> — everyone gets one</small></h1>
+		</div>
+		<div class="Container Container--full">
+			<div class="Grid">
+				<div class="Grid-item">
+					{{#link-to 'channel' model.featured.firstObject}}
+						{{channel-card channel=model.featured.firstObject}}
+					{{/link-to}}
+				</div>
+				<div class="Grid-item Grid-item--double">
+					<div class="Muted">
+						<p>This channel is called <strong>{{model.featured.firstObject.title}}</strong>.</p>
+						<p>Because the human behind can only have one channel, there's nowhere for the good music to hide. Highs and lows, ebbs and flows, Cambodian funk and techno. Each mix is exactly that — a mix.</p>
+						<p>{{#link-to 'channel' model.featured.firstObject}}
+							Listen to {{model.featured.firstObject.title}}
 						{{/link-to}} now!</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-
 	<section>
 		<div class="Manchet Manchet--left">
 			<h1>Let's build a radio for year 4000 together!</h1>
@@ -94,16 +88,16 @@
 			<div class="Section">
 				<div class="Intro-buttons">
 					{{#link-to 'channels' class="Intro-btn" title="Discover music by channels"}}
-					Discover radios &rarr;
+						Discover radios &rarr;
 					{{/link-to}}
 					{{#if session.currentUser.channels.firstObject}}
-					{{#link-to 'channel' session.currentUser.channels.firstObject class="Intro-btn Intro-btn--primary" title="Your radio"}}
-					Go to your “{{session.currentUser.channels.firstObject.title}}”
-					{{/link-to}}
+						{{#link-to 'channel' session.currentUser.channels.firstObject class="Intro-btn Intro-btn--primary" title="Your radio"}}
+							Go to your “{{session.currentUser.channels.firstObject.title}}”
+						{{/link-to}}
 					{{else}}
-					{{#link-to 'channels.new' class="Intro-btn Intro-btn--primary" title="Continue to create your radio"}}
-					Create your radio now
-					{{/link-to}}
+						{{#link-to 'channels.new' class="Intro-btn Intro-btn--primary" title="Continue to create your radio"}}
+							Create your radio now
+						{{/link-to}}
 					{{/if}}
 				</div>
 			</div>

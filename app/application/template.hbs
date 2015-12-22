@@ -8,7 +8,7 @@
 
 	{{#if flashMessages.queue}}
 		<aside class="FlashMessages">
-			{{#each flashMessages.queue as | flash |}}
+			{{#each flashMessages.queue as |flash|}}
 				{{flash-message flash=flash}}
 			{{/each}}
 		</aside>
@@ -30,7 +30,9 @@
 
 	<div class="Player">
 		<div class="Container">
-			{{ember-youtube ytid=player.model.ytid delegate=this delegate-as="emberYoutube"
+			{{ember-youtube ytid=player.model.ytid
+				delegate=this
+				delegate-as="emberYoutube"
 				autoplay="true"
 				playing="ytPlaying"
 				paused="ytPaused"

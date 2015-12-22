@@ -20,12 +20,12 @@ export default Component.extend({
 		});
 	},
 
-	// Remove our dummy app with inline styles
+	// Remove our dummy app with inline styles.
 	removeDummyHTML() {
-		let $dummy = $('.DummyApp');
+		const $dummy = $('.DummyApp');
 
-		$dummy.fadeTo(200, 0, 'linear', function () {
-			// wrap it in a run loop to ensure template is rendered
+		$dummy.fadeTo(200, 0, 'linear', () => {
+			// Wrap it in a run loop to avoid lags.
 			run.schedule('afterRender', () => {
 				$dummy.remove();
 			});

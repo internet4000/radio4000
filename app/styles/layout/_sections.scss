@@ -1,7 +1,9 @@
-// Sections
-// Use this when you need more vertical space
-//
+/**
+ * Sections
+ 	Use this for grouping components vertically
+ */
 
+// Que?
 .Sections {
 	padding-top: 1rem;
 }
@@ -10,6 +12,10 @@
 	clear: both;
 	padding-bottom: 2rem; // padding instead of margin - otherwise it cuts the box-shadow of .Box -_-
 }
+
+/**
+ * Modifiers
+ */
 
 .Section--space {
 	padding-top: 1em;

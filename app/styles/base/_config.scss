@@ -40,26 +40,28 @@ $sans-fallback: 'Lucida Grande','Lucida Sans', sans-serif;
 @mixin size-7 { font-size: rem(49px); }
 
 // Colors
+$purple: hsl(260, 80%, 50%);
 $red: hsl(0, 75%, 50%);
 $yellow: hsl(52, 100%, 67%);
+$green: hsl(125, 82%, 35%);
 $blue: hsl(255, 95%, 39%);
-$purple: hsl(260, 80%, 50%);
 $fadedblue: hsl(231, 48%, 95%);
 $lighterblue: hsla(266, 36%, 84%, 0.8);
 $darkblue: hsl(230, 50%, 23%);
 $verydarkblue: hsl(255, 65%, 19%);
-$green: hsl(125, 82%, 35%);
-$sand: hsl(46, 5%, 91%);
-$bleach: hsl(72, 100%, 98%);
-$black: hsl(0, 0%, 10%);
-$dark: hsl(0, 0%, 30%);
-$gray: hsl(0, 0%, 50%);
-$mediumgray: hsl(0, 0%, 70%);
-$mediumlightgray: hsl(0, 0%, 85%);
-$lightgray: hsl(0, 0%, 91%);
-$slightgray: hsl(0, 0%, 95%);
-$superlightgray: hsl(0, 0%, 98%);
+
+// Grays
 $white: hsl(0, 0%, 100%);
+$bleach: hsl(72, 100%, 98%);
+$superlightgray: hsl(0, 0%, 98%);
+$slightgray: hsl(0, 0%, 95%);
+$sand: hsl(46, 5%, 91%);
+$lightgray: hsl(0, 0%, 91%);
+$mediumlightgray: hsl(0, 0%, 85%);
+$mediumgray: hsl(0, 0%, 70%);
+$gray: hsl(0, 0%, 50%);
+$dark: hsl(0, 0%, 30%);
+$black: hsl(0, 0%, 10%);
 
 // Color definitions
 $primary-color: $purple;
@@ -93,3 +95,4 @@ $border-radius: 3px;
 $bar-height: 50px;
 $bar-border-size: 2px;
 $progress-height: 10px;
+$sidebar-width: 13rem;
