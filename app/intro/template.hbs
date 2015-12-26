@@ -1,24 +1,24 @@
 <section class="Intro">
 	<div class="Intro-bg">
 		<h1 class="Intro-title">
-		<span class="Intro-radio">Radio</span>
-		<span class="Intro-4000">4000</span>
+			<span class="Intro-radio">Radio</span>
+			<span class="Intro-4000">4000</span>
 		</h1>
 		<p class="Intro-slogan">A single channel for everyone<br>and an infinity of great tracks curated with love.</p>
-		{{!-- <div class="Intro-buttons">
-			{{#link-to 'channels' class="Intro-btn" title="Discover music by channels"}}
-			Discover radios &rarr;
-			{{/link-to}}
+		<div class="Intro-actions">
 			{{#if session.currentUser.channels.firstObject}}
-			{{#link-to 'channel' session.currentUser.channels.firstObject class="Intro-btn Intro-btn--primary" title="Your radio"}}
-			Go to your “{{session.currentUser.channels.firstObject.title}}”
-			{{/link-to}}
+				{{#link-to 'channel' session.currentUser.channels.firstObject class="Btn Btn--important Btn--huge" title="Your radio"}}
+					Go to your “{{session.currentUser.channels.firstObject.title}}”
+				{{/link-to}}
 			{{else}}
-			{{#link-to 'channels.new' class="Intro-btn Intro-btn--primary" title="Continue to create your radio"}}
-			Create your radio now
-			{{/link-to}}
+				{{#link-to 'channels.new' class="Btn Btn--important Btn--huge" title="Continue to create your radio"}}
+					Create your radio now
+				{{/link-to}}
 			{{/if}}
-		</div> --}}
+			{{#link-to 'channels' class="Btn Btn--huge" title="Discover music by channels"}}
+				Discover radios &rarr;
+			{{/link-to}}
+		</div>
 	</div>
 </section>
 <div class="Sections">

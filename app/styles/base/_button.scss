@@ -5,7 +5,7 @@
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
-	padding: 0 0.6rem;
+	padding: 0.6em;
 	line-height: 1;
 	cursor: pointer;
 	position: relative;
@@ -13,6 +13,10 @@
 	user-select: none; /* 6 */
 	white-space: normal; /* 7 */
 	background: transparent;
+	@media (min-width: $layout-l) {
+		padding-left: 1em;
+		padding-right: 1em;
+	}
 }
 
 .CustomSelect,
@@ -20,7 +24,6 @@
 	@extend %font-bold;
 	// proper tap areas
 	min-height: 2.1em;
-	// min-width: 2.5em;
 	background-color: $superlightgray;
 	color: $text-color;
 	box-shadow: 0 3px 2px 0 hsla(0, 0%, 0%, 0.06),
@@ -65,7 +68,27 @@
 	}
 }
 
-// Primary, colored button
+/**
+ * Button sizes
+ */
+.Btn--small {
+	font-size: rem(12);
+}
+.Btn--large {
+	@include size-2;
+}
+.Btn--huge {
+	@include size-3;
+	// padding: 0.9rem
+}
+.Btn--full {
+	width: 100%;
+	text-align: center;
+}
+
+/**
+ * Primary, colored button
+ */
 .Btn--primary {
 	background-color: $green;
 	border-color: rgba($gray, 0.4);
@@ -82,19 +105,25 @@
 	}
 }
 
-.Btn--full {
-	width: 100%;
-	text-align: center;
+/**
+ * Important, colored button
+ */
+.Btn--important {
+	background-color: $primary-color;
+	color: $white;
+	&:hover {
+		background-color: $primary-color;
+	}
 }
-.Btn--small {
-	font-size: rem(12);
-}
-.Btn--large {
-	@include size-2;
-}
+
+/**
+ * Danger, colored button
+ */
 .Btn--danger {
 	color: $red;
 }
+
+
 .Btn--transparent {
 	border: 2px solid $white;
 	background-image: none;
@@ -105,7 +134,9 @@
 	}
 }
 
-// Buttons that looks like text
+/**
+ * Buttons that looks like text
+ */
 // extra specificity hack
 .Btn.Btn--text {
 	border-color: transparent;
@@ -131,7 +162,6 @@
 		display: inline;
 	}
 }
-
 
 /**
  * Non Buttons

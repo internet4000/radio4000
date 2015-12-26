@@ -1,7 +1,6 @@
 .Intro {
 	@include negative-text; // because of the dark image bg
 	position: relative;
-	min-height: 60vh;
 	margin-bottom: 0;
 	background-color: #000;
 
@@ -17,28 +16,28 @@
 	}
 }
 .Intro-bg {
+	min-height: 60vh;
 	padding-top: 4%;
+	padding-bottom: 4%;
 	padding-left: 10%;
 	background-image: url('../assets/images/bg-intro.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-attachment: fixed;
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
 
 	@media (min-height: 780px) {
 		padding-top: 10%;
 	}
 }
 .Intro-title {
-	margin-top: 2rem;
-	font-size: 80px;
+	margin-top: 4rem;
 	line-height: 0.8;
 	letter-spacing: -0.02em;
+	@include size-7;
+	@media (min-width: $layout-sm) {
+		font-size: 80px;
+	}
 	@media (min-width: $layout-sm) and (min-height: 740px) {
 		font-size: 120px;
 	}
@@ -57,15 +56,12 @@
 }
 .Intro-slogan {
 	margin-top: 1rem;
+	@include size-3;
 
 	@media (min-width: $layout-sm) {
 		margin-top: 3rem;
 		margin-bottom: 2rem;
 	}
-}
-.Intro-slogan,
-.Intro-btn {
-	@include size-3;
 	@media (min-width: $layout-m) {
 		@include size-4;
 	}
@@ -73,41 +69,12 @@
 		@include size-5;
 	}
 }
-.Intro-btn {
-	background-color: $superlightgray;
-	color: $text-color;
-	white-space: nowrap;
-	float: left;
-	padding: 0.6em 1.2rem;
-	margin-right: 0.6em;
-	margin-bottom: 0.6em;
-	border-radius: $border-radius;
-	@media (min-height: 1000px) {
-		padding-left: 2rem;
-		padding-right: 2rem;
-	}
-
-	&:hover {
-		background-color: $white;
-		text-decoration: none;
-		cursor: pointer;
+.Intro-actions {
+	.Btn {
+		margin-right: 0.6em;
+		margin-bottom: 0.6em;
 	}
 }
-.Intro-btn--primary {
-	background-color: $primary-color;
-	color: $white;
-	&:hover {
-		background-color: $primary-color;
-	}
-}
-.Intro-btn:nth-child(2) {
-	clear: left;
-}
-
-
-
-
-
 
 /**
  * Introduction design
