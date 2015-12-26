@@ -1,13 +1,15 @@
-{{!-- <div class="Tabs">
-	{{#link-to 'channels.index' title="Discover channels" class="Tabs-item"}}Discover{{/link-to}}
-	{{#link-to 'channels.all' title="Discover channels" class="Tabs-item"}}All{{/link-to}}
-	{{#link-to 'channels.history' title="Your listening history" class="Tabs-item"}}History{{/link-to}}
-</div> --}}
+<div class="Container u-pushDown">
+	<div class="Tabs Tabs--horizontal">
+		{{#link-to 'channels.index' title="Check the highlights" class="Tabs-item"}}Discover{{/link-to}}
+		{{#link-to 'channels.all' title="Explore all radio channels" class="Tabs-item"}}All{{/link-to}}
+		{{#link-to 'channels.history' title="Your listening history" class="Tabs-item"}}History{{/link-to}}
+	</div>
+</div>
 
 {{#unless session.currentUser.channels.firstObject}}
 	<section class="Container">
 		<p class="SingleNote">
-				Welcome! Start exploring radios or {{#link-to 'intro'}}get introduced to Radio4000.{{/link-to}}
+			Welcome! Start exploring radios or {{#link-to 'intro'}}get introduced to Radio4000.{{/link-to}}
 		</p>
 	</section>
 {{/unless}}
