@@ -3,9 +3,9 @@ import DS from 'ember-data';
 import youtubeRegex from 'npm:youtube-regex';
 
 const {debug} = Ember;
-const {attr, belongsTo} = DS;
+const {Model, attr, belongsTo} = DS;
 
-export default DS.Model.extend({
+export default Model.extend({
 	url: attr('string'),
 	title: attr('string'),
 	body: attr('string'),
@@ -24,15 +24,16 @@ export default DS.Model.extend({
 
 	// Updates provider Id automatically from the URL
 	updateProvider() {
-		let id = youtubeRegex().exec(this.get('url'))[1];
+		const id = youtubeRegex().exec(this.get('url'))[1];
 
 		if (!id) {
 			return false;
 		}
 
 		this.set('ytid', id);
-		this.save();
-		debug('Updated track.ytid');
+		this.save().then(() => {
+			debug('Updated track.ytid');
+		});
 	},
 
 	// Own properties
