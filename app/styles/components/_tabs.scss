@@ -1,22 +1,23 @@
 /**
-* Tabs
-**/
+ * Tabs
+	by default they are boxed and vertical.
+	Use a modifier if you need them horizontal.
+ */
 
 .Tabs {
 	display: flex;
 	flex-flow: column wrap;
+	flex-shrink: 0;
+	margin-bottom: 1rem;
 
 	// A bit of depth.
-	border-top: 1px solid hsl(0, 0%, 97%);
 	background-color: $slightgray;
+	border-top: 1px solid $superlightgray;
+	border-left: 1px solid hsl(0,0%,75%);
+	border-right: 1px solid hsl(0,0%,75%);
 	border-radius: $border-radius;
-	// can't use border because we use it for active state
-	&::after {
-		content: '';
-		display: block;
-		height: 1px;
-		background-color: $mediumlightgray;
-	}
+	box-shadow: $box-shadow;
+
 
 	// When several tabs follow each other.
 	& + .Tabs {
@@ -29,13 +30,19 @@
 	color: $text-color;
 	border-radius: $border-radius;
 	border-right: 3px solid transparent;
-	transition: border-right-color 200ms $easing, border-bottom-color 200ms $easing;
+	transition: border-right-color 200ms $easing,
+					border-bottom-color 200ms $easing,
+					background-image 200ms $easing;
 
 	&:hover,
 	&:focus,
 	&:active {
 		text-decoration: none;
 	}
+	// &:hover,
+	// &:focus {
+	// 	background-image: radial-gradient($white, transparent 70%);
+	// }
 	&.is-active {
 		@extend %font-bold;
 		border-right-color: $secondary-color;
@@ -76,14 +83,20 @@
 // Used where the background is considered "higher",
 // for instance on a light bg as channel header.
 .Tabs--lighter {
+	border-left: 0;
+	border-right: 0;
+	box-shadow: none;
 	max-width: none;
 	background-color: $superlightgray;
-
+	.Tabs-item.is-active {
+		background-color: $superlightgray;
+	}
 }
 
 // Animated border
 .Tabs--animated {
 	.Tabs-item {
+		// contain the border
 		position: relative;
 		// remove previous borders
 		border-bottom: 0 !important;

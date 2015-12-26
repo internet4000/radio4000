@@ -25,27 +25,21 @@
 	// proper tap areas
 	min-height: 2.1em;
 	background-color: $superlightgray;
-	color: $text-color;
-	box-shadow: 0 3px 2px 0 hsla(0, 0%, 0%, 0.06),
-					inset -1px -1px 1px 0 hsla(0, 0%, 0%, 0.02);
+	box-shadow: $box-shadow;
 	transition: border-color 100ms, background 100ms, box-shadow 100ms;
 
 	// hover and active
 	&:hover,
 	&:active {
 		text-decoration: none;
-		box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.2),
-						inset -1px -1px 1px 0 rgba(0, 0, 0, 0.02);
-		// box-shadow: 0 2px 2px 0 hsla(0, 0%, 0%, 0.12),
-		// 				inset -1px -1px 1px 0 hsla(0, 0%, 0%, 0.02);
+		box-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.2);
 	}
 
 	// active (pressed down)
 	&:active,
 	&.is-active {
 		outline: none;
-		box-shadow: 0 1px 2px 0 hsla(0, 0% , 0, 0.12),
-						inset -1px -1px 1px 0 hsla(0, 0% , 0, 0.02)
+		box-shadow: 0 1px 1px hsla(0, 0%, 0%, 0.2);
 	}
 
 	// focus
@@ -91,7 +85,6 @@
  */
 .Btn--primary {
 	background-color: $green;
-	border-color: rgba($gray, 0.4);
 	color: $bleach;
 
 	&:hover,
