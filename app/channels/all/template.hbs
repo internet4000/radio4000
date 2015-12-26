@@ -4,10 +4,11 @@
 	</div>
 
 	<section class="Section">
-		<div class="Container">
+		<div class="Container Container--full">
 			<form class="Search">
 				{{input class="Search-input" type="search" value=search placeholder="Search radios"}}
-				<button class="Search-btn Btn" {{action 'toggleGrid'}}>
+				<button class="Search-btn Btn" type="submit">Search</button>
+				<button class="Search-toggle Btn" {{action 'toggleGrid'}}>
 					{{if isGrid 'List' 'Grid'}}
 				</button>
 			</form>

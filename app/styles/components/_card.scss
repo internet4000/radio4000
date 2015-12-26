@@ -5,7 +5,7 @@
 	outline: 2px solid transparent;
 	transition: outline 1000ms $easing;
 	&.is-active {
-		outline-color: $secondary-color;
+		outline-color: $primary-color;
 	}
 }
 .ChannelCard-title,

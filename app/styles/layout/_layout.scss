@@ -9,10 +9,9 @@ html {
 }
 body {
 	overflow-y: scroll;
-	// our responsive design doesn't need to scroll horizontally
+	// Our responsive design doesn't need to scroll horizontally.
 	overflow-x: hidden;
 }
-
 
 /**
 	In _root.scss, it is displayed flex
@@ -24,10 +23,6 @@ body {
 	min-height: 100vh;
 	width: 100%;
 	transition: padding 300ms $easing2;
-}
-
-.is-hidden {
-	display: none;
 }
 
 // Set background for ember-modals

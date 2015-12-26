@@ -3,14 +3,13 @@
  	Use this for grouping components vertically
  */
 
-// Que?
 .Sections {
-	padding-top: 3rem;
+	padding-top: 4rem;
 }
-
 .Section {
 	clear: both;
-	padding-bottom: 2rem; // padding instead of margin - otherwise it cuts the box-shadow of .Box -_-
+	// padding instead of margin - otherwise it cuts the box-shadow of .Box -_-
+	padding-bottom: 2rem;
 }
 
 /**

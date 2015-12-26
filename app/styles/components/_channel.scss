@@ -9,12 +9,13 @@
 	z-index: 2; // above the player
 	// because the channel image is a bit outside (negative margin)
 	margin-top: 1.5rem;
+	margin-left: 1rem; // so logo scrolls nicely down the side
 	background-color: $slightgray;
-	border-top: 1px solid hsl(0, 0%, 98%);
-	border-right: 2px solid hsl(0, 0%, 88%);
-	border-bottom: 3px solid hsl(0, 0%, 88%);
-	border-left: 1px solid hsl(0, 0%, 98%);
+	border-top: 1px solid $superlightgray;
+	border-left: 1px solid hsl(0,0%,75%);
+	border-right: 1px solid hsl(0,0%,75%);
 	border-radius: $border-radius;
+	box-shadow: $box-shadow;
 }
 
 .Channel--edit {
