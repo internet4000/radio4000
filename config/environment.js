@@ -4,7 +4,6 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'radio4000',
     environment: environment,
-    contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
     firebase: 'https://radio4000-dev.firebaseio.com/',
     youtubeApiKey: 'AIzaSyCk5FiiPiyHON7PMLfLulM9GFmSYt6W5v4',
     torii: {
@@ -29,12 +28,6 @@ module.exports = function(environment) {
       extendedTimeout: 1000
       // injectionFactories: [],
     }
-  };
-
-  ENV.contentSecurityPolicy = {
-    'connect-src': "'self' wss://*.firebaseio.com",
-    'frame-src': "'self' https://www.youtube.com https://*.firebaseio.com",
-    'script-src': "'self' 'unsafe-eval' https://www.youtube.com/iframe_api https://s.ytimg.com https://*.firebaseio.com"
   };
 
   ENV.CLOUDINARY_NAME = 'radio4000';
