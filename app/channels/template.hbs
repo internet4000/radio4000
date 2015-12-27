@@ -1,6 +1,6 @@
 <div class="Container u-pushDown">
 	<div class="Tabs Tabs--horizontal">
-		{{#link-to 'channels.index' title="Check the highlights" class="Tabs-item"}}Discover{{/link-to}}
+		{{#link-to 'channels.index' title="Check the highlights" class="Tabs-item"}}Radios{{/link-to}}
 		{{#link-to 'channels.all' title="Explore all radio channels" class="Tabs-item"}}All{{/link-to}}
 		{{#link-to 'channels.history' title="Your listening history" class="Tabs-item"}}History{{/link-to}}
 	</div>
@@ -9,7 +9,7 @@
 {{#unless session.currentUser.channels.firstObject}}
 	<section class="Container">
 		<p class="SingleNote">
-			Welcome! Start exploring radios or {{#link-to 'intro'}}get introduced to Radio4000.{{/link-to}}
+			Welcome! Start listening to radios or {{#link-to 'intro'}}get introduced to Radio4000.{{/link-to}}
 		</p>
 	</section>
 {{/unless}}
