@@ -1,7 +1,6 @@
 {{#app-root}}
 	<div class="Bar Bar--top">
 		{{#nav-bar radioDevice=emberYoutube
-			authed=session.isAuthenticated
 			userChannel=session.currentUser.channels.firstObject}}
 			{{site-logo-button}}
 		{{/nav-bar}}
@@ -16,7 +15,6 @@
 	{{/if}}
 
 	{{x-aside class="Aside--left"
-		authed=session.isAuthenticated
 		userChannel=session.currentUser.channels.firstObject}}
 
 	<main class="SiteMain">
