@@ -105,7 +105,7 @@
 		padding-bottom: 0;
 		line-height: 2;
 	}
-	// the border
+	// the (hidden) border
 	.Tabs-item::after {
 		content: '';
 		display: block;
@@ -113,8 +113,9 @@
 		height: 3px;
 		width: 0;
 		background: $secondary-color;
-		transition: width 400ms ease;
+		transition: width 400ms $easing;
 	}
+	// the visible border
 	.Tabs-item.is-active::after {
 		width: 100%;
 	}
