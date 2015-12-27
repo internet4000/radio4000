@@ -12,7 +12,6 @@
     "ember-resolver": "~0.1.20",
     "emberfire": "~1.6.0",
     "firebase": "^2.3.1",
-    "fastclick": "~1.0.6",
     "jquery": "^2.1.4",
     "jquery-file-upload": "~9.11.2",
     "loader.js": "ember-cli/loader.js#3.4.0",
