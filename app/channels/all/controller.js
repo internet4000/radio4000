@@ -33,7 +33,7 @@ export default Controller.extend({
 	// Filters out models where title or body matches the search
 	// it watches 'realSearch' instead of 'search' so we can
 	// debounce for performance.
-	channels: computed('realSearch', function () {
+	channels: computed('realSearch', 'model', function () {
 		let search = this.get('search');
 		let model = this.get('model');
 
