@@ -6,7 +6,6 @@
 
 .Channel--detail, {
 	position: relative;
-	z-index: 2; // above the player
 	// because the channel image is a bit outside (negative margin)
 	margin-top: 1.5rem;
 	margin-left: 1rem; // so logo scrolls nicely down the side

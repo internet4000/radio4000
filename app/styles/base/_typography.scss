@@ -9,7 +9,8 @@ html {
 	line-height: $base-line-height;
 	font-size: 15px;
 	@media (min-width: $layout-m) { font-size: $base-font-size; }
-	@media (min-width: $layout-xl) { font-size: 17px; }
+	@media (min-width: $layout-xl) { font-size: 16px; }
+	@media (min-width: $layout-xxl) { font-size: 17px; }
 }
 
 // apparently it can be bad to use this on the html element, so:
