@@ -7,7 +7,7 @@ export default Ember.Service.extend({
 	/**
 		left panel api
 	 */
-	isPanelLeftVisible: false,
+	isPanelLeftVisible: true,
 	showPanelLeft() {
 		this.set('isPanelLeftVisible', true);
 	},
