@@ -11,6 +11,9 @@ export default Component.extend({
 		togglePlay() {
 			this.attrs.radioDevice.value.send('togglePlay');
 		},
+		toggleVolume() {
+			this.attrs.radioDevice.value.send('toggleVolume');
+		},
 		play() {
 			this.attrs.radioDevice.value.send('play');
 		},

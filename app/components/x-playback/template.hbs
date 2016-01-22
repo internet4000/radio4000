@@ -1,6 +1,5 @@
 {{#if player.model}}
 	<div class="Playback-title" title="Current track / go to current radio">
-
 		<div {{action "scrollToTrack"}}>
 			{{#link-to 'track' player.model.channel player.model replace=true}}
 				{{player.model.title}}
@@ -22,6 +21,10 @@
 
 	<button class="NonBtn" {{action 'next'}} title="Next track">
 		{{x-icon i='next'}}
+	</button>
+
+	<button class="Playback-toggleVolume NonBtn" {{action "toggleVolume"}} title="Toggle the playback volume">
+	    {{#if radioDevice.isMuted}}Unmute{{else}}Mute{{/if}}
 	</button>
 </div>
 
