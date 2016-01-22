@@ -26,29 +26,21 @@
 		{{/if}}
 	</section>
 
-	<section class="Section">
-		<div class="Manchet">
-			<h2><small>Your</small> favorite <small>radios</small></h2>
-		</div>
-
-		<div class="Container Container--full">
-			<div class="Grid">
-				{{#if model.userChannel.favoriteChannels}}
-					{{#each model.userChannel.favoriteChannels as |item|}}
-						<div class="Grid-item">
-							{{channel-card channel=item}}
-						</div>
-					{{/each}}
-				{{else}}
-					<div class="Grid-item">
-						<h3>Tip</h3>
-						<div class="Muted">
-							<p>You don't have any favorite radio channels yet.</p>
-							<p>{{link-to 'Register or log in' 'login'}} and {{link-to 'play radios' 'channels.all'}} to find some you'll enjoy.</p>
-						</div>
-					</div>
-				{{/if}}
+	{{#if model.userChannel.favoriteChannels}}
+		<section class="Section">
+			<div class="Manchet">
+				<h2><small>Your</small> favorite <small>radios</small></h2>
 			</div>
-		</div>
-	</section>
+
+			<div class="Container Container--full">
+				<div class="Grid">
+						{{#each model.userChannel.favoriteChannels as |item|}}
+							<div class="Grid-item">
+								{{channel-card channel=item}}
+							</div>
+						{{/each}}
+				</div>
+			</div>
+		</section>
+	{{/if}}
 </div>
