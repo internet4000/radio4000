@@ -96,10 +96,11 @@
 		position: relative;
 		// remove previous borders
 		border-bottom: 0 !important;
-		// align border vertically
-		padding-top: 0;
+		// align border vertically with same height as other tabs,
+		// stupid but yes.
+		padding-top: rem(4);
 		padding-bottom: 0;
-		line-height: 2;
+		line-height: 2.3;
 	}
 	// the (hidden) border
 	.Tabs-item::after {

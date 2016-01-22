@@ -91,9 +91,9 @@ $layout-xl: rem(1450);
 $layout-xxl: rem(1700);
 
 // Other stuff…
-$box-shadow: 0px 4px 0px -2px rgb(208, 208, 208);
-$box-shadow-hover: 0px 3px 0px -2px rgb(208, 208, 208);
-$box-shadow-active: 0px 2px 0px -2px rgb(208, 208, 208);
+$box-shadow: 0px 4px 0px -2px rgba(208, 208, 208,0.8);
+$box-shadow-hover: 0px 3px 0px -2px rgba(208, 208, 208,0.8);
+$box-shadow-active: 0px 2px 0px -2px rgba(208, 208, 208,0.8);
 $border-radius: 3px;
 $bar-height: 50px;
 $bar-border-size: 2px;
