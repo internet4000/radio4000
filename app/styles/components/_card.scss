@@ -30,9 +30,10 @@
 	color: $dark;
 }
 .ChannelCard-playback {
-	margin-top: -2rem;
-	margin-left: -5px;
-	margin-bottom: 1rem;
+	position: absolute;
+	top: 0.5rem;
+	right: 0.5rem;
+	z-index: 1;
 }
 .ChannelCard-playback,
 .Channel-playback {

@@ -4,6 +4,12 @@
 
 .Player {
 	transition: padding 400ms $easing;
+
+	// Temporarily fix it until we find a better, integrated solution.
+	position: fixed;
+	right: 0.5rem;
+	bottom: 3.7rem;
+	z-index: 20;
 }
 
 #EmberYoutube-player {
