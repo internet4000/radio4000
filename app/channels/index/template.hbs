@@ -4,7 +4,11 @@
 			<h1>Discover<small> — editor's selection</small></h1>
 		</div>
 
-		{{#if model.featured}}
+		{{#unless model.featured}}
+			<div class="Container">
+				{{is-loading}}
+			</div>
+		{{else}}
 			<div class="Container Container--full">
 				<div class="Grid">
 					{{#each model.featured as |item|}}
@@ -12,18 +16,29 @@
 							{{channel-card channel=item}}
 						</div>
 					{{/each}}
-					<div class="Grid-item">
+				</div>
+				<div class="Grid">
+					<div class="Grid-item Grid-item--double">
 						<h3>Tip</h3>
-						<p class="Muted">Each selected channel has been curated by human ears and handpicked for its unquestionable quality.</p>
-						<p class="Muted">Listen to music you'll love, it's free! {{link-to 'See all channels' 'channels.all'}}.</p>
+						<div class="Muted">
+							<p>Each selected channel has been curated by human ears and handpicked for its unquestionable quality. Listen to music you'll love, it's free!</p>
+						</div>
+						<p>&rarr; {{link-to 'See all channels' 'channels.all'}}</p>
+
+						<div class="Muted">
+							{{#unless model.userChannel}}
+								{{#link-to 'channels.new' class="" title="Create your own radio now or log in"}}Create your own radio{{/link-to}}<br>
+							{{/unless}}
+							{{#if session.isAuthenticated}}
+								{{#link-to 'logout' class="" title="Log out from Radio4000"}}Log out{{/link-to}}
+							{{else}}
+								{{#link-to 'login' class="" title="Create your own radio now or log in"}}Sign in or register{{/link-to}}
+							{{/if}}
+						</div>
 					</div>
 				</div>
 			</div>
-		{{else}}
-			<div class="Container">
-				{{is-loading}}
-			</div>
-		{{/if}}
+		{{/unless}}
 	</section>
 
 	{{#if model.userChannel.favoriteChannels}}

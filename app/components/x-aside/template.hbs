@@ -4,17 +4,29 @@
 	{{!-- {{#link-to 'channels.history' title="Your listening history" class="Tabs-item"}}History{{/link-to}} --}}
 </div>
 
+{{#if userChannel}}
+	<div class="Tabs">
+		{{#link-to 'channel' userChannel class="Tabs-item" title="Go to your radio"}}
+			<small>Your radio</small><br>
+			{{userChannel.title}}
+		{{/link-to}}
+	</div>
+{{/if}}
+
 <div class="Tabs">
 	{{#link-to 'intro' title="Get introduced to Radio4000" class="Tabs-item"}}Introduction{{/link-to}}
 	{{#link-to 'about' title="Learn more about Radio4000" class="Tabs-item"}}About{{/link-to}}
-	{{#link-to 'help' title="Answers to your questions" class="Tabs-item"}}Help{{/link-to}}
+	{{#link-to 'help' title="Find help and answers to your questions" class="Tabs-item"}}Help{{/link-to}}
 	<a class="Tabs-item" href="http://blog.radio4000.com" target="_blank" title="How is the weather at Radio4000?">&rarr; Blog</a>
 </div>
 
-<div class="Tabs">
-	{{#unless isAuthenticated}}
-		{{#link-to 'login' class="Tabs-item" title="Create your own radio now or log in"}}Get your own radio or log in {{/link-to}}
-	{{else}}
-		{{#link-to 'logout' class="Tabs-item Muted" title="Log out from Radio4000"}}Log out{{/link-to}}
+<div class="Muted">
+	{{#unless userChannel}}
+		{{#link-to 'channels.new' class="Tabs-item" title="Create your own radio now or log in"}}Create your own radio{{/link-to}}<br>
 	{{/unless}}
+	{{#if isAuthenticated}}
+		{{#link-to 'logout' class="Tabs-item" title="Log out from Radio4000"}}Log out{{/link-to}}
+	{{else}}
+		{{#link-to 'login' class="Tabs-item" title="Create your own radio now or log in"}}Sign in or register{{/link-to}}
+	{{/if}}
 </div>
