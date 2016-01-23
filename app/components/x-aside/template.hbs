@@ -11,16 +11,10 @@
 	<a class="Tabs-item" href="http://blog.radio4000.com" target="_blank" title="How is the weather at Radio4000?">&rarr; Blog</a>
 </div>
 
-{{#unless isAuthenticated}}
-	<div class="Tabs">
-		{{#link-to 'login' class="Tabs-item" title="Get your own radio now"}}Get your radio{{/link-to}}
-	</div>
-{{/unless}}
-
 <div class="Tabs">
-	{{#if isAuthenticated}}
-		{{#link-to 'logout' class="Tabs-item Muted" title="Log out from Radio4000"}}Log out{{/link-to}}
+	{{#unless isAuthenticated}}
+		{{#link-to 'login' class="Tabs-item" title="Create your own radio now or log in"}}Get your own radio or log in {{/link-to}}
 	{{else}}
-		{{#link-to 'login' class="Tabs-item" title="Register or log in to Radio4000"}}Register or log in{{/link-to}}
-	{{/if}}
+		{{#link-to 'logout' class="Tabs-item Muted" title="Log out from Radio4000"}}Log out{{/link-to}}
+	{{/unless}}
 </div>
