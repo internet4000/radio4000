@@ -8,9 +8,11 @@
   },
   "scripts": {
     "start": "ember server",
-    "build": "ember build",
+    "build": "ember build --environment=production; gulp critical",
     "test": "xo && ember test",
-    "report": "plato -r -d reports app --eslint reports/.eslintrc"
+    "report": "plato -r -d reports app --eslint reports/.eslintrc",
+    "deploy": "npm run build; mv dist/index.html dist/200.html; surge dist http://much.radio4000.com",
+    "deploy-live": "npm run build; mv dist/index.html dist/200.html; surge dist https://radio4000.com"
   },
   "repository": "https://bitbucket.com/radio4000/radio4000",
   "engines": {
