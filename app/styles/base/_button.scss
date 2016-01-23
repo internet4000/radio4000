@@ -116,10 +116,16 @@
 
 .Btn--transparent {
 	border: 2px solid $white;
+	color: $white;
+	// reset normal btn styles
+	box-shadow: none;
 	background-image: none;
 	background-color: transparent;
-	color: $white;
-	&:focus {
+	&:hover,
+	&:focus,
+	&:active,
+	&.is-active {
+		box-shadow: none;
 		border-color: $white;
 	}
 }

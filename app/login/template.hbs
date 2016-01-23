@@ -28,21 +28,18 @@
 			{{#unless session.isWorking}}
 				<h1 class="BigStep-title">Log in to Radio4000</h1>
 				<p class="BigStep-subTitle">and create or manage your radio.</p>
-
-				<div class="BigStep-buttons">
+				<p class="BigStep-buttons">
 					<button type="submit" class="Btn Btn--transparent Btn--large" title="Log in with your Google account" {{action 'login' 'google'}}>
 						Google
 					</button>
 					<button type="submit" class="Btn Btn--transparent Btn--large" title="Log in with your Facebook account" {{action 'login' 'facebook'}}>
 						Facebook
 					</button>
-				</div>
-
+				</p>
+				<p class="Muted"><br><br>{{link-to 'Go back' 'application'}}</p>
 			{{else}}
-
 				<p class="BigStep-subTitle">Please wait</p>
 				{{is-loading}}
-
 			{{/unless}}
 
 		{{/if}}
