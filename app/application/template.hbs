@@ -15,6 +15,7 @@
 	{{/if}}
 
 	{{x-aside class="Aside--left"
+		isAuthenticated=session.isAuthenticated
 		userChannel=session.currentUser.channels.firstObject}}
 
 	<main class="SiteMain">

@@ -1,30 +1,30 @@
 import Ember from 'ember';
 
-const {debug, get} = Ember;
+const {debug, get, set} = Ember;
 
 export default Ember.Route.extend({
 	uiStates: Ember.inject.service(),
 
 	activate() {
-		this.set('uiStates.isMinimal', true);
+		set(this, 'uiStates.isMinimal', true);
 	},
 	deactivate() {
-		this.set('uiStates.isMinimal', false);
+		set(this, 'uiStates.isMinimal', false);
 	},
 
 	actions: {
-		// Signs a user in.
-		// And if the user has a channel we transition to it,
-		// otherwise we transition to create a new channel.
+		// Logs in a user
+		// a) if the user has a channel, we transition to it
+		// b) otherwise we transition to create a new channel
 		login(provider) {
 			const flashMessages = get(this, 'flashMessages');
-			this.get('session').open('firebase', {provider}).then(data => {
-				const userChannels = this.get('session.currentUser.channels');
+			get(this, 'session').open('firebase', {provider}).then(() => {
+				const userChannels = get(this, 'session.currentUser.channels');
 				userChannels.then(channels => {
-					const channel = channels.get('firstObject');
+					const channel = get(channels, 'firstObject');
 					if (channel) {
 						debug('user signed in with channel, transitioning to it');
-						flashMessages.info('You are logged in!');
+						flashMessages.info('You are logged in');
 						this.transitionTo('channel', channel);
 					} else {
 						debug('user signed in without channel, transitioning to /new');
