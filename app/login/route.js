@@ -16,9 +16,9 @@ export default Ember.Route.extend({
 		// Signs a user in.
 		// And if the user has a channel we transition to it,
 		// otherwise we transition to create a new channel.
-		logIn(authWith) {
+		login(provider) {
 			const flashMessages = get(this, 'flashMessages');
-			this.get('session').open('firebase', {authWith: authWith}).then(() => {
+			this.get('session').open('firebase', {provider}).then(data => {
 				const userChannels = this.get('session.currentUser.channels');
 				userChannels.then(channels => {
 					const channel = channels.get('firstObject');
