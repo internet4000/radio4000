@@ -80,7 +80,7 @@ export default Ember.Service.extend({
 
 	prevNormal() {
 		const playlist = this.get('playlist');
-		const prev = this.findPreviousTrack();
+		const prev = this.getPrev();
 
 		if (!prev) {
 			this.get('playerHistory').clearPlayerHistory();
@@ -112,7 +112,7 @@ export default Ember.Service.extend({
 
 	nextNormal() {
 		const playlist = this.get('playlist');
-		let next = this.findNextTrack();
+		let next = this.getNext();
 
 		if (!next) {
 			this.get('playerHistory').clearPlayerHistory();
