@@ -12,7 +12,7 @@ export default Route.extend(ownerRouteMixin, {
 	},
 	afterModel() {
 		const flashMessages = Ember.get(this, 'flashMessages');
-		flashMessages.danger(`You'll be missed! 🌇`, {
+		flashMessages.danger(`Your radio will be lost forever! 🌇`, {
 			sticky: true
 		});
 	},
@@ -20,7 +20,7 @@ export default Route.extend(ownerRouteMixin, {
 	actions: {
 		willTransition() {
 			const flashMessages = Ember.get(this, 'flashMessages');
-			flashMessages.clearMessages().info('fiou…', {
+			flashMessages.clearMessages().info('Radio deleted…', {
 				timeout: 400
 			});
 		}
