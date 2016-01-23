@@ -22,12 +22,6 @@ export default Ember.Service.extend({
 			return value;
 		}
 	}),
-	showPanelLeft() {
-		this.set('isPanelLeftVisible', true);
-	},
-	hidePanelLeft() {
-		this.set('isPanelLeftVisible', false);
-	},
 	togglePanelLeft() {
 		this.toggleProperty('isPanelLeftVisible');
 	}
