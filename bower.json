@@ -3,7 +3,7 @@
   "dependencies": {
     "cloudinary": "cloudinary_js#~1.0.25",
     "ember": "2.2.0",
-    "ember-cli-shims": "0.0.6",
+    "ember-cli-shims": "0.1.0",
     "ember-cli-test-loader": "0.2.1",
     "ember-load-initializers": "0.1.7",
     "ember-qunit": "0.4.16",
@@ -16,6 +16,7 @@
     "moment": "~2.10.3",
     "moment-duration-format": "~1.3.0",
     "qunit": "~1.20.0",
-    "js-cookie": "^2.0.4"
+    "js-cookie": "^2.0.4",
+    "firebase": "^2.1.0"
   }
 }
