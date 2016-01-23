@@ -4,7 +4,7 @@ const {Component, inject, debug, computed} = Ember;
 
 // Pass it a track to play it.
 // Pass it a channel to play latest track.
-// Set isShuffle to true it will play random and enable isShuffle on the player.
+// Set isShuffled to true it will play random and enable isShuffled on the player.
 // It will load all tracks async (use isLoading in templates)
 
 export default Component.extend({
@@ -13,7 +13,7 @@ export default Component.extend({
 	classNames: ['Btn'],
 	classNameBindings: ['isLoading', 'isInPlayer', 'nothingToPlay:is-hidden'],
 	isInPlayer: computed.reads('channel.isInPlayer'),
-	isShuffle: computed.reads('isInPlayer'),
+	isShuffled: computed.reads('isInPlayer'),
 
 	// if it is in the player
 	// that mean clicking again should play a random track

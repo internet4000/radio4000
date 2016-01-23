@@ -7,7 +7,7 @@ const {computed} = Ember;
 
 export default PlayButtonComponent.extend({
 	attributeBindings: ['title'],
-	title: computed('shuffle', function () {
-		return this.get('shuffle') ? 'Shuffle this radio' : 'Play this radio';
+	title: computed('isShuffled', function () {
+		return this.get('isShuffled') ? 'Shuffle this radio' : 'Play this radio';
 	})
 });
