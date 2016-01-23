@@ -91,9 +91,14 @@
 	}
 }
 .Channel-outlet {
-	margin-top: 2rem;
+	// margin-top: 2rem;
 	min-height: 2rem;
-	padding-bottom: 1.3rem;
+	// padding-bottom: 1.3rem;
+	height: calc(100vh - 420px);
+	overflow-x: hidden;
+	overflow-y: auto;
+	margin-bottom: 0;
+	position: relative;
 }
 .Channel-edit {
 	position: absolute;
