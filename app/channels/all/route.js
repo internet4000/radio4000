@@ -64,12 +64,24 @@ export default Route.extend({
 		// });
 
 		// v2: load with a pager (avoids fetching duplicate channels)
+		console.time('findPrev1');
 		this.findPrev().then(() => {
-			this.findPrev().then(() => {
-				this.findPrev().then(() => {
-					// Query the rest…
-					const endAt = this.get('endAt');
-					this.store.query('channel', {limitToLast: 999, endAt});
+			console.timeEnd('findPrev1');
+
+			// console.time('findPrev2');
+			// this.findPrev().then(data => {
+			// 	console.timeEnd('findPrev2');
+			// });
+
+			Ember.run.schedule('sync', () => {
+				// console.time('Find all channels');
+				// this.store.findAll('channel').then(() => {
+				// 	console.timeEnd('Find all channels');
+				// });
+
+				console.time('Query the rest of the channels');
+				this.store.query('channel', {limitToLast: 999, endAt: this.get('endAt')}).then(() => {
+					console.timeEnd('Query the rest of the channels');
 				});
 			});
 		});
