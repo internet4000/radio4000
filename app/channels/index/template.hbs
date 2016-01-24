@@ -29,11 +29,9 @@
 							{{#unless model.userChannel}}
 								{{#link-to 'channels.new' class="" title="Create your own radio now or log in"}}Create your own radio{{/link-to}}<br>
 							{{/unless}}
-							{{#if session.isAuthenticated}}
-								{{#link-to 'logout' class="" title="Log out from Radio4000"}}Log out{{/link-to}}
-							{{else}}
+							{{#unless session.isAuthenticated}}
 								{{#link-to 'login' class="" title="Create your own radio now or log in"}}Sign in or register{{/link-to}}
-							{{/if}}
+							{{/unless}}
 						</div>
 					</div>
 				</div>

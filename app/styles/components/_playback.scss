@@ -22,6 +22,14 @@
 	[class*=" icon-"] {
 		margin-right: 0;
 	}
+	a {
+		color: $bleach;
+	}
+}
+.Playback-welcomeLink {
+	margin-top: auto;
+	margin-left: 1rem;
+	margin-bottom: auto;
 }
 .Playback-title {
 	@include size-1;
@@ -31,7 +39,6 @@
 
 	a {
 		display: block;
-		color: $bleach;
 	}
 }
 .Playback-buttons {
@@ -66,12 +73,25 @@
 		font-size: rem(16);
 	}
 }
-.Playback-videoBtn {
+.Playback-fullscreenBtn {
 	order: 3;
 	font-size: 1.4rem;
 	padding-right: 1rem;
 
 	svg {
 		vertical-align: middle;
+	}
+}
+
+// Animate buttons that should only be visible when the player is ready.
+.Playback-title,
+.Playback-buttons,
+.Playback-toggleVolume,
+.Playback-fullscreenBtn {
+	transition: opacity 300ms $easing;
+	.is-withoutPlayer & {
+		opacity: 0;
+		pointer-events: none;
+		transform: scale(0.95);
 	}
 }

@@ -1,13 +1,20 @@
-{{#if player.model}}
-	<div class="Playback-title" title="Current track / go to current radio">
+<div class="Playback-title" title="Current track / go to current radio">
+	{{#if player.model}}
 		<div {{action "scrollToTrack"}}>
 			{{#link-to 'track' player.model.channel player.model replace=true}}
 				{{player.model.title}}
 				<span class="Playback-channel">({{player.model.channel.title}})</span>
-				{{/link-to}}
+			{{/link-to}}
 		</div>
-	</div>
-{{/if}}
+	{{else}}
+	{{/if}}
+</div>
+
+{{#unless player.model}}
+	{{#link-to 'channels.all' class="Playback-welcomeLink"}}
+		Find a radio channel to play!
+	{{/link-to}}
+{{/unless}}
 
 <div class="Playback-buttons">
 	<button class="Playback-shuffle Btn Btn--text  {{if player.isRandom 'is-active'}}" {{action 'toggleRandom'}} title="Toggle shuffle playback">
@@ -28,7 +35,7 @@
 	</button>
 </div>
 
-<button class="Playback-videoBtn NonBtn" {{action 'toggleFullscreen'}} title="Toggle fullscreen video">
+<button class="Playback-fullscreenBtn NonBtn" {{action 'toggleFullscreen'}} title="Toggle fullscreen video">
 	{{#if uiStates.isFullscreen}}
 		{{x-icon i='arrows-compress'}}
 	{{else}}

@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {Component, inject, run, $} = Ember;
+const {Component, get, inject, run, $} = Ember;
 
 export default Component.extend({
 	classNames: ['Playback'],
@@ -15,6 +15,10 @@ export default Component.extend({
 			this.attrs.radioDevice.value.send('toggleVolume');
 		},
 		play() {
+			// const canPlay = get(this, 'player.model');
+			// if (!canPlay) {
+			// 	console.log('@todo play a random radio now');
+			// }
 			this.attrs.radioDevice.value.send('play');
 		},
 		pause() {
