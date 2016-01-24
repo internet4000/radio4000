@@ -1,8 +1,5 @@
-$cover-size: 190px;
-
 .Cover {
 	position: relative;
-	// max-width: $cover-size;
 	text-align: left;
 
 	// wrap link
@@ -15,13 +12,12 @@ $cover-size: 190px;
 		opacity: 1;
 	}
 }
-.Cover-img {
+.Cover-image {
 	background-color: $fadedblue;
 	position: relative;
 	overflow: hidden;
-	// height: $cover-size;
 	height: 0;
-	padding-bottom: 100%;
+	padding-bottom: 100%; // because we use square images
 	// stretch image
 	img {
 		position: absolute;
@@ -42,9 +38,7 @@ $cover-size: 190px;
 	opacity: 0;
 	transition: opacity 200ms;
 }
-.Cover-title {
-	margin-top: 0.7em;
-}
+
 .Cover-button {
 	// reset button styles
 	background-image: none;

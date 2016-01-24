@@ -7,16 +7,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<link rel="manifest" href="manifest.json">
-		<meta name="og:image" content="https://radio4000.com/assets/images/logos/radio4000-square.png">
-		<script>
-			// leave the module namespace to ember and make it work with electron-appz
-			window.module = undefined;
-		</script>
 		{{content-for 'head'}}
 		<link rel="stylesheet" href="assets/vendor.css">
 		<link rel="stylesheet" href="assets/radio4000.css">
-
 		<!-- favicons and branding -->
+		<meta name="og:image" content="https://radio4000.com/assets/images/logos/radio4000-square.png">
 		<link rel="apple-touch-icon" sizes="57x57" href="/assets/images/favicons/apple-touch-icon-57x57.png">
 		<link rel="apple-touch-icon" sizes="60x60" href="/assets/images/favicons/apple-touch-icon-60x60.png">
 		<link rel="apple-touch-icon" sizes="72x72" href="/assets/images/favicons/apple-touch-icon-72x72.png">
@@ -36,9 +31,22 @@
 		<meta name="msapplication-config" content="/assets/images/favicons/browserconfig.xml">
 		<meta name="theme-color" content="#4b0bcb">
 
-		<script src="assets/modernizr-custom.min.js"></script>
-		<script src="assets/images/icons/grunticon/grunticon.loader.js"></script>
+		<script src="assets/radio4000-header.js" async defer></script>
+		<script src="assets/images/icons/grunticon/grunticon.loader.js" async defer></script>
 		<link rel="stylesheet" href="assets/images/icons/grunticon/icons.data.svg.css">
+		{{content-for 'head-footer'}}
+	</head>
+	<body>
+		{{content-for 'body'}}
+		<noscript>Sorry, you need to enable JavaScript in your browser to use Radio4000.</noscript>
+
+		<div id="Radio4000" class="Radio4000"></div>
+
+		<script src="assets/vendor.js"></script>
+		<script src="assets/radio4000.js"></script>
+
+		{{content-for 'body-footer'}}
+
 		<style>
 			.DummyApp {
 				z-index: 2;
@@ -63,12 +71,6 @@
 				color: hsl(0, 0%, 30%); /*$dark*/
 			}
 		</style>
-		{{content-for 'head-footer'}}
-	</head>
-	<body>
-		{{content-for 'body'}}
-		<noscript>Sorry, you need to enable JavaScript in your browser to use Radio4000.</noscript>
-
 		<div class="DummyApp">
 			<!-- a dummy app that appears independently from Ember and is removed by ember asap -->
 			<div class="DummyApp-inner">
@@ -80,7 +82,7 @@
 					<p class="DummyApp-slogan"></p>
 				</div>
 				<script>
-					var dummyApp = function() {
+					var r4DummyApp = function() {
 						// Insert a random sentence to make waiting fun/less annoying
 						console.log('A human feel.');
 						var sentences = ['One moment, please', 'Un momento por favor', 'لحظة واحدة من فضلك', 'Une batez, mesedez', 'এক মিনিট, প্লিজ', 'Един момент моля', '稍等一会儿', 'Et øjeblik', 'Een ogenblik alstublieft', 'Unu momenton, bonvolu', 'Hetkinen', 'Un instant s\'il vous plaît', 'Einen Moment bitte', 'Μια στιγμή παρακαλώ', 'Yon sèl moman, tanpri', 'कृपया एक क्षण', 'Nóiméad amháin, le do thoil', 'Un momento per favore', '少々お待ちください', 'Uno momento, placet', 'Et øyeblikk', 'Chwileczkę', 'Um momento por favor', 'Один момент, пожалуйста', 'Wakati mmoja, tafadhali', 'Ett ögonblick tack', 'กรุณารอสักครู่', 'Bir dakika lütfen', 'Un funud, os gwelwch yn dda', 'Omunye mzuzu, sicela'];
@@ -97,12 +99,5 @@
 				</script>
 			</div>
 		</div>
-
-		<div id="Radio4000" class="Radio4000"></div>
-
-		<script src="assets/vendor.js"></script>
-		<script src="assets/radio4000.js"></script>
-
-		{{content-for 'body-footer'}}
 	</body>
 </html>
