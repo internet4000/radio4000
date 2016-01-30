@@ -91,14 +91,13 @@
 	}
 }
 .Channel-outlet {
-	// margin-top: 2rem;
 	min-height: 2rem;
-	// padding-bottom: 1.3rem;
-	height: calc(100vh - 420px);
+	margin-bottom: 0;
+	// fixed height with scrollbars
+	position: relative;
+	height: calc(100vh - 30rem); // channel header height, more or less
 	overflow-x: hidden;
 	overflow-y: auto;
-	margin-bottom: 0;
-	position: relative;
 }
 .Channel-edit {
 	position: absolute;

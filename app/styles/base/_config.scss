@@ -55,7 +55,7 @@ $white: hsl(0, 0%, 100%);
 $superlightgray: hsl(0, 0%, 98%);
 $bleach: hsl(72, 100%, 98%);
 $slightgray: hsl(0, 0%, 95%);
-$sand: hsl(46, 5%, 85%);
+$lightgray-saturated: hsl(45, 5%, 91%);
 $lightgray: hsl(0, 0%, 91%);
 $mediumlightgray: hsl(0, 0%, 85%);
 $mediumgray: hsl(0, 0%, 70%);
@@ -66,7 +66,7 @@ $black: hsl(0, 0%, 10%);
 // Color definitions
 $primary-color: $purple;
 $secondary-color: $red;
-$bg-color: $sand;
+$bg-color: $lightgray-saturated;
 $text-color: $black;
 $text-color-invert: $superlightgray;
 $link-color: $red;
@@ -91,9 +91,9 @@ $layout-xl: rem(1450);
 $layout-xxl: rem(1700);
 
 // Other stuff…
-$box-shadow: 0px 4px 0px -2px rgba(208, 208, 208,0.8);
-$box-shadow-hover: 0px 3px 0px -2px rgba(208, 208, 208,0.8);
-$box-shadow-active: 0px 2px 0px -2px rgba(208, 208, 208,0.8);
+$box-shadow: 0px 4px 0px -2px hsla(0, 0%, 78%, 0.8);
+$box-shadow-hover: 0px 3px 0px -2px hsla(0, 0%, 78%, 0.8);
+$box-shadow-active: 0px 2px 0px -2px hsla(0, 0%, 78%, 0.8);
 $border-radius: 3px;
 $bar-height: 50px;
 $bar-border-size: 2px;

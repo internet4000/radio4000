@@ -27,7 +27,7 @@
 
 						<div class="Muted">
 							{{#unless model.userChannel}}
-								{{#link-to 'channels.new' class="" title="Create your own radio now or log in"}}Create your own radio{{/link-to}}<br>
+								{{#link-to 'channels.new' class="" title="Create your own radio now or log in"}}Create your own radio{{/link-to}}<br><br>
 							{{/unless}}
 							{{#unless session.isAuthenticated}}
 								{{#link-to 'login' class="" title="Create your own radio now or log in"}}Sign in or register{{/link-to}}

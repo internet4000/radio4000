@@ -11,7 +11,7 @@
 	margin-bottom: 1rem;
 
 	// A bit of depth.
-	background-color: $slightgray;
+	background-color: $superlightgray;
 	border-radius: $border-radius;
 	box-shadow: $box-shadow;
 
@@ -22,6 +22,7 @@
 }
 
 .Tabs-item {
+	display: inline-block;
 	padding: 0.8em 1rem 0.5em;
 	color: $text-color;
 	border-radius: $border-radius;
@@ -39,6 +40,7 @@
 	// &:focus {
 	// 	background-image: radial-gradient($white, transparent 70%);
 	// }
+
 	&.is-active {
 		@extend %font-bold;
 		border-right-color: $secondary-color;

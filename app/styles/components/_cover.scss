@@ -26,6 +26,9 @@
 		object-fit: cover;
 		width: 100%;
 		height: 100%;
+		// Ensure a minimum size in order for lazyloading to work.
+		min-width: 3px;
+		min-height: 3px;
 	}
 }
 

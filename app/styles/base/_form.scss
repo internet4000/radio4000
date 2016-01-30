@@ -36,6 +36,7 @@ textarea,
 	padding: em(10,13) 0.8rem em(8,13);
 	width: 100%;
 	max-width: 100%;
+	border-bottom: 0;
 	box-shadow: $box-shadow, 1px 2px 2px $lightgray inset;
 
 	&:focus {
