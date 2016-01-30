@@ -1,6 +1,6 @@
+/* global document */
 import Ember from 'ember';
-
-const {$, Component, inject, run} = Ember;
+const {Component, inject, run} = Ember;
 
 export default Component.extend({
 	uiStates: inject.service(),
@@ -22,13 +22,7 @@ export default Component.extend({
 
 	// Remove our dummy app with inline styles.
 	removeDummyHTML() {
-		const $dummy = $('.DummyApp');
-
-		$dummy.fadeTo(200, 0, 'linear', () => {
-			// Wrap it in a run loop to avoid lags.
-			run.schedule('afterRender', () => {
-				$dummy.remove();
-			});
-		});
+		const dummy = document.querySelector('.DummyApp');
+		dummy.parentNode.removeChild(dummy);
 	}
 });

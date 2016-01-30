@@ -10,9 +10,9 @@ export default Ember.Component.extend({
 
 	// Updates our results with YouTube videos from a query string
 	findAll: observer('query', function () {
-		let query = this.get('query');
-		let url = encodeURIComponent(query);
-		let endpoint = `http://gdata.youtube.com/feeds/api/videos?q=${url}&format=5&max-results=5&v=2&alt=jsonc`;
+		const query = this.get('query');
+		const url = encodeURIComponent(query);
+		const endpoint = `http://gdata.youtube.com/feeds/api/videos?q=${url}&format=5&max-results=5&v=2&alt=jsonc`;
 
 		// guard being called too early
 		if (!query) {
@@ -34,7 +34,7 @@ export default Ember.Component.extend({
 
 		// query!
 		Ember.$.getJSON(endpoint).then(response => {
-			let tracks = response.data.items.map(item => {
+			const tracks = response.data.items.map(item => {
 				return Ember.Object.create({
 					url: item.player.default,
 					title: item.title,
@@ -50,7 +50,7 @@ export default Ember.Component.extend({
 
 	actions: {
 		add(item) {
-			let $input = this.$().parents('form').find('input').eq(0);
+			const $input = this.$().parents('form').find('input').eq(0);
 
 			this.set('cachedQuery', item.get('title'));
 			this.get('results').clear();
