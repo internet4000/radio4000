@@ -44,7 +44,7 @@ export default Component.extend({
 			// Scroll afterRender and a bit later to not jank the computer
 			run.scheduleOnce('afterRender', function () {
 				run.later(() => {
-					$('html, body').animate({
+					$('.Channel-outlet').animate({
 						scrollTop: $('.Track.is-current').offset().top - 90
 					}, 700, 'swing');
 				}, 100);
