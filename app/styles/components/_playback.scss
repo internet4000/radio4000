@@ -28,9 +28,15 @@
 	}
 }
 .Playback-welcomeLink {
-	margin-top: auto;
-	margin-left: 1rem;
+	@include size-2;
+	margin-top: 1.2rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
 	margin-bottom: auto;
+	i {
+		position: relative;
+		top: 1px;
+	}
 }
 .Playback-title {
 	@include size-1;
@@ -95,9 +101,10 @@
 .Playback-buttons,
 .Playback-toggleVolume,
 .Playback-fullscreenBtn {
-	transition: opacity 300ms $easing;
+	transition: opacity 300ms $easing, transform 300ms $easing, height 300ms $easing;
 	.is-withoutPlayer & {
 		opacity: 0;
+		height: 0;
 		pointer-events: none;
 		transform: scale(0.95);
 	}

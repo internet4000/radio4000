@@ -31,7 +31,10 @@
 	left: initial;
 	bottom: 0;
 	right: 0;
-	max-width: 25rem;
+	width: 25rem;
+	max-width: 100%;
 	border-top: 2px solid $white;
 	border-left: 2px solid $white;
+	border-top-right-radius: $border-radius;
+	border-top-left-radius: $border-radius;
 }
