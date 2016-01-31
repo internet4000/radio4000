@@ -112,7 +112,7 @@ export default Ember.Service.extend({
 
 	nextNormal() {
 		const playlist = this.get('playlist');
-		let next = this.getNext();
+		const next = this.getNext();
 
 		if (!next) {
 			this.get('playerHistory').clearPlayerHistory();

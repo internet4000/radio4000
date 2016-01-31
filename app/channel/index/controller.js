@@ -17,6 +17,11 @@ export default Ember.Controller.extend(EmberValidations, createTrackMixin, {
 
 	actions: {
 		transitionToTrack(track) {
+			// this.transitionToRoute({
+			// 	queryParams: {
+			// 		listen: track.get('id')
+			// 	}
+			// });
 			this.transitionToRoute('track', track);
 		},
 		closeModals() {

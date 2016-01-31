@@ -1,12 +1,21 @@
 import Ember from 'ember';
 
+// const {inject} = Ember;
+
 export default Ember.Route.extend({
-	// refresh (fetch) any cached user session
-	beforeModel() {
-		// return this.get('session').fetch().then(() => {
-		// 	// Ember.debug('user logged in passively');
-		// }, () => {
-		// 	// Ember.debug('no user');
-		// });
-	}
+	// player: inject.service(),
+	// playTrackFromId(id) {
+	// 	if (!id) {
+	// 		return;
+	// 	}
+	// 	this.store.find('track', id).then(track => {
+	// 		this.get('player').playTrack(track);
+	// 	});
+	// },
+
+	// actions: {
+	// 	queryParamsDidChange(params) {
+	// 		this.playTrackFromId(params.listen);
+	// 	}
+	// }
 });

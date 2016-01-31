@@ -3,10 +3,10 @@ import Ember from 'ember';
 const {Controller, inject} = Ember;
 
 export default Controller.extend({
-	queryParams: ['test'],
-	test: null,
 	player: inject.service(),
 	playerHistory: inject.service(),
+	// queryParams: ['listen'],
+	// listen: null,
 
 	actions: {
 		ytPlaying() {
