@@ -5,9 +5,10 @@
 // Controls
 .Playback {
 	display: flex;
-	flex-flow: row nowrap; // items in one row, no wrapping
+	flex-flow: row wrap; // items in one row, no wrapping
 	align-items: stretch; // full-height children
 	justify-content: space-between; // distribute items
+	justify-content: center;
 
 	.Bar--bottom & {
 		min-height: rem($bar-height + $progress-height);
@@ -33,12 +34,15 @@
 }
 .Playback-title {
 	@include size-1;
-	order: 2;
+	order: 5;
+	text-align: center;
 	display: flex;
 	align-items: center;
 
 	a {
 		display: block;
+		padding-top: 0.5rem;
+		padding-bottom: 1rem;
 	}
 }
 .Playback-buttons {
@@ -64,6 +68,7 @@
 		padding-left: 1rem;
 		padding-right: 1rem;
 		opacity: 0.4;
+		// margin-right: auto;
 		&.is-active {
 			opacity: 1;
 		}
@@ -77,6 +82,8 @@
 	order: 3;
 	font-size: 1.4rem;
 	padding-right: 1rem;
+	padding-left: 1rem;
+	// margin-left: auto;
 
 	svg {
 		vertical-align: middle;

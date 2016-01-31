@@ -28,8 +28,8 @@
 		{{outlet}}
 	</main>
 
-	<div class="Player">
-		<div class="Container">
+	<div class="Bar Bar--bottom">
+		<div class="Player">
 			{{ember-youtube ytid=player.model.ytid
 				delegate=this
 				delegate-as="emberYoutube"
@@ -40,9 +40,6 @@
 				error="ytError"
 				showProgress="true"}}
 		</div>
-	</div>
-
-	<div class="Bar Bar--bottom">
 		{{x-playback radioDevice=emberYoutube}}
 	</div>
 {{/app-root}}

@@ -28,6 +28,10 @@
 	}
 }
 .Bar--bottom {
+	left: initial;
 	bottom: 0;
-	width: 100%;
+	right: 0;
+	max-width: 25rem;
+	border-top: 2px solid $white;
+	border-left: 2px solid $white;
 }
