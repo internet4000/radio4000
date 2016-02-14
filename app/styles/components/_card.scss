@@ -105,3 +105,38 @@
 		margin-bottom: 0;
 	}
 }
+
+/**
+ * Wide modifier (also smaller)
+ */
+
+$card-wide-cover-size: 4.8rem;
+.ChannelCard--wide {
+	padding-bottom: 0;
+	> a {
+		display: flex;
+		flex-flow: row nowrap;
+		align-content: center;
+	}
+	.Cover {
+		flex: 0 0 $card-wide-cover-size;
+		margin-bottom: 0;
+	}
+	.ChannelCard-title {
+		margin-top: auto;
+		margin-bottom: auto;
+	}
+	.ChannelCard-body {
+		display: none;
+		// margin-top: -1rem;
+		// padding-left: ($card-wide-cover-size + 1rem);
+		// padding-bottom: 1rem;
+	}
+	.ChannelCard-playback {
+		top: -0.3rem;
+		right: -0.6rem;
+		.Button {
+			padding: 0.6rem;
+		}
+	}
+}

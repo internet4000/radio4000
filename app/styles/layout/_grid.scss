@@ -100,5 +100,12 @@
 	text-align: center;
 }
 
+// Wider cells that the default grid with a balanced
+// width to ensure channel titles are kept in one-line as
+// much as possible.
+.Grid--wide {
+	> .Grid-cell {
+		flex: 1 0 25% !important;
+		min-width: 17rem;
 	}
 }

@@ -33,7 +33,21 @@
 				{{/if}}
 			</div>
 		{{else}}
-			{{channels-list channels=sortedChannels}}
+			{{!-- {{channels-list channels=sortedChannels}} --}}
+			<div class="Container Container--full">
+				{{#if sortedChannels}}
+					<div class="Grid Grid--wide">
+						{{#each sortedChannels as |item|}}
+							<div class="Grid-cell">
+								{{channel-card channel=item wide=true}}
+							</div>
+						{{/each}}
+					</div>
+				{{else}}
+					<p>Tuning radios…</p>
+					{{is-loading}}
+				{{/if}}
+			</div>
 		{{/if}}
 	</section>
 

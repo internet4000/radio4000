@@ -11,8 +11,8 @@
 	margin-left: 1rem; // so logo scrolls nicely down the side
 	background-color: $slightgray;
 	border-top: 1px solid $superlightgray;
-	border-left: 1px solid hsl(0,0%,75%);
-	border-right: 1px solid hsl(0,0%,75%);
+	border-left: 1px solid hsl(0,0%,80%);
+	border-right: 1px solid hsl(0,0%,80%);
 	border-radius: $border-radius;
 	box-shadow: $box-shadow;
 }
@@ -161,6 +161,6 @@
  */
 
 .Channel-introduction {
-	// it is flexbox because of the Grid it is in (Grid-item)
+	// it is flexbox because of the Grid it is in (Grid-cell)
 	order: 1;
 }

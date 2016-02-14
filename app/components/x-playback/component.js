@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {Component, get, inject, run, $} = Ember;
+const {Component, inject, run, $} = Ember;
 
 export default Component.extend({
 	classNames: ['Playback'],
