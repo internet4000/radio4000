@@ -36,3 +36,10 @@
  */
 
 .Aside-item {}
+
+.AddTrackButton {
+	position: fixed;
+	z-index: 20;
+	right: 1.5rem;
+	top: 1rem;
+}

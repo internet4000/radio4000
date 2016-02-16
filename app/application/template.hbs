@@ -16,7 +16,11 @@
 
 	{{x-aside class="Aside--left"
 		isAuthenticated=session.isAuthenticated
-		userChannel=session.currentUser.channels.firstObject}}
+		userChannel=userChannel}}
+
+	{{#if session.isAuthenticated}}
+		{{#link-to 'channel.add' userChannel class="Btn Btn--primary AddTrackButton" title="Add a new track to your radio"}}Add track{{/link-to}}
+	{{/if}}
 
 	<main class="SiteMain">
 		{{#if-ios}}
