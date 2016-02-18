@@ -22,11 +22,11 @@
 
 <div class="Muted">
 	{{#unless userChannel}}
-		{{#link-to 'channels.new' class="Tabs-item" title="Create your own radio now or log in"}}Get your own radio{{/link-to}}<br>
+		{{#link-to 'channels.new' class="Aside-link" title="Create your own radio now or log in"}}Get your own radio{{/link-to}}<br>
 	{{/unless}}
 	{{#if isAuthenticated}}
-		{{#link-to 'logout' class="Tabs-item" title="Log out from Radio4000"}}Log out{{/link-to}}
+		{{#link-to 'logout' class="Aside-link" title="Log out from Radio4000"}}Log out{{/link-to}}
 	{{else}}
-		{{#link-to 'login' class="Tabs-item" title="Create your own radio now or log in"}}Sign in or register{{/link-to}}
+		{{#link-to 'login' class="Aside-link" title="Create your own radio now or log in"}}Sign in or register{{/link-to}}
 	{{/if}}
 </div>

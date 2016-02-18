@@ -37,6 +37,19 @@
 
 .Aside-item {}
 
+.Aside-link {
+	display: inline-block;
+	padding: 0.5em 0.5rem 0.5rem 1rem;
+	transition: color 200ms;
+	color: $text-color;
+	&.is-active {
+		text-decoration: underline;
+	}
+	.Root.is-minimal & {
+		color: $white;
+	}
+}
+
 .AddTrackButton {
 	position: fixed;
 	z-index: 20;
