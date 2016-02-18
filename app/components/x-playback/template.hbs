@@ -1,14 +1,26 @@
-<div class="Playback-title" title="Current track / go to current radio">
-	{{#if player.model}}
-		<div {{action "scrollToTrack"}}>
-			{{#link-to 'track' player.model.channel player.model replace=true}}
-				{{player.model.title}}
-				<span class="Playback-channel">({{player.model.channel.title}})</span>
+{{#if player.model.channel.coverImage}}
+	<img class="Playback-cover" src="{{player.model.channel.coverImage.thumbnail}}" alt="{{player.model.channel.title}}" title="You're listening to {{player.model.channel.title}}">
+{{/if}}
+{{#if player.model}}
+	<div class="Playback-channel">
+		<h4>
+			{{#link-to 'channel' player.model.channel}}
+				{{player.model.channel.title}}
 			{{/link-to}}
+		</h4>
+		<div class="Playback-title" title="Current track / go to current radio">
+			{{#if player.model}}
+				<div {{action "scrollToTrack"}}>
+					{{#link-to 'track' player.model.channel player.model replace=true}}
+						{{player.model.title}}
+						{{!-- <span class="Playback-channel">({{player.model.channel.title}})</span> --}}
+					{{/link-to}}
+				</div>
+			{{else}}
+			{{/if}}
 		</div>
-	{{else}}
-	{{/if}}
-</div>
+	</div>
+{{/if}}
 
 {{#unless player.model}}
 	{{#link-to 'channels.all' class="Playback-welcomeLink"}}

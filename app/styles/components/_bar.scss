@@ -1,3 +1,5 @@
+$bottom-bar-width: 100%;
+
 /**
  *  The top bar
  */
@@ -7,10 +9,6 @@
 	left: 0;
 	z-index: 3;
 	min-height: rem($bar-height);
-
-	background: linear-gradient(lighten($primary-color,10%), $primary-color);
-	// background-color: $primary-color;
-	color: $text-color-invert;
 	backface-visibility: hidden; // perf
 	transition: transform 300ms $easing2, background-color 200ms;
 }
@@ -31,10 +29,6 @@
 	left: initial;
 	bottom: 0;
 	right: 0;
-	width: 25rem;
+	width: $bottom-bar-width;
 	max-width: 100%;
-	border-top: 2px solid $white;
-	border-left: 2px solid $white;
-	border-top-right-radius: $border-radius;
-	border-top-left-radius: $border-radius;
 }

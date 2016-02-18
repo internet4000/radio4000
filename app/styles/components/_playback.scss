@@ -4,15 +4,24 @@
 
 // Controls
 .Playback {
+	width: 100%;
 	display: flex;
-	flex-flow: row wrap; // items in one row, no wrapping
+	flex-flow: row nowrap; // items in one row, no wrapping
 	align-items: stretch; // full-height children
 	justify-content: space-between; // distribute items
 	justify-content: center;
 
+	background: linear-gradient(lighten($primary-color,10%), $primary-color);
+	color: $text-color-invert;
+
 	.Bar--bottom & {
+		border-top: 1px solid $primary-color;
 		min-height: rem($bar-height + $progress-height);
 		padding-bottom: rem($progress-height);
+		// if width is less than 100%, add this:
+		// border-left: 1px solid rgb(111, 111, 111);
+		// border-top-right-radius: $border-radius;
+		// border-top-left-radius: $border-radius;
 	}
 
 	// icon size here
@@ -38,16 +47,34 @@
 		top: 1px;
 	}
 }
+.Playback-cover {
+	margin: 6px; // border
+	width: 41px;
+	height: 41px;
+}
+.Playback-channel {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	h4 {
+		font-weight: 400;
+		font-style: italic;
+	}
+	a {
+		padding-left: 0.5rem;
+	}
+}
 .Playback-title {
 	@include size-1;
-	order: 5;
+	// flex: 4;
+	// order: 3;
 	text-align: center;
 	display: flex;
 	align-items: center;
+	justify-content: center;
 
 	a {
 		display: block;
-		padding: 0.5rem 0.5rem 1rem;
 	}
 }
 .Playback-buttons {
@@ -81,6 +108,8 @@
 	.Playback-toggleVolume {
 		@include size-0;
 		margin-left: 1rem;
+		min-width: 47px; // avoid jumping when switching volume
+		text-align: center;
 	}
 }
 .Playback-fullscreenBtn {

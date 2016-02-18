@@ -1,3 +1,5 @@
+$player-max-width: 300px;
+
 /**
  * Wrapper for the embed video/audio player
  */
@@ -13,7 +15,8 @@
 }
 
 #EmberYoutube-player {
-	width: 100% !important;
+	float: right;
+	// width: $player-max-width% !important;
 	min-height: 30vh;
 	background-color: black;
 	@media (max-width: $layout-s) {
