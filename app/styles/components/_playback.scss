@@ -6,13 +6,17 @@
 .Playback {
 	width: 100%;
 	display: flex;
-	flex-flow: row nowrap; // items in one row, no wrapping
+	flex-flow: row wrap; // items in one row, no wrapping
 	align-items: stretch; // full-height children
 	justify-content: space-between; // distribute items
 	justify-content: center;
 
 	background: linear-gradient(lighten($primary-color,10%), $primary-color);
 	color: $text-color-invert;
+
+	@media (min-width: $layout-s) {
+		flex-wrap: nowrap;
+	}
 
 	.Bar--bottom & {
 		border-top: 1px solid $primary-color;
@@ -59,9 +63,14 @@
 	h4 {
 		font-weight: 400;
 		font-style: italic;
+		@media (max-width: $layout-s) {
+			text-align: left;
+			padding-top: 0.5rem;
+		}
 	}
 	a {
 		padding-left: 0.5rem;
+		padding-right: 0.5rem;
 	}
 }
 .Playback-title {

@@ -6,15 +6,19 @@
 
 .Channel--detail, {
 	position: relative;
-	// because the channel image is a bit outside (negative margin)
-	margin-top: 1.5rem;
-	margin-left: 1rem; // so logo scrolls nicely down the side
 	background-color: $slightgray;
 	border-top: 1px solid $superlightgray;
 	border-left: 1px solid hsl(0,0%,80%);
 	border-right: 1px solid hsl(0,0%,80%);
 	border-radius: $border-radius;
 	box-shadow: $box-shadow;
+
+	@media (min-width: $layout-s) {
+		// because the channel image is a bit outside (negative margin)
+		margin-top: 1.5rem;
+		// so logo scrolls nicely down the side
+		margin-left: 1rem;
+	}
 }
 
 .Channel--edit {
@@ -95,7 +99,7 @@
 	margin-bottom: 0;
 	// fixed height with scrollbars
 	position: relative;
-	height: calc(100vh - 30rem); // channel header height, more or less
+	height: calc(100vh - 27rem); // channel header height, more or less
 	overflow-x: hidden;
 	overflow-y: auto;
 }
