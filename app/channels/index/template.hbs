@@ -16,8 +16,6 @@
 							{{channel-card channel=item}}
 						</div>
 					{{/each}}
-				</div>
-				<div class="Grid">
 					<div class="Grid-cell Grid-cell--double">
 						<h3>Tip</h3>
 						<div class="Muted">
@@ -27,10 +25,10 @@
 
 						<div class="Muted">
 							{{#unless model.userChannel}}
-								{{#link-to 'channels.new' class="" title="Create your own radio now or log in"}}Create your own radio{{/link-to}}<br><br>
+								&rarr; {{#link-to 'channels.new' class="" title="Create your own radio now or log in"}}Create your own radio{{/link-to}}<br><br>
 							{{/unless}}
 							{{#unless session.isAuthenticated}}
-								{{#link-to 'login' class="" title="Create your own radio now or log in"}}Sign in or register{{/link-to}}
+								&rarr; {{#link-to 'login' class="" title="Create your own radio now or log in"}}Sign in or register{{/link-to}}
 							{{/unless}}
 						</div>
 					</div>
