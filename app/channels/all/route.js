@@ -63,10 +63,14 @@ export default Route.extend({
 			// });
 		// });
 
+		if (this.get('didLoadAll')) {
+			return;
+		}
+
 		// v2: load with a pager (avoids fetching duplicate channels)
-		console.time('findPrev1');
+		// console.time('findPrev1');
 		this.findPrev().then(() => {
-			console.timeEnd('findPrev1');
+			// console.timeEnd('findPrev1');
 
 			// console.time('findPrev2');
 			// this.findPrev().then(data => {
@@ -79,9 +83,10 @@ export default Route.extend({
 				// 	console.timeEnd('Find all channels');
 				// });
 
-				console.time('Query the rest of the channels');
+				// console.time('Query the rest of the channels');
 				this.store.query('channel', {limitToLast: 999, endAt: this.get('endAt')}).then(() => {
-					console.timeEnd('Query the rest of the channels');
+					// console.timeEnd('Query the rest of the channels');
+					this.set('didLoadAll', true);
 				});
 			});
 		});
