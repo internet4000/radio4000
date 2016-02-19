@@ -42,13 +42,19 @@
 }
 .Playback-welcomeLink {
 	@include size-2;
-	margin-top: 1.2rem;
+	margin-top: auto;
+	margin-bottom: auto;
+	text-align: center;
 	padding-left: 1rem;
 	padding-right: 1rem;
-	margin-bottom: auto;
 	i {
 		position: relative;
 		top: 1px;
+	}
+	img {
+		position: relative;
+		top: 2px;
+		margin-right: 0.5rem;
 	}
 }
 .Playback-cover {
