@@ -66,6 +66,7 @@
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: center;
+	flex: 1;
 	h4 {
 		font-weight: 400;
 		font-style: italic;
@@ -84,9 +85,6 @@
 	// flex: 4;
 	// order: 3;
 	text-align: center;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 
 	a {
 		display: block;
