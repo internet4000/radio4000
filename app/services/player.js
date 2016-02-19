@@ -33,6 +33,9 @@ export default Ember.Service.extend({
 			this.set('playlist', newPlaylist);
 			newPlaylist.set('isInPlayer', true);
 			debug('Playlist was set');
+			return this.get('playlist.tracks').then(items => {
+				this.get('playerRandom').setNewRandomPool(items);
+			});
 		});
 	},
 
@@ -182,16 +185,21 @@ export default Ember.Service.extend({
 		2- set pool of tracks to be used
 		and return it so we can use it as a promise
 	 */
+
 	activateRandom() {
 		this.set('isRandom', true);
 		this.get('playerHistory').clearPlayerHistory();
-		return this.get('playlist.tracks').then(items => {
-			this.get('playerRandom').setNewRandomPool(items);
-		});
+		return this.updateRandomPoolFromPlaylist();
 	},
 
 	deactivateRandom() {
 		debug('deactivateRandom');
 		this.set('isRandom', false);
+	},
+
+	updateRandomPoolFromPlaylist() {
+		return this.get('playlist.tracks').then(items => {
+			this.get('playerRandom').setNewRandomPool(items);
+		});
 	}
 });

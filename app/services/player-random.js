@@ -9,8 +9,7 @@ export default Service.extend(randomHelpers, {
 	// Pool of shuffled tracks: those availabled to be picked form
 	randomPool: [],
 
-	// sets a new random pool from the playlist in the player
-	// takes the player array and shuffles it
+	// Shuffles a 'channel.tracks' array and sets it as the random pool.
 	setNewRandomPool(items) {
 		debug('setNewRandomPool');
 
