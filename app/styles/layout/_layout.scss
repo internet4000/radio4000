@@ -18,10 +18,10 @@ body {
 
 .SiteMain {
 	// More padding when player is taller..
-	padding-bottom: 10rem;
-	@media (min-width: $layout-s) {
-		padding-bottom: rem($bar-height * 1.5); // bar + a bit more
+	@media (max-width: 570px) {
+		padding-bottom: 10rem;
 	}
+	padding-bottom: rem($bar-height * 1.5); // bar + a bit more
 
 	height: 100vh;
 	width: 100%;
