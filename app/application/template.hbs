@@ -19,7 +19,7 @@
 		userChannel=userChannel}}
 
 	{{#if session.isAuthenticated}}
-		{{#link-to 'channel.add' userChannel class="Btn Btn--primary AddTrackButton" title="Add a new track to your radio"}}Add track{{/link-to}}
+		{{href-to 'Add track' 'channel.add' userChannel class="Btn Btn--primary AddTrackButton" title="Add a new track to your radio"}}
 	{{/if}}
 
 	<main class="SiteMain">

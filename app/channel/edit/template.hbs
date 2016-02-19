@@ -27,39 +27,39 @@
 						<div class="Form-group">
 							<label for="title" >Title</label>
 							{{focus-input id="title"
-							value=model.title
-							placeholder="Title"
-							autofocus='autofocus'
-							required="required"
-							maxlength=titleMaxLength
-							minlength=titleMinLength}}
+								value=model.title
+								placeholder="Title"
+								autofocus='autofocus'
+								required="required"
+								maxlength=titleMaxLength
+								minlength=titleMinLength}}
 							{{errors-display showErrors=showErrors errors=errors.model.title}}
 						</div>
 						<div class="Form-group">
 							<label for="body" >Description</label>
 							{{textarea id="body"
-							value=model.body
-							maxlength=channelDescriptionMaxLength
-							placeholder="What is your radio about?"}}
+								value=model.body
+								maxlength=channelDescriptionMaxLength
+								placeholder="What is your radio about?"}}
 							{{errors-display showErrors=showErrors errors=errors.model.body}}
 						</div>
 						<div class="Form-group">
 							<label for="slug">URL</label>
 							<span class="Permalink">radio4000.com/{{model.slug}}</span>
 							{{input id="slug"
-							maxlength=titleMaxLength
-							minlength=titleMinLength
-							value=model.slug
-							placeholder="channel-slug"
-							required="required"}}
+								maxlength=titleMaxLength
+								minlength=titleMinLength
+								value=model.slug
+								placeholder="channel-slug"
+								required="required"}}
 							{{errors-display showErrors=showErrors errors=errors.model.slug}}
 						</div>
 						<div class="Form-group">
 							<label for="link">Link</label>
 							{{input type="url"
-							id="link"
-							value=model.link
-							placeholder="Your homepage" }}
+								id="link"
+								value=model.link
+								placeholder="Your homepage" }}
 							{{errors-display showErrors=showErrors errors=errors.model.url}}
 						</div>
 
@@ -67,19 +67,14 @@
 							<button type="submit" class="Btn Btn--primary" disabled={{isSaving}}>
 								{{#if isSaving}}Saving…{{else}}Save radio{{/if}}
 							</button>
-							{{#link-to 'channel.index' model class="Btn Btn--text Muted"}}Cancel editing{{/link-to}}
+							{{href-to 'Cancel editing' 'channel.index' model class="Btn Btn--text Muted"}}
 						</div>
 					</form>
 					{{errors-display showErrors=showErrors errors=errors.server}}
 				</div>
 			</div>
 
-			<p>
-				{{#link-to 'channel.delete' model class="Btn Btn--text Muted"}}
-				Delete your radio
-				{{/link-to}}
-			</p>
+			<p>{{href-to 'Delete your radio' 'channel.delete' model class="Btn Btn--text Muted"}}</p>
 		</div>
 	</section>
-
 </div>

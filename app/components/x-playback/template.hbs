@@ -4,17 +4,12 @@
 {{#if player.model}}
 	<div class="Playback-channel">
 		<h4>
-			{{#link-to 'channel' player.model.channel}}
-				{{player.model.channel.title}}
-			{{/link-to}}
+			{{href-to player.model.channel.title 'channel' player.model.channel}}
 		</h4>
 		<div class="Playback-title" title="Current track / go to current radio">
 			{{#if player.model}}
 				<div {{action "scrollToTrack"}}>
-					{{#link-to 'track' player.model.channel player.model replace=true}}
-						{{player.model.title}}
-						{{!-- <span class="Playback-channel">({{player.model.channel.title}})</span> --}}
-					{{/link-to}}
+					{{href-to player.model.title 'track' player.model.channel player.model replace=true}}
 				</div>
 			{{else}}
 			{{/if}}

@@ -36,9 +36,7 @@
 									{{playback/play-shuffle-btn channel=model}}
 								</div>
 								<h1 class="Channel-title">
-									{{#link-to 'channel' model}}
-										{{model.title}}
-									{{/link-to}}
+									{{href-to model.title 'channel' model}}
 								</h1>
 							</div>
 
