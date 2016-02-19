@@ -58,6 +58,7 @@
 	}
 }
 .Playback-cover {
+	user-select: none;
 	margin: 6px; // border
 	width: 41px;
 	height: 41px;
@@ -84,7 +85,9 @@
 	@include size-1;
 	// flex: 4;
 	// order: 3;
-	text-align: center;
+	@media (max-width: $layout-s) {
+		text-align: center;
+	}
 
 	a {
 		display: block;
