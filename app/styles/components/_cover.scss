@@ -34,7 +34,7 @@
 
 // Lazysizes loading
 .Cover img {
-	filter: blur(4px);
+	filter: blur(2px);
 	transition: filter 250ms, opacity 250ms;
 	&.lazyload {
 		opacity: 0.5;
