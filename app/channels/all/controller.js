@@ -14,7 +14,7 @@ const stringContains = function (string, search) {
 export default Controller.extend({
 	search: '',
 	queryParams: ['search'],
-	isGrid: true,
+	isList: false,
 
 	// This little pattern makes sets a property maximum every X ms for performance.
 	watchSearch: observer('search', function () {
@@ -50,8 +50,8 @@ export default Controller.extend({
 	sortedChannels: computed.sort('channels', 'sortKeys'),
 
 	actions: {
-		toggleGrid() {
-			this.toggleProperty('isGrid');
+		changeLayout() {
+			this.toggleProperty('isList');
 		}
 	}
 });

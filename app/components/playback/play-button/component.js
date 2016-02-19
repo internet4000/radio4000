@@ -38,10 +38,11 @@ export default Component.extend({
 		debug('play channel');
 		this.set('isLoading', true);
 
+		// Loads necessary all tracks and then returns another promise
+		// for the last track.
 		const promise = this.loadTracks(channel).then(tracks => {
 			this.set('isLoading', false);
-			const lastTrack = tracks.get('lastObject');
-			return lastTrack;
+			return tracks.get('lastObject');
 		});
 
 		promise.then(track => {

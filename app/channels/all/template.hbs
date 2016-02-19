@@ -8,8 +8,8 @@
 			<form class="Search">
 				{{input class="Search-input" type="search" value=search placeholder="Search radios"}}
 				<button class="Search-btn Btn" type="submit">Search</button>
-				<button class="Search-toggle Btn" {{action 'toggleGrid'}}>
-					{{if isGrid 'List' 'Grid'}}
+				<button class="Search-toggle Btn" {{action 'changeLayout'}}>
+					{{if isList 'Bigger' 'Smaller'}}
 				</button>
 			</form>
 		</div>
@@ -21,34 +21,20 @@
 	{{/btn-group}} --}}
 
 	<section class="Section">
-		{{#if isGrid}}
-			<div class="Container Container--full">
-				{{#if sortedChannels}}
-					{{#each-grid items=sortedChannels as |item|}}
-						{{channel-card channel=item}}
-					{{/each-grid}}
-				{{else}}
-					<p>Tuning radios…</p>
-					{{is-loading}}
-				{{/if}}
-			</div>
-		{{else}}
-			{{!-- {{channels-list channels=sortedChannels}} --}}
-			<div class="Container Container--full">
-				{{#if sortedChannels}}
-					<div class="Grid Grid--wide">
-						{{#each sortedChannels as |item|}}
-							<div class="Grid-cell">
-								{{channel-card channel=item wide=true}}
-							</div>
-						{{/each}}
-					</div>
-				{{else}}
-					<p>Tuning radios…</p>
-					{{is-loading}}
-				{{/if}}
-			</div>
-		{{/if}}
+		<div class="Container Container--full">
+			{{#if sortedChannels}}
+				<div class="Grid {{if isList 'Grid--wide'}}">
+					{{#each sortedChannels as |item|}}
+						<div class="Grid-cell">
+							{{channel-card channel=item wide=isList}}
+						</div>
+					{{/each}}
+				</div>
+			{{else}}
+				<p>Tuning radios…</p>
+				{{is-loading}}
+			{{/if}}
+		</div>
 	</section>
 
 	<section class="Section Container">
