@@ -3,8 +3,9 @@
  **/
 
 .Logo {
+	cursor: pointer;
 	display: block;
-	padding-left: 0.4rem;
+	padding-left: 0.7rem;
 	padding-right: 1rem;
 	user-select: none; // don't highlight
 	color: $bleach;
@@ -16,6 +17,9 @@
 
 	&:hover {
 		text-decoration: none;
+		.Logo-icon {
+			opacity: 1;
+		}
 	}
 
 	// when logo is active, so on home, hide arrow
@@ -29,21 +33,31 @@
 	margin-bottom: 0;
 	font-size: inherit;
 }
-.Logo-arrow {
+.Logo-icon {
 	position: relative;
-	top: 0.15em;
+	top: 0.25em;
 	transition: margin 400ms $easing;
+	opacity: 0.8;
 
 	.Logo.is-active & {
 		margin-right: 0.3rem;
 	}
 }
+.Logo-dot {
+	display: inline-block;
+	width: 0.6rem;
+	height: 0.6rem;
+	background-color: $primary-color;
+	border-radius: 50%;
+	transition: transform 200ms $easing4;
+
+	.is-panelLeftVisible & {
+		transform: scale(0.8);
+	}
+}
 .Logo-img {
 	vertical-align: middle;
-	max-height: 21px;
-	@media (min-width: $layout-s) {
-		max-height: 28px;
-	}
+	max-height: 28px;
 	@media (min-width: $layout-sm) {
 		max-height: 32px;
 	}

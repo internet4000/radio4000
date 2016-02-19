@@ -1,7 +1,9 @@
-<div class="Tabs">
-	{{#link-to 'help.index' title="About Radio4000" class="Tabs-item"}}Help{{/link-to}}
-	{{!-- {{#link-to 'about.contact' title="Contact" class="Tabs-item"}}Forum{{/link-to}} --}}
-	<a class="Tabs-item" href="https://groups.google.com/forum/#!forum/radio4000" target="_blank">Forum &rarr;</a>
+<div class="Container u-pushDown">
+	<nav class="Tabs Tabs--horizontal">
+		{{#link-to 'help.index' title="About Radio4000" class="Tabs-item"}}Help{{/link-to}}
+	</nav>
 </div>
 
-{{outlet}}
+<div class="Sections">
+	{{outlet}}
+</div>

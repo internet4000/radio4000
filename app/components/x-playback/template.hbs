@@ -1,14 +1,28 @@
+{{#if player.model.channel.coverImage}}
+	<img class="Playback-cover" src="{{player.model.channel.coverImage.thumbnail}}" alt="{{player.model.channel.title}}" title="You're listening to {{player.model.channel.title}}">
+{{/if}}
 {{#if player.model}}
-	<div class="Playback-title" title="Current track / go to current radio">
-
-		<div {{action "scrollToTrack"}}>
-			{{#link-to 'track' player.model.channel player.model replace=true}}
-				{{player.model.title}}
-				<span class="Playback-channel">({{player.model.channel.title}})</span>
-				{{/link-to}}
+	<div class="Playback-channel">
+		<h4>
+			<a href="{{href-to 'channel' player.model.channel}}">{{player.model.channel.title}}</a>
+		</h4>
+		<div class="Playback-title" title="Current track / go to current radio">
+			{{#if player.model}}
+				<div {{action "scrollToTrack"}}>
+					{{#link-to 'track' player.model.channel player.model replace=true}}{{player.model.title}}{{/link-to}}
+				</div>
+			{{else}}
+			{{/if}}
 		</div>
 	</div>
 {{/if}}
+
+{{#unless player.model}}
+	{{#link-to 'channels.all' class="Playback-welcomeLink"}}
+		{{!-- {{x-icon i='play'}} Find a radio channel to play! --}}
+		<img src="assets/images/icons/sound.gif" alt=""> Find a radio channel to play!
+	{{/link-to}}
+{{/unless}}
 
 <div class="Playback-buttons">
 	<button class="Playback-shuffle Btn Btn--text  {{if player.isRandom 'is-active'}}" {{action 'toggleRandom'}} title="Toggle shuffle playback">
@@ -23,9 +37,13 @@
 	<button class="NonBtn" {{action 'next'}} title="Next track">
 		{{x-icon i='next'}}
 	</button>
+
+	<button class="Playback-toggleVolume NonBtn" {{action "toggleVolume"}} title="Toggle the playback volume">
+	    {{#if radioDevice.isMuted}}Unmute{{else}}Mute{{/if}}
+	</button>
 </div>
 
-<button class="Playback-videoBtn NonBtn" {{action 'toggleFullscreen'}} title="Toggle fullscreen video">
+<button class="Playback-fullscreenBtn NonBtn" {{action 'toggleFullscreen'}} title="Toggle fullscreen video">
 	{{#if uiStates.isFullscreen}}
 		{{x-icon i='arrows-compress'}}
 	{{else}}

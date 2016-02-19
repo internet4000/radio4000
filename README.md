@@ -44,26 +44,6 @@ xo app/**/*.js
 
 Add .svg icons to `public/assets/images/icons` and run `gulp icons`.
 
-## Building native apps
-
-Make sure the production environment in `config/environment.js` looks like this:
-
-```javascript
-if (environment === 'electron') {
-  ENV.baseURL = './';
-  ENV.locationType = 'hash';
-  ENV.firebase = 'https://radio4000.firebaseio.com/';
-}
-```
-
-… then run:
-
-```
-gulp electron
-```
-
-Check the dist folder where you'll now have all the apps. Be sure to change environment back afterwards.
-
 ## Important if you use Sublime Text
 
 Sublime automatically watches all files in a folder. Because ember-cli is so huge your PC will slow down. To solve this, tell Sublime to ignore the `tmp` and `node_modules` folder: http://www.ember-cli.com/#sublime-text

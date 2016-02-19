@@ -17,6 +17,11 @@ export default Ember.Controller.extend(EmberValidations, createTrackMixin, {
 
 	actions: {
 		transitionToTrack(track) {
+			// this.transitionToRoute({
+			// 	queryParams: {
+			// 		listen: track.get('id')
+			// 	}
+			// });
 			this.transitionToRoute('track', track);
 		},
 		closeModals() {
@@ -54,7 +59,6 @@ export default Ember.Controller.extend(EmberValidations, createTrackMixin, {
 				flashMessages.info('Track saved');
 			});
 		},
-
 
 		createNewTrack(trackProperties) {
 			const channel = this.get('model');

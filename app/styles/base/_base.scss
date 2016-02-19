@@ -30,6 +30,7 @@ input,
 table,
 address,
 textarea,
+select,
 hr,
 figure,
 menu {
@@ -55,5 +56,6 @@ hr {
 }
 
 menu {
+	margin-top: 0;
 	padding: 0;
 }

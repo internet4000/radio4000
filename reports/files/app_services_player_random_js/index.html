@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">63</p>
+      <p class="stat">53</p>
     </div>
   </div>
   <div class="row historical">
@@ -92,64 +92,54 @@
     <textarea id="file-source" class="col-md-12">import Ember from &#039;ember&#039;;
 import randomHelpers from &#039;radio4000/mixins/random-helpers&#039;;
 
-const {Service, A, inject, computed, observer, debug} = Ember;
+const {Service, inject, debug, computed} = Ember;
 
 export default Service.extend(randomHelpers, {
 	player: inject.service(),
-	isRandom: false,
 
-	// Pool of available = all track we did not listen to
-	randomPool: new A([]),
+	// Pool of shuffled tracks: those availabled to be picked form
+	randomPool: [],
 
-	randomWasActivated: observer(&#039;isRandom&#039;, &#039;player.playlist.model&#039;, function () {
-		// 1- visualy clear played tracks in the current channel
-		this.get(&#039;player&#039;).clearPlayedTracksStatus();
-		// 2- set pool of tracks to be used
-		if (this.get(&#039;isRandom&#039;)) {
-			debug(&#039;randomWasActivated: new channel to random&#039;);
-			this.setRandomPool();
-		}
-	}),
-	setRandomPool() {
-		// get track list from player
-		let array = this.get(&#039;player.playlist.tracks&#039;);
-		// set them has available pool
-		// creates a new array (the slice stuff)
-		this.set(&#039;randomPool&#039;, array.slice(0));
-	},
-	refreshRandomPool() {
-		debug(&#039;refreshRandomPool started&#039;);
-		// @TODO clear all tracks.usedInCurrentPlayer
-		this.get(&#039;player&#039;).clearPlayedTracksStatus();
-		this.setRandomPool();
+	// sets a new random pool from the playlist in the player
+	// takes the player array and shuffles it
+	setNewRandomPool(items) {
+		debug(&#039;setNewRandomPool&#039;);
+		let shuffledItems = [];
+		items.forEach(item =&gt; {
+			shuffledItems.pushObject(item);
+		});
+		this.set(&#039;randomPool&#039;, this.shuffle(shuffledItems));
 	},
 
 	/**
 	 @method
-	 @returns @track model that has to be played, to the player@nextRandom
-	 @param {pool} array of tracks available to be played
+	 @returns @promise {track} model that has to be played, to the player@nextRandom
+	 promise so it waits there is a track found to play it
 	*/
-	getRandom(pool = this.get(&#039;randomPool&#039;)) {
-		debug(&#039;getRandom started&#039;);
+	getNext() {
+		let array = this.get(&#039;randomPool&#039;);
+		return new Promise(resolve =&gt; {
+			let item = array.objectAt(array.indexOf(this.get(&#039;player.model&#039;)) + 1);
+			if (!item) {
+				resolve(array.objectAt(0));
+			}
+			resolve(item);
+		});
+	},
 
-		// get random number to get random track
-		let poolLength = pool.get(&#039;length&#039;);
-
-		// if no object in pool, refresh it
-		if (poolLength &lt;= 1) {
-			debug(&#039;pool is empty!&#039;);
-			this.refreshRandomPool();
-		}
-
-		// otherwise, find a random track in the pool and return it to nextRandom
-		let randomNumberInPool = this.randomNumberInArray(poolLength);
-		let randomTrackInPool = pool.objectAt(randomNumberInPool);
-
-		console.log(&#039;- poolLength:&#039;, poolLength, &#039;randomNumberInPool:&#039;, randomNumberInPool);
-
-		this.get(&#039;randomPool&#039;).removeObject(randomTrackInPool);
-
-		return randomTrackInPool;
+	/**
+		@method getPrevious
+		@returns the track previously played in random mode
+	*/
+	getPrevious() {
+		let array = this.get(&#039;randomPool&#039;);
+		return new Promise(resolve =&gt; {
+			let item = array.objectAt(array.indexOf(this.get(&#039;player.model&#039;)) - 1);
+			if (!item) {
+				resolve(array.objectAt(array.length - 1));
+			}
+			resolve(item);
+		});
 	}
 });</textarea>
   </div>

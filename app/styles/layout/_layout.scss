@@ -8,23 +8,25 @@ html {
 	color: $text-color;
 }
 body {
-	overflow-y: scroll;
-	// our responsive design doesn't need to scroll horizontally
-	overflow-x: hidden;
+	overflow: hidden;
 }
 
-.SiteHeader {}
+/**
+	In _root.scss, it is displayed flex
+	So all child of .Root bellow follow this behavior
+ */
+
 .SiteMain {
-	padding-top: rem($bar-height + $bar-border-size); // with border
+	// More padding when player is taller..
+	@media (max-width: 570px) {
+		padding-bottom: 10rem;
+	}
 	padding-bottom: rem($bar-height * 1.5); // bar + a bit more
-	min-height: 100vh;
-}
-.SiteFooter {
-	background-color: darken($bg-color, 6%);
-}
 
-.is-hidden {
-	display: none;
+	height: 100vh;
+	width: 100%;
+	transition: padding 300ms $easing2;
+	overflow-y: auto;
 }
 
 // Set background for ember-modals

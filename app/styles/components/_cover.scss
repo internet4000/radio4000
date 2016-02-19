@@ -1,8 +1,5 @@
-$cover-size: 190px;
-
 .Cover {
 	position: relative;
-	// max-width: $cover-size;
 	text-align: left;
 
 	// wrap link
@@ -15,13 +12,12 @@ $cover-size: 190px;
 		opacity: 1;
 	}
 }
-.Cover-img {
+.Cover-image {
 	background-color: $fadedblue;
 	position: relative;
 	overflow: hidden;
-	// height: $cover-size;
 	height: 0;
-	padding-bottom: 100%;
+	padding-bottom: 100%; // because we use square images
 	// stretch image
 	img {
 		position: absolute;
@@ -30,8 +26,30 @@ $cover-size: 190px;
 		object-fit: cover;
 		width: 100%;
 		height: 100%;
+		// Ensure a minimum size in order for lazyloading to work.
+		min-width: 3px;
+		min-height: 3px;
 	}
 }
+
+// Lazysizes loading
+.Cover img {
+	filter: blur(2px);
+	transition: filter 250ms, opacity 250ms;
+	&.lazyload {
+		opacity: 0.5;
+	}
+	&.lazyloading {
+		// Disabled because it wasn't smooth anyway.
+		// background-image: url(../assets/images/icons/loader.svg);
+		// background-repeat: no-repeat;
+		// background-position: center;
+	}
+	&.lazyloaded {
+		filter: blur(0);
+	}
+}
+
 
 // hidden and centered svg loader
 .Cover-loader {
@@ -42,9 +60,7 @@ $cover-size: 190px;
 	opacity: 0;
 	transition: opacity 200ms;
 }
-.Cover-title {
-	margin-top: 0.7em;
-}
+
 .Cover-button {
 	// reset button styles
 	background-image: none;

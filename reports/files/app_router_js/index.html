@@ -93,7 +93,7 @@
 import config from &#039;./config/environment&#039;;
 import googlePageview from &#039;./mixins/google-pageview&#039;;
 
-var Router = Ember.Router.extend(googlePageview, {
+const Router = Ember.Router.extend(googlePageview, {
 	location: config.locationType
 });
 

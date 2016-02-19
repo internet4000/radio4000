@@ -1,6 +1,9 @@
-<div class="Cover-img">
+{{!-- this line instead of img thumb is fun with background attached --}}
+{{!-- <div class="Cover-image" style="background-image: url({{image.thumb}})"> --}}
+<div class="Cover-image">
 	{{#if image}}
-		<img src={{image.thumb}}>
+		{{!-- <img src="{{image.thumbnail}}" alt=""> --}}
+		<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{{image.thumbnail}}" class="lazyload" alt="">
 	{{/if}}
 
 	{{#if canPlay}}

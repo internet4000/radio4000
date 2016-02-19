@@ -4,21 +4,21 @@ const {Component, inject, debug, computed} = Ember;
 
 // Pass it a track to play it.
 // Pass it a channel to play latest track.
-// Set isShuffle to true it will play random and enable isShuffle on the player.
+// Set isShuffled to true it will play random and enable isShuffled on the player.
 // It will load all tracks async (use isLoading in templates)
 
 export default Component.extend({
 	player: inject.service(),
 	tagName: 'button',
 	classNames: ['Btn'],
-	classNameBindings: ['isLoading', 'isInPlayer'],
+	classNameBindings: ['isLoading', 'isInPlayer', 'nothingToPlay:is-hidden'],
 	isInPlayer: computed.reads('channel.isInPlayer'),
-	isShuffle: computed.reads('isInPlayer'),
+	isShuffled: computed.reads('isInPlayer'),
 
 	// if it is in the player
 	// that mean clicking again should play a random track
 	click() {
-		let player = this.get('player');
+		const player = this.get('player');
 		if (this.get('isInPlayer')) {
 			debug('isInPlayer -> nextRandom');
 			return player.activateRandom().then(() => {
@@ -37,13 +37,25 @@ export default Component.extend({
 	playChannel(channel = this.get('channel')) {
 		debug('play channel');
 		this.set('isLoading', true);
-		let track = this.loadTracks(channel).then(tracks => {
+
+		// Loads necessary all tracks and then returns another promise
+		// for the last track.
+		const promise = this.loadTracks(channel).then(tracks => {
 			this.set('isLoading', false);
 			return tracks.get('lastObject');
 		});
-		track.then(item => {
+
+		promise.then(track => {
 			this.set('isLoading', false);
-			this.get('player').playTrack(item);
+
+			// If we have no track, the radio is empty,
+			// so we set a class in order to hide the button.
+			const nothingToPlay = Boolean(!track);
+			this.set('nothingToPlay', nothingToPlay);
+
+			if (track) {
+				this.get('player').playTrack(track);
+			}
 		});
 	},
 	/**

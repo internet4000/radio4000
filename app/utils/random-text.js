@@ -3,7 +3,7 @@
 export default function randomText() {
 	const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 	const len = 4;
-	return Array(len).join().split(',').map(() => chars.charAt(Math.floor(Math.random() * chars.length))).join('');
+	return new Array(len).join().split(',').map(() => chars.charAt(Math.floor(Math.random() * chars.length))).join('');
 }
 
 // in that case read it as follows:

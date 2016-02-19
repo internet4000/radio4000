@@ -1,17 +1,16 @@
 /* jshint unused:false */
 import Ember from 'ember';
+// import ToriiFirebaseAdapter from 'emberfire/torii-adapters/firebase';
 
 const {debug, inject, run} = Ember;
 
+// export default ToriiFirebaseAdapter.extend({
 export default Ember.Object.extend({
 	firebase: inject.service(),
 	store: inject.service(),
 
 	createSettings(user) {
-		let newSettings = this.get('store').createRecord('user-setting', {
-			user: user
-		});
-
+		const newSettings = this.get('store').createRecord('user-setting', {user});
 		newSettings.save().then(settings => {
 			user.set('settings', settings).save().then(() => {
 				Ember.debug('saved user settings');
@@ -61,7 +60,7 @@ export default Ember.Object.extend({
 
 	// validating an existing authorization (like a session stored in cookies)
 	fetch() {
-		let firebase = this.get('firebase');
+		const firebase = this.get('firebase');
 
 		// This is what should be done to determine how to fetch a session. Here I am
 		// retrieving the auth from firebase and checking if I have a user for that auth.
@@ -73,7 +72,7 @@ export default Ember.Object.extend({
 		// https://github.com/Vestorly/torii#adapters-in-torii
 
 		return new Ember.RSVP.Promise((resolve, reject) => {
-			let auth = firebase.getAuth();
+			const auth = firebase.getAuth();
 
 			if (auth === null) {
 				debug('no auth');
@@ -81,9 +80,9 @@ export default Ember.Object.extend({
 			}
 
 			debug('fetch resolving, looking for user');
-			this.store.findRecord('user', auth.uid).then(user => {
+			this.store.findRecord('user', auth.uid).then(currentUser => {
 				debug('found user');
-				resolve({currentUser: user});
+				resolve({currentUser});
 			}, () => {
 				debug('no user found');
 				reject(new Error('no user found'));
@@ -94,25 +93,18 @@ export default Ember.Object.extend({
 	// This is what should be done to teardown a session. Here I am unloading my
 	// models and setting currentUser to null. here an authorization is destroyed
 	close() {
-		let firebase = this.get('firebase');
-
+		const firebase = this.get('firebase');
 		firebase.unauth();
-
-		// @todo keep this until sure we don't need it
-		// let store = this.get('store');
-		// store.unloadAll('user');
-
 		return Ember.RSVP.resolve();
 	},
 
 	createUser(auth) {
-		let user = this.store.createRecord('user', {
+		const newUser = this.store.createRecord('user', {
 			id: auth.uid,
 			provider: auth.provider,
 			name: this._nameFor(auth)
 		});
-
-		return user.save().then(user => {
+		return newUser.save().then(user => {
 			debug('created user');
 			this.createSettings(user);
 			return user;

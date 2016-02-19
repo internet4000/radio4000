@@ -1,0 +1,26 @@
+<p>Your radio has been created!<br>
+Here is what you could do to start broadcasting 🚀</p>
+
+<div class="PageWelcome-actions">
+	{{#link-to 'channel.add' (query-params url="https://www.youtube.com/watch?v=ymdssZOAx3Q")}}
+		<label>
+			{{input type='checkbox'
+				checked=channel.tracks.firstObject
+				disabled=channel.images.firstObject}} Add your first track
+		</label>
+	{{/link-to}}
+	{{#link-to 'channel.edit'}}
+		<label>
+			{{input type='checkbox'
+				checked=channel.images.firstObject
+				disabled=channel.images.firstObject}} Customize your radio with an image
+		</label>
+	{{/link-to}}
+	{{#link-to 'channels.all'}}
+		<label>
+			{{input type='checkbox'
+				checked=channel.favoriteChannels.firstObject
+				disabled=channel.images.firstObject}} Find a radio you like and add it to your favorites
+		</label>
+	{{/link-to}}
+</div>

@@ -29,45 +29,44 @@
 @import 'layout/manchet';
 @import 'layout/sections';
 @import 'layout/grid'; // @todo refactor
-@import 'layout/sticky-footer'; // @todo refactor
-@import 'layout/new'; // @todo refactor - mix with bigstep?
 @import 'layout/intro';
 
-// UI components
-@import 'components/icon';
-@import 'components/tabs';
+// Forms
 @import 'components/custom-select';
 @import 'components/form-progress';
+@import 'components/checkbox-remote';
+
+// UI components
+@import 'components/aside';
+@import 'components/icon';
+@import 'components/tabs';
 @import 'components/note';
 @import 'components/list'; // @todo refactor
 @import 'components/loader';
 @import 'components/card';
-@import 'components/box-icon';
 @import 'components/cover';
 @import 'components/image-upload';
 @import 'components/channel';
 @import 'components/track';
-@import 'components/widgets';
 @import 'components/bigstep'; // @todo refactor - mix with layout/new??
+@import 'components/page-welcome';
 @import 'components/playback-external';
-@import 'components/blankstate';
 @import 'components/search';
 @import 'components/play-pause';
 @import 'components/flash-messages';
-// @import 'components/navigation';
-// @import 'components/annoncement';
 
 // Header area
 @import 'components/bar';
 @import 'components/nav-bar';
 @import 'components/logo';
-@import 'components/toggle-panel';
-@import 'components/panel-nav';
 
 // Footer area
 @import 'components/playback';
 @import 'components/player';
 
-// States
-@import 'layout/is-fullscreen'; // everything dark and big player
-@import 'layout/is-minimal'; // full bg color
+// Major UI States or the UI
+@import 'layout/root';
+
+// @import 'components/widget';
+// @import 'components/annoncement';
+// @import 'components/toggle-panel';

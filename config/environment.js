@@ -4,7 +4,6 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'radio4000',
     environment: environment,
-    contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
     firebase: 'https://radio4000-dev.firebaseio.com/',
     youtubeApiKey: 'AIzaSyCk5FiiPiyHON7PMLfLulM9GFmSYt6W5v4',
     torii: {
@@ -31,12 +30,6 @@ module.exports = function(environment) {
     }
   };
 
-  ENV.contentSecurityPolicy = {
-    'connect-src': "'self' wss://*.firebaseio.com",
-    'frame-src': "'self' https://www.youtube.com https://*.firebaseio.com",
-    'script-src': "'self' 'unsafe-eval' https://www.youtube.com/iframe_api https://s.ytimg.com https://*.firebaseio.com"
-  };
-
   ENV.CLOUDINARY_NAME = 'radio4000';
   ENV.CLOUDINARY_UPLOAD_PRESET = 'tc44ivjo';
 
@@ -60,17 +53,16 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
   }
 
+  if (environment === 'staging') {
+    // much.radio4000.com
+  }
+
   if (environment === 'production') {
+    // radio4000.com
     ENV.firebase = 'https://radio4000.firebaseio.com/';
     ENV.googleAnalytics = {
         webPropertyId: 'UA-3906535-23'
     };
-  }
-
-  if (environment === 'electron') {
-    ENV.baseURL = './';
-    ENV.locationType = 'hash';
-    ENV.firebase = 'https://radio4000.firebaseio.com/';
   }
 
   return ENV;

@@ -1,11 +1,23 @@
-// Sections
-// Use this when you need more vertical space
-//
+/**
+ * Sections
+ 	Use this for grouping components vertically
+ */
 
+.Sections {
+	padding-top: 2rem;
+	@media (min-width: $layout-s) {
+		padding-top: 4rem;
+	}
+}
 .Section {
 	clear: both;
-	padding-bottom: 2rem; // padding instead of margin - otherwise it cuts the box-shadow of .Box -_-
+	// padding instead of margin - otherwise it cuts the box-shadow of .Box -_-
+	padding-bottom: 2rem;
 }
+
+/**
+ * Modifiers
+ */
 
 .Section--space {
 	padding-top: 1em;

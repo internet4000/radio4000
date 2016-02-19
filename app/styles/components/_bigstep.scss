@@ -4,29 +4,27 @@
  **/
 
 .BigStep {
-	position: fixed;
-	left: 0;
-	right: 0;
-	top: 50%;
-	transform: translateY(-50%);
 	text-align: center;
-	color: white;
+	color: $bleach;
 
 	.BigStep-goto {
-		color: $white;
+		color: $bleach;
 		text-decoration: none;
 		transition: border-bottom-color 300ms $easing2;
-		border-bottom: 2px solid $white;
+		border-bottom: 2px solid $bleach;
 	}
 
 	.Loader {
 		font-size: 2rem;
 		margin-left: auto;
 		margin-right: auto;
-		color: $white;
+		color: $bleach;
 	}
 	input:active {
 		outline: none;
+	}
+	.Muted a {
+		color: rgba($white, 0.5);
 	}
 }
 .BigStep-container {

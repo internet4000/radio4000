@@ -1,12 +1,14 @@
 import Ember from 'ember';
 
-const {Controller, inject} = Ember;
+const {Controller, computed, inject} = Ember;
 
 export default Controller.extend({
-	queryParams: ['test'],
-	test: null,
 	player: inject.service(),
 	playerHistory: inject.service(),
+
+	userChannel: computed.alias('session.currentUser.channels.firstObject'),
+	// queryParams: ['listen'],
+	// listen: null,
 
 	actions: {
 		ytPlaying() {

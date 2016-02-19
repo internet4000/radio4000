@@ -1,41 +1,4 @@
 .NavBar {
 	min-height: rem($bar-height);
 	display: flex;
-	flex-flow: row nowrap; // items in one row, no wrapping
-	align-items: stretch; // full-height children
-	justify-content: space-between; // stretch main axis with space between
-}
-.NavBar-right {
-	margin-left: auto; // pushed to the right
-	display: flex;
-	align-items: stretch;
-	transition: transform 400ms $easing, opacity 200ms;
-
-	a {
-		display: flex;
-		align-items: center;
-		padding-top: 0.1em; // optical center
-		padding-left: 0.5rem;
-		padding-right: 0.5rem;
-		@media (min-width: $layout-m) {
-			padding-left: 1rem;
-			padding-right: 1rem;
-		}
-	}
-
-	// @todo refactor into some button icon modifier??
-	.icon-plus {
-		// vertical center
-		position: relative;
-		top: -0.03em;
-		margin-right: 0.3em;
-	}
-}
-.NavBar {
-	> .Logo {
-		flex-shrink: 0;
-	}
-	.Playback {
-		flex: 1;
-	}
 }

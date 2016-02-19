@@ -10,12 +10,12 @@
 		margin-right: -0.75rem;
 	}
 	&.Grid--firstHidden {
-		.Grid-item:first-child {
+		.Grid-cell:first-child {
 			display: none;
 		}
 	}
 }
-.Grid-item {
+.Grid-cell {
 	flex: 0 1 50%;
 	padding-left: 0.5rem;
 	padding-right: 0.5rem;
@@ -51,7 +51,7 @@
 		text-decoration: none;
 	}
 }
-.Grid-item--double {
+.Grid-cell--double {
 	@media (min-width: $layout-sm) {
 		flex-basis: 66%;
 		.no-flexbox & { max-width: 66%; }
@@ -69,11 +69,29 @@
 		.no-flexbox & { max-width: 2 * 14.28%; }
 	}
 }
+.Grid-cell--triple {
+	@media (min-width: $layout-sm) {
+		flex-basis: 100%;
+		.no-flexbox & { max-width: 100%; }
+	}
+	@media (min-width: $layout-ml) {
+		flex-basis: 75%;
+		.no-flexbox & { max-width: 75%; }
+	}
+	@media (min-width: $layout-l) {
+		flex-basis: 60%;
+		.no-flexbox & { max-width: 60%; }
+	}
+	@media (min-width: $layout-xl) {
+		flex-basis: 3 * 14.28%;
+		.no-flexbox & { max-width: 3 * 14.28%; }
+	}
+}
 
-// Make a grid's items equal height
+// Make a grid's items equal height.
 .Grid--full {
 	align-items: stretch;
-	.Grid-item {
+	.Grid-cell {
 		display: flex;
 	}
 }
@@ -82,25 +100,12 @@
 	text-align: center;
 }
 
-.Flex {
-	display: flex;
-	flex-flow: row wrap;
-
-	// todo: refactor
-	@media (min-width: $layout-s) {
-		.BtnGroup:last-child {
-			margin-left: 1rem;
-		}
-	}
-}
-
-/**
- * Modifier
- **/
-
-.Grid--1 {
-	min-width: 8rem;
-	.Grid-item {
-		flex-basis: 100%;
+// Wider cells that the default grid with a balanced
+// width to ensure channel titles are kept in one-line as
+// much as possible.
+.Grid--wide {
+	> .Grid-cell {
+		flex: 1 0 25% !important;
+		min-width: 17rem;
 	}
 }

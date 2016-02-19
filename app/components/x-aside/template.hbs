@@ -1,0 +1,34 @@
+<div class="Tabs">
+	{{#link-to 'channels.index' title="Selection and your favorite radios" class="Tabs-item"}}Home{{/link-to}}
+	{{#link-to 'channels.all' title="Find radio channels to enjoy" class="Tabs-item"}}Radios{{/link-to}}
+	{{!-- {{#link-to 'channels.history' title="Your listening history" class="Tabs-item"}}History{{/link-to}} --}}
+</div>
+
+{{#if userChannel}}
+	<div class="Tabs">
+		{{#link-to 'channel' userChannel class="Tabs-item" title="Go to your radio"}}
+			<small>Your radio</small><br>
+			{{userChannel.title}}
+		{{/link-to}}
+	</div>
+{{/if}}
+
+<div class="Muted">
+	{{#unless userChannel}}
+		{{#link-to 'channels.new' class="Aside-link" title="Create your own radio now or log in"}}Get your own radio{{/link-to}}<br>
+	{{/unless}}
+	{{#unless isAuthenticated}}
+		<p>{{#link-to 'login' class="Aside-link" title="Create your own radio now or log in"}}Sign in or register{{/link-to}}</p>
+	{{/unless}}
+</div>
+
+<div class="Tabs">
+	{{#link-to 'intro' title="Get introduced to Radio4000" class="Tabs-item"}}Introduction{{/link-to}}
+	{{#link-to 'about' title="Learn more about Radio4000" class="Tabs-item"}}About{{/link-to}}
+	{{#link-to 'help' title="Find help and answers to your questions" class="Tabs-item"}}Help{{/link-to}}
+	<a class="Tabs-item" href="http://blog.radio4000.com" target="_blank" title="How is the weather at Radio4000?">&rarr; Blog</a>
+</div>
+
+{{#if isAuthenticated}}
+	<p>{{#link-to 'logout' class="Aside-link" title="Log out from Radio4000"}}Log out{{/link-to}}</p>
+{{/if}}

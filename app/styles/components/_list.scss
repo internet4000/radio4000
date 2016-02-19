@@ -66,9 +66,9 @@
 		content: counter(list-counter, decimal);
 		display: inline-block;
 		position: absolute;
-		z-index: 1;
 		margin-left: 0.5rem;
-		margin-top: 6px;
+		margin-top: 0.8rem;
+		z-index: 1;
 		font-size: 10px;
 		color: $gray;
 	}

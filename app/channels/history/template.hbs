@@ -1,24 +1,28 @@
-<section class="Section">
-	<div class="Manchet Manchet--left">
-		<h1>Your listening <small>history</small></h1>
-		<p class="Muted">Only you can see this section</p>
-	</div>
+<div class="Sections">
+	<section class="Section">
+		<div class="Manchet">
+			<h1>Your listening <small>history</small></h1>
+			<p class="Muted">Only you can see your history.</p>
+		</div>
 
-	<div class="Container Container--full">
 		{{#if model.userSettings.playedChannels}}
-			{{#each-grid items=model.userSettings.playedChannels as |item|}}
-				{{channel-card channel=item}}
-			{{/each-grid}}
-			{{#btn-group}}
-				<button class="Btn" {{action 'clearChannelHistory'}}>Clear history</button>
-			{{/btn-group}}
+			<div class="Container Container--full">
+				{{#each-grid items=model.userSettings.playedChannels as |item|}}
+					{{channel-card channel=item}}
+				{{/each-grid}}
+				{{#btn-group}}
+					<button class="Btn" {{action 'clearChannelHistory'}}>Clear history</button>
+				{{/btn-group}}
+			</div>
 		{{else}}
-			<p>You haven't played any radios yet.</p>
-			{{#unless session.isAuthenticated}}
-				<p>{{#link-to 'login'}}Register or log in{{/link-to}}.</p>
-			{{/unless}}
+			<div class="Container">
+				{{#if session.isAuthenticated}}
+					<p>You haven't played any radios yet.</p>
+				{{else}}
+					<p>When you register, we'll save your listening history here so you can always come back to your last played radios and tracks.</p>
+					<p><a href="{{href-to 'login'}}">Register or log in</a>.</p>
+				{{/if}}
+			</div>
 		{{/if}}
-	</div>
-
-
-</section>
+	</section>
+</div>

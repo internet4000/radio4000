@@ -4,14 +4,28 @@
 
 // Controls
 .Playback {
+	width: 100%;
 	display: flex;
-	flex-flow: row nowrap; // items in one row, no wrapping
+	flex-flow: row wrap; // items in one row, no wrapping
 	align-items: stretch; // full-height children
 	justify-content: space-between; // distribute items
+	justify-content: center;
+
+	background: linear-gradient(lighten($primary-color,10%), $primary-color);
+	color: $text-color-invert;
+
+	@media (min-width: $layout-s) {
+		flex-wrap: nowrap;
+	}
 
 	.Bar--bottom & {
+		border-top: 1px solid $primary-color;
 		min-height: rem($bar-height + $progress-height);
 		padding-bottom: rem($progress-height);
+		// if width is less than 100%, add this:
+		// border-left: 1px solid rgb(111, 111, 111);
+		// border-top-right-radius: $border-radius;
+		// border-top-left-radius: $border-radius;
 	}
 
 	// icon size here
@@ -22,23 +36,72 @@
 	[class*=" icon-"] {
 		margin-right: 0;
 	}
-}
-.Playback-title {
-	@include size-1;
-	order: 2;
-	display: flex;
-	align-items: center;
-
 	a {
-		display: block;
 		color: $bleach;
 	}
 }
+.Playback-welcomeLink {
+	@include size-2;
+	margin-top: auto;
+	margin-bottom: auto;
+	text-align: center;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	i {
+		position: relative;
+		top: 1px;
+	}
+	img {
+		position: relative;
+		top: 2px;
+		margin-right: 0.5rem;
+	}
+}
+.Playback-cover {
+	user-select: none;
+	margin: 6px; // border
+	width: 41px;
+	height: 41px;
+}
+.Playback-channel {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	flex: 1;
+	h4 {
+		font-weight: 400;
+		font-style: italic;
+		@media (max-width: $layout-s) {
+			text-align: left;
+			padding-top: 0.5rem;
+		}
+	}
+	a {
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+	}
+}
+.Playback-title {
+	@include size-1;
+	// flex: 4;
+	// order: 3;
+	@media (max-width: $layout-s) {
+		text-align: center;
+	}
+
+	a {
+		display: block;
+	}
+}
 .Playback-buttons {
-	// no shrinking to avoid icons scaling down
-	flex-shrink: 0;
-	display: flex; // this works
+	flex: 1 0 auto; // expand
+	display: flex;
+	justify-content: center;
 	margin-right: 0.5rem;
+	@media (min-width: $layout-m) {
+		// center it a bit more
+		margin-right: 7vw;
+	}
 
 	.NonBtn {
 		align-content: center;
@@ -57,17 +120,40 @@
 		padding-left: 1rem;
 		padding-right: 1rem;
 		opacity: 0.4;
+		// margin-right: auto;
 		&.is-active {
 			opacity: 1;
 		}
 	}
+	.Playback-toggleVolume {
+		@include size-0;
+		margin-left: 1rem;
+		min-width: 47px; // avoid jumping when switching volume
+		text-align: center;
+	}
 }
-.Playback-videoBtn {
+.Playback-fullscreenBtn {
 	order: 3;
 	font-size: 1.4rem;
 	padding-right: 1rem;
+	padding-left: 1rem;
+	// margin-left: auto;
 
 	svg {
 		vertical-align: middle;
+	}
+}
+
+// Animate buttons that should only be visible when the player is ready.
+.Playback-title,
+.Playback-buttons,
+.Playback-toggleVolume,
+.Playback-fullscreenBtn {
+	transition: opacity 300ms $easing, transform 300ms $easing, height 300ms $easing;
+	.is-withoutPlayer & {
+		opacity: 0;
+		height: 0;
+		pointer-events: none;
+		transform: scale(0.95);
 	}
 }

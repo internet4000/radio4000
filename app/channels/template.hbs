@@ -1,15 +1,7 @@
-<div class="Tabs">
-	{{#link-to 'channels.index' title="Discover channels" class="Tabs-item"}}Discover{{/link-to}}
-	{{#link-to 'channels.all' title="Discover channels" class="Tabs-item"}}All{{/link-to}}
-	{{#link-to 'channels.history' title="Your listening history" class="Tabs-item"}}History{{/link-to}}
-</div>
-
-<section class="Container">
-	<p class="SingleNote">
-		{{#unless session.currentUser.channels.firstObject}}
-			Welcome! Start exploring radios or {{#link-to 'intro'}}get introduced to Radio4000.{{/link-to}}
-		{{/unless}}
-	</p>
-</section>
+{{#unless session.currentUser.channels.firstObject}}
+	<section class="Container u-pushDown">
+		<p>Welcome to Radio4000! Start listening to radios below, <a href=""></a> or <a href="{{href-to 'login'}}" title="">create your own radio now!</a></p>
+	</section>
+{{/unless}}
 
 {{outlet}}

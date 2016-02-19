@@ -8,7 +8,7 @@ export default Mixin.create({
 		return Math.floor(Math.random() * arrayLength);
 	},
 
-	// takes an array and returns it shuffled
+	// Takes an array and returns it shuffled
 	// http://bost.ocks.org/mike/shuffle/
 	shuffle(array) {
 		let m = array.length;

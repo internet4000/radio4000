@@ -2,19 +2,23 @@
  * Channel
  */
 
+.Channel {}
+
 .Channel--detail, {
 	position: relative;
-	z-index: 2; // above the player
 	background-color: $slightgray;
-	border-top: 1px solid hsl(0, 0%, 98%);
-	border-right: 2px solid hsl(0, 0%, 88%);
-	border-bottom: 3px solid hsl(0, 0%, 88%);
-	border-left: 1px solid hsl(0, 0%, 98%);
+	border-top: 1px solid $superlightgray;
+	border-left: 1px solid hsl(0,0%,80%);
+	border-right: 1px solid hsl(0,0%,80%);
 	border-radius: $border-radius;
-	margin-top: 3rem;
-	margin-left: 1rem;
-	margin-right: 1rem;
-	max-width: 40rem;
+	box-shadow: $box-shadow;
+
+	@media (min-width: $layout-s) {
+		// because the channel image is a bit outside (negative margin)
+		margin-top: 1.5rem;
+		// so logo scrolls nicely down the side
+		margin-left: 1rem;
+	}
 }
 
 .Channel--edit {
@@ -51,7 +55,7 @@
 		@include clearfix;
 		float: left;
 		width: 30%;
-		max-width: 13rem;
+		max-width: $sidebar-width;
 		padding-right: 1rem;
 		margin-top: -1.5rem;
 	}
@@ -91,9 +95,15 @@
 	}
 }
 .Channel-outlet {
-	margin-top: 2rem;
 	min-height: 2rem;
-	padding-bottom: 1.3rem;
+	margin-bottom: 0;
+	@media (min-height: 600px) {
+		// fixed height with scrollbars
+		position: relative;
+		height: calc(100vh - 27rem); // channel header height, more or less
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
 }
 .Channel-edit {
 	position: absolute;
@@ -113,8 +123,8 @@
 }
 .Channel-follow {
 	position: absolute;
-	top: 0.3rem;
-	right: -0.2rem;
+	top: 0.6rem;
+	right: 0.7rem;
 	z-index: 1;
 }
 .LastUpdated {
@@ -149,4 +159,14 @@
 	.Channel-media {
 		margin-top: 0;
 	}
+}
+
+
+/**
+ Channel-introduction
+ */
+
+.Channel-introduction {
+	// it is flexbox because of the Grid it is in (Grid-cell)
+	order: 1;
 }

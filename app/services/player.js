@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {debug, inject, warn} = Ember;
+const {debug, inject} = Ember;
 
 export default Ember.Service.extend({
 	playerRandom: inject.service(),
@@ -15,22 +15,27 @@ export default Ember.Service.extend({
 	// if it really did change (through the model)
 	// also sets the old one as inactive, and new as… active!
 	setPlaylist() {
-		let playlist = this.get('playlist');
-		let playlistId = this.get('playlist.id');
+		const playlist = this.get('playlist');
+		const playlistId = this.get('playlist.id');
 
 		this.get('model.channel').then(newPlaylist => {
-			let newPlaylistId = newPlaylist.get('id');
+			const newPlaylistId = newPlaylist.get('id');
 
 			if (Ember.isEqual(playlistId, newPlaylistId)) {
 				debug('Playlist already set.');
 				return false;
 			}
+
 			if (playlist) {
 				playlist.set('isInPlayer', false);
 			}
+
 			this.set('playlist', newPlaylist);
 			newPlaylist.set('isInPlayer', true);
 			debug('Playlist was set');
+			return this.get('playlist.tracks').then(items => {
+				this.get('playerRandom').setNewRandomPool(items);
+			});
 		});
 	},
 
@@ -39,6 +44,7 @@ export default Ember.Service.extend({
 		this.set('isPlaying', true);
 		this.get('playerHistory').setTrackAsPlayed(currentTrack);
 	},
+
 	pause() {
 		this.set('isPlaying', false);
 	},
@@ -49,7 +55,7 @@ export default Ember.Service.extend({
 	*/
 	playTrack(track) {
 		if (!track) {
-			warn('Play called without a track.');
+			debug('Play called without a track.');
 			return false;
 		}
 		// the router is injected with the 'player-route' initializer
@@ -74,9 +80,10 @@ export default Ember.Service.extend({
 		}
 		return this.prevNormal();
 	},
+
 	prevNormal() {
 		const playlist = this.get('playlist');
-		let prev = this.getPrev();
+		const prev = this.getPrev();
 
 		if (!prev) {
 			this.get('playerHistory').clearPlayerHistory();
@@ -86,6 +93,7 @@ export default Ember.Service.extend({
 
 		return this.playTrack(prev);
 	},
+
 	prevRandom() {
 		this.get('playerRandom').getPrevious().then(prev => {
 			return this.playTrack(prev);
@@ -104,9 +112,10 @@ export default Ember.Service.extend({
 		}
 		return this.nextNormal();
 	},
+
 	nextNormal() {
 		const playlist = this.get('playlist');
-		let next = this.getNext();
+		const next = this.getNext();
 
 		if (!next) {
 			this.get('playerHistory').clearPlayerHistory();
@@ -116,6 +125,7 @@ export default Ember.Service.extend({
 
 		return this.playTrack(next);
 	},
+
 	nextRandom() {
 		this.get('playerRandom').getNext().then(nextRandom => {
 			return this.playTrack(nextRandom);
@@ -175,15 +185,21 @@ export default Ember.Service.extend({
 		2- set pool of tracks to be used
 		and return it so we can use it as a promise
 	 */
+
 	activateRandom() {
 		this.set('isRandom', true);
 		this.get('playerHistory').clearPlayerHistory();
-		return this.get('playlist.tracks').then(items => {
-			this.get('playerRandom').setNewRandomPool(items);
-		});
+		return this.updateRandomPoolFromPlaylist();
 	},
+
 	deactivateRandom() {
 		debug('deactivateRandom');
 		this.set('isRandom', false);
+	},
+
+	updateRandomPoolFromPlaylist() {
+		return this.get('playlist.tracks').then(items => {
+			this.get('playerRandom').setNewRandomPool(items);
+		});
 	}
 });

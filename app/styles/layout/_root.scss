@@ -1,0 +1,81 @@
+/**
+ * Minimal ui styles for some of our major steps
+ * body class is added with the service 'uiStates'
+ **/
+
+.Root {
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: column;
+	@media (min-width: $layout-l) {
+		flex-direction: raw;
+	}
+}
+
+/**
+ * Panel is open
+ */
+.Root.is-panelLeftVisible {
+	.Aside--left {
+		transform: translate3d(0, 0, 0);
+	}
+	.SiteMain {
+		transform: translate3d(100%, 0, 0);
+		@media (min-width: $layout-s) {
+			transform: none;
+			padding-left: $sidebar-width;
+		}
+	}
+}
+
+
+/**
+ * Overlay style, purple background
+ */
+.Root.is-minimal {
+	.SiteMain {
+		padding-bottom: 0;
+		transition: background-color 300ms $easing2;
+		background-color: $primary-color;
+		color: $white;
+		min-height: 100vh;
+		/* flex */
+		display: flex;
+		box-align: center;
+		align-items: center;
+		align-content: center;
+		justify-content: center;
+
+		// Because colors are inverted, we adjust typography
+		h1,h2,h3 {
+			@include negative-text;
+		}
+		.Muted {
+			color: rgba($white, 0.6);
+		}
+	}
+	.ContextualNav {
+		transform: translate3d(100%, 0, 0);
+	}
+	.Player {
+		opacity: 0;
+		transform: translate3d(0, 100%, 0);
+	}
+	.Bar--bottom {
+		background-color: red;
+		transform: translate3d(0, 100%, 0);
+	}
+}
+
+/**
+ * Player is showing
+ */
+.Root.is-withPlayer {
+	.SiteMain {
+		order: 2;
+		padding-top: 0;
+	}
+	.Player {
+		order: 1;
+	}
+}

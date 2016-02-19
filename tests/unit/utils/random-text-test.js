@@ -17,7 +17,7 @@ test('Generate a random string of 4 characters for the newChannel.url', function
 
 		// if the string is in the array, we have a duplicate
 		// so don't push it to the array, to see how many duplicated
-		if (testedResults.indexOf(result) == -1) {
+		if (testedResults.indexOf(result) === -1) {
 			testedResults.push('result');
 		}
 

@@ -1,23 +1,20 @@
-.u-alignCenter {
-	text-align: center;
-}
+/**
+ * Utilities for aligning components
+ */
+
 .u-alignLeft {
 	float: left;
+}
+.u-alignCenter {
+	text-align: center;
 }
 .u-alignRight {
 	float: right;
 }
-
-.u-underline {
-	border-bottom: 2px solid white;
+.u-pushDown {
+	// enough to be below the logo
+	margin-top: 4rem;
 }
-/**
- * Vertical align elements with an unknown height
- * works in IE9+
- */
-
-.u-alignMiddle {
-	position: relative;
-	top: 50%;
-	transform: translateY(-50%);
+.u-hide {
+	display: none;
 }

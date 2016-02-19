@@ -146,7 +146,7 @@ export default Controller.extend(EmberValidations, {
 		},
 
 		deleteImage() {
-			this.get('model.coverImage').destroyRecord().then(function () {
+			this.get('model.coverImage').destroyRecord().then(() => {
 				debug('Deleted channel image.');
 			});
 		},
@@ -160,11 +160,10 @@ export default Controller.extend(EmberValidations, {
 			channel.save().then(() => {
 				debug('Saved --> channel');
 				this.transitionToRoute('channel', this.get('model.slug'));
-				flashMessages.info('Changes saved')
+				flashMessages.info('Changes saved');
 			}).catch(() => {
 				// This get triggered for exemple when firebase.security do not validate
-				// TODO make server errors better handled
-				debug('Channel did NOT save, probably firebase.securityRules');
+				flashMessages.warning(`Sorry, we couldn't save your radio. Please refresh your browser and try again.`);
 			}).finally(() => {
 				// anyways, reset UI
 				this.set('isSaving', false);

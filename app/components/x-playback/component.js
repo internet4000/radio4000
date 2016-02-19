@@ -1,17 +1,33 @@
 import Ember from 'ember';
+import {EKMixin, keyUp} from 'ember-keyboard';
 
-const {Component, inject, run, $} = Ember;
+const {Component, inject, on, run, $} = Ember;
 
-export default Component.extend({
+export default Component.extend(EKMixin, {
 	classNames: ['Playback'],
 	player: inject.service(),
 	uiStates: inject.service(),
+
+	activateKeyboard: Ember.on('init', function () {
+		this.set('keyboardActivated', true);
+	}),
+
+	onSpaceClick: on(keyUp(' '), function () {
+		this.send('togglePlay');
+	}),
 
 	actions: {
 		togglePlay() {
 			this.attrs.radioDevice.value.send('togglePlay');
 		},
+		toggleVolume() {
+			this.attrs.radioDevice.value.send('toggleVolume');
+		},
 		play() {
+			// const canPlay = get(this, 'player.model');
+			// if (!canPlay) {
+			// 	console.log('@todo play a random radio now');
+			// }
 			this.attrs.radioDevice.value.send('play');
 		},
 		pause() {
@@ -37,7 +53,7 @@ export default Component.extend({
 			// Scroll afterRender and a bit later to not jank the computer
 			run.scheduleOnce('afterRender', function () {
 				run.later(() => {
-					$('html, body').animate({
+					$('.Channel-outlet').animate({
 						scrollTop: $('.Track.is-current').offset().top - 90
 					}, 700, 'swing');
 				}, 100);

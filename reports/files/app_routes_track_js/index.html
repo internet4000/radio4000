@@ -97,7 +97,7 @@ export default Ember.Route.extend({
 		return this.store.findRecord(&#039;track&#039;, params.track_id);
 	},
 	afterModel(track) {
-		this.set(&#039;player.model&#039;, track);
+		this.get(&#039;player&#039;).playTrack(track);
 	}
 });</textarea>
   </div>
