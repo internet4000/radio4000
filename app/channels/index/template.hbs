@@ -21,16 +21,13 @@
 						<div class="Muted">
 							<p>Each selected channel has been curated by human ears and handpicked for its unquestionable quality. Listen to music you'll love, it's free!</p>
 						</div>
-						<p>&rarr; {{link-to 'See all channels' 'channels.all'}}</p>
-
-						<div class="Muted">
-							{{#unless model.userChannel}}
-								&rarr; {{#link-to 'channels.new' class="" title="Create your own radio now or log in"}}Create your own radio{{/link-to}}<br><br>
-							{{/unless}}
-							{{#unless session.isAuthenticated}}
-								&rarr; {{#link-to 'login' class="" title="Create your own radio now or log in"}}Sign in or register{{/link-to}}
-							{{/unless}}
-						</div>
+						<p>&rarr; {{link-to 'See all channels' 'channels.all'}}
+						{{#unless model.userChannel}}
+							<br>&rarr; {{#link-to 'channels.new' class="" title="Create your own radio now or log in"}}Create your own radio{{/link-to}}
+						{{/unless}}
+						{{#unless session.isAuthenticated}}
+							<br>&rarr; {{#link-to 'login' class="" title="Create your own radio now or log in"}}Sign in or register{{/link-to}}
+						{{/unless}}</p>
 					</div>
 				</div>
 			</div>

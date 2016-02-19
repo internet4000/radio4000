@@ -14,6 +14,15 @@
 		position: relative;
 		z-index: 2;
 	}
+
+	// When panel is open, avoid sticking.
+	.is-panelLeftVisible & {
+		margin-left: 2rem;
+		border-bottom-left-radius: $border-radius;
+		.Intro-bg {
+			border-bottom-left-radius: $border-radius;
+		}
+	}
 }
 .Intro-bg {
 	min-height: 60vh;
@@ -29,6 +38,7 @@
 	@media (min-height: 780px) {
 		padding-top: 10%;
 	}
+
 }
 .Intro-title {
 	margin-top: 4rem;
@@ -73,6 +83,8 @@
 	.Btn {
 		margin-right: 0.6em;
 		margin-bottom: 0.6em;
+		// Because it's on an image.
+		box-shadow: 0px 4px 0px -2px rgba(0, 0, 0, 0.4);
 	}
 }
 

@@ -34,15 +34,16 @@
 
 // Lazysizes loading
 .Cover img {
-	filter: blur(5px);
+	filter: blur(4px);
 	transition: filter 250ms, opacity 250ms;
 	&.lazyload {
 		opacity: 0.5;
 	}
 	&.lazyloading {
-		background-image: url(../assets/images/icons/loader.svg);
-		background-repeat: no-repeat;
-		background-position: center;
+		// Disabled because it wasn't smooth anyway.
+		// background-image: url(../assets/images/icons/loader.svg);
+		// background-repeat: no-repeat;
+		// background-position: center;
 	}
 	&.lazyloaded {
 		filter: blur(0);
