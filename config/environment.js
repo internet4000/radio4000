@@ -53,17 +53,16 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
   }
 
+  if (environment === 'staging') {
+    // much.radio4000.com
+  }
+
   if (environment === 'production') {
+    // radio4000.com
     ENV.firebase = 'https://radio4000.firebaseio.com/';
     ENV.googleAnalytics = {
         webPropertyId: 'UA-3906535-23'
     };
-  }
-
-  if (environment === 'electron') {
-    ENV.baseURL = './';
-    ENV.locationType = 'hash';
-    ENV.firebase = 'https://radio4000.firebaseio.com/';
   }
 
   return ENV;
