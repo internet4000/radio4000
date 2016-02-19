@@ -1,11 +1,20 @@
 import Ember from 'ember';
+import {EKMixin, keyUp} from 'ember-keyboard';
 
-const {Component, inject, run, $} = Ember;
+const {Component, inject, on, run, $} = Ember;
 
-export default Component.extend({
+export default Component.extend(EKMixin, {
 	classNames: ['Playback'],
 	player: inject.service(),
 	uiStates: inject.service(),
+
+	activateKeyboard: Ember.on('init', function () {
+		this.set('keyboardActivated', true);
+	}),
+
+	onSpaceClick: on(keyUp(' '), function () {
+		this.send('togglePlay');
+	}),
 
 	actions: {
 		togglePlay() {

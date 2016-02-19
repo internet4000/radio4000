@@ -1,12 +1,19 @@
 import Ember from 'ember';
 import ModalDialog from 'ember-modal-dialog/components/modal-dialog';
-// import {EKOnInsertMixin, keyUp} from 'ember-keyboard';
+// import {EKOnFocusMixin, keyUp} from 'ember-keyboard';
 
-const {$, on} = Ember;
+const {on, $} = Ember;
 
 export default ModalDialog.extend({
 	translucentOverlay: true,
 	overlayClassNames: ['ember-modal-overlay'],
+
+	// activateKeyboard: Ember.on('init', function () {
+	// 	this.set('keyboardActivated', true);
+	// }),
+	// onEscape: on(keyUp('Escape'), function () {
+	// 	this.sendAction('close');
+	// })
 
 	setup: on('didInsertElement', function () {
 		$('body').on('keyup.modal-dialog', e => {
@@ -19,14 +26,4 @@ export default ModalDialog.extend({
 	teardown: on('willDestroyElement', function () {
 		$('body').off('keyup.modal-dialog');
 	})
-
-	// activateKeyboard: on('init', function () {
-	// 	console.log('HELLO');
-	// 	this.set('keyboardActivated', true);
-	// }),
-
-	// closeModalsOnKeypress: on(keyUp('a'), function () {
-	// 	console.log('yea');
-	// 	this.sendAction('close');
-	// })
 });
