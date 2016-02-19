@@ -19,7 +19,7 @@
 		userChannel=userChannel}}
 
 	{{#if session.isAuthenticated}}
-		{{href-to 'Add track' 'channel.add' userChannel class="Btn Btn--primary AddTrackButton" title="Add a new track to your radio"}}
+		<a href="{{href-to 'channel.add' userChannel}}" class="Btn Btn--primary AddTrackButton" title="Add a new track to your radio">Add track</a>
 	{{/if}}
 
 	<main class="SiteMain">

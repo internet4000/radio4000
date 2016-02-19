@@ -23,7 +23,8 @@
 			<br>
 			<br>
 			{{#unless isDeleting}}
-				{{href-to 'No, I want to keep my radio!' 'channel.index' model class="Btn Btn--primary"}}
+				<a href="{{href-to 'channel.index' model}}" class="Btn Btn--primary">No, I want to keep my radio!</a>
+
 			{{/unless}}
 		</div>
 	</section>

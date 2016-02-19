@@ -1,5 +1,5 @@
 {{#if session.isAuthenticated}}
-	{{href-to 'Log out' 'logout' class="Muted" title="Log out from Radio4000"}}
+	<a href="{{href-to 'logout'}}" class="Muted" title="Log out from Radio4000">Log out</a>
 {{else}}
-	{{href-to 'Register or log in' 'login' title="Register or log in to Radio4000"}}
+	<a href="{{href-to 'login' title="Register or log in to Radio4000"}}">Register or log in</a>
 {{/if}}

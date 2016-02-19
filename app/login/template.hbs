@@ -6,12 +6,12 @@
 			{{#if session.currentUser.channels.firstObject}}
 				<h1 class="BigStep-title">Your radio</h1>
 				<p class="BigStep-subTitle">
-					{{href-to session.currentUser.channels.firstObject.title 'channel' session.currentUser.channels.firstObject class="BigStep-goto" title="Your radio"}}
+					<a href="{{href-to 'channel' session.currentUser.channels.firstObject}}" class="BigStep-goto" title="Your radio">{{session.currentUser.channels.firstObject.title}}</a>
 				</p>
 			{{else}}
 				<p>You are already logged in</p>
 				<p class="BigStep-buttons">
-					{{href-to 'Create my radio' 'channels.new' class="Btn Btn--transparent Btn--large" title="Your radio"}}
+					<a href="{{href-to 'channels.new'}}" class="Btn Btn--transparent Btn--large" title="Your radio">Create my radio</a>
 				</p>
 			{{/if}}
 
@@ -28,7 +28,7 @@
 						Facebook
 					</button>
 				</p>
-				<p class="Muted"><br><br>{{href-to 'Go back' 'application'}}</p>
+				<p class="Muted"><br><br><a href="{{href-to 'application'}}">Go back</a></p>
 			{{else}}
 				<p class="BigStep-subTitle">Please wait</p>
 				{{is-loading}}

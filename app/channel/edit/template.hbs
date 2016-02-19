@@ -12,12 +12,9 @@
 					<form class="Channel-media">
 						<div class="Form-group">
 							{{#image-upload imageId=newImage}}
-							{{channel-cover image=model.coverImage}}
-							Drag 'n drop an image for your radio here
-							{{/image-upload}}
-
+							{{channel-cover image=model.coverImage}}Drag 'n drop an image for your radio here{{/image-upload}}
 							{{#if model.coverImage}}
-							<button class="Btn Btn--danger Btn--text" {{action 'deleteImage'}}>Delete image</button>
+								<button class="Btn Btn--danger Btn--text" {{action 'deleteImage'}}>Delete image</button>
 							{{/if}}
 						</div>
 					</form>
@@ -67,14 +64,14 @@
 							<button type="submit" class="Btn Btn--primary" disabled={{isSaving}}>
 								{{#if isSaving}}Saving…{{else}}Save radio{{/if}}
 							</button>
-							{{href-to 'Cancel editing' 'channel.index' model class="Btn Btn--text Muted"}}
+							<a href="{{href-to 'channel.index' model}}" class="Btn Btn--text Muted">Cancel editing</a>
 						</div>
 					</form>
 					{{errors-display showErrors=showErrors errors=errors.server}}
 				</div>
 			</div>
 
-			<p>{{href-to 'Delete your radio' 'channel.delete' model class="Btn Btn--text Muted"}}</p>
+			<p><a class="Btn Btn--text Muted" href="{{href-to 'channel.delete' model}}">Delete your radio</a></p>
 		</div>
 	</section>
 </div>
