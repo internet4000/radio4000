@@ -41,6 +41,7 @@
     "ember-data": "^2.3.3",
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
+    "ember-keyboard": "0.2.5",
     "ember-load-initializers": "^0.5.1",
     "ember-resolver": "^2.0.3",
     "fs": "0.0.2",

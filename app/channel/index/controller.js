@@ -60,7 +60,6 @@ export default Ember.Controller.extend(EmberValidations, createTrackMixin, {
 			});
 		},
 
-
 		createNewTrack(trackProperties) {
 			const channel = this.get('model');
 
