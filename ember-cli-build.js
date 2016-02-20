@@ -1,15 +1,41 @@
-/*jshint node:true*/
+/* jshint node:true*/
 /* global require, module */
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+var autoprefixer = require('autoprefixer');
+var atImport = require('postcss-import');
 
-module.exports = function(defaults) {
+module.exports = function (defaults) {
   var app = new EmberApp(defaults, {
-
-    // dont pollute our index.html with meta data
+    // Don't pollute our index.html with meta data.
     storeConfigInMeta: false,
 
+    // Don't fingerprint favicons as browsers expect standard names.
     fingerprint: {
-      exclude: ['apple-touch-icon', 'favicon', 'mstile', 'main.js']
+      exclude: ['apple-touch-icon', 'favicon', 'mstile']
+    },
+
+    // Very verbose but this adds autoprefixer and atImport.
+    styleProcessorOptions: {
+      processors: [
+        {
+          type: 'sass'
+        },
+        {
+          type: 'postcss',
+          plugins: [
+            {
+              module: atImport
+            },
+            {
+              module: autoprefixer,
+              options: {
+                browsers: ['last 2 versions']
+              }
+            }
+          ]
+        }
+      ],
+      extension: 'scss'
     }
   });
 
