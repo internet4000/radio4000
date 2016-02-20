@@ -16,9 +16,6 @@ const base = '//res.cloudinary.com/radio4000/image/upload';
 const defaultQuality = 70;
 
 export function imgUrl(imageId, hash) {
-	console.log(imageId);
-	console.log(hash);
-
 	let url = '';
 	const transforms = [];
 
