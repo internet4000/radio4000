@@ -7,7 +7,6 @@
 	// top: 0;
 	// height: 100%;
 	// z-index: 1;
-	height: 100vh;
 	overflow-y: auto;
 	display: flex;
 	flex-flow: column nowrap;
@@ -21,6 +20,8 @@
 	width: 90%;
 	height: 100%;
 	padding-top: 5.3rem; // space for our top bar
+	height: 100vh;
+	padding-left: 0.7rem; // same
 	// padding-bottom: $bar-height * 1.25; // space for our bottom bar
 	// transition: transform 300ms $easing2;
 	// transform: translate3d(-100%, 0, 0);
@@ -32,9 +33,12 @@
 }
 .Aside--right {
 	display: none;
-	order: 2;
 	flex-basis: 20rem;
 	box-shadow: -4px 1px 4px $boxshadowgray;
+	position: fixed;
+	top: auto;
+	right: 3rem;
+	bottom: 0;
 }
 
 /**
