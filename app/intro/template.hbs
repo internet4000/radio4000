@@ -30,9 +30,7 @@
 			<div class="Grid Grid--firstHidden">
 				{{#each model.featured as |item|}}
 				<div class="Grid-cell">
-					{{#link-to 'channel' item}}
-						{{channel-card channel=item}}
-					{{/link-to}}
+					{{channel-card channel=item}}
 				</div>
 				{{/each}}
 				<div class="Grid-cell">
@@ -64,18 +62,12 @@
 		<div class="Container Container--full">
 			<div class="Grid">
 				<div class="Grid-cell">
-					{{#link-to 'channel' model.featured.firstObject}}
-						{{channel-card channel=model.featured.firstObject}}
-					{{/link-to}}
+					{{channel-card channel=model.featured.firstObject}}
 				</div>
 				<div class="Grid-cell Grid-cell--double">
-					<div class="Muted">
-						<p>This channel is called <strong>{{model.featured.firstObject.title}}</strong>.</p>
-						<p>Because the human behind can only have one channel, there's nowhere for the good music to hide. Highs and lows, ebbs and flows, Cambodian funk and techno. Each mix is exactly that — a mix.</p>
-						<p>{{#link-to 'channel' model.featured.firstObject}}
-							Listen to {{model.featured.firstObject.title}}
-						{{/link-to}} now!</p>
-					</div>
+					<p>This channel is called <strong>{{model.featured.firstObject.title}}</strong>.</p>
+					<p>Because the human behind can only have one channel, there's nowhere for the good music to hide. Highs and lows, ebbs and flows, Cambodian funk and techno. Each mix is exactly that — a mix.</p>
+					<p>{{#link-to 'channel' model.featured.firstObject}}Listen to {{model.featured.firstObject.title}}{{/link-to}} now!</p>
 				</div>
 			</div>
 		</div>
