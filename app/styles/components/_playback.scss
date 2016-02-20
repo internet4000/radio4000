@@ -151,6 +151,10 @@
 }
 .Playback-player {
 	order: 1;
+	background-image: url('../assets/images/noise.gif');
+	background-size: cover;
+   background-position: center center;
+
 }
 
 // Animate buttons that should only be visible when the player is ready.
