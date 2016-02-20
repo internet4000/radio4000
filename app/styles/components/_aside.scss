@@ -34,11 +34,16 @@
 .Aside--right {
 	display: none;
 	flex-basis: 20rem;
-	box-shadow: -4px 1px 4px $boxshadowgray;
+	box-shadow: -5px -3px 4px $boxshadowgray;
 	position: fixed;
+	z-index: 1;
 	top: auto;
-	right: 3rem;
+	right: 1.5rem;
 	bottom: 0;
+	width: 19rem;
+	@media (min-width: $layout-m) {
+		right: 3rem;
+	}
 }
 
 /**
