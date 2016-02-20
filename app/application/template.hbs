@@ -32,18 +32,18 @@
 		{{outlet}}
 	</main>
 
-	<div class="Bar Bar--bottom">
-		<div class="Player">
-			{{ember-youtube ytid=player.model.ytid
-				delegate=this
-				delegate-as="emberYoutube"
-				autoplay="true"
-				playing="ytPlaying"
-				paused="ytPaused"
-				ended="ytEnded"
-				error="ytError"
-				showProgress="true"}}
-		</div>
-		{{x-playback radioDevice=emberYoutube}}
+ 	<div class="Aside Aside--right">
+		{{#x-playback radioDevice=emberYoutube}}
+				{{ember-youtube class="Player"
+					ytid=player.model.ytid
+					delegate=this
+					delegate-as="emberYoutube"
+					autoplay="true"
+					playing="ytPlaying"
+					paused="ytPaused"
+					ended="ytEnded"
+					error="ytError"
+					showProgress="true"}}
+		{{/x-playback}}
 	</div>
 {{/app-root}}

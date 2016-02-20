@@ -6,10 +6,11 @@
 .Playback {
 	width: 100%;
 	display: flex;
-	flex-flow: row wrap; // items in one row, no wrapping
+	flex-flow: column nowrap; // items in one row, no wrapping
 	align-items: stretch; // full-height children
 	justify-content: space-between; // distribute items
-	justify-content: center;
+	justify-content: flex-start;
+	flex: 1;
 
 	background: linear-gradient(lighten($primary-color,10%), $primary-color);
 	color: $text-color-invert;
@@ -58,16 +59,38 @@
 	}
 }
 .Playback-cover {
-	user-select: none;
-	margin: 6px; // border
-	width: 41px;
-	height: 41px;
+	order: 1;
+	margin: 0.5rem; // border
+	// margin: 6px; // border
+	// width: 41px;
+	// height: 41px;
+	img {
+		width: 100%;
+	}
+}
+.Playback-text {
+	order: 1;
+	flex: 2;
+	@include size-1;
+	padding: 0.5rem;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	overflow-y: scroll;
+
+	a {
+		display: block;
+	}
 }
 .Playback-channel {
+	order: 1;
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: center;
-	flex: 1;
+	text-align: center;
+	flex: 0;
 	h4 {
 		font-weight: 400;
 		font-style: italic;
@@ -81,20 +104,14 @@
 		padding-right: 0.5rem;
 	}
 }
-.Playback-title {
-	@include size-1;
-	// flex: 4;
-	// order: 3;
-	@media (max-width: $layout-s) {
-		text-align: center;
-	}
-
-	a {
-		display: block;
-	}
+.Playback-description {
+	font-style: italic;
+   padding-top: 0.2rem;
+	font-size: 0.8rem;
 }
 .Playback-buttons {
-	flex: 1 0 auto; // expand
+	order: 1;
+	flex: 0 0 auto;
 	display: flex;
 	justify-content: center;
 	margin-right: 0.5rem;
@@ -132,20 +149,28 @@
 		text-align: center;
 	}
 }
+.Playback-sizeButtons {
+	font-size: 0.8rem;
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+}
 .Playback-fullscreenBtn {
-	order: 3;
-	font-size: 1.4rem;
-	padding-right: 1rem;
-	padding-left: 1rem;
+	order: 0;
+	// padding-right: 0.3rem;
+	// padding-left: 0.4rem;
 	// margin-left: auto;
 
 	svg {
 		vertical-align: middle;
 	}
 }
+.Playback-player {
+	order: 1;
+}
 
 // Animate buttons that should only be visible when the player is ready.
-.Playback-title,
+.Playback-text,
 .Playback-buttons,
 .Playback-toggleVolume,
 .Playback-fullscreenBtn {

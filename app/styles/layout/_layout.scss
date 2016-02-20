@@ -27,6 +27,7 @@ body {
 	width: 100%;
 	transition: padding 200ms $easing;
 	overflow-y: auto;
+	flex: 2;
 }
 
 // Set background for ember-modals

@@ -1,19 +1,25 @@
 {{#if channel.coverImage}}
+<div class="Playback-cover">
 	<img class="Playback-cover" src="{{img-url channel.coverImage.src w="50" h="50" transforms="c_thumb,c_fill,fl_lossy"}}" alt="{{channel.title}}" title="You're listening to {{channel.title}}">
+</div>
 {{/if}}
+
 {{#if player.model}}
 	<div class="Playback-channel">
 		<h4>
 			<a href="{{href-to 'channel' channel}}">{{channel.title}}</a>
 		</h4>
+	<div class="Playback-text">
 		<div class="Playback-title" title="Current track / go to current radio">
-			{{#if player.model}}
-				<div {{action "scrollToTrack"}}>
-					{{#link-to 'track' channel player.model replace=true}}{{player.model.title}}{{/link-to}}
-				</div>
-			{{else}}
-			{{/if}}
+			<div {{action "scrollToTrack"}}>
+				{{#link-to 'track' channel player.model replace=true}}
+					{{player.model.title}}
+				{{/link-to}}
+			</div>
 		</div>
+		{{#if player.model.body}}
+			<p class="Playback-description">"{{player.model.body}}"</p>
+		{{/if}}
 	</div>
 {{/if}}
 
@@ -23,6 +29,20 @@
 		<img src="assets/images/icons/sound.gif" alt=""> Find a radio channel to play!
 	{{/link-to}}
 {{/unless}}
+
+<div class="Playback-sizeButtons">
+	<button class="Playback-fullscreenBtn Btn" {{action 'toggleFullscreen'}} title="Toggle fullscreen video">
+		{{#if uiStates.isFullscreen}}
+			{{x-icon i='arrows-compress'}}
+		{{else}}
+			{{x-icon i='arrows-expand'}}
+		{{/if}}
+	</button>
+</div>
+
+<div class="Playback-player">
+	{{yield}}
+</div>
 
 <div class="Playback-buttons">
 	<button class="Playback-shuffle Btn Btn--text  {{if player.isRandom 'is-active'}}" {{action 'toggleRandom'}} title="Toggle shuffle playback">
@@ -42,11 +62,3 @@
 	    {{#if radioDevice.isMuted}}Unmute{{else}}Mute{{/if}}
 	</button>
 </div>
-
-<button class="Playback-fullscreenBtn NonBtn" {{action 'toggleFullscreen'}} title="Toggle fullscreen video">
-	{{#if uiStates.isFullscreen}}
-		{{x-icon i='arrows-compress'}}
-	{{else}}
-		{{x-icon i='arrows-expand'}}
-	{{/if}}
-</button>
