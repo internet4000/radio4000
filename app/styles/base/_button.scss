@@ -148,6 +148,12 @@
 		border-color: transparent;
 	}
 }
+.Btn--round {
+	padding: 1.5rem 1.6rem 1.4rem 1.5rem;
+	border-radius: 50%;
+	border-left: 2px solid $primary-color;
+	border-bottom: 2px solid $primary-color;
+}
 
 // Shows either a up or down indicator
 // according to sorting method
@@ -175,4 +181,35 @@
 	&:hover {
 		cursor: pointer;
 	}
+}
+
+
+/**
+ * Big play button
+ **/
+
+@keyframes Spinz {
+	0%{
+		transform: scale(0.2) rotate(360deg);
+	}
+	100%{
+		transform: scale(1) rotate(0);
+	}
+}
+
+.PlayButton {
+	/* animation */
+	animation-name: Spinz;
+	animation-duration: 1.5s;
+	animation-iteration-count: 1;
+	animation-delay: 1s;
+	animation-fill-mode: both;
+	/* styles */
+	position: fixed;
+	bottom: 1rem;
+	right: 1rem;
+	color: white;
+	z-index: 3;
+	// transform: translateX(0);
+	// transition: transform 200ms $easing;
 }
