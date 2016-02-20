@@ -85,8 +85,13 @@
 	top: -1rem;
 	left: 0.5rem;
 	@media (min-width: $layout-s) {
-		top: -2.4rem;
+		top: -3rem;
 		left: 0;
+	}
+
+	svg,
+	i {
+		margin-right: 0.3rem;
 	}
 }
 .Channel-outlet {

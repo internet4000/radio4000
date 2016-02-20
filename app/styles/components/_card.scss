@@ -46,14 +46,6 @@
 		}
 	}
 }
-.ChannelCard-playback,
-.Channel-playback {
-	// remove default margin because icon is alone
-	[class^="icon-"],
-	[class*=" icon-"] {
-		margin-right: auto;
-	}
-}
 .ChannelCard-overlayBtn {
 	position: absolute;
 	top: 0.3rem;
