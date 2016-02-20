@@ -3,9 +3,11 @@
 	by Hugo Vieilledent and Oskar Rough Mosumgaard
 */
 
-// Third party
-@import 'ember-modal-dialog/ember-modal-structure';
-@import 'ember-modal-dialog/ember-modal-appearance';
+// Third party (automatically imported from `./node_modules`)
+@import 'node_modules/ember-modal-dialog/app/styles/ember-modal-dialog/ember-modal-structure';
+@import 'node_modules/ember-modal-dialog/app/styles/ember-modal-dialog/ember-modal-appearance';
+@import 'node_modules/normalize.css/normalize';
+@import 'node_modules/suitcss-base/lib/base';
 
 // Utilities
 @import 'utilities/align';
@@ -15,7 +17,6 @@
 
 // Base (config and everything else without classes)
 @import 'base/fonts';
-@import 'base/normalize-custom';
 @import 'base/config';
 @import 'base/base';
 @import 'base/form';
