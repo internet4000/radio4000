@@ -1,15 +1,15 @@
-{{#if player.model.channel.coverImage}}
-	<img class="Playback-cover" src="{{player.model.channel.coverImage.thumbnail}}" alt="{{player.model.channel.title}}" title="You're listening to {{player.model.channel.title}}">
+{{#if channel.coverImage}}
+	<img class="Playback-cover" src="{{img-url channel.coverImage.src w="50" h="50" transforms="c_thumb,c_fill,fl_lossy"}}" alt="{{channel.title}}" title="You're listening to {{channel.title}}">
 {{/if}}
 {{#if player.model}}
 	<div class="Playback-channel">
 		<h4>
-			<a href="{{href-to 'channel' player.model.channel}}">{{player.model.channel.title}}</a>
+			<a href="{{href-to 'channel' channel}}">{{channel.title}}</a>
 		</h4>
 		<div class="Playback-title" title="Current track / go to current radio">
 			{{#if player.model}}
 				<div {{action "scrollToTrack"}}>
-					{{#link-to 'track' player.model.channel player.model replace=true}}{{player.model.title}}{{/link-to}}
+					{{#link-to 'track' channel player.model replace=true}}{{player.model.title}}{{/link-to}}
 				</div>
 			{{else}}
 			{{/if}}

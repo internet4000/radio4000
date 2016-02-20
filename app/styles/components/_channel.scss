@@ -39,21 +39,16 @@
 	position: relative;
 	float: left;
 	width: 100%;
-	margin-right: 1.8rem;
-	@media (min-width: $layout-m) {
-		margin-right: 0;
-		float: right;
-	}
 }
 .Channel-media {
 	@include clearfix;
 	margin-top: -1rem;
-	max-width: 10rem;
+	// max-width: 10rem;
 	margin-left: auto;
 	margin-right: auto;
 	@media (min-width: $layout-s) {
-		@include clearfix;
 		float: left;
+		min-width: 4rem;
 		width: 30%;
 		max-width: $sidebar-width;
 		padding-right: 1rem;

@@ -14,19 +14,19 @@
 							{{#if canEdit}}
 								{{#link-to 'channel.edit' model}}
 									<div class="Channel-cover">
-										{{channel-cover image=model.coverImage onPlay="play"}}
+										{{channel-cover src=model.coverImage.src}}
 									</div>
 								{{/link-to}}
 							{{else}}
 								<div class="Channel-cover">
-									{{channel-cover image=model.coverImage onPlay="play"}}
+									{{channel-cover src=model.coverImage.src}}
 								</div>
 							{{/if}}
 						</div>
 
 						{{#unless canEdit}}
 							<span class="Channel-follow Follow">
-								{{btn-favorite action="toggleFavorite" isFavorite=isFavorite class="NonBtn"}}
+								{{btn-favorite action="toggleFavorite" title="Save this radio to your favorites" isFavorite=isFavorite class="NonBtn"}}
 							</span>
 						{{/unless}}
 
