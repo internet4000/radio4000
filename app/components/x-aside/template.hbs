@@ -7,6 +7,9 @@
 {{#if userChannel}}
 	<div class="Tabs">
 		{{#link-to 'channel' userChannel class="Tabs-item Tabs-item--bg" title="Go to your radio"}}
+			{{#if userChannel.coverImage.src}}
+				<img src="{{img-url userChannel.coverImage.src w="20" h="58" c="fill"}}" alt="">
+			{{/if}}
 			<small>Your radio</small><br>
 			{{userChannel.title}}
 		{{/link-to}}
