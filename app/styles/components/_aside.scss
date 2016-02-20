@@ -22,7 +22,7 @@
 .Aside--left {
 	width: 90%;
 	height: 100%;
-	padding-top: 4.3rem; // space for our top bar
+	padding-top: 5.3rem; // space for our top bar
 	padding-bottom: $bar-height * 1.25; // space for our bottom bar
 	transition: transform 200ms $easing;
 	transform: translate3d(-100%, 0, 0);

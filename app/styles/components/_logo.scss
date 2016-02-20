@@ -5,7 +5,8 @@
 .Logo {
 	cursor: pointer;
 	display: block;
-	padding-left: 0.7rem;
+	padding-top: 2rem;
+	padding-left: 1.3rem;
 	padding-right: 1rem;
 	user-select: none; // don't highlight
 	color: $bleach;
@@ -56,6 +57,11 @@
 	}
 }
 .Logo-img {
+	// transition: filter 300ms $easing;
+	// .Logo:hover & {
+	// 	filter: blur(4px);
+	// }
+
 	vertical-align: middle;
 	max-height: 28px;
 	@media (min-width: $layout-sm) {
