@@ -4,6 +4,7 @@
 	background-color: $white;
 	outline: 2px solid transparent;
 	transition: outline 1000ms $easing;
+	border-radius: $border-radius;
 	&.is-active {
 		outline-color: $primary-color;
 	}

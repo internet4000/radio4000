@@ -6,7 +6,7 @@
 .Sections {
 	padding-top: 2rem;
 	@media (min-width: $layout-s) {
-		padding-top: 4rem;
+		padding-top: 3rem;
 	}
 }
 .Section {
@@ -22,7 +22,6 @@
 .Section--space {
 	padding-top: 1em;
 }
-
 .Section--messaging {
 	padding-bottom: 0;
 	padding-top: 1.6em;
