@@ -44,6 +44,14 @@
 		margin-right: 0.3rem;
 	}
 }
+.Logo-img {
+	vertical-align: middle;
+	max-width: 100px;
+	// transition: filter 300ms $easing;
+	// .Logo:hover & {
+	// 	filter: blur(4px);
+	// }
+}
 .Logo-dot {
 	display: inline-block;
 	width: 0.6rem;
@@ -54,17 +62,5 @@
 
 	.is-panelLeftVisible & {
 		transform: scale(0.8);
-	}
-}
-.Logo-img {
-	// transition: filter 300ms $easing;
-	// .Logo:hover & {
-	// 	filter: blur(4px);
-	// }
-
-	vertical-align: middle;
-	max-height: 28px;
-	@media (min-width: $layout-sm) {
-		max-height: 32px;
 	}
 }

@@ -81,10 +81,10 @@
 				<div class="Intro-buttons">
 					{{#link-to 'channels' class="Intro-btn" title="Discover music by channels"}}
 						Discover radios &rarr;
-					{{/link-to}}
+					{{/link-to}}<br>
 					{{#if session.currentUser.channels.firstObject}}
 						{{#link-to 'channel' session.currentUser.channels.firstObject class="Intro-btn Intro-btn--primary" title="Your radio"}}
-							Go to your “{{session.currentUser.channels.firstObject.title}}”
+							Go to your channel &rarr; <strong>{{session.currentUser.channels.firstObject.title}}</strong>
 						{{/link-to}}
 					{{else}}
 						{{#link-to 'channels.new' class="Intro-btn Intro-btn--primary" title="Continue to create your radio"}}

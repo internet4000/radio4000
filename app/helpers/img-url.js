@@ -8,7 +8,6 @@ import Ember from 'ember';
 	1. You pass it a cloudinary public ID like this: imprint-85_haowtdg
 	2. Then we add the base and optional transformations to get something like this:
 
-	//img.gb-online.com/q_100,w_1000,e_sharpen:100/gb-online.com/Pockit-Capri-Blue-campaign-portrait-28-17_jor3ek
 	//res.cloudinary.com/radio4000/image/upload/c_thumb,h_240,w_240,c_fill,fl_lossy,q_60/v1428245306/${src}
 */
 
