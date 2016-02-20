@@ -1,12 +1,10 @@
 <div class="Channel-outlet">
 	{{#if model.favoriteChannels}}
-
 		<div class="Container Section">
 			<p>{{model.favoriteChannels.length}} favorites.</p>
 		</div>
 		{{channels-list channels=model.favoriteChannels}}
 	{{else}}
-
 		<div class="Container Section">
 			<p>This channel doesn't have any favorites, yet.</p>
 		</div>

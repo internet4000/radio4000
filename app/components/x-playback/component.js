@@ -1,12 +1,14 @@
 import Ember from 'ember';
 import {EKMixin, keyUp} from 'ember-keyboard';
 
-const {Component, inject, on, run, $} = Ember;
+const {Component, inject, computed, on, run, $} = Ember;
 
 export default Component.extend(EKMixin, {
 	classNames: ['Playback'],
 	player: inject.service(),
 	uiStates: inject.service(),
+
+	channel: computed.alias('player.model.channel'),
 
 	activateKeyboard: Ember.on('init', function () {
 		this.set('keyboardActivated', true);

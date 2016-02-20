@@ -12,7 +12,7 @@
 					<form class="Channel-media">
 						<div class="Form-group">
 							{{#image-upload imageId=newImage}}
-							{{channel-cover image=model.coverImage}}Drag 'n drop an image for your radio here{{/image-upload}}
+							{{channel-cover src=model.coverImage.src}}Drag 'n drop an image for your radio here{{/image-upload}}
 							{{#if model.coverImage}}
 								<button class="Btn Btn--danger Btn--text" {{action 'deleteImage'}}>Delete image</button>
 							{{/if}}

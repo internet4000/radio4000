@@ -1,14 +1,13 @@
-{{!-- this line instead of img thumb is fun with background attached --}}
-{{!-- <div class="Cover-image" style="background-image: url({{image.thumb}})"> --}}
 <div class="Cover-image">
-	{{#if image}}
-		{{!-- <img src="{{image.thumbnail}}" alt=""> --}}
-		<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{{image.thumbnail}}" class="lazyload" alt="">
-	{{/if}}
-
-	{{#if canPlay}}
-		<button class="Cover-button" {{action "play"}} title="Play">
-			{{x-icon i="play"}}
-		</button>
+	{{#if hasBlock}}
+		{{yield}}
+	{{else if src}}
+		<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+			class="lazyload"
+			alt=""
+			data-sizes="auto"
+			data-srcset="
+				{{img-url src w="150" h="150" transforms="c_thumb,c_fill,fl_lossy"}} 150w,
+				{{img-url src w="250" h="250" transforms="c_thumb,c_fill,fl_lossy"}} 250w">
 	{{/if}}
 </div>
