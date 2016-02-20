@@ -60,6 +60,7 @@ $lightgray-saturated: hsl(45, 5%, 89%);
 $lightgray: hsl(0, 0%, 91%);
 $mediumlightgray: hsl(0, 0%, 85%);
 $mediumgray: hsl(0, 0%, 70%);
+$boxshadowgray: hsla(0, 0%, 78%, 0.8);
 $gray: hsl(0, 0%, 50%);
 $dark: hsl(0, 0%, 30%);
 $black: hsl(0, 0%, 10%);
@@ -92,9 +93,9 @@ $layout-xl: rem(1450);
 $layout-xxl: rem(1700);
 
 // Other stuff…
-$box-shadow: 0px 4px 0px -2px hsla(0, 0%, 78%, 0.8);
-$box-shadow-hover: 0px 3px 0px -2px hsla(0, 0%, 78%, 0.8);
-$box-shadow-active: 0px 2px 0px -2px hsla(0, 0%, 78%, 0.8);
+$box-shadow: 0px 4px 0px -2px $boxshadowgray;
+$box-shadow-hover: 0px 3px 0px -2px $boxshadowgray;
+$box-shadow-active: 0px 2px 0px -2px $boxshadowgray;
 $border-radius: 3px;
 $bar-height: 50px;
 $bar-border-size: 2px;

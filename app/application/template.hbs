@@ -18,10 +18,6 @@
 		isAuthenticated=session.isAuthenticated
 		userChannel=userChannel}}
 
-	{{#if session.isAuthenticated}}
-		{{#link-to 'channel.add' userChannel class="Btn Btn--primary AddTrackButton" title="Add a new track to your radio"}}Add track{{/link-to}}
-	{{/if}}
-
 	<main class="SiteMain">
 		{{#if-ios}}
 			<div class="Note Note--full">
@@ -46,4 +42,10 @@
 					showProgress="true"}}
 		{{/x-playback}}
 	</div>
+
+	{{#link-to  'channels.all' class="PlayButton Btn Btn--round"}}
+		{{!-- {{x-icon i='play'}} --}}
+		<img src="assets/images/icons/sound.gif" alt="Find a radio channel to play!">
+	{{/link-to}}
+
 {{/app-root}}

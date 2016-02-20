@@ -78,4 +78,11 @@
 	.Player {
 		order: 1;
 	}
+	.Aside--right {
+		display: block;
+	}
+	.PlayButton {
+		// transform: translateX(200%);
+		display: none;
+	}
 }

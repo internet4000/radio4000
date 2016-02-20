@@ -1,14 +1,7 @@
-{{#if channel.coverImage}}
-<div class="Playback-cover">
-	<img class="Playback-cover" src="{{img-url channel.coverImage.src w="50" h="50" transforms="c_thumb,c_fill,fl_lossy"}}" alt="{{channel.title}}" title="You're listening to {{channel.title}}">
-</div>
-{{/if}}
-
 {{#if player.model}}
 	<div class="Playback-channel">
-		<h4>
-			<a href="{{href-to 'channel' channel}}">{{channel.title}}</a>
-		</h4>
+		{{channel-card channel=player.model.channel wide=true class="ChannelCard--transparent"}}
+	</div>
 	<div class="Playback-text">
 		<div class="Playback-title" title="Current track / go to current radio">
 			<div {{action "scrollToTrack"}}>
@@ -22,13 +15,6 @@
 		{{/if}}
 	</div>
 {{/if}}
-
-{{#unless player.model}}
-	{{#link-to 'channels.all' class="Playback-welcomeLink"}}
-		{{!-- {{x-icon i='play'}} Find a radio channel to play! --}}
-		<img src="assets/images/icons/sound.gif" alt=""> Find a radio channel to play!
-	{{/link-to}}
-{{/unless}}
 
 <div class="Playback-sizeButtons">
 	<button class="Playback-fullscreenBtn Btn" {{action 'toggleFullscreen'}} title="Toggle fullscreen video">

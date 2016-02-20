@@ -11,7 +11,6 @@
 	overflow-y: auto;
 	display: flex;
 	flex-flow: column nowrap;
-	padding-left: 0.7rem; // same
 }
 
 /**
@@ -32,10 +31,10 @@
 	}
 }
 .Aside--right {
+	display: none;
 	order: 2;
-	width: 17rem;
-	flex-basis: 17rem;
-	padding: 0.5rem;
+	flex-basis: 20rem;
+	box-shadow: -4px 1px 4px $boxshadowgray;
 }
 
 /**
