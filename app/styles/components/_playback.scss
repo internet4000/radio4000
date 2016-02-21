@@ -77,13 +77,13 @@
 	margin-bottom: 0;
 }
 .Playback-buttons {
-	order: 3;
-	flex: 0 0 auto;
-	display: flex;
-	justify-content: space-between;
-	padding: 0 0.5rem 0.5rem;
 	color: white;
 	background: linear-gradient(lighten($primary-color,10%), $primary-color);
+	padding: 0 0.5rem 0.5rem;
+	display: flex;
+	flex: 0 0 auto;
+	justify-content: space-between;
+	order: 3;
 
 	.NonBtn {
 		align-content: center;
