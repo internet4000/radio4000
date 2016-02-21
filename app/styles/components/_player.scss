@@ -14,32 +14,24 @@
 }
 
 #EmberYoutube-player {
-	float: right;
+	display: block;
 	background-color: black;
 	width: auto;
 	height: auto;
+	// width: 224px; // this is the minimum width required to show YouTube volume button
 
-	// @media (max-width: $layout-s) {
-	// 	position: fixed;
-	// 	z-index: 3;
-	// 	right: 0;
-	// 	bottom: rem($bar-height + $progress-height);
-	// 	height: 60px;
-	// }
-	//
-	// @media (min-width: $layout-s) {
-	// 	// width: 100px;
-	// 	height: 100px;
-	// }
-	// @media (min-width: $layout-m) {
-	// 	// width: 224px; // this is the minimum width required to show YouTube volume button
-	// 	height: 224px;
-	// 	transform: translateZ(0);
-	// }
-	// @media (min-width: $layout-xl) {
-	// 	// width: 300px;
-	// 	height: 300px;
-	// }
+	@media (max-width: $layout-s) {
+		height: 60px;
+	}
+	@media (min-width: $layout-s) {
+		height: 100px;
+	}
+	@media (min-width: $layout-m) {
+		height: 200px;
+	}
+	@media (min-width: $layout-xl) {
+		height: 300px;
+	}
 }
 .EmberYoutube-progress {
 	position: absolute;
