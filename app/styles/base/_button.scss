@@ -157,6 +157,10 @@
 		border-color: darken($primary-color, 10%);
 	}
 }
+.Btn--topNoRadius {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
 
 // Shows either a up or down indicator
 // according to sorting method
