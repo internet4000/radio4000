@@ -46,22 +46,22 @@
 }
 .Playback-text {
 	@include size-1;
-	text-align: center;
-	overflow-y: scroll;
-	padding: 1rem;
+	padding: 2rem 0.5rem;
 	display: flex;
-	flex: 2;
+	flex: 2 0 7.4rem; // 7.4 = 3 lines of text
 	order: 1;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	overflow-y: auto;
+	text-align: center;
 
 	a {
 		display: block;
 	}
 }
 .Playback-channel {
-	padding: 1rem;
+	padding: 0 1rem 1rem;
 	order: 2;
 }
 .Playback-title {
@@ -74,6 +74,7 @@
 	font-style: italic;
    padding-top: 0.2rem;
 	font-size: 0.8rem;
+	margin-bottom: 0;
 }
 .Playback-buttons {
 	order: 3;
@@ -129,11 +130,12 @@
 	}
 }
 .Playback-player {
-	order: 0;
+	// order: 0;
+
+	// Gif loading background.
 	background-image: url('../assets/images/noise.gif');
 	background-size: cover;
    background-position: center center;
-
 }
 
 // Animate buttons that should only be visible when the player is ready.

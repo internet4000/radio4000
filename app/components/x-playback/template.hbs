@@ -52,7 +52,5 @@
 		{{x-icon i='next'}}
 	</button>
 
-	<button class="Playback-toggleVolume NonBtn" {{action "toggleVolume"}} title="Toggle the playback volume">
-	    {{#if radioDevice.isMuted}}Unmute{{else}}Mute{{/if}}
-	</button>
+	<button class="Playback-toggleVolume NonBtn {{if emberYouTube.isMuted 'u-textStrike'}}" {{action "toggleVolume"}} title="Toggle the playback volume">Mute</button>
 </div>

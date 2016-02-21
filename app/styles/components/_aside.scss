@@ -17,7 +17,8 @@
  */
 
 .Aside--left {
-	width: 90%;
+	width: 100%;
+	width: calc(100% - 2rem);
 	height: 100%;
 	padding-top: 5.3rem; // space for our top bar
 	height: 100vh;
@@ -36,7 +37,7 @@
 	flex-basis: 20rem;
 	box-shadow: -1px -1px 1px $boxshadowgray;
 	border-top: 1px solid $superlightgray;
-	border-left: 1px solid hsl(0,0%,80%);
+	border-left: 1px solid $superlightgray;
 	border-right: 1px solid hsl(0,0%,80%);
 	position: fixed;
 	z-index: 1;
