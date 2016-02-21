@@ -34,7 +34,10 @@
 .Aside--right {
 	display: none;
 	flex-basis: 20rem;
-	box-shadow: -5px -3px 4px $boxshadowgray;
+	box-shadow: -1px -1px 1px $boxshadowgray;
+	border-top: 1px solid $superlightgray;
+	border-left: 1px solid hsl(0,0%,80%);
+	border-right: 1px solid hsl(0,0%,80%);
 	position: fixed;
 	z-index: 1;
 	top: auto;

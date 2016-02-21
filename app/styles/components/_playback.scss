@@ -48,7 +48,7 @@
 	@include size-1;
 	text-align: center;
 	overflow-y: scroll;
-	padding: 3rem 0.5rem 1rem;
+	padding: 1rem;
 	display: flex;
 	flex: 2;
 	order: 1;
@@ -61,7 +61,8 @@
 	}
 }
 .Playback-channel {
-	padding: 1rem 1rem 0rem 1rem;
+	padding: 1rem;
+	order: 2;
 }
 .Playback-title {
 	a {
@@ -69,34 +70,13 @@
 		font-weight: bold;
 	}
 }
-// .Playback-channel {
-// 	order: 1;
-// 	display: flex;
-// 	flex-flow: column nowrap;
-// 	justify-content: center;
-// 	text-align: center;
-// 	flex: 0;
-// 	padding: 1rem;
-// 	h4 {
-// 		font-weight: 400;
-// 		font-style: italic;
-// 		@media (max-width: $layout-s) {
-// 			text-align: left;
-// 			padding-top: 0.5rem;
-// 		}
-// 	}
-// 	a {
-// 		padding-left: 0.5rem;
-// 		padding-right: 0.5rem;
-// 	}
-// }
 .Playback-description {
 	font-style: italic;
    padding-top: 0.2rem;
 	font-size: 0.8rem;
 }
 .Playback-buttons {
-	order: 1;
+	order: 3;
 	flex: 0 0 auto;
 	display: flex;
 	justify-content: space-between;
@@ -136,11 +116,7 @@
 .Playback-sizeButtons {
 	font-size: 0.8rem;
 	padding: 0.5rem;
-	text-align: right;
-	position: absolute;
-	text-outline: 1rem;
-	left: 0;
-	transform: translateX(-100%);
+	display: none;
 }
 .Playback-fullscreenBtn {
 	order: 1;
@@ -153,7 +129,7 @@
 	}
 }
 .Playback-player {
-	order: 1;
+	order: 0;
 	background-image: url('../assets/images/noise.gif');
 	background-size: cover;
    background-position: center center;
