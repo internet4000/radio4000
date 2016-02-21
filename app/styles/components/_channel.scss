@@ -116,6 +116,7 @@
 }
 .Channel-title {
 	display: inline-block;
+	line-height: 1;
 	@media (min-width: $layout-m) {
 		@include size-5;
 		max-width: 80%;
