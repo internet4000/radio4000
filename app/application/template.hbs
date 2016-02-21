@@ -1,7 +1,6 @@
 {{#app-root}}
 	<div class="Bar Bar--top">
-		{{#nav-bar radioDevice=emberYoutube
-			userChannel=session.currentUser.channels.firstObject}}
+		{{#nav-bar userChannel=userChannel}}
 			{{site-logo-button}}
 		{{/nav-bar}}
 	</div>
@@ -29,21 +28,10 @@
 	</main>
 
  	<div class="Aside Aside--right">
-		{{#x-playback radioDevice=emberYoutube}}
-				{{ember-youtube class="Player"
-					ytid=player.model.ytid
-					delegate=this
-					delegate-as="emberYoutube"
-					autoplay="true"
-					playing="ytPlaying"
-					paused="ytPaused"
-					ended="ytEnded"
-					error="ytError"
-					showProgress="true"}}
-		{{/x-playback}}
+		{{x-playback}}
 	</div>
 
-	{{#link-to  'channels.all' class="PlayButton Btn Btn--round"}}
+	{{#link-to 'channels.all' class="PlayButton Btn Btn--round"}}
 		{{!-- {{x-icon i='play'}} --}}
 		<img src="assets/images/icons/sound.gif" alt="Find a radio channel to play!">
 	{{/link-to}}

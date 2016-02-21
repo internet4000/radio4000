@@ -7,33 +7,34 @@ export default Component.extend(EKMixin, {
 	classNames: ['Playback'],
 	player: inject.service(),
 	uiStates: inject.service(),
-
 	channel: computed.alias('player.model.channel'),
 
+	// Keyboard shortucts.
 	activateKeyboard: Ember.on('init', function () {
 		this.set('keyboardActivated', true);
 	}),
-
 	onSpaceClick: on(keyUp(' '), function () {
 		this.send('togglePlay');
 	}),
 
 	actions: {
 		togglePlay() {
-			this.attrs.radioDevice.value.send('togglePlay');
+			this.get('emberYouTube').send('togglePlay');
 		},
 		toggleVolume() {
-			this.attrs.radioDevice.value.send('toggleVolume');
+			this.get('emberYouTube').send('toggleVolume');
 		},
 		play() {
-			// const canPlay = get(this, 'player.model');
-			// if (!canPlay) {
-			// 	console.log('@todo play a random radio now');
-			// }
-			this.attrs.radioDevice.value.send('play');
+			this.get('emberYouTube').send('play');
 		},
 		pause() {
-			this.attrs.radioDevice.value.send('pause');
+			this.get('emberYouTube').send('pause');
+		},
+		prev() {
+			this.get('player').prev();
+		},
+		next() {
+			this.get('player').next();
 		},
 		toggleRandom(player = this.get('player')) {
 			if (player.get('isRandom')) {
@@ -41,12 +42,6 @@ export default Component.extend(EKMixin, {
 			} else {
 				player.activateRandom();
 			}
-		},
-		prev() {
-			this.get('player').prev();
-		},
-		next() {
-			this.get('player').next();
 		},
 		toggleFullscreen() {
 			this.toggleProperty('uiStates.isFullscreen');
@@ -60,40 +55,20 @@ export default Component.extend(EKMixin, {
 					}, 700, 'swing');
 				}, 100);
 			});
+		},
+
+		// ember-youtube events
+		onYouTubePlay() {
+			this.get('player').play();
+		},
+		onYouTubePause() {
+			this.get('player').pause();
+		},
+		onYouTubeEnd() {
+			this.get('player').trackEnded();
+		},
+		onYouTubeError(error) {
+			this.get('player').onError(error);
 		}
 	}
 });
-
-// gets the index of the current track
-// currentTrackIndex: Ember.computed('tracks', 'model', function () {
-// 	return this.get('tracks').indexOf(this.get('model'));
-// }),
-
-// resetRemote: Ember.on('init', function () {
-// 	let channel = this.get('session.currentUser.channels.firstObject');
-// }),
-
-// // @TODO: this should only be active if the user enabled "remote control" setting
-// // (which doesn't exist yet)
-// updateFromRemote: Ember.observer('session.currentUser.channels.firstObject.listeningToTrack', function () {
-
-// 	if (!this.get('session.currentUser')) {
-// 		Ember.warn('updated without user');
-// 		return;
-// 	}
-
-// 	const channel = this.get('session.currentUser.channels.firstObject');
-// 	const track = channel.get('listeningToTrack');
-
-// 	debug(channel);
-// 	debug(track);
-
-// 	if (!track) {
-// 		Ember.warn('updated without track');
-// 		return;
-// 	}
-
-// 	debug('remotely changed track');
-// 	this.set('channel', channel);
-// 	this.set('model', track);
-// }),
