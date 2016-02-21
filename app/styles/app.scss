@@ -39,15 +39,16 @@
 
 // UI components
 @import 'components/aside';
+@import 'components/add-track-button';
 @import 'components/icon';
 @import 'components/tabs';
 @import 'components/note';
 @import 'components/list'; // @todo refactor
 @import 'components/loader';
-@import 'components/card';
 @import 'components/cover';
 @import 'components/image-upload';
 @import 'components/channel';
+@import 'components/channel-card';
 @import 'components/track';
 @import 'components/bigstep'; // @todo refactor - mix with layout/new??
 @import 'components/page-welcome';

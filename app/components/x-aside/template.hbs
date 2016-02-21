@@ -14,14 +14,17 @@
 			{{userChannel.title}}
 		{{/link-to}}
 	</div>
+	<div class="Tabs">
+		{{#link-to 'channel.add' userChannel class="Btn Btn--primary" title="Add a new track to your radio"}}Add track{{/link-to}}
+	</div>
 {{/if}}
 
-<div class="Muted">
+<div class="Tabs Tabs--transparent">
 	{{#unless userChannel}}
-		{{#link-to 'channels.new' class="Aside-link" title="Create your own radio now or log in"}}Get your own radio{{/link-to}}<br>
+		{{#link-to 'channels.new' class="Aside-link Muted" title="Create your own radio now or log in"}}Get your own radio{{/link-to}}
 	{{/unless}}
 	{{#unless isAuthenticated}}
-		<p>{{#link-to 'login' class="Aside-link" title="Create your own radio now or log in"}}Sign in or register{{/link-to}}</p>
+		{{#link-to 'login' class="Aside-link Muted" title="Create your own radio now or log in"}}Sign in or register{{/link-to}}
 	{{/unless}}
 </div>
 

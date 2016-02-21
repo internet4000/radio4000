@@ -6,13 +6,14 @@
 .Playback {
 	width: 100%;
 	display: flex;
-	flex-flow: row wrap; // items in one row, no wrapping
+	flex-flow: column nowrap; // items in one row, no wrapping
 	align-items: stretch; // full-height children
 	justify-content: space-between; // distribute items
-	justify-content: center;
-
-	background: linear-gradient(lighten($primary-color,10%), $primary-color);
-	color: $text-color-invert;
+	justify-content: flex-start;
+	flex: 1;
+	position: relative;
+	background-color: $mediumlightgray;
+	color: $text-color;
 
 	@media (min-width: $layout-s) {
 		flex-wrap: nowrap;
@@ -36,72 +37,52 @@
 	[class*=" icon-"] {
 		margin-right: 0;
 	}
-	a {
-		color: $bleach;
-	}
-}
-.Playback-welcomeLink {
-	@include size-2;
-	margin-top: auto;
-	margin-bottom: auto;
-	text-align: center;
-	padding-left: 1rem;
-	padding-right: 1rem;
-	i {
-		position: relative;
-		top: 1px;
-	}
-	img {
-		position: relative;
-		top: 2px;
-		margin-right: 0.5rem;
-	}
 }
 .Playback-cover {
-	user-select: none;
-	margin: 6px; // border
-	width: 41px;
-	height: 41px;
-}
-.Playback-channel {
-	display: flex;
-	flex-flow: column nowrap;
-	justify-content: center;
-	flex: 1;
-	h4 {
-		font-weight: 400;
-		font-style: italic;
-		@media (max-width: $layout-s) {
-			text-align: left;
-			padding-top: 0.5rem;
-		}
-	}
-	a {
-		padding-left: 0.5rem;
-		padding-right: 0.5rem;
+	order: 1;
+	img {
+		width: 100%;
 	}
 }
-.Playback-title {
+.Playback-text {
 	@include size-1;
-	// flex: 4;
-	// order: 3;
-	@media (max-width: $layout-s) {
-		text-align: center;
-	}
+	text-align: center;
+	overflow-y: scroll;
+	padding: 1rem;
+	display: flex;
+	flex: 2;
+	order: 1;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 
 	a {
 		display: block;
 	}
 }
-.Playback-buttons {
-	flex: 1 0 auto; // expand
-	display: flex;
-	justify-content: center;
-	margin-right: 0.5rem;
-	@media (min-width: $layout-m) {
-		// center it a bit more
-		margin-right: 7vw;
+.Playback-channel {
+	padding: 1rem;
+	order: 2;
+}
+.Playback-title {
+	a {
+		color: $text-color;
+		font-weight: bold;
 	}
+}
+.Playback-description {
+	font-style: italic;
+   padding-top: 0.2rem;
+	font-size: 0.8rem;
+}
+.Playback-buttons {
+	order: 3;
+	flex: 0 0 auto;
+	display: flex;
+	justify-content: space-between;
+	padding: 0 0.5rem 0.5rem;
+	color: white;
+	background: linear-gradient(lighten($primary-color,10%), $primary-color);
 
 	.NonBtn {
 		align-content: center;
@@ -132,20 +113,31 @@
 		text-align: center;
 	}
 }
+.Playback-sizeButtons {
+	font-size: 0.8rem;
+	padding: 0.5rem;
+	display: none;
+}
 .Playback-fullscreenBtn {
-	order: 3;
-	font-size: 1.4rem;
-	padding-right: 1rem;
-	padding-left: 1rem;
+	order: 1;
+	// padding-right: 0.3rem;
+	// padding-left: 0.4rem;
 	// margin-left: auto;
 
 	svg {
 		vertical-align: middle;
 	}
 }
+.Playback-player {
+	order: 0;
+	background-image: url('../assets/images/noise.gif');
+	background-size: cover;
+   background-position: center center;
+
+}
 
 // Animate buttons that should only be visible when the player is ready.
-.Playback-title,
+.Playback-text,
 .Playback-buttons,
 .Playback-toggleVolume,
 .Playback-fullscreenBtn {

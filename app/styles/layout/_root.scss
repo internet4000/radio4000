@@ -6,10 +6,10 @@
 .Root {
 	display: flex;
 	flex-wrap: nowrap;
-	flex-direction: column;
-	@media (min-width: $layout-l) {
-		flex-direction: raw;
-	}
+	flex-direction: row;
+	// @media (min-width: $layout-l) {
+	// 	flex-direction: row;
+	// }
 }
 
 /**
@@ -17,15 +17,15 @@
  */
 .Root.is-panelLeftVisible {
 	.Aside--left {
-		transform: translate3d(0, 0, 0);
+		display: block;
 	}
-	.SiteMain {
-		transform: translate3d(100%, 0, 0);
-		@media (min-width: $layout-s) {
-			transform: none;
-			padding-left: $sidebar-width;
-		}
-	}
+	// .SiteMain {
+	// 	transform: translate3d(100%, 0, 0);
+	// 	@media (min-width: $layout-s) {
+	// 		transform: none;
+	// 		padding-left: $sidebar-width;
+	// 	}
+	// }
 }
 
 
@@ -77,5 +77,12 @@
 	}
 	.Player {
 		order: 1;
+	}
+	.Aside--right {
+		display: block;
+	}
+	.PlayButton {
+		// transform: translateX(200%);
+		display: none;
 	}
 }

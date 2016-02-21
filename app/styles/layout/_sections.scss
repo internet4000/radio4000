@@ -5,8 +5,12 @@
 
 .Sections {
 	padding-top: 2rem;
+
 	@media (min-width: $layout-s) {
 		padding-top: 3rem;
+		.Root.is-panelLeftVisible & {
+			padding-top: 2.3rem;
+		}
 	}
 }
 .Section {

@@ -6,11 +6,11 @@
 	@include clearfix;
 	position: relative;
 	max-width: 45em;
-	padding-left: 1rem;
-	padding-right: 1rem;
+	padding-left: 2rem;
+	padding-right: 3rem;
 	@media (min-width: $layout-m) {
 		padding-left: 2rem;
-		padding-right: 2rem;
+		padding-right: 4rem;
 	}
 }
 
