@@ -25,6 +25,8 @@
     "broccoli-asset-rev": "^2.2.0",
     "broccoli-csso": "^1.1.0",
     "critical": "^0.7.0",
+    "electron-packager": "5.2.1",
+    "electron-prebuilt": "0.36.8",
     "ember-ajax": "0.7.1",
     "ember-browserify": "^1.1.4",
     "ember-cli": "2.3.0",
@@ -41,7 +43,9 @@
     "ember-cli-uglify": "^1.2.0",
     "ember-data": "^2.3.3",
     "ember-disable-proxy-controllers": "^1.0.1",
+    "ember-electron": "1.1.0",
     "ember-export-application-global": "^1.0.4",
+    "ember-inspector": "1.9.5",
     "ember-keyboard": "0.2.5",
     "ember-load-initializers": "^0.5.1",
     "ember-resolver": "^2.0.3",
@@ -70,5 +74,40 @@
   },
   "xo": {
     "esnext": true
+  },
+  "main": "electron.js",
+  "ember-electron": {
+    "copy-files": [
+      "electron.js",
+      "package.json"
+    ],
+    "name": null,
+    "platform": "darwin",
+    "arch": "x64",
+    "version": null,
+    "app-bundle-id": null,
+    "app-category-type": "public.app-category.music",
+    "app-version": null,
+    "asar": null,
+    "asar-unpack": null,
+    "asar-unpack-dir": null,
+    "build-version": null,
+    "cache": null,
+    "helper-bundle-id": null,
+    "icon": "assets/images/logos/radio4000.icns",
+    "ignore": null,
+    "out": null,
+    "overwrite": null,
+    "prune": null,
+    "sign": null,
+    "strict-ssl": null,
+    "version-string": {
+      "CompanyName": "Radio4000",
+      "LegalCopyright": null,
+      "FileDescription": null,
+      "OriginalFilename": null,
+      "ProductName": "Radio4000",
+      "InternalName": null
+    }
   }
 }
