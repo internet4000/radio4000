@@ -1,43 +1,41 @@
-<div class="Sections">
-	<div class="Manchet">
-		<h1>All<small> — radios from A to Z</small></h1>
-	</div>
-
-	<section class="Section">
-		<div class="Container Container--full">
-			<form class="Search">
-				{{input class="Search-input" type="search" value=search placeholder="Search radios"}}
-				<button class="Search-btn Btn" type="submit">Search</button>
-				<button class="Search-toggle Btn" {{action 'changeLayout'}}>
-					{{if isList 'Bigger' 'Smaller'}}
-				</button>
-			</form>
-		</div>
-	</section>
-
-	{{!-- {{#btn-group}}
-		<button class="Btn" {{action 'prev'}} title="See previous radios">prev</button>
-		<button class="Btn" {{action 'next'}} title="See next radios">next</button>
-	{{/btn-group}} --}}
-
-	<section class="Section">
-		<div class="Container Container--full">
-			{{#if sortedChannels}}
-				<div class="Grid {{if isList 'Grid--wide'}}">
-					{{#each sortedChannels as |item|}}
-						<div class="Grid-cell">
-							{{channel-card channel=item wide=isList}}
-						</div>
-					{{/each}}
-				</div>
-			{{else}}
-				<p>Tuning radios…</p>
-				{{is-loading}}
-			{{/if}}
-		</div>
-	</section>
-
-	<section class="Section Container">
-		<p><a href="{{href-to 'channels'}}">See all curated radios &rarr;</a></p>
-	</section>
+<div class="Manchet">
+	<h1>All<small> — radios from A to Z</small></h1>
 </div>
+
+<section class="Section">
+	<div class="Container Container--full">
+		<form class="Search">
+			{{input class="Search-input" type="search" value=search placeholder="Search radios"}}
+			<button class="Search-btn Btn" type="submit">Search</button>
+			<button class="Search-toggle Btn" {{action 'changeLayout'}}>
+				{{if isList 'Bigger' 'Smaller'}}
+			</button>
+		</form>
+	</div>
+</section>
+
+{{!-- {{#btn-group}}
+	<button class="Btn" {{action 'prev'}} title="See previous radios">prev</button>
+	<button class="Btn" {{action 'next'}} title="See next radios">next</button>
+{{/btn-group}} --}}
+
+<section class="Section">
+	<div class="Container Container--full">
+		{{#if sortedChannels}}
+			<div class="Grid {{if isList 'Grid--wide'}}">
+				{{#each sortedChannels as |item|}}
+					<div class="Grid-cell">
+						{{channel-card channel=item wide=isList}}
+					</div>
+				{{/each}}
+			</div>
+		{{else}}
+			<p>Tuning radios…</p>
+			{{is-loading}}
+		{{/if}}
+	</div>
+</section>
+
+<section class="Section Container">
+	<p><a href="{{href-to 'channels'}}">See all curated radios &rarr;</a></p>
+</section>
