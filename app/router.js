@@ -14,9 +14,7 @@ Router.map(function () {
     });
     this.route('bookmarklet');
     this.route('dashboard');
-    this.route('help', function () {
-        // help.index
-    });
+    this.route('help');
     this.route('intro');
     this.route('404');
     this.route('styleguide', function () {
