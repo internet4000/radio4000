@@ -26,7 +26,6 @@ module.exports = function(environment) {
    flashMessageDefaults: {
       timeout: 3000,
       extendedTimeout: 1000
-      // injectionFactories: [],
     }
   };
 
@@ -51,10 +50,6 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
-  }
-
-  if (environment === 'staging') {
-    // much.radio4000.com
   }
 
   if (environment === 'production') {

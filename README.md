@@ -15,30 +15,29 @@ npm install -g ember-cli
 git clone git@bitbucket.org:radio4000/radio4000.git
 cd radio4000
 npm install; bower install
-ember serve
+npm run start
 ```
 
 Also see http://www.ember-cli.com/
-
-## Deploy to development
-
-1. `ember build`
-2. `gulp deploy:dev`
-
-## Deploy to live
-
-Then deploy to either live or dev:
-
-1. `git checkout master; git pull --rebase; git merge dev`
-2. `release-it`
-3. `ember build --environment=production`
-4. `gulp deploy`
 
 ## Testing
 
 ```
 xo app/**/*.js
 ```
+
+## Deployment
+
+To deploy to staging aka http://much.radio4000.com, run:
+
+`npm run deploy`
+
+To deploy to production aka https://radio4000.com, run:
+
+1. `git checkout master; git pull --rebase; git merge develop --no-ff`
+2. (make sure all branches you want are merged in)
+3. `release-it`
+4. `npm run deploy-production`
 
 ## Icons
 

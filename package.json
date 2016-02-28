@@ -7,12 +7,13 @@
     "test": "tests"
   },
   "scripts": {
-    "start": "ember server",
-    "build": "ember build --environment=production; gulp critical",
-    "test": "xo && ember test",
+    "build": "ember build; gulp critical",
+    "build-production": "ember build -p; gulp critical",
+    "deploy": "npm run build; gulp critical; mv dist/index.html dist/200.html; surge dist http://much.radio4000.com",
+    "deploy-production": "npm run build-production; mv dist/index.html dist/200.html; surge dist https://radio4000.com",
     "report": "plato -r -d reports app --eslint reports/.eslintrc",
-    "deploy": "ember build --environment=staging; gulp critical; mv dist/index.html dist/200.html; surge dist http://much.radio4000.com",
-    "deploy-production": "npm run build; mv dist/index.html dist/200.html; surge dist https://radio4000.com"
+    "start": "ember server",
+    "test": "xo && ember test"
   },
   "repository": "https://bitbucket.com/radio4000/radio4000",
   "engines": {
