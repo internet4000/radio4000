@@ -16,6 +16,11 @@ export default Component.extend(EKMixin, {
 	onSpaceClick: on(keyUp(' '), function () {
 		this.send('togglePlay');
 	}),
+	closeFullscreen: on(keyUp('Escape'), function () {
+		if (this.get('uiStates.player.isMaximized')) {
+			this.send('toggleMaximizedPlayer');
+		}
+	}),
 
 	actions: {
 		togglePlay() {
