@@ -60,11 +60,11 @@ export default Component.extend(EKMixin, {
 		},
 
 		// player size states
-		toggleFullscreen() {
+		toggleMaximizedPlayer() {
 			this.set('uiStates.player.isMinimized', false);
 			this.toggleProperty('uiStates.player.isMaximized');
 		},
-		toggleMinimal() {
+		toggleMinimizedPlayer() {
 			this.set('uiStates.player.isMaximized', false);
 			this.toggleProperty('uiStates.player.isMinimized');
 		},

@@ -15,6 +15,14 @@
 	background-color: $mediumlightgray;
 	color: $text-color;
 
+	// Purple background.
+	// background-color: $primary-color;
+	// background-image: linear-gradient(lighten($primary-color,10%), $primary-color);
+	// .Playback-title a {
+	// 	color: $white;
+	// 	color: $bleach;
+	// }
+
 	@media (min-width: $layout-s) {
 		flex-wrap: nowrap;
 	}
@@ -276,9 +284,7 @@ $bar-height-minimized: rem(70);
 	}
 	.Playback-channel {
 		padding: 0;
-		.ChannelCard.is-active {
-			outline: 0;
-		}
+		margin: 2px;
 	}
 	.ChannelCard--wide .Cover {
 		flex-basis: 2.5rem;

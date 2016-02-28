@@ -65,8 +65,8 @@
  */
 .Btn--small {
 	@include size-0;
-	min-width: 2.1em; // equal width
-	padding: 0 0.5rem;
+	min-width: 2em; // equal width
+	padding: 0 0.2rem;
 }
 .Btn--large {
 	@include size-2;
