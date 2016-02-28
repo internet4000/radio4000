@@ -44,6 +44,10 @@ xo app/**/*.js
 
 Add .svg icons to `public/assets/images/icons` and run `gulp icons`.
 
+## Building native apps
+
+`npm run build-app`
+
 ## Important if you use Sublime Text
 
 Sublime automatically watches all files in a folder. Because ember-cli is so huge your PC will slow down. To solve this, tell Sublime to ignore the `tmp` and `node_modules` folder: http://www.ember-cli.com/#sublime-text
