@@ -122,6 +122,10 @@
 	> *:not(:first-child) {
 		margin-left: 0.2em;
 	}
+	// the next button in the size button
+	.Playback-button {
+		display: none;
+	}
 }
 .Playback-fullscreenBtn {
 	order: 1;
@@ -276,5 +280,11 @@ $bar-height-minimized: rem(70);
 	}
 	.Aside--right {
 		width: 10rem;
+	}
+	.Playback-sizeButtons {
+		// the next button in the size button
+		.Playback-button {
+			display: block;
+		}
 	}
 }

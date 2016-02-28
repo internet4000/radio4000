@@ -1,4 +1,9 @@
 <div class="Playback-sizeButtons">
+
+	<button class="Btn Playback-minimalBtn Playback-button" {{action 'next'}} title="Next track">
+		{{x-icon i='next'}}
+	</button>
+
 	<button class="Playback-minimalBtn Btn" {{action 'toggleMinimal'}} title="Minimize Player">
 		{{#if uiStates.player.isMinimized}}
 			⬒
