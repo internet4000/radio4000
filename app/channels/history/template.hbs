@@ -11,15 +11,15 @@
 					{{channel-card channel=item}}
 				{{/each-grid}}
 				{{#btn-group}}
-					<button class="Btn" {{action 'clearChannelHistory'}}>Clear history</button>
+					<button class="Btn" {{action 'clearChannelHistory'}}>Clear my listening history</button>
 				{{/btn-group}}
 			</div>
 		{{else}}
 			<div class="Container">
 				{{#if session.isAuthenticated}}
-					<p>Radio you listen to will appear here so you can continue exploring later.</p>
+					<p>Radios you listen to will appear here so you can continue exploring later.</p>
 				{{else}}
-					<p>When you register, you'll be able to find here your listening history. You can always come back here to your last played radios, and continue your exploration.</p>
+					<p>When you register, you'll be able to find your listening history here. You can always come back here and continue your music exploration where you left off.</p>
 					<p><a href="{{href-to 'login'}}">Register or log in</a>.</p>
 				{{/if}}
 			</div>
