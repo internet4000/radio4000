@@ -7,14 +7,14 @@
     "test": "tests"
   },
   "scripts": {
-    "start": "ember server",
     "build": "ember build --environment=production; gulp critical",
     "build-app": "ember electron:package; npm run compress-app",
     "compress-app": "zip -r -X electron-builds/Radio4000-darwin-x64/Radio4000.zip electron-builds/Radio4000-darwin-x64/Radio4000.app",
-    "test": "xo && ember test",
-    "report": "plato -r -d reports app --eslint reports/.eslintrc",
     "deploy": "ember build --environment=staging; gulp critical; mv dist/index.html dist/200.html; surge dist http://much.radio4000.com",
-    "deploy-production": "npm run build; mv dist/index.html dist/200.html; surge dist https://radio4000.com"
+    "deploy-production": "npm run build; mv dist/index.html dist/200.html; surge dist https://radio4000.com",
+    "report": "plato -r -d reports app --eslint reports/.eslintrc",
+    "start": "ember server",
+    "test": "xo && ember test"
   },
   "repository": "https://bitbucket.com/radio4000/radio4000",
   "engines": {
@@ -52,8 +52,8 @@
     "ember-load-initializers": "^0.5.1",
     "ember-resolver": "^2.0.3",
     "fs": "0.0.2",
-    "grunticon-lib": "^1.0.3",
     "gulp": "^3.9.0",
+    "grunticon-lib": "^1.0.3",
     "loader.js": "^4.0.0",
     "path": "^0.12.7",
     "postcss-import": "^8.0.2",
