@@ -59,3 +59,8 @@ menu {
 	margin-top: 0;
 	padding: 0;
 }
+
+time {
+	@include size-0;
+	font-style: italic;
+}
