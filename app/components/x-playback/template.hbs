@@ -1,3 +1,21 @@
+<div class="Playback-sizeButtons">
+	<button class="Playback-minimalBtn Btn" {{action 'toggleMinimal'}} title="Minimize Player">
+		{{#if uiStates.player.isMinimal}}
+			⬒
+		{{else}}
+			_
+		{{/if}}
+
+	</button>
+	<button class="Playback-fullscreenBtn Btn" {{action 'toggleFullscreen'}} title="Toggle fullscreen player">
+		{{#if uiStates.player.isFullscreen}}
+			{{x-icon i='arrows-compress'}}
+		{{else}}
+			{{x-icon i='arrows-expand'}}
+		{{/if}}
+	</button>
+</div>
+
 <div class="Playback-player">
 	{{ember-youtube class="Player"
 		ytid=player.model.ytid
@@ -28,16 +46,6 @@
 		{{/if}}
 	</div>
 {{/if}}
-
-<div class="Playback-sizeButtons">
-	<button class="Playback-fullscreenBtn Btn" {{action 'toggleFullscreen'}} title="Toggle fullscreen video">
-		{{#if uiStates.isFullscreen}}
-			{{x-icon i='arrows-compress'}}
-		{{else}}
-			{{x-icon i='arrows-expand'}}
-		{{/if}}
-	</button>
-</div>
 
 <div class="Playback-buttons">
 	<button class="Playback-button Playback-shuffle Btn Btn--text  {{if player.isRandom 'is-active'}}" {{action 'toggleRandom'}} title="Toggle shuffle playback">

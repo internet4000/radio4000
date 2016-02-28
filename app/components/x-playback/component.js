@@ -43,18 +43,23 @@ export default Component.extend(EKMixin, {
 				player.activateRandom();
 			}
 		},
-		toggleFullscreen() {
-			this.toggleProperty('uiStates.isFullscreen');
-		},
 		scrollToTrack() {
 			// Scroll afterRender and a bit later to not jank the computer
-			run.scheduleOnce('afterRender', function () {
+			run.scheduleOnce('afterRender', () => {
 				run.later(() => {
 					$('.Channel-outlet').animate({
 						scrollTop: $('.Track.is-current').offset().top - 90
 					}, 700, 'swing');
 				}, 100);
 			});
+		},
+
+		// player size states
+		toggleFullscreen() {
+			this.toggleProperty('uiStates.player.isFullscreen');
+		},
+		toggleMinimal() {
+			this.toggleProperty('uiStates.player.isMinimal');
 		},
 
 		// ember-youtube events
