@@ -16,18 +16,21 @@ export default Mixin.create({
 
 		const track = this.store.createRecord('track', trackProperties);
 
-		// set channel on track and save
+		// Set channel on track and save.
 		track.set('channel', channel);
 		track.updateProvider();
 		track.save().then(() => {
 			debug('saved track');
 
-			// Add it to the tracks relationship on the channel
+			// Update last updated on the channel.
+			channel.set('updated', new Date().getTime());
+
+			// Add it to the tracks relationship on the channel and save it.
 			channel.get('tracks').then(tracks => {
 				tracks.addObject(track);
 				channel.save().then(() => {
 					debug('Saved new track.');
-					flashMessages.info('Track saved');
+					flashMessages.info('Saved track');
 				}, error => {
 					warn('Could not create track.');
 					debug(error);

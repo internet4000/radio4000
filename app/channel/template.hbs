@@ -40,10 +40,11 @@
 								</h1>
 							</div>
 
-							{{!-- <p class="Muted LastUpdated">({{lastUpdatedFormatted}})</p> --}}
-
 							{{#if model.body}}
 								<p class="Channel-description">{{model.body}}</p>
+							{{/if}}
+							{{#if model.updated}}
+								<time class="Channel-date">{{format-date model.updated}}</time>
 							{{/if}}
 
 							{{#if model.link}}

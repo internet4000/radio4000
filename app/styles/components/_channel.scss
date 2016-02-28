@@ -127,10 +127,6 @@
 	right: 0.7rem;
 	z-index: 1;
 }
-.LastUpdated {
-	@extend %font-regular;
-	@include size-1;
-}
 .Channel-description {
 	max-width: 36rem;
 	margin-bottom: 1rem;
