@@ -1,7 +1,0 @@
-{
-  "name": "radio4000",
-  "productName": "Radio4000",
-  "version": "3.1.0",
-  "description": "Collect, curate, play and share your own radio channel",
-  "main": "main.js"
-}
