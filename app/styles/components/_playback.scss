@@ -169,6 +169,10 @@
 	}
 	.Playback {
 		height: 100%;
+		background: black;
+	}
+	.Playback-channel {
+		order: 5;
 	}
 	.Playback-sizeButtons {
 		// justify-content: flex-end;
@@ -193,13 +197,24 @@
 		flex: 1;
 		position: relative;
 	}
+	.EmberYoutube-progress {
+		display: none;
+	}
+	.Playback-title a {
+		@include negative-text;
+		color: $white;
+	}
+	.Playback-buttons {
+		background: black;
+		margin: auto;
+	}
 }
 
 
 /**
  * Minimal state
  */
-$bar-height-minimized: $bar-height * 2;
+$bar-height-minimized: rem(70);
 .is-minimized {
 	.Aside--right {
 		width: 100%;
@@ -212,7 +227,6 @@ $bar-height-minimized: $bar-height * 2;
 		color: $white;
 		background-color: $primary-color;
 		background: linear-gradient(lighten($primary-color,10%), $primary-color);
-
 	}
 	.Playback-channel {
 		order: -1;
@@ -226,9 +240,12 @@ $bar-height-minimized: $bar-height * 2;
 			flex-flow: row wrap;
 		}
 	}
+	.ChannelCard--wide .Cover {
+		flex: 0 0 3rem;
+	}
 	.Playback-text {
-		flex: 1 0 0;
-
+		flex: 2 0 0;
+		padding: 0.5rem 0;
 	}
 	.Playback-title a {
 		@include negative-text;
