@@ -56,10 +56,12 @@ export default Component.extend(EKMixin, {
 
 		// player size states
 		toggleFullscreen() {
-			this.toggleProperty('uiStates.player.isFullscreen');
+			this.set('uiStates.player.isMinimized', false);
+			this.toggleProperty('uiStates.player.isMaximized');
 		},
 		toggleMinimal() {
-			this.toggleProperty('uiStates.player.isMinimal');
+			this.set('uiStates.player.isMaximized', false);
+			this.toggleProperty('uiStates.player.isMinimized');
 		},
 
 		// ember-youtube events

@@ -1,6 +1,6 @@
 <div class="Playback-sizeButtons">
 	<button class="Playback-minimalBtn Btn" {{action 'toggleMinimal'}} title="Minimize Player">
-		{{#if uiStates.player.isMinimal}}
+		{{#if uiStates.player.isMinimized}}
 			⬒
 		{{else}}
 			_
@@ -8,7 +8,7 @@
 
 	</button>
 	<button class="Playback-fullscreenBtn Btn" {{action 'toggleFullscreen'}} title="Toggle fullscreen player">
-		{{#if uiStates.player.isFullscreen}}
+		{{#if uiStates.player.isMaximized}}
 			{{x-icon i='arrows-compress'}}
 		{{else}}
 			{{x-icon i='arrows-expand'}}

@@ -117,6 +117,10 @@
 .Playback-sizeButtons {
 	font-size: 0.8rem;
 	padding: 0.5rem;
+	display: flex;
+	> *:not(:first-child) {
+		margin-left: 0.2em;
+	}
 }
 .Playback-fullscreenBtn {
 	order: 1;
@@ -148,5 +152,64 @@
 		height: 0;
 		pointer-events: none;
 		transform: scale(0.95);
+	}
+}
+
+/**
+ * Fullscreen state
+ */
+.is-maximized {
+	.Aside--right {
+		top: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		background-color: black;
+	}
+	.Playback {
+		height: 100%;
+	}
+	.Playback-player {
+		flex: 10;
+	}
+	.Playback-text {
+		flex: 1 0 4rem;
+	}
+}
+
+
+/**
+ * Minimal state
+ */
+.is-minimized {
+	.Aside--right {
+		width: 100%;
+		right: 0;
+	}
+	.Playback {
+		flex-flow: row wrap;
+	}
+	.Playback-channel {
+		order: -1;
+		flex: 1;
+		padding: 1rem 0 1rem 1rem;
+		display: flex;
+		.ChannelCard--wide {
+			flex: 1;
+		}
+		.ChannelCard--wide > a {
+			flex-flow: row wrap;
+		}
+	}
+	.Playback-text {
+		flex: 1 0 0;
+	}
+	.Playback-player {
+		order: 5;
+	}
+	.Playback-sizeButtons {
+		position: absolute;
+		top: 0;
+		right: 0;
 	}
 }
