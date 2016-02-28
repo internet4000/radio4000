@@ -216,55 +216,65 @@
  */
 $bar-height-minimized: rem(70);
 .is-minimized {
+	// .Aside--right {
+	// 	width: 100%;
+	// 	right: 0;
+	// 	overflow: visible;
+	// 	height: $bar-height-minimized;
+	// }
+	// .Playback {
+	// 	flex-flow: row wrap;
+	// 	color: $white;
+	// 	background-color: $primary-color;
+	// 	background: linear-gradient(lighten($primary-color,10%), $primary-color);
+	// }
+	// .Playback-channel {
+	// 	order: -1;
+	// 	flex: 1;
+	// 	padding: 0.6rem 0 1rem 0.5rem;
+	// 	display: flex;
+	// 	.ChannelCard--wide {
+	// 		flex: 1;
+	// 	}
+	// 	.ChannelCard--wide > a {
+	// 		flex-flow: row wrap;
+	// 	}
+	// }
+	// .ChannelCard--wide .Cover {
+	// 	flex: 0 0 3rem;
+	// }
+	// .Playback-text {
+	// 	flex: 2 0 0;
+	// 	padding: 0.5rem 0;
+	// }
+	// .Playback-title a {
+	// 	@include negative-text;
+	// 	color: $white;
+	// }
+	// .Playback-player {
+	// 	order: 5;
+	// 	position: fixed;
+	// 	right: 0;
+	// 	bottom: $bar-height-minimized;
+	// 	// order: -2;
+	// 	// width: 100%;
+	// }
+	// .EmberYoutube-progress {
+	// 	position: fixed;
+	// }
+	// .Playback-sizeButtons {
+	// 	position: absolute;
+	// 	top: -0.5rem;
+	// 	right: 0;
+	// }
+	.Playback-channel,
+	.Playback-text,
+	.EmberYoutube-progress,
+	.Playback-buttons,
+	.Playback-controls, {
+		display: none;
+	}
 	.Aside--right {
-		width: 100%;
-		right: 0;
-		overflow: visible;
-		height: $bar-height-minimized;
-	}
-	.Playback {
-		flex-flow: row wrap;
-		color: $white;
-		background-color: $primary-color;
-		background: linear-gradient(lighten($primary-color,10%), $primary-color);
-	}
-	.Playback-channel {
-		order: -1;
-		flex: 1;
-		padding: 0.6rem 0 1rem 0.5rem;
-		display: flex;
-		.ChannelCard--wide {
-			flex: 1;
-		}
-		.ChannelCard--wide > a {
-			flex-flow: row wrap;
-		}
-	}
-	.ChannelCard--wide .Cover {
-		flex: 0 0 3rem;
-	}
-	.Playback-text {
-		flex: 2 0 0;
-		padding: 0.5rem 0;
-	}
-	.Playback-title a {
-		@include negative-text;
-		color: $white;
-	}
-	.Playback-player {
-		order: 5;
-		position: fixed;
-		right: 0;
-		bottom: $bar-height-minimized;
-		// order: -2;
-		// width: 100%;
-	}
-	.EmberYoutube-progress {
-		position: fixed;
-	}
-	.Playback-sizeButtons {
-		position: absolute;
-		top: -0.5rem;
-		right: 0;
+		width: 10rem;
 	}
 }
