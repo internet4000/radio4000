@@ -1,18 +1,8 @@
 <div class="Playback-sizeButtons">
-
-	<button class="Btn Playback-minimalBtn Playback-button" {{action 'next'}} title="Next track">
-		{{x-icon i='next'}}
+	<button class="Playback-minimalBtn Btn Btn--small" {{action 'toggleMinimal'}} title="Minimize Player">
+		{{if uiStates.player.isMinimized '⬒' '_'}}
 	</button>
-
-	<button class="Playback-minimalBtn Btn" {{action 'toggleMinimal'}} title="Minimize Player">
-		{{#if uiStates.player.isMinimized}}
-			⬒
-		{{else}}
-			_
-		{{/if}}
-
-	</button>
-	<button class="Playback-fullscreenBtn Btn" {{action 'toggleFullscreen'}} title="Toggle fullscreen player">
+	<button class="Playback-fullscreenBtn Btn Btn--small" {{action 'toggleFullscreen'}} title="Toggle fullscreen player">
 		{{#if uiStates.player.isMaximized}}
 			{{x-icon i='arrows-compress'}}
 		{{else}}
@@ -36,7 +26,7 @@
 
 {{#if player.model}}
 	<div class="Playback-channel">
-		{{channel-card channel=player.model.channel wide=true}}
+		{{channel-card channel=channel wide=true}}
 	</div>
 	<div class="Playback-text">
 		<div class="Playback-title" title="Current track / go to current radio">

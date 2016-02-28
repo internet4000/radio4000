@@ -41,14 +41,12 @@
 	border-left: 1px solid $superlightgray;
 	border-right: 1px solid hsl(0,0%,80%);
 	position: fixed;
-	z-index: 1;
+	z-index: 4;
 	top: auto;
-	right: 1.5rem;
+	right: 2rem;
 	bottom: 0;
 	width: 19rem;
-	// @media (min-width: $layout-m) {
-		// right: 3rem;
-	// }
+	overflow: visible;
 }
 
 /**

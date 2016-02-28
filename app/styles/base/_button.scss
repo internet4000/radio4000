@@ -64,7 +64,9 @@
  * Button sizes
  */
 .Btn--small {
-	font-size: rem(12);
+	@include size-0;
+	min-width: 2.1em; // equal width
+	padding: 0 0.5rem;
 }
 .Btn--large {
 	@include size-2;

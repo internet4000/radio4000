@@ -30,9 +30,6 @@
 	}
 
 	// icon size here
-	.Btn {
-		border-width: 0;
-	}
 	[class^="icon-"],
 	[class*=" icon-"] {
 		margin-right: 0;
@@ -115,23 +112,22 @@
 	}
 }
 .Playback-sizeButtons {
-	font-size: 0.8rem;
+	position: absolute;
+	top: -1.4rem;
+	right: -1rem;
+	z-index: 1;
 	padding: 0.5rem;
 	display: flex;
 	justify-content: flex-end;
 	> *:not(:first-child) {
 		margin-left: 0.2em;
 	}
-	// the next button in the size button
-	.Playback-button {
-		display: none;
+	.Btn {
+		box-shadow: 0;
 	}
 }
 .Playback-fullscreenBtn {
 	order: 1;
-	// padding-right: 0.3rem;
-	// padding-left: 0.4rem;
-	// margin-left: auto;
 
 	svg {
 		vertical-align: middle;
@@ -179,11 +175,8 @@
 		order: 5;
 	}
 	.Playback-sizeButtons {
-		// justify-content: flex-end;
-		position: absolute;
 		top: 0;
 		right: 0;
-		z-index: 2;
 	}
 	.Playback-text {
 		flex: 1 0 4rem;
@@ -223,7 +216,6 @@ $bar-height-minimized: rem(70);
 	// .Aside--right {
 	// 	width: 100%;
 	// 	right: 0;
-	// 	overflow: visible;
 	// 	height: $bar-height-minimized;
 	// }
 	// .Playback {
@@ -266,12 +258,7 @@ $bar-height-minimized: rem(70);
 	// .EmberYoutube-progress {
 	// 	position: fixed;
 	// }
-	// .Playback-sizeButtons {
-	// 	position: absolute;
-	// 	top: -0.5rem;
-	// 	right: 0;
-	// }
-	.Playback-channel,
+	// .Playback-channel,
 	.Playback-text,
 	.EmberYoutube-progress,
 	.Playback-buttons,
@@ -279,12 +266,24 @@ $bar-height-minimized: rem(70);
 		display: none;
 	}
 	.Aside--right {
-		width: 10rem;
+		width: 14rem;
 	}
 	.Playback-sizeButtons {
 		// the next button in the size button
 		.Playback-button {
 			display: block;
 		}
+	}
+	.Playback-channel {
+		padding: 0;
+		.ChannelCard.is-active {
+			outline: 0;
+		}
+	}
+	.ChannelCard--wide .Cover {
+		flex-basis: 2.5rem;
+	}
+	.ChannelCard-title {
+		@include size-1;
 	}
 }
