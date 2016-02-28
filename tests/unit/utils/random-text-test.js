@@ -27,3 +27,7 @@ test('Generate a random string of 4 characters for the newChannel.url', function
 
 	assert.ok(testedResults.length > timesToSuccess, 'At least 8 of the random strings were different');
 });
+test('it is a string', function (assert) {
+	const result = randomText();
+	assert.ok(typeof result === 'string', 'It is a string yay!');
+});

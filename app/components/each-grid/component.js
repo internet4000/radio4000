@@ -3,5 +3,6 @@ import Ember from 'ember';
 const {Component} = Ember;
 
 export default Component.extend({
-	items: null
+	items: null,
+	classNames: ['Grid']
 });

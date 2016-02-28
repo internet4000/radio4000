@@ -1,4 +1,4 @@
-import { moduleFor, test } from 'ember-qunit';
+import {moduleFor, test} from 'ember-qunit';
 
 moduleFor('service:ui-states', 'Unit | Service | ui states', {
   // Specify the other units that are required for this test.
@@ -6,7 +6,7 @@ moduleFor('service:ui-states', 'Unit | Service | ui states', {
 });
 
 // Replace this with your real tests.
-test('it exists', function(assert) {
+test('it exists', function (assert) {
   var service = this.subject();
   assert.ok(service);
 });

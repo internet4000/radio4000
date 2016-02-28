@@ -1,8 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-
-moduleForComponent('channel-card', 'Integration | Component | channel card', {
+moduleForComponent('/channel-card', 'Integration | Component | channel card', {
   integration: true
 });
 
@@ -14,7 +13,7 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{channel-card}}`);
 
-  assert.equal(this.$().text(), '');
+  assert.equal(this.$().text().trim(), '');
 
   // Template block usage:
   this.render(hbs`

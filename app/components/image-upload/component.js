@@ -41,7 +41,7 @@ export default Component.extend({
 			Ember.run.schedule('afterRender', () => {
 				this.set('gotScripts', true);
 			});
-		}).fail(error => {
+		}).fail(() => {
 			// one or more scripts failed to load
 			console.log(error);
 		});
