@@ -11,7 +11,7 @@ import Ember from 'ember';
 	//res.cloudinary.com/radio4000/image/upload/c_thumb,h_240,w_240,c_fill,fl_lossy,q_60/v1428245306/${src}
 */
 
-const base = '//res.cloudinary.com/radio4000/image/upload';
+const base = 'https://res.cloudinary.com/radio4000/image/upload';
 const defaultQuality = 70;
 
 export function imgUrl(imageId, hash) {
