@@ -9,6 +9,7 @@
   "scripts": {
     "start": "ember server",
     "build": "ember build --environment=production; gulp critical",
+    "build-app": "ember electron:package",
     "test": "xo && ember test",
     "report": "plato -r -d reports app --eslint reports/.eslintrc",
     "deploy": "ember build --environment=staging; gulp critical; mv dist/index.html dist/200.html; surge dist http://much.radio4000.com",
@@ -43,7 +44,7 @@
     "ember-cli-uglify": "^1.2.0",
     "ember-data": "^2.3.3",
     "ember-disable-proxy-controllers": "^1.0.1",
-    "ember-electron": "1.1.0",
+    "ember-electron": "^1.1.1",
     "ember-export-application-global": "^1.0.4",
     "ember-inspector": "1.9.5",
     "ember-keyboard": "0.2.5",
