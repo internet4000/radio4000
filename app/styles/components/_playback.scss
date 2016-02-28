@@ -15,6 +15,14 @@
 	background-color: $mediumlightgray;
 	color: $text-color;
 
+	// Purple background.
+	// background-color: $primary-color;
+	// background-image: linear-gradient(lighten($primary-color,10%), $primary-color);
+	// .Playback-title a {
+	// 	color: $white;
+	// 	color: $bleach;
+	// }
+
 	@media (min-width: $layout-s) {
 		flex-wrap: nowrap;
 	}
@@ -30,9 +38,6 @@
 	}
 
 	// icon size here
-	.Btn {
-		border-width: 0;
-	}
 	[class^="icon-"],
 	[class*=" icon-"] {
 		margin-right: 0;
@@ -77,13 +82,13 @@
 	margin-bottom: 0;
 }
 .Playback-buttons {
-	order: 3;
-	flex: 0 0 auto;
-	display: flex;
-	justify-content: space-between;
-	padding: 0 0.5rem 0.5rem;
 	color: white;
 	background: linear-gradient(lighten($primary-color,10%), $primary-color);
+	padding: 0 0.5rem 0.5rem;
+	display: flex;
+	flex: 0 0 auto;
+	justify-content: space-between;
+	order: 3;
 
 	.NonBtn {
 		align-content: center;
@@ -115,15 +120,22 @@
 	}
 }
 .Playback-sizeButtons {
-	font-size: 0.8rem;
+	position: absolute;
+	top: -1.4rem;
+	right: -1rem;
+	z-index: 1;
 	padding: 0.5rem;
-	display: none;
+	display: flex;
+	justify-content: flex-end;
+	> *:not(:first-child) {
+		margin-left: 0.2em;
+	}
+	.Btn {
+		box-shadow: 0;
+	}
 }
 .Playback-fullscreenBtn {
 	order: 1;
-	// padding-right: 0.3rem;
-	// padding-left: 0.4rem;
-	// margin-left: auto;
 
 	svg {
 		vertical-align: middle;
@@ -149,5 +161,135 @@
 		height: 0;
 		pointer-events: none;
 		transform: scale(0.95);
+	}
+}
+
+/**
+ * Fullscreen state
+ */
+.is-maximized {
+	.Aside--right {
+		top: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		background-color: black;
+	}
+	.Playback {
+		height: 100%;
+		background: black;
+	}
+	.Playback-channel {
+		order: 5;
+	}
+	.Playback-sizeButtons {
+		top: 0;
+		right: 0;
+	}
+	.Playback-text {
+		flex: 1 0 4rem;
+	}
+	.Playback-player {
+		flex: 10;
+		display: flex;
+		#EmberYoutube-player {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+	}
+	.Player {
+		flex: 1;
+		position: relative;
+	}
+	.EmberYoutube-progress {
+		display: none;
+	}
+	.Playback-title a {
+		@include negative-text;
+		color: $white;
+	}
+	.Playback-buttons {
+		background: black;
+		margin: auto;
+	}
+}
+
+
+/**
+ * Minimal state
+ */
+$bar-height-minimized: rem(70);
+.is-minimized {
+	// .Aside--right {
+	// 	width: 100%;
+	// 	right: 0;
+	// 	height: $bar-height-minimized;
+	// }
+	// .Playback {
+	// 	flex-flow: row wrap;
+	// 	color: $white;
+	// 	background-color: $primary-color;
+	// 	background: linear-gradient(lighten($primary-color,10%), $primary-color);
+	// }
+	// .Playback-channel {
+	// 	order: -1;
+	// 	flex: 1;
+	// 	padding: 0.6rem 0 1rem 0.5rem;
+	// 	display: flex;
+	// 	.ChannelCard--wide {
+	// 		flex: 1;
+	// 	}
+	// 	.ChannelCard--wide > a {
+	// 		flex-flow: row wrap;
+	// 	}
+	// }
+	// .ChannelCard--wide .Cover {
+	// 	flex: 0 0 3rem;
+	// }
+	// .Playback-text {
+	// 	flex: 2 0 0;
+	// 	padding: 0.5rem 0;
+	// }
+	// .Playback-title a {
+	// 	@include negative-text;
+	// 	color: $white;
+	// }
+	// .Playback-player {
+	// 	order: 5;
+	// 	position: fixed;
+	// 	right: 0;
+	// 	bottom: $bar-height-minimized;
+	// 	// order: -2;
+	// 	// width: 100%;
+	// }
+	// .EmberYoutube-progress {
+	// 	position: fixed;
+	// }
+	// .Playback-channel,
+	.Playback-text,
+	.EmberYoutube-progress,
+	.Playback-buttons,
+	.Playback-controls, {
+		display: none;
+	}
+	.Aside--right {
+		width: 14rem;
+	}
+	.Playback-sizeButtons {
+		// the next button in the size button
+		.Playback-button {
+			display: block;
+		}
+	}
+	.Playback-channel {
+		padding: 0;
+		margin: 2px;
+	}
+	.ChannelCard--wide .Cover {
+		flex-basis: 2.5rem;
+	}
+	.ChannelCard-title {
+		@include size-1;
 	}
 }

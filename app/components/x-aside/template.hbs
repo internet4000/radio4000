@@ -1,21 +1,21 @@
 <div class="Tabs">
 	{{#link-to 'channels.index' title="Selection and your favorite radios" class="Tabs-item"}}Home{{/link-to}}
 	{{#link-to 'channels.all' title="Find radio channels to enjoy" class="Tabs-item"}}Radios{{/link-to}}
+	{{#link-to 'channels.history' title="Find radio channels to enjoy" class="Tabs-item"}}History{{/link-to}}
 	{{!-- {{#link-to 'channels.history' title="Your listening history" class="Tabs-item"}}History{{/link-to}} --}}
 </div>
 
 {{#if userChannel}}
 	<div class="Tabs">
-		{{#link-to 'channel' userChannel class="Tabs-item Tabs-item--bg" title="Go to your radio"}}
+		{{!-- {{#link-to 'channel' userChannel class="Tabs-item Tabs-item--bg" title="Go to your radio"}}
 			{{#if userChannel.coverImage.src}}
 				<img src="{{img-url userChannel.coverImage.src w="20" h="58" c="fill"}}" alt="">
 			{{/if}}
 			<small>Your radio</small><br>
 			{{userChannel.title}}
-		{{/link-to}}
-	</div>
-	<div class="Tabs">
-		{{#link-to 'channel.add' userChannel class="Btn Btn--primary" title="Add a new track to your radio"}}Add track{{/link-to}}
+		{{/link-to}} --}}
+		{{channel-card channel=userChannel wide=true}}
+		{{#link-to 'channel.add' userChannel class="Btn Btn--primary Btn--topNoRadius" title="Add a new track to your radio"}}Add track{{/link-to}}
 	</div>
 {{/if}}
 

@@ -23,6 +23,7 @@
 	padding-top: 6rem; // space for our top bar
 	height: 100vh;
 	padding-left: 0.7rem; // same
+	padding-right: 1rem;
 	// padding-bottom: $bar-height * 1.25; // space for our bottom bar
 	// transition: transform 300ms $easing2;
 	// transform: translate3d(-100%, 0, 0);
@@ -40,14 +41,12 @@
 	border-left: 1px solid $superlightgray;
 	border-right: 1px solid hsl(0,0%,80%);
 	position: fixed;
-	z-index: 1;
+	z-index: 4;
 	top: auto;
-	right: 1.5rem;
+	right: 2rem;
 	bottom: 0;
 	width: 19rem;
-	@media (min-width: $layout-m) {
-		right: 3rem;
-	}
+	overflow: visible;
 }
 
 /**

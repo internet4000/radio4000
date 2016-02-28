@@ -1,9 +1,3 @@
 <div class="Sections">
-	{{#unless session.currentUser.channels.firstObject}}
-		<section class="Container">
-			<p>Welcome to Radio4000! Start listening to radios below, <a href=""></a> or <a href="{{href-to 'login'}}" title="">create your own radio now!</a></p>
-		</section>
-	{{/unless}}
-
 	{{outlet}}
 </div>

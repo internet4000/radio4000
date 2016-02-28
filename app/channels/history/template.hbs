@@ -1,6 +1,6 @@
 <section class="Section">
 	<div class="Manchet">
-		<h1>Your listening <small>history</small></h1>
+		<h1><small>Your listening </small>History</h1>
 		<p class="Muted">Only you can see your history.</p>
 	</div>
 
@@ -10,15 +10,15 @@
 				{{channel-card channel=item}}
 			{{/each-grid}}
 			{{#btn-group}}
-				<button class="Btn" {{action 'clearChannelHistory'}}>Clear history</button>
+				<button class="Btn" {{action 'clearChannelHistory'}}>Clear my listening history</button>
 			{{/btn-group}}
 		</div>
 	{{else}}
 		<div class="Container">
 			{{#if session.isAuthenticated}}
-				<p>You haven't played any radios yet.</p>
+				<p>Radios you listen to will appear here so you can continue exploring later.</p>
 			{{else}}
-				<p>When you register, we'll save your listening history here so you can always come back to your last played radios and tracks.</p>
+				<p>When you register, you'll be able to find your listening history here. You can always come back here and continue your music exploration where you left off.</p>
 				<p><a href="{{href-to 'login'}}">Register or log in</a>.</p>
 			{{/if}}
 		</div>

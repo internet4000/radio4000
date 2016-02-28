@@ -5,8 +5,10 @@ import Cookies from 'ember-cli-js-cookie';
 const {computed, on} = Ember;
 
 export default Ember.Service.extend({
-	isMinimal: false,
-	isFullscreen: false,
+	player: {
+		isMinimal: false,
+		isFullscreen: false,
+	},
 
 	setInitialWidth: on('init', function () {
 		const xBrowserWidth = document.querySelector('body').getBoundingClientRect().width;

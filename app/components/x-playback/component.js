@@ -16,6 +16,11 @@ export default Component.extend(EKMixin, {
 	onSpaceClick: on(keyUp(' '), function () {
 		this.send('togglePlay');
 	}),
+	closeFullscreen: on(keyUp('Escape'), function () {
+		if (this.get('uiStates.player.isMaximized')) {
+			this.send('toggleMaximizedPlayer');
+		}
+	}),
 
 	actions: {
 		togglePlay() {
@@ -43,18 +48,25 @@ export default Component.extend(EKMixin, {
 				player.activateRandom();
 			}
 		},
-		toggleFullscreen() {
-			this.toggleProperty('uiStates.isFullscreen');
-		},
 		scrollToTrack() {
 			// Scroll afterRender and a bit later to not jank the computer
-			run.scheduleOnce('afterRender', function () {
+			run.scheduleOnce('afterRender', () => {
 				run.later(() => {
 					$('.Channel-outlet').animate({
 						scrollTop: $('.Track.is-current').offset().top - 90
 					}, 700, 'swing');
 				}, 100);
 			});
+		},
+
+		// player size states
+		toggleMaximizedPlayer() {
+			this.set('uiStates.player.isMinimized', false);
+			this.toggleProperty('uiStates.player.isMaximized');
+		},
+		toggleMinimizedPlayer() {
+			this.set('uiStates.player.isMaximized', false);
+			this.toggleProperty('uiStates.player.isMinimized');
 		},
 
 		// ember-youtube events

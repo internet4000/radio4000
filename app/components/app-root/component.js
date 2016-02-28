@@ -8,7 +8,8 @@ export default Component.extend({
 
 	classNames: ['Root'],
 	classNameBindings: [
-		'uiStates.isFullscreen',
+		'uiStates.player.isMaximized:is-maximized',
+		'uiStates.player.isMinimized:is-minimized',
 		'uiStates.isMinimal',
 		'uiStates.isPanelLeftVisible:is-panelLeftVisible',
 		'player.model:is-withPlayer:is-withoutPlayer'
