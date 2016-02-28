@@ -118,6 +118,7 @@
 	font-size: 0.8rem;
 	padding: 0.5rem;
 	display: flex;
+	justify-content: flex-end;
 	> *:not(:first-child) {
 		margin-left: 0.2em;
 	}
@@ -169,11 +170,28 @@
 	.Playback {
 		height: 100%;
 	}
-	.Playback-player {
-		flex: 10;
+	.Playback-sizeButtons {
+		// justify-content: flex-end;
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 2;
 	}
 	.Playback-text {
 		flex: 1 0 4rem;
+	}
+	.Playback-player {
+		flex: 10;
+		display: flex;
+		#EmberYoutube-player {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+	}
+	.Player {
+		flex: 1;
+		position: relative;
 	}
 }
 
@@ -181,18 +199,25 @@
 /**
  * Minimal state
  */
+$bar-height-minimized: $bar-height * 2;
 .is-minimized {
 	.Aside--right {
 		width: 100%;
 		right: 0;
+		overflow: visible;
+		height: $bar-height-minimized;
 	}
 	.Playback {
 		flex-flow: row wrap;
+		color: $white;
+		background-color: $primary-color;
+		background: linear-gradient(lighten($primary-color,10%), $primary-color);
+
 	}
 	.Playback-channel {
 		order: -1;
 		flex: 1;
-		padding: 1rem 0 1rem 1rem;
+		padding: 0.6rem 0 1rem 0.5rem;
 		display: flex;
 		.ChannelCard--wide {
 			flex: 1;
@@ -203,13 +228,26 @@
 	}
 	.Playback-text {
 		flex: 1 0 0;
+
+	}
+	.Playback-title a {
+		@include negative-text;
+		color: $white;
 	}
 	.Playback-player {
 		order: 5;
+		position: fixed;
+		right: 0;
+		bottom: $bar-height-minimized;
+		// order: -2;
+		// width: 100%;
+	}
+	.EmberYoutube-progress {
+		position: fixed;
 	}
 	.Playback-sizeButtons {
 		position: absolute;
-		top: 0;
+		top: -0.5rem;
 		right: 0;
 	}
 }
