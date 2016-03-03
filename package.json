@@ -9,7 +9,7 @@
   "scripts": {
     "build": "ember build; gulp critical",
     "build-production": "ember build -p; gulp critical",
-    "build-app": "ember electron:package; npm run compress-app",
+    "build-app": "ember electron:package",
     "compress-app": "zip -r -X electron-builds/Radio4000-darwin-x64/Radio4000.zip electron-builds/Radio4000-darwin-x64/Radio4000.app",
     "deploy": "npm run build; gulp critical; mv dist/index.html dist/200.html; surge dist http://much.radio4000.com",
     "deploy-production": "npm run build-production; mv dist/index.html dist/200.html; surge dist https://radio4000.com",
@@ -97,7 +97,7 @@
     "build-version": null,
     "cache": null,
     "helper-bundle-id": null,
-    "icon": "dist/assets/images/logos/radio4000.icns",
+    "icon": "public/assets/images/logos/radio4000.icns",
     "ignore": null,
     "out": null,
     "overwrite": null,
