@@ -5,6 +5,7 @@
 /tmp
 /build
 /electron-builds
+/dist-electron
 
 # dependencies
 /node_modules

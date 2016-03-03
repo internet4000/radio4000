@@ -99,7 +99,7 @@
     "helper-bundle-id": null,
     "icon": "public/assets/images/logos/radio4000.icns",
     "ignore": null,
-    "out": null,
+    "out": "dist-electron",
     "overwrite": null,
     "prune": true,
     "sign": null,
