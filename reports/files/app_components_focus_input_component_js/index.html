@@ -94,7 +94,7 @@
 export default Ember.TextField.extend({
 	// http://emberjs.com/guides/cookbook/user_interface_and_interaction/focusing_a_textfield_after_its_been_inserted/
 	becomeFocused: Ember.on(&#039;didInsertElement&#039;, function () {
-		this.$().focus();
+		this.element.focus();
 	})
 });</textarea>
   </div>

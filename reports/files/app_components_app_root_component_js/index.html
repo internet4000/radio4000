@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">34</p>
+      <p class="stat">28</p>
     </div>
   </div>
   <div class="row historical">
@@ -89,9 +89,9 @@
 
 <div class="container">
   <div class="row">
-    <textarea id="file-source" class="col-md-12">import Ember from &#039;ember&#039;;
-
-const {$, Component, inject, run} = Ember;
+    <textarea id="file-source" class="col-md-12">/* global document */
+import Ember from &#039;ember&#039;;
+const {Component, inject, run} = Ember;
 
 export default Component.extend({
 	uiStates: inject.service(),
@@ -99,7 +99,8 @@ export default Component.extend({
 
 	classNames: [&#039;Root&#039;],
 	classNameBindings: [
-		&#039;uiStates.isFullscreen&#039;,
+		&#039;uiStates.player.isMaximized:is-maximized&#039;,
+		&#039;uiStates.player.isMinimized:is-minimized&#039;,
 		&#039;uiStates.isMinimal&#039;,
 		&#039;uiStates.isPanelLeftVisible:is-panelLeftVisible&#039;,
 		&#039;player.model:is-withPlayer:is-withoutPlayer&#039;
@@ -111,16 +112,10 @@ export default Component.extend({
 		});
 	},
 
-	// Remove our dummy app with inline styles
+	// Remove our dummy app with inline styles.
 	removeDummyHTML() {
-		let $dummy = $(&#039;.DummyApp&#039;);
-
-		$dummy.fadeTo(200, 0, &#039;linear&#039;, function () {
-			// wrap it in a run loop to ensure template is rendered
-			run.schedule(&#039;afterRender&#039;, () =&gt; {
-				$dummy.remove();
-			});
-		});
+		const dummy = document.querySelector(&#039;.DummyApp&#039;);
+		dummy.parentNode.removeChild(dummy);
 	}
 });</textarea>
   </div>

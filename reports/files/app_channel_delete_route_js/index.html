@@ -103,17 +103,17 @@ export default Route.extend(ownerRouteMixin, {
 	},
 	afterModel() {
 		const flashMessages = Ember.get(this, &#039;flashMessages&#039;);
-		flashMessages.danger(&quot;You&#039;ll be missed! 🌇&quot;, {
+		flashMessages.danger(`Your radio will be lost forever! 🌇`, {
 			sticky: true
-		})
+		});
 	},
 
 	actions: {
 		willTransition() {
 			const flashMessages = Ember.get(this, &#039;flashMessages&#039;);
-			flashMessages.clearMessages().info(&#039;fiou…&#039;, {
+			flashMessages.clearMessages().info(&#039;Radio deleted…&#039;, {
 				timeout: 400
-			})
+			});
 		}
 	}
 });</textarea>

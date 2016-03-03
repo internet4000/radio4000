@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">22</p>
+      <p class="stat">9</p>
     </div>
   </div>
   <div class="row historical">
@@ -92,24 +92,11 @@
     <textarea id="file-source" class="col-md-12">import Ember from &#039;ember&#039;;
 import DS from &#039;ember-data&#039;;
 
-const {attr, belongsTo} = DS;
+const {Model, attr, belongsTo} = DS;
 
-export default DS.Model.extend({
+export default Model.extend({
 	channel: belongsTo(&#039;channel&#039;),
-	src: attr(&#039;string&#039;),
-
-	// returns a cropped thumb with facial detection
-	thumb: Ember.computed(&#039;src&#039;, function () {
-		const src = this.get(&#039;src&#039;);
-
-		if (!src) {
-			return &#039;&#039;;
-		}
-
-		// let isGif = !src.match(/\.(jpg|jpeg|png|gif)$/);
-
-		return `//res.cloudinary.com/radio4000/image/upload/c_thumb,h_240,w_240/v1428245306/${src}`;
-	})
+	src: attr(&#039;string&#039;)
 });</textarea>
   </div>
 </div>

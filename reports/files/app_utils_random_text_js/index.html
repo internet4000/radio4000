@@ -94,7 +94,7 @@
 export default function randomText() {
 	const chars = &#039;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&#039;;
 	const len = 4;
-	return Array(len).join().split(&#039;,&#039;).map(() =&gt; chars.charAt(Math.floor(Math.random() * chars.length))).join(&#039;&#039;);
+	return new Array(len).join().split(&#039;,&#039;).map(() =&gt; chars.charAt(Math.floor(Math.random() * chars.length))).join(&#039;&#039;);
 }
 
 // in that case read it as follows:

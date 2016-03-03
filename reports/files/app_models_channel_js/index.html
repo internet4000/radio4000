@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">56</p>
+      <p class="stat">45</p>
     </div>
   </div>
   <div class="row historical">
@@ -96,11 +96,9 @@ const {attr, hasMany, belongsTo} = DS;
 const {computed} = Ember;
 
 /*
- Channel model:
-
- There is no reference to the &#039;channel owner&#039; because we want the user to be as anonymous as possible
-
- There is also a channelPublic model, which can be edited by anyone
+ Channel model
+ There is no reference to the &#039;channel owner&#039; because we want the user to be as anonymous as possible.
+ There is also a channelPublic model, which can be edited by anyone.
  */
 
 export default DS.Model.extend({
@@ -110,40 +108,31 @@ export default DS.Model.extend({
 	isFeatured: attr(&#039;boolean&#039;),
 	link: attr(&#039;string&#039;),
 
-	// time stamps
+	// Timestamps.
 	created: attr(&#039;number&#039;, {
 		defaultValue() {
 			return new Date().getTime();
 		}
 	}),
+	updated: attr(&#039;number&#039;, {
+		defaultValue() {
+			return new Date().getTime();
+		}
+	}),
 
-	/**
-	 * why this is not working?
-	 * it should update with a date each time a new track added to tracks
-	 * right?
-	 **/
-	// lastUpdated: Ember.computed(&#039;tracks.[]&#039;, function () {
-	// 	return new Date().getTime();
-	// }),
-
-	// Set the latest image as the cover image
+	// Set the latest image as the cover image.
 	coverImage: computed(&#039;images.[]&#039;, function () {
 		return this.get(&#039;images.lastObject&#039;);
 	}),
 
-	// this property is toggled by the player setChannel
+	// This property is toggled by the player setChannel.
 	isInPlayer: false,
 
-	// relationships
+	// Relationships.
 	images: hasMany(&#039;image&#039;, {async: true}),
 	tracks: hasMany(&#039;track&#039;, {async: true}),
 	favoriteChannels: hasMany(&#039;channel&#039;, {inverse: null, async: true}),
 	channelPublic: belongsTo(&#039;channelPublic&#039;, {async: true})
-
-	// dates
-	// createdDate: Ember.computed(&#039;created&#039;, function () {
-	// 	return moment(this.get(&#039;created&#039;)).fromNow();
-	// }),
 });</textarea>
   </div>
 </div>

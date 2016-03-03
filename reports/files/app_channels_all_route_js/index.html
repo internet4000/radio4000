@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">100.00</p>
+      <p class="stat">82.73</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">14</p>
+      <p class="stat">168</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">0.00</p>
+      <p class="stat">1.00</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.00</p>
+      <p class="stat">0.01</p>
     </div>
   </div>
 </div>
@@ -91,15 +91,169 @@
   <div class="row">
     <textarea id="file-source" class="col-md-12">import Ember from &#039;ember&#039;;
 
-export default Ember.Route.extend({
-	model() {
-		return this.store.findAll(&#039;channel&#039;);
-	},
+const {Route, get} = Ember;
 
+// Lets you call a promise while something is true.
+// function promiseWhile(condition, body) {
+// 	return new RSVP.Promise((resolve, reject) =&gt; {
+
+// 		function loop() {
+// 			RSVP.Promise.resolve(condition()).then(result =&gt; {
+// 				// When the result of calling `condition` is no longer true, we are done.
+// 				if (!result) {
+// 					resolve();
+// 				} else {
+// 					// When it completes loop again otherwise, if it fails, reject
+// 					RSVP.Promise.resolve(body()).then(loop, reject);
+// 				}
+// 			});
+// 		}
+
+// 		// Start running the loop
+// 		loop();
+// 	});
+// }
+
+// Set to either &#039;limitToLast&#039; or &#039;limitToFirst&#039; to
+// find items from newest or oldest.
+const LIMIT_TO_DYNAMIC = &#039;limitToLast&#039;;
+const PAGE_SIZE = 15;
+
+export default Route.extend({
+	startAt: null,
+	endAt: null,
+
+	// When search changes the url, don&#039;t replace the history.
+	// e.g. back/forth in browser works as expected.
 	queryParams: {
-		// search shouldn&#039;t mess with the URL
 		search: {
 			replace: true
+		}
+	},
+
+	model() {
+		// All channels without doing a request. This way the array updates
+		// while we fetch more channels in the background.
+		return this.store.peekAll(&#039;channel&#039;);
+		// return this.store.find(&#039;channel&#039;, {orderBy: &#039;published&#039;, limitToLast: 5})
+		// return this.store.query(&#039;channel&#039;, {orderBy: &#039;category&#039;, startAt: 1, endAt: 1})
+		// get oldest
+		// return this.store.query(&#039;channel&#039;, {limitToLast: 5});
+		// get newest
+		// return this.store.query(&#039;channel&#039;, {limitToFirst: 5});
+		// return this.store.query(&#039;channel&#039;, {startAt: &#039;-J_Gj6nryBGVLHrmfZ10&#039;});
+	},
+
+	afterModel() {
+		// v1: Load more channels in the background.
+		// this.findChannels(5).then(() =&gt; {
+			// this.findChannels(20).then(() =&gt; {
+			// 	this.findChannels().then(() =&gt; {
+			// 		// all channels are loaded
+			// 	});
+			// });
+		// });
+
+		if (this.get(&#039;didLoadAll&#039;)) {
+			return;
+		}
+
+		// v2: load with a pager (avoids fetching duplicate channels)
+		// console.time(&#039;findPrev1&#039;);
+				this.store.findAll(&#039;channel&#039;).then(() =&gt; {
+					// console.timeEnd(&#039;Query the rest of the channels&#039;);
+					this.set(&#039;didLoadAll&#039;, true);
+				});
+		// this.findPrev().then(() =&gt; {
+			// console.timeEnd(&#039;findPrev1&#039;);
+
+			// console.time(&#039;findPrev2&#039;);
+			// this.findPrev().then(data =&gt; {
+			// 	console.timeEnd(&#039;findPrev2&#039;);
+			// });
+
+			// Ember.run.schedule(&#039;later&#039;, () =&gt; {
+				// console.time(&#039;Find all channels&#039;);
+				// this.store.findAll(&#039;channel&#039;).then(() =&gt; {
+				// 	console.timeEnd(&#039;Find all channels&#039;);
+				// });
+
+				// console.time(&#039;Query the rest of the channels&#039;);
+			// });
+		// });
+
+		// v3 WIP: loop through promises
+		// let looper = 20;
+		// promiseWhile(() =&gt; looper &gt; 0, () =&gt; {
+		// 	return this.findPrev().then(data =&gt; {
+		// 		console.log(data.get(&#039;length&#039;));
+		// 		// looper = data.get(&#039;length&#039;);
+		// 		looper--;
+		// 	});
+		// }).then(() =&gt; {
+		// 	console.log(&#039;done&#039;);
+		// });
+	},
+
+	// Constructs an emerfire query supporting pagination.
+	// Inspired by https://github.com/firebase/emberfire/issues/248
+	findPaginated() {
+		const query = {};
+
+		query[LIMIT_TO_DYNAMIC] = PAGE_SIZE + 1;
+
+		if (this.get(&#039;startAt&#039;)) {
+			query.startAt = this.get(&#039;startAt&#039;);
+		}
+
+		if (this.get(&#039;endAt&#039;)) {
+			query.endAt = this.get(&#039;endAt&#039;);
+			query[LIMIT_TO_DYNAMIC] = PAGE_SIZE + 1;
+		}
+
+		return this.store.query(&#039;channel&#039;, query);
+	},
+
+	// Returns either all or a limited query of a model type.
+	// example: findChannels(&#039;track&#039;, 999);
+	// @todo get rid of this and extend `findPaginated`
+	findChannels(howMany) {
+		const modelType = &#039;channel&#039;;
+		if (howMany) {
+			return this.store.query(modelType, {limitToLast: howMany});
+		}
+		return this.store.findAll(modelType, {reload: true});
+	},
+
+	findPrev() {
+		const model = this.get(&#039;currentModel&#039;);
+		let id;
+		this.set(&#039;startAt&#039;, null);
+		if (model) {
+			if (this.get(&#039;endAt&#039;)) {
+				id = get(model, &#039;lastObject.id&#039;);
+			} else {
+				id = get(model, &#039;firstObject.id&#039;);
+			}
+			this.set(&#039;endAt&#039;, id);
+		}
+		return this.findPaginated();
+	},
+
+	findNext() {
+		const model = this.get(&#039;currentModel&#039;);
+		const id = get(model, &#039;lastObject.id&#039;);
+		this.set(&#039;startAt&#039;, id);
+		this.set(&#039;endAt&#039;, null);
+		this.findPaginated();
+	},
+
+	actions: {
+		prev() {
+			this.findPrev();
+		},
+		next() {
+			this.findNext();
 		}
 	}
 });</textarea>

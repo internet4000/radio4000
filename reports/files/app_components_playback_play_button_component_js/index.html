@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">59</p>
+      <p class="stat">71</p>
     </div>
   </div>
   <div class="row historical">
@@ -95,21 +95,21 @@ const {Component, inject, debug, computed} = Ember;
 
 // Pass it a track to play it.
 // Pass it a channel to play latest track.
-// Set isShuffle to true it will play random and enable isShuffle on the player.
+// Set isShuffled to true it will play random and enable isShuffled on the player.
 // It will load all tracks async (use isLoading in templates)
 
 export default Component.extend({
 	player: inject.service(),
 	tagName: &#039;button&#039;,
 	classNames: [&#039;Btn&#039;],
-	classNameBindings: [&#039;isLoading&#039;, &#039;isInPlayer&#039;],
+	classNameBindings: [&#039;isLoading&#039;, &#039;isInPlayer&#039;, &#039;nothingToPlay:is-hidden&#039;],
 	isInPlayer: computed.reads(&#039;channel.isInPlayer&#039;),
-	isShuffle: computed.reads(&#039;isInPlayer&#039;),
+	isShuffled: computed.reads(&#039;isInPlayer&#039;),
 
 	// if it is in the player
 	// that mean clicking again should play a random track
 	click() {
-		let player = this.get(&#039;player&#039;);
+		const player = this.get(&#039;player&#039;);
 		if (this.get(&#039;isInPlayer&#039;)) {
 			debug(&#039;isInPlayer -&gt; nextRandom&#039;);
 			return player.activateRandom().then(() =&gt; {
@@ -128,13 +128,25 @@ export default Component.extend({
 	playChannel(channel = this.get(&#039;channel&#039;)) {
 		debug(&#039;play channel&#039;);
 		this.set(&#039;isLoading&#039;, true);
-		let track = this.loadTracks(channel).then(tracks =&gt; {
+
+		// Loads necessary all tracks and then returns another promise
+		// for the last track.
+		const promise = this.loadTracks(channel).then(tracks =&gt; {
 			this.set(&#039;isLoading&#039;, false);
 			return tracks.get(&#039;lastObject&#039;);
 		});
-		track.then(item =&gt; {
+
+		promise.then(track =&gt; {
 			this.set(&#039;isLoading&#039;, false);
-			this.get(&#039;player&#039;).playTrack(item);
+
+			// If we have no track, the radio is empty,
+			// so we set a class in order to hide the button.
+			const nothingToPlay = Boolean(!track);
+			this.set(&#039;nothingToPlay&#039;, nothingToPlay);
+
+			if (track) {
+				this.get(&#039;player&#039;).playTrack(track);
+			}
 		});
 	},
 	/**

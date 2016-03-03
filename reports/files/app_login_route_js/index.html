@@ -91,31 +91,31 @@
   <div class="row">
     <textarea id="file-source" class="col-md-12">import Ember from &#039;ember&#039;;
 
-const {debug, get} = Ember;
+const {debug, get, set} = Ember;
 
 export default Ember.Route.extend({
 	uiStates: Ember.inject.service(),
 
 	activate() {
-		this.set(&#039;uiStates.isMinimal&#039;, true);
+		set(this, &#039;uiStates.isMinimal&#039;, true);
 	},
 	deactivate() {
-		this.set(&#039;uiStates.isMinimal&#039;, false);
+		set(this, &#039;uiStates.isMinimal&#039;, false);
 	},
 
 	actions: {
-		// Signs a user in.
-		// And if the user has a channel we transition to it,
-		// otherwise we transition to create a new channel.
-		logIn(authWith) {
+		// Logs in a user
+		// a) if the user has a channel, we transition to it
+		// b) otherwise we transition to create a new channel
+		login(provider) {
 			const flashMessages = get(this, &#039;flashMessages&#039;);
-			this.get(&#039;session&#039;).open(&#039;firebase&#039;, {authWith: authWith}).then(() =&gt; {
-				const userChannels = this.get(&#039;session.currentUser.channels&#039;);
+			get(this, &#039;session&#039;).open(&#039;firebase&#039;, {provider}).then(() =&gt; {
+				const userChannels = get(this, &#039;session.currentUser.channels&#039;);
 				userChannels.then(channels =&gt; {
-					const channel = channels.get(&#039;firstObject&#039;);
+					const channel = get(channels, &#039;firstObject&#039;);
 					if (channel) {
 						debug(&#039;user signed in with channel, transitioning to it&#039;);
-						flashMessages.info(&#039;You are logged in!&#039;);
+						flashMessages.info(&#039;You are logged in&#039;);
 						this.transitionTo(&#039;channel&#039;, channel);
 					} else {
 						debug(&#039;user signed in without channel, transitioning to /new&#039;);

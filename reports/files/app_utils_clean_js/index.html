@@ -93,8 +93,9 @@
 // and dasherizes, which also makes it lowercase
 // and remove special (but normally safe) chars
 // remember not do remove hyphens ----
+
 export default function clean(string) {
-	let cleaned = string.trim().dasherize();
+	const cleaned = string.trim().dasherize();
 	return cleaned.replace(/[`~!@#$%^&amp;*()_|+=?;:&#039;&quot;,.&lt;&gt;\{\}\[\]\\\/]/gi, &#039;&#039;);
 }</textarea>
   </div>

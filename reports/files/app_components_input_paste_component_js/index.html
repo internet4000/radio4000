@@ -95,16 +95,16 @@ const {TextField, on, run, debug} = Ember;
 
 export default TextField.extend({
 	capturePaste: on(&#039;didInsertElement&#039;, function () {
-		let self = this;
-		let input = this.element;
-		let $input = this.$();
+		const self = this;
+		const element = this.element;
+		const $input = this.$();
 
 		// use jQuery&#039;s &#039;paste&#039; event
-		$input.on(&#039;paste&#039;, function () {
+		this.$().on(&#039;paste&#039;, function () {
 			// without run loop, the pasted value isn&#039;t available yet
 			run.schedule(&#039;afterRender&#039;, function () {
 				// don&#039;t submit if field is invalid
-				if (input.validity.typeMismatch) {
+				if (element.validity.typeMismatch) {
 					debug(&#039;input not valid&#039;);
 					return;
 				}

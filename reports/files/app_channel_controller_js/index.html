@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">112</p>
+      <p class="stat">102</p>
     </div>
   </div>
   <div class="row historical">
@@ -96,17 +96,6 @@ const {debug, computed} = Ember;
 export default Ember.Controller.extend({
 	player: Ember.inject.service(),
 
-	// @todo: this is very slow!!
-	// lastUpdatedFormatted: computed(&#039;model.tracks.@each.created&#039;, function () {
-	// 	const date = this.get(&#039;model.tracks.lastObject.created&#039;);
-
-	// 	// only the channel owner can see the exact time (privacy)
-	// 	if (this.get(&#039;canEdit&#039;)) {
-	// 		return window.moment(date).fromNow();
-	// 	}
-	// 	return window.moment(date).subtract(1, &#039;days&#039;).fromNow();
-	// }),
-
 	canEdit: computed(&#039;model&#039;, &#039;session.currentUser.channels.firstObject&#039;, function () {
 		const channel = this.get(&#039;model&#039;);
 		const userChannel = this.get(&#039;session.currentUser.channels.firstObject&#039;);
@@ -125,16 +114,17 @@ export default Ember.Controller.extend({
 		return canEdit;
 	}),
 
-	// isWelcomed: computed(&#039;model.tracks.firstObject&#039;, &#039;model.images.firstObject&#039;, &#039;model.favoriteChannels.firstObject&#039;, &#039;canEdit&#039;, function () {
-	// 	let canEdit = this.get(&#039;canEdit&#039;);
-	// 	let hasTrack = this.get(&#039;model.tracks.firstObject&#039;);
-	// 	let hasImage = this.get(&#039;model.images.firstObject&#039;);
-	// 	let hasFavorite = this.get(&#039;model.favoriteChannels.firstObject&#039;);
-	// 	if (canEdit &amp;&amp; hasTrack &amp;&amp; hasImage &amp;&amp; hasFavorite) {
-	// 		return true;
-	// 	}
-	// 	return false;
-	// }),
+	isWelcomed: computed(&#039;model.tracks.firstObject&#039;, &#039;model.images.firstObject&#039;, &#039;model.favoriteChannels.firstObject&#039;, &#039;canEdit&#039;, function () {
+		const canEdit = this.get(&#039;canEdit&#039;);
+		// No need to check for more if you can&#039;t edit.
+		if (!canEdit) {
+			return false;
+		}
+		const hasTrack = this.get(&#039;model.tracks.firstObject&#039;);
+		const hasImage = this.get(&#039;model.images.firstObject&#039;);
+		const hasFavorite = this.get(&#039;model.favoriteChannels.firstObject&#039;);
+		return canEdit &amp;&amp; hasTrack &amp;&amp; hasImage &amp;&amp; hasFavorite;
+	}),
 
 	isFavorite: computed(&#039;model&#039;, &#039;session.currentUser.channels.firstObject.favoriteChannels.[]&#039;, function () {
 		const channel = this.get(&#039;model&#039;);

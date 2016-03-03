@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">100.00</p>
+      <p class="stat">96.88</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">20</p>
+      <p class="stat">51</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,7 +62,7 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">0.00</p>
+      <p class="stat">1.00</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
@@ -89,24 +89,56 @@
 
 <div class="container">
   <div class="row">
-    <textarea id="file-source" class="col-md-12">import Ember from &#039;ember&#039;;
+    <textarea id="file-source" class="col-md-12">/* global document */
+import Ember from &#039;ember&#039;;
+import Cookies from &#039;ember-cli-js-cookie&#039;;
+
+const {computed, on} = Ember;
 
 export default Ember.Service.extend({
-	isMinimal: false,
-	isFullscreen: false,
+	player: {
+		isMinimal: false,
+		isFullscreen: false,
+	},
+
+	setInitialWidth: on(&#039;init&#039;, function () {
+		const xBrowserWidth = document.querySelector(&#039;body&#039;).getBoundingClientRect().width;
+		this.set(&#039;initialWidth&#039;, xBrowserWidth);
+	}),
+
+	// 513px is our current breakpoint for panel to be full width.
+	smallScreen: computed(&#039;initialWidth&#039;, function () {
+		return this.get(&#039;initialWidth&#039;) &lt; 513;
+	}),
 
 	/**
 		left panel api
 	 */
-	isPanelLeftVisible: false,
-	showPanelLeft() {
-		this.set(&#039;isPanelLeftVisible&#039;, true);
-	},
-	hidePanelLeft() {
-		this.set(&#039;isPanelLeftVisible&#039;, false);
-	},
+	// isPanelLeftVisible: true,
+	isPanelLeftVisible: computed({
+		get() {
+			if (this.get(&#039;smallScreen&#039;)) {
+				return false;
+			}
+
+			// if the cookie is undefined (not set), it returns true
+			// or if the cookie has &#039;true&#039; as value, return true
+			const noCookie = Cookies.get(&#039;isPanelOpen&#039;) === undefined;
+			return noCookie || Cookies.get(&#039;isPanelOpen&#039;) === &#039;true&#039;;
+		},
+		set(key, value) {
+			Cookies.set(&#039;isPanelOpen&#039;, value, {expires: 7});
+			return value;
+		}
+	}),
 	togglePanelLeft() {
 		this.toggleProperty(&#039;isPanelLeftVisible&#039;);
+	},
+	// Only close if we&#039;re on a small screen.
+	perhapsClosePanel() {
+		if (this.get(&#039;smallScreen&#039;)) {
+			this.set(&#039;isPanelLeftVisible&#039;, false);
+		}
 	}
 });</textarea>
   </div>

@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">11</p>
+      <p class="stat">16</p>
     </div>
   </div>
   <div class="row historical">
@@ -97,6 +97,11 @@ export default Ember.Route.extend({
 		return this.store.findRecord(&#039;track&#039;, params.track_id);
 	},
 	afterModel(track) {
+		// this.transitionTo(&#039;channel&#039;, track.get(&#039;channel&#039;), {
+		// 	queryParams: {
+		// 		listen: track.get(&#039;id&#039;)
+		// 	}
+		// });
 		this.get(&#039;player&#039;).playTrack(track);
 	}
 });</textarea>

@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">25</p>
+      <p class="stat">8</p>
     </div>
   </div>
   <div class="row historical">
@@ -91,67 +91,12 @@
   <div class="row">
     <textarea id="file-source" class="col-md-12">import Ember from &#039;ember&#039;;
 
-const {Controller, inject} = Ember;
+const {Controller, computed, inject} = Ember;
 
 export default Controller.extend({
-	queryParams: [&#039;test&#039;],
-	test: null,
 	player: inject.service(),
-	playerHistory: inject.service(),
-
-	actions: {
-		ytPlaying() {
-			this.get(&#039;player&#039;).play();
-		},
-		ytPaused() {
-			this.get(&#039;player&#039;).pause();
-		},
-		ytEnded() {
-			this.get(&#039;player&#039;).trackEnded();
-		},
-		ytError(error) {
-			this.get(&#039;player&#039;).onError(error);
-		}
-	}
-});
-
-// START REMOTE TRACK
-
-// onTrackForRemoteChange: observer(&#039;session.currentUser.settings.trackForRemote&#039;, function () {
-// 	let settings = this.get(&#039;session.currentUser.settings&#039;);
-//
-// 	if (!this.get(&#039;player.didPlay&#039;)) {
-// 		debug(&#039;didnt activate play&#039;)
-// 	}
-//
-// 	if (!settings) {
-// 		debug(&#039;remote track changed but no settings&#039;);
-// 		return;
-// 	}
-//
-// 	settings.then(settings =&gt; {
-//
-// 		// make sure it doesn&#039;t run too often
-// 		run.debounce(this, this.setTrackFromRemote, 400, true);
-// 	});
-// }),
-//
-// setTrackFromRemote() {
-// 	let track = this.get(&#039;session.currentUser.settings.trackForRemote&#039;);
-//
-// 	if (!track) {
-// 		debug(&#039;cant set track without a track!&#039;);
-// 		return;
-// 	}
-//
-// 	// open the track (it&#039;s a relationship)
-// 	track.then(track =&gt; {
-// 		debug(&#039;setting track from remote to &#039; + track.get(&#039;title&#039;));
-// 		this.set(&#039;player.model&#039;, track);
-// 	});
-// },
-
-// END REMOTE TRACK</textarea>
+	userChannel: computed.alias(&#039;session.currentUser.channels.firstObject&#039;)
+});</textarea>
   </div>
 </div>
 

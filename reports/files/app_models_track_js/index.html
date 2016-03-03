@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">64</p>
+      <p class="stat">65</p>
     </div>
   </div>
   <div class="row historical">
@@ -94,9 +94,9 @@ import DS from &#039;ember-data&#039;;
 import youtubeRegex from &#039;npm:youtube-regex&#039;;
 
 const {debug} = Ember;
-const {attr, belongsTo} = DS;
+const {Model, attr, belongsTo} = DS;
 
-export default DS.Model.extend({
+export default Model.extend({
 	url: attr(&#039;string&#039;),
 	title: attr(&#039;string&#039;),
 	body: attr(&#039;string&#039;),
@@ -115,15 +115,16 @@ export default DS.Model.extend({
 
 	// Updates provider Id automatically from the URL
 	updateProvider() {
-		let id = youtubeRegex().exec(this.get(&#039;url&#039;))[1];
+		const id = youtubeRegex().exec(this.get(&#039;url&#039;))[1];
 
 		if (!id) {
 			return false;
 		}
 
 		this.set(&#039;ytid&#039;, id);
-		this.save();
-		debug(&#039;Updated track.ytid&#039;);
+		this.save().then(() =&gt; {
+			debug(&#039;Updated track.ytid&#039;);
+		});
 	},
 
 	// Own properties

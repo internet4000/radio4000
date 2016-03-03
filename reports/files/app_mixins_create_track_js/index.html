@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">41</p>
+      <p class="stat">44</p>
     </div>
   </div>
   <div class="row historical">
@@ -107,18 +107,21 @@ export default Mixin.create({
 
 		const track = this.store.createRecord(&#039;track&#039;, trackProperties);
 
-		// set channel on track and save
+		// Set channel on track and save.
 		track.set(&#039;channel&#039;, channel);
 		track.updateProvider();
 		track.save().then(() =&gt; {
 			debug(&#039;saved track&#039;);
 
-			// Add it to the tracks relationship on the channel
+			// Update last updated on the channel.
+			channel.set(&#039;updated&#039;, new Date().getTime());
+
+			// Add it to the tracks relationship on the channel and save it.
 			channel.get(&#039;tracks&#039;).then(tracks =&gt; {
 				tracks.addObject(track);
 				channel.save().then(() =&gt; {
 					debug(&#039;Saved new track.&#039;);
-					flashMessages.info(&#039;Track saved&#039;);
+					flashMessages.info(&#039;Saved track&#039;);
 				}, error =&gt; {
 					warn(&#039;Could not create track.&#039;);
 					debug(error);

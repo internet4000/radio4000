@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">136</p>
+      <p class="stat">128</p>
     </div>
   </div>
   <div class="row historical">
@@ -91,18 +91,17 @@
   <div class="row">
     <textarea id="file-source" class="col-md-12">/* jshint unused:false */
 import Ember from &#039;ember&#039;;
+// import ToriiFirebaseAdapter from &#039;emberfire/torii-adapters/firebase&#039;;
 
 const {debug, inject, run} = Ember;
 
+// export default ToriiFirebaseAdapter.extend({
 export default Ember.Object.extend({
 	firebase: inject.service(),
 	store: inject.service(),
 
 	createSettings(user) {
-		let newSettings = this.get(&#039;store&#039;).createRecord(&#039;user-setting&#039;, {
-			user: user
-		});
-
+		const newSettings = this.get(&#039;store&#039;).createRecord(&#039;user-setting&#039;, {user});
 		newSettings.save().then(settings =&gt; {
 			user.set(&#039;settings&#039;, settings).save().then(() =&gt; {
 				Ember.debug(&#039;saved user settings&#039;);
@@ -152,7 +151,7 @@ export default Ember.Object.extend({
 
 	// validating an existing authorization (like a session stored in cookies)
 	fetch() {
-		let firebase = this.get(&#039;firebase&#039;);
+		const firebase = this.get(&#039;firebase&#039;);
 
 		// This is what should be done to determine how to fetch a session. Here I am
 		// retrieving the auth from firebase and checking if I have a user for that auth.
@@ -164,7 +163,7 @@ export default Ember.Object.extend({
 		// https://github.com/Vestorly/torii#adapters-in-torii
 
 		return new Ember.RSVP.Promise((resolve, reject) =&gt; {
-			let auth = firebase.getAuth();
+			const auth = firebase.getAuth();
 
 			if (auth === null) {
 				debug(&#039;no auth&#039;);
@@ -172,9 +171,9 @@ export default Ember.Object.extend({
 			}
 
 			debug(&#039;fetch resolving, looking for user&#039;);
-			this.store.findRecord(&#039;user&#039;, auth.uid).then(user =&gt; {
+			this.store.findRecord(&#039;user&#039;, auth.uid).then(currentUser =&gt; {
 				debug(&#039;found user&#039;);
-				resolve({currentUser: user});
+				resolve({currentUser});
 			}, () =&gt; {
 				debug(&#039;no user found&#039;);
 				reject(new Error(&#039;no user found&#039;));
@@ -185,25 +184,18 @@ export default Ember.Object.extend({
 	// This is what should be done to teardown a session. Here I am unloading my
 	// models and setting currentUser to null. here an authorization is destroyed
 	close() {
-		let firebase = this.get(&#039;firebase&#039;);
-
+		const firebase = this.get(&#039;firebase&#039;);
 		firebase.unauth();
-
-		// @todo keep this until sure we don&#039;t need it
-		// let store = this.get(&#039;store&#039;);
-		// store.unloadAll(&#039;user&#039;);
-
 		return Ember.RSVP.resolve();
 	},
 
 	createUser(auth) {
-		let user = this.store.createRecord(&#039;user&#039;, {
+		const newUser = this.store.createRecord(&#039;user&#039;, {
 			id: auth.uid,
 			provider: auth.provider,
 			name: this._nameFor(auth)
 		});
-
-		return user.save().then(user =&gt; {
+		return newUser.save().then(user =&gt; {
 			debug(&#039;created user&#039;);
 			this.createSettings(user);
 			return user;

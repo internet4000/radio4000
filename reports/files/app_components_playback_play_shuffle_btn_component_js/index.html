@@ -98,8 +98,8 @@ const {computed} = Ember;
 
 export default PlayButtonComponent.extend({
 	attributeBindings: [&#039;title&#039;],
-	title: computed(&#039;shuffle&#039;, function () {
-		return this.get(&#039;shuffle&#039;) ? &#039;Shuffle this radio&#039; : &#039;Play this radio&#039;;
+	title: computed(&#039;isShuffled&#039;, function () {
+		return this.get(&#039;isShuffled&#039;) ? &#039;Shuffle this radio&#039; : &#039;Play this radio&#039;;
 	})
 });</textarea>
   </div>

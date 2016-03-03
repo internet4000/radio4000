@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">189</p>
+      <p class="stat">205</p>
     </div>
   </div>
   <div class="row historical">
@@ -91,7 +91,7 @@
   <div class="row">
     <textarea id="file-source" class="col-md-12">import Ember from &#039;ember&#039;;
 
-const {debug, inject, warn} = Ember;
+const {debug, inject} = Ember;
 
 export default Ember.Service.extend({
 	playerRandom: inject.service(),
@@ -106,22 +106,27 @@ export default Ember.Service.extend({
 	// if it really did change (through the model)
 	// also sets the old one as inactive, and new as… active!
 	setPlaylist() {
-		let playlist = this.get(&#039;playlist&#039;);
-		let playlistId = this.get(&#039;playlist.id&#039;);
+		const playlist = this.get(&#039;playlist&#039;);
+		const playlistId = this.get(&#039;playlist.id&#039;);
 
 		this.get(&#039;model.channel&#039;).then(newPlaylist =&gt; {
-			let newPlaylistId = newPlaylist.get(&#039;id&#039;);
+			const newPlaylistId = newPlaylist.get(&#039;id&#039;);
 
 			if (Ember.isEqual(playlistId, newPlaylistId)) {
 				debug(&#039;Playlist already set.&#039;);
 				return false;
 			}
+
 			if (playlist) {
 				playlist.set(&#039;isInPlayer&#039;, false);
 			}
+
 			this.set(&#039;playlist&#039;, newPlaylist);
 			newPlaylist.set(&#039;isInPlayer&#039;, true);
 			debug(&#039;Playlist was set&#039;);
+			return this.get(&#039;playlist.tracks&#039;).then(items =&gt; {
+				this.get(&#039;playerRandom&#039;).setNewRandomPool(items);
+			});
 		});
 	},
 
@@ -130,6 +135,7 @@ export default Ember.Service.extend({
 		this.set(&#039;isPlaying&#039;, true);
 		this.get(&#039;playerHistory&#039;).setTrackAsPlayed(currentTrack);
 	},
+
 	pause() {
 		this.set(&#039;isPlaying&#039;, false);
 	},
@@ -140,7 +146,7 @@ export default Ember.Service.extend({
 	*/
 	playTrack(track) {
 		if (!track) {
-			warn(&#039;Play called without a track.&#039;);
+			debug(&#039;Play called without a track.&#039;);
 			return false;
 		}
 		// the router is injected with the &#039;player-route&#039; initializer
@@ -165,9 +171,10 @@ export default Ember.Service.extend({
 		}
 		return this.prevNormal();
 	},
+
 	prevNormal() {
 		const playlist = this.get(&#039;playlist&#039;);
-		let prev = this.getPrev();
+		const prev = this.getPrev();
 
 		if (!prev) {
 			this.get(&#039;playerHistory&#039;).clearPlayerHistory();
@@ -177,6 +184,7 @@ export default Ember.Service.extend({
 
 		return this.playTrack(prev);
 	},
+
 	prevRandom() {
 		this.get(&#039;playerRandom&#039;).getPrevious().then(prev =&gt; {
 			return this.playTrack(prev);
@@ -195,9 +203,10 @@ export default Ember.Service.extend({
 		}
 		return this.nextNormal();
 	},
+
 	nextNormal() {
 		const playlist = this.get(&#039;playlist&#039;);
-		let next = this.getNext();
+		const next = this.getNext();
 
 		if (!next) {
 			this.get(&#039;playerHistory&#039;).clearPlayerHistory();
@@ -207,6 +216,7 @@ export default Ember.Service.extend({
 
 		return this.playTrack(next);
 	},
+
 	nextRandom() {
 		this.get(&#039;playerRandom&#039;).getNext().then(nextRandom =&gt; {
 			return this.playTrack(nextRandom);
@@ -266,16 +276,22 @@ export default Ember.Service.extend({
 		2- set pool of tracks to be used
 		and return it so we can use it as a promise
 	 */
+
 	activateRandom() {
 		this.set(&#039;isRandom&#039;, true);
 		this.get(&#039;playerHistory&#039;).clearPlayerHistory();
-		return this.get(&#039;playlist.tracks&#039;).then(items =&gt; {
-			this.get(&#039;playerRandom&#039;).setNewRandomPool(items);
-		});
+		return this.updateRandomPoolFromPlaylist();
 	},
+
 	deactivateRandom() {
 		debug(&#039;deactivateRandom&#039;);
 		this.set(&#039;isRandom&#039;, false);
+	},
+
+	updateRandomPoolFromPlaylist() {
+		return this.get(&#039;playlist.tracks&#039;).then(items =&gt; {
+			this.get(&#039;playerRandom&#039;).setNewRandomPool(items);
+		});
 	}
 });</textarea>
   </div>

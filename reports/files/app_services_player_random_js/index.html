@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">53</p>
+      <p class="stat">59</p>
     </div>
   </div>
   <div class="row historical">
@@ -92,7 +92,7 @@
     <textarea id="file-source" class="col-md-12">import Ember from &#039;ember&#039;;
 import randomHelpers from &#039;radio4000/mixins/random-helpers&#039;;
 
-const {Service, inject, debug, computed} = Ember;
+const {Service, RSVP, inject, debug} = Ember;
 
 export default Service.extend(randomHelpers, {
 	player: inject.service(),
@@ -100,14 +100,16 @@ export default Service.extend(randomHelpers, {
 	// Pool of shuffled tracks: those availabled to be picked form
 	randomPool: [],
 
-	// sets a new random pool from the playlist in the player
-	// takes the player array and shuffles it
+	// Shuffles a &#039;channel.tracks&#039; array and sets it as the random pool.
 	setNewRandomPool(items) {
 		debug(&#039;setNewRandomPool&#039;);
-		let shuffledItems = [];
+
+		// @TODO: Why not just shuffle `items` directly?
+		const shuffledItems = [];
 		items.forEach(item =&gt; {
 			shuffledItems.pushObject(item);
 		});
+
 		this.set(&#039;randomPool&#039;, this.shuffle(shuffledItems));
 	},
 
@@ -117,9 +119,11 @@ export default Service.extend(randomHelpers, {
 	 promise so it waits there is a track found to play it
 	*/
 	getNext() {
-		let array = this.get(&#039;randomPool&#039;);
-		return new Promise(resolve =&gt; {
-			let item = array.objectAt(array.indexOf(this.get(&#039;player.model&#039;)) + 1);
+		const array = this.get(&#039;randomPool&#039;);
+		const currentIndex = array.indexOf(this.get(&#039;player.model&#039;));
+
+		return new RSVP.Promise(resolve =&gt; {
+			const item = array.objectAt(currentIndex + 1);
 			if (!item) {
 				resolve(array.objectAt(0));
 			}
@@ -132,9 +136,11 @@ export default Service.extend(randomHelpers, {
 		@returns the track previously played in random mode
 	*/
 	getPrevious() {
-		let array = this.get(&#039;randomPool&#039;);
-		return new Promise(resolve =&gt; {
-			let item = array.objectAt(array.indexOf(this.get(&#039;player.model&#039;)) - 1);
+		const array = this.get(&#039;randomPool&#039;);
+		const currentIndex = array.indexOf(this.get(&#039;player.model&#039;));
+
+		return new RSVP.Promise(resolve =&gt; {
+			const item = array.objectAt(currentIndex - 1);
 			if (!item) {
 				resolve(array.objectAt(array.length - 1));
 			}

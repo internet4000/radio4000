@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">12</p>
+      <p class="stat">21</p>
     </div>
   </div>
   <div class="row historical">
@@ -91,15 +91,24 @@
   <div class="row">
     <textarea id="file-source" class="col-md-12">import Ember from &#039;ember&#039;;
 
+// const {inject} = Ember;
+
 export default Ember.Route.extend({
-	// refresh (fetch) any cached user session
-	beforeModel() {
-		return this.get(&#039;session&#039;).fetch().then(() =&gt; {
-			// Ember.debug(&#039;user logged in passively&#039;);
-		}, () =&gt; {
-			// Ember.debug(&#039;no user&#039;);
-		});
-	}
+	// player: inject.service(),
+	// playTrackFromId(id) {
+	// 	if (!id) {
+	// 		return;
+	// 	}
+	// 	this.store.find(&#039;track&#039;, id).then(track =&gt; {
+	// 		this.get(&#039;player&#039;).playTrack(track);
+	// 	});
+	// },
+
+	// actions: {
+	// 	queryParamsDidChange(params) {
+	// 		this.playTrackFromId(params.listen);
+	// 	}
+	// }
 });</textarea>
   </div>
 </div>

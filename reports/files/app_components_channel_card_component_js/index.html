@@ -96,7 +96,7 @@ const {Component, computed} = Ember;
 export default Component.extend({
 	tagName: &#039;article&#039;,
 	classNames: [&#039;ChannelCard&#039;],
-	classNameBindings: [&#039;isActive&#039;],
+	classNameBindings: [&#039;isActive&#039;, &#039;wide:ChannelCard--wide&#039;],
 	isActive: computed.reads(&#039;channel.isInPlayer&#039;)
 });</textarea>
   </div>

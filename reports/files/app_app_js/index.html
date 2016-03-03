@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">75.17</p>
+      <p class="stat">64.17</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">40</p>
+      <p class="stat">24</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">8.88</p>
+      <p class="stat">4.83</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.24</p>
+      <p class="stat">0.08</p>
     </div>
   </div>
 </div>
@@ -90,8 +90,8 @@
 <div class="container">
   <div class="row">
     <textarea id="file-source" class="col-md-12">import Ember from &#039;ember&#039;;
-import Resolver from &#039;ember/resolver&#039;;
-import loadInitializers from &#039;ember/load-initializers&#039;;
+import Resolver from &#039;./resolver&#039;;
+import loadInitializers from &#039;ember-load-initializers&#039;;
 import config from &#039;./config/environment&#039;;
 
 let App;
@@ -108,22 +108,6 @@ App = Ember.Application.extend({
 // Change the class Ember adds to active elements
 Ember.LinkComponent.reopen({
 	activeClass: &#039;is-active&#039;
-});
-
-Ember.EventDispatcher.reopen({
-	setup() {
-		const ignoreEvents = [&#039;touchmove&#039;, &#039;touchstart&#039;, &#039;touchend&#039;, &#039;touchcancel&#039;, &#039;mousemove&#039;, &#039;mouseenter&#039;, &#039;mouseleave&#039;];
-		let events = this.get(&#039;events&#039;);
-
-		Ember.$.each(ignoreEvents, function (index, value) {
-			events[value] = null;
-			delete events[value];
-		});
-
-		this.set(&#039;events&#039;, events);
-
-		return this._super(Array.prototype.slice.call(arguments));
-	}
 });
 
 loadInitializers(App, config.modulePrefix);
