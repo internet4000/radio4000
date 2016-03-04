@@ -34,7 +34,7 @@ export function imgUrl(imageId, hash) {
 	url = `${base}/${transforms.join(',')}/${imageId}`;
 
 	// If a format is specified, append it
-	if (hash.format) {
+	if (hash && hash.format) {
 		url = `${url}.${hash.format}`;
 	}
 

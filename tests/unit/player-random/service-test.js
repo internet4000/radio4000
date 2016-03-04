@@ -1,4 +1,4 @@
-import { moduleFor, test } from 'ember-qunit';
+import {moduleFor, test} from 'ember-qunit';
 
 moduleFor('service:player-random', 'Unit | Service | player random', {
   // Specify the other units that are required for this test.
@@ -6,7 +6,7 @@ moduleFor('service:player-random', 'Unit | Service | player random', {
 });
 
 // Replace this with your real tests.
-test('it exists', function(assert) {
+test('it exists', function (assert) {
   var service = this.subject();
   assert.ok(service);
 });
