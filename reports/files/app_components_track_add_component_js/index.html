@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">72</p>
+      <p class="stat">68</p>
     </div>
   </div>
   <div class="row historical">
@@ -100,11 +100,9 @@ export default TrackFormComponent.extend({
 	// By passing a `newUrl` property to this component,
 	// we&#039;ll here set it to `track.url` (needed for ?add=queryParams)
 	init() {
-		let url = this.get(&#039;newUrl&#039;);
-
 		// Create a track object that we later turn it to real track model
+		const url = this.get(&#039;newUrl&#039;);
 		this.set(&#039;track&#039;, {url});
-
 		this._super(...arguments);
 	},
 
@@ -126,8 +124,8 @@ export default TrackFormComponent.extend({
 	})),
 
 	setTitle() {
-		let id = this.get(&#039;youtubeId&#039;);
-		let endpoint = `https://www.googleapis.com/youtube/v3/videos?
+		const id = this.get(&#039;youtubeId&#039;);
+		const endpoint = `https://www.googleapis.com/youtube/v3/videos?
 			id=${id}
 			&amp;key=${config.youtubeApiKey}
 			&amp;fields=items(id,snippet(title))
@@ -150,9 +148,7 @@ export default TrackFormComponent.extend({
 				return;
 			}
 
-			let title = response.items[0].snippet.title;
-
-			debug(&#039;Setting title to: &#039; + title);
+			const title = response.items[0].snippet.title;
 			this.set(&#039;track.title&#039;, title);
 
 			// cache our title and ID so we don&#039;t request the same video twice

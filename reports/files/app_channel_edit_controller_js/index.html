@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">180</p>
+      <p class="stat">177</p>
     </div>
   </div>
   <div class="row historical">
@@ -135,10 +135,7 @@ export default Controller.extend(EmberValidations, {
 
 	createImage(src) {
 		const channel = this.get(&#039;model&#039;);
-		const image = this.store.createRecord(&#039;image&#039;, {
-			src: src,
-			channel: channel
-		});
+		const image = this.store.createRecord(&#039;image&#039;, {src, channel});
 
 		// save and add it to the channel
 		image.save().then(image =&gt; {
@@ -160,7 +157,7 @@ export default Controller.extend(EmberValidations, {
 	}),
 
 	isSlugFree: computed(&#039;model.slug&#039;, function () {
-		let cleanedSlug = clean(this.get(&#039;model.slug&#039;));
+		const cleanedSlug = clean(this.get(&#039;model.slug&#039;));
 
 		return new Ember.RSVP.Promise((resolve, reject) =&gt; {
 			this.store.query(&#039;channel&#039;, {
@@ -211,7 +208,7 @@ export default Controller.extend(EmberValidations, {
 			this.validate().then(() =&gt; {
 				debug(&#039;form validates!!!&#039;);
 
-				let slugDidChange = (this.get(&#039;cachedSlug&#039;) !== this.get(&#039;model.slug&#039;));
+				const slugDidChange = (this.get(&#039;cachedSlug&#039;) !== this.get(&#039;model.slug&#039;));
 				this.set(&#039;isSaving&#039;, true);
 
 				if (slugDidChange) {

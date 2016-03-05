@@ -97,7 +97,7 @@ export default Ember.Component.extend({
 	// Detect if we&#039;re on an iOS device
 	// it&#039;s a CP so we can use it in our templates
 	iOS: Ember.computed(&#039;&#039;, function () {
-		let iOS = /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
+		const iOS = /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
 		return iOS;
 	})
 });</textarea>

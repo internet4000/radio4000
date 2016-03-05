@@ -110,7 +110,7 @@ export default Ember.Helper.helper(([str, len]) =&gt; {
 
 	const shouldTruncate = str.length &gt; len &amp;&amp; str.length &gt; 0;
 	if (shouldTruncate) {
-		let newString = str + &#039; &#039;;
+		let newString = `${str} `;
 
 		newString = str.substr(0, len);
 		newString = str.substr(0, newString.lastIndexOf(&#039; &#039;));

@@ -89,7 +89,8 @@
 
 <div class="container">
   <div class="row">
-    <textarea id="file-source" class="col-md-12">import Ember from &#039;ember&#039;;
+    <textarea id="file-source" class="col-md-12">/* global document, window */
+import Ember from &#039;ember&#039;;
 import ENV from &#039;radio4000/config/environment&#039;;
 
 const {Component, $, on} = Ember;
@@ -119,9 +120,9 @@ export default Component.extend({
 		});
 
 		// https://github.com/blueimp/jQuery-File-Upload/wiki/Drop-zone-effects
-		$(document).bind(&#039;dragover.r4&#039;, function (e) {
-			let dropZone = $(&#039;#dropzone&#039;);
-			let timeout = window.dropZoneTimeout;
+		$(document).bind(&#039;dragover.r4&#039;, e =&gt; {
+			const dropZone = $(&#039;#dropzone&#039;);
+			const timeout = window.dropZoneTimeout;
 
 			if (timeout) {
 				clearTimeout(timeout);
@@ -149,7 +150,7 @@ export default Component.extend({
 				dropZone.removeClass(&#039;hover&#039;);
 			}
 
-			window.dropZoneTimeout = setTimeout(function () {
+			window.dropZoneTimeout = setTimeout(() =&gt; {
 				window.dropZoneTimeout = null;
 				dropZone.removeClass(&#039;in hover&#039;);
 			}, 100);

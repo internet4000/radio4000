@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">115</p>
+      <p class="stat">111</p>
     </div>
   </div>
   <div class="row historical">
@@ -89,7 +89,8 @@
 
 <div class="container">
   <div class="row">
-    <textarea id="file-source" class="col-md-12">import Ember from &#039;ember&#039;;
+    <textarea id="file-source" class="col-md-12">/* global document */
+import Ember from &#039;ember&#039;;
 const {debug} = Ember;
 
 export default Ember.Route.extend({
@@ -108,10 +109,10 @@ export default Ember.Route.extend({
 		// else check if the user already has a channel
 		return userChannels.then(channels =&gt; {
 			// as users are only allowed one channel, we only check the first
-			let channel = channels.get(&#039;firstObject&#039;);
+			const channel = channels.get(&#039;firstObject&#039;);
 
 			if (channel) {
-				debug(&#039;already got channel -&gt; transition to &#039; + channel.get(&#039;title&#039;));
+				debug(`already got channel -&gt; transition to ${channel.get(&#039;title&#039;)}`);
 				this.transitionTo(&#039;channel&#039;, channel);
 			}
 		});
@@ -167,31 +168,27 @@ export default Ember.Route.extend({
 						// create public channel
 						this.store.createRecord(&#039;channelPublic&#039;, {
 							channel
-						}).save()
+						}).save().then(channelPublic =&gt; {
+							// now the channelPublic is saved, has an ID and can be used
+							debug(&#039;saved channelPublic&#039;);
 
-							.then(channelPublic =&gt; {
-								// now the channelPublic is saved, has an ID and can be used
-								debug(&#039;saved channelPublic&#039;);
+							// set relationships
+							channel.setProperties({
+								channelPublic
+							});
 
-								// set relationships
-								channel.setProperties({
-									channelPublic
+							// save it again because of new relationships
+							channel.save().then(channel =&gt; {
+								// Redirect to the new channel and
+								debug(&#039;redirect to the new channel&#039;);
+								this.transitionTo(&#039;channel&#039;, channel);
+								flashMessages.warning(&#039;Voilà! You now have a Radio4000 📻&#039;, {
+									timeout: 10000
 								});
-
-								// save it again because of new relationships
-								channel.save().then(channel =&gt; {
-									// Redirect to the new channel and
-									debug(&#039;redirect to the new channel&#039;);
-									this.transitionTo(&#039;channel&#039;, channel);
-									flashMessages.warning(&#039;Voilà! You now have a Radio4000 📻&#039;, {
-										timeout: 10000
-									});
-									return channel;
-								}, () =&gt; {
-									return new Error(&#039;Could not create a new channel with its relationships.&#039;);
-								})
-
-							.then(() =&gt; {
+								return channel;
+							}, () =&gt; {
+								return new Error(&#039;Could not create a new channel with its relationships.&#039;);
+							}).then(() =&gt; {
 								// Clean up controller
 								this.controller.setProperties({
 									isSaving: false

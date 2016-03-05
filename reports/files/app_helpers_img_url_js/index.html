@@ -125,7 +125,7 @@ export function imgUrl(imageId, hash) {
 	url = `${base}/${transforms.join(&#039;,&#039;)}/${imageId}`;
 
 	// If a format is specified, append it
-	if (hash.format) {
+	if (hash &amp;&amp; hash.format) {
 		url = `${url}.${hash.format}`;
 	}
 

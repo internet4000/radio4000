@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">9</p>
+      <p class="stat">10</p>
     </div>
   </div>
   <div class="row historical">
@@ -90,14 +90,18 @@
 <div class="container">
   <div class="row">
     <textarea id="file-source" class="col-md-12">import Ember from &#039;ember&#039;;
+import moment from &#039;moment&#039;;
 
-export default Ember.Helper.helper(function (params) {
+export function formatDate(params) {
 	// moment needs a number, not a string
 	const date = Number(params[0]);
-	// return window.moment(params).format(&#039;MMM Do YY&#039;);
-	// return window.moment(params).subtract(1, &#039;days&#039;).fromNow();
-	return window.moment(date).fromNow();
-});</textarea>
+	return moment(date).fromNow();
+}
+
+export default Ember.Helper.helper(formatDate);
+
+// return window.moment(params).format(&#039;MMM Do YY&#039;);
+// return window.moment(params).subtract(1, &#039;days&#039;).fromNow();</textarea>
   </div>
 </div>
 

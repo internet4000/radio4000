@@ -100,8 +100,8 @@ export default Ember.Component.extend({
 
 	// Returns either all tracks or the filtered tracks by hashtag
 	filtered: computed(&#039;filter&#039;, &#039;tracks&#039;, function () {
-		let filter = this.get(&#039;filter&#039;);
-		let tracks = this.get(&#039;tracks&#039;);
+		const filter = this.get(&#039;filter&#039;);
+		const tracks = this.get(&#039;tracks&#039;);
 
 		if (!filter) {
 			return tracks;
@@ -110,7 +110,7 @@ export default Ember.Component.extend({
 		// returns models which has the filter (the tag)
 		// in their hashtags property
 		return tracks.filter(track =&gt; {
-			let hashtags = track.get(&#039;hashtags&#039;);
+			const hashtags = track.get(&#039;hashtags&#039;);
 
 			if (!hashtags) {
 				return false;
@@ -135,7 +135,7 @@ export default Ember.Component.extend({
 
 	// Returns the unique tags from all models
 	tags: computed(&#039;tracks.@each.hashtags&#039;, function () {
-		let tracks = this.get(&#039;tracks&#039;);
+		const tracks = this.get(&#039;tracks&#039;);
 		let tags = tracks.getEach(&#039;hashtags&#039;);
 
 		debug(&#039;tags computed (keep this low)&#039;);

@@ -101,29 +101,29 @@ export default Ember.Route.extend({
 		});
 	},
 
-	/*findLastTrackFromChannel(channel) {
-		const ref = new Firebase(`https://radio4000-dev.firebaseio.com/channels/${channel.get(&#039;id&#039;)}`);
-		return new Ember.RSVP.Promise((resolve, reject) =&gt; {
-			ref.child(&#039;tracks&#039;).orderByKey().limitToLast(1).on(&#039;value&#039;, snapshot =&gt; {
-				const id = Object.keys(snapshot.val())[0];
-				this.store.findRecord(&#039;track&#039;, id).then(track =&gt; {
-					resolve(track);
-				}).catch(error =&gt; {
-					reject(error);
-				});
-			});
-		});
-	},*/
+	// findLastTrackFromChannel(channel) {
+	// 	const ref = new Firebase(`https://radio4000-dev.firebaseio.com/channels/${channel.get(&#039;id&#039;)}`);
+	// 	return new Ember.RSVP.Promise((resolve, reject) =&gt; {
+	// 		ref.child(&#039;tracks&#039;).orderByKey().limitToLast(1).on(&#039;value&#039;, snapshot =&gt; {
+	// 			const id = Object.keys(snapshot.val())[0];
+	// 			this.store.findRecord(&#039;track&#039;, id).then(track =&gt; {
+	// 				resolve(track);
+	// 			}).catch(error =&gt; {
+	// 				reject(error);
+	// 			});
+	// 		});
+	// 	});
+	// },
 
 	actions: {
 		clearChannelHistory() {
 			this.get(&#039;playerHistory&#039;).clearChannelHistory();
-		}/*,
-		lastUpdated(channel) {
-			this.findLastTrackFromChannel(channel).then(track =&gt; {
-				console.log(track.get(&#039;title&#039;));
-			});
-		}*/
+		}
+		// ,lastUpdated(channel) {
+		// 	this.findLastTrackFromChannel(channel).then(track =&gt; {
+		// 		console.log(track.get(&#039;title&#039;));
+		// 	});
+		// }
 	}
 });</textarea>
   </div>
