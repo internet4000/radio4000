@@ -44,10 +44,7 @@ export default Controller.extend(EmberValidations, {
 
 	createImage(src) {
 		const channel = this.get('model');
-		const image = this.store.createRecord('image', {
-			src: src,
-			channel: channel
-		});
+		const image = this.store.createRecord('image', {src, channel});
 
 		// save and add it to the channel
 		image.save().then(image => {
@@ -69,7 +66,7 @@ export default Controller.extend(EmberValidations, {
 	}),
 
 	isSlugFree: computed('model.slug', function () {
-		let cleanedSlug = clean(this.get('model.slug'));
+		const cleanedSlug = clean(this.get('model.slug'));
 
 		return new Ember.RSVP.Promise((resolve, reject) => {
 			this.store.query('channel', {
@@ -120,7 +117,7 @@ export default Controller.extend(EmberValidations, {
 			this.validate().then(() => {
 				debug('form validates!!!');
 
-				let slugDidChange = (this.get('cachedSlug') !== this.get('model.slug'));
+				const slugDidChange = (this.get('cachedSlug') !== this.get('model.slug'));
 				this.set('isSaving', true);
 
 				if (slugDidChange) {

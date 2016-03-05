@@ -19,7 +19,7 @@ export default Ember.Helper.helper(([str, len]) => {
 
 	const shouldTruncate = str.length > len && str.length > 0;
 	if (shouldTruncate) {
-		let newString = str + ' ';
+		let newString = `${str} `;
 
 		newString = str.substr(0, len);
 		newString = str.substr(0, newString.lastIndexOf(' '));

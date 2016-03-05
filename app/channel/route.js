@@ -1,3 +1,4 @@
+/* global document, window */
 import Ember from 'ember';
 
 const {Route, debug, warn} = Ember;
@@ -12,7 +13,7 @@ export default Route.extend({
 
 	afterModel(model) {
 		if (model) {
-			document.title = model.get('title') + ' - Radio4000';
+			document.title = `${model.get('title')} - Radio4000`;
 		}
 	},
 

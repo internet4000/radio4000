@@ -1,3 +1,4 @@
+/* global document, window */
 import Ember from 'ember';
 import ENV from 'radio4000/config/environment';
 
@@ -28,9 +29,9 @@ export default Component.extend({
 		});
 
 		// https://github.com/blueimp/jQuery-File-Upload/wiki/Drop-zone-effects
-		$(document).bind('dragover.r4', function (e) {
-			let dropZone = $('#dropzone');
-			let timeout = window.dropZoneTimeout;
+		$(document).bind('dragover.r4', e => {
+			const dropZone = $('#dropzone');
+			const timeout = window.dropZoneTimeout;
 
 			if (timeout) {
 				clearTimeout(timeout);
@@ -58,7 +59,7 @@ export default Component.extend({
 				dropZone.removeClass('hover');
 			}
 
-			window.dropZoneTimeout = setTimeout(function () {
+			window.dropZoneTimeout = setTimeout(() => {
 				window.dropZoneTimeout = null;
 				dropZone.removeClass('in hover');
 			}, 100);

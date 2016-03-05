@@ -52,8 +52,8 @@ Run `npm run build-app`, make some coffee and then check the `dist-electron` fol
 To get a technical analysis of the project's maintainability.
 
 ```
-npm install -g git+https://github.com/deedubs/es6-plato.git
-npm run report
+npm uninstall -g plato; npm install -g git+https://github.com/deedubs/es6-plato.git
+npm run report;
 open reports/index.html
 ```
 

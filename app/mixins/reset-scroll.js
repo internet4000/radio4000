@@ -1,3 +1,4 @@
+/* global window */
 /**
  * Use this in a controller, or don't
  */

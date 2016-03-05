@@ -9,8 +9,8 @@ export default Ember.Controller.extend({
 
 	actions: {
 		deleteChannel() {
-			let channel = this.get('model');
-			let channelPublic = this.get('model.channelPublic');
+			const channel = this.get('model');
+			const channelPublic = this.get('model.channelPublic');
 
 			this.set('isDeleting', true);
 
@@ -40,7 +40,7 @@ export default Ember.Controller.extend({
 	deleteFavoritesFrom(channel) {
 		channel.get('channelPublic').get('followers').then(followers => {
 			followers.forEach(follower => {
-				debug('Found follower: ' + follower.get('title'));
+				debug(`Found follower: ${follower.get('title')}`);
 
 				follower.get('favoriteChannels').then(favoriteChannels => {
 					favoriteChannels.removeObject(channel);

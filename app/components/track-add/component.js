@@ -9,11 +9,9 @@ export default TrackFormComponent.extend({
 	// By passing a `newUrl` property to this component,
 	// we'll here set it to `track.url` (needed for ?add=queryParams)
 	init() {
-		let url = this.get('newUrl');
-
 		// Create a track object that we later turn it to real track model
+		const url = this.get('newUrl');
 		this.set('track', {url});
-
 		this._super(...arguments);
 	},
 
@@ -35,8 +33,8 @@ export default TrackFormComponent.extend({
 	})),
 
 	setTitle() {
-		let id = this.get('youtubeId');
-		let endpoint = `https://www.googleapis.com/youtube/v3/videos?
+		const id = this.get('youtubeId');
+		const endpoint = `https://www.googleapis.com/youtube/v3/videos?
 			id=${id}
 			&key=${config.youtubeApiKey}
 			&fields=items(id,snippet(title))
@@ -59,9 +57,7 @@ export default TrackFormComponent.extend({
 				return;
 			}
 
-			let title = response.items[0].snippet.title;
-
-			debug('Setting title to: ' + title);
+			const title = response.items[0].snippet.title;
 			this.set('track.title', title);
 
 			// cache our title and ID so we don't request the same video twice

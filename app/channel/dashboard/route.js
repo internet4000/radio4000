@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-	renderTemplate: function () {
+	renderTemplate() {
 		// the template to render
 		// the template to render into
 		// the name of the outlet in that template

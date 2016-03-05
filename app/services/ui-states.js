@@ -7,7 +7,7 @@ const {computed, on} = Ember;
 export default Ember.Service.extend({
 	player: {
 		isMinimal: false,
-		isFullscreen: false,
+		isFullscreen: false
 	},
 
 	setInitialWidth: on('init', function () {

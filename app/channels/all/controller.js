@@ -34,8 +34,8 @@ export default Controller.extend({
 	// it watches 'realSearch' instead of 'search' so we can
 	// debounce for performance.
 	channels: computed('realSearch', 'model', function () {
-		let search = this.get('search');
-		let model = this.get('model');
+		const search = this.get('search');
+		const model = this.get('model');
 
 		if (!search) {
 			return model;

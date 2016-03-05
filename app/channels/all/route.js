@@ -69,10 +69,10 @@ export default Route.extend({
 
 		// v2: load with a pager (avoids fetching duplicate channels)
 		// console.time('findPrev1');
-				this.store.findAll('channel').then(() => {
-					// console.timeEnd('Query the rest of the channels');
-					this.set('didLoadAll', true);
-				});
+		this.store.findAll('channel').then(() => {
+			// console.timeEnd('Query the rest of the channels');
+			this.set('didLoadAll', true);
+		});
 		// this.findPrev().then(() => {
 			// console.timeEnd('findPrev1');
 
