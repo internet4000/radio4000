@@ -2,12 +2,12 @@
   "name": "radio4000",
   "dependencies": {
     "cloudinary": "cloudinary_js#~1.0.25",
-    "ember": "2.3.1",
     "jquery-file-upload": "~9.11.2",
     "js-cookie": "^2.0.4",
     "firebase": "^2.1.0",
-    "ember-cli-shims": "^0.1.0",
+    "ember": "~2.4.1",
+    "ember-cli-shims": "0.1.0",
     "ember-cli-test-loader": "0.2.2",
-    "ember-qunit-notifications": "^0.1.0"
+    "ember-qunit-notifications": "0.1.0"
   }
 }
