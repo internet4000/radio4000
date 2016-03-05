@@ -4,7 +4,7 @@
 .Note {
 	position: relative;
 	max-width: 24rem;
-	padding: 1.5rem 1rem 1px;
+	padding: 0.6rem;
 	border: 1px solid $mediumlightgray;
 	background-clip: padding-box;
 	border-radius: $border-radius;
@@ -12,11 +12,13 @@
 	h2,
 	h3,
 	p {
-		@include size-1;
+		@include size-0;
 		margin-bottom: 1rem;
 	}
 	p {
-		max-width: 90%;
+		&:last-child {
+			margin-bottom: 0;
+		}
 	}
 
 	// border highlight
@@ -33,4 +35,11 @@
 }
 .Note--full {
 	max-width: none;
+	p {
+		max-width: 90%;
+	}
+}
+.Note--sticky {
+	float: right;
+	text-align: right;
 }
