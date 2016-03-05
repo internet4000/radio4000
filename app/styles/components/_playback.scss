@@ -286,10 +286,10 @@ $bar-height-minimized: rem(70);
 		padding: 0;
 		margin: 2px;
 	}
-	.ChannelCard--wide .Cover {
+	.Playback .ChannelCard--wide .Cover {
 		flex-basis: 2.5rem;
 	}
-	.ChannelCard-title {
+	.Playback .ChannelCard-title {
 		@include size-1;
 	}
 }
