@@ -1,5 +1,7 @@
 # Radio4000
 
+https://codeship.com/projects/88d90340-c479-0133-7342-62b97b21679d/status?branch=develop
+
 This is an Ember.js application scaffolded with ember-cli.
 
 ## How to develop
@@ -23,7 +25,8 @@ Also see http://www.ember-cli.com/
 ## Testing
 
 ```
-xo app/**/*.js
+npm run test-xo
+npm run test
 ```
 
 ## Deployment

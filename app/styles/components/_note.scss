@@ -40,6 +40,8 @@
 	}
 }
 .Note--sticky {
-	float: right;
+	position: absolute;
+	top: 0;
+	right: 0.5rem;
 	text-align: right;
 }
