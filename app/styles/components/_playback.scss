@@ -12,16 +12,17 @@
 	justify-content: flex-start;
 	flex: 1;
 	position: relative;
-	background-color: $mediumlightgray;
-	color: $text-color;
+	// background-color: $mediumlightgray;
+	// color: $text-color;
 
 	// Purple background.
-	// background-color: $primary-color;
-	// background-image: linear-gradient(lighten($primary-color,10%), $primary-color);
-	// .Playback-title a {
-	// 	color: $white;
-	// 	color: $bleach;
-	// }
+	background-color: $primary-color;
+	background-image: linear-gradient(lighten($primary-color,10%), $primary-color);
+	color: $bleach;
+	@include negative-text;
+	.Playback-title a {
+		color: $bleach;
+	}
 
 	@media (min-width: $layout-s) {
 		flex-wrap: nowrap;
@@ -213,6 +214,15 @@
 		background: black;
 		margin: auto;
 	}
+	.ChannelCard--wide {
+		max-width: 20rem;
+		margin-left: auto;
+		margin-right: auto;
+		background-color: transparent;
+	}
+	.ChannelCard-title {
+		color: $bleach;
+	}
 }
 
 
@@ -267,7 +277,7 @@ $bar-height-minimized: rem(70);
 	// 	position: fixed;
 	// }
 	// .Playback-channel,
-	.Playback-text,
+	// .Playback-text,
 	.EmberYoutube-progress,
 	.Playback-buttons,
 	.Playback-controls, {
@@ -281,6 +291,12 @@ $bar-height-minimized: rem(70);
 		.Playback-button {
 			display: block;
 		}
+	}
+	.Playback-text {
+		@include size-0;
+		color: $bleach;
+		padding: 0 0.5em;
+		flex-basis: 5em;
 	}
 	.Playback-channel {
 		padding: 0;
