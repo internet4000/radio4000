@@ -25,7 +25,7 @@
 		transform: translateX(0);
 	}
 	&.exiting {
-		transform: translateX(110%);
+		transform: translateX(-110%);
 	}
 }
 .alert-info {
