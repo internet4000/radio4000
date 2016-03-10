@@ -97,13 +97,6 @@
 .Channel-outlet {
 	min-height: 2rem;
 	margin-bottom: 0;
-	@media (min-height: 600px) {
-		// fixed height with scrollbars
-		position: relative;
-		height: calc(100vh - 27rem); // channel header height, more or less
-		overflow-x: hidden;
-		overflow-y: auto;
-	}
 }
 .Channel-edit {
 	position: absolute;
