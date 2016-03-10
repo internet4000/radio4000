@@ -6,6 +6,6 @@ export default Component.extend({
 	className: ['FooterNote'],
 
 	click() {
-		window.scrollTo(0, 0);
+      	    window.scrollTo(0, 0);
 	}
 });
