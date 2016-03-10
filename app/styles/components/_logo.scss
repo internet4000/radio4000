@@ -5,30 +5,11 @@
 .Logo {
 	cursor: pointer;
 	display: block;
-	padding-top: 2rem;
-	padding-left: 1.3rem;
+	max-width: 8.5rem;
+	padding-top: 1.8rem;
+	padding-left: 1.4rem;
 	padding-right: 1rem;
 	user-select: none; // don't highlight
-	color: $bleach;
-
-	// vertical center
-	font-size: 1.5rem;
-	display: flex;
-	align-items: center;
-
-	&:hover {
-		text-decoration: none;
-		.Logo-icon {
-			opacity: 1;
-		}
-	}
-
-	// when logo is active, so on home, hide arrow
-	transition: transform 400ms $easing, padding 400ms $easing;
-	transform: translateX(0);
-	&.is-active {
-		transform: translateX(-2.1rem);
-	}
 }
 .Logo h1 {
 	margin-bottom: 0;
@@ -46,11 +27,6 @@
 }
 .Logo-img {
 	vertical-align: middle;
-	max-width: 80px;
-	// transition: filter 300ms $easing;
-	// .Logo:hover & {
-	// 	filter: blur(4px);
-	// }
 }
 .Logo-dot {
 	display: inline-block;
