@@ -34,13 +34,13 @@
  * Overlay style, purple background
  */
 .Root.is-minimal {
-	.Aside--left,
-	.SiteMain {
-		// @include negative-text;
-		background-color: $primary-color;
-		color: $white;
-		transition: background-color 200ms $easing;
-	}
+	// .Aside--left,
+	// .SiteMain {
+	// 	// @include negative-text;
+	// 	background-color: $primary-color;
+	// 	color: $white;
+	// 	transition: background-color 200ms $easing;
+	// }
 	.SiteMain {
 		padding-bottom: 0;
 		min-height: 100vh;
@@ -51,21 +51,25 @@
 		align-content: center;
 		justify-content: center;
 
-		// Because colors are inverted, we adjust typography
-		h1,h2,h3 {
-			@include negative-text;
-		}
-		.Muted {
-			color: rgba($white, 0.6);
-		}
+		background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/30/The_Burning_of_the_Library_at_Alexandria_in_391_AD.jpg');
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center center;
+		// // Because colors are inverted, we adjust typography
+		// h1,h2,h3 {
+		// 	@include negative-text;
+		// }
+		// .Muted {
+		// 	color: rgba($white, 0.6);
+		// }
 	}
-	.ContextualNav {
-		transform: translate3d(100%, 0, 0);
-	}
-	.Bar--bottom {
-		background-color: red;
-		transform: translate3d(0, 100%, 0);
-	}
+	// .ContextualNav {
+	// 	transform: translate3d(100%, 0, 0);
+	// }
+	// .Bar--bottom {
+	// 	background-color: red;
+	// 	transform: translate3d(0, 100%, 0);
+	// }
 }
 
 /**

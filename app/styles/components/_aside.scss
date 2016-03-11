@@ -63,7 +63,4 @@
 	&.is-active {
 		text-decoration: underline;
 	}
-	.Root.is-minimal & {
-		color: $white;
-	}
 }
