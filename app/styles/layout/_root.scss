@@ -17,7 +17,8 @@
  */
 .Root.is-panelLeftVisible {
 	.Aside--left {
-		display: block;
+		display: flex;
+		flex-direction: column;
 	}
 	// .SiteMain {
 	// 	transform: translate3d(100%, 0, 0);

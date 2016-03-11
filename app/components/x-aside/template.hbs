@@ -19,14 +19,11 @@
 	</div>
 {{/if}}
 
-<div class="Tabs Tabs--transparent">
-	{{#unless userChannel}}
+{{#unless userChannel}}
+	<div class="Tabs Tabs--transparent">
 		{{#link-to 'channels.new' class="Aside-link Muted" title="Create your own radio now or log in"}}Get your own radio{{/link-to}}
-	{{/unless}}
-	{{#unless isAuthenticated}}
-		{{#link-to 'login' class="Aside-link Muted" title="Create your own radio now or log in"}}Sign in or register{{/link-to}}
-	{{/unless}}
-</div>
+	</div>
+{{/unless}}
 
 <div class="Tabs">
 	{{#link-to 'intro' title="Get introduced to Radio4000" class="Tabs-item"}}Introduction{{/link-to}}
@@ -35,6 +32,14 @@
 	<a class="Tabs-item" href="http://blog.radio4000.com" target="_blank" title="How is the weather at Radio4000?">&rarr; Blog</a>
 </div>
 
-{{#if isAuthenticated}}
-	<p>{{#link-to 'logout' class="Aside-link" title="Log out from Radio4000"}}Log out{{/link-to}}</p>
-{{/if}}
+<div class="Tabs Tabs--transparent Tabs--bottom">
+	{{#if isAuthenticated}}
+		{{#link-to 'logout' class="Aside-link Muted" title="Log out from Radio4000"}}Log out{{/link-to}}
+	{{else}}
+		{{#link-to 'login' class="Aside-link Muted" title="Create your own radio now or log in"}}Sign in or register{{/link-to}}
+	{{/if}}
+	<a  href="https://goo.gl/V5jlgk"
+	class="Aside-link Muted"
+	target="_blank"
+	title="Send your experience to the Radio4000 team">Feedback</a>
+</div>
