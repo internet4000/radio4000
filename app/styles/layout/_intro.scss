@@ -25,6 +25,7 @@
 	}
 }
 .Intro-bg {
+	position: relative;
 	min-height: 60vh;
 	padding-top: 4%;
 	padding-bottom: 4%;
@@ -39,6 +40,18 @@
 		padding-top: 10%;
 	}
 
+}
+.Intro-bgCredits {
+	position: absolute;
+	bottom: 0.3rem;
+	right: 0.3rem;
+	a {
+		@include size-0;
+		color: #000;
+		background-color: white;
+		padding-right: 0.3rem;
+		padding-left: 0.3rem;
+	}
 }
 .Intro-title {
 	margin-top: 4rem;
