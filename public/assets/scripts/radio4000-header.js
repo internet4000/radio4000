@@ -1,3 +1,4 @@
+/* eslint-disable */
 // Lazysizes wants to be imported before Ember.
 
 /*! lazysizes attrchange plugin - v1.4.0 */

@@ -6,7 +6,7 @@
 import Ember from 'ember';
 
 export default Ember.Mixin.create({
-	scrollUp: Ember.observer('model', function () {
+	scrollUp: Ember.observer('model', () => {
 		window.scrollTo(0, 0);
 	})
 });
