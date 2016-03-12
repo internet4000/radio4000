@@ -65,14 +65,16 @@
  */
 
 .Section--login {
-	background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/30/The_Burning_of_the_Library_at_Alexandria_in_391_AD.jpg');
+	position: relative;
+	background-image: url('../assets/images/The_Burning_of_the_Library_at_Alexandria_in_391_AD-progressive.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
 }
 .Section--intro {
+	position: relative;
 	background-color: #000;
-	background-image: url('../assets/images/bg-intro.jpg');
+	background-image: url('../assets/images/Torus_Construction_AC75-1886_1920-progressive.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;

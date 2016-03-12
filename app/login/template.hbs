@@ -1,28 +1,27 @@
 <section class="Section Section--100vh Section--flex Section--login">
 	<div class="Section-bgCredits">
 		<a href="https://commons.wikimedia.org/wiki/File:The_Burning_of_the_Library_at_Alexandria_in_391_AD.jpg#filelinks" target="_blank">
-			Ambrose Dudley<br>
-			The Burning of the Library at Alexandria in 391 AD
+			The Burning of the Library at Alexandria in 391 AD <br> 
+			Ambrose Dudley
 		</a>
 	</div>
 	<div class="Container Container--centered Login">
-		<span class="Login-after"></span>
-		<span class="Login-middle"></span>
-		<span class="Login-before"></span>
+		<div class="Login-animation">
+			<span class="Login-after"></span>
+			<span class="Login-middle"></span>
+			<span class="Login-before"></span>
+		</div>
 
-
+		<div class="Login-inner">
 			{{#if session.isAuthenticated}}
 				<p>You are already logged in</p>
 				{{#if session.currentUser.channels.firstObject}}
-					<p class="">
-						{{channel-card channel=session.currentUser.channels.firstObject wide=true}}
-					</p>
+					<p class="">{{channel-card channel=session.currentUser.channels.firstObject wide=true}}</p>
 				{{else}}
 					<p class="">
 						<a href="{{href-to 'channels.new'}}" class="Btn Btn--large" title="Your radio">Create my radio</a>
 					</p>
 				{{/if}}
-
 			{{else}}
 
 				{{#unless session.isWorking}}
@@ -41,7 +40,7 @@
 					<p class="">Please wait</p>
 					{{is-loading}}
 				{{/unless}}
-
 			{{/if}}
+		</div>
 	</div>
 </section>

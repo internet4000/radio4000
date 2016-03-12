@@ -53,6 +53,14 @@
 	animation-fill-mode: both;
 	animation-direction: alternate-reverse;
 }
+.Login-inner {
+	position: relative;
+	z-index: 2;
+}
+.Login-animation {
+	position: relative;
+	z-index: 1;
+}
 
 .Login-after,
 .Login-before,
