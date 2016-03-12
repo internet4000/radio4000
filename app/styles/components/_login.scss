@@ -18,10 +18,10 @@
 	}
 
 	// comment out the 30% step to make it less crazy
-	// 30%{
-	// 	transform: rotate(30deg) scale(0,2) rotate3d(0.2, -1, 1, 40deg);
-	// 	box-shadow: 1px 10px 1px rgba(255, 255, 255, 0.5);
-	// }
+	30%{
+		transform: rotate(30deg) scale(0,2) rotate3d(0.2, -1, 1, 40deg);
+		box-shadow: 1px 10px 1px rgba(255, 255, 255, 0.5);
+	}
 	50%{
 		transform: rotate(360deg) scale(1.1) rotate3d(0.2, -1, 1, 10deg);
 
@@ -78,7 +78,7 @@
 	opacity: 0.6;
 
 	animation-name: Turning;
-	animation-duration: 29s;
+	animation-duration: 120s;
 	animation-timing-function: ease-in; // on the login page
 	animation-iteration-count: infinite;
 	animation-fill-mode: both;
@@ -91,16 +91,19 @@
 	left: -3rem;
 	width: 18rem;
 	height: 18rem;
+	animation-delay: 2s;
 }
 .Login-after {
 	top: -5rem;
 	left: 1rem;
 	width: 22rem;
 	height: 22rem;
+	animation-delay: 4s;
 }
 .Login-middle {
 	top: -6rem;
 	left: 2rem;
 	width: 16rem;
 	height: 16rem;
+	animation-timing-function: cubic-bezier(0.39, 1.82, 0, 1.49);
 }
