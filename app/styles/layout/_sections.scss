@@ -21,6 +21,19 @@
 	padding-bottom: 2rem;
 }
 
+.Section-bgCredits {
+	position: absolute;
+	top: 0.3rem;
+	right: 0.3rem;
+	a {
+		@include size-0;
+		color: #000;
+		background-color: white;
+		padding-right: 0.3rem;
+		padding-left: 0.3rem;
+	}
+}
+
 /**
  * Modifiers
  */
@@ -34,6 +47,9 @@
 	padding-top: 1.6em;
 }
 // a section that should use the vertical full screen, for exemple to use w/ bg cover image
+.Section--80vh {
+	min-height: 80vh;
+}
 .Section--100vh {
 	min-height: 100vh;
 }
@@ -53,4 +69,12 @@
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
+}
+.Section--intro {
+	background-color: #000;
+	background-image: url('../assets/images/bg-intro.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
 }
