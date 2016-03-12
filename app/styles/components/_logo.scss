@@ -2,7 +2,19 @@
  * Logo
  **/
 
+ @keyframes Logo {
+ 	0% {
+ 		left: 0;
+ 		box-shadow: 1px 1px 1px white;
+ 	}
+ 	100% {
+ 		left: 100%;
+ 		box-shadow: -10px 10px 10px white;
+ 	}
+ }
+
 .Logo {
+	position: relative;
 	cursor: pointer;
 	display: block;
 	max-width: 8.5rem;
@@ -10,10 +22,43 @@
 	padding-left: 1.4rem;
 	padding-right: 1rem;
 	user-select: none; // don't highlight
+	z-index: 2;
+	&:before,
+	&:after {
+		content: '';
+		width: 0.5rem;
+		background-color: white;
+		position: absolute;
+		top: 1.5rem;
+		bottom: 0;
+		left: 0;
+		z-index: 1;
+		opacity: 0.3;
+		filter: blur(8px);
+
+		// animation-name: Logo;
+		// animation-duration: 1s;
+		// animation-direction: alternate-reverse;
+		// animation-iteration-count: infinite;
+	}
+	&:before {
+		animation-name: Logo;
+		animation-duration: 4s;
+		animation-direction: alternate-reverse;
+		animation-iteration-count: infinite;
+	}
+	&:after {
+		animation-name: Logo;
+		animation-duration: 16s;
+		animation-direction: alternate;
+		animation-iteration-count: infinite;
+	}
 }
 .Logo h1 {
 	margin-bottom: 0;
 	font-size: inherit;
+	position: relative;
+	z-index: 3;
 }
 .Logo-icon {
 	position: relative;
