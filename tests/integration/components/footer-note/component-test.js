@@ -10,15 +10,5 @@ test('it renders', function(assert) {
   // Handle any actions with this.on('myAction', function(val) { ... });"
 
   this.render(hbs`{{footer-note}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:"
-  this.render(hbs`
-    {{#footer-note}}
-      template block text
-    {{/footer-note}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$().text().trim(), 'Internet4000');
 });
