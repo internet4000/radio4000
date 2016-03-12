@@ -117,6 +117,7 @@ $card-wide-cover-size: 4.8rem;
 	.ChannelCard-title {
 		margin-top: auto;
 		margin-bottom: auto;
+		word-break: inherit;
 	}
 	.ChannelCard-body {
 		display: none;
