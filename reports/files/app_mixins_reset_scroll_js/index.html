@@ -97,7 +97,7 @@
 import Ember from &#039;ember&#039;;
 
 export default Ember.Mixin.create({
-	scrollUp: Ember.observer(&#039;model&#039;, function () {
+	scrollUp: Ember.observer(&#039;model&#039;, () =&gt; {
 		window.scrollTo(0, 0);
 	})
 });</textarea>
