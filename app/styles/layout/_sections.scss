@@ -1,6 +1,10 @@
 /**
- * Sections
- 	Use this for grouping components vertically
+ Sections
+ Use this when: there are several following sections in a template
+ Use this to: group multiple Section(s), to give them vertical  rythm and space
+ Section
+ Group components vertically
+ Will be the children of .Sections if there exist multiple in a template
  */
 
 .Sections {
@@ -24,7 +28,29 @@
 .Section--space {
 	padding-top: 1em;
 }
+// used to display an in-between (or top) message (showed to the user).
 .Section--messaging {
 	padding-bottom: 0;
 	padding-top: 1.6em;
+}
+// a section that should use the vertical full screen, for exemple to use w/ bg cover image
+.Section--100vh {
+	min-height: 100vh;
+}
+// flex section, becomes a reference to position its children
+.Section--flex {
+	display: flex;
+	flex-grow: 1;
+}
+
+/**
+ Specific Section
+ Mostly used to put specific background images
+ */
+
+.Section--login {
+	background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/30/The_Burning_of_the_Library_at_Alexandria_in_391_AD.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
 }

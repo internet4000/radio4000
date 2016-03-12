@@ -1,39 +1,41 @@
-<div class="Container Container--centered Login">
-	<span class="Login-after"></span>
-	<span class="Login-middle"></span>
-	<span class="Login-before"></span>
+<section class="Section Section--100vh Section--flex Section--login">
+	<div class="Container Container--centered Login">
+		<span class="Login-after"></span>
+		<span class="Login-middle"></span>
+		<span class="Login-before"></span>
 
 
-		{{#if session.isAuthenticated}}
-			<p>You are already logged in</p>
-			{{#if session.currentUser.channels.firstObject}}
-				<p class="">
-					{{channel-card channel=session.currentUser.channels.firstObject wide=true}}
-				</p>
+			{{#if session.isAuthenticated}}
+				<p>You are already logged in</p>
+				{{#if session.currentUser.channels.firstObject}}
+					<p class="">
+						{{channel-card channel=session.currentUser.channels.firstObject wide=true}}
+					</p>
+				{{else}}
+					<p class="">
+						<a href="{{href-to 'channels.new'}}" class="Btn Btn--large" title="Your radio">Create my radio</a>
+					</p>
+				{{/if}}
+
 			{{else}}
-				<p class="">
-					<a href="{{href-to 'channels.new'}}" class="Btn Btn--large" title="Your radio">Create my radio</a>
-				</p>
+
+				{{#unless session.isWorking}}
+					<h1 class="">Login Radio4000</h1>
+					<p class="">to create or manage your radio.</p>
+					<p class="">
+						<button type="submit" class="Btn Btn--large" title="Log in with your Google account" {{action 'login' 'google'}}>
+							Google
+						</button>
+						<button type="submit" class="Btn Btn--large" title="Log in with your Facebook account" {{action 'login' 'facebook'}}>
+							Facebook
+						</button>
+					</p>
+					<p class=""><a href="{{href-to 'intro'}}">What is Radio4000?</a></p>
+				{{else}}
+					<p class="">Please wait</p>
+					{{is-loading}}
+				{{/unless}}
+
 			{{/if}}
-
-		{{else}}
-
-			{{#unless session.isWorking}}
-				<h1 class="">Login Radio4000</h1>
-				<p class="">to create or manage your radio.</p>
-				<p class="">
-					<button type="submit" class="Btn Btn--large" title="Log in with your Google account" {{action 'login' 'google'}}>
-						Google
-					</button>
-					<button type="submit" class="Btn Btn--large" title="Log in with your Facebook account" {{action 'login' 'facebook'}}>
-						Facebook
-					</button>
-				</p>
-				<p class=""><a href="{{href-to 'intro'}}">What is Radio4000?</a></p>
-			{{else}}
-				<p class="">Please wait</p>
-				{{is-loading}}
-			{{/unless}}
-
-		{{/if}}
-</div>
+	</div>
+</section>
