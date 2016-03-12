@@ -27,6 +27,8 @@
 }
 .Container--full {
 	max-width: none;
+	// gets a width because needed when combined with flex;
+	width: 100%;
 }
 .Container--noPadding {
 	padding-right: 0;
