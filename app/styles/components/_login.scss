@@ -2,6 +2,13 @@
 	Login route/component
  */
 
+
+/*
+	the animation can symbolise the diverse personalities on r4
+	the fact they evolve in parallel
+	and sometimes combine to make a whole
+	a cultural ressource, offering itself to people, offering themselves via the login step
+*/
 @keyframes Turning {
 	0%{
 		transform: rotate(0deg) scale(0.9) rotate3d(0.2, -1, 1, 20deg);
@@ -10,7 +17,7 @@
 		border-radius: -50%;
 	}
 
-	// comment the 30% step to make it less crazy
+	// comment out the 30% step to make it less crazy
 	// 30%{
 	// 	transform: rotate(30deg) scale(0,2) rotate3d(0.2, -1, 1, 40deg);
 	// 	box-shadow: 1px 10px 1px rgba(255, 255, 255, 0.5);
