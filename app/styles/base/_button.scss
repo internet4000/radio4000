@@ -70,10 +70,11 @@
 }
 .Btn--large {
 	@include size-2;
+	min-width: 6em;
 }
 .Btn--huge {
 	@include size-3;
-	// padding: 0.9rem
+	min-width: 6em;
 }
 .Btn--full {
 	width: 100%;
