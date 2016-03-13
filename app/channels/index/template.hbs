@@ -1,13 +1,11 @@
-{{#unless session.currentUser.channels.firstObject}}
-	<section class="Section">
-		<p class="Container Container--full">
+
+<section class="Section">
+	{{#unless session.currentUser.channels.firstObject}}
+		<p class="Container Container--full u-push--1">
 			Welcome!<br>
 			You can start listening to radios below, or learn more about <a href="{{href-to 'intro'}}" title="">Radio4000</a>.
 		</p>
-	</section>
-{{/unless}}
-
-<section class="Section">
+	{{/unless}}
 	<div class="Manchet">
 		<h1>Discover<small> the editor's selection</small></h1>
 	</div>
