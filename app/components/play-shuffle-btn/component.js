@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import PlayButtonComponent from 'radio4000/components/playback/play-button/component';
+import PlayButtonComponent from 'radio4000/components/play-btn/component';
 
 const {computed} = Ember;
 
