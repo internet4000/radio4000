@@ -19,7 +19,7 @@
 	clear: both;
 	// padding instead of margin - otherwise it cuts the box-shadow of .Box -_-
 	// padding-bottom: 6rem;
-	margin-bottom: 6rem;
+	margin-bottom: 3rem;
 }
 .Section-bgCredits {
 	position: absolute;
@@ -30,8 +30,6 @@
 		@include size-0;
 		color: #000;
 		background-color: white;
-		padding-right: 0.3rem;
-		padding-left: 0.3rem;
 	}
 }
 
