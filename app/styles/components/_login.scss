@@ -52,20 +52,17 @@
 	z-index: 0;
 	text-align: center;
 	align-self: center;
-	animation-name: Colors;
-	animation-duration: 10s;
-	animation-timing-function: ease-in; // on the login page
-	animation-iteration-count: infinite;
-	animation-fill-mode: both;
-	animation-direction: alternate-reverse;
 }
 .Login-inner {
 	position: relative;
 	z-index: 2;
 }
 .Login-animation {
-	position: relative;
+	position: absolute;
 	z-index: 1;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
 .Login-after,
