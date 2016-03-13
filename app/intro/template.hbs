@@ -145,14 +145,19 @@
 
 	<section class="Section">
 		<div class="Container Container--full">
-			<h1 class="u-push--1">What Radio4000 stands for.</h1>
+			<h1 class="u-push--1"><small>What Radio4000</small> stands for.</h1>
 			<div class="Grid">
+				<article class="Grid-cell">
+					<h2>Diversity</h2>
+					<p>
+						Diferences of taste and personalities are the core of Radio4000. We value and respect plurality of self expressions.
+					</p>
+				</article>
 				<article class="Grid-cell">
 					<h2>Retributions</h2>
 					<p>
-						No artist = no music = no Radio 4000.
-						No radios channels with music = no Radio 4000.
-						Let's work on a new viable ecosystem for music.
+						No artist = no music = no Radio 4000. No radios channels with music = no Radio 4000.<br>
+						Let's work on a new viable ecosystem for music.<br>
 					</p>
 				</article>
 				<article class="Grid-cell">
@@ -173,24 +178,27 @@
 		</div>
 	</section>
 
-	<section class="Section">
-		<div class="Intro-actions Container">
-			{{#if session.currentUser.channels.firstObject}}
-				{{#link-to 'channel' session.currentUser.channels.firstObject class="Btn Btn--important Btn--huge" title="Your radio"}}
-					Go to your “{{session.currentUser.channels.firstObject.title}}”
-				{{/link-to}}
-			{{else}}
-				{{#link-to 'channels.new' class="Btn Btn--important Btn--huge" title="Continue to create your radio"}}
-					Create your radio now
-				{{/link-to}}
-			{{/if}}
-			{{#link-to 'channels' class="Btn Btn--huge" title="Discover music by channels"}}
-				Discover radios &rarr;
-			{{/link-to}}
-		</div>
-	</section>
-
 	<section class="Section Section--80vh Section--bg Section--bgFixed"
 				style="background-image: url('assets/images/a3992732581_10.jpg')">
+	</section>
+
+	<section class="Section Section--flex">
+		<div class="Container Container--centered">
+			<h1 class="u-push--1 u-textAlignCenter">Welcome<small> to Radio4000</small></h1>
+			<div class="Intro-actions">
+				{{#if session.currentUser.channels.firstObject}}
+				{{#link-to 'channel' session.currentUser.channels.firstObject class="Btn Btn--important Btn--huge" title="Your radio"}}
+				Go to your “{{session.currentUser.channels.firstObject.title}}”
+				{{/link-to}}
+				{{else}}
+				{{#link-to 'channels.new' class="Btn Btn--important Btn--huge" title="Continue to create your radio"}}
+				Create your radio now
+				{{/link-to}}
+				{{/if}}
+				{{#link-to 'channels' class="Btn Btn--huge" title="Discover music by channels"}}
+				Discover radios &rarr;
+				{{/link-to}}
+			</div>
+		</div>
 	</section>
 </div>
