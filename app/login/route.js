@@ -1,16 +1,10 @@
 import Ember from 'ember';
+import MinimalRouteMixin from 'radio4000/mixins/minimal-route';
 
 const {debug, get, set} = Ember;
 
-export default Ember.Route.extend({
+export default Ember.Route.extend(MinimalRouteMixin, {
 	uiStates: Ember.inject.service(),
-
-	activate() {
-		set(this, 'uiStates.isMinimal', true);
-	},
-	deactivate() {
-		set(this, 'uiStates.isMinimal', false);
-	},
 
 	actions: {
 		// Logs in a user
