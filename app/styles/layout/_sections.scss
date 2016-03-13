@@ -15,15 +15,20 @@
 		padding-top: 4rem;
 	}
 }
+.Sections--noPaddingT {
+	padding-top: 0;
+}
 .Section {
 	clear: both;
 	// padding instead of margin - otherwise it cuts the box-shadow of .Box -_-
-	padding-bottom: 6rem;
+	// padding-bottom: 6rem;
+	margin-bottom: 6rem;
 }
 .Section-bgCredits {
 	position: absolute;
 	top: 0.3rem;
 	right: 0.3rem;
+	z-index: 1;
 	a {
 		@include size-0;
 		color: #000;
@@ -39,6 +44,9 @@
 
 .Section--space {
 	padding-top: 1em;
+}
+.Section--noMarginB {
+	margin-bottom: 0;
 }
 // used to display an in-between (or top) message (showed to the user).
 .Section--messaging {
@@ -62,20 +70,21 @@
  Specific Section
  Mostly used to put specific background images
  */
-
-.Section--login {
-	position: relative;
-	background-image: url('../assets/images/The_Burning_of_the_Library_at_Alexandria_in_391_AD-progressive.jpg');
+.Section--bg {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
+}
+.Section--bgFixed {
+	background-attachment: fixed;
+}
+.Section--login {
+	position: relative;
+	background-image: url('../assets/images/The_Burning_of_the_Library_at_Alexandria_in_391_AD-progressive.jpg');
 }
 .Section--intro {
 	position: relative;
 	background-color: #000;
 	background-image: url('../assets/images/Torus_Construction_AC75-1886_1920-progressive.jpg');
-	background-size: cover;
-	background-repeat: no-repeat;
 	background-position: center center;
-	background-attachment: fixed;
 }
