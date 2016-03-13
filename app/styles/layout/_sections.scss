@@ -15,9 +15,6 @@
 		padding-top: 4rem;
 	}
 }
-.Sections--noPaddingT {
-	padding-top: 0;
-}
 .Section {
 	clear: both;
 	// padding instead of margin - otherwise it cuts the box-shadow of .Box -_-
@@ -65,26 +62,28 @@
 	display: flex;
 	flex-grow: 1;
 }
-
-/**
- Specific Section
- Mostly used to put specific background images
- */
+// a section nwith a background image (put the image as inline style instead of creation specific sections)
 .Section--bg {
+	background-color: #000;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
+	// for the credits
+	position: relative;
 }
 .Section--bgFixed {
 	background-attachment: fixed;
 }
-.Section--login {
-	position: relative;
-	background-image: url('../assets/images/The_Burning_of_the_Library_at_Alexandria_in_391_AD-progressive.jpg');
+
+/*
+	Section-inner
+	Used to position some content inside a section
+	Often used on a Section--flex
+ **/
+
+.Section-inner {
+	padding-top: 3rem;
 }
-.Section--intro {
-	position: relative;
-	background-color: #000;
-	background-image: url('../assets/images/Torus_Construction_AC75-1886_1920-progressive.jpg');
-	background-position: center center;
+.Section-inner--vCentered {
+	align-self: center;
 }

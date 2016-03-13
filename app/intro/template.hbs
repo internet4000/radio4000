@@ -1,20 +1,22 @@
-<div class="Sections Sections--noPaddingT">
-	<section class="Section Section--intro Section--80vh Section--flex Section--bg Section--bgFixed">
-		<span class="Section-bgCredits">
-			<a href="http://settlement.arc.nasa.gov/70sArtHiRes/70sArt/art.html" target="_blank">
-				Torus Construction<br>
-				NASA Ames Research Center
-			</a>
-		</span>
+<section class="Section Section--intro Section--100vh Section--flex Section--bg Section--bgFixed Section--noMarginB"
+			style="background-image: url('../assets/images/illustrations/the-burning-of-the-library-at-alexandria-in-391-ad-ambrose-dudley.jpg')">
+	<div class="Section-bgCredits">
+		<a href="https://commons.wikimedia.org/wiki/File:The_Burning_of_the_Library_at_Alexandria_in_391_AD.jpg" target="_blank">
+			The Burning of the Library at Alexandria in 391 AD <br>
+			Ambrose Dudley
+		</a>
+	</div>
 
-		<div class="Intro Container Container--full Container--centered u-textAlignCenter">
-			<h1 class="Intro-title">
-				<span class="Intro-radio">Radio</span>
-				<span class="Intro-4000">4000</span>
-			</h1>
-			<p class="Intro-slogan">A single channel for everyone<br>and an infinity of great tracks curated with love.</p>
-		</div>
-	</section>
+	<div class="Intro Container Container--full Container--centered u-textAlignCenter">
+		<h1 class="Intro-title">
+			<span class="Intro-radio">Radio</span>
+			<span class="Intro-4000">4000</span>
+		</h1>
+		<p class="Intro-slogan">A single channel for everyone<br>and an infinity of great tracks curated with love.</p>
+	</div>
+</section>
+
+<div class="Sections">
 
 	<section class="Section">
 		<div class="Container u-push--1">
@@ -32,11 +34,17 @@
 	</section>
 
 	<section class="Section Section--80vh Section--bg Section--bgFixed"
-				style="background-image: url('assets/images/1920px-S10-08_Karnak.jpg')">
+				style="background-image: url('assets/images/illustrations/the-sounds-of-earth-record-cover.jpg')">
+		<span class="Section-bgCredits">
+			<a href="https://commons.wikimedia.org/wiki/File:The_Sounds_of_Earth_Record_Cover_-_GPN-2000-001978.jpg" target="_blank">
+				The Sounds of Earth Record Cover<br>
+				NASA/JPL
+			</a>
+		</span>
 	</section>
 
 	<section class="Section">
-		<div class="Container">
+		<div class="Container Container--centered">
 			{{!-- <article class="MediaBlock">
 				<div class="MediaBlock-body"> --}}
 					<h1 class="u-push--1"><small>On Radio4000</small> everyone <small>has</small> one radio<small>, only one</small></h1>
@@ -59,7 +67,7 @@
 
 	<section class="Section">
 		<div class="Container Container--full">
-			<div class="Grid Grid--firstHidden">
+			<div class="Grid Grid--center Grid--firstHidden">
 				{{#each model.featured as |item|}}
 				<div class="Grid-cell">
 					{{channel-card channel=item}}
@@ -76,14 +84,26 @@
 	</section>
 
 	<section class="Section Section--80vh Section--bg Section--bgFixed"
-				style="background-image: url('assets/images/Cylinder_Interior_AC75-1086_900.jpg')">
+				style="background-image: url('assets/images/illustrations/ruins-of-the-augustus-bridge-at-narni-view-1-georg-abraham-hackert.jpg')">
+		<span class="Section-bgCredits">
+			<a href="https://commons.wikimedia.org/wiki/File:Georg_Abraham_Hackert_-_Ruins_of_the_Augustan_Bridge_at_Narni_-_WGA11015.jpg" target="_blank">
+				Ruins of the Augustus Bridge at Narni. View 1<br>
+				Georg Abraham Hackert
+			</a>
+		</span>
 	</section>
 
 	<section class="Section">
-		<div class="Container Container--full">
+		<div class="Container Container--center Container--full">
 			<h1 class="u-push--1"><small>Radio4000 is a music</small> tool <small>and<br></small> a service</h1>
 			<div class="Grid">
-				<article class="Grid-cell Grid-cell--double">
+				<figure class="Grid-cell">
+					<img src="assets/images/illustrations/burial-in-20000-lieues-sous-les-mers-alphonse-marie-adolphe-de-neuville-edouard-riou.jpg" alt="" />
+				</figure>
+				<figure class="Grid-cell">
+					<img src="assets/images/illustrations/une-caverne-pendant-la-nuit-a-l-epoque-du-grand-ours-et-du-mammouth-emile-bayard.jpg" alt="" />
+				</figure>
+				<article class="Grid-cell">
 					<h2>
 						<small>A tool to</small> manage <small>your online music.</small>
 					</h2>
@@ -91,7 +111,7 @@
 						All those links pointing to music you like are now stored somewhere.
 					</p>
 				</article>
-				<article class="Grid-cell Grid-cell--double">
+				<article class="Grid-cell">
 					<h2>
 						<small>A tool to</small> understand <small>your music discoveries.</small>
 					</h2>
@@ -110,7 +130,10 @@
 						Discover some crazy tracks in the context of someone you like the taste of.
 					</p>
 				</article>
-				<article class="Grid-cell Grid-cell--double">
+				<figure class="Grid-cell Grid-cell--double">
+					<img src="assets/images/illustrations/dinosaurs-fighting-the-world-before-the-deluge-edouard-riou-louis-figuier.jpg" alt="" />
+				</figure>
+				<article class="Grid-cell">
 					<h2>
 						<small>A service </small>to enhance discoveries.
 					</h2>
@@ -124,51 +147,41 @@
 		</div>
 	</section>
 
-	<section class="Section">
-		<div class="Container Container--centered">
-			<div class="Grid">
-				<div class="Grid-cell Grid-cell--double">
-					{{channel-card channel=model.featured.firstObject}}
-				</div>
-				<div class="Grid-cell Grid-cell--double Muted">
-					<p>This channel is called <strong>{{model.featured.firstObject.title}}</strong>.</p>
-					<p>Because the human behind can only have one channel, there's nowhere for the good music to hide. Highs and lows, ebbs and flows, Cambodian funk and techno. Each mix is exactly that — a mix.</p>
-					<p>Click on the channel card to start exploring it.</p>
-				</div>
-			</div>
-		</div>
-	</section>
+	<section class="Section Section--100vh Section--bg Section--bgFixed Section--flex"
+				style="background-image: url('assets/images/illustrations/karnak-william-henry-goodyear.jpg')">
+		<span class="Section-bgCredits">
+			<a href="https://commons.wikimedia.org/wiki/File:S10.08_Karnak,_image_9922.jpg" target="_blank">
+				Karnak<br>
+				William Henry Goodyear
+			</a>
+		</span>
 
-	<section class="Section Section--80vh Section--bg Section--bgFixed"
-				style="background-image: url('assets/images/Bernal_Construction_AC76-1288_900.jpg')">
-	</section>
 
-	<section class="Section">
-		<div class="Container Container--full">
+		<div class="Section-inner Section-inner--vCentered Container Container--bg">
 			<h1 class="u-push--1"><small>What Radio4000</small> stands for.</h1>
 			<div class="Grid">
-				<article class="Grid-cell">
-					<h2>Diversity</h2>
+				<article class="Grid-cell Grid-cell--triple">
+					<h2><small>Cultural</small> diversities</h2>
 					<p>
 						Diferences of taste and personalities are the core of Radio4000. We value and respect plurality of self expressions.
 					</p>
 				</article>
-				<article class="Grid-cell">
-					<h2>Retributions</h2>
+				<article class="Grid-cell Grid-cell--double">
+					<h2><small>Fair </small>ecosystem</h2>
 					<p>
-						No artist = no music = no Radio 4000. No radios channels with music = no Radio 4000.<br>
-						Let's work on a new viable ecosystem for music.<br>
+						A platform such as Radio4000 can only exist because people create and share their music.<br>
+						Let's work on a fair and viable ecosystem leading to more music and more sharing.<br>
 					</p>
 				</article>
-				<article class="Grid-cell">
-					<h2>Privacy and data</h2>
+				<article class="Grid-cell Grid-cell--double">
+					<h2>Privacy <small>and</small> ownership</h2>
 					<p>
 						As we said, no one needs to know who you are, Radio4000 neither.
 						The only data we save about you is what's in your radio channel.
 						Also you can export all your music, what's yours' yours.
 					</p>
 				</article>
-				<article class="Grid-cell">
+				<article class="Grid-cell Grid-cell--triple">
 					<h2>Embrace the future</h2>
 					<p>
 						We're all here to imagine and create a music experience for year 4000
@@ -178,27 +191,36 @@
 		</div>
 	</section>
 
-	<section class="Section Section--80vh Section--bg Section--bgFixed"
-				style="background-image: url('assets/images/a3992732581_10.jpg')">
-	</section>
-
 	<section class="Section Section--flex">
-		<div class="Container Container--centered">
-			<h1 class="u-push--1 u-textAlignCenter">Welcome<small> to Radio4000</small></h1>
-			<div class="Intro-actions">
-				{{#if session.currentUser.channels.firstObject}}
-				{{#link-to 'channel' session.currentUser.channels.firstObject class="Btn Btn--important Btn--huge" title="Your radio"}}
-				Go to your “{{session.currentUser.channels.firstObject.title}}”
-				{{/link-to}}
-				{{else}}
-				{{#link-to 'channels.new' class="Btn Btn--important Btn--huge" title="Continue to create your radio"}}
-				Create your radio now
-				{{/link-to}}
-				{{/if}}
-				{{#link-to 'channels' class="Btn Btn--huge" title="Discover music by channels"}}
-				Discover radios &rarr;
-				{{/link-to}}
+		<div class="Section-inner Section-inner--vCentered Container Container--full u-push--1">
+			<div class="Grid Grid--center">
+				<div class="Grid-cell">
+					{{channel-card channel=model.featured.firstObject}}
+				</div>
+				<div class="Grid-cell Muted">
+					<p>This channel is called <strong>{{model.featured.firstObject.title}}</strong>.</p>
+					<p>Because the human behind can only have one channel, there's nowhere for the good music to hide. Highs and lows, ebbs and flows, Cambodian funk and techno. Each mix is exactly that — a mix.</p>
+					<p>Click on the channel card to start exploring it.</p>
+				</div>
+				<div class="Grid-cell">
+					<div class="Intro-actions">
+						{{#link-to 'channels' class="Btn Btn--huge" title="Discover music by channels"}}
+						Discover radios
+						{{/link-to}}
+						{{#if session.currentUser.channels.firstObject}}
+							{{#link-to 'channel' session.currentUser.channels.firstObject class="Btn Btn--important Btn--huge" title="Your radio"}}
+							Go to your “{{session.currentUser.channels.firstObject.title}}”
+							{{/link-to}}
+						{{else}}
+							{{#link-to 'channels.new' class="Btn Btn--important Btn--huge" title="Continue to create your radio"}}
+							Create your radio
+							{{/link-to}}
+						{{/if}}
+					</div>
+				</div>
 			</div>
 		</div>
+
+
 	</section>
 </div>

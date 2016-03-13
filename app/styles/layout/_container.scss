@@ -38,6 +38,9 @@
 		padding-left: 0;
 	}
 }
+.Container--bg {
+	background-color: $bg-color;
+}
 
 .Container--tight {
 	padding-right: 0.5rem;
@@ -57,7 +60,7 @@
 }
 .Container--right {
 	@media (min-width: $layout-m) {
-		float: left;
+		float: right;
 		width: 40%;
 		max-width: 25em;
 	}
