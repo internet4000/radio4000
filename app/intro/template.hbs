@@ -98,12 +98,12 @@
 			<h1 class="u-push--1"><small>Radio4000 is a music</small> tool <small>and<br></small> a service</h1>
 			<div class="Grid">
 				<figure class="Grid-cell">
-					<a href="https://commons.wikimedia.org/wiki/File:%27Around_the_Moon%27_by_Bayard_and_Neuville_21.jpg">
+					<a target="_blank" href="https://commons.wikimedia.org/wiki/File:%27Around_the_Moon%27_by_Bayard_and_Neuville_21.jpg">
 						<img src="assets/images/illustrations/around-the-moon-bayard-neuville.jpg" alt="" />
 					</a>
 				</figure>
 				<figure class="Grid-cell">
-					<a href="http://pip.tamil.fr/bib/31188" class="Muted">
+					<a target="_blank" href="http://pip.tamil.fr/bib/31188" class="Muted">
 						<img src="assets/images/illustrations/une-caverne-pendant-la-nuit-a-l-epoque-du-grand-ours-et-du-mammouth-emile-bayard.jpg" alt="" />
 					</a>
 				</figure>
@@ -135,7 +135,7 @@
 					</p>
 				</article>
 				<figure class="Grid-cell Grid-cell--double">
-					<a class="Muted" href="https://commons.wikimedia.org/wiki/File:Georg_Abraham_Hackert_-_Ruins_of_the_Augustan_Bridge_at_Narni_-_WGA11015.jpg">
+					<a target="_blank" class="Muted" href="https://commons.wikimedia.org/wiki/File:Georg_Abraham_Hackert_-_Ruins_of_the_Augustan_Bridge_at_Narni_-_WGA11015.jpg">
 						<img src="assets/images/illustrations/ruins-of-the-augustus-bridge-at-narni-view-1-georg-abraham-hackert.jpg" alt="" />
 					</a>
 				</figure>
@@ -185,7 +185,7 @@
 					</p>
 				</article>
 				<figure class="Grid-cell">
-					<a href="https://en.wikipedia.org/wiki/File:More_otho_flying.JPG" class="Muted">
+					<a target="_blank" href="https://en.wikipedia.org/wiki/File:More_otho_flying.JPG" class="Muted">
 						<img src="assets/images/illustrations/more-otho-flying-richard-neuhauss.jpg" alt="" />
 					</a>
 				</figure>
@@ -203,10 +203,10 @@
 		</span>
 	</section>
 
-	<section class="Section Section--flex">
-		<div class="Section-inner Section-inner--vCentered Container Container--full u-push--1">
+	<section class="Section">
+		<div class="Container Container--full u-push--1">
 			<h1 class="u-push--1 u-textAlignCenter">Explore <small>or</small> share <small>music<br> on Radio4000</small></h1>
-			<div class="Grid Grid--center">
+			<div class="Grid Grid--center u-push--1">
 				<div class="Grid-cell">
 					{{channel-card channel=model.featured.firstObject}}
 				</div>
@@ -232,6 +232,7 @@
 					</div>
 				</div>
 			</div>
+			<p class="u-textAlignCenter"><a class="Muted" href="{{href-to 'help'}}">Do you have a question?</a></p>
 		</div>
 
 
