@@ -3,9 +3,9 @@ import Ember from 'ember';
 const {Component} = Ember;
 
 export default Component.extend({
-	className: ['FooterNote'],
+	classNames: ['FooterNote'],
 
 	click() {
-      	    window.scrollTo(0, 0);
+		window.scrollTo(0, 0);
 	}
 });
