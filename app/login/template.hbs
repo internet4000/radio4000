@@ -1,48 +1,47 @@
-<section class="Section Section--100vh Section--flex Section--bg Section--noMarginB"
-			style="background-image: url('../assets/images/illustrations/torus-construction-nasa-ames-research-center.jpg')">
-	<span class="Section-bgCredits">
-		<a href="http://settlement.arc.nasa.gov/70sArtHiRes/70sArt/art.html" target="_blank">
-			Torus Construction<br>
-			NASA Ames Research Center
+<figure class="Banner Banner--full">
+	<img src="assets/images/illustrations/pompeii-forum-vesuvius.jpg" alt="">
+	<p class="Banner-credits">
+		<a href="https://en.wikipedia.org/wiki/File:S03_06_01_024_image_3141.jpg" target="_blank">
+			Pompeii - Forum and Vesuvius
 		</a>
-	</span>
+	</p>
+	<div class="Banner-body">
+		<div class="Container Container--centered Login">
+			<div class="Login-animation">
+				<span class="Login-after"></span>
+				<span class="Login-middle"></span>
+				<span class="Login-before"></span>
+			</div>
 
-	<div class="Container Container--centered Login">
-		<div class="Login-animation">
-			<span class="Login-after"></span>
-			<span class="Login-middle"></span>
-			<span class="Login-before"></span>
-		</div>
-
-		<div class="Login-inner">
-			{{#if session.isAuthenticated}}
-				<p>You are already logged in</p>
-				{{#if session.currentUser.channels.firstObject}}
-					<p class="">{{channel-card channel=session.currentUser.channels.firstObject wide=true}}</p>
+			<div class="Login-inner">
+				{{#if session.isAuthenticated}}
+					<p>You are already logged in</p>
+					{{#if session.currentUser.channels.firstObject}}
+						<p>{{channel-card channel=session.currentUser.channels.firstObject wide=true}}</p>
+					{{else}}
+						<p>
+							<a href="{{href-to 'channels.new'}}" class="Btn Btn--large" title="Your radio">Create my radio</a>
+						</p>
+					{{/if}}
 				{{else}}
-					<p class="">
-						<a href="{{href-to 'channels.new'}}" class="Btn Btn--large" title="Your radio">Create my radio</a>
-					</p>
+					{{#unless session.isWorking}}
+						<h1>Login Radio4000</h1>
+						<p>to create or manage your radio.</p>
+						<p>
+							<button type="submit" class="Btn Btn--large" title="Log in with your Google account" {{action 'login' 'google'}}>
+								Google
+							</button>
+							<button type="submit" class="Btn Btn--large" title="Log in with your Facebook account" {{action 'login' 'facebook'}}>
+								Facebook
+							</button>
+						</p>
+						<p><a class="Muted" href="{{href-to 'intro'}}">What is Radio4000?</a></p>
+					{{else}}
+						<p>Letting you in…</p>
+						{{is-loading}}
+					{{/unless}}
 				{{/if}}
-			{{else}}
-
-				{{#unless session.isWorking}}
-					<h1 class="">Login Radio4000</h1>
-					<p class="">to create or manage your radio.</p>
-					<p class="">
-						<button type="submit" class="Btn Btn--large" title="Log in with your Google account" {{action 'login' 'google'}}>
-							Google
-						</button>
-						<button type="submit" class="Btn Btn--large" title="Log in with your Facebook account" {{action 'login' 'facebook'}}>
-							Facebook
-						</button>
-					</p>
-					<p class=""><a class="Muted" href="{{href-to 'intro'}}">What is Radio4000?</a></p>
-				{{else}}
-					<p class="">Letting you in…</p>
-					{{is-loading}}
-				{{/unless}}
-			{{/if}}
+			</div>
 		</div>
 	</div>
-</section>
+</figure>

@@ -21,17 +21,6 @@
 	// padding-bottom: 6rem;
 	margin-bottom: 3rem;
 }
-.Section-bgCredits {
-	position: absolute;
-	top: 0.3rem;
-	right: 0.3rem;
-	z-index: 1;
-	a {
-		@include size-0;
-		color: #000;
-		background-color: white;
-	}
-}
 
 /**
  * Modifiers
@@ -59,18 +48,6 @@
 .Section--flex {
 	display: flex;
 	flex-grow: 1;
-}
-// a section nwith a background image (put the image as inline style instead of creation specific sections)
-.Section--bg {
-	background-color: #000;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center center;
-	// for the credits
-	position: relative;
-}
-.Section--bgFixed {
-	background-attachment: fixed;
 }
 
 /*

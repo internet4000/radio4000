@@ -1,11 +1,9 @@
 .Intro {
 	@include negative-text; // because of the dark image bg
+	color: $white;
 	position: relative;
-	margin-bottom: 0;
-
 	display: flex;
 	flex-flow: column nowrap;
-	color: $white;
 	justify-content: center;
 
 	// When panel is open, avoid sticking.
@@ -18,17 +16,17 @@
 	}
 }
 .Intro-title {
+	@include size-7;
 	margin-top: 4rem;
 	line-height: 0.8;
 	letter-spacing: -0.02em;
-	@include size-7;
 	@media (min-width: $layout-sm) {
 		font-size: 80px;
 	}
-	@media (min-width: $layout-sm) and (min-height: 740px) {
+	@media (min-width: $layout-m) and (min-height: 740px) {
 		font-size: 120px;
 	}
-	@media (min-width: $layout-m) and (min-height: 1000px) {
+	@media (min-width: $layout-xl) and (min-height: 1000px) {
 		font-size: 150px;
 	}
 
@@ -39,20 +37,19 @@
 }
 .Intro-radio {
 	@extend %font-bold-italic;
-	margin-left: 4rem;
+	margin-left: 0.8em;
 }
 .Intro-slogan {
-	margin-top: 1rem;
 	@include size-3;
-
+	margin-top: 1rem;
+	max-width: 16em;
+	margin-left: auto;
+	margin-right: auto;
 	@media (min-width: $layout-sm) {
-		margin-top: 3rem;
-		margin-bottom: 2rem;
-	}
-	@media (min-width: $layout-m) {
 		@include size-4;
+		margin-top: 2rem;
 	}
-	@media (min-width: $layout-sm) and (min-height: 1000px) {
+	@media (min-width: $layout-sm) and (min-height: 800px) {
 		@include size-5;
 	}
 }
