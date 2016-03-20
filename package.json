@@ -33,7 +33,7 @@
     "electron-prebuilt": "0.36.8",
     "ember-ajax": "0.7.1",
     "ember-browserify": "^1.1.4",
-    "ember-cli": "^2.4.1",
+    "ember-cli": "^2.4.2",
     "ember-cli-app-version": "^1.0.0",
     "ember-cli-babel": "^5.1.5",
     "ember-cli-css-preprocess": "0.0.8",
