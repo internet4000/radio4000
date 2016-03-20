@@ -17,6 +17,7 @@ html {
  */
 
 .SiteMain {
+	transform: translateZ(0); // improve scrolling performance. Especially on long lists.
 	height: 100vh;
 	width: 100%;
 	transition: padding 200ms $easing;
