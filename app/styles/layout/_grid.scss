@@ -45,11 +45,6 @@
 		flex-basis: 14.28%;
 		.no-flexbox & { max-width: 14.28%; }
 	}
-
-	a:hover,
-	a:focus {
-		text-decoration: none;
-	}
 }
 .Grid-cell--double {
 	@media (min-width: $layout-sm) {
