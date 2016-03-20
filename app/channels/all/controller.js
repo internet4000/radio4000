@@ -1,15 +1,7 @@
 import Ember from 'ember';
+import stringContains from 'radio4000/utils/string-contains';
 
 const {Controller, computed, observer, run} = Ember;
-
-// Returns true if {string} contains {search}
-const stringContains = function (string, search) {
-	if (!string) {
-		return false;
-	}
-
-	return string.toLowerCase().indexOf(search.toLowerCase()) >= 0;
-};
 
 export default Controller.extend({
 	search: '',
