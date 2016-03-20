@@ -46,7 +46,7 @@
     "ember-cli-release": "0.2.8",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-uglify": "^1.2.0",
-    "ember-data": "^2.3.3",
+    "ember-data": "^2.4.2",
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-electron": "^1.1.1",
     "ember-export-application-global": "^1.0.4",
@@ -71,11 +71,11 @@
     "ember-modal-dialog": "^0.8.0",
     "ember-validations": "2.0.0-alpha.4",
     "ember-youtube": "^0.5.1",
-    "emberfire": "^1.6.5",
+    "emberfire": "^1.6.6",
     "lazysizes": "^1.3.2",
     "suitcss-base": "^1.0.1",
     "surge": "^0.17.7",
-    "torii": "^0.6.0",
+    "torii": "^0.8.0-beta.1",
     "youtube-regex": "^1.0.4"
   },
   "xo": {
