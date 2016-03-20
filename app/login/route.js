@@ -1,10 +1,20 @@
 import Ember from 'ember';
 import MinimalRouteMixin from 'radio4000/mixins/minimal-route';
 
-const {debug, get, set} = Ember;
+const {get} = Ember;
 
 export default Ember.Route.extend(MinimalRouteMixin, {
 	uiStates: Ember.inject.service(),
+
+	afterLogin() {
+		return get(this, 'session.currentUser.channels').then(channels => {
+			const channel = get(channels, 'firstObject');
+			if (channel) {
+				return this.transitionTo('channel', channel);
+			}
+			return this.transitionTo('channels.new');
+		});
+	},
 
 	actions: {
 		// Logs in a user
@@ -13,18 +23,8 @@ export default Ember.Route.extend(MinimalRouteMixin, {
 		login(provider) {
 			const flashMessages = get(this, 'flashMessages');
 			get(this, 'session').open('firebase', {provider}).then(() => {
-				const userChannels = get(this, 'session.currentUser.channels');
-				userChannels.then(channels => {
-					const channel = get(channels, 'firstObject');
-					if (channel) {
-						debug('user signed in with channel, transitioning to it');
-						flashMessages.info('You are logged in');
-						this.transitionTo('channel', channel);
-					} else {
-						debug('user signed in without channel, transitioning to /new');
-						this.transitionTo('channels.new');
-					}
-				});
+				flashMessages.info('You are logged in');
+				this.afterLogin();
 			});
 		}
 	}
