@@ -71,6 +71,13 @@
 				.DummyApp p {
 					color: hsl(0, 0%, 30%); /*$dark*/
 				}
+				@keyframes animate-rotate {
+					0% { transform: rotate(0deg) }
+					100% { transform: rotate(360deg) }
+				}
+				.animate-rotate {
+					animation: animate-rotate 400ms linear infinite;
+				}
 			</style>
 			<h1 class="Logo">
 				<img src="assets/images/icons/r4000.svg" class="Logo-img" alt="Radio4000">
@@ -80,7 +87,7 @@
 					<p>Looking for good tunes</p>
 					<p class="DummyApp-slogan"></p>
 					<br>
-					<img style="opacity: 0.9"src="assets/images/icons/vinyl-animated.svg" alt="">
+					<img class="animate-rotate" style="opacity: 0.9"src="assets/images/icons/vinyl.svg" alt="">
 				</div>
 				<script>
 					var r4DummyApp = function() {
