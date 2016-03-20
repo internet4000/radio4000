@@ -1,5 +1,4 @@
 {{isActive}}
-
 {{#if isShuffled}}
 	{{x-icon i='shuffle'}}{{if expanded ' Shuffle'}}
 {{else}}
@@ -9,5 +8,5 @@
 		{{x-icon i='play'}}{{if expanded ' Play'}}
 	{{/if}}
 {{/if}}
-
 {{#if isLoading}}<span>Loading…</span>{{/if}}
+{{yield}}
