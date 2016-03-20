@@ -2,12 +2,19 @@
 	{{#if hasBlock}}
 		{{yield}}
 	{{else if src}}
-		<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-			class="lazyload"
-			alt=""
-			data-sizes="auto"
-			data-srcset="
-				{{img-url src w="150" h="150" transforms="c_thumb,c_fill,fl_lossy"}} 150w,
-				{{img-url src w="250" h="250" transforms="c_thumb,c_fill,fl_lossy"}} 250w">
+		{{!-- <img src="{{cover-img src size=220}}"> --}}
+		{{!-- <img src="{{cover-img src size=220 webp=true}}"> --}}
+		{{!-- <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt=""
+			data-src="{{cover-img src size=250}}"> --}}
+		{{!-- <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" " class="lazyload" alt="" data-sizes="auto"
+			data-srcset="{{cover-img src size=150}} 150w,
+				{{cover-img src size=250}} 250w"> --}}
+		<picture>
+			<source data-srcset="{{cover-img src size=200 webp=true}}" type="image/webp">
+			<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+				class="lazyload"
+				data-src="{{cover-img src size=200}}"
+				alt="">
+		</picture>
 	{{/if}}
 </div>

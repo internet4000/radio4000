@@ -13,6 +13,7 @@
 	}
 }
 .Cover-image {
+	transform: translate3d(0,0,0);
 	background-color: $fadedblue;
 	position: relative;
 	overflow: hidden;
@@ -34,7 +35,7 @@
 
 // Lazysizes loading
 .Cover img {
-	filter: blur(2px);
+	// filter: blur(2px);
 	transition: filter 250ms, opacity 250ms;
 	&.lazyload {
 		opacity: 0.5;
