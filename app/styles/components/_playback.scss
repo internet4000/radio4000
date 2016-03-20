@@ -166,67 +166,6 @@
 }
 
 /**
- * Fullscreen state
- */
-.is-maximized {
-	.Aside--right {
-		top: 0;
-		right: 0;
-		width: 100%;
-		height: 100%;
-		background-color: black;
-	}
-	.Playback {
-		height: 100%;
-		background: black;
-	}
-	.Playback-channel {
-		order: 5;
-	}
-	.Playback-sizeButtons {
-		top: 0;
-		right: 0;
-	}
-	.Playback-text {
-		flex: 1 0 4rem;
-	}
-	.Playback-player {
-		flex: 10;
-		display: flex;
-		#EmberYoutube-player {
-			position: absolute;
-			width: 100%;
-			height: 100%;
-		}
-	}
-	.Player {
-		flex: 1;
-		position: relative;
-	}
-	.EmberYoutube-progress {
-		display: none;
-	}
-	.Playback-title a {
-		@include negative-text;
-		color: $white;
-	}
-	.Playback-buttons {
-		background: black;
-		margin: auto;
-	}
-	.ChannelCard--wide {
-		max-width: 20rem;
-		margin-left: auto;
-		margin-right: auto;
-		background-color: transparent;
-	}
-	.ChannelCard-title {
-		color: $bleach;
-	}
-}
-
-
-/**
  * Minimal state
  */
 $bar-height-minimized: rem(70);
@@ -307,5 +246,69 @@ $bar-height-minimized: rem(70);
 	}
 	.Playback .ChannelCard-title {
 		@include size-1;
+	}
+}
+
+/**
+ * Fullscreen state
+ */
+.is-maximized {
+	.Aside--right {
+		top: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		background-color: black;
+	}
+	.Playback {
+		height: 100%;
+		background: black;
+		flex-flow: row wrap;
+	}
+	.Playback-sizeButtons {
+		top: 0;
+		right: 0;
+	}
+	.Playback-player {
+		display: flex;
+		width: 100%;
+		min-height: 90vh;
+		margin-bottom: 1rem;
+		#EmberYoutube-player {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+	}
+	.Playback-channel {
+		order: 1;
+		flex: 1;
+	}
+	.Playback-text {
+		flex: 2 0 4rem;
+	}
+	.Player {
+		flex: 1;
+		position: relative;
+	}
+	.EmberYoutube-progress {
+		display: none;
+	}
+	.Playback-title a {
+		@include negative-text;
+		color: $white;
+	}
+	.Playback-buttons {
+		background: black;
+		margin: auto;
+	}
+	.ChannelCard--wide {
+		max-width: 20rem;
+		margin-left: auto;
+		margin-right: auto;
+		background-color: transparent;
+	}
+	.ChannelCard-title {
+		color: $bleach;
 	}
 }
