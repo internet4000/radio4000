@@ -5,16 +5,19 @@
 
 html {
 	@extend %font-regular;
-	font-family: 'maisonneue-book', 'Maison Neue Book', 'MaisonNeue-book', $sans-fallback;
+	font-family: 'maisonneue', $sans-fallback;
 	line-height: $base-line-height;
 	font-size: 15px;
 	@media (min-width: $layout-m) { font-size: $base-font-size; }
-	@media (min-width: $layout-xl) { font-size: 17px; }
+	@media (min-width: $layout-xl) { font-size: 16px; }
+	@media (min-width: $layout-xxl) { font-size: 17px; }
 }
 
 // apparently it can be bad to use this on the html element, so:
 h1,h2,h3,h4,p,ul,ol,blockquote {
+	// Enable kerning in all browsers.
 	text-rendering: optimizeLegibility;
+	font-feature-settings: "kern" 1;
 }
 
 strong,
@@ -34,7 +37,9 @@ em {
 		top: -0.12em;
 	}
 }
-
+.Muted--strong {
+	color: $mediumgray;
+}
 // Headers
 h1,
 h2,
@@ -62,7 +67,7 @@ h1,
 h2,
 .Subtitle {
 	@include size-3;
-	@media (min-width: $layout-sm) {
+	@media (min-width: $layout-m) {
 		@include size-4;
 	}
 }

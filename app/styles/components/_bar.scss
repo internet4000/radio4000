@@ -1,3 +1,5 @@
+$bottom-bar-width: 100%;
+
 /**
  *  The top bar
  */
@@ -5,25 +7,28 @@
 .Bar {
 	position: fixed;
 	left: 0;
-	width: 100%;
 	z-index: 3;
 	min-height: rem($bar-height);
-
-	background: linear-gradient(lighten($primary-color,10%), $primary-color);
-	// background-color: $primary-color;
-	color: $text-color-invert;
 	backface-visibility: hidden; // perf
-	transition: transform 400ms $easing2, background-color 200ms;
+	transition: transform 300ms $easing2, background-color 200ms;
 }
 .Bar--top {
 	top: 0;
-	// border-bottom: 2px solid hsla(0, 0%, 0%, 0.4);
-	// background-image: none;
+	left: 0;
+	// width: $sidebar-width;
+	background: transparent;
+	// border-bottom: $bar-border-size solid hsla(0, 0%, 0%, 0.4);
+	// border-right: $bar-border-size solid hsla(0, 0%, 0%, 0.4);
+	// box-shadow: 2px 2px 4px hsla(0, 0%, 0%, 0.4);
 	color: $text-color-invert; // $dark
 	a {
 		color: $text-color-invert; // $dark
 	}
 }
 .Bar--bottom {
+	left: initial;
 	bottom: 0;
+	right: 0;
+	width: $bottom-bar-width;
+	max-width: 100%;
 }

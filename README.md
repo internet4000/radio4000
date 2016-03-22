@@ -1,5 +1,7 @@
 # Radio4000
 
+https://codeship.com/projects/88d90340-c479-0133-7342-62b97b21679d/status?branch=develop
+
 This is an Ember.js application scaffolded with ember-cli.
 
 ## How to develop
@@ -15,30 +17,30 @@ npm install -g ember-cli
 git clone git@bitbucket.org:radio4000/radio4000.git
 cd radio4000
 npm install; bower install
-ember serve
+npm run start
 ```
 
 Also see http://www.ember-cli.com/
 
-## Deploy to development
-
-1. `ember build`
-2. `gulp deploy:dev`
-
-## Deploy to live
-
-Then deploy to either live or dev:
-
-1. `git checkout master; git pull --rebase; git merge dev`
-2. `release-it`
-3. `ember build --environment=production`
-4. `gulp deploy`
-
 ## Testing
 
 ```
-xo app/**/*.js
+npm run test-xo
+npm run test
 ```
+
+## Deployment
+
+To deploy to staging aka http://much.radio4000.com, run:
+
+`npm run deploy`
+
+To deploy to production aka https://radio4000.com, run:
+
+1. `git checkout master; git pull --rebase; git merge develop --no-ff`
+2. (make sure all branches you want are merged in)
+3. `release-it`
+4. `npm run deploy-production`
 
 ## Icons
 
@@ -46,23 +48,17 @@ Add .svg icons to `public/assets/images/icons` and run `gulp icons`.
 
 ## Building native apps
 
-Make sure the production environment in `config/environment.js` looks like this:
+Run `npm run build-app`, make some coffee and then check the `dist-electron` folder.
 
-```javascript
-if (environment === 'electron') {
-  ENV.baseURL = './';
-  ENV.locationType = 'hash';
-  ENV.firebase = 'https://radio4000.firebaseio.com/';
-}
-```
+## Reports
 
-… then run:
+To get a technical analysis of the project's maintainability.
 
 ```
-gulp electron
+npm uninstall -g plato; npm install -g git+https://github.com/deedubs/es6-plato.git
+npm run report;
+open reports/index.html
 ```
-
-Check the dist folder where you'll now have all the apps. Be sure to change environment back afterwards.
 
 ## Important if you use Sublime Text
 

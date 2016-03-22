@@ -1,17 +1,11 @@
-{{#link-to 'channel' channel}}
-	{{channel-cover image=channel.coverImage}}
-{{/link-to}}
-
-<div class="ChannelCard-playback">
-	{{playback/play-shuffle-btn channel=channel}}
+<a href="{{href-to 'channel' channel}}" title={{unbound channel.body}}>
+	{{channel-cover src=channel.coverImage.src}}
+	<h3 class="ChannelCard-title">{{channel.title}}</h3>
+</a>
+<div class="ChannelCard-controls">
+	{{play-shuffle-btn channel=channel class="Btn--small"}}
 </div>
-
-<h3 class="ChannelCard-title">
-	{{#link-to 'channel' channel}}
-		{{channel.title}}
-	{{/link-to}}
-</h3>
-
 <p class="ChannelCard-body">
-	{{do-truncate channel.body 200}}
+	{{unbound (do-truncate channel.body 200)}}
 </p>
+{{yield}}

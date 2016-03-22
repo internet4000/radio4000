@@ -7,27 +7,41 @@ html {
 	background-color: $bg-color;
 	color: $text-color;
 }
-body {
-	overflow-y: scroll;
-	// our responsive design doesn't need to scroll horizontally
-	overflow-x: hidden;
-}
+// body {
+// 	overflow: hidden;
+// }
 
-.SiteHeader {}
+/**
+	In _root.scss, it is displayed flex
+	So all child of .Root bellow follow this behavior
+ */
+
 .SiteMain {
-	padding-top: rem($bar-height + 3px); // with border
-	padding-bottom: rem($bar-height); // without border
-	min-height: 100vh;
-}
-.SiteFooter {
-	background-color: darken($bg-color, 6%);
-}
-
-.is-hidden {
-	display: none;
+	transform: translateZ(0); // improve scrolling performance. Especially on long lists.
+	height: 100vh;
+	width: 100%;
+	transition: padding 200ms $easing;
+	overflow-y: scroll;
+	flex: 2;
+	// More padding when player is taller..
+	// @media (max-width: 570px) {
+	// 	padding-bottom: 10rem;
+	// }
+	// padding-bottom: rem($bar-height * 1.5); // bar + a bit more
 }
 
 // Set background for ember-modals
 .ember-modal-overlay.translucent {
 	background-color: rgba(43, 43, 43, 0.64);
+}
+
+.SiteFooter {
+	text-align: center;
+	padding-top: 8rem;
+	padding-bottom: 2rem;
+}
+
+.FooterNote {
+	user-select: none;
+	cursor: n-resize;
 }

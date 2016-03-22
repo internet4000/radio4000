@@ -16,7 +16,7 @@ export default Component.extend(EmberValidations, {
 			// 	with: youtubeRegex()
 			// }
 			inline: validator(function () {
-				let isValid = Boolean(youtubeRegex().exec(this.get('track.url')));
+				const isValid = Boolean(youtubeRegex().exec(this.get('track.url')));
 				if (!isValid) {
 					return 'Please enter a valid YouTube URL';
 				}
@@ -32,11 +32,11 @@ export default Component.extend(EmberValidations, {
 	},
 
 	getYoutubeId(urlstring) {
-		let matches = youtubeRegex().exec(urlstring);
-		if (!matches) {
+		const isValid = youtubeRegex().exec(urlstring);
+		if (!isValid) {
 			return false;
 		}
-		return matches[1];
+		return isValid[1];
 	},
 
 	actions: {

@@ -24,8 +24,8 @@ export default Ember.Controller.extend(EmberValidations, {
 
 	// cleans the slug from bad things and suffix it with a random string
 	cleanSlug: computed('title', function () {
-		let title = clean(this.get('title'));
-		let random = randomText();
+		const title = clean(this.get('title'));
+		const random = randomText();
 
 		return `${title}-${random}`;
 	}),
@@ -38,7 +38,7 @@ export default Ember.Controller.extend(EmberValidations, {
 				debug('Form validates!');
 				this.set('isSaving', true);
 
-				let slug = this.get('cleanSlug');
+				const slug = this.get('cleanSlug');
 				let title = this.get('title');
 				debug(`title: ${title}`);
 
@@ -46,10 +46,7 @@ export default Ember.Controller.extend(EmberValidations, {
 				debug(`title.trim(): ${title}`);
 
 				// create channel record
-				const channel = this.store.createRecord('channel', {
-					title: title,
-					slug: slug
-				});
+				const channel = this.store.createRecord('channel', {title, slug});
 				// save it on the parent route
 				this.send('saveChannel', channel);
 			}).catch(() => {

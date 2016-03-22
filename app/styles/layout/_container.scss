@@ -8,9 +8,13 @@
 	max-width: 45em;
 	padding-left: 1rem;
 	padding-right: 1rem;
-	@media (min-width: $layout-m) {
+	@media (min-width: $layout-s) {
 		padding-left: 2rem;
-		padding-right: 2rem;
+		padding-right: 3rem;
+	}
+	@media (min-width: $layout-l) {
+		padding-left: 2rem;
+		padding-right: 4rem;
 	}
 }
 
@@ -23,6 +27,8 @@
 }
 .Container--full {
 	max-width: none;
+	// gets a width because needed when combined with flex;
+	width: 100%;
 }
 .Container--noPadding {
 	padding-right: 0;
@@ -32,6 +38,10 @@
 		padding-left: 0;
 	}
 }
+.Container--bg {
+	background-color: $bg-color;
+}
+
 .Container--tight {
 	padding-right: 0.5rem;
 	padding-left: 0.5rem;
@@ -50,7 +60,7 @@
 }
 .Container--right {
 	@media (min-width: $layout-m) {
-		float: left;
+		float: right;
 		width: 40%;
 		max-width: 25em;
 	}

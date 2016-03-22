@@ -1,3 +1,4 @@
+/* global document */
 import Ember from 'ember';
 const {debug} = Ember;
 
@@ -17,10 +18,10 @@ export default Ember.Route.extend({
 		// else check if the user already has a channel
 		return userChannels.then(channels => {
 			// as users are only allowed one channel, we only check the first
-			let channel = channels.get('firstObject');
+			const channel = channels.get('firstObject');
 
 			if (channel) {
-				debug('already got channel -> transition to ' + channel.get('title'));
+				debug(`already got channel -> transition to ${channel.get('title')}`);
 				this.transitionTo('channel', channel);
 			}
 		});
@@ -59,6 +60,7 @@ export default Ember.Route.extend({
 		// Follow the comments and you'll be ok!
 
 		saveChannel(channel) {
+			const flashMessages = Ember.get(this, 'flashMessages');
 			const user = this.get('session.currentUser');
 
 			channel.save().then(channel => {
@@ -75,28 +77,27 @@ export default Ember.Route.extend({
 						// create public channel
 						this.store.createRecord('channelPublic', {
 							channel
-						}).save()
+						}).save().then(channelPublic => {
+							// now the channelPublic is saved, has an ID and can be used
+							debug('saved channelPublic');
 
-							.then(channelPublic => {
-								// now the channelPublic is saved, has an ID and can be used
-								debug('saved channelPublic');
+							// set relationships
+							channel.setProperties({
+								channelPublic
+							});
 
-								// set relationships
-								channel.setProperties({
-									channelPublic
+							// save it again because of new relationships
+							channel.save().then(channel => {
+								// Redirect to the new channel and
+								debug('redirect to the new channel');
+								this.transitionTo('channel', channel);
+								flashMessages.warning('Voilà! You now have a Radio4000 📻', {
+									timeout: 10000
 								});
-
-								// save it again because of new relationships
-								channel.save().then(channel => {
-									// Redirect to the new channel and
-									debug('redirect to the new channel');
-									this.transitionTo('channel', channel);
-									return channel;
-								}, () => {
-									return new Error('Could not create a new channel with its relationships.');
-								})
-
-							.then(() => {
+								return channel;
+							}, () => {
+								return new Error('Could not create a new channel with its relationships.');
+							}).then(() => {
 								// Clean up controller
 								this.controller.setProperties({
 									isSaving: false

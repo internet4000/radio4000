@@ -6,6 +6,11 @@ export default Ember.Route.extend({
 		return this.store.findRecord('track', params.track_id);
 	},
 	afterModel(track) {
-		this.set('player.model', track);
+		// this.transitionTo('channel', track.get('channel'), {
+		// 	queryParams: {
+		// 		listen: track.get('id')
+		// 	}
+		// });
+		this.get('player').playTrack(track);
 	}
 });

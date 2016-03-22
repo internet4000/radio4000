@@ -2,11 +2,12 @@
  * Typography
  */
 
-$base-font-size: 16px;
+$base-font-size: 15px;
 $base-line-height: (21/16);
 $sans-fallback: 'Lucida Grande','Lucida Sans', sans-serif;
 
 %font-regular {
+	font-family: 'maisonneue', $sans-fallback;
 	font-weight: normal;
 }
 %font-regularItalic {
@@ -40,31 +41,34 @@ $sans-fallback: 'Lucida Grande','Lucida Sans', sans-serif;
 @mixin size-7 { font-size: rem(49px); }
 
 // Colors
+$purple: hsl(260, 80%, 50%);
 $red: hsl(0, 75%, 50%);
 $yellow: hsl(52, 100%, 67%);
+$green: hsl(125, 82%, 35%);
 $blue: hsl(255, 95%, 39%);
-$purple: hsl(260, 80%, 50%);
 $fadedblue: hsl(231, 48%, 95%);
 $lighterblue: hsla(266, 36%, 84%, 0.8);
 $darkblue: hsl(230, 50%, 23%);
 $verydarkblue: hsl(255, 65%, 19%);
-$green: hsl(125, 82%, 35%);
-$sand: hsl(46, 5%, 91%);
-$bleach: hsl(72, 100%, 98%);
-$black: hsl(0, 0%, 10%);
-$dark: hsl(0, 0%, 30%);
-$gray: hsl(0, 0%, 50%);
-$mediumgray: hsl(0, 0%, 70%);
-$mediumlightgray: hsl(0, 0%, 85%);
-$lightgray: hsl(0, 0%, 91%);
-$slightgray: hsl(0, 0%, 95%);
-$superlightgray: hsl(0, 0%, 98%);
+
+// Grays
 $white: hsl(0, 0%, 100%);
+$superlightgray: hsl(0, 0%, 98%);
+$bleach: hsl(72, 100%, 98%);
+$slightgray: hsl(0, 0%, 95%);
+$lightgray-saturated: hsl(45, 5%, 89%);
+$lightgray: hsl(0, 0%, 91%);
+$mediumlightgray: hsl(0, 0%, 85%);
+$mediumgray: hsl(0, 0%, 70%);
+$boxshadowgray: hsla(0, 0%, 78%, 0.8);
+$gray: hsl(0, 0%, 50%);
+$dark: hsl(0, 0%, 30%);
+$black: hsl(0, 0%, 10%);
 
 // Color definitions
 $primary-color: $purple;
 $secondary-color: $red;
-$bg-color: $sand;
+$bg-color: $lightgray-saturated;
 $text-color: $black;
 $text-color-invert: $superlightgray;
 $link-color: $red;
@@ -75,10 +79,10 @@ $facebook: blue;
 
 // Easing and animations
 $easing:  cubic-bezier(0.165, 0.840, 0.400, 1.000); // fast, good looking
-$easing2: cubic-bezier(0.300, 0.000, 0.000, 1.300); // nice for things that pop up (dropdown etc)
+$easing2: cubic-bezier(0.300, 0.000, 0.000, 1.300); // nice for things that "pop"
 $easing3: cubic-bezier(0.860, 0.000, 0.070, 1.000); // nice again?
 $easing4: cubic-bezier(0.250, 1.400, 0.180, 1.000); // try with 200ms
-
+$easing6: cubic-bezier(0.560, 1.000, 0.860, 1.139);
 // Layout: Breakpoints
 $layout-s: rem(480);
 $layout-sm: rem(550);
@@ -89,6 +93,11 @@ $layout-xl: rem(1450);
 $layout-xxl: rem(1700);
 
 // Other stuff…
+$box-shadow: 0px 4px 0px -2px $boxshadowgray;
+$box-shadow-hover: 0px 3px 0px -2px $boxshadowgray;
+$box-shadow-active: 0px 2px 0px -2px $boxshadowgray;
 $border-radius: 3px;
 $bar-height: 50px;
+$bar-border-size: 2px;
 $progress-height: 10px;
+$sidebar-width: 15rem;

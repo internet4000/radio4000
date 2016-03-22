@@ -1,12 +1,11 @@
-import {
-  formatDate
-} from '../../../helpers/format-date';
-import { module, test } from 'qunit';
+import {formatDate} from 'radio4000/helpers/format-date';
+import {module, test} from 'qunit';
 
-module('FormatDateHelper');
+module('Unit | Helper | format date');
 
 // Replace this with your real tests.
-test('it works', function(assert) {
-	let result = formatDate(42);
+test('it works', function (assert) {
+	let result = formatDate(1414571557200);
+	console.log(result);
 	assert.ok(result);
 });

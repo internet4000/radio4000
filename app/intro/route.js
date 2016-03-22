@@ -1,8 +1,12 @@
 import Ember from 'ember';
+// import MinimalRouteMixin from 'radio4000/mixins/minimal-route';
 
-export default Ember.Route.extend({
+const {Route, inject, RSVP} = Ember;
+
+export default Route.extend({
+	uiStates: inject.service(),
 	model() {
-		return Ember.RSVP.hash({
+		return RSVP.hash({
 			featured: this.store.query('channel', {
 				orderBy: 'isFeatured',
 				equalTo: true

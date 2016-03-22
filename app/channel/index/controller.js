@@ -17,6 +17,11 @@ export default Ember.Controller.extend(EmberValidations, createTrackMixin, {
 
 	actions: {
 		transitionToTrack(track) {
+			// this.transitionToRoute({
+			// 	queryParams: {
+			// 		listen: track.get('id')
+			// 	}
+			// });
 			this.transitionToRoute('track', track);
 		},
 		closeModals() {
@@ -38,17 +43,21 @@ export default Ember.Controller.extend(EmberValidations, createTrackMixin, {
 		},
 
 		saveTrack(track) {
-			this.send('closeModals');
+			const flashMessages = Ember.get(this, 'flashMessages');
 
 			if (!track.get('hasDirtyAttributes')) {
 				debug('nothing to save on track');
+				this.send('closeModals');
 				return;
 			}
 
 			// in case url changed, we need to set the ytid
 			debug('saving track');
 			track.updateProvider();
-			track.save();
+			track.save().then(() => {
+				this.send('closeModals');
+				flashMessages.info('Track saved');
+			});
 		},
 
 		createNewTrack(trackProperties) {

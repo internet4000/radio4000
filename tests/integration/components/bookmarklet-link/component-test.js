@@ -1,12 +1,11 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import {moduleForComponent, test} from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-
 
 moduleForComponent('bookmarklet-link', 'Integration | Component | bookmarklet link', {
   integration: true
 });
 
-test('it renders', function(assert) {
+test('it renders', function (assert) {
   assert.expect(2);
 
   // Set any properties with this.set('myProperty', 'value');
@@ -14,7 +13,7 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{bookmarklet-link}}`);
 
-  assert.equal(this.$().text(), '');
+  assert.equal(this.$().text().trim(), '');
 
   // Template block usage:
   this.render(hbs`

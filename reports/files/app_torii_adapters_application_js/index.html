@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - app/torii-adapters/application.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>app/torii-adapters/application.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">96.88</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">128</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">1.00</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">0.00</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">/* jshint unused:false */
+import Ember from &#039;ember&#039;;
+// import ToriiFirebaseAdapter from &#039;emberfire/torii-adapters/firebase&#039;;
+
+const {debug, inject, run} = Ember;
+
+// export default ToriiFirebaseAdapter.extend({
+export default Ember.Object.extend({
+	firebase: inject.service(),
+	store: inject.service(),
+
+	createSettings(user) {
+		const newSettings = this.get(&#039;store&#039;).createRecord(&#039;user-setting&#039;, {user});
+		newSettings.save().then(settings =&gt; {
+			user.set(&#039;settings&#039;, settings).save().then(() =&gt; {
+				Ember.debug(&#039;saved user settings&#039;);
+			});
+		});
+	},
+
+	// creating a new authorization or authenticating a new session
+	open(auth) {
+		const store = this.get(&#039;store&#039;);
+
+		return new Ember.RSVP.Promise((resolve, reject) =&gt; {
+			debug(&#039;finding user&#039;, auth.uid);
+			return store.findRecord(&#039;user&#039;, auth.uid)
+				// we have a user, create settings if needed
+				// and resolve
+				.then(user =&gt; {
+					debug(&#039;found user&#039;);
+
+					user.get(&#039;settings&#039;).then(settings =&gt; {
+						if (settings) {
+							return;
+						}
+						debug(&#039;no settings for user, creating them&#039;);
+						this.createSettings(user);
+					});
+
+					run.bind(null, resolve({currentUser: user}));
+				})
+
+				// no user, so create one
+				.catch(() =&gt; {
+					debug(&#039;no user found, creating one&#039;);
+
+					// but first avoid this bug about unresolved record
+					// @todo maybe nut needed anymore?!
+					// store.recordForId(&#039;user&#039;, auth.uid).unloadRecord();
+					this.createUser(auth).then(user =&gt; {
+						debug(&#039;created a user&#039;);
+						run.bind(null, resolve({currentUser: user}));
+					}, error =&gt; {
+						reject({error});
+					});
+				});
+		});
+	},
+
+	// validating an existing authorization (like a session stored in cookies)
+	fetch() {
+		const firebase = this.get(&#039;firebase&#039;);
+
+		// This is what should be done to determine how to fetch a session. Here I am
+		// retrieving the auth from firebase and checking if I have a user for that auth.
+		// If so, I set currentUser.
+
+		// The object containing the currentUser is merged onto the session.
+		// Because the session is injected onto controllers and routes,
+		// these values will be available to templates.
+		// https://github.com/Vestorly/torii#adapters-in-torii
+
+		return new Ember.RSVP.Promise((resolve, reject) =&gt; {
+			const auth = firebase.getAuth();
+
+			if (auth === null) {
+				debug(&#039;no auth&#039;);
+				reject(&#039;No session available&#039;);
+			}
+
+			debug(&#039;fetch resolving, looking for user&#039;);
+			this.store.findRecord(&#039;user&#039;, auth.uid).then(currentUser =&gt; {
+				debug(&#039;found user&#039;);
+				resolve({currentUser});
+			}, () =&gt; {
+				debug(&#039;no user found&#039;);
+				reject(new Error(&#039;no user found&#039;));
+			});
+		});
+	},
+
+	// This is what should be done to teardown a session. Here I am unloading my
+	// models and setting currentUser to null. here an authorization is destroyed
+	close() {
+		const firebase = this.get(&#039;firebase&#039;);
+		firebase.unauth();
+		return Ember.RSVP.resolve();
+	},
+
+	createUser(auth) {
+		const newUser = this.store.createRecord(&#039;user&#039;, {
+			id: auth.uid,
+			provider: auth.provider,
+			name: this._nameFor(auth)
+		});
+		return newUser.save().then(user =&gt; {
+			debug(&#039;created user&#039;);
+			this.createSettings(user);
+			return user;
+		}, () =&gt; {
+			debug(&#039;couldnt create user&#039;);
+		});
+	},
+
+	_nameFor(auth) {
+		if (auth.github) {
+			return auth.github.username;
+		} else if (auth.facebook) {
+			return auth.facebook.displayName;
+		} else if (auth.twitter) {
+			return auth.twitter.displayName;
+		} else if (auth.google) {
+			return auth.google.displayName;
+		}
+
+		throw new Error(&#039;could not find a username!&#039;);
+	}
+});</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

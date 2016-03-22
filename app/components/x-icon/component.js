@@ -13,12 +13,10 @@ export default Ember.Component.extend({
 	classNameBindings: ['className'],
 
 	className: computed('i', function () {
-		let iconName = this.get('i');
-		return `icon-${iconName}`;
+		return `icon-${this.get('i')}`;
 	}),
 
 	url: computed('i', function () {
-		let iconName = this.get('i');
-		return `assets/images/icons/sprite.svg#icon-${iconName}`;
+		return `assets/images/icons/sprite.svg#icon-${this.get('i')}`;
 	})
 });

@@ -1,96 +1,111 @@
 <!doctype html>
 <html>
-<head>
-  <meta charset="utf-8">
+	<head>
+		<meta charset="utf-8">
+		<title>Radio4000</title>
+		<meta name="description" content="Collect, curate, play and share your own radio channel">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<link rel="manifest" href="manifest.json">
+		{{content-for "head"}}
+		<link rel="stylesheet" href="assets/vendor.css">
+		<link rel="stylesheet" href="assets/radio4000.css">
+		<!-- favicons and branding -->
+		<meta name="og:image" content="https://radio4000.com/assets/images/logos/radio4000-square.png">
+		<link rel="apple-touch-icon" sizes="57x57" href="/assets/images/favicons/apple-touch-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="/assets/images/favicons/apple-touch-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="/assets/images/favicons/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="/assets/images/favicons/apple-touch-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="/assets/images/favicons/apple-touch-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="/assets/images/favicons/apple-touch-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="/assets/images/favicons/apple-touch-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="/assets/images/favicons/apple-touch-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon-180x180.png">
+		<link rel="icon" type="image/png" href="/assets/images/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/assets/images/favicons/android-chrome-192x192.png" sizes="192x192">
+		<link rel="icon" type="image/png" href="/assets/images/favicons/favicon-96x96.png" sizes="96x96">
+		<link rel="icon" type="image/png" href="/assets/images/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="shortcut icon" href="/assets/images/favicons/favicon.ico">
+		<meta name="msapplication-TileColor" content="#4b0bcb">
+		<meta name="msapplication-TileImage" content="/assets/images/favicons/mstile-144x144.png">
+		<meta name="msapplication-config" content="/assets/images/favicons/browserconfig.xml">
+		<meta name="theme-color" content="#4b0bcb">
+		<script src="assets/scripts/radio4000-header.js" async></script>
+		<script src="assets/images/icons/grunticon/grunticon.loader.js" async></script>
+		<link rel="stylesheet" href="assets/images/icons/grunticon/icons.data.svg.css">
+		{{content-for "head-footer"}}
+	</head>
+	<body>
+		{{content-for "body"}}
+		<noscript>Sorry, you need to enable JavaScript in your browser to use Radio4000.</noscript>
 
-  <!--
-	██▀███	▄▄▄		▓█████▄  ██▓ ▒█████
-  ▓██ ▒ ██▒▒████▄	 ▒██▀ ██▌▓██▒▒██▒  ██▒
-  ▓██ ░▄█ ▒▒██  ▀█▄  ░██	█▌▒██▒▒██░  ██▒
-  ▒██▀▀█▄  ░██▄▄▄▄██ ░▓█▄	▌░██░▒██	██░
-  ░██▓ ▒██▒ ▓█	▓██▒░▒████▓ ░██░░ ████▓▒░
-  ░ ▒▓ ░▒▓░ ▒▒	▓▒█░ ▒▒▓  ▒ ░▓  ░ ▒░▒░▒░
-	 ░▒ ░ ▒░  ▒	▒▒ ░ ░ ▒  ▒  ▒ ░  ░ ▒ ▒░
-	 ░░	░	░	▒	 ░ ░  ░  ▒ ░░ ░ ░ ▒
-	  ░			  ░  ░	░	  ░		░ ░
-							 ░
-	 /\ \\ \	 /'__`\  /'__`\  /'__`\
-	 \ \ \\ \  /\ \/\ \/\ \/\ \/\ \/\ \
-	  \ \ \\ \_\ \ \ \ \ \ \ \ \ \ \ \ \
-		\ \__ ,__\ \ \_\ \ \ \_\ \ \ \_\ \
-		 \/_/\_\_/\ \____/\ \____/\ \____/
-			 \/_/	\/___/  \/___/  \/___/ -->
+		<div id="Radio4000" class="Radio4000"></div>
 
-  <title>Radio4000</title>
-  <meta name="description" content="Collect, curate, play and share your own radio channel">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <link rel="manifest" href="manifest.json">
-  <meta name="og:image" content="https://radio4000.com/assets/images/logos/radio4000-square.png">
+		<script src="assets/vendor.js"></script>
+		<script src="assets/radio4000.js"></script>
 
-  <script>
-   // leave the require namespace to ember and make it work with electron-appz
-   window.module = undefined;
-  </script>
+		{{content-for "body-footer"}}
 
-  {{content-for 'head'}}
-
-  <link rel="stylesheet" href="assets/vendor.css">
-  <link rel="stylesheet" href="assets/radio4000.css">
-
-  <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/favicons/apple-touch-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="/assets/images/favicons/apple-touch-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="/assets/images/favicons/apple-touch-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/favicons/apple-touch-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="/assets/images/favicons/apple-touch-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/favicons/apple-touch-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="/assets/images/favicons/apple-touch-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/favicons/apple-touch-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon-180x180.png">
-  <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-32x32.png" sizes="32x32">
-  <link rel="icon" type="image/png" href="/assets/images/favicons/android-chrome-192x192.png" sizes="192x192">
-  <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-96x96.png" sizes="96x96">
-  <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-16x16.png" sizes="16x16">
-  <link rel="shortcut icon" href="/assets/images/favicons/favicon.ico">
-  <meta name="msapplication-TileColor" content="#4b0bcb">
-  <meta name="msapplication-TileImage" content="/assets/images/favicons/mstile-144x144.png">
-  <meta name="msapplication-config" content="/assets/images/favicons/browserconfig.xml">
-  <meta name="theme-color" content="#4b0bcb">
-
-  <script src="assets/modernizr-custom.min.js"></script>
-  <script src="assets/images/icons/grunticon/grunticon.loader.js"></script>
-	<link rel="stylesheet" href="assets/images/icons/grunticon/icons.data.svg.css">
-
-  {{content-for 'head-footer'}}
-</head>
-<body>
-  {{content-for 'body'}}
-
-  <noscript>Sorry, you need to enable JavaScript in your browser to use Radio4000.</noscript>
-
-  <!-- a loader that appears independently from ember and is removed by ember as soon as possible -->
-  <div class="DummyApp" style="z-index: 2; position: fixed; top: 0; right: 0; bottom: 0; left: 0; background-color: #E9E9E7;">
-     <div class="Bar Bar--top"></div>
-     <div class="Loader" style="position: absolute; top: 50%; left: 0; right: 0; width: 100%; text-align: center; font-size: 3rem; margin: 0; height: auto;">
-			<h1 style=" width: 9rem; margin-left: auto; margin-right: auto;">
-				<img src="assets/images/logos/radio4000-logo.png" alt="Radio4000">
+		<div class="DummyApp">
+			<!-- a dummy app that appears independently from Ember and is removed by ember asap -->
+			<style>
+				.DummyApp {
+					z-index: 2;
+					position: fixed;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background-color: hsl(60, 4%, 91%);
+				}
+				.DummyApp-inner {
+					position: absolute;
+					top: 50%;
+					left: 5%;
+					width: 90%;
+					text-align: center;
+					transform: translateY(-50%);
+					-webkit-transform: translateY(-50%);
+					-moz-transform: translateY(-50%);
+				}
+				.DummyApp p {
+					color: hsl(0, 0%, 30%); /*$dark*/
+				}
+				@keyframes animate-rotate {
+					0% { transform: rotate(0deg) }
+					100% { transform: rotate(360deg) }
+				}
+				.animate-rotate {
+					animation: animate-rotate 400ms linear infinite;
+				}
+			</style>
+			<h1 class="Logo">
+				<img src="assets/images/icons/r4000.svg" class="Logo-img" alt="Radio4000">
 			</h1>
-         <p style="opacity: 0.4;">Looking for good tunes</p>
-         <p id="R4Slogan" style="opacity: 0.4;"></p>
-         <script>
-           var sentences = ['One moment, please', 'Un momento por favor', 'لحظة واحدة من فضلك', 'Une batez, mesedez', 'এক মিনিট, প্লিজ', 'Един момент моля', '稍等一会儿', 'Et øjeblik', 'Een ogenblik alstublieft', 'Unu momenton, bonvolu', 'Hetkinen', 'Un instant s\'il vous plaît', 'Einen Moment bitte', 'Μια στιγμή παρακαλώ', 'Yon sèl moman, tanpri', 'कृपया एक क्षण', 'Nóiméad amháin, le do thoil', 'Un momento per favore', '少々お待ちください', 'Uno momento, placet', 'Et øyeblikk', 'Chwileczkę', 'Um momento por favor', 'Один момент, пожалуйста', 'Wakati mmoja, tafadhali', 'Ett ögonblick tack', 'กรุณารอสักครู่', 'Bir dakika lütfen', 'Un funud, os gwelwch yn dda', 'Omunye mzuzu, sicela'];
-           var tempLoader = document.querySelectorAll('#R4Slogan');
-           var rand = sentences[Math.floor(Math.random() * sentences.length)];
-           tempLoader[0].innerHTML = rand + '…';
-         </script>
-	  </div>
-  </div>
+			<div class="DummyApp-inner">
+				<div class="DummyApp-body">
+					<p>Looking for good tunes</p>
+					<p class="DummyApp-slogan"></p>
+					<br>
+					<img class="animate-rotate" style="opacity: 0.9"src="assets/images/icons/vinyl.svg" alt="">
+				</div>
+				<script>
+					var r4DummyApp = function() {
+						// Insert a random sentence to make waiting fun/less annoying
+						console.log('A human feel.');
+						var sentences = ['One moment, please', 'Un momento por favor', 'لحظة واحدة من فضلك', 'Une batez, mesedez', 'এক মিনিট, প্লিজ', 'Един момент моля', '稍等一会儿', 'Et øjeblik', 'Een ogenblik alstublieft', 'Unu momenton, bonvolu', 'Hetkinen', 'Un instant s\'il vous plaît', 'Einen Moment bitte', 'Μια στιγμή παρακαλώ', 'Yon sèl moman, tanpri', 'कृपया एक क्षण', 'Nóiméad amháin, le do thoil', 'Un momento per favore', '少々お待ちください', 'Uno momento, placet', 'Et øyeblikk', 'Chwileczkę', 'Um momento por favor', 'Один момент, пожалуйста', 'Wakati mmoja, tafadhali', 'Ett ögonblick tack', 'กรุณารอสักครู่', 'Bir dakika lütfen', 'Un funud, os gwelwch yn dda', 'Omunye mzuzu, sicela'];
+						var randomSentence = sentences[Math.floor(Math.random() * sentences.length)];
+						var slogan = document.querySelectorAll('.DummyApp-slogan');
+						slogan[0].innerHTML = randomSentence + '…';
 
-  <div id="Radio4000" class="Radio4000"></div>
-
-  <script src="assets/vendor.js"></script>
-  <script src="assets/radio4000.js"></script>
-
-  {{content-for 'body-footer'}}
-</body>
+						// Internet connection check
+						var dummyBody = document.querySelectorAll('.DummyApp-body');
+						if (!navigator.onLine) {
+								dummyBody[0].innerHTML = '<p><strong>It seems that you are not connected to the internet -_-</strong></p><p>Find the internet and then reload this page.</p>';
+						};
+					}();
+				</script>
+			</div>
+		</div>
+	</body>
 </html>

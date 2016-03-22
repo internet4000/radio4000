@@ -44,10 +44,7 @@ export default Controller.extend(EmberValidations, {
 
 	createImage(src) {
 		const channel = this.get('model');
-		const image = this.store.createRecord('image', {
-			src: src,
-			channel: channel
-		});
+		const image = this.store.createRecord('image', {src, channel});
 
 		// save and add it to the channel
 		image.save().then(image => {
@@ -69,7 +66,7 @@ export default Controller.extend(EmberValidations, {
 	}),
 
 	isSlugFree: computed('model.slug', function () {
-		let cleanedSlug = clean(this.get('model.slug'));
+		const cleanedSlug = clean(this.get('model.slug'));
 
 		return new Ember.RSVP.Promise((resolve, reject) => {
 			this.store.query('channel', {
@@ -120,7 +117,7 @@ export default Controller.extend(EmberValidations, {
 			this.validate().then(() => {
 				debug('form validates!!!');
 
-				let slugDidChange = (this.get('cachedSlug') !== this.get('model.slug'));
+				const slugDidChange = (this.get('cachedSlug') !== this.get('model.slug'));
 				this.set('isSaving', true);
 
 				if (slugDidChange) {
@@ -146,7 +143,7 @@ export default Controller.extend(EmberValidations, {
 		},
 
 		deleteImage() {
-			this.get('model.coverImage').destroyRecord().then(function () {
+			this.get('model.coverImage').destroyRecord().then(() => {
 				debug('Deleted channel image.');
 			});
 		},
@@ -154,15 +151,16 @@ export default Controller.extend(EmberValidations, {
 		// Saves the channel
 		save() {
 			const channel = this.get('model');
+			const flashMessages = Ember.get(this, 'flashMessages');
 			debug('channel route save');
 
 			channel.save().then(() => {
 				debug('Saved --> channel');
 				this.transitionToRoute('channel', this.get('model.slug'));
+				flashMessages.info('Changes saved');
 			}).catch(() => {
 				// This get triggered for exemple when firebase.security do not validate
-				// TODO make server errors better handled
-				debug('Channel did NOT save, probably firebase.securityRules');
+				flashMessages.warning(`Sorry, we couldn't save your radio. Please refresh your browser and try again.`);
 			}).finally(() => {
 				// anyways, reset UI
 				this.set('isSaving', false);

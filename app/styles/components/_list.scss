@@ -1,42 +1,39 @@
-/**
- * List (only allows one single link in each <li>)
- */
+// List markup example: .List > .List-item > a
 
 .List {
 	list-style: none;
 	padding-left: 0;
+}
+.List-item {
+	border-bottom: 1px solid hsl(0, 0%, 91%); // $mediumlightgray
+	line-height: normal;
+	&:before {
+		display: none;
+	}
+	&:last-child {
+		border-bottom: 0;
+	}
+}
+// When a link wraps everything
+.List-item a {
+	display: block;
+	@include clearfix;
+	padding: 0.8rem 1rem 0.7rem;
+	text-decoration: none;
 
-	li {
-		border-bottom: 1px solid hsl(0, 0%, 91%); // $mediumlightgray
-		line-height: normal;
-		&:before {
-			display: none;
-		}
-		&:last-child {
-			border-bottom: 0;
-		}
+	@media (min-width: $layout-s) {
+		padding-left: 2rem;
+		padding-right: 2rem;
 	}
 
-	a {
-		display: block;
-		@include clearfix;
-		padding: 0.8rem 1rem 0.7rem;
+	&:hover,
+	&:focus {
+		background-color: hsla(0, 100%, 100%, 0.2);
 		text-decoration: none;
-
-		@media (min-width: $layout-s) {
-			padding-left: 2rem;
-			padding-right: 2rem;
-		}
-
-		&:hover,
-		&:focus {
-			background-color: hsla(0, 100%, 100%, 0.2);
-			text-decoration: none;
-		}
-		&:focus,
-		&:active {
-			text-decoration: none;
-		}
+	}
+	&:focus,
+	&:active {
+		text-decoration: none;
 	}
 }
 .List-title {
@@ -55,13 +52,25 @@
 	color: $gray;
 }
 
-// List without hover
-.List--noHover {
-	a {
-		&:hover,
-		&:focus {
-			background-color: initial;
-		}
+// Numbered list
+.List--numbered {
+	counter-reset: counter(list-counter);
+}
+.List--numbered li {
+	counter-increment: list-counter;
+	&:before {
+		// decimal (1 2 3)
+		// decimal-leading-zero (01, 02, 03)
+		// lower-roman (i ii iii)
+		// upper-roman (I II III)
+		content: counter(list-counter, decimal);
+		display: inline-block;
+		position: absolute;
+		margin-left: 0.5rem;
+		margin-top: 0.8rem;
+		z-index: 1;
+		font-size: 10px;
+		color: $gray;
 	}
 }
 

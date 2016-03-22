@@ -1,51 +1,47 @@
-<div class="BigStep">
-	<div class="BigStep-container">
+<figure class="Banner Banner--full">
+	<img src="assets/images/illustrations/pompeii-forum-vesuvius.jpg" alt="">
+	<p class="Banner-credits">
+		<a href="https://en.wikipedia.org/wiki/File:S03_06_01_024_image_3141.jpg" target="_blank">
+			Pompeii - Forum and Vesuvius
+		</a>
+	</p>
+	<div class="Banner-body">
+		<div class="Container Container--centered Login">
+			<div class="Login-animation">
+				<span class="Login-after"></span>
+				<span class="Login-middle"></span>
+				<span class="Login-before"></span>
+			</div>
 
-		{{#if session.isAuthenticated}}
-
-			{{#if session.currentUser.channels.firstObject}}
-
-				<h1 class="BigStep-title">Your radio</h1>
-				<p class="BigStep-subTitle">
-					{{#link-to 'channel' session.currentUser.channels.firstObject class="BigStep-goto" title="Your radio"}}
-						{{session.currentUser.channels.firstObject.title}}
-					{{/link-to}}
-				</p>
-
-			{{else}}
-
-				<p>You are already logged in</p>
-				<p class="BigStep-buttons">
-					{{#link-to 'channels.new' class="Btn Btn--transparent Btn--large" title="Your radio"}}
-						Create my radio
-					{{/link-to}}
-				</p>
-
-			{{/if}}
-
-		{{else}}
-
-			{{#unless session.isWorking}}
-				<h1 class="BigStep-title">Log in to Radio4000</h1>
-				<p class="BigStep-subTitle">and create or manage your radio.</p>
-
-				<div class="BigStep-buttons">
-					<button type="submit" class="Btn Btn--transparent Btn--large" title="Log in with your Google account" {{action 'logIn' 'google'}}>
-						Google
-					</button>
-
-					<button type="submit" class="Btn Btn--transparent Btn--large" title="Log in with your Facebook account" {{action 'logIn' 'facebook'}}>
-						Facebook
-					</button>
-				</div>
-
-			{{else}}
-
-				<p class="BigStep-subTitle">Please wait</p>
-				{{is-loading}}
-
-			{{/unless}}
-
-		{{/if}}
+			<div class="Login-inner">
+				{{#if session.isAuthenticated}}
+					<p>You are already logged in</p>
+					{{#if session.currentUser.channels.firstObject}}
+						<p>{{channel-card channel=session.currentUser.channels.firstObject wide=true}}</p>
+					{{else}}
+						<p>
+							<a href="{{href-to 'channels.new'}}" class="Btn Btn--large" title="Your radio">Create my radio</a>
+						</p>
+					{{/if}}
+				{{else}}
+					{{#unless session.isWorking}}
+						<h1>Login Radio4000</h1>
+						<p>to create or manage your radio.</p>
+						<p>
+							<button type="submit" class="Btn Btn--large" title="Log in with your Google account" {{action 'login' 'google'}}>
+								Google
+							</button>
+							<button type="submit" class="Btn Btn--large" title="Log in with your Facebook account" {{action 'login' 'facebook'}}>
+								Facebook
+							</button>
+						</p>
+						<p><a class="Muted" href="{{href-to 'intro'}}">What is Radio4000?</a></p>
+					{{else}}
+						<p>Letting you in…</p>
+						{{is-loading}}
+					{{/unless}}
+				{{/if}}
+			</div>
+		</div>
 	</div>
-</div>
+</figure>

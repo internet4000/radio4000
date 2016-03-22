@@ -1,11 +1,12 @@
-<a class="Track-link" href="#" {{action 'play' track}}>
-{{!-- {{#link-to 'track' track class="Track-link"}} --}}
+{{!-- <a class="Track-link" href="#" {{action 'play' track}}> --}}
+{{!-- {{#link-to (query-params listen=track.id) class="Track-link"}} --}}
+{{#link-to 'track' track class="Track-link"}}
 	<h3 class="Track-title">
 		{{track.title}}
 	</h3>
 	<p class="Track-body">{{track.body}}</p>
-{{!-- {{/link-to}} --}}
-</a>
+{{/link-to}}
+{{!-- </a> --}}
 
 {{#unless trackWidget}}
 	<p class="Track-controls Muted" title="Edit the track" {{action 'edit'}}>

@@ -5,7 +5,7 @@
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
-	padding: 0 0.6rem;
+	padding: 0.6em;
 	line-height: 1;
 	cursor: pointer;
 	position: relative;
@@ -13,6 +13,10 @@
 	user-select: none; /* 6 */
 	white-space: normal; /* 7 */
 	background: transparent;
+	@media (min-width: $layout-l) {
+		padding-left: 0.7em;
+		padding-right: 0.7em;
+	}
 }
 
 .CustomSelect,
@@ -20,36 +24,27 @@
 	@extend %font-bold;
 	// proper tap areas
 	min-height: 2.1em;
-	// min-width: 2.5em;
 	background-color: $superlightgray;
-	color: $text-color;
-	box-shadow: 0 3px 2px 0 hsla(0, 0%, 0%, 0.06),
-					inset -1px -1px 1px 0 hsla(0, 0%, 0%, 0.02);
-	transition: border-color 100ms, background 100ms, box-shadow 100ms;
+	box-shadow: $box-shadow;
+	transition: border 150ms, background 150ms, box-shadow 150ms;
 
-	// hover and active
 	&:hover,
-	&:active {
+	&:focus {
 		text-decoration: none;
-		box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.2),
-						inset -1px -1px 1px 0 rgba(0, 0, 0, 0.02);
-		// box-shadow: 0 2px 2px 0 hsla(0, 0%, 0%, 0.12),
-		// 				inset -1px -1px 1px 0 hsla(0, 0%, 0%, 0.02);
+		box-shadow: $box-shadow-hover;
 	}
 
-	// active (pressed down)
+	// pressed down
 	&:active,
 	&.is-active {
 		outline: none;
-		box-shadow: 0 1px 2px 0 hsla(0, 0% , 0, 0.12),
-						inset -1px -1px 1px 0 hsla(0, 0% , 0, 0.02)
+		box-shadow: $box-shadow-active;
 	}
 
 	// focus
 	&:focus {
 		outline: none;
 		border-color: $primary-color;
-		box-shadow: 0px 2px 2px 0 hsla(0, 0%, 0%, 0.3);
 	}
 
 	// disabled
@@ -65,10 +60,32 @@
 	}
 }
 
-// Primary, colored button
+/**
+ * Button sizes
+ */
+.Btn--small {
+	@include size-0;
+	min-width: 2em; // equal width
+	padding: 0 0.2rem;
+}
+.Btn--large {
+	@include size-2;
+	min-width: 6em;
+}
+.Btn--huge {
+	@include size-3;
+	min-width: 6em;
+}
+.Btn--full {
+	width: 100%;
+	text-align: center;
+}
+
+/**
+ * Primary, colored button
+ */
 .Btn--primary {
 	background-color: $green;
-	border-color: rgba($gray, 0.4);
 	color: $bleach;
 
 	&:hover,
@@ -82,30 +99,43 @@
 	}
 }
 
-.Btn--full {
-	width: 100%;
-	text-align: center;
+/**
+ * Important, colored button
+ */
+.Btn--important {
+	background-color: $primary-color;
+	color: $white;
+	&:hover {
+		background-color: $primary-color;
+	}
 }
-.Btn--small {
-	font-size: rem(12);
-}
-.Btn--large {
-	@include size-2;
-}
+
+/**
+ * Danger, colored button
+ */
 .Btn--danger {
 	color: $red;
 }
+
 .Btn--transparent {
 	border: 2px solid $white;
+	color: $white;
+	// reset normal btn styles
+	box-shadow: none;
 	background-image: none;
 	background-color: transparent;
-	color: $white;
-	&:focus {
+	&:hover,
+	&:focus,
+	&:active,
+	&.is-active {
+		box-shadow: none;
 		border-color: $white;
 	}
 }
 
-// Buttons that looks like text
+/**
+ * Buttons that looks like text
+ */
 // extra specificity hack
 .Btn.Btn--text {
 	border-color: transparent;
@@ -121,6 +151,19 @@
 		border-color: transparent;
 	}
 }
+.Btn--round {
+	padding: 1.5rem 1.6rem 1.4rem 1.5rem;
+	border-radius: 50%;
+	border-left: 2px solid $primary-color;
+	border-bottom: 2px solid $primary-color;
+	&:hover {
+		border-color: darken($primary-color, 10%);
+	}
+}
+.Btn--topNoRadius {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
 
 // Shows either a up or down indicator
 // according to sorting method
@@ -131,7 +174,6 @@
 		display: inline;
 	}
 }
-
 
 /**
  * Non Buttons
@@ -151,33 +193,30 @@
 	}
 }
 
+
 /**
- * Play
+ * Big play button
  **/
 
-.Btn-play {
-	.Channel-header & {
-		font-size: 2rem;
-		position: absolute;
-		top: 2.2rem;
-		right: -2.7rem;
-	}
+@keyframes Spinz {
+	0% { transform: scale(0.2) rotate(360deg); }
+	100% { transform: scale(1) rotate(0); }
 }
 
-.Btn-play--round {
-	border-radius: 50%;
-	padding-top: 1.7rem;
-	padding-right: 1.3rem;
-	padding-bottom: 2rem;
-	padding-left: 2.5rem;
-}
-.Btn-play--shuffle {
-	.Channel-header & {
-		top: 8.6rem;
-		right: -2.1rem;
-		padding-top: 0.9rem;
-		padding-right: 0.8rem;
-		padding-left: 1.6rem;
-		padding-bottom: 1.3rem;
-	}
+.PlayButton {
+	/* animation */
+	animation-name: Spinz;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	animation-delay: 1s;
+	animation-fill-mode: both;
+	animation-timing-function: $easing;
+	/* styles */
+	position: fixed;
+	bottom: 2rem;
+	right: 2rem;
+	color: white;
+	z-index: 3;
+	// transform: translateX(0);
+	// transition: transform 200ms $easing;
 }

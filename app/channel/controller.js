@@ -5,17 +5,6 @@ const {debug, computed} = Ember;
 export default Ember.Controller.extend({
 	player: Ember.inject.service(),
 
-	// @todo: this is very slow!!
-	// lastUpdatedFormatted: computed('model.tracks.@each.created', function () {
-	// 	const date = this.get('model.tracks.lastObject.created');
-
-	// 	// only the channel owner can see the exact time (privacy)
-	// 	if (this.get('canEdit')) {
-	// 		return window.moment(date).fromNow();
-	// 	}
-	// 	return window.moment(date).subtract(1, 'days').fromNow();
-	// }),
-
 	canEdit: computed('model', 'session.currentUser.channels.firstObject', function () {
 		const channel = this.get('model');
 		const userChannel = this.get('session.currentUser.channels.firstObject');
@@ -34,16 +23,17 @@ export default Ember.Controller.extend({
 		return canEdit;
 	}),
 
-	// isWelcomed: computed('model.tracks.firstObject', 'model.images.firstObject', 'model.favoriteChannels.firstObject', 'canEdit', function () {
-	// 	let canEdit = this.get('canEdit');
-	// 	let hasTrack = this.get('model.tracks.firstObject');
-	// 	let hasImage = this.get('model.images.firstObject');
-	// 	let hasFavorite = this.get('model.favoriteChannels.firstObject');
-	// 	if (canEdit && hasTrack && hasImage && hasFavorite) {
-	// 		return true;
-	// 	}
-	// 	return false;
-	// }),
+	isWelcomed: computed('model.tracks.firstObject', 'model.images.firstObject', 'model.favoriteChannels.firstObject', 'canEdit', function () {
+		const canEdit = this.get('canEdit');
+		// No need to check for more if you can't edit.
+		if (!canEdit) {
+			return false;
+		}
+		const hasTrack = this.get('model.tracks.firstObject');
+		const hasImage = this.get('model.images.firstObject');
+		const hasFavorite = this.get('model.favoriteChannels.firstObject');
+		return canEdit && hasTrack && hasImage && hasFavorite;
+	}),
 
 	isFavorite: computed('model', 'session.currentUser.channels.firstObject.favoriteChannels.[]', function () {
 		const channel = this.get('model');

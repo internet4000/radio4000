@@ -4,7 +4,6 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'radio4000',
     environment: environment,
-    contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
     firebase: 'https://radio4000-dev.firebaseio.com/',
     youtubeApiKey: 'AIzaSyCk5FiiPiyHON7PMLfLulM9GFmSYt6W5v4',
     torii: {
@@ -12,7 +11,7 @@ module.exports = function(environment) {
       sessionServiceName: 'session'
     },
     baseURL: '/',
-    locationType: 'auto',
+    locationType: process.env.EMBER_CLI_ELECTRON ? 'hash' : 'auto',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -23,13 +22,11 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+   },
+   flashMessageDefaults: {
+      timeout: 3000,
+      extendedTimeout: 1000
     }
-  };
-
-  ENV.contentSecurityPolicy = {
-    'connect-src': "'self' wss://*.firebaseio.com",
-    'frame-src': "'self' https://www.youtube.com https://*.firebaseio.com",
-    'script-src': "'self' 'unsafe-eval' https://www.youtube.com/iframe_api https://s.ytimg.com https://*.firebaseio.com"
   };
 
   ENV.CLOUDINARY_NAME = 'radio4000';
@@ -56,16 +53,11 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    // radio4000.com
     ENV.firebase = 'https://radio4000.firebaseio.com/';
     ENV.googleAnalytics = {
         webPropertyId: 'UA-3906535-23'
     };
-  }
-
-  if (environment === 'electron') {
-    ENV.baseURL = './';
-    ENV.locationType = 'hash';
-    ENV.firebase = 'https://radio4000.firebaseio.com/';
   }
 
   return ENV;

@@ -1,13 +1,8 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
-	tagName: 'figure',
-	classNames: ['Cover'],
-	canPlay: false,
+const {Component} = Ember;
 
-	actions: {
-		play() {
-			this.sendAction('onPlay');
-		}
-	}
+export default Component.extend({
+	tagName: 'figure',
+	classNames: ['Cover']
 });

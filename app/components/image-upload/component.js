@@ -43,7 +43,7 @@ export default Component.extend({
 			});
 		}).fail(error => {
 			// one or more scripts failed to load
-			console.log(error);
+			throw new Error(error);
 		});
 	}),
 
@@ -54,16 +54,14 @@ export default Component.extend({
 		// we could listen to these events directly on that component as well, if we like
 
 		// indicate progress
-		$input.on('fileuploadprogress', function (e, data) {
-			let value = Math.round((data.loaded * 100.0) / data.total);
-
-			// indicate we're uploading
+		$input.on('fileuploadprogress', (e, data) => {
+			const value = Math.round((data.loaded * 100.0) / data.total);
 			component.set('isUploading', true);
 			component.set('progressValue', value);
 		});
 
 		// once it's uploaded
-		$input.on('fileuploaddone', function (e, data) {
+		$input.on('fileuploaddone', (e, data) => {
 			component.set('imageId', data.result.public_id);
 
 			// reset progress

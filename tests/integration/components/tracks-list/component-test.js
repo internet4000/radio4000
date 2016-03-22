@@ -1,27 +1,20 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import {moduleForComponent, test} from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-
 moduleForComponent('tracks-list', 'Integration | Component | tracks list', {
-  integration: true
+	integration: true
 });
 
-test('it renders', function(assert) {
-  assert.expect(2);
+test('it renders with items and sorting works', function (assert) {
+	assert.expect(1);
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+	this.set('items', [{title: 'Michael', created: 1}, {title: 'Jackson', created: 2}]);
 
-  this.render(hbs`{{tracks-list}}`);
+	this.render(hbs`
+		{{#tracks-list items=items as |item|}}
+			<h2>{{item.title}}</h2>
+		{{/tracks-list}}
+	`);
 
-  assert.equal(this.$().text(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#tracks-list}}
-      template block text
-    {{/tracks-list}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+	assert.equal(this.$().find('h2:first').text().trim(), 'Jackson', 'it renders newest item on top');
 });

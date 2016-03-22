@@ -1,11 +1,12 @@
 import Ember from 'ember';
 
-const {Mixin, debug, warn} = Ember;
+const {Mixin, debug, warn, get} = Ember;
 
 // Creates and saves a new track on a channel.
 
 export default Mixin.create({
 	createTrack(trackProperties, channel) {
+		const flashMessages = get(this, 'flashMessages');
 		debug('Create new track');
 
 		if (!trackProperties || !channel) {
@@ -15,17 +16,21 @@ export default Mixin.create({
 
 		const track = this.store.createRecord('track', trackProperties);
 
-		// set channel on track and save
+		// Set channel on track and save.
 		track.set('channel', channel);
 		track.updateProvider();
 		track.save().then(() => {
 			debug('saved track');
 
-			// Add it to the tracks relationship on the channel
+			// Update last updated on the channel.
+			channel.set('updated', new Date().getTime());
+
+			// Add it to the tracks relationship on the channel and save it.
 			channel.get('tracks').then(tracks => {
 				tracks.addObject(track);
 				channel.save().then(() => {
 					debug('Saved new track.');
+					flashMessages.info('Saved track');
 				}, error => {
 					warn('Could not create track.');
 					debug(error);

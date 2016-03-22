@@ -1,20 +1,12 @@
 import Ember from 'ember';
+import stringContains from 'radio4000/utils/string-contains';
 
 const {Controller, computed, observer, run} = Ember;
-
-// Returns true if {string} contains {search}
-const stringContains = function (string, search) {
-	if (!string) {
-		return false;
-	}
-
-	return string.toLowerCase().indexOf(search.toLowerCase()) >= 0;
-};
 
 export default Controller.extend({
 	search: '',
 	queryParams: ['search'],
-	isGrid: true,
+	isList: false,
 
 	// This little pattern makes sets a property maximum every X ms for performance.
 	watchSearch: observer('search', function () {
@@ -33,9 +25,9 @@ export default Controller.extend({
 	// Filters out models where title or body matches the search
 	// it watches 'realSearch' instead of 'search' so we can
 	// debounce for performance.
-	channels: computed('realSearch', function () {
-		let search = this.get('search');
-		let model = this.get('model');
+	channels: computed('realSearch', 'model', function () {
+		const search = this.get('search');
+		const model = this.get('model');
 
 		if (!search) {
 			return model;
@@ -50,8 +42,8 @@ export default Controller.extend({
 	sortedChannels: computed.sort('channels', 'sortKeys'),
 
 	actions: {
-		toggleGrid() {
-			this.toggleProperty('isGrid');
+		changeLayout() {
+			this.toggleProperty('isList');
 		}
 	}
 });

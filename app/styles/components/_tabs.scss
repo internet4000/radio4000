@@ -1,54 +1,153 @@
 /**
-* Tabs
-**/
+ * Tabs
+	by default they are boxed and vertical.
+	Use a modifier if you need them horizontal.
+ */
 
 .Tabs {
 	display: flex;
-	flex-flow: row nowrap;
+	flex-flow: column wrap;
+	flex-shrink: 0;
+	margin-bottom: 1rem;
+
+	// A bit of depth.
 	background-color: $superlightgray;
-	text-align: center;
+	border-radius: $border-radius;
+	box-shadow: $box-shadow;
+
+	// When several tabs follow each other.
+	& + .Tabs {
+		margin-top: 3px;
+	}
 }
-// yeah it is shit
-.Tabs--toHorizontal {
-	@media (max-width: $layout-s) {
-		flex-flow: row wrap;
-		.Tabs-item {
-			text-align: left;
-			flex: 0 1 100%;
-			&:hover,
-			&:focus {
-				border-left-color: $bg-color;
-			}
-			&:active {
-				border-left-color: $secondary-color;
-			}
-			&.is-active {
-				border-left: 3px solid $secondary-color;
-				border-bottom-color: transparent;
-			}
+.Tabs--transparent {
+	background-color: transparent;
+	box-shadow: none;
+}
+// .Tabs--bottom {
+// 	align-self: flex-end;
+// }
+
+.Tabs-item {
+	display: inline-block;
+	padding: 0.8em 1rem 0.5em;
+	color: $text-color;
+	border-radius: $border-radius;
+	border-right: 3px solid transparent;
+	transition: border-right-color 200ms $easing,
+					border-bottom-color 200ms $easing,
+					background-image 200ms $easing;
+
+	&:hover,
+	&:focus,
+	&:active {
+		text-decoration: none;
+	}
+	// &:hover,
+	// &:focus {
+	// 	background-image: radial-gradient($white, transparent 70%);
+	// }
+
+	&.is-active {
+		@extend %font-bold;
+		border-right-color: $secondary-color;
+		background-color: $superlightgray;
+	}
+}
+
+.Tabs-item small {
+	font-size: rem(9);
+	text-transform: uppercase;
+	font-weight: 400;
+}
+
+/**
+ * Modifiers
+ */
+
+.Tabs--horizontal {
+	flex-flow: row wrap;
+	text-align: center;
+	max-width: 90%;
+
+	.Tabs-item {
+		border-radius: 0;
+		flex-grow: 1;
+		border-right: 0;
+		border-bottom: 3px solid transparent;
+		&.is-active {
+			border-right: 0;
+			border-bottom: 3px solid $secondary-color;
+		}
+
+		// equal widths
+		@media (min-width: $layout-m) {
+			flex: 1;
 		}
 	}
 }
 
-.Tabs-item {
-	flex: 0 1 12em; // grow and shrink and stretch 3x12 so it's full width on tablet
-	padding: 0.8em 1rem 0.7em;
-	border-bottom: 3px solid transparent;
-	transition: border-bottom-color 200ms $easing;
-	color: $black;
+.Tabs--centered {
+	justify-content: center;
+}
 
-	&:hover,
-	&:focus {
-		border-bottom-color: $bg-color;
-		text-decoration: none;
+// Used where the background is considered "higher",
+// for instance on a light bg as channel header.
+.Tabs--lighter {
+	border-left: 0;
+	border-right: 0;
+	box-shadow: none;
+	max-width: none;
+	background-color: $superlightgray;
+	.Tabs-item.is-active {
+		background-color: $superlightgray;
 	}
-	&:active {
-		border-bottom-color: $secondary-color;
-		text-decoration: none;
+}
+
+// Animated border
+.Tabs--animated {
+	.Tabs-item {
+		// contain the border
+		position: relative;
+		// remove previous borders
+		border-bottom: 0 !important;
+		// align border vertically with same height as other tabs,
+		// stupid but yes.
+		padding-top: rem(4);
+		padding-bottom: 0;
+		line-height: 2.3;
 	}
-	&.is-active {
-		@extend %font-bold;
-		@include negative-text;
-		border-bottom: 3px solid $secondary-color;
+	// the (hidden) border
+	.Tabs-item::after {
+		content: '';
+		display: block;
+		margin: auto;
+		height: 3px;
+		width: 0;
+		background: $secondary-color;
+		transition: width 400ms $easing;
+	}
+	// the visible border
+	.Tabs-item.is-active::after {
+		width: 100%;
+	}
+}
+
+.Tabs-item--bg {
+	// background-repeat: no-repeat;
+	// background-position: center;
+	// background-color:
+	// background-image: url(https://res.cloudinary.com/radio4000/image/upload/q_70,w_170,h_60,c_fill,e_blur:300,fl_lossy/zr7ux38dwusgdcjfzb2y);
+	// background-size: cover;
+	// text-shadow: 1px 1px 2px black;
+	// font-size: 16px;
+	// color: #fff;
+	// padding-bottom: 0.9em;
+	padding-bottom: 0;
+
+	img {
+		float: left;
+		margin: -12px 7px 0px -15px;
+		height: 58px;
 	}
 }

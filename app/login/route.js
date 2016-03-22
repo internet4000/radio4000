@@ -1,34 +1,30 @@
 import Ember from 'ember';
+import MinimalRouteMixin from 'radio4000/mixins/minimal-route';
 
-const {debug} = Ember;
+const {get} = Ember;
 
-export default Ember.Route.extend({
+export default Ember.Route.extend(MinimalRouteMixin, {
 	uiStates: Ember.inject.service(),
 
-	activate() {
-		this.set('uiStates.isMinimal', true);
-	},
-	deactivate() {
-		this.set('uiStates.isMinimal', false);
+	afterLogin() {
+		return get(this, 'session.currentUser.channels').then(channels => {
+			const channel = get(channels, 'firstObject');
+			if (channel) {
+				return this.transitionTo('channel', channel);
+			}
+			return this.transitionTo('channels.new');
+		});
 	},
 
 	actions: {
-		// Signs a user in.
-		// And if the user has a channel we transition to it,
-		// otherwise we transition to create a new channel.
-		logIn(authWith) {
-			this.get('session').open('firebase', {authWith: authWith}).then(() => {
-				const userChannels = this.get('session.currentUser.channels');
-				userChannels.then(channels => {
-					const channel = channels.get('firstObject');
-					if (channel) {
-						debug('user signed in with channel, transitioning to it');
-						this.transitionTo('channel', channel);
-					} else {
-						debug('user signed in without channel, transitioning to /new');
-						this.transitionTo('channels.new');
-					}
-				});
+		// Logs in a user
+		// a) if the user has a channel, we transition to it
+		// b) otherwise we transition to create a new channel
+		login(provider) {
+			const flashMessages = get(this, 'flashMessages');
+			get(this, 'session').open('firebase', {provider}).then(() => {
+				flashMessages.info('You are logged in');
+				this.afterLogin();
 			});
 		}
 	}

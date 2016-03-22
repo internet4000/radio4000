@@ -1,12 +1,11 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import {moduleForComponent, test} from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-
 
 moduleForComponent('app-root', 'Integration | Component | app root', {
   integration: true
 });
 
-test('it renders', function(assert) {
+test('it renders', function (assert) {
   assert.expect(2);
 
   // Set any properties with this.set('myProperty', 'value');
@@ -14,7 +13,7 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{app-root}}`);
 
-  assert.equal(this.$().text(), '');
+  assert.equal(this.$().text().trim(), '');
 
   // Template block usage:
   this.render(hbs`

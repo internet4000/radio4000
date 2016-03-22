@@ -1,17 +1,64 @@
-// Sections
-// Use this when you need more vertical space
-//
+/**
+ Sections
+ Use this when: there are several following sections in a template
+ Use this to: group multiple Section(s), to give them vertical  rythm and space
+ Section
+ Group components vertically
+ Will be the children of .Sections if there exist multiple in a template
+ */
 
+.Sections {
+	padding-top: 6rem;
+
+	// Push it below the logo.
+	.Root.is-panelLeftVisible & {
+		padding-top: 4rem;
+	}
+}
 .Section {
 	clear: both;
-	padding-bottom: 2rem; // padding instead of margin - otherwise it cuts the box-shadow of .Box -_-
+	// padding instead of margin - otherwise it cuts the box-shadow of .Box -_-
+	// padding-bottom: 6rem;
+	margin-bottom: 3rem;
 }
+
+/**
+ * Modifiers
+ */
 
 .Section--space {
 	padding-top: 1em;
 }
-
+.Section--noMarginB {
+	margin-bottom: 0;
+}
+// used to display an in-between (or top) message (showed to the user).
 .Section--messaging {
 	padding-bottom: 0;
 	padding-top: 1.6em;
+}
+// a section that should use the vertical full screen, for exemple to use w/ bg cover image
+.Section--80vh {
+	min-height: 80vh;
+}
+.Section--100vh {
+	min-height: 100vh;
+}
+// flex section, becomes a reference to position its children
+.Section--flex {
+	display: flex;
+	flex-grow: 1;
+}
+
+/*
+	Section-inner
+	Used to position some content inside a section
+	Often used on a Section--flex
+ **/
+
+.Section-inner {
+	padding-top: 3rem;
+}
+.Section-inner--vCentered {
+	align-self: center;
 }

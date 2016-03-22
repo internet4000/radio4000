@@ -1,34 +1,46 @@
 {{#app-root}}
-	<header class="SiteHeader">
-		<div class="Bar Bar--top">
-			{{nav-bar
-				radioDevice=emberYoutube
-				authed=session.isAuthenticated
-				userChannel=session.currentUser.channels.firstObject}}
-		</div>
-	</header>
+	<div class="Bar Bar--top">
+		{{site-logo-button}}
+	</div>
+
+	{{#if flashMessages.queue}}
+		<aside class="FlashMessages">
+			{{#each flashMessages.queue as |flash|}}
+				{{flash-message flash=flash}}
+			{{/each}}
+		</aside>
+	{{/if}}
+
+	{{x-aside class="Aside--left"
+		isAuthenticated=session.isAuthenticated
+		userChannel=userChannel}}
 
 	<main class="SiteMain">
+		{{#if (is-environment 'development')}}
+			<div class="Note Note--sticky">
+				<p>development preview — for testing only</p>
+			</div>
+		{{/if}}
 		{{#if-ios}}
 			<div class="Note Note--full">
-				<p>We're sorry but because your iOS device doesn't support autoplay Radio4000 can't work properly.</p>
+				<p>We're sorry but because your iOS device doesn't support autoplay, Radio4000 can't work properly.</p>
 			</div>
 		{{/if-ios}}
 
 		{{outlet}}
+
+		<footer class="SiteFooter">
+			{{footer-note}}
+		</footer>
 	</main>
 
-	<div class="Player">
-		{{ember-youtube ytid=player.model.ytid delegate=this delegate-as="emberYoutube"
-			autoplay="true"
-			playing="ytPlaying"
-			paused="ytPaused"
-			ended="ytEnded"
-			error="ytError"
-			showProgress="true"}}
+ 	<div class="Aside Aside--right">
+		{{x-playback}}
 	</div>
 
-	<div class="Bar Bar--bottom">
-		{{x-playback radioDevice=emberYoutube}}
-	</div>
+	{{#link-to 'channels.all' class="PlayButton Btn Btn--round" title="Find a radio channel to play!"}}
+		{{!-- {{x-icon i='play'}} --}}
+		<img src="assets/images/icons/sound.gif" alt="Find a radio channel to play!">
+	{{/link-to}}
+
 {{/app-root}}

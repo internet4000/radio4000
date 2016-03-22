@@ -5,47 +5,17 @@
 
 .Manchet {
 	@extend %Container;
+	padding-bottom: 3rem;
+}
 
+// Reverts the default centered styles.
+.Manchet--centered {
 	text-align: center;
-	padding-top: 2rem;
-	padding-bottom: 1rem;
 
 	h1,
 	p {
 		max-width: 30rem;
 		margin-left: auto;
 		margin-right: auto;
-	}
-}
-
-// modifiers
-.Manchet--bigger {
-	h1,
-	h2,
-	p {
-		max-width: 36rem;
-	}
-}
-.Manchet--biggest {
-	h1,
-	h2 {
-		font-size: 3rem;
-	}
-	p {
-		font-size: 2rem;
-	}
-	h1,
-	h2,
-	p {
-		max-width: 50rem;
-	}
-}
-.Manchet--left {
-	text-align: left;
-	h1,
-	p {
-		max-width: none;
-		margin-left: 0;
-		margin-right: 0;
 	}
 }

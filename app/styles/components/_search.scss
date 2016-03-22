@@ -1,15 +1,18 @@
 .Search {
 	display: flex;
 	flex-wrap: nowrap;
+	justify-content: space-between;
 }
 .Search-input {
 	margin-bottom: 0;
+	flex-basis: rem(420);
 
 	// Avoid double-border.
 	margin-right: -1px;
 }
-.Search-btn {
-	box-shadow: none;
+.Search-btn {}
+.Search-toggle {
+	margin-left: auto;
 
 	// Avoid button 'jumping' when changing text inside.
 	min-width: 50px;

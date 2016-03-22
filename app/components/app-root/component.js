@@ -1,6 +1,6 @@
+/* global document */
 import Ember from 'ember';
-
-const {$, Component, inject, run} = Ember;
+const {Component, inject, run} = Ember;
 
 export default Component.extend({
 	uiStates: inject.service(),
@@ -8,8 +8,10 @@ export default Component.extend({
 
 	classNames: ['Root'],
 	classNameBindings: [
-		'uiStates.isFullscreen',
+		'uiStates.player.isMaximized:is-maximized',
+		'uiStates.player.isMinimized:is-minimized',
 		'uiStates.isMinimal',
+		'uiStates.isPanelLeftVisible:is-panelLeftVisible',
 		'player.model:is-withPlayer:is-withoutPlayer'
 	],
 
@@ -19,15 +21,12 @@ export default Component.extend({
 		});
 	},
 
-	// Remove our dummy app with inline styles
+	// Remove our dummy app with inline styles.
 	removeDummyHTML() {
-		let $dummy = $('.DummyApp');
-
-		$dummy.fadeTo(200, 0, 'linear', function () {
-			// wrap it in a run loop to ensure template is rendered
-			run.schedule('afterRender', () => {
-				$dummy.remove();
-			});
-		});
+		const dummy = document.querySelector('.DummyApp');
+		if (!dummy) {
+			return;
+		}
+		dummy.parentNode.removeChild(dummy);
 	}
 });

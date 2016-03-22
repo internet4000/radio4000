@@ -1,14 +1,3 @@
-<div class="Tabs">
-	{{#link-to 'channels.index' title="Discover channels" class="Tabs-item"}}Discover{{/link-to}}
-	{{#link-to 'channels.all' title="Discover channels" class="Tabs-item"}}All{{/link-to}}
+<div class="Sections">
+	{{outlet}}
 </div>
-
-<section class="Container">
-	<p class="SingleNote">
-		{{#unless session.currentUser.channels.firstObject}}
-			Welcome! Start exploring radios or {{#link-to 'intro'}}get introduced to Radio4000.{{/link-to}}
-		{{/unless}}
-	</p>
-</section>
-
-{{outlet}}
