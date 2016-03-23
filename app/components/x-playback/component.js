@@ -52,9 +52,9 @@ export default Component.extend(EKMixin, {
 			// Scroll afterRender and a bit later to not jank the computer
 			run.scheduleOnce('afterRender', () => {
 				run.later(() => {
-					$('.Channel-outlet').animate({
-						scrollTop: $('.Track.is-current').offset().top - 90
-					}, 700, 'swing');
+					const $container = $('.SiteMain');
+					const offset = $('.Track.is-current').offset().top - 90;
+					$container.animate({scrollTop: offset}, 700, 'swing');
 				}, 100);
 			});
 		},
