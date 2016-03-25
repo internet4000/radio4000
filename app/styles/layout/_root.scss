@@ -17,8 +17,13 @@
  */
 .Root.is-panelLeftVisible {
 	.Aside--left {
-		display: flex;
-		flex-direction: column;
+		transform: translate3d(0, 0, 0);
+		@media (min-width: $layout-s) {
+			display: flex;
+		}
+	}
+	.SiteMain {
+		// transform: translate3d(100%, 0, 0);
 	}
 }
 
@@ -32,6 +37,7 @@
 		min-height: 100vh;
 		/* flex */
 		display: flex;
+		flex-flow: column;
 		box-align: center;
 		align-items: center;
 		align-content: center;
