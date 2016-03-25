@@ -13,7 +13,7 @@
 
 	{{x-aside class="Aside--left"
 		isAuthenticated=session.isAuthenticated
-		userChannel=userChannel}}
+		userChannel=session.currentUser.channels.firstObject}}
 
 	<main class="SiteMain">
 		{{#if (is-environment 'development')}}
