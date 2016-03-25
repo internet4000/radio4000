@@ -1,6 +1,6 @@
 # Radio4000
 
-https://codeship.com/projects/88d90340-c479-0133-7342-62b97b21679d/status?branch=develop
+https://codeship.com/projects/88d90340-c479-0133-7342-62b97b21679d/status?branch=master
 
 This is an Ember.js application scaffolded with ember-cli.
 
