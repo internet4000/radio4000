@@ -56,7 +56,7 @@
     "ember-resolver": "^2.0.3",
     "fs": "0.0.2",
     "grunticon-lib": "^1.0.3",
-    "gulp": "^3.9.0",
+    "gulp": "^3.9.1",
     "loader.js": "^4.0.0",
     "path": "^0.12.7",
     "postcss-import": "^8.0.2",
