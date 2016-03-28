@@ -37,12 +37,6 @@
 		// border-top-right-radius: $border-radius;
 		// border-top-left-radius: $border-radius;
 	}
-
-	// icon size here
-	[class^="icon-"],
-	[class*=" icon-"] {
-		margin-right: 0;
-	}
 }
 .Playback-cover {
 	order: 1;
@@ -132,7 +126,7 @@
 		margin-left: 0.2em;
 	}
 	.Btn {
-		box-shadow: 0;
+		box-shadow: none;
 	}
 }
 .Playback-fullscreenBtn {

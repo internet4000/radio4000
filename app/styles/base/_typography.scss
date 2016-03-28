@@ -3,10 +3,15 @@
  * an attempt to group font families and sizes for base elements
  */
 
+
 html {
 	@extend %font-regular;
 	font-family: 'maisonneue', $sans-fallback;
 	line-height: $base-line-height;
+}
+body {
+	// Defined on <body> because Safari has a 'flicker' bug when
+	// changing font-size in rem media queries on <html>.
 	font-size: 15px;
 	@media (min-width: $layout-m) { font-size: $base-font-size; }
 	@media (min-width: $layout-xl) { font-size: 16px; }

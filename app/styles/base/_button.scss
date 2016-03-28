@@ -2,6 +2,7 @@
 // this allows us to use semantic button elements for other things
 .Btn {
 	-webkit-appearance: none; /* 1 */
+	display: inline-block;
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;

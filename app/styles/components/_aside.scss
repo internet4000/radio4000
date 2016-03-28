@@ -38,10 +38,12 @@
 
 	@media (min-width: $layout-s) {
 		display: none;
+		height: auto;
 		transform: translate3d(0, 0, 0);
 		position: static;
 		width: $sidebar-width;
 		flex-basis: $sidebar-width;
+		overflow: hidden;
 	}
 }
 .Aside--right {
