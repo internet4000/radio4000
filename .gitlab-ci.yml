@@ -1,0 +1,26 @@
+before_script:
+  - npm install -g surge gulp-cli
+  - npm install
+  - bower install
+
+stages:
+  - build
+  - test
+  - deploy
+
+generate_build:
+  stage: build
+  script:
+    - npm run build
+
+run_test:
+  stage: test
+  script:
+    - npm run test
+
+deploy_production:
+  stage: deploy
+  script:
+    - npm run deploy
+  only:
+    - master
