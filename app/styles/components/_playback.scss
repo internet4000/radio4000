@@ -79,41 +79,41 @@
 .Playback-buttons {
 	color: white;
 	background: linear-gradient(lighten($primary-color,10%), $primary-color);
-	padding: 0 0.5rem 0.5rem;
 	display: flex;
-	flex: 0 0 auto;
-	justify-content: space-between;
 	order: 3;
+	flex-basis: 3.5rem;
+	justify-content: space-around;
+	align-items: stretch;
+}
 
-	.NonBtn {
-		align-content: center;
-		display: flex;
-		font-size: 1.9rem;
+.Playback-button {
+	display: flex;
+	flex-grow: 1;
+	justify-content: center;
+	font-size: 1.4rem;
+	flex-basis: 20%;
+	outline-offset: -0.5rem;
+
+	&:hover {
+		// outline: ;
 	}
-	.Btn--text {
-		padding: 0;
-		font-size: 2rem;
-		color: $bleach;
+}
+.Playback-shuffle {
+	svg {
+		opacity: 0.5;
+
 	}
-	.Playback-shuffle {
-		font-size: 1.5rem;
-		display: flex;
-		align-self: center;
-		padding-left: 1rem;
-		padding-right: 1rem;
-		opacity: 0.4;
-		// margin-right: auto;
-		&.is-active {
+	&.is-active {
+		svg {
 			opacity: 1;
 		}
 	}
-	.Playback-toggleVolume {
-		@include size-0;
-		margin-left: 1rem;
-		min-width: 47px; // avoid jumping when switching volume
-		text-align: center;
-	}
 }
+.Playback-toggleVolume {
+	font-size: 0.8rem;
+}
+
+
 .Playback-sizeButtons {
 	position: absolute;
 	top: -1.4rem;
@@ -164,53 +164,6 @@
  */
 $bar-height-minimized: rem(70);
 .is-minimized {
-	// .Aside--right {
-	// 	width: 100%;
-	// 	right: 0;
-	// 	height: $bar-height-minimized;
-	// }
-	// .Playback {
-	// 	flex-flow: row wrap;
-	// 	color: $white;
-	// 	background-color: $primary-color;
-	// 	background: linear-gradient(lighten($primary-color,10%), $primary-color);
-	// }
-	// .Playback-channel {
-	// 	order: -1;
-	// 	flex: 1;
-	// 	padding: 0.6rem 0 1rem 0.5rem;
-	// 	display: flex;
-	// 	.ChannelCard--wide {
-	// 		flex: 1;
-	// 	}
-	// 	.ChannelCard--wide > a {
-	// 		flex-flow: row wrap;
-	// 	}
-	// }
-	// .ChannelCard--wide .Cover {
-	// 	flex: 0 0 3rem;
-	// }
-	// .Playback-text {
-	// 	flex: 2 0 0;
-	// 	padding: 0.5rem 0;
-	// }
-	// .Playback-title a {
-	// 	@include negative-text;
-	// 	color: $white;
-	// }
-	// .Playback-player {
-	// 	order: 5;
-	// 	position: fixed;
-	// 	right: 0;
-	// 	bottom: $bar-height-minimized;
-	// 	// order: -2;
-	// 	// width: 100%;
-	// }
-	// .EmberYoutube-progress {
-	// 	position: fixed;
-	// }
-	// .Playback-channel,
-	// .Playback-text,
 	.EmberYoutube-progress,
 	.Playback-buttons,
 	.Playback-controls, {
@@ -274,19 +227,23 @@ $bar-height-minimized: rem(70);
 			height: 100%;
 		}
 	}
+
+	.Playback-channel,
+	.Playback-buttons,
+	.Playback-text {
+		flex-basis: (100/3) * 1%;
+	}
+
 	.Playback-channel {
 		order: 1;
 		flex: 1;
 	}
 	.Playback-text {
-		flex: 2 0 4rem;
+		padding: 0;
 	}
 	.Player {
 		flex: 1;
 		position: relative;
-	}
-	.EmberYoutube-progress {
-		display: none;
 	}
 	.Playback-title a {
 		@include negative-text;
@@ -305,4 +262,13 @@ $bar-height-minimized: rem(70);
 	.ChannelCard-title {
 		color: $bleach;
 	}
+}
+
+/*
+	since we are using Youtubes directly
+	it becones comfusing where to click
+	and this is an element too much in the UX
+ */
+.EmberYoutube-progress {
+	display: none;
 }
