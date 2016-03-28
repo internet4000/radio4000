@@ -14,19 +14,35 @@ stages:
   - test
   - deploy
 
-generate_build:
+build:
   stage: build
   script:
     - npm run build
+  only:
+    - master
 
-run_test:
+build_production:
+  stage: build
+  script:
+    - npm run build-production
+  only:
+    - production
+
+test:
   stage: test
   script:
     - npm run test
 
-deploy_production:
+deploy:
   stage: deploy
   script:
     - npm run deploy
   only:
     - master
+
+deploy_production:
+  stage: deploy
+  script:
+    - npm run deploy-production
+  only:
+    - production
