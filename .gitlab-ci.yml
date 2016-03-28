@@ -5,7 +5,7 @@ cache:
   - node_modules/
 
 before_script:
-  - npm install -g surge gulp-cli
+  - npm install -g surge gulp-cli bower
   - npm install
   - bower install
 
