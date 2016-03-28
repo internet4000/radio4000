@@ -36,6 +36,7 @@ test:
 deploy:
   stage: deploy
   script:
+    - npm run build
     - npm run deploy
   only:
     - master
@@ -43,6 +44,7 @@ deploy:
 deploy_production:
   stage: deploy
   script:
+    - npm run build-production
     - npm run deploy-production
   only:
     - production
