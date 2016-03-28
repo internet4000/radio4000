@@ -7,7 +7,7 @@ cache:
 before_script:
   - npm install -g surge gulp-cli bower
   - npm install
-  - bower install
+  - bower --allow-root install
 
 stages:
   - build
