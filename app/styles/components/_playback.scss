@@ -219,8 +219,11 @@ $bar-height-minimized: rem(70);
 	.Playback-player {
 		display: flex;
 		width: 100%;
-		min-height: 90vh;
+		min-height: 50vh;
 		margin-bottom: 1rem;
+		@media (min-width: $layout-s) {
+			min-height: 90vh;
+		}
 		#EmberYoutube-player {
 			position: absolute;
 			width: 100%;
@@ -240,6 +243,11 @@ $bar-height-minimized: rem(70);
 	}
 	.Playback-text {
 		padding: 0;
+		@media (max-width: $layout-s) {
+			flex-basis: 100%;
+			padding-left: 1rem;
+			padding-right: 2rem;
+		}
 	}
 	.Player {
 		flex: 1;
@@ -252,6 +260,9 @@ $bar-height-minimized: rem(70);
 	.Playback-buttons {
 		background: black;
 		margin: auto;
+		@media (max-width: $layout-s) {
+			flex: 1;
+		}
 	}
 	.ChannelCard--wide {
 		max-width: 20rem;
