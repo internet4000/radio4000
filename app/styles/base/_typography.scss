@@ -8,12 +8,8 @@ html {
 	@extend %font-regular;
 	font-family: 'maisonneue', $sans-fallback;
 	line-height: $base-line-height;
-}
-body {
-	// Defined on <body> because Safari has a 'flicker' bug when
-	// changing font-size in rem media queries on <html>.
-	font-size: 15px;
-	@media (min-width: $layout-m) { font-size: $base-font-size; }
+	font-size: 14px;
+	@media (min-width: $layout-m) { font-size: $base-font-size; } // 16px;
 	@media (min-width: $layout-xl) { font-size: 16px; }
 	@media (min-width: $layout-xxl) { font-size: 17px; }
 }
