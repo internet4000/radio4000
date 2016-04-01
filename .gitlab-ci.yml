@@ -1,32 +1,22 @@
 image: node:5
 
 cache:
+  key: "$CI_BUILD_NAME/$CI_BUILD_REF_NAME"
+  untracked: true
   paths:
   - node_modules/
 
 before_script:
-  - npm install -g surge gulp-cli bower phantomjs-prebuilt
+  - npm cache clean
+  - rm -rf node_modules bower_components dist tmp
+  - npm install -g ember-cli surge gulp-cli bower
   - npm install
+  - npm set progress=false
   - bower --allow-root install
 
 stages:
-  - build
   - test
   - deploy
-
-build:
-  stage: build
-  script:
-    - npm run build
-  only:
-    - master
-
-build_production:
-  stage: build
-  script:
-    - npm run build-production
-  only:
-    - production
 
 test:
   stage: test
