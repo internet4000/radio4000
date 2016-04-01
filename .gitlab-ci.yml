@@ -1,3 +1,4 @@
+#image: danlynn/ember-cli:2.4.3
 image: node:5
 
 cache:
@@ -5,28 +6,16 @@ cache:
   - node_modules/
 
 before_script:
+  - npm cache clean
+  - rm -rf node_modules bower_components dist tmp
   - npm install -g surge gulp-cli bower phantomjs-prebuilt
   - npm install
+  - npm set progress=false
   - bower --allow-root install
 
 stages:
-  - build
   - test
   - deploy
-
-build:
-  stage: build
-  script:
-    - npm run build
-  only:
-    - master
-
-build_production:
-  stage: build
-  script:
-    - npm run build-production
-  only:
-    - production
 
 test:
   stage: test
