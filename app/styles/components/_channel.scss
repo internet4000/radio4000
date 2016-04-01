@@ -111,10 +111,15 @@
 	@include clearfix;
 }
 .Channel-title {
-	display: inline-block;
+	margin-top: 1rem;
+	text-align: center;
 	line-height: 1;
+	@media (min-width: $layout-s) {
+		text-align: left;
+	}
 	@media (min-width: $layout-m) {
 		@include size-5;
+		display: inline-block;
 		max-width: 80%;
 	}
 }
@@ -125,6 +130,7 @@
 	z-index: 1;
 }
 .Channel-description {
+	@include size-2;
 	max-width: 36rem;
 	margin-bottom: 1rem;
 	clear: both;

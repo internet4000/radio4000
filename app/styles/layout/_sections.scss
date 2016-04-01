@@ -8,7 +8,10 @@
  */
 
 .Sections {
-	padding-top: 6rem;
+	padding-top: 4rem;
+	@media (min-width: $layout-s) {
+		padding-top: 6rem;
+	}
 
 	// Push it below the logo.
 	.Root.is-panelLeftVisible & {
