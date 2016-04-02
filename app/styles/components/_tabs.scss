@@ -68,7 +68,9 @@
 .Tabs--horizontal {
 	flex-flow: row wrap;
 	text-align: center;
-	max-width: 90%;
+	@media (min-width: $layout-s) {
+		max-width: 90%;
+	}
 
 	.Tabs-item {
 		border-radius: 0;

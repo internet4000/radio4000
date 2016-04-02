@@ -12,7 +12,7 @@ export default Ember.Controller.extend(EmberValidations, createTrackMixin, {
 
 	// needed to access canEdit
 	channelController: inject.controller('channel'),
-	canEdit: computed.alias('channelController.canEdit'),
+	canEdit: computed.reads('channelController.canEdit'),
 	hasFewTracks: computed.lte('tracks.length', 2),
 
 	actions: {
@@ -38,6 +38,9 @@ export default Ember.Controller.extend(EmberValidations, createTrackMixin, {
 		},
 
 		startEditingTrack(track) {
+			if (!this.get('canEdit')) {
+				return;
+			}
 			this.set('trackToEdit', track);
 			this.set('isEditing', true);
 		},

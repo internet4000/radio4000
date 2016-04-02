@@ -47,6 +47,8 @@
 	}
 }
 .Grid-cell--double {
+	flex-basis: 100%;
+	.no-flexbox & { max-width: 100%; }
 	@media (min-width: $layout-sm) {
 		flex-basis: 66%;
 		.no-flexbox & { max-width: 66%; }

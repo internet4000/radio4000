@@ -3,12 +3,13 @@
  * an attempt to group font families and sizes for base elements
  */
 
+
 html {
 	@extend %font-regular;
 	font-family: 'maisonneue', $sans-fallback;
 	line-height: $base-line-height;
-	font-size: 15px;
-	@media (min-width: $layout-m) { font-size: $base-font-size; }
+	font-size: 14px;
+	@media (min-width: $layout-m) { font-size: $base-font-size; } // 16px;
 	@media (min-width: $layout-xl) { font-size: 16px; }
 	@media (min-width: $layout-xxl) { font-size: 17px; }
 }
@@ -50,7 +51,7 @@ h4 {
 h1,
 .Title {
 	@include size-4;
-	margin-bottom: 0.25rem;
+	margin-bottom: 1rem;
 
 	@media (min-width: $layout-sm) {
 		@include size-5;

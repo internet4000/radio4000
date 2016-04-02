@@ -84,13 +84,13 @@ $easing3: cubic-bezier(0.860, 0.000, 0.070, 1.000); // nice again?
 $easing4: cubic-bezier(0.250, 1.400, 0.180, 1.000); // try with 200ms
 $easing6: cubic-bezier(0.560, 1.000, 0.860, 1.139);
 // Layout: Breakpoints
-$layout-s: rem(480);
-$layout-sm: rem(550);
-$layout-m: rem(650);
-$layout-ml: rem(780);
-$layout-l: rem(1000);
-$layout-xl: rem(1450);
-$layout-xxl: rem(1700);
+$layout-s: 480px;
+$layout-sm: 550px;
+$layout-m: 650px;
+$layout-ml: 780px;
+$layout-l: 1000px;
+$layout-xl: 1450px;
+$layout-xxl: 1700px;
 
 // Other stuff…
 $box-shadow: 0px 4px 0px -2px $boxshadowgray;

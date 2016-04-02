@@ -38,10 +38,12 @@
 
 	@media (min-width: $layout-s) {
 		display: none;
+		height: auto;
 		transform: translate3d(0, 0, 0);
 		position: static;
 		width: $sidebar-width;
 		flex-basis: $sidebar-width;
+		overflow: hidden;
 	}
 }
 .Aside--right {
@@ -54,7 +56,7 @@
 	position: fixed;
 	z-index: 4;
 	top: auto;
-	right: 2rem;
+	right: 1.5rem;
 	bottom: 0;
 	width: 19rem;
 	overflow: visible;

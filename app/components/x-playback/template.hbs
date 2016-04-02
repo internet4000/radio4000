@@ -43,19 +43,19 @@
 {{/if}}
 
 <div class="Playback-buttons">
-	<button class="Playback-button Playback-shuffle Btn Btn--text  {{if player.isRandom 'is-active'}}" {{action 'toggleRandom'}} title="Toggle shuffle playback">
+	<button class="Playback-button Playback-shuffle {{if player.isRandom 'is-active'}}" {{action 'toggleRandom'}} title="Toggle shuffle playback">
 		{{x-icon i='shuffle'}}
 	</button>
 
-	<button class="Playback-button NonBtn" {{action 'prev'}} title="Previous track">
+	<button class="Playback-button" {{action 'prev'}} title="Previous track">
 		{{x-icon i='previous'}}
 	</button>
 
-	{{play-pause-btn isPlaying=player.isPlaying play=(action "play") pause=(action "pause")}}
+	{{play-pause-btn isPlaying=player.isPlaying play=(action "play") pause=(action "pause") class="Playback-button"}}
 
-	<button class="Playback-button NonBtn" {{action 'next'}} title="Next track">
+	<button class="Playback-button" {{action 'next'}} title="Next track">
 		{{x-icon i='next'}}
 	</button>
 
-	<button class="Playback-button Playback-toggleVolume NonBtn {{if emberYouTube.isMuted 'u-textStrike'}}" {{action "toggleVolume"}} title="Toggle the playback volume">Mute</button>
+	<button class="Playback-button Playback-toggleVolume {{if emberYouTube.isMuted 'u-textStrike'}}" {{action "toggleVolume"}} title="Toggle the playback volume">Mute</button>
 </div>

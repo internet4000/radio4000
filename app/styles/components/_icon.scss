@@ -6,8 +6,7 @@
 	width: 1em;
 	fill: currentColor;
 	// if parent has display: flex
-	margin-top: auto;
-	margin-bottom: auto;
+	margin: auto;
 
 	// vertical center inside buttons
 	.Btn:not(.Btn--text) & {
