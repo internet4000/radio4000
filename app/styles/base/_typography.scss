@@ -3,24 +3,29 @@
  * an attempt to group font families and sizes for base elements
  */
 
-
 html {
 	@extend %font-regular;
-	font-family: 'maisonneue', $sans-fallback;
-	line-height: $base-line-height;
+	font-family: "maisonneue", $sans-fallback;
 	font-size: 14px;
+	line-height: $base-line-height;
 	@media (min-width: $layout-m) { font-size: $base-font-size; } // 16px;
 	@media (min-width: $layout-xl) { font-size: 16px; }
 	@media (min-width: $layout-xxl) { font-size: 17px; }
 }
 
 // apparently it can be bad to use this on the html element, so:
-h1,h2,h3,h4,p,ul,ol,blockquote {
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+blockquote {
 	// Enable kerning in all browsers.
-	text-rendering: optimizeLegibility;
 	font-feature-settings: "kern" 1;
+	text-rendering: optimizeLegibility;
 }
-
 strong,
 b {
 	@extend %font-bold;

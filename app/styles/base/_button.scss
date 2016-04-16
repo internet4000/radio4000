@@ -1,64 +1,53 @@
-// Button reset (inspired by https://github.com/suitcss/components-button)
-// this allows us to use semantic button elements for other things
-.Btn {
-	-webkit-appearance: none; /* 1 */
+@mixin button {
+	@extend %font-bold;
+	align-items: center;
+	background-color: $superlightgray;
+	box-shadow: $box-shadow;
+	box-sizing: border-box; /* 1 */
+	cursor: pointer;
 	display: inline-block;
 	display: inline-flex;
 	justify-content: center;
-	align-items: center;
-	padding: 0.6em;
 	line-height: 1;
-	cursor: pointer;
+	margin: 0;
+	min-height: 2.1em; // proper tap areas
+	padding: 0.6em;
 	position: relative;
+	text-align: center;
 	text-decoration: none;
-	user-select: none; /* 6 */
-	white-space: normal; /* 7 */
-	background: transparent;
+	user-select: none; /* 4 */
+	transition: border 150ms, background 150ms, box-shadow 150ms;
 	@media (min-width: $layout-l) {
 		padding-left: 0.7em;
 		padding-right: 0.7em;
 	}
-}
-
-.CustomSelect,
-.Btn {
-	@extend %font-bold;
-	// proper tap areas
-	min-height: 2.1em;
-	background-color: $superlightgray;
-	box-shadow: $box-shadow;
-	transition: border 150ms, background 150ms, box-shadow 150ms;
-
 	&:hover,
 	&:focus {
 		text-decoration: none;
 		box-shadow: $box-shadow-hover;
 	}
-
-	// pressed down
 	&:active,
 	&.is-active {
 		outline: none;
 		box-shadow: $box-shadow-active;
 	}
-
-	// focus
 	&:focus {
 		outline: none;
 		border-color: $primary-color;
 	}
-
-	// disabled
 	&:disabled,
 	&.is-disabled {
 		cursor: default;
 		opacity: 0.25;
 	}
-
 	// buxfix because ember sometimes adds a div inside a button
 	div {
 		display: inline;
 	}
+}
+
+.Btn {
+	@include button;
 }
 
 /**
