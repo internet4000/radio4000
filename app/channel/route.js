@@ -42,7 +42,7 @@ export default Route.extend({
 
 					track.destroyRecord().then(() => {
 						debug('Deleted track');
-						flashMessages.warning('Track deleted');
+						flashMessages.warning('Deleted your track');
 					}, () => {
 						warn('Could not delete track');
 					});
