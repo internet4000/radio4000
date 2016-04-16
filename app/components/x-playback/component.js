@@ -9,6 +9,11 @@ export default Component.extend(EKMixin, {
 	uiStates: inject.service(),
 	channel: computed.alias('player.model.channel'),
 
+	youtubePlayerVars: {
+	    autoplay: 1,
+	    showinfo: 0
+	},
+
 	// Keyboard shortucts.
 	activateKeyboard: Ember.on('init', function () {
 		this.set('keyboardActivated', true);

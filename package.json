@@ -70,7 +70,7 @@
     "ember-href-to": "^1.1.0",
     "ember-modal-dialog": "^0.8.0",
     "ember-validations": "2.0.0-alpha.4",
-    "ember-youtube": "^0.5.1",
+    "ember-youtube": "^0.6.0",
     "emberfire": "^1.6.6",
     "lazysizes": "^1.3.2",
     "suitcss-base": "^1.0.1",
