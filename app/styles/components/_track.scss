@@ -6,11 +6,9 @@
 	@include size-1;
 	position: relative;
 	overflow: hidden; // hide controls
-
 	// define empty borders so it doesn't jump
 	border-left: 1px solid transparent;
 	border-right: 1px solid transparent;
-
 	.icon-play {
 		position: absolute;
 		left: 0.46em;
@@ -47,18 +45,15 @@
 .Track.is-editing {
 	background-color: $superlightgray;
 	box-shadow: $lighterblue 0 0 10px;
-
 	.Track-link:hover {
 		background-color: transparent;
 		background-image: none;
 	}
-
 	.Track-link,
 	.Track-controls {
 		display: none;
 	}
 }
-
 .Track-title {
 	@extend %font-regular;
 	@include size-1;
@@ -69,7 +64,6 @@
 	font-style: italic;
 	margin-bottom: 0;
 	word-break: break-word;
-
 	&:empty {
 		display: none;
 	}

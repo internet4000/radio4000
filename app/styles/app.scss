@@ -4,73 +4,72 @@
 */
 
 // Third party (automatically imported from `./node_modules`)
-@import 'node_modules/ember-modal-dialog/app/styles/ember-modal-dialog/ember-modal-structure';
-@import 'node_modules/ember-modal-dialog/app/styles/ember-modal-dialog/ember-modal-appearance';
-@import 'node_modules/normalize.css/normalize';
-@import 'node_modules/suitcss-base/lib/base';
+@import "node_modules/ember-modal-dialog/app/styles/ember-modal-dialog/ember-modal-structure";
+@import "node_modules/ember-modal-dialog/app/styles/ember-modal-dialog/ember-modal-appearance";
+@import "node_modules/normalize.css/normalize";
+@import "node_modules/suitcss-base/lib/base";
 
 // Utilities
-@import 'utilities/align';
-@import 'utilities/clearfix';
-@import 'utilities/functions';
-@import 'utilities/push';
-@import 'utilities/text';
-@import 'utilities/mediablock';
+@import "utilities/align";
+@import "utilities/clearfix";
+@import "utilities/functions";
+@import "utilities/push";
+@import "utilities/text";
+@import "utilities/mediablock";
 
 // Base (config and everything else without classes)
-@import 'base/fonts';
-@import 'base/config';
-@import 'base/base';
-@import 'base/form';
-@import 'base/button';
-@import 'base/button-group'; // @todo refactor
-@import 'base/typography';
+@import "base/fonts";
+@import "base/config";
+@import "base/base";
+@import "base/form";
+@import "base/button";
+@import "base/button-group"; // @todo refactor
+@import "base/typography";
 
 // Layout (site and minimal page layout)
-@import 'layout/layout';
-@import 'layout/container';
-@import 'layout/manchet';
-@import 'layout/sections';
-@import 'layout/grid'; // @todo refactor
-@import 'layout/intro';
+@import "layout/layout";
+@import "layout/container";
+@import "layout/manchet";
+@import "layout/sections";
+@import "layout/grid"; // @todo refactor
+@import "layout/intro";
 
 // Forms
-@import 'components/custom-select';
-@import 'components/form-progress';
-@import 'components/checkbox-remote';
+@import "components/custom-select";
+@import "components/form-progress";
+@import "components/checkbox-remote";
 
 // UI components
-@import 'components/aside';
-@import 'components/add-track-button';
-@import 'components/icon';
-@import 'components/tabs';
-@import 'components/note';
-@import 'components/list'; // @todo refactor
-@import 'components/loader';
-@import 'components/cover';
-@import 'components/image-upload';
-@import 'components/channel';
-@import 'components/channel-card';
-@import 'components/track';
-@import 'components/banner';
-@import 'components/login';
-@import 'components/page-welcome';
-@import 'components/playback-external';
-@import 'components/search';
-@import 'components/play-pause';
-@import 'components/flash-messages';
+@import "components/aside";
+@import "components/add-track-button";
+@import "components/icon";
+@import "components/tabs";
+@import "components/note";
+@import "components/list"; // @todo refactor
+@import "components/loader";
+@import "components/cover";
+@import "components/image-upload";
+@import "components/channel";
+@import "components/channel-card";
+@import "components/track";
+@import "components/banner";
+@import "components/login";
+@import "components/page-welcome";
+@import "components/playback-external";
+@import "components/search";
+@import "components/play-pause";
+@import "components/flash-messages";
 
 // Header area
-@import 'components/bar';
-@import 'components/logo';
+@import "components/bar";
+@import "components/logo";
 
 // Footer area
-@import 'components/playback';
-@import 'components/player';
+@import "components/playback";
+@import "components/player";
 
 // Major UI States or the UI
-@import 'layout/root';
+@import "layout/root";
 
-// @import 'components/widget';
-// @import 'components/annoncement';
-// @import 'components/toggle-panel';
+// @import "components/widget";
+// @import "components/toggle-panel";

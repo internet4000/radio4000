@@ -1,5 +1,4 @@
-
-// use .Container for vertical stacks
+// Use .Container for stacking components on top of each other and aligning horizontally.
 
 .Container,
 %Container {
@@ -17,6 +16,8 @@
 		padding-right: 4rem;
 	}
 }
+
+// Modifiers
 
 .Container--centered {
 	margin-left: auto;
@@ -41,7 +42,6 @@
 .Container--bg {
 	background-color: $bg-color;
 }
-
 .Container--tight {
 	padding-right: 0.5rem;
 	padding-left: 0.5rem;

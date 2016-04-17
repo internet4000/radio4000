@@ -11,14 +11,13 @@
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-
 @mixin clearfix {
-	&:before,
-	&:after {
-		content: ' '; /* 1 */
+	&::before,
+	&::after {
+		content: " "; /* 1 */
 		display: table; /* 2 */
 	}
-	&:after {
+	&::after {
 		clear: both;
 	}
 }

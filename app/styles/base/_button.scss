@@ -53,6 +53,7 @@
 /**
  * Button sizes
  */
+
 .Btn--small {
 	@include size-0;
 	min-width: 2em; // equal width
@@ -74,6 +75,7 @@
 /**
  * Primary, colored button
  */
+
 .Btn--primary {
 	background-color: $green;
 	color: $bleach;
@@ -92,6 +94,7 @@
 /**
  * Important, colored button
  */
+
 .Btn--important {
 	background-color: $primary-color;
 	color: $white;
@@ -103,6 +106,7 @@
 /**
  * Danger, colored button
  */
+
 .Btn--danger {
 	color: $red;
 }

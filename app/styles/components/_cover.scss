@@ -12,9 +12,11 @@
 		opacity: 1;
 	}
 }
+
 /**
  * Image wrapper
  */
+
 .Cover-image {
 	background-color: $fadedblue;
 	position: relative;
@@ -26,6 +28,7 @@
 /**
  * The image itself
  */
+
 .Cover-image img {
 	// stretch image
 	position: absolute;
@@ -43,6 +46,7 @@
 /**
  * Lazysizes loading
  */
+
 .Cover img {
 	// filter: blur(2px);
 	transition: filter 250ms, opacity 250ms;
@@ -51,7 +55,7 @@
 	}
 	&.lazyloading {
 		// Disabled because it wasn't smooth anyway.
-		background-image: url(../assets/images/icons/loader.svg);
+		background-image: url("../assets/images/icons/loader.svg");
 		background-size: 30px;
 		background-repeat: no-repeat;
 		background-position: center;

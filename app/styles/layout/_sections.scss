@@ -14,18 +14,23 @@
 		padding-top: 6rem;
 	}
 }
-.section {
-
-}
 .Section {
 	clear: both;
 	// padding instead of margin - otherwise it cuts the box-shadow of .Box -_-
 	margin-bottom: 3rem;
 }
 
-/**
- * Modifiers
- */
+// Section-inner
+// Used to position some content inside a section
+// Often used on a Section--flex
+.Section-inner {
+	padding-top: 3rem;
+}
+.Section-inner--vCentered {
+	align-self: center;
+}
+
+// Modifiers
 
 .Section--space {
 	padding-top: 1em;
@@ -51,15 +56,4 @@
 	flex-grow: 1;
 }
 
-/*
-	Section-inner
-	Used to position some content inside a section
-	Often used on a Section--flex
- **/
 
-.Section-inner {
-	padding-top: 3rem;
-}
-.Section-inner--vCentered {
-	align-self: center;
-}

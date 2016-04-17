@@ -17,17 +17,15 @@
 
 	// Purple background.
 	background-color: $primary-color;
-	background-image: linear-gradient(lighten($primary-color,10%), $primary-color);
+	background-image: linear-gradient(lighten($primary-color, 10%), $primary-color);
 	color: $bleach;
 	@include negative-text;
 	.Playback-title a {
 		color: $bleach;
 	}
-
 	@media (min-width: $layout-s) {
 		flex-wrap: nowrap;
 	}
-
 	.Bar--bottom & {
 		border-top: 1px solid $primary-color;
 		min-height: rem($bar-height + $progress-height);
@@ -85,7 +83,6 @@
 	justify-content: space-around;
 	align-items: stretch;
 }
-
 .Playback-button {
 	display: flex;
 	flex-grow: 1;
@@ -93,10 +90,6 @@
 	font-size: 1.4rem;
 	flex-basis: 20%;
 	outline-offset: -0.5rem;
-
-	&:hover {
-		// outline: ;
-	}
 }
 .Playback-shuffle {
 	svg {
@@ -112,8 +105,6 @@
 .Playback-toggleVolume {
 	font-size: 0.8rem;
 }
-
-
 .Playback-sizeButtons {
 	position: absolute;
 	top: -1.4rem;
@@ -131,18 +122,15 @@
 }
 .Playback-fullscreenBtn {
 	order: 1;
-
 	svg {
 		vertical-align: middle;
 	}
 }
 .Playback-player {
-	// order: 0;
-
 	// Gif loading background.
-	background-image: url('../assets/images/noise.gif');
+	background-image: url("../assets/images/noise.gif");
+	background-position: center;
 	background-size: cover;
-   background-position: center center;
 }
 
 // Animate buttons that should only be visible when the player is ready.
@@ -199,6 +187,7 @@ $bar-height-minimized: rem(70);
 /**
  * Fullscreen state
  */
+
 .is-maximized {
 	.Aside--right {
 		top: 0;
@@ -230,13 +219,11 @@ $bar-height-minimized: rem(70);
 			height: 100%;
 		}
 	}
-
 	.Playback-channel,
 	.Playback-buttons,
 	.Playback-text {
 		flex-basis: (100/3) * 1%;
 	}
-
 	.Playback-channel {
 		order: 1;
 		flex: 1;
@@ -280,6 +267,7 @@ $bar-height-minimized: rem(70);
 	it becones comfusing where to click
 	and this is an element too much in the UX
  */
+
 .EmberYoutube-progress {
 	display: none;
 }

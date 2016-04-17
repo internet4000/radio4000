@@ -12,26 +12,18 @@
 	// bottom: 3.7rem;
 	// z-index: 20;
 }
-
 #EmberYoutube-player {
 	display: block;
 	background-color: black;
 	width: 100%;
 	height: auto;
-	// width: 224px; // this is the minimum width required to show YouTube volume button
+	// this is the minimum width required to show YouTube volume button
+	// width: 224px;
 
-	@media (max-width: $layout-s) {
-		height: 60px;
-	}
-	@media (min-width: $layout-s) {
-		height: 100px;
-	}
-	@media (min-width: $layout-m) {
-		height: 200px;
-	}
-	@media (min-width: $layout-xl) {
-		height: 300px;
-	}
+	@media (max-width: $layout-s) { height: 60px; }
+	@media (min-width: $layout-s) { height: 100px; }
+	@media (min-width: $layout-m) { height: 200px; }
+	@media (min-width: $layout-xl) { height: 300px; }
 }
 .EmberYoutube-progress {
 	position: absolute;

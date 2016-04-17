@@ -7,7 +7,7 @@
 .List-item {
 	border-bottom: 1px solid hsl(0, 0%, 91%); // $mediumlightgray
 	line-height: normal;
-	&:before {
+	&::before {
 		display: none;
 	}
 	&:last-child {
@@ -20,12 +20,6 @@
 	@include clearfix;
 	padding: 0.8rem 1rem 0.7rem;
 	text-decoration: none;
-
-	@media (min-width: $layout-s) {
-		padding-left: 2rem;
-		padding-right: 2rem;
-	}
-
 	&:hover,
 	&:focus {
 		background-color: hsla(0, 100%, 100%, 0.2);
@@ -34,6 +28,11 @@
 	&:focus,
 	&:active {
 		text-decoration: none;
+	}
+
+	@media (min-width: $layout-s) {
+		padding-left: 2rem;
+		padding-right: 2rem;
 	}
 }
 .List-title {
@@ -61,7 +60,7 @@
 }
 .List--numbered li {
 	counter-increment: list-counter;
-	&:before {
+	&::before {
 		// decimal (1 2 3)
 		// decimal-leading-zero (01, 02, 03)
 		// lower-roman (i ii iii)

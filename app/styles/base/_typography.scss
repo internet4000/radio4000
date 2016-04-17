@@ -8,7 +8,8 @@ html {
 	font-family: "maisonneue", $sans-fallback;
 	font-size: 14px;
 	line-height: $base-line-height;
-	@media (min-width: $layout-m) { font-size: $base-font-size; } // 16px;
+
+	@media (min-width: $layout-m) { font-size: $base-font-size; } // 15px;
 	@media (min-width: $layout-xl) { font-size: 16px; }
 	@media (min-width: $layout-xxl) { font-size: 17px; }
 }
@@ -46,6 +47,7 @@ em {
 .Muted--strong {
 	color: $mediumgray;
 }
+
 // Headers
 h1,
 h2,
@@ -61,11 +63,6 @@ h1,
 	@media (min-width: $layout-sm) {
 		@include size-5;
 	}
-
-	// @media (min-width: $layout-l) {
-	// 	@include size-5;
-	// }
-
 	a {
 		color: $text-color;
 	}
@@ -73,6 +70,7 @@ h1,
 h2,
 .Subtitle {
 	@include size-3;
+
 	@media (min-width: $layout-m) {
 		@include size-4;
 	}
@@ -98,9 +96,9 @@ h4 {
 
 // Lists
 ul {
-	padding-left: 1em;
 	list-style: none;
-	li:before {
+	padding-left: 1em;
+	li::before {
 		content: "→ ";
 	}
 }
@@ -111,14 +109,14 @@ pre,
 	@extend %font-mono;
 }
 .Code {
-	padding: 0.45em;
 	background: $black;
 	color: hsl(118, 100%, 59%);
+	padding: 0.45em;
 }
 
 // Warnings
 .Warning {
-	padding: 1px 4px;
 	background-color: $yellow;
 	color: $text-color;
+	padding: 1px 4px;
 }

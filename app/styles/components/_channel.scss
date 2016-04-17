@@ -1,15 +1,10 @@
-/**
- * Channel
- */
-
-.Channel {}
-
+// .Channel {}
 .Channel--detail, {
 	position: relative;
 	background-color: $slightgray;
 	border-top: 1px solid $superlightgray;
-	border-left: 1px solid hsl(0,0%,80%);
-	border-right: 1px solid hsl(0,0%,80%);
+	border-left: 1px solid hsl(0, 0%, 80%);
+	border-right: 1px solid hsl(0, 0%, 80%);
 	border-radius: $border-radius;
 	box-shadow: $box-shadow;
 
@@ -20,16 +15,14 @@
 		margin-left: 1rem;
 	}
 }
-
 .Channel--edit {
 	@media (min-width: $layout-s) {
 		max-width: 50rem;
 	}
-	.Form	{
+	.Form {
 		margin-top: 0;
 	}
 }
-
 .Channel-header {
 	background-color: $superlightgray;
 	padding-bottom: 1rem;
@@ -91,7 +84,6 @@
 		top: -3rem;
 		left: 0;
 	}
-
 	svg,
 	i {
 		margin-right: 0.3rem;
@@ -154,12 +146,9 @@
  * on channel/edit route
  **/
 
-.Channel--edit {
-	.Channel-media {
-		margin-top: 0;
-	}
+.Channel--edit .Channel-media {
+	margin-top: 0;
 }
-
 
 /**
  Channel-introduction

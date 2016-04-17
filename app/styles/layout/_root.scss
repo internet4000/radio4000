@@ -15,6 +15,7 @@
 /**
  * Panel is open
  */
+
 .Root.is-panelLeftVisible {
 	.Aside--left {
 		transform: translate3d(0, 0, 0);
@@ -27,15 +28,14 @@
 	}
 }
 
-
 /**
  * Overlay style, purple background
  */
+
 .Root.is-minimal {
 	.SiteMain {
 		padding-bottom: 0;
 		min-height: 100vh;
-		/* flex */
 		display: flex;
 		flex-flow: column;
 		box-align: center;
@@ -51,6 +51,7 @@
 /**
  * Player is showing
  */
+
 .Root.is-withPlayer {
 	.SiteMain {
 		order: 2;
