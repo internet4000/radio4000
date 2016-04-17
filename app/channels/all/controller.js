@@ -9,12 +9,12 @@ export default Controller.extend({
 	isList: false,
 
 	// This little pattern makes sets a property maximum every X ms for performance.
-	watchSearch: observer('search', function () {
-		run.throttle(this, this.runSearch, 500);
+	onSearchChange: observer('search', function () {
+		run.debounce(this, this.startSearching, 600);
 	}),
 
 	// The property triggers the computed property to, well, compute!
-	runSearch() {
+	startSearching() {
 		this.set('realSearch', this.get('search'));
 	},
 
