@@ -28,6 +28,7 @@
 	width: 100%;
 	z-index: 2;
 	background-color: $bg-color;
+	background-image: linear-gradient(to right, darken($bg-color, 2%) 40%, $bg-color);
 
 	@media (min-width: $layout-s) {
 		display: none;
