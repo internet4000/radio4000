@@ -22,11 +22,12 @@
 					<button class="Btn Btn--large" title="Sign in or register with Facebook" {{action 'login' 'facebook'}}>
 						Facebook</button>
 				</p>
-				<br><br>
+				<br>
 				{{#if session.isWorking}}
-					<p>Warming transistors…</p>
-					{{is-loading}}
+					{{#is-loading}}Warming transistors…{{/is-loading}}
 				{{/if}}
+				<br>
+				<br>
 				<p class="Subtitle">A single radio for you, music for everyone — and an infinity of great tracks curated with love.</p>
 				<p>&rarr; <a href="{{href-to 'intro'}}">Get properly introduced to Radio4000</a></p>
 				<figure class="Banner Banner--isolated">
