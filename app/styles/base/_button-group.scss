@@ -1,56 +1,67 @@
-
-// A group of buttons
-.BtnGroup {
-	display: flex;
-	flex-shrink: 0;
-	flex-flow: row wrap;
-	align-items: center;
-	margin-bottom: 1rem;
-
-	.Btn {
-		flex-shrink: 0;
-
-		& + .Btn {
-			border-left: 0;
-			border-radius: 0;
-		}
-		&:first-of-type {
-			border-top-right-radius: 0;
-			border-bottom-right-radius: 0;
-		}
-		&:last-of-type {
-			border-top-right-radius: $border-radius;
-			border-bottom-right-radius: $border-radius;
-		}
-	}
-
-	.Btn + .BtnGroup-label {
-		margin-left: 1.5rem;
-		margin-right: 1rem;
-	}
-}
-.BtnGroup-label {
-	align-self: center;
-	position: relative;
-	top: em(1,13);
-	margin-right: 0.2em;
-	margin-bottom: 0;
-	color: $gray;
+/**
+ * Links
+ */
+a {
+	color: $link-color;
+	text-decoration: none;
 }
 
-// Groups of BtnGroup
-// (eliminates double-borders and extra spacing between buttons)
-.BtnGroupWrapper {
-	display: flex;
-	flex-flow: wrap;
-	margin-bottom: 0.5rem;
-
-	.BtnGroup {
-		margin-bottom: 0.5rem;
-		margin-right: 0.5rem;
-	}
+a:hover {
+	text-decoration: underline;
 }
 
-.BtnGroupWrapper--full {
-	justify-content: space-between;
+/**
+ * Set a consistent margin between elements
+ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+ol,
+ul,
+dl,
+dd,
+pre,
+fieldset,
+input,
+table,
+address,
+textarea,
+select,
+hr,
+figure,
+menu {
+	margin: 0 0 1rem;
+}
+
+/**
+ * Responsive media
+ */
+iframe,
+img,
+canvas,
+video,
+embed {
+	max-width: 100%;
+}
+
+/**
+ * Seperators
+ */
+hr {
+	margin: 2rem 0;
+}
+
+menu {
+	margin-top: 0;
+	padding: 0;
+}
+
+time {
+	@include size-0;
+	font-style: italic;
 }

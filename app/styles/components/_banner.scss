@@ -3,6 +3,7 @@
 	background-color: $mediumgray;
 	margin-bottom: 0;
 }
+
 .Banner-media {
 	display: block;
 	margin-left: auto;
@@ -12,17 +13,20 @@
 	max-height: 70vh;
 	object-fit: cover;
 }
+
 .Banner-credits {
 	position: absolute;
 	top: 0.3rem;
 	right: 0.3rem;
 	z-index: 1;
+
 	a {
 		@include size-0;
 		color: $black;
 		background-color: $white;
 	}
 }
+
 .Banner-body {
 	position: absolute;
 	top: 0;
@@ -44,12 +48,15 @@
 	margin-top: 2rem;
 	margin-bottom: 3rem;
 }
+
 .Banner--smaller {
 	max-height: 50vh;
 }
+
 .Banner--full {
 	width: 100%;
 	margin: 0;
+
 	.Banner-media {
 		min-height: 100vh;
 		max-height: none;

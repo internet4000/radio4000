@@ -5,19 +5,23 @@
 	outline: 2px solid transparent;
 	transition: outline 1000ms $easing;
 	border-radius: $border-radius;
+
 	&.is-active {
 		outline-color: $primary-color;
 	}
 }
+
 .ChannelCard-title,
 .ChannelCard-body {
 	padding-left: 0.5em;
 	padding-right: 0.5rem;
 	margin-bottom: 0;
+
 	@media (min-width: $layout-m) {
 		padding-left: 1rem;
 	}
 }
+
 .ChannelCard-title {
 	word-break: break-word;
 	color: $secondary-color;
@@ -26,17 +30,21 @@
 		text-decoration: underline;
 	}
 }
+
 .ChannelCard-body {
 	@include size-0;
 	color: $dark;
 }
+
 .ChannelCard-controls {
 	position: absolute;
 	top: 0.5rem;
 	right: 0.5rem;
 	z-index: 1;
+
 	.Btn {
 		transition: all 300ms 2000ms $easing;
+
 		&.is-hidden {
 			transform: scale(0.9) translate3d(0.5rem, 0, 0);
 			transform-origin: right;
@@ -45,11 +53,13 @@
 		}
 	}
 }
+
 .ChannelCard-overlayBtn {
 	position: absolute;
 	top: 0.3rem;
 	right: 0.3rem;
 }
+
 .ChannelCard-overlayBtn .Btn {
 	display: flex;
 	font-size: 1.4rem;
@@ -59,13 +69,15 @@
 	border-radius: 50%;
 	padding: 0.6rem;
 	background: rgba(black, 0);
-	color: rgba(white,0.8);
+	color: rgba(white, 0.8);
 	transition: background 200ms, transform 200ms $easing4;
 	transform: scale(0.95);
+
 	svg {
 		left: auto !important;
 		top: auto !important;
 	}
+
 	&:hover,
 	&.is-loading {
 		background: rgba(black, 0.4);
@@ -73,9 +85,11 @@
 		transform: scale(1);
 		border-radius: 50%;
 	}
+
 	&:active {
 		transform: scale(0.98);
 	}
+
 	&.is-loading {
 		transition-duration: 800ms;
 		background-color: $primary-color;
@@ -85,7 +99,6 @@
 /**
  * modifier
  **/
-
 .ChannelCard--text {
 	@include size-1;
 	position: relative;
@@ -101,33 +114,40 @@
 /**
  * Wide modifier (also smaller)
  */
-
 $card-wide-cover-size: 4.8rem;
+
 .ChannelCard--wide {
 	padding-bottom: 0;
+
 	> a {
 		display: flex;
 		flex-flow: row nowrap;
 		align-content: center;
 	}
+
 	.Cover {
 		flex: 0 0 $card-wide-cover-size;
 		margin-bottom: 0;
 	}
+
 	.ChannelCard-title {
 		margin-top: auto;
 		margin-bottom: auto;
 		word-break: inherit;
 	}
+
 	.ChannelCard-body {
 		display: none;
+
 		// margin-top: -1rem;
 		// padding-left: ($card-wide-cover-size + 1rem);
 		// padding-bottom: 1rem;
 	}
+
 	.ChannelCard-controls {
 		top: -0.3rem;
 		right: -0.6rem;
+
 		.Button {
 			padding: 0.6rem;
 		}

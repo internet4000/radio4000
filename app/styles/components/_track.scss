@@ -1,7 +1,6 @@
 /**
  * Single track
  */
-
 .Track {
 	@include size-1;
 	position: relative;
@@ -9,11 +8,13 @@
 	// define empty borders so it doesn't jump
 	border-left: 1px solid transparent;
 	border-right: 1px solid transparent;
+
 	.icon-play {
 		position: absolute;
 		left: 0.46em;
 		top: 1em;
 		display: none;
+
 		@media (min-width: $layout-s) {
 			left: 0.8em;
 		}
@@ -27,6 +28,7 @@
 		background-color: $white;
 		border-left-color: $secondary-color;
 	}
+
 	.icon-play {
 		display: block;
 	}
@@ -36,7 +38,6 @@
 // .Track--used {
 // 	border-left-color: $yellow;
 // }
-
 .Track--finished {
 	border-right-color: $green;
 }
@@ -45,25 +46,30 @@
 .Track.is-editing {
 	background-color: $superlightgray;
 	box-shadow: $lighterblue 0 0 10px;
+
 	.Track-link:hover {
 		background-color: transparent;
 		background-image: none;
 	}
+
 	.Track-link,
 	.Track-controls {
 		display: none;
 	}
 }
+
 .Track-title {
 	@extend %font-regular;
 	@include size-1;
 	margin-bottom: 0;
 }
+
 .Track-body {
 	color: $gray;
 	font-style: italic;
 	margin-bottom: 0;
 	word-break: break-word;
+
 	&:empty {
 		display: none;
 	}
@@ -76,6 +82,7 @@ a.Track-link {
 	padding-right: rem(60);
 	color: $text-color;
 	transition: border-color 250ms $easing;
+
 	.Widget-container & {
 		padding-left: 0.5rem;
 		padding-right: 0.5rem;
@@ -90,16 +97,20 @@ a.Track-link {
 	top: 0;
 	right: 0;
 	bottom: 0;
-	padding: 0.75rem 1.5rem em(3,13) 0.5rem;
+	padding: 0.75rem 1.5rem em(3, 13) 0.5rem;
 	margin: 0;
 
 	// only show for users who can edit
 	// this is to avoid an if
 	display: none;
-	.canEdit & { display: block; }
+
+	.canEdit & {
+		display: block;
+	}
 
 	.icon-pencil {
 		color: $mediumgray;
+
 		.Track:hover & {
 			color: $text-color;
 		}

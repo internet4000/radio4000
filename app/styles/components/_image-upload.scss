@@ -2,9 +2,11 @@
 .Dropzone {
 	padding: 0.5rem;
 	text-align: center;
+
 	.no-touchevents & {
 		border: 1px dashed;
 	}
+
 	&.in {
 		// when the user is dragging something on the page
 		background-color: palegreen;
@@ -13,15 +15,17 @@
 		animation-iteration-count: infinite;
 		animation-timing-function: linear;
 	}
+
 	&.hover {
 		// when the user is dragging on top
 		background-color: $primary-color;
 		color: $white;
 	}
+
 	// &.fade {}
 }
-// .Dropzone-inner {}
 
+// .Dropzone-inner {}
 // The default "Choose file" input
 .cloudinary-fileupload {
 	margin-top: 1rem;

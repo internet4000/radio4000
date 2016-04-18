@@ -1,11 +1,12 @@
 .FlashMessages {
+	@include size-1;
 	z-index: 3;
 	position: fixed;
 	bottom: 1.4rem;
 	left: 0.7rem;
 	max-width: 20rem;
-	@include size-1;
 }
+
 .alert {
 	display: table;
 	float: right;
@@ -19,21 +20,27 @@
 	// initial state
 	transform: translateX(-110%);
 	transition: transform 250ms $easing4;
+
 	&.active {
 		transform: translateX(0);
 	}
+
 	&.exiting {
 		transform: translateX(-110%);
 	}
 }
+
 .alert-info {
 	background-color: lighten($purple, 20%);
 }
+
 .alert-warning {
 	background-color: $purple;
 }
+
 .alert-danger {
 	background-color: $red;
 }
+
 // .alert-success {}
 // .alert-secondary {}

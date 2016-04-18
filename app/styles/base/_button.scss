@@ -17,29 +17,35 @@
 	text-decoration: none;
 	user-select: none; /* 4 */
 	transition: border 150ms, background 150ms, box-shadow 150ms;
+
 	@media (min-width: $layout-l) {
 		padding-left: 0.7em;
 		padding-right: 0.7em;
 	}
+
 	&:hover,
 	&:focus {
 		text-decoration: none;
 		box-shadow: $box-shadow-hover;
 	}
+
 	&:active,
 	&.is-active {
 		outline: none;
 		box-shadow: $box-shadow-active;
 	}
+
 	&:focus {
 		outline: none;
 		border-color: $primary-color;
 	}
+
 	&:disabled,
 	&.is-disabled {
 		cursor: default;
 		opacity: 0.25;
 	}
+
 	// buxfix because ember sometimes adds a div inside a button
 	div {
 		display: inline;
@@ -59,14 +65,17 @@
 	min-width: 2em; // equal width
 	padding: 0 0.2rem;
 }
+
 .Btn--large {
 	@include size-2;
 	min-width: 6em;
 }
+
 .Btn--huge {
 	@include size-3;
 	min-width: 6em;
 }
+
 .Btn--full {
 	width: 100%;
 	text-align: center;
@@ -86,6 +95,7 @@
 		background-color: $green;
 		background-image: linear-gradient(to bottom, rgba($white, 0.1) 40%, $green);
 	}
+
 	&.is-flashing {
 		background-color: $yellow;
 	}
@@ -98,6 +108,7 @@
 .Btn--important {
 	background-color: $primary-color;
 	color: $white;
+
 	&:hover {
 		background-color: $primary-color;
 	}
@@ -118,6 +129,7 @@
 	box-shadow: none;
 	background-image: none;
 	background-color: transparent;
+
 	&:hover,
 	&:focus,
 	&:active,
@@ -138,6 +150,7 @@
 	box-shadow: none;
 	padding-left: 0.4em;
 	padding-right: 0.4em;
+
 	&:hover,
 	&:focus {
 		background-image: none;
@@ -145,15 +158,18 @@
 		border-color: transparent;
 	}
 }
+
 .Btn--round {
 	padding: 1.5rem 1.6rem 1.4rem 1.5rem;
 	border-radius: 50%;
 	border-left: 2px solid $primary-color;
 	border-bottom: 2px solid $primary-color;
+
 	&:hover {
 		border-color: darken($primary-color, 10%);
 	}
 }
+
 .Btn--topNoRadius {
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
@@ -164,6 +180,7 @@
 .SortIndicator {
 	display: none;
 	font-size: 0.7em;
+
 	.Btn.is-active & {
 		display: inline;
 	}
@@ -187,7 +204,6 @@
 	}
 }
 
-
 /**
  * Big play button
  **/
@@ -198,14 +214,14 @@
 }
 
 .PlayButton {
-	/* animation */
+	// animation
 	animation-name: Spinz;
 	animation-duration: 1s;
 	animation-iteration-count: 1;
 	animation-delay: 1s;
 	animation-fill-mode: both;
 	animation-timing-function: $easing;
-	/* styles */
+	// styles
 	position: fixed;
 	bottom: 2rem;
 	right: 2rem;

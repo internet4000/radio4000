@@ -5,16 +5,19 @@
 	// because items have gutters on both sides
 	margin-left: -0.5rem;
 	margin-right: -0.5rem;
+
 	@media (min-width: $layout-m) {
 		margin-left: -0.75rem;
 		margin-right: -0.75rem;
 	}
+
 	&.Grid--firstHidden {
 		.Grid-cell:first-child {
 			display: none;
 		}
 	}
 }
+
 .Grid-cell {
 	flex: 0 1 50%;
 	padding-left: 0.5rem;
@@ -31,67 +34,120 @@
 	// edge-to-edge grid (also max-width for crossbrowser support)
 	@media (min-width: $layout-sm) {
 		flex-basis: 33%;
-		.no-flexbox & { max-width: 33%; }
+
+		.no-flexbox & {
+			max-width: 33%;
+		}
 	}
+
 	@media (min-width: $layout-ml) {
 		flex-basis: 25%;
-		.no-flexbox & { max-width: 25%; }
+
+		.no-flexbox & {
+			max-width: 25%;
+		}
 	}
+
 	@media (min-width: $layout-l) {
 		flex-basis: 20%;
-		.no-flexbox & { max-width: 20%; }
+
+		.no-flexbox & {
+			max-width: 20%;
+		}
 	}
+
 	@media (min-width: $layout-xl) {
 		flex-basis: 14.28%;
-		.no-flexbox & { max-width: 14.28%; }
+
+		.no-flexbox & {
+			max-width: 14.28%;
+		}
 	}
 }
+
 .Grid-cell--double {
 	flex-basis: 100%;
-	.no-flexbox & { max-width: 100%; }
+
+	.no-flexbox & {
+		max-width: 100%;
+	}
+
 	@media (min-width: $layout-sm) {
 		flex-basis: 66%;
-		.no-flexbox & { max-width: 66%; }
+
+		.no-flexbox & {
+			max-width: 66%;
+		}
 	}
+
 	@media (min-width: $layout-ml) {
 		flex-basis: 50%;
-		.no-flexbox & { max-width: 50%; }
+
+		.no-flexbox & {
+			max-width: 50%;
+		}
 	}
+
 	@media (min-width: $layout-l) {
 		flex-basis: 40%;
-		.no-flexbox & { max-width: 40%; }
+
+		.no-flexbox & {
+			max-width: 40%;
+		}
 	}
+
 	@media (min-width: $layout-xl) {
 		flex-basis: 2 * 14.28%;
-		.no-flexbox & { max-width: 2 * 14.28%; }
+
+		.no-flexbox & {
+			max-width: 2 * 14.28%;
+		}
 	}
 }
+
 .Grid-cell--triple {
 	@media (min-width: $layout-sm) {
 		flex-basis: 100%;
-		.no-flexbox & { max-width: 100%; }
+
+		.no-flexbox & {
+			max-width: 100%;
+		}
 	}
+
 	@media (min-width: $layout-ml) {
 		flex-basis: 75%;
-		.no-flexbox & { max-width: 75%; }
+
+		.no-flexbox & {
+			max-width: 75%;
+		}
 	}
+
 	@media (min-width: $layout-l) {
 		flex-basis: 60%;
-		.no-flexbox & { max-width: 60%; }
+
+		.no-flexbox & {
+			max-width: 60%;
+		}
 	}
+
 	@media (min-width: $layout-xl) {
 		flex-basis: 3 * 14.28%;
-		.no-flexbox & { max-width: 3 * 14.28%; }
+
+		.no-flexbox & {
+			max-width: 3 * 14.28%;
+		}
 	}
 }
 
 // Make a grid's items equal height.
 .Grid--full {
 	align-items: stretch;
+
 	.Grid-cell {
 		display: flex;
 	}
 }
+
 .Grid--center {
 	justify-content: center;
 }

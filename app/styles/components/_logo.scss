@@ -1,17 +1,18 @@
 /**
  * Logo
  **/
-
 @keyframes Logo {
 	0% {
 		left: 0;
 		box-shadow: 1px 1px 1px white;
 	}
+
 	100% {
 		left: 100%;
 		box-shadow: -10px 10px 10px white;
 	}
 }
+
 .Logo {
 	position: relative;
 	cursor: pointer;
@@ -22,6 +23,7 @@
 	padding-right: 1rem;
 	user-select: none; // don't highlight
 	z-index: 2;
+
 	&::before,
 	&::after {
 		content: "";
@@ -40,12 +42,14 @@
 		// animation-direction: alternate-reverse;
 		// animation-iteration-count: infinite;
 	}
+
 	&::before {
 		animation-name: Logo;
 		animation-duration: 4s;
 		animation-direction: alternate-reverse;
 		animation-iteration-count: infinite;
 	}
+
 	&::after {
 		animation-name: Logo;
 		animation-duration: 16s;
@@ -53,24 +57,29 @@
 		animation-iteration-count: infinite;
 	}
 }
+
 .Logo h1 {
 	margin-bottom: 0;
 	font-size: inherit;
 	position: relative;
 	z-index: 3;
 }
+
 .Logo-icon {
 	position: relative;
 	top: 0.25em;
 	transition: margin 400ms $easing;
 	opacity: 0.8;
+
 	.Logo.is-active & {
 		margin-right: 0.3rem;
 	}
 }
+
 .Logo-img {
 	vertical-align: middle;
 }
+
 .Logo-dot {
 	display: inline-block;
 	width: 0.6rem;
@@ -78,6 +87,7 @@
 	background-color: $primary-color;
 	border-radius: 50%;
 	transition: transform 200ms $easing4;
+
 	.is-panelLeftVisible & {
 		transform: scale(0.8);
 	}

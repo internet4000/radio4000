@@ -16,7 +16,6 @@
 /**
  * Image wrapper
  */
-
 .Cover-image {
 	background-color: $fadedblue;
 	position: relative;
@@ -28,7 +27,6 @@
 /**
  * The image itself
  */
-
 .Cover-image img {
 	// stretch image
 	position: absolute;
@@ -37,6 +35,7 @@
 	object-fit: cover;
 	width: 100%;
 	height: 100%;
+
 	// Ensure a minimum size in order for lazyloading to work.
 	min-width: 3px;
 	min-height: 3px;
@@ -46,13 +45,14 @@
 /**
  * Lazysizes loading
  */
-
 .Cover img {
 	// filter: blur(2px);
 	transition: filter 250ms, opacity 250ms;
+
 	&.lazyload {
 		opacity: 0.5;
 	}
+
 	&.lazyloading {
 		// Disabled because it wasn't smooth anyway.
 		background-image: url("../assets/images/icons/loader.svg");
@@ -60,6 +60,7 @@
 		background-repeat: no-repeat;
 		background-position: center;
 	}
+
 	&.lazyloaded {
 		filter: blur(0);
 	}

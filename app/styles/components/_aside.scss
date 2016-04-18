@@ -1,7 +1,6 @@
 /**
 	Site Aside
  */
-
 .Aside {
 	overflow-y: auto;
 	display: flex;
@@ -11,7 +10,6 @@
 /**
  * Modifiers
  */
-
 .Aside--left {
 	width: 100%;
 	height: 100%;
@@ -40,6 +38,7 @@
 		overflow: hidden;
 	}
 }
+
 .Aside--right {
 	display: none;
 	flex-basis: 20rem;
@@ -57,12 +56,12 @@
 }
 
 // Children of .Aside
-
 .Aside-link {
 	display: inline-block;
 	padding: 0.5em 0.5rem 0.5rem 1rem;
 	transition: color 200ms;
 	color: $text-color;
+
 	&.is-active {
 		text-decoration: underline;
 	}

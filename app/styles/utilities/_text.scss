@@ -1,10 +1,10 @@
 /**
  * Utilities for text
  */
-
 .u-textStrike {
 	text-decoration: line-through;
 }
+
 .u-textAlignCenter {
 	text-align: center;
 }
@@ -12,10 +12,7 @@
 /**
  * Negative text
  * use this for whitish text on blackish backgrounds
- *
- * it will make type appear lighter but it also DISABLED subpixel antialiasing which isn't always good
  */
-
 @mixin negative-text() {
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;

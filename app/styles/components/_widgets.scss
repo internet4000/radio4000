@@ -3,7 +3,6 @@
  **/
 
 //  NOT CURRENTLY IN USE
-
 .Widgets {
 	display: flex;
 	flex-direction: row;
@@ -14,6 +13,7 @@
 	padding: 1rem;
 	width: 100%;
 	flex-basis: 100%;
+
 	@media (min-width: $layout-sm) {
 		width: 18rem;
 		flex-basis: 18rem;
@@ -27,7 +27,6 @@
 /**
  * child
  **/
-
 .Widget-container {
 	background-color: $slightgray;
 	padding-top: 0.5rem;
@@ -36,6 +35,7 @@
 .Widget-title {
 	font-size: 1rem;
 	text-align: center;
+
 	&:hover {
 		cursor: pointer;
 	}

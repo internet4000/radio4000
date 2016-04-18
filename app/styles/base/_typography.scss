@@ -2,16 +2,22 @@
  * Typography
  * an attempt to group font families and sizes for base elements
  */
-
 html {
 	@extend %font-regular;
 	font-family: "maisonneue", $sans-fallback;
 	font-size: 14px;
 	line-height: $base-line-height;
 
-	@media (min-width: $layout-m) { font-size: $base-font-size; } // 15px;
-	@media (min-width: $layout-xl) { font-size: 16px; }
-	@media (min-width: $layout-xxl) { font-size: 17px; }
+	@media (min-width: $layout-m) {
+		font-size: $base-font-size;
+	} // 15px;
+	@media (min-width: $layout-xl) {
+		font-size: 16px;
+	}
+
+	@media (min-width: $layout-xxl) {
+		font-size: 17px;
+	}
 }
 
 // apparently it can be bad to use this on the html element, so:
@@ -27,13 +33,16 @@ blockquote {
 	font-feature-settings: "kern" 1;
 	text-rendering: optimizeLegibility;
 }
+
 strong,
 b {
 	@extend %font-bold;
 }
+
 em {
 	font-style: italic;
 }
+
 .Muted {
 	@include size-1;
 	color: $gray;
@@ -44,6 +53,7 @@ em {
 		top: -0.12em;
 	}
 }
+
 .Muted--strong {
 	color: $mediumgray;
 }
@@ -55,6 +65,7 @@ h3,
 h4 {
 	@extend %font-bold;
 }
+
 h1,
 .Title {
 	@include size-4;
@@ -63,10 +74,12 @@ h1,
 	@media (min-width: $layout-sm) {
 		@include size-5;
 	}
+
 	a {
 		color: $text-color;
 	}
 }
+
 h2,
 .Subtitle {
 	@include size-3;
@@ -75,13 +88,16 @@ h2,
 		@include size-4;
 	}
 }
+
 h3 {
 	@include size-2;
 }
+
 h4 {
 	@include size-1;
 	margin-bottom: 0;
 }
+
 .Title,
 h1,
 h2,
@@ -98,6 +114,7 @@ h4 {
 ul {
 	list-style: none;
 	padding-left: 1em;
+
 	li::before {
 		content: "→ ";
 	}
@@ -108,6 +125,7 @@ pre,
 .Mono {
 	@extend %font-mono;
 }
+
 .Code {
 	background: $black;
 	color: hsl(118, 100%, 59%);

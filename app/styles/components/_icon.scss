@@ -5,6 +5,7 @@
 	height: 1em;
 	width: 1em;
 	fill: currentColor;
+
 	// if parent has display: flex
 	margin: auto;
 
@@ -24,9 +25,11 @@ path {
 .icon-facebook {
 	color: #3b5998;
 }
+
 .icon-google-plus {
 	color: #dd4b39;
 }
+
 .icon-twtter {
 	color: #00aced;
 }
@@ -38,17 +41,21 @@ path {
 	stroke-width: 2;
 	transition: all 150ms $easing;
 }
+
 .icon-star,
 .icon-star path {
 	fill: $gray;
 	stroke: $gray;
+
 	// &:hover {
 	// 	stroke: $yellowStroke;
 	// }
 }
+
 .icon-star-yellow {
 	fill: $yellow;
 	stroke: $yellow;
+
 	// &:hover {
 	// 	stroke: $mediumgray;
 	// }

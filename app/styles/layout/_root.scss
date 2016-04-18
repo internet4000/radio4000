@@ -2,11 +2,11 @@
  * Minimal ui styles for some of our major steps
  * body class is added with the service 'uiStates'
  **/
-
 .Root {
 	display: flex;
 	flex-wrap: nowrap;
 	flex-direction: row;
+
 	// @media (min-width: $layout-l) {
 	// 	flex-direction: row;
 	// }
@@ -15,14 +15,15 @@
 /**
  * Panel is open
  */
-
 .Root.is-panelLeftVisible {
 	.Aside--left {
 		transform: translate3d(0, 0, 0);
+
 		@media (min-width: $layout-s) {
 			display: flex;
 		}
 	}
+
 	.SiteMain {
 		// transform: translate3d(100%, 0, 0);
 	}
@@ -31,7 +32,6 @@
 /**
  * Overlay style, purple background
  */
-
 .Root.is-minimal {
 	.SiteMain {
 		padding-bottom: 0;
@@ -43,6 +43,7 @@
 		align-content: center;
 		justify-content: center;
 	}
+
 	.SiteFooter {
 		display: none;
 	}
@@ -51,18 +52,20 @@
 /**
  * Player is showing
  */
-
 .Root.is-withPlayer {
 	.SiteMain {
 		order: 2;
 		padding-top: 0;
 	}
+
 	.Player {
 		order: 1;
 	}
+
 	.Aside--right {
 		display: block;
 	}
+
 	.PlayButton {
 		// transform: translateX(200%);
 		display: none;

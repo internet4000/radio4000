@@ -1,21 +1,23 @@
 /**
  * Media block
  */
-
 .MediaBlock {
 	@include clearfix;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 }
+
 .MediaBlock-media {
 	max-width: 50%;
 }
+
 .MediaBlock-body {
 	max-width: 50%;
 	padding-right: 2rem;
 	align-self: center;
 }
+
 .MediaBlock--full {
 	.MediaBlock-media {
 		width: 100%;

@@ -1,11 +1,23 @@
 @keyframes spin {
-	from { transform: rotate(0); }
-	to { transform: rotate(360deg); }
+	from {
+		transform: rotate(0);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
 }
+
 @keyframes animate-rotate {
-	0% { transform: rotate(0); }
-	100% { transform: rotate(360deg); }
+	0% {
+		transform: rotate(0);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
 }
+
 .animate-rotate {
 	animation: animate-rotate 400ms linear infinite;
 }
@@ -16,24 +28,30 @@
 	align-items: center;
 	margin-top: 1rem;
 	margin-bottom: 1rem;
+
 	// on top of other things
 	position: relative;
 	z-index: 1;
 }
+
 .Loader img {
 	width: 2rem;
+
 	// width: 1em;
 	// height: 1em;
 }
+
 .Loader-text {
 	margin-left: 1rem;
 	font-size: 1rem;
 	color: $dark;
 }
+
 .Loader--center {
 	margin-left: auto;
 	margin-right: auto;
 }
+
 .Loader--middle {
 	position: fixed;
 	top: 50%;

@@ -2,7 +2,6 @@
  * Manchet
  * used for title+subtitle blocks (mimics .Section and .Container as well)
  */
-
 .Manchet {
 	@extend %Container;
 	margin-bottom: 1rem;
@@ -11,6 +10,7 @@
 // Reverts the default centered styles.
 .Manchet--centered {
 	text-align: center;
+
 	h1,
 	p {
 		max-width: 30rem;

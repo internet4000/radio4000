@@ -1,28 +1,35 @@
 // Strips units from a number
+
 @function strip-unit($num) {
 	@return $num / ($num * 0 + 1);
 }
 
 // Converts a value to EM function
+
 @function em($target, $context: $base-font-size, $desired-unit: 1em) {
 	// Make sure units are unitless
 	@if not unitless($target) {
 		$target: strip-unit($target);
 	}
+
 	@if not unitless($context) {
 		$context: strip-unit($context);
 	}
+
 	@return ($target / $context) * $desired-unit;
 }
 
 // REM function
+
 @function rem($target, $context: $base-font-size, $desired-unit: 1rem) {
 	// Make sure units are unitless
 	@if not unitless($target) {
 		$target: strip-unit($target);
 	}
+
 	@if not unitless($context) {
 		$context: strip-unit($context);
 	}
+
 	@return ($target / $context) * $desired-unit;
 }
