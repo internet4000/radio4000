@@ -1,47 +1,36 @@
-<figure class="Banner Banner--full">
-	<img class="Banner-media" src="assets/images/illustrations/pompeii-forum-vesuvius.jpg" alt="">
-	<p class="Banner-credits">
-		<a href="https://en.wikipedia.org/wiki/File:S03_06_01_024_image_3141.jpg" target="_blank">
-			Pompeii - Forum and Vesuvius
-		</a>
-	</p>
-	<div class="Banner-body">
-		<div class="Container Container--centered Login">
-			<div class="Login-animation">
-				<span class="Login-after"></span>
-				<span class="Login-middle"></span>
-				<span class="Login-before"></span>
-			</div>
-
-			<div class="Login-inner">
-				{{#if session.isAuthenticated}}
-					<p>You are already logged in</p>
-					{{#if session.currentUser.channels.firstObject}}
-						<p>{{channel-card channel=session.currentUser.channels.firstObject wide=true}}</p>
-					{{else}}
-						<p>
-							<a href="{{href-to 'channels.new'}}" class="Btn Btn--large" title="Your radio">Create my radio</a>
-						</p>
-					{{/if}}
-				{{else}}
-					{{#unless session.isWorking}}
-						<h1>Login Radio4000</h1>
-						<p>to create or manage your radio.</p>
-						<p>
-							<button type="submit" class="Btn Btn--large" title="Log in with your Google account" {{action 'login' 'google'}}>
-								Google
-							</button>
-							<button type="submit" class="Btn Btn--large" title="Log in with your Facebook account" {{action 'login' 'facebook'}}>
-								Facebook
-							</button>
-						</p>
-						<p><a class="Muted" href="{{href-to 'intro'}}">What is Radio4000?</a></p>
-					{{else}}
-						<p>Letting you in…</p>
-						{{is-loading}}
-					{{/unless}}
+<div class="Sections">
+	<section class="Section">
+		<div class="Container">
+			{{#if session.currentUser.channels.firstObject}}
+				<p>You are already logged in.<br>
+				Did you want to go to your radio?</p>
+				<p>
+					{{#link-to 'channel' session.currentUser.channels.firstObject.slug}}
+						Go to {{session.currentUser.channels.firstObject.title}}.
+					{{/link-to}}
+				</p>
+			{{else}}
+				<h1>Get your own radio</h1>
+				<p>Collect all the music you like via YouTube videos and play them as a radio.<br><br>
+				How does it work? Sign in or register below, give your radio a name and add tracks to your radio by pasting in YouTube links.</p>
+				<br><br>
+				<p><strong>Use Radio4000 with…</strong></p>
+				<p>
+					<button class="Btn Btn--large" title="Sign in or register with Google" {{action 'login' 'google'}}>
+						Google</button>
+						<span style="margin: 0 0.5rem;">or</span>
+					<button class="Btn Btn--large" title="Sign in or register with Facebook" {{action 'login' 'facebook'}}>
+						Facebook</button>
+				</p>
+				<br>
+				{{#if session.isWorking}}
+					{{#is-loading}}Warming transistors…{{/is-loading}}
 				{{/if}}
-			</div>
+				<br>
+				<br>
+				<p class="Subtitle">A single radio for you, music for everyone — and an infinity of great tracks curated with love.</p>
+				<p>&rarr; <a href="{{href-to 'intro'}}">Get properly introduced to Radio4000</a></p>
+			{{/if}}
 		</div>
-	</div>
-</figure>
+	</section>
+</div>

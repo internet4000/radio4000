@@ -16,8 +16,6 @@ export default Component.extend({
 	maxFileSize: 500000,
 
 	enableCloudinary: on('didInsertElement', function () {
-		console.log('enableCloudinary');
-
 		// enable cloudinary on our file field
 		this.$().unsigned_cloudinary_upload(ENV.CLOUDINARY_UPLOAD_PRESET, {
 			cloud_name: ENV.CLOUDINARY_NAME

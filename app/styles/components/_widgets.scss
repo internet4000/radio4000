@@ -3,38 +3,40 @@
  **/
 
 //  NOT CURRENTLY IN USE
-
 .Widgets {
-   display: flex;
-   flex-direction: row;
-   flex-wrap: wrap;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
 }
 
 .Widget {
-   padding: 1rem;
-   width: 100%;
-   flex-basis: 100%;
-   @media (min-width: $layout-sm) {
-      width: 18rem;
-      flex-basis: 18rem;
-   }
+	padding: 1rem;
+	width: 100%;
+	flex-basis: 100%;
+
+	@media (min-width: $layout-sm) {
+		width: 18rem;
+		flex-basis: 18rem;
+	}
 }
+
 .Widget--full {
-   flex-basis: 100%;
+	flex-basis: 100%;
 }
 
 /**
  * child
  **/
-
 .Widget-container {
-   background-color: $slightgray;
-   padding-top: 0.5rem;
+	background-color: $slightgray;
+	padding-top: 0.5rem;
 }
+
 .Widget-title {
-   font-size: 1rem;
-   text-align: center;
-   &:hover {
-      cursor: pointer;
-   }
+	font-size: 1rem;
+	text-align: center;
+
+	&:hover {
+		cursor: pointer;
+	}
 }

@@ -21,6 +21,7 @@
 // Fade out logo
 .SiteLogo {
 	transition: opacity 200ms;
+
 	@include fullscreen {
 		opacity: 0.25;
 	}
@@ -30,7 +31,7 @@
 .Bar {
 	@include fullscreen {
 		background-color: #000; // match youtube player ui color
-		background: linear-gradient(#000, #000);
+		background-image: linear-gradient(#000, #000);
 	}
 }
 

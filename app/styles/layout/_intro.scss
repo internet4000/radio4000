@@ -10,22 +10,27 @@
 	.is-panelLeftVisible & {
 		margin-left: 2rem;
 		border-bottom-left-radius: $border-radius;
+
 		.Intro-bg {
 			border-bottom-left-radius: $border-radius;
 		}
 	}
 }
+
 .Intro-title {
 	@include size-7;
 	margin-top: 4rem;
 	line-height: 0.8;
 	letter-spacing: -0.02em;
+
 	@media (min-width: $layout-sm) {
 		font-size: 80px;
 	}
+
 	@media (min-width: $layout-m) and (min-height: 740px) {
 		font-size: 120px;
 	}
+
 	@media (min-width: $layout-xl) and (min-height: 1000px) {
 		font-size: 150px;
 	}
@@ -35,30 +40,36 @@
 		display: block;
 	}
 }
+
 .Intro-radio {
 	@extend %font-bold-italic;
 	margin-left: 0.8em;
 }
+
 .Intro-slogan {
 	@include size-3;
 	margin-top: 1rem;
 	max-width: 16em;
 	margin-left: auto;
 	margin-right: auto;
+
 	@media (min-width: $layout-sm) {
 		@include size-4;
 		margin-top: 2rem;
 	}
+
 	@media (min-width: $layout-sm) and (min-height: 800px) {
 		@include size-5;
 	}
 }
+
 .Intro-actions {
 	text-align: center;
+
 	.Btn {
 		margin-right: 0.6em;
 		margin-bottom: 0.6em;
 		// Because it's on an image.
-		box-shadow: 0px 4px 0px -2px rgba(0, 0, 0, 0.4);
+		box-shadow: 0 4px 0 -2px rgba(0, 0, 0, 0.4);
 	}
 }

@@ -6,7 +6,6 @@ export default Ember.Component.extend({
 
 	submit(event) {
 		event.preventDefault();
-		console.log('component submit event');
 		this.get('onSubmit')();
 	},
 

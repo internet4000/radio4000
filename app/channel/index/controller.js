@@ -33,7 +33,6 @@ export default Ember.Controller.extend(EmberValidations, createTrackMixin, {
 		},
 
 		addTrack() {
-			console.log(this.get('addTrackUrl'));
 			this.set('isAdding', true);
 		},
 

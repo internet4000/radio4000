@@ -1,6 +1,5 @@
 // These styles are a bit funky but required to make it work
 // (yes we have to declare each selector by its own)
-
 $progress-bg: hsla(0, 100%, 100%, 0.05);
 $progress-bg-value: hsla(0, 100%, 100%, 0.3);
 
@@ -8,23 +7,31 @@ progress {
 	display: block;
 	height: $progress-height;
 }
+
 progress[value] {
 	// Reset the default appearance
 	appearance: none;
+
 	// Remove Firefox and Opera border
 	border: 0;
+
 	// IE10 uses `color` to set the bar background-color
 	color: $progress-bg-value;
 }
+
 progress[value]::-webkit-progress-bar {
 	background-color: $progress-bg;
+
 	// border-radius: $border-radius;
 }
+
 progress[value]::-webkit-progress-value {
 	background-color: $progress-bg-value;
+
 	// border-top-left-radius: $border-radius;
 	// border-bottom-left-radius: $border-radius;
 }
+
 progress[value="100"]::-webkit-progress-value {
 	// border-top-right-radius: $border-radius;
 	// border-bottom-right-radius: $border-radius;
@@ -34,13 +41,17 @@ progress[value="100"]::-webkit-progress-value {
 @-moz-document url-prefix() {
 	progress[value] {
 		background-color: $progress-bg;
+
 		// border-radius: $border-radius;
 	}
+
 	progress[value]::-moz-progress-bar {
 		background-color: $progress-bg-value;
+
 		// border-top-left-radius: $border-radius;
 		// border-bottom-left-radius: $border-radius;
 	}
+
 	progress[value="100"]::-moz-progress-bar {
 		// border-top-right-radius: $border-radius;
 		// border-bottom-right-radius: $border-radius;
@@ -48,19 +59,23 @@ progress[value="100"]::-webkit-progress-value {
 }
 
 /* IE9 hacks to accompany custom markup. We don't need to scope this via media queries, but I feel better doing it anyway. */
-@media screen and (min-width:0\0) {
+@media screen and (min-width: 0\0) {
 	progress {
 		background-color: $progress-bg;
+
 		// border-radius: $border-radius;
 	}
+
 	progress-bar {
 		display: inline-block;
 		height: 1rem;
 		text-indent: -999rem; /* Simulate hiding of value as in native `<progress>` */
 		background-color: $progress-bg-value;
+
 		// border-top-left-radius: $border-radius;
 		// border-bottom-left-radius: $border-radius;
 	}
+
 	progress[width="100%"] {
 		// border-top-right-radius: $border-radius;
 		// border-bottom-right-radius: $border-radius;

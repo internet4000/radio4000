@@ -2,7 +2,6 @@
  * Manchet
  * used for title+subtitle blocks (mimics .Section and .Container as well)
  */
-
 .Manchet {
 	@extend %Container;
 	margin-bottom: 1rem;

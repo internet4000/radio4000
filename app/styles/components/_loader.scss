@@ -1,97 +1,60 @@
-// See templates/error.hbs
+@keyframes spin {
+	from {
+		transform: rotate(0);
+	}
 
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes animate-rotate {
+	0% {
+		transform: rotate(0);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.animate-rotate {
+	animation: animate-rotate 400ms linear infinite;
+}
+
+// See templates/error.hbs
 .Loader {
-	// size
-	font-size: 2rem;
-	width: 1em;
-	height: 1em;
-	margin: 1rem;
+	display: flex;
+	align-items: center;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+
 	// on top of other things
 	position: relative;
 	z-index: 1;
-
-	svg {
-		width: 100%;
-		height: 100%;
-	}
-	// Set the color of the icon
-	path,
-	rect {
-		fill: $secondary-color;
-		.is-minimal & {
-			fill: white;
-		}
-	}
-
-	p {
-		font-size: 1rem;
-		color: $dark;
-	}
 }
+
+.Loader img {
+	width: 2rem;
+
+	// width: 1em;
+	// height: 1em;
+}
+
+.Loader-text {
+	margin-left: 1rem;
+	font-size: 1rem;
+	color: $dark;
+}
+
 .Loader--center {
 	margin-left: auto;
 	margin-right: auto;
 }
+
 .Loader--middle {
 	position: fixed;
 	top: 50%;
 	left: 50%;
 	transform: translateX(-50%);
-}
-
-@keyframes spin {
-	from { transform: rotate(0deg); }
-	to { transform: rotate(360deg); }
-}
-
-// $loader-size: 50px;
-// $loader-color: $white;//$primary-color;
-// $loader-speed: 1000ms;
-
-// .Loader2 {
-// 	animation: animate $loader-speed linear infinite;
-// 	clip: rect(0, $loader-size, $loader-size, $loader-size/2);
-// 	height: $loader-size;
-// 	width: $loader-size;
-// 	// position: absolute;
-// 	// left: calc(50% - 20px);
-// 	// top: calc(50% - 20px);
-// 	position: fixed;
-// 	top: 0;
-// 	left: 6px;
-// 	z-index: 3; // above header bar
-// 	&:after {
-// 		animation: animate2 $loader-speed ease-in-out infinite;
-// 		clip: rect(0, $loader-size, $loader-size, ($loader-size/2));
-// 		content: '';
-// 		border-radius: 50%;
-// 		height: $loader-size;
-// 		width: $loader-size;
-// 		position: absolute;
-// 	}
-// }
-// @keyframes animate {
-// 	0% { transform: rotate(0deg) }
-// 	100% { transform: rotate(220deg) }
-// }
-// @keyframes animate2 {
-// 	0% {
-// 		box-shadow: inset $loader-color 0 0 0 6px;
-// 		transform: rotate(-140deg);
-// 	}
-// 	50% {
-// 		box-shadow: inset $loader-color 0 0 0 2px;
-// 	}
-// 	100% {
-// 		box-shadow: inset $loader-color 0 0 0 6px;
-// 		transform: rotate(140deg);
-// 	}
-// }
-
-@keyframes animate-rotate {
-	0% { transform: rotate(0deg) }
-	100% { transform: rotate(360deg) }
-}
-.animate-rotate {
-	animation: animate-rotate 400ms linear infinite;
 }

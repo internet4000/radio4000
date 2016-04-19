@@ -5,12 +5,12 @@
 // Shared styles for inputs and buttons
 .Btn,
 .CustomSelect,
-[type='text'],
-[type='email'],
-[type='tel'],
-[type='password'],
-[type='url'],
-[type='search'],
+[type="text"],
+[type="email"],
+[type="tel"],
+[type="password"],
+[type="url"],
+[type="search"],
 textarea {
 	@include size-1;
 	@include negative-text;
@@ -25,23 +25,24 @@ textarea {
 }
 
 // Text inputs
-[type='text'],
-[type='email'],
-[type='tel'],
-[type='password'],
-[type='url'],
-[type='search'],
+[type="text"],
+[type="email"],
+[type="tel"],
+[type="password"],
+[type="url"],
+[type="search"],
 textarea,
 .Btn--textInput {
-	padding: em(10,13) 0.8rem em(8,13);
-	width: 100%;
-	max-width: 100%;
 	border-bottom: 0;
 	box-shadow: $box-shadow, 1px 2px 2px $lightgray inset;
+	max-width: 100%;
+	padding: em(10, 13) 0.8rem em(8, 13);
+	width: 100%;
 
 	&:focus {
 		outline: hsl(214, 95%, 64%) auto 4px;
 	}
+
 	&:focus:invalid {
 		border-color: $red;
 	}
@@ -59,11 +60,11 @@ label {
 	display: block;
 	padding-bottom: 5px;
 
-	[type='text'],
-	[type='email'],
-	[type='tel'],
-	[type='password'],
-	[type='url'],
+	[type="text"],
+	[type="email"],
+	[type="tel"],
+	[type="password"],
+	[type="url"],
 	textarea {
 		@extend %font-regular;
 		margin-top: 0.25rem;
@@ -76,7 +77,7 @@ progress {
 }
 
 // File inputs
-input[type='file'] {
+input[type="file"] {
 	// width: 100%;
 	// border: 4px dashed $black;
 	// padding: 2rem;
@@ -87,25 +88,25 @@ input[type='file'] {
 .Form {
 	@include clearfix;
 
-	[type='text'],
-	[type='email'],
-	[type='tel'],
-	[type='password'],
-	[type='url'],
+	[type="text"],
+	[type="email"],
+	[type="tel"],
+	[type="password"],
+	[type="url"],
 	textarea,
 	.Btn {
 		margin-bottom: 1rem;
 	}
 }
-.Form-group {
-	// should wrap every label+input
-}
+
 .Form-group:last-child {
 	@include clearfix;
 	clear: both;
 }
+
 .Form-group--small {
 	max-width: 14em;
+
 	input {
 		padding: 0.5em 0.5em 0.3em;
 	}
@@ -115,14 +116,16 @@ input[type='file'] {
 .Form-group--relative {
 	position: relative;
 }
+
 .Form-group--inline {
 	display: flex;
 	max-width: 30rem;
 
-	>	.Btn {
+	> .Btn {
 		flex-shrink: 0;
 	}
 }
+
 .Form-group .Form-groupStatus {
 	position: absolute;
 	top: 2.3rem;
@@ -146,9 +149,11 @@ input[type='file'] {
 	width: 50%;
 	float: left;
 }
+
 .Form-left {
 	padding-right: 1rem;
 }
+
 .Form-right {
 	padding-left: 1rem;
 }
@@ -164,28 +169,16 @@ input[type='file'] {
 	h3 {
 		margin: 1rem 0;
 	}
+
 	.Btn {
 		margin-bottom: 0;
 	}
 }
+
 .Form--boxSmall {
 	max-width: 27rem;
 }
+
 .Form-group label input {
 	@extend %font-regular;
-}
-
-.ember-modal-dialog {
-	padding: 2rem 1rem 0.5rem;
-	border-radius: $border-radius;
-	box-shadow: -4px 4px 12px rgba(88, 88, 88, 0.25);
-
-	// forms inside modals
-	.Form {
-		max-width: 100%;
-		margin-bottom: 0;
-		@media (min-width: 520px) {
-			width: 500px;
-		}
-	}
 }

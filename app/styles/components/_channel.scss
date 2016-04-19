@@ -1,21 +1,17 @@
-/**
- * Channel
- */
-
-.Channel {}
-
-.Channel--detail, {
+// .Channel {}
+.Channel--detail {
 	position: relative;
 	background-color: $slightgray;
 	border-top: 1px solid $superlightgray;
-	border-left: 1px solid hsl(0,0%,80%);
-	border-right: 1px solid hsl(0,0%,80%);
+	border-left: 1px solid hsl(0, 0%, 80%);
+	border-right: 1px solid hsl(0, 0%, 80%);
 	border-radius: $border-radius;
 	box-shadow: $box-shadow;
 
 	@media (min-width: $layout-s) {
 		// because the channel image is a bit outside (negative margin)
 		margin-top: 1.5rem;
+
 		// so logo scrolls nicely down the side
 		margin-left: 1rem;
 	}
@@ -25,7 +21,8 @@
 	@media (min-width: $layout-s) {
 		max-width: 50rem;
 	}
-	.Form	{
+
+	.Form {
 		margin-top: 0;
 	}
 }
@@ -35,11 +32,13 @@
 	padding-bottom: 1rem;
 	min-height: 10rem; // visual perf
 }
+
 .Channel-media {
 	@include clearfix;
 	margin-top: -1rem;
 	margin-left: auto;
 	margin-right: auto;
+
 	@media (min-width: $layout-s) {
 		float: left;
 		min-width: 4rem;
@@ -48,6 +47,7 @@
 		padding-right: 1rem;
 		margin-top: -1.5rem;
 	}
+
 	@media (min-width: $layout-l) {
 		padding-right: 1.5rem;
 		width: 35%;
@@ -57,18 +57,22 @@
 	.Dropzone .Cover {
 		margin-bottom: 0.5rem;
 	}
+
 	.Btn {
 		width: 100%;
 		margin-bottom: 1rem;
 	}
 }
+
 .Channel-cover {
 	position: relative;
 	float: left;
 	width: 100%;
 }
+
 .Channel-body {
 	@include clearfix;
+
 	@media (min-width: $layout-s) {
 		position: relative;
 		margin-bottom: 1rem;
@@ -76,17 +80,21 @@
 		width: 70%;
 		margin-top: 1.5rem;
 	}
+
 	@media (min-width: $layout-m) {
 		width: 67%;
 	}
+
 	@media (min-width: $layout-l) {
 		width: 65%;
 	}
 }
+
 .Channel-playback {
 	position: absolute;
 	top: -1rem;
 	left: 0.5rem;
+
 	@media (min-width: $layout-s) {
 		top: -3rem;
 		left: 0;
@@ -97,38 +105,46 @@
 		margin-right: 0.3rem;
 	}
 }
+
 .Channel-outlet {
 	min-height: 2rem;
 	margin-bottom: 0;
 }
+
 .Channel-edit {
 	position: absolute;
 	top: -0.6rem;
 	right: -0.5rem;
 	z-index: 4; // above media
 }
+
 .Channel-titleSection {
 	@include clearfix;
 }
+
 .Channel-title {
 	margin-top: 1rem;
 	text-align: center;
 	line-height: 1;
+
 	@media (min-width: $layout-s) {
 		text-align: left;
 	}
+
 	@media (min-width: $layout-m) {
 		@include size-5;
 		display: inline-block;
 		max-width: 80%;
 	}
 }
+
 .Channel-follow {
 	position: absolute;
 	top: 0.6rem;
 	right: 0.7rem;
 	z-index: 1;
 }
+
 .Channel-description {
 	@include size-2;
 	max-width: 36rem;
@@ -136,6 +152,7 @@
 	clear: both;
 	word-break: break-word;
 }
+
 .Channel-links {
 	a {
 		@include size-1;
@@ -143,8 +160,10 @@
 		color: $gray;
 	}
 }
+
 .Channel-contextual {
 	float: right;
+
 	.BtnGroup {
 		float: right;
 	}
@@ -153,18 +172,13 @@
 /**
  * on channel/edit route
  **/
-
-.Channel--edit {
-	.Channel-media {
-		margin-top: 0;
-	}
+.Channel--edit .Channel-media {
+	margin-top: 0;
 }
-
 
 /**
  Channel-introduction
  */
-
 .Channel-introduction {
 	// it is flexbox because of the Grid it is in (Grid-cell)
 	order: 1;

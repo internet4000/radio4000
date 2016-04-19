@@ -6,24 +6,26 @@
 	.no-touchevents & {
 		border: 1px dashed;
 	}
-	// when the user is dragging something on the page
+
 	&.in {
+		// when the user is dragging something on the page
 		background-color: palegreen;
 		animation-name: march;
 		animation-duration: 300ms;
 		animation-iteration-count: infinite;
 		animation-timing-function: linear;
 	}
-	// when the user is dragging on top
+
 	&.hover {
+		// when the user is dragging on top
 		background-color: $primary-color;
 		color: $white;
 	}
-	&.fade {}
+
+	// &.fade {}
 }
-.Dropzone-inner {}
 
-
+// .Dropzone-inner {}
 // The default "Choose file" input
 .cloudinary-fileupload {
 	margin-top: 1rem;

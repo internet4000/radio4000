@@ -16,7 +16,7 @@
     "report": "plato -r -d reports app --eslint reports/.eslintrc",
     "start": "ember server",
     "test": "ember test",
-    "test-xo": "xo app/**/*.js"
+    "lint": "xo app/**/*.js && stylelint --syntax scss app/styles/**/*.scss"
   },
   "repository": "https://bitbucket.com/radio4000/radio4000",
   "engines": {
@@ -58,6 +58,7 @@
     "loader.js": "^4.0.1",
     "path": "^0.12.7",
     "postcss-import": "^8.0.2",
+    "stylelint-config-suitcss": "^5.0.0",
     "q": "^1.4.1",
     "xo": "^0.14.0"
   },
@@ -71,6 +72,7 @@
     "ember-youtube": "^0.6.0",
     "emberfire": "^1.6.6",
     "lazysizes": "^1.3.2",
+    "stylelint": "^5.4.0",
     "suitcss-base": "^2.0.0",
     "surge": "^0.17.7",
     "torii": "^0.6.1",
