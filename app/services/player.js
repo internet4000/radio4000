@@ -58,12 +58,13 @@ export default Ember.Service.extend({
 			debug('Play called without a track.');
 			return false;
 		}
-		// the router is injected with the 'player-route' initializer
-		// this.get('router').transitionTo('track', track);
 		this.setProperties({
 			model: track,
 			isPlaying: true
 		});
+		if (document) {
+			document.title = `${track.get('title')} on ${this.get('playlist.title')}`;
+		}
 		this.setPlaylist();
 	},
 
