@@ -14,28 +14,19 @@ export default Ember.Service.extend({
 	// this caches the current playlist and sets it
 	// if it really did change (through the model)
 	// also sets the old one as inactive, and new as… active!
-	setPlaylist() {
-		const playlist = this.get('playlist');
-		const playlistId = this.get('playlist.id');
-
-		this.get('model.channel').then(newPlaylist => {
-			const newPlaylistId = newPlaylist.get('id');
-
-			if (Ember.isEqual(playlistId, newPlaylistId)) {
-				debug('Playlist already set.');
-				return false;
+	updatePlaylist(newPlaylist) {
+		const currentPlaylist = this.get('playlist');
+		if (currentPlaylist) {
+			if (Ember.isEqual(currentPlaylist.get('id'), newPlaylist.get('id'))) {
+				debug('This playlist is already set.');
+				return;
 			}
-
-			if (playlist) {
-				playlist.set('isInPlayer', false);
-			}
-
-			this.set('playlist', newPlaylist);
-			newPlaylist.set('isInPlayer', true);
-			debug('Playlist was set');
-			return this.get('playlist.tracks').then(items => {
-				this.get('playerRandom').setNewRandomPool(items);
-			});
+			currentPlaylist.set('isInPlayer', false);
+		}
+		this.set('playlist', newPlaylist);
+		newPlaylist.set('isInPlayer', true);
+		newPlaylist.get('tracks').then(tracks => {
+			this.get('playerRandom').setNewRandomPool(tracks);
 		});
 	},
 
@@ -53,19 +44,21 @@ export default Ember.Service.extend({
 		Plays a track
 		Give it a track, and he'll know what to do with it
 	*/
-	playTrack(track) {
-		if (!track) {
+	playTrack(model) {
+		if (!model) {
 			debug('Play called without a track.');
 			return false;
 		}
-		this.setProperties({
-			model: track,
-			isPlaying: true
-		});
+		this.setProperties({model, isPlaying: true});
+		this.setDocumentTitle();
+		model.get('channel').then(channel => this.updatePlaylist(channel));
+	},
+
+	setDocumentTitle() {
 		if (document) {
-			document.title = `${track.get('title')} on ${this.get('playlist.title')}`;
+			document.title = `${this.get('model.title')} on ${this.get('playlist.title')}`;
 		}
-		this.setPlaylist();
+
 	},
 
 	/**
@@ -75,7 +68,6 @@ export default Ember.Service.extend({
 	*/
 	prev() {
 		const isRandom = this.get('isRandom');
-
 		if (isRandom) {
 			return this.prevRandom();
 		}
@@ -85,13 +77,11 @@ export default Ember.Service.extend({
 	prevNormal() {
 		const playlist = this.get('playlist');
 		const prev = this.getPrev();
-
 		if (!prev) {
 			this.get('playerHistory').clearPlayerHistory();
 			// first is last because we have newest on top
 			return this.playTrack(playlist.get('tracks.firstObject'));
 		}
-
 		return this.playTrack(prev);
 	},
 
@@ -107,8 +97,7 @@ export default Ember.Service.extend({
 		depends on the active play mode
 	*/
 	next() {
-		const isRandom = this.get('isRandom');
-		if (isRandom) {
+		if (this.get('isRandom')) {
 			return this.nextRandom();
 		}
 		return this.nextNormal();
@@ -117,13 +106,11 @@ export default Ember.Service.extend({
 	nextNormal() {
 		const playlist = this.get('playlist');
 		const next = this.getNext();
-
 		if (!next) {
 			this.get('playerHistory').clearPlayerHistory();
 			// first is last because we have newest on top
 			return this.playTrack(playlist.get('tracks.lastObject'));
 		}
-
 		return this.playTrack(next);
 	},
 
@@ -147,20 +134,15 @@ export default Ember.Service.extend({
 	*/
 	onError(error) {
 		this.set('isPlaying', false);
-
 		debug(error);
-
-		// dont do anything on 'invalid parameter'
 		if (error === 2) {
+			// dont do anything on 'invalid parameter'
 			return;
 		}
-
-		// dont do anything on 'invalid parameter'
 		if (error === 150) {
-			// @TODO mark track as georestricted
+			debug('error150: georestricted track');
 		}
-
-		// otherwise play next
+		// otherwise skip to next
 		this.next();
 	},
 
