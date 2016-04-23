@@ -15,7 +15,6 @@ html {
 	transform: translateZ(0); // improve scrolling performance. Especially on long lists.
 	min-height: 100vh;
 	width: 100%;
-	transition: padding 200ms $easing;
 
 	// overflow-y: scroll;
 	flex: 2;
