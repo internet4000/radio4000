@@ -22,6 +22,8 @@ $PlayPause-easing: linear; //$easing3;
 	height: 0;
 	border: none;
 	visibility: hidden;
+	margin: 0;
+	position: absolute; // take it out the flow
 }
 
 .PlayPause-controller {

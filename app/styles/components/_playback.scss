@@ -87,6 +87,10 @@
 
 .Playback-buttons {
 	color: white;
+	[class^="icon-"],
+	[class*=" icon-"] {
+		color: white;
+	}
 	background: linear-gradient(lighten($primary-color, 10%), $primary-color);
 	display: flex;
 	order: 3;
@@ -119,6 +123,7 @@
 
 .Playback-toggleVolume {
 	font-size: 0.8rem;
+	color: white;
 }
 
 .Playback-sizeButtons {
