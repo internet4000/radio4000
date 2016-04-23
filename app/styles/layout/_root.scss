@@ -67,3 +67,14 @@
 		display: none;
 	}
 }
+
+.Bot {
+	width: 100%;
+	max-width: 300px;
+	margin: auto;
+
+	.ChannelCard {
+		width: 100%;
+		text-align: center;
+	}
+}

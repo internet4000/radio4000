@@ -1,0 +1,15 @@
+<p>
+	<button class="Btn"
+		onClick={{action skipRadio.perform channel}}
+		disabled={{skipRadio.isRunning}}>
+		{{#if skipRadio.isIdle}}
+			Find another radio
+		{{else}}
+			Tuning…
+		{{/if}}
+	</button>
+	<p>{{#if playTrack.isRunning}}calibrating frequencies{{/if}}&nbsp;</p>
+</p>
+
+<br>
+{{yield channel}}

@@ -49,6 +49,7 @@ Router.map(function () {
       this.route('followers');
   });
   this.route('feedback');
+  this.route('bot');
 });
 
 export default Router;

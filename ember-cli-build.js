@@ -6,6 +6,10 @@ var atImport = require('postcss-import');
 
 module.exports = function (defaults) {
   var app = new EmberApp(defaults, {
+    babel: {
+      // Needed for ember-concurrency
+      includePolyfill: true,
+    },
     // Don't pollute our index.html with meta data.
     storeConfigInMeta: false,
 
