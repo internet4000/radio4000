@@ -65,11 +65,6 @@ export default Component.extend(EKMixin, {
 			});
 		},
 
-		skip(channel) {
-			// forward the action to this external method
-			this.get('bot.playAnotherRadio').perform(channel);
-		},
-
 		// player size states
 		toggleMaximizedPlayer() {
 			this.set('uiStates.player.isMinimized', false);
