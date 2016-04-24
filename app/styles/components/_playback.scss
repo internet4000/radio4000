@@ -4,6 +4,7 @@
 
 // Controls
 .Playback {
+	@include negative-text;
 	width: 100%;
 	display: flex;
 	flex-flow: column nowrap; // items in one row, no wrapping
@@ -12,14 +13,14 @@
 	justify-content: flex-start;
 	flex: 1;
 	position: relative;
+
 	// background-color: $mediumlightgray;
 	// color: $text-color;
-
 	// Purple background.
 	background-color: $primary-color;
-	background-image: linear-gradient(lighten($primary-color,10%), $primary-color);
+	background-image: linear-gradient(lighten($primary-color, 10%), $primary-color);
 	color: $bleach;
-	@include negative-text;
+
 	.Playback-title a {
 		color: $bleach;
 	}
@@ -32,18 +33,22 @@
 		border-top: 1px solid $primary-color;
 		min-height: rem($bar-height + $progress-height);
 		padding-bottom: rem($progress-height);
+
 		// if width is less than 100%, add this:
 		// border-left: 1px solid rgb(111, 111, 111);
 		// border-top-right-radius: $border-radius;
 		// border-top-left-radius: $border-radius;
 	}
 }
+
 .Playback-cover {
 	order: 1;
+
 	img {
 		width: 100%;
 	}
 }
+
 .Playback-text {
 	@include size-1;
 	padding: 2rem 0.5rem;
@@ -60,30 +65,39 @@
 		display: block;
 	}
 }
+
 .Playback-channel {
 	padding: 0 1rem 1rem;
 	order: 2;
 }
+
 .Playback-title {
 	a {
 		color: $text-color;
 		font-weight: bold;
 	}
 }
+
 .Playback-description {
 	font-style: italic;
-   padding-top: 0.2rem;
+	padding-top: 0.2rem;
 	font-size: 0.8rem;
 	margin-bottom: 0;
 }
+
 .Playback-buttons {
 	color: white;
-	background: linear-gradient(lighten($primary-color,10%), $primary-color);
+	[class^="icon-"],
+	[class*=" icon-"] {
+		color: white;
+	}
+	background: linear-gradient(lighten($primary-color, 10%), $primary-color);
 	display: flex;
 	order: 3;
 	flex-basis: 3.5rem;
 	justify-content: space-around;
 	align-items: stretch;
+	max-width: 20rem;
 }
 
 .Playback-button {
@@ -93,26 +107,24 @@
 	font-size: 1.4rem;
 	flex-basis: 20%;
 	outline-offset: -0.5rem;
-
-	&:hover {
-		// outline: ;
-	}
 }
+
 .Playback-shuffle {
 	svg {
 		opacity: 0.5;
-
 	}
+
 	&.is-active {
 		svg {
 			opacity: 1;
 		}
 	}
 }
+
 .Playback-toggleVolume {
 	font-size: 0.8rem;
+	color: white;
 }
-
 
 .Playback-sizeButtons {
 	position: absolute;
@@ -122,13 +134,16 @@
 	padding: 0.5rem;
 	display: flex;
 	justify-content: flex-end;
+
 	> *:not(:first-child) {
 		margin-left: 0.2em;
 	}
+
 	.Btn {
 		box-shadow: none;
 	}
 }
+
 .Playback-fullscreenBtn {
 	order: 1;
 
@@ -136,13 +151,12 @@
 		vertical-align: middle;
 	}
 }
-.Playback-player {
-	// order: 0;
 
+.Playback-player {
 	// Gif loading background.
-	background-image: url('../assets/images/noise.gif');
+	background-image: url("../assets/images/noise.gif");
+	background-position: center;
 	background-size: cover;
-   background-position: center center;
 }
 
 // Animate buttons that should only be visible when the player is ready.
@@ -151,6 +165,7 @@
 .Playback-toggleVolume,
 .Playback-fullscreenBtn {
 	transition: opacity 300ms $easing, transform 300ms $easing, height 300ms $easing;
+
 	.is-withoutPlayer & {
 		opacity: 0;
 		height: 0;
@@ -163,34 +178,42 @@
  * Minimal state
  */
 $bar-height-minimized: rem(70);
+
 .is-minimized {
 	.EmberYoutube-progress,
 	.Playback-buttons,
-	.Playback-controls, {
+	.Playback-controls,
+	 {
 		display: none;
 	}
+
 	.Aside--right {
 		width: 14rem;
 	}
+
 	.Playback-sizeButtons {
 		// the next button in the size button
 		.Playback-button {
 			display: block;
 		}
 	}
+
 	.Playback-text {
 		@include size-0;
 		color: $bleach;
 		padding: 0 0.5em;
 		flex-basis: 5em;
 	}
+
 	.Playback-channel {
 		padding: 0;
 		margin: 2px;
 	}
+
 	.Playback .ChannelCard--wide .Cover {
 		flex-basis: 2.5rem;
 	}
+
 	.Playback .ChannelCard-title {
 		@include size-1;
 	}
@@ -207,23 +230,28 @@ $bar-height-minimized: rem(70);
 		height: 100%;
 		background-color: black;
 	}
+
 	.Playback {
 		height: 100%;
 		background: black;
 		flex-flow: row wrap;
 	}
+
 	.Playback-sizeButtons {
 		top: 0;
 		right: 0;
 	}
+
 	.Playback-player {
 		display: flex;
 		width: 100%;
 		min-height: 50vh;
 		margin-bottom: 1rem;
+
 		@media (min-width: $layout-s) {
 			min-height: 90vh;
 		}
+
 		#EmberYoutube-player {
 			position: absolute;
 			width: 100%;
@@ -234,42 +262,53 @@ $bar-height-minimized: rem(70);
 	.Playback-channel,
 	.Playback-buttons,
 	.Playback-text {
-		flex-basis: (100/3) * 1%;
+		flex-basis: (100 / 3) * 1%;
 	}
 
 	.Playback-channel {
 		order: 1;
-		flex: 1;
+		display: none;
+		@media (min-width: $layout-m) {
+			display: block;
+		}
 	}
+
 	.Playback-text {
 		padding: 0;
+
 		@media (max-width: $layout-s) {
 			flex-basis: 100%;
 			padding-left: 1rem;
 			padding-right: 2rem;
 		}
 	}
+
 	.Player {
 		flex: 1;
 		position: relative;
 	}
+
 	.Playback-title a {
 		@include negative-text;
 		color: $white;
 	}
+
 	.Playback-buttons {
 		background: black;
 		margin: auto;
+
 		@media (max-width: $layout-s) {
 			flex: 1;
 		}
 	}
+
 	.ChannelCard--wide {
 		max-width: 20rem;
 		margin-left: auto;
 		margin-right: auto;
 		background-color: transparent;
 	}
+
 	.ChannelCard-title {
 		color: $bleach;
 	}

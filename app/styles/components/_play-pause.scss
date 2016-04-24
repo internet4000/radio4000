@@ -2,27 +2,30 @@
 //
 // It uses a label and checkbox so we can bind to a value.
 // Also it would work without js.
-
 $PlayPause-size: 18px;
 $PlayPause-width: 1em;
 $PlayPause-height: 1.2em;
 $PlayPause-transition-duration: 100ms;
 $PlayPause-transition-delay: 50ms;
 $PlayPause-bg-color: $white;
-$PlayPause-easing: linear;//$easing3;
-
+$PlayPause-easing: linear; //$easing3;
 .PlayPause {
 	display: flex;
 }
+
 .PlayPause::selection {
 	background-color: transparent;
 }
+
 .PlayPause-state {
 	width: 0;
 	height: 0;
 	border: none;
 	visibility: hidden;
+	margin: 0;
+	position: absolute; // take it out the flow
 }
+
 .PlayPause-controller {
 	display: inline-block;
 	position: relative;
@@ -32,6 +35,7 @@ $PlayPause-easing: linear;//$easing3;
 	padding: 0;
 	margin: auto;
 }
+
 .PlayPause-controller::before,
 .PlayPause-controller::after {
 	box-sizing: content-box;
@@ -39,16 +43,18 @@ $PlayPause-easing: linear;//$easing3;
 	top: 50%;
 	transform: translateY(-50%);
 	content: "";
-	border-top: ($PlayPause-height/4/$PlayPause-width)*1em solid transparent;
-	border-bottom: ($PlayPause-height/4/$PlayPause-width)*1em solid transparent;
+	border-top: ($PlayPause-height / 4 / $PlayPause-width) * 1em solid transparent;
+	border-bottom: ($PlayPause-height / 4 / $PlayPause-width) * 1em solid transparent;
 	border-left: 0.5em solid $PlayPause-bg-color;
 }
+
 .PlayPause-controller::before {
 	left: 0;
 	transition: all $PlayPause-transition-duration $PlayPause-easing;
 	width: 0;
-	height: ($PlayPause-height/2/$PlayPause-width)*1em;
+	height: ($PlayPause-height / 2 / $PlayPause-width) * 1em;
 }
+
 .PlayPause-controller::after {
 	right: 0;
 	transition: all $PlayPause-transition-duration + $PlayPause-transition-delay $PlayPause-easing;
@@ -64,7 +70,6 @@ $PlayPause-easing: linear;//$easing3;
 	border-left-width: 0.38em;
 	height: 100%;
 }
-
 
 .PlayPause-controller {
 	margin-left: 0.5rem;

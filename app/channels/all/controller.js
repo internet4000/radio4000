@@ -9,31 +9,28 @@ export default Controller.extend({
 	isList: false,
 
 	// This little pattern makes sets a property maximum every X ms for performance.
-	watchSearch: observer('search', function () {
-		run.throttle(this, this.runSearch, 500);
+	onSearchChange: observer('search', function () {
+		run.debounce(this, this.startSearching, 600);
 	}),
 
 	// The property triggers the computed property to, well, compute!
-	runSearch() {
+	startSearching() {
 		this.set('realSearch', this.get('search'));
 	},
 
-	// filteredChannels: computed.filter('model', function (channel) {
-	// 	return channel.get('coverImage');
-	// }),
+	// Only show channels that have tracks.
+	filteredChannels: computed.filter('model', m => m.get('totalTracks')),
 
 	// Filters out models where title or body matches the search
 	// it watches 'realSearch' instead of 'search' so we can
 	// debounce for performance.
-	channels: computed('realSearch', 'model', function () {
+	channels: computed('realSearch', 'filteredChannels', function () {
 		const search = this.get('search');
-		const model = this.get('model');
-
+		const filteredChannels = this.get('filteredChannels');
 		if (!search) {
-			return model;
+			return filteredChannels;
 		}
-
-		return model.filter(item => {
+		return filteredChannels.filter(item => {
 			return stringContains(item.get('title'), search) || stringContains(item.get('body'), search);
 		});
 	}),

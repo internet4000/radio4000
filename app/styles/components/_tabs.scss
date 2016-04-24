@@ -3,7 +3,6 @@
 	by default they are boxed and vertical.
 	Use a modifier if you need them horizontal.
  */
-
 .Tabs {
 	display: flex;
 	flex-flow: column wrap;
@@ -20,34 +19,33 @@
 		margin-top: 3px;
 	}
 }
+
 .Tabs--transparent {
 	background-color: transparent;
 	box-shadow: none;
 }
+
 // .Tabs--bottom {
 // 	align-self: flex-end;
 // }
-
 .Tabs-item {
 	display: inline-block;
 	padding: 0.8em 1rem 0.5em;
 	color: $text-color;
 	border-radius: $border-radius;
 	border-right: 3px solid transparent;
-	transition: border-right-color 200ms $easing,
-					border-bottom-color 200ms $easing,
-					background-image 200ms $easing;
+	transition: border-right-color 200ms $easing, border-bottom-color 200ms $easing, background-image 200ms $easing;
 
 	&:hover,
 	&:focus,
 	&:active {
 		text-decoration: none;
 	}
+
 	// &:hover,
 	// &:focus {
 	// 	background-image: radial-gradient($white, transparent 70%);
 	// }
-
 	&.is-active {
 		@extend %font-bold;
 		border-right-color: $secondary-color;
@@ -64,10 +62,10 @@
 /**
  * Modifiers
  */
-
 .Tabs--horizontal {
 	flex-flow: row wrap;
 	text-align: center;
+
 	@media (min-width: $layout-s) {
 		max-width: 90%;
 	}
@@ -77,6 +75,7 @@
 		flex-grow: 1;
 		border-right: 0;
 		border-bottom: 3px solid transparent;
+
 		&.is-active {
 			border-right: 0;
 			border-bottom: 3px solid $secondary-color;
@@ -101,6 +100,7 @@
 	box-shadow: none;
 	max-width: none;
 	background-color: $superlightgray;
+
 	.Tabs-item.is-active {
 		background-color: $superlightgray;
 	}
@@ -111,17 +111,20 @@
 	.Tabs-item {
 		// contain the border
 		position: relative;
+
 		// remove previous borders
 		border-bottom: 0 !important;
+
 		// align border vertically with same height as other tabs,
 		// stupid but yes.
 		padding-top: rem(4);
 		padding-bottom: 0;
 		line-height: 2.3;
 	}
+
 	// the (hidden) border
 	.Tabs-item::after {
-		content: '';
+		content: "";
 		display: block;
 		margin: auto;
 		height: 3px;
@@ -129,6 +132,7 @@
 		background: $secondary-color;
 		transition: width 400ms $easing;
 	}
+
 	// the visible border
 	.Tabs-item.is-active::after {
 		width: 100%;
@@ -149,7 +153,7 @@
 
 	img {
 		float: left;
-		margin: -12px 7px 0px -15px;
+		margin: -12px 7px 0 -15px;
 		height: 58px;
 	}
 }

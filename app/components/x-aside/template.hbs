@@ -21,7 +21,7 @@
 
 {{#unless userChannel}}
 	<div class="Tabs Tabs--transparent">
-		{{#link-to 'channels.new' class="Aside-link Muted" title="Create your own radio now or log in"}}Get your own radio{{/link-to}}
+		{{#link-to 'channels.new' class="Btn Btn--important" title="Create your own radio now or log in"}}Get your own radio{{/link-to}}
 	</div>
 {{/unless}}
 
@@ -38,8 +38,5 @@
 	{{else}}
 		{{#link-to 'login' class="Aside-link Muted" title="Create your own radio now or log in"}}Sign in or register{{/link-to}}
 	{{/if}}
-	<a  href="https://goo.gl/V5jlgk"
-	class="Aside-link Muted"
-	target="_blank"
-	title="Send your experience to the Radio4000 team">Feedback</a>
+	{{#link-to 'feedback' class="Aside-link Muted" title="Share your feedback with the Radio4000 team"}}Feedback{{/link-to}}
 </div>

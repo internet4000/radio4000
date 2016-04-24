@@ -3,27 +3,26 @@
 	by Hugo Vieilledent and Oskar Rough Mosumgaard
 */
 
-
 // 1. Utilities (mixins and functions)
-@import 'utilities/align';
-@import 'utilities/clearfix';
-@import 'utilities/functions';
-@import 'utilities/negative-text';
+@import "utilities/align";
+@import "utilities/clearfix";
+@import "utilities/functions";
+@import "utilities/negative-text";
 
 // 2. Base (config and everything else without classes)
-@import 'base/fonts-inline';
-@import 'base/normalize-custom';
-@import 'base/config';
-@import 'base/base';
-@import 'base/button';
-@import 'base/form';
-@import 'base/typography';
+@import "base/fonts-inline";
+@import "base/normalize-custom";
+@import "base/config";
+@import "base/base";
+@import "base/button";
+@import "base/form";
+@import "base/typography";
 
+// Blog specific styles
 html {
 	background-color: $bg-color;
 	color: $text-color;
 }
-
 // overwrite default tumblr theme styles
 body {
 	margin: 0 auto;
@@ -34,7 +33,6 @@ body {
 	background: inherit;
 	-webkit-font-smoothing: inherit;
 }
-
 // overwrite default tumblr theme typography
 .post-content h1,
 .post-content h2,
@@ -42,8 +40,8 @@ body {
 .post-content h4,
 .post-content h5,
 .post-content h6 {
-  font-family: 'maisonneue-bold';
-  font-size: inherit;
-  margin: inherit;
-  color: inherit;
+	font-family: "maisonneue-bold";
+	font-size: inherit;
+	margin: inherit;
+	color: inherit;
 }

@@ -1,10 +1,12 @@
 /**
  * Links
  */
+
 a {
 	color: $link-color;
 	text-decoration: none;
 }
+
 a:hover {
 	text-decoration: underline;
 }
@@ -35,17 +37,6 @@ hr,
 figure,
 menu {
 	margin: 0 0 1rem;
-}
-
-/**
- * Responsive media
- */
-iframe,
-img,
-canvas,
-video,
-embed {
-	max-width: 100%;
 }
 
 /**

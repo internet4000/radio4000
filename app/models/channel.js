@@ -41,5 +41,16 @@ export default DS.Model.extend({
 	images: hasMany('image', {async: true}),
 	tracks: hasMany('track', {async: true}),
 	favoriteChannels: hasMany('channel', {inverse: null, async: true}),
-	channelPublic: belongsTo('channelPublic', {async: true})
+	channelPublic: belongsTo('channelPublic', {async: true}),
+
+	// Meta data.
+	totalTracks: computed('tracks', function () {
+		return this.hasMany('tracks').ids().length;
+	}),
+	totalFavorites: computed('favoriteChannels', function () {
+		return this.hasMany('favoriteChannels').ids().length;
+	})
+	// model.hasMany('tracks').ids();
+	// model.hasMany('tracks').value() !== null;
+	// model.hasMany('tracks').meta().total;
 });

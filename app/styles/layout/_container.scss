@@ -1,6 +1,4 @@
-
-// use .Container for vertical stacks
-
+// Use .Container for stacking components on top of each other and aligning horizontally.
 .Container,
 %Container {
 	@include clearfix;
@@ -8,36 +6,45 @@
 	max-width: 45em;
 	padding-left: 1rem;
 	padding-right: 1rem;
+
 	@media (min-width: $layout-s) {
 		padding-left: 2rem;
 		padding-right: 3rem;
 	}
+
 	@media (min-width: $layout-l) {
 		padding-left: 2rem;
 		padding-right: 4rem;
 	}
 }
 
+// Modifiers
 .Container--centered {
 	margin-left: auto;
 	margin-right: auto;
 }
+
 .Container--large {
 	max-width: 83rem;
 }
+
 .Container--full {
 	max-width: none;
+
 	// gets a width because needed when combined with flex;
 	width: 100%;
 }
+
 .Container--noPadding {
 	padding-right: 0;
 	padding-left: 0;
+
 	@media (min-width: $layout-m) {
 		padding-right: 0;
 		padding-left: 0;
 	}
 }
+
 .Container--bg {
 	background-color: $bg-color;
 }
@@ -45,6 +52,7 @@
 .Container--tight {
 	padding-right: 0.5rem;
 	padding-left: 0.5rem;
+
 	@media (min-width: $layout-m) {
 		padding-right: 1rem;
 		padding-left: 1rem;
@@ -58,6 +66,7 @@
 		width: 60%;
 	}
 }
+
 .Container--right {
 	@media (min-width: $layout-m) {
 		float: right;

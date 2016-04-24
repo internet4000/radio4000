@@ -2,10 +2,10 @@
  * Remote control checkbox (radio in fact), that activates the remote fn
  @TODO: this could be more abstract. .Form-checkbox or .Checkbox?
  **/
-
 .CheckboxRemote {
 	padding: 0;
 	margin-bottom: 0;
+
 	label {
 		@extend %font-regular;
 		padding-left: 3em;
@@ -13,6 +13,7 @@
 		position: relative;
 		cursor: pointer;
 	}
+
 	input {
 		margin-bottom: 0;
 		position: absolute;

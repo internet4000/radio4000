@@ -1,9 +1,9 @@
 import Ember from 'ember';
-import MinimalRouteMixin from 'radio4000/mixins/minimal-route';
+// import MinimalRouteMixin from 'radio4000/mixins/minimal-route';
 
 const {get} = Ember;
 
-export default Ember.Route.extend(MinimalRouteMixin, {
+export default Ember.Route.extend({
 	uiStates: Ember.inject.service(),
 
 	afterLogin() {

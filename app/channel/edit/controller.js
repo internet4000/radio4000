@@ -160,7 +160,7 @@ export default Controller.extend(EmberValidations, {
 				flashMessages.info('Changes saved');
 			}).catch(() => {
 				// This get triggered for exemple when firebase.security do not validate
-				flashMessages.warning(`Sorry, we couldn't save your radio. Please refresh your browser and try again.`);
+				flashMessages.warning(`Sorry, we couldn't save your radio. Please refresh your browser to try again.`);
 			}).finally(() => {
 				// anyways, reset UI
 				this.set('isSaving', false);

@@ -26,17 +26,13 @@ export default Component.extend({
 
 	// Load all required scripts async
 	startCloudinary: on('init', function () {
-		console.log('startCloudinary');
-
-		$.getScript('assets/scripts/image-upload-r4.js')
 		// $.getMultiScripts([
 		// 	'assets/scripts/jquery.iframe-transport.js',
 		// 	'assets/scripts/jquery.ui.widget.js',
 		// 	'assets/scripts/jquery.fileupload.js',
 		// 	'assets/scripts/jquery.cloudinary.js'
 		// ])
-		.done(() => {
-			console.log('done');
+		$.getScript('assets/scripts/image-upload-r4.js').done(() => {
 			$.cloudinary.config({cloud_name: ENV.CLOUDINARY_NAME});
 			Ember.run.schedule('afterRender', () => {
 				this.set('gotScripts', true);

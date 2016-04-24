@@ -2,32 +2,47 @@
  * Typography
  * an attempt to group font families and sizes for base elements
  */
-
-
 html {
 	@extend %font-regular;
-	font-family: 'maisonneue', $sans-fallback;
-	line-height: $base-line-height;
+	font-family: "maisonneue", $sans-fallback;
 	font-size: 14px;
-	@media (min-width: $layout-m) { font-size: $base-font-size; } // 16px;
-	@media (min-width: $layout-xl) { font-size: 16px; }
-	@media (min-width: $layout-xxl) { font-size: 17px; }
+	line-height: $base-line-height;
+
+	@media (min-width: $layout-m) {
+		font-size: $base-font-size;
+	} // 15px;
+	@media (min-width: $layout-xl) {
+		font-size: 16px;
+	}
+
+	@media (min-width: $layout-xxl) {
+		font-size: 17px;
+	}
 }
 
 // apparently it can be bad to use this on the html element, so:
-h1,h2,h3,h4,p,ul,ol,blockquote {
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+blockquote {
 	// Enable kerning in all browsers.
-	text-rendering: optimizeLegibility;
 	font-feature-settings: "kern" 1;
+	text-rendering: optimizeLegibility;
 }
 
 strong,
 b {
 	@extend %font-bold;
 }
+
 em {
 	font-style: italic;
 }
+
 .Muted {
 	@include size-1;
 	color: $gray;
@@ -38,9 +53,11 @@ em {
 		top: -0.12em;
 	}
 }
+
 .Muted--strong {
 	color: $mediumgray;
 }
+
 // Headers
 h1,
 h2,
@@ -48,6 +65,7 @@ h3,
 h4 {
 	@extend %font-bold;
 }
+
 h1,
 .Title {
 	@include size-4;
@@ -57,28 +75,29 @@ h1,
 		@include size-5;
 	}
 
-	// @media (min-width: $layout-l) {
-	// 	@include size-5;
-	// }
-
 	a {
 		color: $text-color;
 	}
 }
+
 h2,
 .Subtitle {
 	@include size-3;
+
 	@media (min-width: $layout-m) {
 		@include size-4;
 	}
 }
+
 h3 {
 	@include size-2;
 }
+
 h4 {
 	@include size-1;
 	margin-bottom: 0;
 }
+
 .Title,
 h1,
 h2,
@@ -93,9 +112,10 @@ h4 {
 
 // Lists
 ul {
-	padding-left: 1em;
 	list-style: none;
-	li:before {
+	padding-left: 1em;
+
+	li::before {
 		content: "→ ";
 	}
 }
@@ -105,15 +125,16 @@ pre,
 .Mono {
 	@extend %font-mono;
 }
+
 .Code {
-	padding: 0.45em;
 	background: $black;
 	color: hsl(118, 100%, 59%);
+	padding: 0.45em;
 }
 
 // Warnings
 .Warning {
-	padding: 1px 4px;
 	background-color: $yellow;
 	color: $text-color;
+	padding: 1px 4px;
 }

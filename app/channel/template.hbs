@@ -67,13 +67,13 @@
 					Dashboard
 					{{/link-to}} --}}
 					{{#link-to 'channel.index' class="Tabs-item" title="All tracks"}}
-						{{!-- {{model.tracks.length}} --}}Tracks
+						{{model.totalTracks}} Tracks
 					{{/link-to}}
 					{{#link-to 'channel.favorites' class="Tabs-item" title="Favorites of this radio"}}
-						Favorites
+						{{!-- {{model.totalFavorites}}  --}}Favorites
 					{{/link-to}}
 					{{#link-to 'channel.followers' class="Tabs-item" title="Followers of this radio"}}
-						Followers
+						{{!-- {{model.channelPublic.totalFollowers}}  --}}Followers
 					{{/link-to}}
 				</nav>
 

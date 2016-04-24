@@ -1,9 +1,10 @@
-{{!-- <a href="{{href-to 'channel' channel}}" title={{unbound channel.body}}>
-</a> --}}
-{{#link-to 'channel' channel title="channel.body"}}
+<a href="{{href-to 'channel' channel.slug}}" title={{unbound channel.body}}>
 	{{channel-cover src=channel.coverImage.src}}
-	<h3 class="ChannelCard-title">{{channel.title}}</h3>
-{{/link-to}}
+	<h3 class="ChannelCard-title">
+		{{channel.title}}
+		{{!--  <small>({{channel.totalTrackss}})</small> --}}
+	</h3>
+</a>
 <div class="ChannelCard-controls">
 	{{play-shuffle-btn channel=channel class="Btn--small"}}
 </div>

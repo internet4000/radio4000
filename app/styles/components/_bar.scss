@@ -3,7 +3,6 @@ $bottom-bar-width: 100%;
 /**
  *  The top bar
  */
-
 .Bar {
 	position: fixed;
 	left: 0;
@@ -12,11 +11,14 @@ $bottom-bar-width: 100%;
 	backface-visibility: hidden; // perf
 	transition: transform 300ms $easing2, background-color 200ms;
 }
+
 .Bar--top {
 	top: 0;
 	left: 0;
+
 	// width: $sidebar-width;
 	background: transparent;
+
 	// border-bottom: $bar-border-size solid hsla(0, 0%, 0%, 0.4);
 	// border-right: $bar-border-size solid hsla(0, 0%, 0%, 0.4);
 	// box-shadow: 2px 2px 4px hsla(0, 0%, 0%, 0.4);
@@ -25,6 +27,7 @@ $bottom-bar-width: 100%;
 		color: $text-color-invert; // $dark
 	}
 }
+
 .Bar--bottom {
 	left: initial;
 	bottom: 0;
