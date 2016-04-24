@@ -56,19 +56,35 @@
 	.Player {
 		order: 1;
 	}
-
-	.Aside--right {
-		display: block;
-	}
 }
 
 .Bot {
-	width: 100%;
-	max-width: 300px;
-	margin: auto;
-
-	.ChannelCard {
+	.Aside--right & {
+		position: absolute;
+		z-index: 1;
 		width: 100%;
-		text-align: center;
+		height: 100%;
+		display: flex;
+		transition: opacity 200ms 200ms, visibility 0s 200ms;
+		background-color: $mediumlightgray;
+		background-image: url("images/sound-pattern.png");
+		// background-size: 30px;
+		background-position: -2px -2px;
+
+		// hide while a channel is loaded
+		.Root.is-withPlayer & {
+			opacity: 0;
+			visibility: hidden;
+		}
+
+		button {
+			margin: auto;
+			box-shadow: 0 0 3rem hsla(255, 14%, 5%, 0.6);
+			border-color: hsl(0, 0%, 50%);
+
+			&:hover {
+				box-shadow: 0 0 3rem hsla(255, 14%, 2%, 0.8);
+			}
+		}
 	}
 }

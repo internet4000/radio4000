@@ -6,6 +6,7 @@ const {Component, inject, computed, on, run, $} = Ember;
 export default Component.extend(EKMixin, {
 	classNames: ['Playback'],
 	player: inject.service(),
+	bot: inject.service(),
 	uiStates: inject.service(),
 	channel: computed.alias('player.model.channel'),
 
@@ -62,6 +63,11 @@ export default Component.extend(EKMixin, {
 					$container.animate({scrollTop: offset}, 700, 'swing');
 				}, 100);
 			});
+		},
+
+		skip(channel) {
+			// forward the action to this external method
+			this.get('bot.playAnotherRadio').perform(channel);
 		},
 
 		// player size states

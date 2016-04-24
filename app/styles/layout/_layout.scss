@@ -7,6 +7,10 @@ html {
 	color: $text-color;
 }
 
+body {
+	overflow-y: scroll;
+}
+
 /**
 	In _root.scss, it is displayed flex
 	So all child of .Root bellow follow this behavior

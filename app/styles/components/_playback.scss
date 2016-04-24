@@ -130,7 +130,7 @@
 	position: absolute;
 	top: -1.4rem;
 	right: -1rem;
-	z-index: 1;
+	z-index: 2;
 	padding: 0.5rem;
 	display: flex;
 	justify-content: flex-end;
@@ -153,6 +153,7 @@
 }
 
 .Playback-player {
+	position: relative;
 	// Gif loading background.
 	background-image: url("../assets/images/noise.gif");
 	background-position: center;
@@ -165,13 +166,6 @@
 .Playback-toggleVolume,
 .Playback-fullscreenBtn {
 	transition: opacity 300ms $easing, transform 300ms $easing, height 300ms $easing;
-
-	.is-withoutPlayer & {
-		opacity: 0;
-		height: 0;
-		pointer-events: none;
-		transform: scale(0.95);
-	}
 }
 
 /**
@@ -182,8 +176,7 @@ $bar-height-minimized: rem(70);
 .is-minimized {
 	.EmberYoutube-progress,
 	.Playback-buttons,
-	.Playback-controls,
-	 {
+	.Playback-controls {
 		display: none;
 	}
 
@@ -268,6 +261,7 @@ $bar-height-minimized: rem(70);
 	.Playback-channel {
 		order: 1;
 		display: none;
+
 		@media (min-width: $layout-m) {
 			display: block;
 		}
