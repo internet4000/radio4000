@@ -7,7 +7,8 @@ export default Route.extend(minimalRouteMixin, {
 	uiStates: inject.service(),
 	activate() {
 		// on this route we also want the player to be minimized
-		this.set('uiStates.player.isMinimal', true);
+		this.set('uiStates.player.isMaximized', false);
+		this.set('uiStates.player.isMinimized', true);
 		this._super();
 	}
 });

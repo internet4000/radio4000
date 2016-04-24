@@ -10,8 +10,8 @@ export default Component.extend(EKMixin, {
 	channel: computed.alias('player.model.channel'),
 
 	youtubePlayerVars: {
-	    autoplay: 1,
-	    showinfo: 0
+		autoplay: 1,
+		showinfo: 0
 	},
 
 	// Keyboard shortucts.

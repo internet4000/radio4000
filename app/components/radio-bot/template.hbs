@@ -1,15 +1,16 @@
+{{#if channel}}
+	<h2><small>You are listening to</small> <strong>{{channel.title}}</strong></h2>
+	<p></p>
+{{/if}}
+
 <p>
-	<button class="Btn"
-		onClick={{action skipRadio.perform channel}}
-		disabled={{skipRadio.isRunning}}>
+	<button class="Btn" onClick={{action skipRadio.perform channel}} disabled={{skipRadio.isRunning}}>
 		{{#if skipRadio.isIdle}}
-			Find another radio
+			{{#if channel}}Play another radio{{else}}Play some music{{/if}}
 		{{else}}
-			Tuning…
+			{{#if playTrack.isRunning}}Calibrating…{{else}}Tuning…{{/if}}
 		{{/if}}
 	</button>
-	<p>{{#if playTrack.isRunning}}calibrating frequencies{{/if}}&nbsp;</p>
 </p>
 
-<br>
 {{yield channel}}
