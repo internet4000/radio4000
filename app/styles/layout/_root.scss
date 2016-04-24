@@ -39,8 +39,7 @@
 		justify-content: center;
 	}
 
-	.SiteFooter,
-	.PlayButton {
+	.SiteFooter {
 		display: none;
 	}
 }
@@ -60,11 +59,6 @@
 
 	.Aside--right {
 		display: block;
-	}
-
-	.PlayButton {
-		// transform: translateX(200%);
-		display: none;
 	}
 }
 
