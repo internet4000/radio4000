@@ -87,10 +87,12 @@
 
 .Playback-buttons {
 	color: white;
+
 	[class^="icon-"],
 	[class*=" icon-"] {
 		color: white;
 	}
+
 	background: linear-gradient(lighten($primary-color, 10%), $primary-color);
 	display: flex;
 	order: 3;
@@ -126,7 +128,8 @@
 	color: white;
 }
 
-.Playback-sizeButtons {
+//
+.Playback-layoutButtons {
 	position: absolute;
 	top: -1.4rem;
 	right: -1rem;
@@ -141,6 +144,11 @@
 
 	.Btn {
 		box-shadow: none;
+	}
+
+	// no need to change player when it's small and without channel
+	.is-minimized.is-withoutPlayer & {
+		display: none;
 	}
 }
 
@@ -184,7 +192,7 @@ $bar-height-minimized: rem(70);
 		width: 14rem;
 	}
 
-	.Playback-sizeButtons {
+	.Playback-layoutButtons {
 		// the next button in the size button
 		.Playback-button {
 			display: block;
@@ -230,7 +238,7 @@ $bar-height-minimized: rem(70);
 		flex-flow: row wrap;
 	}
 
-	.Playback-sizeButtons {
+	.Playback-layoutButtons {
 		top: 0;
 		right: 0;
 	}

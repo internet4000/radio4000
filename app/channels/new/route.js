@@ -31,10 +31,6 @@ export default Ember.Route.extend({
 		document.title = 'New - Radio4000';
 	},
 
-	activate() {
-		this.set('uiStates.isMinimal', true);
-	},
-
 	// don't render into the channels outlet
 	// this avoids the tabs we have on channels.hbs
 	renderTemplate() {
@@ -42,7 +38,7 @@ export default Ember.Route.extend({
 	},
 
 	deactivate() {
-		this.set('uiStates.isMinimal', false);
+		this._super();
 		// Reset title if user creates two channels in the same session.
 		this.setProperties({
 			'controller.title': '',
