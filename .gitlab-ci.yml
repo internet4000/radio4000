@@ -9,7 +9,7 @@ cache:
 before_script:
   - npm cache clean
   - rm -rf node_modules bower_components dist tmp
-  - npm install -g ember-cli surge gulp-cli bower
+  - npm install -g phantomjs ember-cli surge gulp-cli bower
   - npm install
   - npm set progress=false
   - bower --allow-root install
