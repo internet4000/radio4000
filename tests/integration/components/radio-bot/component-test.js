@@ -10,15 +10,14 @@ test('it renders', function(assert) {
   // Handle any actions with this.on('myAction', function(val) { ... });
 
   this.render(hbs`{{radio-bot}}`);
+  assert.equal(this.$().text().trim(), 'Play some music');
 
-  assert.equal(this.$().text().trim(), '');
+  // // Template block usage:
+  // this.render(hbs`
+  //   {{#radio-bot}}
+  //     template block text
+  //   {{/radio-bot}}
+  // `);
 
-  // Template block usage:
-  this.render(hbs`
-    {{#radio-bot}}
-      template block text
-    {{/radio-bot}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  // assert.equal(this.$().text().trim(), 'template block text');
 });
