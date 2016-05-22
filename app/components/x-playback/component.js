@@ -6,12 +6,13 @@ const {Component, inject, computed, on, run, $} = Ember;
 export default Component.extend(EKMixin, {
 	classNames: ['Playback'],
 	player: inject.service(),
+	bot: inject.service(),
 	uiStates: inject.service(),
 	channel: computed.alias('player.model.channel'),
 
 	youtubePlayerVars: {
-	    autoplay: 1,
-	    showinfo: 0
+		autoplay: 1,
+		showinfo: 0
 	},
 
 	// Keyboard shortucts.

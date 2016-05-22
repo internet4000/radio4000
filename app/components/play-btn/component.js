@@ -9,6 +9,7 @@ const {Component, inject, debug, computed} = Ember;
 
 export default Component.extend({
 	player: inject.service(),
+	bot: inject.service(),
 	tagName: 'button',
 	classNames: ['Btn'],
 	classNameBindings: ['isLoading', 'isInPlayer', 'nothingToPlay:is-hidden'],
@@ -40,10 +41,7 @@ export default Component.extend({
 
 		// Loads necessary all tracks and then returns another promise
 		// for the last track.
-		const promise = this.loadTracks(channel).then(tracks => {
-			this.set('isLoading', false);
-			return tracks.get('lastObject');
-		});
+		const promise = this.get('bot').findLastTrack(channel);
 
 		promise.then(track => {
 			this.set('isLoading', false);
@@ -58,6 +56,7 @@ export default Component.extend({
 			}
 		});
 	},
+
 	/**
 		@method loadTracks
 		@returns promise {tracks}

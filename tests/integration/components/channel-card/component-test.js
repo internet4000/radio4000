@@ -6,21 +6,12 @@ moduleForComponent('/channel-card', 'Integration | Component | channel card', {
 });
 
 test('it renders', function (assert) {
-  assert.expect(2);
+  assert.expect(1);
 
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
-  this.render(hbs`{{channel-card}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#channel-card}}
-      template block text
-    {{/channel-card}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  this.set('model', {title: 'It works!'});
+  this.render(hbs`{{channel-card channel=model}}`);
+  assert.equal(this.$('h3').text().trim(), 'It works!');
 });

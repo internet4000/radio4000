@@ -1,1 +1,23 @@
-{{yield}}
+<div class="Bar Bar--top">
+	{{site-logo-button}}
+</div>
+
+{{#if flashMessages.queue}}
+	<aside class="FlashMessages">
+		{{#each flashMessages.queue as |flash|}}
+			{{flash-message flash=flash}}
+		{{/each}}
+	</aside>
+{{/if}}
+
+{{x-aside class="Aside--left"
+	isAuthenticated=session.isAuthenticated
+	userChannel=session.currentUser.channels.firstObject}}
+
+<main class="SiteMain">
+	{{yield}}
+</main>
+
+<div class="Aside Aside--right">
+	{{x-playback}}
+</div>

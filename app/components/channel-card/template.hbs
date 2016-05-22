@@ -9,6 +9,6 @@
 	{{play-shuffle-btn channel=channel class="Btn--small"}}
 </div>
 <p class="ChannelCard-body">
-	{{unbound (do-truncate channel.body 200)}}
+	{{do-truncate channel.body 200}}
 </p>
 {{yield}}

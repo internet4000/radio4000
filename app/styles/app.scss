@@ -43,6 +43,7 @@
 @import "components/aside";
 @import "components/icon";
 @import "components/tabs";
+@import "components/banner";
 @import "components/note";
 @import "components/list"; // @todo refactor
 @import "components/loader";
@@ -51,12 +52,12 @@
 @import "components/channel";
 @import "components/channel-card";
 @import "components/track";
-@import "components/banner";
 @import "components/login";
 @import "components/page-welcome";
 @import "components/playback-external";
-@import "components/search";
 @import "components/play-pause";
+@import "components/radio-bot";
+@import "components/search";
 @import "components/flash-messages";
 
 // Header area

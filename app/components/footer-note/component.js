@@ -1,3 +1,4 @@
+/* global window */
 import Ember from 'ember';
 
 const {Component} = Ember;

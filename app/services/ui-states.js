@@ -6,7 +6,7 @@ const {computed, on} = Ember;
 
 export default Ember.Service.extend({
 	player: {
-		isMinimal: false,
+		isMinimized: true,
 		isFullscreen: false
 	},
 

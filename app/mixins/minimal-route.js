@@ -1,8 +1,9 @@
 import Ember from 'ember';
 
-const {Mixin, set} = Ember;
+const {inject, Mixin, set} = Ember;
 
 export default Mixin.create({
+	uiStates: inject.service(),
 	activate() {
 		set(this, 'uiStates.isMinimal', true);
 	},

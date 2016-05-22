@@ -22,7 +22,7 @@ export default Route.extend({
 			// without this, it fails when you try to log in
 			return;
 		}
-		// because we use slugs instead of ids in the url
+		// Because we use slugs instead of ids in the url
 		// tell ember what the 'slug' param maps to on our model
 		return {slug: model.get('slug')};
 	},
