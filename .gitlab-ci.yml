@@ -8,9 +8,13 @@ cache:
 
 before_script:
   - npm config set spin false
-  - npm install -g bower ember-cli phantomjs-prebuilt surge gulp-cli
-  - npm install
+  - npm install -g ember-cli
+  - npm install -g phantomjs-prebuilt
+  - npm install -g surge
+  - npm install -g gulp-cli
+  - npm install -g bower
   - bower --allow-root install
+  - npm install
 
 stages:
   - test
@@ -19,7 +23,7 @@ stages:
 test:
   stage: test
   script:
-    - npm run test
+    - npm test
 
 deploy:
   stage: deploy
