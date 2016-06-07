@@ -7,6 +7,7 @@
 	.PlayButton,
 	.Channel-edit,
 	.Channel .Tabs,
+	.Channel-playback,
 	/*.RadioBot,*/
 	.SiteFooter {
 		display: none;
@@ -41,11 +42,11 @@
 		margin-top: 0;
 	}
 
-	.Channel-playback {
-		top: -0.5rem;
-		left: initial;
-		right: 1rem;
-	}
+	// .Channel-playback {
+	// 	top: -0.5rem;
+	// 	left: initial;
+	// 	right: 1rem;
+	// }
 
 	.Channel-outlet .Form--addTrack {
 		margin-left: 1rem;
