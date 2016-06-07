@@ -18,7 +18,7 @@
     "test": "ember test",
     "lint": "xo app/**/*.js && stylelint --syntax scss app/styles/**/*.scss"
   },
-  "repository": "https://bitbucket.com/radio4000/radio4000",
+  "repository": "https://gitlab.com/internet4000/radio4000",
   "engines": {
     "node": ">= 0.10.0"
   },
