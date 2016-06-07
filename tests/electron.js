@@ -16,9 +16,9 @@ app.on('ready', function onReady() {
         height: 700,
         'min-width': 320,
         'min-height': 400,
-        frame: true
+        frame: true,
         resizable: true,
-        toolbar: true,
+        toolbar: true
     });
 
     delete mainWindow.module;
