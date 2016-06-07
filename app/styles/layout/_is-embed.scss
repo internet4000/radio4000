@@ -1,0 +1,54 @@
+// This design intends to highlight the channel
+// and hide the rest of Radio4000.
+// Go to radio4000.com/[radio-slug]?isEmbed=true to see it.
+
+.is-embed {
+	.Bar--top,
+	.PlayButton,
+	.Channel-edit,
+	.Channel .Tabs,
+	/*.RadioBot,*/
+	.SiteFooter {
+		display: none;
+	}
+
+	.Sections {
+		padding-top: initial;
+	}
+
+	.Section:last-of-type {
+		margin-bottom: 0;
+	}
+
+	.Container {
+		max-width: none;
+		padding-left: initial;
+		padding-right: initial;
+	}
+
+	.Channel--detail {
+		margin-top: initial;
+		margin-left: initial;
+		box-shadow: none;
+		border: 0;
+	}
+
+	.Channel--detail .List {
+		margin-bottom: 0;
+	}
+
+	.Channel-media {
+		margin-top: 0;
+	}
+
+	.Channel-playback {
+		top: -0.5rem;
+		left: initial;
+		right: 1rem;
+	}
+
+	.Channel-outlet .Form--addTrack {
+		margin-left: 1rem;
+		margin-right: 1rem;
+	}
+}

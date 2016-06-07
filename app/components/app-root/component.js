@@ -9,6 +9,8 @@ export default Component.extend({
 	classNames: ['Root'],
 	classNameBindings: [
 		'uiStates.player.isMaximized:is-maximized',
+		'isEmbed',
+		'isInverted',
 		'uiStates.player.isMinimized:is-minimized',
 		'uiStates.isMinimal',
 		'uiStates.isPanelLeftVisible:is-panelLeftVisible',
