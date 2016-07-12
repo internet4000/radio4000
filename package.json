@@ -75,7 +75,7 @@
     "ember-modal-dialog": "^0.8.0",
     "ember-validations": "2.0.0-alpha.4",
     "ember-youtube": "^0.6.0",
-    "emberfire": "^1.6.6",
+    "emberfire": "^2.0.1",
     "lazysizes": "^2.0.0",
     "suitcss-base": "^2.0.0",
     "surge": "^0.18.0",

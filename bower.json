@@ -4,7 +4,7 @@
     "cloudinary": "cloudinary_js#~1.0.25",
     "jquery-file-upload": "~9.11.2",
     "js-cookie": "^2.0.4",
-    "firebase": "^2.1.0",
+    "firebase": "^3.0.0",
     "ember": "~2.4.3",
     "ember-cli-shims": "0.1.1",
     "ember-cli-test-loader": "0.2.2",

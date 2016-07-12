@@ -4,7 +4,12 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'radio4000',
     environment: environment,
-    firebase: 'https://radio4000-dev.firebaseio.com/',
+    firebase: {
+      apiKey: "AIzaSyAB0Ur8WSMcina9GDvJ22XnMLk3hOKGPeg",
+      authDomain: "radio4000-dev.firebaseapp.com",
+      databaseURL: "https://radio4000-dev.firebaseio.com",
+      storageBucket: "radio4000-dev.appspot.com"
+    },
     youtubeApiKey: 'AIzaSyCk5FiiPiyHON7PMLfLulM9GFmSYt6W5v4',
     torii: {
       // a 'session' property will be injected on routes and controllers
@@ -18,12 +23,11 @@ module.exports = function(environment) {
         // e.g. 'with-controller': true
       }
     },
-
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-   },
-   flashMessageDefaults: {
+    },
+    flashMessageDefaults: {
       timeout: 3000,
       extendedTimeout: 1000
     }
@@ -53,8 +57,14 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    // radio4000.com
-    ENV.firebase = 'https://radio4000.firebaseio.com/';
+    // Switch to live Firebase
+    ENV.firebase = {
+      apiKey: "AIzaSyAyeuzsaD353IhPbffzvP8EE88HNTwSTY0",
+      authDomain: "radio4000.firebaseapp.com",
+      databaseURL: "https://radio4000.firebaseio.com",
+      storageBucket: ""
+    };
+    // Enable google analytics
     ENV.googleAnalytics = {
         webPropertyId: 'UA-3906535-23'
     };
