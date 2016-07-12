@@ -1,17 +1,17 @@
 import Ember from 'ember';
 
-const {RSVP: {Promise}} = Ember;
+const {RSVP: {promise}} = Ember;
 
 export function createUserSetting(user, store) {
 	if (!user) {
 		throw new Error('Missing `user` argument');
 	}
-	if (user.get('settings')) {
+	if (user.get('settings').length) {
 		console.log('Can not create user setting. Already exists.');
 		return Promise.resolve(user.get('settings.firstObject'));
 	}
-	const userSetting = this.get('store').createRecord('user-setting', {user});
-	return Promise(resolve => {
+	const userSetting = store.createRecord('user-setting', {user});
+	return new Promise(resolve => {
 		userSetting.save().then(() => {
 			user.set('settings', userSetting);
 			user.save().then(() => resolve(userSetting));
