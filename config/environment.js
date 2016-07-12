@@ -5,14 +5,16 @@ module.exports = function(environment) {
     modulePrefix: 'radio4000',
     environment: environment,
     firebase: {
-      apiKey: "AIzaSyAB0Ur8WSMcina9GDvJ22XnMLk3hOKGPeg",
-      authDomain: "radio4000-dev.firebaseapp.com",
-      databaseURL: "https://radio4000-dev.firebaseio.com",
-      storageBucket: "radio4000-dev.appspot.com"
+      apiKey: 'AIzaSyDi6cxC167OWaliNMnZkE0BX1XP8ObwdnQ',
+      authDomain: 'radio4000-staging.firebaseapp.com',
+      databaseURL: 'https://radio4000-staging.firebaseio.com',
+      // apiKey: 'AIzaSyAyeuzsaD353IhPbffzvP8EE88HNTwSTY0',
+      // authDomain: 'radio4000.firebaseapp.com',
+      // databaseURL: 'https://radio4000.firebaseio.com',
+      storageBucket: ''
     },
     youtubeApiKey: 'AIzaSyCk5FiiPiyHON7PMLfLulM9GFmSYt6W5v4',
     torii: {
-      // a 'session' property will be injected on routes and controllers
       sessionServiceName: 'session'
     },
     baseURL: '/',
@@ -59,10 +61,10 @@ module.exports = function(environment) {
   if (environment === 'production') {
     // Switch to live Firebase
     ENV.firebase = {
-      apiKey: "AIzaSyAyeuzsaD353IhPbffzvP8EE88HNTwSTY0",
-      authDomain: "radio4000.firebaseapp.com",
-      databaseURL: "https://radio4000.firebaseio.com",
-      storageBucket: ""
+      apiKey: 'AIzaSyAyeuzsaD353IhPbffzvP8EE88HNTwSTY0',
+      authDomain: 'radio4000.firebaseapp.com',
+      databaseURL: 'https://radio4000.firebaseio.com',
+      storageBucket: ''
     };
     // Enable google analytics
     ENV.googleAnalytics = {
