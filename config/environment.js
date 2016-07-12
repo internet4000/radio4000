@@ -5,7 +5,8 @@ module.exports = function(environment) {
     modulePrefix: 'radio4000',
     environment: environment,
     firebase: 'https://radio4000-dev.firebaseio.com/',
-    youtubeApiKey: 'AIzaSyCk5FiiPiyHON7PMLfLulM9GFmSYt6W5v4',
+    // Find the key here https://console.developers.google.com/apis/credentials?project=firebase-radio4000
+    youtubeApiKey: 'AIzaSyAyeuzsaD353IhPbffzvP8EE88HNTwSTY0',
     torii: {
       // a 'session' property will be injected on routes and controllers
       sessionServiceName: 'session'
