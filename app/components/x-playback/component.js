@@ -19,7 +19,7 @@ export default Component.extend(EKMixin, {
 	activateKeyboard: Ember.on('init', function () {
 		this.set('keyboardActivated', true);
 	}),
-	onSpaceClick: on(keyUp(' '), function () {
+	onSpaceClick: on(keyUp('Space'), function () {
 		this.send('togglePlay');
 	}),
 	closeFullscreen: on(keyUp('Escape'), function () {

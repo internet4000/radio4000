@@ -22,7 +22,7 @@ module.exports = function (defaults) {
     styleProcessorOptions: {
       processors: [
         {
-          type: 'sass'
+          type: 'node-sass'
         },
         {
           type: 'postcss',
