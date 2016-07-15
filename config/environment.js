@@ -5,13 +5,15 @@ module.exports = function(environment) {
     modulePrefix: 'radio4000',
     environment: environment,
     firebase: {
+      // this is the NEW DEV project
       apiKey: 'AIzaSyDi6cxC167OWaliNMnZkE0BX1XP8ObwdnQ',
       authDomain: 'radio4000-staging.firebaseapp.com',
       databaseURL: 'https://radio4000-staging.firebaseio.com',
+
+      // this is the LIVE project
       // apiKey: 'AIzaSyAyeuzsaD353IhPbffzvP8EE88HNTwSTY0',
       // authDomain: 'radio4000.firebaseapp.com',
       // databaseURL: 'https://radio4000.firebaseio.com',
-      storageBucket: ''
     },
     youtubeApiKey: 'AIzaSyCk5FiiPiyHON7PMLfLulM9GFmSYt6W5v4',
     torii: {
