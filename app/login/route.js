@@ -29,8 +29,10 @@ export default Ember.Route.extend({
 		login(provider) {
 			const flashMessages = get(this, 'flashMessages');
 			get(this, 'session').open('firebase', {provider}).then(() => {
-				flashMessages.info('You are logged in');
+				flashMessages.info('You have been signed in');
 				this.redirectIfAuthenticated();
+			}).catch(err => {
+				console.log(err);
 			});
 		}
 	}
