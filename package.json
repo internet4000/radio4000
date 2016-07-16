@@ -60,6 +60,7 @@
     "grunticon-lib": "^1.0.3",
     "gulp": "^3.9.1",
     "loader.js": "^4.0.1",
+    "node-sass": "^3.8.0",
     "path": "^0.12.7",
     "postcss-import": "^8.0.2",
     "q": "^1.4.1",
