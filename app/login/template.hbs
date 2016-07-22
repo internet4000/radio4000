@@ -1,12 +1,6 @@
 <div class="Sections">
 	<section class="Section">
 		<div class="Container">
-			<ul>
-				<li>{{session.isAuthenticated}}</li>
-				<li>{{session.provider}}</li>
-				<li>{{session.uid}}</li>
-				<li>{{session.currentUser}}</li>
-			</ul>
 			{{#if session.isAuthenticated}}
 				<p>You are already logged in.</p>
 				<p>{{link-to "Log out" "logout"}}</p>
