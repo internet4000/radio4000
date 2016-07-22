@@ -4,11 +4,19 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'radio4000',
     environment: environment,
-    firebase: 'https://radio4000-dev.firebaseio.com/',
-    // Find the key here https://console.developers.google.com/apis/credentials?project=firebase-radio4000
-    youtubeApiKey: 'AIzaSyAyeuzsaD353IhPbffzvP8EE88HNTwSTY0',
+    firebase: {
+      // this is the NEW DEV project
+      apiKey: 'AIzaSyDi6cxC167OWaliNMnZkE0BX1XP8ObwdnQ',
+      authDomain: 'radio4000-staging.firebaseapp.com',
+      databaseURL: 'https://radio4000-staging.firebaseio.com',
+
+      // this is the LIVE project
+      // apiKey: 'AIzaSyAyeuzsaD353IhPbffzvP8EE88HNTwSTY0',
+      // authDomain: 'radio4000.firebaseapp.com',
+      // databaseURL: 'https://radio4000.firebaseio.com',
+    },
+    youtubeApiKey: 'AIzaSyCk5FiiPiyHON7PMLfLulM9GFmSYt6W5v4',
     torii: {
-      // a 'session' property will be injected on routes and controllers
       sessionServiceName: 'session'
     },
     baseURL: '/',
@@ -19,12 +27,11 @@ module.exports = function(environment) {
         // e.g. 'with-controller': true
       }
     },
-
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-   },
-   flashMessageDefaults: {
+    },
+    flashMessageDefaults: {
       timeout: 3000,
       extendedTimeout: 1000
     }
@@ -54,8 +61,14 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    // radio4000.com
-    ENV.firebase = 'https://radio4000.firebaseio.com/';
+    // Switch to live Firebase
+    ENV.firebase = {
+      apiKey: 'AIzaSyAyeuzsaD353IhPbffzvP8EE88HNTwSTY0',
+      authDomain: 'radio4000.firebaseapp.com',
+      databaseURL: 'https://radio4000.firebaseio.com',
+      storageBucket: ''
+    };
+    // Enable google analytics
     ENV.googleAnalytics = {
         webPropertyId: 'UA-3906535-23'
     };
