@@ -15,7 +15,7 @@ module.exports = function(environment) {
       // authDomain: 'radio4000.firebaseapp.com',
       // databaseURL: 'https://radio4000.firebaseio.com',
     },
-    youtubeApiKey: 'AIzaSyCk5FiiPiyHON7PMLfLulM9GFmSYt6W5v4',
+    youtubeApiKey: 'AIzaSyBPY0xzz4PQEl5hgm-wggEA4Zlho11Rtfk',
     torii: {
       sessionServiceName: 'session'
     },
