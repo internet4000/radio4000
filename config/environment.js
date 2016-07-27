@@ -19,7 +19,7 @@ module.exports = function(environment) {
     torii: {
       sessionServiceName: 'session'
     },
-    baseURL: '/',
+    rootURL: '/',
     locationType: process.env.EMBER_CLI_ELECTRON ? 'hash' : 'auto',
     EmberENV: {
       FEATURES: {

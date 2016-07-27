@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {RSVP: {promise}} = Ember;
+const {RSVP} = Ember;
 
 export function createUserSetting(user, store) {
 	if (!user) {
@@ -8,10 +8,10 @@ export function createUserSetting(user, store) {
 	}
 	if (user.get('settings').length) {
 		console.log('Can not create user setting. Already exists.');
-		return Promise.resolve(user.get('settings.firstObject'));
+		return RSVP.Promise.resolve(user.get('settings.firstObject'));
 	}
 	const userSetting = store.createRecord('user-setting', {user});
-	return new Promise(resolve => {
+	return new RSVP.Promise(resolve => {
 		userSetting.save().then(() => {
 			user.set('settings', userSetting);
 			user.save().then(() => resolve(userSetting));
@@ -26,7 +26,7 @@ export function getOrCreateUser(id, store) {
 	if (!store) {
 		throw new Error('Missing `store` argument');
 	}
-	return new Promise(resolve => {
+	return new RSVP.Promise(resolve => {
 		store.findRecord('user', id).then(user => {
 			resolve(user);
 		}).catch(error => {
