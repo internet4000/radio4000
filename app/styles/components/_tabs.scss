@@ -10,9 +10,13 @@
 	margin-bottom: 1rem;
 
 	// A bit of depth.
+	border-top: 1px solid hsl(0, 0%, 85%);
+	border-left: 1px solid hsl(0, 0%, 80%);
+	border-right: 1px solid hsl(0, 0%, 80%);
 	background-color: $superlightgray;
 	border-radius: $border-radius;
 	box-shadow: $box-shadow;
+
 
 	// When several tabs follow each other.
 	& + .Tabs {
@@ -21,6 +25,7 @@
 }
 
 .Tabs--transparent {
+	border-color: transparent;
 	background-color: transparent;
 	box-shadow: none;
 }
@@ -62,6 +67,7 @@
 /**
  * Modifiers
  */
+
 .Tabs--horizontal {
 	flex-flow: row wrap;
 	text-align: center;
@@ -95,6 +101,7 @@
 // Used where the background is considered "higher",
 // for instance on a light bg as channel header.
 .Tabs--lighter {
+	border: 0;
 	border-left: 0;
 	border-right: 0;
 	box-shadow: none;
