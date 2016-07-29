@@ -11,7 +11,7 @@ export default Service.extend({
 
 	playAnotherRadio: task(function * (prev) {
 		const channel = yield this.findRandomChannel();
-		// if the new "random" is the same (it happens), run again
+		// if the new "random" is the same as the last, it does happen, run again
 		if (prev && prev.id === channel.id) {
 			return this.get('playAnotherRadio').perform(channel);
 		}
@@ -22,7 +22,10 @@ export default Service.extend({
 	playNewestTrack: task(function * (channel) {
 		const track = yield this.findLastTrack(channel);
 		if (!track) {
-			throw new Error('playTrack was called without a track.');
+			console.log('playTrack was called without a track.');
+			this.get('playAnotherRadio').perform();
+			return;
+			// throw new Error('playTrack was called without a track.');
 		}
 		this.get('player').playTrack(track);
 	}).drop(),
@@ -32,22 +35,29 @@ export default Service.extend({
 	},
 
 	findRandomChannel() {
+		let items = null;
+		let channel;
 		// This returns a single, ramdom channel while doing effecient queries
 		// e.g. first it finds all records, then looks to the cache
 		return new Ember.RSVP.Promise(resolve => {
 			const isCached = this.get('store').peekAll('channel').get('length');
-			let items = null;
 			if (isCached >= 20) {
 				items = this.get('store').peekAll('channel');
 				const filtered = items.filter(c => c.get('totalTracks') > 5);
-				const channel = filtered.objectAt(randomIndex(filtered));
+				channel = filtered.objectAt(randomIndex(filtered));
 				resolve(channel);
 			} else {
 				items = this.get('store').findAll('channel');
 				// items = this.findLast(10, 'channel');
 				items.then(channels => {
-					const filtered = channels.filter(c => c.get('totalTracks') > 5);
-					const channel = filtered.objectAt(randomIndex(filtered));
+					const filtered = channels.filter(c => c.get('totalTracks') > 10);
+					if (Ember.isEmpty(filtered)) {
+						const channelsWithAtLeastOneTrack = channels.filter(c => c.get('totalTracks') > 0);
+						channel = channels.objectAt(randomIndex(channelsWithAtLeastOneTrack));
+					} else {
+						channel = filtered.objectAt(randomIndex(filtered));
+					}
+					Ember.debug(channel.get('title'));
 					resolve(channel);
 				});
 			}
