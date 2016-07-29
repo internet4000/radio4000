@@ -19,7 +19,7 @@ module.exports = function(environment) {
     torii: {
       sessionServiceName: 'session'
     },
-    baseURL: '/',
+    rootURL: '/',
     locationType: process.env.EMBER_CLI_ELECTRON ? 'hash' : 'auto',
     EmberENV: {
       FEATURES: {
@@ -50,7 +50,7 @@ module.exports = function(environment) {
 
   if (environment === 'test') {
     // Testem prefers this...
-    ENV.baseURL = '/';
+    ENV.rootURL = '/';
     ENV.locationType = 'none';
 
     // keep test console output quieter
