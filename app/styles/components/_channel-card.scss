@@ -42,15 +42,11 @@
 	right: 0.5rem;
 	z-index: 1;
 
-	.Btn {
-		transition: all 300ms 2000ms $easing;
-
-		&.is-hidden {
-			transform: scale(0.9) translate3d(0.5rem, 0, 0);
-			transform-origin: right;
-			opacity: 0;
-			pointer-events: none;
-		}
+	.Btn.is-hidden {
+		transform: scale(0.9) translate3d(0.5rem, 0, 0);
+		transform-origin: right;
+		opacity: 0;
+		pointer-events: none;
 	}
 }
 

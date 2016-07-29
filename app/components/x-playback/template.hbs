@@ -1,5 +1,11 @@
-<div class="Playback-sizeButtons">
-	<button class="Playback-minimalBtn Btn Btn--small" {{action 'toggleMinimizedPlayer'}} title="Minimize Player">
+<div class="Playback-layoutButtons">
+	{{!-- skip button is hidden for now because it doesn't fit here ux-wise --}}
+	{{!-- {{#if player.model.channel}}
+		<button class="Btn Btn--small" onClick={{perform bot.playAnotherRadio channel}} disabled={{bot.playAnotherRadio.isRunning}} title="Skip to next radio">
+			{{if bot.playAnotherRadio.isIdle 'Skip' 'Skipping'}}
+		</button>
+	{{/if}} --}}
+	<button class="Playback-minimalBtn Btn Btn--small" {{action 'toggleMinimizedPlayer'}} title="Toggle minimized player">
 		{{if uiStates.player.isMinimized '⬒' '_'}}
 	</button>
 	<button class="Playback-fullscreenBtn Btn Btn--small" {{action 'toggleMaximizedPlayer'}} title="Toggle fullscreen player">
@@ -12,6 +18,7 @@
 </div>
 
 <div class="Playback-player">
+	{{radio-bot}}
 	{{ember-youtube class="Player"
 		ytid=player.model.ytid
 		delegate=this
@@ -43,7 +50,7 @@
 {{/if}}
 
 <div class="Playback-buttons">
-	<button class="Playback-button Playback-shuffle {{if player.isRandom 'is-active'}}" {{action 'toggleRandom'}} title="Toggle shuffle playback">
+	<button class="Playback-button Playback-shuffle {{if player.isRandom 'is-active'}}" {{action 'toggleRandom'}} title="{{if player.isRandom 'Disable shuffle' 'Enable shuffle'}}">
 		{{x-icon i='shuffle'}}
 	</button>
 

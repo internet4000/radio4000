@@ -1,3 +1,4 @@
+/* global document */
 import Ember from 'ember';
 
 const {debug, inject} = Ember;
@@ -55,10 +56,10 @@ export default Ember.Service.extend({
 	},
 
 	setDocumentTitle() {
-		if (document) {
-			document.title = `${this.get('model.title')} on ${this.get('playlist.title')}`;
+		if (!document) {
+			throw new Error('no document');
 		}
-
+		document.title = `${this.get('model.title')} on ${this.get('playlist.title')}`;
 	},
 
 	/**

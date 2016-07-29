@@ -2,7 +2,7 @@
 .Channel--detail {
 	position: relative;
 	background-color: $slightgray;
-	border-top: 1px solid $superlightgray;
+	border-top: 1px solid hsl(0, 0%, 85%);
 	border-left: 1px solid hsl(0, 0%, 80%);
 	border-right: 1px solid hsl(0, 0%, 80%);
 	border-radius: $border-radius;
@@ -104,6 +104,9 @@
 	i {
 		margin-right: 0.3rem;
 	}
+	svg {
+	    float: left;
+	}
 }
 
 .Channel-outlet {
@@ -158,14 +161,6 @@
 		@include size-1;
 		word-wrap: break-word;
 		color: $gray;
-	}
-}
-
-.Channel-contextual {
-	float: right;
-
-	.BtnGroup {
-		float: right;
 	}
 }
 

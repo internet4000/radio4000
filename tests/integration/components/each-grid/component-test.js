@@ -6,13 +6,7 @@ moduleForComponent('each-grid', 'Integration | Component | each grid', {
 });
 
 test('it renders', function (assert) {
-	assert.expect(3);
-
-	// Set any properties with this.set('myProperty', 'value');
-	// Handle any actions with this.on('myAction', function(val) { ... });
-
-	this.render(hbs`{{each-grid}}`);
-	assert.equal(this.$().text().trim(), '');
+    assert.expect(2);
 
 	// Template block usage:
 	this.set('testItems', ['Michael', 'Hugo', 'Jackson']);
@@ -21,7 +15,6 @@ test('it renders', function (assert) {
 			<h2>{{item}}</h2>
 		{{/each-grid}}
 	`);
-
 	assert.equal(this.$().find('h2:first').text().trim(), 'Michael', 'it renders the first item');
 	assert.equal(this.$().find('h2:last').text().trim(), 'Jackson', 'it renders the last item');
 });

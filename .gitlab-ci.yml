@@ -1,4 +1,4 @@
-image: node:5
+image: node:5.10
 
 cache:
   key: "$CI_BUILD_NAME/$CI_BUILD_REF_NAME"
@@ -7,12 +7,14 @@ cache:
   - node_modules/
 
 before_script:
-  - npm cache clean
-  - rm -rf node_modules bower_components dist tmp
-  - npm install -g phantomjs ember-cli surge gulp-cli bower
-  - npm install
-  - npm set progress=false
+  - npm config set spin false
+  - npm install -g ember-cli
+  - npm install -g phantomjs-prebuilt
+  - npm install -g surge
+  - npm install -g gulp-cli
+  - npm install -g bower
   - bower --allow-root install
+  - npm install
 
 stages:
   - test
@@ -21,7 +23,7 @@ stages:
 test:
   stage: test
   script:
-    - npm run test
+    - npm test
 
 deploy:
   stage: deploy

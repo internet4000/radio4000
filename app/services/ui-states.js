@@ -6,7 +6,7 @@ const {computed, on} = Ember;
 
 export default Ember.Service.extend({
 	player: {
-		isMinimal: false,
+		isMinimized: true,
 		isFullscreen: false
 	},
 
@@ -16,7 +16,7 @@ export default Ember.Service.extend({
 	}),
 
 	// 513px is our current breakpoint for panel to be full width.
-	smallScreen: computed('initialWidth', function () {
+	isSmallScreen: computed('initialWidth', function () {
 		return this.get('initialWidth') < 513;
 	}),
 
@@ -26,7 +26,7 @@ export default Ember.Service.extend({
 	// isPanelLeftVisible: true,
 	isPanelLeftVisible: computed({
 		get() {
-			if (this.get('smallScreen')) {
+			if (this.get('isSmallScreen')) {
 				return false;
 			}
 
@@ -40,12 +40,14 @@ export default Ember.Service.extend({
 			return value;
 		}
 	}),
+
 	togglePanelLeft() {
 		this.toggleProperty('isPanelLeftVisible');
 	},
+
 	// Only close if we're on a small screen.
-	perhapsClosePanel() {
-		if (this.get('smallScreen')) {
+	closeLeftPanelIfSmallScreen() {
+		if (this.get('isSmallScreen')) {
 			this.set('isPanelLeftVisible', false);
 		}
 	}

@@ -17,9 +17,13 @@ export default Route.extend({
 		}
 	},
 
-	// because we use slugs instead of ids in the url
-	// tell ember what the 'slug' param maps to on our model
 	serialize(model) {
+		if (!model) {
+			// without this, it fails when you try to log in
+			return;
+		}
+		// Because we use slugs instead of ids in the url
+		// tell ember what the 'slug' param maps to on our model
 		return {slug: model.get('slug')};
 	},
 

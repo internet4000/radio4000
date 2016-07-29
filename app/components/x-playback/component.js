@@ -6,19 +6,20 @@ const {Component, inject, computed, on, run, $} = Ember;
 export default Component.extend(EKMixin, {
 	classNames: ['Playback'],
 	player: inject.service(),
+	bot: inject.service(),
 	uiStates: inject.service(),
 	channel: computed.alias('player.model.channel'),
 
 	youtubePlayerVars: {
-	    autoplay: 1,
-	    showinfo: 0
+		autoplay: 1,
+		showinfo: 0
 	},
 
 	// Keyboard shortucts.
 	activateKeyboard: Ember.on('init', function () {
 		this.set('keyboardActivated', true);
 	}),
-	onSpaceClick: on(keyUp(' '), function () {
+	onSpaceClick: on(keyUp('Space'), function () {
 		this.send('togglePlay');
 	}),
 	closeFullscreen: on(keyUp('Escape'), function () {

@@ -14,9 +14,9 @@
 	{{else}}
 		<div class="Container Container--full">
 			<div class="Grid">
-				{{#each model.featured as |item|}}
+				{{#each model.featured as |channel|}}
 					<div class="Grid-cell">
-						{{channel-card channel=item}}
+						{{channel-card channel=channel}}
 					</div>
 				{{/each}}
 				<div class="Grid-cell Grid-cell--double">
@@ -46,9 +46,9 @@
 
 		<div class="Container Container--full">
 			<div class="Grid Grid--wide">
-				{{#each model.userChannel.favoriteChannels as |item|}}
+				{{#each model.userChannel.favoriteChannels as |userFavorite|}}
 					<div class="Grid-cell">
-						{{channel-card channel=item wide=true}}
+						{{channel-card channel=userFavorite wide=true}}
 					</div>
 				{{/each}}
 			</div>

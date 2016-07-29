@@ -17,7 +17,7 @@ npm install -g ember-cli
 git clone git@bitbucket.org:radio4000/radio4000.git
 cd radio4000
 npm install; bower install
-npm run start
+npm start
 ```
 
 Also see http://www.ember-cli.com/
@@ -25,8 +25,8 @@ Also see http://www.ember-cli.com/
 ## Testing
 
 ```
-npm run test-xo
-npm run test
+npm run lint
+npm test
 ```
 
 ## Deployment

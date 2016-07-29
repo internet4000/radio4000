@@ -11,7 +11,7 @@ export default Component.extend({
 	click(event) {
 		const clickedElementHasAnHref = event.target.href;
 		if (clickedElementHasAnHref && this.get('uiStates.isPanelLeftVisible')) {
-			this.get('uiStates').perhapsClosePanel();
+			this.get('uiStates').closeLeftPanelIfSmallScreen();
 		}
 	}
 });

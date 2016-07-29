@@ -1,0 +1,37 @@
+// This design intends to invert the default color scheme.
+// In this case, we make it white on black.
+// Go to radio4000.com/[radio-slug]?isInverted=true to see it.
+
+.is-inverted {
+	.List-item {
+		border-color: rgba(117, 117, 117, 0.15);
+	}
+
+	.Track-link,
+	a.Track-link,
+	h1 a,
+	.Title a {
+		color: $text-color-invert;
+	}
+
+	&.Root,
+	.Channel--detail,
+	.Channel-header {
+		background-color: $black;
+	}
+
+	.Root.isInverted {
+		color: $text-color-invert;
+	}
+
+	.Track.is-current .Track-link,
+	.Track.is-current a.Track-link {
+		background-color: $dark;
+		// color: $text-color-invert;
+	}
+
+	.Aside--right {
+		border-color: $black;
+		box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+	}
+}

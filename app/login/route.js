@@ -6,11 +6,17 @@ const {get} = Ember;
 export default Ember.Route.extend({
 	uiStates: Ember.inject.service(),
 
-	afterLogin() {
+	beforeModel() {
+		if (get(this, 'session.isAuthenticated')) {
+			return this.redirectIfAuthenticated();
+		}
+	},
+
+	redirectIfAuthenticated() {
 		return get(this, 'session.currentUser.channels').then(channels => {
-			const channel = get(channels, 'firstObject');
-			if (channel) {
-				return this.transitionTo('channel', channel);
+			const userChannel = get(channels, 'firstObject');
+			if (userChannel) {
+				return this.transitionTo('channel', userChannel);
 			}
 			return this.transitionTo('channels.new');
 		});
@@ -23,8 +29,10 @@ export default Ember.Route.extend({
 		login(provider) {
 			const flashMessages = get(this, 'flashMessages');
 			get(this, 'session').open('firebase', {provider}).then(() => {
-				flashMessages.info('You are logged in');
-				this.afterLogin();
+				flashMessages.info('You have been signed in');
+				this.redirectIfAuthenticated();
+			}).catch(err => {
+				console.log(err);
 			});
 		}
 	}

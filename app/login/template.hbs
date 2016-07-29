@@ -1,14 +1,17 @@
 <div class="Sections">
 	<section class="Section">
 		<div class="Container">
-			{{#if session.currentUser.channels.firstObject}}
-				<p>You are already logged in.<br>
-				Did you want to go to your radio?</p>
-				<p>
-					{{#link-to 'channel' session.currentUser.channels.firstObject.slug}}
-						Go to {{session.currentUser.channels.firstObject.title}}.
-					{{/link-to}}
-				</p>
+			{{#if session.isAuthenticated}}
+				<p>You are already logged in.</p>
+				<p>{{link-to "Log out" "logout"}}</p>
+				{{#if session.currentUser.channels.firstObject}}
+					<p>Did you want to go to your radio?</p>
+					<p>
+						{{#link-to "channel" session.currentUser.channels.firstObject.slug}}
+							Go to {{session.currentUser.channels.firstObject.title}}.
+						{{/link-to}}
+					</p>
+				{{/if}}
 			{{else}}
 				<h1>Sign in or create your own radio</h1>
 				<p class="Subtitle">A single radio for you, music for everyone — and an infinity of great tracks curated with love.</p>

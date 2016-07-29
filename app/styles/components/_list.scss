@@ -19,8 +19,8 @@
 
 // When a link wraps everything
 .List-item a {
-	display: block;
 	@include clearfix;
+	display: block;
 	padding: 0.8rem 1rem 0.7rem;
 	text-decoration: none;
 
