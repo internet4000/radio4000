@@ -33,30 +33,3 @@ path {
 .icon-twtter {
 	color: #00aced;
 }
-
-// Star colors
-.icon-star,
-.icon-star-yellow {
-	font-size: 2rem;
-	stroke-width: 2;
-	transition: all 150ms $easing;
-}
-
-.icon-star,
-.icon-star path {
-	fill: $gray;
-	stroke: $gray;
-
-	// &:hover {
-	// 	stroke: $yellowStroke;
-	// }
-}
-
-.icon-star-yellow {
-	fill: $yellow;
-	stroke: $yellow;
-
-	// &:hover {
-	// 	stroke: $mediumgray;
-	// }
-}

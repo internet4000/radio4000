@@ -1,4 +1,7 @@
-<button class="Btn" onClick={{perform bot.playAnotherRadio channel}} disabled={{bot.playAnotherRadio.isRunning}}>
+<button class="Btn"
+	onClick={{perform bot.playAnotherRadio channel}}
+	disabled={{bot.playAnotherRadio.isRunning}}>
+
 	{{#if bot.playAnotherRadio.isIdle}}
 		{{#if player.model.channel}}Play another radio{{else}}Play some music{{/if}}
 	{{else}}
