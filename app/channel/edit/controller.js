@@ -58,7 +58,7 @@ export default Controller.extend(EmberValidations, {
 	},
 
 	isSlugTaken: computed('model.slug', function () {
-		const protectedSlugs = ['about', 'job', 'jobs',
+		const protectedSlugs = ['add' ,'about', 'job', 'jobs',
 			'blog', 'bookmarklet', 'dashboard', 'help',
 			'intro', 'login', '404', 'bunker', 'styleguide'];
 
