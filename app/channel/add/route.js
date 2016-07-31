@@ -3,4 +3,9 @@ import ownerRouteMixin from 'radio4000/mixins/owner-route';
 
 const {Route} = Ember;
 
-export default Route.extend(ownerRouteMixin);
+export default Route.extend(ownerRouteMixin, {
+	// clear any unsaved changes
+	deactivate() {
+		this.get('currentModel').rollbackAttributes();
+	}
+});

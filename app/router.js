@@ -13,7 +13,6 @@ Router.map(function () {
       this.route('contact');
       this.route('technology');
   });
-  this.route('bookmarklet');
   this.route('dashboard');
   this.route('help');
   this.route('intro');
@@ -33,13 +32,9 @@ Router.map(function () {
       this.authenticatedRoute('history');
   });
 
-  // Support deprecated channels urls. Needs to be defined before 'channel' route.
-  this.route('channel-alias', {path: '/c/:slug'});
-
   this.route('channel', {path: '/:slug'}, function () {
-      this.authenticatedRoute('add', function () {
-          this.route('bookmarklet');
-      });
+      this.authenticatedRoute('add');
+      this.route('bookmarklet');
       this.authenticatedRoute('edit');
       this.authenticatedRoute('delete');
       this.route('dashboard', {});
@@ -49,6 +44,9 @@ Router.map(function () {
       this.route('favorites');
       this.route('followers');
   });
+  // Support deprecated channels urls. Needs to be defined before 'channel' route.
+  this.route('channel-alias', {path: '/c/:slug'});
+
   this.route('feedback');
 });
 

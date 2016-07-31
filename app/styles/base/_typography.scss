@@ -127,9 +127,10 @@ pre,
 }
 
 .Code {
+	overflow: auto;
+	padding: 0.45em;
 	background: $black;
 	color: hsl(118, 100%, 59%);
-	padding: 0.45em;
 }
 
 // Warnings
