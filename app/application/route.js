@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	actions: {
-		error(error, transition) {
+		error(error) {
 			if (error) {
 				this.transitionTo('404');
 			}
