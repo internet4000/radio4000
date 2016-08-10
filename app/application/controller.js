@@ -10,6 +10,7 @@ export default Controller.extend(createTrackMixin, {
 	isEmbed: false,
 	isInverted: false,
 	showAddTrack: false,
+	newUrl: null,
 
 	actions: {
 		saveTrack(trackProperties) {

@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {Mixin, debug, warn, get, RSVP} = Ember;
+const {Mixin, warn, get, RSVP} = Ember;
 
 // Creates and saves a new track on a channel.
 

@@ -1,25 +1,33 @@
 <div class="Channel-outlet">
 	{{#if canEdit}}
 		<div class="Container">
-			{{track-add-inline addTrackUrl=addTrackUrl onSubmit=(action 'addTrack')}}
+			{{track-add-inline addTrackUrl=addTrackUrl onSubmit=(action "addTrack")}}
 		</div>
 	{{/if}}
 
-	{{#if isAdding}}
-	  {{#modal-dialog close="closeModals"}}
-	    {{track-add newUrl=addTrackUrl submit="createNewTrack" cancel="closeModals"}}
-	  {{/modal-dialog}}
-	{{/if}}
+	{{!-- {{#if isAdding}}
+		{{#modal-dialog close="closeModals"}}
+			{{track-add newUrl=addTrackUrl submit="createNewTrack" cancel="closeModals"}}
+		{{/modal-dialog}}
+	{{/if}} --}}
 
 	{{#if isEditing}}
-	  {{#modal-dialog close="closeModals"}}
-	    {{track-edit track=trackToEdit submit="saveTrack" cancel="closeModals" deleteTrack="deleteTrack"}}
-	  {{/modal-dialog}}
+		{{#modal-dialog close="closeModals"}}
+			{{track-edit
+				track=trackToEdit
+				submit="updateTrack"
+				cancel="closeModals"
+				deleteTrack="deleteTrack"}}
+		{{/modal-dialog}}
 	{{/if}}
 
 	{{#if tracks.isLoaded}}
 		{{#tracks-list items=tracks numbered=true as |item|}}
-			{{track-item track=item canEdit=canEdit edit=(action "startEditingTrack") onTransition="transitionToTrack"}}
+			{{track-item
+			 track=item
+			 canEdit=canEdit
+			 edit=(action "startEditingTrack")
+			 onTransition="transitionToTrack"}}
 		{{/tracks-list}}
 
 		{{#unless canEdit}}
