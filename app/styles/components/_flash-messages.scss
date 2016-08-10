@@ -2,8 +2,8 @@
 	@include size-1;
 	z-index: 3;
 	position: fixed;
-	bottom: 1.4rem;
-	left: 0.7rem;
+	top: 1.4rem;
+	right: 0.7rem;
 	max-width: 20rem;
 }
 
@@ -18,7 +18,7 @@
 	background-color: $gray;
 
 	// initial state
-	transform: translateX(-110%);
+	transform: translateX(110%);
 	transition: transform 250ms $easing4;
 
 	&.active {
@@ -26,8 +26,12 @@
 	}
 
 	&.exiting {
-		transform: translateX(-110%);
+		transform: translateX(110%);
 	}
+}
+
+.alert-success {
+	background-color: lighten($purple, 20%);
 }
 
 .alert-info {

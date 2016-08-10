@@ -4,21 +4,6 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'radio4000',
     environment: environment,
-    firebase: {
-      // this is the NEW DEV project
-      apiKey: 'AIzaSyDi6cxC167OWaliNMnZkE0BX1XP8ObwdnQ',
-      authDomain: 'radio4000-staging.firebaseapp.com',
-      databaseURL: 'https://radio4000-staging.firebaseio.com',
-
-      // this is the LIVE project
-      // apiKey: 'AIzaSyAyeuzsaD353IhPbffzvP8EE88HNTwSTY0',
-      // authDomain: 'radio4000.firebaseapp.com',
-      // databaseURL: 'https://radio4000.firebaseio.com',
-    },
-    youtubeApiKey: 'AIzaSyBPY0xzz4PQEl5hgm-wggEA4Zlho11Rtfk',
-    torii: {
-      sessionServiceName: 'session'
-    },
     rootURL: '/',
     locationType: process.env.EMBER_CLI_ELECTRON ? 'hash' : 'auto',
     EmberENV: {
@@ -30,6 +15,17 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+    // https://console.developers.google.com/apis/credentials/key/2?project=firebase-radio4000
+    youtubeApiKey: 'AIzaSyBPY0xzz4PQEl5hgm-wggEA4Zlho11Rtfk',
+    firebase: {
+      // this is the NEW DEV project
+      apiKey: 'AIzaSyDi6cxC167OWaliNMnZkE0BX1XP8ObwdnQ',
+      authDomain: 'radio4000-staging.firebaseapp.com',
+      databaseURL: 'https://radio4000-staging.firebaseio.com',
+    },
+    torii: {
+      sessionServiceName: 'session'
     },
     flashMessageDefaults: {
       timeout: 3000,
