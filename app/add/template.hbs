@@ -1,0 +1,25 @@
+<div class="Sections">
+	<div class="Section">
+		<div class="Container">
+			<h2>Add a new track to <em>{{model.title}}</em></h2>
+
+			{{track-add
+				track=track
+				newUrl=url
+				submit="saveTrack"
+				cancel="goBack"}}
+
+			<br><br>
+			<p>
+				Do you want to see your channel? It currently has {{model.totalTracks}} tracks.<br>
+				&rarr; {{#link-to "channel" model.slug class="Btn Btn--text"}}Go to {{model.title}}{{/link-to}}
+			</p>
+			<p>
+				Do you want to add tracks directly from YouTube?<br>
+				&rarr;<a href="{{href-to "bookmarklet"}}" class="Btn Btn--text">Get the bookmarklet</a>
+			</p>
+		</div>
+	</div>
+</div>
+
+{{outlet}}

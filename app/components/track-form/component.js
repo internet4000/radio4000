@@ -2,14 +2,14 @@ import Ember from 'ember';
 import EmberValidations, {validator} from 'ember-validations';
 import youtubeRegex from 'npm:youtube-regex';
 
-const {Component} = Ember;
+const {Component, debug, get, set} = Ember;
 
 export default Component.extend(EmberValidations, {
 	tagName: 'form',
 	classNames: ['Form'],
 	classNameBindings: ['box:Form--box'],
-
 	showErrors: false,
+
 	validations: {
 		'track.url': {
 			// format: {
@@ -43,10 +43,17 @@ export default Component.extend(EmberValidations, {
 		submit() {
 			this.validate().then(() => {
 				// all validations pass
-				this.sendAction('submit', this.get('track'));
-			}).catch(() => {
+				this.sendAction('submit', get(this, 'track'));
+				// Reset the track form
+				this.setProperties({
+					url: '',
+					title: '',
+					body: ''
+				});
+			}).catch(err => {
 				// any validations fail
-				this.set('showErrors', true);
+				debug(err);
+				set(this, 'showErrors', true);
 			});
 		},
 		cancel() {
