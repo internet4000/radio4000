@@ -1,9 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-	// because our channels used to be a /:channel_slug we redirect
-	// to our new /:slug pattern
+	// Deprecated: channel routes used to be `/c/:channel_slug`.
+	// here we redirect to the current, real URL.
 	model(params) {
-		this.transitionTo(`/${params.slug}`);
+		this.replaceWith(`/${params.channel_slug}`);
 	}
 });
