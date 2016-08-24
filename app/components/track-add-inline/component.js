@@ -12,7 +12,6 @@ export default Component.extend({
 		}
 		const url = get(this, 'addTrackUrl');
 		get(this, 'onSubmit')(url);
-		// set(this, 'addTrackUrl', '');
 	},
 
 	actions: {
