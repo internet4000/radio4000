@@ -1,15 +1,10 @@
 <div class="Channel-outlet">
 	{{#if canEdit}}
 		<div class="Container">
-			{{track-add-inline addTrackUrl=addTrackUrl onSubmit=(action "addTrack")}}
+			{{track-add-inline addTrackUrl=addTrackUrl
+				onSubmit=(action "addTrack")}}
 		</div>
 	{{/if}}
-
-	{{!-- {{#if isAdding}}
-		{{#modal-dialog close="closeModals"}}
-			{{track-add newUrl=addTrackUrl submit="createNewTrack" cancel="closeModals"}}
-		{{/modal-dialog}}
-	{{/if}} --}}
 
 	{{#if isEditing}}
 		{{#modal-dialog close="closeModals"}}

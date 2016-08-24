@@ -25,15 +25,14 @@ export default Ember.Controller.extend(EmberValidations, createTrackMixin, {
 				trackToEdit: null
 			});
 		},
-
 		addTrack(url) {
 			debug(`Trying to add ${url}`);
 			get(this, 'applicationController').setProperties({
 				newUrl: url,
 				showAddTrack: true
 			});
+			this.set('addTrackUrl', '');
 		},
-
 		startEditingTrack(track) {
 			if (!this.get('canEdit')) {
 				return;
@@ -41,7 +40,6 @@ export default Ember.Controller.extend(EmberValidations, createTrackMixin, {
 			this.set('trackToEdit', track);
 			this.set('isEditing', true);
 		},
-
 		updateTrack(track) {
 			const flashMessages = Ember.get(this, 'flashMessages');
 
@@ -59,7 +57,6 @@ export default Ember.Controller.extend(EmberValidations, createTrackMixin, {
 				flashMessages.info('Track saved');
 			});
 		},
-
 		deleteTrack() {
 			this.send('closeModals');
 			return true;
