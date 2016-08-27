@@ -2,8 +2,14 @@ import Ember from 'ember';
 import moment from 'moment';
 
 export function formatDate(params) {
-	// moment needs a number, not a string
-	const date = Number(params[0]);
+	// Sometimes params is the number we want, other times it's an array?!
+	// Must be something with the way ember test consumes the helper.
+	let date;
+	if (typeof params === 'number') {
+		date = params;
+	} else {
+		date = Number(params[0]);
+	}
 	return moment(date).fromNow();
 }
 
