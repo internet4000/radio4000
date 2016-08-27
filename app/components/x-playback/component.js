@@ -4,10 +4,10 @@ import {EKMixin, keyUp} from 'ember-keyboard';
 const {Component, inject, computed, on, run, $} = Ember;
 
 export default Component.extend(EKMixin, {
-	classNames: ['Playback'],
 	player: inject.service(),
 	bot: inject.service(),
 	uiStates: inject.service(),
+	classNames: ['Playback'],
 	channel: computed.alias('player.model.channel'),
 
 	youtubePlayerVars: {
