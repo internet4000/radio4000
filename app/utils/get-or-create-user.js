@@ -31,17 +31,16 @@ export function createUserSetting(user, store) {
 
 	const alreadyHaveASetting = user.belongsTo('settings').id();
 	if (alreadyHaveASetting) {
-		debug('Can not create user setting. Already exists.');
 		return RSVP.Promise.resolve(user.get('settings.firstObject'));
 	}
 
-	debug('Creating new user-setting');
+	debug('No user settings found, creating…');
 	const userSetting = store.createRecord('user-setting', {user});
 	return new RSVP.Promise(resolve => {
 		userSetting.save().then(() => {
 			user.set('settings', userSetting);
 			user.save().then(() => {
-				debug('saved new user setting on user');
+				debug('created new user settings');
 				resolve(userSetting);
 			});
 		});
