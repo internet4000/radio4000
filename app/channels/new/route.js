@@ -48,7 +48,6 @@ export default Ember.Route.extend({
 	},
 
 	actions: {
-
 		// OK, saving a channel is a bit crazy because it involves
 		// creating a channelPublic as well as setting those relationships.
 		// Follow the comments and you'll be ok!
