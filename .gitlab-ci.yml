@@ -1,4 +1,4 @@
-image: node:5.10
+image: node:6.2.2
 
 cache:
   key: "$CI_BUILD_NAME/$CI_BUILD_REF_NAME"
@@ -8,13 +8,15 @@ cache:
 
 before_script:
   - npm config set spin false
+  # ember-cli dependencies
+  - npm install -g bower
   - npm install -g ember-cli
   - npm install -g phantomjs-prebuilt
-  - npm install -g surge
+  # these two are dependencies of our custom build script
   - npm install -g gulp-cli
-  - npm install -g bower
-  - bower --allow-root install
+  - npm install -g surge
   - npm install
+  - bower --allow-root install
 
 stages:
   - test
