@@ -14,20 +14,20 @@ export default ToriiFirebaseAdapter.extend({
      * @param {!firebase.User} user
      * @return {Promise}
      */
-    open(user) {
-	this._super(user);
-	const store = this.get('store');
-	return new RSVP.Promise(resolve => {
-	    getOrCreateUser(user.uid, store).then(userModel => {
-		createUserSetting(userModel, store);
-		resolve({
-		    provider: this.extractProviderId_(user),
-		    uid: user.uid,
-		    // currentUser: user
-		    // the above three props are defaults, below is custom
-		    currentUser: userModel
+	open(user) {
+		this._super(user);
+		const store = this.get('store');
+		return new RSVP.Promise(resolve => {
+			getOrCreateUser(user.uid, store).then(userModel => {
+				createUserSetting(userModel, store);
+				resolve({
+					provider: this.extractProviderId_(user),
+					uid: user.uid,
+					// currentUser: user
+					// the above three props are defaults, below is custom
+					currentUser: userModel
+				});
+			});
 		});
-	    });
-	});
-    }
+	}
 });
