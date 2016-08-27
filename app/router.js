@@ -25,16 +25,13 @@ Router.map(function () {
   });
   this.route('login');
   this.route('logout');
-
   this.route('channels', {path: '/'}, function () {
       this.route('all');
       this.route('new');
       this.authenticatedRoute('history');
   });
-
-  this.route('channel', {path: '/:slug'}, function () {
+  this.route('channel', {path: '/:channel_slug'}, function () {
       this.authenticatedRoute('add');
-      this.route('bookmarklet');
       this.authenticatedRoute('edit');
       this.authenticatedRoute('delete');
       this.route('dashboard', {});
@@ -44,10 +41,11 @@ Router.map(function () {
       this.route('favorites');
       this.route('followers');
   });
-  // Support deprecated channels urls. Needs to be defined before 'channel' route.
-  this.route('channel-alias', {path: '/c/:slug'});
-
   this.route('feedback');
+  this.authenticatedRoute('add');
+  this.route('bookmarklet');
+  // Support deprecated channels urls. Needs to be defined before 'channel' route.
+  this.route('channel-alias', {path: '/c/:channel_slug'});
 });
 
 export default Router;

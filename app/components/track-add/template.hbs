@@ -1,12 +1,12 @@
 <div class="Form-group">
-	<label>URL
+	<label title="Paste in the URL of a YouTube video">URL
 		{{focus-input type="url" value=track.url placeholder="Paste in a YouTube link" required="required" autofocus="autofocus"}}
 		{{errors-display showErrors=showErrors errors=errors.track.url}}
 	</label>
 </div>
 
 <div class="Form-group Form-group--relative">
-	<label>Title
+	<label title="Give your track a title">Title
 		{{input value=track.title placeholder="Enter the track title" required="required"}}<br>
 		{{errors-display showErrors=showErrors errors=errors.track.title}}
 	</label>
@@ -15,7 +15,7 @@
 </div>
 
 <div class="Form-group">
-	<label>Description
+	<label title="Give your track an optional description">Description
 		{{input value=track.body placeholder="Fantastic track! #fantastic (optional)"}}<br>
 		{{errors-display showErrors=showErrors errors=errors.track.body}}
 	</label>
@@ -26,9 +26,6 @@
 		{{#btn-group}}
 			<button {{action 'submit'}} type='submit' class="Btn Btn--primary {{if justAdded 'is-flashing'}}" title="Add track to your radio">Add track</button>
 			<button {{action 'cancel'}} class="Btn Btn--text" title="Nevermind, do not add the track">Cancel</button>
-		{{/btn-group}}
-		{{#btn-group}}
-			<a href="{{href-to "channel.bookmarklet"}}" class="Btn Btn--text" title="Add tracks faster to your radio!">Want to add faster?</a>
 		{{/btn-group}}
 	</div>
 </div>

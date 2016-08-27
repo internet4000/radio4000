@@ -2,7 +2,7 @@
 <p>Here is what you could do to start broadcasting 🚀</p>
 
 <div class="PageWelcome-actions">
-	{{#link-to 'channel.add' (query-params url="https://www.youtube.com/watch?v=ymdssZOAx3Q")}}
+	{{#link-to 'add' (query-params url="https://www.youtube.com/watch?v=ymdssZOAx3Q")}}
 		<label>
 			{{input type='checkbox'
 				checked=channel.tracks.firstObject
@@ -20,7 +20,7 @@
 		<label>
 			{{input type='checkbox'
 				checked=channel.favoriteChannels.firstObject
-				disabled=channel.images.firstObject}} Find a radio you like and add it to your favorites
+				disabled=channel.images.firstObject}} Find a radio you enjoy and save it to your favorites
 		</label>
 	{{/link-to}}
 </div>

@@ -1,25 +1,23 @@
 import Ember from 'ember';
 import createTrackMixin from 'radio4000/mixins/create-track';
 
-const {Controller, get, inject} = Ember;
+const {Controller, get} = Ember;
 
 export default Controller.extend(createTrackMixin, {
-	player: inject.service(),
-	uiStates: inject.service(),
-	queryParams: ['isEmbed', 'isInverted'],
-	isEmbed: false,
-	isInverted: false,
-	showAddTrack: false,
-	newUrl: null,
+	queryParams: ['url'],
+	url: null,
 
 	actions: {
+		goBack() {
+			const userChannel = get(this, 'model');
+			this.transitionToRoute('channel', userChannel);
+		},
 		saveTrack(trackProperties) {
 			const channel = get(this, 'session.currentUser.channels.firstObject');
 			this.createTrack(trackProperties, channel).then(() => {
-				this.setProperties({
-					showAddTrack: false,
-					newUrl: ''
-				});
+				// Reset the query param
+				this.set('url', null);
+				// this.transitionToRoute('channel', channel);
 			});
 		}
 	}

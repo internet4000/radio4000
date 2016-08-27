@@ -7,7 +7,7 @@ export default Route.extend({
 	model(params) {
 		return this.store.query('channel', {
 			orderBy: 'slug',
-			equalTo: params.slug
+			equalTo: params.channel_slug
 		}).then(data => data.get('firstObject'));
 	},
 
@@ -18,13 +18,7 @@ export default Route.extend({
 	},
 
 	serialize(model) {
-		if (!model) {
-			// without this, it fails when you try to log in
-			return;
-		}
-		// Because we use slugs instead of ids in the url
-		// tell ember what the 'slug' param maps to on our model
-		return {slug: model.get('slug')};
+		return {channel_slug: model.get('slug')};
 	},
 
 	activate() {
