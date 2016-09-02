@@ -29,6 +29,7 @@ test:
 
 deploy:
   stage: deploy
+  environment: staging
   script:
     - npm run build
     - npm run deploy
@@ -37,6 +38,7 @@ deploy:
 
 deploy_production:
   stage: deploy
+  environment: production
   script:
     - npm run build-production
     - npm run deploy-production
