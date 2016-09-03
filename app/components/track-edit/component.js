@@ -1,13 +1,16 @@
+import Ember from 'ember';
 import TrackFormComponent from 'radio4000/components/track-form/component';
+
+const {get} = Ember;
 
 export default TrackFormComponent.extend({
 	actions: {
 		cancel() {
 			this._super();
-			this.get('track').rollbackAttributes();
+			get(this, 'track').rollbackAttributes();
 		},
 		deleteTrack() {
-			this.sendAction('deleteTrack', this.get('track'));
+			this.sendAction('deleteTrack', get(this, 'track'));
 		}
 	}
 });

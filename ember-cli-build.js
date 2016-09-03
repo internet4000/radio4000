@@ -4,7 +4,7 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 var autoprefixer = require('autoprefixer');
 var atImport = require('postcss-import');
 
-module.exports = function (defaults) {
+module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     babel: {
       // Needed for ember-concurrency
