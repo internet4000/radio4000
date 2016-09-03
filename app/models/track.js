@@ -22,18 +22,14 @@ export default Model.extend({
 		inverse: 'tracks'
 	}),
 
-	// Updates provider Id automatically from the URL
-	updateProvider() {
+	// Updates provider ID automatically from the URL
+	updateYouTubeId() {
 		const id = youtubeRegex().exec(this.get('url'))[1];
-
 		if (!id) {
-			return false;
+			return;
 		}
-
 		this.set('ytid', id);
-		this.save().then(() => {
-			debug('Updated track.ytid');
-		});
+		return this;
 	},
 
 	// Own properties

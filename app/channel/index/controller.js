@@ -51,8 +51,7 @@ export default Ember.Controller.extend(EmberValidations, createTrackMixin, {
 
 			// in case url changed, we need to set the ytid
 			debug('saving track');
-			track.updateProvider();
-			track.save().then(() => {
+			track.updateYouTubeId().save().then(() => {
 				this.send('closeModals');
 				flashMessages.info('Track saved');
 			});
