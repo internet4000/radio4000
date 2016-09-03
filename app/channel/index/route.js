@@ -1,34 +1,23 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-	beforeModel() {
-		const channel = this.modelFor('channel');
-		if (!channel) {
-			this.transitionTo('404');
-		}
-	},
-
 	model() {
 		return this.modelFor('channel');
 	},
 
 	setupController(controller, model) {
-		// Because controllers are singleton,
-		// they keep the tracks between channels.
+		// Because controllers are singleton they keep the tracks between channels.
 		// This avoids it.
 		const cachedId = controller.get('model.id');
 		if (cachedId && cachedId !== model.id) {
 			controller.set('tracks', []);
 		}
-
 		// Immediately set the channel model
 		controller.set('model', model);
-
 		// Start finding tracks and set them when available
 		model.get('tracks').then(tracks => {
 			controller.set('tracks', tracks);
 		});
-
 		this._super(...arguments);
 	}
 

@@ -5,7 +5,6 @@ import config from 'radio4000/config/environment';
 const {debug, observer, on, run} = Ember;
 
 export default TrackFormComponent.extend({
-
 	// By passing a `newUrl` property to this component,
 	// we'll here set it to `track.url` (needed for ?add=queryParams)
 	init() {

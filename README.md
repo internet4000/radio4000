@@ -1,26 +1,20 @@
 # Radio4000
 
-https://codeship.com/projects/88d90340-c479-0133-7342-62b97b21679d/status?branch=master
+The main front-end web application for Radio4000.
 
-This is an Ember.js application scaffolded with ember-cli.
+See the continous integration: https://gitlab.com/internet4000/radio4000/pipelines
 
 ## How to develop
-
-Please follow this guide step-by-step to make sure everything works. It assumes you're on OS X with node installed.
-
-### Install Radio4000 dependencies
 
 Make sure Ember CLI is installed globally, then clone this project and install it's dependencies:
 
 ```
 npm install -g ember-cli
-git clone git@bitbucket.org:radio4000/radio4000.git
+git clone git@gitlab.com:internet4000/radio4000.git
 cd radio4000
 npm install; bower install
 npm start
 ```
-
-Also see http://www.ember-cli.com/
 
 ## Testing
 

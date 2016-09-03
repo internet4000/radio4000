@@ -12,7 +12,8 @@
 
 {{x-aside class="Aside--left"
 	isAuthenticated=session.isAuthenticated
-	userChannel=session.currentUser.channels.firstObject}}
+	userChannel=session.currentUser.channels.firstObject
+	toggleModal=(action "toggleModal")}}
 
 <main class="SiteMain">
 	{{yield}}
@@ -21,3 +22,17 @@
 <div class="Aside Aside--right">
 	{{x-playback}}
 </div>
+
+{{#if isShowingModal}}
+	{{#modal-dialog close="toggleModal" translucentOverlay=true}}
+		<h2>Add a new track to your radio</h2>
+		{{track-add
+			newUrl=url
+			submit="saveTrack"
+			cancel="toggleModal"}}
+		<p>
+			Do you want to add tracks directly from YouTube?<br>
+			&rarr;<a href="{{href-to "bookmarklet"}}" class="Btn Btn--text">Get the bookmarklet</a>
+		</p>
+	{{/modal-dialog}}
+{{/if}}

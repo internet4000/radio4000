@@ -1,24 +1,8 @@
 import Ember from 'ember';
 
-const {RSVP} = Ember;
+const {debug, RSVP} = Ember;
 
-export function createUserSetting(user, store) {
-	if (!user) {
-		throw new Error('Missing `user` argument');
-	}
-	if (user.get('settings').length) {
-		console.log('Can not create user setting. Already exists.');
-		return RSVP.Promise.resolve(user.get('settings.firstObject'));
-	}
-	const userSetting = store.createRecord('user-setting', {user});
-	return new RSVP.Promise(resolve => {
-		userSetting.save().then(() => {
-			user.set('settings', userSetting);
-			user.save().then(() => resolve(userSetting));
-		});
-	});
-}
-
+// Returns a promise that resolves to either a new user or an already existing one.
 export function getOrCreateUser(id, store) {
 	if (!id) {
 		throw new Error('Missing `id` argument');
@@ -30,10 +14,34 @@ export function getOrCreateUser(id, store) {
 		store.findRecord('user', id).then(user => {
 			resolve(user);
 		}).catch(error => {
-			console.log(error);
+			debug(error);
 			const newUser = store.createRecord('user', {id});
 			newUser.save().then(() => {
 				resolve(newUser);
+			});
+		});
+	});
+}
+
+// Returns a promise that resolves either a new user-setting or an already existing one.
+export function createUserSetting(user, store) {
+	if (!user) {
+		throw new Error('Missing `user` argument');
+	}
+
+	const alreadyHaveASetting = user.belongsTo('settings').id();
+	if (alreadyHaveASetting) {
+		return RSVP.Promise.resolve(user.get('settings.firstObject'));
+	}
+
+	debug('No user settings found, creating…');
+	const userSetting = store.createRecord('user-setting', {user});
+	return new RSVP.Promise(resolve => {
+		userSetting.save().then(() => {
+			user.set('settings', userSetting);
+			user.save().then(() => {
+				debug('created new user settings');
+				resolve(userSetting);
 			});
 		});
 	});

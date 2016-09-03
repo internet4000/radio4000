@@ -1,4 +1,12 @@
-{{#app-root session=session isEmbed=isEmbed isInverted=isInverted}}
+{{#app-root
+	session=session
+	isEmbed=isEmbed
+	isInverted=isInverted
+	onSaveTrack=(action "saveTrack")
+	url=newUrl
+	isShowingModal=showAddTrack
+	}}
+
 	{{#if (is-environment 'development')}}
 		<div class="Note Note--sticky">
 			<p>development preview — for testing only</p>

@@ -1,17 +1,22 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
+const {Component, get} = Ember;
+
+export default Component.extend({
 	tagName: 'form',
 	classNames: ['Form', 'Form--addTrack'],
 
 	submit(event) {
-		event.preventDefault();
-		this.get('onSubmit')();
+		if (event) {
+			event.preventDefault();
+		}
+		const url = get(this, 'addTrackUrl');
+		get(this, 'onSubmit')(url);
 	},
 
 	actions: {
-		didPasteUrl(url) {
-			this.get('onSubmit')(url);
+		paste() {
+			this.submit();
 		}
 	}
 });

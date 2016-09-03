@@ -1,11 +1,8 @@
 import Ember from 'ember';
-import ownerRouteMixin from 'radio4000/mixins/owner-route';
 
-const {Route} = Ember;
-
-export default Route.extend(ownerRouteMixin, {
-	// clear any unsaved changes
-	deactivate() {
-		this.get('currentModel').rollbackAttributes();
+export default Ember.Route.extend({
+	beforeModel(transition) {
+		// Deprecation of old bookmarklet URLs "channel-slug/add?url=xxx&title=xxx" to "add?url=xxx&title=xxx"
+		this.transitionTo('add', {queryParams: transition.queryParams});
 	}
 });

@@ -1,41 +1,34 @@
 <div class="Tabs">
-	{{#link-to 'channels.index' title="Selection and your favorite radios" class="Tabs-item"}}Home{{/link-to}}
-	{{#link-to 'channels.all' title="Find radio channels to enjoy" class="Tabs-item"}}Radios{{/link-to}}
-	{{#link-to 'channels.history' title="Find radio channels to enjoy" class="Tabs-item"}}History{{/link-to}}
-	{{!-- {{#link-to 'channels.history' title="Your listening history" class="Tabs-item"}}History{{/link-to}} --}}
+	{{#link-to "channels.index" title="Selection and your favorite radios" class="Tabs-item"}}Home{{/link-to}}
+	{{#link-to "channels.all" title="Find radio channels to enjoy" class="Tabs-item"}}Radios{{/link-to}}
+	{{#link-to "channels.history" title="Your listening history" class="Tabs-item"}}History{{/link-to}}
 </div>
 
 {{#if userChannel}}
 	<div class="Tabs">
-		{{!-- {{#link-to 'channel' userChannel class="Tabs-item Tabs-item--bg" title="Go to your radio"}}
-			{{#if userChannel.coverImage.src}}
-				<img src="{{img-url userChannel.coverImage.src w="20" h="58" c="fill"}}" alt="">
-			{{/if}}
-			<small>Your radio</small><br>
-			{{userChannel.title}}
-		{{/link-to}} --}}
 		{{channel-card channel=userChannel wide=true}}
-		{{#link-to 'channel.add' userChannel class="Btn Btn--primary Btn--topNoRadius" title="Add a new track to your radio"}}Add track{{/link-to}}
+		{{!-- {{#link-to "add" class="Btn Btn--primary Btn--topNoRadius" title="Add a new track to your radio"}}Add track{{/link-to}} --}}
+		<button {{action "addTrack"}} class="Btn Btn--primary Btn--topNoRadius" title="Add a new track to your radio">Add track</button>
 	</div>
 {{/if}}
 
 {{#unless userChannel}}
 	<div class="Tabs Tabs--transparent">
-		{{#link-to 'channels.new' class="Btn Btn--important" title="Create your own radio now or log in"}}Get your own radio{{/link-to}}
+		{{#link-to "channels.new" class="Btn Btn--important" title="Create your own radio now or log in"}}Get your own radio{{/link-to}}
 	</div>
 {{/unless}}
 
 <div class="Tabs">
-	{{#link-to 'intro' title="Get introduced to Radio4000" class="Tabs-item"}}Introduction{{/link-to}}
-	{{#link-to 'about' title="Learn more about Radio4000" class="Tabs-item"}}About{{/link-to}}
-	{{#link-to 'help' title="Find help and answers to your questions" class="Tabs-item"}}Help{{/link-to}}
+	{{#link-to "intro" title="Get introduced to Radio4000" class="Tabs-item"}}Introduction{{/link-to}}
+	{{#link-to "about" title="Learn more about Radio4000" class="Tabs-item"}}About{{/link-to}}
+	{{#link-to "help" title="Find help and answers to your questions" class="Tabs-item"}}Help{{/link-to}}
 	<a class="Tabs-item" href="http://blog.radio4000.com" target="_blank" title="How is the weather at Radio4000?">&rarr; Blog</a>
 </div>
 
 <div class="Tabs Tabs--transparent Tabs--bottom">
 	{{#if isAuthenticated}}
-		{{#link-to 'logout' class="Aside-link Muted" title="Log out from Radio4000"}}Log out{{/link-to}}
+		{{#link-to "logout" class="Aside-link Muted" title="Log out from Radio4000"}}Log out{{/link-to}}
 	{{else}}
-		{{#link-to 'login' class="Aside-link Muted" title="Create your own radio now or log in"}}Sign in or register{{/link-to}}
+		{{#link-to "login" class="Aside-link Muted" title="Create your own radio now or log in"}}Sign in or register{{/link-to}}
 	{{/if}}
 </div>

@@ -5,15 +5,15 @@ import {getOrCreateUser, createUserSetting} from 'radio4000/utils/get-or-create-
 const {inject, RSVP} = Ember;
 
 export default ToriiFirebaseAdapter.extend({
-	store: inject.service(),
-	// firebase: inject.service(),
+    store: inject.service(),
+    // firebase: inject.service(),
 
-	/**
-	* Extacts session information from authentication response
-	*
-	* @param {!firebase.User} user
-	* @return {Promise}
-	*/
+    /**
+     * Extacts session information from authentication response
+     *
+     * @param {!firebase.User} user
+     * @return {Promise}
+     */
 	open(user) {
 		this._super(user);
 		const store = this.get('store');

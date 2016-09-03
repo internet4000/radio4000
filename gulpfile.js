@@ -21,9 +21,11 @@ gulp.task('icons', function () {
 	const inputDir = 'public/assets/images/icons/';
 	const outputDir = 'public/assets/images/icons/grunticon';
 	const options = {enhanceSVG: true};
+
 	const files = fs.readdirSync(inputDir).map(function (fileName) {
 		return path.join(inputDir, fileName);
 	});
+
 	const grunticon = new Grunticon(files, outputDir, options);
 
 	grunticon.process(function () {
