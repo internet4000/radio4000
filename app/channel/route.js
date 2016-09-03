@@ -14,6 +14,8 @@ export default Route.extend({
 	afterModel(model) {
 		if (model) {
 			document.title = `${model.get('title')} - Radio4000`;
+		} else {
+			this.transitionTo('404');
 		}
 	},
 
