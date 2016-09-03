@@ -1,7 +1,7 @@
 /* global document, window */
 import Ember from 'ember';
 
-const {Route, debug, warn} = Ember;
+const {Route, debug, get, warn} = Ember;
 
 export default Route.extend({
 	model(params) {
@@ -32,12 +32,9 @@ export default Route.extend({
 
 	actions: {
 		deleteTrack(track) {
-			const flashMessages = Ember.get(this, 'flashMessages');
+			const flashMessages = get(this, 'flashMessages');
 			track.get('channel').then(channel => {
 				channel.get('tracks').then(tracks => {
-					tracks.removeObject(track);
-					channel.save();
-
 					track.destroyRecord().then(() => {
 						debug('Deleted track');
 						flashMessages.warning('Deleted your track');
