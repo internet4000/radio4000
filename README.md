@@ -44,16 +44,6 @@ Add .svg icons to `public/assets/images/icons` and run `gulp icons`.
 
 Run `npm run build-app`, make some coffee and then check the `dist-electron` folder.
 
-## Reports
-
-To get a technical analysis of the project's maintainability.
-
-```
-npm uninstall -g plato; npm install -g git+https://github.com/deedubs/es6-plato.git
-npm run report;
-open reports/index.html
-```
-
 ## Important if you use Sublime Text
 
 Sublime automatically watches all files in a folder. Because ember-cli is so huge your PC will slow down. To solve this, tell Sublime to ignore the `tmp` and `node_modules` folder: http://www.ember-cli.com/#sublime-text
