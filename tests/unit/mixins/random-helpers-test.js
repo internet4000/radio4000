@@ -6,7 +6,7 @@ module('Unit | Mixin | random helpers');
 
 // Replace this with your real tests.
 test('it works', function (assert) {
-  var RandomHelpersObject = Ember.Object.extend(RandomHelpersMixin);
-  var subject = RandomHelpersObject.create();
-  assert.ok(subject);
+	var RandomHelpersObject = Ember.Object.extend(RandomHelpersMixin);
+	var subject = RandomHelpersObject.create();
+	assert.ok(subject);
 });

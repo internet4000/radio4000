@@ -5,6 +5,6 @@ module('Unit | Helper | cover img');
 
 test('it works', function (assert) {
 	// {{cover-img src size=250}}
-	let result = coverImg(['somestringid'], {size: 250});
+	const result = coverImg(['somestringid'], {size: 250});
 	assert.equal(typeof result, 'string');
 });
