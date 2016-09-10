@@ -1,8 +1,6 @@
-import Ember from 'ember';
 import DS from 'ember-data';
 import youtubeRegex from 'npm:youtube-regex';
 
-const {debug} = Ember;
 const {Model, attr, belongsTo} = DS;
 
 export default Model.extend({

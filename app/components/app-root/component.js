@@ -36,7 +36,7 @@ export default Component.extend({
 	},
 
 	actions: {
-		toggleModal: function() {
+		toggleModal() {
 			console.log('toggleModal');
 			this.toggleProperty('isShowingModal');
 		},

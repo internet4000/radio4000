@@ -6,7 +6,7 @@ module('Unit | Mixin | owner route');
 
 // Replace this with your real tests.
 test('it works', function (assert) {
-  var OwnerRouteObject = Ember.Object.extend(OwnerRouteMixin);
-  var subject = OwnerRouteObject.create();
-  assert.ok(subject);
+	var OwnerRouteObject = Ember.Object.extend(OwnerRouteMixin);
+	var subject = OwnerRouteObject.create();
+	assert.ok(subject);
 });

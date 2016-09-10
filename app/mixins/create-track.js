@@ -22,9 +22,7 @@ export default Mixin.create({
 				channel.get('tracks').then(tracks => {
 					tracks.addObject(track);
 					channel.save().then(() => {
-						get(this, 'flashMessages').info('Your track was created', {
-						  timeout: 5000,
-						});
+						get(this, 'flashMessages').info('Your track was created', {timeout: 5000});
 						resolve(track);
 					}, err => {
 						warn('Could not save track on the channel.', err);

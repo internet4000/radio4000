@@ -12,7 +12,7 @@ test('it renders', function (assert) {
 
 	// This promise is only here to trick the test to run long enough for the
 	// child "ember-youtube" component inside
-	return Ember.Test.promise(function(resolve) {
+	return Ember.Test.promise(function (resolve) {
 		window.setTimeout(function () {
 			// todo: make a more relevant test than this.
 			assert.ok(this.$('.Playback-buttons').length);

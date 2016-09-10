@@ -6,7 +6,7 @@ moduleForComponent('each-grid', 'Integration | Component | each grid', {
 });
 
 test('it renders', function (assert) {
-    assert.expect(2);
+	assert.expect(2);
 
 	// Template block usage:
 	this.set('testItems', ['Michael', 'Hugo', 'Jackson']);

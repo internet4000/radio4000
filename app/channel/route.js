@@ -36,7 +36,7 @@ export default Route.extend({
 		deleteTrack(track) {
 			const flashMessages = get(this, 'flashMessages');
 			track.get('channel').then(channel => {
-				channel.get('tracks').then(tracks => {
+				channel.get('tracks').then(() => {
 					track.destroyRecord().then(() => {
 						debug('Deleted track');
 						flashMessages.warning('Deleted your track');
