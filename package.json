@@ -15,7 +15,7 @@
     "deploy-production": "mv dist/index.html dist/200.html; surge dist https://radio4000.com",
     "start": "ember serve",
     "test": "ember test",
-    "lint": "xo app/**/*.js && stylelint --syntax scss app/styles/**/*.scss"
+    "lint": "stylelint --syntax scss app/styles/**/*.scss"
   },
   "repository": "git@gitlab.com:internet4000/radio4000.git",
   "engines": {

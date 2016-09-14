@@ -38,7 +38,9 @@ progress[value="100"]::-webkit-progress-value {
 }
 
 /* Firefox styles must be entirely separate or it busts Webkit styles. */
+/* stylelint-disable */
 @-moz-document url-prefix() {
+	/* stylelint-enable */
 	progress[value] {
 		background-color: $progress-bg;
 
