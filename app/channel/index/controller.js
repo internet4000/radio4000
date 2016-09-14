@@ -1,10 +1,9 @@
 import Ember from 'ember';
 import EmberValidations from 'ember-validations';
-import createTrackMixin from 'radio4000/mixins/create-track';
 
 const {computed, debug, get, inject} = Ember;
 
-export default Ember.Controller.extend(EmberValidations, createTrackMixin, {
+export default Ember.Controller.extend(EmberValidations, {
 	// player: Ember.inject.service(), // used for debugging unplayed + history
 	// queryParams: ['tags'],
 	isEditing: false,

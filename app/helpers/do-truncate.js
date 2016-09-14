@@ -25,7 +25,7 @@ export default Ember.Helper.helper(([str, len]) => {
 		newString = str.substr(0, newString.lastIndexOf(' '));
 		newString = (newString.length > 0) ? newString : str.substr(0, len);
 
-		return new Ember.Handlebars.SafeString(`${newString}…`);
+		return Ember.String.htmlSafe(`${newString}…`);
 	}
 
 	return str;
