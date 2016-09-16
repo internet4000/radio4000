@@ -14,7 +14,6 @@ test('it renders', function (assert) {
 	// child "ember-youtube" component inside
 	return Ember.Test.promise(function (resolve) {
 		window.setTimeout(function () {
-			// todo: make a more relevant test than this.
 			assert.ok(this.$('#EmberYoutube-player').length);
 			// Make sure the dummy app is being removed.
 			assert.notOk(document.querySelector('.DummyApp'));

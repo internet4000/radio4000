@@ -37,7 +37,6 @@ export default Component.extend({
 
 	actions: {
 		toggleModal() {
-			console.log('toggleModal');
 			this.toggleProperty('isShowingModal');
 		},
 		saveTrack(trackProperties) {
