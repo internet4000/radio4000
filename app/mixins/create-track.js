@@ -16,17 +16,13 @@ export default Mixin.create({
 		return new RSVP.Promise((resolve, reject) => {
 			const track = this.store.createRecord('track', trackProperties);
 			track.set('channel', channel);
-			track.updateProvider();
-
-			track.save().then(() => {
+			track.updateYouTubeId().save().then(() => {
 				channel.set('updated', new Date().getTime());
 				// Add it to the tracks relationship on the channel and save it.
 				channel.get('tracks').then(tracks => {
 					tracks.addObject(track);
 					channel.save().then(() => {
-						get(this, 'flashMessages').info('Your track was created', {
-						  timeout: 5000,
-						});
+						get(this, 'flashMessages').info('Your track was created', {timeout: 5000});
 						resolve(track);
 					}, err => {
 						warn('Could not save track on the channel.', err);

@@ -8,7 +8,7 @@
       ignore: ["after-comment"],
     }],
     "declaration-block-properties-order": [],
-    "max-line-length": false,
+    "max-line-length": 999999,
     "rule-non-nested-empty-line-before": [ "always-multi-line", {
       ignore: ["after-comment"]
     }],

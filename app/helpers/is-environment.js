@@ -10,7 +10,6 @@ export function isEnvironment(params) {
 	} else {
 		env = params[0];
 	}
-
 	return config.environment === env;
 }
 

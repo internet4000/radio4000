@@ -5,26 +5,21 @@ import {getOrCreateUser, createUserSetting} from 'radio4000/utils/get-or-create-
 const {inject, RSVP} = Ember;
 
 export default ToriiFirebaseAdapter.extend({
-    store: inject.service(),
-    // firebase: inject.service(),
+	store: inject.service(),
+	// firebase: inject.service(),
 
-    /**
-     * Extacts session information from authentication response
-     *
-     * @param {!firebase.User} user
-     * @return {Promise}
-     */
+	// Extacts session information from authentication response
 	open(user) {
 		this._super(user);
 		const store = this.get('store');
+
 		return new RSVP.Promise(resolve => {
 			getOrCreateUser(user.uid, store).then(userModel => {
 				createUserSetting(userModel, store);
 				resolve({
 					provider: this.extractProviderId_(user),
 					uid: user.uid,
-					// currentUser: user
-					// the above three props are defaults, below is custom
+					// Note that normally currentUser is a Firebase user, not an ember model `user` like in this case.
 					currentUser: userModel
 				});
 			});

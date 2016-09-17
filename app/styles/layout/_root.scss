@@ -19,9 +19,11 @@
 	.Aside--left {
 		transform: translate3d(0, 0, 0);
 	}
+
 	.Sections {
 		padding-top: 4rem;
 	}
+
 	@media (min-width: $layout-s) {
 		.SiteMain {
 			padding-left: $sidebar-width;

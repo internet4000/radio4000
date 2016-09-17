@@ -1,4 +1,3 @@
-// .Channel {}
 .Channel--detail {
 	position: relative;
 	background-color: $slightgray;
@@ -104,8 +103,9 @@
 	i {
 		margin-right: 0.3rem;
 	}
+
 	svg {
-	    float: left;
+		float: left;
 	}
 }
 

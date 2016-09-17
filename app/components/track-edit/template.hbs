@@ -1,28 +1,34 @@
 <div class="Form-group">
-	<label>URL
-		{{focus-input type="url" value=track.url required="required" placeholder="Copy in a YouTube URL"}}
+	<label title="Paste in the URL of a YouTube video">URL
+		{{focus-input type="url" value=track.url required="required" placeholder="Paste in a YouTube link"}}
 		{{errors-display showErrors=showErrors errors=errors.track.url}}
 	</label>
 </div>
 
-<div class="Form-group">
-	<label>Title
-		{{input value=track.title placeholder="Track title" required="required"}}
+<div class="Form-group Form-group--relative">
+	<label title="Give your track a title">Title
+		{{input value=track.title placeholder="Enter the track title" required="required"}}<br>
 		{{errors-display showErrors=showErrors errors=errors.track.title}}
 	</label>
+	{{#if isFetchingTitle}}<p class="Form-groupStatus">Updating…</p>{{/if}}
+	{{!-- {{youtube-search query=model.title action="addFromSearch"}} --}}
 </div>
 
 <div class="Form-group">
-	<label>Description
-		{{input value=track.body placeholder="Track description"}}
+	<label title="Give your track an optional description">Description
+		{{input value=track.body placeholder="Track description"}}<br>
 		{{errors-display showErrors=showErrors errors=errors.track.body}}
 	</label>
 </div>
 
 <div class="Form-group">
-	<button {{action 'submit'}} type="submit" class="Btn Btn--primary" title="Save the track">Save track</button>
-	<button {{action 'cancel'}} class="Btn Btn--text" title="Stop editing the track">Cancel</button>
-	<button {{action 'deleteTrack'}} class="Btn Btn--text Btn--danger u-alignRight" title="Delete this track from your radio">Delete</button>
+	<div class="BtnGroupWrapper BtnGroupWrapper--full">
+		{{#btn-group}}
+			<button {{action "submit"}} type="submit" class="Btn Btn--primary" title="Save the track">Edit track</button>
+			<button {{action "cancel"}} class="Btn Btn--text" title="Stop editing the track">Cancel</button>
+			<button {{action "deleteTrack"}} class="Btn Btn--text Btn--danger u-alignRight" title="Delete this track from your radio">Delete</button>
+		{{/btn-group}}
+	</div>
 </div>
 
 {{yield}}
