@@ -2,18 +2,16 @@
   "name": "Radio4000",
   "short_name": "Radio4000",
   "description": "Collect, curate, play and share your own radio channel",
-
   "start_url": "index.html",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#5d1ae6",
-
+  "theme_color": "#5d1ae6",
   "app": {
     "launch": {
       "web_url": "https://radio4000.com/"
     }
   },
-
   "icons": [
     {
       "src": "\/android-chrome-192x192.png",
