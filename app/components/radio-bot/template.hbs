@@ -1,10 +1,9 @@
 <button class="Btn"
-	onClick={{perform bot.playAnotherRadio channel}}
-	disabled={{bot.playAnotherRadio.isRunning}}>
-
+		  onClick={{perform bot.playAnotherRadio channel}}
+		  disabled={{bot.playAnotherRadio.isRunning}}>
 	{{#if bot.playAnotherRadio.isIdle}}
-		{{#if player.model.channel}}Play another radio{{else}}Play some music{{/if}}
+		{{if player.model.channel "Play another radio" "Play some music"}}
 	{{else}}
-		{{#if bot.playTrack.isRunning}}Calibrating…{{else}}Tuning…{{/if}}
+		{{if bot.playTrack.isRunning "Calibrating…" "Tuning…"}}
 	{{/if}}
 </button>

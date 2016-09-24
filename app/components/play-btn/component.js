@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {Component, inject, debug, computed} = Ember;
+const {Component, inject, get, set, computed} = Ember;
 
 // Pass it a track to play it.
 // Pass it a channel to play latest track.
@@ -8,51 +8,43 @@ const {Component, inject, debug, computed} = Ember;
 // It will load all tracks async (use isLoading in templates)
 
 export default Component.extend({
-	player: inject.service(),
-	bot: inject.service(),
 	tagName: 'button',
 	classNames: ['Btn'],
 	classNameBindings: ['isLoading', 'isInPlayer', 'nothingToPlay:is-hidden'],
-	isInPlayer: computed.reads('channel.isInPlayer'),
-	isShuffled: computed.reads('isInPlayer'),
 
-	// if it is in the player
-	// that mean clicking again should play a random track
+	player: inject.service(),
+	bot: inject.service(),
+
+	isShuffled: computed.reads('isInPlayer'),
+	isInPlayer: computed.reads('channel.isInPlayer'),
+
+	// If the channel is already loaded in the player,
+	// we activate shuffle/random and skip to next track.
+	// Otherwise play the radio.
 	click() {
-		const player = this.get('player');
-		if (this.get('isInPlayer')) {
-			debug('isInPlayer -> nextRandom');
-			return player.activateRandom().then(() => {
-				player.next();
-			});
+		const player = get(this, 'player');
+		const alreadyPlaying = get(this, 'isInPlayer');
+		if (alreadyPlaying) {
+			return player.activateRandom().then(() => player.next());
 		}
 		return this.playChannel();
 	},
 
-	/**
-		@method playChannel
-		@returns none
-		manages the loading state of the track to be played
-		and makes it play in this order:
-	*/
-	playChannel(channel = this.get('channel')) {
-		debug('play channel');
-		this.set('isLoading', true);
+	// Accepts a `channel` model and plays it.
+	playChannel(channel = get(this, 'channel')) {
+		const player = get(this, 'player');
+		const promise = get(this, 'bot').findLastTrack(channel);
 
-		// Loads necessary all tracks and then returns another promise
-		// for the last track.
-		const promise = this.get('bot').findLastTrack(channel);
-
+		set(this, 'isLoading', true);
 		promise.then(track => {
-			this.set('isLoading', false);
-
-			// If we have no track, the radio is empty,
-			// so we set a class in order to hide the button.
-			const nothingToPlay = Boolean(!track);
-			this.set('nothingToPlay', nothingToPlay);
-
+			set(this, 'isLoading', false);
 			if (track) {
-				this.get('player').playTrack(track);
+				player.playTrack(track);
+			} else {
+				// Without a track we can't play the radio,
+				// so we set a class in order to hide the button.
+				const noTrack = Boolean(!track);
+				set(this, 'nothingToPlay', noTrack);
 			}
 		});
 	},
@@ -64,7 +56,7 @@ export default Component.extend({
 		and show the player only when the track is ready to be played
 	*/
 	loadTracks(channel) {
-		this.set('isLoading', true);
+		set(this, 'isLoading', true);
 		return channel.get('tracks');
 	}
 });
