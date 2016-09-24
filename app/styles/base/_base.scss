@@ -1,19 +1,7 @@
 /**
- * Links
- */
-
-a {
-	color: $link-color;
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
-/**
  * Set a consistent margin between elements
  */
+
 h1,
 h2,
 h3,
@@ -40,8 +28,22 @@ menu {
 }
 
 /**
+ * Links
+ */
+
+a {
+	color: $link-color;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+/**
  * Seperators
  */
+
 hr {
 	margin: 2rem 0;
 }
@@ -54,4 +56,15 @@ menu {
 time {
 	@include size-0;
 	font-style: italic;
+}
+
+// Normalize.css removes list styles. We want them back for <ol>.
+ol {
+	list-style: decimal;
+	padding-left: 1em;
+	// line-height: 2;
+
+	li {
+		margin-bottom: 0.5rem;
+	}
 }
