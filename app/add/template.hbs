@@ -8,10 +8,8 @@
 				onCancel=(action "goBack")}}
 			<br>
 			<p>
-				Do you want to see {{#link-to "channel" model.slug}}your channel <em>{{model.title}}</em>{{/link-to}}? It currently has {{model.totalTracks}} tracks.
-			</p>
-			<p {{action "toggleModal"}}>
-				&rarr;{{link-to "Get the bookmarklet" "bookmarklet" class="Btn Btn--text"}}
+				&rarr; {{#link-to "channel" model.slug title=model.title}}Go to your channel <em>{{model.title}}</em>{{/link-to}} <small>(you currently have {{model.totalTracks}} tracks)</small><br>
+				&rarr; {{link-to "Get the bookmarklet" "bookmarklet"}}
 			</p>
 		</div>
 	</div>
