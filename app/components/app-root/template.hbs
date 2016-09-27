@@ -28,11 +28,11 @@
 		<h2>Add a new track to your radio</h2>
 		{{track-add
 			newUrl=url
-			submit="saveTrack"
-			cancel="toggleModal"}}
-		<p>
+			onSubmit=(action "saveTrack")
+			onCancel=(action "toggleModal")}}
+		<p {{action "toggleModal"}}>
 			Do you want to add tracks directly from YouTube?<br>
-			&rarr;<a href="{{href-to "bookmarklet"}}" class="Btn Btn--text">Get the bookmarklet</a>
+			&rarr;{{link-to "Get the bookmarklet" "bookmarklet" class="Btn Btn--text"}}
 		</p>
 	{{/modal-dialog}}
 {{/if}}

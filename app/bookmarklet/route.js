@@ -1,11 +1,3 @@
-import Ember from 'ember';
+import UserChannelRoute from 'radio4000/routes/user-channel';
 
-const {Route, get} = Ember;
-
-export default Route.extend({
-	model() {
-		const user = get(this, 'session.currentUser');
-		const channel = user.get('channels.firstObject');
-		return channel;
-	}
-});
+export default UserChannelRoute;

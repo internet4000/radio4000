@@ -10,6 +10,8 @@ export default Component.extend(EmberValidations, {
 	classNames: ['Form'],
 	classNameBindings: ['box:Form--box'],
 	showErrors: false,
+	newUrl: '',
+	isIdle: true,
 
 	validations: {
 		'track.url': {
@@ -45,14 +47,15 @@ export default Component.extend(EmberValidations, {
 	automaticSetTitle: on('init', observer('track.url', function () {
 		const url = get(this, 'track.url');
 		const ytid = this.getYoutubeId(url);
-
 		if (!ytid) {
-			debug('no ytid');
+			// debug('no ytid');
 			return;
 		}
-
+		if (!Ember.isEmpty(get(this, 'track.title'))) {
+			// debug('The track title is not empty so we are not updating it');
+			return;
+		}
 		set(this, 'youtubeId', ytid);
-
 		// call setTitle but throttle it so it doesn't happen on every key-stroke
 		run.throttle(this, this.setTitle, 1000);
 	})),
@@ -93,23 +96,24 @@ export default Component.extend(EmberValidations, {
 
 	actions: {
 		submit() {
+			set(this, 'isIdle', false);
 			this.validate().then(() => {
-				// all validations pass
-				this.sendAction('submit', get(this, 'track'));
-				// Reset the track form
-				this.setProperties({
-					url: '',
-					title: '',
-					body: ''
+				const trackProps = get(this, 'track');
+				get(this, 'onSubmit')(trackProps).then(() => {
+					// Reset all properties so we can create another track.
+					this.setProperties({
+						isIdle: true,
+						newUrl: '',
+						track: {}
+					});
 				});
 			}).catch(err => {
-				// any validations fail
 				debug(err);
 				set(this, 'showErrors', true);
 			});
 		},
 		cancel() {
-			this.sendAction('cancel');
+			this.get('onCancel')();
 		}
 	}
 });

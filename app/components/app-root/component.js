@@ -40,8 +40,7 @@ export default Component.extend({
 			this.toggleProperty('isShowingModal');
 		},
 		saveTrack(trackProperties) {
-			console.log('app-root saveTrack');
-			this.get('onSaveTrack')(trackProperties);
+			return this.get('onSaveTrack')(trackProperties);
 		}
 	}
 });

@@ -22,7 +22,7 @@ export default Service.extend({
 	playNewestTrack: task(function * (channel) {
 		const track = yield this.findLastTrack(channel);
 		if (!track) {
-			console.log('playTrack was called without a track.');
+			Ember.debug('playTrack was called without a track.');
 			this.get('playAnotherRadio').perform();
 			return;
 			// throw new Error('playTrack was called without a track.');

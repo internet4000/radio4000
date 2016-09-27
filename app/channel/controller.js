@@ -42,7 +42,7 @@ export default Ember.Controller.extend({
 		}
 
 		// true if this channel is a favorite of the user's favorites
-		return favorites.contains(channel);
+		return favorites.includes(channel);
 	}),
 
 	actions: {
