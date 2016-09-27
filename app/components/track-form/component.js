@@ -47,14 +47,15 @@ export default Component.extend(EmberValidations, {
 	automaticSetTitle: on('init', observer('track.url', function () {
 		const url = get(this, 'track.url');
 		const ytid = this.getYoutubeId(url);
-
 		if (!ytid) {
-			debug('no ytid');
+			// debug('no ytid');
 			return;
 		}
-
+		if (!Ember.isEmpty(get(this, 'track.title'))) {
+			// debug('The track title is not empty so we are not updating it');
+			return;
+		}
 		set(this, 'youtubeId', ytid);
-
 		// call setTitle but throttle it so it doesn't happen on every key-stroke
 		run.throttle(this, this.setTitle, 1000);
 	})),

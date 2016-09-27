@@ -19,10 +19,10 @@
 	{{#if tracks.isLoaded}}
 		{{#tracks-list items=tracks numbered=true as |item|}}
 			{{track-item
-			 track=item
-			 canEdit=canEdit
-			 edit=(action "startEditingTrack")
-			 onTransition="transitionToTrack"}}
+				track=item
+				canEdit=canEdit
+				edit=(action "startEditingTrack")
+				onTransition="transitionToTrack"}}
 		{{/tracks-list}}
 
 		{{#unless canEdit}}
