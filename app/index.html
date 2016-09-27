@@ -1,13 +1,13 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Radio4000</title>
-		<meta name="description" content="Collect, curate, play and share your own radio channel">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-		<meta name="apple-mobile-web-app-capable" content="yes">
+<head>
+	<meta charset="utf-8">
+	<title>Radio4000</title>
+	<meta name="description" content="Collect, curate, play and share your own radio channel">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
 
-		{{content-for "head"}}
+	{{content-for "head"}}
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
 	<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
@@ -16,73 +16,72 @@
 	<meta name="theme-color" content="#5d1ae6">
 	<meta name="og:image" content="https://radio4000.com/assets/images/logos/radio4000-square.png">
 
+	<link rel="stylesheet" href="{{rootURL}}assets/vendor.css">
+	<link rel="stylesheet" href="{{rootURL}}assets/radio4000.css">
+	<link rel="stylesheet" href="{{rootURL}}assets/images/icons/grunticon/icons.data.svg.css">
 
-		<link rel="stylesheet" href="{{rootURL}}assets/vendor.css">
-		<link rel="stylesheet" href="{{rootURL}}assets/radio4000.css">
-		<link rel="stylesheet" href="{{rootURL}}assets/images/icons/grunticon/icons.data.svg.css">
+	<script src="{{rootURL}}assets/scripts/radio4000-header.js" async></script>
+	<script src="{{rootURL}}assets/images/icons/grunticon/grunticon.loader.js" async></script>
 
-		<script src="{{rootURL}}assets/scripts/radio4000-header.js" async></script>
-		<script src="{{rootURL}}assets/images/icons/grunticon/grunticon.loader.js" async></script>
+	{{content-for "head-footer"}}
+</head>
+<body>
+	{{content-for "body"}}
 
-		{{content-for "head-footer"}}
-	</head>
-	<body>
-		{{content-for "body"}}
+	<noscript>Sorry, you need to enable JavaScript in your browser to use Radio4000.</noscript>
 
-		<noscript>Sorry, you need to enable JavaScript in your browser to use Radio4000.</noscript>
+	<div id="Radio4000" class="Radio4000"></div>
 
-		<div id="Radio4000" class="Radio4000"></div>
+	<script src="{{rootURL}}assets/vendor.js"></script>
+	<script src="{{rootURL}}assets/radio4000.js"></script>
 
-		<script src="{{rootURL}}assets/vendor.js"></script>
-		<script src="{{rootURL}}assets/radio4000.js"></script>
+	{{content-for "body-footer"}}
 
-		{{content-for "body-footer"}}
-
-		<div class="DummyApp">
-			<!-- a dummy app that appears independently from Ember and is removed by ember asap -->
-			<style>
-				.DummyApp {
-					z-index: 2;
-					position: fixed;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-					background-color: hsl(60, 4%, 91%);
-				}
-				.DummyApp-inner {
-					position: absolute;
-					top: 50%;
-					left: 5%;
-					width: 90%;
-					text-align: center;
-					transform: translateY(-50%);
-					-webkit-transform: translateY(-50%);
-					-moz-transform: translateY(-50%);
-				}
-				.DummyApp p {
-					color: hsl(0, 0%, 30%); /*$dark*/
-				}
-				@keyframes animate-rotate {
-					0% { transform: rotate(0) }
-					100% { transform: rotate(360deg) }
-				}
-				.animate-rotate {
-					animation: animate-rotate 400ms linear infinite;
-				}
-			</style>
-			<h1 class="Logo">
-				<img src="{{rootURL}}assets/images/icons/r4000.svg" class="Logo-img" alt="Radio4000">
-			</h1>
-			<div class="DummyApp-inner">
-				<div class="DummyApp-body">
-					<p>Looking for good tunes</p>
-					<p class="DummyApp-slogan"></p>
-					<br>
-					<img class="animate-rotate" style="opacity: 0.9" src="{{rootURL}}assets/images/icons/vinyl.svg" alt="">
-				</div>
-				<script>
-					var r4DummyApp = function() {
+	<div class="DummyApp">
+		<!-- a dummy app that appears independently from Ember and is removed by ember asap -->
+		<style>
+			.DummyApp {
+				z-index: 2;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: hsl(60, 4%, 91%);
+			}
+			.DummyApp-inner {
+				position: absolute;
+				top: 50%;
+				left: 5%;
+				width: 90%;
+				text-align: center;
+				transform: translateY(-50%);
+				-webkit-transform: translateY(-50%);
+				-moz-transform: translateY(-50%);
+			}
+			.DummyApp p {
+				color: hsl(0, 0%, 30%); /*$dark*/
+			}
+			@keyframes animate-rotate {
+				0% { transform: rotate(0) }
+				100% { transform: rotate(360deg) }
+			}
+			.animate-rotate {
+				animation: animate-rotate 400ms linear infinite;
+			}
+		</style>
+		<h1 class="Logo">
+			<img src="{{rootURL}}assets/images/icons/r4000.svg" class="Logo-img" alt="Radio4000">
+		</h1>
+		<div class="DummyApp-inner">
+			<div class="DummyApp-body">
+				<p>Looking for good tunes</p>
+				<p class="DummyApp-slogan"></p>
+				<br>
+				<img class="animate-rotate" style="opacity: 0.9" src="{{rootURL}}assets/images/icons/vinyl.svg" alt="">
+			</div>
+			<script>
+				var r4DummyApp = function() {
 						// Insert a random sentence to make waiting fun/less annoying
 						console.log('A human feel.');
 						var sentences = ['One moment, please', 'Un momento por favor', 'لحظة واحدة من فضلك', 'Une batez, mesedez', 'এক মিনিট, প্লিজ', 'Един момент моля', '稍等一会儿', 'Et øjeblik', 'Een ogenblik alstublieft', 'Unu momenton, bonvolu', 'Hetkinen', 'Un instant s\'il vous plaît', 'Einen Moment bitte', 'Μια στιγμή παρακαλώ', 'Yon sèl moman, tanpri', 'कृपया एक क्षण', 'Nóiméad amháin, le do thoil', 'Un momento per favore', '少々お待ちください', 'Uno momento, placet', 'Et øyeblikk', 'Chwileczkę', 'Um momento por favor', 'Один момент, пожалуйста', 'Wakati mmoja, tafadhali', 'Ett ögonblick tack', 'กรุณารอสักครู่', 'Bir dakika lütfen', 'Un funud, os gwelwch yn dda', 'Omunye mzuzu, sicela'];
@@ -93,11 +92,11 @@
 						// Internet connection check
 						var dummyBody = document.querySelectorAll('.DummyApp-body');
 						if (!navigator.onLine) {
-								dummyBody[0].innerHTML = '<p><strong>It seems that you are not connected to the internet -_-</strong></p><p>Find the internet and then reload this page.</p>';
+							dummyBody[0].innerHTML = '<p><strong>It seems that you are not connected to the internet -_-</strong></p><p>Find the internet and then reload this page.</p>';
 						};
 					}();
 				</script>
 			</div>
 		</div>
 	</body>
-</html>
+	</html>
