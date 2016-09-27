@@ -4,7 +4,7 @@ const {debug, Mixin} = Ember;
 
 export default Mixin.create({
 	afterModel(model) {
-		const userChannel = this.get('session.currentUser.channels.firstObject.id');
+		const userChannel = this.get('session.currentUser.channels.firstObject');
 		const userOwnsTheChannel = model.get('id') === userChannel.get('id');
 		if (!userOwnsTheChannel) {
 			debug('user does not own the channel --> login');
