@@ -28,8 +28,7 @@ export default Controller.extend(EmberValidations, {
 				maximum: channelConst.descriptionMaxLength
 			}
 		}
-		// TODO use a custom regex validation
-		// 'model.url': {}
+		// Would be nice to validate the URL as well.
 	},
 
 	cacheSlug: computed('model.slug', function () {
@@ -56,46 +55,36 @@ export default Controller.extend(EmberValidations, {
 		});
 	},
 
-	isSlugProtected: computed('model.slug', function () {
-		const slug = get(this, 'model.slug');
-		const protectedSlugs = ['add', 'about', 'job', 'jobs',
-			'blog', 'bookmarklet', 'dashboard', 'help',
-			'intro', 'login', '404', 'bunker', 'styleguide'];
-		return protectedSlugs.any(s => s === slug);
-	}),
+	isSlugFree() {
+		const slug = clean(get(this, 'model.slug'));
+		const errorMessage = `Sorry, the URL "${slug}" is already taken. Please try another one.`;
 
-	isSlugFree: computed('model.slug', function () {
-		const slug = get(this, 'model.slug');
-		const cleanedSlug = clean(slug);
 		return new Ember.RSVP.Promise((resolve, reject) => {
 			// Check if the slug is in our "protected routes"
-			if (this.get('isSlugProtected')) {
-				reject(new Error(`Sorry, the URL "${slug}" is already taken.\n\nPlease try another one.`));
+			const blacklist = ['add', 'about', 'job', 'jobs', 'blog', 'bookmarklet', 'dashboard', 'help', 'intro', 'login', '404', 'bunker', 'styleguide'];
+			if (blacklist.any(s => s === slug)) {
+				reject(new Error(errorMessage));
 			}
-			// Check the database and see if the slug is free
+			// Check the database to see if the slug is free. The filter below should not be neccesary.
+			// And since slug is already set on the channel, there can be a single duplicate.
 			this.store.query('channel', {
 				orderBy: 'slug',
-				equalsTo: cleanedSlug
+				equalsTo: slug
 			}).then(channels => {
-				// This filter should not be neccesary because query should do it.
-				const duplicates = channels.filterBy('slug', cleanedSlug);
-				// Since slug is already set on the channel there can be 1 duplicate
+				const duplicates = channels.filterBy('slug', slug);
 				if (duplicates.length <= 1) {
-					resolve(cleanedSlug);
+					resolve(slug);
 				} else {
-					reject(new Error(`Sorry, the URL "${cleanedSlug}" is already taken.\n\nPlease try another one.`));
+					reject(new Error(errorMessage));
 				}
 			});
 		});
-	}),
+	},
 
-	// Makes sure the slug is valid e.g. not in use by any other channel
-	// not protected and not empty
+	// Makes sure the slug is valid e.g. not in use by any other channel not protected and not empty
 	validateSlug() {
-		const slug = this.get('model.slug');
-		debug('Validating slug.');
 		return new Ember.RSVP.Promise((resolve, reject) => {
-			this.get('isSlugFree').then(slug => {
+			this.isSlugFree().then(slug => {
 				resolve(slug);
 			}, error => {
 				reject(error);
@@ -103,8 +92,8 @@ export default Controller.extend(EmberValidations, {
 		});
 	},
 
-	// clear any unsaved changes
 	deactivate() {
+		// Clear any unsaved changes.
 		this.controllerFor('channel').get('model').rollbackAttributes();
 	},
 
@@ -112,11 +101,8 @@ export default Controller.extend(EmberValidations, {
 		trySave() {
 			const flashMessages = get(this, 'flashMessages');
 			this.validate().then(() => {
-				debug('form validates!!!');
-
 				const slugDidChange = (this.get('cachedSlug') !== this.get('model.slug'));
 				this.set('isSaving', true);
-
 				if (slugDidChange) {
 					this.validateSlug().then(cleanedSlug => {
 						this.set('model.slug', cleanedSlug);
