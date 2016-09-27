@@ -15,7 +15,7 @@ export default Controller.extend(createTrackMixin, {
 	actions: {
 		saveTrack(trackProperties) {
 			const channel = get(this, 'session.currentUser.channels.firstObject');
-			this.createTrack(trackProperties, channel).then(() => {
+			return this.createTrack(trackProperties, channel).then(() => {
 				this.setProperties({
 					showAddTrack: false,
 					newUrl: ''

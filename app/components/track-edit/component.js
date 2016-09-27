@@ -10,7 +10,7 @@ export default TrackFormComponent.extend({
 			get(this, 'track').rollbackAttributes();
 		},
 		deleteTrack() {
-			this.sendAction('deleteTrack', get(this, 'track'));
+			this.get('onDeleteTrack')(get(this, 'track'));
 		}
 	}
 });

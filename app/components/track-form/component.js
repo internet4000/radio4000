@@ -10,6 +10,8 @@ export default Component.extend(EmberValidations, {
 	classNames: ['Form'],
 	classNameBindings: ['box:Form--box'],
 	showErrors: false,
+	newUrl: '',
+	isIdle: true,
 
 	validations: {
 		'track.url': {
@@ -93,23 +95,24 @@ export default Component.extend(EmberValidations, {
 
 	actions: {
 		submit() {
+			set(this, 'isIdle', false);
 			this.validate().then(() => {
-				// all validations pass
-				this.sendAction('submit', get(this, 'track'));
-				// Reset the track form
-				this.setProperties({
-					url: '',
-					title: '',
-					body: ''
+				const trackProps = get(this, 'track');
+				get(this, 'onSubmit')(trackProps).then(() => {
+					// Reset all properties so we can create another track.
+					this.setProperties({
+						isIdle: true,
+						newUrl: '',
+						track: {}
+					});
 				});
 			}).catch(err => {
-				// any validations fail
 				debug(err);
 				set(this, 'showErrors', true);
 			});
 		},
 		cancel() {
-			this.sendAction('cancel');
+			this.get('onCancel')();
 		}
 	}
 });

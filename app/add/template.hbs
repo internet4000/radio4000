@@ -2,14 +2,11 @@
 	<div class="Section">
 		<div class="Container">
 			<h2>Add a new track to <em>{{model.title}}</em></h2>
-
 			{{track-add
-				track=track
 				newUrl=url
-				submit="saveTrack"
-				cancel="goBack"}}
-
-			<br><br>
+				onSubmit=(action "saveTrack")
+				onCancel=(action "goBack")}}
+			<br>
 			<p>
 				Do you want to see {{#link-to "channel" model.slug}}your channel <em>{{model.title}}</em>{{/link-to}}? It currently has {{model.totalTracks}} tracks.
 			</p>

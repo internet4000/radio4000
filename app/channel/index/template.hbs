@@ -10,9 +10,9 @@
 		{{#modal-dialog close="closeModals"}}
 			{{track-edit
 				track=trackToEdit
-				submit="updateTrack"
-				cancel="closeModals"
-				deleteTrack="deleteTrack"}}
+				onSubmit=(action "updateTrack")
+				onCancel=(action "closeModals")
+				onDeleteTrack=(action "deleteTrack")}}
 		{{/modal-dialog}}
 	{{/if}}
 
