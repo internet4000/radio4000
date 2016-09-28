@@ -106,10 +106,12 @@ export default Component.extend(EmberValidations, {
 						newUrl: '',
 						track: {}
 					});
+					this.$('input[type="url"]').focus();
 				});
 			}).catch(err => {
 				debug(err);
 				set(this, 'showErrors', true);
+				this.set('isIdle', true);
 			});
 		},
 		cancel() {
