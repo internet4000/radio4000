@@ -25,7 +25,7 @@ export default Ember.Component.extend({
 				return false;
 			}
 
-			return hashtags.contains(filter);
+			return hashtags.includes(filter);
 		});
 	}),
 

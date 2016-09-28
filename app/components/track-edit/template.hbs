@@ -24,7 +24,9 @@
 <div class="Form-group">
 	<div class="BtnGroupWrapper BtnGroupWrapper--full">
 		{{#btn-group}}
-			<button {{action "submit"}} type="submit" class="Btn Btn--primary" title="Save the track">Edit track</button>
+			<button {{action "submit"}} type="submit" class="Btn Btn--primary" title="Save the track" disabled={{if isIdle "" "disabled"}}>
+				{{if isIdle "Edit track" "Saving…"}}
+			</button>
 			<button {{action "cancel"}} class="Btn Btn--text" title="Stop editing the track">Cancel</button>
 			<button {{action "deleteTrack"}} class="Btn Btn--text Btn--danger u-alignRight" title="Delete this track from your radio">Delete</button>
 		{{/btn-group}}
