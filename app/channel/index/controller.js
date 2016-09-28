@@ -47,17 +47,24 @@ export default Ember.Controller.extend(EmberValidations, {
 				this.send('closeModals');
 				return;
 			}
-
 			// in case url changed, we need to set the ytid
-			debug('saving track');
 			track.updateYouTubeId().save().then(() => {
 				this.send('closeModals');
 				flashMessages.info('Track saved');
 			});
 		},
-		deleteTrack() {
+		deleteTrack(track) {
+			const flashMessages = get(this, 'flashMessages');
 			this.send('closeModals');
-			return true;
+			track.get('channel').then(channel => {
+				channel.get('tracks').then(() => {
+					track.destroyRecord().then(() => {
+						flashMessages.warning('Track deleted');
+					}, () => {
+						flashMessages.warning('Could not delete your track');
+					});
+				});
+			});
 		}
 	}
 });
