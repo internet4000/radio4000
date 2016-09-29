@@ -51,15 +51,19 @@ export default Ember.Service.extend({
 			return false;
 		}
 		this.setProperties({model, isPlaying: true});
-		this.setDocumentTitle();
-		model.get('channel').then(channel => this.updatePlaylist(channel));
+		model.get('channel').then(channel => {
+			this.updatePlaylist(channel);
+			const trackTitle = model.get('title');
+			const channelTitle = channel.get('title');
+			this.updateMetaTitle(trackTitle, channelTitle);
+		});
 	},
 
-	setDocumentTitle() {
+	updateMetaTitle(trackTitle, channelTitle) {
 		if (!document) {
 			throw new Error('no document');
 		}
-		document.title = `${this.get('model.title')} on ${this.get('playlist.title')}`;
+		document.title = `${trackTitle} on ${channelTitle}`;
 	},
 
 	/**
