@@ -60,7 +60,7 @@
     "ember-modal-dialog": "^0.9.0",
     "ember-resolver": "^2.0.3",
     "ember-validations": "2.0.0-alpha.5",
-    "ember-youtube": "^0.6.3",
+    "ember-youtube": "^0.7.0",
     "eslint-config-xo": "^0.15.4",
     "gulp": "^3.9.1",
     "gulpicon": "^1.0.0",

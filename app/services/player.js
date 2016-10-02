@@ -12,8 +12,7 @@ export default Ember.Service.extend({
 	model: null,
 	playlist: null,
 
-	// this caches the current playlist and sets it
-	// if it really did change (through the model)
+	// This caches the current playlist and sets it if it really did change (through the model)
 	// also sets the old one as inactive, and new as… active!
 	updatePlaylist(newPlaylist) {
 		const currentPlaylist = this.get('playlist');
@@ -31,7 +30,7 @@ export default Ember.Service.extend({
 		});
 	},
 
-	// just play/pause activations for the current track in player (and metrics)
+	// Play/pause activations for the current track in player (and metrics).
 	play(currentTrack = this.get('model')) {
 		this.set('isPlaying', true);
 		this.get('playerHistory').setTrackAsPlayed(currentTrack);
@@ -41,10 +40,7 @@ export default Ember.Service.extend({
 		this.set('isPlaying', false);
 	},
 
-	/**
-		Plays a track
-		Give it a track, and he'll know what to do with it
-	*/
+	// Give it a track model and it'll play it
 	playTrack(model) {
 		if (!model) {
 			debug('Play called without a track.');
