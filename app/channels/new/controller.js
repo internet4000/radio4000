@@ -53,10 +53,10 @@ export default Ember.Controller.extend(EmberValidations, {
 		try {
 			channel.setProperties({channelPublic});
 			yield channel.save();
+			this.transitionToRoute('channel', channel);
+			messages.warning('Voilà! You now have a Radio4000 📻', {timeout: 10000});
 		} catch (e) {
 			throw new Error('Could not save new channel');
-		} finally {
-			this.transitionToRoute('channel', channel);
 		}
 	}).drop(),
 
