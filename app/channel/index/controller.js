@@ -41,14 +41,13 @@ export default Ember.Controller.extend(EmberValidations, {
 		},
 		updateTrack(track) {
 			const flashMessages = Ember.get(this, 'flashMessages');
-
 			if (!track.get('hasDirtyAttributes')) {
-				debug('nothing to save on track');
 				this.send('closeModals');
-				return;
+				return Ember.RSVP.resolve();
 			}
 			// in case url changed, we need to set the ytid
-			track.updateYouTubeId().save().then(() => {
+			track.updateYouTubeId();
+			return track.save().then(() => {
 				this.send('closeModals');
 				flashMessages.info('Track saved');
 			});
