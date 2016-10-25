@@ -23,7 +23,7 @@
 	{{ember-youtube class="Player"
 		ytid=player.model.ytid
 		delegate=this
-		delegate-as="emberYouTube"
+		delegate-as="emberYoutube"
 		playerVars=youtubePlayerVars
 		showProgress=true
 		lazyload=true
@@ -67,5 +67,5 @@
 		{{x-icon i='next'}}
 	</button>
 
-	<button class="Playback-button Playback-toggleVolume {{if emberYouTube.isMuted 'u-textStrike'}}" {{action "toggleVolume"}} title="Toggle the playback volume">Mute</button>
+	<button class="Playback-button Playback-toggleVolume {{if emberYoutube.isMuted 'u-textStrike'}}" {{action "toggleVolume"}} title="Toggle the playback volume">Mute</button>
 </div>

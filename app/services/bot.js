@@ -30,9 +30,6 @@ export default Service.extend({
 		this.get('player').playTrack(track);
 	}).drop(),
 
-	findLast(x, type) {
-		return this.get('store').query(type, {limitToLast: x});
-	},
 
 	findRandomChannel() {
 		let items = null;
@@ -73,21 +70,3 @@ export default Service.extend({
 		return channel.get('tracks').then(tracks => tracks.get('lastObject'));
 	}
 });
-
-// playSomething() {
-// 	this.get('randomChannel').then(channel => {
-// 		channel.get('tracks').then(tracks => {
-// 			const track = tracks.objectAt(randomIndex(tracks));
-// 			this.get('player').playTrack(track);
-// 		});
-// 	});
-// }
-// randomTrack() {
-	// this.store.query('channel', {limitToLast: 5}).then(channels => {
-	// 	const channel = channels.filter(c => c.get('tracks.length')).objectAt(randomIndex(channels));
-	// 	channel.get('tracks').then(tracks => {
-	// 		const track = tracks.objectAt(randomIndex(tracks));
-	// 		this.get('player').playTrack(track);
-	// 	});
-	// });
-// }
