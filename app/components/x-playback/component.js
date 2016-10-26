@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import {task, timeout} from 'ember-concurrency';
 import {EKMixin, keyUp} from 'ember-keyboard';
 
 const {Component, inject, computed, on, run, $} = Ember;
@@ -15,18 +16,36 @@ export default Component.extend(EKMixin, {
 		showinfo: 0
 	},
 
-	// Keyboard shortucts.
 	activateKeyboard: Ember.on('init', function () {
 		this.set('keyboardActivated', true);
 	}),
-	onSpaceClick: on(keyUp('Space'), function () {
+
+	swapShortcut: on(keyUp('KeyW'), function () {
+		this.get('swap').perform();
+	}),
+
+	playbackShortcut: on(keyUp('KeyP'), function () {
 		this.send('togglePlay');
+	}),
+	skipShortcut: on(keyUp('KeyS'), function () {
+		this.send('next');
+	}),
+	muteShortcut: on(keyUp('KeyM'), function () {
+		this.send('toggleVolume');
 	}),
 	closeFullscreen: on(keyUp('Escape'), function () {
 		if (this.get('uiStates.player.isMaximized')) {
 			this.send('toggleMaximizedPlayer');
 		}
 	}),
+
+	swap: task(function * () {
+		const previousChannel = this.get('player.playlist');
+		const channel = yield this.get('bot.playAnotherRadio').perform(previousChannel);
+		Ember.debug('swapping');
+		// this.get('on-swap')(channel);
+		// yield timeout(200); // ensures it can't be called
+	}).keepLatest(),
 
 	actions: {
 		togglePlay() {

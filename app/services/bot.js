@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import {task} from 'ember-concurrency';
 
-const {Service, inject} = Ember;
+const {Service, debug, inject} = Ember;
 
 const randomIndex = array => Math.floor(Math.random() * array.get('length'));
 
@@ -10,63 +10,70 @@ export default Service.extend({
 	player: inject.service(),
 
 	playAnotherRadio: task(function * (prev) {
-		const channel = yield this.findRandomChannel();
-		// if the new "random" is the same as the last, it does happen, run again
-		if (prev && prev.id === channel.id) {
-			return this.get('playAnotherRadio').perform(channel);
+		let channel = yield this.findRandomChannel();
+		// If a `prev` channel is passed, we call the function again to avoid getting the same channel twice.
+		while (prev && prev.id === channel.id) {
+			debug('found the same "random" radio, let us try again');
+			channel = yield this.findRandomChannel();
 		}
 		this.get('player').set('isShuffled', true);
 		yield this.get('playNewestTrack').perform(channel);
 	}).drop(),
 
 	playNewestTrack: task(function * (channel) {
-		const track = yield this.findLastTrack(channel);
+		const track = yield this.get('findLastTrack').perform(channel);
 		if (!track) {
-			Ember.debug('playTrack was called without a track.');
+			debug('playNewestTrack was called but could not find a track to play. Trying another radio.');
 			this.get('playAnotherRadio').perform();
 			return;
-			// throw new Error('playTrack was called without a track.');
 		}
 		this.get('player').playTrack(track);
 	}).drop(),
 
+	playRandomTrack: task(function * (channel) {
+		const track = yield this.get('findRandomTrack').perform(channel);
+		this.get('player').playTrack(track);
+	}).drop(),
 
+	findLastTrack: task(function * (channel) {
+		const tracks = yield channel.get('tracks');
+		return tracks.get('lastObject');
+	}).drop(),
+
+	// This returns a single, ramdom channel while doing effecient queries
+	// e.g. first it finds all records, then looks to the cache
 	findRandomChannel() {
-		let items = null;
 		let channel;
-		// This returns a single, ramdom channel while doing effecient queries
-		// e.g. first it finds all records, then looks to the cache
+		let items = null;
+		let filtered;
+
+		debug('findRandomChannel');
+
 		return new Ember.RSVP.Promise(resolve => {
-			const isCached = this.get('store').peekAll('channel').get('length');
-			if (isCached >= 20) {
-				items = this.get('store').peekAll('channel');
-				const filtered = items.filter(c => c.get('totalTracks') > 5);
-				channel = filtered.objectAt(randomIndex(filtered));
+			const cachedChannels = this.get('store').peekAll('channel');
+			const isCached = cachedChannels.get('length');
+			if (isCached >= 2) {
+				items = cachedChannels;
+				channel = items.objectAt(randomIndex(items));
+				if (channel.get('totalTracks') < 1) {
+					// Only filter the channels if necessary. This method is called often #performance
+					filtered = items.filter(c => c.get('totalTracks') > 5);
+					channel = filtered.objectAt(randomIndex(filtered));
+				}
 				resolve(channel);
 			} else {
-				items = this.get('store').findAll('channel');
 				// items = this.findLast(10, 'channel');
-				items.then(channels => {
-					const filtered = channels.filter(c => c.get('totalTracks') > 10);
+				this.get('store').findAll('channel').then(channels => {
+					Ember.debug('avoid this being called, it is heavy');
+					items = channels;
+					filtered = channels.filter(c => c.get('totalTracks') > 5);
 					if (Ember.isEmpty(filtered)) {
-						const channelsWithAtLeastOneTrack = channels.filter(c => c.get('totalTracks') > 0);
-						channel = channels.objectAt(randomIndex(channelsWithAtLeastOneTrack));
-					} else {
-						channel = filtered.objectAt(randomIndex(filtered));
+						filtered = channels.filter(c => c.get('totalTracks') > 0);
 					}
-					Ember.debug(channel.get('title'));
+					channel = filtered.objectAt(randomIndex(filtered));
 					resolve(channel);
 				});
 			}
-		}).catch(error => {
-			throw new Error(error);
-		});
-	},
-
-	findLastTrack(channel) {
-		if (!channel) {
-			throw new Error('no channel');
-		}
-		return channel.get('tracks').then(tracks => tracks.get('lastObject'));
+		}).catch(err => Ember.debug(err));
 	}
 });

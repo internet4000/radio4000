@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import {task} from 'ember-concurrency';
 
 const {Component, inject, get, set, computed} = Ember;
 
@@ -20,40 +21,19 @@ export default Component.extend({
 
 	click() {
 		const player = get(this, 'player');
+		const channel = get(this, 'channel');
 		const alreadyPlaying = get(this, 'isInPlayer');
+
 		if (alreadyPlaying) {
+			// return player.next();
 			return player.activateRandom().then(() => player.next());
 		}
-		return this.playChannel();
+
+		get(this, 'play').perform(channel);
 	},
 
 	// Accepts a `channel` model and plays it.
-	playChannel(channel = get(this, 'channel')) {
-		const player = get(this, 'player');
-		const promise = get(this, 'bot').findLastTrack(channel);
-
-		set(this, 'isLoading', true);
-		promise.then(track => {
-			set(this, 'isLoading', false);
-			if (track) {
-				player.playTrack(track);
-			} else {
-				// Without a track we can't play the radio,
-				// so we set a class in order to hide the button.
-				const noTrack = Boolean(!track);
-				set(this, 'nothingToPlay', noTrack);
-			}
-		});
-	},
-
-	/**
-		@method loadTracks
-		@returns promise {tracks}
-		so we can display a loading state
-		and show the player only when the track is ready to be played
-	*/
-	loadTracks(channel) {
-		set(this, 'isLoading', true);
-		return channel.get('tracks');
-	}
+	play: task(function * (channel) {
+		yield get(this, 'bot.playNewestTrack').perform(channel);
+	})
 });

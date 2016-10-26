@@ -1,10 +1,13 @@
 <div class="Playback-layoutButtons">
 	{{!-- skip button is hidden for now because it doesn't fit here ux-wise --}}
-	{{!-- {{#if player.model.channel}}
-		<button class="Btn Btn--small" onClick={{perform bot.playAnotherRadio channel}} disabled={{bot.playAnotherRadio.isRunning}} title="Skip to next radio">
-			{{if bot.playAnotherRadio.isIdle 'Skip' 'Skipping'}}
+	{{#if player.model.channel}}
+		<button class="Btn Btn--small"
+			onClick={{perform bot.playAnotherRadio channel}}
+			disabled={{bot.playAnotherRadio.isRunning}}
+			title="Swap to another radio">
+			{{if bot.playAnotherRadio.isIdle 'Swap' 'Swapping'}}
 		</button>
-	{{/if}} --}}
+	{{/if}}
 	<button class="Playback-minimalBtn Btn Btn--small" {{action 'toggleMinimizedPlayer'}} title="Toggle minimized player">
 		{{if uiStates.player.isMinimized '⬒' '_'}}
 	</button>
