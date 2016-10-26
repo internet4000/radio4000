@@ -30,16 +30,16 @@ export default Component.extend(EKMixin, {
 
 	actions: {
 		togglePlay() {
-			this.get('emberYouTube').send('togglePlay');
+			this.get('emberYoutube').send('togglePlay');
 		},
 		toggleVolume() {
-			this.get('emberYouTube').send('toggleVolume');
+			this.get('emberYoutube').send('toggleVolume');
 		},
 		play() {
-			this.get('emberYouTube').send('play');
+			this.get('emberYoutube').send('play');
 		},
 		pause() {
-			this.get('emberYouTube').send('pause');
+			this.get('emberYoutube').send('pause');
 		},
 		prev() {
 			this.get('player').prev();

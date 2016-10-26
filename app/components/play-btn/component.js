@@ -12,15 +12,12 @@ export default Component.extend({
 	classNames: ['Btn'],
 	classNameBindings: ['isLoading', 'isInPlayer', 'nothingToPlay:is-hidden'],
 
-	player: inject.service(),
 	bot: inject.service(),
+	player: inject.service(),
 
 	isShuffled: computed.reads('isInPlayer'),
 	isInPlayer: computed.reads('channel.isInPlayer'),
 
-	// If the channel is already loaded in the player,
-	// we activate shuffle/random and skip to next track.
-	// Otherwise play the radio.
 	click() {
 		const player = get(this, 'player');
 		const alreadyPlaying = get(this, 'isInPlayer');

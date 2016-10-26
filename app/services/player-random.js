@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import randomHelpers from 'radio4000/mixins/random-helpers';
 
-const {Service, RSVP, inject, debug} = Ember;
+const {Service, inject, debug, RSVP} = Ember;
 
 export default Service.extend(randomHelpers, {
 	player: inject.service(),
@@ -12,21 +12,14 @@ export default Service.extend(randomHelpers, {
 	// Shuffles a 'channel.tracks' array and sets it as the random pool.
 	setNewRandomPool(items) {
 		debug('setNewRandomPool');
-
-		// @TODO: Why not just shuffle `items` directly?
 		const shuffledItems = [];
 		items.forEach(item => {
 			shuffledItems.pushObject(item);
 		});
-
 		this.set('randomPool', this.shuffle(shuffledItems));
 	},
 
-	/**
-	 @method
-	 @returns @promise {track} model that has to be played, to the player@nextRandom
-	 promise so it waits there is a track found to play it
-	*/
+	// Returns @promise {track} model that has to be played, to the player@nextRandom promise so it waits there is a track found to play it
 	getNext() {
 		const array = this.get('randomPool');
 		const currentIndex = array.indexOf(this.get('player.model'));
@@ -40,10 +33,7 @@ export default Service.extend(randomHelpers, {
 		});
 	},
 
-	/**
-		@method getPrevious
-		@returns the track previously played in random mode
-	*/
+	// Returns a promise with the track previously played with player.isRandom = true
 	getPrevious() {
 		const array = this.get('randomPool');
 		const currentIndex = array.indexOf(this.get('player.model'));
