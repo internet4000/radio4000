@@ -1,0 +1,92 @@
+//
+// types
+//
+
+type User {
+     channels: Map<String, Boolean>,
+     created: Number,
+     settings: String,
+}
+type UserSetting {
+     isRemoteActive: Boolean,
+     playedChannels: Map<String, Boolean>,
+     user: String
+}
+type Track {
+     channel: String,
+     created: Number,
+     url: String,
+     title: String,
+     ytid: String
+}
+type Image {
+     channel: String,
+     src: String
+}
+type Channel {
+     channelPublic: String,
+     created: Number,
+     favoriteChannels: Map<String, Boolean>,
+     isFeatured: Boolean,
+     slug: String,
+     title: String,
+     tracks: Map<String, Boolean>,
+     updated: Number
+}
+type ChannelPublic {
+     channel: String,
+     followers: Map<String, Boolean>,
+}
+
+
+
+//
+// routes
+//
+
+path / {
+     read() { false }
+     write() { false }
+}
+
+path /users {
+     read() { false }
+     write() {
+       isSignedIn() && this != null
+     }
+}
+path /users/{user_id} is User {
+     read() {
+         isCurrentUser(user_id)
+     }
+     write() {
+          isCurrentUser(user_id) && this != null
+     }
+}
+path /users/{user_id}/channels/{channel_id} is Channel {
+     validate() {
+     	channelExists(channel_id) && userOwnsChannel(user_id, channel_id) && (root.channels[channel].tracks != null)
+     }
+}
+path /userSettings is UserSetting {}
+path /userSettings/{userSetting_id} {
+     read() {
+     	    isCurrentUser(userSetting_id)
+     }
+     write() {
+     	     isCurrentUser(userSetting_id) && root.users[auth.uid].settings == null
+     }
+}
+
+
+
+//
+// Helper Functions
+//
+
+isCurrentUser(uid) { isSignedIn() && auth.uid == uid }
+isSignedIn() { auth != null }
+channelExists(channel) { root.channels.channel != null }
+userOwnsChannel(uid, channel) {
+  isCurrentUser(uid) && (root.users[uid].channels[channel] != null)
+}
