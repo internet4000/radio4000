@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import {task, timeout} from 'ember-concurrency';
+import {task} from 'ember-concurrency';
 import {EKMixin, keyUp} from 'ember-keyboard';
 
 const {Component, inject, computed, on, run, $} = Ember;
@@ -40,11 +40,9 @@ export default Component.extend(EKMixin, {
 	}),
 
 	swap: task(function * () {
-		const previousChannel = this.get('player.playlist');
-		const channel = yield this.get('bot.playAnotherRadio').perform(previousChannel);
-		Ember.debug('swapping');
-		// this.get('on-swap')(channel);
-		// yield timeout(200); // ensures it can't be called
+		const previous = this.get('player.playlist');
+		const channel = yield this.get('bot.playAnotherRadio').perform(previous);
+		return channel;
 	}).keepLatest(),
 
 	actions: {

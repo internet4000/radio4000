@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import {task} from 'ember-concurrency';
 
-const {Service, debug, inject} = Ember;
+const {Service, debug, inject, set, get} = Ember;
 
 const randomIndex = array => Math.floor(Math.random() * array.get('length'));
 
@@ -10,13 +10,20 @@ export default Service.extend({
 	player: inject.service(),
 
 	playAnotherRadio: task(function * (prev) {
-		let channel = yield this.findRandomChannel();
+		let channel = yield get(this, 'findRandomChannel').perform();
+
 		// If a `prev` channel is passed, we call the function again to avoid getting the same channel twice.
-		while (prev && prev.id === channel.id) {
-			debug('found the same "random" radio, let us try again');
-			channel = yield this.findRandomChannel();
+		if (prev) {
+			while (channel.id === prev.id) {
+				debug('found the same channel as the previous one, trying again');
+				channel = yield get(this, 'findRandomChannel').perform();
+			}
 		}
+
+		// Ensure shuffle is enabled.
+		// The user really did not ask for this but it is for the best.
 		this.get('player').set('isShuffled', true);
+
 		yield this.get('playNewestTrack').perform(channel);
 	}).drop(),
 
@@ -40,40 +47,27 @@ export default Service.extend({
 		return tracks.get('lastObject');
 	}).drop(),
 
-	// This returns a single, ramdom channel while doing effecient queries
-	// e.g. first it finds all records, then looks to the cache
-	findRandomChannel() {
+	findRandomChannel: task(function * () {
+		let cache = get(this, 'store').peekAll('channel');
 		let channel;
-		let items = null;
-		let filtered;
 
-		debug('findRandomChannel');
+		// Very small cache so we try to fetch more.
+		if (!get(this, 'didCache') && cache.get('length') > 3) {
+			Ember.debug('small cache, fetching more channels');
+			cache = yield get(this, 'store').findAll('channel');
+			// cache = yield this.findLast(10, 'channel');
+			set(this, 'didCache', true);
+		}
 
-		return new Ember.RSVP.Promise(resolve => {
-			const cachedChannels = this.get('store').peekAll('channel');
-			const isCached = cachedChannels.get('length');
-			if (isCached >= 2) {
-				items = cachedChannels;
-				channel = items.objectAt(randomIndex(items));
-				if (channel.get('totalTracks') < 1) {
-					// Only filter the channels if necessary. This method is called often #performance
-					filtered = items.filter(c => c.get('totalTracks') > 5);
-					channel = filtered.objectAt(randomIndex(filtered));
-				}
-				resolve(channel);
-			} else {
-				// items = this.findLast(10, 'channel');
-				this.get('store').findAll('channel').then(channels => {
-					Ember.debug('avoid this being called, it is heavy');
-					items = channels;
-					filtered = channels.filter(c => c.get('totalTracks') > 5);
-					if (Ember.isEmpty(filtered)) {
-						filtered = channels.filter(c => c.get('totalTracks') > 0);
-					}
-					channel = filtered.objectAt(randomIndex(filtered));
-					resolve(channel);
-				});
-			}
-		}).catch(err => Ember.debug(err));
-	}
+		// Pick a channel.
+		channel = cache.objectAt(randomIndex(cache));
+
+		// If the channel is empty, pick one with more tracks.
+		if (channel.get('totalTracks') < 1) {
+			cache = cache.filter(c => c.get('totalTracks') > 1);
+			channel = cache.objectAt(randomIndex(cache));
+		}
+
+		return channel;
+	}).keepLatest()
 });

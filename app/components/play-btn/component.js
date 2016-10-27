@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import {task} from 'ember-concurrency';
 
-const {Component, inject, get, set, computed} = Ember;
+const {Component, inject, get, computed} = Ember;
 
 // Pass it a track to play it.
 // Pass it a channel to play latest track.
