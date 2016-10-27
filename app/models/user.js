@@ -1,9 +1,8 @@
 import DS from 'ember-data';
 
-const {belongsTo, attr, hasMany, Model} = DS;
+const {Model, attr, belongsTo, hasMany} = DS;
 
 export default Model.extend({
-	provider: attr('string'),
 	created: attr('number', {
 		defaultValue() {
 			return new Date().getTime();
