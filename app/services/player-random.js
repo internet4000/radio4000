@@ -1,40 +1,38 @@
 import Ember from 'ember';
-import randomHelpers from 'radio4000/mixins/random-helpers';
+import {shuffleArray} from 'radio4000/utils/random-helpers';
 
 const {Service, RSVP, inject, debug} = Ember;
 
-export default Service.extend(randomHelpers, {
+export default Service.extend({
 	player: inject.service(),
 
 	// Pool of shuffled tracks: those availabled to be picked form
 	randomPool: [],
 
-	// Shuffles a 'channel.tracks' array and sets it as the random pool.
-	setNewRandomPool(items) {
+	// Copies and shuffles a 'channel.tracks' array and sets it as the random pool.
+	setNewRandomPool(tracks) {
 		debug('setNewRandomPool');
-
-		// @TODO: Why not just shuffle `items` directly?
-		const shuffledItems = [];
-		items.forEach(item => {
-			shuffledItems.pushObject(item);
+		let pool = [];
+		tracks.forEach(track => {
+			pool.pushObject(track);
 		});
-
-		this.set('randomPool', this.shuffle(shuffledItems));
+		pool = shuffleArray(pool);
+		this.set('randomPool', pool);
 	},
 
 	/**
 	 @method
 	 @returns @promise {track} model that has to be played, to the player@nextRandom
 	 promise so it waits there is a track found to play it
-	*/
+	 */
 	getNext() {
 		const array = this.get('randomPool');
 		const currentIndex = array.indexOf(this.get('player.model'));
 
 		return new RSVP.Promise(resolve => {
-			const item = array.objectAt(currentIndex + 1);
+			let item = array.objectAt(currentIndex + 1);
 			if (!item) {
-				resolve(array.objectAt(0));
+				item = array.objectAt(0);
 			}
 			resolve(item);
 		});
@@ -43,15 +41,15 @@ export default Service.extend(randomHelpers, {
 	/**
 		@method getPrevious
 		@returns the track previously played in random mode
-	*/
+		*/
 	getPrevious() {
 		const array = this.get('randomPool');
 		const currentIndex = array.indexOf(this.get('player.model'));
 
 		return new RSVP.Promise(resolve => {
-			const item = array.objectAt(currentIndex - 1);
+			let item = array.objectAt(currentIndex - 1);
 			if (!item) {
-				resolve(array.objectAt(array.length - 1));
+				item = array.objectAt(array.length - 1);
 			}
 			resolve(item);
 		});

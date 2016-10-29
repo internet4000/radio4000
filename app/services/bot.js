@@ -1,9 +1,8 @@
 import Ember from 'ember';
 import {task} from 'ember-concurrency';
+import {getRandomIndex} from 'radio4000/utils/random-helpers';
 
 const {Service, inject} = Ember;
-
-const randomIndex = array => Math.floor(Math.random() * array.get('length'));
 
 export default Service.extend({
 	store: inject.service(),
@@ -44,7 +43,7 @@ export default Service.extend({
 			if (isCached >= 20) {
 				items = this.get('store').peekAll('channel');
 				const filtered = items.filter(c => c.get('totalTracks') > 5);
-				channel = filtered.objectAt(randomIndex(filtered));
+				channel = filtered.objectAt(getRandomIndex(filtered));
 				resolve(channel);
 			} else {
 				items = this.get('store').findAll('channel');
@@ -53,9 +52,9 @@ export default Service.extend({
 					const filtered = channels.filter(c => c.get('totalTracks') > 10);
 					if (Ember.isEmpty(filtered)) {
 						const channelsWithAtLeastOneTrack = channels.filter(c => c.get('totalTracks') > 0);
-						channel = channels.objectAt(randomIndex(channelsWithAtLeastOneTrack));
+						channel = channels.objectAt(getRandomIndex(channelsWithAtLeastOneTrack));
 					} else {
-						channel = filtered.objectAt(randomIndex(filtered));
+						channel = filtered.objectAt(getRandomIndex(filtered));
 					}
 					Ember.debug(channel.get('title'));
 					resolve(channel);
@@ -77,7 +76,7 @@ export default Service.extend({
 // playSomething() {
 // 	this.get('randomChannel').then(channel => {
 // 		channel.get('tracks').then(tracks => {
-// 			const track = tracks.objectAt(randomIndex(tracks));
+// 			const track = tracks.objectAt(getRandomIndex(tracks));
 // 			this.get('player').playTrack(track);
 // 		});
 // 	});
@@ -86,7 +85,7 @@ export default Service.extend({
 	// this.store.query('channel', {limitToLast: 5}).then(channels => {
 	// 	const channel = channels.filter(c => c.get('tracks.length')).objectAt(randomIndex(channels));
 	// 	channel.get('tracks').then(tracks => {
-	// 		const track = tracks.objectAt(randomIndex(tracks));
+	// 		const track = tracks.objectAt(getRandomIndex(tracks));
 	// 		this.get('player').playTrack(track);
 	// 	});
 	// });
