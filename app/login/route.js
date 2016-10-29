@@ -23,7 +23,7 @@ export default Ember.Route.extend({
 	},
 
 	actions: {
-		// Logs in a user
+		// Logs in a user. Provider has to match what we've enabled in Firebase authentication. That is 'google' or 'facebook'.
 		// a) if the user has a channel, we transition to it
 		// b) otherwise we transition to create a new channel
 		login(provider) {

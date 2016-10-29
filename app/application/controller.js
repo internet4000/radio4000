@@ -6,6 +6,7 @@ const {Controller, get, inject} = Ember;
 export default Controller.extend(createTrackMixin, {
 	player: inject.service(),
 	uiStates: inject.service(),
+
 	queryParams: ['isEmbed', 'isInverted'],
 	isEmbed: false,
 	isInverted: false,
@@ -18,7 +19,7 @@ export default Controller.extend(createTrackMixin, {
 			return this.createTrack(trackProperties, channel).then(() => {
 				this.setProperties({
 					showAddTrack: false,
-					newUrl: ''
+					newUrl: null
 				});
 			});
 		}
