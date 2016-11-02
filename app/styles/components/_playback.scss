@@ -48,7 +48,11 @@
 		width: 100%;
 	}
 }
-
+.Playback-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
 .Playback-text {
 	@include size-1;
 	padding: 2rem 0.5rem;
@@ -230,7 +234,7 @@ $bar-height-minimized: rem(70);
 	.Playback {
 		height: 100%;
 		background: black;
-		flex-flow: row wrap;
+		flex-flow: row nowrap;
 	}
 
 	.Playback-layoutButtons {
