@@ -51,7 +51,7 @@
 }
 
 /**
- * Player is showing
+ * Player
  */
 .Root.is-withPlayer {
 	.SiteMain {
@@ -62,4 +62,9 @@
 	.Player {
 		order: 1;
 	}
+}
+.Root.is-withoutPlayer {
+    .Aside--right {
+	display: none;
+    }
 }
