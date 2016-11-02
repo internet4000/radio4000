@@ -33,39 +33,41 @@
 		error="onYouTubeError"}}
 </div>
 
-{{#if player.model}}
-	<div class="Playback-channel">
-		{{channel-card channel=channel wide=true}}
+<div class="Playback-body">
+  {{#if player.model}}
+    <div class="Playback-channel">
+      {{channel-card channel=channel wide=true}}
+    </div>
+    <div class="Playback-text">
+      <div class="Playback-title" title="Current track / go to current radio">
+	<div {{action "scrollToTrack"}}>
+	  {{#link-to 'track' channel player.model replace=true}}
+	    {{player.model.title}}
+	  {{/link-to}}
 	</div>
-	<div class="Playback-text">
-		<div class="Playback-title" title="Current track / go to current radio">
-			<div {{action "scrollToTrack"}}>
-				{{#link-to 'track' channel player.model replace=true}}
-					{{player.model.title}}
-				{{/link-to}}
-			</div>
-		</div>
-		{{#if player.model.body}}
-			<p class="Playback-description">"{{player.model.body}}"</p>
-		{{/if}}
-	</div>
+      </div>
+      {{#if player.model.body}}
+	<p class="Playback-description">"{{player.model.body}}"</p>
+      {{/if}}
+    </div>
 
-{{/if}}
+  {{/if}}
 
-<div class="Playback-buttons {{unless player.model "u-hide"}}">
-	<button class="Playback-button Playback-shuffle {{if player.isRandom 'is-active'}}" {{action 'toggleRandom'}} title="{{if player.isRandom 'Disable shuffle' 'Enable shuffle'}}">
-		{{x-icon i='shuffle'}}
-	</button>
+  <div class="Playback-buttons {{unless player.model "u-hide"}}">
+    <button class="Playback-button Playback-shuffle {{if player.isRandom 'is-active'}}" {{action 'toggleRandom'}} title="{{if player.isRandom 'Disable shuffle' 'Enable shuffle'}}">
+      {{x-icon i='shuffle'}}
+    </button>
 
-	<button class="Playback-button" {{action 'prev'}} title="Previous track">
-		{{x-icon i='previous'}}
-	</button>
+    <button class="Playback-button" {{action 'prev'}} title="Previous track">
+      {{x-icon i='previous'}}
+    </button>
 
-	{{play-pause-btn isPlaying=player.isPlaying play=(action "play") pause=(action "pause") class="Playback-button"}}
+    {{play-pause-btn isPlaying=player.isPlaying play=(action "play") pause=(action "pause") class="Playback-button"}}
 
-	<button class="Playback-button" {{action 'next'}} title="Next track">
-		{{x-icon i='next'}}
-	</button>
+    <button class="Playback-button" {{action 'next'}} title="Next track">
+      {{x-icon i='next'}}
+    </button>
 
-	<button class="Playback-button Playback-toggleVolume {{if emberYouTube.isMuted 'u-textStrike'}}" {{action "toggleVolume"}} title="Toggle the playback volume">Mute</button>
+    <button class="Playback-button Playback-toggleVolume {{if emberYouTube.isMuted 'u-textStrike'}}" {{action "toggleVolume"}} title="Toggle the playback volume">Mute</button>
+  </div>
 </div>
