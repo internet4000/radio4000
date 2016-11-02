@@ -7,7 +7,7 @@
 	border-radius: $border-radius;
 
 	&.is-active {
-		outline-color: $primary-color;
+	    outline-color: $primary-color;
 	}
 }
 
@@ -113,7 +113,8 @@
 $card-wide-cover-size: 4.8rem;
 
 .ChannelCard--wide {
-	padding-bottom: 0;
+    padding-bottom: 0;
+    width: 100%;
 
 	> a {
 		display: flex;
@@ -141,8 +142,9 @@ $card-wide-cover-size: 4.8rem;
 	}
 
 	.ChannelCard-controls {
-		top: -0.3rem;
-		right: -0.6rem;
+		left: 0;
+		top: 0;
+		right: auto;
 
 		.Button {
 			padding: 0.6rem;
