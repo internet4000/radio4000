@@ -178,9 +178,8 @@
 $bar-height-minimized: rem(70);
 
 .is-minimized {
-	.EmberYoutube-progress,
-	.Playback-buttons,
-	.Playback-controls {
+    .EmberYoutube-progress,
+    .Playback-body {
 		display: none;
 	}
 
