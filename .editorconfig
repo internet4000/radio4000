@@ -4,25 +4,16 @@
 
 root = true
 
-
 [*]
-end_of_line = lf
 charset = utf-8
-trim_trailing_whitespace = true
+end_of_line = lf
 insert_final_newline = true
-
-[*.js]
 indent_style = tabs
-
-[*.hbs]
-indent_style = tabs
-
-[*.css]
-indent_style = tabs
-
-[*.html]
-indent_style = tabs
-insert_final_newline = false
+trim_trailing_whitespace = true
 
 [*.{diff,md}]
 trim_trailing_whitespace = false
+
+[*.{json,yml}]
+indent_size = 2
+indent_style = space

@@ -1,9 +1,8 @@
 import Ember from 'ember';
 import {task} from 'ember-concurrency';
+import {getRandomIndex} from 'radio4000/utils/random-helpers';
 
 const {Service, debug, inject, set, get} = Ember;
-
-const randomIndex = array => Math.floor(Math.random() * array.get('length'));
 
 export default Service.extend({
 	store: inject.service(),

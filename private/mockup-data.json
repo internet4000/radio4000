@@ -1,0 +1,148 @@
+{
+    "channelPublics" : {
+	"1" : {
+	    "channel" : "1"
+	},
+	"2" : {
+	    "channel" : "2",
+	    "followers" : {
+		"1" : true
+	    }
+	},
+	"5": {
+	    "channel": "5"
+	}
+    },
+    "channels" : {
+	"1" : {
+	    "channelPublic" : "1",
+	    "created" : 1477061961276,
+	    "favoriteChannels" : {
+		"2": true
+	    },
+	    "isFeatured" : true,
+	    "slug" : "c1",
+	    "title" : "c1",
+	    "tracks" : {
+		"1a" : true,
+		"1b" : true,
+		"1c" : true
+	    },
+	    "updated" : 1477413257113
+	},
+	"2" : {
+	    "channelPublic" : "2",
+	    "created" : 1477062350652,
+	    "isFeatured" : true,
+	    "slug" : "c2",
+	    "title" : "c2",
+	    "tracks" : {
+		"2a" : true,
+		"2b" : true,
+		"2c" : true
+	    },
+	    "updated" : 1477413100166
+	},
+	"4": {
+	    "created": 1477062350652,
+	    "title": "c4",
+	    "slug": "c4"
+	}
+    },
+    "images" : {
+	"1" : {
+	    "channel" : "1",
+	    "src" : "hncx7ltxsrty2cfuboay"
+	}
+    },
+    "tracks" : {
+	"1a" : {
+	    "channel" : "1",
+	    "created" : 1477407562021,
+	    "title" : "1a",
+	    "url" : "https://www.youtube.com/watch?v=jmCytJPqQis",
+	    "ytid" : "jmCytJPqQis"
+	},
+	"1b" : {
+	    "channel" : "1",
+	    "created" : 1477407569228,
+	    "title" : "1b",
+	    "url" : "https://www.youtube.com/watch?v=jmCytJPqQis",
+	    "ytid" : "jmCytJPqQis"
+	},
+	"1c" : {
+	    "channel" : "1",
+	    "created" : 1477407572451,
+	    "title" : "1c",
+	    "url" : "https://www.youtube.com/watch?v=jmCytJPqQis",
+	    "ytid" : "jmCytJPqQis"
+	},
+	"2a" : {
+	    "body" : "2a",
+	    "channel" : "2",
+	    "created" : 1477413096574,
+	    "title" : "2a",
+	    "url" : "https://www.youtube.com/watch?v=w311Hd4K_Fk",
+	    "ytid" : "w311Hd4K_Fk"
+	},
+	"2b" : {
+	    "body" : "2b",
+	    "channel" : "2",
+	    "created" : 1477413098322,
+	    "title" : "2b",
+	    "url" : "https://www.youtube.com/watch?v=w311Hd4K_Fk",
+	    "ytid" : "w311Hd4K_Fk"
+	},
+	"2c" : {
+	    "body" : "2c",
+	    "channel" : "2",
+	    "created" : 1477413100023,
+	    "title" : "2c",
+	    "url" : "https://www.youtube.com/watch?v=w311Hd4K_Fk",
+	    "ytid" : "w311Hd4K_Fk"
+	}
+    },
+    "userSettings" : {
+	"1" : {
+	    "isRemoteActive" : false,
+	    "playedChannels" : {
+		"1" : true
+	    },
+	    "user" : "1"
+	},
+	"2" : {
+	    "isRemoteActive" : false,
+	    "user" : "2"
+	},
+	"3" : {
+	    "isRemoteActive" : false,
+	    "user" : "3",
+	    "playedChannels" : {
+		"1" : true,
+		"2" : true
+	    }
+	}
+    },
+    "users" : {
+	"1" : {
+	    "channels" : {
+		"1" : true
+	    },
+	    "created" : 1477586143954,
+	    "settings" : "1"
+	},
+	"2" : {
+	    "channels" : {
+		"2" : true
+	    },
+	    "created" : 1477062417559,
+	    "settings" : "2"
+	},
+	"3" : {
+	    "channels" : {
+	    },
+	    "created" : 1477062347235,
+	    "settings" : "3"
+	}
+    }
+}

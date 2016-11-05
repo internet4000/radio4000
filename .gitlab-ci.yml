@@ -14,7 +14,7 @@ before_script:
   - npm install -g phantomjs-prebuilt
   # these two are dependencies of our custom build script
   - npm install -g gulp-cli
-  - npm install -g surge
+  - npm install -g firebase-cli
   - npm install
   - bower --allow-root install
 
@@ -32,7 +32,7 @@ deploy:
   environment: staging
   script:
     - npm run build
-    - npm run deploy
+    - npm run deploy-firebase-staging
   only:
     - master
 
@@ -41,6 +41,6 @@ deploy_production:
   environment: production
   script:
     - npm run build-production
-    - npm run deploy-production
+    - npm run deploy-firebase-production
   only:
     - production
