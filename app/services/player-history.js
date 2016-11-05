@@ -5,7 +5,6 @@ const {Service, inject, debug} = Ember;
 export default Service.extend({
 	player: inject.service(),
 	session: inject.service(),
-	store: inject.service(),
 
 	// a track from the player ended (no user action, it played all the track)
 	trackEnded(track) {
@@ -48,7 +47,7 @@ export default Service.extend({
 	// @TODO the user finished this channel entirely (all tracks were naturally finished)
 	// Clears the History of played channels
 	clearPlayerHistory(usedTracks = this.get('player.playlist.tracks')) {
-		debug('clearPlayerHistory started');
+		debug('clearPlayerHistory');
 		if (!usedTracks) {
 			return;
 		}

@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import {task} from 'ember-concurrency';
 import {EKMixin, keyUp} from 'ember-keyboard';
 
 const {Component, inject, computed, on, run, $} = Ember;
@@ -15,12 +16,22 @@ export default Component.extend(EKMixin, {
 		showinfo: 0
 	},
 
-	// Keyboard shortucts.
 	activateKeyboard: Ember.on('init', function () {
 		this.set('keyboardActivated', true);
 	}),
-	onSpaceClick: on(keyUp('Space'), function () {
+
+	swapShortcut: on(keyUp('KeyW'), function () {
+		this.get('swap').perform();
+	}),
+
+	playbackShortcut: on(keyUp('KeyP'), function () {
 		this.send('togglePlay');
+	}),
+	skipShortcut: on(keyUp('KeyS'), function () {
+		this.send('next');
+	}),
+	muteShortcut: on(keyUp('KeyM'), function () {
+		this.send('toggleVolume');
 	}),
 	closeFullscreen: on(keyUp('Escape'), function () {
 		if (this.get('uiStates.player.isMaximized')) {
@@ -28,18 +39,24 @@ export default Component.extend(EKMixin, {
 		}
 	}),
 
+	swap: task(function * () {
+		const previous = this.get('player.playlist');
+		const channel = yield this.get('bot.playAnotherRadio').perform(previous);
+		return channel;
+	}).keepLatest(),
+
 	actions: {
 		togglePlay() {
-			this.get('emberYouTube').send('togglePlay');
+			this.get('emberYoutube').send('togglePlay');
 		},
 		toggleVolume() {
-			this.get('emberYouTube').send('toggleVolume');
+			this.get('emberYoutube').send('toggleVolume');
 		},
 		play() {
-			this.get('emberYouTube').send('play');
+			this.get('emberYoutube').send('play');
 		},
 		pause() {
-			this.get('emberYouTube').send('pause');
+			this.get('emberYoutube').send('pause');
 		},
 		prev() {
 			this.get('player').prev();

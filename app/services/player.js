@@ -6,26 +6,28 @@ const {debug, inject} = Ember;
 export default Ember.Service.extend({
 	playerRandom: inject.service(),
 	playerHistory: inject.service(),
-	isPlaying: false,
-	isLooped: true,
-	isRandom: false,
 	model: null,
 	playlist: null,
+	isLooped: true,
+	isRandom: false,
+	isPlaying: false,
 
 	// This caches the current playlist and sets it if it really did change (through the model)
 	// also sets the old one as inactive, and new as… active!
 	updatePlaylist(newPlaylist) {
 		const currentPlaylist = this.get('playlist');
+
+		if (currentPlaylist && Ember.isEqual(currentPlaylist.get('id'), newPlaylist.get('id'))) {
+			return;
+		}
+
 		if (currentPlaylist) {
-			if (Ember.isEqual(currentPlaylist.get('id'), newPlaylist.get('id'))) {
-				debug('This playlist is already set.');
-				return;
-			}
 			currentPlaylist.set('isInPlayer', false);
 		}
-		this.set('playlist', newPlaylist);
+
 		newPlaylist.set('isInPlayer', true);
 		newPlaylist.get('tracks').then(tracks => {
+			this.set('playlist', newPlaylist);
 			this.get('playerRandom').setNewRandomPool(tracks);
 		});
 	},
@@ -43,23 +45,16 @@ export default Ember.Service.extend({
 	// Give it a track model and it'll play it
 	playTrack(model) {
 		if (!model) {
-			debug('Play called without a track.');
+			debug('playTrack() was called without a track.');
 			return false;
 		}
 		this.setProperties({model, isPlaying: true});
 		model.get('channel').then(channel => {
-			this.updatePlaylist(channel);
 			const trackTitle = model.get('title');
 			const channelTitle = channel.get('title');
 			this.updateMetaTitle(trackTitle, channelTitle);
+			this.updatePlaylist(channel);
 		});
-	},
-
-	updateMetaTitle(trackTitle, channelTitle) {
-		if (!document) {
-			throw new Error('no document');
-		}
-		document.title = `${trackTitle} on ${channelTitle}`;
 	},
 
 	/**
@@ -169,8 +164,8 @@ export default Ember.Service.extend({
 		2- set pool of tracks to be used
 		and return it so we can use it as a promise
 	 */
-
 	activateRandom() {
+		debug('activateRandom');
 		this.set('isRandom', true);
 		this.get('playerHistory').clearPlayerHistory();
 		return this.updateRandomPoolFromPlaylist();
@@ -185,5 +180,12 @@ export default Ember.Service.extend({
 		return this.get('playlist.tracks').then(items => {
 			this.get('playerRandom').setNewRandomPool(items);
 		});
+	},
+
+	updateMetaTitle(trackTitle, channelTitle) {
+		if (!document) {
+			throw new Error('no document');
+		}
+		document.title = `${trackTitle} on ${channelTitle}`;
 	}
 });
