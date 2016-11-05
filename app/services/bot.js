@@ -21,24 +21,24 @@ export default Service.extend({
 
 		// Ensure shuffle is enabled.
 		// The user really did not ask for this but it is for the best.
-		this.get('player').set('isShuffled', true);
+		get(this, 'player').set('isShuffled', true);
 
-		yield this.get('playNewestTrack').perform(channel);
+		yield get(this, 'playNewestTrack').perform(channel);
 	}).drop(),
 
 	playNewestTrack: task(function * (channel) {
-		const track = yield this.get('findLastTrack').perform(channel);
+		const track = yield get(this, 'findLastTrack').perform(channel);
 		if (!track) {
 			debug('playNewestTrack was called but could not find a track to play. Trying another radio.');
-			this.get('playAnotherRadio').perform();
+			get(this, 'playAnotherRadio').perform();
 			return;
 		}
-		this.get('player').playTrack(track);
+		get(this, 'player').playTrack(track);
 	}).drop(),
 
 	playRandomTrack: task(function * (channel) {
-		const track = yield this.get('findRandomTrack').perform(channel);
-		this.get('player').playTrack(track);
+		const track = yield get(this, 'findRandomTrack').perform(channel);
+		get(this, 'player').playTrack(track);
 	}).drop(),
 
 	findLastTrack: task(function * (channel) {
@@ -47,24 +47,24 @@ export default Service.extend({
 	}).drop(),
 
 	findRandomChannel: task(function * () {
-		let cache = get(this, 'store').peekAll('channel');
 		let channel;
+		let cache = get(this, 'store').peekAll('channel');
 
 		// Very small cache so we try to fetch more.
-		if (!get(this, 'didCache') && cache.get('length') > 3) {
+		if (cache.get('length') < 3 && !get(this, 'didFetchAllChannels')) {
 			Ember.debug('small cache, fetching more channels');
-			cache = yield get(this, 'store').findAll('channel');
-			// cache = yield this.findLast(10, 'channel');
-			set(this, 'didCache', true);
+			cache = get(this, 'store').findAll('channel');
+			Ember.debug(cache);
+			set(this, 'didFetchAllChannels', true);
 		}
 
 		// Pick a channel.
-		channel = cache.objectAt(randomIndex(cache));
+		channel = cache.objectAt(getRandomIndex(cache.content));
 
 		// If the channel is empty, pick one with more tracks.
 		if (channel.get('totalTracks') < 1) {
 			cache = cache.filter(c => c.get('totalTracks') > 1);
-			channel = cache.objectAt(randomIndex(cache));
+			channel = cache.objectAt(getRandomIndex(cache.content));
 		}
 
 		return channel;

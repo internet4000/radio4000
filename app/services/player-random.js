@@ -10,6 +10,7 @@ export default Service.extend({
 	randomPool: [],
 
 	// Copies and shuffles a 'channel.tracks' array and sets it as the random pool.
+	// Note: this is A BIT heavy, so we should avoid calling it more than necessary.
 	setNewRandomPool(tracks) {
 		debug('setNewRandomPool');
 		let pool = [];
@@ -20,11 +21,7 @@ export default Service.extend({
 		this.set('randomPool', pool);
 	},
 
-	/**
-	 @method
-	 @returns @promise {track} model that has to be played, to the player@nextRandom
-	 promise so it waits there is a track found to play it
-	 */
+	// Returns a promise with the next track in the random pool
 	getNext() {
 		const array = this.get('randomPool');
 		const currentIndex = array.indexOf(this.get('player.model'));
@@ -38,7 +35,7 @@ export default Service.extend({
 		});
 	},
 
-	// Returns a promise with the track previously played with player.isRandom = true
+	// Returns a promise with the track previously played while player.isRandom was enabled
 	getPrevious() {
 		const array = this.get('randomPool');
 		const currentIndex = array.indexOf(this.get('player.model'));
