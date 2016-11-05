@@ -49,6 +49,12 @@
 	}
 }
 
+.Playback-body {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+
 .Playback-text {
 	@include size-1;
 	padding: 2rem 0.5rem;
@@ -162,10 +168,6 @@
 
 .Playback-player {
 	position: relative;
-	// Gif loading background.
-	background-image: url("../assets/images/noise.gif");
-	background-position: center;
-	background-size: cover;
 }
 
 // Animate buttons that should only be visible when the player is ready.
@@ -183,8 +185,7 @@ $bar-height-minimized: rem(70);
 
 .is-minimized {
 	.EmberYoutube-progress,
-	.Playback-buttons,
-	.Playback-controls {
+	.Playback-body {
 		display: none;
 	}
 
@@ -235,7 +236,6 @@ $bar-height-minimized: rem(70);
 	.Playback {
 		height: 100%;
 		background: black;
-		flex-flow: row wrap;
 	}
 
 	.Playback-layoutButtons {
@@ -246,12 +246,8 @@ $bar-height-minimized: rem(70);
 	.Playback-player {
 		display: flex;
 		width: 100%;
-		min-height: 50vh;
+		min-height: 70vh;
 		margin-bottom: 1rem;
-
-		@media (min-width: $layout-s) {
-			min-height: 90vh;
-		}
 
 		#EmberYoutube-player {
 			position: absolute;
@@ -260,24 +256,26 @@ $bar-height-minimized: rem(70);
 		}
 	}
 
+	.Playback-body {
+	    flex-flow: row wrap;
+	}
+
 	.Playback-channel,
-	.Playback-buttons,
 	.Playback-text {
-		flex-basis: (100 / 3) * 1%;
+	    flex-basis: 50%;
 	}
 
 	.Playback-channel {
 		order: 1;
-		display: none;
-
-		@media (min-width: $layout-m) {
-			display: block;
-		}
+		display: flex;
+		flex-grow: 0;
+		flex-direction: row;
+		padding: 0;
 	}
 
 	.Playback-text {
 		padding: 0;
-
+		order: 2;
 		@media (max-width: $layout-s) {
 			flex-basis: 100%;
 			padding-left: 1rem;
@@ -298,6 +296,7 @@ $bar-height-minimized: rem(70);
 	.Playback-buttons {
 		background: black;
 		margin: auto;
+		flex-basis: 100%;
 
 		@media (max-width: $layout-s) {
 			flex: 1;
@@ -309,6 +308,7 @@ $bar-height-minimized: rem(70);
 		margin-left: auto;
 		margin-right: auto;
 		background-color: transparent;
+		align-self: center;
 	}
 
 	.ChannelCard-title {
