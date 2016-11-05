@@ -53,7 +53,7 @@ export default Service.extend({
 		// Very small cache so we try to fetch more.
 		if (cache.get('length') < 3 && !get(this, 'didFetchAllChannels')) {
 			Ember.debug('small cache, fetching more channels');
-			cache = get(this, 'store').findAll('channel');
+			cache = yield get(this, 'store').findAll('channel');
 			Ember.debug(cache);
 			set(this, 'didFetchAllChannels', true);
 		}
