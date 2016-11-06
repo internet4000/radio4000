@@ -75,6 +75,7 @@
 .Playback-channel {
 	padding: 0 1rem 1rem;
 	order: 2;
+	position: relative;
 }
 
 .Playback-title {
@@ -134,7 +135,12 @@
 	color: white;
 }
 
-//
+.Playback-channelSwap {
+    position: absolute;
+    top: -1rem;
+    right: -0.5rem;
+    z-index: 1;
+}
 .Playback-layoutButtons {
 	position: absolute;
 	top: -1.4rem;
