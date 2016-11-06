@@ -36,7 +36,7 @@
 	top: 0;
 	left: 0;
 	bottom: 0;
-	z-index: 2;
+	z-index: 3;
 	width: 100%;
 	background-color: $bg-color;
 	background-image: linear-gradient(to right, darken($bg-color, 2%) 40%, $bg-color);
@@ -55,7 +55,7 @@
 	// border-left: 1px solid $superlightgray;
 	// border-right: 1px solid hsl(0, 0%, 65%);
 	position: fixed;
-	z-index: 4;
+	z-index: 2;
 	top: auto;
 	right: 1.5rem;
 	bottom: 0;
