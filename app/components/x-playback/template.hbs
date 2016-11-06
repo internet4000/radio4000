@@ -30,15 +30,16 @@
 <div class="Playback-body">
 	{{#if player.model}}
 		<div class="Playback-channel">
-		  {{channel-card channel=channel wide=true}}
-		  <div class="Playback-channelSwap">
-		    <button class="Btn Btn--small"
-			    onClick={{perform bot.playAnotherRadio channel}}
-			    disabled={{bot.playAnotherRadio.isRunning}}
-			    title="Swap to another radio">
-		      {{if bot.playAnotherRadio.isIdle 'Swap' 'Swapping'}}
-		    </button>
+		  {{#channel-card channel=channel wide=true}}
+		    <div class="Playback-channelSwap">
+		      <button class="Btn Btn--small"
+			      onClick={{perform bot.playAnotherRadio channel}}
+			      disabled={{bot.playAnotherRadio.isRunning}}
+			      title="Swap to another radio">
+			{{if bot.playAnotherRadio.isIdle 'Swap' 'Swapping'}}
+		      </button>
 		    </div>
+		  {{/channel-card}}
 		</div>
 		<div class="Playback-text">
 			<div class="Playback-title" title="Current track / go to current radio">

@@ -9,6 +9,9 @@
 	&.is-active {
 		outline-color: $primary-color;
 	}
+	.Playback-channel &.is-active {
+	    outline-color: transparent;
+	}
 }
 
 .ChannelCard-title,
@@ -144,8 +147,8 @@ $card-wide-cover-size: 4.8rem;
 	}
 
 	.ChannelCard-controls {
-		left: 0;
-		top: 0;
+		left: -0.5rem;
+		top: -0.5rem;
 		right: auto;
 
 		.Button {
