@@ -2,7 +2,6 @@
  * Player
  */
 
-// Controls
 .Playback {
 	@include negative-text;
 	width: 100%;
@@ -27,17 +26,6 @@
 
 	@media (min-width: $layout-s) {
 		flex-wrap: nowrap;
-	}
-
-	.Bar--bottom & {
-		border-top: 1px solid $primary-color;
-		min-height: rem($bar-height + $progress-height);
-		padding-bottom: rem($progress-height);
-
-		// if width is less than 100%, add this:
-		// border-left: 1px solid rgb(111, 111, 111);
-		// border-top-right-radius: $border-radius;
-		// border-top-left-radius: $border-radius;
 	}
 }
 
@@ -80,7 +68,6 @@
 
 .Playback-title {
 	a {
-		color: $text-color;
 		font-weight: bold;
 	}
 }
@@ -136,11 +123,12 @@
 }
 
 .Playback-channelSwap {
-    position: absolute;
-    top: -1rem;
-    right: -0.5rem;
-    z-index: 1;
+	position: absolute;
+	top: -1rem;
+	right: -0.5rem;
+	z-index: 1;
 }
+
 .Playback-layoutButtons {
 	position: absolute;
 	top: -1.4rem;
@@ -263,12 +251,12 @@ $bar-height-minimized: rem(70);
 	}
 
 	.Playback-body {
-	    flex-flow: row wrap;
+		flex-flow: row wrap;
 	}
 
 	.Playback-channel,
 	.Playback-text {
-	    flex-basis: 50%;
+		flex-basis: 50%;
 	}
 
 	.Playback-channel {
@@ -282,6 +270,7 @@ $bar-height-minimized: rem(70);
 	.Playback-text {
 		padding: 0;
 		order: 2;
+
 		@media (max-width: $layout-s) {
 			flex-basis: 100%;
 			padding-left: 1rem;
@@ -323,9 +312,9 @@ $bar-height-minimized: rem(70);
 }
 
 /*
-	since we are using Youtubes directly
-	it becones comfusing where to click
-	and this is an element too much in the UX
+since we are using Youtubes directly
+it becones comfusing where to click
+and this is an element too much in the UX
  */
 .EmberYoutube-progress {
 	display: none;

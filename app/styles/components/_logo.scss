@@ -1,61 +1,28 @@
-/**
- * Logo
- **/
-// @keyframes Logo {
-// 	0% {
-// 		left: 0;
-// 		box-shadow: 1px 1px 1px white;
-// 	}
-//
-// 	100% {
-// 		left: 100%;
-// 		box-shadow: -10px 10px 10px white;
-// 	}
-// }
+.Logo {
+	background: transparent;
+	backface-visibility: hidden; // perf
+	color: $text-color-invert; // $dark
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 4;
+	min-height: rem($bar-height);
+	transition: transform 300ms $easing2, background-color 200ms;
+
+	a {
+		color: $text-color-invert; // $dark
+	}
+}
 
 .Logo {
-	position: relative;
-	cursor: pointer;
-	display: block;
-	max-width: 8.5rem;
-	padding-top: 1.8rem;
-	padding-left: 1.4rem;
-	padding-right: 1rem;
+	max-width: 10rem;
+	padding-top: 1.5rem;
+	padding-left: 3.5rem;
 	user-select: none; // don't highlight
-	z-index: 2;
 
-	// &::before,
-	// &::after {
-	// 	content: "";
-	// 	width: 0.5rem;
-	// 	background-color: white;
-	// 	position: absolute;
-	// 	top: 1.5rem;
-	// 	bottom: 0;
-	// 	left: 0;
-	// 	z-index: 1;
-	// 	opacity: 0.3;
-	// 	filter: blur(8px);
-	//
-	// 	// animation-name: Logo;
-	// 	// animation-duration: 1s;
-	// 	// animation-direction: alternate-reverse;
-	// 	// animation-iteration-count: infinite;
-	// }
-	//
-	// &::before {
-	// 	animation-name: Logo;
-	// 	animation-duration: 4s;
-	// 	animation-direction: alternate-reverse;
-	// 	animation-iteration-count: infinite;
-	// }
-	//
-	// &::after {
-	// 	animation-name: Logo;
-	// 	animation-duration: 16s;
-	// 	animation-direction: alternate;
-	// 	animation-iteration-count: infinite;
-	// }
+	a {
+		user-select: none; // don't highlight
+	}
 }
 
 .Logo h1 {
@@ -80,15 +47,3 @@
 	vertical-align: middle;
 }
 
-.Logo-dot {
-	display: inline-block;
-	width: 0.6rem;
-	height: 0.6rem;
-	background-color: $primary-color;
-	border-radius: 50%;
-	transition: transform 200ms $easing4;
-
-	.is-panelLeftVisible & {
-		transform: scale(0.8);
-	}
-}
