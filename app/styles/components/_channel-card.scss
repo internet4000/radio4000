@@ -34,6 +34,8 @@
 .ChannelCard-body {
 	@include size-0;
 	color: $dark;
+	// Ensure very long words don't mess up the layout.
+	word-break: break-word;
 }
 
 .ChannelCard-controls {

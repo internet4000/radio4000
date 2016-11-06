@@ -40,24 +40,6 @@
 }
 
 /**
- * Overlay style, purple background
- */
-.Root.is-minimal {
-	// background-color: $primary-color;
-
-	.SiteMain {
-		display: flex;
-		flex-flow: column;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.SiteFooter {
-		display: none;
-	}
-}
-
-/**
  * Player
  */
 .Root.is-withPlayer {
@@ -76,4 +58,3 @@
 		display: none;
 	}
 }
-

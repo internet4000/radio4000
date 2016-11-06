@@ -2,7 +2,7 @@ import Ember from 'ember';
 import {task} from 'ember-concurrency';
 import {EKMixin, keyUp} from 'ember-keyboard';
 
-const {Component, inject, computed, on, run, $} = Ember;
+const {Component, get, set, inject, computed, on, run, $} = Ember;
 
 export default Component.extend(EKMixin, {
 	player: inject.service(),
@@ -17,13 +17,11 @@ export default Component.extend(EKMixin, {
 	},
 
 	activateKeyboard: Ember.on('init', function () {
-		this.set('keyboardActivated', true);
+		set(this, 'keyboardActivated', true);
 	}),
-
 	swapShortcut: on(keyUp('KeyW'), function () {
-		this.get('swap').perform();
+		get(this, 'swap').perform();
 	}),
-
 	playbackShortcut: on(keyUp('KeyP'), function () {
 		this.send('togglePlay');
 	}),
@@ -33,36 +31,37 @@ export default Component.extend(EKMixin, {
 	muteShortcut: on(keyUp('KeyM'), function () {
 		this.send('toggleVolume');
 	}),
+	cycleFormat: on(keyUp('KeyF'), function () {
+		get(this, 'uiStates').cycleFormat();
+	}),
 	closeFullscreen: on(keyUp('Escape'), function () {
-		if (this.get('uiStates.player.isMaximized')) {
-			this.send('toggleMaximizedPlayer');
-		}
+		set(this, 'uiStates.format', 1);
 	}),
 
 	swap: task(function * () {
-		const previous = this.get('player.playlist');
-		const channel = yield this.get('bot.playAnotherRadio').perform(previous);
+		const previous = get(this, 'player.playlist');
+		const channel = yield get(this, 'bot.playAnotherRadio').perform(previous);
 		return channel;
 	}).keepLatest(),
 
 	actions: {
 		togglePlay() {
-			this.get('emberYoutube').send('togglePlay');
+			get(this, 'emberYoutube').send('togglePlay');
 		},
 		toggleVolume() {
-			this.get('emberYoutube').send('toggleVolume');
+			get(this, 'emberYoutube').send('toggleVolume');
 		},
 		play() {
-			this.get('emberYoutube').send('play');
+			get(this, 'emberYoutube').send('play');
 		},
 		pause() {
-			this.get('emberYoutube').send('pause');
+			get(this, 'emberYoutube').send('pause');
 		},
 		prev() {
-			this.get('player').prev();
+			get(this, 'player').prev();
 		},
 		next() {
-			this.get('player').next();
+			get(this, 'player').next();
 		},
 		toggleRandom(player = this.get('player')) {
 			if (player.get('isRandom')) {
@@ -82,14 +81,11 @@ export default Component.extend(EKMixin, {
 			});
 		},
 
-		// player size states
-		toggleMaximizedPlayer() {
-			this.set('uiStates.player.isMinimized', false);
-			this.toggleProperty('uiStates.player.isMaximized');
+		toggleMinimizedFormat() {
+			get(this, 'uiStates').toggleMinimizedFormat();
 		},
-		toggleMinimizedPlayer() {
-			this.set('uiStates.player.isMaximized', false);
-			this.toggleProperty('uiStates.player.isMinimized');
+		toggleFullscreenFormat() {
+			get(this, 'uiStates').toggleFullscreenFormat();
 		},
 
 		// ember-youtube events

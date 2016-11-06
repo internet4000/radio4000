@@ -1,5 +1,4 @@
 import Ember from 'ember';
-// import MinimalRouteMixin from 'radio4000/mixins/minimal-route';
 
 const {Route, inject, RSVP} = Ember;
 

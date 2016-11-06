@@ -1,10 +1,9 @@
 import Ember from 'ember';
-// import MinimalRouteMixin from 'radio4000/mixins/minimal-route';
 
-const {get} = Ember;
+const {Route, get, inject} = Ember;
 
-export default Ember.Route.extend({
-	uiStates: Ember.inject.service(),
+export default Route.extend({
+	uiStates: inject.service(),
 
 	beforeModel() {
 		if (get(this, 'session.isAuthenticated')) {

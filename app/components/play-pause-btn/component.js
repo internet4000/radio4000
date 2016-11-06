@@ -6,7 +6,6 @@ export default Ember.Component.extend({
 	isPlaying: false,
 
 	click() {
-		// this.sendAction('togglePlay')
 		if (this.get('isPlaying')) {
 			this.sendAction('pause');
 		} else {

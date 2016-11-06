@@ -2,17 +2,41 @@
 import Ember from 'ember';
 import Cookies from 'ember-cli-js-cookie';
 
-const {computed, on} = Ember;
+const {Service, computed, get, set, on} = Ember;
 
-export default Ember.Service.extend({
-	player: {
-		isMinimized: false,
-		isFullscreen: false
+export default Service.extend({
+	// Set the format to 0 for mini, 1 for normal or 2 for max
+	format: 1,
+	isMinimized: computed.equal('format', 0),
+	// isNormal: computed.equal('format', 1),
+	isFullscreen: computed.equal('format', 2),
+	cycleFormat() {
+		let format = get(this, 'format');
+		if (format >= 2) {
+			set(this, 'format', 0);
+			return;
+		}
+		this.incrementProperty('format');
+	},
+	toggleMinimizedFormat() {
+		if (get(this, 'format') === 0) {
+			set(this, 'format', 1);
+			return;
+		}
+		set(this, 'format', 0);
+	},
+	toggleFullscreenFormat() {
+		if (get(this, 'format') === 2) {
+			set(this, 'format', 1);
+			return;
+		}
+		set(this, 'format', 2);
 	},
 
 	setInitialWidth: on('init', function () {
-		const xBrowserWidth = document.querySelector('body').getBoundingClientRect().width;
-		this.set('initialWidth', xBrowserWidth);
+		const body = document.querySelector('body');
+		const width = body.getBoundingClientRect().width;
+		this.set('initialWidth', width);
 	}),
 
 	// 513px is our current breakpoint for panel to be full width.
@@ -20,9 +44,6 @@ export default Ember.Service.extend({
 		return this.get('initialWidth') < 513;
 	}),
 
-	/**
-		left panel api
-	 */
 	// isPanelLeftVisible: true,
 	isPanelLeftVisible: computed({
 		get() {
@@ -47,8 +68,8 @@ export default Ember.Service.extend({
 
 	// Only close if we're on a small screen.
 	closeLeftPanelIfSmallScreen() {
-		if (this.get('isSmallScreen')) {
-			this.set('isPanelLeftVisible', false);
+		if (get(this, 'isSmallScreen')) {
+			set(this, 'isPanelLeftVisible', false);
 		}
 	}
 });
