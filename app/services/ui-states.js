@@ -5,9 +5,19 @@ import Cookies from 'ember-cli-js-cookie';
 const {computed, on} = Ember;
 
 export default Ember.Service.extend({
-	player: {
-		isMinimized: false,
-		isFullscreen: false
+	// 0: minimized
+	// 1: normal
+	// 2: fullscreen
+	format: 1,
+	isMinimized: computed.equal('format', 0),
+	isFullscreen: computed.equal('format', 2),
+	cyclePlayerFormat() {
+		let format = get(this, 'format');
+		if (format >= 2) {
+			set(this, 'format', 0);
+			return;
+		}
+		this.incrementProperty('format');
 	},
 
 	setInitialWidth: on('init', function () {
@@ -20,9 +30,6 @@ export default Ember.Service.extend({
 		return this.get('initialWidth') < 513;
 	}),
 
-	/**
-		left panel api
-	 */
 	// isPanelLeftVisible: true,
 	isPanelLeftVisible: computed({
 		get() {

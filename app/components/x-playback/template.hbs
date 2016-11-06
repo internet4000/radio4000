@@ -1,9 +1,9 @@
 <div class="Playback-layoutButtons">
-	<button class="Playback-minimalBtn Btn Btn--small" {{action 'toggleMinimizedPlayer'}} title="Toggle minimized player">
-		{{if uiStates.player.isMinimized '⬒' '_'}}
+	<button class="Playback-minimalBtn Btn Btn--small" {{action 'toggleMinimizedFormat'}} title="Toggle minimized player">
+		{{if uiStates.isMinimized '⬒' '_'}}
 	</button>
-	<button class="Playback-fullscreenBtn Btn Btn--small" {{action 'toggleMaximizedPlayer'}} title="Toggle fullscreen player">
-		{{#if uiStates.player.isMaximized}}
+	<button class="Playback-fullscreenBtn Btn Btn--small" {{action 'toggleFullscreenFormat'}} title="Toggle fullscreen player">
+		{{#if uiStates.isFullscreen}}
 			{{x-icon i='arrows-compress'}}
 		{{else}}
 			{{x-icon i='arrows-expand'}}

@@ -10,10 +10,10 @@ export default Component.extend({
 
 	classNames: ['Root'],
 	classNameBindings: [
-		'uiStates.player.isMaximized:is-maximized',
 		'isEmbed',
 		'isInverted',
-		'uiStates.player.isMinimized:is-minimized',
+		'uiStates.isMinimized',
+		'uiStates.isFullscreen:is-maximized',
 		'uiStates.isPanelLeftVisible:is-panelLeftVisible',
 		'player.model:is-withPlayer:is-withoutPlayer'
 	],

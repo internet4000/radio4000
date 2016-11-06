@@ -2,7 +2,7 @@ import Ember from 'ember';
 import {task} from 'ember-concurrency';
 import {EKMixin, keyUp} from 'ember-keyboard';
 
-const {Component, inject, computed, on, run, $} = Ember;
+const {Component, get, set, inject, computed, on, run, $} = Ember;
 
 export default Component.extend(EKMixin, {
 	player: inject.service(),
@@ -19,11 +19,9 @@ export default Component.extend(EKMixin, {
 	activateKeyboard: Ember.on('init', function () {
 		this.set('keyboardActivated', true);
 	}),
-
 	swapShortcut: on(keyUp('KeyW'), function () {
 		this.get('swap').perform();
 	}),
-
 	playbackShortcut: on(keyUp('KeyP'), function () {
 		this.send('togglePlay');
 	}),
@@ -33,10 +31,16 @@ export default Component.extend(EKMixin, {
 	muteShortcut: on(keyUp('KeyM'), function () {
 		this.send('toggleVolume');
 	}),
-	closeFullscreen: on(keyUp('Escape'), function () {
-		if (this.get('uiStates.player.isMaximized')) {
-			this.send('toggleMaximizedPlayer');
+	cycleFormat: on(keyUp('KeyF'), function () {
+		let format = get(this, 'uiStates.format');
+		if (format >= 2) {
+			set(this, 'uiStates.format', 0);
+			return;
 		}
+		this.incrementProperty('uiStates.format');
+	}),
+	closeFullscreen: on(keyUp('Escape'), function () {
+		set(this, 'uiStates.format', 1);
 	}),
 
 	swap: task(function * () {
@@ -83,13 +87,19 @@ export default Component.extend(EKMixin, {
 		},
 
 		// player size states
-		toggleMaximizedPlayer() {
-			this.set('uiStates.player.isMinimized', false);
-			this.toggleProperty('uiStates.player.isMaximized');
+		toggleFullscreenFormat() {
+			if (get(this, 'uiStates.format') === 2) {
+				set(this, 'uiStates.format', 1);
+				return;
+			}
+			set(this, 'uiStates.format', 2);
 		},
-		toggleMinimizedPlayer() {
-			this.set('uiStates.player.isMaximized', false);
-			this.toggleProperty('uiStates.player.isMinimized');
+		toggleMinimizedFormat() {
+			if (get(this, 'uiStates.format') === 0) {
+				set(this, 'uiStates.format', 1);
+				return;
+			}
+			set(this, 'uiStates.format', 0);
 		},
 
 		// ember-youtube events
