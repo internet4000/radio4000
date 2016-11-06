@@ -17,6 +17,11 @@
  */
 .Root.is-panelLeftVisible {
     
+    @media (max-width: $layout-s) {
+	height: 100vh;
+	overflow: hidden;
+    }
+    
     .Aside--left {
 	transform: translateX(0);
     }
