@@ -1,26 +1,27 @@
 .Logo {
-    background: transparent;
-    backface-visibility: hidden; // perf
-    color: $text-color-invert; // $dark
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 4;
-    min-height: rem($bar-height);
-    transition: transform 300ms $easing2, background-color 200ms;
-    a {
+	background: transparent;
+	backface-visibility: hidden; // perf
 	color: $text-color-invert; // $dark
-    }
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 4;
+	min-height: rem($bar-height);
+	transition: transform 300ms $easing2, background-color 200ms;
+
+	a {
+		color: $text-color-invert; // $dark
+	}
 }
 
-
 .Logo {
-        max-width: 10rem;
+	max-width: 10rem;
 	padding-top: 1.5rem;
 	padding-left: 3.5rem;
 	user-select: none; // don't highlight
+
 	a {
-	    user-select: none; // don't highlight
+		user-select: none; // don't highlight
 	}
 }
 
@@ -45,3 +46,4 @@
 .Logo-img {
 	vertical-align: middle;
 }
+

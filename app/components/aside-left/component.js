@@ -1,22 +1,23 @@
 import Ember from 'ember';
 
-const {Component, inject} = Ember;
+const {Component, get, inject} = Ember;
 
 export default Component.extend({
-    uiStates: inject.service(),
-    tagName: 'aside',
-    classNames: ['Aside', 'Aside--left'],
+	uiStates: inject.service(),
+	tagName: 'aside',
+	classNames: ['Aside', 'Aside--left'],
 
-    click(event) {
-	const clickedElementHasAnHref = event.target.href;
-	if (clickedElementHasAnHref && this.get('uiStates.isPanelLeftVisible')) {
-	    this.get('uiStates').closeLeftPanelIfSmallScreen();
-	}
-    },
+	click(event) {
+		const isALink = event.target.href;
+		const isVisible = get(this, 'uiStates.isPanelLeftVisible');
+		if (isALink && isVisible) {
+			get(this, 'uiStates').closeLeftPanelIfSmallScreen();
+		}
+	},
 
-    actions: {
-	addTrack() {
-	    this.get('toggleModal')();
+	actions: {
+		addTrack() {
+			get(this, 'toggleModal')();
+		}
 	}
-    }
 });

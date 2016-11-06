@@ -1,25 +1,29 @@
 /**
 	Site Aside
  */
+
 .Aside {
 	overflow-y: auto;
 	display: flex;
 	flex-flow: column nowrap;
 }
+
 .AsideLeftToggle {
-    position: fixed;
-    top: 4.8rem;
-    left: -3px;
-    z-index: 4;
-    span {
-	transform: rotateY(180deg);
-	transition: transform 300ms $easing;
-    }
-    &.Btn--isActive {
+	position: fixed;
+	top: 4.8rem;
+	left: -3px;
+	z-index: 4;
+
 	span {
-	    transform: rotateY(0);
+		transform: rotateY(180deg);
+		transition: transform 300ms $easing;
 	}
-    }
+
+	&.Btn--isActive {
+		span {
+			transform: rotateY(0);
+		}
+	}
 }
 
 /**
@@ -43,8 +47,8 @@
 
 	@media (min-width: $layout-s) {
 		// transform: translate3d(0, 0, 0);
-		width: $sidebar-width;
 		// overflow: hidden;
+		width: $sidebar-width;
 	}
 }
 
@@ -74,3 +78,4 @@
 		text-decoration: underline;
 	}
 }
+
