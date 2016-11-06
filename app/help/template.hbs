@@ -1,65 +1,74 @@
 <div class="Sections">
-	<section class="Section">
-		<div class="Manchet">
-			<h1>Help <small>— answers to your questions</small></h1>
-		</div>
+  <section class="Section">
+    <div class="Manchet">
+      <h1>Help <small>— answers to your questions</small></h1>
+    </div>
 
-		<div class="Container">
-			<p>
-				Would you like to {{#link-to "feedback"}}send us feedback?{{/link-to}}
-			</p>
+    <div class="Container">
+      <p>
+	Would you like to {{#link-to "feedback"}}send us feedback?{{/link-to}}
+      </p>
 
-			<h3>How do I create more than one radio?</h3>
-			<p>You do not! You have <strong>one single radio</strong> to present your taste in music. This is one pillar of Radio4000: one radio = one human. We think playlists are really useful, but they can become a pain to maintain. With playlists out of the way, you never have to consider where the song fits but only that, yes, you really enjoy that tune. According to us this leads to more exciting radios, creating unexpected bridges between genres, through times, cultures and people. We explore this concept further in the <a href="{{href-to "intro"}}">introduction</a>.</p>
+      <h3>How do I create more than one radio?</h3>
+      <p>You do not! You have <strong>one single radio</strong> to present your taste in music. This is one pillar of Radio4000: one radio = one human. We think playlists are really useful, but they can become a pain to maintain. With playlists out of the way, you never have to consider where the song fits but only that, yes, you really enjoy that tune. According to us this leads to more exciting radios, creating unexpected bridges between genres, through times, cultures and people. We explore this concept further in the <a href="{{href-to "intro"}}">introduction</a>.</p>
 
-			<h3>How do I save a radio to my list of favorites?</h3>
-			<p>To save a radio as your favorite you will need to first <a href="{{href-to "login"}}">create yourself a radio</a>. It takes 20 seconds, 5 clicks. Once registered you'll see a yellow star icon on ever radio.</p>
+      <h3>How do I save a radio to my list of favorites?</h3>
+      <p>To save a radio as your favorite you will need to first <a href="{{href-to "login"}}">create yourself a radio</a>. It takes 20 seconds, 5 clicks. Once registered you'll see a yellow star icon on ever radio.</p>
 
-			<h3>Why do I need to create a radio to save favorites?</h3>
-			<p>All your favorites are saved to your own radio. And they are public. So when you feel like listening to one of your favorite radios, you can always find your favorites on your own radio.{{#if session.currentUser.channels.firstObject}} Go to <a href="{{href-to 'channel' session.currentUser.channels.firstObject}}">{{session.currentUser.channels.firstObject.title}}</a>{{else}} Look for the 'favorites' tab{{/if}}.</p>
+      <h3>Keyboard Shortcuts</h3>
+      <p>
+	<kbd>P</kbd>: play/pause<br/>
+	<kbd>F</kbd>: cycle through playback formats (default, fullscreen, minimized)<br/>
+	<kbd>M</kbd>: mute sound<br/>
+	<kbd>W</kbd>: swap to a random radio<br/>
+	<kbd>S</kbd>: skip to next track in current radio<br/>
+      </p>
 
-			<h3>How do I change the URL of my radio? (aka <em>radio4000.com/your-radio-name</em>)</h3>
-			<p>{{#if session.currentUser.channels.firstObject}}
-				Tap this link to <a href="{{href-to 'channel' session.currentUser.channels.firstObject}}">edit {{session.currentUser.channels.firstObject.title}}</a> and look for the <em>URL</em> field.
-			{{else}}
-				Log in, go to your radio, tap the <em>'Edit'</em> button and look for <em>'URL'</em>.
-			{{/if}}
-			 We suggest you to use a URL that matches your radio title.</p>
+      <h3>Why do I need to create a radio to save favorites?</h3>
+      <p>All your favorites are saved to your own radio. And they are public. So when you feel like listening to one of your favorite radios, you can always find your favorites on your own radio.{{#if session.currentUser.channels.firstObject}} Go to <a href="{{href-to 'channel' session.currentUser.channels.firstObject}}">{{session.currentUser.channels.firstObject.title}}</a>{{else}} Look for the 'favorites' tab{{/if}}.</p>
 
-			<h3>How do I add tracks from Bandcamp, Soundcloud etc.?</h3>
-			<p>For now, we want to focus on creating the best possible experience on top of YouTube. We're considering more sources.</p>
+      <h3>How do I change the URL of my radio? (aka <em>radio4000.com/your-radio-name</em>)</h3>
+      <p>{{#if session.currentUser.channels.firstObject}}
+	Tap this link to <a href="{{href-to 'channel' session.currentUser.channels.firstObject}}">edit {{session.currentUser.channels.firstObject.title}}</a> and look for the <em>URL</em> field.
+      {{else}}
+	Log in, go to your radio, tap the <em>'Edit'</em> button and look for <em>'URL'</em>.
+      {{/if}}
+      We suggest you to use a URL that matches your radio title.</p>
 
-			<h3>Why can't I browser artists instead of radios?</h3>
-			<p>The point of Radio4000 is to listen and discover music through the selection of someone. We don't aim on offering a catalog such as Spotify, iTunes or Google Music.</p>
+      <h3>How do I add tracks from Bandcamp, Soundcloud etc.?</h3>
+      <p>For now, we want to focus on creating the best possible experience on top of YouTube. We're considering more sources.</p>
 
-			<h3>Why doesn't it play all tracks after each other on my iPhone/iPad?</h3>
-			<p>Unfortunately Apple decided to disallow autoplaying of videos on iOS. This means each time you want to watch a YouTube video it switches to the default YouTube app on your device. When the video has finished, we have no way to continue with the next song in the radio for you. While we work around it, we suggest you buy an Android device. Sorry…</p>
+      <h3>Why can't I browser artists instead of radios?</h3>
+      <p>The point of Radio4000 is to listen and discover music through the selection of someone. We don't aim on offering a catalog such as Spotify, iTunes or Google Music.</p>
 
-			<h3>Are you planning on having native mobile apps, Android, iOs, Blackberry?</h3>
-			<p>No, not really. Radio4000 is build with web techonologies, which means there is as long as you have a modern browser, it will work. There's no need for a native application. If you're reading this, you're here already. We want to make one application that works on any device. Here is our <a href="{{href-to "about.technology"}}">technology stack</a> if it is of your interest. Feel free to contact us if you would like to talk.</p>
+      <h3>Why doesn't it play all tracks after each other on my iPhone/iPad?</h3>
+      <p>Unfortunately Apple decided to disallow autoplaying of videos on iOS. This means each time you want to watch a YouTube video it switches to the default YouTube app on your device. When the video has finished, we have no way to continue with the next song in the radio for you. While we work around it, we suggest you buy an Android device. Sorry…</p>
 
-			<h3>Why can I just register with Facebook or Google?</h3>
-			<p>For now we did not implement e-mail registration, but this is something we definitely want to do. When it comes we will let you know and you will be able to switch your login method.</p>
+      <h3>Are you planning on having native mobile apps, Android, iOs, Blackberry?</h3>
+      <p>No, not really. Radio4000 is build with web techonologies, which means there is as long as you have a modern browser, it will work. There's no need for a native application. If you're reading this, you're here already. We want to make one application that works on any device. Here is our <a href="{{href-to "about.technology"}}">technology stack</a> if it is of your interest. Feel free to contact us if you would like to talk.</p>
 
-			<h3>What data do you need from my Facebook or Google account?</h3>
-			<p>None really. We don't want your name, your pictures, your sex, age, or any other attribute. The only reason you have to register is so that we can associate your radio with you, and be sure only you access it.</p>
+      <h3>Why can I just register with Facebook or Google?</h3>
+      <p>For now we did not implement e-mail registration, but this is something we definitely want to do. When it comes we will let you know and you will be able to switch your login method.</p>
 
-			<h3>Is Radio4000 anonymous?</h3>
-			<p>Short answer is yes. Long answer is no. Why? Everyone see radios the same way. Everything you add to your channel is public. But if you don't want anyone to know who's behind, don't write your own name; except if you actually want them to know. It is up to you. About the long answer, unfortunately, is there such thing as anonymity on the internet? Not as it is right now. So to us, we want to do as much as possible to keep you pricacy intact. We recommend you to <a href="https://ssd.eff.org">read this</a>, if you have any concerns.</p>
+      <h3>What data do you need from my Facebook or Google account?</h3>
+      <p>None really. We don't want your name, your pictures, your sex, age, or any other attribute. The only reason you have to register is so that we can associate your radio with you, and be sure only you access it.</p>
 
-			<h3>Why can't I sort the tracks in my radio?</h3>
-			<p>This is the first question we asked ourselves. As you're beginning to add tracks to your first radio, you would like to spend time sorting them, making sure each one fits perfectly in order; or maybe interpose a group of tracks from the same artist you added in a row? Please, don't worry about that. It is a radio. It's supposed to be worry-free. As long as you enjoy what's in your radio, it's all good. Remember you can play radios in shuffle mode (click the {{x-icon i="shuffle"}} icon on the player).</p>
+      <h3>Is Radio4000 anonymous?</h3>
+      <p>Short answer is yes. Long answer is no. Why? Everyone see radios the same way. Everything you add to your channel is public. But if you don't want anyone to know who's behind, don't write your own name; except if you actually want them to know. It is up to you. About the long answer, unfortunately, is there such thing as anonymity on the internet? Not as it is right now. So to us, we want to do as much as possible to keep you pricacy intact. We recommend you to <a href="https://ssd.eff.org">read this</a>, if you have any concerns.</p>
 
-			<h3>Any plans for a pro version?</h3>
-			<p>Yes. We are discussing and experimenting with the right business model. We want it to retribute artists and right holders whose tracks are on Radio4000 as people contributing to make Radio4000 a great music tool and radio service. We also want the price to be worth it, so you know precisely what and why why you contribute.</p>
+      <h3>Why can't I sort the tracks in my radio?</h3>
+      <p>This is the first question we asked ourselves. As you're beginning to add tracks to your first radio, you would like to spend time sorting them, making sure each one fits perfectly in order; or maybe interpose a group of tracks from the same artist you added in a row? Please, don't worry about that. It is a radio. It's supposed to be worry-free. As long as you enjoy what's in your radio, it's all good. Remember you can play radios in shuffle mode (click the {{x-icon i="shuffle"}} icon on the player).</p>
 
-			<hr>
+      <h3>Any plans for a pro version?</h3>
+      <p>Yes. We are discussing and experimenting with the right business model. We want it to retribute artists and right holders whose tracks are on Radio4000 as people contributing to make Radio4000 a great music tool and radio service. We also want the price to be worth it, so you know precisely what and why why you contribute.</p>
 
-			<h3>Can we help you?</h3>
-			<ul>
-				<li>Send us <a href="https://goo.gl/V5jlgk">feedback</a>.</li>
-				<li>Ask us anything by mail at <a href="mailto:contact@radio4000.com">contact@radio4000.com</a>.</li>
-			</ul>
-		</div>
-</section>
+      <hr>
+
+      <h3>Can we help you?</h3>
+      <ul>
+	<li>Send us <a href="https://goo.gl/V5jlgk">feedback</a>.</li>
+	<li>Ask us anything by mail at <a href="mailto:contact@radio4000.com">contact@radio4000.com</a>.</li>
+      </ul>
+    </div>
+  </section>
 </div>
