@@ -6,6 +6,12 @@
 	display: flex;
 	flex-flow: column nowrap;
 }
+.AsideLeftToggle {
+    position: fixed;
+    top: 4.8rem;
+    left: 0;
+    z-index: 4;
+}
 
 /**
  * Modifiers

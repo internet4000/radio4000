@@ -11,7 +11,7 @@ test('it renders', function (assert) {
 	// Set any properties with this.set('myProperty', 'value');
 	// Handle any actions with this.on('myAction', function(val) { ... });
 
-	this.render(hbs`{{x-aside}}`);
+	this.render(hbs`{{aside-left}}`);
 	assert.ok(this.$('a').length > 0);
 
 	// @todo make sure the click handler runs
