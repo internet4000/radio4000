@@ -11,6 +11,15 @@
     top: 4.8rem;
     left: 0;
     z-index: 4;
+    span {
+	transform: rotateY(180deg);
+	transition: transform 300ms $easing;
+    }
+    &.Btn--isActive {
+	span {
+	    transform: rotateY(0);
+	}
+    }
 }
 
 /**
