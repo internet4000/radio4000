@@ -6,10 +6,6 @@
 	display: flex;
 	flex-wrap: nowrap;
 	flex-direction: row;
-
-	// @media (min-width: $layout-l) {
-	// 	flex-direction: row;
-	// }
 }
 
 /**
@@ -32,27 +28,8 @@
 }
 
 .Root.is-maximized {
-    max-height: 100vh;
-    overflow: hidden;
-}
- 
-/**
- * Overlay style, purple background
- */
-.Root.is-minimal {
-	// background-color: $primary-color;
-
-	.SiteMain {
-		display: flex;
-		flex-flow: column;
-		align-items: center;
-		// align-content: center;
-		justify-content: center;
-	}
-
-	.SiteFooter {
-		display: none;
-	}
+	max-height: 100vh;
+	overflow: hidden;
 }
 
 /**
@@ -69,7 +46,8 @@
 	}
 }
 .Root.is-withoutPlayer {
-    .Aside--right {
-	display: none;
-    }
+	.Aside--right {
+		display: none;
+	}
 }
+

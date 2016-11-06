@@ -14,7 +14,6 @@ export default Component.extend({
 		'isEmbed',
 		'isInverted',
 		'uiStates.player.isMinimized:is-minimized',
-		'uiStates.isMinimal',
 		'uiStates.isPanelLeftVisible:is-panelLeftVisible',
 		'player.model:is-withPlayer:is-withoutPlayer'
 	],
