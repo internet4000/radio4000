@@ -4,6 +4,7 @@ const {Component, inject, computed} = Ember;
 
 export default Component.extend({
     uiStates: inject.service(),
+    tagName: ['button'],
     classNames: ['AsideLeftToggle', 'Btn', 'Btn--small'],
     classNameBindings: ['isToggled:Btn--isActive'],
     isToggled: computed.oneWay('uiStates.isPanelLeftVisible'),
