@@ -219,14 +219,6 @@ $bar-height-minimized: rem(70);
  * Fullscreen state
  */
 .is-maximized {
-	.Aside--right {
-		top: 0;
-		right: 0;
-		width: 100%;
-		height: 100%;
-		background-color: black;
-	}
-
 	.Playback {
 		height: 100%;
 		background: black;
