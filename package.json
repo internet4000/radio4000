@@ -13,7 +13,7 @@
     "deploy-surge:staging": "mv dist/index.html dist/200.html; surge dist http://much.radio4000.com",
     "deploy-surge:production": "mv dist/index.html dist/200.html; surge dist https://radio4000.com",
     "deploy-firebase-staging": "firebase use radio4000-staging; firebase deploy --only hosting",
-    "deploy-firebase-production": "firebase use radio4000-live; firebase deploy --only hosting",
+    "deploy-firebase-production": "firebase use firebase-radio4000; firebase deploy --only hosting",
     "start": "ember serve",
     "test": "ember test",
     "lint": "stylelint --syntax scss app/styles/**/*.scss"
