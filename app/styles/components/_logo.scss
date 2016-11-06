@@ -15,12 +15,14 @@
 
 
 .Logo {
-	max-width: 8.5rem;
-	padding-top: 1.8rem;
-	padding-left: 1.4rem;
-	padding-right: 1rem;
+        max-width: $sidebar-width;
+	padding-top: 1.5rem;
+	padding-left: 4rem;
+	padding-right: 4rem;
 	user-select: none; // don't highlight
-
+	a {
+	    user-select: none; // don't highlight
+	}
 }
 
 .Logo h1 {

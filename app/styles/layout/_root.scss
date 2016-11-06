@@ -16,19 +16,23 @@
  * Panel is open
  */
 .Root.is-panelLeftVisible {
-	.Aside--left {
-		transform: translateX(0);
-	}
+    
+    .Aside--left {
+	transform: translateX(0);
+    }
 
-	.Sections {
-		padding-top: 4rem;
-	}
-
+    .Sections {
 	@media (min-width: $layout-s) {
-		.SiteMain {
-			padding-left: $sidebar-width;
-		}
+	    padding-top: 4rem;
 	}
+
+    }
+
+    @media (min-width: $layout-s) {
+	.SiteMain {
+	    padding-left: $sidebar-width;
+	}
+    }
 }
 
 .Root.is-maximized {
