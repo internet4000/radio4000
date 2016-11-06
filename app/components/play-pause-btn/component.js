@@ -1,15 +1,21 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
-	tagName: ['button'],
-	classNames: ['PlayPause'],
-	isPlaying: false,
+const {Component, computed} = Ember;
 
-	click() {
-		if (this.get('isPlaying')) {
-			this.sendAction('pause');
-		} else {
-			this.sendAction('play');
-		}
+export default Component.extend({
+    tagName: ['button'],
+    classNames: ['PlayPause'],
+    isPlaying: false,
+    attributeBindings: ['title'],
+    title: computed('isPlaying', function () {
+	return this.get('isPlaying') ? 'Pause music playback' : 'Start music playback (play)';
+    }),
+
+    click() {
+	if (this.get('isPlaying')) {
+	    this.sendAction('pause');
+	} else {
+	    this.sendAction('play');
 	}
+    }
 });
