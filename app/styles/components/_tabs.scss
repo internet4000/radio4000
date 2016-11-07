@@ -29,14 +29,10 @@
 	box-shadow: none;
 }
 
-// .Tabs--bottom {
-// 	align-self: flex-end;
-// }
 .Tabs-item {
 	display: inline-block;
 	padding: 0.8em 1rem 0.5em;
 	color: $text-color;
-	border-radius: $border-radius;
 	border-right: 3px solid transparent;
 	transition: border-right-color 200ms $easing, border-bottom-color 200ms $easing, background-image 200ms $easing;
 
@@ -46,10 +42,6 @@
 		text-decoration: none;
 	}
 
-	// &:hover,
-	// &:focus {
-	// 	background-image: radial-gradient($white, transparent 70%);
-	// }
 	&.is-active {
 		@extend %font-bold;
 		border-right-color: $secondary-color;
