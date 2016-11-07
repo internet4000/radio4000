@@ -1,3 +1,4 @@
+/* eslint no-path-concat: 0 */
 /* jshint undef: false */
 
 const BrowserWindow = require('electron').BrowserWindow;

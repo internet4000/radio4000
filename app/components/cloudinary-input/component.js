@@ -1,3 +1,4 @@
+/* eslint camelcase:0 */
 /* global document, window */
 import Ember from 'ember';
 import ENV from 'radio4000/config/environment';
