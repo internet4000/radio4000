@@ -64,7 +64,10 @@
 			{{x-icon i='previous'}}
 		</button>
 
-		{{play-pause-btn isPlaying=player.isPlaying play=(action "play") pause=(action "pause") class="Playback-button"}}
+		{{play-pause-btn class="Playback-button"
+			isPlaying=player.isPlaying
+			play=(action "play")
+			pause=(action "pause")}}
 
 		<button class="Playback-button" {{action 'next'}} title="Next track">
 			{{x-icon i='next'}}
