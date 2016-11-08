@@ -71,13 +71,14 @@ export default Component.extend(EKMixin, {
 			}
 		},
 		scrollToTrack() {
-			// Scroll afterRender and a bit later to not jank the computer
+			// We wrap the actual scrolling inside this run loop,
+			// to minimize jank. Seems to work better.
 			run.scheduleOnce('afterRender', () => {
 				run.later(() => {
 					const $container = $('.html, body');
 					const offset = $('.Track.is-current').offset().top - 90;
 					$container.animate({scrollTop: offset}, 700, 'swing');
-				}, 100);
+				}, 60);
 			});
 		},
 
@@ -90,16 +91,16 @@ export default Component.extend(EKMixin, {
 
 		// ember-youtube events
 		onYouTubePlay() {
-			this.get('player').play();
+			get(this, 'player').play();
 		},
 		onYouTubePause() {
-			this.get('player').pause();
+			get(this, 'player').pause();
 		},
 		onYouTubeEnd() {
-			this.get('player').trackEnded();
+			get(this, 'player').trackEnded();
 		},
 		onYouTubeError(error) {
-			this.get('player').onError(error);
+			get(this, 'player').onError(error);
 		}
 	}
 });
