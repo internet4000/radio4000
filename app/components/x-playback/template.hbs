@@ -1,8 +1,8 @@
 <div class="Playback-layoutButtons">
-	<button class="Playback-minimalBtn Btn Btn--small" {{action 'toggleMinimizedFormat'}} title="Toggle minimized player">
+	<button class="Playback-minimalBtn Btn Btn--small" {{action 'toggleMinimizedFormat'}} title="Toggle minimized player (press 'F')">
 		{{if uiStates.isMinimized '⬒' '_'}}
 	</button>
-	<button class="Playback-fullscreenBtn Btn Btn--small" {{action 'toggleFullscreenFormat'}} title="Toggle fullscreen player">
+	<button class="Playback-fullscreenBtn Btn Btn--small" {{action 'toggleFullscreenFormat'}} title="Toggle fullscreen player (press 'F')">
 		{{#if uiStates.isFullscreen}}
 			{{x-icon i='arrows-compress'}}
 		{{else}}
@@ -35,8 +35,8 @@
 		      <button class="Btn Btn--small"
 			      onClick={{perform bot.playAnotherRadio channel}}
 			      disabled={{bot.playAnotherRadio.isRunning}}
-			      title="Swap to another radio">
-			{{if bot.playAnotherRadio.isIdle 'Swap' 'Swapping'}}
+			      title="Swap to another radio (press 'W')">
+						{{if bot.playAnotherRadio.isIdle 'Swap' 'Swapping'}}
 		      </button>
 		    </div>
 		  {{/channel-card}}
