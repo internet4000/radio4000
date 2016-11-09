@@ -13,11 +13,8 @@
 					</p>
 				{{/if}}
 			{{else}}
-				<h1>Sign in or create your own radio</h1>
-				<p class="Subtitle">A single radio for you, music for everyone — and an infinity of great tracks curated with love.</p>
-				<p>Collect all the music you like via YouTube videos and play them as a radio.</p>
-				<br><br>
-				<p><strong>Use Radio4000 with…</strong></p>
+				<h1>Login</h1>
+				<p>To <strong>create</strong> or <strong>manage</strong> your Radio4000, connect with:</p>
 				<p>
 					<button class="Btn Btn--large" title="Sign in or register with Google" {{action 'login' 'google'}}>
 						Google</button>
@@ -25,14 +22,11 @@
 					<button class="Btn Btn--large" title="Sign in or register with Facebook" {{action 'login' 'facebook'}}>
 						Facebook</button>
 				</p>
-				<br>
 				{{#if session.isWorking}}
 					{{#is-loading}}Warming transistors…{{/is-loading}}
 				{{/if}}
-				<br>
-				<br>
-				<p>How does it work? Sign in above, give your radio a name and start adding tracks to it by pasting in YouTube links.</p>
-				<p>&rarr; <a href="{{href-to 'intro'}}">Get properly introduced to Radio4000</a></p>
+
+				<p>&rarr; <a href="{{href-to 'intro'}}">Get introduced to Radio4000</a></p>
 			{{/if}}
 		</div>
 	</section>
