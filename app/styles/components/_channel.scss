@@ -24,6 +24,33 @@
 	.Form {
 		margin-top: 0;
 	}
+
+	.Channel-body {
+	    width: 100%;
+	}
+	.Channel-media {
+	    margin-top: 0;
+	    width: 100%;
+	    max-width: 100%;
+	    float: none;
+	}
+	.Dropzone .Cover {
+	    padding-bottom: 0.5rem;
+	    padding-top: 1rem;
+	}
+	.Dropzone-inner {
+	    figure {
+		max-width: 10rem;
+		margin: 0 auto;
+	    }
+	    input {
+		clear: both;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		padding-top: 0.5rem;
+	    }
+	}
 }
 
 .Channel-header {
@@ -50,11 +77,6 @@
 	@media (min-width: $layout-l) {
 		padding-right: 1.5rem;
 		width: 35%;
-	}
-
-	// remove margin between cover and button
-	.Dropzone .Cover {
-		margin-bottom: 0.5rem;
 	}
 
 	.Btn {
@@ -165,12 +187,6 @@
 	}
 }
 
-/**
- * on channel/edit route
- **/
-.Channel--edit .Channel-media {
-	margin-top: 0;
-}
 
 /**
  Channel-introduction
