@@ -55,16 +55,6 @@
 	}
 }
 
-.no-touchevents .ChannelCard {
-	.ChannelCard-controls .Btn {
-		opacity: 0.8;
-	}
-
-	&:hover .ChannelCard-controls .Btn {
-		opacity: 1;
-	}
-}
-
 .ChannelCard-overlayBtn {
 	position: absolute;
 	top: 0.3rem;
@@ -150,7 +140,6 @@ $card-wide-cover-size: 4.8rem;
 
 	.ChannelCard-body {
 		display: none;
-
 		// margin-top: -1rem;
 		// padding-left: ($card-wide-cover-size + 1rem);
 		// padding-bottom: 1rem;
@@ -166,3 +155,15 @@ $card-wide-cover-size: 4.8rem;
 		}
 	}
 }
+
+// Disabled faded, play icon for now.
+// .no-touchevents .Grid .ChannelCard {
+// 	.ChannelCard-controls .Btn {
+// 		opacity: 0.8;
+// 	}
+
+// 	&:hover .ChannelCard-controls .Btn {
+// 		opacity: 1;
+// 	}
+// }
+
