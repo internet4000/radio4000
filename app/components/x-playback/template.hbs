@@ -69,10 +69,10 @@
 			play=(action "play")
 			pause=(action "pause")}}
 
-		<button class="Playback-button" {{action 'next'}} title="Next track">
+		<button class="Playback-button" {{action 'next'}} title="Next track (press 'N')">
 			{{x-icon i='next'}}
 		</button>
 
-		<button class="Playback-button Playback-toggleVolume {{if emberYoutube.isMuted 'u-textStrike'}}" {{action "toggleVolume"}} title="Toggle the playback volume">Mute</button>
+		<button class="Playback-button Playback-toggleVolume {{if emberYoutube.isMuted 'u-textStrike'}}" {{action "toggleVolume"}} title="Toggle the playback volume (press 'M')">Mute</button>
   </div>
 </div>
