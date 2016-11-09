@@ -1,7 +1,4 @@
 <section class="Section">
-  <p class="Container Container--full u-push-1">
-    Hi! Listen to radios below or <a href="{{href-to 'intro'}}" title="">learn more about Radio4000</a>.
-  </p>
 	<div class="Manchet">
 		<h1>Discover<small> the editor's selection</small></h1>
 	</div>
@@ -12,25 +9,24 @@
 	{{else}}
 		<div class="Container Container--full">
 			<div class="Grid">
-				{{#each model.featured as |channel|}}
-					<div class="Grid-cell">
-						{{channel-card channel=channel}}
-					</div>
-				{{/each}}
-				<div class="Grid-cell Grid-cell--double">
-					<h3>Tip</h3>
+				<div class="Grid-cell">
 					<div class="Muted">
-						<p>Each selected channel has been curated by human ears and handpicked for its unquestionable quality. Listen to music you'll love, it's free!</p>
+					  <p>Hello and welcome!</p>
+					  <p>You can start your journey by listening to one of the radio on this page.</p>
+					  <p>Otherwise, let's explore!</p>
+					  <p>
+					    &rarr; <a href="{{href-to 'intro'}}" title="">What is Radio4000?</a><br/>
+					    &rarr; <a href="{{href-to 'channels.all'}}">See all radios</a>
+					  </p>
+
 					</div>
-					<p>&rarr; <a href="{{href-to 'channels.all'}}">See all radios</a>
-						{{#unless model.userChannel}}
-							<br>&rarr; <a href="{{href-to 'channels.new'}}" class="" title="Create your own radio now or log in">Create your own radio</a>
-						{{/unless}}
-						{{#unless session.isAuthenticated}}
-							<br>&rarr; <a href="{{href-to 'login'}}" class="" title="Create your own radio now or log in">Sign in or register</a>
-						{{/unless}}
-					</p>
+
 				</div>
+				{{#each model.featured as |channel|}}
+				  <div class="Grid-cell">
+				    {{channel-card channel=channel}}
+				  </div>
+				{{/each}}
 			</div>
 		</div>
 	{{/unless}}
