@@ -17,8 +17,12 @@
 .Logo {
 	max-width: 7rem;
 	padding-top: 1.5rem;
-	padding-left: 1rem;
+	padding-left: 0.6rem;
 	user-select: none; // don't highlight
+
+	@media (min-width: $layout-s) {
+		padding-left: 1rem;
+	}
 
 	a {
 		user-select: none; // don't highlight
