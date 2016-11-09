@@ -1,3 +1,4 @@
+/* eslint camelcase:0 */
 import Ember from 'ember';
 import ENV from 'radio4000/config/environment';
 
@@ -32,14 +33,13 @@ export default Component.extend({
 		// 	'assets/scripts/jquery.fileupload.js',
 		// 	'assets/scripts/jquery.cloudinary.js'
 		// ])
-		$.getScript('assets/scripts/image-upload-r4.js').done(() => {
+		$.getScript('/assets/scripts/image-upload-r4.js').done(() => {
 			$.cloudinary.config({cloud_name: ENV.CLOUDINARY_NAME});
 			Ember.run.schedule('afterRender', () => {
 				this.set('gotScripts', true);
 			});
-		}).fail(error => {
-			// one or more scripts failed to load
-			throw new Error(error);
+		}).fail(() => {
+			throw new Error(`Failed to load image-upload script.`);
 		});
 	}),
 

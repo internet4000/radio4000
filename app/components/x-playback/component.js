@@ -1,7 +1,8 @@
 import Ember from 'ember';
+import {task} from 'ember-concurrency';
 import {EKMixin, keyUp} from 'ember-keyboard';
 
-const {Component, inject, computed, on, run, $} = Ember;
+const {Component, get, set, inject, computed, on, run, $} = Ember;
 
 export default Component.extend(EKMixin, {
 	player: inject.service(),
@@ -15,37 +16,52 @@ export default Component.extend(EKMixin, {
 		showinfo: 0
 	},
 
-	// Keyboard shortucts.
 	activateKeyboard: Ember.on('init', function () {
-		this.set('keyboardActivated', true);
+		set(this, 'keyboardActivated', true);
 	}),
-	onSpaceClick: on(keyUp('Space'), function () {
+	swapShortcut: on(keyUp('KeyW'), function () {
+		get(this, 'swap').perform();
+	}),
+	playbackShortcut: on(keyUp('KeyP'), function () {
 		this.send('togglePlay');
 	}),
-	closeFullscreen: on(keyUp('Escape'), function () {
-		if (this.get('uiStates.player.isMaximized')) {
-			this.send('toggleMaximizedPlayer');
-		}
+	skipShortcut: on(keyUp('KeyS'), function () {
+		this.send('next');
 	}),
+	muteShortcut: on(keyUp('KeyM'), function () {
+		this.send('toggleVolume');
+	}),
+	cycleFormat: on(keyUp('KeyF'), function () {
+		get(this, 'uiStates').cycleFormat();
+	}),
+	closeFullscreen: on(keyUp('Escape'), function () {
+		set(this, 'uiStates.format', 1);
+	}),
+
+	swap: task(function * () {
+		const previous = get(this, 'player.playlist');
+		const channel = yield get(this, 'bot.playAnotherRadio').perform(previous);
+		return channel;
+	}).keepLatest(),
 
 	actions: {
 		togglePlay() {
-			this.get('emberYouTube').send('togglePlay');
+			get(this, 'emberYoutube').send('togglePlay');
 		},
 		toggleVolume() {
-			this.get('emberYouTube').send('toggleVolume');
+			get(this, 'emberYoutube').send('toggleVolume');
 		},
 		play() {
-			this.get('emberYouTube').send('play');
+			get(this, 'emberYoutube').send('play');
 		},
 		pause() {
-			this.get('emberYouTube').send('pause');
+			get(this, 'emberYoutube').send('pause');
 		},
 		prev() {
-			this.get('player').prev();
+			get(this, 'player').prev();
 		},
 		next() {
-			this.get('player').next();
+			get(this, 'player').next();
 		},
 		toggleRandom(player = this.get('player')) {
 			if (player.get('isRandom')) {
@@ -55,38 +71,36 @@ export default Component.extend(EKMixin, {
 			}
 		},
 		scrollToTrack() {
-			// Scroll afterRender and a bit later to not jank the computer
+			// We wrap the actual scrolling inside this run loop,
+			// to minimize jank. Seems to work better.
 			run.scheduleOnce('afterRender', () => {
 				run.later(() => {
 					const $container = $('.html, body');
 					const offset = $('.Track.is-current').offset().top - 90;
 					$container.animate({scrollTop: offset}, 700, 'swing');
-				}, 100);
+				}, 60);
 			});
 		},
 
-		// player size states
-		toggleMaximizedPlayer() {
-			this.set('uiStates.player.isMinimized', false);
-			this.toggleProperty('uiStates.player.isMaximized');
+		toggleMinimizedFormat() {
+			get(this, 'uiStates').toggleMinimizedFormat();
 		},
-		toggleMinimizedPlayer() {
-			this.set('uiStates.player.isMaximized', false);
-			this.toggleProperty('uiStates.player.isMinimized');
+		toggleFullscreenFormat() {
+			get(this, 'uiStates').toggleFullscreenFormat();
 		},
 
 		// ember-youtube events
 		onYouTubePlay() {
-			this.get('player').play();
+			get(this, 'player').play();
 		},
 		onYouTubePause() {
-			this.get('player').pause();
+			get(this, 'player').pause();
 		},
 		onYouTubeEnd() {
-			this.get('player').trackEnded();
+			get(this, 'player').trackEnded();
 		},
 		onYouTubeError(error) {
-			this.get('player').onError(error);
+			get(this, 'player').onError(error);
 		}
 	}
 });

@@ -112,6 +112,7 @@
 .Channel-outlet {
 	min-height: 2rem;
 	margin-bottom: 0;
+	padding-top: 1rem;
 }
 
 .Channel-edit {
@@ -151,7 +152,7 @@
 .Channel-description {
 	@include size-2;
 	max-width: 36rem;
-	margin-bottom: 1rem;
+	margin-bottom: 0;
 	clear: both;
 	word-break: break-word;
 }

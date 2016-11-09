@@ -1,6 +1,8 @@
-<div class="Bar Bar--top">
-	{{site-logo-button}}
-</div>
+{{#link-to 'application' class="Logo"}}
+  <h1>
+    <img class="Logo-img" src="/assets/images/icons/radio4000.svg" alt="Radio4000" title="Go to the homepage">
+  </h1>
+{{/link-to}}
 
 {{#if flashMessages.queue}}
 	<aside class="FlashMessages">
@@ -10,7 +12,9 @@
 	</aside>
 {{/if}}
 
-{{x-aside class="Aside--left"
+{{aside-left-toggle}}
+
+{{aside-left
 	isAuthenticated=session.isAuthenticated
 	userChannel=session.currentUser.channels.firstObject
 	toggleModal=(action "toggleModal")}}
@@ -19,9 +23,9 @@
 	{{yield}}
 </main>
 
-<div class="Aside Aside--right">
+<aside class="Aside Aside--right">
 	{{x-playback}}
-</div>
+</aside>
 
 {{#if isShowingModal}}
 	{{#modal-dialog close="toggleModal" translucentOverlay=true}}

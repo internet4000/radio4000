@@ -10,7 +10,7 @@ export default Controller.extend(createTrackMixin, {
 	actions: {
 		saveTrack(trackProperties) {
 			const channel = get(this, 'session.currentUser.channels.firstObject');
-			return this.createTrack(trackProperties, channel);
+			return this.get('createTrack').perform(trackProperties, channel);
 		},
 		goBack() {
 			const userChannel = get(this, 'model');

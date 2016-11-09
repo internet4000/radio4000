@@ -6,22 +6,25 @@
 	display: flex;
 	flex-wrap: nowrap;
 	flex-direction: row;
-
-	// @media (min-width: $layout-l) {
-	// 	flex-direction: row;
-	// }
 }
 
 /**
  * Panel is open
  */
 .Root.is-panelLeftVisible {
+	@media (max-width: $layout-s) {
+		height: 100vh;
+		overflow: hidden;
+	}
+
 	.Aside--left {
-		transform: translate3d(0, 0, 0);
+		transform: translateX(0);
 	}
 
 	.Sections {
-		padding-top: 4rem;
+		@media (min-width: $layout-s) {
+			padding-top: 4rem;
+		}
 	}
 
 	@media (min-width: $layout-s) {
@@ -31,27 +34,13 @@
 	}
 }
 
-/**
- * Overlay style, purple background
- */
-.Root.is-minimal {
-	// background-color: $primary-color;
-
-	.SiteMain {
-		display: flex;
-		flex-flow: column;
-		align-items: center;
-		// align-content: center;
-		justify-content: center;
-	}
-
-	.SiteFooter {
-		display: none;
-	}
+.Root.is-maximized {
+	max-height: 100vh;
+	overflow: hidden;
 }
 
 /**
- * Player is showing
+ * Player
  */
 .Root.is-withPlayer {
 	.SiteMain {
@@ -61,5 +50,11 @@
 
 	.Player {
 		order: 1;
+	}
+}
+
+.Root.is-withoutPlayer {
+	.Aside--right {
+		display: none;
 	}
 }

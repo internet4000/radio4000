@@ -10,6 +10,7 @@ module.exports = {
 	},
 	rules: {
 		'array-callback-return': 'warn',
+		'no-path-concat': 'warn',
 		'camelcase': ['warn', {
 			properties: 'always'
 		}],

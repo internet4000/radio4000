@@ -1,15 +1,9 @@
 <div class="Playback-layoutButtons">
-	{{!-- skip button is hidden for now because it doesn't fit here ux-wise --}}
-	{{!-- {{#if player.model.channel}}
-		<button class="Btn Btn--small" onClick={{perform bot.playAnotherRadio channel}} disabled={{bot.playAnotherRadio.isRunning}} title="Skip to next radio">
-			{{if bot.playAnotherRadio.isIdle 'Skip' 'Skipping'}}
-		</button>
-	{{/if}} --}}
-	<button class="Playback-minimalBtn Btn Btn--small" {{action 'toggleMinimizedPlayer'}} title="Toggle minimized player">
-		{{if uiStates.player.isMinimized '⬒' '_'}}
+	<button class="Playback-minimalBtn Btn Btn--small" {{action 'toggleMinimizedFormat'}} title="Toggle minimized player (press 'F')">
+		{{if uiStates.isMinimized '⬒' '_'}}
 	</button>
-	<button class="Playback-fullscreenBtn Btn Btn--small" {{action 'toggleMaximizedPlayer'}} title="Toggle fullscreen player">
-		{{#if uiStates.player.isMaximized}}
+	<button class="Playback-fullscreenBtn Btn Btn--small" {{action 'toggleFullscreenFormat'}} title="Toggle fullscreen player (press 'F')">
+		{{#if uiStates.isFullscreen}}
 			{{x-icon i='arrows-compress'}}
 		{{else}}
 			{{x-icon i='arrows-expand'}}
@@ -23,7 +17,7 @@
 	{{ember-youtube class="Player"
 		ytid=player.model.ytid
 		delegate=this
-		delegate-as="emberYouTube"
+		delegate-as="emberYoutube"
 		playerVars=youtubePlayerVars
 		showProgress=true
 		lazyload=true
@@ -33,39 +27,52 @@
 		error="onYouTubeError"}}
 </div>
 
-{{#if player.model}}
-	<div class="Playback-channel">
-		{{channel-card channel=channel wide=true}}
-	</div>
-	<div class="Playback-text">
-		<div class="Playback-title" title="Current track / go to current radio">
-			<div {{action "scrollToTrack"}}>
-				{{#link-to 'track' channel player.model replace=true}}
-					{{player.model.title}}
-				{{/link-to}}
-			</div>
+<div class="Playback-body">
+	{{#if player.model}}
+		<div class="Playback-channel">
+		  {{#channel-card channel=channel wide=true}}
+		    <div class="Playback-channelSwap">
+		      <button class="Btn Btn--small"
+			      onClick={{perform bot.playAnotherRadio channel}}
+			      disabled={{bot.playAnotherRadio.isRunning}}
+			      title="Swap to another radio (press 'W')">
+						{{if bot.playAnotherRadio.isIdle 'Swap' 'Swapping'}}
+		      </button>
+		    </div>
+		  {{/channel-card}}
 		</div>
-		{{#if player.model.body}}
-			<p class="Playback-description">"{{player.model.body}}"</p>
-		{{/if}}
-	</div>
+		<div class="Playback-text">
+			<div class="Playback-title" title="Current track / go to current radio">
+				<div {{action "scrollToTrack"}}>
+					{{#link-to 'track' channel player.model replace=true}}
+						{{player.model.title}}
+					{{/link-to}}
+				</div>
+			</div>
+			{{#if player.model.body}}
+				<p class="Playback-description">{{player.model.body}}</p>
+			{{/if}}
+		</div>
+	{{/if}}
 
-{{/if}}
+	<div class="Playback-buttons {{unless player.model "u-hide"}}">
+		<button class="Playback-button Playback-shuffle {{if player.isRandom 'is-active'}}" {{action 'toggleRandom'}} title="{{if player.isRandom 'Disable shuffle' 'Enable shuffle'}}">
+			{{x-icon i='shuffle'}}
+		</button>
 
-<div class="Playback-buttons {{unless player.model "u-hide"}}">
-	<button class="Playback-button Playback-shuffle {{if player.isRandom 'is-active'}}" {{action 'toggleRandom'}} title="{{if player.isRandom 'Disable shuffle' 'Enable shuffle'}}">
-		{{x-icon i='shuffle'}}
-	</button>
+		<button class="Playback-button" {{action 'prev'}} title="Previous track">
+			{{x-icon i='previous'}}
+		</button>
 
-	<button class="Playback-button" {{action 'prev'}} title="Previous track">
-		{{x-icon i='previous'}}
-	</button>
+		{{play-pause-btn class="Playback-button"
+			isPlaying=player.isPlaying
+			play=(action "play")
+			pause=(action "pause")}}
 
-	{{play-pause-btn isPlaying=player.isPlaying play=(action "play") pause=(action "pause") class="Playback-button"}}
+		<button class="Playback-button" {{action 'next'}} title="Next track (press 'S')">
+			{{x-icon i='next'}}
+		</button>
 
-	<button class="Playback-button" {{action 'next'}} title="Next track">
-		{{x-icon i='next'}}
-	</button>
-
-	<button class="Playback-button Playback-toggleVolume {{if emberYouTube.isMuted 'u-textStrike'}}" {{action "toggleVolume"}} title="Toggle the playback volume">Mute</button>
+		<button class="Playback-button Playback-toggleVolume {{if emberYoutube.isMuted 'u-textStrike'}}" {{action "toggleVolume"}} title="Toggle the playback volume (press 'M')">Mute</button>
+  </div>
 </div>

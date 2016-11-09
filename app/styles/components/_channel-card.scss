@@ -9,6 +9,9 @@
 	&.is-active {
 		outline-color: $primary-color;
 	}
+	.Playback-channel &.is-active {
+	    outline-color: transparent;
+	}
 }
 
 .ChannelCard-title,
@@ -34,12 +37,14 @@
 .ChannelCard-body {
 	@include size-0;
 	color: $dark;
+	// Ensure very long words don't mess up the layout.
+	word-break: break-word;
 }
 
 .ChannelCard-controls {
 	position: absolute;
-	top: 0.5rem;
-	right: 0.5rem;
+	top: 0.4rem;
+	left: 0.4rem;
 	z-index: 1;
 
 	.Btn.is-hidden {
@@ -47,6 +52,16 @@
 		transform-origin: right;
 		opacity: 0;
 		pointer-events: none;
+	}
+}
+
+.no-touchevents .ChannelCard {
+	.ChannelCard-controls .Btn {
+		opacity: 0.8;
+	}
+
+	&:hover .ChannelCard-controls .Btn {
+		opacity: 1;
 	}
 }
 
@@ -114,6 +129,7 @@ $card-wide-cover-size: 4.8rem;
 
 .ChannelCard--wide {
 	padding-bottom: 0;
+	width: 100%;
 
 	> a {
 		display: flex;
@@ -141,8 +157,9 @@ $card-wide-cover-size: 4.8rem;
 	}
 
 	.ChannelCard-controls {
-		top: -0.3rem;
-		right: -0.6rem;
+		left: -0.5rem;
+		top: -0.5rem;
+		right: auto;
 
 		.Button {
 			padding: 0.6rem;

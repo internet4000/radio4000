@@ -5,6 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'radio4000',
     environment: environment,
     locationType: process.env.EMBER_CLI_ELECTRON ? 'hash' : 'auto',
+    rootURL: '/',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

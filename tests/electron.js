@@ -1,6 +1,8 @@
+/* eslint no-path-concat: 0 */
 /* jshint undef: false */
 
-const {BrowserWindow, app} = require('electron');
+const BrowserWindow = require('electron').BrowserWindow;
+const app = require('electron').app;
 
 let mainWindow = null;
 
@@ -12,21 +14,16 @@ app.on('window-all-closed', function onWindowAllClosed() {
 
 app.on('ready', function onReady() {
 	mainWindow = new BrowserWindow({
-		'width': 1000,
-		'height': 700,
-		'min-width': 320,
-		'min-height': 400,
-		'frame': true,
-		'resizable': true,
-		'toolbar': true
+		width: 800,
+		height: 600
 	});
 
 	delete mainWindow.module;
 
 	if (process.env.EMBER_ENV === 'test') {
-		mainWindow.loadURL(`file://${__dirname}/index.html`);
+		mainWindow.loadURL('file://' + __dirname + '/index.html');
 	} else {
-		mainWindow.loadURL(`file://${__dirname}/dist/index.html`);
+		mainWindow.loadURL('file://' + __dirname + '/dist/index.html');
 	}
 
 	mainWindow.on('closed', function onClosed() {

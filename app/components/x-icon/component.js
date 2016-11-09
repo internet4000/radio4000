@@ -17,6 +17,6 @@ export default Ember.Component.extend({
 	}),
 
 	url: computed('i', function () {
-		return `assets/images/icons/sprite.svg#icon-${this.get('i')}`;
+		return `/assets/images/icons/sprite.svg#icon-${this.get('i')}`;
 	})
 });

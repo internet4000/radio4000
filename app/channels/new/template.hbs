@@ -1,17 +1,29 @@
 <section class="Section Section--100vh Section--flex Section--bg Section--noMarginB">
 	<div class="Section-inner Section-inner--vCentered Container Container--centered">
+
 		<h2>What do you want to call your radio?</h2>
-		<form class="Form" {{action "create" on="submit"}}>
+
+		<form class="Form" {{action "submit" on="submit"}}>
 			<div class="Form-group">
-				{{focus-input value=title required="required" placeholder='“The Pirate Radio”' class="Form-bigInput u-textAlignCenter"}}
-				{{errors-display showErrors=showErrors errors=errors.title}}
+				{{focus-input
+					value=title
+					required="required"
+					placeholder="“The Pirate Radio”"
+					class="Form-bigInput u-textAlignCenter"}}
+				{{errors-display errors=errors showErrors=showErrors}}
+
 				<p class="Muted">Go ahead, you can <em>always</em> change the name later</p>
 			</div>
+
 			<div class="Form-group u-alignCenter">
-				<button disabled={{isSaving}} class="Btn Btn--primary Btn--large" title="Create your radio channel">
-					{{if isSaving 'Creating…' 'Create my radio'}}
+				<button
+					class="Btn Btn--primary Btn--large"
+					title="Create your radio channel"
+					disabled={{createRadio.isRunning}}>
+					{{if createRadio.isRunning "Creating…" "Create my radio"}}
 				</button>
 			</div>
 		</form>
+
 	</div>
 </section>

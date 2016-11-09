@@ -1,10 +1,9 @@
 import Ember from 'ember';
-// import MinimalRouteMixin from 'radio4000/mixins/minimal-route';
 
-const {get} = Ember;
+const {Route, get, inject} = Ember;
 
-export default Ember.Route.extend({
-	uiStates: Ember.inject.service(),
+export default Route.extend({
+	uiStates: inject.service(),
 
 	beforeModel() {
 		if (get(this, 'session.isAuthenticated')) {
@@ -23,7 +22,7 @@ export default Ember.Route.extend({
 	},
 
 	actions: {
-		// Logs in a user
+		// Logs in a user. Provider has to match what we've enabled in Firebase authentication. That is 'google' or 'facebook'.
 		// a) if the user has a channel, we transition to it
 		// b) otherwise we transition to create a new channel
 		login(provider) {

@@ -1,93 +1,72 @@
 import Ember from 'ember';
 import {task} from 'ember-concurrency';
+import {getRandomIndex} from 'radio4000/utils/random-helpers';
 
-const {Service, inject} = Ember;
-
-const randomIndex = array => Math.floor(Math.random() * array.get('length'));
+const {Service, debug, inject, set, get} = Ember;
 
 export default Service.extend({
 	store: inject.service(),
 	player: inject.service(),
 
 	playAnotherRadio: task(function * (prev) {
-		const channel = yield this.findRandomChannel();
-		// if the new "random" is the same as the last, it does happen, run again
-		if (prev && prev.id === channel.id) {
-			return this.get('playAnotherRadio').perform(channel);
+		let channel = yield get(this, 'findRandomChannel').perform();
+
+		// If a `prev` channel is passed, we call the function again to avoid getting the same channel twice.
+		if (prev) {
+			while (channel.id === prev.id) {
+				debug('found the same channel as the previous one, trying again');
+				channel = yield get(this, 'findRandomChannel').perform();
+			}
 		}
-		this.get('player').set('isShuffled', true);
-		yield this.get('playNewestTrack').perform(channel);
+
+		// Ensure shuffle is enabled.
+		// The user really did not ask for this but it is for the best.
+		get(this, 'player').set('isShuffled', true);
+
+		yield get(this, 'playNewestTrack').perform(channel);
 	}).drop(),
 
 	playNewestTrack: task(function * (channel) {
-		const track = yield this.findLastTrack(channel);
+		const track = yield get(this, 'findLastTrack').perform(channel);
 		if (!track) {
-			Ember.debug('playTrack was called without a track.');
-			this.get('playAnotherRadio').perform();
+			debug('playNewestTrack was called but could not find a track to play. Trying another radio.');
+			get(this, 'playAnotherRadio').perform();
 			return;
-			// throw new Error('playTrack was called without a track.');
 		}
-		this.get('player').playTrack(track);
+		get(this, 'player').playTrack(track);
 	}).drop(),
 
-	findLast(x, type) {
-		return this.get('store').query(type, {limitToLast: x});
-	},
+	playRandomTrack: task(function * (channel) {
+		const track = yield get(this, 'findRandomTrack').perform(channel);
+		get(this, 'player').playTrack(track);
+	}).drop(),
 
-	findRandomChannel() {
-		let items = null;
+	findLastTrack: task(function * (channel) {
+		const tracks = yield channel.get('tracks');
+		return tracks.get('lastObject');
+	}).drop(),
+
+	findRandomChannel: task(function * () {
 		let channel;
-		// This returns a single, ramdom channel while doing effecient queries
-		// e.g. first it finds all records, then looks to the cache
-		return new Ember.RSVP.Promise(resolve => {
-			const isCached = this.get('store').peekAll('channel').get('length');
-			if (isCached >= 20) {
-				items = this.get('store').peekAll('channel');
-				const filtered = items.filter(c => c.get('totalTracks') > 5);
-				channel = filtered.objectAt(randomIndex(filtered));
-				resolve(channel);
-			} else {
-				items = this.get('store').findAll('channel');
-				// items = this.findLast(10, 'channel');
-				items.then(channels => {
-					const filtered = channels.filter(c => c.get('totalTracks') > 10);
-					if (Ember.isEmpty(filtered)) {
-						const channelsWithAtLeastOneTrack = channels.filter(c => c.get('totalTracks') > 0);
-						channel = channels.objectAt(randomIndex(channelsWithAtLeastOneTrack));
-					} else {
-						channel = filtered.objectAt(randomIndex(filtered));
-					}
-					Ember.debug(channel.get('title'));
-					resolve(channel);
-				});
-			}
-		}).catch(error => {
-			throw new Error(error);
-		});
-	},
+		let cache = get(this, 'store').peekAll('channel');
 
-	findLastTrack(channel) {
-		if (!channel) {
-			throw new Error('no channel');
+		// Very small cache so we try to fetch more.
+		if (cache.get('length') < 3 && !get(this, 'didFetchAllChannels')) {
+			Ember.debug('small cache, fetching more channels');
+			cache = yield get(this, 'store').findAll('channel');
+			Ember.debug(cache);
+			set(this, 'didFetchAllChannels', true);
 		}
-		return channel.get('tracks').then(tracks => tracks.get('lastObject'));
-	}
-});
 
-// playSomething() {
-// 	this.get('randomChannel').then(channel => {
-// 		channel.get('tracks').then(tracks => {
-// 			const track = tracks.objectAt(randomIndex(tracks));
-// 			this.get('player').playTrack(track);
-// 		});
-// 	});
-// }
-// randomTrack() {
-	// this.store.query('channel', {limitToLast: 5}).then(channels => {
-	// 	const channel = channels.filter(c => c.get('tracks.length')).objectAt(randomIndex(channels));
-	// 	channel.get('tracks').then(tracks => {
-	// 		const track = tracks.objectAt(randomIndex(tracks));
-	// 		this.get('player').playTrack(track);
-	// 	});
-	// });
-// }
+		// Pick a channel.
+		channel = cache.objectAt(getRandomIndex(cache.content));
+
+		// If the channel is empty, pick one with more tracks.
+		if (channel.get('totalTracks') < 1) {
+			cache = cache.filter(c => c.get('totalTracks') > 1);
+			channel = cache.objectAt(getRandomIndex(cache.content));
+		}
+
+		return channel;
+	}).keepLatest()
+});

@@ -3,8 +3,9 @@ import clean from 'radio4000/utils/clean';
 import randomText from 'radio4000/utils/random-text';
 import channelConst from 'radio4000/utils/channel-const';
 import EmberValidations from 'ember-validations';
+import {task} from 'ember-concurrency';
 
-const {debug, computed} = Ember;
+const {debug, computed, get} = Ember;
 
 export default Ember.Controller.extend(EmberValidations, {
 	title: '',
@@ -26,29 +27,43 @@ export default Ember.Controller.extend(EmberValidations, {
 	cleanSlug: computed('title', function () {
 		const title = clean(this.get('title'));
 		const random = randomText();
-
 		return `${title}-${random}`;
 	}),
 
+	createRadio: task(function * () {
+		const messages = get(this, 'flashMessages');
+		const user = get(this, 'session.currentUser');
+		const slug = get(this, 'cleanSlug');
+		let title = get(this, 'title');
+
+		// Avoid extra spaces
+		title = title.trim();
+
+		// Save the channel, create channel public and relationships, save again
+		const channel = this.store.createRecord('channel', {title, slug});
+		yield channel.save();
+
+		const userChannels = yield user.get('channels');
+		userChannels.addObject(channel);
+		yield user.save();
+
+		const channelPublic = yield this.store.createRecord('channelPublic', {channel});
+		yield channelPublic.save();
+
+		try {
+			channel.setProperties({channelPublic});
+			yield channel.save();
+			this.transitionToRoute('channel', channel);
+			messages.warning('Voilà! You now have a Radio4000 📻', {timeout: 10000});
+		} catch (e) {
+			throw new Error('Could not save new channel');
+		}
+	}).drop(),
+
 	actions: {
-		// Create a channel record and sends order to save it on parent route
-		create() {
-			// first we do a form validation on channel.title
+		submit() {
 			this.validate().then(() => {
-				debug('Form validates!');
-				this.set('isSaving', true);
-
-				const slug = this.get('cleanSlug');
-				let title = this.get('title');
-				debug(`title: ${title}`);
-
-				title = title.trim();
-				debug(`title.trim(): ${title}`);
-
-				// create channel record
-				const channel = this.store.createRecord('channel', {title, slug});
-				// save it on the parent route
-				this.send('saveChannel', channel);
+				get(this, 'createRadio').perform();
 			}).catch(() => {
 				this.set('showErrors', true);
 				debug('Form does not validate');

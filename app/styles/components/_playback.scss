@@ -2,7 +2,6 @@
  * Player
  */
 
-// Controls
 .Playback {
 	@include negative-text;
 	width: 100%;
@@ -28,17 +27,6 @@
 	@media (min-width: $layout-s) {
 		flex-wrap: nowrap;
 	}
-
-	.Bar--bottom & {
-		border-top: 1px solid $primary-color;
-		min-height: rem($bar-height + $progress-height);
-		padding-bottom: rem($progress-height);
-
-		// if width is less than 100%, add this:
-		// border-left: 1px solid rgb(111, 111, 111);
-		// border-top-right-radius: $border-radius;
-		// border-top-left-radius: $border-radius;
-	}
 }
 
 .Playback-cover {
@@ -47,6 +35,12 @@
 	img {
 		width: 100%;
 	}
+}
+
+.Playback-body {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
 }
 
 .Playback-text {
@@ -69,11 +63,11 @@
 .Playback-channel {
 	padding: 0 1rem 1rem;
 	order: 2;
+	position: relative;
 }
 
 .Playback-title {
 	a {
-		color: $text-color;
 		font-weight: bold;
 	}
 }
@@ -128,7 +122,13 @@
 	color: white;
 }
 
-//
+.Playback-channelSwap {
+	position: absolute;
+	top: -1rem;
+	right: -0.5rem;
+	z-index: 1;
+}
+
 .Playback-layoutButtons {
 	position: absolute;
 	top: -1.4rem;
@@ -162,10 +162,6 @@
 
 .Playback-player {
 	position: relative;
-	// Gif loading background.
-	background-image: url("../assets/images/noise.gif");
-	background-position: center;
-	background-size: cover;
 }
 
 // Animate buttons that should only be visible when the player is ready.
@@ -183,8 +179,7 @@ $bar-height-minimized: rem(70);
 
 .is-minimized {
 	.EmberYoutube-progress,
-	.Playback-buttons,
-	.Playback-controls {
+	.Playback-body {
 		display: none;
 	}
 
@@ -224,18 +219,9 @@ $bar-height-minimized: rem(70);
  * Fullscreen state
  */
 .is-maximized {
-	.Aside--right {
-		top: 0;
-		right: 0;
-		width: 100%;
-		height: 100%;
-		background-color: black;
-	}
-
 	.Playback {
 		height: 100%;
 		background: black;
-		flex-flow: row wrap;
 	}
 
 	.Playback-layoutButtons {
@@ -246,12 +232,8 @@ $bar-height-minimized: rem(70);
 	.Playback-player {
 		display: flex;
 		width: 100%;
-		min-height: 50vh;
+		min-height: 70vh;
 		margin-bottom: 1rem;
-
-		@media (min-width: $layout-s) {
-			min-height: 90vh;
-		}
 
 		#EmberYoutube-player {
 			position: absolute;
@@ -260,23 +242,26 @@ $bar-height-minimized: rem(70);
 		}
 	}
 
+	.Playback-body {
+		flex-flow: row wrap;
+	}
+
 	.Playback-channel,
-	.Playback-buttons,
 	.Playback-text {
-		flex-basis: (100 / 3) * 1%;
+		flex-basis: 50%;
 	}
 
 	.Playback-channel {
 		order: 1;
-		display: none;
-
-		@media (min-width: $layout-m) {
-			display: block;
-		}
+		display: flex;
+		flex-grow: 0;
+		flex-direction: row;
+		padding: 0;
 	}
 
 	.Playback-text {
 		padding: 0;
+		order: 2;
 
 		@media (max-width: $layout-s) {
 			flex-basis: 100%;
@@ -284,20 +269,14 @@ $bar-height-minimized: rem(70);
 			padding-right: 2rem;
 		}
 	}
-
 	.Player {
 		flex: 1;
 		position: relative;
 	}
-
-	.Playback-title a {
-		@include negative-text;
-		color: $white;
-	}
-
 	.Playback-buttons {
 		background: black;
 		margin: auto;
+		flex-basis: 100%;
 
 		@media (max-width: $layout-s) {
 			flex: 1;
@@ -308,18 +287,14 @@ $bar-height-minimized: rem(70);
 		max-width: 20rem;
 		margin-left: auto;
 		margin-right: auto;
-		background-color: transparent;
-	}
-
-	.ChannelCard-title {
-		color: $bleach;
+		align-self: center;
 	}
 }
 
 /*
-	since we are using Youtubes directly
-	it becones comfusing where to click
-	and this is an element too much in the UX
+since we are using Youtubes directly
+it becones comfusing where to click
+and this is an element too much in the UX
  */
 .EmberYoutube-progress {
 	display: none;

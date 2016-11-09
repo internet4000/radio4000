@@ -25,28 +25,24 @@ npm test
 
 ## Deployment
 
-To deploy to staging aka http://much.radio4000.com, run:
+To deploy to staging aka https://radio4000-staging.firebaseapp.com, run:
 
-`npm run deploy`
+`npm run build; npm run deploy-firebase-staging`
 
-To deploy to production aka https://radio4000.com, run:
+To deploy to production aka https://radio4000.com:
 
-1. `git checkout master; git pull --rebase; git merge develop --no-ff`
-2. (make sure all branches you want are merged in)
-3. `release-it`
-4. `npm run deploy-production`
+1. Make sure your master branch is up to date 
+2. Use `release-it` to tag a new release
+3. `git checkout production; git pull; git merge master --no-ff`
+4. `npm run build-production; npm run deploy-firebase-production`
 
 ## Icons
 
-Add .svg icons to `public/assets/images/icons` and run `gulp icons`.
+Put .svg icons in `public/assets/images/icons` and run `gulp icons` to update the SVG sprites.
 
 ## Building native apps
 
 Run `npm run build-app`, make some coffee and then check the `dist-electron` folder.
-
-## Important if you use Sublime Text
-
-Sublime automatically watches all files in a folder. Because ember-cli is so huge your PC will slow down. To solve this, tell Sublime to ignore the `tmp` and `node_modules` folder: http://www.ember-cli.com/#sublime-text
 
 ## Emberfire
 
@@ -58,4 +54,5 @@ We're using the YouTube API so you might run into trouble with permissions, doma
 
 ## Firebase security rules
 
-Firebase rules are a bitch but see the `rules` folder.
+Firebase rules are a bitch but see the `private/rules` folder.
+
