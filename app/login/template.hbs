@@ -1,33 +1,39 @@
 <div class="Sections">
 	<section class="Section">
-		<div class="Container">
-			{{#if session.isAuthenticated}}
+
+		{{#if session.isAuthenticated}}
+
+			<div class="Container">
 				<p>You are already logged in.</p>
 				<p>{{link-to "Log out" "logout"}}</p>
 				{{#if session.currentUser.channels.firstObject}}
 					<p>Did you want to go to your radio?</p>
 					<p>
-						{{#link-to "channel" session.currentUser.channels.firstObject.slug}}
-							Go to {{session.currentUser.channels.firstObject.title}}.
-						{{/link-to}}
+					{{#link-to "channel" session.currentUser.channels.firstObject.slug}}
+						Go to {{session.currentUser.channels.firstObject.title}}.
+					{{/link-to}}
 					</p>
 				{{/if}}
-			{{else}}
+			</div>
+
+		{{else}}
+			<header class="Manchet">
 				<h1>Login</h1>
+			</header>
+			<div class="Container">
 				<p>To <strong>create</strong> or <strong>manage</strong> your Radio4000, connect with:</p>
 				<p>
 					<button class="Btn Btn--large" title="Sign in or register with Google" {{action 'login' 'google'}}>
 						Google</button>
-						<span style="margin: 0 0.5rem;">or</span>
+					<span style="margin: 0 0.5rem;">or</span>
 					<button class="Btn Btn--large" title="Sign in or register with Facebook" {{action 'login' 'facebook'}}>
 						Facebook</button>
 				</p>
 				{{#if session.isWorking}}
 					{{#is-loading}}Warming transistors…{{/is-loading}}
 				{{/if}}
-
 				<p>&rarr; <a href="{{href-to 'intro'}}">Get introduced to Radio4000</a></p>
-			{{/if}}
-		</div>
+			</div>
+		{{/if}}
 	</section>
 </div>
