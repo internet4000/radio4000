@@ -7,6 +7,7 @@ export default Component.extend({
 	uiStates: inject.service(),
 	player: inject.service(),
 	store: inject.service(),
+	session: inject.service(),
 
 	classNames: ['Root'],
 	classNameBindings: [

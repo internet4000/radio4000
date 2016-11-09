@@ -4,8 +4,6 @@
   </h1>
 {{/link-to}}
 
-{{aside-left-toggle}}
-
 {{#if flashMessages.queue}}
 	<aside class="FlashMessages">
 		{{#each flashMessages.queue as |flash|}}
@@ -13,6 +11,8 @@
 		{{/each}}
 	</aside>
 {{/if}}
+
+{{aside-left-toggle}}
 
 {{aside-left
 	isAuthenticated=session.isAuthenticated
