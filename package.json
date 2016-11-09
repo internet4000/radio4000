@@ -6,8 +6,6 @@
     "build": "ember build; gulp critical",
     "build-production": "ember build -p; gulp critical",
     "build-app": "ember electron:package",
-    "deploy-surge:staging": "mv dist/index.html dist/200.html; surge dist http://much.radio4000.com",
-    "deploy-surge:production": "mv dist/index.html dist/200.html; surge dist https://radio4000.com",
     "deploy-firebase-staging": "firebase use radio4000-staging; firebase deploy --only hosting",
     "deploy-firebase-production": "firebase use firebase-radio4000; firebase deploy --only hosting",
     "start": "ember serve",
@@ -71,7 +69,6 @@
     "emberfire": "^2.0.1",
     "lazysizes": "^2.0.0",
     "suitcss-base": "^2.0.0",
-    "surge": "^0.18.0",
     "torii": "^0.8.0",
     "youtube-regex": "^1.0.4"
   },
