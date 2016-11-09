@@ -2,10 +2,6 @@
   "name": "radio4000",
   "version": "4.4.0",
   "private": true,
-  "directories": {
-    "doc": "doc",
-    "test": "tests"
-  },
   "scripts": {
     "build": "ember build; gulp critical",
     "build-production": "ember build -p; gulp critical",
@@ -22,7 +18,6 @@
   "engines": {
     "node": ">= 5.0.0"
   },
-  "author": "",
   "devDependencies": {
     "autoprefixer": "^6.3.3",
     "broccoli-asset-rev": "^2.4.2",

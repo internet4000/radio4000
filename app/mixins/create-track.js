@@ -25,7 +25,6 @@ export default Mixin.create({
 			get(this, 'flashMessages').info('Your track was created', {timeout: 5000});
 		} catch (e) {
 			flashMessages.warning('Hm, something went astray…');
-		} finally {
 		}
 		return track;
 	}).drop()
