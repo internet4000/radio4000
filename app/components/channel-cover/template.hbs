@@ -3,7 +3,8 @@
 		{{yield}}
 	{{else if src}}
 		<picture>
-			<source data-srcset="{{cover-img src size=200 webp=true}}" type="image/webp">
+			<source data-srcset="{{cover-img src size=200 format='jpg'}}" media="(max-width: 400px)">
+			<source data-srcset="{{cover-img src size=200 format='awebp'}}" type="image/webp">
 			<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
 				class="lazyload"
 				data-src="{{cover-img src size=200}}"
