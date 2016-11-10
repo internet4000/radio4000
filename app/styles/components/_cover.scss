@@ -50,7 +50,7 @@
 	transition: filter 250ms, opacity 250ms;
 
 	&.lazyload {
-		opacity: 0.5;
+		opacity: 0;
 	}
 
 	&.lazyloading {
@@ -65,3 +65,14 @@
 		filter: blur(0);
 	}
 }
+
+// The first 20 images inside grids we fade in nicely.
+// The rest you can't see so we don't need more than 20.
+.Grid-cell {
+	@for $i from 1 through 20 {
+		&:nth-child(#{$i}) .Cover img {
+			transition-delay: 10ms * $i;
+		}
+	}
+}
+
