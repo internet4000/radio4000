@@ -11,7 +11,7 @@ export function formatDate(params) {
 		date = Number(params[0]);
 	}
 
-	const oneWeekAgo = moment().subtract('week', 1);
+	const oneWeekAgo = moment().subtract(1, 'week');
 	const updated = moment(date);
 	const updatedDaysAgo = oneWeekAgo.diff(updated, 'days');
 
@@ -22,4 +22,3 @@ export function formatDate(params) {
 }
 
 export default Ember.Helper.helper(formatDate);
-
