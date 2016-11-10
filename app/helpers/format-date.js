@@ -10,10 +10,16 @@ export function formatDate(params) {
 	} else {
 		date = Number(params[0]);
 	}
-	return moment(date).fromNow();
+
+	const oneWeekAgo = moment().subtract('week', 1);
+	const updated = moment(date);
+	const updatedDaysAgo = oneWeekAgo.diff(updated, 'days');
+
+	if (updatedDaysAgo < 7) {
+		return 'a week ago';
+	}
+	return updated.fromNow();
 }
 
 export default Ember.Helper.helper(formatDate);
 
-// return window.moment(params).format('MMM Do YY');
-// return window.moment(params).subtract(1, 'days').fromNow();
