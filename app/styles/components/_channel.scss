@@ -26,30 +26,34 @@
 	}
 
 	.Channel-body {
-	    width: 100%;
+		width: 100%;
 	}
+
 	.Channel-media {
-	    margin-top: 0;
-	    width: 100%;
-	    max-width: 100%;
-	    float: none;
+		margin-top: 0;
+		width: 100%;
+		max-width: 100%;
+		float: none;
 	}
+
 	.Dropzone .Cover {
-	    padding-bottom: 0.5rem;
-	    padding-top: 1rem;
+		padding-bottom: 0.5rem;
+		padding-top: 1rem;
 	}
+
 	.Dropzone-inner {
-	    figure {
-		max-width: 10rem;
-		margin: 0 auto;
-	    }
-	    input {
-		clear: both;
-		display: block;
-		margin-left: auto;
-		margin-right: auto;
-		padding-top: 0.5rem;
-	    }
+		figure {
+			max-width: 10rem;
+			margin: 0 auto;
+		}
+
+		input {
+			clear: both;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			padding-top: 0.5rem;
+		}
 	}
 }
 
@@ -187,11 +191,11 @@
 	}
 }
 
-
 /**
- Channel-introduction
+	Channel-introduction
  */
 .Channel-introduction {
 	// it is flexbox because of the Grid it is in (Grid-cell)
 	order: 1;
 }
+

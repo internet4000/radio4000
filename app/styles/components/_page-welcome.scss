@@ -3,25 +3,26 @@
  */
 
 .PageWelcome {
-    margin-top: 1rem;
-    background-color: $slightgray;
-    padding: 1rem;
-    margin-bottom: 4rem;
-    max-width: 30rem;
-    margin-left: auto;
-    margin-right: auto;
-    h3,
-    p{
-	text-align: center;
-    }
+	margin-top: 1rem;
+	background-color: $slightgray;
+	padding: 1rem;
+	margin-bottom: 4rem;
+	max-width: 30rem;
+	margin-left: auto;
+	margin-right: auto;
+
+	h3,
+	p {
+		text-align: center;
+	}
 }
 
 .PageWelcome-actions {
-    input {
-	margin-bottom: 0;
-	cursor: pointer;
-	margin-right: 0.6rem;
-	top: 0.2rem;
-	position: relative;
-    }
+	input {
+		margin-bottom: 0;
+		cursor: pointer;
+		margin-right: 0.6rem;
+		top: 0.2rem;
+		position: relative;
+	}
 }
