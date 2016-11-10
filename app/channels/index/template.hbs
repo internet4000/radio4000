@@ -22,7 +22,7 @@
 					</div>
 
 				</div>
-				{{#each model.featured as |channel|}}
+				{{#each sortedFeaturedChannels as |channel|}}
 				  <div class="Grid-cell">
 				    {{channel-card channel=channel}}
 				  </div>
