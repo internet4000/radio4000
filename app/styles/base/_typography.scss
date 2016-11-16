@@ -70,6 +70,7 @@ h1,
 .Title {
 	@include size-4;
 	margin-bottom: 1rem;
+	line-height: 1.2;
 
 	@media (min-width: $layout-sm) {
 		@include size-5;

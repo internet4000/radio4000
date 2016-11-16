@@ -12,7 +12,7 @@
     ],
     "headers": [
       {
-        "source" : "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
+        "source" : "**/*.@(eot|otf|ttf|ttc|woff|woff2)",
         "headers" : [
           {
             "key" : "Access-Control-Allow-Origin",

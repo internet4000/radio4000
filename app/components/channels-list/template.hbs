@@ -1,16 +1,18 @@
 {{#each channels as |channel|}}
 	<li class="List-item">
+
 		{{#link-to "channel" channel}}
 			{{#channel-cover}}
-				<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-					data-src="{{img-url channel.coverImage.src w="50" h="50" transforms="c_thumb,c_fill,fl_lossy"}}"
-					class="lazyload"
-					alt="">
+				{{#if channel.coverImage.src}}
+					<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+					data-src="{{img-url channel.coverImage.src w="50" h="50" transforms="c_thumb,c_fill,fl_lossy"}}" class="lazyload" alt="{{channel.title}}">
+				{{/if}}
 			{{/channel-cover}}
 			<h3 class="List-title">{{channel.title}}</h3>
 			{{#if channel.body}}
 				<p class="List-body">{{do-truncate channel.body 120}}</p>
 			{{/if}}
 		{{/link-to}}
+
 	</li>
 {{/each}}

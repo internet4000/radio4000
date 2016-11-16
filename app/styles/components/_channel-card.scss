@@ -9,8 +9,9 @@
 	&.is-active {
 		outline-color: $primary-color;
 	}
+
 	.Playback-channel &.is-active {
-	    outline-color: transparent;
+		outline-color: transparent;
 	}
 }
 
@@ -52,16 +53,6 @@
 		transform-origin: right;
 		opacity: 0;
 		pointer-events: none;
-	}
-}
-
-.no-touchevents .ChannelCard {
-	.ChannelCard-controls .Btn {
-		opacity: 0.8;
-	}
-
-	&:hover .ChannelCard-controls .Btn {
-		opacity: 1;
 	}
 }
 
@@ -107,9 +98,7 @@
 	}
 }
 
-/**
- * modifier
- **/
+// Modifier
 .ChannelCard--text {
 	@include size-1;
 	position: relative;
@@ -122,9 +111,7 @@
 	}
 }
 
-/**
- * Wide modifier (also smaller)
- */
+// Wide modifier (also smaller)
 $card-wide-cover-size: 4.8rem;
 
 .ChannelCard--wide {
@@ -150,7 +137,6 @@ $card-wide-cover-size: 4.8rem;
 
 	.ChannelCard-body {
 		display: none;
-
 		// margin-top: -1rem;
 		// padding-left: ($card-wide-cover-size + 1rem);
 		// padding-bottom: 1rem;
@@ -166,3 +152,10 @@ $card-wide-cover-size: 4.8rem;
 		}
 	}
 }
+
+// Modifier inside .Tabs
+.Tabs .ChannelCard {
+	margin-top: 0.25rem;
+	border-top: 1px solid hsl(0, 0%, 85%); // same as on .Tabs
+}
+
