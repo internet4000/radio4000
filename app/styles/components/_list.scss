@@ -55,13 +55,13 @@
 
 .List-body {
 	@include size-0;
+	max-width: 80%;
+	margin: 0;
+	color: $gray;
 
 	@media (min-width: $layout-l) {
 		@include size-1;
 	}
-	max-width: 80%;
-	margin: 0;
-	color: $gray;
 }
 
 // Numbered list

@@ -135,6 +135,12 @@
 	}
 }
 
+.Channel-body {
+	@media (max-width: $layout-s) {
+		text-align: center;
+	}
+}
+
 .Channel-outlet {
 	min-height: 2rem;
 	margin-bottom: 0;
