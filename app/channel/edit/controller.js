@@ -1,35 +1,10 @@
 import Ember from 'ember';
 import clean from 'radio4000/utils/clean';
-import channelConst from 'radio4000/utils/channel-const';
-import EmberValidations from 'ember-validations';
 
 const {debug, get, Controller, computed, observer} = Ember;
 
-export default Controller.extend(EmberValidations, {
+export default Controller.extend({
 	didCacheSlug: false,
-
-	// form validations and resulting errors
-	showErrors: false,
-	validations: {
-		'model.title': {
-			length: {
-				minimum: channelConst.titleMinLength,
-				maximum: channelConst.titleMaxLength
-			}
-		},
-		'model.slug': {
-			length: {
-				minimum: channelConst.titleMinLength,
-				maximum: channelConst.titleMaxLength
-			}
-		},
-		'model.body': {
-			length: {
-				maximum: channelConst.descriptionMaxLength
-			}
-		}
-		// Would be nice to validate the URL as well.
-	},
 
 	cacheSlug: computed('model.slug', function () {
 		this.cachedSlug = this.get('model.slug');
@@ -55,6 +30,7 @@ export default Controller.extend(EmberValidations, {
 		});
 	},
 
+	// this could be moved to a custom slug-validator using ember-cp-validations
 	isSlugFree() {
 		const slug = clean(get(this, 'model.slug'));
 		const errorMessage = `Sorry, the URL "${slug}" is already taken. Please try another one.`;
@@ -122,7 +98,6 @@ export default Controller.extend(EmberValidations, {
 			}).catch(() => {
 				// show errors on forms, why does it not validate
 				debug('form not validating…');
-				this.set('showErrors', true);
 			});
 		},
 

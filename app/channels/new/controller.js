@@ -11,18 +11,6 @@ export default Ember.Controller.extend(EmberValidations, {
 	title: '',
 	isSaving: false,
 
-	// form validation
-	validations: {
-		title: {
-			length: {
-				minimum: channelConst.titleMinLength,
-				maximum: channelConst.titleMaxLength
-			}
-		}
-	},
-	// errors from form validation
-	showErrors: false,
-
 	// cleans the slug from bad things and suffix it with a random string
 	cleanSlug: computed('title', function () {
 		const title = clean(this.get('title'));
@@ -65,7 +53,6 @@ export default Ember.Controller.extend(EmberValidations, {
 			this.validate().then(() => {
 				get(this, 'createRadio').perform();
 			}).catch(() => {
-				this.set('showErrors', true);
 				debug('Form does not validate');
 			});
 		}

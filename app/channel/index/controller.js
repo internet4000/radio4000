@@ -1,9 +1,8 @@
 import Ember from 'ember';
-import EmberValidations from 'ember-validations';
 
 const {computed, debug, get, inject} = Ember;
 
-export default Ember.Controller.extend(EmberValidations, {
+export default Ember.Controller.extend({
 	// player: Ember.inject.service(), // used for debugging unplayed + history
 	// queryParams: ['tags'],
 	isEditing: false,
