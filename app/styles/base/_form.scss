@@ -76,14 +76,6 @@ progress {
 	width: 100%;
 }
 
-// File inputs
-input[type="file"] {
-	// width: 100%;
-	// border: 4px dashed $black;
-	// padding: 2rem;
-	// background-color: #FDFFB2;
-}
-
 // Form design should be tigther than inputs alone
 .Form {
 	@include clearfix;
@@ -182,3 +174,4 @@ input[type="file"] {
 .Form-group label input {
 	@extend %font-regular;
 }
+

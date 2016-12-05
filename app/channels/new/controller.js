@@ -71,3 +71,4 @@ export default Ember.Controller.extend(EmberValidations, {
 		}
 	}
 });
+

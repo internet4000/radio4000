@@ -36,6 +36,8 @@ To deploy to production aka https://radio4000.com:
 
 ## Icons
 
+Make sure gulp is installed globally with `yarn global add gulp-cli`.
+
 1. Place svg icons in `public/assets/images/icons`
 2. Run `gulp icons` to update the SVG sprites.
 
