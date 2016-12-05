@@ -9,8 +9,7 @@
     "deploy-firebase-staging": "firebase use radio4000-staging; firebase deploy --only hosting",
     "deploy-firebase-production": "firebase use firebase-radio4000; firebase deploy --only hosting",
     "start": "ember serve",
-    "test": "ember test",
-    "lint": "stylelint --syntax scss app/styles/**/*.scss"
+    "test": "ember test"
   },
   "repository": "git@gitlab.com:internet4000/radio4000.git",
   "engines": {
@@ -42,6 +41,7 @@
     "ember-cli-qunit": "^3.0.1",
     "ember-cli-release": "^0.2.9",
     "ember-cli-sri": "^2.1.0",
+    "ember-cli-stylelint": "0.8.0",
     "ember-cli-test-loader": "^1.1.0",
     "ember-cli-uglify": "^1.2.0",
     "ember-concurrency": "^0.7.9",
@@ -61,7 +61,6 @@
     "loader.js": "^4.0.10",
     "node-sass": "^3.8.0",
     "postcss-import": "^8.0.2",
-    "stylelint": "^7.0.3",
     "stylelint-config-suitcss": "^8.0.0"
   },
   "dependencies": {
