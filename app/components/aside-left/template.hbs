@@ -1,15 +1,15 @@
 <div class="Tabs">
+  {{#link-to "channels.index" class="Tabs-item"}}Home{{/link-to}}
   {{#link-to "channels.all" title="Find radio channels to enjoy" class="Tabs-item"}}Radios{{/link-to}}
 
   {{#if userChannel}}
     {{#link-to "channels.history" title="Your listening history" class="Tabs-item"}}History{{/link-to}}
     {{channel-card channel=userChannel wide=true}}
-    {{!-- {{#link-to "add" class="Btn Btn--primary Btn--topNoRadius" title="Add a new track to your radio"}}Add track{{/link-to}} --}}
     <button {{action "addTrack"}} class="Btn Btn--primary Btn--topNoRadius" title="Add a new track to your radio">Add track</button>
   {{/if}}
 
   {{#unless userChannel}}
-    {{#link-to "channels.new" class="Btn Btn--important" title="Create your own radio now or log in"}}Your radio{{/link-to}}
+    {{#link-to "channels.new" class="Btn Btn--important" title="Sign up to create your own radio now or log in"}}Sign up or log in{{/link-to}}
   {{/unless}}
 
   {{#link-to "intro" title="Get introduced to Radio4000" class="Tabs-item"}}Introduction{{/link-to}}
@@ -21,7 +21,6 @@
 <div class="Tabs Tabs--transparent Tabs--bottom">
   {{#if isAuthenticated}}
     {{#link-to "logout" class="Aside-link Muted" title="Log out from Radio4000"}}Log out{{/link-to}}
-    <!-- {{else}}
-	 {{#link-to "login" class="Aside-link Muted" title="Create your own radio now or log in"}}Sign in or register{{/link-to}} -->
   {{/if}}
 </div>
+

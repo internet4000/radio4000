@@ -136,21 +136,8 @@
 	}
 }
 
-.Tabs-item--bg {
-	// background-repeat: no-repeat;
-	// background-position: center;
-	// background-color:
-	// background-image: url(https://res.cloudinary.com/radio4000/image/upload/q_70,w_170,h_60,c_fill,e_blur:300,fl_lossy/zr7ux38dwusgdcjfzb2y);
-	// background-size: cover;
-	// text-shadow: 1px 1px 2px black;
-	// font-size: 16px;
-	// color: #fff;
-	// padding-bottom: 0.9em;
-	padding-bottom: 0;
-
-	img {
-		float: left;
-		margin: -12px 7px 0 -15px;
-		height: 58px;
-	}
+.Tabs > .Btn--important {
+	// A bit of space around the button
+	margin: 0.5rem;
 }
+

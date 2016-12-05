@@ -1,39 +1,39 @@
 <div class="Sections">
 	<section class="Section">
-		<div class="Container">
-			{{#if session.isAuthenticated}}
+
+		{{#if session.isAuthenticated}}
+
+			<div class="Container">
 				<p>You are already logged in.</p>
 				<p>{{link-to "Log out" "logout"}}</p>
 				{{#if session.currentUser.channels.firstObject}}
 					<p>Did you want to go to your radio?</p>
 					<p>
-						{{#link-to "channel" session.currentUser.channels.firstObject.slug}}
-							Go to {{session.currentUser.channels.firstObject.title}}.
-						{{/link-to}}
+					{{#link-to "channel" session.currentUser.channels.firstObject.slug}}
+						Go to {{session.currentUser.channels.firstObject.title}}.
+					{{/link-to}}
 					</p>
 				{{/if}}
-			{{else}}
-				<h1>Sign in or create your own radio</h1>
-				<p class="Subtitle">A single radio for you, music for everyone — and an infinity of great tracks curated with love.</p>
-				<p>Collect all the music you like via YouTube videos and play them as a radio.</p>
-				<br><br>
-				<p><strong>Use Radio4000 with…</strong></p>
+			</div>
+
+		{{else}}
+			<header class="Manchet">
+				<h1>Login</h1>
+			</header>
+			<div class="Container">
+				<p>To create and manage your Radio4000, please connect:</p>
 				<p>
 					<button class="Btn Btn--large" title="Sign in or register with Google" {{action 'login' 'google'}}>
 						Google</button>
-						<span style="margin: 0 0.5rem;">or</span>
+					<span style="margin: 0 0.5rem;">or</span>
 					<button class="Btn Btn--large" title="Sign in or register with Facebook" {{action 'login' 'facebook'}}>
 						Facebook</button>
 				</p>
-				<br>
 				{{#if session.isWorking}}
 					{{#is-loading}}Warming transistors…{{/is-loading}}
 				{{/if}}
-				<br>
-				<br>
-				<p>How does it work? Sign in above, give your radio a name and start adding tracks to it by pasting in YouTube links.</p>
-				<p>&rarr; <a href="{{href-to 'intro'}}">Get properly introduced to Radio4000</a></p>
-			{{/if}}
-		</div>
+				<p><br>&rarr; <a href="{{href-to 'intro'}}">Get introduced to Radio4000</a></p>
+			</div>
+		{{/if}}
 	</section>
 </div>
