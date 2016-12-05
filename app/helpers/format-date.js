@@ -1,24 +1,19 @@
 import Ember from 'ember';
-import moment from 'moment';
+import distanceInWordsToNow from 'npm:date-fns/distance_in_words_to_now';
+// import addHours from 'npm:date-fns/add_hours';
 
 export function formatDate(params) {
-	// Sometimes params is the number we want, other times it's an array?!
-	// Must be something with the way ember test consumes the helper.
 	let date;
+
+	// Sometimes `params` is the number we want, other times it's an array?!
+	// Must be something with the way ember tests consume the helper.
 	if (typeof params === 'number') {
 		date = params;
 	} else {
 		date = Number(params[0]);
 	}
 
-	const oneWeekAgo = moment().subtract(1, 'week');
-	const updated = moment(date);
-	const updatedDaysAgo = oneWeekAgo.diff(updated, 'days');
-
-	if (updatedDaysAgo < 7) {
-		return 'a week ago';
-	}
-	return updated.fromNow();
+	return `${distanceInWordsToNow(date)} ago`;
 }
 
 export default Ember.Helper.helper(formatDate);
