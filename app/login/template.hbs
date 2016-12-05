@@ -21,7 +21,7 @@
 				<h1>Login</h1>
 			</header>
 			<div class="Container">
-				<p>To <strong>create</strong> or <strong>manage</strong> your Radio4000, connect with:</p>
+				<p>To create and manage your Radio4000, please connect:</p>
 				<p>
 					<button class="Btn Btn--large" title="Sign in or register with Google" {{action 'login' 'google'}}>
 						Google</button>
@@ -32,7 +32,7 @@
 				{{#if session.isWorking}}
 					{{#is-loading}}Warming transistors…{{/is-loading}}
 				{{/if}}
-				<p>&rarr; <a href="{{href-to 'intro'}}">Get introduced to Radio4000</a></p>
+				<p><br>&rarr; <a href="{{href-to 'intro'}}">Get introduced to Radio4000</a></p>
 			</div>
 		{{/if}}
 	</section>
