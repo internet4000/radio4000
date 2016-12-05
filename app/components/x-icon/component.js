@@ -1,6 +1,8 @@
-/**
- * {{x-icon i='play'}}
- **/
+/*
+ Use like this in your templates:
+
+ {{x-icon i='play'}}
+ */
 
 import Ember from 'ember';
 
