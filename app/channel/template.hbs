@@ -44,7 +44,7 @@
 								<p class="Channel-description">{{model.body}}</p>
 							{{/if}}
 							{{#if model.updated}}
-							  <time class="Channel-date">Updated {{format-date model.updated}}</time>
+							  <time class="Channel-date">Updated {{time-ago model.updated}}</time>
 							{{/if}}
 
 							{{#if model.link}}
