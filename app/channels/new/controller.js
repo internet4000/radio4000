@@ -1,13 +1,11 @@
 import Ember from 'ember';
 import clean from 'radio4000/utils/clean';
 import randomText from 'radio4000/utils/random-text';
-import channelConst from 'radio4000/utils/channel-const';
-import EmberValidations from 'ember-validations';
 import {task} from 'ember-concurrency';
 
 const {debug, computed, get} = Ember;
 
-export default Ember.Controller.extend(EmberValidations, {
+export default Ember.Controller.extend({
 	title: '',
 	isSaving: false,
 
@@ -29,6 +27,13 @@ export default Ember.Controller.extend(EmberValidations, {
 
 		// Save the channel, create channel public and relationships, save again
 		const channel = this.store.createRecord('channel', {title, slug});
+
+		yield channel.validate().then(() => {
+			debug('valid channel');
+		}).catch(() => {
+			debug('invalid channel');
+		});
+
 		yield channel.save();
 
 		const userChannels = yield user.get('channels');
@@ -50,11 +55,7 @@ export default Ember.Controller.extend(EmberValidations, {
 
 	actions: {
 		submit() {
-			this.validate().then(() => {
-				get(this, 'createRadio').perform();
-			}).catch(() => {
-				debug('Form does not validate');
-			});
+			get(this, 'createRadio').perform();
 		}
 	}
 });

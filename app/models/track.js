@@ -1,18 +1,42 @@
 import DS from 'ember-data';
+// import channelConst from 'radio4000/utils/channel-const';
+import {validator, buildValidations} from 'ember-cp-validations';
 import youtubeRegex from 'npm:youtube-regex';
 
 const {Model, attr, belongsTo} = DS;
 
-export default Model.extend({
+const Validations = buildValidations({
+	title: [
+		validator('presence', true),
+		validator('length', {
+			max: 256
+		})
+	],
+	body: [
+		validator('length', {
+			max: 300
+		})
+	],
+	url: [
+		validator('presence', true),
+		validator('format', {
+			type: 'url',
+			regex: youtubeRegex(),
+			message: 'The URL has to be a valid and complete YouTube URL'
+		})
+	]
+});
+
+export default Model.extend(Validations, {
 	url: attr('string'),
 	title: attr('string'),
 	body: attr('string'),
+	ytid: attr('string'),
 	created: attr('number', {
 		defaultValue() {
 			return new Date().getTime();
 		}
 	}),
-	ytid: attr('string'),
 
 	// relationships
 	channel: belongsTo('channel', {
@@ -20,14 +44,14 @@ export default Model.extend({
 		inverse: 'tracks'
 	}),
 
-	// Updates provider ID automatically from the URL
+	// Updates provider ID from the URL
 	updateYouTubeId() {
 		const id = youtubeRegex().exec(this.get('url'))[1];
 		if (!id) {
 			return;
 		}
 		this.set('ytid', id);
-		return this;
+		return id;
 	},
 
 	// Own properties
@@ -39,18 +63,13 @@ export default Model.extend({
 	// hashtags: Ember.computed('body', function () {
 	// 	let body = this.get('body');
 	// 	let hashtags;
-
 	// 	if (!body) { return; }
-
 	// 	// find " #hashtags" (with space) https://regex101.com/r/pJ4wC5/4
 	// 	hashtags = body.match(/(^|\s)(#[a-z\d-]+)/ig);
-
 	// 	if (!hashtags) { return; }
-
 	// 	// remove spaces on each item
 	// 	return hashtags.map((tag) => tag.trim());
 	// })
-
 	// bodyPlusMentions: Ember.computed('body', function () {
 	// 	let body = this.get('body');
 	// 	// find " @channel" (with space)

@@ -1,6 +1,4 @@
 import Ember from 'ember';
-import EmberValidations, {validator} from 'ember-validations';
-import youtubeRegex from 'npm:youtube-regex';
 import config from 'radio4000/config/environment';
 
 const {Component, debug, get, set, on, observer, run} = Ember;
@@ -13,46 +11,16 @@ export default Component.extend(EmberValidations, {
 	newUrl: '',
 	isIdle: true,
 
-	validations: {
-		'track.url': {
-			// format: {
-			// 	with: youtubeRegex()
-			// }
-			inline: validator(function () {
-				const isValid = Boolean(youtubeRegex().exec(get(this, 'track.url')));
-				if (!isValid) {
-					return 'Please enter a valid YouTube URL';
-				}
-			})
-		},
-		'track.title': {
-			presence: true,
-			length: {maximum: 256}
-		},
-		'track.body': {
-			length: {maximum: 300}
-		}
-	},
-
-	getYoutubeId(urlstring) {
-		const isValid = youtubeRegex().exec(urlstring);
-		if (!isValid) {
-			return false;
-		}
-		return isValid[1];
-	},
-
 	// This gets called when you paste something into the input-url component
 	// it takes a URL and turns it into a YouTube ID which we use to query the API for a title
 	automaticSetTitle: on('init', observer('track.url', function () {
-		const url = get(this, 'track.url');
-		const ytid = this.getYoutubeId(url);
+		const ytid = get(this, 'track').updateYouTubeId();
 		if (!ytid) {
-			// debug('no ytid');
+			debug('no ytid');
 			return;
 		}
 		if (!Ember.isEmpty(get(this, 'track.title'))) {
-			// debug('The track title is not empty so we are not updating it');
+			debug('The track title is not empty so we are not updating it');
 			return;
 		}
 		set(this, 'youtubeId', ytid);

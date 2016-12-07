@@ -17,7 +17,8 @@ export default Mixin.create({
 		track.set('channel', channel);
 
 		try {
-			yield track.updateYouTubeId().save();
+			track.updateYouTubeId();
+			yield track.save();
 			const tracks = yield channel.get('tracks');
 			tracks.addObject(track);
 			channel.set('updated', new Date().getTime());
