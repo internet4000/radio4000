@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import TrackFormComponent from 'radio4000/components/track-form/component';
+import {TrackValidations} from 'radio4000/models/track';
 
 const {get, set} = Ember;
 
@@ -9,7 +10,9 @@ export default TrackFormComponent.extend({
 	init() {
 		// Create a track object that we later turn it to real track model
 		const url = get(this, 'newUrl');
-		set(this, 'track', {url});
+		const track = Ember.Object.create(TrackValidations, {url});
+		console.log(track.get('url'));
+		set(this, 'track', track);
 		this._super(...arguments);
 	}
 });

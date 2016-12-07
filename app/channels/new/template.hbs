@@ -3,7 +3,7 @@
 
 		<h2>What do you want to call your radio?</h2>
 
-		<form class="Form" {{action "submit" on="submit"}}>
+		<form class="Form" onsubmit={{perform createRadio}}>
 			<div class="Form-group">
 				{{focus-input
 					value=title
@@ -18,7 +18,7 @@
 				<button
 					class="Btn Btn--primary Btn--large"
 					title="Create your radio channel"
-					disabled={{createRadio.isRunning}}>
+					disabled={{disableSubmit}}>
 					{{if createRadio.isRunning "Creating…" "Create my radio"}}
 				</button>
 			</div>

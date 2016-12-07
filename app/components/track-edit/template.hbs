@@ -10,7 +10,7 @@
 		{{input value=track.title placeholder="Enter the track title" required="required"}}<br>
 		{{errors-display model=track valuePath="title"}}
 	</label>
-	{{#if isFetchingTitle}}<p class="Form-groupStatus">Updating…</p>{{/if}}
+	{{#if fetchTitle.isRunning}}<p class="Form-groupStatus">Updating…</p>{{/if}}
 	{{!-- {{youtube-search query=model.title action="addFromSearch"}} --}}
 </div>
 

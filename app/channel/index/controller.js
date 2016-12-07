@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
 
 const {computed, debug, get, inject} = Ember;
 
@@ -45,7 +46,10 @@ export default Ember.Controller.extend({
 				return Ember.RSVP.resolve();
 			}
 			// in case url changed, we need to set the ytid
-			track.updateYouTubeId();
+			const ytid = youtubeUrlToId(track.get('url'))
+			if (ytid) {
+				track.set('ytid', ytid);
+			}
 			return track.save().then(() => {
 				this.send('closeModals');
 				flashMessages.info('Track saved');

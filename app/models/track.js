@@ -4,7 +4,7 @@ import {validator, buildValidations} from 'ember-cp-validations';
 
 const {Model, attr, belongsTo} = DS;
 
-const Validations = buildValidations({
+export const Validations = buildValidations({
 	title: [
 		validator('presence', true),
 		validator('length', {
@@ -42,16 +42,6 @@ export default Model.extend(Validations, {
 		async: true,
 		inverse: 'tracks'
 	}),
-
-	// Updates provider ID from the URL
-	updateYouTubeId() {
-		const id = youtubeRegex().exec(this.get('url'))[1];
-		if (!id) {
-			return;
-		}
-		this.set('ytid', id);
-		return id;
-	},
 
 	// Own properties
 	// property for local use only, not planned to save them
