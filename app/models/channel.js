@@ -15,7 +15,10 @@ const Validations = buildValidations({
 		})
 	],
 	slug: [
-		validator('presence', true),
+		validator('presence', {
+			presence: true,
+			ignoreBlank: false
+		}),
 		validator('length', {
 			min: channelConst.titleMinLength,
 			max: channelConst.titleMaxLength

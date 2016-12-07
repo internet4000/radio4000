@@ -12,7 +12,6 @@
 					{{!-- left side, channel image --}}
 
 					<form class="Channel-media">
-
 						<div class="Form-group">
 							{{#image-upload imageId=newImage}}
 								{{channel-cover src=model.coverImage.src}}
@@ -39,7 +38,7 @@
 								required="required"
 								maxlength=titleMaxLength
 								minlength=titleMinLength}}
-							{{errors-display showErrors=showErrors errors=errors.model.title}}
+							{{errors-display model=model valuePath="title"}}
 						</div>
 						<div class="Form-group">
 							<label for="body">Description</label>
@@ -47,36 +46,36 @@
 								value=model.body
 								maxlength=channelDescriptionMaxLength
 								placeholder="What is your radio about?"}}
-							{{errors-display showErrors=showErrors errors=errors.model.body}}
+							{{errors-display model=model valuePath="body"}}
 						</div>
 						<div class="Form-group">
 							<label for="slug">URL</label>
 							<span class="Permalink">radio4000.com/{{model.slug}}</span>
 							{{input id="slug"
-								maxlength=titleMaxLength
-								minlength=titleMinLength
 								value=model.slug
 								placeholder="channel-slug"
-								required="required"}}
-							{{errors-display showErrors=showErrors errors=errors.model.slug}}
+								required="required"
+								maxlength=titleMaxLength
+								minlength=titleMinLength}}
+							{{errors-display model=model valuePath="slug"}}
 						</div>
 						<div class="Form-group">
 							<label for="link">Link</label>
 							{{input type="url"
 								id="link"
 								value=model.link
-								placeholder="Your homepage" }}
-							{{errors-display showErrors=showErrors errors=errors.model.url}}
+								aria-invalid=(if model.validations.attrs.link.isValid "false" "true")
+								placeholder="Your homepage"}}
+							{{errors-display model=model valuePath="link"}}
 						</div>
 
 						<div class="Form-group Form--save">
-							<button type="submit" class="Btn Btn--primary" disabled={{isSaving}}>
+							<button type="submit" class="Btn Btn--primary" disabled={{disableSubmit}}>
 								{{#if isSaving}}Saving…{{else}}Save radio{{/if}}
 							</button>
 							<a href="{{href-to 'channel.index' model}}" class="Btn Btn--text Muted">Cancel editing</a>
 						</div>
 					</form>
-					{{errors-display showErrors=showErrors errors=errors.server}}
 				</div>
 			</div>
 

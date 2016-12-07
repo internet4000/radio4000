@@ -1,7 +1,17 @@
-{{#if showErrors}}
-	{{#each errors as |error|}}
-		<p class="Muted">
-			<span class="Warning">{{error}}</span>
-		</p>
-	{{/each}}
+{{!--
+{{input type=type value=value placeholder=placeholder class="form-control" name=valuePath}}
+{{#if isValid}}
+	<span class="valid-input fa fa-check">&check;</span>
+{{/if}}
+isValid: {{isValid}}<br>
+--}}
+{{#if showErrorMessage}}
+	<p class="Warning">
+		{{v-get model valuePath "message"}}
+	</p>
+{{/if}}
+{{#if showWarningMessage}}
+	<p class="Warning">
+		{{v-get model valuePath "warningMessage"}}
+	</p>
 {{/if}}

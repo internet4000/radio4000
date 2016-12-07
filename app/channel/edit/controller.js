@@ -4,20 +4,23 @@ import clean from 'radio4000/utils/clean';
 const {debug, get, Controller, computed, observer} = Ember;
 
 export default Controller.extend({
+	isSaving: false, // replace with ember-concurrency
+	disableSubmit: computed.or('isSaving', 'model.validations.isInvalid'),
+
 	didCacheSlug: false,
 
 	cacheSlug: computed('model.slug', function () {
-		this.cachedSlug = this.get('model.slug');
+		this.cachedSlug = get(this, 'model.slug');
 		this.toggleProperty('didCacheSlug');
 	}),
 
 	updateImage: observer('newImage', function () {
-		const newImage = this.get('newImage');
+		const newImage = get(this, 'newImage');
 		this.createImage(newImage);
 	}),
 
 	createImage(src) {
-		const channel = this.get('model');
+		const channel = get(this, 'model');
 		const image = this.store.createRecord('image', {src, channel});
 
 		// save and add it to the channel
@@ -76,7 +79,9 @@ export default Controller.extend({
 	actions: {
 		trySave() {
 			const flashMessages = get(this, 'flashMessages');
-			this.validate().then(() => {
+			const model = get(this, 'model');
+
+			model.validate().then(() => {
 				const slugDidChange = (this.get('cachedSlug') !== this.get('model.slug'));
 				this.set('isSaving', true);
 				if (slugDidChange) {
@@ -115,7 +120,7 @@ export default Controller.extend({
 
 			channel.save().then(() => {
 				debug('Saved --> channel');
-				this.transitionToRoute('channel', this.get('model.slug'));
+				// this.transitionToRoute('channel', this.get('model.slug'));
 				flashMessages.info('Changes saved');
 			}).catch(() => {
 				// This get triggered for exemple when firebase.security do not validate
