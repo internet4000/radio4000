@@ -3,19 +3,28 @@ import Ember from 'ember';
 const {Controller, get} = Ember;
 
 export default Controller.extend({
+		onLoginError(data) {
+				get(this, 'flashMessages').info(data.message);
+				// auth/invalid-email
+				// auth/user-disabled
+				// auth/user-not-found
+				// auth/wrong-password
+		},
 		actions: {
-				// Logs in a user. Provider has to match what we've enabled in Firebase authentication. That is 'google' or 'facebook'.
-				// a) if the user has a channel, we transition to it
-				// b) otherwise we transition to create a new channel
+				// Logs in a user. Provider has to match what we've enabled in Firebase authentication.
+				// That is: 'password' or 'google' or 'facebook'
 				login(data) {
 						const flashMessages = get(this, 'flashMessages');
-						console.log('data',data);
 						get(this, 'session').open('firebase', data).then(() => {
 								flashMessages.info('You are now signed in!');
-								this.redirectIfAuthenticated(); // on the route
-						}).catch(err => {
-								console.log(err);
+								this.send('redirectAfterAuth');
+						}).catch(error => {
+								this.onLoginError(error)
 						});
+				},
+				redirectAfterAuth() {
+						// on the route, true to bubble up
+						return true;
 				}
 		}
 });
