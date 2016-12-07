@@ -1,0 +1,17 @@
+<p>
+	{{input name="email" type="text" value=email placeholder="Email"}}
+	{{input name="" type="text" value=password placeholder="Password"}}
+	<button class="Btn Btn--large" title="Sign up or Log in with email" {{action 'login' 'email' email password}}>
+		Connect with email</button>
+</p>
+<p>Or connect with:</p>
+<p class="BtnGroup">
+	<button class="Btn Btn--large" title="Sign up or log in with Google" {{action 'login' 'google'}}>
+		Google</button>
+	<button class="Btn Btn--large" title="Sign up or log in with Facebook" {{action 'login' 'facebook'}}>
+		Facebook</button>
+</p>
+{{#if session.isWorking}}
+	{{#is-loading}}Warming transistors…{{/is-loading}}
+{{/if}}
+<p><br>&rarr; <a href="{{href-to 'intro'}}">Get introduced to Radio4000</a></p>
