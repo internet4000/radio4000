@@ -3,12 +3,14 @@ import config from 'radio4000/config/environment';
 
 const {Component, debug, get, set, on, observer, run} = Ember;
 
-export default Component.extend(EmberValidations, {
+export default Component.extend({
 	tagName: 'form',
 	classNames: ['Form'],
 	classNameBindings: ['box:Form--box'],
-	showErrors: false,
+
+	track: null,
 	newUrl: '',
+
 	isIdle: true,
 
 	// This gets called when you paste something into the input-url component
@@ -78,7 +80,6 @@ export default Component.extend(EmberValidations, {
 				});
 			}).catch(err => {
 				debug(err);
-				set(this, 'showErrors', true);
 				this.set('isIdle', true);
 			});
 		},

@@ -2,7 +2,7 @@
 	<div class="Section">
 		<div class="Container">
 			<h2>Add a new track to <em>{{model.title}}</em></h2>
-			{{track-add
+			{{track-form-add
 				newUrl=url
 				onSubmit=(action "saveTrack")
 				onCancel=(action "goBack")}}

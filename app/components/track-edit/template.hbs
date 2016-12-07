@@ -1,14 +1,14 @@
 <div class="Form-group">
 	<label title="Paste in the URL of a YouTube video">URL
 		{{focus-input type="url" value=track.url required="required" placeholder="Paste in a YouTube link"}}
-		{{errors-display showErrors=showErrors errors=errors.track.url}}
+		{{errors-display model=track valuePath="url"}}
 	</label>
 </div>
 
 <div class="Form-group Form-group--relative">
 	<label title="Give your track a title">Title
 		{{input value=track.title placeholder="Enter the track title" required="required"}}<br>
-		{{errors-display showErrors=showErrors errors=errors.track.title}}
+		{{errors-display model=track valuePath="title"}}
 	</label>
 	{{#if isFetchingTitle}}<p class="Form-groupStatus">Updating…</p>{{/if}}
 	{{!-- {{youtube-search query=model.title action="addFromSearch"}} --}}
@@ -17,7 +17,7 @@
 <div class="Form-group">
 	<label title="Give your track an optional description">Description
 		{{input value=track.body placeholder="Track description"}}<br>
-		{{errors-display showErrors=showErrors errors=errors.track.body}}
+		{{errors-display model=track valuePath="body"}}
 	</label>
 </div>
 

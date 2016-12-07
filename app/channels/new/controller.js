@@ -2,12 +2,27 @@ import Ember from 'ember';
 import clean from 'radio4000/utils/clean';
 import randomText from 'radio4000/utils/random-text';
 import {task} from 'ember-concurrency';
+import {validator, buildValidations} from 'ember-cp-validations';
+import channelConst from 'radio4000/utils/channel-const';
 
 const {debug, computed, get} = Ember;
 
-export default Ember.Controller.extend({
+// This is copy/paste from channel model because we need to validate
+// a `title` field without using a full channel model.
+const Validations = buildValidations({
+	title: [
+		validator('presence', true),
+		validator('length', {
+			min: channelConst.titleMinLength,
+			max: channelConst.titleMaxLength
+		})
+	]
+});
+
+export default Ember.Controller.extend(Validations, {
 	title: '',
-	isSaving: false,
+
+	disableSubmit: computed.or('validations.attrs.title.isInvalid', 'createRadio.isRunning'),
 
 	// cleans the slug from bad things and suffix it with a random string
 	cleanSlug: computed('title', function () {
@@ -16,7 +31,8 @@ export default Ember.Controller.extend({
 		return `${title}-${random}`;
 	}),
 
-	createRadio: task(function * () {
+	createRadio: task(function * (event) {
+		event.preventDefault();
 		const messages = get(this, 'flashMessages');
 		const user = get(this, 'session.currentUser');
 		const slug = get(this, 'cleanSlug');
@@ -51,12 +67,6 @@ export default Ember.Controller.extend({
 		} catch (e) {
 			throw new Error('Could not save new channel');
 		}
-	}).drop(),
-
-	actions: {
-		submit() {
-			get(this, 'createRadio').perform();
-		}
-	}
+	}).drop()
 });
 

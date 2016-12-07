@@ -1,7 +1,6 @@
 import DS from 'ember-data';
-// import channelConst from 'radio4000/utils/channel-const';
-import {validator, buildValidations} from 'ember-cp-validations';
 import youtubeRegex from 'npm:youtube-regex';
+import {validator, buildValidations} from 'ember-cp-validations';
 
 const {Model, attr, belongsTo} = DS;
 
