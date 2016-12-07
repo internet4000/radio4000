@@ -4,8 +4,13 @@ const {Component, get} = Ember;
 
 export default Component.extend({
 		actions: {
-				login(provider, ...data) {
-						get(this, 'onLogin')(provider, data);
+				login(provider, email, password) {
+						let data = {
+								provider,
+								email,
+								password
+						};
+						get(this, 'onLogin')(data);
 				}
 		}
 });
