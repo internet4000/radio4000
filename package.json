@@ -33,7 +33,6 @@
     "ember-cli-htmlbars-inline-precompile": "^0.3.3",
     "ember-cli-inject-live-reload": "^1.4.1",
     "ember-cli-js-cookie": "0.0.1",
-    "ember-cli-moment-shim": "^2.0.0",
     "ember-cli-qunit": "^3.0.1",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-stylelint": "0.8.0",
@@ -59,6 +58,7 @@
     "stylelint-config-suitcss": "^8.0.0"
   },
   "dependencies": {
+    "date-fns": "^1.12.1",
     "ember-youtube": "^0.8.0-beta.0",
     "emberfire": "^2.0.5",
     "lazysizes": "^2.0.0",
