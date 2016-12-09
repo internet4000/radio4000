@@ -1,16 +1,12 @@
 import Ember from 'ember';
-import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
 
 const {computed, debug, get, inject} = Ember;
 
 export default Ember.Controller.extend({
-	// player: Ember.inject.service(), // used for debugging unplayed + history
-	// queryParams: ['tags'],
 	isEditing: false,
 	applicationController: inject.controller('application'),
 
 	hasFewTracks: computed.lte('tracks.length', 2),
-	// needed to access canEdit
 	channelController: inject.controller('channel'),
 	canEdit: computed.reads('channelController.canEdit'),
 
@@ -46,10 +42,7 @@ export default Ember.Controller.extend({
 				return Ember.RSVP.resolve();
 			}
 			// in case url changed, we need to set the ytid
-			const ytid = youtubeUrlToId(track.get('url'))
-			if (ytid) {
-				track.set('ytid', ytid);
-			}
+			track.updateYoutubeId();
 			return track.save().then(() => {
 				this.send('closeModals');
 				flashMessages.info('Track saved');

@@ -1,8 +1,9 @@
 import DS from 'ember-data';
 import youtubeRegex from 'npm:youtube-regex';
 import {validator, buildValidations} from 'ember-cp-validations';
+import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
 
-const {Model, attr, belongsTo} = DS;
+const {Model, set, attr, belongsTo} = DS;
 
 export const Validations = buildValidations({
 	url: [
@@ -46,6 +47,13 @@ export default Model.extend(Validations, {
 	// Own properties
 	// property for local use only, not planned to save them
 	usedInCurrentPlayer: false,
-	finishedInCurrentPlayer: false
+	finishedInCurrentPlayer: false,
 
+	// If the user changes the url, we need to update the YouTube id.
+	updateYoutubeId() {
+		const ytid = youtubeUrlToId(this.get('url'));
+		if (ytid) {
+			set(this, 'ytid', ytid);
+		}
+	}
 });

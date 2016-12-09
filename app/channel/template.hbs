@@ -63,9 +63,6 @@
 				</div>
 
 				<nav class="Tabs Tabs--horizontal Tabs--lighter Tabs--animated">
-					{{!-- {{#link-to 'channel.dashboard' class="Tabs-item" title="Dashboard, a summary of this radio"}}
-					Dashboard
-					{{/link-to}} --}}
 					{{#link-to 'channel.index' class="Tabs-item" title="All tracks"}}
 						{{model.totalTracks}} Tracks
 					{{/link-to}}
@@ -81,12 +78,4 @@
 			</article>
 		</div>
 	</section>
-
-	{{!-- <section class="Section">
-		<div class="Grid">
-			<div class="Grid-cell Widgets Widgets--tracks">
-				{{outlet 'channel-widgets'}}
-			</div>
-		</div>
-	</section> --}}
 </div>

@@ -18,56 +18,41 @@ export default Component.extend({
 	// it takes a URL and turns it into a YouTube ID which we use to query the API for a title
 	automaticSetTitle: on('init', observer('track.url', function () {
 		const track = get(this, 'track');
+
 		// Can not continue without a track or URL.
 		if (!track || !track.get('url')) {
-			console.log('automaticSetTitle: no track');
 			return;
 		}
-		// Don't overwrite already exisiting titles
-		if (!Ember.isEmpty(track.get('title'))) {
-			debug('automaticSetTitle: could overwrite title but we are not doing it');
-			return;
+
+		// Because the URL might have changed
+		const newid = youtubeUrlToId(track.get('url'));
+		if (newid) {
+			track.set('ytid', newid);
 		}
-		const ytid = youtubeUrlToId(track.get('url'));
-		if (ytid) {
-			set(this, 'ytid', ytid);
-			console.log('perform');
-			get(this, 'fetchTitle').perform();
-		}
+
+		get(this, 'fetchTitle').perform();
 	})),
 
 	fetchTitle: task(function * () {
-		yield timeout(1000);
-		console.log('fetchTitle');
-		const id = get(this, 'ytid');
+		const track = get(this, 'track');
+		const ytid = track.get('ytid');
 		const endpoint = `https://www.googleapis.com/youtube/v3/videos?
-			id=${id}
+			id=${ytid}
 			&key=${config.youtubeApiKey}
 			&fields=items(id,snippet(title))
 			&part=snippet`;
 
-		// Use cache if we have it
-		if (get(this, 'cachedId') === id) {
-			debug('Reusing the cached title.');
-			set(this, 'track.title', get(this, 'cachedTitle'));
-			return;
-		}
+		yield timeout(1000);
 
-		// Fetch the title
-		let promise = Ember.$.getJSON(endpoint);
-		let response = yield promise;
+		// Fetch and set it
+		const promise = Ember.$.getJSON(endpoint);
+		const response = yield promise;
 		if (!response.items.length) {
 			debug('Could not find a title');
 			return;
 		}
 		const title = response.items[0].snippet.title;
-
-		this.set('track.title', title);
-		this.setProperties({
-			cachedTitle: title,
-			cachedId: id
-		});
-		// cache our title and ID so we don't request the same video twice
+		track.set('title', title);
 	}).restartable(),
 
 	actions: {
