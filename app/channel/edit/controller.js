@@ -119,9 +119,9 @@ export default Controller.extend({
 			debug('channel route save');
 
 			channel.save().then(() => {
-				debug('Saved --> channel');
-				// this.transitionToRoute('channel', this.get('model.slug'));
-				flashMessages.info('Changes saved');
+				flashMessages.info('Saved');
+				// We have to transition if the slug changed. Otherwise reloading is a 404.
+				this.transitionToRoute('channel', this.get('model.slug'));
 			}).catch(() => {
 				// This get triggered for exemple when firebase.security do not validate
 				flashMessages.warning(`Sorry, we couldn't save your radio. Please refresh your browser to try again.`);
