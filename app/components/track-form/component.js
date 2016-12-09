@@ -12,7 +12,6 @@ export default Component.extend({
 
 	track: null,
 	newUrl: '',
-
 	isIdle: true,
 
 	// This gets called when you paste something into the input-url component

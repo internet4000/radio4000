@@ -5,6 +5,14 @@ import {validator, buildValidations} from 'ember-cp-validations';
 const {Model, attr, belongsTo} = DS;
 
 export const Validations = buildValidations({
+	url: [
+		validator('presence', true),
+		validator('format', {
+			type: 'url',
+			regex: youtubeRegex(),
+			message: 'The URL has to be a valid and complete YouTube URL'
+		})
+	],
 	title: [
 		validator('presence', true),
 		validator('length', {
@@ -15,27 +23,19 @@ export const Validations = buildValidations({
 		validator('length', {
 			max: 300
 		})
-	],
-	url: [
-		validator('presence', true),
-		validator('format', {
-			type: 'url',
-			regex: youtubeRegex(),
-			message: 'The URL has to be a valid and complete YouTube URL'
-		})
 	]
 });
 
 export default Model.extend(Validations, {
-	url: attr('string'),
-	title: attr('string'),
-	body: attr('string'),
-	ytid: attr('string'),
 	created: attr('number', {
 		defaultValue() {
 			return new Date().getTime();
 		}
 	}),
+	url: attr('string'),
+	title: attr('string'),
+	body: attr('string'),
+	ytid: attr('string'),
 
 	// relationships
 	channel: belongsTo('channel', {
@@ -48,20 +48,4 @@ export default Model.extend(Validations, {
 	usedInCurrentPlayer: false,
 	finishedInCurrentPlayer: false
 
-	// // Finds an array of all " #hashtags " from the body property
-	// hashtags: Ember.computed('body', function () {
-	// 	let body = this.get('body');
-	// 	let hashtags;
-	// 	if (!body) { return; }
-	// 	// find " #hashtags" (with space) https://regex101.com/r/pJ4wC5/4
-	// 	hashtags = body.match(/(^|\s)(#[a-z\d-]+)/ig);
-	// 	if (!hashtags) { return; }
-	// 	// remove spaces on each item
-	// 	return hashtags.map((tag) => tag.trim());
-	// })
-	// bodyPlusMentions: Ember.computed('body', function () {
-	// 	let body = this.get('body');
-	// 	// find " @channel" (with space)
-	// 	return body.replace(/(^|\s)(@[a-z\d-]+)/ig,'$1<a href="https://radio4000.com/$2" class="Mention">$2</a>');
-	// })
 });
