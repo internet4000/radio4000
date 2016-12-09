@@ -3,16 +3,16 @@ import config from 'radio4000/config/environment';
 import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
 import {task, timeout} from 'ember-concurrency';
 
-const {Component, debug, get, set, on, observer} = Ember;
+const {Component, debug, get, on, observer} = Ember;
 
 export default Component.extend({
 	tagName: 'form',
 	classNames: ['Form'],
 	classNameBindings: ['box:Form--box'],
 
+	// This is not the "track model", but an ordinary object.
 	track: null,
-	newUrl: '',
-	isIdle: true,
+	initialUrl: '',
 
 	// This gets called when you paste something into the input-url component
 	// it takes a URL and turns it into a YouTube ID which we use to query the API for a title
@@ -72,23 +72,18 @@ export default Component.extend({
 
 	actions: {
 		submit() {
-			set(this, 'isIdle', false);
-
-			// @todo refactor below to a task. then we can get rid of `isIdle` flag
-			this.get('track').validate().then(() => {
-				const trackProps = get(this, 'track');
-				get(this, 'onSubmit')(trackProps).then(() => {
-					// Reset all properties so we can create another track.
-					this.setProperties({
-						isIdle: true,
-						newUrl: '',
-						track: {}
-					});
-					this.$('input[type="url"]').focus();
+			const trackProps = get(this, 'track');
+			get(this, 'onSubmit')(trackProps).then(() => {
+				console.log('done submitting');
+				// Reset all properties so we can create another track.
+				this.set('initialUrl', null);
+				this.setProperties(trackProps, {
+					url: null,
+					title: null,
+					body: null,
+					ytid: null
 				});
-			}).catch(err => {
-				debug(err);
-				this.set('isIdle', true);
+				this.$('input[type="url"]').focus();
 			});
 		},
 		cancel() {
