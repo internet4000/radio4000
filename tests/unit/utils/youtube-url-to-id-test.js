@@ -8,6 +8,6 @@ test('it works', function (assert) {
 	assert.expect(2);
 	let testUrl = 'https://www.youtube.com/watch?v=sCXpEMtHBhI';
 	let result = youtubeUrlToId(testUrl);
-	assert.ok(typeof result === 'String');
+	assert.ok(typeof result === 'string');
 	assert.ok(testUrl.indexOf(result) >= 0);
 });
