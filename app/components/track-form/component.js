@@ -24,6 +24,11 @@ export default Component.extend({
 			return;
 		}
 
+		// Don't overwrite already existing titles
+		if (track.get('title')) {
+			return;
+		}
+
 		// Because the URL might have changed
 		const newid = youtubeUrlToId(track.get('url'));
 		if (newid) {
