@@ -10,8 +10,9 @@ export const Validations = buildValidations({
 		validator('presence', true),
 		validator('format', {
 			type: 'url',
-			regex: youtubeRegex(),
-			message: 'The URL has to be a valid and complete YouTube URL'
+			// regex: youtubeRegex(),
+			// regex: /(?:youtube\.com\/\S*(?:(?:\/e(?:mbed))?\/|watch\/?\?(?:\S*?&?v\=))|youtu\.be\/)([a-zA-Z0-9_-]{6,11})/g,
+			message: 'The URL is not a valid YouTube URL'
 		})
 	],
 	title: [
