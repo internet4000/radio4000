@@ -1,5 +1,4 @@
 import DS from 'ember-data';
-import youtubeRegex from 'npm:youtube-regex';
 import {validator, buildValidations} from 'ember-cp-validations';
 import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
 
@@ -8,12 +7,7 @@ const {Model, set, attr, belongsTo} = DS;
 export const Validations = buildValidations({
 	url: [
 		validator('presence', true),
-		validator('format', {
-			type: 'url',
-			// regex: youtubeRegex(),
-			// regex: /(?:youtube\.com\/\S*(?:(?:\/e(?:mbed))?\/|watch\/?\?(?:\S*?&?v\=))|youtu\.be\/)([a-zA-Z0-9_-]{6,11})/g,
-			message: 'The URL is not a valid YouTube URL'
-		})
+		validator('youtube-url')
 	],
 	title: [
 		validator('presence', true),
