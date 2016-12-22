@@ -6,20 +6,8 @@ moduleForComponent('track-form-add', 'Integration | Component | track form add',
 });
 
 test('it renders', function (assert) {
-	// Set any properties with this.set('myProperty', 'value');
-	// Handle any actions with this.on('myAction', function(val) { ... });
-
 	this.render(hbs`{{track-form-add}}`);
-
-	assert.equal(this.$().text().trim(), '');
-
-	// Template block usage:
-	this.render(hbs`
-		{{#track-form-add}}
-			template block text
-		{{/track-form-add}}
-	`);
-
-	assert.equal(this.$().text().trim(), 'template block text');
+	assert.ok(this.$('.Form-group').length);
+	assert.ok(this.$('button[type="submit"]').length);
 });
 
