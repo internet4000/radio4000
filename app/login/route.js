@@ -1,10 +1,8 @@
 import Ember from 'ember';
 
-const {Route, get, inject} = Ember;
+const {Route, get} = Ember;
 
 export default Route.extend({
-		uiStates: inject.service(),
-
 		beforeModel() {
 				if (get(this, 'session.isAuthenticated')) {
 						return this.send('redirectAfterAuth');

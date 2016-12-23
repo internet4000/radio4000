@@ -18,11 +18,12 @@
 
 		{{else}}
 			<header class="Manchet">
-				<h1>Sign up or log in</h1>
-				<p>to create or manage your Radio4000.</p>
+				<h1>Log in</h1>
+				<p>to manage your Radio4000.</p>
 			</header>
 			<div class="Container">
 				{{login-register onLogin=(action 'login')}}
+				<!-- <p><br>&rarr; <a href="{{href-to 'intro'}}">Get introduced to Radio4000</a></p> -->
 			</div>
 		{{/if}}
 	</section>
