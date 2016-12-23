@@ -12,8 +12,8 @@ Make sure Ember CLI is installed globally, then clone this project and install i
 yarn global add ember-cli
 git clone git@gitlab.com:internet4000/radio4000.git
 cd radio4000
-yarn
-bower i
+npm install (or yarn)
+bower install
 npm start
 ```
 
@@ -22,6 +22,8 @@ npm start
 Run either `npm test` or `ember test --server`.
 
 ## Deployment
+
+If this is your first time deploying, install the Firebase CLI: `npm i -g firebase-tools` and run `firebase login` first.
 
 To deploy to staging aka https://radio4000-staging.firebaseapp.com, run:
 
