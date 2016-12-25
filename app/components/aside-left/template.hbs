@@ -9,7 +9,9 @@
   {{/if}}
 
   {{#unless userChannel}}
-    {{#link-to "channels.new" class="Btn Btn--important" title="Sign up to create your own radio now or log in"}}Sign up or log in{{/link-to}}
+		{{#link-to "channels.new" class="Btn Btn--important" title="Sign up to create your own radio now or log in"}}
+			{{if session.isAuthenticated "Create your radio" "Sign up or log in"}}
+		{{/link-to}}
   {{/unless}}
 
   {{#link-to "intro" title="Get introduced to Radio4000" class="Tabs-item"}}Introduction{{/link-to}}
