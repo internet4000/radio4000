@@ -14,14 +14,16 @@ export default Route.extend({
 			return this.transitionTo('login');
 		}
 
-		// If user has a channel, go to it
-		return userChannels.then(channels => {
-			const channel = get(channels, 'firstObject');
-			if (channel) {
-				debug(`already got channel -> transition to ${channel.get('title')}`);
-				this.transitionTo('channel', channel);
-			}
-		});
+		// If the user has a channel, go to it
+		if (userChannels) {
+			return userChannels.then(channels => {
+				const channel = get(channels, 'firstObject');
+				if (channel) {
+					debug(`already got channel -> transition to ${channel.get('title')}`);
+					this.transitionTo('channel', channel);
+				}
+			});
+		}
 	},
 
 	afterModel() {

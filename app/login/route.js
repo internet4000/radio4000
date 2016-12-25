@@ -12,7 +12,13 @@ export default Route.extend({
 	},
 
 	redirectIfAuthenticated() {
-		return get(this, 'session.currentUser.channels').then(channels => {
+		const userChannels = get(this, 'session.currentUser.channels');
+
+		if (!userChannels) {
+			return this.transitionTo('channels.new');
+		}
+
+		return userChannels.then(channels => {
 			const userChannel = get(channels, 'firstObject');
 			if (userChannel) {
 				return this.transitionTo('channel', userChannel);
