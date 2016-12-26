@@ -65,8 +65,8 @@ export default Component.extend({
 			const trackProps = get(this, 'track');
 			get(this, 'onSubmit')(trackProps).then(() => {
 				// Reset all properties so we can create another track.
-				this.set('initialUrl', null);
-				this._reset();
+				set(this, 'initialUrl', null);
+				// this._reset();
 				this.$('input[type="url"]').focus();
 			});
 		},
