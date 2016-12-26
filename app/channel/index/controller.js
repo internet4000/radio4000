@@ -36,12 +36,15 @@ export default Ember.Controller.extend({
 			this.set('isEditing', true);
 		},
 		updateTrack(track) {
-			const flashMessages = Ember.get(this, 'flashMessages');
+			const flashMessages = get(this, 'flashMessages');
+
+			// Close the modal, if the modal isn't edited.
 			if (!track.get('hasDirtyAttributes')) {
 				this.send('closeModals');
 				return Ember.RSVP.resolve();
 			}
-			// in case url changed, we need to set the ytid
+
+			// In case url changed, we need to set the ytid.
 			track.updateYoutubeId();
 			return track.save().then(() => {
 				this.send('closeModals');

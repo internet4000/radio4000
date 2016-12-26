@@ -1,8 +1,10 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 import {validator, buildValidations} from 'ember-cp-validations';
 import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
 
-const {Model, set, attr, belongsTo} = DS;
+const {Model, attr, belongsTo} = DS;
+const {get, set} = Ember;
 
 export const Validations = buildValidations({
 	url: [
@@ -46,7 +48,8 @@ export default Model.extend(Validations, {
 
 	// If the user changes the url, we need to update the YouTube id.
 	updateYoutubeId() {
-		const ytid = youtubeUrlToId(this.get('url'));
+		const url = get(this, 'url');
+		const ytid = youtubeUrlToId(url);
 		if (ytid) {
 			set(this, 'ytid', ytid);
 		}

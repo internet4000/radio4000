@@ -3,7 +3,7 @@ import config from 'radio4000/config/environment';
 import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
 import {task, timeout} from 'ember-concurrency';
 
-const {Component, debug, get, on, observer} = Ember;
+const {Component, debug, get, set, on, observer} = Ember;
 
 export default Component.extend({
 	tagName: 'form',
@@ -71,7 +71,8 @@ export default Component.extend({
 			});
 		},
 		cancel() {
-			this.get('onCancel')();
+			get(this, 'onCancel')();
 		}
 	}
 });
+
