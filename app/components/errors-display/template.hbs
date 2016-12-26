@@ -5,6 +5,10 @@
 {{/if}}
 isValid: {{isValid}}<br>
 --}}
+{{#if hasBlock}}
+	{{yield}}
+{{/if}}
+
 {{#if showErrorMessage}}
 	<p class="Warning">
 		{{v-get model valuePath "message"}}

@@ -7,7 +7,7 @@ export default Ember.Component.extend({
 	classNameBindings: ['showErrorClass:has-error', 'isValid:has-success'],
 	model: null,
 	valuePath: '',
-	showValidations: false,
+	showValidations: true,
 	didValidate: false,
 
 	// These two are set on init.
