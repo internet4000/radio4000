@@ -28,6 +28,12 @@ const Validations = buildValidations({
 		validator('length', {
 			max: channelConst.descriptionMaxLength
 		})
+	],
+	link: [
+		validator('format', {
+			type: 'url',
+			allowBlank: true
+		})
 	]
 });
 
