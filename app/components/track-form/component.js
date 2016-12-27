@@ -60,15 +60,18 @@ export default Component.extend({
 		track.set('title', title);
 	}).restartable(),
 
+	submitTask: task(function * () {
+		const track = get(this, 'track');
+		const action = get(this, 'onSubmit')(track);
+		yield action;
+		// Reset all properties so we can create another track.
+		set(this, 'initialUrl', null);
+		this.$('input[type="url"]').focus();
+	}),
+
 	actions: {
 		submit() {
-			const trackProps = get(this, 'track');
-			get(this, 'onSubmit')(trackProps).then(() => {
-				// Reset all properties so we can create another track.
-				set(this, 'initialUrl', null);
-				// this._reset();
-				this.$('input[type="url"]').focus();
-			});
+			get(this, 'submitTask').perform();
 		},
 		cancel() {
 			get(this, 'onCancel')();

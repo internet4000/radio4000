@@ -32,7 +32,7 @@
 	<div class="BtnGroupWrapper BtnGroupWrapper--full">
 		{{#btn-group}}
 			<button {{action "submit"}} type="submit" class="Btn Btn--primary" title="Add track to your radio" disabled={{disableSubmit}}>
-				{{if isSubmitting "Saving…" "Add track"}}
+				{{if submitTask.isIdle "Add track" "Adding…"}}
 			</button>
 			<button {{action "cancel"}} class="Btn Btn--text" title="Go back, do not add the track">Cancel</button>
 		{{/btn-group}}
