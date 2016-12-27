@@ -3,7 +3,6 @@ import {validator, buildValidations} from 'ember-cp-validations';
 
 export const Validations = buildValidations({
 	addTrackUrl: [
-		// validator('presence', true),
 		validator('youtube-url')
 	]
 });
@@ -13,7 +12,6 @@ const {Component, get} = Ember;
 export default Component.extend(Validations, {
 	tagName: 'form',
 	classNames: ['Form', 'Form--addTrack'],
-
 	addTrackUrl: null,
 
 	submit(event) {

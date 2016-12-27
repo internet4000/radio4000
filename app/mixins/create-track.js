@@ -14,8 +14,6 @@ export default Mixin.create({
 			return;
 		}
 
-		console.log({props, channel});
-
 		const track = this.store.createRecord('track', {
 			url: props.url,
 			title: props.title,
@@ -27,7 +25,7 @@ export default Mixin.create({
 		try {
 			yield track.save();
 		} catch (e) {
-			console.log(e);
+			Ember.debug(e);
 			flashMessages.warning('Could not create your track.');
 		}
 
@@ -38,7 +36,7 @@ export default Mixin.create({
 			yield channel.save();
 			get(this, 'flashMessages').info('Your track was created', {timeout: 5000});
 		} catch (e) {
-			console.log(e);
+			Ember.debug(e);
 			flashMessages.warning('Could not save the track to your radio');
 		}
 

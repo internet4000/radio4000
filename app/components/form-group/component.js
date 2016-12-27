@@ -4,34 +4,30 @@ const {Component, computed, get, set, defineProperty} = Ember;
 
 export default Component.extend({
 	classNames: ['Form-group'],
-	showValidations: false,
 
-	// model: null,
-	// valuePath: '',
-	// label,
-	// hint,
-	// validation: null,
-	// value: null,
+	// model: object with validations mixin,
+	// valuePath: '', // this is the property name on the model
+	// label: '',
+	// hint: '',
+	// value: null, // will be set in init()
+	// showValidations: false,
 
 	init() {
 		this._super(...arguments);
-		this._setValue();
-		// defineProperty(this, 'validation', computed.readOnly(`model.validations.attrs.${valuePath}`));
-	},
-
-	_setValue() {
 		let valuePath = get(this, 'valuePath');
 		defineProperty(this, 'value', computed.alias(`model.${valuePath}`));
 	},
-
-	fieldId: computed('valuePath', function () {
-		let id = get(this, 'elementId');
-		let valuePath = get(this, 'valuePath');
-		return `${id}_${valuePath}`;
-	}),
 
 	focusOut() {
 		this._super(...arguments);
 		set(this, 'showValidations', true);
 	}
+
+	// Use this to group labels and nested inputs. But we don't nest inputs yet.
+	// fieldId: computed('valuePath', function () {
+	// 	let id = get(this, 'elementId');
+	// 	let valuePath = get(this, 'valuePath');
+	// 	return `${id}_${valuePath}`;
+	// }),
 });
+
