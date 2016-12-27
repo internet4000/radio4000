@@ -69,3 +69,9 @@ ol {
 	}
 }
 
+// Allow images to scale
+img {
+	max-width: 100%;
+	height: auto;
+}
+
