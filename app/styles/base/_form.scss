@@ -94,7 +94,6 @@ progress {
 	@extend %font-regular;
 }
 
-
 .Form-bigInput {
 	@include size-3;
 }
@@ -126,7 +125,7 @@ progress {
 	}
 }
 
-.Form-group .Form-groupStatus {
+.Form .Form-groupStatus {
 	position: absolute;
 	top: 2.3rem;
 	right: 0.7rem;
