@@ -1,25 +1,32 @@
-<div class="Form-group">
-	<label title="Paste in the URL of a YouTube video">URL
-		{{focus-input type="url" value=track.url required="required" placeholder="Paste in a YouTube link"}}
-		{{errors-display model=track valuePath="url"}}
-	</label>
-</div>
+{{#form-group
+	model=track
+	valuePath="url"
+	label="URL"
+	hint="Paste in the URL of a YouTube video" as |value|}}
 
-<div class="Form-group Form-group--relative">
-	<label title="Give your track a title">Title
-		{{input value=track.title placeholder="Enter the track title" required="required"}}<br>
-		{{errors-display model=track valuePath="title"}}
-	</label>
-	{{#if fetchTitle.isRunning}}<p class="Form-groupStatus">Updating…</p>{{/if}}
-	{{!-- {{youtube-search query=model.title action="addFromSearch"}} --}}
-</div>
+	{{focus-input type="url" value=value required="required" placeholder="Paste in a YouTube link"}}
+{{/form-group}}
 
-<div class="Form-group">
-	<label title="Give your track an optional description">Description
-		{{input value=track.body placeholder="Fantastic track! #fantastic (optional)"}}<br>
-		{{errors-display model=track valuePath="body"}}
-	</label>
-</div>
+{{#form-group
+	model=track
+	valuePath="title"
+	label="Title"
+	hint="Paste in the URL of a YouTube video" as |value|}}
+
+	{{input value=value placeholder="Enter the track title" required="required"}}
+	{{#if fetchTitle.isRunning}}
+		<p class="Form-groupStatus">Updating…</p>
+	{{/if}}
+{{/form-group}}
+
+{{#form-group
+	model=track
+	valuePath="body"
+	label="Description"
+	hint="Give your track an optional description" as |value|}}
+
+	{{input value=value placeholder="Fantastic track! #fantastic (optional)"}}<br>
+{{/form-group}}
 
 <div class="Form-group">
 	<div class="BtnGroupWrapper BtnGroupWrapper--full">
@@ -31,5 +38,3 @@
 		{{/btn-group}}
 	</div>
 </div>
-
-{{yield}}
