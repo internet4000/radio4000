@@ -4,20 +4,17 @@
 		<h2>What do you want to call your radio?</h2>
 
 		<form class="Form" onsubmit={{perform createRadio}}>
-			<div class="Form-group">
+			{{#form-group model=this valuePath="title" as |v|}}
 				{{focus-input
-					value=title
+					value=v
 					required="required"
 					placeholder="“The Pirate Radio”"
 					class="Form-bigInput u-textAlignCenter"}}
-					{{errors-display model=this valuePath="title"}}
 				<p class="Muted">Go ahead, you can <em>always</em> change the name later</p>
-			</div>
+			{{/form-group}}
 
 			<div class="Form-group u-alignCenter">
-				<button
-					type="submit"
-					class="Btn Btn--primary Btn--large"
+				<button type="submit" class="Btn Btn--primary Btn--large"
 					title="Create your radio channel"
 					disabled={{disableSubmit}}>
 					{{if createRadio.isRunning "Creating…" "Create my radio"}}
