@@ -32,7 +32,8 @@ const Validations = buildValidations({
 	link: [
 		validator('format', {
 			type: 'url',
-			allowBlank: true
+			allowBlank: true,
+			message: 'If you leave a link, please do it with https://… in front'
 		})
 	]
 });

@@ -18,7 +18,7 @@
 								Drag 'n drop an image for your radio here
 							{{/image-upload}}
 							{{#if model.coverImage}}
-							<button class="Btn Btn--danger Btn--text" {{action 'deleteImage'}}>
+							<button class="Btn Btn--danger Btn--text" {{action "deleteImage"}}>
 								Delete image
 							</button>
 							{{/if}}
@@ -28,47 +28,40 @@
 					{{!-- right side, channel model --}}
 
 					<form class="Channel-body" {{action "trySave" on="submit"}}>
-
-						<div class="Form-group">
-							<label for="title">Radio channel name</label>
-							{{focus-input id="title"
-								value=model.title
+						{{#form-group model=model valuePath="title" label="Radio channel name" as |v|}}
+							{{focus-input
+								value=v
 								placeholder="Title"
-								autofocus='autofocus'
+								autofocus="autofocus"
 								required="required"
 								maxlength=titleMaxLength
 								minlength=titleMinLength}}
-							{{errors-display model=model valuePath="title"}}
-						</div>
-						<div class="Form-group">
-							<label for="body">Description</label>
+						{{/form-group}}
+
+						{{#form-group model=model valuePath="body" label="Description" as |v|}}
 							{{textarea id="body"
-								value=model.body
+								value=v
 								maxlength=channelDescriptionMaxLength
 								placeholder="What is your radio about?"}}
-							{{errors-display model=model valuePath="body"}}
-						</div>
-						<div class="Form-group">
-							<label for="slug">URL</label>
-							<span class="Permalink">radio4000.com/{{model.slug}}</span>
-							{{input id="slug"
-								value=model.slug
+						{{/form-group}}
+
+						{{#form-group model=model valuePath="slug" label="URL" as |v|}}
+							<p style="font-weight: normal">radio4000.com/{{v}}</p>
+							{{input
+								value=v
 								placeholder="channel-slug"
 								required="required"
 								maxlength=titleMaxLength
 								minlength=titleMinLength}}
-							{{errors-display model=model valuePath="slug"}}
-						</div>
-						<div class="Form-group">
-							<label for="link">Link</label>
+						{{/form-group}}
+
+						{{#form-group model=model valuePath="link" label="Link" as |v|}}
 							{{input type="url"
-								id="link"
-								value=model.link
+								value=v
 								aria-invalid=(if model.validations.attrs.link.isValid "false" "true")
 								pattern="https?://.+"
 								placeholder="Your homepage"}}
-							{{errors-display model=model valuePath="link"}}
-						</div>
+						{{/form-group}}
 
 						<div class="Form-group Form--save">
 							<button type="submit" class="Btn Btn--primary" disabled={{disableSubmit}}>
