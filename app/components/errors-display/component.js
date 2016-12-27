@@ -5,9 +5,10 @@ const {computed, get, defineProperty} = Ember;
 export default Ember.Component.extend({
 	classNames: ['ErrorsDisplay'],
 	classNameBindings: ['showErrorClass:has-error', 'isValid:has-success'],
+
 	model: null,
 	valuePath: '',
-	showValidations: true,
+	showValidations: false,
 	didValidate: false,
 
 	// These two are set on init.
@@ -27,14 +28,7 @@ export default Ember.Component.extend({
 	init() {
 		this._super(...arguments);
 		let valuePath = get(this, 'valuePath');
-
 		defineProperty(this, 'validation', computed.readOnly(`model.validations.attrs.${valuePath}`));
 		defineProperty(this, 'value', computed.alias(`model.${valuePath}`));
-	},
-
-	focusOut() {
-		this._super(...arguments);
-		this.set('showValidations', true);
 	}
 });
-

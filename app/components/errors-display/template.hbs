@@ -1,16 +1,12 @@
-{{!--
-{{input type=type value=value placeholder=placeholder class="form-control" name=valuePath}}
-{{#if isValid}}
-	<span class="valid-input fa fa-check">&check;</span>
-{{/if}}
-isValid: {{isValid}}<br>
---}}
-{{#if hasBlock}}
-	{{yield}}
-{{/if}}
-
+{{!-- <p>
+	model: {{model}}<br>
+	valuePath: {{valuePath}}<br>
+	value: {{value}}<br>
+	<em>{{valuePath}}</em> is valid: {{v-get model valuePath "isValid"}}<br>
+</p>
+ --}}
 {{#if showErrorMessage}}
-	<p class="Warning">
+	<p class="Warning Warning--error">
 		{{v-get model valuePath "message"}}
 	</p>
 {{/if}}
