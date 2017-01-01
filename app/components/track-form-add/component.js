@@ -13,16 +13,17 @@ export default TrackFormComponent.extend({
 
 	disableSubmit: computed.or('submitTask.isRunning', 'isSubmitting', 'track.validations.isInvalid'),
 
-	resetTrack() {
+	resetForm() {
 		// The getOwner part is mentioned in the ember-cp-validation docs.
 		const track = trackObject.create(Ember.getOwner(this).ownerInjection(), {
 			url: get(this, 'initialUrl')
 		});
 		set(this, 'track', track);
+		this._super(...arguments);
 	},
 
 	init() {
 		this._super(...arguments);
-		this.resetTrack();
+		this.resetForm();
 	}
 });

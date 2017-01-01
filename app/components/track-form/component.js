@@ -64,10 +64,17 @@ export default Component.extend({
 		const track = get(this, 'track');
 		const action = get(this, 'onSubmit')(track);
 		yield action;
-		// Reset all properties so we can create another track.
-		set(this, 'initialUrl', null);
-		this.$('input[type="url"]').focus();
+		this.resetForm();
 	}),
+
+	// Reset all properties so we can create another track.
+	resetForm() {
+		set(this, 'initialUrl', null);
+		let input = this.$('input[type="url"]');
+		if (input) {
+			input.focus();
+		}
+	},
 
 	actions: {
 		submit() {
