@@ -21,7 +21,7 @@ export default Component.extend({
 	childInputHasFocus() {
 		let focusedElement = document.activeElement;
 		let input = this.$('input');
-		if (!input) {
+		if (!input || !input[0]) {
 			return;
 		}
 		return input[0].id === focusedElement.id;
