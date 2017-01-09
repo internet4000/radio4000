@@ -1,11 +1,12 @@
 <div class="Sections">
 	<div class="Section">
 		<div class="Container">
-			<h2>Add a new track to <em>{{model.title}}</em></h2>
-			{{track-add
-				newUrl=url
+			<h2>Add a new track to your radio</h2>
+			{{track-form-add
+				initialUrl=url
 				onSubmit=(action "saveTrack")
-				onCancel=(action "goBack")}}
+				onCancel=(action "goBack")
+				isSubmitting=createTrack.isRunning}}
 			<br>
 			<p>
 				&rarr; {{#link-to "channel" model.slug title=model.title}}Go to your channel <em>{{model.title}}</em>{{/link-to}} <small>(you currently have {{model.totalTracks}} tracks)</small><br>

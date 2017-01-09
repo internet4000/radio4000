@@ -1,48 +1,26 @@
 import Ember from 'ember';
 import clean from 'radio4000/utils/clean';
-import channelConst from 'radio4000/utils/channel-const';
-import EmberValidations from 'ember-validations';
 
 const {debug, get, Controller, computed, observer} = Ember;
 
-export default Controller.extend(EmberValidations, {
+export default Controller.extend({
+	isSaving: false, // replace with ember-concurrency
+	disableSubmit: computed.or('isSaving', 'model.validations.isInvalid'),
+
 	didCacheSlug: false,
 
-	// form validations and resulting errors
-	showErrors: false,
-	validations: {
-		'model.title': {
-			length: {
-				minimum: channelConst.titleMinLength,
-				maximum: channelConst.titleMaxLength
-			}
-		},
-		'model.slug': {
-			length: {
-				minimum: channelConst.titleMinLength,
-				maximum: channelConst.titleMaxLength
-			}
-		},
-		'model.body': {
-			length: {
-				maximum: channelConst.descriptionMaxLength
-			}
-		}
-		// Would be nice to validate the URL as well.
-	},
-
 	cacheSlug: computed('model.slug', function () {
-		this.cachedSlug = this.get('model.slug');
+		this.cachedSlug = get(this, 'model.slug');
 		this.toggleProperty('didCacheSlug');
 	}),
 
 	updateImage: observer('newImage', function () {
-		const newImage = this.get('newImage');
+		const newImage = get(this, 'newImage');
 		this.createImage(newImage);
 	}),
 
 	createImage(src) {
-		const channel = this.get('model');
+		const channel = get(this, 'model');
 		const image = this.store.createRecord('image', {src, channel});
 
 		// save and add it to the channel
@@ -55,6 +33,7 @@ export default Controller.extend(EmberValidations, {
 		});
 	},
 
+	// this could be moved to a custom slug-validator using ember-cp-validations
 	isSlugFree() {
 		const slug = clean(get(this, 'model.slug'));
 		const errorMessage = `Sorry, the URL "${slug}" is already taken. Please try another one.`;
@@ -100,7 +79,9 @@ export default Controller.extend(EmberValidations, {
 	actions: {
 		trySave() {
 			const flashMessages = get(this, 'flashMessages');
-			this.validate().then(() => {
+			const model = get(this, 'model');
+
+			model.validate().then(() => {
 				const slugDidChange = (this.get('cachedSlug') !== this.get('model.slug'));
 				this.set('isSaving', true);
 				if (slugDidChange) {
@@ -122,7 +103,6 @@ export default Controller.extend(EmberValidations, {
 			}).catch(() => {
 				// show errors on forms, why does it not validate
 				debug('form not validating…');
-				this.set('showErrors', true);
 			});
 		},
 
@@ -139,9 +119,9 @@ export default Controller.extend(EmberValidations, {
 			debug('channel route save');
 
 			channel.save().then(() => {
-				debug('Saved --> channel');
+				flashMessages.info('Saved');
+				// We have to transition if the slug changed. Otherwise reloading is a 404.
 				this.transitionToRoute('channel', this.get('model.slug'));
-				flashMessages.info('Changes saved');
 			}).catch(() => {
 				// This get triggered for exemple when firebase.security do not validate
 				flashMessages.warning(`Sorry, we couldn't save your radio. Please refresh your browser to try again.`);

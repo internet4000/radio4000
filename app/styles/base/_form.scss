@@ -58,7 +58,6 @@ label {
 	@extend %font-bold;
 	@include size-1;
 	display: block;
-	padding-bottom: 5px;
 
 	[type="text"],
 	[type="email"],
@@ -67,7 +66,7 @@ label {
 	[type="url"],
 	textarea {
 		@extend %font-regular;
-		margin-top: 0.25rem;
+		margin-top: 0.2rem;
 	}
 }
 
@@ -80,15 +79,28 @@ progress {
 .Form {
 	@include clearfix;
 
-	[type="text"],
-	[type="email"],
-	[type="tel"],
-	[type="password"],
-	[type="url"],
-	textarea,
-	.Btn {
-		margin-bottom: 1rem;
-	}
+	// [type="text"],
+	// [type="email"],
+	// [type="tel"],
+	// [type="password"],
+	// [type="url"],
+	// textarea,
+	// .Btn {
+	// 	margin-bottom: 1rem;
+	// }
+}
+
+.Form-group label input {
+	@extend %font-regular;
+}
+
+.Form-bigInput {
+	@include size-3;
+}
+
+.Form-group {
+	position: relative;
+	margin-bottom: 1rem;
 }
 
 .Form-group:last-child {
@@ -104,11 +116,6 @@ progress {
 	}
 }
 
-// fixes an element into a formgroup
-.Form-group--relative {
-	position: relative;
-}
-
 .Form-group--inline {
 	display: flex;
 	max-width: 30rem;
@@ -118,7 +125,7 @@ progress {
 	}
 }
 
-.Form-group .Form-groupStatus {
+.Form .Form-groupStatus {
 	position: absolute;
 	top: 2.3rem;
 	right: 0.7rem;
@@ -130,10 +137,6 @@ progress {
 		bottom: 0;
 		right: 0;
 	}
-}
-
-.Form-bigInput {
-	@include size-3;
 }
 
 .Form-left,
@@ -170,8 +173,3 @@ progress {
 .Form--boxSmall {
 	max-width: 27rem;
 }
-
-.Form-group label input {
-	@extend %font-regular;
-}
-

@@ -1,18 +1,14 @@
 import Ember from 'ember';
-import EmberValidations from 'ember-validations';
 
 const {computed, debug, get, inject} = Ember;
 
-export default Ember.Controller.extend(EmberValidations, {
-	// player: Ember.inject.service(), // used for debugging unplayed + history
-	// queryParams: ['tags'],
+export default Ember.Controller.extend({
 	isEditing: false,
 	applicationController: inject.controller('application'),
 
-	// needed to access canEdit
+	hasFewTracks: computed.lte('tracks.length', 2),
 	channelController: inject.controller('channel'),
 	canEdit: computed.reads('channelController.canEdit'),
-	hasFewTracks: computed.lte('tracks.length', 2),
 
 	actions: {
 		transitionToTrack(track) {
@@ -40,13 +36,16 @@ export default Ember.Controller.extend(EmberValidations, {
 			this.set('isEditing', true);
 		},
 		updateTrack(track) {
-			const flashMessages = Ember.get(this, 'flashMessages');
+			const flashMessages = get(this, 'flashMessages');
+
+			// Close the modal, if the modal isn't edited.
 			if (!track.get('hasDirtyAttributes')) {
 				this.send('closeModals');
 				return Ember.RSVP.resolve();
 			}
-			// in case url changed, we need to set the ytid
-			track.updateYouTubeId();
+
+			// In case url changed, we need to set the ytid.
+			track.updateYoutubeId();
 			return track.save().then(() => {
 				this.send('closeModals');
 				flashMessages.info('Track saved');

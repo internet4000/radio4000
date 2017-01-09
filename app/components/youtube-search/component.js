@@ -2,6 +2,8 @@ import Ember from 'ember';
 
 const {observer} = Ember;
 
+// {{youtube-search query=model.title action="addFromSearch"}}
+
 export default Ember.Component.extend({
 	cachedQuery: '',
 

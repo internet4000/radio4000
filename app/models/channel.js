@@ -1,8 +1,42 @@
 import Ember from 'ember';
 import DS from 'ember-data';
+import {validator, buildValidations} from 'ember-cp-validations';
+import channelConst from 'radio4000/utils/channel-const';
 
 const {attr, hasMany, belongsTo} = DS;
 const {computed} = Ember;
+
+const Validations = buildValidations({
+	title: [
+		validator('presence', true),
+		validator('length', {
+			min: channelConst.titleMinLength,
+			max: channelConst.titleMaxLength
+		})
+	],
+	slug: [
+		validator('presence', {
+			presence: true,
+			ignoreBlank: false
+		}),
+		validator('length', {
+			min: channelConst.titleMinLength,
+			max: channelConst.titleMaxLength
+		})
+	],
+	body: [
+		validator('length', {
+			max: channelConst.descriptionMaxLength
+		})
+	],
+	link: [
+		validator('format', {
+			type: 'url',
+			allowBlank: true,
+			message: 'If you leave a link, please do it with https://… in front'
+		})
+	]
+});
 
 /*
  Channel model
@@ -10,7 +44,7 @@ const {computed} = Ember;
  There is also a channelPublic model, which can be edited by anyone.
  */
 
-export default DS.Model.extend({
+export default DS.Model.extend(Validations, {
 	title: attr('string'),
 	slug: attr('string'),
 	body: attr('string'),

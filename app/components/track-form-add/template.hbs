@@ -3,6 +3,7 @@
 	valuePath="url"
 	label="URL"
 	hint="Paste in the URL of a YouTube video" as |value|}}
+
 	{{focus-input type="url" value=value required="required" placeholder="Paste in a YouTube link"}}
 {{/form-group}}
 
@@ -11,6 +12,7 @@
 	valuePath="title"
 	label="Title"
 	hint="Paste in the URL of a YouTube video" as |value|}}
+
 	{{input value=value placeholder="Enter the track title" required="required"}}
 	{{#if fetchTitle.isRunning}}
 		<p class="Form-groupStatus">Updating…</p>
@@ -22,17 +24,15 @@
 	valuePath="body"
 	label="Description"
 	hint="Give your track an optional description" as |value|}}
-	{{input value=value placeholder="Track description"}}<br>
+
+	{{input value=value placeholder="Fantastic track! #fantastic (optional)"}}<br>
 {{/form-group}}
 
 <div class="Form-group">
 	{{#btn-group}}
-		<button {{action "submit"}} type="submit" class="Btn Btn--primary" title="Save the track" disabled={{disableSubmit}}>
-			{{if submitTask.isIdle "Save" "Saving…"}}
+		<button {{action "submit"}} type="submit" class="Btn Btn--primary" title="Add track to your radio" disabled={{disableSubmit}}>
+			{{if submitTask.isIdle "Add track" "Adding…"}}
 		</button>
-		<button {{action "cancel"}} class="Btn Btn--text" title="Stop editing the track">Cancel</button>
-		<button {{action "deleteTrack"}} class="Btn Btn--text Btn--danger u-alignRight" title="Delete this track from your radio">Delete</button>
+		<button {{action "cancel"}} class="Btn Btn--text" title="Go back, do not add the track">Cancel</button>
 	{{/btn-group}}
 </div>
-
-{{yield}}

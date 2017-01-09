@@ -134,9 +134,9 @@ pre,
 	color: hsl(118, 100%, 59%);
 }
 
-// Warnings
 .Warning {
+	@include size-0;
 	background-color: $yellow;
 	color: $text-color;
-	padding: 1px 4px;
+	padding: 3px 4px 0;
 }

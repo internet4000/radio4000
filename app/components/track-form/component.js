@@ -1,121 +1,88 @@
 import Ember from 'ember';
-import EmberValidations, {validator} from 'ember-validations';
-import youtubeRegex from 'npm:youtube-regex';
 import config from 'radio4000/config/environment';
+import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
+import {task, timeout} from 'ember-concurrency';
 
-const {Component, debug, get, set, on, observer, run} = Ember;
+const {Component, debug, get, set, on, observer} = Ember;
 
-export default Component.extend(EmberValidations, {
+export default Component.extend({
 	tagName: 'form',
 	classNames: ['Form'],
 	classNameBindings: ['box:Form--box'],
-	showErrors: false,
-	newUrl: '',
-	isIdle: true,
 
-	validations: {
-		'track.url': {
-			// format: {
-			// 	with: youtubeRegex()
-			// }
-			inline: validator(function () {
-				const isValid = Boolean(youtubeRegex().exec(get(this, 'track.url')));
-				if (!isValid) {
-					return 'Please enter a valid YouTube URL';
-				}
-			})
-		},
-		'track.title': {
-			presence: true,
-			length: {maximum: 256}
-		},
-		'track.body': {
-			length: {maximum: 300}
-		}
-	},
-
-	getYoutubeId(urlstring) {
-		const isValid = youtubeRegex().exec(urlstring);
-		if (!isValid) {
-			return false;
-		}
-		return isValid[1];
-	},
+	// This is not the "track model", but an ordinary object.
+	track: null,
+	initialUrl: '',
 
 	// This gets called when you paste something into the input-url component
 	// it takes a URL and turns it into a YouTube ID which we use to query the API for a title
 	automaticSetTitle: on('init', observer('track.url', function () {
-		const url = get(this, 'track.url');
-		const ytid = this.getYoutubeId(url);
-		if (!ytid) {
-			// debug('no ytid');
+		const track = get(this, 'track');
+
+		// Can not continue without a track or URL.
+		if (!track || !track.get('url')) {
 			return;
 		}
-		if (!Ember.isEmpty(get(this, 'track.title'))) {
-			// debug('The track title is not empty so we are not updating it');
+
+		// Don't overwrite already existing titles
+		if (track.get('title')) {
 			return;
 		}
-		set(this, 'youtubeId', ytid);
-		// call setTitle but throttle it so it doesn't happen on every key-stroke
-		run.throttle(this, this.setTitle, 1000);
+
+		// Because the URL might have changed
+		const newid = youtubeUrlToId(track.get('url'));
+		if (newid) {
+			track.set('ytid', newid);
+		}
+
+		get(this, 'fetchTitle').perform();
 	})),
 
-	setTitle() {
-		const id = get(this, 'youtubeId');
+	fetchTitle: task(function * () {
+		const track = get(this, 'track');
+		const ytid = track.get('ytid');
 		const endpoint = `https://www.googleapis.com/youtube/v3/videos?
-			id=${id}
+			id=${ytid}
 			&key=${config.youtubeApiKey}
 			&fields=items(id,snippet(title))
 			&part=snippet`;
 
-		// Use cache if we have it
-		if (get(this, 'cachedId') === id) {
-			debug('Setting cached title');
-			this.set('track.title', get(this, 'cachedTitle'));
+		yield timeout(1000);
+
+		// Fetch and set it
+		const promise = Ember.$.getJSON(endpoint);
+		const response = yield promise;
+		if (!response.items.length) {
+			debug('Could not find a title');
 			return;
 		}
+		const title = response.items[0].snippet.title;
+		track.set('title', title);
+	}).restartable(),
 
-		this.set('isFetchingTitle', true);
+	submitTask: task(function * () {
+		const track = get(this, 'track');
+		const action = get(this, 'onSubmit')(track);
+		yield action;
+		this.resetForm();
+	}),
 
-		Ember.$.getJSON(endpoint).then(response => {
-			this.set('isFetchingTitle', false);
-
-			if (!response.items.length) {
-				debug('Could not find a title');
-				return;
-			}
-
-			const title = response.items[0].snippet.title;
-			this.set('track.title', title);
-
-			// cache our title and ID so we don't request the same video twice
-			this.set('cachedTitle', title);
-			this.set('cachedId', id);
-		});
+	// Reset all properties so we can create another track.
+	resetForm() {
+		set(this, 'initialUrl', null);
+		let input = this.$('input[type="url"]');
+		if (input) {
+			input.focus();
+		}
 	},
 
 	actions: {
 		submit() {
-			set(this, 'isIdle', false);
-			this.validate().then(() => {
-				const trackProps = get(this, 'track');
-				get(this, 'onSubmit')(trackProps).then(() => {
-					// Reset all properties so we can create another track.
-					this.setProperties({
-						isIdle: true,
-						newUrl: '',
-						track: {}
-					});
-					this.$('input[type="url"]').focus();
-				});
-			}).catch(err => {
-				debug(err);
-				set(this, 'showErrors', true);
-				this.set('isIdle', true);
-			});
+			get(this, 'submitTask').perform();
 		},
 		cancel() {
-			this.get('onCancel')();
+			get(this, 'onCancel')();
 		}
 	}
 });
+
