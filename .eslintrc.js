@@ -9,6 +9,9 @@ module.exports = {
 		'browser': true
 	},
 	rules: {
+		// these are normally errors but warnings,
+		// are enough. Otherwise CI breaks.
+		'no-mixed-spaces-and-tabs': 'warn',
 		'array-callback-return': 'warn',
 		'no-path-concat': 'warn',
 		'camelcase': ['warn', {
