@@ -12,7 +12,11 @@ export const Validations = buildValidations({
 		validator('youtube-url')
 	],
 	title: [
-		validator('presence', true),
+	  validator('presence', {
+	    presence: true,
+	    ignoreBlank: true,
+	    message: 'Field should not be empty'
+	  }),
 		validator('length', {
 			max: 256
 		})
