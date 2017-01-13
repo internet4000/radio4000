@@ -9,7 +9,8 @@
   {{/if}}
 
   {{#unless userChannel}}
-    {{#link-to "channels.new" class="Btn Btn--important" title="Sign up to create your own radio now or log in"}}Sign up or log in{{/link-to}}
+      {{#link-to "auth.login" class="Btn Btn--important" title="Log in to Radio4000"}}Log in{{/link-to}}
+      {{#link-to "auth.signup" class="Btn Btn--important" title="Sign up to Radio4000"}}Sign up{{/link-to}}
   {{/unless}}
 
   {{#link-to "intro" title="Get introduced to Radio4000" class="Tabs-item"}}Introduction{{/link-to}}
@@ -20,7 +21,6 @@
 
 <div class="Tabs Tabs--transparent Tabs--bottom">
   {{#if isAuthenticated}}
-    {{#link-to "logout" class="Aside-link Muted" title="Log out from Radio4000"}}Log out{{/link-to}}
+    {{#link-to "auth.logout" class="Aside-link Muted" title="Log out from Radio4000"}}Log out{{/link-to}}
   {{/if}}
 </div>
-
