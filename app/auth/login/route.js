@@ -8,16 +8,8 @@ export default Route.extend({
 	    return transition.send('redirectAfterAuth');
 	}
     },
-
-    actions: {
-	redirectAfterAuth() {
-	    return get(this, 'session.currentUser.channels').then(channels => {
-		const userChannel = get(channels, 'firstObject');
-		if (userChannel) {
-		    return this.transitionTo('channel', userChannel);
-		}
-		return this.transitionTo('channels.new');
-	    });
-	}
+    redirectAfterAuth() {
+	// on the route, true to bubble up
+	return true;
     }
 });
