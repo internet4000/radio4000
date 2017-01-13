@@ -1,30 +1,15 @@
 <div class="Sections">
-	<section class="Section">
+  <section class="Section">
+    <header class="Manchet">
+      <h1>Log in</h1>
+      <p>to manage your Radio4000.</p>
+    </header>
+    <div class="Container">
+      {{login-register onLogin=(action 'login')}}
+    </div>
 
-		{{#if session.isAuthenticated}}
-
-			<div class="Container">
-				<p>You are already logged in.</p>
-				<p>{{link-to "Log out" "logout"}}</p>
-				{{#if session.currentUser.channels.firstObject}}
-					<p>Did you want to go to your radio?</p>
-					<p>
-					{{#link-to "channel" session.currentUser.channels.firstObject.slug}}
-						Go to {{session.currentUser.channels.firstObject.title}}.
-					{{/link-to}}
-					</p>
-				{{/if}}
-			</div>
-
-		{{else}}
-			<header class="Manchet">
-				<h1>Log in</h1>
-				<p>to manage your Radio4000.</p>
-			</header>
-			<div class="Container">
-				{{login-register onLogin=(action 'login')}}
-				<!-- <p><br>&rarr; <a href="{{href-to 'intro'}}">Get introduced to Radio4000</a></p> -->
-			</div>
-		{{/if}}
-	</section>
+  </section>
+  <section class="Section">
+    <div class="Container">You don't have an account yet? <a href="{{href-to 'auth.signup'}}" class="Btn Btn--important">Register!</a></div>
+  </section>
 </div>
