@@ -1,0 +1,17 @@
+<form {{action "login" "password" email password on="submit"}} class="Form">
+	{{input name="email" type="email" value=email placeholder="Email"}}
+	{{input name="" type="password" value=password placeholder="Password"}}
+	<button type="submit" class="Btn Btn--large" title="Sign up or Log in with email">
+		Log in with email</button>
+</form>
+
+<p>Or connect with:</p>
+<p class="BtnGroup">
+	<button class="Btn Btn--large" title="Sign up or log in with Google" {{action 'login' 'google'}}>
+		Google</button>
+	<button class="Btn Btn--large" title="Sign up or log in with Facebook" {{action 'login' 'facebook'}}>
+		Facebook</button>
+</p>
+{{#if session.isWorking}}
+	{{#is-loading}}Warming transistors…{{/is-loading}}
+{{/if}}

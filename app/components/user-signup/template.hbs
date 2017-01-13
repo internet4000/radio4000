@@ -1,0 +1,17 @@
+<form {{action "submit" "password" email password passwordConfirmation on="submit"}} class="Form">
+  {{input name="email" type="email" value=email placeholder="Email" required="required"}}
+  {{input name="" type="password" value=password placeholder="Password" required="required"}}
+  {{input name="" type="password" value=passwordConfirmation placeholder="Password confirmation" required="required"}}
+  <button type="submit" class="Btn Btn--large" title="Sign up or Log in with email">
+    Sign up with email</button>
+</form>
+
+<p>Or register  with:</p>
+<p class="BtnGroup">
+  <button class="Btn Btn--large" title="Sign up or log in with Google" {{action 'submit' 'google'}}>
+    Google</button>
+  <button class="Btn Btn--large" title="Sign up or log in with Facebook" {{action 'submit' 'facebook'}}>
+    Facebook</button>
+</p>
+
+<p>Already have an account? <a href="{{href-to 'auth.login'}}">Log in</a> to it!</p>
