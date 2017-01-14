@@ -5,6 +5,8 @@
 	height: 1em;
 	width: 1em;
 	fill: currentColor;
+	background-size: contain;
+	background-repeat: no-repeat;
 
 	// if parent has display: flex
 	margin: auto;
@@ -32,4 +34,8 @@ path {
 
 .icon-twtter {
 	color: #00aced;
+}
+
+.icon-shuffle-white {
+	text-indent: -999px;
 }
