@@ -9,11 +9,11 @@ export default Route.extend({
 	model() {
 		const user = get(this, 'session.currentUser');
 		if (!user) {
-			this.transitionTo('login');
+			this.transitionTo('auth.login');
 		}
 		const userChannel = get(user, 'channels.firstObject');
 		if (!userChannel) {
-			this.transitionTo('login');
+			this.transitionTo('auth.login');
 		}
 		return userChannel;
 	}

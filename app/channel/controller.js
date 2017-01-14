@@ -51,7 +51,7 @@ export default Ember.Controller.extend({
 
 			if (!userChannel) {
 				debug('no user channel - transitioning to sigin');
-				this.transitionToRoute('login');
+				this.transitionToRoute('auth.login');
 				return;
 			}
 
