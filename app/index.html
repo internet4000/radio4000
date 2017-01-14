@@ -18,10 +18,16 @@
 
 	<link rel="stylesheet" href="{{rootURL}}assets/vendor.css">
 	<link rel="stylesheet" href="{{rootURL}}assets/radio4000.css">
-	<link rel="stylesheet" href="{{rootURL}}assets/images/icons/grunticon/icons.data.svg.css">
 
 	<script src="{{rootURL}}assets/scripts/radio4000-header.js" async></script>
-	<script src="{{rootURL}}assets/images/icons/grunticon/grunticon.loader.js" async></script>
+	<script src="{{rootURL}}assets/images/icons/grunticon/grunticon.loader.js"></script>
+	<script>
+		grunticon([
+			'/assets/images/icons/grunticon/icons.data.svg.css',
+			'/assets/images/icons/grunticon/icons.data.png.css',
+			'/assets/images/icons/grunticon/icons.fallback.css'
+		], grunticon.svgLoadedCallback);
+	</script>
 
 	{{content-for "head-footer"}}
 </head>

@@ -51,7 +51,7 @@
     "ember-resolver": "^2.0.3",
     "eslint-config-xo": "^0.17.0",
     "gulp": "^3.9.1",
-    "gulpicon": "^1.0.0",
+    "gulpicon": "^1.2.1",
     "loader.js": "^4.0.10",
     "node-sass": "^3.13.0",
     "postcss-import": "^8.0.2",
