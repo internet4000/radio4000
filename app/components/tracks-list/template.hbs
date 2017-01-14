@@ -1,11 +1,28 @@
-<ol class="List{{if numbered ' List--numbered'}}">
-	{{#each sortedItems as |item|}}
-		<li class="List-item">
-			{{#if hasBlock}}
-				{{yield item}}
-			{{else}}
-				{{item.title}}
-			{{/if}}
-		</li>
+{{#if grouped}}
+	{{#each itemsByMonth as |group|}}
+	<h3 class="Muted">Added {{group.value}}</h3>
+		<ol class="List{{if numbered ' List--numbered'}}">
+			{{#each group.items as |item|}}
+				<li class="List-item">
+					{{#if hasBlock}}
+						{{yield item}}
+					{{else}}
+						{{item.title}}
+					{{/if}}
+				</li>
+			{{/each}}
+		</ol>
 	{{/each}}
-</ol>
+{{else}}
+	<ol class="List{{if numbered ' List--numbered'}}">
+		{{#each sortedItems as |item|}}
+			<li class="List-item">
+				{{#if hasBlock}}
+					{{yield item}}
+				{{else}}
+					{{item.title}}
+				{{/if}}
+			</li>
+		{{/each}}
+	</ol>
+{{/if}}

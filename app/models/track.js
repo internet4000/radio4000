@@ -2,9 +2,13 @@ import Ember from 'ember';
 import DS from 'ember-data';
 import {validator, buildValidations} from 'ember-cp-validations';
 import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
+import format from 'npm:date-fns/format';
+// import getMonth from 'npm:date-fns/get_month';
+// import getYear from 'npm:date-fns/get_year';
+// import getISOWeek from 'npm:date-fns/get_iso_week';
 
 const {Model, attr, belongsTo} = DS;
-const {get, set} = Ember;
+const {computed, get, set} = Ember;
 
 export const Validations = buildValidations({
 	url: [
@@ -33,6 +37,10 @@ export default Model.extend(Validations, {
 		defaultValue() {
 			return new Date().getTime();
 		}
+	}),
+	createdMonth: computed('created', function () {
+		let created = get(this, 'created');
+		return format(created, 'Wo \w\e\e\k of YYYY');
 	}),
 	url: attr('string'),
 	title: attr('string'),
