@@ -106,11 +106,13 @@
 }
 
 .Playback-shuffle {
+	.icon,
 	svg {
 		opacity: 0.5;
 	}
 
 	&.is-active {
+		.icon,
 		svg {
 			opacity: 1;
 		}
