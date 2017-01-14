@@ -13,7 +13,7 @@ export default Route.extend({
 	},
 	actions: {
 		login(data) {
-			console.log(data, "data auth route");
+			console.log(data, 'data auth route');
 
 			const flashMessages = get(this, 'flashMessages');
 
@@ -23,7 +23,7 @@ export default Route.extend({
 				// .then( redirect
 				this.send('redirectAfterAuth');
 			}).catch(error => {
-				this.onLoginError(error)
+				this.onLoginError(error);
 			});
 		},
 		redirectAfterAuth() {
