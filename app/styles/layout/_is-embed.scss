@@ -8,9 +8,24 @@
 	.Channel-edit,
 	.Channel .Tabs,
 	.Channel-playback,
-	/*.RadioBot,*/
-	.SiteFooter {
+	.Channel-follow,
+	.AsideLeftToggle,
+	.SiteFooter,
+	.Aside--left {
 		display: none;
+	}
+
+	// Disable logo link
+	.Logo {
+		pointer-events: none;
+	}
+
+	&.is-panelLeftVisible .SiteMain {
+		padding-left: initial;
+	}
+
+	.Logo-img {
+		max-width: 60px;
 	}
 
 	.Sections {
@@ -41,12 +56,6 @@
 	.Channel-media {
 		margin-top: 0;
 	}
-
-	// .Channel-playback {
-	// 	top: -0.5rem;
-	// 	left: initial;
-	// 	right: 1rem;
-	// }
 
 	.Channel-outlet .Form--addTrack {
 		margin-left: 1rem;

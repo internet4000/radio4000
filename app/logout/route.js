@@ -7,7 +7,8 @@ export default Ember.Route.extend({
 		const flashMessages = get(this, 'flashMessages');
 
 		// If we do not unload the user model, Firebase will warn about permissions.
-		const user = get(this, 'session.currentUser');
+		let user = get(this, 'session.currentUser');
+		get(user, 'settings').then(s => s.unloadRecord());
 		user.unloadRecord();
 
 		get(this, 'session').close().then(() => {

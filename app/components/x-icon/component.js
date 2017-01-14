@@ -1,6 +1,8 @@
-/**
- * {{x-icon i='play'}}
- **/
+/*
+ Use like this in your templates:
+
+ {{x-icon i="play"}}
+ */
 
 import Ember from 'ember';
 
@@ -17,6 +19,6 @@ export default Ember.Component.extend({
 	}),
 
 	url: computed('i', function () {
-		return `/assets/images/icons/sprite.svg#icon-${this.get('i')}`;
+		return `/assets/images/sprite.svg#icon-${this.get('i')}`;
 	})
 });

@@ -1,17 +1,42 @@
+import Ember from 'ember';
 import DS from 'ember-data';
-import youtubeRegex from 'npm:youtube-regex';
+import {validator, buildValidations} from 'ember-cp-validations';
+import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
 
 const {Model, attr, belongsTo} = DS;
+const {get, set} = Ember;
 
-export default Model.extend({
-	url: attr('string'),
-	title: attr('string'),
-	body: attr('string'),
+export const Validations = buildValidations({
+	url: [
+		validator('presence', true),
+		validator('youtube-url')
+	],
+	title: [
+	  validator('presence', {
+	    presence: true,
+	    ignoreBlank: true,
+	    message: 'Field should not be empty'
+	  }),
+		validator('length', {
+			max: 256
+		})
+	],
+	body: [
+		validator('length', {
+			max: 300
+		})
+	]
+});
+
+export default Model.extend(Validations, {
 	created: attr('number', {
 		defaultValue() {
 			return new Date().getTime();
 		}
 	}),
+	url: attr('string'),
+	title: attr('string'),
+	body: attr('string'),
 	ytid: attr('string'),
 
 	// relationships
@@ -20,40 +45,17 @@ export default Model.extend({
 		inverse: 'tracks'
 	}),
 
-	// Updates provider ID automatically from the URL
-	updateYouTubeId() {
-		const id = youtubeRegex().exec(this.get('url'))[1];
-		if (!id) {
-			return;
-		}
-		this.set('ytid', id);
-		return this;
-	},
-
 	// Own properties
 	// property for local use only, not planned to save them
 	usedInCurrentPlayer: false,
-	finishedInCurrentPlayer: false
+	finishedInCurrentPlayer: false,
 
-	// // Finds an array of all " #hashtags " from the body property
-	// hashtags: Ember.computed('body', function () {
-	// 	let body = this.get('body');
-	// 	let hashtags;
-
-	// 	if (!body) { return; }
-
-	// 	// find " #hashtags" (with space) https://regex101.com/r/pJ4wC5/4
-	// 	hashtags = body.match(/(^|\s)(#[a-z\d-]+)/ig);
-
-	// 	if (!hashtags) { return; }
-
-	// 	// remove spaces on each item
-	// 	return hashtags.map((tag) => tag.trim());
-	// })
-
-	// bodyPlusMentions: Ember.computed('body', function () {
-	// 	let body = this.get('body');
-	// 	// find " @channel" (with space)
-	// 	return body.replace(/(^|\s)(@[a-z\d-]+)/ig,'$1<a href="https://radio4000.com/$2" class="Mention">$2</a>');
-	// })
+	// If the user changes the url, we need to update the YouTube id.
+	updateYoutubeId() {
+		const url = get(this, 'url');
+		const ytid = youtubeUrlToId(url);
+		if (ytid) {
+			set(this, 'ytid', ytid);
+		}
+	}
 });

@@ -30,8 +30,8 @@
 {{#if isShowingModal}}
 	{{#modal-dialog close="toggleModal" translucentOverlay=true}}
 		<h2>Add a new track to your radio</h2>
-		{{track-add
-			newUrl=url
+		{{track-form-add
+			initialUrl=url
 			onSubmit=(action "saveTrack")
 			onCancel=(action "toggleModal")}}
 		<p {{action "toggleModal"}}>

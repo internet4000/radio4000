@@ -1,0 +1,12 @@
+<label for={{fieldId}} title={{hint}}>
+	{{label}}
+
+	{{#if hasBlock}}
+		{{yield value}}
+	{{/if}}
+</label>
+
+{{errors-display
+	showValidations=showValidations
+	model=model
+	valuePath=valuePath}}

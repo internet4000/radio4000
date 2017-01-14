@@ -1,7 +1,17 @@
-{{#if showErrors}}
-	{{#each errors as |error|}}
-		<p class="Muted">
-			<span class="Warning">{{error}}</span>
-		</p>
-	{{/each}}
+{{!-- <p>
+	model: {{model}}<br>
+	valuePath: {{valuePath}}<br>
+	value: {{value}}<br>
+	<em>{{valuePath}}</em> is valid: {{v-get model valuePath "isValid"}}<br>
+</p>
+ --}}
+{{#if showErrorMessage}}
+	<p class="Warning Warning--error">
+		{{v-get model valuePath "message"}}
+	</p>
+{{/if}}
+{{#if showWarningMessage}}
+	<p class="Warning">
+		{{v-get model valuePath "warningMessage"}}
+	</p>
 {{/if}}

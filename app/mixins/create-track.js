@@ -7,25 +7,39 @@ const {Mixin, debug, get} = Ember;
 
 export default Mixin.create({
 	createTrack: task(function * (props, channel) {
+		const flashMessages = get(this, 'flashMessages');
+
 		if (!props || !channel) {
 			debug('No track properties or  no channel.');
 			return;
 		}
 
-		const flashMessages = get(this, 'flashMessages');
-		const track = this.store.createRecord('track', props);
+		const track = this.store.createRecord('track', {
+			url: props.url,
+			title: props.title,
+			body: props.body,
+			ytid: props.ytid
+		});
 		track.set('channel', channel);
 
 		try {
-			yield track.updateYouTubeId().save();
+			yield track.save();
+		} catch (e) {
+			Ember.debug(e);
+			flashMessages.warning('Could not create your track.');
+		}
+
+		try {
 			const tracks = yield channel.get('tracks');
 			tracks.addObject(track);
 			channel.set('updated', new Date().getTime());
 			yield channel.save();
 			get(this, 'flashMessages').info('Your track was created', {timeout: 5000});
 		} catch (e) {
-			flashMessages.warning('Hm, something went astray…');
+			Ember.debug(e);
+			flashMessages.warning('Could not save the track to your radio');
 		}
+
 		return track;
 	}).drop()
 });

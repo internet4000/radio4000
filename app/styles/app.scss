@@ -1,4 +1,4 @@
-/*!
+/* !
 	RADIO4000
 	by Hugo Vieilledent and Oskar Rough Mosumgaard
 */
@@ -21,7 +21,6 @@
 @import "base/base";
 @import "base/form";
 @import "base/button";
-@import "base/button-group"; // @todo refactor
 @import "base/typography";
 
 // Layout
@@ -39,6 +38,7 @@
 
 // UI components
 @import "components/aside";
+@import "components/button-group";
 @import "components/icon";
 @import "components/tabs";
 @import "components/banner";

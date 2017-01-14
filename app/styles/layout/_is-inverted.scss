@@ -20,7 +20,8 @@
 		background-color: $black;
 	}
 
-	.Root.isInverted {
+	.Root.isInverted,
+	.Channel-body {
 		color: $text-color-invert;
 	}
 

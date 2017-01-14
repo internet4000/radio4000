@@ -1,7 +1,7 @@
 {{isActive}}
-{{#if isShuffled}}
 
-	{{x-icon i='shuffle'}}{{x-icon i='next'}}{{if expanded ' Shuffle'}}
+{{#if isShuffled}}
+	<i class="icon-shuffle"></i> {{if expanded 'Shuffle'}}
 {{else}}
 	{{#if nothingToPlay}}
 		Sorry, this radio is empty for now…
@@ -9,5 +9,9 @@
 		{{x-icon i='play'}}{{if expanded ' Play'}}
 	{{/if}}
 {{/if}}
-{{#if isLoading}}<span>Loading…</span>{{/if}}
+
+{{#if isLoading}}
+	<span>Loading…</span>
+{{/if}}
+
 {{yield}}

@@ -19,5 +19,11 @@ yarn.lock
 /libpeerconnection.log
 npm-debug.log*
 testem.log
+
+# sublime text
 *.sublime-project
 *.sublime-workspace
+
+# vs studio code
+jsconfig.json
+typings/
