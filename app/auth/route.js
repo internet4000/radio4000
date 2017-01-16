@@ -12,10 +12,15 @@ export default Route.extend({
 		// auth/wrong-password
 	},
 	actions: {
-		login(data) {
-			console.log(data, 'data auth route');
-
+		login(provider, email, password) {
 			const flashMessages = get(this, 'flashMessages');
+			console.log(provider, email, password, '/ auth route');
+
+			let data = {
+				provider,
+				email,
+				password
+			};
 
 			get(this, 'session').open('firebase', data).then(() => {
 				flashMessages.info('You are now signed in!');

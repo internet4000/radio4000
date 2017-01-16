@@ -9,12 +9,7 @@ export default Component.extend({
 				Ember.warn('Passwords do not match');
 				return;
 			}
-			let data = {
-				provider,
-				email,
-				password
-			};
-			get(this, 'onSignup')(data);
+			get(this, 'onSignup')(provider, email, password);
 		}
 	}
 });

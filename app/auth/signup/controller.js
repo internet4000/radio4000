@@ -6,9 +6,7 @@ export default Controller.extend({
 	firebaseApp: inject.service(),
 
 	createUser(email, password) {
-		return this.createFirebaseUser(email, password)
-			.then(this.login(email, password));
-		// .then(uid => this.createInternalUser(uid));
+		return this.createFirebaseUser(email, password);
 	},
 	createFirebaseUser(email, password) {
 		return new RSVP.Promise((resolve, reject) => {
@@ -20,14 +18,14 @@ export default Controller.extend({
 	},
 
 	actions: {
-		signup(data) {
-			console.log('signup controller action', data);
-			if (data.provider === 'password') {
-				this.createUser(data.email, data.password);
+		signup(provider, email, password) {
+			if (provider === 'password') {
+				this.createUser(email, password);
 			}
-			// create a new firebase.user
-			// if success -> create r4.user -> redirect to newuser
-			// if fail -> why did it fail.
+			this.send("login", provider, email, password);
+		},
+		login(provider, email, password) {
+			return true;
 		}
 	}
 });
