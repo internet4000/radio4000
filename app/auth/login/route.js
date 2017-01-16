@@ -8,8 +8,9 @@ export default Route.extend({
 			return transition.send('redirectAfterAuth');
 		}
 	},
-	redirectAfterAuth() {
-		// on the route, true to bubble up
-		return true;
+	actions: {
+		redirectAfterAuth() {
+			return true;
+		}
 	}
 });

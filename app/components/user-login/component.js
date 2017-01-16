@@ -12,9 +12,14 @@ export default Component.extend({
 
 		resetPassword(email) {
 			const auth = get(this, 'firebaseApp').auth();
+
+			if (!email) {
+				get(this, 'flashMessages').warning('Enter your e-mail address to reset your email.');
+			}
+
 			auth.sendPasswordResetEmail(email)
 				.then(() => {
-					get(this, 'notifications').success('Password reset. Check your email.', {
+					get(this, 'flashMessages').success('Password reset. Check your email.', {
 						autoClear: false
 					});
 				})

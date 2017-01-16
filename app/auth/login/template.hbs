@@ -5,13 +5,12 @@
 			<p>to manage your Radio4000.</p>
 		</header>
 		<div class="Container">
-			{{user-login onLogin=(action 'catchLogin')}}
-		</div>
-	</section>
+			{{user-login onLogin=(action "catchLogin")}}
 
-	<section class="Section">
-		<div class="Container">
-			<p>Don't have an account yet? <a href="{{href-to 'auth.signup'}}" class="Btn Btn--important">Sign up</a> now!</p>
+			<br>
+			<p>
+				Don't have a radio yet? <a href="{{href-to 'auth.signup'}}" class="Btn Btn--important">Sign up</a>
+			</p>
 		</div>
 	</section>
 </div>

@@ -42,7 +42,7 @@
 
 .Note--sticky {
 	position: absolute;
-	top: 0;
+	top: -2px; // so it appears to be "stuck" to the top
 	right: 0.5rem;
 	text-align: right;
 }

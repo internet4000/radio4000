@@ -24,8 +24,6 @@ export default Route.extend({
 
 			get(this, 'session').open('firebase', data).then(() => {
 				flashMessages.info('You are now signed in!');
-				// get or create user either in utils/get... or here
-				// .then( redirect
 				this.send('redirectAfterAuth');
 			}).catch(error => {
 				this.onLoginError(error);

@@ -1,16 +1,13 @@
 import Ember from 'ember';
 
-const {Controller, inject, RSVP} = Ember;
+const {Controller, get, inject, RSVP} = Ember;
 
 export default Controller.extend({
 	firebaseApp: inject.service(),
 
-	createUser(email, password) {
-		return this.createFirebaseUser(email, password);
-	},
 	createFirebaseUser(email, password) {
 		return new RSVP.Promise((resolve, reject) => {
-			this.get('firebaseApp').auth()
+			get(this, 'firebaseApp').auth()
 				.createUserWithEmailAndPassword(email, password)
 				.then(authData => resolve(authData.uid))
 				.catch(err => reject(err));
@@ -19,12 +16,19 @@ export default Controller.extend({
 
 	actions: {
 		signup(provider, email, password) {
+			const flashMessages = get(this, 'flashMessages');
+
 			if (provider === 'password') {
-				this.createUser(email, password);
+				this.createFirebaseUser(email, password).then(() => {
+					this.send('login', provider, email, password);
+				}).catch(err => {
+					flashMessages.warning(err, {timeout: 4000});
+				});
+			} else {
+				this.send('login', provider);
 			}
-			this.send("login", provider, email, password);
 		},
-		login(provider, email, password) {
+		login() {
 			return true;
 		}
 	}
