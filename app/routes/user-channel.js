@@ -18,4 +18,3 @@ export default Route.extend({
 		return userChannel;
 	}
 });
-

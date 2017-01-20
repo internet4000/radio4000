@@ -36,7 +36,11 @@
 			      onClick={{perform bot.playAnotherRadio channel}}
 			      disabled={{bot.playAnotherRadio.isRunning}}
 			      title="Swap to another radio (press 'W')">
-						{{if bot.playAnotherRadio.isIdle 'Swap' 'Swapping'}}
+						{{#if bot.playAnotherRadio.isIdle}}
+							S<u>w</u>ap
+						{{else}}
+							Swapping
+						{{/if}}
 		      </button>
 		    </div>
 		  {{/channel-card}}

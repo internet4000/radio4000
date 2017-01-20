@@ -9,10 +9,10 @@ const {get, set, computed} = Ember;
 const trackObject = Ember.Object.extend(Validations);
 
 export default TrackFormComponent.extend({
-	initialUrl: '',
-
 	disableSubmit: computed.or('submitTask.isRunning', 'isSubmitting', 'track.validations.isInvalid'),
 
+	// Called on init as well as after submitting a track.
+	// Also see the same method on the `TrackForm` component, from which this extends.
 	resetForm() {
 		// The getOwner part is mentioned in the ember-cp-validation docs.
 		const track = trackObject.create(Ember.getOwner(this).ownerInjection(), {

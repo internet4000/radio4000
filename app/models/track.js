@@ -8,15 +8,18 @@ const {get, set} = Ember;
 
 export const Validations = buildValidations({
 	url: [
-		validator('presence', true),
+		validator('presence', {
+			presence: true,
+			message: 'Paste a YouTube URL here'
+		}),
 		validator('youtube-url')
 	],
 	title: [
-	  validator('presence', {
-	    presence: true,
-	    ignoreBlank: true,
-	    message: 'Field should not be empty'
-	  }),
+		validator('presence', {
+			presence: true,
+			ignoreBlank: true,
+			message: 'Field should not be empty'
+		}),
 		validator('length', {
 			max: 256
 		})
