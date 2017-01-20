@@ -8,7 +8,10 @@ const {get, set} = Ember;
 
 export const Validations = buildValidations({
 	url: [
-		validator('presence', true),
+		validator('presence', {
+			presence: true,
+			message: 'Paste a YouTube URL here'
+		}),
 		validator('youtube-url')
 	],
 	title: [

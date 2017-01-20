@@ -11,7 +11,7 @@ export default Route.extend({
 	startAt: null,
 	endAt: null,
 
-	// When search changes the url, don't replace the history.
+	// When search changes the url, don't replace (add) to the history.
 	// e.g. back/forth in browser works as expected.
 	queryParams: {
 		search: {
@@ -86,16 +86,17 @@ export default Route.extend({
 	// Constructs an emerfire query supporting pagination.
 	// Inspired by https://github.com/firebase/emberfire/issues/248
 	findPaginated() {
-		const query = {};
-
+		let startAt = this.get('startAt');
+		let endAt = this.get('endAt');
+		let query = {};
 		query[LIMIT_TO_DYNAMIC] = PAGE_SIZE + 1;
 
-		if (this.get('startAt')) {
-			query.startAt = this.get('startAt');
+		if (startAt) {
+			query.startAt = startAt;
 		}
 
-		if (this.get('endAt')) {
-			query.endAt = this.get('endAt');
+		if (endAt) {
+			query.endAt = endAt;
 			query[LIMIT_TO_DYNAMIC] = PAGE_SIZE + 1;
 		}
 

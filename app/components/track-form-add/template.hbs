@@ -3,7 +3,6 @@
 	valuePath="url"
 	label="URL"
 	hint="Paste in the URL of a YouTube video" as |value|}}
-
 	{{focus-input type="url" value=value required="required" placeholder="Paste in a YouTube link"}}
 {{/form-group}}
 
@@ -12,7 +11,6 @@
 	valuePath="title"
 	label="Title"
 	hint="Paste in the URL of a YouTube video" as |value|}}
-
 	{{input value=value placeholder="Enter the track title" required="required"}}
 	{{#if fetchTitle.isRunning}}
 		<p class="Form-groupStatus">Updating…</p>
@@ -24,7 +22,6 @@
 	valuePath="body"
 	label="Description"
 	hint="Give your track an optional description" as |value|}}
-
 	{{input value=value placeholder="Fantastic track! #fantastic (optional)"}}<br>
 {{/form-group}}
 
