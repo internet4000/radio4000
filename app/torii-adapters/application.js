@@ -5,6 +5,7 @@ const {debug, inject, RSVP} = Ember;
 
 export default ToriiFirebaseAdapter.extend({
 	store: inject.service(),
+	flashMessages: inject.service(),
 	// firebase: inject.service(),
 
 	// Extacts session information from authentication response
@@ -12,30 +13,25 @@ export default ToriiFirebaseAdapter.extend({
 		this._super(user);
 		const store = this.get('store');
 
-		// TODO: somehow send a verification email before user is logged in
-		// or directly log out after emailVerified, so log in, is checked.
-		// insert this logic as the `reject` part of the returned promise
-		if (!user.emailVerified) {
-			debug('Email is not verified, sending email');
-			user.sendEmailVerification();
-			this.close();
-			console.log( this.close(), "this.close" );
+		return new RSVP.Promise((resolve, reject) => {
+			if (!user.emailVerified) {
+				debug('Email is not verified, sending email');
+				user.sendEmailVerification();
+				this.close();
+				reject(new Error("We just sent your an email to verify your email adress"));
+			} else {
+				this.getOrCreateUser(user.uid, store).then(userModel => {
+					console.log( userModel, "userModel" );
 
-			return
-		}
-
-		return new RSVP.Promise(resolve => {
-			this.getOrCreateUser(user.uid, store).then(userModel => {
-				console.log( userModel, "userModel" );
-
-				this.createUserSetting(userModel, store);
-				resolve({
-					provider: this.extractProviderId_(user),
-					uid: user.uid,
-					// Note that normally currentUser is a Firebase user, not an ember model `user` like in this case.
-					currentUser: userModel
+					this.createUserSetting(userModel, store);
+					resolve({
+						provider: this.extractProviderId_(user),
+						uid: user.uid,
+						// Note that normally currentUser is a Firebase user, not an ember model `user` like in this case.
+						currentUser: userModel
+					});
 				});
-			});
+			}
 		});
 	},
 
