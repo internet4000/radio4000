@@ -14,7 +14,6 @@ export default Route.extend({
 	actions: {
 		login(provider, email, password) {
 			const flashMessages = get(this, 'flashMessages');
-			console.log(provider, email, password, '/ auth route');
 
 			let data = {
 				provider,
@@ -22,7 +21,7 @@ export default Route.extend({
 				password
 			};
 
-			get(this, 'session').open('firebase', data).then(() => {
+			get(this, 'session').open('firebase', data).then((result) => {
 				flashMessages.info('You are now signed in!');
 				this.send('redirectAfterAuth');
 			}).catch(error => {
