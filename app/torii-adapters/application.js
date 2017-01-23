@@ -12,8 +12,10 @@ export default ToriiFirebaseAdapter.extend({
 	open(user) {
 		this._super(user);
 		const store = this.get('store');
+		console.log( "user", user );
 
 		return new RSVP.Promise((resolve, reject) => {
+			// TODO: make this check only for email logins
 			if (!user.emailVerified) {
 				debug('Email is not verified, sending email');
 				user.sendEmailVerification();
