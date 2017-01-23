@@ -9,6 +9,7 @@ export default Controller.extend(createTrackMixin, {
 
 	actions: {
 		saveTrack(trackProperties) {
+			this.set('url', null);
 			const userChannel = get(this, 'model');
 			return this.get('createTrack').perform(trackProperties, userChannel);
 		},
