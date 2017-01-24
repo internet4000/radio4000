@@ -1,0 +1,15 @@
+<div class="Sections">
+	<section class="Section">
+		<header class="Manchet">
+			<h1>Settings</h1>
+			<p>Customize the tool to your needs for a  experience.</p>
+		</header>
+		<div class="Container">
+			<h2>Accounts</h2>
+			<p>You can link and unlink your different accounts together, to login using any of them.</p>
+			{{#account-provider-link auth=auth providerName="google" link=(action 'linkAccount')}}Google{{/account-provider-link}}
+			{{#account-provider-link auth=auth providerName="facebook" link=(action 'linkAccount')}}Facebook{{/account-provider-link}}
+		</div>
+	</section>
+</div>
+{{outlet}}
