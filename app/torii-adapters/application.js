@@ -12,19 +12,18 @@ export default ToriiFirebaseAdapter.extend({
 	open(user) {
 		this._super(user);
 		const store = this.get('store');
-		console.log( "user", user );
+		let providerIsPassword = this.extractProviderId_(user) === 'password';
+		console.log( providerIsPassword, "providerispassword" );
 
 		return new RSVP.Promise((resolve, reject) => {
 			// TODO: make this check only for email logins
-			if (!user.emailVerified) {
+			if (!user.emailVerified && providerIsPassword) {
 				debug('Email is not verified, sending email');
 				user.sendEmailVerification();
 				this.close();
 				reject(new Error("We just sent your an email to verify your email adress"));
 			} else {
 				this.getOrCreateUser(user.uid, store).then(userModel => {
-					console.log( userModel, "userModel" );
-
 					this.createUserSetting(userModel, store);
 					resolve({
 						provider: this.extractProviderId_(user),
