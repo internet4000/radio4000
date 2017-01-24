@@ -21,7 +21,7 @@ export default Route.extend({
 				password
 			};
 
-			get(this, 'session').open('firebase', data).then((result) => {
+			get(this, 'session').open('firebase', data).then(() => {
 				flashMessages.info('You are now signed in!');
 				this.send('redirectAfterAuth');
 			}).catch(error => {

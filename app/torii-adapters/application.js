@@ -20,7 +20,7 @@ export default ToriiFirebaseAdapter.extend({
 				debug('Email is not verified, sending email');
 				user.sendEmailVerification();
 				this.close();
-				reject(new Error("We just sent your an email to verify your email adress"));
+				reject(new Error('We just sent your an email to verify your email adress'));
 			} else {
 				this.getOrCreateUser(user.uid, store).then(userModel => {
 					this.createUserSetting(userModel, store);

@@ -8,7 +8,7 @@ export default Ember.Route.extend({
 
 		// If we do not unload the user model, Firebase will warn about permissions.
 		const user = get(this, 'session.currentUser');
-		console.log( user, "user" );
+		console.log(user, 'user');
 
 		if (user) {
 			user.get('settings').then(settings => {
@@ -16,6 +16,7 @@ export default Ember.Route.extend({
 				user.unloadRecord();
 			});
 		}
+
 		get(this, 'session').close().then(() => {
 			flashMessages.warning(`You have been signed out`);
 			this.transitionTo('auth.login');
