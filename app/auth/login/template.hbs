@@ -5,8 +5,7 @@
 			<p>to manage your Radio4000.</p>
 		</header>
 		<div class="Container">
-			{{user-login onLogin=(action "catchLogin")}}
-
+			{{user-login onLogin="login"}}
 			<br>
 			<p>
 				Don't have a radio yet? <a href="{{href-to 'auth.signup'}}" class="Btn Btn--important">Sign up</a>
