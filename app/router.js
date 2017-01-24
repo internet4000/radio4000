@@ -23,7 +23,6 @@ Router.map(function () {
 		this.route('forms');
 		this.route('tabs');
 	});
-	this.route('logout');
 	this.route('channels', {path: '/'}, function () {
 		this.route('all');
 		this.route('new');
