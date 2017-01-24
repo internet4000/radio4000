@@ -13,7 +13,6 @@ export default ToriiFirebaseAdapter.extend({
 		this._super(user);
 		const store = this.get('store');
 		let providerIsPassword = this.extractProviderId_(user) === 'password';
-		console.log( providerIsPassword, "providerispassword" );
 
 		return new RSVP.Promise((resolve, reject) => {
 			// TODO: make this check only for email logins
