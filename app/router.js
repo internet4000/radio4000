@@ -47,8 +47,8 @@ Router.map(function () {
 	this.route('auth', function () {
 		this.route('signup');
 		this.route('login');
-		this.route('logout');
-		this.route('settings');
+		this.authenticatedRoute('logout');
+		this.authenticatedRoute('settings');
 	});
 });
 

@@ -4,23 +4,28 @@ const {Controller, inject, computed, debug} = Ember;
 
 export default Controller.extend({
 	firebaseApp: inject.service(),
-	session: inject.service(),
-	userAccounts: computed('session', 'firebaseApp', function() {
-		return this.get('firebaseApp').auth().currentUser.providerData.map(provider => {
+	init() {
+		this._super();
+		this.getActiveUserAccounts();
+	},
+	accounts: [],
+	getActiveUserAccounts() {
+		let accounts = this.get('firebaseApp').auth().currentUser.providerData.map(provider => {
 			if (provider.providerId === 'facebook.com') {
-				debug('provider: facebook');
-				this.set('hasFacebook', true);
+				debug('provider = facebook');
 				return 'facebook';
 			} else if (provider.providerId === 'google.com') {
-				debug('provider: google')
-				this.set('hasGoogle', true);
+				debug('provider = google');
 				return 'google';
 			} else {
-				debug('provider: default')
+				debug('unknown provider');
 			}
+			this.set('accounts', accounts);
 		});
+	},
+	hasGoogle: computed('accounts', function() {
+		return this.get('accounts').contains('google');
 	}),
-	hasGoogle: false,
 	hasFacebook: false,
 	hasEmail: false,
 
