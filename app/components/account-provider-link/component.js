@@ -7,6 +7,7 @@ export default Component.extend({
 	tagName: ['button'],
 	classNames: ['Btn'],
 
+
 	click() {
 		// pass data up to action link (user account)
 		get(this, 'link')(this.extractProvider(get(this, 'providerName')));
