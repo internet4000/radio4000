@@ -8,6 +8,7 @@ export default Component.extend({
 	classNames: ['Btn'],
 
 	click() {
+		// pass data up to action link (user account)
 		get(this, 'link')(this.extractProvider(get(this, 'providerName')));
 	},
 
@@ -22,7 +23,6 @@ export default Component.extend({
 		} else {
 				throw new Error('Provider is not supported for extraction');
 		}
-
 		debug(`generating provider: ${name}`);
 		debug(provider);
 
