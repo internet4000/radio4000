@@ -4,8 +4,8 @@ import firebase from 'npm:firebase';
 const {Component, get, debug} = Ember;
 
 export default Component.extend({
-	tagName: ["button"],
-	classNames: ["Btn"],
+	tagName: ['button'],
+	classNames: ['Btn'],
 
 	click() {
 		get(this, 'link')(this.extractProvider(get(this, 'providerName')));
@@ -15,20 +15,17 @@ export default Component.extend({
 		const auth = firebase.auth;
 		let provider;
 
-		debug(`generating provider: ${name}`);
-
-		switch (name) {
-			case "google":
+		if (name === 'google') {
 				provider = new auth.GoogleAuthProvider();
-				break;
-			case "facebook":
+		} else if (name === 'facebook') {
 				provider = new auth.FacebookAuthProvider();
-				break;
-			default:
-				new Error("Provider is not supported for extraction")
-				break;
+		} else {
+				throw new Error('Provider is not supported for extraction');
 		}
-		console.log("PROVIDER", provider);
+
+		debug(`generating provider: ${name}`);
+		debug(provider);
+
 		return provider;
 	}
 });
