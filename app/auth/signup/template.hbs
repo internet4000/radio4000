@@ -1,0 +1,19 @@
+<div class="Sections">
+	<section class="Section">
+		<header class="Manchet">
+			<h1>Sign up</h1>
+			<p>
+				<strong>Create your own Radio4000</strong> and interact with other radios.<br>
+				Are you wondering why? <a href="{{href-to 'intro'}}">Get introduced</a> to Radio4000.
+			</p>
+		</header>
+		<div class="Container">
+			{{user-signup onSignup=(action "signup")}}
+
+			<br>
+			<p>
+				Already have a radio? <a href="{{href-to 'auth.login'}}" class="Btn Btn--important">Log in</a>
+			</p>
+		</div>
+	</section>
+</div>
