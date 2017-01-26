@@ -8,10 +8,13 @@ export default Controller.extend({
 		this._super();
 		this.getActiveUserAccounts();
 	},
-	accounts: [],
+	accounts: null,
 	getActiveUserAccounts() {
-		let auth = this.get('firebaseApp').auth();
-		let accounts = auth.currentUser.providerData.map(provider => {
+		// This called will set the `accounts` array, triggering the `hasProviderName`s CPs
+		// used to display link/unLink buttons for each of them
+		// this method is called after each link/unlink and on page controller load
+		// because the firebaseApp.auth() cannot be made a CP
+		let accounts = this.get('firebaseApp').auth().currentUser.providerData.map(provider => {
 			if (provider.providerId === 'facebook.com') {
 				debug('provider = facebook');
 				return 'facebook';
@@ -21,13 +24,15 @@ export default Controller.extend({
 			} else {
 				debug('unknown provider');
 			}
-			this.set('accounts', accounts);
 		});
+		this.set('accounts', accounts);
 	},
 	hasGoogle: computed('accounts', function() {
 		return this.get('accounts').contains('google');
 	}),
-	hasFacebook: false,
+	hasFacebook: computed('accounts', function() {
+		return this.get('accounts').contains('facebook');
+	}),
 	hasEmail: false,
 
 	actions: {
@@ -35,6 +40,7 @@ export default Controller.extend({
 			let auth = this.get('firebaseApp').auth();
 			auth.currentUser.linkWithPopup(provider).then(result => {
 				Ember.debug('Accounts successfully linked');
+				this.getActiveUserAccounts();
 				Ember.debug(result.credential, result.user);
 			}).catch(err => {
 				Ember.debug(err);
