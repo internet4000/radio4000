@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import firebase from 'npm:firebase';
 
-const {Component, get, debug} = Ember;
+const {Component, get} = Ember;
 
 export default Component.extend({
 	tagName: ['article'],
@@ -9,21 +9,18 @@ export default Component.extend({
 
 	extractProvider(providerId) {
 		const auth = firebase.auth;
-		let provider;
-
 		if (providerId === 'google.com') {
-			provider = new auth.GoogleAuthProvider();
+			return new auth.GoogleAuthProvider();
 		} else if (providerId === 'facebook.com') {
-			provider = new auth.FacebookAuthProvider();
-		} else {
-			throw new Error('Provider is not supported for extraction');
+			return new auth.FacebookAuthProvider();
 		}
-		return provider;
+		throw new Error('Provider is not supported for extraction');
 	},
 	actions: {
-		remove() {
+		add() {
 			// pass data up to action link (user account)
-			get(this, 'link')(this.extractProvider(get(this, 'providerId')));
+			const provider = this.extractProvider(get(this, 'providerId'));
+			get(this, 'link')(provider);
 		}
 	}
 });

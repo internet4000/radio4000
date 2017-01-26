@@ -8,11 +8,11 @@ export default Controller.extend({
 	flashMessages: inject.service(),
 	init() {
 		this._super();
-		this.getActiveUserAccounts();
+		this.updateAccounts();
 	},
 	accounts: null,
 	providerData: null,
-	getActiveUserAccounts() {
+	updateAccounts() {
 		// This called will set the `accounts` array, triggering the `hasProviderName`s CPs
 		// used to display link/unLink buttons for each of them
 		// this method is called after each link/unlink and on page controller load
@@ -36,9 +36,10 @@ export default Controller.extend({
 		linkAccount(provider) {
 			this.get('firebaseApp').auth().currentUser.linkWithPopup(provider).then(user => {
 				debug(`Accounts successfully linked: ${user}`);
-				this.getActiveUserAccounts();
+				this.updateAccounts();
 			}).catch(error => {
-				debug(error);
+				console.log('could not link account');
+				console.log(error);
 				this.get('flashMessages').info(error)
 			});
 		},
@@ -55,7 +56,7 @@ export default Controller.extend({
 			debug(`provider ${providerId} unlink starting`);
 			this.get('firebaseApp').auth().currentUser.unlink(providerId).then(user => {
 				debug(`provider ${providerId} un-linked; user: ${user}`);
-				this.getActiveUserAccounts();
+				this.updateAccounts();
 			}).catch(error => {
 				debug(`provider ${providerId} un-linked ERROR: ${error}`);
 			});
