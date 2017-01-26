@@ -3,14 +3,14 @@
 	{{#link-to "channels.all" title="Find radio channels to enjoy" class="Tabs-item"}}Radios{{/link-to}}
 
 	{{#if userChannel}}
-		{{#link-to "auth.settings" title="Settings to custonize your experience" class="Tabs-item"}}Setings{{/link-to}}
+		{{#link-to "auth.settings" title="Settings to custonize your experience" class="Tabs-item"}}Settings{{/link-to}}
 		{{#link-to "channels.history" title="Your listening history" class="Tabs-item"}}History{{/link-to}}
 		{{channel-card channel=userChannel wide=true}}
 		<button {{action "addTrack"}} class="Btn Btn--primary Btn--topNoRadius" title="Add a new track to your radio">Add track</button>
 	{{/if}}
 
 	{{#unless userChannel}}
-		{{#btn-group class="Tabs-item"}}
+		{{#btn-group class="Tabs-item BtnGroupWrapper BtnGroupWrapper--full"}}
 			{{#if isAuthenticated}}
 				{{#link-to "channels.new" class="Btn Btn--important" title="Sign up to create your own radio now or log in"}}Create your radio{{/link-to}}
 			{{else}}

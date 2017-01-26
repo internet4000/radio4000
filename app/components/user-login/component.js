@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {Component, get, inject} = Ember;
+const {Component, get, inject, debug} = Ember;
 
 export default Component.extend({
 	firebaseApp: inject.service(),
@@ -15,14 +15,14 @@ export default Component.extend({
 			const messages = get(this, 'flashMessages');
 
 			if (!email) {
-				messages.warning('Enter your e-mail address to reset your email.');
+				messages.warning('Enter your e-mail address in the email field to reset your password.');
 			}
 
 			auth.sendPasswordResetEmail(email).then(() => {
 				messages.success('Password reset. Check your email.', {
 					autoClear: false
 				});
-			}).catch(err => Ember.debug(err));
+			}).catch(err => debug(err));
 		}
 	}
 });

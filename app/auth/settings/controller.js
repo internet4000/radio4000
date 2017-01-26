@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import firebase from 'npm:firebase';
 
-const {Controller, inject, computed, debug} = Ember;
+const {Controller, inject, get, computed, debug} = Ember;
 
 export default Controller.extend({
 	firebaseApp: inject.service(),
@@ -17,10 +17,10 @@ export default Controller.extend({
 		// used to display link/unLink buttons for each of them
 		// this method is called after each link/unlink and on page controller load
 		// because the firebaseApp.auth() cannot be made a CP
-		let providerData = this.get('firebaseApp').auth().currentUser.providerData;
-		let accounts = providerData.mapBy('providerId');
+		let currentUserData = this.get('firebaseApp').auth().currentUser;
+		let accounts = currentUserData.providerData.mapBy('providerId');
 		this.set('accounts', accounts);
-		this.set('providerData', providerData);
+		this.set('currentUserData', currentUserData);
 	},
 	hasGoogle: computed('accounts', function() {
 		return this.get('accounts').contains('google.com');
@@ -47,6 +47,8 @@ export default Controller.extend({
 			let auth = this.get('firebaseApp').auth();
 			let credential = firebase.auth.EmailAuthProvider.credential(email, password);
 			auth.currentUser.link(credential).then(user => {
+				this.get('firebaseApp').auth().currentUser.sendEmailVerification();
+				this.getActiveUserAccounts();
 				debug(`Account linking success: ${user}`);
 			}).catch(error => {
 				this.get('flashMessages').info(error)

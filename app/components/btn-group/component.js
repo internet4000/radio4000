@@ -3,7 +3,6 @@ import Ember from 'ember';
 const {on, $} = Ember;
 
 export default Ember.Component.extend({
-	tagName: 'menu',
 	classNames: ['BtnGroup'],
 
 	attachButtonHandlers: on('didInsertElement', function () {
