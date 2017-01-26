@@ -29,7 +29,7 @@ export default Controller.extend({
 		return this.get('accounts').contains('facebook.com');
 	}),
 	hasEmail: computed('accounts', function() {
-		return this.get('accounts').contains('passwor');
+		return this.get('accounts').contains('password');
 	}),
 
 	actions: {

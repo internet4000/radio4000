@@ -1,6 +1,3 @@
-{{#unless moreThanOneAccount}}
-	<p>You need to link at least one account to connect to Radio4000.</p>
-{{/unless}}
 
 {{#each providerData as |provider|}}
 	<article class="ProviderAccount">
@@ -10,13 +7,17 @@
 			</div>
 		{{/if}}
 		<div class="ProviderAccount-body">
-			<p class="ProviderAccount-id">{{provider.providerId}}</p>
 			<p class="ProviderAccount-name">{{provider.displayName}}</p>
+			<p class="ProviderAccount-id Muted">{{provider.providerId}}</p>
 		</div>
 		{{#if moreThanOneAccount}}
-			<button class="Btn Btn-important" {{action 'unlink' provider.providerId}}>Unlink account</button>
+			<button class="Btn" {{action 'unlink' provider.providerId}}>Remove</button>
 		{{/if}}
 	</article>
 {{/each}}
+
+{{#unless moreThanOneAccount}}
+	<p class="Muted">You need to have at least one account linked to connect to Radio4000.</p>
+{{/unless}}
 
 {{yield}}

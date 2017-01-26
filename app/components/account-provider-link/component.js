@@ -4,14 +4,8 @@ import firebase from 'npm:firebase';
 const {Component, get, debug} = Ember;
 
 export default Component.extend({
-	tagName: ['button'],
-	classNames: ['Btn'],
-	attributeBindings: ['disabled'],
-
-	click() {
-		// pass data up to action link (user account)
-		get(this, 'link')(this.extractProvider(get(this, 'providerId')));
-	},
+	tagName: ['article'],
+	classNames: ['ProviderAccount'],
 
 	extractProvider(providerId) {
 		const auth = firebase.auth;
@@ -25,5 +19,11 @@ export default Component.extend({
 			throw new Error('Provider is not supported for extraction');
 		}
 		return provider;
+	},
+	actions: {
+		remove() {
+			// pass data up to action link (user account)
+			get(this, 'link')(this.extractProvider(get(this, 'providerId')));
+		}
 	}
 });

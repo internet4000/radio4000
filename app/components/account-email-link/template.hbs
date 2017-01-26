@@ -1,11 +1,15 @@
 {{#if disabled}}
-	{{button action='submit' disabled=disabled}}
+	<button class="Btn" disabled=disabled>Add email account</button>
 {{else}}
-	<form class="Form" {{action "link" email password on="submit"}}>
-		{{input name="email" type="email" value=email placeholder="Email"}}
-		{{input name="" type="password" value=password placeholder="Password"}}
+	<form class="Form ProviderAccount-body" {{action "link" email password on="submit"}}>
+		<div class="Form-group">
+			{{input name="email" type="email" value=email placeholder="Email"}}
+		</div>
+		<div class="Form-group">
+			{{input name="" type="password" value=password placeholder="Password"}}
+		</div>
 		<button type="submit" class="Btn Btn--large">
-			Link an email/password account
+			Add Email
 		</button>
 	</form>
 {{/if}}

@@ -1,14 +1,26 @@
+.ProviderAccounts {
+  padding-bottom: 1.3rem;
+}
 .ProviderAccount {
 	display: flex;
 	flex-direction: row;
 	wrap: no-wrap;
-	align-items: end;
+	align-items: center;
+	padding: 0.5rem;
+	margin-bottom: 0.4rem;
+	background-color: $slightgray;
 }
 .ProviderAccount-media {
-	min-width: 5rem;
+	width: 100%;
+	max-width: 5rem;
+	padding-right: 1rem;
 }
 .ProviderAccount-image {
-	max-height: 3rem;
+	width: 100%;
+	text-align: center;
+}
+.ProviderAccount-body {
+	flex-grow: 2;
 }
 .ProviderAccount-id,
 .ProviderAccount-name {
