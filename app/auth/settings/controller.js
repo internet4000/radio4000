@@ -62,6 +62,8 @@ export default Controller.extend({
 			}).catch(error => {
 				debug(`provider ${providerId} un-linked ERROR: ${error}`);
 			});
+		},
+		resetPassword() {
 		}
 	}
 });

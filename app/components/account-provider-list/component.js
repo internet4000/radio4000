@@ -9,6 +9,9 @@ export default Component.extend({
 	actions: {
 		unlink(providerId) {
 			this.get('unlink')(providerId);
+		},
+		resetPassword() {
+
 		}
 	}
 });
