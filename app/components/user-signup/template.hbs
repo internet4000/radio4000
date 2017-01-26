@@ -1,7 +1,13 @@
 <form {{action "submit" "password" email password passwordConfirmation on="submit"}} class="Form">
-	{{input name="email" type="email" value=email placeholder="Email" required="required"}}
-	{{input name="" type="password" value=password placeholder="Password" required="required"}}
-	{{input name="" type="password" value=passwordConfirmation placeholder="Password confirmation" required="required"}}
+	<div class="Form-group">
+		{{input name="email" type="email" value=email placeholder="Email" required="required"}}
+	</div>
+	<div class="Form-group">
+		{{input name="" type="password" value=password placeholder="Password" required="required"}}
+	</div>
+	<div class="Form-group">
+		{{input name="" type="password" value=passwordConfirmation placeholder="Password confirmation" required="required"}}
+	</div>
 	<button type="submit" class="Btn Btn--large" title="Sign up or Log in with email">
 		Sign up with email
 	</button>
