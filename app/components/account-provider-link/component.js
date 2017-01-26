@@ -10,23 +10,20 @@ export default Component.extend({
 
 	click() {
 		// pass data up to action link (user account)
-		get(this, 'link')(this.extractProvider(get(this, 'providerName')));
+		get(this, 'link')(this.extractProvider(get(this, 'providerId')));
 	},
 
-	extractProvider(name) {
+	extractProvider(providerId) {
 		const auth = firebase.auth;
 		let provider;
 
-		if (name === 'google') {
-				provider = new auth.GoogleAuthProvider();
-		} else if (name === 'facebook') {
-				provider = new auth.FacebookAuthProvider();
+		if (providerId === 'google.com') {
+			provider = new auth.GoogleAuthProvider();
+		} else if (providerId === 'facebook.com') {
+			provider = new auth.FacebookAuthProvider();
 		} else {
-				throw new Error('Provider is not supported for extraction');
+			throw new Error('Provider is not supported for extraction');
 		}
-		debug(`generating provider: ${name}`);
-		debug(provider);
-
 		return provider;
 	}
 });

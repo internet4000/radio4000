@@ -1,0 +1,20 @@
+.ProviderAccount {
+	display: flex;
+	flex-direction: row;
+	wrap: no-wrap;
+	align-items: end;
+}
+.ProviderAccount-media {
+	min-width: 5rem;
+}
+.ProviderAccount-image {
+	max-height: 3rem;
+}
+.ProviderAccount-id,
+.ProviderAccount-name {
+	margin-bottom: 0;
+}
+
+.ProviderAccount-id {
+	text-transform: capitalize;
+}

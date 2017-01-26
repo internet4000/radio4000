@@ -4,20 +4,19 @@
 			<h1>Settings</h1>
 			<p>Customize your tool to your needs for a personal experience.</p>
 		</header>
+	</section>
+	<section class="Section">
 		<div class="Container">
-			<h2>Accounts</h2>
-			<p>You can link and unlink your different accounts together, to login using any of them.</p>
-			{{#if hasGoogle}}
-				<p>has googlito!</p>
-			{{else}}
-				{{#account-provider-link providerName="google" link=(action 'linkAccount')}}Google{{/account-provider-link}}
-			{{/if}}
-			{{#if hasFacebook}}
-				<p>has facebooki@@(@(@#@!!!!!!!!</p>
-			{{else}}
-				{{#account-provider-link providerName="facebook" link=(action 'linkAccount')}}Facebook{{/account-provider-link}}
-			{{/if}}
-
+			<h2>Linked accounts</h2>
+			{{account-provider-list providerData=providerData unlink=(action 'unlinkAccount')}}
+		</div>
+	</section>
+	<section class="Section">
+		<div class="Container">
+			<h2>Link a new account</h2>
+			<p>Add other accounts to connect to your Radio4000.</p>
+			{{#account-provider-link providerId="google.com" link=(action 'linkAccount')}}Google{{/account-provider-link}}
+			{{#account-provider-link providerId="facebook.com" link=(action 'linkAccount')}}Facebook{{/account-provider-link}}
 		</div>
 	</section>
 </div>

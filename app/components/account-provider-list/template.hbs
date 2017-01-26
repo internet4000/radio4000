@@ -1,0 +1,20 @@
+{{#unless moreThanOneAccount}}
+	<p>You need to link at least one account to use Radio4000 correctly</p>
+{{/unless}}
+
+{{#each providerData as |provider|}}
+	<article class="ProviderAccount">
+		<div class="ProviderAccount-media">
+			<img class="ProviderAccount-image" alt="Image for {{provider.displayName}} {{provider.providerId}} account " src="{{provider.photoURL}}"/>
+		</div>
+		<div class="ProviderAccount-body">
+			<p class="ProviderAccount-id">{{provider.providerId}}</p>
+			<p class="ProviderAccount-name">{{provider.displayName}}</p>
+		</div>
+		{{#if moreThanOneAccount}}
+			<button class="Btn Btn-important" {{action 'unlink' provider.providerId}}>Unlink account</button>
+		{{/if}}
+	</article>
+{{/each}}
+
+{{yield}}
