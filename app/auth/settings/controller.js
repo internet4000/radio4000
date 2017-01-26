@@ -10,7 +10,8 @@ export default Controller.extend({
 	},
 	accounts: [],
 	getActiveUserAccounts() {
-		let accounts = this.get('firebaseApp').auth().currentUser.providerData.map(provider => {
+		let auth = this.get('firebaseApp').auth();
+		let accounts = auth.currentUser.providerData.map(provider => {
 			if (provider.providerId === 'facebook.com') {
 				debug('provider = facebook');
 				return 'facebook';
@@ -32,7 +33,6 @@ export default Controller.extend({
 	actions: {
 		linkAccount(provider) {
 			let auth = this.get('firebaseApp').auth();
-
 			auth.currentUser.linkWithPopup(provider).then(result => {
 				Ember.debug('Accounts successfully linked');
 				Ember.debug(result.credential, result.user);
