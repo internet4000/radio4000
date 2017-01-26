@@ -31,8 +31,8 @@ export default Controller.extend({
 	actions: {
 		linkAccount(provider) {
 			let auth = this.get('firebaseApp').auth();
-			auth.currentUser.linkWithPopup(provider).then(result => {
-				debug(`Accounts successfully linked: ${result}`);
+			auth.currentUser.linkWithPopup(provider).then(user => {
+				debug(`Accounts successfully linked: ${user}`);
 				this.getActiveUserAccounts();
 			}).catch(err => {
 				debug(err);
@@ -40,10 +40,10 @@ export default Controller.extend({
 		},
 		unlinkAccount(providerId) {
 			debug(`provider ${providerId} unlink starting`);
-			this.get('firebaseApp').auth().currentUser.unlink(providerId).then(function() {
-				debug(`provider ${providerId} un-linked`);
+			this.get('firebaseApp').auth().currentUser.unlink(providerId).then(user => {
+				debug(`provider ${providerId} un-linked; user: ${user}`);
 				this.getActiveUserAccounts();
-			}, function(error) {
+			}).catch(error => {
 				debug(`provider ${providerId} un-linked ERROR: ${error}`);
 			});
 		}

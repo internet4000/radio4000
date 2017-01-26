@@ -6,7 +6,7 @@ const {Component, get, debug} = Ember;
 export default Component.extend({
 	tagName: ['button'],
 	classNames: ['Btn'],
-
+	attributeBindings: ['disabled'],
 
 	click() {
 		// pass data up to action link (user account)
