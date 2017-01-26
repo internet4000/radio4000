@@ -7,8 +7,6 @@ export default Controller.extend({
 	init() {
 		this._super();
 		this.getActiveUserAccounts();
-		console.log("this.get('firebaseApp').auth().currentUser", this.get('firebaseApp').auth().currentUser );
-
 	},
 	accounts: null,
 	providerData: null,
@@ -18,9 +16,7 @@ export default Controller.extend({
 		// this method is called after each link/unlink and on page controller load
 		// because the firebaseApp.auth() cannot be made a CP
 		let providerData = this.get('firebaseApp').auth().currentUser.providerData;
-		let accounts = providerData.map(provider => {
-			return provider.providerId;
-		});
+		let accounts = providerData.mapBy('providerId');
 		this.set('accounts', accounts);
 		this.set('providerData', providerData);
 	},
