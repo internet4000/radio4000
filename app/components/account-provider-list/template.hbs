@@ -4,9 +4,11 @@
 
 {{#each providerData as |provider|}}
 	<article class="ProviderAccount">
-		<div class="ProviderAccount-media">
-			<img class="ProviderAccount-image" alt="Image for {{provider.displayName}} {{provider.providerId}} account " src="{{provider.photoURL}}"/>
-		</div>
+		{{#if provider.photoURL}}
+			<div class="ProviderAccount-media">
+				<img class="ProviderAccount-image" alt="Image for {{provider.displayName}} {{provider.providerId}} account " src="{{provider.photoURL}}"/>
+			</div>
+		{{/if}}
 		<div class="ProviderAccount-body">
 			<p class="ProviderAccount-id">{{provider.providerId}}</p>
 			<p class="ProviderAccount-name">{{provider.displayName}}</p>
