@@ -1,0 +1,13 @@
+{{#if disabled}}
+	{{button action='submit' disabled=disabled}}
+{{else}}
+	<form class="Form" {{action "link" email password on="submit"}}>
+		{{input name="email" type="email" value=email placeholder="Email"}}
+		{{input name="" type="password" value=password placeholder="Password"}}
+		<button type="submit" class="Btn Btn--large">
+			Link an email/password account
+		</button>
+	</form>
+{{/if}}
+
+{{yield}}

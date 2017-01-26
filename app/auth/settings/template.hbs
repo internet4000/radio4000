@@ -17,6 +17,7 @@
 			<p>Add other accounts to connect to your Radio4000.</p>
 			{{#account-provider-link providerId="google.com" disabled=hasGoogle link=(action 'linkAccount')}}Google{{/account-provider-link}}
 			{{#account-provider-link providerId="facebook.com" disabled=hasFacebook link=(action 'linkAccount')}}Facebook{{/account-provider-link}}
+			{{account-email-link disabled=hasEmail link=(action 'linkEmail')}}
 		</div>
 	</section>
 </div>

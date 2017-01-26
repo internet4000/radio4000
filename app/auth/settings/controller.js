@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import firebase from 'npm:firebase';
 
 const {Controller, inject, computed, debug} = Ember;
 
@@ -27,16 +28,26 @@ export default Controller.extend({
 	hasFacebook: computed('accounts', function() {
 		return this.get('accounts').contains('facebook.com');
 	}),
-	hasEmail: false,
+	hasEmail: computed('accounts', function() {
+		return this.get('accounts').contains('passwor');
+	}),
 
 	actions: {
 		linkAccount(provider) {
-			let auth = this.get('firebaseApp').auth();
-			auth.currentUser.linkWithPopup(provider).then(user => {
+			this.get('firebaseApp').auth().currentUser.linkWithPopup(provider).then(user => {
 				debug(`Accounts successfully linked: ${user}`);
 				this.getActiveUserAccounts();
 			}).catch(error => {
 				debug(error);
+				this.get('flashMessages').info(error)
+			});
+		},
+		linkEmail(email, password) {
+			let auth = this.get('firebaseApp').auth();
+			let credential = firebase.auth.EmailAuthProvider.credential(email, password);
+			auth.currentUser.link(credential).then(user => {
+				debug(`Account linking success: ${user}`);
+			}).catch(error => {
 				this.get('flashMessages').info(error)
 			});
 		},
