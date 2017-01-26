@@ -4,6 +4,7 @@ const {Controller, inject, computed, debug} = Ember;
 
 export default Controller.extend({
 	firebaseApp: inject.service(),
+	flashMessages: inject.service(),
 	init() {
 		this._super();
 		this.getActiveUserAccounts();
@@ -34,8 +35,9 @@ export default Controller.extend({
 			auth.currentUser.linkWithPopup(provider).then(user => {
 				debug(`Accounts successfully linked: ${user}`);
 				this.getActiveUserAccounts();
-			}).catch(err => {
-				debug(err);
+			}).catch(error => {
+				debug(error);
+				this.get('flashMessages').info(error)
 			});
 		},
 		unlinkAccount(providerId) {
