@@ -12,9 +12,15 @@
 			{{account-provider-list providerData=providerData unlink=(action 'unlinkAccount')}}
 			<p>Those accounts can be added too:</p>
 			<div class="ProviderAccounts">
-				{{account-provider-link name="Google" providerId="google.com" disabled=hasGoogle link=(action 'linkAccount')}}
-				{{account-provider-link name="Facebook" providerId="facebook.com" disabled=hasFacebook link=(action 'linkAccount')}}
-				{{account-email-link disabled=hasEmail link=(action 'linkEmail')}}
+				{{#unless hasGoogle}}
+					{{account-provider-link name="Google" providerId="google.com" disabled=hasGoogle link=(action 'linkAccount')}}
+				{{/unless}}
+				{{#unless hasFacebook}}
+					{{account-provider-link name="Facebook" providerId="facebook.com" disabled=hasFacebook link=(action 'linkAccount')}}
+				{{/unless}}
+				{{#unless hasEmail}}
+					{{account-email-link disabled=hasEmail link=(action 'linkEmail')}}
+				{{/unless}}
 			</div>
 		</div>
 	</section>

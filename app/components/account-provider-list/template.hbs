@@ -1,23 +1,20 @@
-
 {{#each providerData as |provider|}}
 	<article class="ProviderAccount">
 		{{#if provider.photoURL}}
 			<div class="ProviderAccount-media">
-				<img class="ProviderAccount-image" alt="Image for {{provider.displayName}} {{provider.providerId}} account " src="{{provider.photoURL}}"/>
+				<img class="ProviderAccount-image" alt="Image for {{provider.displayName}} {{provider.providerId}} account" src="{{provider.photoURL}}"/>
 			</div>
 		{{/if}}
 		<div class="ProviderAccount-body">
 			<p class="ProviderAccount-name">{{provider.displayName}}</p>
 			<p class="ProviderAccount-id Muted">{{provider.providerId}}</p>
 		</div>
-		{{#if moreThanOneAccount}}
-			<button class="Btn" {{action 'unlink' provider.providerId}}>Remove</button>
-		{{/if}}
+		<button class="Btn" {{action 'unlink' provider.providerId}} disabled={{onlyOneAccount}}>Remove</button>
 	</article>
 {{/each}}
 
-{{#unless moreThanOneAccount}}
+{{#if onlyOneAccount}}
 	<p class="Muted">You need to have at least one account linked to connect to Radio4000.</p>
-{{/unless}}
+{{/if}}
 
 {{yield}}
