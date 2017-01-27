@@ -6,9 +6,6 @@ moduleForComponent('account-email-link', 'Integration | Component | account emai
 });
 
 test('it renders', function (assert) {
-	// Set any properties with this.set('myProperty', 'value');
-	// Handle any actions with this.on('myAction', function(val) { ... });
-
 	this.render(hbs`{{account-email-link}}`);
-	assert.equal(this.$().text().trim(), 'Add Email');
+	assert.equal(this.$().text().trim(), 'Add');
 });

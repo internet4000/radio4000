@@ -21,7 +21,12 @@ export default Controller.extend({
 	// this method is called after each link/unlink and on page controller load
 	// because the firebaseApp.auth() cannot be made a CP
 	updateAccounts() {
-		let currentUser = get(this, 'firebaseApp').auth().currentUser;
+		let firebaseApp = get(this, 'firebaseApp');
+		// This guard is necessary in our test.
+		if (!firebaseApp) {
+			return;
+		}
+		let currentUser = firebaseApp.auth().currentUser;
 		let providerData = currentUser.providerData;
 		let emailVerified = currentUser.emailVerified;
 
