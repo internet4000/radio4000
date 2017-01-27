@@ -3,7 +3,6 @@
 	{{#link-to "channels.all" title="Find radio channels to enjoy" class="Tabs-item"}}Radios{{/link-to}}
 
 	{{#if userChannel}}
-		{{#link-to "auth.settings" title="Settings to custonize your experience" class="Tabs-item"}}Settings{{/link-to}}
 		{{#link-to "channels.history" title="Your listening history" class="Tabs-item"}}History{{/link-to}}
 		{{channel-card channel=userChannel wide=true}}
 		<button {{action "addTrack"}} class="Btn Btn--primary Btn--topNoRadius" title="Add a new track to your radio">Add track</button>
@@ -28,6 +27,7 @@
 
 <div class="Tabs Tabs--transparent Tabs--bottom">
 	{{#if isAuthenticated}}
-		{{#link-to "auth.logout" class="Aside-link Muted" title="Log out from Radio4000"}}Log out{{/link-to}}
+		{{#link-to "auth.settings" class="Aside-link" title="Customize your Radio4000"}}Settings{{/link-to}}
+		{{#link-to "auth.logout" class="Aside-link" title="Log out from Radio4000"}}Log out{{/link-to}}
 	{{/if}}
 </div>
