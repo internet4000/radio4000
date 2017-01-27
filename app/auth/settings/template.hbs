@@ -8,8 +8,11 @@
 	<section class="Section">
 		<div class="Container">
 			<h2>Your accounts</h2>
-			<p>You can connect to Radio4000 with all your linked accounts. It is also used to perform actions from Radio4000 to other sites.</p>
-			{{account-provider-list currentUserData=currentUserData unlink=(action 'unlinkAccount') resetPassword=(action 'resetPassword')}}
+			<p>
+				You can connect to Radio4000 with all accounts you link.<br/>
+				Accounts are also used to perform  actions from Radio4000 to other sites.
+			</p>
+			{{account-provider-list currentUserData=currentUserData providerData=providerData unlink=(action 'unlinkAccount') resetPassword=(action 'resetPassword')}}
 
 			<div class="ProviderAccounts">
 				{{#unless hasGoogle}}

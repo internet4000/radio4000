@@ -11,6 +11,7 @@ export default Controller.extend({
 		this.updateAccounts();
 	},
 	accounts: null,
+	currentUserData: null,
 	providerData: null,
 	updateAccounts() {
 		// This called will set the `accounts` array, triggering the `hasProviderName`s CPs
@@ -18,18 +19,42 @@ export default Controller.extend({
 		// this method is called after each link/unlink and on page controller load
 		// because the firebaseApp.auth() cannot be made a CP
 		let currentUserData = this.get('firebaseApp').auth().currentUser;
-		let accounts = currentUserData.providerData.mapBy('providerId');
-		this.set('accounts', accounts);
-		this.set('currentUserData', currentUserData);
+		let providerData = currentUserData.providerData;
+		let accounts = providerData.mapBy('providerId');
+		console.log( "accounts", accounts );
+
+		var user = this.get('firebaseApp').auth().currentUser;
+		console.log( "user", user );
+
+
+		this.setProperties({
+			'accounts': accounts,
+			'currentUserData': currentUserData,
+			'providerData': providerData
+		});
+	},
+	updateEmail(newEmail) {
+		var user = this.get('firebaseApp').auth().currentUser;
+		user.updateEmail(newEmail).then(result => {
+			this.sendConfirmationEmail();
+			debug(`update email sucess: ${result}`);
+			console.log( 'user', user );
+		}).catch(error => {
+			debug(`update email ERROR: ${error}`);
+		});
+	},
+	sendConfirmationEmail() {
+		this.get('firebaseApp').auth().currentUser.sendEmailVerification();
+		debug(`Confirmation email sent`);
 	},
 	hasGoogle: computed('accounts', function() {
-		return this.get('accounts').contains('google.com');
+		return this.get('accounts').includes('google.com');
 	}),
 	hasFacebook: computed('accounts', function() {
-		return this.get('accounts').contains('facebook.com');
+		return this.get('accounts').includes('facebook.com');
 	}),
 	hasEmail: computed('accounts', function() {
-		return this.get('accounts').contains('password');
+		return this.get('accounts').includes('password');
 	}),
 
 	actions: {
@@ -47,7 +72,7 @@ export default Controller.extend({
 			let auth = this.get('firebaseApp').auth();
 			let credential = firebase.auth.EmailAuthProvider.credential(email, password);
 			auth.currentUser.link(credential).then(user => {
-				this.get('firebaseApp').auth().currentUser.sendEmailVerification();
+				this.sendConfirmationEmail;
 				this.getActiveUserAccounts();
 				debug(`Account linking success: ${user}`);
 			}).catch(error => {
@@ -59,6 +84,9 @@ export default Controller.extend({
 			this.get('firebaseApp').auth().currentUser.unlink(providerId).then(user => {
 				debug(`provider ${providerId} un-linked; user: ${user}`);
 				this.updateAccounts();
+				if(providerId === 'password') {
+					this.updateEmail('');
+				}
 			}).catch(error => {
 				debug(`provider ${providerId} un-linked ERROR: ${error}`);
 			});

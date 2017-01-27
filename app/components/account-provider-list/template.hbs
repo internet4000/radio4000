@@ -1,4 +1,21 @@
-{{#each currentUserData.providerData as |provider|}}
+{{#if currentUserData.email}}
+	<article class="ProviderAccount">
+		<div class="ProviderAccount-body">
+			<p class="ProviderAccount-name">{{currentUserData.email}}</p>
+			<p class="ProviderAccount-id Muted">
+				<span>Your email </span>
+				{{#if currentUserData.emailVerified}}
+					<span class="Muted">(verified)</span>
+				{{else}}
+					<span>(Not verified - <span>Resend a verification link</span>)</span>
+				{{/if}}
+			</p>
+			<button class="Btn" {{action 'unlink' provider.providerId}} disabled={{onlyOneAccount}}>Remove</button>
+		</div>
+	</article>
+{{/if}}
+
+{{#each providerData as |provider|}}
 	<article class="ProviderAccount">
 		{{#if provider.photoURL}}
 			<div class="ProviderAccount-media">
