@@ -79,5 +79,4 @@ export default ToriiFirebaseAdapter.extend({
 			});
 		});
 	}
-
 });

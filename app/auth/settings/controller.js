@@ -44,8 +44,8 @@ export default Controller.extend({
 			this.sendEmailVerification();
 			debug(`update email sucess: ${result}`);
 			console.log('user', user);
-		}).catch(error => {
-			debug(`update email ERROR: ${error}`);
+		}).catch(err => {
+			debug(`update email ERROR: ${err}`);
 		});
 	},
 
@@ -67,25 +67,28 @@ export default Controller.extend({
 
 	actions: {
 		linkAccount(provider) {
-			get(this, 'firebaseApp').auth().currentUser.linkWithPopup(provider).then(user => {
-				debug(`Accounts successfully linked: ${user}`);
+			let messages = get(this, 'flashMessages');
+			let auth = get(this, 'firebaseApp').auth();
+
+			auth.currentUser.linkWithPopup(provider).then(user => {
 				this.updateAccounts();
-				get(this, 'flashMessages').success(`Added ${provider.providerId} account`);
-			}).catch(error => {
-				console.log('could not link account');
-				console.log(error);
-				get(this, 'flashMessages').warning(error);
+				messages.success(`Added ${provider.providerId} account`);
+			}).catch(err => {
+				messages.warning('Could not link account');
+				console.log(err);
 			});
 		},
 		linkEmail(email, password) {
+			let messages = get(this, 'flashMessages');
 			let auth = get(this, 'firebaseApp').auth();
 			let credential = firebase.auth.EmailAuthProvider.credential(email, password);
+
 			auth.currentUser.link(credential).then(user => {
-				this.sendEmailVerification();
 				this.updateAccounts();
-				debug(`Added ${user} account`);
-			}).catch(error => {
-				get(this, 'flashMessages').warning(error);
+				messages.success(`Added email account`);
+				this.sendEmailVerification();
+			}).catch(err => {
+				messages.warning(err);
 			});
 		},
 		unlinkAccount(providerId) {
@@ -96,8 +99,8 @@ export default Controller.extend({
 				if (providerId === 'password') {
 					this.updateEmail(null);
 				}
-			}).catch(error => {
-				debug(`provider ${providerId} un-linked ERROR: ${error}`);
+			}).catch(err => {
+				debug(`provider ${providerId} un-linked ERROR: ${err}`);
 			});
 		},
 		verifyEmail() {
