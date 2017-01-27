@@ -6,10 +6,12 @@
 			{{/if}}
 		</div> --}}
 		<div class="ProviderAccount-body">
-			<p>
-				{{if (eq provider.providerId "password") "Email" provider.providerId}}<br>
 
-				<span class="Muted">
+			<p class="ProviderAccount-id">
+				{{if (eq provider.providerId "password") "Email" provider.providerId}}
+			</p>
+
+				<span class="ProviderAccount-name Muted">
 					{{#if (eq provider.providerId "password")}}
 						{{#unless emailVerified}}
 							<a href="#" {{action verifyEmail}}>Please verify</a>
@@ -19,7 +21,6 @@
 						{{provider.displayName}}
 					{{/if}}
 				</span>
-			</p>
 		</div>
 
 		{{#unless onlyOneAccount}}
