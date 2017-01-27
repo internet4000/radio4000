@@ -84,7 +84,7 @@ export default Controller.extend({
 				messages.success(`Added ${provider.providerId} account`);
 			}).catch(err => {
 				messages.warning('Could not link account');
-				console.log(err);
+				debug(err);
 			});
 		},
 		linkEmail(email, password) {
@@ -116,7 +116,7 @@ export default Controller.extend({
 			this.sendEmailVerification();
 		},
 		resetPassword() {
-			console.log('todo reset password');
+			debug('todo reset password');
 		}
 	}
 });
