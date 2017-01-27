@@ -1,13 +1,14 @@
-<form class="Form ProviderAccount-body" {{action "link" email password on="submit"}}>
-	<div class="Form-group">
-		{{input name="email" type="email" value=email placeholder="Email"}}
+<form class="Form ProviderAccount" {{action link email password on="submit"}}>
+	<div class="ProviderAccount-body">
+		<p class="ProviderAccount-id">{{name}}</p>
+		<div class="Form-group">
+			{{input name="email" type="email" value=email placeholder="Email"}}
+		</div>
+		<div class="Form-group">
+			{{input name="" type="password" value=password placeholder="Password"}}
+		</div>
 	</div>
-	<div class="Form-group">
-		{{input name="" type="password" value=password placeholder="Password"}}
-	</div>
-	<button type="submit" class="Btn Btn--large">
-		Add Email
-	</button>
+	<button type="submit" class="Btn">Add</button>
 </form>
 
 {{yield}}
