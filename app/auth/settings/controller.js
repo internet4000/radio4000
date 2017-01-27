@@ -63,7 +63,7 @@ export default Controller.extend({
 	hasEmail: computed('providerIds', function () {
 		return get(this, 'providerIds').includes('password');
 	}),
-	hasEverything: computed.equal('accounts.length', 3),
+	hasEverything: computed.equal('providerIds.length', 3),
 
 	willDestroy() {
 		this._super();
