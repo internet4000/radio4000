@@ -65,6 +65,15 @@ export default Controller.extend({
 	}),
 	hasEverything: computed.equal('accounts.length', 3),
 
+	willDestroy() {
+		this._super();
+		// Ensure the auth data we 'cache' is cleaned.
+		this.setProperties({
+			providerData: null,
+			emailVerified: null
+		});
+	},
+
 	actions: {
 		linkAccount(provider) {
 			let messages = get(this, 'flashMessages');
