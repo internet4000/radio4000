@@ -63,6 +63,7 @@ export default Controller.extend({
 	hasEmail: computed('providerIds', function () {
 		return get(this, 'providerIds').includes('password');
 	}),
+	hasEverything: computed.equal('accounts.length', 3),
 
 	actions: {
 		linkAccount(provider) {
@@ -93,7 +94,7 @@ export default Controller.extend({
 				debug(`provider ${providerId} un-linked; user: ${user}`);
 				this.updateAccounts();
 				if (providerId === 'password') {
-					this.updateEmail('');
+					this.updateEmail(null);
 				}
 			}).catch(error => {
 				debug(`provider ${providerId} un-linked ERROR: ${error}`);
