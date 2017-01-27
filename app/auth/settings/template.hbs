@@ -2,31 +2,42 @@
 	<section class="Section">
 		<header class="Manchet">
 			<h1>Settings</h1>
-			<p>Customize your tool to your needs for a personal experience.</p>
+			<p>Customize Radio4000 to your needs.</p>
+			<p>Here you can add and remove accounts which you can use to sign in.</p>
 		</header>
-	</section>
-	<section class="Section">
 		<div class="Container">
-			<h2>Your accounts</h2>
-			<p>
-				You can connect to Radio4000 with all accounts you link.<br/>
-				Accounts are also used to perform  actions from Radio4000 to other sites.
-			</p>
-			{{account-provider-list currentUserData=currentUserData providerData=providerData unlink=(action 'unlinkAccount') resetPassword=(action 'resetPassword')}}
+
+			<h3>Linked accounts</h3>
+
+			{{account-provider-list
+				providerData=providerData
+				emailVerified=emailVerified
+				unlink=(action "unlinkAccount")
+				resetPassword=(action "resetPassword")
+				verifyEmail=(action "verifyEmail")}}
+
+			<h3>Unlinked accounts</h3>
 
 			<div class="ProviderAccounts">
 				{{#unless hasGoogle}}
-					{{account-provider-link name="Google" providerId="google.com" disabled=hasGoogle link=(action 'linkAccount')}}
+					{{account-provider-link
+						name="Google"
+						providerId="google.com"
+						disabled=hasGoogle
+						link=(action "linkAccount")}}
 				{{/unless}}
 				{{#unless hasFacebook}}
-					{{account-provider-link name="Facebook" providerId="facebook.com" disabled=hasFacebook link=(action 'linkAccount')}}
+					{{account-provider-link
+						name="Facebook"
+						providerId="facebook.com"
+						disabled=hasFacebook
+						link=(action "linkAccount")}}
 				{{/unless}}
 				{{#unless hasEmail}}
-					{{account-email-link link=(action 'linkEmail')}}
+					{{account-email-link name="Email" link=(action "linkEmail")}}
 				{{/unless}}
 			</div>
 		</div>
 	</section>
-
 </div>
 {{outlet}}

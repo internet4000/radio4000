@@ -6,92 +6,99 @@ const {Controller, inject, get, computed, debug} = Ember;
 export default Controller.extend({
 	firebaseApp: inject.service(),
 	flashMessages: inject.service(),
+
+	providerData: null,
+	providerIds: computed.mapBy('providerData', 'providerId'),
+	emailVerified: null,
+
 	init() {
 		this._super();
 		this.updateAccounts();
 	},
-	accounts: null,
-	currentUserData: null,
-	providerData: null,
+
+	// This called will set the `providerData` array, triggering the `hasProviderName`s CPs
+	// used to display link/unLink buttons for each of them
+	// this method is called after each link/unlink and on page controller load
+	// because the firebaseApp.auth() cannot be made a CP
 	updateAccounts() {
-		// This called will set the `accounts` array, triggering the `hasProviderName`s CPs
-		// used to display link/unLink buttons for each of them
-		// this method is called after each link/unlink and on page controller load
-		// because the firebaseApp.auth() cannot be made a CP
-		let currentUserData = this.get('firebaseApp').auth().currentUser;
-		let providerData = currentUserData.providerData;
-		let accounts = providerData.mapBy('providerId');
-		console.log( "accounts", accounts );
+		let currentUser = get(this, 'firebaseApp').auth().currentUser;
+		let providerData = currentUser.providerData;
+		let emailVerified = currentUser.emailVerified;
 
-		var user = this.get('firebaseApp').auth().currentUser;
-		console.log( "user", user );
-
+		console.log(providerData, emailVerified);
 
 		this.setProperties({
-			'accounts': accounts,
-			'currentUserData': currentUserData,
-			'providerData': providerData
+			providerData,
+			emailVerified
 		});
 	},
+
 	updateEmail(newEmail) {
-		var user = this.get('firebaseApp').auth().currentUser;
+		var user = get(this, 'firebaseApp').auth().currentUser;
 		user.updateEmail(newEmail).then(result => {
-			this.sendConfirmationEmail();
+			this.sendEmailVerification();
 			debug(`update email sucess: ${result}`);
-			console.log( 'user', user );
+			console.log('user', user);
 		}).catch(error => {
 			debug(`update email ERROR: ${error}`);
 		});
 	},
-	sendConfirmationEmail() {
-		this.get('firebaseApp').auth().currentUser.sendEmailVerification();
-		debug(`Confirmation email sent`);
+
+	sendEmailVerification() {
+		get(this, 'firebaseApp').auth().currentUser.sendEmailVerification();
+		get(this, 'flashMessages').info(`Verification email sent`);
 	},
-	hasGoogle: computed('accounts', function() {
-		return this.get('accounts').includes('google.com');
+
+	hasGoogle: computed('providerIds', function () {
+		return get(this, 'providerIds').includes('google.com');
 	}),
-	hasFacebook: computed('accounts', function() {
-		return this.get('accounts').includes('facebook.com');
+	hasFacebook: computed('providerIds', function () {
+		return get(this, 'providerIds').includes('facebook.com');
 	}),
-	hasEmail: computed('accounts', function() {
-		return this.get('accounts').includes('password');
+	hasEmail: computed('providerIds', function () {
+		return get(this, 'providerIds').includes('password');
 	}),
 
 	actions: {
 		linkAccount(provider) {
-			this.get('firebaseApp').auth().currentUser.linkWithPopup(provider).then(user => {
+			get(this, 'firebaseApp').auth().currentUser.linkWithPopup(provider).then(user => {
 				debug(`Accounts successfully linked: ${user}`);
 				this.updateAccounts();
+				get(this, 'flashMessages').success(`Added ${provider.providerId} account`);
 			}).catch(error => {
 				console.log('could not link account');
 				console.log(error);
-				this.get('flashMessages').info(error)
+				get(this, 'flashMessages').warning(error);
 			});
 		},
 		linkEmail(email, password) {
-			let auth = this.get('firebaseApp').auth();
+			let auth = get(this, 'firebaseApp').auth();
 			let credential = firebase.auth.EmailAuthProvider.credential(email, password);
 			auth.currentUser.link(credential).then(user => {
-				this.sendConfirmationEmail;
-				this.getActiveUserAccounts();
-				debug(`Account linking success: ${user}`);
+				this.sendEmailVerification();
+				this.updateAccounts();
+				debug(`Added ${user} account`);
 			}).catch(error => {
-				this.get('flashMessages').info(error)
+				get(this, 'flashMessages').warning(error);
 			});
 		},
 		unlinkAccount(providerId) {
 			debug(`provider ${providerId} unlink starting`);
-			this.get('firebaseApp').auth().currentUser.unlink(providerId).then(user => {
+			get(this, 'firebaseApp').auth().currentUser.unlink(providerId).then(user => {
 				debug(`provider ${providerId} un-linked; user: ${user}`);
 				this.updateAccounts();
-				if(providerId === 'password') {
+				if (providerId === 'password') {
 					this.updateEmail('');
 				}
 			}).catch(error => {
 				debug(`provider ${providerId} un-linked ERROR: ${error}`);
 			});
 		},
+		verifyEmail() {
+			this.sendEmailVerification();
+		},
 		resetPassword() {
+			console.log('todo reset password');
 		}
 	}
 });

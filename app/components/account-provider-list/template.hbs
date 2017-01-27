@@ -1,37 +1,36 @@
-{{#if currentUserData.email}}
-	<article class="ProviderAccount">
-		<div class="ProviderAccount-body">
-			<p class="ProviderAccount-name">{{currentUserData.email}}</p>
-			<p class="ProviderAccount-id Muted">
-				<span>Your email </span>
-				{{#if currentUserData.emailVerified}}
-					<span class="Muted">(verified)</span>
-				{{else}}
-					<span>(Not verified - <span>Resend a verification link</span>)</span>
-				{{/if}}
-			</p>
-			<button class="Btn" {{action 'unlink' provider.providerId}} disabled={{onlyOneAccount}}>Remove</button>
-		</div>
-	</article>
-{{/if}}
-
 {{#each providerData as |provider|}}
 	<article class="ProviderAccount">
-		{{#if provider.photoURL}}
-			<div class="ProviderAccount-media">
-				<img class="ProviderAccount-image" alt="Image for {{provider.displayName}} {{provider.providerId}} account" src="{{provider.photoURL}}"/>
-			</div>
-		{{/if}}
+		{{!-- <div class="ProviderAccount-media">
+			{{#if provider.photoURL}}
+				<img class="ProviderAccount-image" alt="Image for {{provider.displayName}} {{provider.providerId}} account" src="{{provider.photoURL}}">
+			{{/if}}
+		</div> --}}
 		<div class="ProviderAccount-body">
-			<p class="ProviderAccount-name">{{provider.displayName}}</p>
-			<p class="ProviderAccount-id Muted">{{provider.providerId}}</p>
+			<p>
+				{{if (eq provider.providerId "password") "Email" provider.providerId}}<br>
+
+				<span class="Muted">
+					{{#if (eq provider.providerId "password")}}
+						{{#unless emailVerified}}
+							<a href="#" {{action verifyEmail}}>Please verify</a>
+						{{/unless}}
+						{{provider.email}}
+					{{else}}
+						{{provider.displayName}}
+					{{/if}}
+				</span>
+			</p>
 		</div>
-		<button class="Btn" {{action 'unlink' provider.providerId}} disabled={{onlyOneAccount}}>Remove</button>
+
+		{{#unless onlyOneAccount}}
+		<button class="Btn"
+			{{action unlink provider.providerId}}
+			disabled={{onlyOneAccount}}
+			title="Remove this account (this will NEVER delete your radio)">
+				Remove
+			</button>
+		{{/unless}}
 	</article>
 {{/each}}
-
-{{#if onlyOneAccount}}
-	<p class="Muted">You need to have at least one account linked to connect to Radio4000.</p>
-{{/if}}
 
 {{yield}}

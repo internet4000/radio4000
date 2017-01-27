@@ -1,32 +1,33 @@
 .ProviderAccounts {
-  padding-bottom: 1.3rem;
+	margin-bottom: 1rem;
 }
+
 .ProviderAccount {
 	display: flex;
 	flex-direction: row;
 	wrap: no-wrap;
 	align-items: center;
 	padding: 0.5rem;
-	margin-bottom: 0.4rem;
+	margin-bottom: 0.5rem;
 	background-color: $slightgray;
+	border-radius: $border-radius;
 }
+
 .ProviderAccount-media {
 	width: 100%;
 	max-width: 5rem;
 	padding-right: 1rem;
 }
+
 .ProviderAccount-image {
 	width: 100%;
 	text-align: center;
 }
+
 .ProviderAccount-body {
 	flex-grow: 2;
-}
-.ProviderAccount-id,
-.ProviderAccount-name {
-	margin-bottom: 0;
-}
 
-.ProviderAccount-id {
-	text-transform: capitalize;
+	p {
+		margin-bottom: 0;
+	}
 }

@@ -19,6 +19,11 @@
 .BtnGroup .Btn {
 	flex-shrink: 0;
 
+	& + .Btn {
+		border-left: 0;
+		border-radius: 0;
+	}
+
 	&:first-of-type {
 		border-top-right-radius: 0;
 		border-bottom-right-radius: 0;
@@ -27,11 +32,6 @@
 	&:last-of-type {
 		border-top-right-radius: $border-radius;
 		border-bottom-right-radius: $border-radius;
-	}
-
-	& + .Btn {
-		border-left: 0;
-		border-radius: 0;
 	}
 
 	& + .BtnGroup-label {
