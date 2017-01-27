@@ -1,9 +1,9 @@
 <form class="Form" {{action "login" "password" email password on="submit"}}>
 	<div class="Form-group">
-		{{input name="email" type="email" value=email placeholder="Email"}}
+		{{input type="email" value=email placeholder="Email" required="required"}}
 	</div>
 	<div class="Form-group">
-		{{input name="" type="password" value=password placeholder="Password"}}
+		{{input type="password" value=password placeholder="Password" required="required"}}
 	</div>
 	<div class="BtnGroupWrapper BtnGroupWrapper--full">
 		<button type="submit" class="Btn Btn--large">
