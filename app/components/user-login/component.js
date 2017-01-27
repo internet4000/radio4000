@@ -15,7 +15,7 @@ export default Component.extend({
 			const messages = get(this, 'flashMessages');
 
 			if (!email) {
-				messages.warning('Enter your e-mail address in the email field to reset your password.');
+				messages.warning('Enter your e-mail address in the email field and click "Forgot password" again.');
 			}
 
 			auth.sendPasswordResetEmail(email).then(() => {

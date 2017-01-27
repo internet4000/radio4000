@@ -8,13 +8,15 @@
 	<div class="Form-group">
 		{{input name="" type="password" value=passwordConfirmation placeholder="Password confirmation" required="required"}}
 	</div>
-	<button type="submit" class="Btn Btn--large" title="Sign up or Log in with email">
-		Sign up with email
-	</button>
+	<div class="Form-group">
+		<button type="submit" class="Btn Btn--large" title="Sign up or Log in with email">
+			Sign up with email
+		</button>
+	</div>
 </form>
 
 <br>
-<p>Or register with:</p>
+<p>Or sign up with:</p>
 <p class="BtnGroup">
 	<button class="Btn Btn--large" title="Sign up with Google" {{action "submit" "google"}}>
 		Google
