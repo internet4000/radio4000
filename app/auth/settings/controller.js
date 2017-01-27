@@ -7,6 +7,7 @@ export default Controller.extend({
 	firebaseApp: inject.service(),
 	flashMessages: inject.service(),
 
+	currentUser: null,
 	providerData: null,
 	providerIds: computed.mapBy('providerData', 'providerId'),
 	emailVerified: null,
@@ -30,25 +31,14 @@ export default Controller.extend({
 		let providerData = currentUser.providerData;
 		let emailVerified = currentUser.emailVerified;
 
-		console.log(providerData, emailVerified);
+		console.log("currentUser", currentUser);
 
 		this.setProperties({
 			providerData,
-			emailVerified
+			emailVerified,
+			currentUser
 		});
 	},
-
-	updateEmail(newEmail) {
-		var user = get(this, 'firebaseApp').auth().currentUser;
-		user.updateEmail(newEmail).then(result => {
-			this.sendEmailVerification();
-			debug(`update email sucess: ${result}`);
-			console.log('user', user);
-		}).catch(err => {
-			debug(`update email ERROR: ${err}`);
-		});
-	},
-
 	sendEmailVerification() {
 		get(this, 'firebaseApp').auth().currentUser.sendEmailVerification();
 		get(this, 'flashMessages').info(`Verification email sent`);
@@ -106,7 +96,7 @@ export default Controller.extend({
 				debug(`provider ${providerId} un-linked; user: ${user}`);
 				this.updateAccounts();
 				if (providerId === 'password') {
-					this.updateEmail(null);
+					this.removeEmailOnly();
 				}
 			}).catch(err => {
 				debug(`provider ${providerId} un-linked ERROR: ${err}`);
@@ -117,6 +107,28 @@ export default Controller.extend({
 		},
 		resetPassword() {
 			debug('todo reset password');
+		},
+		updateEmail(newEmail) {
+			var user = get(this, 'firebaseApp').auth().currentUser;
+			user.updateEmail(newEmail).then(result => {
+				this.sendEmailVerification();
+				debug(`update email sucess: ${result}`);
+				console.log('user', user);
+			}).catch(err => {
+				debug(`update email ERROR: ${err}`);
+			});
+		},
+		removeEmail() {
+			// this.updateEmail();
+			var user = get(this, 'firebaseApp').auth().currentUser;
+			user.updateProfile({
+				email: ''
+			}).then(data => {
+				debug(`update email DATA: ${data}`);
+			}).catch(err => {
+				debug(`update email ERROR: ${err}`);
+			});
+
 		}
 	}
 });

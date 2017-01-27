@@ -7,6 +7,16 @@
 		</header>
 		<div class="Container">
 
+			{{#if currentUser.email}}
+				<div class="ProviderAccounts">
+					<h3>Your Email</h3>
+					{{input value=currentUser.email}}
+					<span>{{currentUser.emailVerified}}</span>
+					<button class="Btn" {{action 'removeEmail'}}>Remove email</button>
+					<button class="Btn" {{action 'updateEmail' currentUser.email}}>Update email</button>
+				</div>
+			{{/if}}
+
 			<h3>Linked accounts</h3>
 
 			{{account-provider-list
@@ -17,6 +27,7 @@
 				verifyEmail=(action "verifyEmail")}}
 
 			<h3>Unlinked accounts</h3>
+
 			{{#if 'hasEverything'}}
 				<p class="Muted">There are no other accounts to connect.</p>
 			{{/if}}
