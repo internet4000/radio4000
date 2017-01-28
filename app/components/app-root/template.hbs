@@ -29,7 +29,9 @@
 
 {{#if isShowingModal}}
 	{{#modal-dialog close="toggleModal" translucentOverlay=true}}
-		<h2>Add a new track to your radio</h2>
+		<div class="Manchet">
+			<h2><small>Add a </small>new track<small> to your radio</small></h2>
+		</div>
 		{{track-form-add
 			initialUrl=url
 			onSubmit=(action "saveTrack")
