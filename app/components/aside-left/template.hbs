@@ -11,13 +11,12 @@
 			{{if session.isAuthenticated "Create your radio" "Sign up or log in"}}
 		{{/link-to}}
   {{/unless}}
-
-  {{#link-to "intro" title="Get introduced to Radio4000" class="Tabs-item"}}Introduction{{/link-to}}
   {{#link-to "about" title="Learn more about Radio4000" class="Tabs-item"}}About{{/link-to}}
-  {{#link-to "help" title="Find help and answers to your questions" class="Tabs-item"}}Help / Feedback{{/link-to}}
+  {{#link-to "help" title="Find help and answers to your questions" class="Tabs-item"}}Help{{/link-to}}
 </div>
 
 <div class="Tabs Tabs--transparent Tabs--bottom">
+	{{#link-to "feedback" class="Aside-link Muted" title="Log out from Radio4000"}}Feedback{{/link-to}}
   {{#if isAuthenticated}}
     {{#link-to "logout" class="Aside-link Muted" title="Log out from Radio4000"}}Log out{{/link-to}}
   {{/if}}
