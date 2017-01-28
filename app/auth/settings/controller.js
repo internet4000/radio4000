@@ -7,6 +7,7 @@ export default Controller.extend({
 	firebaseApp: inject.service(),
 	flashMessages: inject.service(),
 
+	newEmail: null,
 	currentUser: null,
 	providerData: null,
 	providerIds: computed.mapBy('providerData', 'providerId'),

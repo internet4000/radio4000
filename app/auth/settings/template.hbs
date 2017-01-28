@@ -8,12 +8,21 @@
 		<div class="Container">
 
 			{{#if currentUser.email}}
-				<div class="ProviderAccounts">
-					<h3>Your Email</h3>
-					{{input value=currentUser.email}}
-					<span>{{currentUser.emailVerified}}</span>
-					<button class="Btn" {{action 'removeEmail'}}>Remove email</button>
-					<button class="Btn" {{action 'updateEmail' currentUser.email}}>Update email</button>
+				<div class="ProviderAccount">
+					<div class="ProviderAccount-body">
+						<h3>Your Email</h3>
+						<div class="Form-group">
+							{{input placeholder=currentUser.email value=newEmail}}
+						</div>
+						<p class="ProviderAccount-id">
+							{{#if currentUser.emailVerified}}
+								(email verified)
+							{{else}}
+								<a href="#" {{action "verifyEmail"}} title="Click to send a new verification email">Please verify</a>
+							{{/if}}
+						</p>
+					</div>
+					<button class="Btn" {{action 'updateEmail' newEmail}}>Update</button>
 				</div>
 			{{/if}}
 

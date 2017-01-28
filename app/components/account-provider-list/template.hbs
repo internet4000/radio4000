@@ -14,7 +14,7 @@
 				<span class="ProviderAccount-name Muted">
 					{{#if (eq provider.providerId "password")}}
 						{{#unless emailVerified}}
-							<a href="#" {{action verifyEmail}}>Please verify</a>
+							<a href="#" {{action "verifyEmail"}} title="Click to send a new verification email">Please verify</a>
 						{{/unless}}
 						{{provider.email}}
 					{{else}}
