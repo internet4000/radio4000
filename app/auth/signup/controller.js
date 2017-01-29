@@ -1,32 +1,28 @@
 import Ember from 'ember';
 
-const {Controller, get, inject, RSVP} = Ember;
+const {Controller, get, inject} = Ember;
 
 export default Controller.extend({
 	firebaseApp: inject.service(),
 
 	createFirebaseUser(email, password) {
-		return new RSVP.Promise((resolve, reject) => {
-			get(this, 'firebaseApp').auth()
-				.createUserWithEmailAndPassword(email, password)
-				.then(authData => resolve(authData.uid))
-				.catch(err => reject(err));
-		});
+		let auth = get(this, 'firebaseApp').auth();
+		return auth.createUserWithEmailAndPassword(email, password);
 	},
 
 	actions: {
 		signup(provider, email, password) {
-			const flashMessages = get(this, 'flashMessages');
+			const messages = get(this, 'flashMessages');
 
 			if (provider === 'password') {
-				this.createFirebaseUser(email, password).then(() => {
+				return this.createFirebaseUser(email, password).then(() => {
 					this.send('login', provider, email, password);
 				}).catch(err => {
-					flashMessages.warning(err, {timeout: 4000});
+					messages.warning(err, {timeout: 8000});
 				});
-			} else {
-				this.send('login', provider);
 			}
+
+			this.send('login', provider);
 		},
 		login() {
 			return true;
