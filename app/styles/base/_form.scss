@@ -78,16 +78,6 @@ progress {
 // Form design should be tigther than inputs alone
 .Form {
 	@include clearfix;
-
-	// [type="text"],
-	// [type="email"],
-	// [type="tel"],
-	// [type="password"],
-	// [type="url"],
-	// textarea,
-	// .Btn {
-	// 	margin-bottom: 1rem;
-	// }
 }
 
 .Form-group label input {
@@ -100,7 +90,7 @@ progress {
 
 .Form-group {
 	position: relative;
-	margin-bottom: 0.6rem;
+	margin-bottom: 1rem;
 }
 
 .Form-group:last-child {
