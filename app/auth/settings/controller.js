@@ -1,50 +1,16 @@
 import Ember from 'ember';
 import firebase from 'npm:firebase';
 
-const {Controller, inject, get, computed, debug} = Ember;
+const {Controller, inject, get, set, computed, debug} = Ember;
 
 export default Controller.extend({
 	firebaseApp: inject.service(),
 	flashMessages: inject.service(),
 
 	newEmail: null,
+
 	currentUser: null,
-	providerData: null,
-	providerIds: computed.mapBy('providerData', 'providerId'),
-	emailVerified: null,
-
-	init() {
-		this._super();
-		this.updateAccounts();
-	},
-
-	// This called will set the `providerData` array, triggering the `hasProviderName`s CPs
-	// used to display link/unLink buttons for each of them
-	// this method is called after each link/unlink and on page controller load
-	// because the firebaseApp.auth() cannot be made a CP
-	updateAccounts() {
-		let firebaseApp = get(this, 'firebaseApp');
-		// This guard is necessary in our test.
-		if (!firebaseApp) {
-			return;
-		}
-		let currentUser = firebaseApp.auth().currentUser;
-		let providerData = currentUser.providerData;
-		let emailVerified = currentUser.emailVerified;
-
-		console.log("currentUser", currentUser);
-
-		this.setProperties({
-			providerData,
-			emailVerified,
-			currentUser
-		});
-	},
-	sendEmailVerification() {
-		get(this, 'firebaseApp').auth().currentUser.sendEmailVerification();
-		get(this, 'flashMessages').info(`Verification email sent`);
-	},
-
+	providerIds: computed.mapBy('currentUser.providerData', 'providerId'),
 	hasGoogle: computed('providerIds', function () {
 		return get(this, 'providerIds').includes('google.com');
 	}),
@@ -56,12 +22,42 @@ export default Controller.extend({
 	}),
 	hasEverything: computed.equal('providerIds.length', 3),
 
+	init() {
+		this._super();
+		this.updateCurrentUser();
+	},
+
 	willDestroy() {
 		this._super();
-		// Ensure the auth data we 'cache' is cleaned.
-		this.setProperties({
-			providerData: null,
-			emailVerified: null
+		console.log('WHY IS THIS NOT CALLED!!! OMG');
+		this.resetCurrentUser();
+	},
+
+	// This caches certain auth data on the controller
+	// in order to build the 'hasProvider...' CPs.
+	// Called after link/unlink and on init.
+	updateCurrentUser() {
+		let firebaseApp = get(this, 'firebaseApp');
+		// Guard is necessary in our test.
+		if (!firebaseApp) {
+			return;
+		}
+		let currentUser = firebaseApp.auth().currentUser;
+		set(this, 'currentUser', currentUser);
+	},
+
+	// Ensure the auth data we 'cache' is cleaned.
+	resetCurrentUser() {
+		console.log('reset');
+		this.set('currentUser', null);
+	},
+
+	sendEmailVerification() {
+		get(this, 'firebaseApp').auth().currentUser.sendEmailVerification();
+		get(this, 'flashMessages').info(`Verification email sent`);
+	},
+
+
 		});
 	},
 

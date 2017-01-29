@@ -29,8 +29,8 @@
 			<h3>Linked accounts</h3>
 
 			{{account-provider-list
-				providerData=providerData
-				emailVerified=emailVerified
+				providerData=currentUser.providerData
+				emailVerified=currentUser.emailVerified
 				unlink=(action "unlinkAccount")
 				resetPassword=(action "resetPassword")
 				verifyEmail=(action "verifyEmail")}}
