@@ -114,9 +114,9 @@ export default Controller.extend({
 			user.updateEmail(newEmail).then(result => {
 				this.sendEmailVerification();
 				debug(`update email sucess: ${result}`);
-				console.log('user', user);
+				console.log({user, result});
 			}).catch(err => {
-				debug(`update email ERROR: ${err}`);
+				throw new Error(err);
 			});
 		},
 		removeEmail() {
@@ -125,11 +125,12 @@ export default Controller.extend({
 			user.updateProfile({
 				email: ''
 			}).then(data => {
+				get(this, 'flashMessages').success('Email account removed');
 				debug(`update email DATA: ${data}`);
 			}).catch(err => {
-				debug(`update email ERROR: ${err}`);
+				debug(`remove email ERROR`);
+				throw new Error(err);
 			});
-
 		}
 	}
 });

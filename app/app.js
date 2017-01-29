@@ -2,6 +2,7 @@ import Ember from 'ember';
 import Resolver from './resolver';
 import loadInitializers from 'ember-load-initializers';
 import config from './config/environment';
+import RSVP from 'rsvp';
 
 let App;
 
@@ -17,6 +18,11 @@ App = Ember.Application.extend({
 // Change the class Ember adds to active elements
 Ember.LinkComponent.reopen({
 	activeClass: 'is-active'
+});
+
+// https://guides.emberjs.com/v2.11.0/configuring-ember/debugging/#toc_errors-within-an-code-rsvp-promise-code
+RSVP.on('error', error => {
+	Ember.assert(false, error);
 });
 
 loadInitializers(App, config.modulePrefix);
