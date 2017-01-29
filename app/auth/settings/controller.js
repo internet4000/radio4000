@@ -57,47 +57,61 @@ export default Controller.extend({
 		get(this, 'flashMessages').info(`Verification email sent`);
 	},
 
+	// Link a new provider to the current user.
+	// Send it either a single auth provider object (google+facebook)
+	// OR string "password" + email password
+	linkAccount(provider, email, password) {
+		let auth = get(this, 'firebaseApp').auth();
+		let messages = get(this, 'flashMessages');
+		let promise;
 
+		if (provider === 'password') {
+			let credential = firebase.auth.EmailAuthProvider
+				.credential(email, password);
+			console.log(credential);
+			promise = auth.currentUser.link(credential);
+		} else {
+			console.log(provider);
+			promise = auth.currentUser.linkWithPopup(provider);
+		}
+
+		return promise.then(() => {
+			this.updateCurrentUser();
+			messages.success(`Added ${provider.providerId || name} account`);
+		}, err => {
+			messages.warning('Could not add account');
+			throw new Error(err);
 		});
+	},
+
+	unlinkAccount(providerId) {
+		let auth = get(this, 'firebaseApp').auth();
+		return auth.currentUser.unlink(providerId)
+			.then(user => {
+				debug(`provider ${providerId} un-linked; user: ${user}`);
+				this.updateCurrentUser();
+				// if (providerId === 'password') {
+				// 	this.removeEmailOnly();
+				// }
+			})
+			.catch(err => {
+				debug(`provider ${providerId} un-linked ERROR`);
+				throw new Error(err);
+			});
 	},
 
 	actions: {
 		linkAccount(provider) {
-			let messages = get(this, 'flashMessages');
-			let auth = get(this, 'firebaseApp').auth();
-
-			auth.currentUser.linkWithPopup(provider).then(user => {
-				this.updateAccounts();
-				messages.success(`Added ${provider.providerId} account`);
-			}).catch(err => {
-				messages.warning('Could not link account');
-				debug(err);
-			});
+			console.log(provider);
+			this.linkAccount(provider);
 		},
 		linkEmail(email, password) {
-			let messages = get(this, 'flashMessages');
-			let auth = get(this, 'firebaseApp').auth();
-			let credential = firebase.auth.EmailAuthProvider.credential(email, password);
-
-			auth.currentUser.link(credential).then(user => {
-				this.updateAccounts();
-				messages.success(`Added email account`);
+			this.linkAccount('password', email, password).then(() => {
 				this.sendEmailVerification();
-			}).catch(err => {
-				messages.warning(err);
 			});
 		},
 		unlinkAccount(providerId) {
-			debug(`provider ${providerId} unlink starting`);
-			get(this, 'firebaseApp').auth().currentUser.unlink(providerId).then(user => {
-				debug(`provider ${providerId} un-linked; user: ${user}`);
-				this.updateAccounts();
-				if (providerId === 'password') {
-					this.removeEmailOnly();
-				}
-			}).catch(err => {
-				debug(`provider ${providerId} un-linked ERROR: ${err}`);
-			});
+			this.unlinkAccount(providerId);
 		},
 		verifyEmail() {
 			this.sendEmailVerification();
