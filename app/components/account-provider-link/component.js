@@ -16,11 +16,12 @@ export default Component.extend({
 		}
 		throw new Error('Provider is not supported for extraction');
 	},
+
 	actions: {
 		add() {
-			// pass data up to action link (user account)
+			// Pass provider object up to action link.
 			const provider = this.extractProvider(get(this, 'providerId'));
-			get(this, 'link')(provider);
+			get(this, 'onLink')(provider);
 		}
 	}
 });

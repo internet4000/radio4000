@@ -16,13 +16,13 @@
 						</div>
 						<p class="ProviderAccount-id">
 							{{#if currentUser.emailVerified}}
-								(email verified)
+								(verified email)
 							{{else}}
 								<a href="#" {{action "verifyEmail"}} title="Click to send a new verification email">Please verify</a>
 							{{/if}}
 						</p>
 					</div>
-					<button class="Btn" {{action 'updateEmail' newEmail}}>Update</button>
+					<button class="Btn" {{action "updateEmail" newEmail}}>Update</button>
 				</div>
 			{{/if}}
 
@@ -46,17 +46,19 @@
 						name="Google"
 						providerId="google.com"
 						disabled=hasGoogle
-						link=(action "linkAccount")}}
+						onLink=(action "linkAccount")}}
 				{{/unless}}
 				{{#unless hasFacebook}}
 					{{account-provider-link
 						name="Facebook"
 						providerId="facebook.com"
 						disabled=hasFacebook
-						link=(action "linkAccount")}}
+						onLink=(action "linkAccount")}}
 				{{/unless}}
 				{{#unless hasEmail}}
-					{{account-email-link name="Email" link=(action "linkEmail")}}
+					{{account-email-link
+						name="Email"
+						onLink=(action "linkEmail")}}
 				{{/unless}}
 			</div>
 		</div>
