@@ -141,6 +141,8 @@ export default Controller.extend({
 					messages.warning(err.message, {
 						sticky: true
 					});
+				} else {
+					messages.warning(err.message);
 				}
 				throw new Error(err);
 			});
