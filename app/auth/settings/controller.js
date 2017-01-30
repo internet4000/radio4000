@@ -8,9 +8,10 @@ export default Controller.extend({
 	flashMessages: inject.service(),
 
 	newEmail: null,
-
 	currentUser: null,
-	providerIds: computed.mapBy('currentUser.providerData', 'providerId'),
+	providerData: null,
+
+	providerIds: computed.mapBy('providerData', 'providerId'),
 	hasGoogle: computed('providerIds', function () {
 		return get(this, 'providerIds').includes('google.com');
 	}),
@@ -20,6 +21,7 @@ export default Controller.extend({
 	hasEmail: computed('providerIds', function () {
 		return get(this, 'providerIds').includes('password');
 	}),
+	// password+google+facebook = 3
 	hasEverything: computed.equal('providerIds.length', 3),
 
 	init() {
@@ -44,12 +46,15 @@ export default Controller.extend({
 		}
 		let currentUser = firebaseApp.auth().currentUser;
 		set(this, 'currentUser', currentUser);
+		set(this, 'providerData', currentUser.providerData);
+		console.log('updated current user');
 	},
 
 	// Ensure the auth data we 'cache' is cleaned.
 	resetCurrentUser() {
-		console.log('reset');
-		this.set('currentUser', null);
+		set(this, 'currentUser', null);
+		set(this, 'providerData', null);
+		console.log('reset current user');
 	},
 
 	sendEmailVerification() {
@@ -79,7 +84,11 @@ export default Controller.extend({
 			this.updateCurrentUser();
 			messages.success(`Added ${provider.providerId || name} account`);
 		}, err => {
-			messages.warning('Could not add account');
+			if (err.code === 'auth/credential-already-in-use') {
+				messages.warning('Could not add account as it is already in use.');
+			} else {
+				messages.warning('Could not add account.');
+			}
 			throw new Error(err);
 		});
 	},
