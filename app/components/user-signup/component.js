@@ -27,7 +27,7 @@ export default Component.extend(Validations, {
 	// password
 	// passwordConfirmation
 	actions: {
-		submit(providerId, email, password, passwordConfirmation) {
+		submit(providerId, email, password) {
 			get(this, 'onSignup')(providerId, email, password);
 		}
 	}
