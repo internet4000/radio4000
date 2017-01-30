@@ -4,6 +4,7 @@ const {Component, get, inject, debug} = Ember;
 
 export default Component.extend({
 	firebaseApp: inject.service(),
+	session: inject.service(),
 
 	actions: {
 		login(provider, email, password) {
