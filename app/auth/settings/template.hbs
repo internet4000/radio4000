@@ -9,7 +9,7 @@
 			{{#if currentUser.email}}
 				<div class="ProviderAccount">
 					<div class="ProviderAccount-body">
-						<h3>Your Email</h3>
+						<h3>Your email</h3>
 						<div class="Form-group">
 							{{input placeholder=currentUser.email value=newEmail}}
 						</div>
@@ -25,7 +25,7 @@
 				</div>
 			{{/if}}
 
-			<h3>Linked accounts</h3>
+			<h3>Accounts you have added</h3>
 
 			{{account-provider-list
 				providerData=providerData
@@ -34,10 +34,10 @@
 				resetPassword=(action "resetPassword")
 				verifyEmail=(action "verifyEmail")}}
 
-			<h3>Unlinked accounts</h3>
+			<h3>Accounts you can add</h3>
 
 			{{#if hasEverything}}
-				<p class="Muted">There are no other accounts to connect.</p>
+				<p class="Muted">You have linked all possible accounts.</p>
 			{{/if}}
 
 			<div class="ProviderAccounts">
