@@ -1,15 +1,15 @@
 <form {{action "submit" "password" email password passwordConfirmation on="submit"}} class="Form">
+	{{#form-group model=this valuePath="email" label="Email" as |v|}}
+		{{input type="email" value=v placeholder="Enter your email address" required="required"}}
+	{{/form-group}}
+	{{#form-group model=this valuePath="password" label="Password" as |v|}}
+		{{input type="password" value=v placeholder="Create a password" required="required"}}
+	{{/form-group}}
+	{{#form-group model=this valuePath="passwordConfirmation" as |v|}}
+		{{input type="password" value=v placeholder="Enter password again" required="required"}}
+	{{/form-group}}
 	<div class="Form-group">
-		{{input name="email" type="email" value=email placeholder="Email" required="required"}}
-	</div>
-	<div class="Form-group">
-		{{input name="" type="password" value=password placeholder="Password" required="required"}}
-	</div>
-	<div class="Form-group">
-		{{input name="" type="password" value=passwordConfirmation placeholder="Password confirmation" required="required"}}
-	</div>
-	<div class="Form-group">
-		<button type="submit" class="Btn Btn--large" title="Sign up or Log in with email">
+		<button disabled={{validations.isInvalid}} type="submit" class="Btn Btn--large" title="Sign up or Log in with email">
 			Sign up with email
 		</button>
 	</div>
