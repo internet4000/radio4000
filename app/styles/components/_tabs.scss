@@ -43,7 +43,7 @@
 
 	&.is-active {
 		@extend %font-bold;
-		border-right-color: $secondary-color;
+		border-right-color: $primary-color;
 		background-color: $superlightgray;
 	}
 }
@@ -74,7 +74,7 @@
 
 		&.is-active {
 			border-right: 0;
-			border-bottom: 3px solid $secondary-color;
+			border-bottom: 3px solid $primary-color;
 		}
 
 		// equal widths
@@ -126,7 +126,7 @@
 		margin: auto;
 		height: 3px;
 		width: 0;
-		background: $secondary-color;
+		background: $primary-color;
 		transition: width 400ms $easing;
 	}
 
@@ -140,4 +140,3 @@
 	// A bit of space around the button
 	margin: 0.5rem;
 }
-
