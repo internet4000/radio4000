@@ -42,8 +42,6 @@
 	bottom: 0;
 	z-index: 3;
 	width: 100%;
-	background-color: $bg-color;
-	background-image: linear-gradient(to right, darken($bg-color, 2%) 40%, $bg-color);
 
 	@media (min-width: $layout-s) {
 		// transform: translate3d(0, 0, 0);
@@ -87,4 +85,3 @@
 		text-decoration: underline;
 	}
 }
-

@@ -1,8 +1,7 @@
 .ChannelCard {
 	position: relative;
 	padding-bottom: 1rem;
-	background-color: $white;
-	border-radius: $border-radius;
+	background-color: $bg-color-2;
 
 	&.is-active > a {
 		outline: 2px solid $primary-color;
@@ -30,7 +29,7 @@
 
 .ChannelCard-title {
 	word-break: break-word;
-	color: $primary-color;
+	color: $text-color;
 }
 
 .ChannelCard-body {
