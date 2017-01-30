@@ -137,7 +137,7 @@ export default Controller.extend({
 				debug(`update email sucess: ${result}`);
 				console.log({user, result});
 			}).catch(err => {
-				if(err.code === 'auth/requires-recent-login') {
+				if (err.code === 'auth/requires-recent-login') {
 					messages.warning(err.message, {
 						sticky: true
 					});
