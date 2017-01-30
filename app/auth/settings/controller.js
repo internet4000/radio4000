@@ -48,7 +48,7 @@ export default Controller.extend({
 
 	sendEmailVerification() {
 		get(this, 'firebaseApp').auth().currentUser.sendEmailVerification();
-		get(this, 'flashMessages').info(`Verification email sent`);
+		get(this, 'flashMessages').success(`Verification email sent. Please check your email.`);
 	},
 
 	// Link a new provider to the current user.
@@ -133,7 +133,7 @@ export default Controller.extend({
 				console.log({user, result});
 			}).catch(err => {
 				if (err.code === 'auth/requires-recent-login') {
-					messages.warning(err.message, {
+					messages.warning(`For your security, please log in again before updating your email address.`, {
 						sticky: true
 					});
 				} else {
