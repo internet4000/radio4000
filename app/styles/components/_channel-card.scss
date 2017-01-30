@@ -8,6 +8,10 @@
 		outline: 2px solid $primary-color;
 	}
 
+	a {
+		text-decoration: none;
+	}
+
 	.Playback-channel &.is-active > a {
 		outline-color: transparent;
 	}
@@ -26,11 +30,7 @@
 
 .ChannelCard-title {
 	word-break: break-word;
-	color: $secondary-color;
-
-	a:hover & {
-		text-decoration: underline;
-	}
+	color: $primary-color;
 }
 
 .ChannelCard-body {
@@ -156,4 +156,3 @@ $card-wide-cover-size: 4.8rem;
 	margin-top: 0.25rem;
 	border-top: 1px solid hsl(0, 0%, 85%); // same as on .Tabs
 }
-

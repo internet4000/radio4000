@@ -35,6 +35,7 @@
 	border-right: 3px solid transparent;
 	transition: border-right-color 200ms $easing, border-bottom-color 200ms $easing, background-image 200ms $easing;
 
+	&,
 	&:hover,
 	&:focus,
 	&:active {
