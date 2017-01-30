@@ -24,11 +24,6 @@ export default Controller.extend({
 	// password+google+facebook = 3
 	hasEverything: computed.equal('providerIds.length', 3),
 
-	init() {
-		this._super();
-		this.updateCurrentUser();
-	},
-
 	// This caches certain auth data on the controller
 	// in order to build the 'hasProvider...' CPs.
 	// Called after link/unlink and on init.
