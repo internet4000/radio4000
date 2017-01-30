@@ -42,11 +42,6 @@
 				{{#if hasEverything}}
 					<p class="Muted">There are no other accounts to connect.</p>
 				{{/if}}
-				{{#if requiresRecentLogin}}
-					<div class="Note">
-						<p>For your security, please <a href="{{href-to 'auth.logout'}}">log out</a> and sign back in again before you add another account.</p>
-					</div>
-				{{/if}}
 
 				{{#unless hasGoogle}}
 					{{account-provider-link
