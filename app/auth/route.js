@@ -4,8 +4,15 @@ const {Route, get, inject} = Ember;
 
 export default Route.extend({
 	flashMessages: inject.service(),
-	onLoginError(data) {
-		get(this, 'flashMessages').info(data.message);
+	onLoginError(err) {
+		let messages = 	get(this, 'flashMessages');
+		messages.info(err.message, {
+			timeout: 10000
+		});
+
+		if (err.name === 'auth/email-not-verified') {
+			this.transitionTo('auth.login');
+		}
 		// auth/invalid-email
 		// auth/user-disabled
 		// auth/user-not-found
