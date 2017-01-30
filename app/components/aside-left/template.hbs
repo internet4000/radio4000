@@ -2,8 +2,8 @@
   {{#link-to "channels.all" title="Find radio channels to enjoy" class="Tabs-item"}}Radios{{/link-to}}
 
   {{#if userChannel}}
-    <button {{action "addTrack"}} class="Btn Btn--important Btn--bottomNoRadius" title="Add a new track to your radio">Add track</button>
 		{{channel-card channel=userChannel wide=true}}
+		<button {{action "addTrack"}} class="Btn Btn--important Btn--topNoRadius" title="Add a new track to your radio">Add track</button>
   {{/if}}
 
   {{#unless userChannel}}
