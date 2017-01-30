@@ -137,11 +137,17 @@ export default Controller.extend({
 		},
 		updateEmail(newEmail) {
 			var user = get(this, 'firebaseApp').auth().currentUser;
+			let messages = get(this, 'flashMessages');
 			user.updateEmail(newEmail).then(result => {
 				this.sendEmailVerification();
 				debug(`update email sucess: ${result}`);
 				console.log({user, result});
 			}).catch(err => {
+				if(err.code === 'auth/requires-recent-login') {
+					messages.warning(err.message, {
+						sticky: true
+					});
+				}
 				throw new Error(err);
 			});
 		},
