@@ -83,9 +83,16 @@ export default Controller.extend({
 		return promise.then(() => {
 			this.updateCurrentUser();
 			messages.success(`Added ${provider.providerId || name} account`);
+			set(this, 'requiresRecentLogin', false);
 		}, err => {
+			console.log(err);
 			if (err.code === 'auth/credential-already-in-use') {
-				messages.warning('Could not add account as it is already in use.');
+				messages.warning('Could not add account. Credentials are already in use.');
+			} else if (err.code === 'auth/email-already-in-use') {
+				messages.warning(`Could not add account. The e-mail ${email} is already in use.`);
+			} else if (err.code === 'auth/requires-recent-login') {
+				// messages.warning(`For your security, please log out and sign back in to add a new account.`);
+				set(this, 'requiresRecentLogin', true);
 			} else {
 				messages.warning('Could not add account.');
 			}
