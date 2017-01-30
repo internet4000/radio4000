@@ -2,69 +2,70 @@
 	<section class="Section">
 		<header class="Manchet">
 			<h1>Settings</h1>
-			<p>Add and remove accounts to manage your radio.</p>
+			<p>A little bit of customization</p>
 		</header>
-		<div class="Container">
+	</section>
 
+	<section class="Section">
+		<div class="Container">
 			{{#if currentUser.email}}
+				<h3>Email</h3>
+				<p class="Muted">
+				{{#if currentUser.emailVerified}}
+					Your email has been verified
+					{{else}}
+					Your email adress is not verified, so we sent a verification email to your new adress. <a href="#" {{action "verifyEmail"}} title="Click to send a new verification email">Need a new verification link?</a>.
+					{{/if}}
+					</p>
 				<form class="ProviderAccount" {{action "updateEmail" newEmail on="submit"}}>
 					<div class="ProviderAccount-body">
-						<h3>Your email</h3>
 						<div class="Form-group">
 							{{input placeholder=currentUser.email value=newEmail}}
 						</div>
-						<p class="ProviderAccount-id">
-							{{#if currentUser.emailVerified}}
-								(verified email)
-							{{else}}
-								<a href="#" {{action "verifyEmail"}} title="Click to send a new verification email">Please verify</a>
-							{{/if}}
-						</p>
 					</div>
 					<button class="Btn" type="submit">Update</button>
 				</form>
 			{{/if}}
-
-			<h3>Accounts you have added</h3>
-
+		</div>
+	</section>
+	<section class="Section">
+		<div class="Container">
+			<h3>Accounts</h3>
+			<p>Add and remove accounts to manage your radio.</p>
 			{{account-provider-list
-				providerData=providerData
-				emailVerified=currentUser.emailVerified
-				unlink=(action "unlinkAccount")
-				resetPassword=(action "resetPassword")
-				verifyEmail=(action "verifyEmail")}}
-
-			<h3>Accounts you can add</h3>
-
-			{{#if hasEverything}}
-				<p class="Muted">You have linked all possible accounts.</p>
-			{{/if}}
-
-			{{#if requiresRecentLogin}}
-				<div class="Note">
-					<p>For your security, please <a href="{{href-to 'auth.logout'}}">log out</a> and sign back in again before you add another account.</p>
-				</div>
-			{{/if}}
-
+					providerData=providerData
+					emailVerified=currentUser.emailVerified
+					unlink=(action "unlinkAccount")
+					resetPassword=(action "resetPassword")
+					verifyEmail=(action "verifyEmail")}}
 			<div class="ProviderAccounts">
+				{{#if hasEverything}}
+					<p class="Muted">There are no other accounts to connect.</p>
+				{{/if}}
+				{{#if requiresRecentLogin}}
+					<div class="Note">
+						<p>For your security, please <a href="{{href-to 'auth.logout'}}">log out</a> and sign back in again before you add another account.</p>
+					</div>
+				{{/if}}
+
 				{{#unless hasGoogle}}
 					{{account-provider-link
-						name="Google"
-						providerId="google.com"
-						disabled=hasGoogle
-						onLink=(action "linkAccount")}}
+							name="Google"
+							providerId="google.com"
+							disabled=hasGoogle
+							onLink=(action "linkAccount")}}
 				{{/unless}}
 				{{#unless hasFacebook}}
 					{{account-provider-link
-						name="Facebook"
-						providerId="facebook.com"
-						disabled=hasFacebook
-						onLink=(action "linkAccount")}}
+							name="Facebook"
+							providerId="facebook.com"
+							disabled=hasFacebook
+							onLink=(action "linkAccount")}}
 				{{/unless}}
 				{{#unless hasEmail}}
 					{{account-email-link
-						name="Email"
-						onLink=(action "linkEmail")}}
+							name="Email"
+							onLink=(action "linkEmail")}}
 				{{/unless}}
 			</div>
 		</div>
