@@ -7,7 +7,7 @@
 		<div class="Container">
 
 			{{#if currentUser.email}}
-				<div class="ProviderAccount">
+				<form class="ProviderAccount" {{action "updateEmail" newEmail on="submit"}}>
 					<div class="ProviderAccount-body">
 						<h3>Your email</h3>
 						<div class="Form-group">
@@ -21,8 +21,8 @@
 							{{/if}}
 						</p>
 					</div>
-					<button class="Btn" {{action "updateEmail" newEmail}}>Update</button>
-				</div>
+					<button class="Btn" type="submit">Update</button>
+				</form>
 			{{/if}}
 
 			<h3>Accounts you have added</h3>
