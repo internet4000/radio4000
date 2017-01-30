@@ -19,8 +19,8 @@ export default ToriiFirebaseAdapter.extend({
 			if (!user.emailVerified && providerIsPassword) {
 				let err = {
 					name: 'auth/email-not-verified',
-					message: 'To login you first have to verify your email adress. Check your inbox'
-				}
+					message: 'Before you can log in, first verify your email adress. Check your inbox.'
+				};
 				debug(err);
 				user.sendEmailVerification();
 				this.close();
