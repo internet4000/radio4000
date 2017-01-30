@@ -1,3 +1,6 @@
+.ProviderAccounts:first-of-type {
+	margin-bottom: 2rem;
+}
 .ProviderAccount {
 	display: flex;
 	flex-direction: row;
@@ -31,6 +34,7 @@
 .ProviderAccount-body {
 	flex-grow: 2;
 	padding-right: 1rem;
+	padding-bottom: 0.2rem;
 }
 
 .ProviderAccount-id {
