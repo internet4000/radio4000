@@ -1,14 +1,16 @@
 <form class="Form ProviderAccount" {{action "link" email password on="submit"}}>
 	<div class="ProviderAccount-body">
 		<p class="ProviderAccount-id">{{name}}</p>
-		<div class="ProviderAccount-inputs">
-			<div class="Form-group">
-				{{input type="email" value=email placeholder="Email" required="required" autocomplete="nope"}}
+		{{#if showInputs}}
+			<div class="ProviderAccount-inputs">
+				<div class="Form-group">
+					{{input type="email" value=email placeholder="Email" required="required" autocomplete="nope"}}
+				</div>
+				<div class="Form-group">
+					{{input type="password" value=password placeholder="Create a password" required="required" autocomplete="new-password"}}
+				</div>
 			</div>
-			<div class="Form-group">
-				{{input type="password" value=password placeholder="Password" required="required" autocomplete="new-password"}}
-			</div>
-		</div>
+		{{/if}}
 	</div>
 	<button type="submit" class="Btn">Add</button>
 </form>
