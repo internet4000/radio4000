@@ -1,9 +1,11 @@
 <div class="Tabs">
+  {{#link-to "channels.index" class="Tabs-item"}}Home{{/link-to}}
   {{#link-to "channels.all" title="Find radio channels to enjoy" class="Tabs-item"}}Radios{{/link-to}}
 
   {{#if userChannel}}
-    <button {{action "addTrack"}} class="Btn Btn--important Btn--bottomNoRadius" title="Add a new track to your radio">Add track</button>
-		{{channel-card channel=userChannel wide=true}}
+    {{#link-to "channels.history" title="Your listening history" class="Tabs-item"}}History{{/link-to}}
+    {{channel-card channel=userChannel wide=true}}
+    <button {{action "addTrack"}} class="Btn Btn--primary Btn--topNoRadius" title="Add a new track to your radio">Add track</button>
   {{/if}}
 
   {{#unless userChannel}}

@@ -1,11 +1,9 @@
 <section class="Section">
 	<div class="Manchet">
 		<h1><small>Your listening </small>History</h1>
-		{{aside-channels userChannel=session.currentUser.channels.firstObject}}
 		<p class="Muted">Only you can see your history.</p>
 	</div>
-</section>
-<section class="Section">
+
 	{{#if model.userSettings.playedChannels}}
 		<div class="Container Container--full">
 			{{#each-grid items=model.userSettings.playedChannels as |item|}}

@@ -1,11 +1,7 @@
 <section class="Section">
-	<div class="Manchet Container">
+	<div class="Manchet">
 		<h1>Discover<small> the editor's selection</small></h1>
-		{{aside-channels	userChannel=session.currentUser.channels.firstObject}}
 	</div>
-</section>
-
-<section class="Section">
 	{{#unless model.featured}}
 		<div class="Container">
 			{{is-loading}}

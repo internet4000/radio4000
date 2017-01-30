@@ -1,11 +1,9 @@
 <section class="Section">
 	<div class="Manchet">
 		<h1><small>Explore all</small> radios</h1>
-		{{aside-channels userChannel=session.currentUser.channels.firstObject}}
 		<p class="Muted">Each radio is curated by one <b>human</b>. Listen, discover someone's personal selection. <br/>If you feel like sharing yours, we welcome you to <a href="{{href-to 'login'}}" title="">create your own radio</a>.</p>
 	</div>
-</section>
-<section class="Section">
+
 	<div class="Container Container--full">
 		<form class="Search">
 			{{input class="Search-input" type="search" value=search placeholder="Search radios"}}
