@@ -29,12 +29,6 @@ export default Controller.extend({
 		this.updateCurrentUser();
 	},
 
-	willDestroy() {
-		this._super();
-		console.log('WHY IS THIS NOT CALLED!!! OMG');
-		this.resetCurrentUser();
-	},
-
 	// This caches certain auth data on the controller
 	// in order to build the 'hasProvider...' CPs.
 	// Called after link/unlink and on init.
