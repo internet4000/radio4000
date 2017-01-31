@@ -3,17 +3,13 @@
  */
 
 .PageWelcome {
-	margin-top: 1rem;
-	background-color: $slightgray;
-	padding: 1rem;
+	padding-bottom: 1rem;
+	padding-left: 1rem;
 	margin-bottom: 4rem;
-	max-width: 30rem;
-	margin-left: auto;
-	margin-right: auto;
 
 	h3,
 	p {
-		text-align: center;
+		margin-bottom: 0.4rem;
 	}
 }
 
