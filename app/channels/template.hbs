@@ -1,3 +1,12 @@
 <div class="Sections">
-	{{outlet}}
+	<div class="Section">
+		<div class="Container">
+			<h1>Radios</h1>
+			{{aside-channels userChannel=session.currentUser.channels.firstObject}}
+		</div>
+	</div>
+
+	<article class="Section">
+		{{outlet}}
+	</article>
 </div>

@@ -2,10 +2,6 @@
 	<h1>Discover<small> the editor's selection</small></h1>
 </div>
 
-<section class="Section Container">
-		{{aside-channels	userChannel=session.currentUser.channels.firstObject}}
-</section>
-
 <section class="Section">
 	{{#unless model.featured}}
 		<div class="Container">
@@ -19,13 +15,11 @@
 					  <p>Hello and welcome!</p>
 					  <p>You can start your journey by listening to one of the radio on this page.</p>
 					  <p>Otherwise, let's explore!</p>
-					  <p>
-					    &rarr; <a href="{{href-to 'about.intro'}}">What is Radio4000?</a><br/>
-					    &rarr; <a href="{{href-to 'channels.all'}}">See all radios</a>
-					  </p>
-
+						<p>
+							&rarr; <a href="{{href-to 'about.intro'}}">What is Radio4000?</a><br/>
+							&rarr; <a href="{{href-to 'channels.all'}}">See all radios</a>
+						</p>
 					</div>
-
 				</div>
 				{{#each sortedFeaturedChannels as |channel|}}
 				  <div class="Grid-cell">

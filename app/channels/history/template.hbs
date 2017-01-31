@@ -1,10 +1,8 @@
-	<div class="Manchet">
-		<h1><small>Your listening </small>History</h1>
-	</div>
-<section class="Section Container">
-	{{aside-channels userChannel=session.currentUser.channels.firstObject}}
+<div class="Manchet">
+	<h1><small>Your listening </small>history</h1>
 	<p class="Muted">Only you can see your history.</p>
-</section>
+</div>
+
 <section class="Section">
 	{{#if model.userSettings.playedChannels}}
 		<div class="Container Container--full">
