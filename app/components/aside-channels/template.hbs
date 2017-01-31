@@ -1,13 +1,17 @@
 <div class="Tabs Tabs--horizontal Tabs--animated">
-	{{#link-to "channels.index" title="Listen to the editor's selection" class="Tabs-item"}}
-		Editor's selection
-	{{/link-to}}
 	{{#link-to "channels.all" title="Explore all radios" class="Tabs-item"}}
 		All
 	{{/link-to}}
+	{{#link-to "channels.index" title="Listen to the editor's selection" class="Tabs-item"}}
+		Featured
+	{{/link-to}}
+	<div class="Tabs-divider">|</div>
 	{{#if userChannel}}
 		{{#link-to "channels.history" title="Your listening history" class="Tabs-item"}}
 			History
+		{{/link-to}}
+		{{#link-to "channel.favorites" userChannel title="Your listening history" class="Tabs-item"}}
+			&rarr; Favorites
 		{{/link-to}}
 	{{/if}}
 </div>

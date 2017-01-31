@@ -24,21 +24,3 @@
 		</div>
 	{{/unless}}
 </section>
-
-{{#if model.userChannel.favoriteChannels}}
-	<section class="Section">
-		<div class="Manchet">
-			<h2><small>Your</small> favorite <small>radios</small></h2>
-		</div>
-
-		<div class="Container Container--full">
-			<div class="Grid Grid--wide">
-				{{#each model.userChannel.favoriteChannels as |userFavorite|}}
-					<div class="Grid-cell">
-						{{channel-card channel=userFavorite wide=true}}
-					</div>
-				{{/each}}
-			</div>
-		</div>
-	</section>
-{{/if}}
