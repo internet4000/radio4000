@@ -1,0 +1,37 @@
+// Colors
+$blue: hsl(255, 95%, 39%);
+$darkblue: hsl(230, 50%, 23%);
+$fadedblue: hsl(231, 48%, 95%);
+$green: hsl(125, 82%, 35%);
+$lighterblue: hsla(266, 36%, 84%, 0.8);
+$purple: hsl(260, 80%, 50%);
+$red: hsl(0, 75%, 50%);
+$verydarkblue: hsl(255, 65%, 19%);
+$yellow: hsl(52, 100%, 67%);
+
+// Grays
+$white: hsl(0, 0%, 100%);
+$superlightgray: hsl(0, 0%, 98%);
+$bleach: hsl(72, 100%, 98%);
+$slightgray: hsl(0, 0%, 95%);
+$lightgray-saturated: hsl(45, 5%, 90%);
+$lightgray: hsl(0, 0%, 91%);
+$mediumlightgray: hsl(0, 0%, 85%);
+$mediumgray: hsl(0, 0%, 70%);
+$boxshadowgray: hsla(0, 0%, 80%, 0.9);
+$gray: hsl(0, 0%, 50%);
+$dark: hsl(0, 0%, 30%);
+$black: hsl(0, 0%, 10%);
+
+// Color definitions
+$primary-color: $purple;
+$secondary-color: $red;
+$bg-color: $lightgray-saturated;
+$bg-color-2: $superlightgray;
+$text-color: $black;
+$text-color-invert: $superlightgray;
+$link-color: $text-color;
+
+// Partners colors
+$google: red;
+$facebook: blue;
