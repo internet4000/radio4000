@@ -67,7 +67,7 @@
 	}
 
 	.Tabs-item {
-		border-radius: 0;
+		border-radius: $border-radius;
 		flex-grow: 1;
 		border-right: 0;
 		border-bottom: 3px solid transparent;
