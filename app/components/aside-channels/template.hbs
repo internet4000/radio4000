@@ -8,7 +8,10 @@
 	<div class="Tabs-divider">|</div>
 	{{#if userChannel}}
 		{{#link-to "channels.history" title="Your listening history" class="Tabs-item"}}
-			History
+			My history
+		{{/link-to}}
+		{{#link-to "channel.favorites" userChannel title="Your favorite radios" class="Tabs-item"}}
+			-&rarr; My favorites
 		{{/link-to}}
 		{{#link-to "channel.favorites" userChannel title="Your listening history" class="Tabs-item"}}
 			&rarr; Favorites
