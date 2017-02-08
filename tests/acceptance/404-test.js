@@ -12,7 +12,7 @@ test('visiting /404 works', function (assert) {
 });
 
 test('visiting a non-existing route redirects to /404', function (assert) {
-	visit('/non-exisitng-route-to-test-404-route');
+	visit('/gghf894h');
 
 	andThen(function () {
 		assert.equal(currentURL(), '/404');
