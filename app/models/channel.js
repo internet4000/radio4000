@@ -54,6 +54,7 @@ export default DS.Model.extend(Validations, {
 	body: attr('string'),
 	isFeatured: attr('boolean'),
 	link: attr('string'),
+	backgroundColor: attr('string'),
 
 	// Timestamps.
 	created: attr('number', {

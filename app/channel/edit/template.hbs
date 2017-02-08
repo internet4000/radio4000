@@ -23,6 +23,20 @@
 							</button>
 							{{/if}}
 						</div>
+						<div class="Form-group">
+							{{spectrum-color-picker
+								color=model.backgroundColor
+								allowEmpty=true
+								preferredFormat="hsl"
+								showButtons=false
+								showInput=true
+								clickoutFiresChange=true
+								moveFiresChange=true
+								onChange=(action "colorChanged")}}
+								{{#if model.backgroundColor}}
+									<button class="NonBtn Btn--small" {{action 'removeBackgroundColor'}}>Reset the background color.</button>
+								{{/if}}
+						</div>
 					</form>
 
 					{{!-- right side, channel model --}}
@@ -77,3 +91,5 @@
 		</div>
 	</section>
 </div>
+
+<div class="SiteBackground" style="{{backgroundColorStyle}}"></div>

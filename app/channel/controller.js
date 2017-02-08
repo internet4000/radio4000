@@ -1,9 +1,13 @@
 import Ember from 'ember';
 
-const {debug, computed} = Ember;
+const {debug, computed, inject} = Ember;
 
 export default Ember.Controller.extend({
-	player: Ember.inject.service(),
+	player: inject.service(),
+
+	backgroundColorStyle: computed('model.backgroundColor', function () {
+		return new Ember.Handlebars.SafeString(`background-color: ${this.get('model.backgroundColor')}`);
+	}),
 
 	canEdit: computed('model', 'session.currentUser.channels.firstObject', {
 		get() {

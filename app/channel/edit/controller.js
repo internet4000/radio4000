@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import clean from 'radio4000/utils/clean';
 
-const {debug, get, Controller, computed, observer} = Ember;
+const {debug, get, set, Controller, computed, observer} = Ember;
 
 export default Controller.extend({
 	isSaving: false, // replace with ember-concurrency
@@ -9,6 +9,9 @@ export default Controller.extend({
 
 	didCacheSlug: false,
 
+	backgroundColorStyle: computed('model.backgroundColor', function () {
+		return new Ember.Handlebars.SafeString(`background-color: ${this.get('model.backgroundColor')}`);
+	}),
 	cacheSlug: computed('model.slug', function () {
 		this.cachedSlug = get(this, 'model.slug');
 		this.toggleProperty('didCacheSlug');
@@ -136,6 +139,16 @@ export default Controller.extend({
 			debug('Cancel edit --> channel');
 			this.transitionToRoute('channel', this.get('model'));
 			this.set('isSaving', false);
+		},
+
+		colorChanged(color) {
+			set(this, 'model.backgroundColor', color);
+			get(this, 'model').save();
+		},
+
+		removeBackgroundColor() {
+			set(this, 'model.backgroundColor', null);
+			get(this, 'model').save();
 		}
 	}
 });
