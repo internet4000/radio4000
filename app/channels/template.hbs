@@ -3,7 +3,9 @@
 		<div class="Manchet">
 			<h1>Listen <small>to radios</small></h1>
 		</div>
-		{{aside-channels userChannel=session.currentUser.channels.firstObject class="Container Container--full"}}
+		<div class="Container">
+			{{aside-channels userChannel=session.currentUser.channels.firstObject}}
+		</div>
 	</div>
 
 	<article class="Section">
