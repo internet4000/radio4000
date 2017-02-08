@@ -12,7 +12,7 @@
 	border-top: 1px solid hsl(0, 0%, 85%);
 	border-left: 1px solid hsl(0, 0%, 80%);
 	border-right: 1px solid hsl(0, 0%, 80%);
-	background-color: $superlightgray;
+	background-color: $bg-color-2;
 	border-radius: $border-radius;
 	box-shadow: $box-shadow;
 
@@ -35,6 +35,7 @@
 	border-right: 3px solid transparent;
 	transition: border-right-color 200ms $easing, border-bottom-color 200ms $easing, background-image 200ms $easing;
 
+	&,
 	&:hover,
 	&:focus,
 	&:active {
@@ -43,7 +44,7 @@
 
 	&.is-active {
 		@extend %font-bold;
-		border-right-color: $secondary-color;
+		border-right-color: $primary-color;
 		background-color: $superlightgray;
 	}
 }
@@ -52,6 +53,11 @@
 	font-size: rem(9);
 	text-transform: uppercase;
 	font-weight: 400;
+}
+
+.Tabs-divider {
+	margin: auto;
+	color: $slightgray;
 }
 
 /**
@@ -67,14 +73,14 @@
 	}
 
 	.Tabs-item {
-		border-radius: 0;
+		border-radius: $border-radius;
 		flex-grow: 1;
 		border-right: 0;
 		border-bottom: 3px solid transparent;
 
 		&.is-active {
 			border-right: 0;
-			border-bottom: 3px solid $secondary-color;
+			border-bottom: 3px solid $primary-color;
 		}
 
 		// equal widths
@@ -126,7 +132,7 @@
 		margin: auto;
 		height: 3px;
 		width: 0;
-		background: $secondary-color;
+		background: $primary-color;
 		transition: width 400ms $easing;
 	}
 
@@ -135,9 +141,3 @@
 		width: 100%;
 	}
 }
-
-.Tabs > .Btn--important {
-	// A bit of space around the button
-	margin: 0.5rem;
-}
-

@@ -64,43 +64,6 @@ $sans-fallback: "Lucida Grande", "Lucida Sans", sans-serif;
 	font-size: rem(49px);
 }
 
-// Colors
-$blue: hsl(255, 95%, 39%);
-$darkblue: hsl(230, 50%, 23%);
-$fadedblue: hsl(231, 48%, 95%);
-$green: hsl(125, 82%, 35%);
-$lighterblue: hsla(266, 36%, 84%, 0.8);
-$purple: hsl(260, 80%, 50%);
-$red: hsl(0, 75%, 50%);
-$verydarkblue: hsl(255, 65%, 19%);
-$yellow: hsl(52, 100%, 67%);
-
-// Grays
-$white: hsl(0, 0%, 100%);
-$superlightgray: hsl(0, 0%, 98%);
-$bleach: hsl(72, 100%, 98%);
-$slightgray: hsl(0, 0%, 95%);
-$lightgray-saturated: hsl(45, 5%, 90%);
-$lightgray: hsl(0, 0%, 91%);
-$mediumlightgray: hsl(0, 0%, 85%);
-$mediumgray: hsl(0, 0%, 70%);
-$boxshadowgray: hsla(0, 0%, 80%, 0.9);
-$gray: hsl(0, 0%, 50%);
-$dark: hsl(0, 0%, 30%);
-$black: hsl(0, 0%, 10%);
-
-// Color definitions
-$primary-color: $purple;
-$secondary-color: $red;
-$bg-color: $lightgray-saturated;
-$text-color: $black;
-$text-color-invert: $superlightgray;
-$link-color: $red;
-
-// Partners colors
-$google: red;
-$facebook: blue;
-
 // Easing and animations
 $easing: cubic-bezier(0.165, 0.84, 0.4, 1); // fast, good looking
 $easing2: cubic-bezier(0.3, 0, 0, 1.3); // nice for things that "pop"
@@ -116,6 +79,7 @@ $layout-ml: 780px;
 $layout-l: 1000px;
 $layout-xl: 1450px;
 $layout-xxl: 1700px;
+$layout-xxxl: 1920px;
 
 // Other stuff
 $box-shadow: 0 3px 0 -1px $boxshadowgray;

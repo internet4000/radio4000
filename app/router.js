@@ -10,12 +10,12 @@ const Router = Ember.Router.extend(googlePageview, {
 
 Router.map(function () {
 	this.route('about', function () {
+		this.route('intro', {path: '/'});
 		this.route('contact');
 		this.route('technology');
 	});
 	this.route('dashboard');
 	this.route('help');
-	this.route('intro');
 	this.route('404');
 	this.route('styleguide', function () {
 		this.route('typography');
@@ -31,13 +31,13 @@ Router.map(function () {
 		this.authenticatedRoute('history');
 	});
 	this.route('channel', {path: '/:channel_slug'}, function () {
-		this.authenticatedRoute('add');
-		this.authenticatedRoute('edit');
-		this.authenticatedRoute('delete');
-		this.route('dashboard', {});
 		this.route('index', {path: '/'}, function () {
 			this.route('track', {path: ':track_id', resetNamespace: true});
 		});
+		this.authenticatedRoute('add');
+		this.authenticatedRoute('edit');
+		this.authenticatedRoute('delete');
+		this.route('dashboard');
 		this.route('favorites');
 		this.route('followers');
 	});

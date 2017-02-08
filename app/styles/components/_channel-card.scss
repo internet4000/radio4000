@@ -1,11 +1,14 @@
 .ChannelCard {
 	position: relative;
 	padding-bottom: 1rem;
-	background-color: $white;
-	border-radius: $border-radius;
+	background-color: $bg-color-2;
 
 	&.is-active > a {
 		outline: 2px solid $primary-color;
+	}
+
+	a {
+		text-decoration: none;
 	}
 
 	.Playback-channel &.is-active > a {
@@ -26,11 +29,7 @@
 
 .ChannelCard-title {
 	word-break: break-word;
-	color: $secondary-color;
-
-	a:hover & {
-		text-decoration: underline;
-	}
+	color: $text-color;
 }
 
 .ChannelCard-body {
@@ -156,4 +155,3 @@ $card-wide-cover-size: 4.8rem;
 	margin-top: 0.25rem;
 	border-top: 1px solid hsl(0, 0%, 85%); // same as on .Tabs
 }
-

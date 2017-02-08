@@ -93,12 +93,8 @@
 	float: left;
 
 	// fits with two lines of description
-	width: rem(51);
+	width: 4rem;
 	margin-right: 1rem;
 	margin-bottom: 0;
 
-	// align with cover
-	+ .List-title {
-		margin-top: -3px;
-	}
 }

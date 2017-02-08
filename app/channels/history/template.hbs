@@ -1,9 +1,8 @@
-<section class="Section">
-	<div class="Manchet">
-		<h1><small>Your listening </small>History</h1>
-		<p class="Muted">Only you can see your history.</p>
-	</div>
+<div class="Manchet">
+	<p>Your listening history, only you can see this page.</p>
+</div>
 
+<section class="Section">
 	{{#if model.userSettings.playedChannels}}
 		<div class="Container Container--full">
 			{{#each-grid items=model.userSettings.playedChannels as |item|}}

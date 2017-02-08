@@ -163,6 +163,10 @@
 	text-align: center;
 	line-height: 1;
 
+	a {
+		text-decoration: none;
+	}
+
 	@media (min-width: $layout-s) {
 		text-align: left;
 	}
@@ -194,6 +198,7 @@
 		@include size-1;
 		word-wrap: break-word;
 		color: $gray;
+		text-decoration: none;
 	}
 }
 
@@ -204,4 +209,3 @@
 	// it is flexbox because of the Grid it is in (Grid-cell)
 	order: 1;
 }
-

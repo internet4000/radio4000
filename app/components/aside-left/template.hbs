@@ -1,11 +1,9 @@
 <div class="Tabs">
-  {{#link-to "channels.index" class="Tabs-item"}}Home{{/link-to}}
-  {{#link-to "channels.all" title="Find radio channels to enjoy" class="Tabs-item"}}Radios{{/link-to}}
+  {{#link-to "channels" title="Find radio channels to enjoy" class="Tabs-item"}}Radios{{/link-to}}
 
   {{#if userChannel}}
-    {{#link-to "channels.history" title="Your listening history" class="Tabs-item"}}History{{/link-to}}
     {{channel-card channel=userChannel wide=true}}
-    <button {{action "addTrack"}} class="Btn Btn--primary Btn--topNoRadius" title="Add a new track to your radio">Add track</button>
+    <button {{action "addTrack"}} class="Btn Btn--important Btn--topNoRadius" title="Add a new track to your radio">Add track</button>
   {{/if}}
 
   {{#unless userChannel}}
@@ -13,16 +11,13 @@
 			{{if session.isAuthenticated "Create your radio" "Sign up or log in"}}
 		{{/link-to}}
   {{/unless}}
-
-  {{#link-to "intro" title="Get introduced to Radio4000" class="Tabs-item"}}Introduction{{/link-to}}
   {{#link-to "about" title="Learn more about Radio4000" class="Tabs-item"}}About{{/link-to}}
-  {{#link-to "help" title="Find help and answers to your questions" class="Tabs-item"}}Help / Feedback{{/link-to}}
-  <a class="Tabs-item" href="http://blog.radio4000.com" target="_blank" title="How is the weather at Radio4000?">&rarr; Blog</a>
+  {{#link-to "help" title="Find help and answers to your questions" class="Tabs-item"}}Help{{/link-to}}
 </div>
 
 <div class="Tabs Tabs--transparent Tabs--bottom">
+	{{#link-to "feedback" class="Aside-link Muted" title="Let us know what you have in mind!"}}Feedback{{/link-to}}
   {{#if isAuthenticated}}
     {{#link-to "logout" class="Aside-link Muted" title="Log out from Radio4000"}}Log out{{/link-to}}
   {{/if}}
 </div>
-
