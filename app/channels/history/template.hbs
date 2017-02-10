@@ -1,23 +1,27 @@
 <section class="Section">
 	<div class="Container Container--full">
-		<div class="Grid">
-			<div class="Grid-cell">
-				<p>This is your listening history.</p>
-				<p>Radios you listened to will appear here, so you can continue later.</p>
-				{{#if session.isAuthenticated}}
-					{{#btn-group}}
-						<button class="Btn" {{action 'clearChannelHistory'}}>Delete all my history</button>
-					{{/btn-group}}
+		{{!--#list-manipulation items=model.userSettings.playedChannels as |mItems|--}}
+		{{#list-manipulation items as |mItems|}}
+			<div class="Grid">
+				<div class="Grid-cell">
+					<p>This is your listening history.</p>
+					<p>Radios you listened to will appear here, so you can continue later.</p>
+					{{#if session.isAuthenticated}}
+						{{#btn-group}}
+							<button class="Btn" {{action 'clearChannelHistory'}}>Delete all my history</button>
+						{{/btn-group}}
+					{{/if}}
+					<p class="Muted">This page is private, only you can see it.</p>
+				</div>
+
+				{{#if model.userSettings.playedChannels}}
+					{{#each mItems as |item|}}
+						<div class="Grid-cell">
+							{{channel-card channel=item}}
+						</div>
+					{{/each}}
 				{{/if}}
-				<p class="Muted">This page is private, only you can see it.</p>
 			</div>
-			{{#if model.userSettings.playedChannels}}
-				{{#each model.userSettings.playedChannels as |item|}}
-					<div class="Grid-cell">
-						{{channel-card channel=item}}
-					</div>
-				{{/each}}
-			{{/if}}
-		</div>
+		{{/list-manipulation}}
 	</div>
 </section>
