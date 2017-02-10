@@ -1,7 +1,8 @@
 <section class="Section">
 	<div class="Container Container--full">
 		{{#list-manipulation
-				 items=model.userSettings.playedChannels as |mItems|}}
+				 items=model.userSettings.playedChannels
+				 test=mItems as |mItems|}}
 			<div class="Grid">
 				<div class="Grid-cell">
 					<p>This is your listening history.</p>
