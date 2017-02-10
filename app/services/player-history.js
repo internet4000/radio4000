@@ -35,6 +35,9 @@ export default Service.extend({
 		currentChannelModel.then(channel => {
 			settings.then(settings => {
 				settings.get('playedChannels').then(history => {
+					if(history.includes(channel)) {
+						history.removeObject(channel);
+					}
 					history.addObject(channel);
 					settings.save().then(() => {
 						debug('playlist was added to currentUser played');
