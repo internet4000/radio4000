@@ -4,8 +4,7 @@ const {Component, computed} = Ember;
 
 export default Component.extend({
 	items: null,
-	manipulatedItems: computed('items', function() {
-		return this.get('items').reverseObjects();
+	mItems: computed('items', function() {
+		return this.get('items').slice().reverseObjects();
 	})
-
 });
