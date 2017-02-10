@@ -64,7 +64,8 @@ export default Service.extend({
 	// Clears the History of played channels
 	clearChannelHistory() {
 		this.get('session.currentUser.settings').then(settings => {
-			settings.set('playedChannels', []).save();
+			settings.set('playedChannels', []);
+			settings.save();
 		});
 	}
 });
