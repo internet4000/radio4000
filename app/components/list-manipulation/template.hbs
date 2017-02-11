@@ -1,0 +1,4 @@
+<button {{action (mut "sortKey" 'updated:asc')}} class="Btn">Updated:asc</button>
+<button {{action (mut "sortKey" 'updated:desc')}} class="Btn">Updated:desc</button>
+
+{{yield sortedList}}
