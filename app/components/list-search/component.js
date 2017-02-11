@@ -16,8 +16,7 @@ export default Ember.Component.extend({
 		let results;
 
 		if (isBlank(query)) {
-			console.log('blank');
-			results = [];
+			results = null;
 			if (this.attrs.afterSearching) {
 				this.attrs.afterSearching(results);
 			}
