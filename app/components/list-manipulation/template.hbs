@@ -1,7 +1,8 @@
 {{#btn-group}}
-	<button {{action "setSortKey" 'updated'}} class="Btn">Last updated date</button>
+	<span class="BtnGroup-label">{{label}}</span>
+	<button {{action "setSortKey" 'updated'}} class="Btn">Recently updated</button>
+	<button {{action "setSortKey" 'created'}} class="Btn">Created date</button>
 	<button {{action "setSortKey" 'title'}} class="Btn">Alphabetically</button>
-	<button {{action "setSortKey" 'created'}} class="Btn">Creation date</button>
 {{/btn-group}}
 
 {{yield manipulatedList}}
