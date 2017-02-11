@@ -6,7 +6,7 @@ const {Component, get} = Ember;
 
 export default Component.extend({
 	tagName: ['Button'],
-	classNames: ['Btn'],
+	classNames: ['Btn', 'Btn--small'],
 	toggle: false,
 	click() {
 		get(this, 'setKey')();

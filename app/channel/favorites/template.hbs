@@ -4,7 +4,6 @@
 			<p>{{model.favoriteChannels.length}} favorite radio channels.</p>
 		</div>
 		{{#list-manipulation list=model.favoriteChannels as |manipulatedList|}}
-
 			{{channels-list channels=manipulatedList}}
 		{{/list-manipulation}}
 	{{else}}
