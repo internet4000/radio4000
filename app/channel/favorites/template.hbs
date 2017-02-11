@@ -3,9 +3,22 @@
 		<div class="Container">
 			<p>{{model.favoriteChannels.length}} favorite radio channels.</p>
 		</div>
-		{{#list-manipulation list=model.favoriteChannels as |manipulatedList|}}
+
+		{{#list-manipulation list=model.favoriteChannels as |manipulatedList updateSorting|}}
+
+			{{#btn-group class='Container'}}
+				<span class="BtnGroup-label">Filter by</span>
+				{{btn-list-manipulation text='Recently updated'
+						onClick=(action updateSorting 'updated')}}
+				{{btn-list-manipulation text="Creation date"
+						onClick=(action updateSorting "created" true)}}
+				{{btn-list-manipulation text="A-Z"
+						onClick=(action updateSorting "title" true)}}
+			{{/btn-group}}
+
 			{{channels-list channels=manipulatedList}}
 		{{/list-manipulation}}
+
 	{{else}}
 		<div class="Container u-push-3">
 			<p>This channel doesn't have any favorites, yet.</p>
