@@ -45,7 +45,7 @@ export default Component.extend({
 	},
 	actions: {
 		// one action decides what to do, if toggle=true
-		setSortKey(key, toggle) {
+		updateSorting(key, toggle) {
 			if(toggle) {
 				this.toggleSetSortKey(key);
 				return;

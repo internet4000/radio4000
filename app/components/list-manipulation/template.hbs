@@ -1,8 +1,4 @@
-{{#btn-group}}
-	<span class="BtnGroup-label">{{label}}</span>
-	{{btn-list-manipulation setKey=(action 'setSortKey' 'updated') text='Recently updated'}}
-	{{btn-list-manipulation setKey=(action 'setSortKey' 'created' true) text='Created date'}}
-	{{btn-list-manipulation setKey=(action 'setSortKey' 'title' true) text='Alphabetically'}}
-{{/btn-group}}
-
-{{yield manipulatedList}}
+{{yield
+	manipulatedList
+	(action "updateSorting")
+}}

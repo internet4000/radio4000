@@ -21,7 +21,18 @@
 
 <section class="Section">
 	<div class="Container Container--full">
-		{{#list-manipulation list=channels as |manipulatedList|}}
+		{{#list-manipulation list=channels as |manipulatedList updateSorting|}}
+
+		{{#btn-group}}
+			<span class="BtnGroup-label">{{label}}</span>
+			{{btn-list-manipulation text='Recently updated'
+				onClick=(action updateSorting 'updated')}}
+			{{btn-list-manipulation text="Created date"
+				onClick=(action updateSorting "created" true)}}
+			{{btn-list-manipulation text="Alphabetically"
+				onClick=(action updateSorting "title" true)}}
+		{{/btn-group}}
+
 			{{#if channels}}
 				<div class="Grid {{if isList 'Grid--wide'}}">
 					<div class="Grid-cell">

@@ -9,6 +9,6 @@ export default Component.extend({
 	classNames: ['Btn', 'Btn--small'],
 	toggle: false,
 	click() {
-		get(this, 'setKey')();
+		get(this, 'onClick')();
 	}
 });
