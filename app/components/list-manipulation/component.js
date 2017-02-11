@@ -5,7 +5,7 @@ const {Component, computed, set, get} = Ember;
 export default Component.extend({
 	list: null,
 	sortKey: 'updated',
-	sortDirection: 'asc',
+	sortDirection: 'desc',
 
 	sortDefinition: computed('sortKey', 'sortDirection', function () {
 		return [].addObject(get(this, 'sortKey') + ':' + get(this, 'sortDirection'));
