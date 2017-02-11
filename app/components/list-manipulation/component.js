@@ -4,6 +4,7 @@ const {Component, computed, set, get} = Ember;
 
 export default Component.extend({
 	list: null,
+	label: 'Sort by',
 	sortKey: 'updated',
 	sortDirection: 'desc',
 
