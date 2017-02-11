@@ -5,33 +5,33 @@
 <section class="Section">
 	<div class="Container Container--full">
 		{{list-search
-			list=filteredChannels
-			afterSearching=(action "handleSearch")
-		}}
-		<button class="Search-toggle Btn" {{action 'changeLayout'}}>
-			{{if isList 'Bigger' 'Smaller'}}
-		</button>
+				list=filteredChannels
+				afterSearching=(action "handleSearch")}}
 	</div>
 </section>
 
 {{!-- {{#btn-group}}
-	<button class="Btn" {{action 'prev'}} title="See previous radios">prev</button>
-	<button class="Btn" {{action 'next'}} title="See next radios">next</button>
-{{/btn-group}} --}}
+				 <button class="Btn" {{action 'prev'}} title="See previous radios">prev</button>
+				 <button class="Btn" {{action 'next'}} title="See next radios">next</button>
+				 {{/btn-group}} --}}
 
 <section class="Section">
 	<div class="Container Container--full">
 		{{#list-manipulation list=channels as |manipulatedList updateSorting|}}
 
-		{{#btn-group}}
-			<span class="BtnGroup-label">{{label}}</span>
-			{{btn-list-manipulation text='Recently updated'
-				onClick=(action updateSorting 'updated')}}
-			{{btn-list-manipulation text="Created date"
-				onClick=(action updateSorting "created" true)}}
-			{{btn-list-manipulation text="Alphabetically"
-				onClick=(action updateSorting "title" true)}}
-		{{/btn-group}}
+			{{#btn-group class='BtnGroup--right'}}
+				<span class="BtnGroup-label">Filter by</span>
+				{{btn-list-manipulation text='Recently updated'
+						onClick=(action updateSorting 'updated')}}
+				{{btn-list-manipulation text="Creation date"
+						onClick=(action updateSorting "created" true)}}
+				{{btn-list-manipulation text="A-Z"
+						onClick=(action updateSorting "title" true)}}
+				<span class="BtnGroup-label">Display</span>
+				<button class="Btn Btn--small" {{action 'changeLayout'}}>
+					{{if isList 'Bigger' 'Smaller'}}
+				</button>
+			{{/btn-group}}
 
 			{{#if channels}}
 				<div class="Grid {{if isList 'Grid--wide'}}">
