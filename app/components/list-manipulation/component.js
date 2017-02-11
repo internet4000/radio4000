@@ -10,7 +10,7 @@ export default Component.extend({
 		return get(this, 'sortKey') + ':' + get(this, 'sortDirection');
 	}),
 	sortDefinition: computed.collect('sortCombo'),
-	sortedList: computed.sort('list', 'sortDefinition'),
+	manipulatedList: computed.sort('list', 'sortDefinition'),
 	actions: {
 		setSortKey(key) {
 			set(this, 'sortKey', key);

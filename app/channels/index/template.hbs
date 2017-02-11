@@ -5,7 +5,7 @@
 		</div>
 	{{else}}
 		<div class="Container Container--full">
-			{{#list-manipulation list=model.featured as |sortedList|}}
+			{{#list-manipulation list=model.featured as |manipulatedList|}}
 				<div class="Grid">
 					<div class="Grid-cell">
 						<p>Hello and welcome!</p>
@@ -16,7 +16,7 @@
 							&rarr; <a href="{{href-to 'channels.all'}}">See all radios</a>
 						</p>
 					</div>
-					{{#each sortedList as |channel|}}
+					{{#each manipulatedList as |channel|}}
 						<div class="Grid-cell">
 							{{channel-card channel=channel}}
 						</div>
