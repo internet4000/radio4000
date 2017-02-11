@@ -55,8 +55,10 @@
 	font-weight: 400;
 }
 
-.Tabs-item.Btn {
-	margin: 0.2rem 0.5rem;
+// .Tabs-item + .Btn doesn't play nice
+// so just nest .Btn directly inside.
+.Tabs .Btn {
+	margin: 0.2rem 0.6rem;
 }
 
 .Tabs-divider {
