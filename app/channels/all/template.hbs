@@ -4,13 +4,13 @@
 
 <section class="Section">
 	<div class="Container Container--full">
-		<form class="Search">
-			{{input class="Search-input" type="search" value=search placeholder="Search radios"}}
-			<button class="Search-btn Btn" type="submit">Search</button>
-			<button class="Search-toggle Btn" {{action 'changeLayout'}}>
-				{{if isList 'Bigger' 'Smaller'}}
-			</button>
-		</form>
+		{{list-search
+			list=filteredChannels
+			afterSearching=(action "handleSearch")
+		}}
+		<button class="Search-toggle Btn" {{action 'changeLayout'}}>
+			{{if isList 'Bigger' 'Smaller'}}
+		</button>
 	</div>
 </section>
 
@@ -21,8 +21,8 @@
 
 <section class="Section">
 	<div class="Container Container--full">
-		{{#list-manipulation list=sortedChannels as |manipulatedList|}}
-			{{#if sortedChannels}}
+		{{#list-manipulation list=channels as |manipulatedList|}}
+			{{#if channels}}
 				<div class="Grid {{if isList 'Grid--wide'}}">
 					<div class="Grid-cell">
 						<h3>Tip</h3>

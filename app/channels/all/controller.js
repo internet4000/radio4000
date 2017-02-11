@@ -1,46 +1,31 @@
 import Ember from 'ember';
-import stringContains from 'radio4000/utils/string-contains';
 
-const {Controller, computed, observer, run} = Ember;
+const {Controller, get, set, computed} = Ember;
 
 export default Controller.extend({
 	search: '',
 	queryParams: ['search'],
 	isList: false,
-
-	// This little pattern makes sets a property maximum every X ms for performance.
-	onSearchChange: observer('search', function () {
-		run.debounce(this, this.startSearching, 600);
-	}),
-
-	// The property triggers the computed property to, well, compute!
-	startSearching() {
-		this.set('realSearch', this.get('search'));
-	},
+	sortKey: 'created',
+	sortDirection: 'desc',
+	searchResults: null,
 
 	// Only show channels that have tracks.
 	filteredChannels: computed.filter('model', m => m.get('totalTracks')),
 
-	// Filters out models where title or body matches the search
-	// it watches 'realSearch' instead of 'search' so we can
-	// debounce for performance.
-	channels: computed('realSearch', 'filteredChannels', function () {
-		const search = this.get('search');
-		const filteredChannels = this.get('filteredChannels');
-		if (!search) {
-			return filteredChannels;
-		}
-		return filteredChannels.filter(item => {
-			return stringContains(item.get('title'), search) || stringContains(item.get('body'), search);
-		});
+	// Either show filtered or search-result channels.
+	channels: computed('filteredChannels', 'searchResults', function () {
+		let filtered = get(this, 'filteredChannels');
+		let searchResults = get(this, 'searchResults');
+		return searchResults ? searchResults : filtered;
 	}),
-
-	sortKeys: ['created:desc'],
-	sortedChannels: computed.sort('channels', 'sortKeys'),
 
 	actions: {
 		changeLayout() {
 			this.toggleProperty('isList');
+		},
+		handleSearch(searchResults) {
+			set(this, 'searchResults', searchResults);
 		}
 	}
 });
