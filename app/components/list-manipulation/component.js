@@ -14,10 +14,13 @@ export default Component.extend({
 	manipulatedList: computed.sort('list', 'sortDefinition'),
 	actions: {
 		setSortKey(key) {
+			set(this, 'sortKey', key);
+		},
+		toggleSetSortKey(key) {
 			if (get(this, 'sortKey') === key) {
 				return this.send('toggleSortDirection');
 			}
-			set(this, 'sortKey', key);
+			this.send('setSortKey', key);
 		},
 		toggleSortDirection() {
 			if (get(this, 'sortDirection') === 'asc') {
