@@ -7,13 +7,15 @@ export default Component.extend({
 	sortKey: 'updated',
 	sortDirection: 'asc',
 
-	sortCombo: computed('sortKey', 'sortDirection', function () {
-		return get(this, 'sortKey') + ':' + get(this, 'sortDirection');
+	sortDefinition: computed('sortKey', 'sortDirection', function () {
+		return [].addObject(get(this, 'sortKey') + ':' + get(this, 'sortDirection'));
 	}),
-	sortDefinition: computed.collect('sortCombo'),
 	manipulatedList: computed.sort('list', 'sortDefinition'),
 	actions: {
 		setSortKey(key) {
+			if (get(this, 'sortKey') === key) {
+				return this.send('toggleSortDirection');
+			}
 			set(this, 'sortKey', key);
 		},
 		toggleSortDirection() {
