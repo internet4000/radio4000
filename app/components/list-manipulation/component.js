@@ -6,7 +6,8 @@ export default Component.extend({
 	list: null,
 	sortKey: 'updated',
 	sortDirection: 'asc',
-	sortCombo: computed('sortKey', 'sortDirection', function() {
+
+	sortCombo: computed('sortKey', 'sortDirection', function () {
 		return get(this, 'sortKey') + ':' + get(this, 'sortDirection');
 	}),
 	sortDefinition: computed.collect('sortCombo'),
@@ -16,10 +17,11 @@ export default Component.extend({
 			set(this, 'sortKey', key);
 		},
 		toggleSortDirection() {
-			if(get(this, 'sortDirection') === 'asc') {
-				return set(this, 'sortDirection', 'desc');
+			if (get(this, 'sortDirection') === 'asc') {
+				set(this, 'sortDirection', 'desc');
+				return;
 			}
-			return set(this, 'sortDirection', 'asc')
+			set(this, 'sortDirection', 'asc');
 		}
 	}
 });

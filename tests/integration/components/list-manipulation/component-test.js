@@ -1,25 +1,48 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import {moduleForComponent, test} from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('list-manipulation', 'Integration | Component | list manipulation', {
   integration: true
 });
 
-test('it renders', function(assert) {
+test('it renders', function (assert) {
+	let list = [
+		{id: 1, name: 'Manchester'},
+		{id: 2, name: 'United'},
+		{id: 3, name: 'Forever'}
+	];
+	this.set('list', list);
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
-  this.render(hbs`{{list-manipulation}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
   this.render(hbs`
-    {{#list-manipulation}}
-      template block text
+    {{#list-manipulation
+			list=list
+			sortKey=key
+			sortDirection=direction
+			as |sortedList|
+		}}
+			<ul class="test">
+				{{#each sortedList as |item|}}
+					<li>{{item.name}}</li>
+				{{/each}}
+			</ul>
     {{/list-manipulation}}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+	// Shortcut to get the name of each item in the list by index.
+	const getName = index => this.$('.test li').eq(index).text().trim();
+
+	this.set('key', 'id');
+	this.set('direction', 'asc');
+  assert.equal(getName(0), list[0].name, 'sorting by key works');
+  assert.equal(getName(1), list[1].name);
+  assert.equal(getName(2), list[2].name);
+
+	this.set('direction', 'desc');
+  assert.equal(getName(0), list[2].name, 'sort direction can be changed');
+  assert.equal(getName(1), list[1].name);
+  assert.equal(getName(2), list[0].name);
+
+	this.set('key', 'name');
+	this.set('direction', 'asc');
+  assert.equal(getName(0), 'Forever', 'sort key can be changed');
 });
