@@ -3,7 +3,9 @@
 		<div class="Container">
 			<p>{{model.favoriteChannels.length}} favorite radio channels.</p>
 		</div>
-		{{channels-list channels=model.favoriteChannels}}
+		{{#list-manipulation list=model.favoriteChannels as |manipulatedList|}}
+			{{channels-list channels=manipulatedList}}
+		{{/list-manipulation}}
 	{{else}}
 		<div class="Container u-push-3">
 			<p>This channel doesn't have any favorites, yet.</p>
