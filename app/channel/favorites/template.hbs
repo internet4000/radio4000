@@ -1,13 +1,10 @@
 <div class="Channel-outlet">
 	{{#if model.favoriteChannels}}
-		<div class="Container">
-			<p>{{model.favoriteChannels.length}} favorite radio channels.</p>
-		</div>
 
 		{{#list-manipulation list=model.favoriteChannels as |manipulatedList updateSorting|}}
 
 			{{#btn-group class='Container'}}
-				<span class="BtnGroup-label">Filter by</span>
+				<span class="BtnGroup-label">Filter ({{model.favoriteChannels.length}}) by</span>
 				{{btn-list-manipulation text='Recently updated'
 						onClick=(action updateSorting 'updated')}}
 				{{btn-list-manipulation text="Creation date"
