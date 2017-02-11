@@ -1,10 +1,25 @@
 import Ember from 'ember';
 
-const {Component, computed} = Ember;
+const {Component, computed, set, get} = Ember;
 
 export default Component.extend({
 	list: null,
-	sortKey: 'updated:desc',
-	sortDefinition: computed.collect('sortKey'),
-	sortedList: computed.sort('list', 'sortDefinition')
+	sortKey: 'updated',
+	sortDirection: 'asc',
+	sortCombo: computed('sortKey', 'sortDirection', function() {
+		return get(this, 'sortKey') + ':' + get(this, 'sortDirection');
+	}),
+	sortDefinition: computed.collect('sortCombo'),
+	sortedList: computed.sort('list', 'sortDefinition'),
+	actions: {
+		setSortKey(key) {
+			set(this, 'sortKey', key);
+		},
+		toggleSortDirection() {
+			if(get(this, 'sortDirection') === 'asc') {
+				return set(this, 'sortDirection', 'desc');
+			}
+			return set(this, 'sortDirection', 'asc')
+		}
+	}
 });
