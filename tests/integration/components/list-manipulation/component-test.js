@@ -13,13 +13,13 @@ test('it renders', function (assert) {
 	];
 	this.set('list', list);
 
+	// {{btn-list-manipulation text='Recently updated'
+	// 		onClick=(action updateSorting 'updated')}}
+
 	this.render(hbs`
 		{{#list-manipulation
 			list=list
-			sortKey=key
-			sortDirection=direction
-			as |sortedList|
-		}}
+			as |sortedList|}}
 			<ul class="test">
 				{{#each sortedList as |item|}}
 					<li>{{item.name}}</li>
@@ -31,18 +31,18 @@ test('it renders', function (assert) {
 	// Shortcut to get the name of each item in the list by index.
 	const getName = index => this.$('.test li').eq(index).text().trim();
 
-	this.set('key', 'id');
-	this.set('direction', 'asc');
+	// this.set('key', 'id');
+	// this.set('direction', 'desc');
 	assert.equal(getName(0), list[0].name, 'sorting by key works');
-	assert.equal(getName(1), list[1].name);
-	assert.equal(getName(2), list[2].name);
+	// assert.equal(getName(1), list[1].name);
+	// assert.equal(getName(2), list[2].name);
 
-	this.set('direction', 'desc');
-	assert.equal(getName(0), list[2].name, 'sort direction can be changed');
-	assert.equal(getName(1), list[1].name);
-	assert.equal(getName(2), list[0].name);
+	// this.set('direction', 'asc');
+	// assert.equal(getName(0), list[2].name, 'sort direction can be changed');
+	// assert.equal(getName(1), list[1].name);
+	// assert.equal(getName(2), list[0].name);
 
-	this.set('key', 'name');
-	this.set('direction', 'asc');
-	assert.equal(getName(0), 'Forever', 'sort key can be changed');
+	// this.set('key', 'name');
+	// this.set('direction', 'asc');
+	// assert.equal(getName(0), 'Forever', 'sort key can be changed');
 });
