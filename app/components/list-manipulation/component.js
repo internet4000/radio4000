@@ -4,53 +4,45 @@ const {Component, computed, set, get} = Ember;
 
 export default Component.extend({
 	list: null,
-	label: 'Sort by',
 	sortKey: 'updated',
-	sortDesc: 'true',
-
+	sortDesc: true,
 	manipulatedList: computed.sort('list', 'sortDefinition'),
-
 	sortDefinition: computed('sortKey', 'sortDesc', function () {
-		let sortDirection;
 		let sortKey = get(this, 'sortKey');
+		let sortDesc = get(this, 'sortDesc');
+		let direction;
 
-		if (get(this, 'sortDesc')) {
-			sortDirection = 'desc';
+		if (sortDesc) {
+			direction = 'desc';
 		} else {
-			sortDirection = 'asc';
+			direction = 'asc';
 		}
 
-		return [`${sortKey}:${sortDirection}`];
+		return [`${sortKey}:${direction}`];
 	}),
 
 	setSortKey(key) {
 		this.setProperties({
-			sortKey: key,
+			'sortKey': key,
 			sortDesc: true
 		});
 	},
 	toggleSetSortKey(key) {
-		if (get(this, 'sortKey') === key) {
-			this.toggleSortDirection();
-			return;
+		if (key === get(this, 'sortKey')) {
+			this.toggleProperty('sortDesc');
+		} else {
+			this.setSortKey(key);
 		}
-		this.setSortKey(key);
 	},
-	toggleSortDirection() {
-		if (get(this, 'sortDesc')) {
-			set(this, 'sortDesc', false);
-			return;
-		}
-		set(this, 'sortDesc', true);
-	},
+
 	actions: {
 		// one action decides what to do, if toggle=true
-		updateSorting(key, toggle) {
-			if (toggle) {
-				this.toggleSetSortKey(key);
-				return;
+		updateSorting(key, toggleSorting) {
+			if (toggleSorting) {
+				this.toggleSetSortKey(key)
+			} else {
+				this.setSortKey(key)
 			}
-			this.setSortKey(key);
 		}
 	}
 });
