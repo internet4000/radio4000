@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {Component, computed, set, get} = Ember;
+const {Component, computed, get} = Ember;
 
 export default Component.extend({
 	list: null,
@@ -23,7 +23,7 @@ export default Component.extend({
 
 	setSortKey(key) {
 		this.setProperties({
-			'sortKey': key,
+			sortKey: key,
 			sortDesc: true
 		});
 	},
@@ -39,9 +39,9 @@ export default Component.extend({
 		// one action decides what to do, if toggle=true
 		updateSorting(key, toggleSorting) {
 			if (toggleSorting) {
-				this.toggleSetSortKey(key)
+				this.toggleSetSortKey(key);
 			} else {
-				this.setSortKey(key)
+				this.setSortKey(key);
 			}
 		}
 	}
