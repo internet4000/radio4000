@@ -19,6 +19,5 @@ test('it renders', function (assert) {
 			template block text
 		{{/btn-list-manipulation}}
 	`);
-
 	assert.equal(this.$().text().trim(), 'template block text');
 });
