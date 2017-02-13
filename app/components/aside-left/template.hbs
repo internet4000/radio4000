@@ -7,7 +7,7 @@
   {{/if}}
 
   {{#unless userChannel}}
-		{{#link-to "channels.new" class="Btn Btn--important" title="Sign up to create your own radio now or log in"}}
+		{{#link-to "channels.new" class="Tabs-btn Btn Btn--important" title="Sign up to create your own radio now or log in"}}
 			{{if session.isAuthenticated "Create your radio" "Sign up or log in"}}
 		{{/link-to}}
   {{/unless}}
