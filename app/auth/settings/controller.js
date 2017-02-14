@@ -144,7 +144,7 @@ export default Controller.extend({
 		},
 		removeEmail() {
 			// this.updateEmail();
-			var user = get(this, 'firebaseApp').auth().currentUser;
+			let user = get(this, 'firebaseApp').auth().currentUser;
 			user.updateProfile({
 				email: ''
 			}).then(data => {
@@ -154,6 +154,9 @@ export default Controller.extend({
 				debug(`remove email ERROR`);
 				throw new Error(err);
 			});
+		},
+		deletedUser() {
+			console.log('finished deleting user?');
 		}
 	}
 });

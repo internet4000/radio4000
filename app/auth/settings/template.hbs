@@ -6,28 +6,27 @@
 		</header>
 	</section>
 
-	<section class="Section">
-		<div class="Container">
+	{{#if currentUser.email}}
+		<section class="Section">
+			<div class="Container">
+					<h3>Email</h3>
+						<p class="Muted">
+						{{#if currentUser.emailVerified}}
+							Your email has been verified
+						{{else}}
+							Your email is not yet verified. We have sent a verification email to your new address. <a href="#" {{action "verifyEmail"}} title="Click to send a new verification email. After clicking the link in the email, please refresh this page.">Need a new verification link?</a>.
+						{{/if}}
+					</p>
 
-			{{#if currentUser.email}}
-				<h3>Email</h3>
-					<p class="Muted">
-					{{#if currentUser.emailVerified}}
-						Your email has been verified
-					{{else}}
-						Your email is not yet verified. We have sent a verification email to your new address. <a href="#" {{action "verifyEmail"}} title="Click to send a new verification email. After clicking the link in the email, please refresh this page.">Need a new verification link?</a>.
-					{{/if}}
-				</p>
-
-				<form class="ProviderAccount" {{action "updateEmail" newEmail on="submit"}}>
-					<div class="ProviderAccount-body">
-						{{input placeholder=currentUser.email value=newEmail}}
-					</div>
-					<button class="Btn" type="submit">Update</button>
-				</form>
-			{{/if}}
-		</div>
-	</section>
+					<form class="ProviderAccount" {{action "updateEmail" newEmail on="submit"}}>
+						<div class="ProviderAccount-body">
+							{{input placeholder=currentUser.email value=newEmail}}
+						</div>
+						<button class="Btn" type="submit">Update</button>
+					</form>
+			</div>
+		</section>
+	{{/if}}
 
 	<section class="Section">
 		<div class="Container">
@@ -42,11 +41,9 @@
 				verifyEmail=(action "verifyEmail")}}
 
 			<div class="ProviderAccounts">
-
 				{{#if hasEverything}}
 					<p class="Muted">There are no other accounts to connect.</p>
 				{{/if}}
-
 				{{#unless hasGoogle}}
 					{{account-provider-link
 						name="Google"
@@ -54,7 +51,6 @@
 						disabled=hasGoogle
 						onLink=(action "linkAccount")}}
 				{{/unless}}
-
 				{{#unless hasFacebook}}
 					{{account-provider-link
 						name="Facebook"
@@ -62,13 +58,22 @@
 						disabled=hasFacebook
 						onLink=(action "linkAccount")}}
 				{{/unless}}
-
 				{{#unless hasEmail}}
 					{{account-email-link
 						name="Email"
 						onLink=(action "linkEmail")}}
 				{{/unless}}
 			</div>
+		</div>
+	</section>
+
+	<section class="Section">
+		<div class="Container">
+			<h3>Delete my Radio4000 account</h3>
+			{{auth-delete-account
+				firebaseApp=firebaseApp
+				user=session.currentUser
+				onDelete=(action "deletedUser")}}
 		</div>
 	</section>
 </div>

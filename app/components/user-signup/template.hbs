@@ -6,7 +6,7 @@
 		{{input type="password" value=v placeholder="Create a password" required="required"}}
 	{{/form-group}}
 	{{#form-group model=this valuePath="passwordConfirmation" as |v|}}
-		{{input type="password" value=v placeholder="Enter password again" required="required"}}
+		{{input type="password" value=v placeholder="Enter your new password again" required="required"}}
 	{{/form-group}}
 	<div class="Form-group">
 		<button disabled={{validations.isInvalid}} type="submit" class="Btn Btn--large" title="Sign up or Log in with email">
