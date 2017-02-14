@@ -1,22 +1,34 @@
 import Ember from 'ember';
 
-const {Route, get, inject} = Ember;
+const {Route, get, inject, debug} = Ember;
 
 export default Route.extend({
 	flashMessages: inject.service(),
 	onLoginError(err) {
-		let messages = 	get(this, 'flashMessages');
-		messages.info(err.message, {
+		console.log( err );
+
+		let message;
+
+		if (err.code === 'auth/email-not-verified') {
+			message = 'This email address is not verified. Check your inbox.';
+			this.transitionTo('auth.login');
+		} else if (err.code === 'auth/invalid-email') {
+			message = 'Invalid email.';
+		} else if (err.code === 'auth/user-disabled') {
+			message = 'This account has been disabled. Contact an admin.';
+		} else if (err.code === 'auth/user-not-found') {
+			message = 'This account does not exist.';
+		} else if (err.code === 'auth/wrong-password') {
+			message = 'Password does not match email.';
+		} else {
+			debug('Login error is not referenced');
+		}
+		this.sendErrorMessage(message);
+	},
+	sendErrorMessage(message) {
+		get(this, 'flashMessages').info(message, {
 			timeout: 10000
 		});
-
-		if (err.name === 'auth/email-not-verified') {
-			this.transitionTo('auth.login');
-		}
-		// auth/invalid-email
-		// auth/user-disabled
-		// auth/user-not-found
-		// auth/wrong-password
 	},
 	actions: {
 		login(provider, email, password) {
