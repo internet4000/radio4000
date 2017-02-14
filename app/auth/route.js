@@ -5,8 +5,6 @@ const {Route, get, inject, debug} = Ember;
 export default Route.extend({
 	flashMessages: inject.service(),
 	onLoginError(err) {
-		console.log( err );
-
 		let message;
 
 		if (err.code === 'auth/email-not-verified') {
