@@ -19,23 +19,25 @@ export default ToriiFirebaseAdapter.extend({
 			if (!user.emailVerified && providerIsPassword) {
 				let err = {
 					name: 'auth/email-not-verified',
-					message: 'Before you can log in, first verify your email adress. Check your inbox.'
+					message: 'Before you can log in, first verify your email address. Check your inbox.'
 				};
 				debug(err);
 				user.sendEmailVerification();
 				this.close();
 				reject(err);
-			} else {
-				this.getOrCreateUser(user.uid, store).then(userModel => {
-					this.createUserSetting(userModel, store);
-					resolve({
-						provider: this.extractProviderId_(user),
-						uid: user.uid,
-						// Note that normally currentUser is a Firebase user, not an ember model `user` like in this case.
-						currentUser: userModel
-					});
-				});
+				return;
 			}
+
+			this.getOrCreateUser(user.uid, store).then(userModel => {
+				this.createUserSetting(userModel, store);
+				resolve({
+					provider: this.extractProviderId_(user),
+					uid: user.uid,
+					// Note that normally currentUser is a Firebase user,
+					// not an ember model `user` like in this case.
+					currentUser: userModel
+				});
+			});
 		});
 	},
 
