@@ -8,6 +8,7 @@
 }
 
 .BtnGroup--right {
+	// margin-left: auto;
 	justify-content: flex-end;
 }
 
@@ -38,10 +39,10 @@
 		border-radius: 0;
 	}
 
-	& + .BtnGroup-label {
-		margin-left: 1.5rem;
-		margin-right: 1rem;
-	}
+	// & + .BtnGroup-label {
+	// 	margin-left: 1.5rem;
+	// 	margin-right: 1rem;
+	// }
 
 	&:active,
 	&.is-active {

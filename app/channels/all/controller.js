@@ -25,7 +25,6 @@ export default Controller.extend({
 			this.toggleProperty('isList');
 		},
 		handleSearch(searchResults) {
-			console.log(searchResults);
 			set(this, 'searchResults', searchResults);
 		}
 	}

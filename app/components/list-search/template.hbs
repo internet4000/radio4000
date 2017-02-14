@@ -1,19 +1,23 @@
-<!-- {{input class="Search-input" type="search" value=search placeholder="Search radios"}} -->
+{{input class="Search-input"
+	type="search"
+	value=searchQuery
+	key-press=(perform search searchQuery)
+	placeholder="Search radios"}}
 
-<input type="search" class="Search-input"
-	oninput={{perform search value="target.value"}}
-	placeholder="Search radios…" />
-
-{{#if searchRepo.isRunning}}
+{{!--
+{{#if search.isRunning}}
 	Searching…
 {{/if}}
 
 <ul>
-	{{#each searchRepo.lastSuccessful.value as |item|}}
-		<li>{{item.title}}</li>
+	{{#each search.lastSuccessful.value as |item|}}
+		<!-- <li>{{item.title}}</li> -->
+	{{else}}
+		<li>no results</li>
 	{{/each}}
 </ul>
 
 <!-- <button class="Search-btn Btn" type="submit">Search</button> -->
+--}}
 
 {{yield searchedList}}

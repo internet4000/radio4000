@@ -1,23 +1,16 @@
 <div class="Manchet">
-	<p>Each radio is curated by one <b>human</b>. Listen, discover someone's personal selection. <br/>If you feel like sharing yours, we welcome you to <a href="{{href-to 'login'}}" title="">create your own radio</a>.</p>
+	<p>Each radio is curated by one <b>human</b>. Listen, discover someone's personal selection. If you feel like sharing yours, we welcome you to <a href="{{href-to 'login'}}" title="">create your own radio</a>.</p>
 </div>
 
 <section class="Section">
 	<div class="Container Container--full">
-		{{list-search
+		{{#list-manipulation list=channels as |manipulatedList updateSorting|}}
+
+		<div class="u-row">
+			{{list-search
 				list=filteredChannels
 				afterSearching=(action "handleSearch")}}
-	</div>
-</section>
 
-{{!-- {{#btn-group}}
-				 <button class="Btn" {{action 'prev'}} title="See previous radios">prev</button>
-				 <button class="Btn" {{action 'next'}} title="See next radios">next</button>
-				 {{/btn-group}} --}}
-
-<section class="Section">
-	<div class="Container Container--full">
-		{{#list-manipulation list=channels as |manipulatedList updateSorting|}}
 			{{#btn-group class="BtnGroup--right"}}
 				<span class="BtnGroup-label">Filter by</span>
 				{{btn-list-manipulation text="Activity"
@@ -26,11 +19,12 @@
 						onClick=(action updateSorting "created" true)}}
 				{{btn-list-manipulation text="A-Z"
 						onClick=(action updateSorting "title" true)}}
-				<span class="BtnGroup-label">Display</span>
+				<span class="BtnGroup-label">&nbsp;</span>
 				<button class="Btn Btn--small" {{action "changeLayout"}}>
 					{{if isList "Bigger" "Smaller"}}
 				</button>
 			{{/btn-group}}
+		</div>
 
 			{{#if channels}}
 				<div class="Grid {{if isList 'Grid--wide'}}">
@@ -48,7 +42,7 @@
 						</div>
 					{{/each}}
 				</div>
-		{{else}}
+			{{else}}
 				<p>Tuning radios…</p>
 				{{is-loading}}
 			{{/if}}

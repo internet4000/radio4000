@@ -1,20 +1,19 @@
-.Search {
+.u-row {
 	display: flex;
-	flex-wrap: nowrap;
-	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.Search {
+	flex: 100%;
+
+	@media (min-width: $layout-m) {
+		flex: 0 1 14rem;
+		margin-left: auto;
+		margin-right: 1rem;
+	}
 }
 
 .Search-input {
-	margin-bottom: 0;
-	flex-basis: rem(420);
-
-	// Avoid double-border.
-	margin-right: -1px;
+	padding: 0.3rem 0.5rem;
 }
 
-.Search-toggle {
-	margin-left: auto;
-
-	// Avoid button 'jumping' when changing text inside.
-	flex-basis: 68px;
-}
