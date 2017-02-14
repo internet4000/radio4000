@@ -18,18 +18,17 @@
 <section class="Section">
 	<div class="Container Container--full">
 		{{#list-manipulation list=channels as |manipulatedList updateSorting|}}
-
-			{{#btn-group class='BtnGroup--right'}}
+			{{#btn-group class="BtnGroup--right"}}
 				<span class="BtnGroup-label">Filter by</span>
-				{{btn-list-manipulation text='Recently updated'
-						onClick=(action updateSorting 'updated')}}
-				{{btn-list-manipulation text="Creation date"
+				{{btn-list-manipulation text="Activity"
+						onClick=(action updateSorting "updated")}}
+				{{btn-list-manipulation text="Age"
 						onClick=(action updateSorting "created" true)}}
 				{{btn-list-manipulation text="A-Z"
 						onClick=(action updateSorting "title" true)}}
 				<span class="BtnGroup-label">Display</span>
-				<button class="Btn Btn--small" {{action 'changeLayout'}}>
-					{{if isList 'Bigger' 'Smaller'}}
+				<button class="Btn Btn--small" {{action "changeLayout"}}>
+					{{if isList "Bigger" "Smaller"}}
 				</button>
 			{{/btn-group}}
 
