@@ -51,6 +51,24 @@ export default Controller.extend({
 		get(this, 'flashMessages').success(`Verification email sent. Please check your email.`);
 	},
 
+	settingsError(err) {
+		let messages = get(this, 'flashMessages');
+		let message, messageOptions;
+
+		if (err.code === 'auth/credential-already-in-use') {
+			message = 'Could not add account. Credentials are already in use.';
+		} else if (err.code === 'auth/email-already-in-use') {
+			message = 'Could not add account. This email is already in use.';
+		} else if (err.code === 'auth/requires-recent-login') {
+			message = 'For your security, please log out and sign back in to add a new account.';
+			messageOptions = {sticky: true};
+		} else {
+			message = 'Could not add account.';
+			throw new Error(err);
+		}
+		messages.warning(message, options);
+	},
+
 	// Link a new provider to the current user.
 	// Send it either a single auth provider object (google+facebook)
 	// OR string "password" + email password
@@ -72,21 +90,7 @@ export default Controller.extend({
 		return promise.then(() => {
 			this.updateCurrentUser();
 			messages.success(`Added ${provider.providerId || name} account`);
-		}, err => {
-			console.log(err);
-			if (err.code === 'auth/credential-already-in-use') {
-				messages.warning('Could not add account. Credentials are already in use.');
-			} else if (err.code === 'auth/email-already-in-use') {
-				messages.warning(`Could not add account. The e-mail ${email} is already in use.`);
-			} else if (err.code === 'auth/requires-recent-login') {
-				messages.warning(`For your security, please log out and sign back in to add a new account.`, {
-					sticky: true
-				});
-			} else {
-				messages.warning('Could not add account.');
-			}
-			throw new Error(err);
-		});
+		}).catch(err => this.settingsError);
 	},
 
 	unlinkAccount(providerId) {
