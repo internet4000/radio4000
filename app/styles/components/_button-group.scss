@@ -7,11 +7,15 @@
 	margin-bottom: 1rem;
 }
 
+.BtnGroup--right {
+	justify-content: flex-end;
+}
+
 .BtnGroup-label {
 	align-self: center;
 	position: relative;
 	top: em(1, 13);
-	margin-right: 0.2em;
+	margin-right: 0.5em;
 	margin-bottom: 0;
 	color: $gray;
 }
@@ -30,13 +34,18 @@
 	}
 
 	& + .Btn {
-		border-left: 0;
+		border-left-color: transparent;
 		border-radius: 0;
 	}
 
 	& + .BtnGroup-label {
 		margin-left: 1.5rem;
 		margin-right: 1rem;
+	}
+
+	&:active,
+	&.is-active {
+		border-color: $primary-color;
 	}
 }
 

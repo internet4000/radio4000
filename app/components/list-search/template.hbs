@@ -1,0 +1,19 @@
+<!-- {{input class="Search-input" type="search" value=search placeholder="Search radios"}} -->
+
+<input type="search" class="Search-input"
+	oninput={{perform search value="target.value"}}
+	placeholder="Search radios…" />
+
+{{#if searchRepo.isRunning}}
+	Searching…
+{{/if}}
+
+<ul>
+	{{#each searchRepo.lastSuccessful.value as |item|}}
+		<li>{{item.title}}</li>
+	{{/each}}
+</ul>
+
+<!-- <button class="Search-btn Btn" type="submit">Search</button> -->
+
+{{yield searchedList}}
