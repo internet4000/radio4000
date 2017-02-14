@@ -5,8 +5,6 @@ const {debug, inject, RSVP} = Ember;
 
 export default ToriiFirebaseAdapter.extend({
 	store: inject.service(),
-	flashMessages: inject.service(),
-	// firebase: inject.service(),
 
 	// Extacts session information from authentication response
 	open(user) {
@@ -29,10 +27,9 @@ export default ToriiFirebaseAdapter.extend({
 			}
 
 			// resolve on sucess
-			this.getOrCreateUser(user.uid, store).then(userModel => {
-				this.createUserSetting(userModel, store);
+			this.getOrCreateUser(user.uid).then(userModel => {
+				this.createUserSetting(userModel);
 				resolve({
-					provider: this.extractProviderId_(user),
 					uid: user.uid,
 					// Note that normally currentUser is a Firebase user,
 					// not an ember model `user` like in this case.
@@ -43,13 +40,11 @@ export default ToriiFirebaseAdapter.extend({
 	},
 
 	// Returns a promise that resolves to either a new user or an already existing one.
-	getOrCreateUser(id, store) {
+	getOrCreateUser(id) {
 		if (!id) {
 			throw new Error('Missing `id` argument');
 		}
-		if (!store) {
-			throw new Error('Missing `store` argument');
-		}
+		const store = this.get('store');
 		return new RSVP.Promise(resolve => {
 			store.findRecord('user', id).then(user => {
 				resolve(user);
@@ -64,13 +59,13 @@ export default ToriiFirebaseAdapter.extend({
 	},
 
 	// Returns a promise that resolves either a new user-setting or an already existing one.
-	createUserSetting(user, store) {
+	createUserSetting(user) {
 		if (!user) {
 			throw new Error('Missing `user` argument');
 		}
-
-		const alreadyHaveASetting = user.belongsTo('settings').id();
-		if (alreadyHaveASetting) {
+		const store = this.get('store');
+		const hasSettings = user.belongsTo('settings').id();
+		if (hasSettings) {
 			return RSVP.Promise.resolve(user.get('settings.firstObject'));
 		}
 
