@@ -80,11 +80,13 @@
 						{{model.totalTracks}} Tracks
 					{{/link-to}}
 					{{#link-to 'channel.favorites' class="Tabs-item" title="Favorites of this radio"}}
-						{{!-- {{model.totalFavorites}}  --}}Favorites
+						Favorites
 					{{/link-to}}
-					{{#link-to 'channel.followers' class="Tabs-item" title="Followers of this radio"}}
-						{{!-- {{model.channelPublic.totalFollowers}}  --}}Followers
-					{{/link-to}}
+					{{#if canEdit}}
+						{{#link-to 'channel.followers' class="Tabs-item" title="Followers of this radio"}}
+							Followers
+						{{/link-to}}
+					{{/if}}
 				</nav>
 
 				{{outlet}}
