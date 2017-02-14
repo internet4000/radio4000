@@ -8,7 +8,11 @@ export default Ember.Route.extend({
 
 		// If we do not unload the user model, Firebase will warn about permissions.
 		let user = get(this, 'session.currentUser');
-		get(user, 'settings').then(s => s.unloadRecord());
+		get(user, 'settings').then(s => {
+			if (s) {
+				s.unloadRecord();
+			}
+		});
 		user.unloadRecord();
 
 		get(this, 'session').close().then(() => {

@@ -6,7 +6,7 @@
 {{else}}
 	<button class="Btn Btn--danger" title="Once deleted, it's deleted"
 		{{action "delete"}}>
-		Yes, delete my account
+		{{if deleteAccount.isIdle "Yes, delete my account" "Deleting..."}}
 	</button>
 {{/if}}
 

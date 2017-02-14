@@ -51,22 +51,23 @@ export default Controller.extend({
 		get(this, 'flashMessages').success(`Verification email sent. Please check your email.`);
 	},
 
-	settingsError(err) {
+	handleError(err) {
 		let messages = get(this, 'flashMessages');
-		let message, messageOptions;
+		let msg;
+		let options;
 
 		if (err.code === 'auth/credential-already-in-use') {
-			message = 'Could not add account. Credentials are already in use.';
+			msg = 'Could not add account. Credentials are already in use.';
 		} else if (err.code === 'auth/email-already-in-use') {
-			message = 'Could not add account. This email is already in use.';
+			msg = 'Could not add account. This email is already in use.';
 		} else if (err.code === 'auth/requires-recent-login') {
-			message = 'For your security, please log out and sign back in to add a new account.';
-			messageOptions = {sticky: true};
+			msg = 'For your security, please log out and sign back in to add a new account.';
+			options = {sticky: true};
 		} else {
-			message = 'Could not add account.';
+			msg = 'Could not add account.';
 			throw new Error(err);
 		}
-		messages.warning(message, options);
+		messages.warning(msg, options);
 	},
 
 	// Link a new provider to the current user.
@@ -90,7 +91,7 @@ export default Controller.extend({
 		return promise.then(() => {
 			this.updateCurrentUser();
 			messages.success(`Added ${provider.providerId || name} account`);
-		}).catch(err => this.settingsError);
+		}).catch(this.handleError);
 	},
 
 	unlinkAccount(providerId) {
@@ -103,10 +104,7 @@ export default Controller.extend({
 				// 	this.removeEmailOnly();
 				// }
 			})
-			.catch(err => {
-				debug(`provider ${providerId} un-linked ERROR`);
-				throw new Error(err);
-			});
+			.catch(this.handleError);
 	},
 
 	actions: {
@@ -160,7 +158,12 @@ export default Controller.extend({
 			});
 		},
 		deletedUser() {
-			console.log('finished deleting user?');
+			this.get('session').close();
+			this.transitionToRoute('auth.signup');
+			get(this, 'flashMessages').success('Your Radio4000 account was deleted. Farewell!');
+		},
+		onError(err) {
+			this.handleError(err);
 		}
 	}
 });

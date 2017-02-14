@@ -73,8 +73,10 @@
 			{{auth-delete-account
 				firebaseApp=firebaseApp
 				user=session.currentUser
+				onError=(action "onError")
 				onDelete=(action "deletedUser")}}
 		</div>
 	</section>
 </div>
+
 {{outlet}}
