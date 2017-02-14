@@ -21,9 +21,6 @@ export default Route.extend({
 		} else {
 			debug('Login error is not referenced');
 		}
-		this.sendErrorMessage(message);
-	},
-	sendErrorMessage(message) {
 		get(this, 'flashMessages').info(message, {
 			timeout: 10000
 		});
