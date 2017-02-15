@@ -36,9 +36,9 @@
 			initialUrl=url
 			onSubmit=(action "saveTrack")
 			onCancel=(action "toggleModal")}}
-		<p {{action "toggleModal"}}>
+		<p>
 			Do you want to add tracks directly from YouTube?<br>
-			&rarr;{{link-to "Get the bookmarklet" "bookmarklet" class="Btn Btn--text"}}
+			&rarr;<span {{action "toggleModal"}}>{{link-to "Get the bookmarklet" "bookmarklet" class="Btn Btn--text"}}</span>
 		</p>
 	{{/modal-dialog}}
 {{/if}}
