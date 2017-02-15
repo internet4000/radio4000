@@ -158,10 +158,15 @@
 	@include clearfix;
 }
 
-.Channel-title {
+.Channel-titleGroup {
 	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+.Channel-title {
 	text-align: center;
 	line-height: 1;
+	margin-bottom: 0;
 
 	a {
 		text-decoration: none;
@@ -175,6 +180,14 @@
 		@include size-5;
 		display: inline-block;
 		max-width: 80%;
+	}
+}
+
+.Channel-slug {
+	margin-bottom: 0;
+
+	a {
+		text-decoration: none;
 	}
 }
 
@@ -202,9 +215,6 @@
 	}
 }
 
-/**
-	Channel-introduction
- */
 .Channel-introduction {
 	// it is flexbox because of the Grid it is in (Grid-cell)
 	order: 1;

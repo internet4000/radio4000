@@ -129,7 +129,8 @@ $card-wide-cover-size: 4.8rem;
 	.ChannelCard-title {
 		margin-top: auto;
 		margin-bottom: auto;
-		word-break: inherit;
+		// Commented out, it broke channels with longer words.
+		// word-break: inherit;
 	}
 
 	.ChannelCard-body {

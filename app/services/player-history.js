@@ -21,7 +21,7 @@ export default Service.extend({
 	setTrackAsFinished(track) {
 		track.set('finishedInCurrentPlayer', true);
 	},
-	// the user played this channel entirely
+	// logged in user naturally finished a track in this channel
 	setChannelAsPlayed() {
 		const currentChannelModel = this.get('player.model.channel');
 		const settings = this.get('session.currentUser.settings');
@@ -64,7 +64,8 @@ export default Service.extend({
 	// Clears the History of played channels
 	clearChannelHistory() {
 		this.get('session.currentUser.settings').then(settings => {
-			settings.set('playedChannels', []).save();
+			settings.set('playedChannels', []);
+			settings.save();
 		});
 	}
 });

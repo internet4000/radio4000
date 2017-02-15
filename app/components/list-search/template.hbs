@@ -1,0 +1,23 @@
+{{input class="Search-input"
+	type="search"
+	value=searchQuery
+	key-press=(perform search searchQuery)
+	placeholder="Search radios"}}
+
+{{!--
+{{#if search.isRunning}}
+	Searching…
+{{/if}}
+
+<ul>
+	{{#each search.lastSuccessful.value as |item|}}
+		<!-- <li>{{item.title}}</li> -->
+	{{else}}
+		<li>no results</li>
+	{{/each}}
+</ul>
+
+<!-- <button class="Search-btn Btn" type="submit">Search</button> -->
+--}}
+
+{{yield searchedList}}

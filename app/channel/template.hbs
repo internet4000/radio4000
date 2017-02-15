@@ -10,7 +10,7 @@
 			<article class="Channel Channel--detail {{if canEdit 'canEdit'}}">
 				<div class="Channel-header">
 					<div class="Container Container--full Container--tight">
-						<div class="Channel-media">
+						<div class="Channel-media" title="Image for {{model.title}}">
 							{{#if canEdit}}
 								{{#link-to 'channel.edit' model}}
 									<div class="Channel-cover">
@@ -35,21 +35,34 @@
 								<div class="Channel-playback">
 									{{play-shuffle-btn channel=model expanded=true}}
 								</div>
-								<h1 class="Channel-title">
-									<a href="{{href-to 'channel' model}}">{{model.title }}</a>
-								</h1>
+								<div class="Channel-titleGroup">
+									<h1 class="Channel-title" title="Welcome to {{model.title}}">
+										<a href="{{href-to 'channel' model}}">{{model.title}}</a>
+									</h1>
+									<p class="Channel-slug">
+										{{#if canEdit}}
+											<a href="{{href-to 'channel.edit' model}}"
+												 class="Muted"
+												 title="To listen, tune in @{{model.slug}}">@{{model.slug}}</a>
+										{{else}}
+											<a href="{{href-to 'channel' model}}"
+												 class="Muted"
+												 title="To listen, tune in @{{model.slug}}" >@{{model.slug}}</a>
+										{{/if}}
+									</p>
+								</div>
 							</div>
 
 							{{#if model.body}}
 								<p class="Channel-description">{{model.body}}</p>
 							{{/if}}
 							{{#if model.updated}}
-							  <time class="Channel-date">Updated {{time-ago model.updated}}</time>
+							  <time class="Channel-date" title="{{model.title}} added music {{time-ago model.updated}}">Updated {{time-ago model.updated}}</time>
 							{{/if}}
 
 							{{#if model.link}}
 								<p class="Channel-links">
-									<a href="{{model.link}}" target="_blank">{{model.link}}</a>
+									<a href="{{model.link}}" target="_blank" title="Go to {{model.title}}'s webpage">{{model.link}}</a>
 								</p>
 							{{/if}}
 						</div>
@@ -67,11 +80,13 @@
 						{{model.totalTracks}} Tracks
 					{{/link-to}}
 					{{#link-to 'channel.favorites' class="Tabs-item" title="Favorites of this radio"}}
-						{{!-- {{model.totalFavorites}}  --}}Favorites
+						Favorites
 					{{/link-to}}
-					{{#link-to 'channel.followers' class="Tabs-item" title="Followers of this radio"}}
-						{{!-- {{model.channelPublic.totalFollowers}}  --}}Followers
-					{{/link-to}}
+					{{#if canEdit}}
+						{{#link-to 'channel.followers' class="Tabs-item" title="Followers of this radio"}}
+							Followers
+						{{/link-to}}
+					{{/if}}
 				</nav>
 
 				{{outlet}}

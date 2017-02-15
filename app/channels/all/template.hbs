@@ -1,46 +1,52 @@
 <div class="Manchet">
-	<p>Each radio is curated by one <b>human</b>. Listen, discover someone's personal selection. <br/>If you feel like sharing yours, we welcome you to <a href="{{href-to 'login'}}" title="">create your own radio</a>.</p>
+	<p>Each radio is curated by one <b>human</b>. Listen, discover someone's personal selection. If you feel like sharing yours, we welcome you to <a href="{{href-to 'login'}}" title="">create your own radio</a>.</p>
 </div>
 
 <section class="Section">
 	<div class="Container Container--full">
-		<form class="Search">
-			{{input class="Search-input" type="search" value=search placeholder="Search radios"}}
-			<button class="Search-btn Btn" type="submit">Search</button>
-			<button class="Search-toggle Btn" {{action 'changeLayout'}}>
-				{{if isList 'Bigger' 'Smaller'}}
-			</button>
-		</form>
-	</div>
-</section>
+		{{#list-manipulation list=channels as |manipulatedList updateSorting|}}
 
-{{!-- {{#btn-group}}
-	<button class="Btn" {{action 'prev'}} title="See previous radios">prev</button>
-	<button class="Btn" {{action 'next'}} title="See next radios">next</button>
-{{/btn-group}} --}}
+		<div class="u-row">
+			{{list-search
+				list=filteredChannels
+				afterSearching=(action "handleSearch")}}
 
-<section class="Section">
-	<div class="Container Container--full">
-		{{#if sortedChannels}}
-			<div class="Grid {{if isList 'Grid--wide'}}">
-			  <div class="Grid-cell">
-			    <h3>Tip</h3>
-			    <div class="Muted">
-			      <p>Newest radios are at the top.</p>
-			      <p>Press <strong>W</strong> anytime (on your keyboard) to play a random radio. Press <strong>W</strong> again to 'swap' to another one.</p>
-			      <p>Radios without music are not shown here.</p>
-			    </div>
-			  </div>
-			  {{#each sortedChannels as |item|}}
-			    <div class="Grid-cell">
-			      {{channel-card channel=item wide=isList}}
-			    </div>
-			  {{/each}}
-			</div>
-		{{else}}
-			<p>Tuning radios…</p>
-			{{is-loading}}
-		{{/if}}
+			{{#btn-group class="BtnGroup--right"}}
+				<span class="BtnGroup-label">Filter by</span>
+				{{btn-list-manipulation text="Activity"
+						onClick=(action updateSorting "updated")}}
+				{{btn-list-manipulation text="Age"
+						onClick=(action updateSorting "created" true)}}
+				{{btn-list-manipulation text="A-Z"
+						onClick=(action updateSorting "title" true)}}
+				<span class="BtnGroup-label">&nbsp;</span>
+				<button class="Btn Btn--small" {{action "changeLayout"}}>
+					{{if isList "Bigger" "Smaller"}}
+				</button>
+			{{/btn-group}}
+		</div>
+
+			{{#if channels}}
+				<div class="Grid {{if isList 'Grid--wide'}}">
+					<div class="Grid-cell">
+						<h3>Tip</h3>
+						<div class="Muted">
+							<p>Newest radios are at the top.</p>
+							<p>Press <strong>W</strong> anytime (on your keyboard) to play a random radio. Press <strong>W</strong> again to 'swap' to another one.</p>
+							<p>Radios without music are not shown here.</p>
+						</div>
+					</div>
+					{{#each manipulatedList as |item|}}
+						<div class="Grid-cell">
+							{{channel-card channel=item wide=isList}}
+						</div>
+					{{/each}}
+				</div>
+			{{else}}
+				<p>Tuning radios…</p>
+				{{is-loading}}
+			{{/if}}
+		{{/list-manipulation}}
 	</div>
 </section>
 
