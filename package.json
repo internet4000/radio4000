@@ -1,6 +1,6 @@
 {
   "name": "radio4000",
-  "version": "4.7.1",
+  "version": "4.8.0",
   "scripts": {
     "build": "ember build; gulp critical",
     "build-production": "ember build -p; gulp critical",
