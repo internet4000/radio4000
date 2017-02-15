@@ -12,19 +12,21 @@ export default Controller.extend({
 
 	onSignupError(err) {
 		const messages = get(this, 'flashMessages');
+		let options = {timeout: 8000};
+		let msg;
 
 		if (err.code === 'auth/email-already-in-use') {
-			message = 'There already exists an account with the given email address.';
+			msg = 'There already exists an account with the given email address.';
 		}	else if (err.code === 'auth/invalid-email') {
-			message = 'Email address is not valid.';
+			msg = 'Email address is not valid.';
 		}	else if (err.code === 'auth/operation-not-allowed') {
-			message = 'Email/password accounts are not enabled.';
+			msg = 'Email/password accounts are not enabled.';
 		}	else if (err.code === 'auth/weak-password') {
-			message = 'Password is not strong enough.';
+			msg = 'Password is not strong enough.';
 		} else {
 			debug('Signup error is not referenced');
 		}
-		messages.warning(message, {timeout: 8000});
+		messages.warning(msg, options);
 	},
 
 	actions: {
@@ -33,10 +35,9 @@ export default Controller.extend({
 				return this.createFirebaseUser(email, password).then(() => {
 					this.send('login', provider, email, password);
 				}).catch(err => {
-					this.onSignupError(err)
+					this.onSignupError(err);
 				});
 			}
-
 			this.send('login', provider);
 		},
 		login() {

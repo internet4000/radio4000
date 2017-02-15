@@ -9,8 +9,8 @@ export default ToriiFirebaseAdapter.extend({
 	// Extacts session information from authentication response
 	open(user) {
 		this._super(user);
-		const store = this.get('store');
-		let providerIsPassword = this.extractProviderId_(user) === 'password';
+		let provider = this.extractProviderId_(user);
+		let providerIsPassword = (provider === 'password');
 
 		// reject login and send email is loging with email && not verified
 		return new RSVP.Promise((resolve, reject) => {
@@ -63,14 +63,13 @@ export default ToriiFirebaseAdapter.extend({
 		if (!user) {
 			throw new Error('Missing `user` argument');
 		}
-		const store = this.get('store');
 		const hasSettings = user.belongsTo('settings').id();
 		if (hasSettings) {
 			return RSVP.Promise.resolve(user.get('settings.firstObject'));
 		}
 
 		debug('No user settings found, creating…');
-		const userSetting = store.createRecord('user-setting', {user});
+		const userSetting = this.get('store').createRecord('user-setting', {user});
 		return new RSVP.Promise(resolve => {
 			userSetting.save().then(() => {
 				user.set('settings', userSetting);

@@ -60,7 +60,7 @@
   "dependencies": {
     "date-fns": "^1.12.1",
     "ember-youtube": "^0.8.0",
-    "emberfire": "^2.0.5",
+    "emberfire": "2.0.5",
     "lazysizes": "^2.0.0",
     "suitcss-base": "^2.0.0",
     "torii": "^0.8.1",
