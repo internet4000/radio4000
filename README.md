@@ -45,10 +45,6 @@ Make sure gulp is installed globally with `yarn global add gulp-cli`.
 
 If your icon is called `hello-world.svg` you can add `class="icon-hello-world"` to an element to use it.
 
-## Building native apps
-
-Run `npm run build-app`, make some coffee and then check the `dist-electron` folder.
-
 ## Backend
 
 We use Firebase as our database and API. It's connected through Ember Data and [Emberfire](https://github.com/firebase/emberfire).
