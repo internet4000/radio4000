@@ -6,13 +6,13 @@
 	align-items: center;
 	margin-bottom: 1rem;
 }
+
 .BtnGroup--vertical {
 	flex-direction: column;
 	align-items: right;
 }
 
 .BtnGroup--right {
-	// margin-left: auto;
 	justify-content: flex-end;
 }
 
@@ -33,6 +33,7 @@
 		border-color: $primary-color;
 	}
 }
+
 .BtnGroup--vertical .Btn {
 	margin-bottom: 0.2rem;
 	margin-top: 0.2rem;
