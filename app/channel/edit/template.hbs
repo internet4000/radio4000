@@ -6,27 +6,22 @@
 
 		<div class="Channel Channel--edit Container Container--full">
 
+			<form class="Channel-media">
+				<div class="Form-group">
+					{{#image-upload imageId=newImage}}
+						{{channel-cover src=model.coverImage.src}}
+						Drag 'n drop an image for your radio here
+					{{/image-upload}}
+					{{#if model.coverImage}}
+						<button class="Btn Btn--danger Btn--text" {{action "deleteImage"}}>
+							Delete image
+						</button>
+					{{/if}}
+				</div>
+			</form>
+
 			<div class="Form Form--box">
 				<div class="Channel Channel--edit">
-
-					{{!-- left side, channel image --}}
-
-					<form class="Channel-media">
-						<div class="Form-group">
-							{{#image-upload imageId=newImage}}
-								{{channel-cover src=model.coverImage.src}}
-								Drag 'n drop an image for your radio here
-							{{/image-upload}}
-							{{#if model.coverImage}}
-							<button class="Btn Btn--danger Btn--text" {{action "deleteImage"}}>
-								Delete image
-							</button>
-							{{/if}}
-						</div>
-					</form>
-
-					{{!-- right side, channel model --}}
-
 					<form class="Channel-body" {{action "trySave" on="submit"}}>
 						{{#form-group model=model valuePath="title" label="Radio channel name" as |v|}}
 							{{focus-input
@@ -38,21 +33,21 @@
 								minlength=titleMinLength}}
 						{{/form-group}}
 
+						{{#form-group model=model valuePath="slug" label="URL" as |v|}}
+							<p style="font-weight: normal">radio4000.com/{{v}}</p>
+							{{input
+									value=v
+									placeholder="channel-slug"
+									required="required"
+									maxlength=titleMaxLength
+									minlength=titleMinLength}}
+						{{/form-group}}
+
 						{{#form-group model=model valuePath="body" label="Description" as |v|}}
 							{{textarea id="body"
 								value=v
 								maxlength=channelDescriptionMaxLength
 								placeholder="What is your radio about?"}}
-						{{/form-group}}
-
-						{{#form-group model=model valuePath="slug" label="URL" as |v|}}
-							<p style="font-weight: normal">radio4000.com/{{v}}</p>
-							{{input
-								value=v
-								placeholder="channel-slug"
-								required="required"
-								maxlength=titleMaxLength
-								minlength=titleMinLength}}
 						{{/form-group}}
 
 						{{#form-group model=model valuePath="link" label="Link" as |v|}}
@@ -74,8 +69,6 @@
 			</div>
 
 			<p><a class="Btn Btn--text Muted" href="{{href-to 'channel.delete' model}}">Delete your radio</a></p>
-
-			<p>Go to <a href="{{href-to 'auth.settings'}}">settings</a> to manage how you sign in to your radio.</p>
 		</div>
 	</section>
 </div>

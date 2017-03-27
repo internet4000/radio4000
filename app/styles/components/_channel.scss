@@ -62,7 +62,7 @@
 	background-color: $superlightgray;
 	min-height: 10rem; // visual perf
 	display: flex;
-	padding-left: 2rem;
+	padding-left: 1rem;
 }
 
 .Channel-media {
@@ -97,9 +97,9 @@
 
 .Channel-body {
 	@include clearfix;
-	padding-left: 1.5rem;
-	padding-top: 2.5rem;
-	padding-right: 1.5rem;
+	padding-left: 1rem;
+	padding-top: 2rem;
+	padding-right: 1rem;
 
 	@media (min-width: $layout-s) {
 		position: relative;
@@ -137,13 +137,6 @@
 	margin-bottom: 0;
 	padding-top: 2rem;
 	padding-bottom: 1rem;
-}
-
-.Channel-edit {
-	position: absolute;
-	top: -0.6rem;
-	right: -0.5rem;
-	z-index: 4; // above media
 }
 
 .Channel-titleSection {
