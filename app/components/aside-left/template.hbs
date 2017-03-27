@@ -6,11 +6,17 @@
     <button {{action "addTrack"}} class="Btn Btn--important Btn--topNoRadius" title="Add a new track to your radio">Add track</button>
   {{/if}}
 
-  {{#unless userChannel}}
-		{{#link-to "channels.new" class="Tabs-btn Btn Btn--important" title="Sign up to create your own radio now or log in"}}
-			{{if session.isAuthenticated "Create your radio" "Sign up or log in"}}
-		{{/link-to}}
-  {{/unless}}
+	{{#unless userChannel}}
+		{{#btn-group class="Tabs-item BtnGroupWrapper BtnGroupWrapper--full"}}
+			{{#if isAuthenticated}}
+				{{#link-to "channels.new" class="Btn Btn--important" title="Sign up to create your own radio now or log in"}}Create your radio{{/link-to}}
+			{{else}}
+				{{#link-to "auth.signup" class="Btn Btn--important" title="Sign up to Radio4000"}}Sign up{{/link-to}}
+				{{#link-to "auth.login" class="Btn" title="Log in to Radio4000"}}Log in{{/link-to}}
+			{{/if}}
+		{{/btn-group}}
+	{{/unless}}
+
   {{#link-to "about" title="Learn more about Radio4000" class="Tabs-item"}}About{{/link-to}}
   {{#link-to "help" title="Find help and answers to your questions" class="Tabs-item"}}Help{{/link-to}}
 </div>
