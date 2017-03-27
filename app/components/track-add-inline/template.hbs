@@ -1,11 +1,10 @@
-<label>Add a track to your radio</label>
-<div class="Form-group">
-	{{input-paste type="url"
-		value=addTrackUrl
-		onPaste="paste"
-		placeholder="Paste in a YouTube link to add a track"
-		required="required"}}
-	<button type="submit" class="Btn Form-groupStatus" title="Tip: Press enter to add!">Add</button>
-</div>
+{{#Form-group}}
+	{{input-paste
+			type="url"
+			value=addTrackUrl
+			onPaste="paste"
+			placeholder="Paste in a YouTube link to add a track"
+			required="required"}}
+{{/Form-group}}
 
 {{yield}}
