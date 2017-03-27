@@ -18,8 +18,11 @@ export default Route.extend({
 			message = 'This account does not exist.';
 		} else if (err.code === 'auth/wrong-password') {
 			message = 'Password and email do not match.';
+		} else if (err.code === 'auth/internal-error') {
+			message = 'Internal error, please try again later.';
+			debug(`auth/internal-error: ${err}`);
 		} else {
-			debug('Login error is not referenced');
+			debug(`Login error is not referenced: ${err}`);
 		}
 		get(this, 'flashMessages').warning(message, {
 			timeout: 10000
