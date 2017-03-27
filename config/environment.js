@@ -26,7 +26,7 @@ module.exports = function(environment) {
 			// this is the NEW DEV project
 			apiKey: 'AIzaSyDi6cxC167OWaliNMnZkE0BX1XP8ObwdnQ',
 			authDomain: 'radio4000-staging.firebaseapp.com',
-			databaseURL: 'https://radio4000-staging.firebaseio.com',
+			databaseURL: 'https://radio4000-staging.firebaseio.com'
 		},
 		torii: {
 			sessionServiceName: 'session'
@@ -64,8 +64,7 @@ module.exports = function(environment) {
 		ENV.firebase = {
 			apiKey: 'AIzaSyAyeuzsaD353IhPbffzvP8EE88HNTwSTY0',
 			authDomain: 'radio4000.firebaseapp.com',
-			databaseURL: 'https://radio4000.firebaseio.com',
-			storageBucket: ''
+			databaseURL: 'https://radio4000.firebaseio.com'
 		};
 		// Enable google analytics
 		ENV.googleAnalytics = {
