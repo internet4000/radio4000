@@ -50,8 +50,7 @@ export default Controller.extend({
 		get(this, 'flashMessages').success(`Email sent. Check your inbox to verify your email.`, {sticky: true});
 	},
 	handleError(err, _this) {
-		debug('@Handle error')
-
+		debug('@handledError');
 		let messages = get(_this, 'flashMessages');
 		let msg;
 		let options = {
@@ -66,7 +65,7 @@ export default Controller.extend({
 			msg = 'This is a SENSITIVE operation, logout and login again to perform this action.';
 			options.sticky = true;
 		} else {
-			msg = 'Could not add account.';
+			debug('Could not add account.');
 			throw new Error(err);
 		}
 		messages.warning(msg, options);
@@ -81,9 +80,7 @@ export default Controller.extend({
 		let promise;
 
 		if (provider === 'password') {
-			let credential = firebase.auth.EmailAuthProvider
-				.credential(email, password);
-			console.log("credz", credential);
+			let credential = firebase.auth.EmailAuthProvider.credential(email, password);
 			promise = auth.currentUser.link(credential);
 		} else {
 			promise = auth.currentUser.linkWithPopup(provider);
@@ -97,10 +94,8 @@ export default Controller.extend({
 
 	unlinkAccount(providerId) {
 		let auth = get(this, 'firebaseApp').auth();
-		console.log( auth.currentUser );
-
 		return auth.currentUser.unlink(providerId)
-			.then(user => {
+			.then(() => {
 				get(this, 'flashMessages').success(`Account removed.`, {timeout: 8000});
 				this.updateCurrentUser();
 			})
