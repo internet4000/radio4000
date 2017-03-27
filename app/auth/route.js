@@ -5,17 +5,18 @@ const {Route, get, inject, debug} = Ember;
 export default Route.extend({
 	flashMessages: inject.service(),
 	onLoginError(err) {
-		let message;
+		const messages = get(this, 'flashMessages');
+		let msg;
 
 		if (err.code === 'auth/email-not-verified') {
-			message = 'This email address is not verified. Check your inbox.';
+			msg = 'This email address is not verified. Check your inbox.';
 			this.transitionTo('auth.login');
 		} else if (err.code === 'auth/invalid-email') {
-			message = 'Invalid email.';
+			msg = 'Invalid email.';
 		} else if (err.code === 'auth/user-disabled') {
-			message = 'This account has been disabled. Contact an admin.';
+			msg = 'This account has been disabled. Contact an admin.';
 		} else if (err.code === 'auth/user-not-found') {
-			message = 'This account does not exist.';
+			msg = 'This account does not exist.';
 		} else if (err.code === 'auth/wrong-password') {
 			message = 'Password and email do not match.';
 		} else if (err.code === 'auth/internal-error') {
@@ -24,14 +25,14 @@ export default Route.extend({
 		} else {
 			debug(`Login error is not referenced: ${err}`);
 		}
-		get(this, 'flashMessages').warning(message, {
-			timeout: 10000
-		});
+
+		if (msg) {
+			mssages.warning(msg, {timeout: 10000});
+		}
 	},
 	actions: {
 		login(provider, email, password) {
 			const flashMessages = get(this, 'flashMessages');
-
 			let data = {
 				provider,
 				email,

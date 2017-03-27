@@ -22,6 +22,7 @@ Ember.LinkComponent.reopen({
 
 // https://guides.emberjs.com/v2.11.0/configuring-ember/debugging/#toc_errors-within-an-code-rsvp-promise-code
 RSVP.on('error', error => {
+	Ember.debug('RSVP caught an error: ' + error);
 	Ember.assert(false, error);
 });
 

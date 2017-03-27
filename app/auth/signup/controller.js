@@ -12,7 +12,6 @@ export default Controller.extend({
 
 	onSignupError(err) {
 		const messages = get(this, 'flashMessages');
-		let options = {timeout: 8000};
 		let msg;
 
 		if (err.code === 'auth/email-already-in-use') {
@@ -25,8 +24,12 @@ export default Controller.extend({
 			msg = 'Password is not strong enough.';
 		} else {
 			debug('Signup error is not referenced');
+			console.log(err);
 		}
-		messages.warning(msg, options);
+
+		if (msg && options) {
+			messages.warning(msg, {timeout: 8000});
+		}
 	},
 
 	actions: {
