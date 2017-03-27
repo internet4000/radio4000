@@ -36,33 +36,35 @@ export default Controller.extend({
 		let currentUser = firebaseApp.auth().currentUser;
 		set(this, 'currentUser', currentUser);
 		set(this, 'providerData', currentUser.providerData);
-		console.log('updated current user');
+		Ember.debug('updated current user');
 	},
 
 	// Ensure the auth data we 'cache' is cleaned.
 	resetCurrentUser() {
 		set(this, 'currentUser', null);
 		set(this, 'providerData', null);
-		console.log('reset current user');
 	},
 
 	sendEmailVerification() {
 		get(this, 'firebaseApp').auth().currentUser.sendEmailVerification();
-		get(this, 'flashMessages').success(`Verification email sent. Please check your email.`);
+		get(this, 'flashMessages').success(`Email sent! Please check your inbox to verify your email.`);
 	},
+	handleError(err, _this) {
+		debug('@Handle error')
 
-	handleError(err) {
-		let messages = get(this, 'flashMessages');
+		let messages = get(_this, 'flashMessages');
 		let msg;
-		let options;
+		let options = {
+			timeout: 8000
+		};
 
 		if (err.code === 'auth/credential-already-in-use') {
-			msg = 'Could not add account. Credentials are already in use.';
+			msg = 'This account is already in use.';
 		} else if (err.code === 'auth/email-already-in-use') {
-			msg = 'Could not add account. This email is already in use.';
+			msg = 'This email is already in use.';
 		} else if (err.code === 'auth/requires-recent-login') {
-			msg = 'For your security, please log out and sign back in to add a new account.';
-			options = {sticky: true};
+			msg = 'This is a SENSITIVE operation, logout and login again to perform this action.';
+			options.sticky = true;
 		} else {
 			msg = 'Could not add account.';
 			throw new Error(err);
@@ -81,41 +83,38 @@ export default Controller.extend({
 		if (provider === 'password') {
 			let credential = firebase.auth.EmailAuthProvider
 				.credential(email, password);
-			console.log(credential);
+			console.log("credz", credential);
 			promise = auth.currentUser.link(credential);
 		} else {
-			console.log(provider);
 			promise = auth.currentUser.linkWithPopup(provider);
 		}
 
 		return promise.then(() => {
 			this.updateCurrentUser();
-			messages.success(`Added ${provider.providerId || name} account`);
-		}).catch(this.handleError);
+			messages.success(`Added your ${provider.providerId || name} account.`);
+		});
 	},
 
 	unlinkAccount(providerId) {
 		let auth = get(this, 'firebaseApp').auth();
+		console.log( auth.currentUser );
+
 		return auth.currentUser.unlink(providerId)
 			.then(user => {
-				debug(`provider ${providerId} un-linked; user: ${user}`);
+				get(this, 'flashMessages').success(`Account removed.`, {timeout: 8000});
 				this.updateCurrentUser();
-				// if (providerId === 'password') {
-				// 	this.removeEmailOnly();
-				// }
 			})
 			.catch(this.handleError);
 	},
 
 	actions: {
 		linkAccount(provider) {
-			console.log(provider);
-			this.linkAccount(provider);
+			this.linkAccount(provider).catch(err => this.handleError(err, this));
 		},
 		linkEmail(email, password) {
 			this.linkAccount('password', email, password).then(() => {
 				this.sendEmailVerification();
-			});
+			}).catch(err => this.handleError(err, this));
 		},
 		unlinkAccount(providerId) {
 			this.unlinkAccount(providerId);
@@ -132,7 +131,6 @@ export default Controller.extend({
 			user.updateEmail(newEmail).then(result => {
 				this.sendEmailVerification();
 				debug(`update email sucess: ${result}`);
-				console.log({user, result});
 			}).catch(err => {
 				if (err.code === 'auth/requires-recent-login') {
 					messages.warning(`For your security, please log in again before updating your email address.`, {
@@ -159,7 +157,7 @@ export default Controller.extend({
 		},
 		deletedUser() {
 			this.get('session').close();
-			this.transitionToRoute('auth.signup');
+			this.transitionToRoute('auth.login');
 			get(this, 'flashMessages').success('Your Radio4000 account was deleted. Farewell!');
 		},
 		onError(err) {

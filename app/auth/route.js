@@ -17,11 +17,11 @@ export default Route.extend({
 		} else if (err.code === 'auth/user-not-found') {
 			message = 'This account does not exist.';
 		} else if (err.code === 'auth/wrong-password') {
-			message = 'Password does not match email.';
+			message = 'Password and email do not match.';
 		} else {
 			debug('Login error is not referenced');
 		}
-		get(this, 'flashMessages').info(message, {
+		get(this, 'flashMessages').warning(message, {
 			timeout: 10000
 		});
 	},

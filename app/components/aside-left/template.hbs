@@ -9,7 +9,7 @@
 	{{#unless userChannel}}
 		{{#btn-group class="Tabs-item BtnGroupWrapper BtnGroupWrapper--full"}}
 			{{#if isAuthenticated}}
-				{{#link-to "channels.new" class="Btn Btn--important" title="Sign up to create your own radio now or log in"}}Create your radio{{/link-to}}
+				{{#link-to "channels.new" class="Btn Btn--full Btn--important" title="Sign up to create your own radio now or log in"}}Create your radio{{/link-to}}
 			{{else}}
 				{{#link-to "auth.signup" class="Btn Btn--important" title="Sign up to Radio4000"}}Sign up{{/link-to}}
 				{{#link-to "auth.login" class="Btn" title="Log in to Radio4000"}}Log in{{/link-to}}

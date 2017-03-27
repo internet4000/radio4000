@@ -2,7 +2,7 @@
 	<section class="Section">
 		<header class="Manchet">
 			<h1>Settings</h1>
-			<p>A little bit of customization</p>
+			<p>The bit of customization</p>
 		</header>
 	</section>
 
@@ -10,18 +10,16 @@
 		<section class="Section">
 			<div class="Container">
 					<h3>Email</h3>
-						<p class="Muted">
-						{{#if currentUser.emailVerified}}
-							Your email has been verified
-						{{else}}
-							Your email is not yet verified. We have sent a verification email to your new address. <a href="#" {{action "verifyEmail"}} title="Click to send a new verification email. After clicking the link in the email, please refresh this page.">Need a new verification link?</a>.
-						{{/if}}
-					</p>
 
 					<form class="ProviderAccount" {{action "updateEmail" newEmail on="submit"}}>
-						<div class="ProviderAccount-body">
+						<label class="ProviderAccount-body">
+							<p class="ProviderAccount-id">
+								{{#unless currentUser.emailVerified}}
+									Your email is not yet verified. We have sent a verification email to your new address. <a href="#" {{action "verifyEmail"}} title="Click to send a new verification email. After clicking the link in the email, please refresh this page.">Need a new verification link?</a>.
+								{{/unless}}
 							{{input placeholder=currentUser.email value=newEmail}}
-						</div>
+							</p>
+						</label>
 						<button class="Btn" type="submit">Update</button>
 					</form>
 			</div>
@@ -31,7 +29,7 @@
 	<section class="Section">
 		<div class="Container">
 			<h3>Accounts</h3>
-			<p>Connect the accounts you want to use to login to your Radio4000 account.</p>
+			<p>Manage the accounts you can login Radio4000 with.</p>
 
 			{{account-provider-list
 				providerData=providerData

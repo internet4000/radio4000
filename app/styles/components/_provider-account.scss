@@ -1,35 +1,12 @@
-.ProviderAccounts:first-of-type {
-	margin-bottom: 1rem;
-}
-
 .ProviderAccount {
 	display: flex;
 	flex-direction: row;
 	wrap: no-wrap;
 	align-items: center;
 	padding: 0.4rem 0.8rem;
-	margin-bottom: 1rem;
+	margin-bottom: 0.5rem;
 	background-color: $slightgray;
 	border-radius: $border-radius;
-}
-
-.ProviderAccounts {
-	margin-bottom: 1rem;
-
-	.ProviderAccount {
-		margin-bottom: 0.5rem;
-	}
-}
-
-.ProviderAccount-media {
-	width: 100%;
-	max-width: 5rem;
-	padding-right: 1rem;
-}
-
-.ProviderAccount-image {
-	width: 100%;
-	text-align: center;
 }
 
 .ProviderAccount-body {
