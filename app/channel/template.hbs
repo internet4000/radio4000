@@ -1,56 +1,39 @@
 <div class="Sections">
 	<section class="Section">
 		<div class="Container">
-			{{#if canEdit}}{{#unless isWelcomed}}
-				<div class="Channel-introduction">
-					{{page-welcome channel=model}}
-				</div>
-			{{/unless}}{{/if}}
-
 			<article class="Channel Channel--detail {{if canEdit 'canEdit'}}">
 				<div class="Channel-header">
-					<div class="Container Container--full Container--tight">
-						<div class="Channel-media" title="Image for {{model.title}}">
-							{{#if canEdit}}
-								{{#link-to 'channel.edit' model}}
-									<div class="Channel-cover">
-										{{channel-cover src=model.coverImage.src}}
-									</div>
-								{{/link-to}}
-							{{else}}
+					<div class="Channel-media" title="Image for {{model.title}}">
+						{{#if canEdit}}
+							{{#link-to 'channel.edit' model}}
 								<div class="Channel-cover">
 									{{channel-cover src=model.coverImage.src}}
 								</div>
-							{{/if}}
-						</div>
+							{{/link-to}}
+						{{else}}
+							<div class="Channel-cover">
+								{{channel-cover src=model.coverImage.src}}
+							</div>
+						{{/if}}
+					</div>
 
-						{{#unless canEdit}}
-							<span class="Channel-follow Follow">
-								{{btn-favorite action="toggleFavorite" isFavorite=isFavorite}}
-							</span>
-						{{/unless}}
-
-						<div class="Channel-body">
-							<div class="Channel-titleSection">
-								<div class="Channel-playback">
-									{{play-shuffle-btn channel=model expanded=true}}
-								</div>
-								<div class="Channel-titleGroup">
-									<h1 class="Channel-title" title="Welcome to {{model.title}}">
-										<a href="{{href-to 'channel' model}}">{{model.title}}</a>
-									</h1>
-									<p class="Channel-slug">
-										{{#if canEdit}}
-											<a href="{{href-to 'channel.edit' model}}"
-												 class="Muted"
-												 title="To listen, tune in @{{model.slug}}">@{{model.slug}}</a>
-										{{else}}
-											<a href="{{href-to 'channel' model}}"
-												 class="Muted"
-												 title="To listen, tune in @{{model.slug}}" >@{{model.slug}}</a>
-										{{/if}}
-									</p>
-								</div>
+					<div class="Channel-body">
+						<div class="Channel-titleSection">
+							<div class="Channel-titleGroup">
+								<h1 class="Channel-title" title="Welcome to {{model.title}}">
+									<a href="{{href-to 'channel' model}}">{{model.title}}</a>
+								</h1>
+								<p class="Channel-slug">
+									{{#if canEdit}}
+										<a href="{{href-to 'channel.edit' model}}"
+											 class="Muted"
+											 title="To listen, tune in @{{model.slug}}">@{{model.slug}}</a>
+									{{else}}
+										<a href="{{href-to 'channel' model}}"
+											 class="Muted"
+											 title="To listen, tune in @{{model.slug}}" >@{{model.slug}}</a>
+									{{/if}}
+								</p>
 							</div>
 
 							{{#if model.body}}
@@ -66,13 +49,18 @@
 								</p>
 							{{/if}}
 						</div>
+				</div>
 
-						{{#if canEdit}}
-							{{#link-to 'channel.edit' model class="Channel-edit Btn" title="Edit your radio"}}
-								{{x-icon i="pencil"}} Edit radio
-							{{/link-to}}
-						{{/if}}
-					</div>
+				<div class="BtnGroup BtnGroup--vertical Channel-buttons">
+					{{play-shuffle-btn channel=model expanded=true class="Channel-playback"}}
+					{{#if canEdit}}
+						{{#link-to 'channel.edit' model class="Btn" title="Edit your radio"}}
+							{{x-icon i="pencil"}} Edit radio
+						{{/link-to}}
+					{{else}}
+						{{btn-favorite action="toggleFavorite" isFavorite=isFavorite}}
+					{{/if}}
+				</div>
 				</div>
 
 				<nav class="Tabs Tabs--horizontal Tabs--lighter Tabs--animated">
@@ -91,6 +79,13 @@
 
 				{{outlet}}
 			</article>
+
+			{{#if canEdit}}{{#unless isWelcomed}}
+				<div class="Channel-introduction">
+					{{page-welcome channel=model}}
+				</div>
+			{{/unless}}{{/if}}
+
 		</div>
 	</section>
 </div>

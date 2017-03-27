@@ -59,8 +59,9 @@
 
 .Channel-header {
 	background-color: $superlightgray;
-	padding-bottom: 1rem;
 	min-height: 10rem; // visual perf
+	display: flex;
+	padding-left: 2rem;
 }
 
 .Channel-media {
@@ -74,12 +75,10 @@
 		min-width: 4rem;
 		width: 30%;
 		max-width: $sidebar-width;
-		padding-right: 1rem;
 		margin-top: -1.5rem;
 	}
 
 	@media (min-width: $layout-l) {
-		padding-right: 1.5rem;
 		width: 35%;
 	}
 
@@ -97,13 +96,15 @@
 
 .Channel-body {
 	@include clearfix;
+	padding-left: 1.5rem;
+	padding-top: 2.5rem;
+	padding-right: 1.5rem;
 
 	@media (min-width: $layout-s) {
 		position: relative;
 		margin-bottom: 1rem;
 		float: left;
 		width: 70%;
-		margin-top: 1.5rem;
 	}
 
 	@media (min-width: $layout-m) {
@@ -113,18 +114,13 @@
 	@media (min-width: $layout-l) {
 		width: 65%;
 	}
+	// max width
+	@media (max-width: $layout-s) {
+		text-align: center;
+	}
 }
 
 .Channel-playback {
-	position: absolute;
-	top: -1rem;
-	left: 0.5rem;
-
-	@media (min-width: $layout-s) {
-		top: -3rem;
-		left: 0;
-	}
-
 	svg,
 	i {
 		margin-right: 0.3rem;
@@ -135,16 +131,10 @@
 	}
 }
 
-.Channel-body {
-	@media (max-width: $layout-s) {
-		text-align: center;
-	}
-}
-
 .Channel-outlet {
 	min-height: 2rem;
 	margin-bottom: 0;
-	padding-top: 1rem;
+	padding-top: 2rem;
 }
 
 .Channel-edit {
@@ -159,7 +149,6 @@
 }
 
 .Channel-titleGroup {
-	margin-top: 1rem;
 	margin-bottom: 1rem;
 }
 
@@ -191,11 +180,9 @@
 	}
 }
 
-.Channel-follow {
-	position: absolute;
-	top: 0.6rem;
-	right: 0.7rem;
-	z-index: 1;
+.Channel-buttons {
+	margin-right: -1rem;
+	padding-top: 1rem;
 }
 
 .Channel-description {
