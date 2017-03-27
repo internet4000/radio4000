@@ -81,9 +81,9 @@
 	padding: 0.5em 0.5rem 0.5rem 1rem;
 	transition: color 200ms;
 	color: $text-color;
+	text-decoration: none;
 
 	&.is-active {
 		text-decoration: underline;
 	}
 }
-
