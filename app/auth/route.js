@@ -18,16 +18,16 @@ export default Route.extend({
 		} else if (err.code === 'auth/user-not-found') {
 			msg = 'This account does not exist.';
 		} else if (err.code === 'auth/wrong-password') {
-			message = 'Password and email do not match.';
+			msg = 'Password and email do not match.';
 		} else if (err.code === 'auth/internal-error') {
-			message = 'Internal error, please try again later.';
+			msg = 'Internal error, please try again later.';
 			debug(`auth/internal-error: ${err}`);
 		} else {
 			debug(`Login error is not referenced: ${err}`);
 		}
 
 		if (msg) {
-			mssages.warning(msg, {timeout: 10000});
+			messages.warning(msg, {timeout: 10000});
 		}
 	},
 	actions: {

@@ -24,10 +24,10 @@ export default Controller.extend({
 			msg = 'Password is not strong enough.';
 		} else {
 			debug('Signup error is not referenced');
-			console.log(err);
+			debug(err);
 		}
 
-		if (msg && options) {
+		if (msg) {
 			messages.warning(msg, {timeout: 8000});
 		}
 	},
