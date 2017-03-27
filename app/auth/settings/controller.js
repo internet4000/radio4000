@@ -47,7 +47,7 @@ export default Controller.extend({
 
 	sendEmailVerification() {
 		get(this, 'firebaseApp').auth().currentUser.sendEmailVerification();
-		get(this, 'flashMessages').success(`Email sent! Please check your inbox to verify your email.`);
+		get(this, 'flashMessages').success(`Email sent. Check your inbox to verify your email.`, {sticky: true});
 	},
 	handleError(err, _this) {
 		debug('@Handle error')
@@ -91,7 +91,7 @@ export default Controller.extend({
 
 		return promise.then(() => {
 			this.updateCurrentUser();
-			messages.success(`Added your ${provider.providerId || name} account.`);
+			messages.success(`Account added.`);
 		});
 	},
 
