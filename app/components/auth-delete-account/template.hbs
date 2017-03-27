@@ -1,0 +1,13 @@
+{{#if channel}}
+	<p>
+		Before you can delete your account, please
+		{{link-to (concat "delete your radio " channel.title) "channel.delete" channel}}, and come back here.
+	</p>
+{{else}}
+	<button class="Btn Btn--danger" title="Once deleted, it's deleted"
+		{{action "delete"}}>
+		{{if deleteAccount.isIdle "Yes, delete my account" "Deleting..."}}
+	</button>
+{{/if}}
+
+{{yield}}

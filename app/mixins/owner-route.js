@@ -8,7 +8,7 @@ export default Mixin.create({
 		const userChannel = session.get('currentUser.channels.firstObject');
 		if (!userChannel || !isEqual(model.id, userChannel.id)) {
 			debug('user does not own the channel --> login');
-			this.transitionTo('login');
+			this.transitionTo('auth.login');
 		}
 		this._super(...arguments);
 	}

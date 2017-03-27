@@ -1,0 +1,27 @@
+<form {{action "submit" "password" email password on="submit"}} class="Form">
+	{{#form-group model=this valuePath="email" label="Email" as |v|}}
+		{{input type="email" value=v placeholder="Enter your email address" required="required"}}
+	{{/form-group}}
+	{{#form-group model=this valuePath="password" label="Password" as |v|}}
+		{{input type="password" value=v placeholder="Create a password" required="required"}}
+	{{/form-group}}
+	{{#form-group model=this valuePath="passwordConfirmation" as |v|}}
+		{{input type="password" value=v placeholder="Enter your new password again" required="required"}}
+	{{/form-group}}
+	<div class="Form-group">
+		<button disabled={{validations.isInvalid}} type="submit" class="Btn Btn--large" title="Sign up or Log in with email">
+			Sign up with email
+		</button>
+	</div>
+</form>
+
+<br>
+<p>Or sign up with:</p>
+<p class="BtnGroup">
+	<button class="Btn Btn--large" title="Sign up with Google" {{action "submit" "google"}}>
+		Google
+	</button>
+	<button class="Btn Btn--large" title="Sign up with Facebook" {{action "submit" "facebook"}}>
+		Facebook
+	</button>
+</p>

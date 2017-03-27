@@ -1,0 +1,37 @@
+{{#each providerData as |provider|}}
+	<article class="ProviderAccount">
+		{{!-- <div class="ProviderAccount-media">
+			{{#if provider.photoURL}}
+				<img class="ProviderAccount-image" alt="Image for {{provider.displayName}} {{provider.providerId}} account" src="{{provider.photoURL}}">
+			{{/if}}
+		</div> --}}
+		<div class="ProviderAccount-body">
+
+			<p class="ProviderAccount-id">
+				{{if (eq provider.providerId "password") "Email" provider.providerId}}
+			</p>
+
+				<span class="ProviderAccount-name Muted">
+					{{#if (eq provider.providerId "password")}}
+						{{#unless emailVerified}}
+							<a href="#" {{action verifyEmail}} title="Click to send a new verification email">Please verify</a>
+						{{/unless}}
+						{{provider.email}}
+					{{else}}
+						{{provider.email}} ({{provider.displayName}})
+					{{/if}}
+				</span>
+		</div>
+
+		{{#unless onlyOneAccount}}
+		<button class="Btn"
+			{{action unlink provider.providerId}}
+			disabled={{onlyOneAccount}}
+			title="Remove this account (this will NEVER delete your radio)">
+				Remove
+			</button>
+		{{/unless}}
+	</article>
+{{/each}}
+
+{{yield}}
