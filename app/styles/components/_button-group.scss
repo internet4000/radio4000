@@ -5,8 +5,10 @@
 	flex-flow: row wrap;
 	align-items: center;
 	margin-bottom: 1rem;
+
 	.Btn {
 		margin-left: 0.2rem;
+
 		&:first-child {
 			margin-left: 0;
 		}
@@ -16,14 +18,17 @@
 .BtnGroup--vertical {
 	flex-direction: column;
 	align-items: right;
+
 	.Btn {
 		margin-bottom: 0.2rem;
 		margin-top: 0.2rem;
 	}
 }
+
 .BtnGroup--full {
 	flex-wrap: nowrap;
 	align-items: stretch;
+
 	.Btn {
 		flex-grow: 1;
 	}
