@@ -43,11 +43,15 @@
 	bottom: 0;
 	z-index: 3;
 	width: 100%;
+	background-color: $bg-color-2;
+	max-width: 70%;
 
 	@media (min-width: $layout-s) {
 		// transform: translate3d(0, 0, 0);
 		// overflow: hidden;
+		background-color: transparent;
 		width: $sidebar-width;
+			max-width: 100%;
 	}
 }
 

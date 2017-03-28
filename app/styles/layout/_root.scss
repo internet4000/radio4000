@@ -27,9 +27,12 @@
 		}
 	}
 
-	@media (min-width: $layout-s) {
-		.SiteMain {
+	.SiteMain {
+		opacity: 0.4;
+
+		@media (min-width: $layout-s) {
 			padding-left: $sidebar-width;
+			opacity: 1;
 		}
 	}
 }
