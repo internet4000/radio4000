@@ -1,7 +1,6 @@
 <section class="Section">
 	<div class="Container">
-		<h1>Introduction to Radio4000</h1>
-		<p class="u-push-3"><a class="Muted" href="https://github.com/Internet4000/publications/blob/master/radio4000-manifest.md" target="_blank">
+		<p><a class="Muted" href="https://github.com/Internet4000/publications/blob/master/radio4000-manifest.md" target="_blank">
 			The Radio4000 manifest (v0.1)<br>
 			March 12, 2016 — Berlin</a></p>
 		<p>We believe each of us are engaged on a musical journey, sonic exploration of the available spectrum of sounds.</p>
@@ -9,227 +8,220 @@
 	</div>
 </section>
 
-<figure class="Banner">
-	<img data-src="/assets/images/illustrations/the-sounds-of-earth-record-cover.jpg" alt="" class="lazyload Banner-media">
-	<p class="Banner-credits">
-		<a href="https://commons.wikimedia.org/wiki/File:The_Sounds_of_Earth_Record_Cover_-_GPN-2000-001978.jpg" target="_blank">
-			The Sounds of Earth Record Cover<br>
-			NASA/JPL
-		</a>
-	</p>
-	<div class="Banner-body">
-		<div class="Intro Container Container--full Container--centered u-textAlignCenter">
-			<h1 class="Intro-title">
-				<span class="Intro-radio">Radio</span>
-				<span class="Intro-4000">4000</span>
-			</h1>
-			<p class="Intro-slogan">A single channel for everyone,<br>music for anyone — and an infinity of great tracks curated with love.</p>
-		</div>
+<figure class="Section Intro">
+	<div class="Container Container--full Container--centered u-textAlignCenter">
+		<h1 class="Intro-title">
+			<span class="Intro-radio">Radio</span>
+			<span class="Intro-4000">4000</span>
+		</h1>
+		<p class="Intro-slogan">A single channel for everyone,<br>music for anyone — and an infinity of great tracks curated with love.</p>
 	</div>
 </figure>
 
-<div class="Sections">
-	<section class="Section">
-		<figure class="Banner">
-			<img class="Banner-media" src="/assets/images/illustrations/the-burning-of-the-library-at-alexandria-in-391-ad-ambrose-dudley.jpg" alt="">
-			<p class="Banner-credits">
-				<a href="https://commons.wikimedia.org/wiki/File:The_Burning_of_the_Library_at_Alexandria_in_391_AD.jpg" target="_blank">
-					The Burning of the Library at Alexandria in 391 AD <br>
-					Ambrose Dudley
-				</a>
-			</p>
-		</figure>
-	</section>
+<section class="Section">
+	<figure class="Banner">
+		<img class="Banner-media" src="/assets/images/illustrations/the-burning-of-the-library-at-alexandria-in-391-ad-ambrose-dudley.jpg" alt="">
+		<p class="Banner-credits">
+			<a href="https://commons.wikimedia.org/wiki/File:The_Burning_of_the_Library_at_Alexandria_in_391_AD.jpg" target="_blank">
+				The Burning of the Library at Alexandria in 391 AD <br>
+				Ambrose Dudley
+			</a>
+		</p>
+	</figure>
+</section>
 
-	<section class="Section">
-		<div class="Container Container--centered">
-			{{!-- <article class="MediaBlock">
-				<div class="MediaBlock-body"> --}}
-					<h1 class="u-push-3"><small>On Radio4000</small> everyone <small>has</small> one radio<small>, only one</small></h1>
-					<p>
-						In your unique radio you add music, any music you enjoy.<br>
-						From this constraint you gain freedom. When you like a song, add it to your radio.
-					</p>
-					<p>
-						Your personality gives soul to your radio.<br>
-						All the music you listen to and their variety compose a harmonious whole.
-						Their common denominator is the fact that you liked them, so don't worry about classifying.
-					</p>
-				{{!-- </div>
-				<figure class="MediaBlock-media">
-					<img src="/assets/images/Torus_Exterior_AC76-0525_900.jpg" alt="" />
-				</figure>
-			</article> --}}
-		</div>
-	</section>
+<section class="Section">
+	<div class="Container Container--centered">
+		<h1><small>On Radio4000</small> everyone <small>has</small> one radio<small>, only one</small></h1>
+		<p>
+			In your unique radio you add music, any music you enjoy.<br>
+			From this constraint you gain freedom. When you like a song, add it to your radio.
+		</p>
+		<p>
+			Your personality gives soul to your radio.<br>
+			All the music you listen to and their variety compose a harmonious whole.
+			Their common denominator is the fact that you liked them, so don't worry about classifying.
+		</p>
+	</div>
+</section>
 
-	<section class="Section">
-		<div class="Container Container--full">
-			<div class="Grid Grid--center Grid--firstHidden">
-				{{#each model.featured as |item|}}
-					<div class="Grid-cell">
-						{{channel-card channel=item}}
-					</div>
-				{{/each}}
+<section class="Section">
+	<div class="Container Container--full">
+		<div class="Grid Grid--center Grid--firstHidden">
+			{{#each model.featured as |item|}}
 				<div class="Grid-cell">
-					<div class="ChannelCard ChannelCard--text">
-						<p>Simply tap a channel to play it!</p>
-						<p>Each channel is as unique as the person who is crafting it. <a href="{{href-to 'channels.all'}}" title="">Go to all radios</a>.</p>
-					</div>
+					{{channel-card channel=item}}
+				</div>
+			{{/each}}
+			<div class="Grid-cell">
+				<div class="ChannelCard ChannelCard--text">
+					<p>Simply tap a channel to play it!</p>
+					<p>Each channel is as unique as the person who is crafting it. <a href="{{href-to 'channels.all'}}" title="">Go to all radios</a>.</p>
 				</div>
 			</div>
 		</div>
-	</section>
+	</div>
+</section>
 
-	<section class="Section">
-		<figure class="Banner Banner--isolated">
-			<img class="Banner-media" src="/assets/images/illustrations/bernal-exterior-ac76-0965.jpg" alt="">
-			<p class="Banner-credits">
-				<a href="http://settlement.arc.nasa.gov/70sArtHiRes/70sArt/art.html" target="_blank">
-					Bernal Exterior<br>
-					NASA Ames Research Center
+<section class="Section">
+	<figure class="Banner">
+		<img data-src="/assets/images/illustrations/the-sounds-of-earth-record-cover.jpg" alt="" class="lazyload Banner-media">
+		<p class="Banner-credits">
+			<a href="https://commons.wikimedia.org/wiki/File:The_Sounds_of_Earth_Record_Cover_-_GPN-2000-001978.jpg" target="_blank">
+				The Sounds of Earth Record Cover<br>
+				NASA/JPL
+			</a>
+		</p>
+	</figure>
+</section>
+
+<section class="Section">
+	<div class="Container Container--centered Container--large">
+		<h1 class="u-push-3"><small>Radio4000 is a music</small> tool <small>and<br></small> a service</h1>
+		<div class="Grid">
+			<figure class="Grid-cell">
+				<a target="_blank" href="https://commons.wikimedia.org/wiki/File:%27Around_the_Moon%27_by_Bayard_and_Neuville_21.jpg">
+					<img src="/assets/images/illustrations/around-the-moon-bayard-neuville.jpg" alt="" />
 				</a>
-			</p>
-		</figure>
-	</section>
-
-	<section class="Section">
-		<div class="Container Container--centered Container--large">
-			<h1 class="u-push-3"><small>Radio4000 is a music</small> tool <small>and<br></small> a service</h1>
-			<div class="Grid">
-				<figure class="Grid-cell">
-					<a target="_blank" href="https://commons.wikimedia.org/wiki/File:%27Around_the_Moon%27_by_Bayard_and_Neuville_21.jpg">
-						<img src="/assets/images/illustrations/around-the-moon-bayard-neuville.jpg" alt="" />
-					</a>
-				</figure>
-				<figure class="Grid-cell">
-					<a target="_blank" href="http://pip.tamil.fr/bib/31188" class="Muted">
-						<img src="/assets/images/illustrations/une-caverne-pendant-la-nuit-a-l-epoque-du-grand-ours-et-du-mammouth-emile-bayard.jpg" alt="" />
-					</a>
-				</figure>
-				<article class="Grid-cell Grid-cell--double">
-					<h2>
-						<small>A service </small>for and by humans.
-					</h2>
-					<p>
-						The musical content on Radio4000 is generated by humans who want to discover and share their music selection. You can give yourself some peace in music digging and listen to the sounds of fellow humans around you. Discover wonderful songs in the context of someone you like the taste of.
-					</p>
-				</article>
-				<article class="Grid-cell Grid-cell--double">
-					<h2>
-						<small>A tool to</small> understand <small>your music discoveries.</small>
-					</h2>
-					<p>
-						We want to provide you with some context for your music history. For example what genre it is, which label it was released on and when it came out.
-						That way you'll have a better chance to dig into fresh discoveries.
-					</p>
-				</article>
-				<article class="Grid-cell Grid-cell--double">
-					<h2>
-						<small>A tool to</small> manage <small>your online music.</small>
-					</h2>
-					<p>
-						All the links pointing to the music you like, floating around the vast internet, are now stored in one place.
-					</p>
-				</article>
-				<figure class="Grid-cell Grid-cell--double">
-					<a target="_blank" class="Muted" href="https://commons.wikimedia.org/wiki/File:Georg_Abraham_Hackert_-_Ruins_of_the_Augustan_Bridge_at_Narni_-_WGA11015.jpg">
-						<img src="/assets/images/illustrations/ruins-of-the-augustus-bridge-at-narni-view-1-georg-abraham-hackert.jpg" alt="" />
-					</a>
-				</figure>
-				<article class="Grid-cell Grid-cell--double">
-					<h2>
-						<small>A service </small>to extend discoveries.
-					</h2>
-					<p>
-						The nature of each person having a single radio — and not multiple playlists — encourage exploration and will surprise you with unknown songs from all over the world.
-					</p>
-				</article>
-			</div>
-		</div>
-	</section>
-
-	<section class="Section">
-		<div class="Container Container--centered Container--large">
-			<h1 class="u-push-3"><small>What Radio4000</small> stands for</h1>
-			<div class="Grid">
-				<article class="Grid-cell">
-					<h2><small>Cultural</small> diversities</h2>
-					<p>
-						Diferences of taste and personalities are at the core of Radio4000. We value and respect plurality of self expressions.
-					</p>
-				</article>
-				<article class="Grid-cell">
-					<h2><small>Fair </small>ecosystem</h2>
-					<p>
-						A platform such as Radio4000 can only exist because of the people behind, sharing their music.<br>
-						Let's work on a fair and viable ecosystem leading to more music and more sharing.<br>
-					</p>
-				</article>
-				<article class="Grid-cell">
-					<h2>Privacy <small>and</small> ownership</h2>
-					<p>
-						Anyone can access your radio channel and listen to your selection — anytime and anywhere. No one needs to know who you are. It is about the music. The data we save about you is what's in your radio channel. If you choose to leave, we help you export your tracks, what is yours is yours.
-					</p>
-				</article>
-				<article class="Grid-cell">
-					<h2><small>Embrace the</small> future</h2>
-					<p>
-						We're all here to imagine and create a music experience for year 4000
-					</p>
-				</article>
-				<figure class="Grid-cell">
-					<a target="_blank" href="https://en.wikipedia.org/wiki/File:More_otho_flying.JPG" class="Muted">
-						<img src="/assets/images/illustrations/more-otho-flying-richard-neuhauss.jpg" alt="" />
-					</a>
-				</figure>
-			</div>
-		</div>
-	</section>
-
-	<section class="Section">
-		<figure class="Banner">
-			<img class="Banner-media" src="/assets/images/illustrations/karnak-william-henry-goodyear.jpg" alt="">
-			<p class="Banner-credits">
-				<a href="https://commons.wikimedia.org/wiki/File:S10.08_Karnak,_image_9922.jpg" target="_blank">
-					Karnak<br>
-					William Henry Goodyear
+			</figure>
+			<figure class="Grid-cell">
+				<a target="_blank" href="http://pip.tamil.fr/bib/31188" class="Muted">
+					<img src="/assets/images/illustrations/une-caverne-pendant-la-nuit-a-l-epoque-du-grand-ours-et-du-mammouth-emile-bayard.jpg" alt="" />
 				</a>
-			</p>
-		</figure>
-	</section>
+			</figure>
+			<article class="Grid-cell Grid-cell--double">
+				<h2>
+					<small>A service </small>for and by humans.
+				</h2>
+				<p>
+					The musical content on Radio4000 is generated by humans who want to discover and share their music selection. You can give yourself some peace in music digging and listen to the sounds of fellow humans around you. Discover wonderful songs in the context of someone you like the taste of.
+				</p>
+			</article>
+			<article class="Grid-cell Grid-cell--double">
+				<h2>
+					<small>A tool to</small> understand <small>your music discoveries.</small>
+				</h2>
+				<p>
+					We want to provide you with some context for your music history. For example what genre it is, which label it was released on and when it came out.
+					That way you'll have a better chance to dig into fresh discoveries.
+				</p>
+			</article>
+			<article class="Grid-cell Grid-cell--double">
+				<h2>
+					<small>A tool to</small> manage <small>your online music.</small>
+				</h2>
+				<p>
+					All the links pointing to the music you like, floating around the vast internet, are now stored in one place.
+				</p>
+			</article>
+			<figure class="Grid-cell Grid-cell--double">
+				<a target="_blank" class="Muted" href="https://commons.wikimedia.org/wiki/File:Georg_Abraham_Hackert_-_Ruins_of_the_Augustan_Bridge_at_Narni_-_WGA11015.jpg">
+					<img src="/assets/images/illustrations/ruins-of-the-augustus-bridge-at-narni-view-1-georg-abraham-hackert.jpg" alt="" />
+				</a>
+			</figure>
+			<article class="Grid-cell Grid-cell--double">
+				<h2>
+					<small>A service </small>to extend discoveries.
+				</h2>
+				<p>
+					The nature of each person having a single radio — and not multiple playlists — encourage exploration and will surprise you with unknown songs from all over the world.
+				</p>
+			</article>
+		</div>
+	</div>
+</section>
 
-	<section class="Section Section--space">
-		<div class="Container Container--full u-push-3">
-			<h1 class="u-push-3 u-textAlignCenter">Explore<small> Radio4000</small></h1>
-			<div class="Grid Grid--center u-push-3">
-				<div class="Grid-cell">
-					{{channel-card channel=model.featured.firstObject}}
-				</div>
-				<div class="Grid-cell Muted">
-					<p>This channel is called <strong>{{model.featured.firstObject.title}}</strong>.</p>
-					<p>Because the human behind can only have one channel, there's nowhere for the good music to hide. Highs and lows, ebbs and flows, Cambodian funk and techno. Each mix is exactly that — a mix.</p>
-					<p>Click on the channel card to start exploring it.</p>
-				</div>
-				<div class="Grid-cell Grid-cell--double">
-					<div class="Intro-actions">
-						{{#link-to 'channels' class="Btn Btn--huge" title="Discover music by channels"}}
-							Discover radios
+<section class="Section">
+	<div class="Container Container--centered Container--large">
+		<h1 class="u-push-3"><small>What Radio4000</small> stands for</h1>
+		<div class="Grid">
+			<article class="Grid-cell">
+				<h2><small>Cultural</small> diversities</h2>
+				<p>
+					Diferences of taste and personalities are at the core of Radio4000. We value and respect plurality of self expressions.
+				</p>
+			</article>
+			<article class="Grid-cell">
+				<h2><small>Fair </small>ecosystem</h2>
+				<p>
+					A platform such as Radio4000 can only exist because of the people behind, sharing their music.<br>
+					Let's work on a fair and viable ecosystem leading to more music and more sharing.<br>
+				</p>
+			</article>
+			<article class="Grid-cell">
+				<h2>Privacy <small>and</small> ownership</h2>
+				<p>
+					Anyone can access your radio channel and listen to your selection — anytime and anywhere. No one needs to know who you are. It is about the music. The data we save about you is what's in your radio channel. If you choose to leave, we help you export your tracks, what is yours is yours.
+				</p>
+			</article>
+			<article class="Grid-cell">
+				<h2><small>Embrace the</small> future</h2>
+				<p>
+					We're all here to imagine and create a music experience for year 4000
+				</p>
+			</article>
+			<figure class="Grid-cell">
+				<a target="_blank" href="https://en.wikipedia.org/wiki/File:More_otho_flying.JPG" class="Muted">
+					<img src="/assets/images/illustrations/more-otho-flying-richard-neuhauss.jpg" alt="" />
+				</a>
+			</figure>
+		</div>
+	</div>
+</section>
+
+<section class="Section">
+	<figure class="Banner">
+		<img class="Banner-media" src="/assets/images/illustrations/bernal-exterior-ac76-0965.jpg" alt="">
+		<p class="Banner-credits">
+			<a href="http://settlement.arc.nasa.gov/70sArtHiRes/70sArt/art.html" target="_blank">
+				Bernal Exterior<br>
+				NASA Ames Research Center
+			</a>
+		</p>
+	</figure>
+</section>
+<!-- <section class="Section">
+		 <figure class="Banner">
+		 <img class="Banner-media" src="/assets/images/illustrations/karnak-william-henry-goodyear.jpg" alt="">
+		 <p class="Banner-credits">
+		 <a href="https://commons.wikimedia.org/wiki/File:S10.08_Karnak,_image_9922.jpg" target="_blank">
+		 Karnak<br>
+		 William Henry Goodyear
+		 </a>
+		 </p>
+		 </figure>
+		 </section> -->
+
+<section class="Section">
+	<div class="Container Container--full u-push-3">
+		<h1 class="u-textAlignCenter">Explore<small> Radio4000</small></h1>
+		<div class="Grid Grid--center u-push-3">
+			<div class="Grid-cell">
+				{{channel-card channel=model.featured.firstObject}}
+			</div>
+			<div class="Grid-cell Muted">
+				<p>This channel is called <strong>{{model.featured.firstObject.title}}</strong>.</p>
+				<p>Because the human behind can only have one channel, there's nowhere for the good music to hide. Highs and lows, ebbs and flows, Cambodian funk and techno. Each mix is exactly that — a mix.</p>
+				<p>Click on the channel card to start exploring it.</p>
+			</div>
+			<div class="Grid-cell">
+				<div class="Intro-actions">
+					{{#link-to 'channels' class="Btn Btn--huge" title="Discover music by channels"}}
+						Discover radios
+					{{/link-to}}
+					<br/>
+					{{#if session.currentUser.channels.firstObject}}
+						{{#link-to 'channel' session.currentUser.channels.firstObject class="Btn Btn--important Btn--huge" title="Your radio"}}
+							Go to your “{{session.currentUser.channels.firstObject.title}}”
 						{{/link-to}}
-						{{#if session.currentUser.channels.firstObject}}
-							{{#link-to 'channel' session.currentUser.channels.firstObject class="Btn Btn--important Btn--huge" title="Your radio"}}
-								Go to your “{{session.currentUser.channels.firstObject.title}}”
-							{{/link-to}}
-						{{else}}
-							{{#link-to 'channels.new' class="Btn Btn--important Btn--huge" title="Continue to create your radio"}}
-								Create yours
-							{{/link-to}}
-						{{/if}}
-					</div>
+					{{else}}
+						{{#link-to 'channels.new' class="Btn Btn--important Btn--huge" title="Continue to create your radio"}}
+							Create yours
+						{{/link-to}}
+					{{/if}}
 				</div>
 			</div>
-			<p class="u-textAlignCenter"><a class="Muted" href="{{href-to 'help'}}">Do you have a question?</a></p>
 		</div>
-
-	</section>
-</div>
+		<p class="u-textAlignCenter"><a class="Muted" href="{{href-to 'help'}}">Do you have a question?</a></p>
+	</div>
+</section>
