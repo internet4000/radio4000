@@ -2,16 +2,17 @@
 	{{#if model.favoriteChannels}}
 
 		{{#list-manipulation list=model.favoriteChannels as |manipulatedList updateSorting|}}
-
-			{{#btn-group class='Container'}}
-				<span class="BtnGroup-label">Filter ({{model.favoriteChannels.length}}) by</span>
-				{{btn-list-manipulation text='Recently updated'
-						onClick=(action updateSorting 'updated')}}
-				{{btn-list-manipulation text="Creation date"
-						onClick=(action updateSorting "created" true)}}
-				{{btn-list-manipulation text="A-Z"
-						onClick=(action updateSorting "title" true)}}
-			{{/btn-group}}
+			<div class="Filters">
+				{{#btn-group class='Filter Container'}}
+					<span class="BtnGroup-label">Filter ({{model.favoriteChannels.length}}) by</span>
+					{{btn-list-manipulation text='Recently updated'
+							onClick=(action updateSorting 'updated')}}
+					{{btn-list-manipulation text="Creation date"
+							onClick=(action updateSorting "created" true)}}
+					{{btn-list-manipulation text="A-Z"
+							onClick=(action updateSorting "title" true)}}
+				{{/btn-group}}
+			</div>
 
 			{{channels-list channels=manipulatedList}}
 		{{/list-manipulation}}

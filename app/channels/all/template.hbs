@@ -11,12 +11,13 @@
 	<div class="Container Container--full">
 		{{#list-manipulation list=channels as |manipulatedList updateSorting|}}
 
-			<div class="u-row">
+			<div class="Filters">
 				{{list-search
+						class="Filter"
 						list=filteredChannels
 						afterSearching=(action "handleSearch")}}
 
-				{{#btn-group class="BtnGroup--right"}}
+				{{#btn-group class="Filter BtnGroup--right"}}
 					<span class="BtnGroup-label">Filter by</span>
 					{{btn-list-manipulation text="Activity"
 							onClick=(action updateSorting "updated")}}
