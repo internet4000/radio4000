@@ -7,14 +7,14 @@
   {{/if}}
 
 	{{#unless userChannel}}
-		{{#btn-group class="Tabs-item BtnGroupWrapper BtnGroupWrapper--full"}}
+		<div class="Tabs-btn BtnGroup BtnGroup--full">
 			{{#if isAuthenticated}}
 				{{#link-to "channels.new" class="Btn Btn--full Btn--important" title="Sign up to create your own radio now or log in"}}Create your radio{{/link-to}}
 			{{else}}
 				{{#link-to "auth.signup" class="Btn Btn--important" title="Sign up to Radio4000"}}Sign up{{/link-to}}
 				{{#link-to "auth.login" class="Btn" title="Log in to Radio4000"}}Log in{{/link-to}}
 			{{/if}}
-		{{/btn-group}}
+		</div>
 	{{/unless}}
 
   {{#link-to "about" title="Learn more about Radio4000" class="Tabs-item"}}About{{/link-to}}
