@@ -1,0 +1,28 @@
+.ProviderAccount {
+	display: flex;
+	flex-direction: row;
+	wrap: no-wrap;
+	align-items: center;
+	padding: 0.4rem 0.8rem;
+	margin-bottom: 0.5rem;
+	background-color: $slightgray;
+	border-radius: $border-radius;
+}
+
+.ProviderAccount-body {
+	flex-grow: 2;
+	padding-right: 1rem;
+	padding-bottom: 0.2rem;
+}
+
+.ProviderAccount-id {
+	margin-bottom: 0;
+}
+
+.ProviderAccount-inputs {
+	margin-top: 0.5rem;
+
+	.Form-group {
+		margin-bottom: 0.5rem;
+	}
+}

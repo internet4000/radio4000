@@ -1,8 +1,6 @@
 <div class="Sections">
 	<section class="Section">
-
 		{{#if session.isAuthenticated}}
-
 			<div class="Container">
 				<p>You are already logged in.</p>
 				<p>{{link-to "Log out" "logout"}}</p>
@@ -15,7 +13,6 @@
 					</p>
 				{{/if}}
 			</div>
-
 		{{else}}
 			<header class="Manchet">
 				<h1>Login</h1>

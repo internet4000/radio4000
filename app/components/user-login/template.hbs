@@ -1,0 +1,29 @@
+<form class="Form" {{action "login" "password" email password on="submit"}}>
+	<div class="Form-group">
+		{{input type="email" value=email placeholder="Email" required="required"}}
+	</div>
+	<div class="Form-group">
+		{{input type="password" value=password placeholder="Password" required="required"}}
+	</div>
+	<div class="BtnGroupWrapper BtnGroupWrapper--full">
+		<button type="submit" class="Btn Btn--large">
+			Log in with email
+		</button>
+		<button class="Btn Btn--text" {{action "resetPassword" email}}>Forgot password?</button>
+	</div>
+</form>
+
+<br/>
+<p>Or log in with:</p>
+<p class="BtnGroup">
+	<button class="Btn Btn--large" title="Log in with Google" {{action "login" "google"}}>
+		Google
+	</button>
+	<button class="Btn Btn--large" title="Log in with Facebook" {{action "login" "facebook"}}>
+		Facebook
+	</button>
+</p>
+
+{{#if session.isWorking}}
+	{{#is-loading}}Warming transistors…{{/is-loading}}
+{{/if}}

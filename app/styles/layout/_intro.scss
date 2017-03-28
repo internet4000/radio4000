@@ -1,6 +1,5 @@
 .Intro {
 	@include negative-text; // because of the dark image bg
-	color: $white;
 	position: relative;
 	display: flex;
 	flex-flow: column nowrap;

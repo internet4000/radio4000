@@ -1,12 +1,10 @@
 <div class="Channel-outlet">
-	{{#if model.channelPublic.followers}}
-		<div class="Container">
+	<div class="Container">
+		{{#if model.channelPublic.followers}}
 			<p>{{model.channelPublic.followers.length}} humans are following this radio.</p>
-		</div>
-		{{channels-list channels=model.channelPublic.followers}}
-	{{else}}
-		<div class="Container u-push-3">
-			<p>This channel doesn't have any followers, yet.</p>
-		</div>
-	{{/if}}
+			{{channels-list channels=model.channelPublic.followers}}
+		{{else}}
+			You don't have any followers, yet.
+		{{/if}}
+	</div>
 </div>

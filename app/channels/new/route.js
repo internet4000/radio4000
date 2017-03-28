@@ -11,7 +11,7 @@ export default Route.extend({
 		const userChannels = get(this, 'session.currentUser.channels');
 
 		if (!authed) {
-			return this.transitionTo('login');
+			return this.transitionTo('auth.login');
 		}
 
 		// If the user has a channel, go to it

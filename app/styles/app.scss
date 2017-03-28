@@ -3,9 +3,11 @@
 	by Hugo Vieilledent and Oskar Rough Mosumgaard
 */
 
-// Third party (automatically imported from `./node_modules`)
+// Third party (imported from `./node_modules` because we use postcss-import)
 @import "node_modules/normalize.css/normalize";
 @import "node_modules/suitcss-base/lib/base";
+@import "node_modules/ember-modal-dialog/app/styles/ember-modal-dialog/ember-modal-structure";
+@import "node_modules/ember-modal-dialog/app/styles/ember-modal-dialog/ember-modal-appearance";
 
 // Utilities
 @import "utilities/align";
@@ -52,15 +54,15 @@
 @import "components/channel";
 @import "components/channel-card";
 @import "components/track";
+@import "components/provider-account";
 @import "components/login";
 @import "components/page-welcome";
 @import "components/playback-external";
 @import "components/play-pause";
 @import "components/radio-bot";
 @import "components/search";
+@import "components/filters";
 @import "components/flash-messages";
-@import "node_modules/ember-modal-dialog/app/styles/ember-modal-dialog/ember-modal-structure";
-@import "node_modules/ember-modal-dialog/app/styles/ember-modal-dialog/ember-modal-appearance";
 @import "components/modal-dialog";
 
 // Header area

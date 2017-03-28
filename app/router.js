@@ -23,8 +23,6 @@ Router.map(function () {
 		this.route('forms');
 		this.route('tabs');
 	});
-	this.route('login');
-	this.route('logout');
 	this.route('channels', {path: '/'}, function () {
 		this.route('all');
 		this.route('new');
@@ -46,6 +44,12 @@ Router.map(function () {
 	this.authenticatedRoute('bookmarklet');
 	// Support deprecated channels urls. Needs to be defined before 'channel' route.
 	this.route('channel-alias', {path: '/c/:channel_slug'});
+	this.route('auth', function () {
+		this.route('signup');
+		this.route('login');
+		this.authenticatedRoute('logout');
+		this.authenticatedRoute('settings');
+	});
 });
 
 export default Router;

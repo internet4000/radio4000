@@ -1,0 +1,80 @@
+<div class="Sections">
+	<section class="Section">
+		<header class="Manchet">
+			<h1>General <small>settings</small></h1>
+			<p>The bit of customization</p>
+		</header>
+	</section>
+
+	{{#if currentUser.email}}
+		<section class="Section">
+			<div class="Container">
+					<h3>Email</h3>
+
+					<form class="ProviderAccount" {{action "updateEmail" newEmail on="submit"}}>
+						<label class="ProviderAccount-body">
+							<p class="ProviderAccount-id">
+								{{#unless currentUser.emailVerified}}
+									Your email is not yet verified. We have sent a verification email to your new address. <a href="#" {{action "verifyEmail"}} title="Click to send a new verification email. After clicking the link in the email, please refresh this page.">Need a new verification link?</a>.
+								{{/unless}}
+							{{input placeholder=currentUser.email value=newEmail}}
+							</p>
+						</label>
+						<button class="Btn" type="submit">Update</button>
+					</form>
+			</div>
+		</section>
+	{{/if}}
+
+	<section class="Section">
+		<div class="Container">
+			<h3>Accounts</h3>
+			<p>Manage the accounts you can use to login Radio4000.</p>
+
+			{{account-provider-list
+				providerData=providerData
+				emailVerified=currentUser.emailVerified
+				unlink=(action "unlinkAccount")
+				resetPassword=(action "resetPassword")
+				verifyEmail=(action "verifyEmail")}}
+
+			<div class="ProviderAccounts">
+				{{#if hasEverything}}
+					<p class="Muted">There are no other accounts to connect.</p>
+				{{/if}}
+				{{#unless hasGoogle}}
+					{{account-provider-link
+						name="Google"
+						providerId="google.com"
+						disabled=hasGoogle
+						onLink=(action "linkAccount")}}
+				{{/unless}}
+				{{#unless hasFacebook}}
+					{{account-provider-link
+						name="Facebook"
+						providerId="facebook.com"
+						disabled=hasFacebook
+						onLink=(action "linkAccount")}}
+				{{/unless}}
+				{{#unless hasEmail}}
+					{{account-email-link
+						name="Email"
+						onLink=(action "linkEmail")}}
+				{{/unless}}
+			</div>
+		</div>
+	</section>
+
+	<section class="Section">
+		<div class="Container">
+			<h3>Delete my Radio4000 account</h3>
+			{{auth-delete-account
+				firebaseApp=firebaseApp
+				user=session.currentUser
+				onError=(action "onError")
+				onDelete=(action "deletedUser")}}
+		</div>
+	</section>
+</div>
+
+{{outlet}}

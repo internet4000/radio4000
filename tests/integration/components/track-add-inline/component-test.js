@@ -13,5 +13,5 @@ test('it renders', function (assert) {
 
 	this.render(hbs`{{track-add-inline}}`);
 
-	assert.equal(this.$('label').text().trim(), 'Add a track to your radio');
+	assert.equal(this.$('input').length, 1);
 });

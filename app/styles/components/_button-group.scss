@@ -5,10 +5,36 @@
 	flex-flow: row wrap;
 	align-items: center;
 	margin-bottom: 1rem;
+
+	.Btn {
+		margin-left: 0.2rem;
+
+		&:first-child {
+			margin-left: 0;
+		}
+	}
+}
+
+.BtnGroup--vertical {
+	flex-direction: column;
+	align-items: right;
+
+	.Btn {
+		margin-bottom: 0.2rem;
+		margin-top: 0.2rem;
+	}
+}
+
+.BtnGroup--full {
+	flex-wrap: nowrap;
+	align-items: stretch;
+
+	.Btn {
+		flex-grow: 1;
+	}
 }
 
 .BtnGroup--right {
-	// margin-left: auto;
 	justify-content: flex-end;
 }
 
@@ -23,26 +49,6 @@
 
 .BtnGroup .Btn {
 	flex-shrink: 0;
-
-	&:first-of-type {
-		border-top-right-radius: 0;
-		border-bottom-right-radius: 0;
-	}
-
-	&:last-of-type {
-		border-top-right-radius: $border-radius;
-		border-bottom-right-radius: $border-radius;
-	}
-
-	& + .Btn {
-		border-left-color: transparent;
-		border-radius: 0;
-	}
-
-	// & + .BtnGroup-label {
-	// 	margin-left: 1.5rem;
-	// 	margin-right: 1rem;
-	// }
 
 	&:active,
 	&.is-active {

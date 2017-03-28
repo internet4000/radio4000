@@ -1,30 +1,36 @@
-<div class="Manchet">
-	<p>Each radio is curated by one <b>human</b>. Listen, discover someone's personal selection. If you feel like sharing yours, we welcome you to <a href="{{href-to 'login'}}" title="">create your own radio</a>.</p>
-</div>
+<section class="Section">
+	<div class="Manchet">
+		<p>
+			Each radio is curated by one <b>human</b>. Listen, discover someone's personal selection.<br/>
+			If you feel like sharing yours, we welcome you to <a href="{{href-to "auth.login"}}" title="">create your own radio</a>.
+		</p>
+	</div>
+</section>
 
 <section class="Section">
 	<div class="Container Container--full">
 		{{#list-manipulation list=channels as |manipulatedList updateSorting|}}
 
-		<div class="u-row">
-			{{list-search
-				list=filteredChannels
-				afterSearching=(action "handleSearch")}}
+			<div class="Filters">
+				{{list-search
+						class="Filter"
+						list=filteredChannels
+						afterSearching=(action "handleSearch")}}
 
-			{{#btn-group class="BtnGroup--right"}}
-				<span class="BtnGroup-label">Filter by</span>
-				{{btn-list-manipulation text="Activity"
-						onClick=(action updateSorting "updated")}}
-				{{btn-list-manipulation text="Age"
-						onClick=(action updateSorting "created" true)}}
-				{{btn-list-manipulation text="A-Z"
-						onClick=(action updateSorting "title" true)}}
-				<span class="BtnGroup-label">&nbsp;</span>
-				<button class="Btn Btn--small" {{action "changeLayout"}}>
-					{{if isList "Bigger" "Smaller"}}
-				</button>
-			{{/btn-group}}
-		</div>
+				{{#btn-group class="Filter BtnGroup--right"}}
+					<span class="BtnGroup-label">Filter by</span>
+					{{btn-list-manipulation text="Activity"
+							onClick=(action updateSorting "updated")}}
+					{{btn-list-manipulation text="Age"
+							onClick=(action updateSorting "created" true)}}
+					{{btn-list-manipulation text="A-Z"
+							onClick=(action updateSorting "title" true)}}
+					<span class="BtnGroup-label">&nbsp;</span>
+					<button class="Btn Btn--small" {{action "changeLayout"}}>
+						{{if isList "Bigger" "Smaller"}}
+					</button>
+				{{/btn-group}}
+			</div>
 
 			{{#if channels}}
 				<div class="Grid {{if isList 'Grid--wide'}}">

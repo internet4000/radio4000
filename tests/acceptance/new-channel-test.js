@@ -7,7 +7,7 @@ moduleForAcceptance('Acceptance | new channel');
 test('visiting /new without a session redirects', function (assert) {
 	visit('/new');
 	andThen(function () {
-		assert.equal(currentURL(), '/login');
+		assert.equal(currentURL(), '/auth/login');
 	});
 });
 

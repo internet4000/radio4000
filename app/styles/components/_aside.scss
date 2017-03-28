@@ -43,11 +43,15 @@
 	bottom: 0;
 	z-index: 3;
 	width: 100%;
+	background-color: $bg-color-2;
+	max-width: 70%;
 
 	@media (min-width: $layout-s) {
 		// transform: translate3d(0, 0, 0);
 		// overflow: hidden;
+		background-color: transparent;
 		width: $sidebar-width;
+		max-width: 100%;
 	}
 }
 
@@ -81,9 +85,9 @@
 	padding: 0.5em 0.5rem 0.5rem 1rem;
 	transition: color 200ms;
 	color: $text-color;
+	text-decoration: none;
 
 	&.is-active {
 		text-decoration: underline;
 	}
 }
-
