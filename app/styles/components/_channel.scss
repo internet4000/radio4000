@@ -74,6 +74,7 @@
 	margin-top: -1.5rem;
 	display: none;
 	width: 30%;
+
 	@media (min-width: $layout-s) {
 		display: block;
 	}
@@ -164,6 +165,7 @@
 	padding-right: 0.52rem;
 	padding-top: 0.5rem;
 	min-width: 7rem;
+
 	@media (min-width: $layout-s) {
 		padding-right: 0;
 		margin-right: -1rem;
