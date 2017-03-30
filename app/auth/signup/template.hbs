@@ -3,11 +3,15 @@
 		<header class="Manchet">
 			<h1>Sign up<small> to Radio4000</small></h1>
 			<p>
-				Start a radio <a href="{{href-to 'about.intro'}}" class="Muted" title="Read more about Radio4000, we prepared you an introduction">(what?)</a> and interact with others. Already have one? <a href="{{href-to 'auth.login'}}" class="Btn">Log in</a>
+				Start a radio <a href="{{href-to 'about.intro'}}" class="Muted" title="Read more about Radio4000, we prepared you an introduction">(what?)</a> and interact with others.
 			</p>
 		</header>
 		<div class="Container">
 			{{user-signup onSignup=(action "signup")}}
+			<br>
+			<p>
+				Already have one? <a href="{{href-to 'auth.login'}}">Log in</a>.
+			</p>
 		</div>
 	</section>
 </div>
