@@ -3,7 +3,7 @@
 	padding-bottom: 1rem;
 	background-color: $bg-color-2;
 
-	&.is-active > a {
+	&.is-active {
 		outline: 2px solid $primary-color;
 	}
 
