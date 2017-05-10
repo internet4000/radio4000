@@ -27,3 +27,4 @@ testem.log
 # vs studio code
 jsconfig.json
 typings/
+.vscode/
