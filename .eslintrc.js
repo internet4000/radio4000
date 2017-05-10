@@ -13,6 +13,7 @@ module.exports = {
 		// the CI builds failing.
 		'no-mixed-spaces-and-tabs': 'warn',
 		'array-callback-return': 'warn',
+		'space-before-function-paren': 'warn',
 		'no-path-concat': 'warn',
 		'camelcase': ['warn', {
 			properties: 'always'
