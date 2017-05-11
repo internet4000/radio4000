@@ -40,34 +40,35 @@
 
         // validation for each key
        "body": {
-          ".validate": "newData.isString() && newData.val().length > 3 && newData.val().length < 300"
+        	// ".validate": "newData.isString() && newData.val().length > 3 && newData.val().length < 300"
+        	".validate": "newData.isString() && newData.val().length < 300"
         },
         "channelPublic": {
-          // todo
-          ".validate": true
+        	// todo
+        	".validate": true
         },
         "created": {
-          ".validate": "newData.isNumber()"
+        	".validate": "newData.isNumber()"
         },
         "favoriteChannels": {
-          // todo
-          ".validate": true
+        	// todo
+        	".validate": true
         },
         "images": {
-          // todo
-          ".validate": true
+        	// todo
+        	".validate": true
         },
         "isFeatured": {
-          ".validate": "newData.isBoolean()"
+        	".validate": "newData.isBoolean()"
         },
         /*"link": {
-          ".validate": "newData.isString() && newData.val().length > 7 && newData.val().length < 100"
+        	".validate": "newData.isString() && newData.val().length > 7 && newData.val().length < 100"
         },*/
         "slug": {
-          ".validate": "newData.isString() && newData.val().length > 2 && newData.val().length < 100"
+        	".validate": "newData.isString() && newData.val().length > 2 && newData.val().length < 100"
         },
         "title": {
-          ".validate": "newData.isString() && newData.val().length > 2 && newData.val().length < 32"
+        	".validate": "newData.isString() && newData.val().length > 2 && newData.val().length < 32"
         },
        "tracks": {
           // todo
@@ -75,7 +76,7 @@
         }/*,
         // a channel cannot have other child paths than the one allowed above
         "$other": {
-          ".validate": false
+        	".validate": false
         }*/
       }
     },
@@ -107,6 +108,7 @@
     },
 
     "images": {
+      ".indexOn": ["channel"],
       ".read": true,
       ".write": "auth != null", // todo: remove this when the below works
       "$imageID": {
