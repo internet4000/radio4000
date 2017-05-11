@@ -1,118 +1,85 @@
 {
   "rules": {
-
-    // by default rules are false
-    // nested rules can not change rules above
-
     "users": {
-      // no one can read user list
-      ".read": false,
-      ".write": false,
-
-      "$userID": {
-        // only auth user can read themselves
-        ".read": "$userID === auth.uid",
-        ".write": "(!data.exists() && auth === null) || (!newData.exists() && auth === null) || $userID === auth.uid"
-      }
-    },
-
-    "userSettings": {
-      ".read": true,
-      ".write": true
-    },
-
-    "channels": {
-      // this allows us to query by slug (normally it's only by ID)
-      ".indexOn": ["slug", "isFeatured"],
-
-      ".read": true,
-
-      // todo: remove this when the below works
-      ".write": "auth != null",
-
-      "$channelID": {
-        // ".write": "(auth.uid !== null && !data.exists() || !newData.exists()) || data.child('user').val() === auth.uid"
-        //".write": "auth.uid !== null && 1data.child('user').val() === auth.uid || !data.exists()"
-        //".write": "root.child('users/' + auth.uid + '/channels').val() === $channelID"
-
-        // Allow write if the auth user has a channel equal to the one we're trying to write here
-        //".write": "root.child('users/' + auth.uid + '/channels').child($channelID).exists()"
-
-        // validation for each key
-       "body": {
-        	// ".validate": "newData.isString() && newData.val().length > 3 && newData.val().length < 300"
-        	".validate": "newData.isString() && newData.val().length < 300"
-        },
-        "channelPublic": {
-        	// todo
-        	".validate": true
+      ".write": "auth != null && newData.val() != null",
+      "$user_id": {
+        ".validate": "newData.hasChildren(['created', 'settings'])",
+        "channels": {
+          "$key1": {
+            ".validate": "newData.isBoolean()"
+          },
+          ".validate": "newData.hasChildren()",
+          "$channel_id": {
+            ".validate": "newData.hasChildren(['channelPublic', 'created', 'isFeatured', 'slug', 'title', 'updated']) && newData.parent().parent().parent().parent().child('channels').child('channel').val() != null && (auth != null && auth.uid == $user_id && newData.parent().parent().parent().parent().child('users').child($user_id).child('channels').child($channel_id).val() != null) && newData.parent().parent().parent().parent().child('channels').child(channel).child('tracks').val() != null",
+            "channelPublic": {
+              ".validate": "newData.isString()"
+            },
+            "created": {
+              ".validate": "newData.isNumber()"
+            },
+            "favoriteChannels": {
+              "$key1": {
+                ".validate": "newData.isBoolean()"
+              },
+              ".validate": "newData.hasChildren()"
+            },
+            "isFeatured": {
+              ".validate": "newData.isBoolean()"
+            },
+            "slug": {
+              ".validate": "newData.isString()"
+            },
+            "title": {
+              ".validate": "newData.isString()"
+            },
+            "tracks": {
+              "$key1": {
+                ".validate": "newData.isBoolean()"
+              },
+              ".validate": "newData.hasChildren()"
+            },
+            "updated": {
+              ".validate": "newData.isNumber()"
+            },
+            "$other": {
+              ".validate": "false"
+            }
+          }
         },
         "created": {
-        	".validate": "newData.isNumber()"
+          ".validate": "newData.isNumber()"
         },
-        "favoriteChannels": {
-        	// todo
-        	".validate": true
+        "settings": {
+          ".validate": "newData.isString()"
         },
-        "images": {
-        	// todo
-        	".validate": true
-        },
-        "isFeatured": {
-        	".validate": "newData.isBoolean()"
-        },
-        /*"link": {
-        	".validate": "newData.isString() && newData.val().length > 7 && newData.val().length < 100"
-        },*/
-        "slug": {
-        	".validate": "newData.isString() && newData.val().length > 2 && newData.val().length < 100"
-        },
-        "title": {
-        	".validate": "newData.isString() && newData.val().length > 2 && newData.val().length < 32"
-        },
-       "tracks": {
-          // todo
-          ".validate": true
-        }/*,
-        // a channel cannot have other child paths than the one allowed above
         "$other": {
-        	".validate": false
-        }*/
+          ".validate": "false"
+        },
+        ".read": "auth != null && auth.uid == $user_id",
+        ".write": "auth != null && auth.uid == $user_id && newData.val() != null"
       }
     },
-
-    "channelPublics": {
-      ".read": true,
-      ".write": true,
-       ".indexOn": ["followers"]
-      //"$channelPublic": {}
-    },
-
-    "tracks": {
-      ".read": true,
-
-      // otherwise we can't update ytid dynamically
-      ".write": true,
-
-      ".indexOn": ["channel", "title"],
-
-      "$trackID": {
-        //".write": "!data.exists() || root.child('users/' + auth.uid + '/channels').val().contains(data.child('channel').val())"
-        // todo: here we need to allow write if track.channel.user === auth.uid
-        // ".write": "!data.exists() || !newData.exists() || data.child('user').val() === auth.uid"
-
-        // Allows write if there is no prev data OR
-        // if the 'channel' property is the same channel as the one in auth user
-        //".write": "!newData.exists() || root.child('users/' + auth.uid + '/channels').child( newData.child('channel').val()  ).exists()"// || root.child('users/' + auth.uid + '/channels').child( data.child('channel').val()  ).exists()"
-      }
-    },
-
-    "images": {
-      ".indexOn": ["channel"],
-      ".read": true,
-      ".write": "auth != null", // todo: remove this when the below works
-      "$imageID": {
-        // todo: here we need to allow write if $imageID.child('channel').val() === auth.uid
+    "userSettings": {
+      ".validate": "newData.hasChildren(['isRemoteActive', 'user'])",
+      "isRemoteActive": {
+        ".validate": "newData.isBoolean()"
+      },
+      "playedChannels": {
+        "$key1": {
+          ".validate": "newData.isBoolean()"
+        },
+        ".validate": "newData.hasChildren()"
+      },
+      "user": {
+        ".validate": "newData.isString()"
+      },
+      "$other": {
+        ".validate": "false"
+      },
+      "$userSetting_id": {
+        ".validate": "true",
+        ".read": "auth != null && auth.uid == $userSetting_id",
+        ".write": "auth != null && auth.uid == $userSetting_id && newData.parent().parent().child('users').child(auth.uid).child('settings').val() == null"
       }
     }
   }
