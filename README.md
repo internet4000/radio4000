@@ -9,17 +9,17 @@ See the continous integration: https://gitlab.com/internet4000/radio4000/pipelin
 Make sure Ember CLI is installed globally, then clone this project and install it's dependencies:
 
 ```
-yarn global add ember-cli
+npm install --global ember-cli phantomjs-prebuilt
 git clone git@gitlab.com:internet4000/radio4000.git
 cd radio4000
-npm install (or yarn)
+npm install
 bower install
 npm start
 ```
 
 ## Testing
 
-Run either `npm test` or `ember test --server`.
+Run `npm test` for a single test or `ember test --server` to start a test server.
 
 ## Deployment
 
