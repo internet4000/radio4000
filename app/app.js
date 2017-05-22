@@ -6,8 +6,6 @@ import RSVP from 'rsvp';
 
 let App;
 
-Ember.MODEL_FACTORY_INJECTIONS = true;
-
 App = Ember.Application.extend({
 	rootElement: '#Radio4000',
 	modulePrefix: config.modulePrefix,
