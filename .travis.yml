@@ -1,23 +1,26 @@
----
 language: node_js
 node_js:
   - "7"
 
 sudo: false
 
-cache:
-  yarn: true
-
 before_install:
+	- yarn --version
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH=$HOME/.yarn/bin:$PATH
-  - yarn global add bower phantomjs-prebuilt
+  - yarn global add bower
+  - yarn --version
   - bower --version
   - phantomjs --version
 
 install:
   - bower install
   - yarn install
+
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3 # give xvfb some time to start
 
 script:
   - yarn test
