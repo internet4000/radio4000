@@ -15,6 +15,7 @@ before_install:
   - phantomjs --version
 
 install:
+	- bower install
   - yarn install
 
 script:
