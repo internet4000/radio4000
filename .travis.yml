@@ -3,7 +3,7 @@ node_js: 7
 dist: trusty
 
 addons:
-  firefox: "latest"
+  # firefox: "latest"
   apt:
     sources:
     - google-chrome
