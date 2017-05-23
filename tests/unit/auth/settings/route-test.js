@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import {moduleFor, test} from 'ember-qunit';
 
 moduleFor('route:auth/settings', 'Unit | Route | auth/settings', {
@@ -6,6 +7,7 @@ moduleFor('route:auth/settings', 'Unit | Route | auth/settings', {
 });
 
 test('it exists', function (assert) {
+	this.register('service:firebaseApp', Ember.Service.extend());
 	let route = this.subject();
 	assert.ok(route);
 });

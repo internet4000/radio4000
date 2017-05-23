@@ -14,6 +14,7 @@ module.exports = {
 		'no-mixed-spaces-and-tabs': 'warn',
 		'array-callback-return': 'warn',
 		'space-before-function-paren': 'warn',
+		'object-curly-spacing': 'warn',
 		'no-path-concat': 'warn',
 		'camelcase': ['warn', {
 			properties: 'always'

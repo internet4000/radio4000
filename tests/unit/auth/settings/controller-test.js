@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import {moduleFor, test} from 'ember-qunit';
 
 moduleFor('controller:auth/settings', 'Unit | Controller | auth/settings', {
@@ -7,6 +8,8 @@ moduleFor('controller:auth/settings', 'Unit | Controller | auth/settings', {
 
 // Replace this with your real tests.
 test('it exists', function (assert) {
+	this.register('service:firebaseApp', Ember.Service.extend());
+	this.register('service:flashMessages', Ember.Service.extend());
 	let controller = this.subject();
 	assert.ok(controller);
 });
