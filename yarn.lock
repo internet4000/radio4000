@@ -1558,7 +1558,7 @@ broccoli-node-info@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/broccoli-node-info/-/broccoli-node-info-1.1.0.tgz#3aa2e31e07e5bdb516dd25214f7c45ba1c459412"
 
-broccoli-persistent-filter@^1.0.1, broccoli-persistent-filter@^1.0.3, broccoli-persistent-filter@^1.1.5, broccoli-persistent-filter@^1.1.6, broccoli-persistent-filter@^1.2.0, broccoli-persistent-filter@~1.2.11:
+broccoli-persistent-filter@^1.0.1, broccoli-persistent-filter@^1.0.3, broccoli-persistent-filter@^1.1.6, broccoli-persistent-filter@^1.2.0, broccoli-persistent-filter@~1.2.11:
   version "1.2.13"
   resolved "https://registry.yarnpkg.com/broccoli-persistent-filter/-/broccoli-persistent-filter-1.2.13.tgz#61368669e2b8f35238fdd38a2a896597e4a1c821"
   dependencies:
@@ -1629,13 +1629,6 @@ broccoli-stew@^1.2.0, broccoli-stew@^1.3.3:
     resolve "^1.1.6"
     rsvp "^3.0.16"
     walk-sync "^0.3.0"
-
-broccoli-string-replace@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/broccoli-string-replace/-/broccoli-string-replace-0.1.1.tgz#e560d20db3569a336043110b4048210fa6f1478b"
-  dependencies:
-    broccoli-persistent-filter "^1.1.5"
-    minimatch "^2.0.8"
 
 broccoli-stylelint@0.10.3:
   version "0.10.3"
@@ -6749,7 +6742,7 @@ minimalistic-assert@^1.0.0:
   dependencies:
     brace-expansion "^1.0.0"
 
-minimatch@^2.0.1, minimatch@^2.0.3, minimatch@^2.0.8:
+minimatch@^2.0.1, minimatch@^2.0.3:
   version "2.0.10"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-2.0.10.tgz#8d087c39c6b38c001b97fca7ce6d0e1e80afbac7"
   dependencies:
@@ -9319,14 +9312,11 @@ topo@1.x.x:
   dependencies:
     hoek "2.x.x"
 
-torii@^0.8.4:
-  version "0.8.4"
-  resolved "https://registry.yarnpkg.com/torii/-/torii-0.8.4.tgz#12ba0b51af0594ad6f0f16294c71fe13c82c7686"
+torii@^0.9.3:
+  version "0.9.3"
+  resolved "https://registry.yarnpkg.com/torii/-/torii-0.9.3.tgz#4607e3fa5b5937c6dfe4825cedca2d6d7cea50b3"
   dependencies:
-    broccoli-funnel "^1.0.1"
-    broccoli-merge-trees "^1.1.1"
-    broccoli-string-replace "^0.1.1"
-    ember-cli-babel "^5.1.3"
+    ember-cli-babel "^6.0.0"
 
 tough-cookie@^2.2.0, tough-cookie@~2.3.0:
   version "2.3.2"
