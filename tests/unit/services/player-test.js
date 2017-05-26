@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import {moduleFor, test} from 'ember-qunit';
 
 moduleFor('service:player', {
@@ -7,6 +8,8 @@ moduleFor('service:player', {
 
 // Replace this with your real tests.
 test('it exists', function (assert) {
+	this.register('service:playerRandom', Ember.Service.extend());
+	this.register('service:playerHistory', Ember.Service.extend());
 	var service = this.subject();
 	assert.ok(service);
 });
