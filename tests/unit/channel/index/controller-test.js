@@ -2,7 +2,7 @@ import {moduleFor, test} from 'ember-qunit';
 
 moduleFor('controller:channel/index', {
 	// Specify the other units that are required for this test.
-	// needs: ['controller:foo']
+	needs: ['controller:application', 'controller:channel']
 });
 
 // Replace this with your real tests.

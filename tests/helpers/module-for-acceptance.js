@@ -13,11 +13,23 @@ export default function (name, options = {}) {
 			if (options.beforeEach) {
 				return options.beforeEach.apply(this, arguments);
 			}
+
+			// Use this to 'stub' services in tests.
+			// Example: this.register('service:session', Ember.Service.extend({}))
+			this.register = (fullName, Factory) => {
+				let instance = this.application.__deprecatedInstance__;
+				let registry = instance.register ? instance : instance.registry;
+
+				return registry.register(fullName, Factory);
+			};
 		},
 
 		afterEach() {
-			let afterEach = options.afterEach && options.afterEach.apply(this, arguments);
-			return Promise.resolve(afterEach).then(() => destroyApp(this.application));
+			let afterEach =
+				options.afterEach && options.afterEach.apply(this, arguments);
+			return Promise.resolve(afterEach).then(() =>
+				destroyApp(this.application)
+			);
 		}
 	});
 }

@@ -1,18 +1,20 @@
 module.exports = {
 	root: true,
 	parserOptions: {
-		ecmaVersion: 6,
+		ecmaVersion: 2017,
 		sourceType: 'module'
 	},
 	extends: 'xo',
 	env: {
-		'browser': true
+		browser: true
 	},
 	rules: {
-		// these are normally errors but warnings,
-		// are enough. Otherwise CI breaks.
+		// Change errors to warnings to avoid
+		// the CI builds failing.
 		'no-mixed-spaces-and-tabs': 'warn',
 		'array-callback-return': 'warn',
+		'space-before-function-paren': 'warn',
+		'object-curly-spacing': 'warn',
 		'no-path-concat': 'warn',
 		'camelcase': ['warn', {
 			properties: 'always'

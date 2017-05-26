@@ -1,0 +1,24 @@
+language: node_js
+node_js: 7
+dist: trusty
+
+addons:
+  # firefox: "latest"
+  apt:
+    sources:
+    - google-chrome
+    packages:
+    - google-chrome-stable
+
+before_install:
+  - yarn global add bower phantomjs-prebuilt
+  - yarn --version
+  - bower --version
+  - phantomjs --version
+
+install:
+  - bower install
+  - yarn install
+
+script:
+  - yarn test

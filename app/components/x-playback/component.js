@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import {task} from 'ember-concurrency';
-import {EKMixin, keyUp} from 'ember-keyboard';
+import {EKMixin, keyDown} from 'ember-keyboard';
 
 const {Component, get, set, inject, computed, on, run, $} = Ember;
 
@@ -16,25 +16,26 @@ export default Component.extend(EKMixin, {
 		showinfo: 0
 	},
 
-	activateKeyboard: Ember.on('init', function () {
+	activateKeyboard: on('init', function () {
 		set(this, 'keyboardActivated', true);
 	}),
-	swapShortcut: on(keyUp('KeyW'), function () {
+	swapShortcut: on(keyDown('KeyW'), function () {
+		console.log('swap shortcut');
 		get(this, 'swap').perform();
 	}),
-	playbackShortcut: on(keyUp('KeyP'), function () {
+	playbackShortcut: on(keyDown('KeyP'), function () {
 		this.send('togglePlay');
 	}),
-	skipShortcut: on(keyUp('KeyS'), function () {
+	skipShortcut: on(keyDown('KeyS'), function () {
 		this.send('next');
 	}),
-	muteShortcut: on(keyUp('KeyM'), function () {
+	muteShortcut: on(keyDown('KeyM'), function () {
 		this.send('toggleVolume');
 	}),
-	cycleFormat: on(keyUp('KeyF'), function () {
+	cycleFormat: on(keyDown('KeyF'), function () {
 		get(this, 'uiStates').cycleFormat();
 	}),
-	closeFullscreen: on(keyUp('Escape'), function () {
+	closeFullscreen: on(keyDown('Escape'), function () {
 		set(this, 'uiStates.format', 1);
 	}),
 

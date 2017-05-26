@@ -1,20 +1,22 @@
-/* jshint node:true*/
-/* global require, module */
-var EmberApp = require('ember-cli/lib/broccoli/ember-app');
-var autoprefixer = require('autoprefixer');
-var atImport = require('postcss-import');
+/* eslint-env node */
+const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const autoprefixer = require('autoprefixer');
+const atImport = require('postcss-import');
 
-module.exports = function (defaults) {
+module.exports = function(defaults) {
 	var app = new EmberApp(defaults, {
 		// Don't pollute our index.html with meta data.
 		storeConfigInMeta: false,
 
-		// Don't fingerprint favicons as browsers expect standard names.
+		// Don't fingerprint favicons.
 		fingerprint: {
-			exclude: ['apple-touch-icon', 'favicon', 'mstile', 'icns']
+			exclude: [
+				'apple-touch-icon', 'android-chrome',
+				'favicon', 'mstile', 'icns'
+			]
 		},
 
-		// Very verbose but this adds autoprefixer and atImport (option to import css/scss from node modules).
+		// Enable autoprefixer and imports from node modules.
 		styleProcessorOptions: {
 			processors: [
 				{
@@ -41,3 +43,4 @@ module.exports = function (defaults) {
 
 	return app.toTree();
 };
+

@@ -1,18 +1,14 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
+# See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
 /dist
 /tmp
-/build
-/electron-builds
-/dist-electron
 
 # dependencies
 /node_modules
 /bower_components
 
 # misc
-yarn.lock
 /.sass-cache
 /connect.lock
 /coverage/*
@@ -25,5 +21,7 @@ testem.log
 *.sublime-workspace
 
 # vs studio code
+/.vscode
 jsconfig.json
 typings/
+.vscode/
