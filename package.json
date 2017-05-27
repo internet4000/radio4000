@@ -31,7 +31,6 @@
     "ember-cli-qunit": "^4.0.0",
     "ember-cli-shims": "^1.1.0",
     "ember-cli-sri": "^2.1.0",
-    "ember-cli-stylelint": "^0.9.0",
     "ember-cli-uglify": "^1.2.0",
     "ember-concurrency": "^0.8.3",
     "ember-cp-validations": "^3.3.2",
@@ -47,8 +46,7 @@
     "loader.js": "^4.2.3",
     "node-sass": "^4.5.2",
     "postcss": "^5.2.12",
-    "postcss-import": "^9.1.0",
-    "stylelint-config-suitcss": "^8.0.0"
+    "postcss-import": "^9.1.0"
   },
   "dependencies": {
     "date-fns": "^1.28.4",
