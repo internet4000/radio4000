@@ -61,11 +61,7 @@ export default DS.Model.extend(Validations, {
 			return new Date().getTime();
 		}
 	}),
-	updated: attr('number', {
-		defaultValue() {
-			return new Date().getTime();
-		}
-	}),
+	updated: attr('number'),
 
 	// Set the latest image as the cover image.
 	coverImage: computed('images.[]', function () {
