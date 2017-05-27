@@ -1,4 +1,15 @@
-/* eslint-env node */
+//* eslint-env node */
+const isMacOS = /^darwin/.test(process.platform)
+const isWindows = /^win/.test(process.platform)
+
+let browserArgs
+
+if (isMacOS || isWindows) {
+  browserArgs = []
+} else {
+  browserArgs = ['--headless', '--disable-gpu', '--remote-debugging-port=9222']
+}
+
 module.exports = {
 	"test_page": "tests/index.html?hidepassed",
 	"disable_watching": true,
@@ -9,6 +20,6 @@ module.exports = {
 		"Chrome"
 	],
 	"browser_args": {
-		'Chrome': ['--headless', '--disable-gpu', '--remote-debugging-port=9222'],
+		'Chrome': browserArgs
 	}
-};
+}
