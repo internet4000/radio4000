@@ -45,7 +45,7 @@
     "gulp": "^3.9.1",
     "gulpicon": "^1.2.1",
     "loader.js": "^4.2.3",
-    "node-sass": "^4.5.2",
+    "node-sass": "^4.5.3",
     "postcss": "^5.2.12",
     "postcss-import": "^9.1.0",
     "stylelint-config-suitcss": "^8.0.0"
