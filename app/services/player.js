@@ -48,12 +48,15 @@ export default Ember.Service.extend({
 			debug('playTrack() was called without a track.');
 			return false;
 		}
-		this.setProperties({model, isPlaying: true});
+		/* this.setProperties({model, isPlaying: true});*/
+		this.set('isPlaying', true);
 		model.get('channel').then(channel => {
 			const trackTitle = model.get('title');
 			const channelTitle = channel.get('title');
 			this.updateMetaTitle(trackTitle, channelTitle);
 			this.updatePlaylist(channel);
+			// radio4000-player-vue
+			document.querySelector('radio4000-player').slug = channel.get('slug');
 		});
 	},
 

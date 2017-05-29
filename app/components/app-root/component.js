@@ -16,7 +16,7 @@ export default Component.extend({
 		'uiStates.isMinimized',
 		'uiStates.isFullscreen:is-maximized',
 		'uiStates.isPanelLeftVisible:is-panelLeftVisible',
-		'player.model:is-withPlayer:is-withoutPlayer'
+		'player.isPlaying:is-withPlayer:is-withoutPlayer'
 	],
 	isShowingModal: false,
 
