@@ -11,28 +11,8 @@
 	</button>
 </div>
 
-<div class="Playback-body">
-	{{#if player.model}}
-		<div class="Playback-channel">
-		  {{channel-card channel=channel wide=true}}
-		</div>
-	{{/if}}
-	<div class="Playback-text">
-		<div class="Playback-title" title="Current track / go to current radio">
-			<div {{action "scrollToTrack"}}>
-				{{#link-to 'track' channel player.model replace=true}}
-					{{player.model.title}}
-				{{/link-to}}
-			</div>
-		</div>
-		{{#if player.model.body}}
-			<p class="Playback-description">{{player.model.body}}</p>
-		{{/if}}
-	</div>
-
-</div>
-
 <div class="Playback-player">
-	<script async src="https://rawgit.com/internet4000/radio4000-player-vue/master/dist/radio4000-player.min.js"></script>
-	<radio4000-player slug=""></radio4000-player>
+	<!-- <script async src="https://rawgit.com/internet4000/radio4000-player-vue/master/dist/radio4000-player.min.js"></script> -->
+	<script async src="http://localhost:5000/dist/radio4000-player.js"></script>
+	<radio4000-player></radio4000-player>
 </div>

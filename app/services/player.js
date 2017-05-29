@@ -56,7 +56,7 @@ export default Ember.Service.extend({
 			this.updateMetaTitle(trackTitle, channelTitle);
 			this.updatePlaylist(channel);
 			// radio4000-player-vue
-			document.querySelector('radio4000-player').slug = channel.get('slug');
+			document.querySelector('radio4000-player').id = channel.get('id');
 		});
 	},
 
