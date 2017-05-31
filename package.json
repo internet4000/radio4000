@@ -1,6 +1,6 @@
 {
   "name": "radio4000",
-  "version": "4.10.0",
+  "version": "4.10.1",
   "scripts": {
     "build": "ember build; gulp critical",
     "build-production": "ember build -p; gulp critical",
@@ -45,7 +45,7 @@
     "gulp": "^3.9.1",
     "gulpicon": "^1.2.1",
     "loader.js": "^4.2.3",
-    "node-sass": "^4.5.2",
+    "node-sass": "^4.5.3",
     "postcss": "^5.2.12",
     "postcss-import": "^9.1.0",
     "stylelint-config-suitcss": "^8.0.0"
@@ -53,8 +53,8 @@
   "dependencies": {
     "date-fns": "^1.28.4",
     "ember-href-to": "^1.12.1",
-    "ember-source": "^2.13.2",
-    "ember-youtube": "^0.8.0",
+    "ember-source": "^2.13.3",
+    "ember-youtube": "^0.8.1",
     "emberfire": "^2.0.7",
     "lazysizes": "^2.0.0",
     "suitcss-base": "^2.0.0",
