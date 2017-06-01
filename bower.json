@@ -2,8 +2,6 @@
   "name": "radio4000",
   "dependencies": {
     "cloudinary": "cloudinary_js#~1.0.25",
-    "jquery-file-upload": "~9.11.2",
-    "js-cookie": "^2.0.4",
-    "firebase": "^3.6.9"
+    "jquery-file-upload": "~9.11.2"
   }
 }
