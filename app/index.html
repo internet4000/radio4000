@@ -14,8 +14,9 @@
 	<meta name="theme-color" content="#5d1ae6">
 	<meta name="og:image" content="https://radio4000.com/assets/images/logos/radio4000-square.png">
 	{{content-for "head"}}
-	<link rel="stylesheet" href="{{rootURL}}assets/vendor.css">
-	<link rel="stylesheet" href="{{rootURL}}assets/radio4000.css"> {{content-for "head-footer"}}
+	<!--<link rel="stylesheet" href="{{rootURL}}assets/vendor.css">-->
+	<link rel="stylesheet" href="{{rootURL}}assets/radio4000.css">
+	{{content-for "head-footer"}}
 </head>
 <body>
 	{{content-for "body"}}
@@ -24,8 +25,7 @@
 
 	<div id="Radio4000" class="Radio4000"></div>
 
-	<script src="{{rootURL}}assets/vendor.js"></script>
-	<script src="{{rootURL}}assets/radio4000.js"></script>
+	<script async src="{{rootURL}}assets/app.js"></script>
 
 	{{content-for "body-footer"}}
 
