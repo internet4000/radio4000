@@ -1,31 +1,28 @@
-/**
- * Font family definitions
- */
-
 @font-face {
-	font-family: "maisonneue";
+	font-family: "Maison Neue";
 	src: url("fonts/maisonneue/maisonneueweb-book.woff2") format("woff2"), url("fonts/maisonneue/maisonneueweb-book.woff") format("woff");
+	// src: url("https://res.cloudinary.com/radio4000/raw/upload/v1492541388/maisonneueweb-book_ee98sm.woff2") format("woff2");
 	font-weight: normal;
 	font-style: normal;
 }
-
 @font-face {
-	font-family: "maisonneue";
+	font-family: "Maison Neue";
 	src: url("fonts/maisonneue/maisonneueweb-bookitalic.woff2") format("woff2"), url("fonts/maisonneue/maisonneueweb-bookitalic.woff") format("woff");
+	// src: url("https://res.cloudinary.com/radio4000/raw/upload/v1492541388/maisonneueweb-bookitalic_szjrvl.woff2") format("woff2");
 	font-weight: normal;
 	font-style: italic;
 }
-
 @font-face {
-	font-family: "maisonneue";
-	src: url("fonts/maisonneue/maisonneueweb-bold.woff2") format("woff2"), url("fonts/maisonneue/maisonneueweb-bold.woff") format("woff");
+	font-family: "Maison Neue";
+	// src: url("fonts/maisonneue/maisonneueweb-bold.woff2") format("woff2"), url("fonts/maisonneue/maisonneueweb-bold.woff") format("woff");
+	src: url("https://res.cloudinary.com/radio4000/raw/upload/v1492541388/maisonneueweb-bold_rvmbzr.woff2") format("woff2");
 	font-weight: bold;
 	font-style: normal;
 }
-
 @font-face {
-	font-family: "maisonneue";
+	font-family: "Maison Neue";
 	src: url("fonts/maisonneue/maisonneueweb-bolditalic.woff2") format("woff2"), url("fonts/maisonneue/maisonneueweb-bolditalic.woff") format("woff");
+	// src: url("https://res.cloudinary.com/radio4000/raw/upload/v1492541388/maisonneueweb-bolditalic_awvcg5.woff2") format("woff2");
 	font-weight: bold;
 	font-style: italic;
 }
