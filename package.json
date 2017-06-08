@@ -9,7 +9,7 @@
     "start": "ember server",
     "test": "ember test"
   },
-  "repository": "git@gitlab.com:internet4000/radio4000.git",
+  "repository": "internet4000/radio4000",
   "devDependencies": {
     "autoprefixer": "^6.5.3",
     "broccoli-asset-rev": "^2.4.5",
