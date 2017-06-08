@@ -2,10 +2,7 @@
 .Dropzone {
 	padding: 0.5rem;
 	text-align: center;
-
-	.no-touchevents & {
-		border: 1px dashed;
-	}
+	border: 1px dashed;
 
 	&.in {
 		// when the user is dragging something on the page
@@ -29,9 +26,4 @@
 // The default "Choose file" input
 .cloudinary-fileupload {
 	margin-top: 1rem;
-
-	// hide the file input on desktop because we use dragndrop
-	.no-touchevents & {
-		display: none;
-	}
 }

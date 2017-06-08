@@ -15,9 +15,7 @@
 	<meta name="og:image" content="https://radio4000.com/assets/images/logos/radio4000-square.png">
 	{{content-for "head"}}
 	<link rel="stylesheet" href="{{rootURL}}assets/vendor.css">
-	<link rel="stylesheet" href="{{rootURL}}assets/radio4000.css">
-	<script src="{{rootURL}}assets/scripts/radio4000-header.js"></script>
-	{{content-for "head-footer"}}
+	<link rel="stylesheet" href="{{rootURL}}assets/radio4000.css"> {{content-for "head-footer"}}
 </head>
 <body>
 	{{content-for "body"}}
@@ -75,22 +73,23 @@
 				<img class="animate-rotate" style="opacity: 0.9" src="/assets/images/icons/vinyl.svg" alt="">
 			</div>
 			<script>
-				var r4DummyApp = function() {
-						// Insert a random sentence to make waiting fun/less annoying
-						console.log('A human feel.');
-						var sentences = ['One moment, please', 'Un momento por favor', 'لحظة واحدة من فضلك', 'Une batez, mesedez', 'এক মিনিট, প্লিজ', 'Един момент моля', '稍等一会儿', 'Et øjeblik', 'Een ogenblik alstublieft', 'Unu momenton, bonvolu', 'Hetkinen', 'Un instant s\'il vous plaît', 'Einen Moment bitte', 'Μια στιγμή παρακαλώ', 'Yon sèl moman, tanpri', 'कृपया एक क्षण', 'Nóiméad amháin, le do thoil', 'Un momento per favore', '少々お待ちください', 'Uno momento, placet', 'Et øyeblikk', 'Chwileczkę', 'Um momento por favor', 'Один момент, пожалуйста', 'Wakati mmoja, tafadhali', 'Ett ögonblick tack', 'กรุณารอสักครู่', 'Bir dakika lütfen', 'Un funud, os gwelwch yn dda', 'Omunye mzuzu, sicela'];
-						var randomSentence = sentences[Math.floor(Math.random() * sentences.length)];
-						var slogan = document.querySelectorAll('.DummyApp-slogan');
-						slogan[0].innerHTML = randomSentence + '…';
+				var r4DummyApp = function () {
+					// Insert a random sentence to make waiting fun/less annoying
+					console.log('A human feel.');
+					var sentences = ['One moment, please', 'Un momento por favor', 'لحظة واحدة من فضلك', 'Une batez, mesedez', 'এক মিনিট, প্লিজ', 'Един момент моля', '稍等一会儿', 'Et øjeblik', 'Een ogenblik alstublieft', 'Unu momenton, bonvolu', 'Hetkinen', 'Un instant s\'il vous plaît', 'Einen Moment bitte', 'Μια στιγμή παρακαλώ', 'Yon sèl moman, tanpri', 'कृपया एक क्षण', 'Nóiméad amháin, le do thoil', 'Un momento per favore', '少々お待ちください', 'Uno momento, placet', 'Et øyeblikk', 'Chwileczkę', 'Um momento por favor', 'Один момент, пожалуйста', 'Wakati mmoja, tafadhali', 'Ett ögonblick tack', 'กรุณารอสักครู่', 'Bir dakika lütfen', 'Un funud, os gwelwch yn dda', 'Omunye mzuzu, sicela'];
+					var randomSentence = sentences[Math.floor(Math.random() * sentences.length)];
+					var slogan = document.querySelectorAll('.DummyApp-slogan');
+					slogan[0].innerHTML = randomSentence + '…';
 
-						// Internet connection check
-						var dummyBody = document.querySelectorAll('.DummyApp-body');
-						if (!navigator.onLine) {
-							dummyBody[0].innerHTML = '<p><strong>It seems that you are not connected to the internet -_-</strong></p><p>Find the internet and then reload this page.</p>';
-						};
-					}();
-				</script>
-			</div>
+					// Internet connection check
+					var dummyBody = document.querySelectorAll('.DummyApp-body');
+					if (!navigator.onLine) {
+						dummyBody[0].innerHTML = '<p><strong>It seems that you are not connected to the internet -_-</strong></p><p>Find the internet and then reload this page.</p>';
+					};
+				}();
+			</script>
 		</div>
-	</body>
-	</html>
+	</div>
+
+</body>
+</html>
