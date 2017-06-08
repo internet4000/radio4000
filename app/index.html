@@ -6,8 +6,6 @@
 	<meta name="description" content="Collect, curate, play and share your own radio channel">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
-
-	{{content-for "head"}}
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
 	<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
@@ -15,20 +13,10 @@
 	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5d1ae6">
 	<meta name="theme-color" content="#5d1ae6">
 	<meta name="og:image" content="https://radio4000.com/assets/images/logos/radio4000-square.png">
-
+	{{content-for "head"}}
 	<link rel="stylesheet" href="{{rootURL}}assets/vendor.css">
 	<link rel="stylesheet" href="{{rootURL}}assets/radio4000.css">
-
-	<script src="{{rootURL}}assets/scripts/radio4000-header.js" async></script>
-	<script src="{{rootURL}}assets/images/icons/grunticon/grunticon.loader.js"></script>
-	<script>
-		grunticon([
-			'/assets/images/icons/grunticon/icons.data.svg.css',
-			'/assets/images/icons/grunticon/icons.data.png.css',
-			'/assets/images/icons/grunticon/icons.fallback.css'
-		], grunticon.svgLoadedCallback);
-	</script>
-
+	<script src="{{rootURL}}assets/scripts/radio4000-header.js"></script>
 	{{content-for "head-footer"}}
 </head>
 <body>

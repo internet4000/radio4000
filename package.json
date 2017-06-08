@@ -41,8 +41,6 @@
     "ember-modal-dialog": "^1.0.0",
     "ember-resolver": "^4.0.0",
     "eslint-config-xo": "^0.17.0",
-    "gulp": "^3.9.1",
-    "gulpicon": "^1.2.1",
     "loader.js": "^4.2.3",
     "node-sass": "^4.5.3",
     "postcss": "^5.2.12",
