@@ -9,7 +9,7 @@ export default Component.extend({
 	isPlaying: false,
 
 	title: computed('isPlaying', function () {
-		return get(this, 'isPlaying') ? 'Pause music playback' : 'Start music playback (play)';
+		return get(this, 'isPlaying') ? 'Pause music playback (Press \'P\')' : 'Start music playback (Press \'P\')';
 	}),
 
 	click() {
