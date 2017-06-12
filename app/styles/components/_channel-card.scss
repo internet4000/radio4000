@@ -12,6 +12,7 @@
 	}
 }
 
+.ChannelRow.is-active,
 .ChannelCard.is-active {
 	&::before {
 		background-color: $primary-color;

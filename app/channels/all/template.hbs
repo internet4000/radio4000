@@ -25,27 +25,19 @@
 							onClick=(action updateSorting "created" true)}}
 					{{btn-list-manipulation text="A-Z"
 							onClick=(action updateSorting "title" true)}}
-					<span class="BtnGroup-label">&nbsp;</span>
-					<button class="Btn Btn--small" {{action "changeLayout"}}>
-						{{if isList "Bigger" "Smaller"}}
-					</button>
 				{{/btn-group}}
 			</div>
 
 			{{#if channels}}
-				<div class="Grid {{if isList 'Grid--wide'}}">
-					<div class="Grid-cell">
-						<h3>Tip</h3>
-						<div class="Muted">
-							<p>Newest radios are at the top.</p>
-							<p>Press <strong>W</strong> anytime (on your keyboard) to play a random radio. Press <strong>W</strong> again to 'swap' to another one.</p>
-							<p>Radios without music are not shown here.</p>
-						</div>
-					</div>
+				<h3>Tip</h3>
+				<div class="Muted">
+					<p>Newest radios are at the top.</p>
+					<p>Press <strong>W</strong> anytime (on your keyboard) to play a random radio. Press <strong>W</strong> again to 'swap' to another one.</p>
+					<p>Radios without music are not shown here.</p>
+				</div>
+				<div class="FlexList">
 					{{#each manipulatedList as |item|}}
-						<div class="Grid-cell">
-							{{channel-card channel=item wide=isList}}
-						</div>
+						{{channel-row channel=item}}
 					{{/each}}
 				</div>
 			{{else}}

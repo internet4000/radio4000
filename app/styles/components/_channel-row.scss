@@ -1,0 +1,50 @@
+.ChannelRow {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+
+	> a {
+		flex: 1;
+		text-decoration: none;
+		background-color: $bg-color-2;
+		border-bottom: 1px solid hsla(0, 0%, 50%, 0.1);
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+
+		&:hover {
+			background-color: #fff;
+		}
+	}
+
+	figure {
+		flex-shrink: 0;
+		margin: 0 0.75rem 0 0;
+		width: 3rem;
+	}
+
+	h3 {
+		// margin: auto 0 auto 0.5rem;
+		margin-top: auto;
+		margin-bottom: auto;
+		flex-shrink: 0;
+	}
+
+	.ChannelCard-body {
+		text-overflow: ellipsis;
+		overflow: hidden;
+		height: 1.3em;
+		padding-left: 0.75rem;
+	}
+
+	.ChannelCard-controls {
+		position: static;
+		order: -1;
+		margin: auto 1rem auto 0;
+	}
+}
+
+.ChannelCard-cover {
+	// flex-basis: 3rem;
+}
