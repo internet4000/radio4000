@@ -49,10 +49,10 @@ export default Ember.Service.extend({
 			return false;
 		}
 
-		document.querySelector('radio4000-player').trackId = model.get('id');
-		document.querySelector('radio4000-player').channelId = model.get('channel');
-
-		/* this.setProperties({model, isPlaying: true});*/
+		// const player = document.querySelector('radio4000-player');
+		// player.trackId = model.get('id');
+		// player.channelId = model.get('channel');
+		this.setProperties({model, isPlaying: true});
 		this.set('isPlaying', true);
 		model.get('channel').then(channel => {
 			const trackTitle = model.get('title');
