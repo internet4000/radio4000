@@ -1,7 +1,7 @@
 {{#each channels as |channel|}}
 	<li class="List-item">
 
-		{{#link-to "channel" channel}}
+		{{#link-to "channel" channel.slug}}
 			{{#channel-cover}}
 				{{#if channel.coverImage.src}}
 					<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="

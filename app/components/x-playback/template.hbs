@@ -60,7 +60,7 @@
 
 	<div class="Playback-buttons {{unless player.model "u-hide"}}">
 		<button class="Playback-button Playback-shuffle {{if player.isRandom 'is-active'}}" {{action 'toggleRandom'}} title="{{if player.isRandom 'Disable shuffle' 'Enable shuffle'}}">
-			<i class="icon icon-shuffle-white" data-grunticon-embed></i>
+			{{x-icon i="shuffle-white"}}
 		</button>
 
 		<button class="Playback-button" {{action 'prev'}} title="Previous track">
