@@ -10,7 +10,9 @@ export function coverImg(params, {size, format}) {
 	const id = params[0];
 	if (format === 'awebp') {
 		// This is an animated version of webp.
-		return `${base}/w_${size},h_${size},q_${quality},c_thumb,fl_awebp/${id}.webp`;
+		return `${base}/f_auto,w_${size},h_${size},q_${quality},c_thumb,fl_awebp/${id}`;
+	} else if (format === 'lofi') {
+		return `${base}/w_${size},h_${size},q_auto,c_thumb,f_auto,pg_1/${id}`;
 	} else if (format) {
 		return `${base}/w_${size},h_${size},q_auto,c_thumb/${id}.${format}`;
 	}
