@@ -4,10 +4,10 @@
 
 $base-font-size: 15px;
 $base-line-height: (21 / 16);
-$sans-fallback: "Lucida Grande", "Lucida Sans", sans-serif;
+$sans-fallback: "system-ui", "Lucida Grande", "Lucida Sans", sans-serif;
 
 %font-regular {
-	font-family: "maisonneue", $sans-fallback;
+	font-family: "Maison Neue", $sans-fallback;
 	font-weight: normal;
 }
 
