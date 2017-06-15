@@ -22,6 +22,7 @@ export default Route.extend({
 	model() {
 		// All channels without doing a request. This way the array updates
 		// while we fetch more channels in the background.
+		this.store.findAll('channel');
 		return this.store.peekAll('channel');
 		// return this.store.find('channel', {orderBy: 'published', limitToLast: 5})
 		// return this.store.query('channel', {orderBy: 'category', startAt: 1, endAt: 1})
@@ -32,56 +33,56 @@ export default Route.extend({
 		// return this.store.query('channel', {startAt: '-J_Gj6nryBGVLHrmfZ10'});
 	},
 
-	afterModel() {
-		// v1: Load more channels in the background.
-		// this.findChannels(5).then(() => {
-			// this.findChannels(20).then(() => {
-			// 	this.findChannels().then(() => {
-			// 		// all channels are loaded
-			// 	});
-			// });
-		// });
+	// afterModel() {
+	// 	// v1: Load more channels in the background.
+	// 	// this.findChannels(5).then(() => {
+	// 		// this.findChannels(20).then(() => {
+	// 		// 	this.findChannels().then(() => {
+	// 		// 		// all channels are loaded
+	// 		// 	});
+	// 		// });
+	// 	// });
 
-		if (this.get('didLoadAll')) {
-			return;
-		}
+	// 	if (this.get('didLoadAll')) {
+	// 		return;
+	// 	}
 
-		// v2: load with a pager (avoids fetching duplicate channels)
-		// console.time('findPrev1');
-		this.store.findAll('channel').then(() => {
-			// console.timeEnd('Query the rest of the channels');
-			this.set('didLoadAll', true);
-		});
-		// this.findPrev().then(() => {
-			// console.timeEnd('findPrev1');
+	// 	// v2: load with a pager (avoids fetching duplicate channels)
+	// 	// console.time('findPrev1');
+	// 	this.store.findAll('channel').then(() => {
+	// 		// console.timeEnd('Query the rest of the channels');
+	// 		this.set('didLoadAll', true);
+	// 	});
+	// 	// this.findPrev().then(() => {
+	// 		// console.timeEnd('findPrev1');
 
-			// console.time('findPrev2');
-			// this.findPrev().then(data => {
-			// 	console.timeEnd('findPrev2');
-			// });
+	// 		// console.time('findPrev2');
+	// 		// this.findPrev().then(data => {
+	// 		// 	console.timeEnd('findPrev2');
+	// 		// });
 
-			// Ember.run.schedule('later', () => {
-				// console.time('Find all channels');
-				// this.store.findAll('channel').then(() => {
-				// 	console.timeEnd('Find all channels');
-				// });
+	// 		// Ember.run.schedule('later', () => {
+	// 			// console.time('Find all channels');
+	// 			// this.store.findAll('channel').then(() => {
+	// 			// 	console.timeEnd('Find all channels');
+	// 			// });
 
-				// console.time('Query the rest of the channels');
-			// });
-		// });
+	// 			// console.time('Query the rest of the channels');
+	// 		// });
+	// 	// });
 
-		// v3 WIP: loop through promises
-		// let looper = 20;
-		// promiseWhile(() => looper > 0, () => {
-		// 	return this.findPrev().then(data => {
-		// 		console.log(data.get('length'));
-		// 		// looper = data.get('length');
-		// 		looper--;
-		// 	});
-		// }).then(() => {
-		// 	console.log('done');
-		// });
-	},
+	// 	// v3 WIP: loop through promises
+	// 	// let looper = 20;
+	// 	// promiseWhile(() => looper > 0, () => {
+	// 	// 	return this.findPrev().then(data => {
+	// 	// 		console.log(data.get('length'));
+	// 	// 		// looper = data.get('length');
+	// 	// 		looper--;
+	// 	// 	});
+	// 	// }).then(() => {
+	// 	// 	console.log('done');
+	// 	// });
+	// },
 
 	// Constructs an emerfire query supporting pagination.
 	// Inspired by https://github.com/firebase/emberfire/issues/248
