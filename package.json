@@ -12,6 +12,7 @@
   },
   "repository": "internet4000/radio4000",
   "devDependencies": {
+    "@html-next/vertical-collection": "^1.0.0-beta.4",
     "autoprefixer": "^6.5.3",
     "broccoli-asset-rev": "^2.4.5",
     "critical": "^0.7.1",

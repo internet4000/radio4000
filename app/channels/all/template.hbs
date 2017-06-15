@@ -7,6 +7,7 @@
 	</div>
 
 	<div class="Container Container--full">
+
 		{{#list-manipulation list=channels as |manipulatedList updateSorting|}}
 			<div class="Filters">
 				{{#btn-group class="Filter"}}
@@ -25,15 +26,24 @@
 				<div class="Muted">
 					<p>TIP: Press <strong>W</strong> anytime (on your keyboard) to play a random radio. Press <strong>W</strong> again to 'swap' to another one. Radios without music are not shown here.</p>
 				</div>
+
+				{{#unless channels}}
+					<p>Tuning radios…</p>
+					{{is-loading}}
+				{{/unless}}
+
 				<div class="jets-content">
-					{{#if channels}}
+						{{!--
 						{{#each manipulatedList as |item|}}
 							{{channel-row channel=item}}
 						{{/each}}
-					{{else}}
-						<p>Tuning radios…</p>
-						{{is-loading}}
-					{{/if}}
+						--}}
+						{{#vertical-collection manipulatedList
+							minHeight=46
+							as |channel index|
+						}}
+							{{channel-row channel=channel index=index}}
+						{{/vertical-collection}}
 				</div>
 		{{/list-manipulation}}
 	</div>
