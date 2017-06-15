@@ -51,7 +51,7 @@
   "dependencies": {
     "date-fns": "^1.28.4",
     "ember-href-to": "^1.12.1",
-    "ember-jets": "https://github.com/oskarrough/ember-jets.git#develop",
+    "ember-jets": "^1.0.0",
     "ember-source": "^2.13.3",
     "ember-youtube": "^0.8.1",
     "emberfire": "^2.0.7",

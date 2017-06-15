@@ -1401,9 +1401,9 @@ broccoli-funnel-reducer@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/broccoli-funnel-reducer/-/broccoli-funnel-reducer-1.0.0.tgz#11365b2a785aec9b17972a36df87eef24c5cc0ea"
 
-broccoli-funnel@^1.0.0, broccoli-funnel@^1.0.1, broccoli-funnel@^1.0.6, broccoli-funnel@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/broccoli-funnel/-/broccoli-funnel-1.1.0.tgz#dfb91a37c902456456de4a40a1881948d65b27d9"
+broccoli-funnel@^1.0.0, broccoli-funnel@^1.0.1, broccoli-funnel@^1.1.0, broccoli-funnel@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/broccoli-funnel/-/broccoli-funnel-1.2.0.tgz#cddc3afc5ff1685a8023488fff74ce6fb5a51296"
   dependencies:
     array-equal "^1.0.0"
     blank-object "^1.0.1"
@@ -1420,9 +1420,9 @@ broccoli-funnel@^1.0.0, broccoli-funnel@^1.0.1, broccoli-funnel@^1.0.6, broccoli
     symlink-or-copy "^1.0.0"
     walk-sync "^0.3.1"
 
-broccoli-funnel@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/broccoli-funnel/-/broccoli-funnel-1.2.0.tgz#cddc3afc5ff1685a8023488fff74ce6fb5a51296"
+broccoli-funnel@^1.0.6:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/broccoli-funnel/-/broccoli-funnel-1.1.0.tgz#dfb91a37c902456456de4a40a1881948d65b27d9"
   dependencies:
     array-equal "^1.0.0"
     blank-object "^1.0.1"
@@ -3221,9 +3221,9 @@ ember-inflector@^2.0.0:
   dependencies:
     ember-cli-babel "^6.0.0"
 
-"ember-jets@https://github.com/oskarrough/ember-jets.git#develop":
-  version "0.0.0"
-  resolved "https://github.com/oskarrough/ember-jets.git#225390385243d79fc39c8c43b376b5385a7b884c"
+ember-jets@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/ember-jets/-/ember-jets-1.0.0.tgz#36b105cb2651433f830e412c531bc3f36ac647a6"
   dependencies:
     ember-cli-babel "^6.0.0"
     ember-cli-htmlbars "^1.1.1"
