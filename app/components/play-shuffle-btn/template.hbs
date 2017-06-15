@@ -1,12 +1,14 @@
 {{isActive}}
 
 {{#if isShuffled}}
-	<i class="icon-shuffle"></i> {{if expanded 'Shuffle'}}
+	⇢
+	<!-- <i class="icon-shuffle"></i> {{if expanded 'Shuffle'}} -->
 {{else}}
 	{{#if nothingToPlay}}
 		Sorry, this radio is empty for now…
 	{{else}}
-		{{x-icon i='play'}}{{if expanded ' Play'}}
+		▶
+		<!-- {{x-icon i='play'}}{{if expanded ' Play'}} -->
 	{{/if}}
 {{/if}}
 
