@@ -6,7 +6,6 @@ const {Component, get, set, inject, computed, on, run, $} = Ember;
 
 export default Component.extend(EKMixin, {
 	player: inject.service(),
-	bot: inject.service(),
 	uiStates: inject.service(),
 	classNames: ['Playback'],
 	channel: computed.alias('player.model.channel'),
