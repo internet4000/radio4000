@@ -10,7 +10,7 @@ export default PlayButtonComponent.extend({
 	attributeBindings: ['title'],
 
 	title: computed('isPlaying', function () {
-		return get(this, 'isPlaying') ? 'Skip current track (press "S")' : 'Play this radio';
+		return get(this, 'isPlaying') ? 'Randomize track' : 'Play this radio';
 	}),
 
 	click() {
