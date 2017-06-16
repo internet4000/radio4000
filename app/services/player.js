@@ -1,52 +1,20 @@
 /* global document */
 import Ember from 'ember';
 
-const { debug } = Ember;
+const { Service, set, debug, computed } = Ember;
 
-export default Ember.Service.extend({
+export default Service.extend({
 
-	// Give it a track model and it'll play it
+	currentTrack: null,
+	currentChannel: computed.alias('currentTrack.channel'),
+	isPlaying: computed.bool('currentTrack'),
+
+	// play a track model
 	playTrack(model) {
 		if (!model) {
 			debug('playTrack() was called without a track.');
-			return false;
-		}
-
-		document.querySelector('radio4000-player').trackId = model.get('id');
-
-		this.set('isPlaying', true);
-		model.get('channel').then(channel => {
-			const trackTitle = model.get('title');
-			const channelTitle = channel.get('title');
-			this.updateMetaTitle(trackTitle, channelTitle);
-			this.updatePlaylist(channel);
-			// radio4000-player-vue
-		});
-	},
-
-	// This caches the current playlist and sets it if it really did change (through the model)
-	// also sets the old one as inactive, and new as… active!
-	updatePlaylist(newPlaylist) {
-		const currentPlaylist = this.get('playlist');
-
-		if (currentPlaylist && Ember.isEqual(currentPlaylist.get('id'), newPlaylist.get('id'))) {
 			return;
 		}
-
-		if (currentPlaylist) {
-			currentPlaylist.set('isInPlayer', false);
-		}
-
-		newPlaylist.set('isInPlayer', true);
-		newPlaylist.get('tracks').then(tracks => {
-			this.set('playlist', newPlaylist);
-		});
-	},
-
-	updateMetaTitle(trackTitle, channelTitle) {
-		if (!document) {
-			throw new Error('no document');
-		}
-		document.title = `${trackTitle} on ${channelTitle}`;
+		set(this, 'currentTrack', model)
 	}
 });
