@@ -1,7 +1,7 @@
 /* global document */
 import Ember from 'ember';
 
-const {debug, inject} = Ember;
+const { debug } = Ember;
 
 export default Ember.Service.extend({
 
@@ -40,7 +40,6 @@ export default Ember.Service.extend({
 		newPlaylist.set('isInPlayer', true);
 		newPlaylist.get('tracks').then(tracks => {
 			this.set('playlist', newPlaylist);
-			this.get('playerRandom').setNewRandomPool(tracks);
 		});
 	},
 
