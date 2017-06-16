@@ -26,7 +26,6 @@ Router.map(function () {
 	this.route('channels', {path: '/'}, function () {
 		this.route('all');
 		this.route('new');
-		this.authenticatedRoute('history');
 	});
 	this.route('channel', {path: '/:channel_slug'}, function () {
 		this.route('index', {path: '/'}, function () {
