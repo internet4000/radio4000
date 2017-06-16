@@ -1,10 +1,8 @@
-/* global document */
 import Ember from 'ember';
 
 const { Service, set, debug, computed } = Ember;
 
 export default Service.extend({
-
 	currentTrack: null,
 	currentChannel: computed.alias('currentTrack.channel'),
 	isPlaying: computed.bool('currentTrack'),
