@@ -40,9 +40,10 @@
 						--}}
 						{{#vertical-collection manipulatedList
 							minHeight=46
+							containerSelector="body"
 							as |channel index|
 						}}
-							{{channel-row channel=channel index=index}}
+							{{channel-row channel=channel}}
 						{{/vertical-collection}}
 				</div>
 		{{/list-manipulation}}

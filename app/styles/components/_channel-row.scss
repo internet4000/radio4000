@@ -3,7 +3,7 @@
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	height: 46px;
+	min-height: 46px;
 
 	> a {
 		flex: 1;
@@ -33,7 +33,9 @@
 	}
 
 	.ChannelCard-body {
+		display: inline-block;
 		text-overflow: ellipsis;
+		white-space: nowrap;
 		overflow: hidden;
 		height: 1.3em;
 		padding-left: 0.75rem;
