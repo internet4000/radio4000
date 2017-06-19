@@ -1,9 +1,12 @@
+$channel-row-small: 46px;
+$channel-row-medium: 60px;
+
 .ChannelRow {
 	position: relative;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	min-height: 46px;
+	min-height: $channel-row-small;
 
 	> a {
 		flex: 1;
@@ -23,7 +26,11 @@
 	figure {
 		flex-shrink: 0;
 		margin: 0 0.75rem 0 0;
-		width: 3rem;
+		width: $channel-row-small;
+
+		@media (min-width: $layout-m) {
+			width: $channel-row-medium;
+		}
 	}
 
 	h3 {
