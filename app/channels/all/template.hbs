@@ -17,7 +17,7 @@
 						list=filteredChannels
 						afterSearching=(action "handleSearch")}}
 
-						{{!--
+					{{!--
 					{{jets-search
 						contentTag=".jets-content vertical-collection"
 						content=channels
@@ -42,19 +42,15 @@
 				{{/unless}}
 
 				<div class="jets-content">
-						{{!--
-						{{#each manipulatedList as |item|}}
-							{{channel-row channel=item}}
-						{{/each}}
-						--}}
-						{{#vertical-collection manipulatedList
-							minHeight=46
-							containerSelector="body"
-							staticHeight=true
-							as |channel index|
-						}}
-							{{channel-row channel=channel}}
-						{{/vertical-collection}}
+					{{#vertical-collection manipulatedList
+						minHeight=46
+						containerSelector="body"
+						staticHeight=true
+						bufferSize=2
+						as |channel index|
+					}}
+						{{channel-row channel=channel}}
+					{{/vertical-collection}}
 				</div>
 		{{/list-manipulation}}
 	</div>
