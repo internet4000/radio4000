@@ -3221,9 +3221,9 @@ ember-inflector@^2.0.0:
   dependencies:
     ember-cli-babel "^6.0.0"
 
-ember-jets@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/ember-jets/-/ember-jets-1.0.0.tgz#36b105cb2651433f830e412c531bc3f36ac647a6"
+ember-jets@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/ember-jets/-/ember-jets-1.1.0.tgz#3d1466d3e4d459e310a52122551fda1586f4c4c1"
   dependencies:
     ember-cli-babel "^6.0.0"
     ember-cli-htmlbars "^1.1.1"
