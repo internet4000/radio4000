@@ -1,11 +1,12 @@
-{{#link-to "channel" channel title=title class="ChannelCard-cover"}}
+{{#link-to "channel" channel
+	title=title
+	class="ChannelCard-cover"
+}}
 	{{channel-cover src=channel.coverImage.src}}
-{{/link-to}}
-<h3 class="ChannelCard-title">
-	{{#link-to "channel" channel title=title}}
+	<h3 class="ChannelCard-title">
 		{{channel.title}}
-	{{/link-to}}
-</h3>
+	</h3>
+{{/link-to}}
 <div class="ChannelCard-controls">
 	{{play-shuffle-btn channel=channel class="Btn--small"}}
 </div>

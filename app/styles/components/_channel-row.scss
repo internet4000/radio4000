@@ -9,10 +9,15 @@ $channel-row-medium: 60px;
 	min-height: $channel-row-small;
 
 	> a {
+		border-top: 1px solid hsl(0, 0%, 100%);
+		border-left: 1px solid hsl(0, 0%, 80%);
+		border-right: 1px solid hsl(0, 0%, 80%);
+		border-bottom: 1px solid hsl(0, 0%, 90%);
+		border-radius: $border-radius;
+		background-color: $bg-color-2;
 		flex: 1;
 		text-decoration: none;
-		background-color: $bg-color-2;
-		border-bottom: 1px solid hsla(0, 0%, 50%, 0.1);
+		// border-bottom: 1px solid hsla(0, 0%, 50%, 0.1);
 		display: flex;
 		flex-direction: row;
 		align-items: center;
@@ -58,4 +63,8 @@ $channel-row-medium: 60px;
 
 .ChannelCard-cover {
 	// flex-basis: 3rem;
+}
+
+.ChannelRow:first-of-type > a {
+		border-top: 1px solid hsl(0, 0%, 85%);
 }
