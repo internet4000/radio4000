@@ -8,11 +8,20 @@
 
 	<div class="Container Container--full">
 
-		{{#list-manipulation list=channels as |manipulatedList updateSorting|}}
+		{{#list-manipulation list=filteredChannels as |manipulatedList updateSorting|}}
 			<div class="Filters">
 				{{#btn-group class="Filter"}}
 					<span class="BtnGroup-label">Search</span>
-					{{jets-search contentTag=".jets-content" content=channels}}
+
+					{{list-search
+						list=filteredChannels
+						afterSearching=(action "handleSearch")}}
+
+						{{!--
+					{{jets-search
+						contentTag=".jets-content vertical-collection"
+						content=channels
+						class="u-wauto"}}--}}
 					<span class="BtnGroup-label" style="margin-left: 1em">Filter by</span>
 					{{btn-list-manipulation text="Activity"
 							onClick=(action updateSorting "updated")}}
