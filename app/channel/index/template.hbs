@@ -16,27 +16,31 @@
 		{{/modal-dialog}}
 	{{/if}}
 
-	{{#if tracks.isLoaded}}
-		{{#tracks-list items=tracks numbered=false as |item|}}
-			{{track-item
-				track=item
-				canEdit=canEdit
-				edit=(action "startEditingTrack")
-				onTransition="transitionToTrack"}}
-		{{/tracks-list}}
+	{{!--
+	{{jets-search contentTag=".List" content=tracks}}
+	--}}
 
-		{{#unless canEdit}}
-			{{#unless tracks.length}}
-				<div class="Container Section--space">
-				  <p>Ooh, there are no tracks in this radio yet.</p>
-				</div>
-			{{/unless}}
-		{{/unless}}
-	{{else}}
+	{{#unless tracks.isLoaded}}
 		<div class="Container Section--space">
 			{{is-loading}}
 		</div>
-	{{/if}}
+	{{else}}
+		{{#unless canEdit}}
+			{{#unless tracks.length}}
+				<div class="Container Section--space">
+					<p>Ooh, there are no tracks in this radio yet.</p>
+				</div>
+			{{/unless}}
+		{{/unless}}
+	{{/unless}}
+
+	{{#tracks-list items=tracks numbered=false as |item|}}
+		{{track-item
+			track=item
+			canEdit=canEdit
+			edit=(action "startEditingTrack")
+			onTransition="transitionToTrack"}}
+	{{/tracks-list}}
 
 	{{outlet}}
 </div>
