@@ -1,5 +1,7 @@
 {{#link-to "channel" channel title=title class="ChannelCard-cover"}}
-	{{channel-cover src=channel.coverImage.src}}
+	{{channel-cover
+		src=channel.coverImage.src
+		disableGif=true}}
 	<h3>
 		{{channel.title}}
 	</h3>
