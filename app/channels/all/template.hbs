@@ -18,7 +18,7 @@
 						afterSearching=(action "handleSearch")}}
 					{{!-- {{jets-search contentTag=".jets-content vertical-collection" content=channels class="u-wauto"}}--}}
 					<span class="BtnGroup-label" style="margin-left: 1em">Filter by</span>
-					{{btn-list-manipulation text="Activity"
+					{{btn-list-manipulation class="is-active" text="Activity"
 							onClick=(action updateSorting "updated")}}
 					{{btn-list-manipulation text="Age"
 							onClick=(action updateSorting "created" true)}}

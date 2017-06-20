@@ -40,7 +40,7 @@
  * Lazysizes loading
  */
 .Cover img {
-	transition: filter 200ms, opacity 500ms;
+	transition: filter 200ms, opacity 200ms;
 
 	&.lazyload {
 		opacity: 0;
