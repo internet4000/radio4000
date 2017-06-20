@@ -7,7 +7,7 @@ const {get, isBlank} = Ember;
 export default Ember.TextField.extend({
 	classNames: ['ListSearch'],
 	type: 'search',
-	// list: [],
+	items: [],
 
 	input() {
 		const value = get(this, 'value');
@@ -16,10 +16,10 @@ export default Ember.TextField.extend({
 
 	search: task(function * (query) {
 		let results = null;
-		const list = get(this, 'list');
+		const items = get(this, 'items');
 
 		if (!isBlank(query)) {
-			results = list.filter(item => {
+			results = items.filter(item => {
 				let title = get(item, 'title');
 				let body = get(item, 'body');
 				return stringContains(title, query) || stringContains(body, query);
@@ -35,9 +35,9 @@ export default Ember.TextField.extend({
 		// the current search will be canceled at this point and
 		// start over from the beginning. This is the
 		// ember-concurrency way of debouncing a task.
-		yield timeout(150);
+		yield timeout(100);
 
 		return results;
-	}).restartable()
+	}).keepLatest()
 });
 

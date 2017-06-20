@@ -13,7 +13,8 @@
 				{{#btn-group class="Filter"}}
 					<span class="BtnGroup-label">Search</span>
 					{{list-search
-						list=filteredChannels
+						value=search
+						items=filteredChannels
 						afterSearching=(action "handleSearch")}}
 					{{!-- {{jets-search contentTag=".jets-content vertical-collection" content=channels class="u-wauto"}}--}}
 					<span class="BtnGroup-label" style="margin-left: 1em">Filter by</span>
