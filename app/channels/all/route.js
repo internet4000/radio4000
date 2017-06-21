@@ -10,8 +10,8 @@ export default Route.extend({
 		// Load all channels but don't return (block rendering)
 		// Only needed once.
 		if (!get(this, 'didFindAll')) {
-			return store.findAll('channel');
 			set(this, 'didFindAll', true);
+			return store.findAll('channel');
 		}
 		// Return cached channels, which is instant.
 		return store.peekAll('channel');
