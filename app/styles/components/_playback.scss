@@ -1,14 +1,33 @@
-/**
- * Player
- */
+// "Purple" skin for the Radio4000 player.
+// Avoid changing layout as much as possible.
+.Playback radio4000-player {
+	font-size: 16px;
+	// Because it's bottom aligned.
+	border-bottom: 0;
 
-.Playback {
-	width: 100%;
-	position: relative;
+	header,
+	footer {
+		@include negative-text;
+		background-color: $primary-color;
+		color: $bleach;
+	}
 
-	background-color: $primary-color;
-	background-image: linear-gradient(lighten($primary-color, 10%), $primary-color);
-	color: $bleach;
+	footer .Btn {
+		@include negative-text;
+		color: $bleach;
+	}
+
+	main {
+		// background-color: darken($primary-color, 7%);
+	}
+
+	footer .Btn {
+		background-color: transparent;
+	}
+
+	.TrackList-list {
+		height: 10rem;
+	}
 }
 
 .Playback-layoutButtons {
@@ -34,42 +53,10 @@
 	}
 }
 
-.Playback-fullscreenBtn {
-	order: 1;
+// Minimized state.
+// .is-minimized {}
 
-	svg {
-		vertical-align: middle;
-	}
-}
-
-.Playback-player {
-	position: relative;
-}
-
-// Animate buttons that should only be visible when the player is ready.
-.Playback-text,
-.Playback-buttons,
-.Playback-toggleVolume,
-.Playback-fullscreenBtn {
-	transition: opacity 300ms $easing, transform 300ms $easing, height 300ms $easing;
-}
-
-/**
- * Minimal state
- */
-
-$bar-height-minimized: rem(70);
-
-.is-minimized {
-	.Aside--right {
-		// width: 14rem;
-	}
-}
-
-/**
- * Fullscreen state
- */
-
+// Fullscreen state
 .is-maximized {
 	.Playback {
 		height: 100%;
