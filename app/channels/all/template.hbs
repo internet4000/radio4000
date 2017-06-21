@@ -37,15 +37,20 @@
 				{{/unless}}
 
 				<div class="jets-content">
+					{{#each manipulatedList as |channel|}}
+						{{channel-row channel=channel}}
+					{{/each}}
+					{{!--
 					{{#vertical-collection manipulatedList
 						minHeight=46
 						containerSelector="body"
 						staticHeight=true
 						bufferSize=2
-						as |channel index|
+						as |channel|
 					}}
 						{{channel-row channel=channel}}
 					{{/vertical-collection}}
+					--}}
 				</div>
 		{{/list-manipulation}}
 	</div>
