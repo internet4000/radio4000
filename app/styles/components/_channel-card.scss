@@ -12,6 +12,7 @@
 	}
 }
 
+.ChannelRow.is-active,
 .ChannelCard.is-active {
 	&::before {
 		background-color: $primary-color;
@@ -60,48 +61,6 @@
 		transform-origin: right;
 		opacity: 0;
 		pointer-events: none;
-	}
-}
-
-.ChannelCard-overlayBtn {
-	position: absolute;
-	top: 0.3rem;
-	right: 0.3rem;
-}
-
-.ChannelCard-overlayBtn .Btn {
-	display: flex;
-	font-size: 1.4rem;
-	background: none;
-	font-size: 1.4rem;
-	border: 0;
-	border-radius: 50%;
-	padding: 0.6rem;
-	background: rgba(black, 0);
-	color: rgba(white, 0.8);
-	transition: background 200ms, transform 200ms $easing4;
-	transform: scale(0.95);
-
-	svg {
-		left: auto !important;
-		top: auto !important;
-	}
-
-	&:hover,
-	&.is-loading {
-		background: rgba(black, 0.4);
-		color: rgba(white, 1);
-		transform: scale(1);
-		border-radius: 50%;
-	}
-
-	&:active {
-		transform: scale(0.98);
-	}
-
-	&.is-loading {
-		transition-duration: 800ms;
-		background-color: $primary-color;
 	}
 }
 

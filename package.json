@@ -12,6 +12,7 @@
   },
   "repository": "internet4000/radio4000",
   "devDependencies": {
+    "@html-next/vertical-collection": "^1.0.0-beta.4",
     "autoprefixer": "^6.5.3",
     "broccoli-asset-rev": "^2.4.5",
     "critical": "^0.7.1",
@@ -50,6 +51,7 @@
   "dependencies": {
     "date-fns": "^1.28.4",
     "ember-href-to": "^1.12.1",
+    "ember-jets": "^1.1.0",
     "ember-source": "^2.13.3",
     "ember-youtube": "^0.8.1",
     "emberfire": "^2.0.7",

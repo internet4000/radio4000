@@ -1,29 +1,24 @@
 import Ember from 'ember';
 
-const {Controller, get, set, computed} = Ember;
+const {Controller, computed, get, set} = Ember;
 
 export default Controller.extend({
-	search: '',
 	queryParams: ['search'],
-	isList: false,
+	search: '',
 	sortKey: 'created',
 	sortDirection: 'desc',
-	searchResults: null,
 
 	// Only show channels that have tracks.
-	filteredChannels: computed.filter('model', m => m.get('totalTracks')),
+	channels: computed.filter('model', m => m.get('totalTracks')),
 
 	// Either show filtered or search-result channels.
-	channels: computed('filteredChannels', 'searchResults', function () {
-		let filtered = get(this, 'filteredChannels');
+	filteredChannels: computed('channels', 'searchResults', function () {
+		let channels = get(this, 'channels');
 		let searchResults = get(this, 'searchResults');
-		return searchResults ? searchResults : filtered;
+		return searchResults ? searchResults : channels;
 	}),
 
 	actions: {
-		changeLayout() {
-			this.toggleProperty('isList');
-		},
 		handleSearch(searchResults) {
 			set(this, 'searchResults', searchResults);
 		}

@@ -1,0 +1,72 @@
+// This is very similar to .ChannelCard--wide but different.
+
+$channel-row-small: 46px;
+$channel-row-medium: 70px;
+
+.ChannelRow {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	min-height: $channel-row-small;
+
+	> a {
+		border-top: 1px solid hsl(0, 0%, 100%);
+		border-left: 1px solid hsl(0, 0%, 80%);
+		border-right: 1px solid hsl(0, 0%, 80%);
+		border-bottom: 1px solid hsl(0, 0%, 90%);
+		border-radius: $border-radius;
+		background-color: $bg-color-2;
+		flex: 1;
+		text-decoration: none;
+		// border-bottom: 1px solid hsla(0, 0%, 50%, 0.1);
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		overflow: hidden;
+
+		&:hover {
+			background-color: #fff;
+		}
+	}
+
+	figure {
+		flex-shrink: 0;
+		margin: 0 0.75rem 0 0;
+		width: $channel-row-small;
+
+		@media (min-width: $layout-m) {
+			width: $channel-row-medium;
+		}
+	}
+
+	h3 {
+		// margin: auto 0 auto 0.5rem;
+		margin-top: auto;
+		margin-bottom: auto;
+		flex-shrink: 0;
+	}
+
+	.ChannelCard-body {
+		display: inline-block;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+		height: 1.3em;
+		padding-left: 0.75rem;
+	}
+
+	.ChannelCard-controls {
+		position: static;
+		order: -1;
+		margin: auto 1rem auto 0;
+	}
+}
+
+.ChannelCard-cover {
+	// flex-basis: 3rem;
+}
+
+.ChannelRow:first-of-type > a {
+		border-top: 1px solid hsl(0, 0%, 85%);
+}

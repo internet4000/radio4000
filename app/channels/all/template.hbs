@@ -5,53 +5,53 @@
 			If you feel like sharing yours, we welcome you to <a href="{{href-to "auth.login"}}" title="">create your own radio</a>.
 		</p>
 	</div>
-</section>
 
-<section class="Section">
 	<div class="Container Container--full">
-		{{#list-manipulation list=channels as |manipulatedList updateSorting|}}
 
+		{{#list-manipulation list=filteredChannels as |manipulatedList updateSorting|}}
 			<div class="Filters">
-				{{list-search
-						class="Filter"
-						list=filteredChannels
+				{{#btn-group class="Filter"}}
+					<span class="BtnGroup-label">Search</span>
+					{{list-search
+						value=search
+						items=filteredChannels
 						afterSearching=(action "handleSearch")}}
-
-				{{#btn-group class="Filter BtnGroup--right"}}
-					<span class="BtnGroup-label">Filter by</span>
-					{{btn-list-manipulation text="Activity"
+					{{!-- {{jets-search contentTag=".jets-content vertical-collection" content=channels class="u-wauto"}}--}}
+					<span class="BtnGroup-label" style="margin-left: 1em">Filter by</span>
+					{{btn-list-manipulation class="is-active" text="Activity"
 							onClick=(action updateSorting "updated")}}
 					{{btn-list-manipulation text="Age"
 							onClick=(action updateSorting "created" true)}}
 					{{btn-list-manipulation text="A-Z"
 							onClick=(action updateSorting "title" true)}}
-					<span class="BtnGroup-label">&nbsp;</span>
-					<button class="Btn Btn--small" {{action "changeLayout"}}>
-						{{if isList "Bigger" "Smaller"}}
-					</button>
 				{{/btn-group}}
 			</div>
 
-			{{#if channels}}
-				<div class="Grid {{if isList 'Grid--wide'}}">
-					<div class="Grid-cell">
-						<h3>Tip</h3>
-						<div class="Muted">
-							<p>Newest radios are at the top.</p>
-							<p>Press <strong>W</strong> anytime (on your keyboard) to play a random radio. Press <strong>W</strong> again to 'swap' to another one.</p>
-							<p>Radios without music are not shown here.</p>
-						</div>
-					</div>
-					{{#each manipulatedList as |item|}}
-						<div class="Grid-cell">
-							{{channel-card channel=item wide=isList}}
-						</div>
-					{{/each}}
+				<div class="Muted">
+					<p>TIP: Press <strong>W</strong> anytime (on your keyboard) to play a random radio. Press <strong>W</strong> again to 'swap' to another one. Radios without music are not shown here.</p>
 				</div>
-			{{else}}
-				<p>Tuning radios…</p>
-				{{is-loading}}
-			{{/if}}
+
+				{{#unless channels}}
+					<p>Tuning radios…</p>
+					{{is-loading}}
+				{{/unless}}
+
+				<div class="jets-content">
+					{{#each manipulatedList as |channel|}}
+						{{channel-row channel=channel}}
+					{{/each}}
+					{{!--
+					{{#vertical-collection manipulatedList
+						minHeight=46
+						containerSelector="body"
+						staticHeight=true
+						bufferSize=2
+						as |channel|
+					}}
+						{{channel-row channel=channel}}
+					{{/vertical-collection}}
+					--}}
+				</div>
 		{{/list-manipulation}}
 	</div>
 </section>

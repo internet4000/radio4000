@@ -1,7 +1,7 @@
 /* !
-	RADIO4000
-	by Hugo Vieilledent and Oskar Rough Mosumgaard
-*/
+RADIO4000
+by Hugo Vieilledent and Oskar Rough Mosumgaard
+ */
 
 // Third party (imported from `./node_modules` because we use postcss-import)
 @import "node_modules/normalize.css/normalize";
@@ -48,11 +48,13 @@
 @import "components/banner";
 @import "components/note";
 @import "components/list"; // @todo refactor
+@import "components/list-search";
 @import "components/loader";
 @import "components/cover";
 @import "components/image-upload";
 @import "components/channel";
 @import "components/channel-card";
+@import "components/channel-row";
 @import "components/track";
 @import "components/provider-account";
 @import "components/login";
@@ -60,7 +62,6 @@
 @import "components/playback-external";
 @import "components/play-pause";
 @import "components/radio-bot";
-@import "components/search";
 @import "components/filters";
 @import "components/flash-messages";
 @import "components/modal-dialog";

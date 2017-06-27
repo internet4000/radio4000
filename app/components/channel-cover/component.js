@@ -4,5 +4,6 @@ const {Component} = Ember;
 
 export default Component.extend({
 	tagName: 'figure',
-	classNames: ['Cover']
+	classNames: ['Cover'],
+	disableGif: false
 });
