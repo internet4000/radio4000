@@ -36,6 +36,7 @@ export default ToriiFirebaseAdapter.extend({
 				});
 			}).catch(err => {
 				debug('could not get or create user', err);
+				reject(err)
 			});
 		});
 	},
@@ -46,7 +47,7 @@ export default ToriiFirebaseAdapter.extend({
 			throw new Error('Missing `id` argument');
 		}
 		const store = this.get('store');
-		return new RSVP.Promise(resolve => {
+		return new RSVP.Promise((resolve, reject) => {
 			store.findRecord('user', id).then(user => {
 				resolve(user);
 			}).catch(() => {
@@ -57,7 +58,7 @@ export default ToriiFirebaseAdapter.extend({
 					const newUser = store.createRecord('user', {id});
 					newUser.save().then(() => {
 						resolve(newUser);
-					});
+					}).catch(reject);
 				});
 			});
 		});
