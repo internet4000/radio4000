@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 import {validator, buildValidations} from 'ember-cp-validations';
+import firebase from 'firebase';
 import channelConst from 'radio4000/utils/channel-const';
 
 const {attr, hasMany, belongsTo} = DS;
@@ -58,7 +59,7 @@ export default DS.Model.extend(Validations, {
 	// Timestamps.
 	created: attr('number', {
 		defaultValue() {
-			return new Date().getTime();
+			return firebase.database.ServerValue.TIMESTAMP;
 		}
 	}),
 	updated: attr('number'),
