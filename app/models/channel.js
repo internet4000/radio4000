@@ -50,19 +50,17 @@ const Validations = buildValidations({
 	*/
 
 export default DS.Model.extend(Validations, {
-	title: attr('string'),
-	slug: attr('string'),
-	body: attr('string'),
-	isFeatured: attr('boolean'),
-	link: attr('string'),
-
-	// Timestamps.
 	created: attr('number', {
 		defaultValue() {
 			return firebase.database.ServerValue.TIMESTAMP;
 		}
 	}),
 	updated: attr('number'),
+	title: attr('string'),
+	slug: attr('string'),
+	body: attr('string'),
+	isFeatured: attr('boolean'),
+	link: attr('string'),
 
 	// Set the latest image as the cover image.
 	coverImage: computed('images.[]', function () {
