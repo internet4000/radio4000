@@ -36,7 +36,7 @@ export default ToriiFirebaseAdapter.extend({
 				});
 			}).catch(err => {
 				debug('could not get or create user', err);
-				reject(err)
+				reject(err);
 			});
 		});
 	},
