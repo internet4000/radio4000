@@ -1,6 +1,15 @@
 import Ember from 'ember';
+import {task} from 'ember-concurrency';
 
-const {debug, computed} = Ember;
+const {get, computed} = Ember;
+
+function toggleObject(context, obj, condition) {
+	if (condition) {
+		context.removeObject(obj);
+	} else {
+		context.addObject(obj);
+	}
+}
 
 export default Ember.Controller.extend({
 	player: Ember.inject.service(),
@@ -45,55 +54,25 @@ export default Ember.Controller.extend({
 		return favorites.includes(channel);
 	}),
 
-	actions: {
-		toggleFavorite() {
-			const userChannel = this.get('session.currentUser.channels.firstObject');
+	toggleFavorite: task(function * () {
+		const isFavorite = get(this, 'isFavorite');
 
-			if (!userChannel) {
-				debug('no user channel - transitioning to sigin');
-				this.transitionToRoute('auth.login');
-				return;
-			}
-
-			const channel = this.get('model');
-			const channelPublic = channel.get('channelPublic');
-			const channelFollowers = channelPublic.get('followers');
-			const isFavorite = this.get('isFavorite');
-			const userFavorites = userChannel.get('favoriteChannels');
-
-			userFavorites.then(userfavs => {
-				debug(userfavs);
-
-				// add or remove to user's channel's favorites
-				if (isFavorite) {
-					debug('removing this channel from user favorites');
-					userfavs.removeObject(channel);
-				} else {
-					debug('adding this channel from user favorites');
-					userfavs.addObject(channel);
-				}
-
-				// save the parent
-				userChannel.save();
-			});
-
-			channelFollowers.then(followers => {
-				// toggle the userChannel from this channel's public followers
-				if (isFavorite) {
-					debug('removing user channel from channel followers');
-					followers.removeObject(userChannel);
-				} else {
-					debug('adding user channel from channel followers');
-					followers.addObject(userChannel);
-				}
-
-				// open and save the parent
-				channelPublic.then(cp => {
-					cp.save().then(() => {
-						debug('saved channel public');
-					});
-				});
-			});
+		const userChannel = get(this, 'session.currentUser.channels.firstObject');
+		if (!userChannel) {
+			this.transitionToRoute('auth.login');
+			return;
 		}
-	}
+
+		// Toggle the channel on the userChannel's favoriteChannels.
+		const favoriteChannels = yield userChannel.get('favoriteChannels');
+		const channel = get(this, 'model');
+		toggleObject(favoriteChannels, channel, isFavorite);
+		yield userChannel.save();
+
+		// Toggle the userChannel from this channel's public followers.
+		const channelPublic = yield channel.get('channelPublic');
+		const followers = yield channelPublic.get('followers');
+		toggleObject(followers, userChannel, isFavorite);
+		yield channelPublic.save();
+	})
 });

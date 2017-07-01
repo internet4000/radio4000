@@ -58,7 +58,11 @@
 							{{x-icon i="pencil"}} Edit radio
 						{{/link-to}}
 					{{else}}
-						{{btn-favorite action="toggleFavorite" isFavorite=isFavorite}}
+						{{btn-favorite
+							onClick=(perform toggleFavorite)
+							isIdle=toggleFavorite.isIdle
+							isFavorite=isFavorite
+						}}
 					{{/if}}
 				</div>
 				</div>
