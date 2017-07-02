@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 import {validator, buildValidations} from 'ember-cp-validations';
+import firebase from 'firebase';
 import channelConst from 'radio4000/utils/channel-const';
 
 const {attr, hasMany, belongsTo} = DS;
@@ -49,19 +50,17 @@ const Validations = buildValidations({
 	*/
 
 export default DS.Model.extend(Validations, {
+	created: attr('number', {
+		defaultValue() {
+			return firebase.database.ServerValue.TIMESTAMP;
+		}
+	}),
+	updated: attr('number'),
 	title: attr('string'),
 	slug: attr('string'),
 	body: attr('string'),
 	isFeatured: attr('boolean'),
 	link: attr('string'),
-
-	// Timestamps.
-	created: attr('number', {
-		defaultValue() {
-			return new Date().getTime();
-		}
-	}),
-	updated: attr('number'),
 
 	// Set the latest image as the cover image.
 	coverImage: computed('images.[]', function () {

@@ -1,8 +1,6 @@
-{{if isFavorite "Undo favorite" "Favorite"}}
-
-{{!-- <button class="Btn Btn--small"
-	title="{{if isFavorite "Remove this radio from your favorites" "Save this radio from your favorites"}}"
-	{{action "toggleFavorite"}}>
+{{#if isIdle}}
 	{{if isFavorite "Unfavorite" "Favorite"}}
-</button>
- --}}
+{{else}}
+	Saving…
+{{/if}}
+

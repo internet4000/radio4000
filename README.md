@@ -36,6 +36,8 @@ To deploy to production aka https://radio4000.com:
 3. `git checkout production; git pull; git merge master --no-ff`
 4. `npm run build-production; npm run deploy-firebase-production`
 
+For Firebase security rules, see the `private/rules` folder.
+
 ## Icons
 
 Make sure gulp is installed globally with `yarn global add gulp-cli`.
@@ -47,13 +49,9 @@ If your icon is called `hello-world.svg` you can add `class="icon-hello-world"` 
 
 ## Backend
 
-We use Firebase as our database and API. It's connected through Ember Data and [Emberfire](https://github.com/firebase/emberfire).
+We use Firebase as our database and API. It's connected through Ember Data and [Emberfire](https://github.com/firebase/emberfire). The security rules are in the [radio4000-api](https://github.com/internet4000.com/radio4000-api) repository.
 
 ## Google API
 
 We're using the YouTube API to detect video titles etc. If you run into trouble with permissions or domains, check here https://console.developers.google.com/project/much-play/
-
-## Firebase security rules
-
-Firebase rules are a bitch but see the `private/rules` folder.
 

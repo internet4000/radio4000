@@ -3,6 +3,8 @@ import Resolver from './resolver';
 import loadInitializers from 'ember-load-initializers';
 import config from './config/environment';
 import RSVP from 'rsvp';
+import 'npm:lazysizes/plugins/attrchange/ls.attrchange';
+import 'npm:lazysizes';
 
 let App;
 

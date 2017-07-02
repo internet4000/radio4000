@@ -1,20 +1,12 @@
 .Logo {
 	background: transparent;
 	backface-visibility: hidden; // perf
-	color: $text-color-invert; // $dark
 	position: fixed;
 	top: 0;
 	left: 0;
 	z-index: 4;
 	min-height: rem($bar-height);
 	transition: transform 300ms $easing2, background-color 200ms;
-
-	a {
-		color: $text-color-invert; // $dark
-	}
-}
-
-.Logo {
 	max-width: 7rem;
 	padding-top: 1.5rem;
 	padding-left: 0.6rem;
@@ -22,10 +14,6 @@
 
 	@media (min-width: $layout-s) {
 		padding-left: 1rem;
-	}
-
-	a {
-		user-select: none; // don't highlight
 	}
 }
 
@@ -51,3 +39,8 @@
 	vertical-align: middle;
 }
 
+.Logo svg {
+	max-width: 100%;
+	height: auto;
+	max-height: 100%; // Safari fix
+}
