@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import {task} from 'ember-concurrency';
 
 const {Component, computed, get} = Ember;
 
@@ -7,7 +6,6 @@ export default Component.extend({
 	tagName: 'button',
 	classNames: ['Btn Btn--small'],
 	attributeBindings: ['title'],
-	// isFavorite: null
 
 	title: computed('isFavorite', {
 		get() {
