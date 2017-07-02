@@ -1,7 +1,4 @@
 {
-  "database": {
-    "rules": "private/rules/database-rules.json"
-  },
   "hosting": {
     "public": "dist",
     "rewrites": [
