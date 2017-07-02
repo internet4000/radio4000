@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "radio4000-staging",
+    "staging": "radio4000-staging",
     "production": "firebase-radio4000"
   }
 }
