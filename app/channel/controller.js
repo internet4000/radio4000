@@ -74,5 +74,5 @@ export default Ember.Controller.extend({
 		const followers = yield channelPublic.get('followers');
 		toggleObject(followers, userChannel, isFavorite);
 		yield channelPublic.save();
-	})
+	}).drop()
 });
