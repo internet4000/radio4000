@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import ToriiFirebaseAdapter from 'emberfire/torii-adapters/firebase';
 
-const {debug, inject, RSVP} = Ember;
+const {debug, inject, RSVP, run} = Ember;
 
 export default ToriiFirebaseAdapter.extend({
 	store: inject.service(),
@@ -10,11 +10,10 @@ export default ToriiFirebaseAdapter.extend({
 	open(user) {
 		this._super(user);
 		let provider = this.extractProviderId_(user);
-		let providerIsPassword = (provider === 'password');
 
 		// reject login and send email is loging with email && not verified
 		return new RSVP.Promise((resolve, reject) => {
-			if (!user.emailVerified && providerIsPassword) {
+			if (!user.emailVerified && provider === 'password') {
 				let err = {
 					code: 'auth/email-not-verified',
 					message: 'Before you can log in, first verify your email address. Check your inbox.'
@@ -35,6 +34,9 @@ export default ToriiFirebaseAdapter.extend({
 					// not an ember model `user` like in this case.
 					currentUser: userModel
 				});
+			}).catch(err => {
+				debug('could not get or create user', err);
+				reject(err);
 			});
 		});
 	},
@@ -45,14 +47,18 @@ export default ToriiFirebaseAdapter.extend({
 			throw new Error('Missing `id` argument');
 		}
 		const store = this.get('store');
-		return new RSVP.Promise(resolve => {
+		return new RSVP.Promise((resolve, reject) => {
 			store.findRecord('user', id).then(user => {
 				resolve(user);
-			}).catch(error => {
-				debug(error);
-				const newUser = store.createRecord('user', {id});
-				newUser.save().then(() => {
-					resolve(newUser);
+			}).catch(() => {
+				store.recordForId('user', id).unloadRecord();
+				// Unloading a record does not happen immediately,
+				// so we wrap this in a run loop.
+				run.next(() => {
+					const newUser = store.createRecord('user', {id});
+					newUser.save().then(() => {
+						resolve(newUser);
+					}).catch(reject);
 				});
 			});
 		});
