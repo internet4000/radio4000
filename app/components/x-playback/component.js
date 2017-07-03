@@ -20,6 +20,18 @@ export default Component.extend(EKMixin, {
 		set(this, 'uiStates.format', 1);
 	}),
 
+	didInsertElement() {
+		var player = this.element.querySelector('radio4000-player')
+		player.addEventListener('trackChanged', (event) => {
+			console.info('[event:trackChanged]', event.detail)
+			// const track = get(this, 'store').findRecord('track', event.detail.id);
+			// get(this, 'player').playTrack(track);
+		})
+		player.addEventListener('trackEnded', (event) => {
+			console.info('[event:trackEnded]', event.detail)
+		})
+	},
+
 	actions: {
 		toggleMinimizedFormat() {
 			get(this, 'uiStates').toggleMinimizedFormat();
