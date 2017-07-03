@@ -9,7 +9,7 @@ export default Component.extend(EKMixin, {
 	classNames: ['Playback'],
 
 	channel: computed.alias('player.currentChannel'),
-	track: computed('player.currentTrack', function() {
+	track: computed('player.currentTrack', function () {
 		return get(this, 'player.currentTrack');
 	}),
 
@@ -21,15 +21,15 @@ export default Component.extend(EKMixin, {
 	}),
 
 	didInsertElement() {
-		var player = this.element.querySelector('radio4000-player')
-		player.addEventListener('trackChanged', (event) => {
-			console.info('[event:trackChanged]', event.detail)
+		var player = this.element.querySelector('radio4000-player');
+		player.addEventListener('trackChanged', event => {
+			console.info('[event:trackChanged]', event.detail);
 			// const track = get(this, 'store').findRecord('track', event.detail.id);
 			// get(this, 'player').playTrack(track);
-		})
-		player.addEventListener('trackEnded', (event) => {
-			console.info('[event:trackEnded]', event.detail)
-		})
+		});
+		player.addEventListener('trackEnded', event => {
+			console.info('[event:trackEnded]', event.detail);
+		});
 	},
 
 	actions: {
