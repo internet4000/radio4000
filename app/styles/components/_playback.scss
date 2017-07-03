@@ -25,8 +25,8 @@
 		background-color: transparent;
 	}
 
-	.TrackList-list {
-		height: 10rem;
+	.TrackList li {
+		margin-bottom: 0; // remove r4 styles
 	}
 }
 
@@ -72,15 +72,5 @@
 		max-width: none;
 		height: 100vh;
 		border: 0;
-
-		main,
-		.TrackList {
-			display: flex;
-			flex: 1;
-		}
-
-		.TrackList-list {
-			height: auto;
-		}
 	}
 }
