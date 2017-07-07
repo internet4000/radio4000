@@ -2,6 +2,7 @@ import Ember from 'ember';
 import DS from 'ember-data';
 import {validator, buildValidations} from 'ember-cp-validations';
 import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
+import firebase from 'firebase';
 
 const {Model, attr, belongsTo} = DS;
 const {get, set} = Ember;
@@ -34,7 +35,7 @@ export const Validations = buildValidations({
 export default Model.extend(Validations, {
 	created: attr('number', {
 		defaultValue() {
-			return new Date().getTime();
+			return firebase.database.ServerValue.TIMESTAMP;
 		}
 	}),
 	url: attr('string'),
