@@ -19,9 +19,9 @@ export default Mixin.create({
 			url: props.url,
 			title: props.title,
 			body: props.body,
-			ytid: props.ytid
+			ytid: props.ytid,
+			channel
 		});
-		track.set('channel', channel);
 
 		try {
 			yield track.save();
@@ -41,6 +41,10 @@ export default Mixin.create({
 			Ember.debug(e);
 			flashMessages.warning('Could not save the track to your radio');
 		}
+
+		// To avoid 'updated' being NaN due to a value of {.sv: "timestamp"}
+		// we need to request an update from Firebase.
+		channel.reload();
 
 		return track;
 	}).drop()
