@@ -1,10 +1,9 @@
 import Ember from 'ember';
-const { Component,
+const {Component,
 				inject,
 				computed,
 				get,
-				setProperties,
-				$ } = Ember;
+				$} = Ember;
 
 /*
 	 Source: https://mashe.hawksey.info/2014/07/google-sheets-as-a-database-insert-with-apps-script-using-postget-methods-with-ajax-example/
@@ -21,7 +20,7 @@ export default Component.extend({
 	scriptId: '',
 	message: '',
 	email: '',
-	channelId: computed('session.currentUser.channels.firstObject.id', function() {
+	userChannelId: computed('session.currentUser.channels.firstObject.id', function () {
 		return get(this, 'session.currentUser.channels.firstObject.id') || '';
 	}),
 
@@ -35,7 +34,7 @@ export default Component.extend({
 		this.setProperties({
 			message: '',
 			email: ''
-		})
+		});
 	},
 
 	actions: {
@@ -45,17 +44,17 @@ export default Component.extend({
 			let data = {
 				message: get(this, 'message'),
 				email: get(this, 'email'),
-				channelId: get(this, 'channelId')
-			}
+				userChannelId: get(this, 'userChannelId')
+			};
 
-      return $.ajax({
+			return $.ajax({
 				url: this.buildUrl(),
-				type: "post",
+				type: 'post',
 				data
-			}).then(res => {
+			}).then(() => {
 				this.clearData();
-				notification.success(`Thanks for your feedback!`);
-			})
+				notification.success('Thank you for your feedback!');
+			});
 		}
 	}
 });
