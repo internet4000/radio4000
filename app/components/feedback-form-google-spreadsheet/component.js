@@ -6,10 +6,13 @@ const { Component,
 				setProperties,
 				$ } = Ember;
 
-// https://mashe.hawksey.info/2014/07/google-sheets-as-a-database-insert-with-apps-script-using-postget-methods-with-ajax-example/
-// call this co,mpoenent as follow:
-// {{feedback-form-google-spreadsheet scriptId="script-id"}}
-// where `script-id` is the script id associated to the spreadsheet
+/*
+	 Source: https://mashe.hawksey.info/2014/07/google-sheets-as-a-database-insert-with-apps-script-using-postget-methods-with-ajax-example/
+	 Required param: `scriptId` (on handlebar component)
+	 {{feedback-form-google-spreadsheet scriptId="id"}}
+	 where `id` is the script id associated to the spreadsheet you will
+	 use to store the feedback data
+ */
 
 export default Component.extend({
 	session: inject.service('session'),
@@ -18,7 +21,9 @@ export default Component.extend({
 	scriptId: '',
 	message: '',
 	email: '',
-	channelId: computed.alias('session.currentUser.channels.firstObject.id'),
+	channelId: computed('session.currentUser.channels.firstObject.id', function() {
+		return get(this, 'session.currentUser.channels.firstObject.id') || '';
+	}),
 
 	notValid: computed.empty('message'),
 
@@ -35,6 +40,8 @@ export default Component.extend({
 
 	actions: {
 		send() {
+			const notification = get(this, 'flashMessages');
+
 			let data = {
 				message: get(this, 'message'),
 				email: get(this, 'email'),
@@ -47,7 +54,7 @@ export default Component.extend({
 				data
 			}).then(res => {
 				this.clearData();
-				notification.success(`Thanks! Feedback sent.`);
+				notification.success(`Thanks for your feedback!`);
 			})
 		}
 	}
