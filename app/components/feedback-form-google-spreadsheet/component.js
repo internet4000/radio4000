@@ -53,7 +53,7 @@ export default Component.extend({
 				data
 			}).then(() => {
 				this.clearData();
-				notification.success('Thank you for your feedback!');
+				notification.success('Thank you for the feedback!');
 			});
 		}
 	}
