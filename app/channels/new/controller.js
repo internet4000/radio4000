@@ -48,7 +48,7 @@ export default Ember.Controller.extend(Validations, {
 		}).then(data => {
 			const channelSlugExists = data.get('firstObject');
 			if (channelSlugExists) {
-				slug = this.suffixSlug(slug)
+				slug = this.suffixSlug(slug);
 			}
 		});
 
