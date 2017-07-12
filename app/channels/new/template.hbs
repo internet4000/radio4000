@@ -1,16 +1,16 @@
 <section class="Section Section--100vh Section--flex Section--bg Section--noMarginB">
 	<div class="Section-inner Section-inner--vCentered Container Container--centered">
 
-		<h2>What do you want to call your radio?</h2>
+		<h2><small>What </small>name<small> for your </small>radio?</h2>
+		<p class="Muted">Go ahead, you can <em>always</em> change it later!</p>
 
 		<form class="Form" onsubmit={{perform createRadio}}>
 			{{#form-group model=this valuePath="title" as |v|}}
 				{{focus-input
 					value=v
 					required="required"
-					placeholder="“The Pirate Radio”"
+					placeholder="exemple: “The Pirate Radio”"
 					class="Form-bigInput u-textAlignCenter"}}
-				<p class="Muted">Go ahead, you can <em>always</em> change the name later</p>
 			{{/form-group}}
 
 			<div class="Form-group u-alignCenter">
