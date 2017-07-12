@@ -3,26 +3,37 @@
 	Here, a few things you could do to explore arround.
 </p>
 
+<p>
+	Start by clicking each of them.
+</p>
+
 <div class="PageWelcome-actions">
+	{{#link-to 'channel.edit'}}
+		<label>
+			{{input type='checkbox'
+					checked=channel.slug}} Edit your username: <span class="Muted">https://radio4000.com/{{channel.slug}}</span>
+		</label>
+	{{/link-to}}
 	{{#link-to 'add' (query-params url="https://www.youtube.com/watch?v=ymdssZOAx3Q")}}
 		<label>
 			{{input type='checkbox'
-				checked=channel.tracks.firstObject
-				disabled=channel.images.firstObject}} Add your first track <small>(paste in a YouTube link)</small>
+				checked=channel.tracks.firstObject}} Add your first track <small>(paste in a YouTube link)</small>
 		</label>
 	{{/link-to}}
 	{{#link-to 'channel.edit'}}
 		<label>
 			{{input type='checkbox'
-				checked=channel.images.firstObject
-				disabled=channel.images.firstObject}} Customize your radio with an image
+				checked=channel.images.firstObject}} Customize your radio with an image
 		</label>
 	{{/link-to}}
 	{{#link-to 'channels.all'}}
 		<label>
 			{{input type='checkbox'
-				checked=channel.favoriteChannels.firstObject
-				disabled=channel.images.firstObject}} Find a radio you enjoy and save it to your favorites
+				checked=channel.favoriteChannels.firstObject}} Find a radio you enjoy, save it to your favorites
 		</label>
 	{{/link-to}}
 </div>
+
+<p class="Muted">
+	You can always change all that later.
+</p>
