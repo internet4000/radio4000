@@ -4,6 +4,16 @@
 	padding-left: 0;
 }
 
+.List-title {
+	padding-left: 1rem;
+	padding-right: 1rem;
+	font-size: 1rem;
+	font-weight: 200;
+	font-style: italic;
+	padding-bottom: 0.3rem;
+	text-align: right;
+}
+
 .List-item {
 	border-bottom: 1px solid hsl(0, 0%, 91%); // $mediumlightgray
 	line-height: normal;
