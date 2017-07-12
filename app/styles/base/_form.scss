@@ -41,7 +41,7 @@ textarea,
 	width: 100%;
 
 	&:focus {
-		outline: hsl(214, 95%, 64%) auto 4px;
+		outline: hsl(214, 95%, 64%) auto 1px;
 	}
 
 	&:focus:invalid {
