@@ -5,6 +5,12 @@ const {A,
 			 get,
 			 isPresent} = Ember;
 
+/*
+ * source: https://github.com/HeroicEric/ember-group-by
+ * not used as an ember addon because it is nice to have it here
+ * and look at the code
+ */
+
 export default function groupBy(collection, property) {
 	var dependentKey = collection + '.@each.' + property;
 
