@@ -10,9 +10,9 @@ export default Component.extend({
 	title: computed('isFavorite', {
 		get() {
 			if (!get(this, 'isFavorite')) {
-				return 'Remove this radio from your favorites';
+				return 'Save this radio to your favorites';
 			}
-			return 'Save this radio to your favorites';
+			return 'Remove this radio from your favorites';
 		}
 	}),
 	click() {
