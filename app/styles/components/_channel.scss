@@ -38,22 +38,18 @@
 	}
 
 	.Dropzone .Cover {
-		padding-bottom: 0.5rem;
-		padding-top: 1rem;
+		padding-bottom: 1rem;
 	}
 
 	.Dropzone-inner {
 		figure {
 			max-width: 10rem;
-			margin: 0 auto;
+			margin: 0;
 		}
 
 		input {
 			clear: both;
 			display: block;
-			margin-left: auto;
-			margin-right: auto;
-			padding-top: 0.5rem;
 		}
 	}
 }

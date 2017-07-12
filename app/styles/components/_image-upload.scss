@@ -1,16 +1,13 @@
 // A dropzone for file uploads
 .Dropzone {
-	padding: 0.5rem;
-	text-align: center;
-	border: 1px dashed;
+	padding: 1rem;
+	border-style: inset;
+  border-width: 1px;
+  border-color: $slightgray;
 
 	&.in {
 		// when the user is dragging something on the page
-		background-color: palegreen;
-		animation-name: march;
-		animation-duration: 300ms;
-		animation-iteration-count: infinite;
-		animation-timing-function: linear;
+		background-color: $yellow;
 	}
 
 	&.hover {
