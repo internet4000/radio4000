@@ -3,9 +3,10 @@ import DS from 'ember-data';
 import {validator, buildValidations} from 'ember-cp-validations';
 import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
 import firebase from 'firebase';
+import format from 'npm:date-fns/format';
 
 const {Model, attr, belongsTo} = DS;
-const {get, set} = Ember;
+const {get, set, computed} = Ember;
 
 export const Validations = buildValidations({
 	url: [
@@ -37,6 +38,10 @@ export default Model.extend(Validations, {
 		defaultValue() {
 			return firebase.database.ServerValue.TIMESTAMP;
 		}
+	}),
+	createdMonth: computed('created', function () {
+		let created = get(this, 'created');
+		return format(created, 'MMMM YYYY');
 	}),
 	url: attr('string'),
 	title: attr('string'),
