@@ -1,8 +1,7 @@
-import format from 'npm:date-fns/format';
 import Ember from 'ember';
 import groupBy from 'radio4000/utils/group-by';
 
-const {Component, computed, get} = Ember;
+const {Component, computed} = Ember;
 
 export default Component.extend({
 	classNames: ['Tracks'],

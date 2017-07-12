@@ -2,7 +2,8 @@ import Ember from 'ember';
 
 const {A,
 			 computed,
-			 get,isPresent} = Ember;
+			 get,
+			 isPresent} = Ember;
 
 export default function groupBy(collection, property) {
 	var dependentKey = collection + '.@each.' + property;
