@@ -46,7 +46,7 @@
 							{{textarea id="body"
 								value=v
 								maxlength=channelDescriptionMaxLength
-								placeholder="What is your radio about? ex: 'Fireplace music"}}
+								placeholder="What is your radio about? ex: 'Fireplace music'"}}
 						{{/form-group}}
 
 						{{#form-group model=model valuePath="link" label="Website" as |v|}}
@@ -57,12 +57,12 @@
 								placeholder="Link to your website, ex: 'https://exemple.com'"}}
 						{{/form-group}}
 
-						<div class="Form-group Form--save">
-							<button type="submit" class="Btn Btn--primary" disabled={{disableSubmit}}>
+						<p class="BtnGroupWrapper BtnGroupWrapper--full">
+							<button type="submit" class="Btn Btn--large Btn--primary" disabled={{disableSubmit}}>
 								{{#if isSaving}}Saving…{{else}}Save radio{{/if}}
 							</button>
-							<a href="{{href-to 'channel.index' model}}" type="button" class="Btn Btn--text Muted">Cancel editing</a>
-						</div>
+							<a href="{{href-to 'channel.index' model}}" type="button" class="Btn Btn--large Btn--text Muted">Cancel</a>
+						</p>
 					</form>
 				</div>
 			</div>

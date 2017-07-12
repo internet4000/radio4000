@@ -49,6 +49,15 @@
 	div {
 		display: inline;
 	}
+
+	svg,
+	i {
+		margin-right: 0.3rem;
+	}
+
+	svg {
+		float: left;
+	}
 }
 
 .Btn {
@@ -207,4 +216,3 @@
 		cursor: pointer;
 	}
 }
-
