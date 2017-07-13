@@ -1,35 +1,3 @@
-// "Purple" skin for the Radio4000 player.
-// Avoid changing layout as much as possible.
-.Playback radio4000-player {
-	font-size: 16px;
-	// Because it's bottom aligned.
-	border-bottom: 0;
-
-	header,
-	footer {
-		@include negative-text;
-		background-color: $primary-color;
-		color: $bleach;
-	}
-
-	footer .Btn {
-		@include negative-text;
-		color: $bleach;
-	}
-
-	main {
-		// background-color: darken($primary-color, 7%);
-	}
-
-	footer .Btn {
-		background-color: transparent;
-	}
-
-	.TrackList li {
-		margin-bottom: 0; // remove r4 styles
-	}
-}
-
 .Playback-layoutButtons {
 	position: absolute;
 	top: -1.4rem;
@@ -43,16 +11,20 @@
 		margin-left: 0.2em;
 	}
 
-	.Btn {
-		box-shadow: none;
-	}
-
 	// no need to change player when it's small and without channel
 	.is-minimized.is-withoutPlayer & {
 		display: none;
 	}
 }
 
+.Playback {
+	.Btn {
+		box-shadow: none;
+	}
+	radio4000-player {
+		font-size: 16px;
+	}
+}
 // Minimized state.
 // .is-minimized {}
 
@@ -72,5 +44,9 @@
 		max-width: none;
 		height: 100vh;
 		border: 0;
+	}
+	radio4000-player .TrackList-list {
+		// 45px header, 40px footer
+		max-height: calc(100vh - 85px);
 	}
 }
