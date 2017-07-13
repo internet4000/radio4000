@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
-const { Component, inject, get, computed } = Ember;
-
+const {Component, inject, get, computed} = Ember;
 
 export default Component.extend({
 	player: inject.service('player'),
@@ -12,13 +11,13 @@ export default Component.extend({
 	tracks: computed.reads('channel.tracks'),
 
 	click() {
-		playFirstTrack()
+		this.playFirstTrack();
 	},
 
 	playFirstTrack() {
 		get(this, 'tracks').then(tracks => {
 			const firstTrack = tracks.get('lastObject');
-			get(this, 'player').playTrack(firstTrack)
-		})
+			get(this, 'player').playTrack(firstTrack);
+		});
 	}
 });

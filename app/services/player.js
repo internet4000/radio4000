@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { Service, set, debug, computed } = Ember;
+const {Service, set, debug, computed} = Ember;
 
 export default Service.extend({
 	currentTrack: null,
@@ -13,6 +13,6 @@ export default Service.extend({
 			debug('playTrack() was called without a track.');
 			return;
 		}
-		set(this, 'currentTrack', model)
+		set(this, 'currentTrack', model);
 	}
 });
