@@ -22,14 +22,23 @@ export default Component.extend(EKMixin, {
 
 	didInsertElement() {
 		var player = this.element.querySelector('radio4000-player');
-		player.addEventListener('trackChanged', event => {
-			console.info('[event:trackChanged]', event.detail);
-			// const track = get(this, 'store').findRecord('track', event.detail.id);
-			// get(this, 'player').playTrack(track);
-		});
-		player.addEventListener('trackEnded', event => {
-			console.info('[event:trackEnded]', event.detail);
-		});
+		player.addEventListener('trackChanged', this.onTrackChanged);
+		player.addEventListener('trackEnded', this.onTrackEnded);
+	},
+
+	didDestroyElement() {
+		player.removeEventListener('trackChanged', this.onTrackChanged);
+		player.removeEventListener('trackEnded', this.onTrackEnded);
+	},
+
+	onTrackChanged(event) {
+		console.info('[event:trackChanged]', event.detail);
+		/* const track = get(this, 'store').findRecord('track', event.detail.id);*/
+		/* get(this, 'player').playTrack(track);*/
+	},
+
+	onTrackended(event) {
+		console.info('[event:trackEnded]', event.detail);
 	},
 
 	actions: {
