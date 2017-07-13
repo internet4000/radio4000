@@ -1,3 +1,13 @@
+.Playback {
+	.Btn {
+		box-shadow: none;
+	}
+	radio4000-player {
+		font-size: 16px;
+		max-width: 300px;
+	}
+}
+
 .Playback-layoutButtons {
 	position: absolute;
 	top: -1.4rem;
@@ -17,16 +27,28 @@
 	}
 }
 
-.Playback {
-	.Btn {
-		box-shadow: none;
+
+/*
+	 States of the player
+	 - default
+	 - minimized
+	 - maximized
+ */
+
+// Minimized state.
+.is-minimized {
+	.Playback {
+		width: 200px;
+		height: 200px;
 	}
 	radio4000-player {
-		font-size: 16px;
+		.Header,
+		.TrackList,
+		.PlayerControl {
+			display: none;
+		}
 	}
 }
-// Minimized state.
-// .is-minimized {}
 
 // Fullscreen state
 .is-maximized {
@@ -44,13 +66,14 @@
 		max-width: none;
 		height: 100vh;
 		border: 0;
-	}
-	/* this is what gives the height to the player
-		 unfortunatelly it is not possible the make the player
-		 absolute and hve the track list "fit" the remaining
-		 space, and scroll its content */
-	radio4000-player .TrackList-list {
-		// 45px header, 40px footer
-		max-height: calc(100vh - 85px);
+
+		/* this is what gives the height to the player
+			 unfortunatelly it is not possible the make the player
+			 absolute and hve the track list "fit" the remaining
+			 space, and scroll its content */
+		.TrackList-list {
+			// 45px header, 40px footer
+			max-height: calc(100vh - 85px);
+		}
 	}
 }
