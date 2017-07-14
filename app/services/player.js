@@ -1,8 +1,9 @@
 import Ember from 'ember';
 
-const {Service, set, debug, computed} = Ember;
+const {Service, inject, get, set, debug, computed} = Ember;
 
 export default Service.extend({
+	store: inject.service(),
 	currentTrack: null,
 	currentChannel: computed.alias('currentTrack.channel'),
 	isPlaying: computed.bool('currentTrack'),
@@ -14,5 +15,19 @@ export default Service.extend({
 			return;
 		}
 		set(this, 'currentTrack', model);
+	},
+
+	onTrackChanged(trackId) {
+		console.log('trackId', trackId);
+		get(this, 'store').findRecord('track', trackId).then(newTrack => {
+			newTrack.set('playedInCurrentPlayer', true);
+		});
+	},
+
+	onTrackEnded(trackId) {
+		console.log('trackId', trackId);
+		get(this, 'store').findRecord('track', trackId).then(newTrack => {
+			newTrack.set('finishedInCurrentPlayer', true);
+		});
 	}
 });
