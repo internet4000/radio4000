@@ -2,10 +2,6 @@
 	.Btn {
 		box-shadow: none;
 	}
-	radio4000-player {
-		font-size: 16px;
-		max-width: 300px;
-	}
 }
 
 .Playback-layoutButtons {
@@ -33,7 +29,12 @@
 	 - default
 	 - minimized
 	 - maximized
- */
+*/
+
+radio4000-player {
+		font-size: 16px;
+		max-width: 300px;
+}
 
 // Minimized state.
 .is-minimized {
@@ -73,7 +74,7 @@
 			 space, and scroll its content */
 		.TrackList-list {
 			// 45px header, 40px footer
-			max-height: calc(100vh - 85px);
+			height: calc(100vh - 85px);
 		}
 	}
 }
