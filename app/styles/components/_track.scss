@@ -23,21 +23,20 @@
 
 // Active state
 .Track.is-current {
+
+}
+
+// Conflicts with is-current border
+.Track--live {
 	.Track-link,
 	a.Track-link {
 		background-color: $white;
 		border-left-color: $primary-color;
 	}
-
-	.icon-play {
-		display: block;
-	}
 }
-
-// Conflicts with is-current border
-// .Track--used {
-// 	border-left-color: $yellow;
-// }
+.Track--played {
+	border-right-color: $green;
+}
 .Track--finished {
 	border-right-color: $green;
 }

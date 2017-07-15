@@ -17,17 +17,30 @@ export default Service.extend({
 		set(this, 'currentTrack', model);
 	},
 
-	onTrackChanged(trackId) {
-		console.log('trackId', trackId);
-		get(this, 'store').findRecord('track', trackId).then(newTrack => {
-			newTrack.set('playedInCurrentPlayer', true);
+	onTrackChanged(event) {
+		console.log('event', event);
+
+		// set previous track as non active
+		// set new track as played and active
+		console.log('event.previousTrack', event.previousTrack)
+		if(Object.keys(event.previousTrack).length) {
+			get(this, 'store').findRecord('track', event.previousTrack.id).then(previousTrack => {
+				console.log('previousTrack', previousTrack)
+				previousTrack.set('liveInCurrentPlayer', false)
+			})
+		}
+		get(this, 'store').findRecord('track', event.track.id).then(track => {
+			track.setProperties({
+				'playedInCurrentPlayer': true,
+				'liveInCurrentPlayer': true
+			});
 		});
 	},
 
-	onTrackEnded(trackId) {
-		console.log('trackId', trackId);
-		get(this, 'store').findRecord('track', trackId).then(newTrack => {
-			newTrack.set('finishedInCurrentPlayer', true);
+	onTrackEnded(event) {
+		console.log('event', event);
+		get(this, 'store').findRecord('track', trackId).then(track => {
+			track.set('finishedInCurrentPlayer', true);
 		});
 	}
 });
