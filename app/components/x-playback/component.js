@@ -24,7 +24,7 @@ export default Component.extend(EKMixin, {
 	didInsertElement() {
 		var player = this.element.querySelector('radio4000-player');
 		player.addEventListener('trackChanged', event => this.onTrackChanged(event), {passive: false});
-		player.addEventListener('trackEnded', event => this.onTrackEnded(event), {passive: false});
+		/* player.addEventListener('trackEnded', event => this.onTrackEnded(event), {passive: false});*/
 	},
 
 	/* FIXME what event should we remove?
@@ -32,7 +32,7 @@ export default Component.extend(EKMixin, {
 	didDestroyElement() {
 		var player = this.element.querySelector('radio4000-player');
 		player.removeEventListener('trackChanged', this.onTrackChanged);
-		player.removeEventListener('trackEnded', this.onTrackEnded);
+		/* player.removeEventListener('trackEnded', this.onTrackEnded);*/
 	},
 
 	onTrackChanged(event) {
