@@ -18,28 +18,25 @@ export default Service.extend({
 	},
 
 	onTrackChanged(event) {
-		console.log('event', event);
-
 		// set previous track as non active
 		// set new track as played and active
-		console.log('event.previousTrack', event.previousTrack)
-		if(Object.keys(event.previousTrack).length) {
+		console.log('changed', event);
+		if (event.previousTrack.length !== undefined) {
 			get(this, 'store').findRecord('track', event.previousTrack.id).then(previousTrack => {
-				console.log('previousTrack', previousTrack)
-				previousTrack.set('liveInCurrentPlayer', false)
-			})
+				previousTrack.set('liveInCurrentPlayer', false);
+			});
 		}
 		get(this, 'store').findRecord('track', event.track.id).then(track => {
 			track.setProperties({
-				'playedInCurrentPlayer': true,
-				'liveInCurrentPlayer': true
+				playedInCurrentPlayer: true,
+				liveInCurrentPlayer: true
 			});
 		});
 	},
 
 	onTrackEnded(event) {
 		console.log('event', event);
-		get(this, 'store').findRecord('track', trackId).then(track => {
+		get(this, 'store').findRecord('track', event.track.id).then(track => {
 			track.set('finishedInCurrentPlayer', true);
 		});
 	}
