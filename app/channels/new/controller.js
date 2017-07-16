@@ -70,7 +70,7 @@ export default Ember.Controller.extend(Validations, {
 		userChannels.addObject(channel);
 		yield user.save();
 
-		const channelPublic = yield this.store.createRecord('channelPublic', {channel});
+		const channelPublic = this.store.createRecord('channelPublic', {channel});
 		yield channelPublic.save();
 
 		try {
