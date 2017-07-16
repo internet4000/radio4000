@@ -20,8 +20,8 @@ export default Service.extend({
 
 	onTrackChanged(event) {
 		// set channels as active/inactive/add-to-history
-		if(event.previousTrack.channel !== event.track.channel) {
-			this.channelChanged(event.previousTrack.channel, event.track.channel)
+		if (event.previousTrack.channel !== event.track.channel) {
+			this.channelChanged(event.previousTrack.channel, event.track.channel);
 		}
 
 		// set previous track as non active
@@ -49,9 +49,9 @@ export default Service.extend({
 
 	channelChanged(previousChannelId, channelId) {
 		// set previous channel as not active
-		if(previousChannelId !== undefined) {
+		if (previousChannelId !== undefined) {
 			get(this, 'store').findRecord('channel', previousChannelId).then(channel => {
-				channel.set('isInPlayer', false)
+				channel.set('isInPlayer', false);
 			});
 		}
 
@@ -64,7 +64,7 @@ export default Service.extend({
 
 	// add a channel to the History of played channels
 	updateChannelHistory(channel) {
-		console.log('updateChannelHistory')
+		console.log('updateChannelHistory');
 		const settings = get(this, 'session.currentUser.settings');
 
 		// Break if the user does not have settings (= logged out)

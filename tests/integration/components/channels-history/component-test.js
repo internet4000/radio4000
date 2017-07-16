@@ -2,24 +2,23 @@ import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('channels-history', 'Integration | Component | channels history', {
-  integration: true
+	integration: true
 });
 
 test('it renders', function(assert) {
+	// Set any properties with this.set('myProperty', 'value');
+	// Handle any actions with this.on('myAction', function(val) { ... });
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+	this.render(hbs`{{channels-history}}`);
 
-  this.render(hbs`{{channels-history}}`);
+	assert.equal(this.$().text().trim(), '');
 
-  assert.equal(this.$().text().trim(), '');
+	// Template block usage:
+	this.render(hbs`
+		{{#channels-history}}
+			template block text
+		{{/channels-history}}
+	`);
 
-  // Template block usage:
-  this.render(hbs`
-    {{#channels-history}}
-      template block text
-    {{/channels-history}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+	assert.equal(this.$().text().trim(), 'template block text');
 });

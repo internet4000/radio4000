@@ -2,7 +2,7 @@ import Ember from 'ember';
 import PlayButtonComponent from 'radio4000/components/play-btn/component';
 import {getRandomIndex} from 'radio4000/utils/random-helpers';
 
-const {computed, get, set} = Ember;
+const {computed, get} = Ember;
 
 // Extends the play button with a different title and template
 
@@ -25,7 +25,8 @@ export default PlayButtonComponent.extend({
 	playRandomTrack() {
 		get(this, 'tracks').then(tracks => {
 			const randomIndex = getRandomIndex(tracks);
-			get(this, 'player').playTrack(tracks.objectAt(randomIndex));
+			const randomTrack = tracks.objectAt(randomIndex);
+			get(this, 'player').playTrack(randomTrack);
 		});
 	}
 });
