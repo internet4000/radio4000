@@ -1,17 +1,12 @@
 <p>
-	🚀 That's it, you've got a radio.<br>
-	Here, a few things you could do to explore arround.
+	That's it, you've got a radio 🚀  Here's a few things you can do to get started:
 </p>
 
-<p>
-	Start by clicking each of them.
-</p>
-
-<div class="PageWelcome-actions">
+<p class="PageWelcome-actions">
 	{{#link-to 'channel.edit'}}
 		<label>
 			{{input type='checkbox'
-					checked=channel.slug}} Edit your username: <span class="Muted">https://radio4000.com/{{channel.slug}}</span>
+				checked=channel.slug}} Create your radio: <span class="Muted">https://radio4000.com/{{channel.slug}}</span>
 		</label>
 	{{/link-to}}
 	{{#link-to 'add' (query-params url="https://www.youtube.com/watch?v=ymdssZOAx3Q")}}
@@ -32,7 +27,7 @@
 				checked=channel.favoriteChannels.firstObject}} Find a radio you enjoy, save it to your favorites
 		</label>
 	{{/link-to}}
-</div>
+</p>
 
 <p class="Muted">
 	You can always change all that later.
