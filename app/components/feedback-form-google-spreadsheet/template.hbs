@@ -1,26 +1,26 @@
 <form class="Form" {{action "send" message email on="submit"}}>
 	<div class="Form-group">
 		{{textarea
-				value=message
-				placeholder="Your feedback"
-				required="required"}}
+			value=message
+			placeholder="Your feedback"
+			required="required"}}
 	</div>
 	<div class="Form-group">
 		{{input
-				type="email"
-				value=email
-				placeholder="Your email (optional, only used to send you an answer)"}}
+			type="email"
+			value=email
+			placeholder="Your email (optional, only used to answer you)"}}
 	</div>
 
 	<div class="BtnGroupWrapper BtnGroupWrapper--full">
 		{{async-button
-				class="Btn Btn--large"
-				action=(action "send" message email)
-				default="Send feedback"
-				pending="Sending..."
-				fulfilled="Sent!"
-				rejected="Error, try to refresh the page"
-				disableWhen=notValid
-				reset=message}}
+			class="Btn Btn--large"
+			action=(action "send" message email)
+			default="Send feedback"
+			pending="Sending..."
+			fulfilled="Sent!"
+			rejected="Error, try to refresh the page"
+			disableWhen=notValid
+			reset=message}}
 	</div>
 </form>
