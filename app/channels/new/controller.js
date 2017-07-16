@@ -41,16 +41,19 @@ export default Ember.Controller.extend(Validations, {
 		const title = get(this, 'title').trim();
 		let slug = get(this, 'cleanSlug');
 
-		// does a channel with this slug already exists
-		yield this.store.query('channel', {
-			orderBy: 'slug',
-			equalTo: slug
-		}).then(data => {
-			const channelSlugExists = data.get('firstObject');
-			if (channelSlugExists) {
+		// If the slug is already taken, suffix it.
+		try {
+			const query = yield this.store.query('channel', {
+				orderBy: 'slug',
+				equalTo: slug
+			});
+			const slugExists = query.get('firstObject');
+			if (slugExists) {
 				slug = this.suffixSlug(slug);
 			}
-		});
+		} catch (err) {
+			debug(err);
+		}
 
 		// Save the channel, create channel public and relationships, save again
 		const channel = this.store.createRecord('channel', {title, slug});
