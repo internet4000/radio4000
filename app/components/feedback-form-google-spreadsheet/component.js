@@ -23,14 +23,14 @@ export default Component.extend({
 	email: '',
 	scriptId: '',
 
+	buildUrl: computed('scriptId', function () {
+		const scriptId = get(this, 'scriptId');
+		return `https://script.google.com/macros/s/${scriptId}/exec`;
+	}),
 	notValid: computed.empty('message'),
 	userChannelId: computed('session.currentUser.channels.firstObject.id', function () {
 		return get(this, 'session.currentUser.channels.firstObject.id') || '';
 	}),
-
-	buildUrl() {
-		return `https://script.google.com/macros/s/${this.scriptId}/exec`;
-	},
 
 	clearData() {
 		this.setProperties({
@@ -49,7 +49,7 @@ export default Component.extend({
 			};
 
 			return $.ajax({
-				url: this.buildUrl(),
+				url: get(this, 'buildUrl'),
 				type: 'post',
 				data
 			}).then(() => {
