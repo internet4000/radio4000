@@ -1,0 +1,20 @@
+<div class="Grid">
+	<div class="Grid-cell">
+		<p>This is your listening history.</p>
+		<p class="Muted">This page is private, only you can see it.</p>
+		{{#btn-group}}
+			<button class="Btn"
+							{{action 'clearChannelHistory'}}
+							disabled={{noHistory}}>Delete all my history</button>
+		{{/btn-group}}
+	</div>
+	{{#if items}}
+	{{#each items as |item|}}
+		<div class="Grid-cell">
+			{{channel-card channel=item}}
+		</div>
+	{{/each}}
+	{{else}}
+	<p class="Muted">Your history is empty</p>
+	{{/if}}
+</div>
