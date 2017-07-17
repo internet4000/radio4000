@@ -1,9 +1,9 @@
 // A dropzone for file uploads
 .Dropzone {
+	// border: 1px solid $mediumgray;
 	padding: 1rem;
-	border-style: inset;
-  border-width: 1px;
-  border-color: $slightgray;
+	border: 1px solid rgba($gray, 0.4);
+	border-radius: $border-radius;
 
 	&.in {
 		// when the user is dragging something on the page
@@ -12,6 +12,7 @@
 
 	&.hover {
 		// when the user is dragging on top
+		border-color: rgba($gray, 0.6);
 		background-color: $primary-color;
 		color: $white;
 	}

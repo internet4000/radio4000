@@ -5,22 +5,22 @@
 		</div>
 
 		<div class="Channel Channel--edit Container Container--full">
-
-			<form class="Channel-media" title="Drag and drop an image in this area to upload it">
-				{{#form-group label="Image"}}
-					{{#image-upload imageId=newImage}}
-						{{channel-cover src=model.coverImage.src}}
-					{{/image-upload}}
-					{{#if model.coverImage}}
-						<button class="Btn Btn--danger Btn--text" {{action "deleteImage"}}>
-							Delete image
-						</button>
-					{{/if}}
-				{{/form-group}}
-			</form>
-
 			<div class="Form Form--box">
 				<div class="Channel Channel--edit">
+
+					<form class="Channel-media" title="Drag and drop an image in this area to upload it">
+						{{#form-group label="Image"}}
+							{{#image-upload imageId=newImage}}
+								{{channel-cover src=model.coverImage.src}}
+							{{/image-upload}}
+							{{#if model.coverImage}}
+								<button class="Btn Btn--danger Btn--text" {{action "deleteImage"}}>
+									Delete image
+								</button>
+							{{/if}}
+						{{/form-group}}
+					</form>
+
 					<form class="Channel-body" {{action "trySave" on="submit"}}>
 						{{#form-group model=model valuePath="title" label="Name" as |v|}}
 							{{focus-input
