@@ -28,33 +28,35 @@
 
 	.Channel-body {
 		width: 100%;
+		padding: 0;
+		margin: 0;
 	}
 
 	.Channel-media {
-		margin-top: 0;
 		width: 100%;
 		max-width: 100%;
 		float: none;
+		margin-top: 0;
 	}
 
 	.Dropzone .Cover {
-		padding-bottom: 0.5rem;
-		padding-top: 1rem;
+		padding-bottom: 1rem;
 	}
 
 	.Dropzone-inner {
 		figure {
-			max-width: 10rem;
-			margin: 0 auto;
+			max-width: 6rem;
+			margin: 0;
 		}
 
 		input {
 			clear: both;
 			display: block;
-			margin-left: auto;
-			margin-right: auto;
-			padding-top: 0.5rem;
 		}
+	}
+
+	.BtnGroupWrapper {
+		margin-bottom: 0;
 	}
 }
 
@@ -112,22 +114,10 @@
 	}
 }
 
-.Channel-playback {
-	svg,
-	i {
-		margin-right: 0.3rem;
-	}
-
-	svg {
-		float: left;
-	}
-}
-
 .Channel-outlet {
-	min-height: 2rem;
-	margin-bottom: 0;
-	padding-top: 2rem;
-	padding-bottom: 1rem;
+	// avoids jumps between tracks/favorites/followers
+	min-height: 5rem; 
+	padding-top: 1rem;
 }
 
 .Channel-titleSection {
