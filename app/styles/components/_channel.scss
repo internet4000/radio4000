@@ -115,9 +115,9 @@
 }
 
 .Channel-outlet {
-	min-height: 2rem;
+	// avoids jumps between tracks/favorites/followers
+	min-height: 5rem; 
 	padding-top: 1rem;
-	padding-bottom: 1px;
 }
 
 .Channel-titleSection {
