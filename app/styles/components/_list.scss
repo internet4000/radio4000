@@ -7,11 +7,10 @@
 .List-header {
 	padding-left: 1rem;
 	padding-right: 1rem;
-	font-size: 1rem;
-	font-weight: 200;
+	font-weight: normal;
 	font-style: italic;
-	padding-bottom: 0.3rem;
 	text-align: right;
+	color: $mediumgray;
 }
 
 .List-item {
@@ -101,10 +100,8 @@
 // Lists with cover images
 .List .Cover {
 	float: left;
-
 	// fits with two lines of description
 	width: 4rem;
 	margin-right: 1rem;
 	margin-bottom: 0;
-
 }
