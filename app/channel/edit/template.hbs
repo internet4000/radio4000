@@ -28,18 +28,18 @@
 								placeholder="ex: The pirate Radio"
 								autofocus="autofocus"
 								required="required"
-								maxlength=titleMaxLength
-								minlength=titleMinLength}}
+								minlength=titleMinLength
+								maxlength=titleMaxLength}}
 						{{/form-group}}
 
 						{{#form-group model=model valuePath="slug" label="Username (URL)" as |v|}}
 							<p class="Muted" style="font-weight: normal">https://radio4000.com/{{v}}</p>
 							{{input
-									value=v
-									placeholder="ex: pirate-radio"
-									required="required"
-									maxlength=titleMaxLength
-									minlength=titleMinLength}}
+								value=v
+								placeholder="ex: pirate-radio"
+								required="required"
+								minlength=titleMinLength
+								maxlength=titleMaxLength}}
 						{{/form-group}}
 
 						{{#form-group model=model valuePath="body" label="Description" as |v|}}
@@ -54,7 +54,7 @@
 								value=v
 								aria-invalid=(if model.validations.attrs.link.isValid "false" "true")
 								pattern="https?://.+"
-								placeholder="Link to your website, ex: 'https://exemple.com'"}}
+								placeholder="Link to your website, ex: 'https://example.com'"}}
 						{{/form-group}}
 
 						<p class="BtnGroupWrapper BtnGroupWrapper--full">
@@ -66,7 +66,7 @@
 					</form>
 				</div>
 			</div>
-
+			<br>
 			<p><a class="Btn Btn--text Muted" href="{{href-to 'channel.delete' model}}">Delete your radio</a></p>
 		</div>
 	</section>

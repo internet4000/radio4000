@@ -152,6 +152,7 @@
  */
 // extra specificity hack
 .Btn.Btn--text {
+	-webkit-appearance: none;
 	border-color: transparent;
 	background-image: none;
 	background-color: transparent;
