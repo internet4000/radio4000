@@ -1,6 +1,6 @@
 {
   "name": "radio4000",
-  "version": "4.11.2",
+  "version": "4.11.3",
   "scripts": {
     "build": "ember build; npm run critical-css",
     "build-production": "ember build -prod; npm run critical-css",
@@ -16,6 +16,7 @@
     "broccoli-asset-rev": "^2.4.5",
     "critical": "^0.7.1",
     "ember-ajax": "^3.0.0",
+    "ember-async-button": "^1.0.2",
     "ember-browserify": "^1.1.11",
     "ember-cli": "^2.13.3",
     "ember-cli-app-version": "^3.0.0",
@@ -41,8 +42,8 @@
     "ember-load-initializers": "^1.0.0",
     "ember-modal-dialog": "^1.0.0",
     "ember-resolver": "^4.0.0",
-    "eslint-config-xo": "^0.17.0",
     "ember-source": "^2.13.3",
+    "eslint-config-xo": "^0.17.0",
     "loader.js": "^4.2.3",
     "node-sass": "^4.5.3",
     "postcss": "^5.2.12",

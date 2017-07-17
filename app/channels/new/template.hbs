@@ -1,26 +1,33 @@
-<section class="Section Section--100vh Section--flex Section--bg Section--noMarginB">
-	<div class="Section-inner Section-inner--vCentered Container Container--centered">
+<section class="Sections">
+	<div class="Section">
 
-		<h2>What do you want to call your radio?</h2>
+		<header class="Manchet">
+			<h1><small>Choose a </small>name<small> for your </small>radio?</h1>
+			<p>
+				<span class="Muted">Step 1 on 1</span><br>
+				Go ahead, you can <em>always</em> change this name later.
+			</p>
+		</header>
 
-		<form class="Form" onsubmit={{perform createRadio}}>
-			{{#form-group model=this valuePath="title" as |v|}}
-				{{focus-input
-					value=v
-					required="required"
-					placeholder="“The Pirate Radio”"
-					class="Form-bigInput u-textAlignCenter"}}
-				<p class="Muted">Go ahead, you can <em>always</em> change the name later</p>
-			{{/form-group}}
+		<div class="Container">
+			<form class="Form" onsubmit={{perform createRadio}}>
+				{{#form-group model=this valuePath="title" label="Name" as |v|}}
+					{{focus-input
+						value=v
+						required="required"
+						placeholder="ex: “The Pirate Radio”"}}
+				{{/form-group}}
 
-			<div class="Form-group u-alignCenter">
-				<button type="submit" class="Btn Btn--primary Btn--large"
-					title="Create your radio channel"
-					disabled={{disableSubmit}}>
-					{{if createRadio.isRunning "Creating…" "Create my radio"}}
-				</button>
-			</div>
-		</form>
-
+				<div class="BtnGroupWrapper BtnGroupWrapper--full">
+					<button type="submit"
+						class="Btn Btn--large"
+						title="Create your radio channel"
+						disabled={{disableSubmit}}>
+						{{if createRadio.isRunning "Creating…" "Create"}}
+					</button>
+					<button class="Btn Btn--text" disabled>yes, we're done!</button>
+				</div>
+			</form>
+		</div>
 	</div>
 </section>

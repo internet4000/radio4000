@@ -26,20 +26,34 @@ export default Ember.Controller.extend(Validations, {
 
 	// cleans the slug from bad things and suffix it with a random string
 	cleanSlug: computed('title', function () {
-		const title = clean(this.get('title'));
-		const random = randomText();
-		return `${title}-${random}`;
+		return clean(this.get('title'));
 	}),
+
+	suffixSlug(slug) {
+		const random = randomText();
+		return `${slug}-${random}`;
+	},
 
 	createRadio: task(function * (event) {
 		event.preventDefault();
 		const messages = get(this, 'flashMessages');
 		const user = get(this, 'session.currentUser');
-		const slug = get(this, 'cleanSlug');
-		let title = get(this, 'title');
+		const title = get(this, 'title').trim();
+		let slug = get(this, 'cleanSlug');
 
-		// Avoid extra spaces
-		title = title.trim();
+		// If the slug is already taken, suffix it.
+		try {
+			const query = yield this.store.query('channel', {
+				orderBy: 'slug',
+				equalTo: slug
+			});
+			const slugExists = query.get('firstObject');
+			if (slugExists) {
+				slug = this.suffixSlug(slug);
+			}
+		} catch (err) {
+			debug(err);
+		}
 
 		// Save the channel, create channel public and relationships, save again
 		const channel = this.store.createRecord('channel', {title, slug});
@@ -56,7 +70,7 @@ export default Ember.Controller.extend(Validations, {
 		userChannels.addObject(channel);
 		yield user.save();
 
-		const channelPublic = yield this.store.createRecord('channelPublic', {channel});
+		const channelPublic = this.store.createRecord('channelPublic', {channel});
 		yield channelPublic.save();
 
 		try {
@@ -69,4 +83,3 @@ export default Ember.Controller.extend(Validations, {
 		}
 	}).drop()
 });
-

@@ -1,6 +1,6 @@
 /**
 	Site Aside
- */
+*/
 
 .Aside {
 	overflow-y: auto;
@@ -8,22 +8,34 @@
 	flex-flow: column nowrap;
 }
 
-.AsideLeftToggle {
-	position: fixed;
-	top: 4.8rem;
-	left: -3px;
-	z-index: 4;
-
-	span {
+.Aside-toggle {
+	.Aside-toggleBtn span {
 		transform: rotateY(180deg);
 		transition: transform 300ms $easing;
 	}
-
-	&.Btn--isActive {
-		span {
+	&.is-active {
+		.Aside-toggleBtn span {
 			transform: rotateY(0);
 		}
+		.Aside-toggleLayer {
+			display: block;
+			@media (min-width: $layout-s) {
+				display: none;
+			}
+		}
 	}
+}
+
+.Aside-toggleLayer {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 4;
+	background-color: $slightgray;
+	opacity: 0.6;
 }
 
 /**
@@ -31,31 +43,40 @@
  */
 
 .Aside--left {
-	height: 100%;
-	padding-top: 6rem; // space for our top bar
-	height: 100vh;
-	padding-left: 0.7rem; // same
-	padding-right: 1rem;
-	transform: translateX(-100%);
-	position: fixed;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	z-index: 3;
-	width: 100%;
-	background-color: $bg-color-2;
-	max-width: 70%;
+	.Aside-toggleBtn {
+		position: fixed;
+		top: 4.8rem;
+		left: -3px;
+		z-index: 6;
+	}
+	.Aside-inner {
+		height: 100%;
+		padding-top: 6rem; // space for our top bar
+		height: 100vh;
+		padding-left: 0.7rem; // same
+		padding-right: 1rem;
+		transform: translateX(-100%);
+		position: fixed;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		z-index: 5;
+		width: 100%;
+		background-color: $bg-color-2;
+		max-width: 70%;
 
-	@media (min-width: $layout-s) {
-		// transform: translate3d(0, 0, 0);
-		// overflow: hidden;
-		background-color: transparent;
-		width: $sidebar-width;
-		max-width: 100%;
+		@media (min-width: $layout-s) {
+			// transform: translate3d(0, 0, 0);
+			// overflow: hidden;
+			background-color: transparent;
+			width: $sidebar-width;
+			max-width: 100%;
+		}
 	}
 }
 
 .Aside--right {
+	flex-basis: 20rem;
 	position: fixed;
 	z-index: 2;
 	top: auto;

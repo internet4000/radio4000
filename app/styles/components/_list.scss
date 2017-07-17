@@ -4,6 +4,15 @@
 	padding-left: 0;
 }
 
+.List-header {
+	padding-left: 1rem;
+	padding-right: 1rem;
+	font-weight: normal;
+	font-style: italic;
+	text-align: right;
+	color: $mediumgray;
+}
+
 .List-item {
 	border-bottom: 1px solid hsl(0, 0%, 91%); // $mediumlightgray
 	line-height: normal;
@@ -91,10 +100,8 @@
 // Lists with cover images
 .List .Cover {
 	float: left;
-
 	// fits with two lines of description
 	width: 4rem;
 	margin-right: 1rem;
 	margin-bottom: 0;
-
 }
