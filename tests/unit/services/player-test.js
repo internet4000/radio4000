@@ -9,6 +9,7 @@ moduleFor('service:player', {
 // Replace this with your real tests.
 test('it exists', function (assert) {
 	this.register('service:playerRandom', Ember.Service.extend());
+	this.register('service:session', Ember.Service.extend());
 	var service = this.subject();
 	assert.ok(service);
 });

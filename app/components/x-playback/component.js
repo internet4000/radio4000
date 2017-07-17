@@ -30,7 +30,7 @@ export default Component.extend(EKMixin, {
 
 	/* FIXME what event should we remove?
 		 they are created in an anonymous function */
-	didDestroyElement() {
+	willDestroyElement() {
 		var player = this.element.querySelector('radio4000-player');
 		player.removeEventListener('trackChanged', this.onTrackChanged);
 		player.removeEventListener('trackEnded', this.onTrackEnded);
