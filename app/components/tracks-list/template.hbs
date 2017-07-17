@@ -2,7 +2,7 @@
 	<ol class="List{{if numbered ' List--numbered'}}">
 		{{#each groupedItems as |group|}}
 
-			<h2 class="List-title Muted">{{group.items.firstObject.createdMonth}}</h2>
+			<h2 class="List-header Muted">{{group.items.firstObject.createdMonth}}</h2>
 
 			<ol class="List{{if numbered ' List--numbered'}}">
 				{{#each group.items as |item|}}
