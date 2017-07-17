@@ -9,9 +9,8 @@
 }
 
 .Aside-toggle {
-	span {
+	.Aside-toggleBtn {
 		transform: rotateY(180deg);
-		transition: transform 300ms $easing;
 	}
 	&.is-active {
 		.Aside-toggleBtn {
@@ -19,6 +18,9 @@
 		}
 		.Aside-toggleLayer {
 			display: block;
+			@media (min-width: $layout-s) {
+				display: none;
+			}
 		}
 	}
 }
