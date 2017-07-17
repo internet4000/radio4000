@@ -72,6 +72,11 @@
 	@include size-0;
 	min-width: 2em; // equal width
 	padding: 0.45rem 0.5rem 0.4rem;
+
+	svg,
+	i {
+		margin-right: 0;
+	}
 }
 
 .Btn--large {
