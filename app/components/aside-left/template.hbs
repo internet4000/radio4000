@@ -1,33 +1,44 @@
-<div class="Tabs">
-  {{#link-to "channels" title="Find radio channels to enjoy" class="Tabs-item"}}Radios{{/link-to}}
+{{#link-to 'channels.index' class="Logo"}}
+  <h1>
+    {{!--<img class="Logo-img" src="/assets/images/icons/radio4000.svg" alt="Radio4000" title="Go to the homepage">--}}
+		<svg class="Logo-img" title="Go to the homepage" width="369" height="158" viewBox="0 0 369 158" xmlns="http://www.w3.org/2000/svg"><title>Radio4000</title><g fill="#000" fill-rule="evenodd"><path d="M352.606 44.05c-2.15-18.698-10.6-26.05-24.53-26.05C311.796 18 303 28.045 303 54.513c0 22.92 4.88 33.9 14.097 38.01 2.37 13.442 10.667 20.192 21.873 21.767 15.523 2.18 25.3-5.713 28.964-31.782 3.023-21.513-2.416-34.74-15.328-38.458zm0 0c.363 3.158.547 6.64.547 10.463 0 30.773-8.796 40.02-25.077 40.02-4.154 0-7.82-.6-10.98-2.01-.91-5.176-.944-11.346.075-18.595 3.295-23.443 16.257-32.83 31.78-30.648 1.278.18 2.497.436 3.656.77z"/><path d="M291.52 32.57c-4.616-19.75-14.395-27.276-28.855-26.518-18.844.987-28.31 15.136-26.43 51.01 1.545 29.483 7.413 44.122 17.376 49.822 3.845 7.714 10.166 11.895 17.982 13.133 16.105 2.55 30.037-8.75 35.216-41.445 4.063-25.657-2.777-40.852-15.287-46zm0 0c1.4 5.99 2.326 13.103 2.763 21.45 2.186 41.71-7.337 54.777-26.18 55.765-5.525.29-10.36-.537-14.492-2.9-4.077-8.182-5.37-20.337-2.703-37.167 4.656-29.402 18.685-41.31 34.79-38.76 2.05.324 3.998.862 5.824 1.613z"/><path d="M174.854 123.833c-12.82-7.022-19.6-25.316-19.6-63.045C155.253 16.723 167.756 0 190.903 0c14.59 0 24.952 6.645 30.62 22.593 18.843 5.393 30.827 25.36 28.328 61.1-3.16 45.164-21.627 62.163-45.007 60.528-12.937-.904-23.59-7.248-29.99-20.387zm0 0c4.588 2.514 9.95 3.583 16.05 3.583 23.146 0 35.65-15.396 35.65-66.628 0-16.29-1.708-28.842-5.03-38.195-2.572-.735-5.27-1.2-8.076-1.396-23.38-1.635-41.908 16.206-44.748 56.82-1.41 20.175.986 35.21 6.154 45.816z"/><path d="M74.84 132.078h65.414V157.5h24.15V132.08h15.592v-23.716h-15.593v-83.67h-38.98l-50.582 83.48v23.906zm21-23.385l51.29-43h.497v43H95.84z"/><path d="M0 113.168h21.382V68.255h23.79l30.107 44.913h14.757l-31.09-46.9c20.267-2.36 35.42-12.12 35.42-31.32C94.366 12.76 76.852 3 48.91 3H0v110.168zm11.11-64.61v-25.26h25.85C50.09 23.297 60 26.31 60 35.97c0 9.662-10.85 12.587-22.77 12.587H11.11z"/></g></svg>
+  </h1>
+{{/link-to}}
 
-  {{#if userChannel}}
-    {{channel-card channel=userChannel wide=true}}
-    <button {{action "addTrack"}} class="Btn Btn--important Btn--topNoRadius" title="Add a new track to your radio">Add track</button>
-  {{/if}}
+{{aside-left-toggle}}
 
-	{{#unless userChannel}}
-		<div class="Tabs-btn BtnGroup BtnGroup--full">
-			{{#if isAuthenticated}}
-				{{#link-to "channels.new" class="Btn Btn--full Btn--important" title="Create your Radio4000 channel"}}Create your radio{{/link-to}}
-			{{else}}
-				{{#link-to "auth.signup" class="Btn Btn--important" title="Sign up to Radio4000"}}Sign up{{/link-to}}
-				{{#link-to "auth.login" class="Btn" title="Log in to Radio4000"}}Log in{{/link-to}}
-			{{/if}}
-		</div>
-	{{/unless}}
+<div class="Aside-inner">
+	<div class="Tabs">
+		{{#link-to "channels" title="Find radio channels to enjoy" class="Tabs-item"}}Radios{{/link-to}}
 
-	{{#if isAuthenticated}}
-		{{#link-to "auth.settings" class="Aside-link" title="Customize your Radio4000"}}Settings{{/link-to}}
-  {{/if}}
+		{{#if userChannel}}
+			{{channel-card channel=userChannel wide=true}}
+			<button {{action "addTrack"}} class="Btn Btn--important Btn--topNoRadius" title="Add a new track to your radio">Add track</button>
+		{{/if}}
 
-  {{#link-to "about" title="Learn more about Radio4000" class="Tabs-item"}}About{{/link-to}}
-</div>
+		{{#unless userChannel}}
+			<div class="Tabs-btn BtnGroup BtnGroup--full">
+				{{#if isAuthenticated}}
+					{{#link-to "channels.new" class="Btn Btn--full Btn--important" title="Create your Radio4000 channel"}}Create your radio{{/link-to}}
+				{{else}}
+					{{#link-to "auth.signup" class="Btn Btn--important" title="Sign up to Radio4000"}}Sign up{{/link-to}}
+					{{#link-to "auth.login" class="Btn" title="Log in to Radio4000"}}Log in{{/link-to}}
+				{{/if}}
+			</div>
+		{{/unless}}
 
-<div class="Tabs Tabs--transparent Tabs--bottom">
-	{{#link-to "feedback" class="Aside-link Muted" title="Let us know what you have in mind!"}}Feedback{{/link-to}}
+		{{#if isAuthenticated}}
+			{{#link-to "auth.settings" class="Aside-link" title="Customize your Radio4000"}}Settings{{/link-to}}
+		{{/if}}
 
-  {{#if isAuthenticated}}
-    {{#link-to "auth.logout" class="Aside-link Muted" title="Log out from Radio4000"}}Log out{{/link-to}}
-  {{/if}}
+		{{#link-to "about" title="Learn more about Radio4000" class="Tabs-item"}}About{{/link-to}}
+	</div>
+
+	<div class="Tabs Tabs--transparent Tabs--bottom">
+		{{#link-to "feedback" class="Aside-link Muted" title="Let us know what you have in mind!"}}Feedback{{/link-to}}
+
+		{{#if isAuthenticated}}
+			{{#link-to "auth.logout" class="Aside-link Muted" title="Log out from Radio4000"}}Log out{{/link-to}}
+		{{/if}}
+	</div>
 </div>
