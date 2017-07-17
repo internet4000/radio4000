@@ -17,7 +17,7 @@
 		overflow: hidden;
 	}
 
-	.Aside--left {
+	.Aside--left .Aside-inner {
 		transform: translateX(0);
 	}
 
@@ -28,7 +28,6 @@
 	}
 
 	.SiteMain {
-		opacity: 0.4;
 
 		@media (min-width: $layout-s) {
 			padding-left: $sidebar-width;
