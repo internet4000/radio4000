@@ -7,8 +7,8 @@ export default Controller.extend(createTrackMixin, {
 	queryParams: ['isEmbed', 'isInverted'],
 	isEmbed: false,
 	isInverted: false,
-	showAddTrack: false,
 	newUrl: null,
+	showAddTrack: false,
 
 	actions: {
 		saveTrack(props) {
