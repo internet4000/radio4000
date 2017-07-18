@@ -40,7 +40,7 @@ For Firebase security rules, see the `private/rules` folder.
 
 ## Backend
 
-We use Firebase as our database and API. It's connected through Ember Data and [Emberfire](https://github.com/firebase/emberfire). The security rules are in the [radio4000-api](https://github.com/internet4000.com/radio4000-api) repository.
+We use Firebase as our database and API. It's connected through Ember Data and [Emberfire](https://github.com/firebase/emberfire). The security rules are in the [radio4000-api](https://github.com/internet4000/radio4000-api) repository.
 
 ## Google API
 
