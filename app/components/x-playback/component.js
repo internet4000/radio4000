@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import {EKMixin, keyUp} from 'ember-keyboard';
+import 'npm:radio4000-player';
 
 const {Component, get, set, inject, computed, on} = Ember;
 
@@ -28,8 +29,8 @@ export default Component.extend(EKMixin, {
 		player.addEventListener('channelChanged', event => this.onChannelChanged(event), {passive: false});
 	},
 
-	/* FIXME what event should we remove?
-		 they are created in an anonymous function */
+	// FIXME what event should we remove?
+	// they are created in an anonymous function
 	willDestroyElement() {
 		var player = this.element.querySelector('radio4000-player');
 		player.removeEventListener('trackChanged', this.onTrackChanged);

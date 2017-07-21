@@ -1,13 +1,11 @@
 <div class="Playback-player">
 	<!-- Do you like this player? It's open source!
-	github.com/internet4000/radio4000-player-vue -->
-	<!-- <script async src="https://rawgit.com/internet4000/radio4000-player-vue/master/dist/radio4000-player.min.js"></script> -->
-	<script async src="http://localhost:4002/dist/radio4000-player.js"></script>
+	 github.com/internet4000/radio4000-player -->
 	<radio4000-player
-			autoplay="true"
-			r4-url="true"
-			track-id={{track.id}}
-			class="{{if uiStates.isMinimized 'mini'}}"
+		autoplay="true"
+		r4-url="true"
+		track-id={{track.id}}
+		class="{{if uiStates.isMinimized 'mini'}}"
 	></radio4000-player>
 </div>
 
