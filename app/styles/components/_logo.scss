@@ -11,7 +11,6 @@
 	padding-top: 1.5rem;
 	padding-left: 0.6rem;
 	user-select: none; // don't highlight
-
 	@media (min-width: $layout-s) {
 		padding-left: 1rem;
 	}
@@ -39,8 +38,22 @@
 	vertical-align: middle;
 }
 
-.Logo svg {
+.Logo-img {
 	max-width: 100%;
 	height: auto;
 	max-height: 100%; // Safari fix
+}
+
+.Logo-img--small {
+	display: block;
+	width: 2.8rem;
+	@media (min-width: $layout-m) {
+		display: none;
+	}
+}
+.Logo-img--large {
+	display: none;
+	@media (min-width: $layout-m) {
+		display: block;
+	}
 }
