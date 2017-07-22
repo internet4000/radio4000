@@ -8,14 +8,15 @@
  */
 .Sections {
 	// Push it below the logo.
-	padding-top: 6rem;
+	padding-top: 1.5rem;
+	/* padding-top: 6rem; */
 }
 
 .Section {
 	clear: both;
 
 	// padding instead of margin - otherwise it cuts the box-shadow of .Box -_-
-	margin-bottom: 3rem;
+	margin-bottom: 2rem;
 }
 
 // Section-inner
