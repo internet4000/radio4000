@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import {moduleForComponent, test} from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
@@ -6,6 +7,7 @@ moduleForComponent('x-playback', 'Integration | Component | x playback', {
 });
 
 test('it renders', function (assert) {
+	this.register('service:session', Ember.Service.extend());
 	this.render(hbs`{{x-playback}}`);
-	assert.equal(this.$('.Playback-toggleVolume').text().trim(), 'Mute');
+	assert.equal(this.$('radio4000-player').length, 1);
 });

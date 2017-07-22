@@ -7,16 +7,17 @@
 {{/if}}
 
 {{aside-left
-	isAuthenticated=session.isAuthenticated
-	userChannel=session.currentUser.channels.firstObject
-	toggleModal=(action "toggleModal")}}
+		isAuthenticated=session.isAuthenticated
+		userChannel=session.currentUser.channels.firstObject
+		toggleModal=(action "toggleModal")}}
 
 <main class="SiteMain">
+	{{play-random-channel keyboardActivated=true}}
 	{{yield}}
 </main>
 
 <aside class="Aside Aside--right">
-	{{x-playback}}
+	{{x-playback keyboardActivated=true}}
 </aside>
 
 {{#if isShowingModal}}
@@ -25,9 +26,9 @@
 			<h2><small>Add a </small>new track<small> to your radio</small></h2>
 		</div>
 		{{track-form-add
-			initialUrl=url
-			onSubmit=(action "saveTrack")
-			onCancel=(action "toggleModal")}}
+				initialUrl=url
+				onSubmit=(action "saveTrack")
+				onCancel=(action "toggleModal")}}
 		<p>
 			Do you want to add tracks directly from YouTube?<br>
 			&rarr;<span {{action "toggleModal"}}>{{link-to "Get the bookmarklet" "bookmarklet" class="Btn Btn--text"}}</span>

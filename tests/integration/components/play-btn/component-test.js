@@ -6,15 +6,6 @@ moduleForComponent('play-btn', 'Integration | Component | play btn', {
 });
 
 test('it renders', function (assert) {
-	// Set any properties with this.set('myProperty', 'value');
-	// Handle any actions with this.on('myAction', function(val) { ... });
 	this.render(hbs`{{play-btn}}`);
-	assert.equal(this.$().text().trim(), 'Play');
-	// // Template block usage:
-	// this.render(hbs`
-	//	 {{#play-btn}}
-	//		 template block text
-	//	 {{/play-btn}}
-	// `);
-	// assert.equal(this.$().text().trim(), 'template block text');
+	assert.equal(this.$().text().trim(), '▶');
 });
