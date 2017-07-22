@@ -8,11 +8,7 @@
 	box-shadow: $box-shadow;
 
 	@media (min-width: $layout-s) {
-		// because the channel image is a bit outside (negative margin)
-		margin-top: 1.5rem;
-
-		// so logo scrolls nicely down the side
-		margin-left: 1rem;
+		margin-top: 2.5rem;
 	}
 }
 
@@ -28,6 +24,7 @@
 
 	.Channel-body {
 		width: 100%;
+		flex-grow: 1;
 		padding: 0;
 		margin: 0;
 	}
@@ -63,8 +60,8 @@
 .Channel-header {
 	background-color: $superlightgray;
 	min-height: 10rem; // visual perf
-	display: flex;
 	padding-left: 1rem;
+	display: flex;
 }
 
 .Channel-media {
@@ -74,11 +71,9 @@
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: -1.5rem;
-	display: none;
 	width: 30%;
 
 	@media (min-width: $layout-s) {
-		display: block;
 	}
 
 	@media (min-width: $layout-l) {
@@ -116,7 +111,7 @@
 
 .Channel-outlet {
 	// avoids jumps between tracks/favorites/followers
-	min-height: 5rem; 
+	min-height: 5rem;
 	padding-top: 1rem;
 }
 
@@ -156,7 +151,7 @@
 	padding-top: 0.5rem;
 	min-width: 7rem;
 
-	@media (min-width: $layout-s) {
+	@media (min-width: $layout-m) {
 		padding-right: 0;
 		margin-right: -1rem;
 	}

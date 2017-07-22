@@ -7,12 +7,7 @@
 	padding-left: 1rem;
 	padding-right: 1rem;
 
-	@media (min-width: $layout-s) {
-		padding-left: 2rem;
-		padding-right: 2rem;
-	}
-
-	@media (min-width: $layout-l) {
+	@media (min-width: $layout-m) {
 		padding-left: 2rem;
 		padding-right: 2rem;
 	}
@@ -41,6 +36,14 @@
 
 	@media (min-width: $layout-m) {
 		padding-right: 0;
+		padding-left: 0;
+	}
+}
+
+.Container--noPaddingLeft {
+	padding-left: 0;
+
+	@media (min-width: $layout-m) {
 		padding-left: 0;
 	}
 }

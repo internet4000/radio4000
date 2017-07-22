@@ -19,7 +19,7 @@
 		}
 		.Aside-toggleLayer {
 			display: block;
-			@media (min-width: $layout-s) {
+			@media (min-width: $layout-m) {
 				display: none;
 			}
 		}
@@ -45,13 +45,14 @@
 .Aside--left {
 	.Aside-toggleBtn {
 		position: fixed;
-		top: 4.8rem;
+		top: 1.5rem;
 		left: -3px;
 		z-index: 6;
+		opacity: 0.3;
 	}
 	.Aside-inner {
 		height: 100%;
-		padding-top: 6rem; // space for our top bar
+		padding-top: 5rem; // space for our top bar
 		height: 100vh;
 		padding-left: 0.7rem; // same
 		padding-right: 1rem;
@@ -63,9 +64,10 @@
 		z-index: 5;
 		width: 100%;
 		background-color: $bg-color-2;
+		min-width: 15rem;
 		max-width: 70%;
 
-		@media (min-width: $layout-s) {
+		@media (min-width: $layout-m) {
 			// transform: translate3d(0, 0, 0);
 			// overflow: hidden;
 			background-color: transparent;

@@ -41,7 +41,7 @@ export default Service.extend({
 
 	// 513px is our current breakpoint for panel to be full width.
 	isSmallScreen: computed('initialWidth', function () {
-		return this.get('initialWidth') < 513;
+		return this.get('initialWidth') < 650;
 	}),
 
 	// isPanelLeftVisible: true,

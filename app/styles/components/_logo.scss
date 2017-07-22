@@ -1,19 +1,22 @@
 .Logo {
 	background: transparent;
 	backface-visibility: hidden; // perf
-	position: fixed;
-	top: 0;
-	left: 0;
 	z-index: 6;
 	min-height: rem($bar-height);
 	transition: transform 300ms $easing2, background-color 200ms;
 	max-width: 7rem;
-	padding-top: 1.5rem;
-	padding-left: 0.6rem;
+	padding-top: 1.8rem;
+	padding-left: 2.3rem;
 	user-select: none; // don't highlight
-	@media (min-width: $layout-s) {
-		padding-left: 1rem;
+	display: none;
+
+	.Root.is-panelLeftVisible & {
+		position: fixed;
+		top: 0;
+		left: 0;
+		display: block;
 	}
+
 }
 
 .Logo h1 {
@@ -46,7 +49,7 @@
 
 .Logo-img--small {
 	display: block;
-	width: 2.8rem;
+	width: 2rem;
 	@media (min-width: $layout-m) {
 		display: none;
 	}
