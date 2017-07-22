@@ -7,12 +7,11 @@ export default Component.extend({
 	attributeBindings: ['title'],
 	classNames: ['Aside-toggle'],
 	classNameBindings: ['isToggled:is-active'],
-	title: computed('isToggled', function() {
+	title: computed('isToggled', function () {
 		if (get(this, 'isToggled')) {
-			return 'Close the navigation menu'
-		} else {
-			return 'Open the navigation menu'
+			return 'Close the navigation menu';
 		}
+		return 'Open the navigation menu';
 	}),
 	isToggled: computed.oneWay('uiStates.isPanelLeftVisible'),
 	click() {
