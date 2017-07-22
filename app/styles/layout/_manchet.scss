@@ -5,13 +5,6 @@
 .Manchet {
 	@extend %Container;
 	margin-bottom: 1rem;
-	h1 {
-		padding-left: 1rem;
-
-		.Root.is-panelLeftVisible & {
-			padding-left: 0;
-		}
-	}
 }
 
 // Reverts the default centered styles.
