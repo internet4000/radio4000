@@ -12,7 +12,7 @@
  * Panel is open
  */
 .Root.is-panelLeftVisible {
-	@media (max-width: $layout-s) {
+	@media (max-width: $layout-m) {
 		height: 100vh;
 		overflow: hidden;
 	}
@@ -20,16 +20,13 @@
 	.Aside--left .Aside-inner {
 		transform: translateX(0);
 	}
-
-	.Sections {
-		@media (min-width: $layout-s) {
-			padding-top: 4rem;
-		}
+	.Aside-toggleBtn {
+		opacity: 1;
 	}
 
 	.SiteMain {
 
-		@media (min-width: $layout-s) {
+		@media (min-width: $layout-m) {
 			padding-left: $sidebar-width;
 			opacity: 1;
 		}

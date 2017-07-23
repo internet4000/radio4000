@@ -5,13 +5,9 @@
 html {
 	@extend %font-regular;
 	font-family: "Maison Neue", $sans-fallback;
-	font-size: 14px;
-	line-height: $base-line-height;
 
-	@media (min-width: $layout-m) {
-		// 15px
-		font-size: $base-font-size;
-	}
+	font-size: $base-font-size;
+	line-height: $base-line-height;
 
 	@media (min-width: $layout-xl) {
 		font-size: 16px;
@@ -74,13 +70,9 @@ h4 {
 
 h1,
 .Title {
-	@include size-4;
+	@include size-5;
 	margin-bottom: 1rem;
 	line-height: 1.2;
-
-	@media (min-width: $layout-sm) {
-		@include size-5;
-	}
 
 	a {
 		color: $text-color;
@@ -89,11 +81,7 @@ h1,
 
 h2,
 .Subtitle {
-	@include size-3;
-
-	@media (min-width: $layout-m) {
-		@include size-4;
-	}
+	@include size-4;
 }
 
 h3 {
