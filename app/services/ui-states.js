@@ -25,6 +25,13 @@ export default Service.extend({
 		}
 		set(this, 'format', 0);
 	},
+	toggleNormalFormat() {
+		if (get(this, 'format') === 1) {
+			set(this, 'format', 1);
+			return;
+		}
+		set(this, 'format', 2);
+	},
 	toggleFullscreenFormat() {
 		if (get(this, 'format') === 2) {
 			set(this, 'format', 1);

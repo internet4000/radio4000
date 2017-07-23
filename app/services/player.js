@@ -1,191 +1,92 @@
-/* global document */
 import Ember from 'ember';
 
-const {debug, inject} = Ember;
+const {Service, inject, get, set, debug, computed} = Ember;
 
-export default Ember.Service.extend({
-	playerRandom: inject.service(),
-	playerHistory: inject.service(),
-	model: null,
-	playlist: null,
-	isLooped: true,
-	isRandom: false,
-	isPlaying: false,
+export default Service.extend({
+	store: inject.service(),
+	session: inject.service(),
+	currentTrack: null,
+	currentChannel: computed.alias('currentTrack.channel'),
+	isPlaying: computed.bool('currentTrack'),
 
-	// This caches the current playlist and sets it if it really did change (through the model)
-	// also sets the old one as inactive, and new as… active!
-	updatePlaylist(newPlaylist) {
-		const currentPlaylist = this.get('playlist');
-
-		if (currentPlaylist && Ember.isEqual(currentPlaylist.get('id'), newPlaylist.get('id'))) {
-			return;
-		}
-
-		if (currentPlaylist) {
-			currentPlaylist.set('isInPlayer', false);
-		}
-
-		newPlaylist.set('isInPlayer', true);
-		newPlaylist.get('tracks').then(tracks => {
-			this.set('playlist', newPlaylist);
-			this.get('playerRandom').setNewRandomPool(tracks);
-		});
-	},
-
-	// Play/pause activations for the current track in player (and metrics).
-	play(currentTrack = this.get('model')) {
-		this.set('isPlaying', true);
-		this.get('playerHistory').setTrackAsPlayed(currentTrack);
-	},
-
-	pause() {
-		this.set('isPlaying', false);
-	},
-
-	// Give it a track model and it'll play it
+	// play a track model
 	playTrack(model) {
 		if (!model) {
 			debug('playTrack() was called without a track.');
-			return false;
-		}
-		this.setProperties({model, isPlaying: true});
-		model.get('channel').then(channel => {
-			const trackTitle = model.get('title');
-			const channelTitle = channel.get('title');
-			this.updateMetaTitle(trackTitle, channelTitle);
-			this.updatePlaylist(channel);
-		});
-	},
-
-	/**
-		prev
-		decides which track to play
-		depends on the active play mode
-	*/
-	prev() {
-		const isRandom = this.get('isRandom');
-		if (isRandom) {
-			return this.prevRandom();
-		}
-		return this.prevNormal();
-	},
-
-	prevNormal() {
-		const playlist = this.get('playlist');
-		const prev = this.getPrev();
-		if (!prev) {
-			this.get('playerHistory').clearPlayerHistory();
-			// first is last because we have newest on top
-			return this.playTrack(playlist.get('tracks.firstObject'));
-		}
-		return this.playTrack(prev);
-	},
-
-	prevRandom() {
-		this.get('playerRandom').getPrevious().then(prev => {
-			return this.playTrack(prev);
-		});
-	},
-
-	/**
-		next
-		decide which next track is going to play
-		depends on the active play mode
-	*/
-	next() {
-		if (this.get('isRandom')) {
-			return this.nextRandom();
-		}
-		return this.nextNormal();
-	},
-
-	nextNormal() {
-		const playlist = this.get('playlist');
-		const next = this.getNext();
-		if (!next) {
-			this.get('playerHistory').clearPlayerHistory();
-			// first is last because we have newest on top
-			return this.playTrack(playlist.get('tracks.lastObject'));
-		}
-		return this.playTrack(next);
-	},
-
-	nextRandom() {
-		this.get('playerRandom').getNext().then(nextRandom => {
-			return this.playTrack(nextRandom);
-		});
-	},
-
-	// Find out which actual item has to be played
-	getNext(array = this.get('playlist.tracks')) {
-		return array.objectAt(array.indexOf(this.get('model')) - 1);
-	},
-
-	getPrev(array = this.get('playlist.tracks')) {
-		return array.objectAt(array.indexOf(this.get('model')) + 1);
-	},
-
-	/**
-		On YouTube player error
-	*/
-	onError(error) {
-		this.set('isPlaying', false);
-		debug(error);
-		if (error === 2) {
-			// dont do anything on 'invalid parameter'
 			return;
 		}
-		if (error === 150) {
-			debug('error150: georestricted track');
+		set(this, 'currentTrack', model);
+	},
+
+	onTrackChanged(event) {
+		// set channels as active/inactive/add-to-history
+		if (event.previousTrack.channel !== event.track.channel) {
+			this.channelChanged(event.previousTrack.channel, event.track.channel);
 		}
-		// otherwise skip to next
-		this.next();
-	},
 
-	/**
-		A track ended naturally
-		Application route called this.
-		A track from the player ended, without user action. It played naturally untill the end
-	*/
-	trackEnded(finishedTrack = this.get('model')) {
-		this.set('isPlaying', false);
-		// mark this track has finished
-		this.get('playerHistory').trackEnded(finishedTrack);
-		// play next track
-		return this.next();
-	},
+		// set previous track as non active
+		if (event.previousTrack.id !== undefined) {
+			get(this, 'store').findRecord('track', event.previousTrack.id).then(previousTrack => {
+				previousTrack.set('liveInCurrentPlayer', false);
+			});
+		}
 
-	/**
-		@method activateRandom
-		Random was activated
-		from clicking on shuffle in playback
-		@TODO from shuffling on a channel card
-		1- visualy clear played tracks in the current channel
-		2- set pool of tracks to be used
-		and return it so we can use it as a promise
-	 */
-	activateRandom() {
-		debug('activateRandom');
-		this.set('isRandom', true);
-		this.get('playerHistory').clearPlayerHistory();
-		return this.updateRandomPoolFromPlaylist();
-	},
-
-	deactivateRandom() {
-		debug('deactivateRandom');
-		this.set('isRandom', false);
-	},
-
-	updateRandomPoolFromPlaylist() {
-		return this.get('playlist.tracks').then(items => {
-			this.get('playerRandom').setNewRandomPool(items);
+		// set new track as played and active
+		get(this, 'store').findRecord('track', event.track.id).then(track => {
+			track.setProperties({
+				playedInCurrentPlayer: true,
+				liveInCurrentPlayer: true
+			});
 		});
 	},
 
-	updateMetaTitle(trackTitle, channelTitle) {
-		if (!document) {
-			throw new Error('no document');
+	onTrackEnded(event) {
+		console.log('onTrackEnded:event', event);
+		get(this, 'store').findRecord('track', event.track.id).then(track => {
+			track.set('finishedInCurrentPlayer', true);
+		});
+	},
+
+	channelChanged(previousChannelId, channelId) {
+		// set previous channel as not active
+		if (previousChannelId !== undefined) {
+			get(this, 'store').findRecord('channel', previousChannelId).then(channel => {
+				channel.set('isInPlayer', false);
+			});
 		}
-		document.title = `${trackTitle} on ${channelTitle}`;
+
+		// set new channel as active
+		get(this, 'store').findRecord('channel', channelId).then(channel => {
+			channel.set('isInPlayer', true);
+			return channel;
+		}).then(channel => this.updateChannelHistory(channel));
+	},
+
+	// add a channel to the History of played channels
+	updateChannelHistory(channel) {
+		console.log('updateChannelHistory');
+		const settings = get(this, 'session.currentUser.settings');
+
+		// Break if the user does not have settings (= logged out)
+		if (!settings) {
+			return;
+		}
+
+		return settings.then(settings => {
+			settings.get('playedChannels').then(history => {
+				history.addObject(channel);
+				return settings.save().then(() => {
+					debug('playlist was added to currentUser played');
+				});
+			});
+		});
+	},
+
+	// Clears the History of played channels
+	clearChannelHistory() {
+		this.get('session.currentUser.settings').then(settings => {
+			settings.set('playedChannels', []);
+			settings.save();
+		});
 	}
 });

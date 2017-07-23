@@ -78,13 +78,11 @@
 }
 
 .Aside--right {
-	flex-basis: 20rem;
 	position: fixed;
 	z-index: 2;
 	top: auto;
 	right: 1.5rem;
 	bottom: 0;
-	width: 19rem;
 	overflow: visible;
 
 	.Root.is-maximized & {

@@ -56,7 +56,8 @@ export default Model.extend(Validations, {
 
 	// Own properties
 	// property for local use only, not planned to save them
-	usedInCurrentPlayer: false,
+	liveInCurrentPlayer: false,
+	playedInCurrentPlayer: false,
 	finishedInCurrentPlayer: false,
 
 	// If the user changes the url, we need to update the YouTube id.

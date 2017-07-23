@@ -1,17 +1,2 @@
-{{isActive}}
-
-{{#if isShuffled}}
-	{{x-icon i="shuffle"}}{{if expanded ' Shuffle'}}
-{{else}}
-	{{#if nothingToPlay}}
-		Sorry, this radio is empty for now…
-	{{else}}
-		{{x-icon i='play'}}{{if expanded ' Play'}}
-	{{/if}}
-{{/if}}
-
-{{#if isLoading}}
-	<span>Loading…</span>
-{{/if}}
-
+{{#if isPlaying}}⇢{{else}}▶{{/if}}
 {{yield}}
