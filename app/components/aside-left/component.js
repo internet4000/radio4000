@@ -9,14 +9,6 @@ export default Component.extend({
 
 	isActive: computed.alias('uiStates.isPanelLeftVisible'),
 
-	click(event) {
-		const isALink = event.target.href;
-		const isActive = get(this, 'isActive');
-		if (isALink && isActive) {
-			get(this, 'uiStates').closeLeftPanelIfSmallScreen();
-		}
-	},
-
 	actions: {
 		addTrack() {
 			get(this, 'toggleModal')();
