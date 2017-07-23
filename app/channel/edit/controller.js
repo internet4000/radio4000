@@ -1,18 +1,12 @@
 import Ember from 'ember';
 import clean from 'radio4000/utils/clean';
 
-const {debug, get, Controller, computed, observer} = Ember;
+const {debug, get, Controller, computed, observer, RSVP, isEqual} = Ember;
 
 export default Controller.extend({
-	isSaving: false, // replace with ember-concurrency
+	isSaving: false,
+
 	disableSubmit: computed.or('isSaving', 'model.validations.isInvalid'),
-
-	didCacheSlug: false,
-
-	cacheSlug: computed('model.slug', function () {
-		this.cachedSlug = get(this, 'model.slug');
-		this.toggleProperty('didCacheSlug');
-	}),
 
 	updateImage: observer('newImage', function () {
 		const newImage = get(this, 'newImage');
@@ -36,38 +30,24 @@ export default Controller.extend({
 	// this could be moved to a custom slug-validator using ember-cp-validations
 	isSlugFree() {
 		const slug = clean(get(this, 'model.slug'));
+		const blacklist = ['add', 'about', 'job', 'jobs', 'blog', 'bookmarklet', 'dashboard', 'help', 'intro', 'login', '404', 'bunker', 'styleguide'];
 		const errorMessage = `Sorry, the URL "${slug}" is already taken. Please try another one.`;
 
-		return new Ember.RSVP.Promise((resolve, reject) => {
-			// Check if the slug is in our "protected routes"
-			const blacklist = ['add', 'about', 'job', 'jobs', 'blog', 'bookmarklet', 'dashboard', 'help', 'intro', 'login', '404', 'bunker', 'styleguide'];
-			if (blacklist.any(s => s === slug)) {
-				reject(new Error(errorMessage));
-			}
-			// Check the database to see if the slug is free. The filter below should not be neccesary.
-			// And since slug is already set on the channel, there can be a single duplicate.
-			this.store.query('channel', {
-				orderBy: 'slug',
-				equalsTo: slug
-			}).then(channels => {
-				const duplicates = channels.filterBy('slug', slug);
-				if (duplicates.length <= 1) {
-					resolve(slug);
-				} else {
-					reject(new Error(errorMessage));
-				}
-			});
-		});
-	},
+		if (blacklist.any(s => s === slug)) {
+			return RSVP.Promise.reject(new Error(errorMessage));
+		}
 
-	// Makes sure the slug is valid e.g. not in use by any other channel not protected and not empty
-	validateSlug() {
-		return new Ember.RSVP.Promise((resolve, reject) => {
-			this.isSlugFree().then(slug => {
-				resolve(slug);
-			}, error => {
-				reject(error);
-			});
+		// Check the database to see if the slug is free. The filter below should not be neccesary.
+		// And since slug is already set on the channel, there can be a single duplicate.
+		return this.store.query('channel', {
+			orderBy: 'slug',
+			equalTo: slug
+		}).then(query => {
+			if (query.get('firstObject')) {
+				return RSVP.Promise.reject(new Error(errorMessage));
+			} else {
+				return RSVP.Promise.resolve(slug);
+			}
 		});
 	},
 
@@ -80,28 +60,33 @@ export default Controller.extend({
 		trySave() {
 			const flashMessages = get(this, 'flashMessages');
 			const model = get(this, 'model');
+			const slug = get(model, 'slug');
+			const initialSlug = get(this, 'initialSlug');
+
+			if (!model.get('hasDirtyAttributes')) {
+				this.send('cancelEdit');
+				return;
+			}
 
 			model.validate().then(() => {
-				const slugDidChange = (this.get('cachedSlug') !== this.get('model.slug'));
 				this.set('isSaving', true);
-				if (slugDidChange) {
-					this.validateSlug().then(cleanedSlug => {
-						this.set('model.slug', cleanedSlug);
-						this.send('save');
-					}, error => {
-						Ember.debug(error);
-						flashMessages.warning(error);
-						// reset the slug
-						this.set('slug', '');
-						this.set('isSaving', false);
-					});
-				} else if (this.get('model.hasDirtyAttributes')) {
+
+				if (isEqual(initialSlug, slug)) {
 					this.send('save');
-				} else {
-					this.send('cancelEdit');
+					return;
 				}
+
+				this.isSlugFree().then(cleanedSlug => {
+					this.set('model.slug', cleanedSlug);
+					this.send('save');
+				}).catch(err => {
+					debug(err);
+					flashMessages.warning(err);
+					// reset the slug
+					this.set('slug', initialSlug);
+					this.set('isSaving', false);
+				});
 			}).catch(() => {
-				// show errors on forms, why does it not validate
 				debug('form not validating…');
 			});
 		},
@@ -121,11 +106,12 @@ export default Controller.extend({
 			channel.save().then(() => {
 				flashMessages.info('Saved');
 				// We have to transition if the slug changed. Otherwise reloading is a 404.
-				this.transitionToRoute('channel', this.get('model.slug'));
+				this.transitionToRoute('channel', channel.get('slug'));
 			}).catch(() => {
 				// This get triggered for exemple when firebase.security do not validate
 				flashMessages.warning(`Sorry, we couldn't save your radio. Please refresh your browser to try again.`);
 			}).finally(() => {
+				debug('finally');
 				// anyways, reset UI
 				this.set('isSaving', false);
 			});
