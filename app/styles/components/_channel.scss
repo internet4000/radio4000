@@ -1,5 +1,6 @@
 .Channel--detail {
 	position: relative;
+	margin-top: 1rem;
 	background-color: $slightgray;
 	border-top: 1px solid hsl(0, 0%, 85%);
 	border-left: 1px solid hsl(0, 0%, 80%);
@@ -7,8 +8,8 @@
 	border-radius: $border-radius;
 	box-shadow: $box-shadow;
 
-	@media (min-width: $layout-s) {
-		margin-top: 2.5rem;
+	@media (min-width: $layout-m) {
+		margin-top: 2rem;
 	}
 }
 
