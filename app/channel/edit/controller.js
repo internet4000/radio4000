@@ -45,9 +45,8 @@ export default Controller.extend({
 		}).then(query => {
 			if (query.get('firstObject')) {
 				return RSVP.Promise.reject(new Error(errorMessage));
-			} else {
-				return RSVP.Promise.resolve(slug);
 			}
+			return RSVP.Promise.resolve(slug);
 		});
 	},
 
@@ -68,7 +67,7 @@ export default Controller.extend({
 				return;
 			}
 
-			model.validate().then(() => {
+			model.validate().hen(() => {
 				this.set('isSaving', true);
 
 				if (isEqual(initialSlug, slug)) {
