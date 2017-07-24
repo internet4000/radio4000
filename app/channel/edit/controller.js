@@ -67,7 +67,7 @@ export default Controller.extend({
 				return;
 			}
 
-			model.validate().hen(() => {
+			model.validate().then(() => {
 				this.set('isSaving', true);
 
 				if (isEqual(initialSlug, slug)) {
