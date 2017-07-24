@@ -16,11 +16,6 @@
 	> *:not(:first-child) {
 		margin-left: 0.2em;
 	}
-
-	// no need to change player when it's small and without channel
-	.is-minimized.is-withoutPlayer & {
-		display: none;
-	}
 }
 
 
@@ -34,38 +29,4 @@
 radio4000-player {
 	font-size: 16px;
 	max-width: 300px;
-}
-
-// Minimized state.
-.is-minimized {
-	.Playback {
-		width: 200px;
-		height: 200px;
-	}
-	radio4000-player {
-		.Layout-header,
-		.TrackList,
-		.PlayerControl {
-			display: none;
-		}
-	}
-}
-
-// Fullscreen state
-.is-maximized {
-	.Playback {
-		height: 100%;
-		background: black;
-	}
-
-	.Playback-layoutButtons {
-		top: 0;
-		right: 0;
-	}
-
-	radio4000-player {
-		max-width: none;
-		height: 100vh;
-		border: 0;
-	}
 }
