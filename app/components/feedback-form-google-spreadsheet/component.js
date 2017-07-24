@@ -54,7 +54,7 @@ export default Component.extend({
 				email: get(this, 'email'),
 				userChannelId: get(this, 'userChannelId'),
 				playerChannelId: get(this, 'playerChannelId'),
-				playerTrackId: get(this, 'playerTrackId'),
+				playerTrackId: get(this, 'playerTrackId')
 			};
 
 			return $.ajax({
