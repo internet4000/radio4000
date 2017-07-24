@@ -29,22 +29,11 @@ export default Component.extend(EKMixin, {
 		player.addEventListener('channelChanged', event => this.onChannelChanged(event), {passive: false});
 	},
 
-	// FIXME what event should we remove?
-	// they are created in an anonymous function
-	willDestroyElement() {
-		var player = this.element.querySelector('radio4000-player');
-		player.removeEventListener('trackChanged', this.onTrackChanged);
-		player.removeEventListener('trackEnded', this.onTrackEnded);
-		player.removeEventListener('channelChanged', this.onChannelChanged);
-	},
-
 	onTrackChanged(event) {
-		console.info('[event:trackChanged]', event.detail);
 		get(this, 'player').onTrackChanged(event.detail[0]);
 	},
 
 	onTrackEnded(event) {
-		console.info('[event:trackEnded]', event.detail);
 		get(this, 'player').onTrackEnded(event.detail[0]);
 	},
 
