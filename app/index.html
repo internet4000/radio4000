@@ -20,7 +20,7 @@
 	{{content-for "body"}}
 
 	<div id="Radio4000" class="Radio4000"></div>
-	<noscript>Sorry, you need to enable JavaScript in your browser to use Radio4000.</noscript>
+	<noscript>Sorry, to use Radio4000 you need to enable JavaScript in your browser.</noscript>
 
 	<script async src="{{rootURL}}assets/app.js"></script>
 
@@ -30,6 +30,7 @@
 		<!-- a dummy app that appears independently from Ember and is removed by ember asap -->
 		<style>
 			.DummyApp {
+				display: none;
 				z-index: 2;
 				position: fixed;
 				top: 0;
@@ -74,8 +75,12 @@
 			</div>
 			<script>
 				var r4DummyApp = function () {
-					// Insert a random sentence to make waiting fun/less annoying
 					console.log('A human feel.');
+					// Show dummy app
+					var dummyApp = document.querySelectorAll('.DummyApp');
+					dummyApp[0].style.display = 'block';
+
+					// Insert a random sentence to make waiting fun/less annoying
 					var sentences = ['One moment, please', 'Un momento por favor', 'لحظة واحدة من فضلك', 'Une batez, mesedez', 'এক মিনিট, প্লিজ', 'Един момент моля', '稍等一会儿', 'Et øjeblik', 'Een ogenblik alstublieft', 'Unu momenton, bonvolu', 'Hetkinen', 'Un instant s\'il vous plaît', 'Einen Moment bitte', 'Μια στιγμή παρακαλώ', 'Yon sèl moman, tanpri', 'कृपया एक क्षण', 'Nóiméad amháin, le do thoil', 'Un momento per favore', '少々お待ちください', 'Uno momento, placet', 'Et øyeblikk', 'Chwileczkę', 'Um momento por favor', 'Один момент, пожалуйста', 'Wakati mmoja, tafadhali', 'Ett ögonblick tack', 'กรุณารอสักครู่', 'Bir dakika lütfen', 'Un funud, os gwelwch yn dda', 'Omunye mzuzu, sicela'];
 					var randomSentence = sentences[Math.floor(Math.random() * sentences.length)];
 					var slogan = document.querySelectorAll('.DummyApp-slogan');
