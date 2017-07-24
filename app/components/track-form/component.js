@@ -41,11 +41,7 @@ export default Component.extend({
 	fetchTitle: task(function * () {
 		const track = get(this, 'track');
 		const ytid = track.get('ytid');
-		const endpoint = `https://www.googleapis.com/youtube/v3/videos?
-			id=${ytid}
-			&key=${config.youtubeApiKey}
-			&fields=items(id,snippet(title))
-			&part=snippet`;
+		const endpoint = `https://www.googleapis.com/youtube/v3/videos?id=${ytid}&key=${config.youtubeApiKey}&fields=items(id,snippet(title))&part=snippet`.trim();
 
 		yield timeout(1000);
 

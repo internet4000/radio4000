@@ -12,10 +12,8 @@ Router.map(function () {
 	this.route('about', function () {
 		this.route('intro', {path: '/'});
 		this.route('contact');
-		this.route('technology');
 	});
 	this.route('dashboard');
-	this.route('help');
 	this.route('404');
 	this.route('styleguide', function () {
 		this.route('typography');

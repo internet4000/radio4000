@@ -38,20 +38,11 @@ To deploy to production aka https://radio4000.com:
 
 For Firebase security rules, see the `private/rules` folder.
 
-## Icons
-
-Make sure gulp is installed globally with `yarn global add gulp-cli`.
-
-1. Place svg icons in `public/assets/images/icons`
-2. Run `gulp icons` to update the SVG sprites.
-
-If your icon is called `hello-world.svg` you can add `class="icon-hello-world"` to an element to use it.
-
 ## Backend
 
-We use Firebase as our database and API. It's connected through Ember Data and [Emberfire](https://github.com/firebase/emberfire). The security rules are in the [radio4000-api](https://github.com/internet4000.com/radio4000-api) repository.
+We use Firebase as our database and API. It's connected through Ember Data and [Emberfire](https://github.com/firebase/emberfire). The security rules are in the [radio4000-api](https://github.com/internet4000/radio4000-api) repository.
 
 ## Google API
 
-We're using the YouTube API to detect video titles etc. If you run into trouble with permissions or domains, check here https://console.developers.google.com/project/much-play/
+We use the YouTube API to detect video titles etc. If you run into trouble with permissions or domains, check here https://console.developers.google.com/project/much-play/.
 

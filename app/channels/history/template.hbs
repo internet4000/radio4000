@@ -1,36 +1,5 @@
 <section class="Section">
 	<div class="Container Container--full">
-		<div class="Grid">
-			<div class="Grid-cell">
-				<p>This is your listening history.</p>
-				<p>Radios you listened to will appear here, so you can continue later.</p>
-				{{#if session.isAuthenticated}}
-					{{#btn-group}}
-						<button class="Btn" {{action 'clearChannelHistory'}}>Delete all my history</button>
-					{{/btn-group}}
-				{{/if}}
-				<p class="Muted">This page is private, only you can see it.</p>
-			</div>
-
-			{{#if model.userSettings.playedChannels}}
-				<div class="Container Container--full">
-					{{#each-grid items=model.userSettings.playedChannels as |item|}}
-						{{channel-card channel=item}}
-					{{/each-grid}}
-					{{#btn-group}}
-						<button class="Btn" {{action 'clearChannelHistory'}}>Clear my listening history</button>
-					{{/btn-group}}
-				</div>
-			{{else}}
-				<div class="Container">
-					{{#if session.isAuthenticated}}
-						<p>Radios you listen to will appear here so you can continue listening later.</p>
-					{{else}}
-						<p>When you register, you'll be able to find your listening history here. You can always come back here and continue your music listening where you left off.</p>
-						<p><a href="{{href-to 'auth.login'}}">Register or log in</a>.</p>
-					{{/if}}
-				</div>
-			{{/if}}
-		</div>
+		{{channels-history items=model.userSettings.playedChannels}}
 	</div>
 </section>

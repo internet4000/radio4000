@@ -5,6 +5,12 @@
 .Manchet {
 	@extend %Container;
 	margin-bottom: 1rem;
+	h1 {
+		padding-left: 1rem;
+		@media (min-width: $layout-m) {
+			padding-left: 0;
+		}
+	}
 }
 
 // Reverts the default centered styles.

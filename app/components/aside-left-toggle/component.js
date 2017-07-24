@@ -1,17 +1,21 @@
 import Ember from 'ember';
 
-const {Component, inject, computed} = Ember;
+const {Component, inject, computed, get} = Ember;
 
 export default Component.extend({
 	uiStates: inject.service(),
-	tagName: ['button'],
 	attributeBindings: ['title'],
-	classNames: ['AsideLeftToggle', 'Btn', 'Btn--small'],
-	classNameBindings: ['isToggled:Btn--isActive'],
-	title: 'Toggle the visibility of the navigation menu',
+	classNames: ['Aside-toggle'],
+	classNameBindings: ['isToggled:is-active'],
+	title: computed('isToggled', function () {
+		if (get(this, 'isToggled')) {
+			return 'Close the navigation menu';
+		}
+		return 'Open the navigation menu';
+	}),
 	isToggled: computed.oneWay('uiStates.isPanelLeftVisible'),
 	click() {
-		this.get('uiStates').togglePanelLeft();
+		get(this, 'uiStates').togglePanelLeft();
 	},
 	html: '<'
 });

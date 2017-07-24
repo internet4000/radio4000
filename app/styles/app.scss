@@ -57,20 +57,14 @@
 @import "components/provider-account";
 @import "components/login";
 @import "components/page-welcome";
+@import "components/playback";
 @import "components/playback-external";
 @import "components/play-pause";
-@import "components/radio-bot";
 @import "components/search";
 @import "components/filters";
 @import "components/flash-messages";
 @import "components/modal-dialog";
-
-// Header area
 @import "components/logo";
-
-// Footer area
-@import "components/playback";
-@import "components/player";
 
 // Major UI States or the UI
 @import "layout/root";

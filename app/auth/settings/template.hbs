@@ -2,13 +2,14 @@
 	<section class="Section">
 		<header class="Manchet">
 			<h1>General <small>settings</small></h1>
+			<p class="Muted">Customize your user experience</p>
 		</header>
 	</section>
 
 	{{#if currentUser.email}}
 		<section class="Section">
 			<div class="Container">
-					<h3>Email</h3>
+					<h2>Email</h2>
 
 					<form class="ProviderAccount" {{action "updateEmail" newEmail on="submit"}}>
 						<label class="ProviderAccount-body">
@@ -27,7 +28,7 @@
 
 	<section class="Section">
 		<div class="Container">
-			<h3>Accounts</h3>
+			<h2>Accounts</h2>
 			<p>Manage the accounts you can use to login Radio4000.</p>
 
 			{{account-provider-list
@@ -66,7 +67,7 @@
 
 	<section class="Section">
 		<div class="Container">
-			<h3>Delete my Radio4000 account</h3>
+			<h2>Delete my Radio4000 account</h2>
 			{{auth-delete-account
 				firebaseApp=firebaseApp
 				user=session.currentUser

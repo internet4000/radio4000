@@ -2,59 +2,86 @@
  * Minimal ui styles for some of our major steps
  * body class is added with the service 'uiStates'
  **/
+
 .Root {
 	display: flex;
 	flex-wrap: nowrap;
 	flex-direction: row;
 }
 
+
 /**
  * Panel is open
  */
+
 .Root.is-panelLeftVisible {
-	@media (max-width: $layout-s) {
+	@media (max-width: $layout-m) {
 		height: 100vh;
 		overflow: hidden;
 	}
 
-	.Aside--left {
+	.Aside--left .Aside-inner {
 		transform: translateX(0);
 	}
-
-	.Sections {
-		@media (min-width: $layout-s) {
-			padding-top: 4rem;
-		}
+	.Aside-toggleBtn {
+		opacity: 1;
 	}
 
 	.SiteMain {
-		opacity: 0.4;
-
-		@media (min-width: $layout-s) {
+		@media (min-width: $layout-m) {
 			padding-left: $sidebar-width;
 			opacity: 1;
 		}
 	}
 }
 
+
+/*
+	 Player is in maximized state
+ */
+
 .Root.is-maximized {
 	max-height: 100vh;
 	overflow: hidden;
+
+	.Playback {
+		height: 100%;
+		background: black;
+	}
+	.TrackList-list {
+		height: calc(100vh - 85px);
+	}
+
+	.Playback-layoutButtons {
+		top: 0;
+		right: 0;
+	}
+
+	radio4000-player {
+		max-width: none;
+		height: 100vh;
+		border: 0;
+	}
 }
+
+.Root.is-minimized {
+	.Playback {
+		width: 200px;
+		height: 200px;
+	}
+	radio4000-player {
+		.Header,
+		.TrackList,
+		.PlayerControl {
+			display: none;
+		}
+	}
+}
+
 
 /**
  * Player
  */
-.Root.is-withPlayer {
-	.SiteMain {
-		order: 2;
-		padding-top: 0;
-	}
-
-	.Player {
-		order: 1;
-	}
-}
 
 .Root.is-withoutPlayer {
 	.Aside--right {

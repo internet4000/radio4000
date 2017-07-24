@@ -11,6 +11,11 @@ export default Route.extend(ownerRouteMixin, {
 		});
 	},
 
+	setupController(controller, model) {
+		this._super(controller, model);
+		controller.set('initialSlug', model.get('slug'));
+	},
+
 	// Clear any unsaved changes.
 	deactivate() {
 		this.modelFor('channel').rollbackAttributes();
