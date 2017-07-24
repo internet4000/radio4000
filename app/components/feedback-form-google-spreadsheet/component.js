@@ -17,6 +17,7 @@ const {
 
 export default Component.extend({
 	session: inject.service(),
+	player: inject.service(),
 	flashMessages: inject.service(),
 
 	message: '',
@@ -30,6 +31,12 @@ export default Component.extend({
 	notValid: computed.empty('message'),
 	userChannelId: computed('session.currentUser.channels.firstObject.id', function () {
 		return get(this, 'session.currentUser.channels.firstObject.id') || '';
+	}),
+	playerChannelId: computed('player.currentChannel.id', function () {
+		return get(this, 'player.currentChannel.id') || '';
+	}),
+	playerTrackId: computed('player.currentTrack', function () {
+		return get(this, 'player.currentTrack.id') || '';
 	}),
 
 	clearData() {
@@ -45,7 +52,9 @@ export default Component.extend({
 			const data = {
 				message: get(this, 'message'),
 				email: get(this, 'email'),
-				userChannelId: get(this, 'userChannelId')
+				userChannelId: get(this, 'userChannelId'),
+				playerChannelId: get(this, 'playerChannelId'),
+				playerTrackId: get(this, 'playerTrackId'),
 			};
 
 			return $.ajax({
