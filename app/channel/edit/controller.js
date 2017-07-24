@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import clean from 'radio4000/utils/clean';
+import reservedUrls from 'radio4000/utils/reserved-urls';
 
 const {debug, get, Controller, computed, observer, RSVP, isEqual} = Ember;
 
@@ -30,10 +31,9 @@ export default Controller.extend({
 	// this could be moved to a custom slug-validator using ember-cp-validations
 	isSlugFree() {
 		const slug = clean(get(this, 'model.slug'));
-		const blacklist = ['add', 'about', 'job', 'jobs', 'blog', 'bookmarklet', 'dashboard', 'help', 'intro', 'login', '404', 'bunker', 'styleguide'];
 		const errorMessage = `Sorry, the URL "${slug}" is already taken. Please try another one.`;
 
-		if (blacklist.any(s => s === slug)) {
+		if (reservedUrls.any(s => s === slug)) {
 			return RSVP.Promise.reject(new Error(errorMessage));
 		}
 
