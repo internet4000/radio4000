@@ -27,6 +27,10 @@ RSVP.on('error', err => {
 	Ember.assert(false, err);
 });
 
+// Expose the databaseURL so `radio4000-player` can catch it.
+window.r4 = {}
+window.r4.databaseURL = config.firebase.databaseURL
+
 loadInitializers(App, config.modulePrefix);
 
 export default App;
