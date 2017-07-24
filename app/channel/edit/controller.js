@@ -91,16 +91,13 @@ export default Controller.extend({
 		},
 
 		deleteImage() {
-			this.get('model.coverImage').destroyRecord().then(() => {
-				debug('Deleted channel image.');
-			});
+			return this.get('model.coverImage').destroyRecord();
 		},
 
 		// Saves the channel
 		save() {
 			const channel = this.get('model');
 			const flashMessages = Ember.get(this, 'flashMessages');
-			debug('channel route save');
 
 			channel.save().then(() => {
 				flashMessages.info('Saved');
@@ -110,15 +107,12 @@ export default Controller.extend({
 				// This get triggered for exemple when firebase.security do not validate
 				flashMessages.warning(`Sorry, we couldn't save your radio. Please refresh your browser to try again.`);
 			}).finally(() => {
-				debug('finally');
-				// anyways, reset UI
 				this.set('isSaving', false);
 			});
 		},
 
 		// used by 'ESC' key in the view
 		cancelEdit() {
-			debug('Cancel edit --> channel');
 			this.transitionToRoute('channel', this.get('model'));
 			this.set('isSaving', false);
 		}
