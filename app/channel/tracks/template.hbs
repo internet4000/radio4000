@@ -1,0 +1,42 @@
+<div class="Channel-outlet">
+	{{#if canEdit}}
+		<div class="Container">
+			{{track-add-inline addTrackUrl=addTrackUrl
+				onSubmit=(action "addTrack")}}
+		</div>
+	{{/if}}
+
+	{{#if isEditing}}
+		{{#modal-dialog close="closeModals"}}
+			{{track-edit
+				track=trackToEdit
+				onSubmit=(action "updateTrack")
+				onCancel=(action "closeModals")
+				onDeleteTrack=(action "deleteTrack")}}
+		{{/modal-dialog}}
+	{{/if}}
+
+	{{#if tracks.isLoaded}}
+		{{#tracks-list items=tracks grouped=true numbered=false as |item|}}
+			{{track-item
+				track=item
+				canEdit=canEdit
+				edit=(action "startEditingTrack")
+				onTransition="transitionToTrack"}}
+		{{/tracks-list}}
+
+		{{#unless canEdit}}
+			{{#unless tracks.length}}
+				<div class="Container Section--space">
+				  <p>Ooh, there are no tracks in this radio yet.</p>
+				</div>
+			{{/unless}}
+		{{/unless}}
+	{{else}}
+		<div class="Container Section--space">
+			{{is-loading}}
+		</div>
+	{{/if}}
+
+	{{outlet}}
+</div>
