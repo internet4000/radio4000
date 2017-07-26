@@ -17,7 +17,6 @@ body {
 	So all child of .Root bellow follow this behavior
  */
 .SiteMain {
-	transform: translateZ(0); // improve scrolling performance. Especially on long lists.
 	min-height: 100vh;
 	width: 100%;
 	flex: 2;
@@ -32,4 +31,3 @@ body {
 	user-select: none;
 	cursor: n-resize;
 }
-

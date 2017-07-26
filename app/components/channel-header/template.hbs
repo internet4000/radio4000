@@ -1,18 +1,28 @@
-<div class="Channel-header">
-	<div class="Channel-media" title="Image for {{model.title}}">
-		{{#if canEdit}}
-			{{#link-to 'channel.edit' channel}}
-				<div class="Channel-cover">
-					{{channel-cover src=channel.coverImage.src}}
-				</div>
-			{{/link-to}}
-		{{else}}
+<div class="Channel-media" title="Image for {{model.title}}">
+	{{#if canEdit}}
+		{{#link-to 'channel.edit' channel}}
 			<div class="Channel-cover">
 				{{channel-cover src=channel.coverImage.src}}
 			</div>
-		{{/if}}
-	</div>
+		{{/link-to}}
+	{{else}}
+		<div class="Channel-cover">
+			{{channel-cover src=channel.coverImage.src}}
+		</div>
+	{{/if}}
+</div>
 
+<div class="BtnGroup BtnGroup--vertical Channel-buttons">
+	{{play-shuffle-btn channel=channel expanded=true class="Channel-playback"}}
+	{{#unless canEdit}}
+		{{btn-favorite
+				onClick=(perform toggleFavorite)
+				isIdle=isIdle
+				isFavorite=isFavorite}}
+	{{/unless}}
+</div>
+
+<div class="Channel-header">
 	<div class="Channel-body">
 		<div class="Channel-titleSection">
 			<div class="Channel-titleGroup">
@@ -39,15 +49,5 @@
 				</p>
 			{{/if}}
 		</div>
-	</div>
-
-	<div class="BtnGroup BtnGroup--vertical Channel-buttons">
-		{{play-shuffle-btn channel=channel expanded=true class="Channel-playback"}}
-		{{#unless canEdit}}
-			{{btn-favorite
-					onClick=(perform toggleFavorite)
-					isIdle=isIdle
-					isFavorite=isFavorite}}
-		{{/unless}}
 	</div>
 </div>

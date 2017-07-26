@@ -73,12 +73,15 @@
 .Tabs--horizontal {
 	flex-flow: row wrap;
 	text-align: center;
+	position: fixed;
+	top: 0;
 
 	@media (min-width: $layout-s) {
 		max-width: 90%;
 	}
 
 	.Tabs-item {
+		white-space: nowrap;
 		border-radius: $border-radius;
 		flex-grow: 1;
 		border-right: 0;

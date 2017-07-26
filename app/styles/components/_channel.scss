@@ -83,25 +83,7 @@
 }
 
 .Channel-body {
-	@include clearfix;
-	padding-left: 1rem;
-	padding-top: 2rem;
-	padding-right: 1rem;
-
-	@media (min-width: $layout-s) {
-		position: relative;
-		margin-bottom: 1rem;
-		float: left;
-		width: 70%;
-	}
-
-	@media (min-width: $layout-m) {
-		width: 67%;
-	}
-
-	@media (min-width: $layout-l) {
-		width: 65%;
-	}
+	padding: 1.5rem 1rem 1rem;
 }
 
 .Channel-outlet {
@@ -142,8 +124,7 @@
 }
 
 .Channel-buttons {
-	padding-right: 0.52rem;
-	padding-top: 0.5rem;
+	padding: 0.5rem;
 	min-width: 7rem;
 
 	@media (min-width: $layout-m) {
