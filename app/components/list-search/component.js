@@ -4,23 +4,30 @@ import stringContains from 'radio4000/utils/string-contains';
 
 const {get, isBlank} = Ember;
 
-export default Ember.Component.extend({
-	tagName: 'form',
-	classNames: ['Search'],
+export default Ember.TextField.extend({
+	classNames: ['ListSearch'],
+	type: 'search',
+	items: [],
 
-	// list: [],
-	// query: '',
+	input() {
+		const value = get(this, 'value');
+		get(this, 'search').perform(value);
+	},
 
 	search: task(function * (query) {
-		const list = get(this, 'list');
-		let results;
+		let results = null;
+		const items = get(this, 'items');
 
-		if (isBlank(query)) {
-			results = null;
-			if (this.attrs.afterSearching) {
-				this.attrs.afterSearching(results);
-			}
-			return results;
+		if (!isBlank(query)) {
+			results = items.filter(item => {
+				let title = get(item, 'title');
+				let body = get(item, 'body');
+				return stringContains(title, query) || stringContains(body, query);
+			});
+		}
+
+		if (get(this, 'afterSearching')) {
+			get(this, 'afterSearching')(results);
 		}
 
 		// Pause here for DEBOUNCE_MS milliseconds. Because this
@@ -28,18 +35,9 @@ export default Ember.Component.extend({
 		// the current search will be canceled at this point and
 		// start over from the beginning. This is the
 		// ember-concurrency way of debouncing a task.
-		yield timeout(250);
-
-		results = list.filter(item => {
-			let title = get(item, 'title');
-			let body = get(item, 'body');
-			return stringContains(title, query) || stringContains(body, query);
-		});
-
-		if (this.attrs.afterSearching) {
-			this.attrs.afterSearching(results);
-		}
+		yield timeout(100);
 
 		return results;
-	}).restartable()
+	}).keepLatest()
 });
+
