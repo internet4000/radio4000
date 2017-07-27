@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
 
 	actions: {
 		transitionToTrack(track) {
-			this.transitionToRoute('track', track);
+			this.transitionToRoute('tracks.track', track);
 		},
 		closeModals() {
 			this.setProperties({

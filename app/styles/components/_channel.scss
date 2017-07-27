@@ -1,6 +1,6 @@
 .Channel--detail {
 	position: relative;
-	margin-top: 1rem;
+	margin-top: 3rem;
 
 	@media (min-width: $layout-m) {
 		margin-top: 2rem;
@@ -61,6 +61,7 @@
 
 .Channel-media {
 	@include clearfix;
+
 	float: left;
 	margin-top: -1rem;
 	margin-left: auto;
@@ -68,12 +69,12 @@
 	margin-top: -1.5rem;
 	width: 30%;
 
-	@media (min-width: $layout-s) {
-	}
-
-	@media (min-width: $layout-l) {
-		width: 35%;
-	}
+	// position: fixed;
+	// top: 0;
+	// right: 0;
+	// left: 0;
+	// bottom: 0;
+	// z-index: -1;
 }
 
 .Channel-cover {

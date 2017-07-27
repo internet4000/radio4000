@@ -26,8 +26,9 @@ Router.map(function () {
         this.route('new');
         this.authenticatedRoute('history');
     });
-    this.route('channel', {path: '/:channel_slug'}, function () {
-      this.route('index', {path: '/'}, function () {
+  this.route('channel', {path: '/:channel_slug'}, function () {
+		  this.route('index', {path: '/'});
+      this.route('tracks', function () {
           this.route('track', {path: ':track_id', resetNamespace: true});
       });
       this.authenticatedRoute('add');
@@ -36,7 +37,6 @@ Router.map(function () {
       this.route('dashboard');
       this.route('favorites');
       this.route('followers');
-      this.route('tracks');
     });
     this.route('feedback');
     this.authenticatedRoute('add');
