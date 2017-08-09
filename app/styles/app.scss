@@ -47,7 +47,8 @@
 @import "components/tabs";
 @import "components/banner";
 @import "components/note";
-@import "components/list"; // @todo refactor
+@import "components/list";
+@import "components/list-search";
 @import "components/loader";
 @import "components/cover";
 @import "components/image-upload";
@@ -60,7 +61,6 @@
 @import "components/playback";
 @import "components/playback-external";
 @import "components/play-pause";
-@import "components/search";
 @import "components/filters";
 @import "components/flash-messages";
 @import "components/modal-dialog";
