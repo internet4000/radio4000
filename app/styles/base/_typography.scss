@@ -5,6 +5,7 @@
 html {
 	@extend %font-regular;
 	font-family: "Maison Neue", $sans-fallback;
+	font-display: swap;
 
 	font-size: $base-font-size;
 	line-height: $base-line-height;
