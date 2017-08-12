@@ -67,6 +67,37 @@
 
 	<section class="Section">
 		<div class="Container">
+			<h2>Premium</h2>
+			<p>Radio4000 will always be free to use.</p>
+			<p>
+				To support the team in creating the best music experience, you can upgrade to a premium Radio4000 account.
+				For <strong>14€, one time payment</strong>, access all Radio4000 features; <strong>pay once, enjoy Radio4000 for ever.</strong>
+			</p>
+			<p>What you get:</p>
+			<ul>
+				<li>reblog music from a radio channel to yours</li>
+				<li>filter tracks in radios channels by their data and tags</li>
+				<li>analyse channels and their music</li>
+				<li>every future features the team will develop</li>
+				<li>the satisfaction of supporting a great open source project</li>
+			</ul>
+			<form action="/your-server-side-code" method="POST">
+				<script
+						src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+						data-key="pk_test_Ti8aYhMv1as1ZrbaZzaI8QOk"
+						data-amount="1400"
+						data-name="Radio4000.com"
+						data-description="Pay once, enjoy Radio4000 premium features for ever, and ever"
+						data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+						data-locale="auto"
+						data-zip-code="true">
+				</script>
+			</form>
+		</div>
+	</section>
+
+	<section class="Section">
+		<div class="Container">
 			<h2>Delete my Radio4000 account</h2>
 			{{auth-delete-account
 				firebaseApp=firebaseApp
