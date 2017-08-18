@@ -2,12 +2,13 @@
 	<section class="Section">
 		<header class="Manchet">
 			<h1>General <small>settings</small></h1>
-			<p class="Muted">Customize your user experience</p>
-			<nav class="Tabs Tabs--horizontal">
+		</header>
+		<div class="Container">
+			<nav class="Tabs Tabs--horizontal Tabs--animated">
 				{{link-to 'Account' 'auth.settings.account' class="Tabs-item"}}
 				{{link-to 'Payments' 'auth.settings.payments' class="Tabs-item"}}
 			</nav>
-		</header>
+		</div>
 	</section>
 
 	{{outlet}}

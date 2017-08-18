@@ -1,8 +1,9 @@
 import Ember from 'ember';
 
-const { Controller } = Ember;
+const { Controller, computed } = Ember;
 
 export default Controller.extend({
+	userChannel: computed.alias('session.currentUser.channels.firstObject'),
 	actions: {
 		processStripeToken(token, args) {
 			console.log('token & args', token, args);
