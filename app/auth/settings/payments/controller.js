@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { Controller, computed } = Ember;
+const { Controller, computed, get } = Ember;
 
 export default Controller.extend({
 	userChannel: computed.alias('session.currentUser.channels.firstObject'),
@@ -29,16 +29,19 @@ export default Controller.extend({
 		 * the user processed
 		 */
 		processStripeToken(card, args) {
-			console.log('card', card);
-			console.log('args', args);
+			const charge = {
+				stripeCard: card,
+				radio4000ChannelId: get(this, 'userChannel.id')
+			}
+
 			fetch('http://localhost:3000/payments', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify(card)
+				body: JSON.stringify(charge)
 			}).then(response => {
-				console.log("response", response)
+				console.log("@processStripeToken:response", response)
 			})
 		}
 	}
