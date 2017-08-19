@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { Controller, computed, get } = Ember;
+const {Controller, computed, get} = Ember;
 
 export default Controller.extend({
 	userChannel: computed.alias('session.currentUser.channels.firstObject'),
@@ -28,18 +28,17 @@ export default Controller.extend({
 		 * `response` Object is the charged transaction
 		 * the user processed
 		 */
-		processStripeToken(card, args) {
+		processStripeToken(card) {
 			const messages = get(this, 'flashMessages');
 			const charge = {
 				stripeCard: card,
 				radio4000ChannelId: get(this, 'userChannel.id')
-			}
+			};
 
 			messages.add({
 				message: '(1/2) - Card authorized. Proceeding to payment',
 				type: 'success',
-				sticky: true,
-				/* timeout: 8000,*/
+				sticky: true
 			});
 
 			fetch('http://localhost:3000/payments', {
@@ -49,25 +48,25 @@ export default Controller.extend({
 				},
 				body: JSON.stringify(charge)
 			}).then(response => {
-				console.log("@processStripeToken:response", response)
+				console.log('@processStripeToken:response', response);
 
-				if(response.status > 299 ) {
-					throw Error(response)
+				if (response.status > 299) {
+					throw Error(response);
 				}
 
 				messages.add({
 					type: 'success',
 					message: '(2/2) - Payment success. Channel upgraded. Thank you!',
-					sticky: true,
+					sticky: true
 				});
 			}).catch(error => {
 				messages.add({
 					type: 'alert',
 					message: '(2/2) - Payment failed (on the server). Card was not charged.',
-					sticky: true,
+					sticky: true
 				});
-				console.log(error)
-			})
+				console.log(error);
+			});
 		}
 	}
 });
