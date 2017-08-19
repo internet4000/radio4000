@@ -51,6 +51,10 @@ export default Controller.extend({
 			}).then(response => {
 				console.log("@processStripeToken:response", response)
 
+				if(response.status > 299 ) {
+					throw Error(response)
+				}
+
 				messages.add({
 					type: 'success',
 					message: '(2/2) - Payment success. Channel upgraded. Thank you!',
@@ -62,7 +66,7 @@ export default Controller.extend({
 					message: '(2/2) - Payment failed (on the server). Card was not charged.',
 					sticky: true,
 				});
-				console.log('error')
+				console.log(error)
 			})
 		}
 	}
