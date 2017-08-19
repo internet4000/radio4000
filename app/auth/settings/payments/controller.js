@@ -29,10 +29,18 @@ export default Controller.extend({
 		 * the user processed
 		 */
 		processStripeToken(card, args) {
+			const messages = get(this, 'flashMessages');
 			const charge = {
 				stripeCard: card,
 				radio4000ChannelId: get(this, 'userChannel.id')
 			}
+
+			messages.add({
+				message: '(1/2) - Card authorized. Proceeding to payment',
+				type: 'success',
+				sticky: true,
+				/* timeout: 8000,*/
+			});
 
 			fetch('http://localhost:3000/payments', {
 				method: 'POST',
@@ -42,6 +50,19 @@ export default Controller.extend({
 				body: JSON.stringify(charge)
 			}).then(response => {
 				console.log("@processStripeToken:response", response)
+
+				messages.add({
+					type: 'success',
+					message: '(2/2) - Payment success. Channel upgraded. Thank you!',
+					sticky: true,
+				});
+			}).catch(error => {
+				messages.add({
+					type: 'alert',
+					message: '(2/2) - Payment failed (on the server). Card was not charged.',
+					sticky: true,
+				});
+				console.log('error')
 			})
 		}
 	}
