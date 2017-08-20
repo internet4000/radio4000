@@ -1,13 +1,21 @@
 <div class="Container Container--full">
-	<p>@{{model.slug}}</p>
-	{{#if model.updated}}
-		<p>
-			<time class="Channel-date" title="{{model.title}} added music {{time-ago model.updated}}">Updated {{time-ago model.updated}}</time>
-		</p>
-	{{/if}}
-	<p>
-		{{model.body}}
-	</p>
+	<div class="Grid">
+		<article class="Grid-cell">
+			{{channel-cover src=model.coverImage.src}}
+		</article>
+		<article class="Grid-cell Grid-cell--double">
+			<p>@{{model.slug}}</p>
+			{{#if model.updated}}
+				<p>
+					<time class="Channel-date" title="{{model.title}} added music {{time-ago model.updated}}">Updated {{time-ago model.updated}}</time>
+				</p>
+			{{/if}}
+			<p>
+				{{model.body}}
+			</p>
+		</article>
+	</div>
+
 	<!-- <div class="Grid">
 			 <article class="Grid-cell">
 			 {{channel-card channel=model}}

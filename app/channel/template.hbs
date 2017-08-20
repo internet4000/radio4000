@@ -1,35 +1,31 @@
 <div class="Sections">
 	<section class="Section">
 		<div class="Manchet">
-			<h1>
-				{{#link-to 'channel' model}}
-					{{model.title}}
-				{{/link-to}}
-			</h1>
-		</div>
-
-		<div class="Container">
 			<nav class="Tabs Tabs--horizontal Tabs--animated">
-				{{#link-to 'channel.index' class="Tabs-item" title="All tracks"}}
-					<!-- <span>{{model.title}}</span> -->
-					Infos
+				{{#link-to 'channel.index' model class="Tabs-item Tabs-item--transparent"}}
+					<h1>
+						{{model.title}}
+					</h1>
 				{{/link-to}}
-				{{#link-to 'channel.tracks' class="Tabs-item" title="All tracks"}}
+				{{#link-to 'channel.tracks' class="Tabs-item Tabs-item--transparent" title="All tracks"}}
 					Tracks <span class="Muted">({{model.totalTracks}})</span>
 				{{/link-to}}
-				{{#link-to 'channel.favorites' class="Tabs-item" title="Favorites of this radio"}}
+				{{#link-to 'channel.favorites' class="Tabs-item Tabs-item--transparent" title="Favorites of this radio"}}
 					Favorites
 				{{/link-to}}
 				{{#if canEdit}}
-					{{#link-to 'channel.followers' class="Tabs-item" title="Followers of this radio"}}
+					{{#link-to 'channel.followers' class="Tabs-item Tabs-item--transparent" title="Followers of this radio"}}
 						Followers
 					{{/link-to}}
 					<div class="Tabs-divider">|</div>
-					{{#link-to 'channel.edit' class="Tabs-item" title="Edit your radio"}}
+					{{#link-to 'channel.edit' class="Tabs-item Tabs-item--transparent" title="Edit your radio"}}
 						Edit
 					{{/link-to}}
 				{{/if}}
 			</nav>
+		</div>
+
+		<div class="Container">
 		</div>
 	</section>
 	<section class="Section">

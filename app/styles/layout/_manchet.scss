@@ -5,8 +5,12 @@
 .Manchet {
 	@extend %Container;
 	margin-bottom: 1rem;
+	display: flex;
+	/* align-items: center; */
+	flex-wrap: wrap;
 	h1 {
 		padding-left: 1rem;
+		margin-bottom: 0;
 		@media (min-width: $layout-m) {
 			padding-left: 0;
 		}
