@@ -44,7 +44,7 @@ export default Component.extend({
 		const ytid = track.get('ytid');
 		const url = `https://www.googleapis.com/youtube/v3/videos?id=${ytid}&key=${config.youtubeApiKey}&fields=items(id,snippet(title))&part=snippet`;
 		const response = yield fetch(url);
-		const data = yield response.json()
+		const data = yield response.json();
 		if (!data.items.length) {
 			debug('Could not find title for track');
 			return;
