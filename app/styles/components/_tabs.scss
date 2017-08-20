@@ -50,9 +50,9 @@
 		text-transform: uppercase;
 		font-weight: 400;
 	}
-}
-.Tabs-item--transparent {
-	border-color: transparent;
+	&.Tabs-item--transparent {
+		background-color: transparent;
+	}
 }
 
 
