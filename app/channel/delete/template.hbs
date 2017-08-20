@@ -1,29 +1,43 @@
 <div class="Sections">
 	<section class="Section">
 		<div class="Manchet">
-			<h1>You are about to permanently delete {{model.title}}</h1>
+			<h1><small>Permanently</small> delete <small>{{model.title}}</small></h1>
+			<p>Delete your channel from Radio4000.</p>
 		</div>
 
-		<div class="Container Section--space">
-			<ul>
-				<li>All your music on your radio will be deleted</li>
-				<li>All your saved radio favorites will be deleted</li>
-				<li>All your followers will loose access to your radio</li>
-			</ul>
+		<div class="Container Container--full">
+			<div class="Grid">
+				<article class="Grid-cell">
+					{{channel-card channel=model}}
+				</article>
+				<article class="Grid-cell Grid-cell--double">
+					<p>Deleting your radio channel will result in:</p>
+					<ul>
+						<li>Deletion of all information and musics saved in your radio.</li>
+						<li>Deletion of all radios you saved as favorites being erased.</li>
+						<li>Your radio will therefore be innacessible to your followers or any other user.</li>
+					</ul>
 
-			<p>If you are sure of your decision, farewell!</p>
+					<p>Note:</p>
+					<ul>
+						<li>
+							This action does not <a href="https://support.internet4000.com/radio4000/#how-to-delete-my-radio4000-account" target="_blank">delete your Radio4000 account</a>.
+						</li>
+						<li>You can always create a new radio later.</li>
+					</ul>
 
-			<button disabled={{isDeleting}} class="Btn Btn--danger" {{action 'deleteChannel'}}>
-				{{#if isDeleting}}
-				Deleting…
-				{{else}}
-				Yes, delete {{model.title}} :(
-				{{/if}}
-			</button>
-			{{#unless isDeleting}}
-				<a href="{{href-to 'channel.index' model}}" class="Btn Btn--text">No, I want to keep my radio!</a>
-
-			{{/unless}}
+					<div class="BtnGroup">
+						<a href="{{href-to 'channel.index' model}}" class="Btn">Keep my channel online</a>
+						<button disabled={{isDeleting}} class="Btn Btn--danger" {{action 'deleteChannel'}}>
+							{{#if isDeleting}}
+								Deleting…
+							{{else}}
+								Delete channel (for real)
+							{{/if}}
+						</button>
+					</div>
+				</article>
+			</div>
 		</div>
 	</section>
 </div>
