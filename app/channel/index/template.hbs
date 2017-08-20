@@ -1,9 +1,34 @@
-<!-- {{channel-card channel=model}} -->
-
-{{channel-header
-		channel=model
-		canEdit=canEdit
-		toggleFavorite=toggleFavorite
-		isIdle=toggleFavorite.isIdle}}
+<div class="Container Container--full">
+	<p>@{{model.slug}}</p>
+	{{#if model.updated}}
+		<p>
+			<time class="Channel-date" title="{{model.title}} added music {{time-ago model.updated}}">Updated {{time-ago model.updated}}</time>
+		</p>
+	{{/if}}
+	<p>
+		{{model.body}}
+	</p>
+	<!-- <div class="Grid">
+			 <article class="Grid-cell">
+			 {{channel-card channel=model}}
+			 </article>
+			 <article class="Grid-cell Grid-cell--double">
+			 {{channel-header
+			 channel=model
+			 canEdit=canEdit
+			 toggleFavorite=toggleFavorite
+			 isIdle=toggleFavorite.isIdle}}
+			 </article>
+			 {{#if canEdit}}
+			 {{#unless isWelcomed}}
+			 <article class="Grid-cell Grid-cell--double">
+			 <div class="Channel-introduction">
+			 {{page-welcome channel=model}}
+			 </div>
+			 </article>
+			 {{/unless}}
+			 {{/if}}
+			 </div> -->
+</div>
 
 {{outlet}}
