@@ -1,14 +1,14 @@
 <div class="Sections">
 	<section class="Section">
-		<div class="Manchet">
-			<h1>{{model.title}}</h1>
-		</div>
+		<!-- <div class="Manchet">
+				 <h1>{{model.title}}</h1>
+				 </div> -->
 
-		<div class="Container">
-			<nav class="Tabs Tabs--horizontal">
-				{{#link-to 'channel.index' class="Tabs-item" title="All tracks"}}
-					<!-- <span>{{model.title}}</span> -->
-					Infos
+		<div class="Container Container--full">
+			<nav class="Tabs Tabs--animated Tabs--horizontal">
+				{{#link-to 'channel.index' title="All tracks"}}
+					<h1>{{model.title}}</h1>
+					<!-- Infos -->
 				{{/link-to}}
 				{{#link-to 'channel.tracks' class="Tabs-item" title="All tracks"}}
 					Tracks <span class="Muted">({{model.totalTracks}})</span>
@@ -25,16 +25,20 @@
 					{{/link-to}}
 				{{/if}}
 			</nav>
-			<article class="Channel Channel--detail {{if canEdit 'canEdit'}}">
-				{{outlet}}
-			</article>
-
-			{{#if canEdit}}{{#unless isWelcomed}}
+		</div>
+	</section>
+	<section class="Section">
+		<article class="Channel {{if canEdit 'canEdit'}}">
+			{{outlet}}
+		</article>
+	</section>
+	{{#if canEdit}}
+		{{#unless isWelcomed}}
+			<section class="Section">
 				<div class="Channel-introduction">
 					{{page-welcome channel=model}}
 				</div>
-			{{/unless}}{{/if}}
-
-		</div>
-	</section>
+			</section>
+		{{/unless}}
+	{{/if}}
 </div>
