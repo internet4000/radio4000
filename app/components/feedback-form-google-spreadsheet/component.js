@@ -1,4 +1,5 @@
 import Ember from 'ember';
+
 const {
 	Component,
 	inject,
@@ -49,16 +50,19 @@ export default Component.extend({
 	actions: {
 		send() {
 			const notification = get(this, 'flashMessages');
+			const url = get(this, 'buildUrl')
 			const data = {
 				message: get(this, 'message'),
 				email: get(this, 'email'),
 				userChannelId: get(this, 'userChannelId'),
 				playerChannelId: get(this, 'playerChannelId'),
 				playerTrackId: get(this, 'playerTrackId')
-			};
+			}
 
+			// Tried to use `fetch` instead of `$.ajax` but could not get
+			// the Google Docs script to parse the incoming body.
 			return $.ajax({
-				url: get(this, 'buildUrl'),
+				url,
 				type: 'post',
 				data
 			}).then(() => {

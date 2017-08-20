@@ -15,7 +15,6 @@
     "autoprefixer": "^6.5.3",
     "broccoli-asset-rev": "^2.4.5",
     "critical": "^0.7.1",
-    "ember-ajax": "^3.0.0",
     "ember-async-button": "^1.0.2",
     "ember-browserify": "^1.1.11",
     "ember-cli": "^2.13.3",
@@ -52,6 +51,7 @@
   },
   "dependencies": {
     "date-fns": "^1.28.4",
+    "ember-fetch": "^3.3.0",
     "ember-href-to": "^1.12.1",
     "ember-youtube": "^0.8.1",
     "emberfire": "^2.0.7",

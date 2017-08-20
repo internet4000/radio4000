@@ -39,20 +39,17 @@ export default Component.extend({
 	})),
 
 	fetchTitle: task(function * () {
+		yield timeout(250); // throttle
 		const track = get(this, 'track');
 		const ytid = track.get('ytid');
-		const endpoint = `https://www.googleapis.com/youtube/v3/videos?id=${ytid}&key=${config.youtubeApiKey}&fields=items(id,snippet(title))&part=snippet`.trim();
-
-		yield timeout(1000);
-
-		// Fetch and set it
-		const promise = Ember.$.getJSON(endpoint);
-		const response = yield promise;
-		if (!response.items.length) {
-			debug('Could not find a title');
+		const url = `https://www.googleapis.com/youtube/v3/videos?id=${ytid}&key=${config.youtubeApiKey}&fields=items(id,snippet(title))&part=snippet`;
+		const response = yield fetch(url);
+		const data = yield response.json()
+		if (!data.items.length) {
+			debug('Could not find title for track');
 			return;
 		}
-		const title = response.items[0].snippet.title;
+		const title = data.items[0].snippet.title;
 		track.set('title', title);
 	}).restartable(),
 
