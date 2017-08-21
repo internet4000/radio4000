@@ -8,20 +8,14 @@
 				<form class="Form">
 					{{track-add-inline addTrackUrl=addTrackUrl
 						onSubmit=(action "addTrack")}}
-
 				</form>
-
-				{{#if isEditing}}
-					{{#modal-dialog close="closeModals"}}
-						{{track-edit
-								track=trackToEdit
-								onSubmit=(action "updateTrack")
-								onCancel=(action "closeModals")
-								onDeleteTrack=(action "deleteTrack")}}
-					{{/modal-dialog}}
-				{{/if}}
 			</div>
 		{{/if}}
+		{{#unless model.isExperienced}}
+			<div class="Grid-cell Grid-cell--triple">
+				{{page-welcome channel=model}}
+			</div>
+		{{/unless}}
 	</div>
 </div>
 
