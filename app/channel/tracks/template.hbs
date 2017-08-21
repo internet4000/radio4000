@@ -1,22 +1,4 @@
 <div class="Container Container--full Grid">
-
-	{{#if canEdit}}
-		<div class="Grid-cell Grid-cell--Double">
-			{{track-add-inline addTrackUrl=addTrackUrl
-					onSubmit=(action "addTrack")}}
-
-			{{#if isEditing}}
-				{{#modal-dialog close="closeModals"}}
-					{{track-edit
-							track=trackToEdit
-							onSubmit=(action "updateTrack")
-							onCancel=(action "closeModals")
-							onDeleteTrack=(action "deleteTrack")}}
-				{{/modal-dialog}}
-			{{/if}}
-		</div>
-	{{/if}}
-
 	<div class="Grid-cell Grid-cell--triple">
 		{{#if tracks.isLoaded}}
 			{{#tracks-list items=tracks grouped=true numbered=false as |item|}}

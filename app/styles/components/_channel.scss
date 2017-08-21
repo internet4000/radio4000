@@ -126,10 +126,12 @@
 
 .Channel-buttons {
 	padding: 0.5rem;
+	padding-right: 0;
 	min-width: 7rem;
+  display: flex;
+  justify-content: flex-end;
 
 	@media (min-width: $layout-m) {
-		padding-right: 0;
 		margin-right: -1rem;
 	}
 }
