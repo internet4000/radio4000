@@ -5,14 +5,20 @@
 		</article>
 		<article class="Grid-cell Grid-cell--double">
 			<p>@{{model.slug}}</p>
+
+			{{#if model.body}}
+				<p class="Channel-description">{{model.body}}</p>
+			{{/if}}
+
 			{{#if model.updated}}
-				<p>
-					<time class="Channel-date" title="{{model.title}} added music {{time-ago model.updated}}">Updated {{time-ago model.updated}}</time>
+				<time class="Channel-date" title="{{model.title}} added music {{time-ago model.updated}}">Updated {{time-ago model.updated}}</time>
+			{{/if}}
+
+			{{#if model.link}}
+				<p class="Channel-links">
+					<a href="{{model.link}}" target="_blank" title="Go to {{model.title}}'s webpage" rel="noopener">{{model.link}}</a>
 				</p>
 			{{/if}}
-			<p>
-				{{model.body}}
-			</p>
 		</article>
 	</div>
 
