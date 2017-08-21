@@ -1,12 +1,12 @@
 import Ember from 'ember';
+import AsyncButton from 'ember-async-button/components/async-button';
 
 const {Component, computed, get} = Ember;
 
-export default Component.extend({
+export default AsyncButton.extend({
 	tagName: 'button',
 	classNames: ['Btn'],
-	attributeBindings: ['title', 'disabled'],
-	disabled: computed.not('isIdle'),
+	attributeBindings: ['title'],
 	title: computed('isFavorite', {
 		get() {
 			if (!get(this, 'isFavorite')) {
@@ -15,9 +15,12 @@ export default Component.extend({
 			return 'Remove this radio from your favorites';
 		}
 	}),
-	click() {
-		if (get(this, 'onClick')) {
-			get(this, 'onClick')();
+	actions: {
+		toggleFavorite() {
+			return get(this, 'toggleFavorite').perform();
+		},
+		click() {
+			return get(this, 'action')();
 		}
 	}
 });

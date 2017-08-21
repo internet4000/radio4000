@@ -1,5 +1,12 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
-	classNames: ['ChannelHeader']
+const {Component, get} = Ember;
+
+export default Component.extend({
+	classNames: ['ChannelHeader'],
+	actions: {
+		toggleFavorite() {
+			return get(this, 'channel.toggleFavorite').perform();
+		}
+	}
 });

@@ -1,5 +1,5 @@
 <div class="Channel-media" title="Image for {{model.title}}">
-	{{#if canEdit}}
+	{{#if channel.canEdit}}
 		{{#link-to 'channel.edit' channel}}
 			<div class="Channel-cover">
 				{{channel-cover src=channel.coverImage.src}}
@@ -13,12 +13,15 @@
 </div>
 
 <div class="BtnGroup Channel-buttons">
-	{{play-shuffle-btn channel=channel expanded=true class="Channel-playback"}}
-	{{#unless canEdit}}
+	{{play-shuffle-btn
+			channel=channel
+			expanded=true
+			class="Channel-playback"}}
+	{{#unless channel.canEdit}}
 		{{btn-favorite
-				onClick=(perform toggleFavorite)
-				isIdle=isIdle
-				isFavorite=isFavorite}}
+				isFavorite=channel.isFavorite
+				action=(action "toggleFavorite" model)}}
+
 	{{/unless}}
 </div>
 

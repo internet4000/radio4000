@@ -15,10 +15,5 @@ export default Ember.Controller.extend({
 		const hasImage = this.get('model.images.firstObject');
 		const hasFavorite = this.get('model.favoriteChannels.firstObject');
 		return canEdit && hasTrack && hasImage && hasFavorite;
-	}),
-	actions: {
-		toggleFavorite() {
-			return get(this, 'model.toggleFavorite').perform();
-		}
-	}
+	})
 });

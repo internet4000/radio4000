@@ -1,7 +1,22 @@
-{{#if isFavorite}}
-	★
-{{else}}
-	☆
-{{/if}}
+{{#async-button
+		 reset=true
+		 action=(action 'click') as |component state|}}
+  {{#if state.isDefault}}
+		{{#if isFavorite}}
+			★
+		{{else}}
+			☆
+		{{/if}}
 
-<span> Favorite</span>
+		<span> Favorite</span>
+  {{/if}}
+  {{#if state.isPending}}
+    Loading
+  {{/if}}
+  {{#if state.isFulfilled}}
+    Success
+  {{/if}}
+  {{#if state.isRejected}}
+    Error
+  {{/if}}
+{{/async-button}}
