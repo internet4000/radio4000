@@ -1,8 +1,15 @@
 import Ember from 'ember';
 
-const {Controller, get, set} = Ember;
+const {Controller,
+			 inject,
+			 get,
+			 set,
+			 debug,
+			 computed} = Ember;
 
 export default Controller.extend({
+	applicationController: inject.controller('application'),
+
 	actions: {
 		addTrack(url) {
 			debug(`Trying to add ${url}`);
