@@ -7,20 +7,17 @@ export default AsyncButton.extend({
 	tagName: 'button',
 	classNames: ['Btn'],
 	attributeBindings: ['title'],
-	title: computed('isFavorite', {
+	title: computed('channel.isFavorite', {
 		get() {
-			if (!get(this, 'isFavorite')) {
+			if (!get(this, 'channel.isFavorite')) {
 				return 'Save this radio to your favorites';
 			}
 			return 'Remove this radio from your favorites';
 		}
 	}),
 	actions: {
-		toggleFavorite() {
-			return get(this, 'toggleFavorite').perform();
-		},
 		click() {
-			return get(this, 'action')();
+			return get(this, 'channel.toggleFavorite').perform();
 		}
 	}
 });

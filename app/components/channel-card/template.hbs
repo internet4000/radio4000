@@ -10,4 +10,9 @@
 <p class="ChannelCard-body">
 	{{do-truncate channel.body 200}}
 </p>
+
+{{#unless channel.canEdit}}
+	{{btn-favorite channel=channel}}
+{{/unless}}
+
 {{yield}}

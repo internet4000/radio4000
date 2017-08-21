@@ -6,19 +6,19 @@
 					{{model.title}}
 				{{/link-to}}
 			</h1>
-			<nav class="Tabs Tabs--horizontal Tabs--animated">
-				{{#link-to 'channel.tracks' class="Tabs-item Tabs-item--transparent" title="All tracks"}}
+			<nav class="Tabs Tabs--horizontal Tabs--animated Tabs--transparent">
+				{{#link-to 'channel.tracks' class="Tabs-item" title="All tracks"}}
 					Tracks <span class="Muted">({{model.totalTracks}})</span>
 				{{/link-to}}
-				{{#link-to 'channel.favorites' class="Tabs-item Tabs-item--transparent" title="Favorites of this radio"}}
+				{{#link-to 'channel.favorites' class="Tabs-item" title="Favorites of this radio"}}
 					Favorites
 				{{/link-to}}
 				{{#if model.canEdit}}
-					{{#link-to 'channel.followers' class="Tabs-item Tabs-item--transparent" title="Followers of this radio"}}
+					{{#link-to 'channel.followers' class="Tabs-item" title="Followers of this radio"}}
 						Followers
 					{{/link-to}}
 					<div class="Tabs-divider"></div>
-					{{#link-to 'channel.edit' class="Tabs-item Tabs-item--transparent" title="Edit your radio"}}
+					{{#link-to 'channel.edit' class="Tabs-item" title="Edit your radio"}}
 						Edit
 					{{/link-to}}
 				{{/if}}

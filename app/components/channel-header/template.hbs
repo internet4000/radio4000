@@ -18,9 +18,7 @@
 			expanded=true
 			class="Channel-playback"}}
 	{{#unless channel.canEdit}}
-		{{btn-favorite
-				isFavorite=channel.isFavorite
-				action=(action "toggleFavorite" model)}}
+		{{btn-favorite channel=channel}}
 
 	{{/unless}}
 </div>

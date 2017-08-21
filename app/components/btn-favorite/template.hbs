@@ -2,13 +2,12 @@
 		 reset=true
 		 action=(action 'click') as |component state|}}
   {{#if state.isDefault}}
-		{{#if isFavorite}}
-			★
+		{{#if channel.isFavorite}}
+			<span>★</span>
 		{{else}}
-			☆
+			<span>☆</span>
 		{{/if}}
-
-		<span> Favorite</span>
+		Favorite
   {{/if}}
   {{#if state.isPending}}
     Loading

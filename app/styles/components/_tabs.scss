@@ -19,12 +19,6 @@
 	}
 }
 
-.Tabs--transparent {
-	border-color: transparent;
-	background-color: transparent;
-	box-shadow: none;
-}
-
 .Tabs-item {
 	background-color: $bg-color-2;
 	margin-bottom: 0;
@@ -146,5 +140,17 @@
 	// the visible border
 	.Tabs-item.is-active::after {
 		width: 100%;
+	}
+}
+
+.Tabs--transparent {
+	border-color: transparent;
+	background-color: transparent;
+	box-shadow: none;
+	.Tabs-item {
+		background-color: transparent;
+		// &.is-active:after {
+		// 	background: $text-color;
+		// }
 	}
 }
