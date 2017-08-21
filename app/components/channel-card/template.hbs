@@ -12,7 +12,14 @@
 </p>
 
 {{#unless canEdit}}
-	{{btn-favorite channel=channel}}
+	<p>
+		<div class="ChannelCard-favorite">
+			{{btn-favorite
+					class="Btn--text Muted"
+					channel=channel
+					showText=false}}
+		</div>
+	</p>
 {{/unless}}
 
 {{yield}}

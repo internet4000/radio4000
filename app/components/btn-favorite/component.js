@@ -7,6 +7,10 @@ export default AsyncButton.extend({
 	tagName: 'button',
 	classNames: ['Btn'],
 	attributeBindings: ['title'],
+
+	// display text in template or only icon
+	showText: true,
+
 	title: computed('channel.isFavorite', {
 		get() {
 			if (!get(this, 'channel.isFavorite')) {

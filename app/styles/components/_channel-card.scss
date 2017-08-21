@@ -63,6 +63,11 @@
 		pointer-events: none;
 	}
 }
+.ChannelCard-favorite {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
 
 .ChannelCard-overlayBtn {
 	position: absolute;
