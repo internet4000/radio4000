@@ -1,14 +1,17 @@
 import Ember from 'ember';
 
-const {computed, debug, get, inject} = Ember;
+const {Controller,
+			 computed,
+			 debug,
+			 get,
+			 inject} = Ember;
 
-export default Ember.Controller.extend({
+export default Controller.extend({
 	isEditing: false,
-	applicationController: inject.controller('application'),
 
 	hasFewTracks: computed.lte('tracks.length', 2),
 	channelController: inject.controller('channel'),
-	canEdit: computed.reads('channelController.canEdit'),
+	canEdit: computed.reads('channel.canEdit'),
 
 	actions: {
 		transitionToTrack(track) {

@@ -1,3 +1,13 @@
+{{#if isEditing}}
+	{{#modal-dialog close="closeModals"}}
+		{{track-edit
+				track=trackToEdit
+				onSubmit=(action "updateTrack")
+				onCancel=(action "closeModals")
+				onDeleteTrack=(action "deleteTrack")}}
+	{{/modal-dialog}}
+{{/if}}
+
 <div class="Container Container--full Grid">
 	<div class="Grid-cell Grid-cell--triple">
 		{{#if tracks.isLoaded}}

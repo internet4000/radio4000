@@ -19,6 +19,8 @@ export default Component.extend({
 		return this.get('player.currentTrack') === this.get('track');
 	}),
 
+	canEdit: computed.reads('track.channel.canEdit'),
+
 	actions: {
 		edit() {
 			this.get('edit')(this.get('track'));

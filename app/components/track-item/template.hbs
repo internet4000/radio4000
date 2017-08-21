@@ -4,11 +4,7 @@
 	</h3>
 	<p class="Track-body">{{track.body}}</p>
 {{/link-to}}
-{{#unless trackWidget}}
-	<p class="Track-controls Muted" title="Edit the track" {{action 'edit'}}>
-		{{!-- using a static icon instead of x-icon to avoid an extra component for performance --}}
-		<svg class="icon-pencil">
-			<use xlink:href="/assets/images/sprite.svg#icon-pencil"></use>
-		</svg>
-	</p>
-{{/unless}}
+
+{{#if canEdit}}
+	<button class="Btn Btn--text Muted Track-controls" {{action 'edit'}} title="Edit the track">Edit</button>
+{{/if}}

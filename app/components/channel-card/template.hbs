@@ -11,7 +11,7 @@
 	{{do-truncate channel.body 200}}
 </p>
 
-{{#unless channel.canEdit}}
+{{#unless canEdit}}
 	{{btn-favorite channel=channel}}
 {{/unless}}
 
