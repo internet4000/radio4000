@@ -8,7 +8,6 @@ const {computed, get} = Ember;
 
 export default PlayButtonComponent.extend({
 	attributeBindings: ['title'],
-
 	isPlaying: computed.alias('channel.isInPlayer'),
 	title: computed('isPlaying', function () {
 		return get(this, 'isPlaying') ? 'Play a random track' : 'Play this radio';

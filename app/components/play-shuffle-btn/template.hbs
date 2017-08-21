@@ -1,5 +1,7 @@
 {{#if isPlaying}}
-	⇢ <span>next random</span>
+	<span>⇢</span>
+	{{if showText 'Next random'}}
 {{else}}
-	▶ <span>play</span>
+	<span>▶</span>
+	{{if showText 'Play'}}
 {{/if}}
