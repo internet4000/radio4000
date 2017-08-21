@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import ownerRouteMixin from 'radio4000/mixins/owner-route';
 
-const {Route, get} = Ember;
+const {Route} = Ember;
 
 export default Route.extend(ownerRouteMixin, {
 	// Don't render into channel because we don't want channel templates here.
