@@ -1,18 +1,19 @@
 import Ember from 'ember';
 
-const {debug} = Ember;
+const {Controller, debug, get, set} = Ember;
 
-export default Ember.Controller.extend({
+export default Controller.extend({
 
 	// so user does not click two times
 	isDeleting: false,
 
 	actions: {
 		deleteChannel() {
-			const channel = this.get('model');
-			const channelPublic = this.get('model.channelPublic');
+			const messages = get(this, 'flashMessages');
+			const channel = get(this, 'model');
+			const channelPublic = get(this, 'model.channelPublic');
 
-			this.set('isDeleting', true);
+			set(this, 'isDeleting', true);
 
 			// open public
 			channelPublic.then(channelPublic => {
@@ -28,7 +29,8 @@ export default Ember.Controller.extend({
 						// this needs to happen after deleting the channel
 						// because of our firebase rules which use the user relationship
 						this.deleteUserRelationshipFrom(channel);
-						this.set('isDeleting', false);
+						set(this, 'isDeleting', false);
+						messages.success('Radio channel deleted. Farewell!', {timeout: 10000});
 						this.transitionToRoute('channels');
 					});
 				});
@@ -54,7 +56,7 @@ export default Ember.Controller.extend({
 
 	// Delete this channel on the session user
 	deleteUserRelationshipFrom(channel) {
-		const user = this.get('session.currentUser');
+		const user = get(this, 'session.currentUser');
 		user.get('channels').then(userChannels => {
 			userChannels.removeObject(channel);
 			user.save().then(() => {

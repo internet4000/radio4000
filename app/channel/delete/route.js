@@ -9,20 +9,5 @@ export default Route.extend(ownerRouteMixin, {
 		this.render({
 			into: 'application'
 		});
-	},
-	afterModel() {
-		const flashMessages = Ember.get(this, 'flashMessages');
-		flashMessages.danger(`Your radio will be lost forever! 🌇`, {
-			sticky: true
-		});
-	},
-
-	actions: {
-		willTransition() {
-			const flashMessages = Ember.get(this, 'flashMessages');
-			flashMessages.clearMessages().info('Radio deleted…', {
-				timeout: 400
-			});
-		}
 	}
 });
