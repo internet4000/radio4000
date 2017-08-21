@@ -30,7 +30,6 @@
 // Layout
 @import "layout/layout";
 @import "layout/container";
-@import "layout/manchet";
 @import "layout/sections";
 @import "layout/grid"; // @todo refactor
 @import "layout/intro";
@@ -43,6 +42,7 @@
 // UI components
 @import "components/aside";
 @import "components/button-group";
+@import "components/manchet";
 @import "components/icon";
 @import "components/tabs";
 @import "components/tags";
