@@ -1,42 +1,42 @@
-<div class="Channel-outlet">
-	{{#if canEdit}}
-		<div class="Container">
-			{{track-add-inline addTrackUrl=addTrackUrl
-				onSubmit=(action "addTrack")}}
-		</div>
-	{{/if}}
+<div class="Container Container--full">
+	<div class="Grid">
+		<article class="Grid-cell">
+			{{channel-cover src=model.coverImage.src}}
+		</article>
+		<article class="Grid-cell Grid-cell--double">
+			<p>@{{model.slug}}</p>
+			{{#if model.updated}}
+				<p>
+					<time class="Channel-date" title="{{model.title}} added music {{time-ago model.updated}}">Updated {{time-ago model.updated}}</time>
+				</p>
+			{{/if}}
+			<p>
+				{{model.body}}
+			</p>
+		</article>
+	</div>
 
-	{{#if isEditing}}
-		{{#modal-dialog close="closeModals"}}
-			{{track-edit
-				track=trackToEdit
-				onSubmit=(action "updateTrack")
-				onCancel=(action "closeModals")
-				onDeleteTrack=(action "deleteTrack")}}
-		{{/modal-dialog}}
-	{{/if}}
-
-	{{#if tracks.isLoaded}}
-		{{#tracks-list items=tracks grouped=true numbered=false as |item|}}
-			{{track-item
-				track=item
-				canEdit=canEdit
-				edit=(action "startEditingTrack")
-				onTransition="transitionToTrack"}}
-		{{/tracks-list}}
-
-		{{#unless canEdit}}
-			{{#unless tracks.length}}
-				<div class="Container Section--space">
-				  <p>Ooh, there are no tracks in this radio yet.</p>
-				</div>
-			{{/unless}}
-		{{/unless}}
-	{{else}}
-		<div class="Container Section--space">
-			{{is-loading}}
-		</div>
-	{{/if}}
-
-	{{outlet}}
+	<!-- <div class="Grid">
+			 <article class="Grid-cell">
+			 {{channel-card channel=model}}
+			 </article>
+			 <article class="Grid-cell Grid-cell--double">
+			 {{channel-header
+			 channel=model
+			 canEdit=canEdit
+			 toggleFavorite=toggleFavorite
+			 isIdle=toggleFavorite.isIdle}}
+			 </article>
+			 {{#if canEdit}}
+			 {{#unless isWelcomed}}
+			 <article class="Grid-cell Grid-cell--double">
+			 <div class="Channel-introduction">
+			 {{page-welcome channel=model}}
+			 </div>
+			 </article>
+			 {{/unless}}
+			 {{/if}}
+			 </div> -->
 </div>
+
+{{outlet}}

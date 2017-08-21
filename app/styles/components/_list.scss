@@ -2,11 +2,19 @@
 .List {
 	list-style: none;
 	padding-left: 0;
+
+	background-color: $slightgray;
+	border-top: 1px solid hsl(0, 0%, 85%);
+	border-left: 1px solid hsl(0, 0%, 80%);
+	border-right: 1px solid hsl(0, 0%, 80%);
+	border-radius: $border-radius;
+	box-shadow: $box-shadow;
 }
 
 .List-header {
 	padding-left: 1rem;
 	padding-right: 1rem;
+	margin-bottom: 0.2rem;
 	font-weight: normal;
 	font-style: italic;
 	text-align: right;

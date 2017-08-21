@@ -1,12 +1,6 @@
 .Channel--detail {
 	position: relative;
-	margin-top: 1rem;
-	background-color: $slightgray;
-	border-top: 1px solid hsl(0, 0%, 85%);
-	border-left: 1px solid hsl(0, 0%, 80%);
-	border-right: 1px solid hsl(0, 0%, 80%);
-	border-radius: $border-radius;
-	box-shadow: $box-shadow;
+	margin-top: 3rem;
 
 	@media (min-width: $layout-m) {
 		margin-top: 2rem;
@@ -67,6 +61,7 @@
 
 .Channel-media {
 	@include clearfix;
+
 	float: left;
 	margin-top: -1rem;
 	margin-left: auto;
@@ -74,12 +69,12 @@
 	margin-top: -1.5rem;
 	width: 30%;
 
-	@media (min-width: $layout-s) {
-	}
-
-	@media (min-width: $layout-l) {
-		width: 35%;
-	}
+	// position: fixed;
+	// top: 0;
+	// right: 0;
+	// left: 0;
+	// bottom: 0;
+	// z-index: -1;
 }
 
 .Channel-cover {
@@ -89,25 +84,7 @@
 }
 
 .Channel-body {
-	@include clearfix;
-	padding-left: 1rem;
-	padding-top: 2rem;
-	padding-right: 1rem;
-
-	@media (min-width: $layout-s) {
-		position: relative;
-		margin-bottom: 1rem;
-		float: left;
-		width: 70%;
-	}
-
-	@media (min-width: $layout-m) {
-		width: 67%;
-	}
-
-	@media (min-width: $layout-l) {
-		width: 65%;
-	}
+	padding: 1.5rem 1rem 1rem;
 }
 
 .Channel-outlet {
@@ -148,8 +125,7 @@
 }
 
 .Channel-buttons {
-	padding-right: 0.52rem;
-	padding-top: 0.5rem;
+	padding: 0.5rem;
 	min-width: 7rem;
 
 	@media (min-width: $layout-m) {

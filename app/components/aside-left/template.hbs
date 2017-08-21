@@ -30,17 +30,17 @@
 		{{/unless}}
 
 		{{#if isAuthenticated}}
-			{{#link-to "auth.settings" class="Aside-link" title="Customize your Radio4000"}}Settings{{/link-to}}
+			{{#link-to "auth.settings" class="Tabs-item" title="Customize your Radio4000"}}Settings{{/link-to}}
 		{{/if}}
 
 		{{#link-to "about" title="Learn more about Radio4000" class="Tabs-item"}}About{{/link-to}}
 	</div>
 
-	<div class="Tabs Tabs--transparent Tabs--bottom">
-		{{#link-to "feedback" class="Aside-link Muted" title="Let us know what you have in mind!"}}Feedback{{/link-to}}
+	<div class="Tabs Tabs--bottom">
+		{{#link-to "feedback" class="Tabs-item Tabs-item--transparent" title="Let us know what you have in mind!"}}Feedback{{/link-to}}
 
 		{{#if isAuthenticated}}
-			{{#link-to "auth.logout" class="Aside-link Muted" title="Log out from Radio4000"}}Log out{{/link-to}}
+			{{#link-to "auth.logout" class="Tabs-item Tabs-item--transparent" title="Log out from Radio4000"}}Log out{{/link-to}}
 		{{/if}}
 	</div>
 </div>

@@ -1,0 +1,15 @@
+.Tags {
+	display: flex;
+	flex-wrap: wrap;
+	a {
+		padding: 0.2rem;
+		margin-right: 0.4rem;
+	}
+}
+
+.Tags--vertical {
+	flex-direction: column;
+	a {
+		margin-bottom: 0.4rem;
+	}
+}
