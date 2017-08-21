@@ -108,7 +108,7 @@ export default DS.Model.extend(Validations, {
 		}
 	}),
 
-	isExperienced: computed.and('totalTracks', 'images.firstObject', 'favoriteChannels.firstObject', 'canEdit'),
+	isExperienced: computed.and('images.firstObject', 'totalTracks', 'favoriteChannels.firstObject'),
 
 	// is already a favorite channel of session.currentUser
 	isFavorite: computed('model', 'session.currentUser.channels.firstObject.favoriteChannels.[]', function () {
