@@ -1,11 +1,13 @@
 import Ember from 'ember';
 import DS from 'ember-data';
+import {task} from 'ember-concurrency';
 import {validator, buildValidations} from 'ember-cp-validations';
 import firebase from 'firebase';
 import channelConst from 'radio4000/utils/channel-const';
+import toggleObject from 'radio4000/utils/toggle-object';
 
 const {attr, hasMany, belongsTo} = DS;
-const {computed, inject} = Ember;
+const {computed, inject, get} = Ember;
 
 const Validations = buildValidations({
 	title: [
@@ -89,8 +91,8 @@ export default DS.Model.extend(Validations, {
 	// can current logged in user edit the channel
 	canEdit: computed('id', 'session.currentUser.channels.firstObject.id', {
 		get() {
-			const channel = this.get('id');
-			const userChannel = this.get('session.currentUser.channels.firstObject.id');
+			const channel = this;
+			const userChannel = this.get('session.currentUser.channels.firstObject');
 
 			console.log("channel", channel)
 			console.log("userChannel", userChannel)
@@ -99,13 +101,41 @@ export default DS.Model.extend(Validations, {
 			if (channel === null || userChannel === null || userChannel === undefined) {
 				return false;
 			}
-			return channel === userChannel;
+			return channel.get('id') === userChannel.get('id');
 		},
 		set() {
 			// not allowed
 		}
 	}),
-	// model.hasMany('tracks').ids();
-	// model.hasMany('tracks').value() !== null;
-	// model.hasMany('tracks').meta().total;
+	isFavorite: computed('model', 'session.currentUser.channels.firstObject.favoriteChannels.[]', function () {
+		const channel = this;
+		const favorites = this.get('session.currentUser.channels.firstObject.favoriteChannels');
+
+		// guard because this functions runs before userChannel is defined
+		if (!favorites) {
+			return false;
+		}
+
+		// true if this channel is a favorite of the user's favorites
+		return favorites.includes(channel);
+	}),
+
+	toggleFavorite: task(function * () {
+		const isFavorite = get(this, 'isFavorite');
+		const userChannel = get(this, 'session.currentUser.channels.firstObject');
+		const favoriteChannels = yield userChannel.get('favoriteChannels');
+		const channel = this;
+
+		toggleObject(favoriteChannels, channel, isFavorite);
+
+		yield userChannel.save();
+
+		// Toggle the userChannel from this channel's public followers.
+		const channelPublic = yield channel.get('channelPublic');
+		const followers = yield channelPublic.get('followers');
+
+		toggleObject(followers, userChannel, isFavorite);
+
+		return yield channelPublic.save();
+	}).drop()
 });
