@@ -20,14 +20,6 @@ export default Ember.Controller.extend({
 				trackToEdit: null
 			});
 		},
-		addTrack(url) {
-			debug(`Trying to add ${url}`);
-			get(this, 'applicationController').setProperties({
-				newUrl: url,
-				showAddTrack: true
-			});
-			this.set('addTrackUrl', '');
-		},
 		startEditingTrack(track) {
 			if (!this.get('canEdit')) {
 				return;
