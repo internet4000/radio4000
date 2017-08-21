@@ -14,23 +14,8 @@ function toggleObject(context, obj, condition) {
 export default Ember.Controller.extend({
 	player: Ember.inject.service(),
 
-	canEdit: computed('model', 'session.currentUser.channels.firstObject', {
-		get() {
-			const channel = this.get('model');
-			const userChannel = this.get('session.currentUser.channels.firstObject');
-			// Avoid any property being null because `(null === null)` equals true…
-			if (channel === null || userChannel === null || userChannel === undefined) {
-				return false;
-			}
-			return channel.get('id') === userChannel.get('id');
-		},
-		set() {
-			// not allowed
-		}
-	}),
-
-	isWelcomed: computed('model.tracks.firstObject', 'model.images.firstObject', 'model.favoriteChannels.firstObject', 'canEdit', function () {
-		const canEdit = this.get('canEdit');
+	isWelcomed: computed('model.tracks.firstObject', 'model.images.firstObject', 'model.favoriteChannels.firstObject', 'model.canEdit', function () {
+		const canEdit = this.get('model.canEdit');
 		// No need to check for more if you can't edit.
 		if (!canEdit) {
 			return false;
@@ -66,6 +51,7 @@ export default Ember.Controller.extend({
 		// Toggle the channel on the userChannel's favoriteChannels.
 		const favoriteChannels = yield userChannel.get('favoriteChannels');
 		const channel = get(this, 'model');
+
 		toggleObject(favoriteChannels, channel, isFavorite);
 		yield userChannel.save();
 

@@ -5,7 +5,7 @@ import firebase from 'firebase';
 import channelConst from 'radio4000/utils/channel-const';
 
 const {attr, hasMany, belongsTo} = DS;
-const {computed} = Ember;
+const {computed, inject} = Ember;
 
 const Validations = buildValidations({
 	title: [
@@ -50,6 +50,8 @@ const Validations = buildValidations({
 	*/
 
 export default DS.Model.extend(Validations, {
+	session: inject.service(),
+
 	created: attr('number', {
 		defaultValue() {
 			return firebase.database.ServerValue.TIMESTAMP;
@@ -82,7 +84,27 @@ export default DS.Model.extend(Validations, {
 	}),
 	totalFavorites: computed('favoriteChannels', function () {
 		return this.hasMany('favoriteChannels').ids().length;
-	})
+	}),
+
+	// can current logged in user edit the channel
+	canEdit: computed('id', 'session.currentUser.channels.firstObject.id', {
+		get() {
+			const channel = this.get('id');
+			const userChannel = this.get('session.currentUser.channels.firstObject.id');
+
+			console.log("channel", channel)
+			console.log("userChannel", userChannel)
+
+			// Avoid any property being null because `(null === null)` equals true…
+			if (channel === null || userChannel === null || userChannel === undefined) {
+				return false;
+			}
+			return channel === userChannel;
+		},
+		set() {
+			// not allowed
+		}
+	}),
 	// model.hasMany('tracks').ids();
 	// model.hasMany('tracks').value() !== null;
 	// model.hasMany('tracks').meta().total;

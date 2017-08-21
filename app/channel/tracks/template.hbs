@@ -4,7 +4,7 @@
 			{{#tracks-list items=tracks grouped=true numbered=false as |item|}}
 				{{track-item
 						track=item
-						canEdit=canEdit
+						canEdit=model.canEdit
 						edit=(action "startEditingTrack")
 						onTransition="transitionToTrack"}}
 			{{/tracks-list}}
