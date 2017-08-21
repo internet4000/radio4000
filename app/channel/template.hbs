@@ -1,12 +1,12 @@
 <div class="Sections">
 	<section class="Section">
 		<div class="Manchet">
-			<nav class="Tabs Tabs--horizontal Tabs--animated">
-				{{#link-to 'channel.index' model class="Tabs-item Tabs-item--transparent"}}
-					<h1>
-						{{model.title}}
-					</h1>
+			<h1>
+				{{#link-to 'channel' model}}
+					{{model.title}}
 				{{/link-to}}
+			</h1>
+			<nav class="Tabs Tabs--horizontal Tabs--animated">
 				{{#link-to 'channel.tracks' class="Tabs-item Tabs-item--transparent" title="All tracks"}}
 					Tracks <span class="Muted">({{model.totalTracks}})</span>
 				{{/link-to}}
@@ -23,9 +23,6 @@
 					{{/link-to}}
 				{{/if}}
 			</nav>
-		</div>
-
-		<div class="Container">
 		</div>
 	</section>
 	<section class="Section">

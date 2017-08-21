@@ -1,42 +1,122 @@
-<div class="Container">
+<div class="Container Container--full Grid">
+
 	{{#if canEdit}}
-		<div class="Container">
+		<div class="Grid-cell Grid-cell--Double">
 			{{track-add-inline addTrackUrl=addTrackUrl
-				onSubmit=(action "addTrack")}}
+					onSubmit=(action "addTrack")}}
+
+			{{#if isEditing}}
+				{{#modal-dialog close="closeModals"}}
+					{{track-edit
+							track=trackToEdit
+							onSubmit=(action "updateTrack")
+							onCancel=(action "closeModals")
+							onDeleteTrack=(action "deleteTrack")}}
+				{{/modal-dialog}}
+			{{/if}}
 		</div>
 	{{/if}}
 
-	{{#if isEditing}}
-		{{#modal-dialog close="closeModals"}}
-			{{track-edit
-				track=trackToEdit
-				onSubmit=(action "updateTrack")
-				onCancel=(action "closeModals")
-				onDeleteTrack=(action "deleteTrack")}}
-		{{/modal-dialog}}
-	{{/if}}
+	<div class="Grid-cell Grid-cell--triple">
+		{{#if tracks.isLoaded}}
+			{{#tracks-list items=tracks grouped=true numbered=false as |item|}}
+				{{track-item
+						track=item
+						canEdit=canEdit
+						edit=(action "startEditingTrack")
+						onTransition="transitionToTrack"}}
+			{{/tracks-list}}
 
-	{{#if tracks.isLoaded}}
-		{{#tracks-list items=tracks grouped=true numbered=false as |item|}}
-			{{track-item
-				track=item
-				canEdit=canEdit
-				edit=(action "startEditingTrack")
-				onTransition="transitionToTrack"}}
-		{{/tracks-list}}
-
-		{{#unless canEdit}}
-			{{#unless tracks.length}}
-				<div class="Container Section--space">
-				  <p>Ooh, there are no tracks in this radio yet.</p>
-				</div>
+			{{#unless canEdit}}
+				{{#unless tracks.length}}
+					<span><p>Ooh, there are no tracks in this radio yet.</p></span>
+				{{/unless}}
 			{{/unless}}
-		{{/unless}}
-	{{else}}
-		<div class="Container Section--space">
+		{{else}}
 			{{is-loading}}
+		{{/if}}
+	</div>
+
+	<div class="Grid-cell">
+		<div class="Sections">
+			<section class="Section">
+				<h2>Tags</h2>
+				<nav class="Tags">
+					<a href="#">techno</a>
+					<a href="#">99</a>
+					<a href="#">acid</a>
+					<a href="#">acoustic</a>
+					<a href="#">africa</a>
+					<a href="#">african</a>
+					<a href="#">africanrock</a>
+					<a href="#">afro</a>
+					<a href="#">Afro</a>
+					<a href="#">afrobeat</a>
+					<a href="#">afrobeats</a>
+					<a href="#">afrofunk</a>
+					<a href="#">afropsych</a>
+					<a href="#">After</a>
+					<a href="#">afterhours</a>
+					<a href="#">Agressive</a>
+					<a href="#">Alligator</a>
+					<a href="#">alt</a>
+					<a href="#">altdance</a>
+					<a href="#">altfolk</a>
+					<a href="#">am</a>
+					<a href="#">ambiant</a>
+					<a href="#">ambient</a>
+					<a href="#">Ambient</a>
+					<a href="#">ambientporn</a>
+					<a href="#">ambienttechno</a>
+					<a href="#">america</a>
+					<a href="#">american</a>
+					<a href="#">americana</a>
+					<a href="#">Amour</a>
+					<a href="#">animalrug</a>
+					<a href="#">anthem</a>
+				</nav>
+			</section>
+			<section class="Section">
+				<h2>History</h2>
+				<nav class="Tags Tags--vertical">
+					<a href="#">2017 august</a>
+					<a href="#">2017 july</a>
+					<a href="#">2017 june</a>
+					<a href="#">2017 may</a>
+					<a href="#">2017 april</a>
+					<a href="#">2017 march</a>
+					<a href="#">2017 february</a>
+					<a href="#">2017 january</a>
+					<a href="#">2016 december</a>
+					<a href="#">2016 november</a>
+					<a href="#">2016 october</a>
+					<a href="#">2016 september</a>
+					<a href="#">2016 august</a>
+					<a href="#">2016 july</a>
+					<a href="#">2016 june</a>
+					<a href="#">2016 may</a>
+					<a href="#">2016 april</a>
+					<a href="#">2016 march</a>
+					<a href="#">2016 february</a>
+					<a href="#">2016 january</a>
+					<a href="#">2017 january</a>
+					<a href="#">2015 december</a>
+					<a href="#">2015 november</a>
+					<a href="#">2015 october</a>
+					<a href="#">2015 september</a>
+					<a href="#">2015 august</a>
+					<a href="#">2015 july</a>
+					<a href="#">2015 june</a>
+					<a href="#">2015 may</a>
+					<a href="#">2015 april</a>
+					<a href="#">2015 march</a>
+					<a href="#">2015 february</a>
+					<a href="#">2015 january</a>
+				</nav>
+			</section>
 		</div>
-	{{/if}}
+	</div>
 
 	{{outlet}}
+
 </div>
