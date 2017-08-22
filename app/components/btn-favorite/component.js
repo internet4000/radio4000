@@ -9,12 +9,12 @@ export default AsyncButton.extend({
 
 	// async button
 	action: 'toggleFavorite',
+	pending: 'Loading',
+	reset: true,
 
-	toggleFavorite() {
+	toggleFavorite: function() {
 		return get(this, 'channel.toggleFavorite').perform();
 	},
-
-	pending: 'Loading',
 
 	// display text in template or only icon
 	showText: true,
