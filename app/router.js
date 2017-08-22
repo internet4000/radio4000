@@ -27,10 +27,12 @@ Router.map(function () {
         this.authenticatedRoute('history');
     });
   this.route('channel', {path: '/:channel_slug'}, function () {
-		  this.route('index', {path: '/'});
-      this.route('tracks', function () {
-          this.route('track', {path: ':track_id', resetNamespace: true});
-      });
+    this.route('index', {path: '/'});
+    this.route('tracks', function () {
+      this.route('track', {path: '/:track_id'}, function() {
+				this.route('index', {path: '/'});
+			});
+    });
       this.authenticatedRoute('add');
       this.authenticatedRoute('edit');
       this.authenticatedRoute('delete');
