@@ -8,7 +8,12 @@ export default AsyncButton.extend({
 	classNames: ['Btn'],
 
 	// async button
-	action: 'click',
+	action: 'toggleFavorite',
+
+	toggleFavorite() {
+		return get(this, 'channel.toggleFavorite').perform();
+	},
+
 	pending: 'Loading',
 
 	// display text in template or only icon
@@ -21,8 +26,5 @@ export default AsyncButton.extend({
 			}
 			return 'Remove this radio from your favorites';
 		}
-	}),
-	click() {
-		return get(this, 'channel.toggleFavorite').perform();
-	}
+	})
 });
