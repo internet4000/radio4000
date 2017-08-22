@@ -5,7 +5,7 @@
 	<p class="Track-body">{{track.body}}</p>
 {{/link-to}}
 
-{{#if canEdit}}
+{{#if track.channel.canEdit}}
 	{{link-to 'Edit' 'channel.tracks.track.edit' track
 			class="Btn Btn--text Muted Track-controls"
 			title="Edit the track"}}

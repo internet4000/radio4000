@@ -7,7 +7,6 @@ export default Component.extend({
 	classNames: ['ChannelCard'],
 	classNameBindings: ['isActive', 'wide:ChannelCard--wide'],
 	isActive: computed.reads('channel.isInPlayer'),
-	canEdit: computed.reads('channel.canEdit'),
 	title: computed('channel.title', 'channel.body', function () {
 		const body = get(this, 'channel.body') || '';
 		const title = get(this, 'channel.title') || '';
