@@ -94,9 +94,6 @@ export default DS.Model.extend(Validations, {
 			const channel = this;
 			const userChannel = this.get('session.currentUser.channels.firstObject');
 
-			console.log("channel", channel)
-			console.log("userChannel", userChannel)
-
 			// Avoid any property being null because `(null === null)` equals true…
 			if (channel === null || userChannel === null || userChannel === undefined) {
 				return false;
@@ -140,6 +137,6 @@ export default DS.Model.extend(Validations, {
 
 		toggleObject(followers, userChannel, isFavorite);
 
-		return yield channelPublic.save();
+		return channelPublic.save();
 	}).drop()
 });

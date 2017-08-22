@@ -4,9 +4,12 @@ import AsyncButton from 'ember-async-button/components/async-button';
 const {Component, computed, get} = Ember;
 
 export default AsyncButton.extend({
-	tagName: 'button',
-	classNames: ['Btn'],
 	attributeBindings: ['title'],
+	classNames: ['Btn'],
+
+	// async button
+	action: 'click',
+	pending: 'Loading',
 
 	// display text in template or only icon
 	showText: true,
@@ -19,9 +22,7 @@ export default AsyncButton.extend({
 			return 'Remove this radio from your favorites';
 		}
 	}),
-	actions: {
-		click() {
-			return get(this, 'channel.toggleFavorite').perform();
-		}
+	click() {
+		return get(this, 'channel.toggleFavorite').perform();
 	}
 });
