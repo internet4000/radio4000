@@ -1,28 +1,17 @@
-{{#if isEditing}}
-	{{#modal-dialog close="closeModals"}}
-		{{track-edit
-				track=trackToEdit
-				onSubmit=(action "updateTrack")
-				onCancel=(action "closeModals")
-				onDeleteTrack=(action "deleteTrack")}}
-	{{/modal-dialog}}
-{{/if}}
-
 <div class="Container Container--full">
 	<div class=" Grid">
 		<div class="Grid-cell Grid-cell--triple">
 			{{#if tracks.isLoaded}}
-				{{#tracks-list items=tracks grouped=true numbered=false as |item|}}
-					{{track-item
-							track=item
-							canEdit=model.canEdit
-							edit=(action "startEditingTrack")
-							onTransition="transitionToTrack"}}
+				{{#tracks-list
+						 items=tracks
+						 grouped=true
+						 numbered=false as |item|}}
+					{{track-item track=item}}
 				{{/tracks-list}}
 
 				{{#unless canEdit}}
 					{{#unless tracks.length}}
-						<span><p>Ooh, there are no tracks in this radio yet.</p></span>
+						<p>This radio has no tracks yet</p>
 					{{/unless}}
 				{{/unless}}
 			{{else}}

@@ -67,5 +67,28 @@ export default Model.extend(Validations, {
 		if (ytid) {
 			set(this, 'ytid', ytid);
 		}
+	},
+	updateTrack(track) {
+		/* if (!track.get('hasDirtyAttributes')) {
+			 return Ember.RSVP.resolve();
+			 }
+
+			 // In case url changed, we need to set the ytid.
+			 track.updateYoutubeId();
+			 return track.save().then(() => {
+			 this.send('closeModals');
+			 flashMessages.info('Track saved');
+			 });*/
+	},
+	deleteTrack(track) {
+		/* track.get('channel').then(channel => {
+			 channel.get('tracks').then(() => {
+			 track.destroyRecord().then(() => {
+			 flashMessages.warning('Track deleted');
+			 }, () => {
+			 flashMessages.warning('Could not delete your track');
+			 });
+			 });
+			 });*/
 	}
 });

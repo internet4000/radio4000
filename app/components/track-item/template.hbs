@@ -6,5 +6,7 @@
 {{/link-to}}
 
 {{#if canEdit}}
-	<button class="Btn Btn--text Muted Track-controls" {{action 'edit'}} title="Edit the track">Edit</button>
+	{{link-to 'Edit' 'channel.tracks.track.edit' track
+			class="Btn Btn--text Muted Track-controls"
+			title="Edit the track"}}
 {{/if}}

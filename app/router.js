@@ -30,8 +30,9 @@ Router.map(function () {
     this.route('index', {path: '/'});
     this.route('tracks', function () {
       this.route('track', {path: '/:track_id'}, function() {
-				this.route('index', {path: '/'});
-			});
+        this.route('index', {path: '/'});
+        this.route('edit');
+      });
     });
       this.authenticatedRoute('add');
       this.authenticatedRoute('edit');
