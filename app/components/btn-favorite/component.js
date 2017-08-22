@@ -1,21 +1,17 @@
 import Ember from 'ember';
-import AsyncButton from 'ember-async-button/components/async-button';
 
-const {Component, computed, get} = Ember;
+const {Component,
+			 computed,
+			 get} = Ember;
 
-export default AsyncButton.extend({
+export default Component.extend({
 	attributeBindings: ['title'],
 	classNames: ['Btn'],
+	disabled: computed.reads('channel.toggleFavorite.isRunning'),
 
-	// async button
-	action: 'toggleFavorite',
-	pending: 'Loading',
-	reset: true,
-
-	toggleFavorite: function() {
-		return get(this, 'channel.toggleFavorite').perform();
-	},
-
+	/* params */
+	// channel to be added as favorite to user.session
+	channel: null,
 	// display text in template or only icon
 	showText: true,
 
@@ -26,5 +22,9 @@ export default AsyncButton.extend({
 			}
 			return 'Remove this radio from your favorites';
 		}
-	})
+	}),
+
+	click() {
+		return get(this, 'channel.toggleFavorite').perform();
+	}
 });

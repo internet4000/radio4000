@@ -1,6 +1,10 @@
-{{#if channel.isFavorite}}
-	<span>★</span>
+{{#if channel.toggleFavorite.isIdle}}
+	Loading
 {{else}}
-	<span>☆</span>
+	{{#if channel.isFavorite}}
+		<span>★</span>
+	{{else}}
+		<span>☆</span>
+	{{/if}}
+	{{if showText 'Favorite'}}
 {{/if}}
-{{if showText 'Favorite'}}

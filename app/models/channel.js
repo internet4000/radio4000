@@ -127,6 +127,9 @@ export default DS.Model.extend(Validations, {
 		const favoriteChannels = yield userChannel.get('favoriteChannels');
 		const channel = this;
 
+		/* console.log('channel', channel);
+			 console.log('userChannel', userChannel);
+		 */
 		toggleObject(favoriteChannels, channel, isFavorite);
 
 		yield userChannel.save();
