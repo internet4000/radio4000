@@ -29,7 +29,7 @@ Router.map(function () {
   this.route('channel', {path: '/:channel_slug'}, function () {
     this.route('index', {path: '/'});
     this.route('tracks', function () {
-      this.route('track', {path: '/:track_id'}, function() {
+      this.route('track', {path: ':track_id'}, function() {
         this.route('index', {path: '/'});
         this.route('edit');
       });
