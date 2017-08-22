@@ -1,11 +1,12 @@
 <div class="Container Container--full">
 	<div class=" Grid">
 		<div class="Grid-cell Grid-cell--triple">
-			{{#if tracks.isLoaded}}
+			{{#if model.tracks.isFulfilled}}
 				{{#tracks-list
-						 items=tracks
-						 grouped=true
-						 numbered=false as |item|}}
+					items=model.tracks
+					grouped=true
+					numbered=false as |item|
+				}}
 					{{track-item track=item}}
 				{{/tracks-list}}
 
