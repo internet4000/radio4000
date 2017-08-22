@@ -9,6 +9,8 @@
 	flex-shrink: 0;
 
 	// A bit of depth.
+	border-top: 1px solid $mediumlightgray;
+	border-radius: $border-radius;
 
 	// border-radius: $border-radius;
 	// box-shadow: $box-shadow;
@@ -16,6 +18,11 @@
 	// When several tabs follow each other.
 	& + .Tabs {
 		margin-top: 3px;
+	}
+
+	// When panel has bg-color.
+	.Root.is-panelLeftVisible .Aside--left & {
+		border-top-color: transparent;
 	}
 }
 
@@ -144,13 +151,10 @@
 }
 
 .Tabs--transparent {
-	border-color: transparent;
+	border-top: 0;
 	background-color: transparent;
-	box-shadow: none;
+
 	.Tabs-item {
 		background-color: transparent;
-		// &.is-active:after {
-		// 	background: $text-color;
-		// }
 	}
 }

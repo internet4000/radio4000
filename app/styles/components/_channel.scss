@@ -53,6 +53,8 @@
 }
 
 .Channel-header {
+	border-top: 1px solid $mediumlightgray;
+	border-radius: $border-radius;
 	background-color: $superlightgray;
 	min-height: 10rem; // visual perf
 	padding-left: 1rem;
