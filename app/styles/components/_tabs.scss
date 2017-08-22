@@ -49,11 +49,11 @@
 	}
 }
 
-
 // .Tabs-item + .Btn doesn't play nice
 // so just nest .Btn directly inside.
 .Tabs-btn {
-	margin: 0.2rem 0.6rem;
+	margin-top: 0.8rem;
+	margin-bottom: 0.8rem;
 }
 
 .Tabs-divider {
