@@ -53,6 +53,7 @@ const Validations = buildValidations({
 
 export default DS.Model.extend(Validations, {
 	session: inject.service(),
+	flashMessages: inject.service(),
 
 	created: attr('number', {
 		defaultValue() {
@@ -108,18 +109,17 @@ export default DS.Model.extend(Validations, {
 
 	isExperienced: computed.and('images.firstObject', 'totalTracks', 'favoriteChannels.firstObject'),
 
-	// is already a favorite channel of session.currentUser
+	// Is already a favorite channel of session.currentUser.
 	isFavorite: computed('model', 'session.currentUser.channels.firstObject.favoriteChannels.[]', function () {
 		const channel = this;
 		const favorites = get(this, 'session.currentUser.channels.firstObject.favoriteChannels');
 
-		// guard because this functions runs before userChannel is defined
+		// Guard because this functions runs before userChannel is defined.
 		if (!favorites) {
-			Ember.debug('could not check isFavorite because no favorites')
 			return false;
 		}
 
-		// true if this channel is a favorite of the user's favorites
+		// True if this channel is a favorite of the user's favorites.
 		return favorites.includes(channel);
 	}),
 
@@ -127,27 +127,21 @@ export default DS.Model.extend(Validations, {
 		const isFavorite = get(this, 'isFavorite');
 		const userChannel = get(this, 'session.currentUser.channels.firstObject');
 
-		if(!userChannel) return
+		if (!userChannel) {
+			get(this, 'flashMessages').warning('To save a radio channel as favorite you should sign up or log in')
+			return
+		}
 
+		// Toggle this channel on the current user's favorite channels.
 		const favoriteChannels = yield userChannel.get('favoriteChannels');
 		const channel = this;
-
-		console.log('toggleFavorite start', isFavorite)
-
-		/* console.log('channel', channel);
-			 console.log('userChannel', userChannel);
-		 */
 		toggleObject(favoriteChannels, channel, isFavorite);
-
 		yield userChannel.save();
 
 		// Toggle the userChannel from this channel's public followers.
 		const channelPublic = yield channel.get('channelPublic');
 		const followers = yield channelPublic.get('followers');
-
 		toggleObject(followers, userChannel, isFavorite);
-
 		yield channelPublic.save();
-		console.log('toggleFavorite end')
 	}).drop()
 });
