@@ -1,4 +1,5 @@
 <h2>Edit <small>track</small></h2>
+
 {{#form-group
 	model=track
 	valuePath="url"
@@ -23,7 +24,7 @@
 	valuePath="body"
 	label="Description"
 	hint="Give your track an optional description" as |value|}}
-	{{input value=value placeholder="Track description"}}<br>
+	{{textarea value=value placeholder="Track description"}}<br>
 {{/form-group}}
 
 <div class="Form-group">
