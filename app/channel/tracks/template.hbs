@@ -9,10 +9,8 @@
 					{{track-item track=item}}
 				{{/tracks-list}}
 
-				{{#unless model.canEdit}}
-					{{#unless model.tracks.length}}
-						<p>This radio has no tracks yet</p>
-					{{/unless}}
+				{{#unless model.tracks.length}}
+					<p>This radio has no tracks yet</p>
 				{{/unless}}
 			{{else}}
 				{{is-loading}}
