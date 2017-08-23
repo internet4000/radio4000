@@ -13,11 +13,12 @@ export default Controller.extend({
 	actions: {
 		addTrack(url) {
 			debug(`Trying to add ${url}`);
+
+			// Setting these properties open a modal in the application template.
 			get(this, 'applicationController').setProperties({
 				newUrl: url,
 				showAddTrack: true
 			});
-			set(this, 'addTrackUrl', '');
 		}
 	}
 });
