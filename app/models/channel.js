@@ -93,7 +93,7 @@ export default DS.Model.extend(Validations, {
 	canEdit: computed('id', 'session.currentUser.channels.firstObject.id', {
 		get() {
 			const channel = this;
-			const userChannel = this.get('session.currentUser.channels.firstObject');
+			const userChannel = get(this, 'session.currentUser.channels.firstObject');
 
 			// Avoid any property being null because `(null === null)` equals true…
 			if (channel === null || userChannel === null || userChannel === undefined) {
@@ -111,7 +111,7 @@ export default DS.Model.extend(Validations, {
 	// is already a favorite channel of session.currentUser
 	isFavorite: computed('model', 'session.currentUser.channels.firstObject.favoriteChannels.[]', function () {
 		const channel = this;
-		const favorites = this.get('session.currentUser.channels.firstObject.favoriteChannels');
+		const favorites = get(this, 'session.currentUser.channels.firstObject.favoriteChannels');
 
 		// guard because this functions runs before userChannel is defined
 		if (!favorites) {
@@ -125,6 +125,9 @@ export default DS.Model.extend(Validations, {
 	toggleFavorite: task(function * () {
 		const isFavorite = get(this, 'isFavorite');
 		const userChannel = get(this, 'session.currentUser.channels.firstObject');
+
+		if(!userChannel) return
+
 		const favoriteChannels = yield userChannel.get('favoriteChannels');
 		const channel = this;
 
