@@ -28,27 +28,29 @@
 {{/form-group}}
 
 <div class="Form-group">
-	{{#btn-group}}
-		<button
-				onclick={{perform updateTrack}}
-				type="submit"
-				class="Btn Btn--primary"
-				title="Save the track"
-				disabled={{updateTrack.isRunning}}>
-			{{if updateTrack.isIdle "Save" "Saving…"}}
-		</button>
+	<div class="BtnGroupWrapper BtnGroupWrapper--full">
+		{{#btn-group}}
+			<button
+					onclick={{perform updateTrack}}
+					type="submit"
+					class="Btn Btn--primary"
+					title="Save the track"
+					disabled={{updateTrack.isRunning}}>
+				{{if updateTrack.isIdle "Save" "Saving…"}}
+			</button>
 
-		<button {{action "cancel"}} class="Btn Btn--text" title="Stop editing the track">Cancel</button>
-
-		<button
-				onclick={{perform deleteTrack}}
-				class="Btn Btn--text Btn--danger u-alignRight"
-				title="Delete this track from your radio"
-				disabled={{deleteTrack.isRunning}}>
-			{{if deleteTrack.isIdle "Delete" "Deleting…"}}
-		</button>
-
-	{{/btn-group}}
+			<button {{action "cancel"}} class="Btn" title="Stop editing the track">Cancel</button>
+		{{/btn-group}}
+		{{#btn-group class="BtnGroup--right"}}
+			<button
+					onclick={{perform deleteTrack}}
+					class="Btn Btn--text Btn--danger u-alignRight"
+					title="Delete this track from your radio"
+					disabled={{deleteTrack.isRunning}}>
+				{{if deleteTrack.isIdle "Delete" "Deleting…"}}
+			</button>
+		{{/btn-group}}
+	</div>
 </div>
 
 {{yield}}
