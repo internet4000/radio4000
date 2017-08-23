@@ -5,7 +5,7 @@ const {Component,
 			 get} = Ember;
 
 export default Component.extend({
-	attributeBindings: ['title'],
+	attributeBindings: ['title', 'disabled'],
 	classNames: ['Btn'],
 	disabled: computed.reads('channel.toggleFavorite.isRunning'),
 
