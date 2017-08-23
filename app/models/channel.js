@@ -115,6 +115,7 @@ export default DS.Model.extend(Validations, {
 
 		// guard because this functions runs before userChannel is defined
 		if (!favorites) {
+			Ember.debug('could not check isFavorite because no favorites')
 			return false;
 		}
 
@@ -131,6 +132,8 @@ export default DS.Model.extend(Validations, {
 		const favoriteChannels = yield userChannel.get('favoriteChannels');
 		const channel = this;
 
+		console.log('toggleFavorite start', isFavorite)
+
 		/* console.log('channel', channel);
 			 console.log('userChannel', userChannel);
 		 */
@@ -144,6 +147,7 @@ export default DS.Model.extend(Validations, {
 
 		toggleObject(followers, userChannel, isFavorite);
 
-		return channelPublic.save();
+		yield channelPublic.save();
+		console.log('toggleFavorite end')
 	}).drop()
 });

@@ -9,22 +9,13 @@
 	flex-shrink: 0;
 
 	// A bit of depth.
-	border-top: 1px solid $mediumlightgray;
+	border: 1px solid $mediumlightgray;
 	border-radius: $border-radius;
-
-	// border-radius: $border-radius;
 	// box-shadow: $box-shadow;
 
 	// When several tabs follow each other.
 	& + .Tabs {
 		margin-top: 3px;
-	}
-
-	// When panel has bg-color.
-	@media (max-width: $layout-m) {
-		.Root.is-panelLeftVisible .Aside--left & {
-			border-top-color: transparent;
-		}
 	}
 }
 
@@ -33,6 +24,7 @@
 	margin-bottom: 0;
 	padding: 0.8em 1rem 0.5em;
 	color: $text-color;
+	border-radius: $border-radius;
 	border-right: 3px solid transparent;
 	transition: border-color 260ms $easing, border-bottom-color 200ms $easing, background-image 200ms $easing;
 
@@ -151,7 +143,7 @@
 }
 
 .Tabs--transparent {
-	border-top: 0;
+	border: 0;
 	background-color: transparent;
 
 	.Tabs-item {

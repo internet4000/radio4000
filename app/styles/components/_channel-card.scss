@@ -2,6 +2,8 @@
 	position: relative;
 	padding-bottom: 1rem;
 	background-color: $bg-color-2;
+	border: 1px solid $mediumlightgray;
+	border-radius: $border-radius;
 
 	a {
 		text-decoration: none;
