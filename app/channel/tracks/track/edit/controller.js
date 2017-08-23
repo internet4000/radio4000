@@ -10,6 +10,7 @@ export default Controller.extend({
 			this.send('transitionRoute');
 		},
 		transitionRoute() {
+			get(this, 'model').rollbackAttributes();
 			this.transitionToRoute('channel.tracks');
 		}
 	}

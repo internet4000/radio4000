@@ -31,7 +31,6 @@ export default TrackFormComponent.extend({
 
 	actions: {
 		cancel() {
-			get(this, 'track').rollbackAttributes();
 			get(this, 'cancel')();
 		}
 	}
