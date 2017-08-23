@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import DS from 'ember-data';
+import {task} from 'ember-concurrency';
 import {validator, buildValidations} from 'ember-cp-validations';
 import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
 import firebase from 'firebase';
@@ -68,19 +69,17 @@ export default Model.extend(Validations, {
 			set(this, 'ytid', ytid);
 		}
 	},
-	updateTrack(track) {
-		/* if (!track.get('hasDirtyAttributes')) {
-			 return Ember.RSVP.resolve();
-			 }
+	update: task(function * () {
+		if (!get(this, 'hasDirtyAttributes')) {
+			return
+		}
 
-			 // In case url changed, we need to set the ytid.
-			 track.updateYoutubeId();
-			 return track.save().then(() => {
-			 this.send('closeModals');
-			 flashMessages.info('Track saved');
-			 });*/
-	},
-	deleteTrack(track) {
+		// In case url changed, we need to set the ytid
+		yield this.updateYoutubeId();
+		yield this.save()
+	}).drop(),
+	delete: task(function * () {
+		yield window.setTimeout(() => console.log('test'), 4000);
 		/* track.get('channel').then(channel => {
 			 channel.get('tracks').then(() => {
 			 track.destroyRecord().then(() => {
@@ -90,5 +89,5 @@ export default Model.extend(Validations, {
 			 });
 			 });
 			 });*/
-	}
+	}).drop()
 });

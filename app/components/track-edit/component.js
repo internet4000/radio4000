@@ -11,7 +11,10 @@ export default TrackFormComponent.extend({
 			get(this, 'cancel')();
 		},
 		deleteTrack() {
-			return get(this, 'track.deleteTrack').perform();
+			return get(this, 'track.delete').perform();
+		},
+		submit() {
+			return get(this, 'track.update').perform();
 		}
 	}
 });

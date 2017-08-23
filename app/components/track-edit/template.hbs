@@ -28,11 +28,26 @@
 
 <div class="Form-group">
 	{{#btn-group}}
-		<button {{action "submit"}} type="submit" class="Btn Btn--primary" title="Save the track" disabled={{disableSubmit}}>
-			{{if submitTask.isIdle "Save" "Saving…"}}
+
+		<button
+				{{action "submit"}}
+				type="submit"
+				class="Btn Btn--primary"
+				title="Save the track"
+				disabled={{submit.isRunning}}>
+			{{if submit.isIdle "Save" "Saving…"}}
 		</button>
+
 		<button {{action "cancel"}} class="Btn Btn--text" title="Stop editing the track">Cancel</button>
-		<button {{action "deleteTrack"}} class="Btn Btn--text Btn--danger u-alignRight" title="Delete this track from your radio">Delete</button>
+
+		<button
+				{{action "deleteTrack"}}
+				class="Btn Btn--text Btn--danger u-alignRight"
+				title="Delete this track from your radio"
+				disabled={{deleteTrack.isRunning}}>
+			{{if deleteTrack.isIdle "Save" "Saving…"}}
+		</button>
+
 	{{/btn-group}}
 </div>
 
