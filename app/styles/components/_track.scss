@@ -103,8 +103,6 @@ a.Track-link {
 
 // Track edit button.
 .Track-controls {
-	@include size-1;
-	cursor: pointer;
 	position: absolute;
 	top: 0;
 	right: 0;
