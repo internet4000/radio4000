@@ -7,7 +7,6 @@ export default Controller.extend({
 
 	actions: {
 		cancel() {
-			get(this, 'model').rollbackAttributes();
 			this.send('transitionRoute');
 		},
 		transitionRoute() {
