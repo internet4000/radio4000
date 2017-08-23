@@ -21,8 +21,10 @@
 	}
 
 	// When panel has bg-color.
-	.Root.is-panelLeftVisible .Aside--left & {
-		border-top-color: transparent;
+	@media (max-width: $layout-m) {
+		.Root.is-panelLeftVisible .Aside--left & {
+			border-top-color: transparent;
+		}
 	}
 }
 
@@ -56,11 +58,9 @@
 	}
 }
 
-// .Tabs-item + .Btn doesn't play nice
-// so just nest .Btn directly inside.
-.Tabs-btn {
-	margin-top: 0.8rem;
-	margin-bottom: 0.8rem;
+.Tabs .BtnGroup {
+	padding-top: 0.2em;
+	padding-bottom: 0.2em;
 }
 
 .Tabs-divider {
