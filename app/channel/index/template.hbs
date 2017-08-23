@@ -1,18 +1,22 @@
-<div class="Container">
-	{{channel-header channel=model}}
+<div class="Container Container--full">
+	<div class="Grid">
+		<div class="Grid-cell Grid-cell--triple">
+			{{channel-header channel=model}}
+		</div>
+		{{#if model.canEdit}}
+			<div class="Grid-cell Grid-cell--triple">
+				<form class="Form">
+					{{track-add-inline
+							addTrackUrl=addTrackUrl
+							onSubmit=(action "addTrack")}}
+				</form>
 
-	{{#if model.canEdit}}
-		<form class="Form">
-			{{track-add-inline
-				addTrackUrl=addTrackUrl
-				onSubmit=(action "addTrack")
-			}}
-		</form>
-
-		{{#unless model.isExperienced}}
-			{{page-welcome channel=model}}
-		{{/unless}}
-	{{/if}}
+				{{#unless model.isExperienced}}
+					{{page-welcome channel=model}}
+				{{/unless}}
+			</div>
+		{{/if}}
+	</div>
 </div>
 
 {{outlet}}
