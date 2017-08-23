@@ -78,16 +78,14 @@ export default Model.extend(Validations, {
 		yield this.updateYoutubeId();
 		yield this.save()
 	}).drop(),
+
 	delete: task(function * () {
-		yield window.setTimeout(() => console.log('test'), 4000);
-		/* track.get('channel').then(channel => {
-			 channel.get('tracks').then(() => {
-			 track.destroyRecord().then(() => {
-			 flashMessages.warning('Track deleted');
-			 }, () => {
-			 flashMessages.warning('Could not delete your track');
-			 });
-			 });
-			 });*/
+		const track = this
+		const channel = yield get(this, 'channel');
+		const tracks = yield channel.get('tracks');
+
+		yield tracks.removeObject(track);
+		yield channel.save();
+		return track.destroyRecord();
 	}).drop()
 });
