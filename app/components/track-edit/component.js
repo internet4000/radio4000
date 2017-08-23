@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import {task} from 'ember-concurrency';
 import TrackFormComponent from 'radio4000/components/track-form/component';
 
 const {get,
@@ -10,11 +11,11 @@ export default TrackFormComponent.extend({
 		cancel() {
 			get(this, 'cancel')();
 		},
-		deleteTrack() {
+		delete: task(function *() {
 			return get(this, 'track.delete').perform();
-		},
-		submit() {
+		}).drop(),
+		update: task(function *() {
 			return get(this, 'track.update').perform();
-		}
+		}).drop()
 	}
 });

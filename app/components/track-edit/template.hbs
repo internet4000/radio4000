@@ -31,7 +31,7 @@
 	{{#btn-group}}
 
 		<button
-				{{action "submit"}}
+				onclick={{perform update}}
 				type="submit"
 				class="Btn Btn--primary"
 				title="Save the track"
@@ -42,7 +42,7 @@
 		<button {{action "cancel"}} class="Btn Btn--text" title="Stop editing the track">Cancel</button>
 
 		<button
-				{{action "deleteTrack"}}
+				onclick={{perform delete}}
 				class="Btn Btn--text Btn--danger u-alignRight"
 				title="Delete this track from your radio"
 				disabled={{deleteTrack.isRunning}}>
