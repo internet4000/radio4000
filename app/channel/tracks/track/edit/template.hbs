@@ -1,6 +1,7 @@
 {{#modal-dialog close="cancel"}}
 	{{track-edit
 			track=model
-			cancel=(action 'cancel')}}
+			cancel=(action 'cancel')
+			transitionRoute=(action 'transitionRoute')}}
 	{{outlet}}
 {{/modal-dialog}}
