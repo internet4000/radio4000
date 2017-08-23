@@ -1,57 +1,3 @@
-.Channel--detail {
-	position: relative;
-	margin-top: 3rem;
-
-	@media (min-width: $layout-m) {
-		margin-top: 2rem;
-	}
-}
-
-.Channel--edit {
-	@media (min-width: $layout-s) {
-		max-width: 50rem;
-	}
-
-	.Form {
-		margin-top: 0;
-		background-color: $slightgray;
-	}
-
-	.Channel-body {
-		width: 100%;
-		flex-grow: 1;
-		padding: 0;
-		margin: 0;
-	}
-
-	.Channel-media {
-		width: 100%;
-		max-width: 100%;
-		float: none;
-		margin-top: 0;
-	}
-
-	.Dropzone .Cover {
-		padding-bottom: 1rem;
-	}
-
-	.Dropzone-inner {
-		figure {
-			max-width: 6rem;
-			margin: 0;
-		}
-
-		input {
-			clear: both;
-			display: block;
-		}
-	}
-
-	.BtnGroupWrapper {
-		margin-bottom: 0;
-	}
-}
-
 .Channel-header {
 	border-top: 1px solid $mediumlightgray;
 	border-radius: $border-radius;
@@ -70,13 +16,6 @@
 	margin-right: auto;
 	margin-top: -1.5rem;
 	width: 30%;
-
-	// position: fixed;
-	// top: 0;
-	// right: 0;
-	// left: 0;
-	// bottom: 0;
-	// z-index: -1;
 }
 
 .Channel-cover {
@@ -87,12 +26,6 @@
 
 .Channel-body {
 	padding: 1.5rem 1rem 1rem;
-}
-
-.Channel-outlet {
-	// avoids jumps between tracks/favorites/followers
-	min-height: 5rem;
-	padding-top: 1rem;
 }
 
 .Channel-titleSection {
@@ -126,18 +59,6 @@
 	}
 }
 
-.Channel-buttons {
-	padding: 0.5rem;
-	padding-right: 0;
-	min-width: 7rem;
-  display: flex;
-  justify-content: flex-end;
-
-	@media (min-width: $layout-m) {
-		margin-right: -1rem;
-	}
-}
-
 .Channel-description {
 	@include size-2;
 	max-width: 36rem;
@@ -152,6 +73,18 @@
 		word-wrap: break-word;
 		color: $gray;
 		text-decoration: none;
+	}
+}
+
+.Channel-buttons {
+	padding: 0.5rem;
+	padding-right: 0;
+	min-width: 7rem;
+	display: flex;
+	justify-content: flex-end;
+
+	@media (min-width: $layout-m) {
+		margin-right: -1rem;
 	}
 }
 
