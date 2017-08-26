@@ -1,9 +1,9 @@
 import Ember from 'ember';
 
 const {Component,
-			 inject,
-			 computed,
-			 get} = Ember;
+	inject,
+	computed,
+	get} = Ember;
 
 export default Component.extend({
 	tagName: ['button'],
@@ -23,7 +23,7 @@ export default Component.extend({
 
 	title: computed('channel.isFavorite', {
 		get() {
-			if(!get(this, 'hasChannel')) {
+			if (!get(this, 'hasChannel')) {
 				return 'You need to login and have a channel to add this one as favorite'
 			}
 			if (!get(this, 'channel.isFavorite')) {
