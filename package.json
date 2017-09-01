@@ -60,7 +60,6 @@
     "radio4000-player": "^0.1.8",
     "suitcss-base": "^3.0.0",
     "torii": "^0.9.3",
-    "whatwg-fetch": "^2.0.3",
     "youtube-regex": "^1.0.4"
   },
   "engines": {
