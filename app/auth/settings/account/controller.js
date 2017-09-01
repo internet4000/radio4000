@@ -152,7 +152,9 @@ export default Controller.extend({
 			});
 		},
 		deletedUser() {
-			get(this, 'flashMessages').success('Your Radio4000 account and all its data were deleted. Farewell!');
+			get(this, 'flashMessages').success('Your Radio4000 account and all its data were deleted. Farewell!', {
+				sticky: true
+			});
 			this.transitionToRoute('auth.logout');
 		}
 	}
