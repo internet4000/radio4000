@@ -49,7 +49,7 @@ export default ToriiFirebaseAdapter.extend({
 		const store = this.get('store');
 		return new RSVP.Promise((resolve, reject) => {
 			store.findRecord('user', id).then(user => {
-				debug('Found existing r4 user')
+				debug('Found existing r4 user');
 				resolve(user);
 			}).catch(() => {
 				debug('no r4 user found');
@@ -74,7 +74,7 @@ export default ToriiFirebaseAdapter.extend({
 		}
 		const hasSettings = user.belongsTo('settings').id();
 		if (hasSettings) {
-			debug('user has settings')
+			debug('user has settings');
 			return RSVP.Promise.resolve(user.get('settings.firstObject'));
 		}
 

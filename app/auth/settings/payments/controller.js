@@ -42,7 +42,7 @@ export default Controller.extend({
 				sticky: true
 			});
 
-			/* const apiURL = 'http://localhost:3000/payments';*/
+			/* const apiURL = 'http://localhost:3000/payments'; */
 			const apiURL = 'http://localhost:5000/radio4000-staging/us-central1/api/payments';
 
 			fetch(apiURL, {

@@ -29,15 +29,14 @@ export default Component.extend({
 			debug('r4 user destroyed');
 			yield firebaseUser.delete();
 			debug('firebase user destroyed');
-			get(this, 'onDelete')()
+			get(this, 'onDelete')();
 		} catch (error) {
-			console.log(error)
-			if(error.code === 'auth/requires-recent-login') {
+			if (error.code === 'auth/requires-recent-login') {
 				messages.warning(`For your security, please log in again before deleting your account.`, {
 					sticky: true
 				});
 			}
-			debug(error)
+			debug(error);
 		}
 	}),
 
