@@ -1,6 +1,6 @@
 {
   "name": "radio4000",
-  "version": "4.11.3",
+  "version": "4.11.4",
   "scripts": {
     "build": "ember build; npm run critical-css",
     "build-production": "ember build -prod; npm run critical-css",
@@ -12,7 +12,7 @@
   },
   "repository": "internet4000/radio4000",
   "devDependencies": {
-    "autoprefixer": "^6.5.3",
+    "autoprefixer": "^7.1.2",
     "broccoli-asset-rev": "^2.4.5",
     "critical": "^0.7.1",
     "ember-async-button": "^1.0.2",
@@ -46,8 +46,8 @@
     "eslint-config-xo": "^0.17.0",
     "loader.js": "^4.2.3",
     "node-sass": "^4.5.3",
-    "postcss": "^5.2.12",
-    "postcss-import": "^9.1.0"
+    "postcss": "^6.0.8",
+    "postcss-import": "^10.0.0"
   },
   "dependencies": {
     "date-fns": "^1.28.4",
@@ -58,7 +58,7 @@
     "js-cookie": "^2.1.4",
     "lazysizes": "^4.0.0-rc1",
     "radio4000-player": "^0.1.8",
-    "suitcss-base": "^2.0.0",
+    "suitcss-base": "^3.0.0",
     "torii": "^0.9.3",
     "whatwg-fetch": "^2.0.3",
     "youtube-regex": "^1.0.4"
