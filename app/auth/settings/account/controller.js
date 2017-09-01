@@ -36,7 +36,7 @@ export default Controller.extend({
 		let currentUser = firebaseApp.auth().currentUser;
 		set(this, 'currentUser', currentUser);
 		set(this, 'providerData', currentUser.providerData);
-		Ember.debug('updated current user');
+		debug('updated current user');
 	},
 
 	// Ensure the auth data we 'cache' is cleaned.
@@ -65,7 +65,8 @@ export default Controller.extend({
 			msg = 'This is a SENSITIVE operation, logout and login again to perform this action.';
 			options.sticky = true;
 		} else {
-			debug('Could not add account.');
+			msg = 'An error occured. Please refresh the page and try again.';
+			debug('error in accounts.');
 			throw new Error(err);
 		}
 		messages.warning(msg, options);
@@ -151,12 +152,8 @@ export default Controller.extend({
 			});
 		},
 		deletedUser() {
-			this.get('session').close();
-			this.transitionToRoute('auth.login');
-			get(this, 'flashMessages').success('Your Radio4000 account was deleted. Farewell!');
-		},
-		onError(err) {
-			this.handleError(err);
+			get(this, 'flashMessages').success('Your Radio4000 account and all its data were deleted. Farewell!');
+			this.transitionToRoute('auth.logout');
 		}
 	}
 });

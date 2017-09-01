@@ -3,21 +3,22 @@ import {task} from 'ember-concurrency';
 
 const {Component,
 			 computed,
+			 inject,
 			 get,
 			 debug} = Ember;
 
 export default Component.extend({
+	flashMessages: inject.service(),
 	isExpanded: false,
 	// firebaseApp service
 	// user: null
 	channel: computed.alias('user.channels.firstObject'),
 
 	deleteAccount: task(function * () {
+		const messages = get(this, 'flashMessages');
 		let user = get(this, 'user');
 		let settings = yield user.get('settings');
 		let firebaseUser = get(this, 'firebaseApp').auth().currentUser;
-
-		console.log('firebaseUser', firebaseUser)
 
 		try {
 			yield settings.destroyRecord();
@@ -27,9 +28,16 @@ export default Component.extend({
 			yield user.destroyRecord();
 			debug('r4 user destroyed');
 			yield firebaseUser.delete();
-			debug('firabse user destroyed');
-		} catch (err) {
-			this.attrs.onError(err);
+			debug('firebase user destroyed');
+			get(this, 'onDelete')()
+		} catch (error) {
+			console.log(error)
+			if(error.code === 'auth/requires-recent-login') {
+				messages.warning(`For your security, please log in again before deleting your account.`, {
+					sticky: true
+				});
+			}
+			debug(error)
 		}
 	}),
 
@@ -38,8 +46,7 @@ export default Component.extend({
 			this.toggleProperty('isExpanded');
 		},
 		delete() {
-			this.get('deleteAccount').perform()
-				.then(this.attrs.onDelete);
+			get(this, 'deleteAccount').perform();
 		}
 	}
 });

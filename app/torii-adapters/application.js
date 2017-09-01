@@ -49,14 +49,17 @@ export default ToriiFirebaseAdapter.extend({
 		const store = this.get('store');
 		return new RSVP.Promise((resolve, reject) => {
 			store.findRecord('user', id).then(user => {
+				debug('Found existing r4 user')
 				resolve(user);
 			}).catch(() => {
+				debug('no r4 user found');
 				store.recordForId('user', id).unloadRecord();
 				// Unloading a record does not happen immediately,
 				// so we wrap this in a run loop.
 				run.next(() => {
 					const newUser = store.createRecord('user', {id});
 					newUser.save().then(() => {
+						debug('r4 user created');
 						resolve(newUser);
 					}).catch(reject);
 				});
@@ -71,6 +74,7 @@ export default ToriiFirebaseAdapter.extend({
 		}
 		const hasSettings = user.belongsTo('settings').id();
 		if (hasSettings) {
+			debug('user has settings')
 			return RSVP.Promise.resolve(user.get('settings.firstObject'));
 		}
 
