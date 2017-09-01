@@ -11,7 +11,7 @@ module.exports = {
 	rules: {
 		// Change errors to warnings to avoid
 		// the CI builds failing.
-		'no-mixed-spaces-and-tabs': 'warn',
+		'no-mixed-spaces-and-tabs': 0,
 		'array-callback-return': 'warn',
 		'space-before-function-paren': 'warn',
 		'object-curly-spacing': 'warn',
