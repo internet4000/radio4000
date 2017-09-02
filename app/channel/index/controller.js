@@ -3,9 +3,7 @@ import Ember from 'ember';
 const {Controller,
 			 inject,
 			 get,
-			 set,
-			 debug,
-			 computed} = Ember;
+			 debug} = Ember;
 
 export default Controller.extend({
 	applicationController: inject.controller('application'),

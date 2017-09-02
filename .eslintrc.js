@@ -8,21 +8,12 @@ module.exports = {
 	env: {
 		browser: true
 	},
+	// Change errors to warnings to avoid the CI builds failing.
 	rules: {
-		'semi': 'off',
+		'indent': 'warn',
+		'no-mixed-spaces-and-tabs': 'warn',
 		'object-curly-spacing': 'off',
-		'space-before-function-paren': 'off',
-		// Change errors to warnings to avoid
-		// the CI builds failing.
-		'no-unused-vars': 'warn',
-		'no-mixed-spaces-and-tabs': 0,
-		'array-callback-return': 'warn',
-		'no-path-concat': 'warn',
-		'camelcase': ['warn', {
-			properties: 'always'
-		}],
-		'indent': ['warn', 'tab', {
-			SwitchCase: 1
-		}]
+		'semi': 'off',
+		'space-before-function-paren': 'off'
 	}
 };

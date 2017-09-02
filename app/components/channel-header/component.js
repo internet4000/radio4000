@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {Component, get} = Ember;
+const {Component} = Ember;
 
 export default Component.extend({
 	classNames: ['ChannelHeader']

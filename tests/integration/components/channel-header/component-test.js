@@ -1,5 +1,5 @@
 import {moduleForComponent, test} from 'ember-qunit';
-import hbs from 'htmlbars-inline-precompile';
+// import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('channel-header', 'Integration | Component | channel header', {
 	integration: true
