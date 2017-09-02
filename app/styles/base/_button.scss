@@ -1,5 +1,5 @@
 @mixin button {
-	@extend %font-bold;
+	font-weight: bold;
 	align-items: center;
 	background-color: $superlightgray;
 	box-shadow: $box-shadow;

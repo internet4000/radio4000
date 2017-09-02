@@ -3,15 +3,15 @@
  */
 
 // Shared styles for inputs and buttons
-.Btn,
-.CustomSelect,
 [type="text"],
 [type="email"],
 [type="tel"],
 [type="password"],
 [type="url"],
 [type="search"],
-textarea {
+textarea,
+.Btn,
+.CustomSelect {
 	@include size-1;
 	@include negative-text;
 	border: 1px solid rgba($gray, 0.4);
@@ -56,8 +56,8 @@ textarea {
 
 // Labels
 label {
-	@extend %font-bold;
 	@include size-1;
+	font-weight: bold;
 	display: block;
 
 	[type="text"],
@@ -66,7 +66,7 @@ label {
 	[type="password"],
 	[type="url"],
 	textarea {
-		@extend %font-regular;
+		font-weight: normal;
 		margin-top: 0.2rem;
 	}
 
