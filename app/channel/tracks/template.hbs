@@ -1,20 +1,16 @@
 <div class="Container Container--full">
 	<div class=" Grid">
 		<div class="Grid-cell Grid-cell--triple">
-			{{#if model.tracks.isFulfilled}}
-				{{#tracks-list
-					items=model.tracks
-					grouped=true
-					numbered=false as |item|}}
-					{{track-item track=item}}
-				{{/tracks-list}}
+			{{#tracks-list
+					 items=model
+					 grouped=true
+					 numbered=false as |item|}}
+				{{track-item track=item}}
+			{{/tracks-list}}
 
-				{{#unless model.tracks.length}}
-					<p>This radio has no tracks yet</p>
-				{{/unless}}
-			{{else}}
-				{{is-loading}}
-			{{/if}}
+			{{#unless model.tracks.length}}
+				<p>This radio has no tracks yet</p>
+			{{/unless}}
 		</div>
 	</div>
 
