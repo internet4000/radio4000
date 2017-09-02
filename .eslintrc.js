@@ -15,7 +15,7 @@ module.exports = {
 		// Change errors to warnings to avoid
 		// the CI builds failing.
 		'no-unused-vars': 'warn',
-		'no-mixed-spaces-and-tabs': 'warn',
+		'no-mixed-spaces-and-tabs': 0,
 		'array-callback-return': 'warn',
 		'no-path-concat': 'warn',
 		'camelcase': ['warn', {

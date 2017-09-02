@@ -65,6 +65,7 @@ export default DS.Model.extend(Validations, {
 	slug: attr('string'),
 	body: attr('string'),
 	isFeatured: attr('boolean'),
+	isPremium: attr('boolean'),
 	link: attr('string'),
 
 	// Set the latest image as the cover image.

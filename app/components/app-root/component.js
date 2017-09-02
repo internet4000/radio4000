@@ -11,8 +11,6 @@ export default Component.extend({
 
 	classNames: ['Root'],
 	classNameBindings: [
-		'isEmbed',
-		'isInverted',
 		'uiStates.isMinimized',
 		'uiStates.isFullscreen:is-maximized',
 		'uiStates.isPanelLeftVisible:is-panelLeftVisible',

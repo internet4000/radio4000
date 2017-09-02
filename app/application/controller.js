@@ -4,9 +4,6 @@ import createTrackMixin from 'radio4000/mixins/create-track';
 const {Controller, get} = Ember;
 
 export default Controller.extend(createTrackMixin, {
-	queryParams: ['isEmbed', 'isInverted'],
-	isEmbed: false,
-	isInverted: false,
 	newUrl: null,
 	showAddTrack: false,
 
