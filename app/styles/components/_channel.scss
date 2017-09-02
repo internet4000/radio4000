@@ -1,85 +1,16 @@
-.Channel--detail {
-	position: relative;
-	margin-top: 1rem;
-	background-color: $slightgray;
-	border-top: 1px solid hsl(0, 0%, 85%);
-	border-left: 1px solid hsl(0, 0%, 80%);
-	border-right: 1px solid hsl(0, 0%, 80%);
-	border-radius: $border-radius;
-	box-shadow: $box-shadow;
-
-	@media (min-width: $layout-m) {
-		margin-top: 2rem;
-	}
-}
-
-.Channel--edit {
-	@media (min-width: $layout-s) {
-		max-width: 50rem;
-	}
-
-	.Form {
-		margin-top: 0;
-		background-color: $slightgray;
-	}
-
-	.Channel-body {
-		width: 100%;
-		flex-grow: 1;
-		padding: 0;
-		margin: 0;
-	}
-
-	.Channel-media {
-		width: 100%;
-		max-width: 100%;
-		float: none;
-		margin-top: 0;
-	}
-
-	.Dropzone .Cover {
-		padding-bottom: 1rem;
-	}
-
-	.Dropzone-inner {
-		figure {
-			max-width: 6rem;
-			margin: 0;
-		}
-
-		input {
-			clear: both;
-			display: block;
-		}
-	}
-
-	.BtnGroupWrapper {
-		margin-bottom: 0;
-	}
-}
-
 .Channel-header {
+	border: 1px solid $mediumlightgray;
+	border-radius: $border-radius;
 	background-color: $superlightgray;
 	min-height: 10rem; // visual perf
-	padding-left: 1rem;
 	display: flex;
 }
 
 .Channel-media {
 	@include clearfix;
 	float: left;
-	margin-top: -1rem;
-	margin-left: auto;
-	margin-right: auto;
 	margin-top: -1.5rem;
 	width: 30%;
-
-	@media (min-width: $layout-s) {
-	}
-
-	@media (min-width: $layout-l) {
-		width: 35%;
-	}
 }
 
 .Channel-cover {
@@ -89,93 +20,38 @@
 }
 
 .Channel-body {
-	@include clearfix;
-	padding-left: 1rem;
-	padding-top: 2rem;
-	padding-right: 1rem;
-
-	@media (min-width: $layout-s) {
-		position: relative;
-		margin-bottom: 1rem;
-		float: left;
-		width: 70%;
-	}
-
-	@media (min-width: $layout-m) {
-		width: 67%;
-	}
-
-	@media (min-width: $layout-l) {
-		width: 65%;
-	}
-}
-
-.Channel-outlet {
-	// avoids jumps between tracks/favorites/followers
-	min-height: 5rem;
-	padding-top: 1rem;
-}
-
-.Channel-titleSection {
-	@include clearfix;
-}
-
-.Channel-titleGroup {
-	margin-bottom: 1rem;
-}
-
-.Channel-title {
-	line-height: 1;
-	margin-bottom: 0;
-
-	a {
-		text-decoration: none;
-	}
-
-	@media (min-width: $layout-m) {
-		@include size-5;
-		display: inline-block;
-		max-width: 80%;
-	}
+	flex: 1;
+	padding: 1.5rem 1rem 0;
 }
 
 .Channel-slug {
-	margin-bottom: 0;
+	display: flex;
+	justify-content: space-between;
+	// margin-bottom: 0;
 
 	a {
 		text-decoration: none;
-	}
-}
-
-.Channel-buttons {
-	padding-right: 0.52rem;
-	padding-top: 0.5rem;
-	min-width: 7rem;
-
-	@media (min-width: $layout-m) {
-		padding-right: 0;
-		margin-right: -1rem;
 	}
 }
 
 .Channel-description {
 	@include size-2;
-	max-width: 36rem;
-	margin-bottom: 0;
-	clear: both;
 	word-break: break-word;
 }
 
-.Channel-links {
-	a {
-		@include size-1;
-		word-wrap: break-word;
-		color: $gray;
-		text-decoration: none;
-	}
+.Channel-links a {
+	word-wrap: break-word;
+	text-decoration: none;
 }
 
-.Channel-introduction {
-	// it is flexbox because of the Grid it is in (Grid-cell)
-	order: 1;
+.Channel-buttons {
+	padding: 0.5rem;
+	padding-right: 0;
+	min-width: 7rem;
+	display: flex;
+	justify-content: flex-end;
+
+	@media (min-width: $layout-m) {
+		margin-right: -1rem;
+	}
 }

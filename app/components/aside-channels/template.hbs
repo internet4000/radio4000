@@ -5,13 +5,13 @@
 	{{#link-to "channels.index" title="Listen to the editor's selection" class="Tabs-item"}}
 		Featured
 	{{/link-to}}
-	<div class="Tabs-divider">|</div>
 	{{#if userChannel}}
+		<div class="Tabs-divider">|</div>
 		{{#link-to "channels.history" title="Your listening history" class="Tabs-item"}}
 			History
 		{{/link-to}}
 		{{#link-to "channel.favorites" userChannel title="Your favorite radios" class="Tabs-item"}}
-			Favorites
+			&rarr; Favorites
 		{{/link-to}}
 	{{/if}}
 </div>

@@ -1,25 +1,42 @@
-<div class="Channel-outlet">
-	{{#if model.favoriteChannels}}
+{{#if model.favoriteChannels}}
 
-		{{#list-manipulation list=model.favoriteChannels as |manipulatedList updateSorting|}}
-			<div class="Filters">
-				{{#btn-group class='Filter Container'}}
-					<span class="BtnGroup-label">Filter ({{model.favoriteChannels.length}}) by</span>
-					{{btn-list-manipulation text='Recently updated'
-							onClick=(action updateSorting 'updated')}}
-					{{btn-list-manipulation text="Creation date"
-							onClick=(action updateSorting "created" true)}}
-					{{btn-list-manipulation text="A-Z"
-							onClick=(action updateSorting "title" true)}}
-				{{/btn-group}}
-			</div>
+	<section class="Section">
+		<div class="Container Container--full">
+			{{#list-manipulation list=model.favoriteChannels as |manipulatedList updateSorting|}}
+				<div class="Filters">
+					{{#btn-group class="Filter BtnGroup--right"}}
+						<span class="BtnGroup-label">Filter by</span>
+						{{btn-list-manipulation text="Activity"
+								onClick=(action updateSorting "updated")}}
+						{{btn-list-manipulation text="Age"
+								onClick=(action updateSorting "created" true)}}
+						{{btn-list-manipulation text="A-Z"
+								onClick=(action updateSorting "title" true)}}
+						<span class="BtnGroup-label">&nbsp;</span>
+						<button class="Btn Btn--small" {{action "changeLayout"}}>
+							{{if isList "Bigger" "Smaller"}}
+						</button>
+					{{/btn-group}}
+				</div>
 
-			{{channels-list channels=manipulatedList}}
-		{{/list-manipulation}}
+				{{#if model.favoriteChannels}}
+					<div class="Grid {{if isList 'Grid--wide'}}">
+						{{#each manipulatedList as |item|}}
+							<div class="Grid-cell">
+								{{channel-card channel=item wide=isList}}
+							</div>
+						{{/each}}
+					</div>
+			{{else}}
+					<p>Tuning radios…</p>
+					{{is-loading}}
+				{{/if}}
+			{{/list-manipulation}}
+		</div>
+	</section>
 
 	{{else}}
-		<div class="Container">
-			<p>This channel doesn't have any favorites, yet.</p>
-		</div>
-	{{/if}}
-</div>
+	<div class="Container">
+		<p>This channel doesn't have any favorites, yet.</p>
+	</div>
+{{/if}}

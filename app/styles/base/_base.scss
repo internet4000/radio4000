@@ -37,6 +37,13 @@ a:hover {
 	text-decoration: underline;
 }
 
+h1 a {
+	text-decoration: none;
+	&.is-active {
+		text-decoration: underline;
+	}
+}
+
 /**
  * Seperators
  */

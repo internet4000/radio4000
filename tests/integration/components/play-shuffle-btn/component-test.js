@@ -7,5 +7,5 @@ moduleForComponent('play-shuffle-btn', 'Integration | Component | play shuffle b
 
 test('it renders', function (assert) {
 	this.render(hbs`{{play-shuffle-btn}}`);
-	assert.equal(this.$().text().trim(), '▶');
+	assert.ok(this.$().text().indexOf('▶'));
 });

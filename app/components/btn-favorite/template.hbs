@@ -1,5 +1,13 @@
-{{#if isIdle}}
-	{{if isFavorite "Unfavorite" "Favorite"}}
+<div style="{if showText 'min-width: 6em'}}">
+{{#if channel.toggleFavorite.isRunning}}
+	Loading
 {{else}}
-	Saving…
+	{{#if channel.isFavorite}}
+		<span>★</span>
+		{{if showText 'Unfavorite'}}
+	{{else}}
+		<span>☆</span>
+		{{if showText 'Favorite'}}
+	{{/if}}
 {{/if}}
+</div>

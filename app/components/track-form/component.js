@@ -33,9 +33,8 @@ export default Component.extend({
 		const newid = youtubeUrlToId(track.get('url'));
 		if (newid) {
 			track.set('ytid', newid);
+			get(this, 'fetchTitle').perform();
 		}
-
-		get(this, 'fetchTitle').perform();
 	})),
 
 	fetchTitle: task(function * () {

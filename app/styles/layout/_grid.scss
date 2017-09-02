@@ -106,12 +106,10 @@
 }
 
 .Grid-cell--triple {
-	@media (min-width: $layout-sm) {
-		flex-basis: 100%;
+	flex-basis: 100%;
 
-		.no-flexbox & {
-			max-width: 100%;
-		}
+	.no-flexbox & {
+		max-width: 100%;
 	}
 
 	@media (min-width: $layout-ml) {

@@ -19,7 +19,7 @@
 		{{/if}}
 
 		{{#unless userChannel}}
-			<div class="Tabs-btn BtnGroup BtnGroup--full">
+			<div class="Tabs-item BtnGroup BtnGroup--full">
 				{{#if isAuthenticated}}
 					{{#link-to "channels.new" class="Btn Btn--full Btn--important" title="Create your Radio4000 channel"}}Create your radio{{/link-to}}
 				{{else}}
@@ -30,17 +30,17 @@
 		{{/unless}}
 
 		{{#if isAuthenticated}}
-			{{#link-to "auth.settings" class="Aside-link" title="Customize your Radio4000"}}Settings{{/link-to}}
+			{{#link-to "auth.settings" class="Tabs-item" title="Customize your Radio4000"}}Settings{{/link-to}}
 		{{/if}}
 
 		{{#link-to "about" title="Learn more about Radio4000" class="Tabs-item"}}About{{/link-to}}
 	</div>
 
-	<div class="Tabs Tabs--transparent Tabs--bottom">
-		{{#link-to "feedback" class="Aside-link Muted" title="Let us know what you have in mind!"}}Feedback{{/link-to}}
+	<div class="Tabs Tabs--transparent">
+		{{#link-to "feedback" class="Tabs-item" title="Let us know what you have in mind!"}}Feedback{{/link-to}}
 
 		{{#if isAuthenticated}}
-			{{#link-to "auth.logout" class="Aside-link Muted" title="Log out from Radio4000"}}Log out{{/link-to}}
+			{{#link-to "auth.logout" class="Tabs-item" title="Log out from Radio4000"}}Log out{{/link-to}}
 		{{/if}}
 	</div>
 </div>

@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import DS from 'ember-data';
+import {task} from 'ember-concurrency';
 import {validator, buildValidations} from 'ember-cp-validations';
 import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
 import firebase from 'firebase';
@@ -67,5 +68,24 @@ export default Model.extend(Validations, {
 		if (ytid) {
 			set(this, 'ytid', ytid);
 		}
-	}
+	},
+	update: task(function * () {
+		if (!get(this, 'hasDirtyAttributes')) {
+			return
+		}
+
+		// In case url changed, we need to set the ytid
+		yield this.updateYoutubeId();
+		yield this.save()
+	}).drop(),
+
+	delete: task(function * () {
+		const track = this
+		const channel = yield get(this, 'channel');
+		const tracks = yield channel.get('tracks');
+
+		yield tracks.removeObject(track);
+		yield channel.save();
+		return track.destroyRecord();
+	}).drop()
 });

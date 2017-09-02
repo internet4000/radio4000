@@ -1,14 +1,12 @@
-{{#link-to 'track' track class="Track-link"}}
+{{#link-to 'channel.tracks.track.index' track class="Track-link"}}
 	<h3 class="Track-title">
 		{{track.title}}
 	</h3>
 	<p class="Track-body">{{track.body}}</p>
 {{/link-to}}
-{{#unless trackWidget}}
-	<p class="Track-controls Muted" title="Edit the track" {{action 'edit'}}>
-		{{!-- using a static icon instead of x-icon to avoid an extra component for performance --}}
-		<svg class="icon-pencil">
-			<use xlink:href="/assets/images/sprite.svg#icon-pencil"></use>
-		</svg>
-	</p>
-{{/unless}}
+
+{{#if track.channel.canEdit}}
+	{{link-to 'Edit' 'channel.tracks.track.edit' track
+			class="Btn Btn--text Muted Track-controls"
+			title="Edit the track"}}
+{{/if}}

@@ -3,17 +3,20 @@
 		<article>
 			<header class="Manchet">
 				<h1>404<small> — Bzz bzz… error;</small></h1>
+				<p>That page cannot be found. Sorry!</p>
 			</header>
 
 			<div class="Container">
-				<p>We couldn't find that page. Sorry.<br>Please let us know at <a href="mailto:contact@radio4000.com">contact@radio4000.com</a> if the problem persists.</p>
-				<p>&larr; back to <a href="{{href-to 'application'}}">the homepage</a>.</p>
+				<ul>
+					<li>{{link-to 'Send feedback' 'feedback'}}  to the team about this error</li>
+					<li>Go back to the <a href="{{href-to 'application'}}">homepage</a>.</li>
+				</ul>
 
 				<figure>
 					<img src="//res.cloudinary.com/radio4000/image/upload/v1431860149/console_tcpbit.gif" alt="">
 				</figure>
 
-				<p><small>If the problem persists, please try to reload the page.</small></p> </div>
+				<p><small>If the problem persists, please try to reload the website.</small></p> </div>
 		</article>
 		</section>
 </div>
