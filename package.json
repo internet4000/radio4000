@@ -14,7 +14,7 @@
   "devDependencies": {
     "autoprefixer": "^7.1.2",
     "broccoli-asset-rev": "^2.4.5",
-    "critical": "^0.7.1",
+    "critical": "^0.9.0",
     "ember-async-button": "^1.0.2",
     "ember-browserify": "^1.1.11",
     "ember-cli": "^2.13.3",
@@ -60,7 +60,6 @@
     "radio4000-player": "^0.1.8",
     "suitcss-base": "^3.0.0",
     "torii": "^0.9.3",
-    "whatwg-fetch": "^2.0.3",
     "youtube-regex": "^1.0.4"
   },
   "engines": {
