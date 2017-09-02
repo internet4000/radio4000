@@ -53,7 +53,6 @@
     "date-fns": "^1.28.4",
     "ember-fetch": "^3.3.0",
     "ember-href-to": "^1.12.1",
-    "ember-youtube": "^0.8.1",
     "emberfire": "^2.0.8",
     "js-cookie": "^2.1.4",
     "lazysizes": "^4.0.0-rc1",

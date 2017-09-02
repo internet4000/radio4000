@@ -3560,12 +3560,6 @@ ember-wormhole@~0.3.6:
   dependencies:
     ember-cli-babel "^5.0.0"
 
-ember-youtube@^0.8.1:
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/ember-youtube/-/ember-youtube-0.8.2.tgz#df701addb0a184cb4f1d64be717f9d1c4bef317d"
-  dependencies:
-    ember-cli-babel "^5.1.6"
-
 emberfire@^2.0.8:
   version "2.0.8"
   resolved "https://registry.yarnpkg.com/emberfire/-/emberfire-2.0.8.tgz#03cdc99faaa6e1d9feac0cd6dce5316099c600c5"
