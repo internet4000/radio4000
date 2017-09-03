@@ -83,7 +83,7 @@ export default DS.Model.extend(Validations, {
 	channelPublic: belongsTo('channelPublic', {async: true}),
 
 	// Meta data.
-	totalTracks: computed('tracks', function () {
+	totalTracks: computed('tracks.[]', function () {
 		return this.hasMany('tracks').ids().length;
 	}),
 	hasFewTracks: computed.lte('totalTracks', 2),
