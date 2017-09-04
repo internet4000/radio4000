@@ -17,7 +17,7 @@ export default Ember.Route.extend({
 
 		get(this, 'session').close().then(() => {
 			flashMessages.success(`You have been signed out`);
-			this.transitionTo('auth.login');
+			this.replaceWith('auth.login');
 		});
 	}
 });
