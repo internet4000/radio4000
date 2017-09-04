@@ -3,7 +3,7 @@ import Ember from 'ember';
 import clean from 'radio4000/utils/clean';
 import reservedUrls from 'radio4000/utils/reserved-urls';
 
-const {debug, get, Controller, computed, observer, RSVP, isEqual} = Ember;
+const {debug, get, Controller, computed, RSVP, isEqual} = Ember;
 
 export default Controller.extend({
 	isSaving: false,

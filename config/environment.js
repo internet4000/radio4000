@@ -46,9 +46,6 @@ module.exports = function(environment) {
 		}
   };
 
-	ENV.CLOUDINARY_NAME = 'radio4000';
-	ENV.CLOUDINARY_UPLOAD_PRESET = 'tc44ivjo';
-
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
