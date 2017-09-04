@@ -13,7 +13,6 @@ npm install --global ember-cli phantomjs-prebuilt
 git clone git@gitlab.com:internet4000/radio4000.git
 cd radio4000
 npm install
-bower install
 npm start
 ```
 
