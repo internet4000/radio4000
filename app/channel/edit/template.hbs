@@ -5,10 +5,12 @@
 			{{cloudinary-upload
 				cloudName='radio4000'
 				unsignedUploadPreset='tc44ivjo'
-				didUpload=(action "saveImage")
-			}}
+				didUpload=(action "saveImage")}}
 
 			{{#if model.coverImage}}
+				<figure>
+					{{channel-cover src=model.coverImage.src}}
+				</figure>
 				<button class="Btn Btn--danger Btn--text" {{action "deleteImage"}}>
 					Delete image
 				</button>
