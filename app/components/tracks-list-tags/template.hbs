@@ -1,15 +1,18 @@
 {{#if tags}}
+	<p>filter: {{filter}}</p>
 	<div class="Container Section--space">
 		<div class="CustomSelect">
-			@todo
-			{{!-- http://emberjs.com/deprecations/v1.x/#toc_ember-select --}}
-			{{!-- {{view "select" content=tags prompt="All tracks" value=filter}} --}}
+			<select onchange={{action "setTag" value="target.value"}}>
+				{{#each tags as |tag|}}
+					<option value={{tag}}>{{tag}}</option>
+				{{/each}}
+			</select>
 		</div>
 	</div>
 {{/if}}
 
 <ul class="List">
-	{{#each sortedAndFiltered as |item|}}
-		<li class="List-item">{{item.title}}</li>
+	{{#each filtered as |track|}}
+		<li class="List-item">{{track.title}}</li>
 	{{/each}}
 </ul>

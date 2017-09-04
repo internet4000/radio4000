@@ -87,5 +87,23 @@ export default Model.extend(Validations, {
 		yield tracks.removeObject(track);
 		yield channel.save();
 		return track.destroyRecord();
-	}).drop()
+	}).drop(),
+
+	hashtags: computed('body', function () {
+		const body = this.get('body');
+		if (!body) { return []; }
+		// Find " #hashtags" (with space) https://regex101.com/r/pJ4wC5/4
+		const hashtags = body.match(/(^|\s)(#[a-z\d-]+)/ig);
+		if (!hashtags) { return []; }
+		// remove spaces on each item
+		return hashtags.map(function(tag) {
+			return tag.trim();
+		});
+	})
+
+	// bodyPlusMentions: function() {
+	// 	var body = this.get('body');
+	// 	// find " @channel" (with space)
+	// 	return body.replace(/(^|\s)(@[a-z\d-]+)/ig,'$1<a href="http://radio4000.com/c/$2" class="Mention">$2</a>');
+	// }.property('body')
 });

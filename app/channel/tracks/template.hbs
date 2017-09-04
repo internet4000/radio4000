@@ -1,6 +1,9 @@
 <div class="Container Container--full">
 	<div class=" Grid">
-		<div class="Grid-cell Grid-cell--triple">
+		<div class="Grid-cell Grid-cell--single">
+			{{tracks-list-tags filter="" tracks=model.tracks}}	
+		</div>
+		<div class="Grid-cell Grid-cell--double">
 			{{#if model.tracks.isFulfilled}}
 				{{#tracks-list
 					items=model.tracks

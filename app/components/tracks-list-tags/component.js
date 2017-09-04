@@ -29,19 +29,6 @@ export default Ember.Component.extend({
 		});
 	}),
 
-	// not sure how to set up SortableMixin
-	// sortedandfiltered: computed('filtered', function () {
-	sortedAndFiltered: computed('tracks', function () {
-		return Ember.ArrayController.create({
-			// content: this.get('filtered'),
-			content: this.get('tracks'),
-
-			// Newest on top
-			sortProperties: ['created'],
-			sortAscending: false
-		});
-	}),
-
 	// Returns the unique tags from all models
 	tags: computed('tracks.@each.hashtags', function () {
 		const tracks = this.get('tracks');
@@ -63,5 +50,12 @@ export default Ember.Component.extend({
 		tags = tags.filter(tag => tag !== '');
 
 		return tags;
-	})
+	}),
+
+	actions: {
+		setTag(tag) {
+			console.log(tag)
+			this.set('filter', tag)
+		}
+	}
 });
