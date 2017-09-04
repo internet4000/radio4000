@@ -42,8 +42,8 @@ Router.map(function() {
 		this.route('followers')
 	})
 	this.route('feedback')
-	this.route('add')
-	this.route('bookmarklet')
+	this.authenticatedRoute('add')
+	this.authenticatedRoute('bookmarklet')
 	// Support deprecated channels urls. Needs to be defined before 'channel' route.
 	this.route('channel-alias', { path: '/c/:channel_slug' })
 	this.route('auth', function() {
