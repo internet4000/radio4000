@@ -3,11 +3,11 @@
 		<input type="file" id="fileElem" multiple accept="image/*"
 			style="display:none"
 			onchange={{action "fileInputChanged" value="target.files"}}>
-		<button {{action "selectFiles"}}>
+		<button class="Btn" {{action "selectFiles"}}>
 			{{#if isRunning}}
 				Uploading… {{progress}}%
 			{{else}}
-				Select or drop an image here
+				Select or drop an image
 			{{/if}}
 		</button>
 	</form>
