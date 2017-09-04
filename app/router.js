@@ -24,7 +24,7 @@ Router.map(function() {
 	this.route('channels', { path: '/' }, function() {
 		this.route('all')
 		this.route('new')
-		this.authenticatedRoute('history')
+		this.route('history')
 	})
 	this.route('channel', { path: '/:channel_slug' }, function() {
 		this.route('index', { path: '/' })
@@ -34,23 +34,26 @@ Router.map(function() {
 				this.route('edit')
 			})
 		})
-		this.authenticatedRoute('add')
-		this.authenticatedRoute('edit')
-		this.authenticatedRoute('delete')
+		this.route('add')
+		this.route('edit')
+		this.route('delete')
 		this.route('dashboard')
 		this.route('favorites')
 		this.route('followers')
 	})
 	this.route('feedback')
-	this.authenticatedRoute('add')
-	this.authenticatedRoute('bookmarklet')
+	this.route('add')
+	this.route('bookmarklet')
 	// Support deprecated channels urls. Needs to be defined before 'channel' route.
 	this.route('channel-alias', { path: '/c/:channel_slug' })
 	this.route('auth', function() {
 		this.route('signup')
 		this.route('login')
-		this.authenticatedRoute('logout')
-		this.authenticatedRoute('settings')
+		this.route('logout')
+		this.route('settings', function() {
+			this.route('account', { path: '/'})
+			this.route('payments')
+		})
 	})
 })
 
