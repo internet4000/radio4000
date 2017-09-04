@@ -1,18 +1,19 @@
 <div class="Container Container--full">
 	<div class="Grid">
 		<article class="Grid-cell">
-			<form class="" title="Drag and drop an image in this area to upload it">
-				{{#form-group label="Image"}}
-					{{#image-upload imageId=newImage}}
-						{{channel-cover src=model.coverImage.src}}
-					{{/image-upload}}
-					{{#if model.coverImage}}
-						<button class="Btn Btn--danger Btn--text" {{action "deleteImage"}}>
-							Delete image
-						</button>
-					{{/if}}
-				{{/form-group}}
-			</form>
+			<p>Upload multiple files with the file dialog or by dragging and dropping images onto the dashed region</p>
+			
+			{{cloudinary-upload
+				cloudName='radio4000'
+				unsignedUploadPreset='tc44ivjo'
+				didUpload=(action "saveImage")
+			}}
+
+			{{#if model.coverImage}}
+				<button class="Btn Btn--danger Btn--text" {{action "deleteImage"}}>
+					Delete image
+				</button>
+			{{/if}}
 		</article>
 
 		<article class="Grid-cell Grid-cell--double ">

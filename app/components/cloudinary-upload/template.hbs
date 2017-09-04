@@ -1,0 +1,15 @@
+<div class="CloudinaryUpload">
+	<form>
+		<input type="file" id="fileElem" multiple accept="image/*"
+			style="display:none"
+			onchange={{action "fileInputChanged" value="target.files"}}>
+		<button {{action "selectFiles"}}>
+			{{#if isRunning}}
+				Uploading… {{progress}}%
+			{{else}}
+				Select or drop an image here
+			{{/if}}
+		</button>
+	</form>
+	<figure></figure>
+</div>
