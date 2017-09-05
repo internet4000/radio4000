@@ -3,10 +3,11 @@
 		<article class="Grid-cell">
 			<p><strong>Image</strong></p>
 
+			<figure>
+				{{channel-cover src=model.coverImage.src}}
+			</figure>
+
 			{{#if model.coverImage}}
-				<figure>
-					{{channel-cover src=model.coverImage.src}}
-				</figure>
 				<button class="Btn Btn--text" {{action "deleteImage"}}>
 					Delete image
 				</button>
