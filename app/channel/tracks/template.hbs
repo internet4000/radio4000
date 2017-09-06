@@ -11,7 +11,14 @@
 					{{/tracks-list}}
 
 					{{#unless model.tracks.length}}
-						<p>This radio has no tracks yet.</p>
+						{{#if model.canEdit}}
+							<p>
+								Your radio has no tracks yet.<br>
+								Try to {{link-to 'add your first' 'add'}}.
+							</p>
+						{{else}}
+							<p>This radio has no tracks yet.</p>
+						{{/if}}
 					{{/unless}}
 				{{else}}
 					{{#is-loading}}
