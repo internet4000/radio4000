@@ -1,22 +1,27 @@
 <section class="Section">
-	<div class="Container Container--full">
-		<div class="Grid">
-			<div class="Grid-cell Grid-cell--triple">
-				{{channel-header channel=model}}
-			</div>
-			{{#if model.canEdit}}
-				<div class="Grid-cell Grid-cell--triple">
-					<form class="Form">
-						{{track-add-inline
-								onSubmit=(action "addTrack")}}
-					</form>
+	<div class="Container">
+		{{channel-header channel=model}}
 
-					{{#unless model.isExperienced}}
-						{{page-welcome channel=model}}
-					{{/unless}}
-				</div>
-			{{/if}}
-		</div>
+		{{#if model.canEdit}}
+			<form class="Form">
+				{{track-add-inline onSubmit=(action "addTrack")}}
+			</form>
+			{{#unless model.isExperienced}}
+				{{page-welcome channel=model}}
+			{{/unless}}
+		{{/if}}
+
+		<br>
+		<h3>
+			Latest tracks
+			<small>({{link-to "see all" "channel.tracks"}})</small>
+		</h3>
+
+		{{#tracks-list items=latestTracks as |item|}}
+			{{track-item track=item}}
+		{{/tracks-list}}
+
+		<p>{{link-to "See all tracks" "channel.tracks"}}</p>
 	</div>
 </section>
 {{outlet}}
