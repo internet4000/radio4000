@@ -8,6 +8,8 @@ export default Component.extend({
 	tagName: 'button',
 	classNames: ['Btn'],
 
+	showText: true,
+
 	tracks: computed.reads('channel.tracks'),
 
 	click() {

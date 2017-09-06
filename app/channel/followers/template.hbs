@@ -1,10 +1,59 @@
-<div class="Channel-outlet">
-	<div class="Container">
-		{{#if model.channelPublic.followers}}
-			<p>{{model.channelPublic.followers.length}} humans are following this radio.</p>
-			{{channels-list channels=model.channelPublic.followers}}
-		{{else}}
-			<p>You don't have any followers, yet.</p>
-		{{/if}}
-	</div>
-</div>
+{{#if model.channelPublic.followers}}
+
+	<section class="Section">
+		<div class="Container Container--full">
+			{{#list-manipulation list=model.channelPublic.followers as |manipulatedList updateSorting|}}
+				<div class="Filters">
+					{{#btn-group class="Filter BtnGroup--right"}}
+						<span class="BtnGroup-label">Filter radio channels by</span>
+						{{btn-list-manipulation text="Activity"
+								onClick=(action updateSorting "updated")}}
+						{{btn-list-manipulation text="Age"
+								onClick=(action updateSorting "created" true)}}
+						{{btn-list-manipulation text="A-Z"
+								onClick=(action updateSorting "title" true)}}
+					{{/btn-group}}
+				</div>
+
+				{{#if model.channelPublic.followers}}
+					<div class="Grid {{if isList 'Grid--wide'}}">
+						{{#each manipulatedList as |item|}}
+							<div class="Grid-cell">
+								{{channel-card channel=item wide=isList}}
+							</div>
+						{{/each}}
+					</div>
+			{{else}}
+					<p>Tuning radios…</p>
+					{{is-loading}}
+				{{/if}}
+			{{/list-manipulation}}
+		</div>
+	</section>
+
+	{{else}}
+	<section class="Section">
+		<div class="Container">
+			<p>
+				Use the following link to share or access your Radio4000 when out of the house:
+			</p>
+			<p>
+				{{channel-sharer-url channel=model}}
+			</p>
+
+			{{#unless model.isExperienced}}
+				<p class="Muted">
+					Tip: you can customize the link by {{link-to 'editing your channel URL' 'channel.edit' class="Muted"}}.
+				</p>
+			{{/unless}}
+		</div>
+	</section>
+
+	<section class="Section">
+		<div class="Container">
+			<p class="Muted">
+				There are no followers yet.
+			</p>
+		</div>
+	</section>
+{{/if}}

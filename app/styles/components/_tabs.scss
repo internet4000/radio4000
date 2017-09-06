@@ -9,12 +9,9 @@
 	flex-shrink: 0;
 
 	// A bit of depth.
-	border-top: 1px solid hsl(0, 0%, 85%);
-	border-left: 1px solid hsl(0, 0%, 80%);
-	border-right: 1px solid hsl(0, 0%, 80%);
-	background-color: $bg-color-2;
+	border: 1px solid $mediumlightgray;
 	border-radius: $border-radius;
-	box-shadow: $box-shadow;
+	// box-shadow: $box-shadow;
 
 	// When several tabs follow each other.
 	& + .Tabs {
@@ -22,18 +19,14 @@
 	}
 }
 
-.Tabs--transparent {
-	border-color: transparent;
-	background-color: transparent;
-	box-shadow: none;
-}
-
 .Tabs-item {
+	background-color: $superlightgray;
 	margin-bottom: 0;
 	padding: 0.8em 1rem 0.5em;
 	color: $text-color;
+	border-radius: $border-radius;
 	border-right: 3px solid transparent;
-	transition: border-right-color 200ms $easing, border-bottom-color 200ms $easing, background-image 200ms $easing;
+	transition: border-color 260ms $easing, border-bottom-color 200ms $easing, background-image 200ms $easing;
 
 	&,
 	&:hover,
@@ -44,21 +37,22 @@
 
 	&.is-active {
 		@extend %font-bold;
-		border-right-color: $primary-color;
+		border-color: $primary-color;
 		background-color: $superlightgray;
+	}
+	& small {
+		font-size: rem(9);
+		text-transform: uppercase;
+		font-weight: 400;
+	}
+	&.Tabs-item--transparent {
+		background-color: transparent;
 	}
 }
 
-.Tabs-item small {
-	font-size: rem(9);
-	text-transform: uppercase;
-	font-weight: 400;
-}
-
-// .Tabs-item + .Btn doesn't play nice
-// so just nest .Btn directly inside.
-.Tabs-btn {
-	margin: 0.2rem 0.6rem;
+.Tabs .BtnGroup {
+	padding-top: 0.2em;
+	padding-bottom: 0.2em;
 }
 
 .Tabs-divider {
@@ -71,7 +65,7 @@
  */
 
 .Tabs--horizontal {
-	flex-flow: row wrap;
+	flex-flow: row nowrap;
 	text-align: center;
 
 	@media (min-width: $layout-s) {
@@ -79,7 +73,7 @@
 	}
 
 	.Tabs-item {
-		border-radius: $border-radius;
+		white-space: nowrap;
 		flex-grow: 1;
 		border-right: 0;
 		border-bottom: 3px solid transparent;
@@ -145,5 +139,15 @@
 	// the visible border
 	.Tabs-item.is-active::after {
 		width: 100%;
+	}
+}
+
+.Tabs--transparent {
+	border: 0;
+	background-color: transparent;
+	flex-wrap: wrap;
+
+	.Tabs-item {
+		background-color: transparent;
 	}
 }

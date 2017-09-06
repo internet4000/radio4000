@@ -1,8 +1,9 @@
 import Ember from 'ember';
+import FocusInput from 'radio4000/components/focus-input/component';
 
-const {TextField, on, run, debug} = Ember;
+const {on, run, debug} = Ember;
 
-export default TextField.extend({
+export default FocusInput.extend({
 	capturePaste: on('didInsertElement', function () {
 		const self = this;
 		const element = this.element;

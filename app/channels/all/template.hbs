@@ -1,13 +1,4 @@
 <section class="Section">
-	<div class="Manchet">
-		<p>
-			Each radio is curated by one <b>human</b>. Listen, discover someone's personal selection.<br/>
-			If you feel like sharing yours, we welcome you to <a href="{{href-to "auth.login"}}" title="">create your own radio</a>.
-		</p>
-	</div>
-</section>
-
-<section class="Section">
 	<div class="Container Container--full">
 		{{#list-manipulation list=filteredChannels as |manipulatedList updateSorting|}}
 
@@ -26,28 +17,50 @@
 							onClick=(action updateSorting "created" true)}}
 					{{btn-list-manipulation text="A-Z"
 							onClick=(action updateSorting "title" true)}}
+					{{!--
 					<span class="BtnGroup-label">&nbsp;</span>
 					<button class="Btn Btn--small" {{action "changeLayout"}}>
 						{{if isList "Bigger" "Smaller"}}
 					</button>
+					--}}
 				{{/btn-group}}
 			</div>
 
-			{{#unless channels}}
-				<p>Tuning radios…</p>
-				{{is-loading}}
-			{{/unless}}
-
 			<div class="Grid {{if isList 'Grid--wide'}}">
+				<div class="Grid-cell">
+					<p>
+						Each radio is curated by one <b>human</b>. Listen, discover someone's personal selection.<br/>
+					</p>
+					{{#unless session.currentUser.channels.firstObject}}
+						<p>
+							If you feel like sharing yours, we welcome you to <a href="{{href-to "auth.login"}}" title="">create your own radio</a>.
+						</p>
+					{{/unless}}
+					<p>
+						{{play-random-channel}}
+					</p>
+					<p class="Muted">
+						Tip: you can also press <strong>W</strong> anywhere on the site to play a random channel.
+					</p>
+				</div>
+
+				{{#unless channels}}
+					<div class="Grid-cell">
+						{{#is-loading}}
+							loading all channels...
+						{{/is-loading}}
+					</div>
+				{{/unless}}
 				{{#each manipulatedList as |item|}}
 					<div class="Grid-cell">
 						{{channel-card channel=item wide=isList}}
 					</div>
 				{{/each}}
+				<!-- <div class="Grid-cell">
+						 <p class="Muted">TIP: Press <strong>W</strong> anytime (on your keyboard) to play a random radio. Press <strong>W</strong> again to 'swap' to another one. Radios without music are not shown here.</p>
+						 </div> -->
 			</div>
 		{{/list-manipulation}}
-
-		<p class="Muted">TIP: Press <strong>W</strong> anytime (on your keyboard) to play a random radio. Press <strong>W</strong> again to 'swap' to another one. Radios without music are not shown here.</p>
 	</div>
 </section>
 

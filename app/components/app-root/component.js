@@ -11,8 +11,6 @@ export default Component.extend({
 
 	classNames: ['Root'],
 	classNameBindings: [
-		'isEmbed',
-		'isInverted',
 		'uiStates.isMinimized',
 		'uiStates.isFullscreen:is-maximized',
 		'uiStates.isPanelLeftVisible:is-panelLeftVisible',
@@ -38,6 +36,7 @@ export default Component.extend({
 	actions: {
 		toggleModal() {
 			this.toggleProperty('isShowingModal');
+			this.set('url', '');
 		},
 		saveTrack(trackProperties) {
 			return this.get('onSaveTrack')(trackProperties);

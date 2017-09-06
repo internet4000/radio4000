@@ -1,11 +1,4 @@
-/**
- * Typography
- * an attempt to group font families and sizes for base elements
- */
 html {
-	@extend %font-regular;
-	font-family: "Maison Neue", $sans-fallback;
-
 	font-size: $base-font-size;
 	line-height: $base-line-height;
 
@@ -20,6 +13,20 @@ html {
 	@media (min-width: $layout-xxxl) {
 		font-size: 20px;
 	}
+}
+
+// Change the font family for all the elements that need it.
+
+html {
+	font-family: "Maison Neue", $sans-fallback;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+	font-family: inherit;
 }
 
 // apparently it can be bad to use this on the html element, so:
@@ -38,7 +45,7 @@ blockquote {
 
 strong,
 b {
-	@extend %font-bold;
+	font-weight: bold;
 }
 
 em {
@@ -65,7 +72,7 @@ h1,
 h2,
 h3,
 h4 {
-	@extend %font-bold;
+	font-weight: bold;
 }
 
 h1,
@@ -134,3 +141,4 @@ pre,
 	color: $text-color;
 	padding: 3px 4px 0;
 }
+

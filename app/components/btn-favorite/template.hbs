@@ -1,5 +1,11 @@
-{{#if isIdle}}
-	{{if isFavorite "Unfavorite" "Favorite"}}
+{{#if channel.toggleFavorite.isRunning}}
+	Loading
 {{else}}
-	Saving…
+	{{#if channel.isFavorite}}
+		<i>★</i>
+		{{if showText 'Unfavorite'}}
+	{{else}}
+		<i>☆</i>
+		{{if showText 'Favorite'}}
+	{{/if}}
 {{/if}}

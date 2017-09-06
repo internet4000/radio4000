@@ -1,11 +1,13 @@
 import Ember from 'ember';
 import DS from 'ember-data';
+import {task} from 'ember-concurrency';
 import {validator, buildValidations} from 'ember-cp-validations';
 import firebase from 'firebase';
 import channelConst from 'radio4000/utils/channel-const';
+import toggleObject from 'radio4000/utils/toggle-object';
 
 const {attr, hasMany, belongsTo} = DS;
-const {computed} = Ember;
+const {computed, inject, get} = Ember;
 
 const Validations = buildValidations({
 	title: [
@@ -50,6 +52,9 @@ const Validations = buildValidations({
 	*/
 
 export default DS.Model.extend(Validations, {
+	session: inject.service(),
+	flashMessages: inject.service(),
+
 	created: attr('number', {
 		defaultValue() {
 			return firebase.database.ServerValue.TIMESTAMP;
@@ -60,6 +65,7 @@ export default DS.Model.extend(Validations, {
 	slug: attr('string'),
 	body: attr('string'),
 	isFeatured: attr('boolean'),
+	isPremium: attr('boolean'),
 	link: attr('string'),
 
 	// Set the latest image as the cover image.
@@ -77,13 +83,66 @@ export default DS.Model.extend(Validations, {
 	channelPublic: belongsTo('channelPublic', {async: true}),
 
 	// Meta data.
-	totalTracks: computed('tracks', function () {
+	totalTracks: computed('tracks.[]', function () {
 		return this.hasMany('tracks').ids().length;
 	}),
+	hasFewTracks: computed.lte('totalTracks', 2),
 	totalFavorites: computed('favoriteChannels', function () {
 		return this.hasMany('favoriteChannels').ids().length;
-	})
-	// model.hasMany('tracks').ids();
-	// model.hasMany('tracks').value() !== null;
-	// model.hasMany('tracks').meta().total;
+	}),
+
+	// can current logged in user edit the channel
+	canEdit: computed('id', 'session.currentUser.channels.firstObject.id', {
+		get() {
+			const channel = this;
+			const userChannel = get(this, 'session.currentUser.channels.firstObject');
+
+			// Avoid any property being null because `(null === null)` equals true…
+			if (channel === null || userChannel === null || userChannel === undefined) {
+				return false;
+			}
+			return channel.get('id') === userChannel.get('id');
+		},
+		set() {
+			// not allowed
+		}
+	}),
+
+	isExperienced: computed.and('images.firstObject', 'totalTracks', 'favoriteChannels.firstObject'),
+
+	// Is already a favorite channel of session.currentUser.
+	isFavorite: computed('model', 'session.currentUser.channels.firstObject.favoriteChannels.[]', function () {
+		const channel = this;
+		const favorites = get(this, 'session.currentUser.channels.firstObject.favoriteChannels');
+
+		// Guard because this functions runs before userChannel is defined.
+		if (!favorites) {
+			return false;
+		}
+
+		// True if this channel is a favorite of the user's favorites.
+		return favorites.includes(channel);
+	}),
+
+	toggleFavorite: task(function * () {
+		const isFavorite = get(this, 'isFavorite');
+		const userChannel = get(this, 'session.currentUser.channels.firstObject');
+
+		if (!userChannel) {
+			get(this, 'flashMessages').warning('To save a radio channel as favorite you should sign up or log in')
+			return
+		}
+
+		// Toggle this channel on the current user's favorite channels.
+		const favoriteChannels = yield userChannel.get('favoriteChannels');
+		const channel = this;
+		toggleObject(favoriteChannels, channel, isFavorite);
+		yield userChannel.save();
+
+		// Toggle the userChannel from this channel's public followers.
+		const channelPublic = yield channel.get('channelPublic');
+		const followers = yield channelPublic.get('followers');
+		toggleObject(followers, userChannel, isFavorite);
+		yield channelPublic.save();
+	}).drop()
 });

@@ -1,5 +1,5 @@
 @mixin button {
-	@extend %font-bold;
+	font-weight: bold;
 	align-items: center;
 	background-color: $superlightgray;
 	box-shadow: $box-shadow;
@@ -53,10 +53,19 @@
 	svg {
 		float: left;
 	}
+
+	i {
+		font-style: normal;
+	}
 }
 
 .Btn {
 	@include button;
+
+	small {
+		padding-left: 0.2rem;
+		padding-right: 0.2rem;
+	}
 }
 
 /**
@@ -74,14 +83,18 @@
 	}
 }
 
+.Btn--wide,
+.Btn--large,
+.Btn--huge {
+	min-width: 7rem;
+}
+
 .Btn--large {
 	@include size-2;
-	min-width: 6em;
 }
 
 .Btn--huge {
 	@include size-3;
-	min-width: 6em;
 }
 
 .Btn--full {

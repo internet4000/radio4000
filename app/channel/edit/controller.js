@@ -1,32 +1,16 @@
+
 import Ember from 'ember';
 import clean from 'radio4000/utils/clean';
 import reservedUrls from 'radio4000/utils/reserved-urls';
 
-const {debug, get, Controller, computed, observer, RSVP, isEqual} = Ember;
+const {debug, get, Controller, computed, RSVP, isEqual} = Ember;
 
 export default Controller.extend({
 	isSaving: false,
 
-	disableSubmit: computed.or('isSaving', 'model.validations.isInvalid'),
-
-	updateImage: observer('newImage', function () {
-		const newImage = get(this, 'newImage');
-		this.createImage(newImage);
-	}),
-
-	createImage(src) {
-		const channel = get(this, 'model');
-		const image = this.store.createRecord('image', {src, channel});
-
-		// save and add it to the channel
-		image.save().then(image => {
-			debug('Image saved.');
-			channel.get('images').addObject(image);
-			channel.save().then(() => {
-				debug('Saved channel with image');
-			});
-		});
-	},
+	disableSubmit: computed.or('isSaving', 'cantSave'),
+	cantSave: computed.or('model.validations.isInvalid', 'nothingChanged'),
+	nothingChanged: computed.not('model.hasDirtyAttributes'),
 
 	// this could be moved to a custom slug-validator using ember-cp-validations
 	isSlugFree() {
@@ -56,6 +40,24 @@ export default Controller.extend({
 	},
 
 	actions: {
+		saveImage(cloudinaryId) {
+			if (!cloudinaryId) {
+				throw new Error('Could not save image. Missing cloudinary id')
+			}
+			const channel = get(this, 'model');
+			const image = this.store.createRecord('image', {src: cloudinaryId, channel});
+			// save and add it to the channel
+			return image.save().then(image => {
+				debug('Image saved.');
+				channel.get('images').addObject(image);
+				channel.save().then(() => {
+					debug('Saved channel with image');
+				});
+			}).catch(err => {
+				Ember.debug('could not save image', err)
+			});
+		},
+
 		trySave() {
 			const flashMessages = get(this, 'flashMessages');
 			const model = get(this, 'model');
@@ -113,6 +115,7 @@ export default Controller.extend({
 
 		// used by 'ESC' key in the view
 		cancelEdit() {
+			console.log('cancelz?')
 			this.transitionToRoute('channel', this.get('model'));
 			this.set('isSaving', false);
 		}

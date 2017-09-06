@@ -8,7 +8,7 @@ const {Mixin, debug, get} = Ember;
 
 export default Mixin.create({
 	createTrack: task(function * (props, channel) {
-		const notification = get(this, 'flashMessages');
+		const messages = get(this, 'flashMessages');
 
 		if (!props || !channel) {
 			debug('Could not add track. Track properties or channel is missing?');
@@ -25,9 +25,9 @@ export default Mixin.create({
 
 		try {
 			yield track.save();
-		} catch (e) {
-			Ember.debug(e);
-			notification.warning('Could not create your track.');
+		} catch (err) {
+			Ember.debug(err);
+			messages.warning('Could not create your track.');
 		}
 
 		try {
@@ -36,10 +36,10 @@ export default Mixin.create({
 			tracks.addObject(track);
 			channel.set('updated', timestamp);
 			yield channel.save();
-			get(this, 'notification').info('Your track was created', {timeout: 5000});
-		} catch (e) {
-			Ember.debug(e);
-			notification.warning('Could not save the track to your radio');
+			messages.success('Your track was created', {timeout: 5000});
+		} catch (err) {
+			Ember.debug(err);
+			messages.warning('Could not save the track to your radio');
 		}
 
 		// To avoid 'updated' being NaN due to a value of {.sv: "timestamp"}

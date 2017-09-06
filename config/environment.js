@@ -32,6 +32,10 @@ module.exports = function(environment) {
 			databaseURL: 'https://radio4000-staging.firebaseio.com'
 		},
 
+		stripe: {
+      key: 'pk_test_Ti8aYhMv1as1ZrbaZzaI8QOk'
+    },
+
 		torii: {
 			sessionServiceName: 'session'
 		},
@@ -41,9 +45,6 @@ module.exports = function(environment) {
 			extendedTimeout: 1000
 		}
   };
-
-	ENV.CLOUDINARY_NAME = 'radio4000';
-	ENV.CLOUDINARY_UPLOAD_PRESET = 'tc44ivjo';
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
@@ -80,4 +81,3 @@ module.exports = function(environment) {
 
   return ENV;
 };
-

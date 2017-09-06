@@ -1,14 +1,5 @@
 import Ember from 'ember';
 
-const {Route, debug} = Ember;
+const {Route} = Ember;
 
-export default Route.extend({
-	actions: {
-		accessDenied(err) {
-			this.transitionTo('auth.login');
-			if (err) {
-				debug(err);
-			}
-		}
-	}
-});
+export default Route.extend({});

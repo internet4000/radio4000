@@ -48,9 +48,6 @@
 		height: 100%;
 		background: black;
 	}
-	.TrackList-list {
-		height: calc(100vh - 85px);
-	}
 
 	.Playback-layoutButtons {
 		top: 0;
@@ -58,9 +55,11 @@
 	}
 
 	radio4000-player {
-		max-width: none;
 		height: 100vh;
-		border: 0;
+
+		.Layout {
+			border: 0;
+		}
 	}
 }
 
@@ -70,9 +69,8 @@
 		height: 200px;
 	}
 	radio4000-player {
-		.Header,
-		.TrackList,
-		.PlayerControl {
+		.Layout-header,
+		.Layout-footer {
 			display: none;
 		}
 	}

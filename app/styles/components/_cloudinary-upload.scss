@@ -1,0 +1,18 @@
+// Use this together with {{cloudinary-upload}}
+
+.CloudinaryUpload {
+	border: 2px dotted $gray;
+	border-radius: $border-radius;
+}
+
+.CloudinaryUpload button {
+	margin: 1rem;
+}
+
+.CloudinaryUpload figure {
+	margin: 0;
+}
+
+.CloudinaryUpload figure img {
+	margin: 1rem;
+}

@@ -1,42 +1,42 @@
-<div class="Channel-outlet">
-	{{#if canEdit}}
+<section class="Section">
+	<div class="Container">
+		{{channel-header channel=model}}
+
+		{{#if model.canEdit}}
+			<form class="Form">
+				{{track-add-inline onSubmit=(action "addTrack")}}
+			</form>
+			<br>
+		{{/if}}
+	</div>
+</section>
+
+<section class="Section">
+	{{#if model.totalTracks}}
 		<div class="Container">
-			{{track-add-inline addTrackUrl=addTrackUrl
-				onSubmit=(action "addTrack")}}
+			<h3>
+				Latest tracks
+				<small>({{link-to "see all" "channel.tracks"}})</small>
+			</h3>
+			{{#if latestTracks}}
+				{{#tracks-list items=latestTracks as |item|}}
+					{{track-item track=item}}
+				{{/tracks-list}}
+			{{else}}
+				{{#is-loading}}
+					Loading latest tracks
+				{{/is-loading}}
+			{{/if}}
 		</div>
 	{{/if}}
+</section>
 
-	{{#if isEditing}}
-		{{#modal-dialog close="closeModals"}}
-			{{track-edit
-				track=trackToEdit
-				onSubmit=(action "updateTrack")
-				onCancel=(action "closeModals")
-				onDeleteTrack=(action "deleteTrack")}}
-		{{/modal-dialog}}
-	{{/if}}
-
-	{{#if tracks.isLoaded}}
-		{{#tracks-list items=tracks grouped=true numbered=false as |item|}}
-			{{track-item
-				track=item
-				canEdit=canEdit
-				edit=(action "startEditingTrack")
-				onTransition="transitionToTrack"}}
-		{{/tracks-list}}
-
-		{{#unless canEdit}}
-			{{#unless tracks.length}}
-				<div class="Container Section--space">
-				  <p>Ooh, there are no tracks in this radio yet.</p>
-				</div>
-			{{/unless}}
-		{{/unless}}
-	{{else}}
-		<div class="Container Section--space">
-			{{is-loading}}
+{{#if showWelcome}}
+	<section class="Section">
+		<div class="Container">
+			{{page-welcome channel=model}}
 		</div>
-	{{/if}}
+	</section>
+{{/if}}
 
-	{{outlet}}
-</div>
+{{outlet}}

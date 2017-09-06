@@ -2,18 +2,15 @@
 
 The main front-end web application for Radio4000.
 
-See the continous integration: https://gitlab.com/internet4000/radio4000/pipelines
-
 ## How to develop
 
 Make sure Ember CLI is installed globally, then clone this project and install it's dependencies:
 
 ```
-npm install --global ember-cli phantomjs-prebuilt
+npm install --global ember-cli 
 git clone git@gitlab.com:internet4000/radio4000.git
 cd radio4000
 npm install
-bower install
 npm start
 ```
 
@@ -23,20 +20,15 @@ Run `npm test` for a single test or `ember test --server` to start a test server
 
 ## Deployment
 
-If this is your first time deploying, install the Firebase CLI: `npm i -g firebase-tools` and run `firebase login` first.
+The site is hosted on netlify.com. Netlify will automatically deploy each branch and PR. The `production` branch is mirrored to https://radio4000.com
 
-To deploy to staging aka https://radio4000-staging.firebaseapp.com, run:
+So, to deploy to production:
 
-`npm run build; npm run deploy-firebase-staging`
-
-To deploy to production aka https://radio4000.com:
-
-1. Make sure your master branch is up to date
+1. `git checkout master; git pull`
 2. Use `release-it` to tag a new release
-3. `git checkout production; git pull; git merge master --no-ff`
-4. `npm run build-production; npm run deploy-firebase-production`
+3. `git checkout production; git pull; git merge master --no-ff; git push`
 
-For Firebase security rules, see the `private/rules` folder.
+For Firebase security rules, see the https://github.com/internet4000/radio4000-api repository.
 
 ## Backend
 

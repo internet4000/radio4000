@@ -1,0 +1,42 @@
+<div class="Channel-media" title="Image for {{model.title}}">
+	{{#if channel.canEdit}}
+		{{#link-to 'channel.edit' channel}}
+			<div class="Channel-cover">
+				{{channel-cover src=channel.coverImage.src}}
+			</div>
+		{{/link-to}}
+	{{else}}
+		<div class="Channel-cover">
+			{{channel-cover src=channel.coverImage.src}}
+		</div>
+	{{/if}}
+</div>
+
+<div class="BtnGroup Channel-buttons">
+	{{play-shuffle-btn
+		channel=channel
+		expanded=true
+		class="Btn--large Channel-playback"}}
+	{{#unless channel.canEdit}}
+		{{btn-favorite channel=channel class="Btn--wide"}}
+	{{/unless}}
+</div>
+
+<div class="Channel-header">
+	<div class="Channel-body">
+		<p class="Channel-slug">
+			<a href="{{href-to 'channel' channel}}" class="" title="To listen, tune in @{{channel.slug}}">@{{channel.slug}}</a>
+		{{#if channel.updated}}
+			<span class="Channel-date Muted" title="{{channel.title}} added music {{time-ago channel.updated}}">{{time-ago channel.updated}}</span>
+		{{/if}}
+		</p>
+		{{#if channel.body}}
+			<p class="Channel-description">{{channel.body}}</p>
+		{{/if}}
+		{{#if channel.link}}
+			<p class="Channel-links">
+				<a class="Muted" href="{{channel.link}}" target="_blank" title="Go to {{channel.title}}'s webpage" rel="noopener">{{channel.link}}</a>
+			</p>
+		{{/if}}
+	</div>
+</div>

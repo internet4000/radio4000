@@ -1,0 +1,33 @@
+<section class="Section">
+	<div class="Container Container--full">
+		<div class=" Grid">
+			<div class="Grid-cell Grid-cell--triple">
+				{{#if model.tracks.isFulfilled}}
+					{{#tracks-list
+							 items=model.tracks
+							 grouped=true
+							 numbered=false as |item|}}
+						{{track-item track=item}}
+					{{/tracks-list}}
+
+					{{#unless model.tracks.length}}
+						{{#if model.canEdit}}
+							<p>
+								Your radio has no tracks yet.<br>
+								Try to {{link-to 'add your first' 'add'}}.
+							</p>
+						{{else}}
+							<p>This radio has no tracks yet.</p>
+						{{/if}}
+					{{/unless}}
+				{{else}}
+					{{#is-loading}}
+						Loading all tracks…
+					{{/is-loading}}
+				{{/if}}
+			</div>
+		</div>
+
+		{{outlet}}
+	</div>
+</section>
