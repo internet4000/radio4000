@@ -9,14 +9,11 @@ cache:
 before_script:
   - npm config set spin false
   # ember-cli dependencies
-  - npm install -g bower
   - npm install -g ember-cli
-  - npm install -g phantomjs-prebuilt
   # these two are dependencies of our custom build script
   - npm install -g gulp-cli
   - npm install -g firebase-tools
   - npm install
-  - bower --allow-root install
 
 stages:
   - test

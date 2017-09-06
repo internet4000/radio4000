@@ -1,7 +1,0 @@
-{
-  "name": "radio4000",
-  "dependencies": {
-    "cloudinary": "cloudinary_js#~1.0.25",
-    "jquery-file-upload": "~9.11.2"
-  }
-}
