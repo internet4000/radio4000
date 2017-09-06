@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import {EKMixin, keyUp} from 'ember-keyboard';
-import 'npm:radio4000-player';
+// import 'npm:radio4000-player';
 
 const {Component, get, set, inject, computed, on} = Ember;
 
