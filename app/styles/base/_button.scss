@@ -61,6 +61,11 @@
 
 .Btn {
 	@include button;
+
+	small {
+		padding-left: 0.2rem;
+		padding-right: 0.2rem;
+	}
 }
 
 /**

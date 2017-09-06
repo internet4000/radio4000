@@ -10,6 +10,7 @@
 	@include clearfix;
 	float: left;
 	margin-top: -1.5rem;
+	margin-right: -2rem;
 	width: 30%;
 }
 
@@ -21,7 +22,7 @@
 
 .Channel-body {
 	flex: 1;
-	padding: 1.5rem 1rem 0;
+	padding: 1.5rem 3rem 0;
 }
 
 .Channel-slug {
@@ -30,7 +31,7 @@
 	// margin-bottom: 0;
 
 	a {
-		text-decoration: none;
+		font-weight: bold;
 	}
 }
 
