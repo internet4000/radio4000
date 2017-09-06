@@ -1,10 +1,52 @@
-<section class="Section">
-	<div class="Container">
-		{{#if model.channelPublic.followers}}
-			<p>{{model.channelPublic.followers.length}} humans are following this radio.</p>
-			{{channels-list channels=model.channelPublic.followers}}
-		{{else}}
-			<p>You don't have any followers, yet.</p>
-		{{/if}}
-	</div>
-</section>
+{{#if model.channelPublic.followers}}
+
+	<section class="Section">
+		<div class="Container Container--full">
+			{{#list-manipulation list=model.channelPublic.followers as |manipulatedList updateSorting|}}
+				<div class="Filters">
+					{{#btn-group class="Filter BtnGroup--right"}}
+						<span class="BtnGroup-label">Filter by</span>
+						{{btn-list-manipulation text="Activity"
+								onClick=(action updateSorting "updated")}}
+						{{btn-list-manipulation text="Age"
+								onClick=(action updateSorting "created" true)}}
+						{{btn-list-manipulation text="A-Z"
+								onClick=(action updateSorting "title" true)}}
+						<span class="BtnGroup-label">&nbsp;</span>
+						<button class="Btn Btn--small" {{action "changeLayout"}}>
+							{{if isList "Bigger" "Smaller"}}
+						</button>
+					{{/btn-group}}
+				</div>
+
+				{{#if model.channelPublic.followers}}
+					<div class="Grid {{if isList 'Grid--wide'}}">
+						{{#each manipulatedList as |item|}}
+							<div class="Grid-cell">
+								{{channel-card channel=item wide=isList}}
+							</div>
+						{{/each}}
+					</div>
+			{{else}}
+					<p>Tuning radios…</p>
+					{{is-loading}}
+				{{/if}}
+			{{/list-manipulation}}
+		</div>
+	</section>
+
+	{{else}}
+	<section class="Section">
+		<div class="Container">
+			<p>You don't know any followers yet.</p>
+		</div>
+	</section>
+	<section class="Section">
+		<div class="Container">
+			<p class="Muted">
+				Tips: share your radio4000 URL, it's super simple. Just copy the follwing link:
+			</p>
+			{{channel-sharer-url channel=model}}
+		</div>
+	</section>
+{{/if}}
