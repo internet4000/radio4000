@@ -1,7 +1,9 @@
 <section class="Section">
 	{{#unless model.featured}}
 		<div class="Container">
-			{{is-loading}}
+			{{#is-loading}}
+				loading featured channels...
+			{{/is-loading}}
 		</div>
 	{{else}}
 		<div class="Container Container--full">

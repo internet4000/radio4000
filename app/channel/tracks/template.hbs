@@ -14,8 +14,9 @@
 						<p>This radio has no tracks yet</p>
 					{{/unless}}
 				{{else}}
-					{{is-loading}}
-					loading all tracks...
+					{{#is-loading}}
+						loading all tracks...
+					{{/is-loading}}
 				{{/if}}
 			</div>
 		</div>

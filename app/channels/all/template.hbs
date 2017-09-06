@@ -46,8 +46,9 @@
 
 				{{#unless channels}}
 					<div class="Grid-cell">
-						{{is-loading}}
-						Tuning radios…
+						{{#is-loading}}
+							loading all channels...
+						{{/is-loading}}
 					</div>
 				{{/unless}}
 				{{#each manipulatedList as |item|}}
