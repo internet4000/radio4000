@@ -78,14 +78,18 @@
 	}
 }
 
+.Btn--wide,
+.Btn--large,
+.Btn--huge {
+	min-width: 7rem;
+}
+
 .Btn--large {
 	@include size-2;
-	min-width: 6em;
 }
 
 .Btn--huge {
 	@include size-3;
-	min-width: 6em;
 }
 
 .Btn--full {

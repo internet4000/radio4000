@@ -14,11 +14,11 @@
 
 <div class="BtnGroup Channel-buttons">
 	{{play-shuffle-btn
-			channel=channel
-			expanded=true
-			class="Channel-playback"}}
+		channel=channel
+		expanded=true
+		class="Btn--large Channel-playback"}}
 	{{#unless channel.canEdit}}
-		{{btn-favorite channel=channel}}
+		{{btn-favorite channel=channel class="Btn--wide"}}
 	{{/unless}}
 </div>
 

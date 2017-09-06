@@ -1,13 +1,11 @@
-<div style="{if showText 'min-width: 6em'}}">
 {{#if channel.toggleFavorite.isRunning}}
 	Loading
 {{else}}
 	{{#if channel.isFavorite}}
-		<span>★</span>
+		<i>★</i>
 		{{if showText 'Unfavorite'}}
 	{{else}}
-		<span>☆</span>
+		<i>☆</i>
 		{{if showText 'Favorite'}}
 	{{/if}}
 {{/if}}
-</div>
