@@ -1,13 +1,15 @@
-<div class="Container">
-	{{channel-header channel=model}}
+<section class="Section">
+	<div class="Container">
+		{{channel-header channel=model}}
 
-	{{#if model.canEdit}}
-		<form class="Form">
-			{{track-add-inline onSubmit=(action "addTrack")}}
-		</form>
-		<br>
-	{{/if}}
-</div>
+		{{#if model.canEdit}}
+			<form class="Form">
+				{{track-add-inline onSubmit=(action "addTrack")}}
+			</form>
+			<br>
+		{{/if}}
+	</div>
+</section>
 
 <section class="Section">
 	{{#if model.totalTracks}}
