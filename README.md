@@ -7,7 +7,7 @@ The main front-end web application for Radio4000.
 Make sure Ember CLI is installed globally, then clone this project and install it's dependencies:
 
 ```
-npm install --global ember-cli phantomjs-prebuilt
+npm install --global ember-cli 
 git clone git@gitlab.com:internet4000/radio4000.git
 cd radio4000
 npm install
