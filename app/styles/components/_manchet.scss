@@ -17,6 +17,10 @@
 	p {
 		flex-basis: 100%;
 	}
+
+	h1 + .Tabs {
+		margin-left: 2rem;
+	}
 }
 
 // Reverts the default centered styles.
