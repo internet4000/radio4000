@@ -65,7 +65,7 @@
  */
 
 .Tabs--horizontal {
-	flex-flow: row wrap;
+	flex-flow: row nowrap;
 	text-align: center;
 
 	@media (min-width: $layout-s) {
@@ -145,6 +145,7 @@
 .Tabs--transparent {
 	border: 0;
 	background-color: transparent;
+	flex-wrap: wrap;
 
 	.Tabs-item {
 		background-color: transparent;
