@@ -60,8 +60,13 @@
 								placeholder="Link to your website, ex: 'https://example.com'"}}
 					{{/form-group}}
 					<p class="BtnGroupWrapper BtnGroupWrapper--full">
-						<a href="{{href-to 'channel.index' model}}" type="button" class="Btn Btn--large">Cancel changes</a>
-						<button type="submit" class="Btn Btn--large Btn--primary" disabled={{disableSubmit}}>
+						<button type="button"
+										{{action "cancelEdit"}}
+										class="Btn Btn--large"
+										disabled={{nothingChanged}}>Cancel changes</button>
+						<button type="submit"
+										class="Btn Btn--large Btn--primary"
+										disabled={{disableSubmit}}>
 							{{#if isSaving}}Saving…{{else}}Save radio{{/if}}
 						</button>
 					</p>
