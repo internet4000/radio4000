@@ -9,6 +9,7 @@
 	flex-wrap: wrap;
 	h1 {
 		padding-left: 1rem;
+		padding-right: 2rem;
 		margin-bottom: 0;
 		@media (min-width: $layout-m) {
 			padding-left: 0;
@@ -16,10 +17,6 @@
 	}
 	p {
 		flex-basis: 100%;
-	}
-
-	h1 + .Tabs {
-		margin-left: 2rem;
 	}
 }
 
