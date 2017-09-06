@@ -35,15 +35,15 @@
 	<section class="Section">
 		<div class="Container Grid">
 			<div class="Grid-cell Grid-cell--triple">
-				<p class="Muted">
-					Tip: use the following link to share or access your Radio4000 when out of the house.
+				<p>
+					Use the following link to share or access your Radio4000 when out of the house:
 				</p>
 				{{channel-sharer-url channel=model}}
 			</div>
 			<div class="Grid-cell Grid-cell--triple">
 				{{#unless model.isExperienced}}
 					<p class="Muted">
-						You can customize this URL by updating your `slug` in your {{link-to 'radio channel edit page' 'channel.edit' class="Muted"}}
+						You can customize the link by {{link-to 'updating your channel URL' 'channel.edit' class="Muted"}}.
 					</p>
 				{{/unless}}
 				<p class="Muted">
