@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
 const {Route,
-			 get,
-			 inject} = Ember;
+	get,
+	inject} = Ember;
 
 export default Route.extend({
 	player: inject.service(),
