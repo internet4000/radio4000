@@ -37,16 +37,23 @@
 
 	{{else}}
 	<section class="Section">
-		<div class="Container">
-			<p>You don't know any followers yet.</p>
-		</div>
-	</section>
-	<section class="Section">
-		<div class="Container">
-			<p class="Muted">
-				Tips: share your radio4000 URL, it's super simple. Just copy the follwing link:
-			</p>
-			{{channel-sharer-url channel=model}}
+		<div class="Container Grid">
+			<div class="Grid-cell Grid-cell--triple">
+				<p class="Muted">
+					Tip: use the following link to share or access your Radio4000 when out of the house.
+				</p>
+				{{channel-sharer-url channel=model}}
+			</div>
+			<div class="Grid-cell Grid-cell--triple">
+				{{#unless model.isExperienced}}
+					<p class="Muted">
+						You can customize this URL by updating your `slug` in your {{link-to 'radio channel edit page' 'channel.edit' class="Muted"}}
+					</p>
+				{{/unless}}
+				<p class="Muted">
+					There no followers yet.
+				</p>
+			</div>
 		</div>
 	</section>
 {{/if}}
