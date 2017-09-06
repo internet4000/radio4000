@@ -9,24 +9,26 @@
 	{{/if}}
 </div>
 
-{{#if model.totalTracks}}
-	<div class="Container">
-		<h3>
-			Latest tracks
-			<small>({{link-to "see all" "channel.tracks"}})</small>
-		</h3>
-		{{#tracks-list items=latestTracks as |item|}}
-			{{track-item track=item}}
-		{{/tracks-list}}
-	</div>
-{{/if}}
+<section class="Section">
+	{{#if model.totalTracks}}
+		<div class="Container">
+			<h3>
+				Latest tracks
+				<small>({{link-to "see all" "channel.tracks"}})</small>
+			</h3>
+			{{#tracks-list items=latestTracks as |item|}}
+				{{track-item track=item}}
+			{{/tracks-list}}
+		</div>
+	{{/if}}
+</section>
 
 {{#if showWelcome}}
-<section class="Section">
-	<div class="Container">
+	<section class="Section">
+		<div class="Container">
 			{{page-welcome channel=model}}
-	</div>
-</section>
+		</div>
+	</section>
 {{/if}}
 
 {{outlet}}
