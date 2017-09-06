@@ -33,23 +33,27 @@
 
 	{{else}}
 	<section class="Section">
-		<div class="Container Grid">
-			<div class="Grid-cell Grid-cell--triple">
-				<p>
-					Use the following link to share or access your Radio4000 when out of the house:
-				</p>
+		<div class="Container">
+			<p>
+				Use the following link to share or access your Radio4000 when out of the house:
+			</p>
+			<p>
 				{{channel-sharer-url channel=model}}
-			</div>
-			<div class="Grid-cell Grid-cell--triple">
-				{{#unless model.isExperienced}}
-					<p class="Muted">
-						Tip: you can customize the link by {{link-to 'editing your channel URL' 'channel.edit' class="Muted"}}.
-					</p>
-				{{/unless}}
+			</p>
+
+			{{#unless model.isExperienced}}
 				<p class="Muted">
-					There are no followers yet.
+					Tip: you can customize the link by {{link-to 'editing your channel URL' 'channel.edit' class="Muted"}}.
 				</p>
-			</div>
+			{{/unless}}
+		</div>
+	</section>
+
+	<section class="Section">
+		<div class="Container">
+			<p class="Muted">
+				There are no followers yet.
+			</p>
 		</div>
 	</section>
 {{/if}}
