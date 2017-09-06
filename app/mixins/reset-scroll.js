@@ -7,8 +7,8 @@ import Ember from 'ember';
 const {Mixin} = Ember;
 
 export default Mixin.create({
-	beforeModel() {
-		window.scrollTo(0, 0);
+	activate() {
 		this._super(...arguments);
+		window.scrollTo(0, 0);
 	}
 });
