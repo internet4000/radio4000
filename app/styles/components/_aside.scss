@@ -81,9 +81,14 @@
 	position: fixed;
 	z-index: 2;
 	top: auto;
-	right: 1.5rem;
+	right: 1rem;
 	bottom: 0;
 	overflow: visible;
+	width: 20rem;
+
+	.Root.is-minimized & {
+		width: auto;
+	}
 
 	.Root.is-maximized & {
 		top: 0;

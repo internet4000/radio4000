@@ -6792,9 +6792,9 @@ qunitjs@^2.0.1:
     resolve "1.3.2"
     walk-sync "0.3.1"
 
-radio4000-player@^0.1.8:
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/radio4000-player/-/radio4000-player-0.1.8.tgz#1890973168507b0cbd12edd1b054c4cc09c5aa23"
+radio4000-player@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/radio4000-player/-/radio4000-player-0.2.0.tgz#983fffddfee89a4d85da876ec3fce82f190081d5"
   dependencies:
     lodash.debounce "^4.0.8"
     unfetch "^3.0.0"
