@@ -2,12 +2,16 @@ import Ember from 'ember';
 
 const {
 	Controller,
+	computed,
 	inject,
 	get,
 	debug} = Ember;
 
 export default Controller.extend({
 	applicationController: inject.controller('application'),
+
+	notExperienced: computed.not('model.isExperienced'),
+	showWelcome: computed.and('notExperienced', 'model.canEdit'),
 
 	actions: {
 		addTrack(url) {
