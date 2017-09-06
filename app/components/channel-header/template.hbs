@@ -25,7 +25,7 @@
 <div class="Channel-header">
 	<div class="Channel-body">
 		<p class="Channel-slug">
-			<a href="{{href-to 'channel' channel}}" class="Muted" title="To listen, tune in @{{channel.slug}}">@{{channel.slug}}</a>
+			<a href="{{href-to 'channel' channel}}" class="" title="To listen, tune in @{{channel.slug}}">@{{channel.slug}}</a>
 		{{#if channel.updated}}
 			<span class="Channel-date Muted" title="{{channel.title}} added music {{time-ago channel.updated}}">{{time-ago channel.updated}}</span>
 		{{/if}}
