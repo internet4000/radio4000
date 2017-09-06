@@ -14,6 +14,7 @@
 }
 
 // Modifiers
+
 .Container--centered {
 	margin-left: auto;
 	margin-right: auto;
@@ -48,28 +49,3 @@
 	}
 }
 
-.Container--tight {
-	padding-right: 0.5rem;
-	padding-left: 0.5rem;
-
-	@media (min-width: $layout-m) {
-		padding-right: 1rem;
-		padding-left: 1rem;
-	}
-}
-
-// @todo this should be in .Grid
-.Container--left {
-	@media (min-width: $layout-m) {
-		float: left;
-		width: 60%;
-	}
-}
-
-.Container--right {
-	@media (min-width: $layout-m) {
-		float: right;
-		width: 40%;
-		max-width: 25em;
-	}
-}
