@@ -18,9 +18,15 @@
 				Latest tracks
 				<small>({{link-to "see all" "channel.tracks"}})</small>
 			</h3>
-			{{#tracks-list items=latestTracks as |item|}}
-				{{track-item track=item}}
-			{{/tracks-list}}
+			{{#if latestTracks}}
+				{{#tracks-list items=latestTracks as |item|}}
+					{{track-item track=item}}
+				{{/tracks-list}}
+			{{else}}
+				{{#is-loading}}
+					Loading latest tracks
+				{{/is-loading}}
+			{{/if}}
 		</div>
 	{{/if}}
 </section>
