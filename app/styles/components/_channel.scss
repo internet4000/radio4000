@@ -22,7 +22,12 @@
 
 .Channel-body {
 	flex: 1;
-	padding: 1.5rem 3rem 0;
+	padding: 1.5rem 1rem 0;
+
+	@media (min-width: $layout-s) {
+		padding-left: 3rem;
+		padding-right: 3rem;
+	}
 }
 
 .Channel-slug {
@@ -32,6 +37,7 @@
 
 	a {
 		font-weight: bold;
+		text-decoration: none;
 	}
 }
 
@@ -49,10 +55,5 @@
 	padding: 0.5rem;
 	padding-right: 0;
 	min-width: 7rem;
-	display: flex;
 	justify-content: flex-end;
-
-	@media (min-width: $layout-m) {
-		margin-right: -1rem;
-	}
 }

@@ -14,5 +14,9 @@ export default TextField.extend({
 		if (get(this, 'select')) {
 			this.element.select();
 		}
+	},
+
+	click() {
+		this.$().select();
 	}
 });

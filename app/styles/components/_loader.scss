@@ -25,9 +25,8 @@
 // See templates/error.hbs
 .Loader {
 	display: flex;
+	flex-direction: row;
 	align-items: center;
-	margin-top: 1rem;
-	margin-bottom: 1rem;
 
 	// on top of other things
 	position: relative;
@@ -36,15 +35,14 @@
 
 .Loader img {
 	width: 2rem;
-
-	// width: 1em;
-	// height: 1em;
+	margin-right: 1rem;
 }
 
 .Loader-text {
-	margin-left: 1rem;
+	margin-bottom: 0.5rem;
 	font-size: 1rem;
 	color: $dark;
+	display: block;
 }
 
 .Loader--center {

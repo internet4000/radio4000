@@ -1,33 +1,42 @@
-<div class="Container">
-	{{channel-header channel=model}}
-
-	{{#if model.canEdit}}
-		<form class="Form">
-			{{track-add-inline onSubmit=(action "addTrack")}}
-		</form>
-		<br>
-	{{/if}}
-</div>
-
-{{#if model.totalTracks}}
-	<div class="Container">
-		<h3>
-			Latest tracks
-			<small>({{link-to "see all" "channel.tracks"}})</small>
-		</h3>
-		{{#tracks-list items=latestTracks as |item|}}
-			{{track-item track=item}}
-		{{/tracks-list}}
-		<p>{{link-to "See all tracks" "channel.tracks"}}</p>
-	</div>
-{{/if}}
-
-{{#if showWelcome}}
 <section class="Section">
 	<div class="Container">
-			{{page-welcome channel=model}}
+		{{channel-header channel=model}}
+
+		{{#if model.canEdit}}
+			<form class="Form">
+				{{track-add-inline onSubmit=(action "addTrack")}}
+			</form>
+			<br>
+		{{/if}}
 	</div>
 </section>
+
+<section class="Section">
+	{{#if model.totalTracks}}
+		<div class="Container">
+			<h3>
+				Latest tracks
+				<small>({{link-to "see all" "channel.tracks"}})</small>
+			</h3>
+			{{#if latestTracks}}
+				{{#tracks-list items=latestTracks as |item|}}
+					{{track-item track=item}}
+				{{/tracks-list}}
+			{{else}}
+				{{#is-loading}}
+					Loading latest tracks
+				{{/is-loading}}
+			{{/if}}
+		</div>
+	{{/if}}
+</section>
+
+{{#if showWelcome}}
+	<section class="Section">
+		<div class="Container">
+			{{page-welcome channel=model}}
+		</div>
+	</section>
 {{/if}}
 
 {{outlet}}

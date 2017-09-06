@@ -8,7 +8,9 @@ const {debug, get, Controller, computed, RSVP, isEqual} = Ember;
 export default Controller.extend({
 	isSaving: false,
 
-	disableSubmit: computed.or('isSaving', 'model.validations.isInvalid'),
+	disableSubmit: computed.or('isSaving', 'cantSave'),
+	cantSave: computed.or('model.validations.isInvalid', 'nothingChanged'),
+	nothingChanged: computed.not('model.hasDirtyAttributes'),
 
 	// this could be moved to a custom slug-validator using ember-cp-validations
 	isSlugFree() {
@@ -113,6 +115,7 @@ export default Controller.extend({
 
 		// used by 'ESC' key in the view
 		cancelEdit() {
+			console.log('cancelz?')
 			this.transitionToRoute('channel', this.get('model'));
 			this.set('isSaving', false);
 		}
