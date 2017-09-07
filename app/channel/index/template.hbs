@@ -50,6 +50,9 @@
 					 channel=model
 					 autoSelect=true}}
 				URL
+				{{#if model.canEdit}}
+					<small>({{link-to 'edit' 'channel.edit'}})</small>
+				{{/if}}
 			{{/channel-sharer-url}}
 		</p>
 		<p>
