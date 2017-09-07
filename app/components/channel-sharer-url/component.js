@@ -20,9 +20,10 @@ export default Component.extend({
 	buildUrl: computed('slug', function() {
 		const channelUrl = get(this, 'channelUrl');
 		const iframe = get(this, 'iframe');
+		const apiUrl = get(this, 'buildApiUrl');
 
 		if(iframe) {
-			return `<iframe width="320" height="400" src="" frameborder="0"></iframe>`
+			return `<iframe width="320" height="400" src="${apiUrl}" frameborder="0"></iframe>`
 		}
 		return channelUrl
 	}),
