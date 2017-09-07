@@ -10,4 +10,3 @@ test('it renders', function (assert) {
 	assert.ok(this.$('.Form-group').length);
 	assert.ok(this.$('button[type="submit"]').length);
 });
-
