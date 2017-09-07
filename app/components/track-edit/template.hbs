@@ -5,7 +5,13 @@
 	valuePath="url"
 	label="URL"
 	hint="Paste in the URL of a YouTube video" as |value|}}
-	{{focus-input type="url" value=value required="required" placeholder="Paste in a YouTube link"}}
+	{{focus-input
+			type="url"
+			value=value
+			required="required"
+			placeholder="Paste in a YouTube link"
+			autoFocus=true
+			autoSelect=true}}
 {{/form-group}}
 
 {{#form-group

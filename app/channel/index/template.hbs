@@ -39,4 +39,33 @@
 	</section>
 {{/if}}
 
+<section class="Section">
+	<div class="Manchet">
+		<h3>Share</h3>
+		<p>Use the following links to share or embed this radio on any website.</p>
+	</div>
+	<div class="Container">
+		<p title="Tip: use this link to access this radio anywhere easily. You can also customize it for your radio so it is easier to remember">
+			{{#channel-sharer-url
+					 channel=model
+					 autoSelect=true}}
+				URL
+				{{#if model.canEdit}}
+					<small>({{link-to 'edit' 'channel.edit'}})</small>
+				{{/if}}
+			{{/channel-sharer-url}}
+		</p>
+		<p title="Tip: paste this <iframe/> element in the HTML code of any website to embed a player of this radio">
+			{{#channel-sharer-url
+					 channel=model
+					 iframe=true
+					 autoSelect=true}}
+				Embed <small>(iframe)</small>
+			{{/channel-sharer-url}}
+		</p>
+	</div>
+</section>
+{{#if model.canEdit}}
+{{/if}}
+
 {{outlet}}
