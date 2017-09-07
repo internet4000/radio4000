@@ -3,8 +3,29 @@ import Ember from 'ember';
 const {Component, computed, get} = Ember;
 
 export default Component.extend({
+	// props
 	channel: null,
-	url: computed('channel.slug', function() {
-		return 'https://radio4000.com/' + get(this, 'channel.slug')
+	iframe: false,
+
+	// const
+	iframeApiUrl: 'https://api.radio4000.com/iframe',
+
+	// logic
+	slug: computed.reads('channel.slug'),
+
+	channelFullUrl: computed('slug', function() {
+		return 'https://radio4000.com/' + get(this, 'slug')
+	}),
+
+	buildUrl: computed('channelFullUrl', function() {
+		const channelFullUrl = get(this, 'channelFullUrl');
+		const iframe = get(this, 'iframe');
+		const iframeApiUrl = get(this, 'iframeApiUrl');
+		const slug = get(this, 'slug');
+
+		if(iframe) {
+			return `<iframe src="${iframeApiUrl}?slug=${slug}">`
+		}
+		return channelFullUrl
 	})
 });

@@ -39,4 +39,30 @@
 	</section>
 {{/if}}
 
+<section class="Section">
+	<div class="Container">
+		<h3>
+			Share radio
+		</h3>
+		<p>Use the following links to share or embed this radio on any website.</p>
+		<p>
+			{{#channel-sharer-url
+					 channel=model
+					 autoSelect=true}}
+				URL
+			{{/channel-sharer-url}}
+		</p>
+		<p>
+			{{#channel-sharer-url
+					 channel=model
+					 iframe=true
+					 autoSelect=true}}
+				Iframe <small>(embed)</small>
+			{{/channel-sharer-url}}
+		</p>
+	</div>
+</section>
+{{#if model.canEdit}}
+{{/if}}
+
 {{outlet}}

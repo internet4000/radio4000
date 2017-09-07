@@ -3,20 +3,26 @@ import Ember from 'ember';
 const {TextField, get} = Ember;
 
 export default TextField.extend({
-	// User param
-	select: false,
+	// props
+	autoFocus: false,
+	autoSelect: false,
 
 	// http://emberjs.com/guides/cookbook/user_interface_and_interaction/focusing_a_textfield_after_its_been_inserted/
 	didInsertElement() {
 		this._super(...arguments);
-		this.element.focus();
 
-		if (get(this, 'select')) {
-			this.element.select();
+		if (get(this, 'autoFocus')) {
+			this.element.focus();
+
+			if (get(this, 'autoSelect')) {
+				this.element.select();
+			}
 		}
 	},
 
 	click() {
-		this.$().select();
+		if (get(this, 'autoSelect')) {
+			this.element.select();
+		}
 	}
 });
