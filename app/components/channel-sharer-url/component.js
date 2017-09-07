@@ -13,19 +13,22 @@ export default Component.extend({
 	// logic
 	slug: computed.reads('channel.slug'),
 
-	channelFullUrl: computed('slug', function() {
+	channelUrl: computed('slug', function() {
 		return 'https://radio4000.com/' + get(this, 'slug')
 	}),
 
-	buildUrl: computed('channelFullUrl', function() {
-		const channelFullUrl = get(this, 'channelFullUrl');
+	buildUrl: computed('slug', function() {
+		const channelUrl = get(this, 'channelUrl');
 		const iframe = get(this, 'iframe');
-		const iframeApiUrl = get(this, 'iframeApiUrl');
-		const slug = get(this, 'slug');
 
 		if(iframe) {
-			return `<iframe width="320" height="400" src="${iframeApiUrl}?slug=${slug}" frameborder="0"></iframe>`
+			return `<iframe width="320" height="400" src="" frameborder="0"></iframe>`
 		}
-		return channelFullUrl
+		return channelUrl
+	}),
+	buildApiUrl: computed('slug', function() {
+		const iframeApiUrl = get(this, 'iframeApiUrl');
+		const slug = get(this, 'slug');
+		return `${iframeApiUrl}?slug=${slug}`;
 	})
 });
