@@ -24,7 +24,7 @@ export default Component.extend({
 		const slug = get(this, 'slug');
 
 		if(iframe) {
-			return `<iframe src="${iframeApiUrl}?slug=${slug}">`
+			return `<iframe width="320" height="400" src="${iframeApiUrl}?slug=${slug}" frameborder="0"></iframe>`
 		}
 		return channelFullUrl
 	})
