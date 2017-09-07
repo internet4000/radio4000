@@ -22,7 +22,7 @@ export default Component.extend({
 		const iframe = get(this, 'iframe');
 		const apiUrl = get(this, 'buildApiUrl');
 
-		if(iframe) {
+		if (iframe) {
 			return `<iframe width="320" height="400" src="${apiUrl}" frameborder="0"></iframe>`
 		}
 		return channelUrl
