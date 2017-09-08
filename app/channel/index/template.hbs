@@ -1,13 +1,6 @@
 <section class="Section">
 	<div class="Container">
 		{{channel-header channel=model}}
-
-		{{#if model.canEdit}}
-			<form class="Form">
-				{{track-add-inline onSubmit=(action "addTrack")}}
-			</form>
-			<br>
-		{{/if}}
 	</div>
 </section>
 
@@ -18,6 +11,13 @@
 				Latest tracks
 				<small>({{link-to "see all" "channel.tracks"}})</small>
 			</h3>
+
+			{{#if model.canEdit}}
+				<form class="Form">
+					{{track-add-inline onSubmit=(action "addTrack")}}
+				</form>
+			{{/if}}
+
 			{{#if latestTracks}}
 				{{#tracks-list items=latestTracks as |item|}}
 					{{track-item track=item}}
@@ -38,5 +38,31 @@
 		</div>
 	</section>
 {{/if}}
+
+{{!--
+<section class="Section">
+	<div class="Container">
+		<h3>Share or this radio on any website</h3>
+		<p title="Tip: use this link to access this radio anywhere easily. You can also customize it for your radio so it is easier to remember">
+			{{#channel-sharer-url
+				channel=model
+				autoSelect=true}}
+				URL
+				{{#if model.canEdit}}
+					<small>({{link-to 'edit' 'channel.edit'}})</small>
+				{{/if}}
+			{{/channel-sharer-url}}
+		</p>
+		<p title="Tip: paste this <iframe/> element in the HTML code of any website to embed a player of this radio">
+			{{#channel-sharer-url
+				 channel=model
+				 iframe=true
+				 autoSelect=true}}
+				Embed <small>(<a href={{buildApiUrl}} target="_blank" rel="noopener">Try it out</a>)</small>
+			{{/channel-sharer-url}}
+		</p>
+	</div>
+</section>
+--}}
 
 {{outlet}}

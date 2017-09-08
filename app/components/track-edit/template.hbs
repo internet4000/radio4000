@@ -5,7 +5,13 @@
 	valuePath="url"
 	label="URL"
 	hint="Paste in the URL of a YouTube video" as |value|}}
-	{{focus-input type="url" value=value required="required" placeholder="Paste in a YouTube link"}}
+	{{focus-input
+			type="url"
+			value=value
+			required="required"
+			placeholder="Paste in a YouTube link"
+			autoFocus=true
+			autoSelect=true}}
 {{/form-group}}
 
 {{#form-group
@@ -31,12 +37,12 @@
 	<div class="BtnGroupWrapper BtnGroupWrapper--full">
 		{{#btn-group}}
 			<button
-					onclick={{perform updateTrack}}
+					onclick={{perform submitTask}}
 					type="submit"
 					class="Btn Btn--primary"
 					title="Save the track"
-					disabled={{updateTrack.isRunning}}>
-				{{if updateTrack.isIdle "Save" "Saving…"}}
+					disabled={{submitTask.isRunning}}>
+				{{if submitTask.isIdle "Save" "Saving…"}}
 			</button>
 
 			<button {{action "cancel"}} class="Btn" title="Stop editing the track">Cancel</button>

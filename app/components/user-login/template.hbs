@@ -1,6 +1,11 @@
 <form class="Form" {{action "login" "password" email password on="submit"}}>
 	<div class="Form-group">
-		{{input type="email" value=email placeholder="Email" required="required"}}
+		{{focus-input
+				type="email"
+				value=email
+				placeholder="Email"
+				required="required"
+				autoFocus=true}}
 	</div>
 	<div class="Form-group">
 		{{input type="password" value=password placeholder="Password" required="required"}}

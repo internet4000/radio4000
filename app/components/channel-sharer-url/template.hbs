@@ -1,7 +1,20 @@
 <form class="Form">
-	{{focus-input
-			value=url
-			select=true
-			readonly=true}}
+	{{#if hasBlock}}
+		<label>{{yield}}</label>
+	{{/if}}
+	{{#if focus}}
+		{{focus-input
+				value=buildUrl
+				select=true
+				readonly=true
+				autoFocus=autoFocus
+				autoSelect=autoSelect}}
+	{{else}}
+		{{focus-input
+				value=buildUrl
+				select=true
+				readonly=true
+				autoFocus=autoFocus
+				autoSelect=autoSelect}}
+	{{/if}}
 </form>
-{{yield}}

@@ -7,32 +7,25 @@ const {
 	computed} = Ember;
 
 export default TrackFormComponent.extend({
-	// track model to edit
+	// Track model to edit
 	track: null,
-	// function passed as a prop
-	transitionRoute: null,
+	// Functions passed as a properties
+	onSubmit: null,
+	onDelete: null,
+
 	disableSubmit: computed.oneWay('track.validations.isInvalid'),
 
-	notify(message) {
-		const messages = get(this, 'flashMessages');
-		messages.success(message);
-	},
-
-	updateTrack: task(function * () {
+	submitTask: task(function * (event) {
+		event.preventDefault()
 		yield get(this, 'track.update').perform();
-		this.notify('Track updated');
-		yield get(this, 'transitionRoute')()
+		get(this, 'flashMessages').success('Track updated')
+		yield get(this, 'onUpdate')()
 	}).drop(),
 
-	deleteTrack: task(function * () {
+	deleteTrack: task(function * (event) {
+		event.preventDefault()
 		yield get(this, 'track.delete').perform();
-		this.notify('Track deleted');
-		yield get(this, 'transitionRoute')()
-	}).drop(),
-
-	actions: {
-		cancel() {
-			get(this, 'cancel')();
-		}
-	}
+		get(this, 'flashMessages').success('Track deleted')
+		yield get(this, 'onDelete')()
+	}).drop()
 });

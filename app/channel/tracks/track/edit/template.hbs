@@ -1,7 +1,8 @@
-{{#modal-dialog close="cancel"}}
+{{#modal-dialog close="cancelAndBack"}}
 	{{track-edit
-			track=model
-			cancel=(action 'cancel')
-			transitionRoute=(action 'transitionRoute')}}
+		track=model
+		onCancel=(action 'cancelAndBack')
+		onSubmit=(action 'goBack')
+		onDelete=(action 'goBack')}}
 	{{outlet}}
 {{/modal-dialog}}

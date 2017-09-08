@@ -1,6 +1,13 @@
 # Radio4000
 
-The main front-end web application for Radio4000.
+The main front-end web application for Radio4000, CMS for music
+libraries.
+
+## URLs
+
+latest production deployment: https://radio4000.com
+development master branch + live db (no authentication):
+https://master--radio4000.netlify.com
 
 ## How to develop
 
