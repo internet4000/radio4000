@@ -7,12 +7,12 @@ const {
 export default Controller.extend({
 
 	actions: {
-		cancel() {
-			this.send('transitionRoute');
+		cancelAndBack() {
+			get(this, 'model').rollbackAttributes()
+			this.send('goBack')
 		},
-		transitionRoute() {
-			get(this, 'model').rollbackAttributes();
-			this.transitionToRoute('channel.tracks');
+		goBack() {
+			this.transitionToRoute('channel.tracks')
 		}
 	}
 });
