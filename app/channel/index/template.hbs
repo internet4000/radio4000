@@ -40,15 +40,12 @@
 {{/if}}
 
 <section class="Section">
-	<div class="Manchet">
-		<h3>Share</h3>
-		<p>Use the following links to share or embed this radio on any website.</p>
-	</div>
 	<div class="Container">
+		<h3>Share or this radio on any website</h3>
 		<p title="Tip: use this link to access this radio anywhere easily. You can also customize it for your radio so it is easier to remember">
 			{{#channel-sharer-url
-					 channel=model
-					 autoSelect=true}}
+				channel=model
+				autoSelect=true}}
 				URL
 				{{#if model.canEdit}}
 					<small>({{link-to 'edit' 'channel.edit'}})</small>
@@ -57,15 +54,13 @@
 		</p>
 		<p title="Tip: paste this <iframe/> element in the HTML code of any website to embed a player of this radio">
 			{{#channel-sharer-url
-					 channel=model
-					 iframe=true
-					 autoSelect=true}}
-				Embed <small>(iframe)</small>
+				 channel=model
+				 iframe=true
+				 autoSelect=true}}
+				Embed <small>(<a href={{buildApiUrl}} target="_blank" rel="noopener">Try it out</a>)</small>
 			{{/channel-sharer-url}}
 		</p>
 	</div>
 </section>
-{{#if model.canEdit}}
-{{/if}}
 
 {{outlet}}
