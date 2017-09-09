@@ -19,7 +19,7 @@ export default TrackFormComponent.extend({
 		event.preventDefault()
 		yield get(this, 'track.update').perform();
 		get(this, 'flashMessages').success('Track updated')
-		yield get(this, 'onUpdate')()
+		yield get(this, 'onSubmit')()
 	}).drop(),
 
 	deleteTrack: task(function * (event) {
