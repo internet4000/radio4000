@@ -39,10 +39,6 @@ export default Model.extend(Validations, {
 			return new Date()
 		}
 	}),
-	createdMonth: computed('created', function () {
-		let created = get(this, 'created');
-		return format(created, 'MMMM YYYY');
-	}),
 	url: attr('string'),
 	title: attr('string'),
 	body: attr('string'),
@@ -59,6 +55,11 @@ export default Model.extend(Validations, {
 	liveInCurrentPlayer: false,
 	playedInCurrentPlayer: false,
 	finishedInCurrentPlayer: false,
+
+	createdMonth: computed('created', function () {
+		let created = get(this, 'created');
+		return format(created, 'MMMM YYYY');
+	}),
 
 	// If the user changes the url, we need to update the YouTube id.
 	updateYoutubeId() {
