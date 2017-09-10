@@ -3,7 +3,6 @@ import DS from 'ember-data';
 import {task} from 'ember-concurrency';
 import {validator, buildValidations} from 'ember-cp-validations';
 import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
-import firebase from 'firebase';
 import format from 'npm:date-fns/format';
 
 const {Model, attr, belongsTo} = DS;
@@ -35,9 +34,9 @@ export const Validations = buildValidations({
 });
 
 export default Model.extend(Validations, {
-	created: attr('number', {
+	created: attr('timestamp', {
 		defaultValue() {
-			return firebase.database.ServerValue.TIMESTAMP;
+			return new Date()
 		}
 	}),
 	createdMonth: computed('created', function () {

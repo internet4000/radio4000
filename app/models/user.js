@@ -1,12 +1,11 @@
 import DS from 'ember-data';
-import firebase from 'firebase';
 
 const {Model, attr, belongsTo, hasMany} = DS;
 
 export default Model.extend({
-	created: attr('number', {
+	created: attr('timestamp', {
 		defaultValue() {
-			return firebase.database.ServerValue.TIMESTAMP;
+			return new Date()
 		}
 	}),
 	channels: hasMany('channel', {
