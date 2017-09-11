@@ -4,8 +4,8 @@ const {
 	Controller,
 	computed,
 	inject,
-	get,
-	debug} = Ember;
+	get
+} = Ember;
 
 export default Controller.extend({
 	applicationController: inject.controller('application'),
@@ -15,8 +15,6 @@ export default Controller.extend({
 
 	actions: {
 		addTrack(url) {
-			debug(`Trying to add ${url}`);
-
 			// Setting these properties open a modal in the application template.
 			get(this, 'applicationController').setProperties({
 				newUrl: url,
