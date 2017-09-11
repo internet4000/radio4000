@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {Component, computed, inject} = Ember;
+const {Component, computed, get, set, inject} = Ember;
 
 export default Component.extend({
 	player: inject.service(),
@@ -21,10 +21,16 @@ export default Component.extend({
 
 	actions: {
 		edit() {
-			this.get('edit')(this.get('track'));
+			this.toggleProperty('isEditing')
 		},
 		play(track) {
-			this.set('player.model', track);
+			get(this, 'player').playTrack(track)
+		},
+		goBack(rollback) {
+			if (rollback) {
+				get(this, 'track').rollbackAttributes()
+			}
+			set(this, 'isEditing', false)
 		}
 	}
 });

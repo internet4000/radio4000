@@ -1,12 +1,39 @@
-{{#link-to 'channel.tracks.track.index' track class="Track-link"}}
-	<h3 class="Track-title">
-		{{track.title}}
-	</h3>
-	<p class="Track-body">{{track.body}}</p>
-{{/link-to}}
+{{#if inline}}
+	<a href="#" {{action "play" track}}>
+		<h3 class="Track-title">
+			{{track.title}}
+		</h3>
+		<p class="Track-body">{{track.body}}</p>
+	</a>
+{{else}}
+	{{#link-to 'channel.tracks.track.index' track class="Track-link"}}
+		<h3 class="Track-title">
+			{{track.title}}
+		</h3>
+		<p class="Track-body">{{track.body}}</p>
+	{{/link-to}}
+{{/if}}
 
 {{#if track.channel.canEdit}}
-	{{link-to 'Edit' 'channel.tracks.track.edit' track
+	{{#if inline}}
+		<button class="Track-controls Muted" {{action "edit"}}>Edit</button>
+	{{else}}
+		{{link-to 'Edit' 'channel.tracks.track.edit' track
 			class="Btn Btn--text Muted Track-controls"
 			title="Edit the track"}}
+	{{/if}}
 {{/if}}
+
+{{#if isEditing}}
+	<div class="Track-modal">
+		{{#modal-dialog onClose=(action "goBack" true)}}
+			{{track-edit
+				track=track
+				onCancel=(action "goBack" true)
+				onSubmit=(action "goBack")
+				onDelete=(action "goBack")}}
+		{{/modal-dialog}}
+	</div>
+{{/if}}
+
+{{outlet}}
