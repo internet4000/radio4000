@@ -5,13 +5,8 @@
 	box-shadow: $box-shadow;
 	border: 1px solid $mediumlightgray;
 	border-radius: $border-radius;
-
-	.Form {
-		@media (min-width: 520px) {
-			// Sets the width of the modal.
-			width: 500px;
-		}
-	}
+	width: calc(100% - 2rem);
+	max-width: 500px;
 }
 
 // Set background for ember-modals
