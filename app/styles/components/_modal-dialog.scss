@@ -1,22 +1,15 @@
 // Modals using the ember-modal-dialog addon.
 
 .ember-modal-dialog {
-	padding: 2.4rem 2rem 0.5rem;
+	padding: 2.4rem 2rem 0;
+	box-shadow: $box-shadow;
+	border: 1px solid $mediumlightgray;
 	border-radius: $border-radius;
-	box-shadow: -4px 4px 12px rgba(88, 88, 88, 0.25);
-
-	// forms inside modals
-	.Form {
-		max-width: 100%;
-		margin-bottom: 0;
-
-		@media (min-width: 520px) {
-			width: 500px;
-		}
-	}
+	width: calc(100% - 2rem);
+	max-width: 500px;
 }
 
 // Set background for ember-modals
-.ember-modal-overlay.translucent {
-	background-color: rgba(43, 43, 43, 0.24);
+div.ember-modal-overlay.translucent {
+	background-color: hsla(0, 0%, 20%, 0.1);
 }

@@ -21,7 +21,7 @@
 </aside>
 
 {{#if isShowingModal}}
-	{{#modal-dialog close="toggleModal" translucentOverlay=true}}
+	{{#modal-dialog onClose=(action "toggleModal")}}
 		<div class="Manchet">
 			<h2><small>Add a </small>new track<small> to your radio</small></h2>
 		</div>
