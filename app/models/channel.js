@@ -54,12 +54,12 @@ export default DS.Model.extend(Validations, {
 	session: inject.service(),
 	flashMessages: inject.service(),
 
-	created: attr('number', {
+	created: attr('timestamp', {
 		defaultValue() {
 			return new Date()
 		}
 	}),
-	updated: attr('number', {
+	updated: attr('timestamp', {
 		defaultValue() {
 			return new Date()
 		}
