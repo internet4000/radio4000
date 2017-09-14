@@ -22,7 +22,7 @@ export default PlayButtonComponent.extend({
 	},
 
 	playRandomTrack() {
-		get(this, 'tracks').then(tracks => {
+		get(this, 'channel.tracks').then(tracks => {
 			const randomIndex = getRandomIndex(tracks);
 			const randomTrack = tracks.objectAt(randomIndex);
 			get(this, 'player').playTrack(randomTrack);
