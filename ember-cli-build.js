@@ -2,9 +2,10 @@
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const autoprefixer = require('autoprefixer');
 const atImport = require('postcss-import');
+const targets = require('./config/targets');
 
 module.exports = function(defaults) {
-	var app = new EmberApp(defaults, {
+	let app = new EmberApp(defaults, {
 		// Don't pollute our index.html with meta data.
 		storeConfigInMeta: false,
 
@@ -31,7 +32,7 @@ module.exports = function(defaults) {
 						{
 							module: autoprefixer,
 							options: {
-								browsers: ['last 2 versions']
+								browsers: targets.browsers
 							}
 						}
 					]
