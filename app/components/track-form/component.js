@@ -73,6 +73,7 @@ export default Component.extend({
 			get(this, 'submitTask').perform();
 		},
 		cancel() {
+			get(this, 'track').rollbackAttributes();
 			get(this, 'onCancel')();
 		}
 	}

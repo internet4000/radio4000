@@ -1,21 +1,16 @@
 import Ember from 'ember';
 import ModalDialog from 'ember-modal-dialog/components/modal-dialog';
-// import {EKOnFocusMixin, keyUp} from 'ember-keyboard';
 
 const {on, $} = Ember;
 
 export default ModalDialog.extend({
+	// Change the default value to use overlay.
 	translucentOverlay: true,
-	overlayClassNames: ['ember-modal-overlay'],
-
-	// activateKeyboard: Ember.on('init', function () {
-	// 	this.set('keyboardActivated', true);
-	// }),
-	// onEscape: on(keyUp('Escape'), function () {
-	// 	this.sendAction('close');
-	// })
 
 	setup: on('didInsertElement', function () {
+		this._super()
+
+		// Close modal on ESC.
 		$('body').on('keyup.modal-dialog', e => {
 			if (e.keyCode === 27) {
 				this.sendAction('close');

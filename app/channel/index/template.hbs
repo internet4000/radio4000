@@ -20,7 +20,7 @@
 
 			{{#if latestTracks}}
 				{{#tracks-list items=latestTracks as |item|}}
-					{{track-item track=item}}
+					{{track-item track=item inline=true}}
 				{{/tracks-list}}
 			{{else}}
 				{{#is-loading}}

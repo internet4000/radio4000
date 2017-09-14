@@ -1,4 +1,4 @@
-{{#modal-dialog close="cancelAndBack"}}
+{{#modal-dialog onClose=(action "cancelAndBack")}}
 	{{track-edit
 		track=model
 		onCancel=(action 'cancelAndBack')
