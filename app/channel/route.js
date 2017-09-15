@@ -28,16 +28,17 @@ export default Route.extend({
 	deactivate() {
 		// Reset meta tags when leaving the route.
 		get(this, 'headData').setProperties({
-			title: null, description: null, image: null
+			title: null, description: null, image: null, slug: null
 		})
 	},
 	setHeadData(model) {
 		const headData = get(this, 'headData')
 		// const title = `${model.get('title')} - Radio4000`;
 		const title = model.get('title')
+		const slug = model.get('slug')
 		const body = model.get('body')
-
 		set(headData, 'title', title)
+		set(headData, 'slug', slug)
 		if (body) {
 			set(headData, 'description', body)
 		}
