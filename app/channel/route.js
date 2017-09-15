@@ -33,7 +33,8 @@ export default Route.extend({
 	},
 	setHeadData(model) {
 		const headData = get(this, 'headData')
-		const title = `${model.get('title')} - Radio4000`;
+		// const title = `${model.get('title')} - Radio4000`;
+		const title = model.get('title')
 		const body = model.get('body')
 
 		set(headData, 'title', title)
