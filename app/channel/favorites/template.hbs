@@ -6,7 +6,7 @@
 				<div class="Filters">
 					{{#btn-group class="Filter BtnGroup--right"}}
 						<span class="BtnGroup-label">Filter radio channels by</span>
-						{{btn-list-manipulation text="Activity"
+						{{btn-list-manipulation text="Activity" class="is-active"
 								onClick=(action updateSorting "updated")}}
 						{{btn-list-manipulation text="Age"
 								onClick=(action updateSorting "created" true)}}
