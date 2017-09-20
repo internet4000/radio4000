@@ -5,7 +5,6 @@ const {Service, inject, get, set, debug, computed} = Ember;
 export default Service.extend({
 	store: inject.service(),
 	session: inject.service(),
-	originTrack: null,
 	currentTrack: null,
 	currentChannel: computed.alias('currentTrack.channel'),
 	isPlaying: computed.bool('currentTrack'),
@@ -16,7 +15,7 @@ export default Service.extend({
 			debug('playTrack() was called without a track.');
 			return;
 		}
-		set(this, 'originTrack', model);
+		set(this, 'currentTrack', model);
 	},
 
 	onTrackChanged(event) {
@@ -34,11 +33,11 @@ export default Service.extend({
 
 		// set new track as played and active
 		get(this, 'store').findRecord('track', event.track.id).then(track => {
-			set(this, 'currentTrack', track);
 			track.setProperties({
 				playedInCurrentPlayer: true,
 				liveInCurrentPlayer: true
 			});
+			set(this, 'currentTrack', track);
 		});
 	},
 
