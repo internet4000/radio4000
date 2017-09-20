@@ -31,8 +31,8 @@
 	.Track-link,
 	a.Track-link {
 		background-color: $white;
-
-		&::before {
+	}
+	&::before {
 			background-color: $primary-color;
 			position: absolute;
 			top: 50%;
@@ -44,8 +44,6 @@
 			border-radius: 50%;
 			transform: translateY(-50%);
 		}
-		// border-left-color: $primary-color;
-	}
 }
 .Track--played {
 	border-right-color: $white;
