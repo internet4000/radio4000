@@ -21,30 +21,21 @@
 	}
 }
 
-// Active state
-.Track.is-current {
+// When the track is loaded in the player
+.Track--live a.Track-link {
+	background-color: $white;
 
-}
-
-// Conflicts with is-current border
-.Track--live {
-	.Track-link,
-	a.Track-link {
-		background-color: $white;
-
-		&::before {
-			background-color: $primary-color;
-			position: absolute;
-			top: 50%;
-			left: 0.5rem;
-			height: 1rem;
-			width: 1rem;
-			display: block;
-			content: "";
-			border-radius: 50%;
-			transform: translateY(-50%);
-		}
-		// border-left-color: $primary-color;
+	&::before {
+		background-color: $primary-color;
+		position: absolute;
+		top: 50%;
+		left: 0.5rem;
+		height: 1rem;
+		width: 1rem;
+		display: block;
+		content: "";
+		border-radius: 50%;
+		transform: translateY(-50%);
 	}
 }
 .Track--played {

@@ -10,9 +10,6 @@ export default Component.extend(EKMixin, {
 	classNames: ['Playback'],
 
 	channel: computed.alias('player.currentChannel'),
-	track: computed('player.originTrack', function () {
-		return get(this, 'player.originTrack');
-	}),
 
 	cycleFormat: on(keyUp('KeyF'), function () {
 		get(this, 'uiStates').cycleFormat();
