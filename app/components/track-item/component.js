@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {Component, computed, get, set, inject} = Ember;
+const {Component, get, set, inject} = Ember;
 
 export default Component.extend({
 	player: inject.service(),
