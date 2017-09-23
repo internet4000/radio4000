@@ -27,10 +27,9 @@ export default Component.extend({
 	// Remove our dummy app with inline styles.
 	removeDummyHTML() {
 		const dummy = document.querySelector('.DummyApp');
-		if (!dummy) {
-			return;
+		if (dummy) {
+			dummy.parentNode.removeChild(dummy);
 		}
-		dummy.parentNode.removeChild(dummy);
 	},
 
 	actions: {
