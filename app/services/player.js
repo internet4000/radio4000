@@ -66,7 +66,6 @@ export default Service.extend({
 
 	// add a channel to the History of played channels
 	updateChannelHistory(channel) {
-		console.log('updateChannelHistory');
 		const settings = get(this, 'session.currentUser.settings');
 
 		// Break if the user does not have settings (= logged out)

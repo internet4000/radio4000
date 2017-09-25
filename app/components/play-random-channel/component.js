@@ -31,5 +31,4 @@ export default Component.extend(EKMixin, {
 			});
 		});
 	}
-
 });

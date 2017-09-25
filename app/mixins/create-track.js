@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import {task} from 'ember-concurrency';
-import firebase from 'firebase';
 
 const {Mixin, debug, get} = Ember;
 
@@ -32,22 +31,14 @@ export default Mixin.create({
 
 		try {
 			const tracks = yield channel.get('tracks');
-			const timestamp = firebase.database.ServerValue.TIMESTAMP;
 			tracks.addObject(track);
-			channel.set('updated', timestamp);
+			channel.set('updated', new Date());
 			yield channel.save();
 			messages.success('Your track was created', {timeout: 5000});
 		} catch (err) {
 			Ember.debug(err);
 			messages.warning('Could not save the track to your radio');
 		}
-
-		// To avoid 'updated' being NaN due to a value of {.sv: "timestamp"}
-		// we need to request an update from Firebase for the channel.
-		channel.reload();
-
-		// And we need to do a similar track for the track.
-		track.set('created', new Date().getTime());
 
 		return track;
 	}).drop()
