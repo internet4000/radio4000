@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import {task} from 'ember-concurrency';
+import firebase from 'firebase';
 
 const {Mixin, debug, get} = Ember;
 
@@ -32,7 +33,7 @@ export default Mixin.create({
 		try {
 			const tracks = yield channel.get('tracks');
 			tracks.addObject(track);
-			channel.set('updated', new Date());
+			channel.set('updated', firebase.database.ServerValue.TIMESTAMP;);
 			yield channel.save();
 			messages.success('Your track was created', {timeout: 5000});
 		} catch (err) {
