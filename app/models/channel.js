@@ -60,7 +60,8 @@ export default DS.Model.extend(Validations, {
 			return firebase.database.ServerValue.TIMESTAMP;
 		}
 	}),
-	updated: attr('number'),
+	updated: attr('timestamp'),
+
 	title: attr('string'),
 	slug: attr('string'),
 	body: attr('string'),
