@@ -59,6 +59,10 @@ export default Model.extend(Validations, {
 
 	createdMonth: computed('created', function () {
 		let created = get(this, 'created');
+		// Avoid temporary Firebase timestamps.
+		if (created['.sv'] === 'timestamp') {
+			created = new Date();
+		}
 		return format(created, 'MMMM YYYY');
 	}),
 
