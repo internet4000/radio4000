@@ -6,9 +6,7 @@ import RSVP from 'rsvp';
 import 'npm:lazysizes/plugins/attrchange/ls.attrchange';
 import 'npm:lazysizes';
 
-let App;
-
-App = Ember.Application.extend({
+let App = Ember.Application.extend({
 	rootElement: '#Radio4000',
 	modulePrefix: config.modulePrefix,
 	podModulePrefix: config.podModulePrefix,
@@ -21,10 +19,11 @@ Ember.LinkComponent.reopen({
 });
 
 // https://guides.emberjs.com/v2.11.0/configuring-ember/debugging/#toc_errors-within-an-code-rsvp-promise-code
-RSVP.on('error', err => {
-	// Ember.debug('RSVP caught an error: ' + error);
-	console.log(err);
-	Ember.assert(false, err);
+RSVP.on('error', reason => {
+	// An aborted transition propogates an error to RSVP
+	if (reason.name !== 'TransitionAborted') {
+		Ember.debug(reason)
+	}
 });
 
 // Expose the databaseURL so `radio4000-player` can catch it.
