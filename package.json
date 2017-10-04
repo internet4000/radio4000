@@ -1,6 +1,6 @@
 {
   "name": "radio4000",
-  "version": "5.1.2",
+  "version": "5.1.3",
   "scripts": {
     "build": "ember build; npm run critical-css",
     "build-production": "ember build -prod; npm run critical-css",
