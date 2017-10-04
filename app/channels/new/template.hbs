@@ -13,6 +13,7 @@
 			<form class="Form" onsubmit={{perform createRadio}}>
 				{{#form-group model=this valuePath="title" label="Name" as |v|}}
 					{{focus-input
+						autoFocus=true
 						value=v
 						required="required"
 						placeholder="ex: “The Pirate Radio”"}}
