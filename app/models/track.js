@@ -59,10 +59,14 @@ export default Model.extend(Validations, {
 
 	createdMonth: computed('created', function () {
 		let created = get(this, 'created');
+
 		// Avoid temporary Firebase timestamps.
+		// if (!(created instanceof Date) || isNaN(created)) {
 		if (created['.sv'] === 'timestamp') {
+			Ember.debug('using temporary date')
 			created = new Date();
 		}
+
 		return format(created, 'MMMM YYYY');
 	}),
 

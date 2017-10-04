@@ -1,7 +1,3 @@
-<p>
-	created: {{model.created}}<br>
-	updated: {{model.updated}}
-</p>
 <div class="Sections">
 	<section class="Section">
 		<div class="Manchet">
@@ -10,6 +6,7 @@
 					{{model.title}}
 				{{/link-to}}
 			</h1>
+
 			<nav class="Tabs Tabs--horizontal Tabs--animated Tabs--transparent">
 				{{#link-to 'channel.tracks' class="Tabs-item" title="All tracks"}}
 					Tracks <span class="Muted">({{model.totalTracks}})</span>
@@ -31,5 +28,4 @@
 	</section>
 
 	{{outlet}}
-
 </div>

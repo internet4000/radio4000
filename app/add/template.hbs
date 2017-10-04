@@ -5,10 +5,10 @@
 				<h2><small>Add a </small>new track<small> to your radio</small></h2>
 				</div>
 				{{track-form-add
-						initialUrl=url
-						onSubmit=(action "saveTrack")
-						onCancel=(action "goBack")
-						isSubmitting=createTrack.isRunning}}
+					initialUrl=url
+					onSubmit=(action "saveTrack")
+					onCancel=(action "goBack")
+					isSubmitting=createTrack.isRunning}}
 				<br>
 				<p>
 					&rarr; {{#link-to "channel" model.slug title=model.title}}Go to your channel <em>{{model.title}}</em>{{/link-to}} <small>(you currently have {{model.totalTracks}} tracks)</small><br>
