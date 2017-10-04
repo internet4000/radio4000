@@ -1,3 +1,4 @@
+import Ember from 'ember'
 import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('route:channel/play/random', 'Unit | Route | channel/play/random', {
@@ -6,6 +7,7 @@ moduleFor('route:channel/play/random', 'Unit | Route | channel/play/random', {
 });
 
 test('it exists', function(assert) {
+	this.register('service:player', Ember.Service.extend());
   let route = this.subject();
   assert.ok(route);
 });
