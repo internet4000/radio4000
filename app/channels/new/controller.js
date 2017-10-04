@@ -5,7 +5,7 @@ import { task } from 'ember-concurrency'
 import { validator, buildValidations } from 'ember-cp-validations'
 import channelConst from 'radio4000/utils/channel-const'
 
-const { debug, warn, computed, get } = Ember
+const { warn, computed, get } = Ember
 
 // This is copy/paste from channel model because we need to validate
 // a `title` field without using a full channel model.
@@ -38,22 +38,22 @@ export default Ember.Controller.extend(Validations, {
 	},
 
 	// This tasks calls the other one so we have one place to catch success/fail.
-	createRadio: task(function*(event) {
+	createRadio: task(function * (event) {
 		event.preventDefault()
 
 		const messages = get(this, 'flashMessages')
 
 		try {
-			const channel = this.get('reallyCreateRadio').perform()
+			const channel = yield this.get('reallyCreateRadio').perform()
 			this.transitionToRoute('channel', channel)
 			messages.success('Voilà! You now have a Radio4000 📻', { timeout: 10000 })
 		} catch (err) {
-			debug(err)
+			warn(err)
 			messages.warning('Sorry, could not create your radio')
 		}
 	}).drop(),
 
-	reallyCreateRadio: task(function*(event) {
+	reallyCreateRadio: task(function * () {
 		const user = get(this, 'session.currentUser')
 		const title = get(this, 'title').trim()
 		let slug = get(this, 'cleanSlug')
