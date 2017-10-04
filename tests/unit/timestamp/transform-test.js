@@ -19,7 +19,7 @@ test('should serialize to Firebase server value timestamp', function(assert) {
   assert.deepEqual(result, firebase.database.ServerValue.TIMESTAMP);
 });
 
-test('should deserialize to date', function(assert) {
+test('should deserialize to number', function(assert) {
   assert.expect(1);
 
   // Arrange
@@ -29,5 +29,6 @@ test('should deserialize to date', function(assert) {
   const result = transform.deserialize(1483228800000);
 
   // Assert
-  assert.deepEqual(result, new Date('2017-01-01'));
+  // assert.deepEqual(result, new Date('2017-01-01'));
+  assert.deepEqual(result, 1483228800000);
 });
