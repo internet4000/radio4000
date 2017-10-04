@@ -10,8 +10,8 @@ const {
 export default Controller.extend({
 	applicationController: inject.controller('application'),
 
-	notExperienced: computed.not('model.isExperienced'),
-	showWelcome: computed.and('notExperienced', 'model.canEdit'),
+	notExperienced: computed.not('model.channel.isExperienced'),
+	showWelcome: computed.and('notExperienced', 'model.channel.canEdit'),
 
 	actions: {
 		addTrack(url) {

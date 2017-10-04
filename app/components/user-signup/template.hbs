@@ -1,11 +1,11 @@
 <form {{action "submit" "password" email password on="submit"}} class="Form">
 	{{#form-group model=this valuePath="email" label="Email" as |v|}}
 		{{focus-input
-				type="email"
-				value=v
-				placeholder="Enter your email address"
-				required="required"
-				autoFocus=true}}
+			type="email"
+			value=v
+			placeholder="Enter your email address"
+			required="required"
+			autoFocus=true}}
 	{{/form-group}}
 	{{#form-group model=this valuePath="password" label="Password" as |v|}}
 		{{input type="password" value=v placeholder="Create a password" required="required"}}

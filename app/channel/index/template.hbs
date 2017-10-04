@@ -1,25 +1,25 @@
 <section class="Section">
 	<div class="Container">
-		{{channel-header channel=model}}
+		{{channel-header channel=model.channel}}
 	</div>
 </section>
 
 <section class="Section">
-	{{#if model.totalTracks}}
+	{{#if model.channel.totalTracks}}
 		<div class="Container">
 			<h3>
 				Latest tracks
 				<small>({{link-to "see all" "channel.tracks"}})</small>
 			</h3>
 
-			{{#if model.canEdit}}
+			{{#if model.channel.canEdit}}
 				<form class="Form">
 					{{track-add-inline onSubmit=(action "addTrack")}}
 				</form>
 			{{/if}}
 
-			{{#if latestTracks}}
-				{{#tracks-list items=latestTracks as |item|}}
+			{{#if model.latestTracks}}
+				{{#tracks-list items=model.latestTracks as |item|}}
 					{{track-item track=item inline=true}}
 				{{/tracks-list}}
 			{{else}}
@@ -34,7 +34,7 @@
 {{#if showWelcome}}
 	<section class="Section">
 		<div class="Container">
-			{{page-welcome channel=model}}
+			{{page-welcome channel=model.channel}}
 		</div>
 	</section>
 {{/if}}

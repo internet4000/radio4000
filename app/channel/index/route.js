@@ -1,17 +1,16 @@
-import Ember from 'ember';
+import Ember from 'ember'
 
 export default Ember.Route.extend({
-	setupController(controller, model) {
-		this._super(...arguments)
-
-		controller.set('model', model)
-
-		this.store.query('track', {
+	model() {
+		const channel = this.modelFor('channel')
+		const latestTracks = this.store.query('track', {
 			orderBy: 'channel',
-			equalTo: model.id,
+			equalTo: channel.id,
 			limitToLast: 10
-		}).then(latestTracks => {
-			controller.set('latestTracks', latestTracks)
+		})
+		return Ember.RSVP.hash({
+			channel,
+			latestTracks
 		})
 	}
-});
+})

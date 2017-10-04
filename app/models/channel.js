@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import DS from 'ember-data';
+import firebase from 'firebase';
 import {task} from 'ember-concurrency';
 import {validator, buildValidations} from 'ember-cp-validations';
 import channelConst from 'radio4000/utils/channel-const';
@@ -54,16 +55,12 @@ export default DS.Model.extend(Validations, {
 	session: inject.service(),
 	flashMessages: inject.service(),
 
-	created: attr('timestamp', {
+	created: attr('number', {
 		defaultValue() {
-			return new Date()
+			return firebase.database.ServerValue.TIMESTAMP;
 		}
 	}),
-	updated: attr('timestamp', {
-		defaultValue() {
-			return new Date()
-		}
-	}),
+	updated: attr('timestamp'),
 
 	title: attr('string'),
 	slug: attr('string'),
