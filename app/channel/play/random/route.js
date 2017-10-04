@@ -9,7 +9,7 @@ export default Route.extend({
 	afterModel(model) {
 		const tracks = model.get('tracks');
 
-		if(tracks) {
+		if (tracks) {
 			const randomIndex = getRandomIndex(tracks.content);
 			const randomTrack = tracks.objectAt(randomIndex);
 			get(this, 'player').playTrack(randomTrack);
