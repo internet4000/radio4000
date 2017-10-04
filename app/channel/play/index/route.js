@@ -7,12 +7,10 @@ export default Route.extend({
 
 	afterModel(model) {
 		const tracks = model.get('tracks');
-
-		if (tracks) {
-			const firstTrack = tracks.get('lastObject');
+		const firstTrack = tracks.get('lastObject');
+		if (firstTrack) {
 			get(this, 'player').playTrack(firstTrack);
 		}
-
 		this.transitionTo('channel');
 	}
 });
