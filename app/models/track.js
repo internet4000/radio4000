@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import DS from 'ember-data';
+import firebase from 'firebase';
 import {task} from 'ember-concurrency';
 import {validator, buildValidations} from 'ember-cp-validations';
 import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
@@ -34,9 +35,9 @@ export const Validations = buildValidations({
 });
 
 export default Model.extend(Validations, {
-	created: attr('timestamp', {
+	created: attr('number', {
 		defaultValue() {
-			return new Date()
+			return firebase.database.ServerValue.TIMESTAMP;
 		}
 	}),
 	url: attr('string'),
@@ -58,6 +59,14 @@ export default Model.extend(Validations, {
 
 	createdMonth: computed('created', function () {
 		let created = get(this, 'created');
+
+		// Avoid temporary Firebase timestamps.
+		// if (!(created instanceof Date) || isNaN(created)) {
+		if (created['.sv'] === 'timestamp') {
+			Ember.debug('using temporary date')
+			created = new Date();
+		}
+
 		return format(created, 'MMMM YYYY');
 	}),
 

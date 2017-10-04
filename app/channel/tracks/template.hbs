@@ -2,15 +2,15 @@
 	<div class="Container Container--full">
 		<div class=" Grid">
 			<div class="Grid-cell Grid-cell--triple">
-				{{#if model.tracks.isFulfilled}}
+				{{#if model.isLoaded}}
 					{{#tracks-list
-							 items=model.tracks
-							 grouped=true
-							 numbered=false as |item|}}
+						items=model
+						grouped=true
+						numbered=false as |item|}}
 						{{track-item track=item}}
 					{{/tracks-list}}
 
-					{{#unless model.tracks.length}}
+					{{#unless model.length}}
 						{{#if model.canEdit}}
 							<p>
 								Your radio has no tracks yet.<br>
