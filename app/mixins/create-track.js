@@ -14,29 +14,35 @@ export default Mixin.create({
 			return;
 		}
 
+		// 1. Create the track.
 		const track = this.store.createRecord('track', {
 			url: props.url,
 			title: props.title,
 			body: props.body,
-			ytid: props.ytid,
-			channel
+			ytid: props.ytid
 		});
 
+		// 2. Add it to the channel's tracks.
+		const tracks = yield channel.get('tracks');
+		tracks.addObject(track);
+
+		// 3. Save track.
 		try {
 			yield track.save();
+			debug('saved track')
 		} catch (err) {
-			Ember.debug(err);
-			messages.warning('Could not create your track.');
+			debug(err)
+			messages.warning('Could not create your track.')
 		}
 
+		// 4. Save channel.
 		try {
-			const tracks = yield channel.get('tracks');
-			tracks.addObject(track);
 			yield channel.save();
+			debug('saved track on channel')
 			messages.success('Your track was created', {timeout: 5000});
 		} catch (err) {
-			Ember.debug(err);
-			messages.warning('Could not save the track to your radio');
+			debug(err)
+			messages.warning('Could not save the track to your radio')
 		}
 
 		return track;
