@@ -45,9 +45,8 @@ export default Controller.extend({
 	// Deletes all references of this channel on its followers' favorite channels
 	deleteFavoritesFrom(channel) {
 		const totalFollowers = channel.get('channelPublic.totalFollowers')
-		console.log(totalFollowers)
 		if (!totalFollowers) {
-			Ember.debug('no favorites to delete cp')
+			debug('delete channel: no favorites to delete. So skipping that.')
 			return
 		}
 		channel

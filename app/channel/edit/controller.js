@@ -115,7 +115,6 @@ export default Controller.extend({
 
 		// used by 'ESC' key in the view
 		cancelEdit() {
-			console.log('cancelz?')
 			this.transitionToRoute('channel', this.get('model'));
 			this.set('isSaving', false);
 		}
