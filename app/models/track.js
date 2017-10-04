@@ -78,23 +78,18 @@ export default Model.extend(Validations, {
 			set(this, 'ytid', ytid);
 		}
 	},
+
+	// In case url changed, we need to set the ytid.
 	update: task(function * () {
 		if (!get(this, 'hasDirtyAttributes')) {
 			return
 		}
-
-		// In case url changed, we need to set the ytid
 		yield this.updateYoutubeId();
 		yield this.save()
 	}).drop(),
 
 	delete: task(function * () {
-		const track = this
-		const channel = yield get(this, 'channel');
-		const tracks = yield channel.get('tracks');
-
-		yield tracks.removeObject(track);
-		yield channel.save();
-		return track.destroyRecord();
+		// Also removes the relationship on the channel.
+		yield this.destroyRecord();
 	}).drop()
 });
