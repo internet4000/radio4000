@@ -41,6 +41,9 @@ Router.map(function() {
 		this.route('dashboard')
 		this.route('favorites')
 		this.route('followers')
+		this.route('play', function() {
+			this.route('random');
+		});
 	})
 	this.route('feedback')
 	this.authenticatedRoute('add')
