@@ -44,4 +44,3 @@ We use Firebase as our database and API. It's connected through Ember Data and [
 ## Google API
 
 We use the YouTube API to detect video titles etc. If you run into trouble with permissions or domains, check here https://console.developers.google.com/project/much-play/.
-
