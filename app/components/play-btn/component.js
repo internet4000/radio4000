@@ -1,9 +1,9 @@
-import Ember from 'ember';
-
-const {Component, inject, get} = Ember;
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
+import { get } from '@ember/object';
 
 export default Component.extend({
-	player: inject.service('player'),
+	player: service('player'),
 
 	tagName: 'button',
 	classNames: ['Btn'],

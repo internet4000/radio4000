@@ -1,10 +1,11 @@
+import Component from '@ember/component';
+import { computed } from '@ember/object';
+import { debug } from '@ember/debug';
 import Ember from 'ember';
-
-const {computed, debug} = Ember;
 
 // This component enables a list of tracks to be filtered by hashtags
 
-export default Ember.Component.extend({
+export default Component.extend({
 	filter: '',
 
 	// Returns either all tracks or the filtered tracks by hashtag

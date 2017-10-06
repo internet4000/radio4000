@@ -1,10 +1,11 @@
-import Ember from 'ember';
-
-const {Component, get, inject, debug} = Ember;
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
+import { get } from '@ember/object';
+import { debug } from '@ember/debug';
 
 export default Component.extend({
-	firebaseApp: inject.service(),
-	session: inject.service(),
+	firebaseApp: service(),
+	session: service(),
 
 	actions: {
 		login(provider, email, password) {

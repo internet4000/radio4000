@@ -1,8 +1,6 @@
 /* eslint camelcase:0 */
 /* global document, window */
-import Ember from 'ember';
-
-const {Route} = Ember;
+import Route from '@ember/routing/route';
 
 export default Route.extend({
 	model(params) {

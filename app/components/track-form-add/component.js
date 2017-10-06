@@ -1,21 +1,21 @@
-import Ember from 'ember';
+import { or } from '@ember/object/computed';
+import { getOwner } from '@ember/application';
+import EmberObject, { set, get } from '@ember/object';
 import TrackFormComponent from 'radio4000/components/track-form/component';
-import {Validations} from 'radio4000/models/track';
-
-const {get, set, computed} = Ember;
+import { Validations } from 'radio4000/models/track';
 
 // Use a normal object instead af a model.
 // This avoids it appearing in the UI before it is saved.
-const trackObject = Ember.Object.extend(Validations);
+const trackObject = EmberObject.extend(Validations);
 
 export default TrackFormComponent.extend({
-	disableSubmit: computed.or('submitTask.isRunning', 'isSubmitting', 'track.validations.isInvalid'),
+	disableSubmit: or('submitTask.isRunning', 'isSubmitting', 'track.validations.isInvalid'),
 
 	// Called on init as well as after submitting a track.
 	// Also see the same method on the `TrackForm` component, from which this extends.
 	resetForm() {
 		// The getOwner part is mentioned in the ember-cp-validation docs.
-		const track = trackObject.create(Ember.getOwner(this).ownerInjection(), {
+		const track = trackObject.create(getOwner(this).ownerInjection(), {
 			url: get(this, 'initialUrl')
 		});
 		set(this, 'track', track);

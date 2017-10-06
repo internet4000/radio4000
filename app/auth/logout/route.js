@@ -1,9 +1,8 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
+import { get } from '@ember/object';
 import authenticatedRoute from 'radio4000/mixins/authenticated-route';
 
-const {get} = Ember;
-
-export default Ember.Route.extend(authenticatedRoute, {
+export default Route.extend(authenticatedRoute, {
 	afterModel() {
 		const flashMessages = get(this, 'flashMessages');
 

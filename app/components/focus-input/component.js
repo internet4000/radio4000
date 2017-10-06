@@ -1,6 +1,5 @@
-import Ember from 'ember';
-
-const {TextField, get} = Ember;
+import TextField from '@ember/component/text-field';
+import { get } from '@ember/object';
 
 export default TextField.extend({
 	// props

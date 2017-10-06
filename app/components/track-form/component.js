@@ -1,9 +1,10 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { debug } from '@ember/debug';
+import { on } from '@ember/object/evented';
+import { observer, set, get } from '@ember/object';
 import config from 'radio4000/config/environment';
 import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
-import {task, timeout} from 'ember-concurrency';
-
-const {Component, debug, get, set, on, observer} = Ember;
+import { task, timeout } from 'ember-concurrency';
 
 export default Component.extend({
 	tagName: 'form',

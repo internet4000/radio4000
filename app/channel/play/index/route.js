@@ -1,9 +1,9 @@
-import Ember from 'ember';
-
-const {Route, inject, get} = Ember;
+import { inject as service } from '@ember/service';
+import Route from '@ember/routing/route';
+import { get } from '@ember/object';
 
 export default Route.extend({
-	player: inject.service('player'),
+	player: service('player'),
 
 	afterModel(model) {
 		const tracks = model.get('tracks');

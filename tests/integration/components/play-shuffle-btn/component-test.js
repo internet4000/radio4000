@@ -1,4 +1,4 @@
-import {moduleForComponent, test} from 'ember-qunit';
+import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('play-shuffle-btn', 'Integration | Component | play shuffle btn', {

@@ -1,7 +1,6 @@
-import Ember from 'ember';
+import { on } from '@ember/object/evented';
+import $ from 'jquery';
 import ModalDialog from 'ember-modal-dialog/components/modal-dialog';
-
-const {on, $} = Ember;
 
 export default ModalDialog.extend({
 	// Change the default value to use overlay.

@@ -1,6 +1,6 @@
-import Ember from 'ember';
-
-const {debug, Mixin, isEqual} = Ember;
+import { debug } from '@ember/debug';
+import Mixin from '@ember/object/mixin';
+import { isEqual } from '@ember/utils';
 
 export default Mixin.create({
 	afterModel(model) {

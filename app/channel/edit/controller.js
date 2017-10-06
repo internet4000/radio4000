@@ -1,16 +1,19 @@
 
-import Ember from 'ember';
+import { or, not } from '@ember/object/computed';
+import { debug } from '@ember/debug';
+import { get } from '@ember/object';
+import Controller from '@ember/controller';
+import RSVP from 'rsvp';
+import { isEqual } from '@ember/utils';
 import clean from 'radio4000/utils/clean';
 import reservedUrls from 'radio4000/utils/reserved-urls';
-
-const {debug, get, Controller, computed, RSVP, isEqual} = Ember;
 
 export default Controller.extend({
 	isSaving: false,
 
-	disableSubmit: computed.or('isSaving', 'cantSave'),
-	cantSave: computed.or('model.validations.isInvalid', 'nothingChanged'),
-	nothingChanged: computed.not('model.hasDirtyAttributes'),
+	disableSubmit: or('isSaving', 'cantSave'),
+	cantSave: or('model.validations.isInvalid', 'nothingChanged'),
+	nothingChanged: not('model.hasDirtyAttributes'),
 
 	// this could be moved to a custom slug-validator using ember-cp-validations
 	isSlugFree() {
@@ -54,7 +57,7 @@ export default Controller.extend({
 					debug('Saved channel with image');
 				});
 			}).catch(err => {
-				Ember.debug('could not save image', err)
+				debug('could not save image', err)
 			});
 		},
 
@@ -99,7 +102,7 @@ export default Controller.extend({
 		// Saves the channel
 		save() {
 			const channel = this.get('model');
-			const flashMessages = Ember.get(this, 'flashMessages');
+			const flashMessages = get(this, 'flashMessages');
 
 			channel.save().then(() => {
 				flashMessages.info('Saved');

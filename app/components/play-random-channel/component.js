@@ -1,14 +1,17 @@
-import Ember from 'ember';
-const {Component, inject, get, on, computed} = Ember;
-import {getRandomIndex} from 'radio4000/utils/random-helpers';
-import {EKMixin, keyUp} from 'ember-keyboard';
+import { inject as service } from '@ember/service';
+import { not } from '@ember/object/computed';
+import Component from '@ember/component';
+import { get } from '@ember/object';
+import { on } from '@ember/object/evented';
+import { getRandomIndex } from 'radio4000/utils/random-helpers';
+import { EKMixin, keyUp } from 'ember-keyboard';
 
 export default Component.extend(EKMixin, {
-	store: inject.service(),
-	player: inject.service(),
+	store: service(),
+	player: service(),
 	tagNames: ['button'],
 	classNames: ['Btn'],
-	isVisible: computed.not('keyboardActivated'),
+	isVisible: not('keyboardActivated'),
 
 	bindKeyboard: on(keyUp('KeyW'), function () {
 		this.playRandomChannel();

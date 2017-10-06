@@ -1,13 +1,14 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import { lte, and } from '@ember/object/computed';
+import { get, computed } from '@ember/object';
 import DS from 'ember-data';
 import firebase from 'firebase';
-import {task} from 'ember-concurrency';
-import {validator, buildValidations} from 'ember-cp-validations';
+import { task } from 'ember-concurrency';
+import { validator, buildValidations } from 'ember-cp-validations';
 import channelConst from 'radio4000/utils/channel-const';
 import toggleObject from 'radio4000/utils/toggle-object';
 
 const {attr, hasMany, belongsTo} = DS;
-const {computed, inject, get} = Ember;
 
 const Validations = buildValidations({
 	title: [
@@ -52,8 +53,8 @@ const Validations = buildValidations({
 	*/
 
 export default DS.Model.extend(Validations, {
-	session: inject.service(),
-	flashMessages: inject.service(),
+	session: service(),
+	flashMessages: service(),
 
 	created: attr('number', {
 		defaultValue() {
@@ -87,7 +88,7 @@ export default DS.Model.extend(Validations, {
 	totalTracks: computed('tracks.[]', function () {
 		return this.hasMany('tracks').ids().length;
 	}),
-	hasFewTracks: computed.lte('totalTracks', 2),
+	hasFewTracks: lte('totalTracks', 2),
 	totalFavorites: computed('favoriteChannels', function () {
 		return this.hasMany('favoriteChannels').ids().length;
 	}),
@@ -109,7 +110,7 @@ export default DS.Model.extend(Validations, {
 		}
 	}),
 
-	isExperienced: computed.and('images.firstObject', 'totalTracks', 'favoriteChannels.firstObject'),
+	isExperienced: and('images.firstObject', 'totalTracks', 'favoriteChannels.firstObject'),
 
 	// Is already a favorite channel of session.currentUser.
 	isFavorite: computed('model', 'session.currentUser.channels.firstObject.favoriteChannels.[]', function () {

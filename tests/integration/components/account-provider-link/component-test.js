@@ -1,4 +1,4 @@
-import {moduleForComponent, test} from 'ember-qunit';
+import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('account-provider-link', 'Integration | Component | account provider link', {

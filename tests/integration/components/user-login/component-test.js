@@ -1,5 +1,5 @@
-import Ember from 'ember';
-import {moduleForComponent, test} from 'ember-qunit';
+import Service from '@ember/service';
+import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('user-login', 'Integration | Component | user login', {
@@ -7,7 +7,7 @@ moduleForComponent('user-login', 'Integration | Component | user login', {
 });
 
 test('it renders', function (assert) {
-	this.register('service:session', Ember.Service.extend());
+	this.register('service:session', Service.extend());
 	// no real tests yet
 	this.render(hbs`{{user-login}}`);
 	assert.equal(1, 1);

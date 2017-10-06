@@ -1,12 +1,12 @@
-import Ember from 'ember';
-
-const {Component, computed, get} = Ember;
+import { reads } from '@ember/object/computed';
+import Component from '@ember/component';
+import { get, computed } from '@ember/object';
 
 export default Component.extend({
 	tagName: 'article',
 	classNames: ['ChannelCard'],
 	classNameBindings: ['isActive', 'wide:ChannelCard--wide'],
-	isActive: computed.reads('channel.isInPlayer'),
+	isActive: reads('channel.isInPlayer'),
 	title: computed('channel.title', 'channel.body', function () {
 		const body = get(this, 'channel.body') || '';
 		const title = get(this, 'channel.title') || '';

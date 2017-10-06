@@ -1,5 +1,5 @@
-import {timeAgo} from 'radio4000/helpers/time-ago';
-import {module, test} from 'qunit';
+import { timeAgo } from 'radio4000/helpers/time-ago';
+import { module, test } from 'qunit';
 
 module('Unit | Helper | time ago');
 

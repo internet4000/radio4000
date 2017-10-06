@@ -1,9 +1,9 @@
-import Ember from 'ember';
-
-const {Component, computed, get, set, inject} = Ember;
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
+import { set, get, computed } from '@ember/object';
 
 export default Component.extend({
-	player: inject.service(),
+	player: service(),
 	classNames: ['Track'],
 	classNameBindings: [
 		'isCurrent',

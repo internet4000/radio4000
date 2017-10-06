@@ -1,5 +1,5 @@
 import channelConst from '../../../utils/channel-const';
-import {module, test} from 'qunit';
+import { module, test } from 'qunit';
 
 module('Unit | Utility | channel const');
 

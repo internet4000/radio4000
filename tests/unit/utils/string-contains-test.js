@@ -1,5 +1,5 @@
 import stringContains from 'radio4000/utils/string-contains';
-import {module, test} from 'qunit';
+import { module, test } from 'qunit';
 
 module('Unit | Utility | string contains');
 

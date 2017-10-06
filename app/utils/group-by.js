@@ -1,10 +1,6 @@
-import Ember from 'ember';
-
-const {
-	A,
-	computed,
-	get,
-	isPresent} = Ember;
+import { A } from '@ember/array';
+import { get, computed } from '@ember/object';
+import { isPresent } from '@ember/utils';
 
 /*
  * source: https://github.com/HeroicEric/ember-group-by

@@ -1,5 +1,5 @@
-import {coverImg} from 'radio4000/helpers/cover-img';
-import {module, test} from 'qunit';
+import { coverImg } from 'radio4000/helpers/cover-img';
+import { module, test } from 'qunit';
 
 module('Unit | Helper | cover img');
 

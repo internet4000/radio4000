@@ -1,10 +1,10 @@
-import Ember from 'ember';
-
-const {observer} = Ember;
+import $ from 'jquery';
+import Component from '@ember/component';
+import EmberObject, { observer } from '@ember/object';
 
 // {{youtube-search query=model.title action="addFromSearch"}}
 
-export default Ember.Component.extend({
+export default Component.extend({
 	cachedQuery: '',
 
 	// Wrap our results in an array we can use in our template
@@ -35,9 +35,9 @@ export default Ember.Component.extend({
 		}
 
 		// query!
-		Ember.$.getJSON(endpoint).then(response => {
+		$.getJSON(endpoint).then(response => {
 			const tracks = response.data.items.map(item => {
-				return Ember.Object.create({
+				return EmberObject.create({
 					url: item.player.default,
 					title: item.title,
 					ytid: item.id

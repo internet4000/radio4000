@@ -1,19 +1,17 @@
-import Ember from 'ember';
-
-const {Component,
-	inject,
-	computed,
-	get} = Ember;
+import { inject as service } from '@ember/service';
+import { reads } from '@ember/object/computed';
+import Component from '@ember/component';
+import { get, computed } from '@ember/object';
 
 export default Component.extend({
 	tagName: ['button'],
-	session: inject.service(),
+	session: service(),
 	attributeBindings: ['title', 'disabled'],
 	classNames: ['Btn'],
 	disabled: computed('channel.toggleFavorite.isRunning', 'hasChannel', function() {
 		return !get(this, 'hasChannel') || get(this, 'channel.toggleFavorite.isRunning')
 	}),
-	hasChannel: computed.reads('session.content.currentUser.channels.firstObject'),
+	hasChannel: reads('session.content.currentUser.channels.firstObject'),
 
 	/* params */
 	// channel to be added as favorite to user.session

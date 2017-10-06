@@ -1,5 +1,5 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
 import authenticatedRoute from 'radio4000/mixins/authenticated-route';
 
-export default Ember.Route.extend(authenticatedRoute, {
+export default Route.extend(authenticatedRoute, {
 });

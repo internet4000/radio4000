@@ -1,12 +1,12 @@
-import Ember from 'ember';
-
-const {Component, computed, get} = Ember;
+import { sort } from '@ember/object/computed';
+import Component from '@ember/component';
+import { get, computed } from '@ember/object';
 
 export default Component.extend({
 	list: null,
 	sortKey: 'updated',
 	sortDesc: true,
-	manipulatedList: computed.sort('list', 'sortDefinition'),
+	manipulatedList: sort('list', 'sortDefinition'),
 	sortDefinition: computed('sortKey', 'sortDesc', function () {
 		let sortKey = get(this, 'sortKey');
 		let sortDesc = get(this, 'sortDesc');

@@ -1,13 +1,12 @@
-import Ember from 'ember';
-import {validator, buildValidations} from 'ember-cp-validations';
+import Component from '@ember/component';
+import { set, get } from '@ember/object';
+import { validator, buildValidations } from 'ember-cp-validations';
 
 export const Validations = buildValidations({
 	url: [
 		validator('youtube-url')
 	]
 });
-
-const {Component, get, set} = Ember;
 
 export default Component.extend(Validations, {
 	tagName: 'form',

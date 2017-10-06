@@ -1,6 +1,6 @@
 /* eslint guard-for-in: 0 */
 
-import Ember from 'ember';
+import { helper } from '@ember/component/helper';
 
 /*
 	IMAGE HELPER
@@ -41,4 +41,4 @@ export function imgUrl(imageId, hash) {
 	return url;
 }
 
-export default Ember.Helper.helper(imgUrl);
+export default helper(imgUrl);

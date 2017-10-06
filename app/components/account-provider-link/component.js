@@ -1,7 +1,6 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { get } from '@ember/object';
 import firebase from 'npm:firebase';
-
-const {Component, get} = Ember;
 
 export default Component.extend({
 	tagName: ['article'],

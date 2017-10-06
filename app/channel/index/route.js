@@ -1,6 +1,7 @@
-import Ember from 'ember'
+import { hash } from 'rsvp';
+import Route from '@ember/routing/route';
 
-export default Ember.Route.extend({
+export default Route.extend({
 	model() {
 		const channel = this.modelFor('channel')
 		const latestTracks = this.store.query('track', {
@@ -8,9 +9,9 @@ export default Ember.Route.extend({
 			equalTo: channel.id,
 			limitToLast: 10
 		})
-		return Ember.RSVP.hash({
+		return hash({
 			channel,
 			latestTracks
-		})
+		});
 	}
 })

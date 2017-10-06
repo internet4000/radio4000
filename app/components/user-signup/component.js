@@ -1,7 +1,6 @@
-import Ember from 'ember';
-import {validator, buildValidations} from 'ember-cp-validations';
-
-const {Component, get} = Ember;
+import Component from '@ember/component';
+import { get } from '@ember/object';
+import { validator, buildValidations } from 'ember-cp-validations';
 
 const Validations = buildValidations({
 	email: [

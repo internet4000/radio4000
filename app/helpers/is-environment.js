@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { helper } from '@ember/component/helper';
 import config from '../config/environment';
 
 // Returns {boolean} if a single {string} matches the current environment.
@@ -13,4 +13,4 @@ export function isEnvironment(params) {
 	return config.environment === env;
 }
 
-export default Ember.Helper.helper(isEnvironment);
+export default helper(isEnvironment);

@@ -1,8 +1,8 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { on } from '@ember/object/evented';
+import $ from 'jquery';
 
-const {on, $} = Ember;
-
-export default Ember.Component.extend({
+export default Component.extend({
 	classNames: ['BtnGroup'],
 
 	attachButtonHandlers: on('didInsertElement', function () {

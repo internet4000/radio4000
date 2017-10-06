@@ -1,11 +1,12 @@
-import Ember from 'ember'
+import { or } from '@ember/object/computed';
+import Controller from '@ember/controller';
+import { warn } from '@ember/debug';
+import { get, computed } from '@ember/object';
 import clean from 'radio4000/utils/clean'
 import randomText from 'radio4000/utils/random-text'
 import { task } from 'ember-concurrency'
 import { validator, buildValidations } from 'ember-cp-validations'
 import channelConst from 'radio4000/utils/channel-const'
-
-const { warn, computed, get } = Ember
 
 // This is copy/paste from channel model because we need to validate
 // a `title` field without using a full channel model.
@@ -19,10 +20,10 @@ const Validations = buildValidations({
 	]
 })
 
-export default Ember.Controller.extend(Validations, {
+export default Controller.extend(Validations, {
 	title: '',
 
-	disableSubmit: computed.or(
+	disableSubmit: or(
 		'validations.attrs.title.isInvalid',
 		'createRadio.isRunning'
 	),

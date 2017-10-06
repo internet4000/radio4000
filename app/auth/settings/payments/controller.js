@@ -1,10 +1,10 @@
-import Ember from 'ember';
+import { alias } from '@ember/object/computed';
+import Controller from '@ember/controller';
+import { get } from '@ember/object';
 import fetch from 'fetch';
 
-const {Controller, computed, get} = Ember;
-
 export default Controller.extend({
-	userChannel: computed.alias('session.currentUser.channels.firstObject'),
+	userChannel: alias('session.currentUser.channels.firstObject'),
 	actions: {
 
 		/* Payment object exemple

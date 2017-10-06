@@ -2,9 +2,7 @@
 
 // Use this in a controller, or don't
 
-import Ember from 'ember';
-
-const {Mixin} = Ember;
+import Mixin from '@ember/object/mixin';
 
 export default Mixin.create({
 	activate() {

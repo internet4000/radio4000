@@ -1,9 +1,8 @@
-import Ember from 'ember';
-
-const {Component, computed} = Ember;
+import { gt, equal } from '@ember/object/computed';
+import Component from '@ember/component';
 
 export default Component.extend({
 	classNames: ['ProviderAccounts'],
-	moreThanOneAccount: computed.gt('providerData.length', 1),
-	onlyOneAccount: computed.equal('providerData.length', 1)
+	moreThanOneAccount: gt('providerData.length', 1),
+	onlyOneAccount: equal('providerData.length', 1)
 });

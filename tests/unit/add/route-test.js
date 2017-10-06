@@ -1,4 +1,4 @@
-import {moduleFor, test} from 'ember-qunit';
+import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('route:add', 'Unit | Route | add', {
 	// Specify the other units that are required for this test.

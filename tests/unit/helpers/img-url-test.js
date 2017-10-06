@@ -1,5 +1,5 @@
-import {imgUrl} from 'radio4000/helpers/img-url';
-import {module, test} from 'qunit';
+import { imgUrl } from 'radio4000/helpers/img-url';
+import { module, test } from 'qunit';
 
 module('Unit | Helper | img url');
 

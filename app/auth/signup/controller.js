@@ -1,9 +1,10 @@
-import Ember from 'ember';
-
-const {Controller, get, inject, debug} = Ember;
+import { inject as service } from '@ember/service';
+import Controller from '@ember/controller';
+import { get } from '@ember/object';
+import { debug } from '@ember/debug';
 
 export default Controller.extend({
-	firebaseApp: inject.service(),
+	firebaseApp: service(),
 
 	createFirebaseUser(email, password) {
 		let auth = get(this, 'firebaseApp').auth();

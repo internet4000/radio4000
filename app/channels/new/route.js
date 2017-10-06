@@ -1,10 +1,12 @@
 /* global document */
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
 
-const {Route, debug, get, inject} = Ember;
+import Route from '@ember/routing/route';
+import { debug } from '@ember/debug';
+import { get } from '@ember/object';
 
 export default Route.extend({
-	uiStates: inject.service(),
+	uiStates: service(),
 
 	beforeModel() {
 		const authed = get(this, 'session.isAuthenticated');

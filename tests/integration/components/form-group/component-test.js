@@ -1,5 +1,5 @@
-import Ember from 'ember';
-import {moduleForComponent, test} from 'ember-qunit';
+import EmberObject from '@ember/object';
+import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('form-group', 'Integration | Component | form group', {
@@ -19,7 +19,7 @@ test('it renders', function (assert) {
 	assert.equal($label.attr('title'), this.get('hint'), 'it renders a hint');
 
 	// Template block usage:
-	this.set('item', Ember.Object.create({title: 'My item'}));
+	this.set('item', EmberObject.create({title: 'My item'}));
 
 	this.render(hbs`
 		{{#form-group model=item valuePath="title" as |value|}}

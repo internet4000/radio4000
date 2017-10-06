@@ -1,4 +1,4 @@
-import {moduleFor, test} from 'ember-qunit';
+import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('validator:youtube-url', 'Unit | Validator | youtube-url', {
 	needs: ['validator:messages']

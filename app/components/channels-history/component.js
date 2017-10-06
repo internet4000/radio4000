@@ -1,11 +1,11 @@
-import Ember from 'ember';
-
-const {Component, inject, computed} = Ember;
+import { inject as service } from '@ember/service';
+import { empty } from '@ember/object/computed';
+import Component from '@ember/component';
 
 export default Component.extend({
-	player: inject.service(),
+	player: service(),
 	items: null,
-	noHistory: computed.empty('items'),
+	noHistory: empty('items'),
 	actions: {
 		clearChannelHistory() {
 			this.get('player').clearChannelHistory();

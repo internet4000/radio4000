@@ -4,11 +4,11 @@
  {{x-icon i="play"}}
  */
 
-import Ember from 'ember';
+import Component from '@ember/component';
 
-const {computed} = Ember;
+import { computed } from '@ember/object';
 
-export default Ember.Component.extend({
+export default Component.extend({
 	tagName: 'svg',
 
 	// this creates a class name like "icon-iconName" (iconName comes from the variable "i")

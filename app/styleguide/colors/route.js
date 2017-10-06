@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
 
 const colors = [
 	{title: 'purple', value: 'hsl(260, 80%, 50%)'},
@@ -26,7 +26,7 @@ const grays = [
 	{title: 'black', value: 'hsl(0, 0%, 10%)'}
 ];
 
-export default Ember.Route.extend({
+export default Route.extend({
 	model() {
 		return {colors, grays};
 	}

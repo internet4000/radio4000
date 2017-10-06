@@ -10,9 +10,11 @@
 	{{do-truncate someVariable 140}}
 */
 
-import Ember from 'ember';
+import { htmlSafe } from '@ember/string';
 
-export default Ember.Helper.helper(([str, len]) => {
+import { helper } from '@ember/component/helper';
+
+export default helper(([str, len]) => {
 	if (!str) {
 		return '';
 	}
@@ -25,7 +27,7 @@ export default Ember.Helper.helper(([str, len]) => {
 		newString = str.substr(0, newString.lastIndexOf(' '));
 		newString = (newString.length > 0) ? newString : str.substr(0, len);
 
-		return Ember.String.htmlSafe(`${newString}…`);
+		return htmlSafe(`${newString}…`);
 	}
 
 	return str;

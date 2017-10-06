@@ -1,7 +1,6 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
+import { get } from '@ember/object';
 import createTrackMixin from 'radio4000/mixins/create-track';
-
-const {Controller, get} = Ember;
 
 export default Controller.extend(createTrackMixin, {
 	newUrl: null,

@@ -1,4 +1,4 @@
-import {moduleFor, test} from 'ember-qunit';
+import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('route:auth/settings/payments', 'Unit | Route | auth/settings/payments', {
 	// Specify the other units that are required for this test.

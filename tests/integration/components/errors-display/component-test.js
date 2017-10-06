@@ -1,7 +1,7 @@
 // import Ember from 'ember';
-import {moduleForComponent, test} from 'ember-qunit';
+import { moduleForComponent, test } from 'ember-qunit';
 // import hbs from 'htmlbars-inline-precompile';
-// import {Validations} from 'radio4000/models/track';
+// import { Validations } from 'radio4000/models/track';
 
 moduleForComponent('errors-display', 'Integration | Component | errors display', {
 	integration: true

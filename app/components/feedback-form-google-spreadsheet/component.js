@@ -1,12 +1,8 @@
-import Ember from 'ember';
-
-const {
-	Component,
-	inject,
-	computed,
-	get,
-	$
-} = Ember;
+import { inject as service } from '@ember/service';
+import { empty } from '@ember/object/computed';
+import Component from '@ember/component';
+import { get, computed } from '@ember/object';
+import $ from 'jquery';
 
 /*
 	 Source: https://mashe.hawksey.info/2014/07/google-sheets-as-a-database-insert-with-apps-script-using-postget-methods-with-ajax-example/
@@ -17,9 +13,9 @@ const {
  */
 
 export default Component.extend({
-	session: inject.service(),
-	player: inject.service(),
-	flashMessages: inject.service(),
+	session: service(),
+	player: service(),
+	flashMessages: service(),
 
 	message: '',
 	email: '',
@@ -29,7 +25,7 @@ export default Component.extend({
 		const scriptId = get(this, 'scriptId');
 		return `https://script.google.com/macros/s/${scriptId}/exec`;
 	}),
-	notValid: computed.empty('message'),
+	notValid: empty('message'),
 	userChannelId: computed('session.currentUser.channels.firstObject.id', function () {
 		return get(this, 'session.currentUser.channels.firstObject.id') || '';
 	}),

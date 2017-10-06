@@ -1,6 +1,6 @@
-import Ember from 'ember';
-
-const {Component, computed, get} = Ember;
+import { reads } from '@ember/object/computed';
+import Component from '@ember/component';
+import { get, computed } from '@ember/object';
 
 export default Component.extend({
 	// props
@@ -11,7 +11,7 @@ export default Component.extend({
 	iframeApiUrl: 'https://api.radio4000.com/iframe',
 
 	// logic
-	slug: computed.reads('channel.slug'),
+	slug: reads('channel.slug'),
 
 	channelUrl: computed('slug', function() {
 		return 'https://radio4000.com/' + get(this, 'slug')

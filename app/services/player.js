@@ -1,14 +1,15 @@
-import Ember from 'ember';
-
-const {Service, inject, get, set, debug, computed} = Ember;
+import { alias, bool } from '@ember/object/computed';
+import Service, { inject as service } from '@ember/service';
+import { set, get } from '@ember/object';
+import { debug } from '@ember/debug';
 
 export default Service.extend({
-	store: inject.service(),
-	session: inject.service(),
+	store: service(),
+	session: service(),
 	originTrack: null,
 	currentTrack: null,
-	currentChannel: computed.alias('currentTrack.channel'),
-	isPlaying: computed.bool('currentTrack'),
+	currentChannel: alias('currentTrack.channel'),
+	isPlaying: bool('currentTrack'),
 
 	// play a track model
 	playTrack(model) {

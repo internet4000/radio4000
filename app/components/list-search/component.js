@@ -1,10 +1,10 @@
-import Ember from 'ember';
-import {task, timeout} from 'ember-concurrency';
+import TextField from '@ember/component/text-field';
+import { get } from '@ember/object';
+import { isBlank } from '@ember/utils';
+import { task, timeout } from 'ember-concurrency';
 import stringContains from 'radio4000/utils/string-contains';
 
-const {get, isBlank} = Ember;
-
-export default Ember.TextField.extend({
+export default TextField.extend({
 	classNames: ['ListSearch'],
 	type: 'search',
 	items: [],

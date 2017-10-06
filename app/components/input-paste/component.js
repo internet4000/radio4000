@@ -1,7 +1,7 @@
-import Ember from 'ember';
+import { on } from '@ember/object/evented';
+import { run } from '@ember/runloop';
+import { debug } from '@ember/debug';
 import FocusInput from 'radio4000/components/focus-input/component';
-
-const {on, run, debug} = Ember;
 
 export default FocusInput.extend({
 	capturePaste: on('didInsertElement', function () {

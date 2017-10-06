@@ -1,7 +1,6 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
+import RSVP from 'rsvp';
 import authenticatedRoute from 'radio4000/mixins/authenticated-route'
-
-const {Route, RSVP} = Ember;
 
 export default Route.extend(authenticatedRoute, {
 	model() {

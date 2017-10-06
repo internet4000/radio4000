@@ -1,19 +1,16 @@
-import Ember from 'ember';
-import {task} from 'ember-concurrency';
-
-const {
-	Component,
-	computed,
-	inject,
-	get,
-	debug} = Ember;
+import { inject as service } from '@ember/service';
+import { alias } from '@ember/object/computed';
+import Component from '@ember/component';
+import { get } from '@ember/object';
+import { debug } from '@ember/debug';
+import { task } from 'ember-concurrency';
 
 export default Component.extend({
-	flashMessages: inject.service(),
+	flashMessages: service(),
 	isExpanded: false,
 	// firebaseApp service
 	// user: null
-	channel: computed.alias('user.channels.firstObject'),
+	channel: alias('user.channels.firstObject'),
 
 	deleteAccount: task(function * () {
 		const messages = get(this, 'flashMessages');

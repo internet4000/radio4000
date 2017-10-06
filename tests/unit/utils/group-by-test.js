@@ -1,5 +1,5 @@
 import groupBy from 'radio4000/utils/group-by';
-import {module, test} from 'qunit';
+import { module, test } from 'qunit';
 
 module('Unit | Utility | group by');
 

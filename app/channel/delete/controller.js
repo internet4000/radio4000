@@ -1,6 +1,7 @@
-import Ember from 'ember'
-
-const { Controller, debug, get, set } = Ember
+import { resolve } from 'rsvp';
+import Controller from '@ember/controller';
+import { debug } from '@ember/debug';
+import { set, get } from '@ember/object';
 
 export default Controller.extend({
 	// so user does not click two times
@@ -16,7 +17,7 @@ export default Controller.extend({
 
 			// open public
 			channelPublic.then(channelPublic => {
-				let promise = Ember.RSVP.resolve()
+				let promise = resolve()
 
 				// start deleting favorites in parallel
 				if (channelPublic) {

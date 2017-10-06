@@ -1,4 +1,4 @@
-import {moduleFor, test} from 'ember-qunit';
+import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('route:styleguide/typography', 'Unit | Route | styleguide/typography', {
 	// Specify the other units that are required for this test.

@@ -1,5 +1,5 @@
-import {isEnvironment} from 'radio4000/helpers/is-environment';
-import {module, test} from 'qunit';
+import { isEnvironment } from 'radio4000/helpers/is-environment';
+import { module, test } from 'qunit';
 import config from 'radio4000/config/environment';
 
 module('Unit | Helper | is environment');

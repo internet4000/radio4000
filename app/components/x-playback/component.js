@@ -1,15 +1,17 @@
-import Ember from 'ember';
-import {EKMixin, keyUp} from 'ember-keyboard';
+import { inject as service } from '@ember/service';
+import { alias } from '@ember/object/computed';
+import Component from '@ember/component';
+import { computed, set, get } from '@ember/object';
+import { on } from '@ember/object/evented';
+import { EKMixin, keyUp } from 'ember-keyboard';
 import 'npm:radio4000-player';
 
-const {Component, get, set, inject, computed, on} = Ember;
-
 export default Component.extend(EKMixin, {
-	player: inject.service(),
-	uiStates: inject.service(),
+	player: service(),
+	uiStates: service(),
 	classNames: ['Playback'],
 
-	channel: computed.alias('player.currentChannel'),
+	channel: alias('player.currentChannel'),
 	track: computed('player.originTrack', function () {
 		return get(this, 'player.originTrack');
 	}),

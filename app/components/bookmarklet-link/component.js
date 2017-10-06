@@ -1,9 +1,9 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 
 /**
  * Dynamic bookmarklet link
  */
 
-export default Ember.Component.extend({
+export default Component.extend({
 	slug: null
 });

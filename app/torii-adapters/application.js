@@ -1,10 +1,11 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import { debug } from '@ember/debug';
+import RSVP from 'rsvp';
+import { run } from '@ember/runloop';
 import ToriiFirebaseAdapter from 'emberfire/torii-adapters/firebase';
 
-const {debug, inject, RSVP, run} = Ember;
-
 export default ToriiFirebaseAdapter.extend({
-	store: inject.service(),
+	store: service(),
 
 	// Extacts session information from authentication response
 	open(user) {

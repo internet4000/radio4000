@@ -1,7 +1,7 @@
-import Ember from 'ember';
-import {task} from 'ember-concurrency';
-
-const {Mixin, debug, get} = Ember;
+import Mixin from '@ember/object/mixin';
+import { debug } from '@ember/debug';
+import { get } from '@ember/object';
+import { task } from 'ember-concurrency';
 
 // Creates and saves a new track on a channel.
 

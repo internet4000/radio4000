@@ -1,17 +1,12 @@
-import Ember from 'ember';
-
-const {
-	Controller,
-	computed,
-	inject,
-	get
-} = Ember;
+import { not, and } from '@ember/object/computed';
+import Controller, { inject as controller } from '@ember/controller';
+import { get } from '@ember/object';
 
 export default Controller.extend({
-	applicationController: inject.controller('application'),
+	applicationController: controller('application'),
 
-	notExperienced: computed.not('model.channel.isExperienced'),
-	showWelcome: computed.and('notExperienced', 'model.channel.canEdit'),
+	notExperienced: not('model.channel.isExperienced'),
+	showWelcome: and('notExperienced', 'model.channel.canEdit'),
 
 	actions: {
 		addTrack(url) {

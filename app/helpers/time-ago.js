@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { helper } from '@ember/component/helper';
 import addHours from 'npm:date-fns/add_hours';
 import differenceInHours from 'npm:date-fns/difference_in_hours';
 import distanceInWordsToNow from 'npm:date-fns/distance_in_words_to_now';
@@ -15,5 +15,5 @@ export function timeAgo([date]) {
 	return `${distanceInWordsToNow(date)} ago`;
 }
 
-export default Ember.Helper.helper(timeAgo);
+export default helper(timeAgo);
 

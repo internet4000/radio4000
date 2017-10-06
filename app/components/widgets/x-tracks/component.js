@@ -1,6 +1,7 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
+export default Component.extend({
 	classNames: ['Widget'],
 	smallList: false,
 
@@ -10,7 +11,7 @@ export default Ember.Component.extend({
 	trackToShowArray: [1, 2, 3],
 	trackToShowIndex: 2,
 
-	lastTracks: Ember.computed('tracks', 'trackToShowIndex', function () {
+	lastTracks: computed('tracks', 'trackToShowIndex', function () {
 		const index = this.get('trackToShowIndex');
 		const array = this.get('trackToShowArray');
 		const tracks = this.get('tracks');

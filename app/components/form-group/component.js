@@ -1,6 +1,7 @@
-import Ember from 'ember';
-
-const {Component, computed, get, set, defineProperty, run} = Ember;
+import { alias } from '@ember/object/computed';
+import Component from '@ember/component';
+import { defineProperty, set, get } from '@ember/object';
+import { run } from '@ember/runloop';
 
 export default Component.extend({
 	classNames: ['Form-group'],
@@ -15,7 +16,7 @@ export default Component.extend({
 	init() {
 		this._super(...arguments);
 		let valuePath = get(this, 'valuePath');
-		defineProperty(this, 'value', computed.alias(`model.${valuePath}`));
+		defineProperty(this, 'value', alias(`model.${valuePath}`));
 	},
 
 	childInputHasFocus() {

@@ -1,8 +1,7 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
 import DS from 'ember-data';
 
 const {hasMany, belongsTo} = DS;
-const {computed} = Ember;
 
 // inverse tells Ember which relationship this matches on the other model
 

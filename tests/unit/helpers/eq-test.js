@@ -1,5 +1,5 @@
-import {eq} from 'radio4000/helpers/eq';
-import {module, test} from 'qunit';
+import { eq } from 'radio4000/helpers/eq';
+import { module, test } from 'qunit';
 
 module('Unit | Helper | eq');
 

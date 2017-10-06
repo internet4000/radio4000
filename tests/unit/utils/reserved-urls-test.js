@@ -1,5 +1,5 @@
 import reservedUrls from 'radio4000/utils/reserved-urls';
-import {module, test} from 'qunit';
+import { module, test } from 'qunit';
 
 module('Unit | Utility | reserved urls');
 

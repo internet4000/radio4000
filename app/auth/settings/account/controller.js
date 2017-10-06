@@ -1,17 +1,19 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import { mapBy, equal } from '@ember/object/computed';
+import Controller from '@ember/controller';
+import { computed, set, get } from '@ember/object';
+import { debug } from '@ember/debug';
 import firebase from 'npm:firebase';
 
-const {Controller, inject, get, set, computed, debug} = Ember;
-
 export default Controller.extend({
-	firebaseApp: inject.service(),
-	flashMessages: inject.service(),
+	firebaseApp: service(),
+	flashMessages: service(),
 
 	newEmail: null,
 	currentUser: null,
 	providerData: null,
 
-	providerIds: computed.mapBy('providerData', 'providerId'),
+	providerIds: mapBy('providerData', 'providerId'),
 	hasGoogle: computed('providerIds', function () {
 		return get(this, 'providerIds').includes('google.com');
 	}),
@@ -22,7 +24,7 @@ export default Controller.extend({
 		return get(this, 'providerIds').includes('password');
 	}),
 	// password+google+facebook = 3
-	hasEverything: computed.equal('providerIds.length', 3),
+	hasEverything: equal('providerIds.length', 3),
 
 	// This caches certain auth data on the controller
 	// in order to build the 'hasProvider...' CPs.

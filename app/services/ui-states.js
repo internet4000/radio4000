@@ -1,15 +1,17 @@
 /* global document */
-import Ember from 'ember';
-import Cookies from 'npm:js-cookie';
+import { equal } from '@ember/object/computed';
 
-const {Service, computed, get, set, on} = Ember;
+import Service from '@ember/service';
+import { set, get, computed } from '@ember/object';
+import { on } from '@ember/object/evented';
+import Cookies from 'npm:js-cookie';
 
 export default Service.extend({
 	// Set the format to 0 for mini, 1 for normal or 2 for max
 	format: 1,
-	isMinimized: computed.equal('format', 0),
+	isMinimized: equal('format', 0),
 	// isNormal: computed.equal('format', 1),
-	isFullscreen: computed.equal('format', 2),
+	isFullscreen: equal('format', 2),
 	cycleFormat() {
 		let format = get(this, 'format');
 		if (format >= 2) {

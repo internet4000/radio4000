@@ -1,13 +1,13 @@
-import Ember from 'ember';
+import { debug } from '@ember/debug';
+import { computed, set, get } from '@ember/object';
 import DS from 'ember-data';
 import firebase from 'firebase';
-import {task} from 'ember-concurrency';
-import {validator, buildValidations} from 'ember-cp-validations';
+import { task } from 'ember-concurrency';
+import { validator, buildValidations } from 'ember-cp-validations';
 import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
 import format from 'npm:date-fns/format';
 
 const {Model, attr, belongsTo} = DS;
-const {get, set, computed} = Ember;
 
 export const Validations = buildValidations({
 	url: [
@@ -63,7 +63,7 @@ export default Model.extend(Validations, {
 		// Avoid temporary Firebase timestamps.
 		// if (!(created instanceof Date) || isNaN(created)) {
 		if (created['.sv'] === 'timestamp') {
-			Ember.debug('using temporary date')
+			debug('using temporary date')
 			created = new Date();
 		}
 

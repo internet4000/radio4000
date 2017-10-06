@@ -1,10 +1,11 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import Route from '@ember/routing/route';
+import { get } from '@ember/object';
+import { debug } from '@ember/debug';
 import resetScroll from 'radio4000/mixins/reset-scroll'
 
-const {Route, get, inject, debug} = Ember;
-
 export default Route.extend(resetScroll, {
-	flashMessages: inject.service(),
+	flashMessages: service(),
 	onLoginError(err) {
 		const messages = get(this, 'flashMessages');
 		let msg;

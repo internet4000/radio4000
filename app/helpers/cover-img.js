@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { helper } from '@ember/component/helper';
 
 // This helper returns a full Cloudinary image url
 // with some optimization and formats.
@@ -17,4 +17,4 @@ export function coverImg(params, {size, format}) {
 	return `${base}/q_${quality},w_${size},h_${size},c_thumb,c_fill,fl_lossy/${id}`;
 }
 
-export default Ember.Helper.helper(coverImg);
+export default helper(coverImg);

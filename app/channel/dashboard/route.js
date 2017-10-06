@@ -1,7 +1,7 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
 import resetScroll from 'radio4000/mixins/reset-scroll'
 
-export default Ember.Route.extend(resetScroll, {
+export default Route.extend(resetScroll, {
 	renderTemplate() {
 		// the template to render
 		// the template to render into

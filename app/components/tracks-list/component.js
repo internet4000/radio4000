@@ -1,7 +1,6 @@
-import Ember from 'ember';
+import { sort } from '@ember/object/computed';
+import Component from '@ember/component';
 import groupBy from 'radio4000/utils/group-by';
-
-const {Component, computed} = Ember;
 
 export default Component.extend({
 	classNames: ['Tracks'],
@@ -10,6 +9,6 @@ export default Component.extend({
 
 	// sorts our items newest on top
 	sortKeys: ['created:desc'],
-	sortedItems: computed.sort('items', 'sortKeys'),
+	sortedItems: sort('items', 'sortKeys'),
 	groupedItems: groupBy('sortedItems', 'createdMonth')
 });

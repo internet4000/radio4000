@@ -1,5 +1,5 @@
 import randomText from '../../../utils/random-text';
-import {module, test} from 'qunit';
+import { module, test } from 'qunit';
 
 module('randomText');
 

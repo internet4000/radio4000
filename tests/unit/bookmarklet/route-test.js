@@ -1,4 +1,4 @@
-import {moduleFor, test} from 'ember-qunit';
+import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('route:bookmarklet', 'Unit | Route | bookmarklet', {
 	// Specify the other units that are required for this test.

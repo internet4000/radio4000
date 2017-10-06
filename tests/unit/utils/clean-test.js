@@ -1,6 +1,6 @@
 import clean from 'radio4000/utils/clean';
 
-import {module, test} from 'qunit';
+import { module, test } from 'qunit';
 
 module('clean');
 

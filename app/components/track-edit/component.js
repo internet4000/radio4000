@@ -1,10 +1,7 @@
-import Ember from 'ember';
-import {task} from 'ember-concurrency';
+import { oneWay } from '@ember/object/computed';
+import { get } from '@ember/object';
+import { task } from 'ember-concurrency';
 import TrackFormComponent from 'radio4000/components/track-form/component';
-
-const {
-	get,
-	computed} = Ember;
 
 export default TrackFormComponent.extend({
 	// Track model to edit
@@ -13,7 +10,7 @@ export default TrackFormComponent.extend({
 	onSubmit: null,
 	onDelete: null,
 
-	disableSubmit: computed.oneWay('track.validations.isInvalid'),
+	disableSubmit: oneWay('track.validations.isInvalid'),
 
 	submitTask: task(function * (event) {
 		event.preventDefault()

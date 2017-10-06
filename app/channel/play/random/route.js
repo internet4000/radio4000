@@ -1,10 +1,10 @@
-import Ember from 'ember';
-import {getRandomIndex} from 'radio4000/utils/random-helpers';
-
-const {Route, inject, get} = Ember;
+import { inject as service } from '@ember/service';
+import Route from '@ember/routing/route';
+import { get } from '@ember/object';
+import { getRandomIndex } from 'radio4000/utils/random-helpers';
 
 export default Route.extend({
-	player: inject.service('player'),
+	player: service('player'),
 
 	afterModel(model) {
 		const tracks = model.get('tracks');

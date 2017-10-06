@@ -1,9 +1,10 @@
-import Ember from 'ember';
-
-const {Component, inject, computed, get} = Ember;
+import { inject as service } from '@ember/service';
+import { oneWay } from '@ember/object/computed';
+import Component from '@ember/component';
+import { get, computed } from '@ember/object';
 
 export default Component.extend({
-	uiStates: inject.service(),
+	uiStates: service(),
 	attributeBindings: ['title'],
 	classNames: ['Aside-toggle'],
 	classNameBindings: ['isToggled:is-active'],
@@ -13,7 +14,7 @@ export default Component.extend({
 		}
 		return 'Open the navigation menu';
 	}),
-	isToggled: computed.oneWay('uiStates.isPanelLeftVisible'),
+	isToggled: oneWay('uiStates.isPanelLeftVisible'),
 	click() {
 		get(this, 'uiStates').togglePanelLeft();
 	},

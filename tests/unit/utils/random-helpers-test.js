@@ -1,5 +1,5 @@
-import {getRandomIndex, shuffleArray} from 'radio4000/utils/random-helpers';
-import {module, test} from 'qunit';
+import { getRandomIndex, shuffleArray } from 'radio4000/utils/random-helpers';
+import { module, test } from 'qunit';
 
 module('Unit | Utility | random helpers');
 

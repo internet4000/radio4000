@@ -1,6 +1,6 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
 
-export default Ember.Route.extend({
+export default Route.extend({
 	// Redirect the now deprecated channel/:track_id route
 	// to our new one. We can completely remove this once
 	// we no longer care about the old track URLs.
