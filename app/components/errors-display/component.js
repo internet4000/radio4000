@@ -1,10 +1,10 @@
 import {
-  not,
-  notEmpty,
-  and,
-  or,
-  readOnly,
-  alias
+	not,
+	notEmpty,
+	and,
+	or,
+	readOnly,
+	alias
 } from '@ember/object/computed';
 import Component from '@ember/component';
 import { defineProperty, get } from '@ember/object';
