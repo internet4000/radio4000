@@ -1,4 +1,6 @@
 /* eslint-env node */
+'use strict';
+
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const autoprefixer = require('autoprefixer');
 const atImport = require('postcss-import');
@@ -6,6 +8,8 @@ const targets = require('./config/targets');
 
 module.exports = function(defaults) {
 	let app = new EmberApp(defaults, {
+    // Add options here
+    
 		// Don't pollute our index.html with meta data.
 		storeConfigInMeta: false,
 

@@ -10,10 +10,16 @@ https://master--radio4000.netlify.com
 
 ## How to develop
 
-Make sure Ember CLI is installed globally, then clone this project and install it's dependencies:
+You'll need these installed:
+
+* [Git](https://git-scm.com/)
+* [Node.js](https://nodejs.org/) (with NPM)
+* [Ember CLI](https://ember-cli.com/)
+* [Google Chrome](https://google.com/chrome/)
+
+...then clone this project and install it's dependencies:
 
 ```
-npm install --global ember-cli 
 git clone git@gitlab.com:internet4000/radio4000.git
 cd radio4000
 npm install

@@ -6,7 +6,7 @@ import RSVP from 'rsvp';
 import 'npm:lazysizes/plugins/attrchange/ls.attrchange';
 import 'npm:lazysizes';
 
-let App = Ember.Application.extend({
+const App = Ember.Application.extend({
 	rootElement: '#Radio4000',
 	modulePrefix: config.modulePrefix,
 	podModulePrefix: config.podModulePrefix,
