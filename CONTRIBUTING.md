@@ -2,7 +2,13 @@
 
 https://github.com/internet4000/radio4000/
 
-This document explains the workflow we normally take when developing on Radio4000. We follow a basic Git Flow with two long-lived branches: `master` and `production`. Let’s walk through it…
+This document explains the workflow we normally take when developing on Radio4000. We follow a basic Git Flow with two long-lived branches: `master` and `production`. 
+
+## TLDR
+
+Work in branches from master, send a PR via GitHub when ready. All branches and PRs are auto-deployed via Netlify. The production branch is mirrored to https://radio4000.com.
+
+Let’s walk through it…
 
 ## 1. Start work, create branch
 
@@ -48,3 +54,4 @@ For more information on why we’re doing this, see:
 
 - http://doc.gitlab.com/ee/workflow/gitlab_flow.html
 - https://guides.github.com/introduction/flow/
+
