@@ -1,6 +1,6 @@
 {
   "name": "radio4000",
-  "version": "5.2.0",
+  "version": "5.2.1",
   "scripts": {
     "build": "ember build -prod",
     "critical-css": "cat dist/index.html | critical --base dist/ --inline --minify > index.tmp && mv index.tmp dist/index.html",
