@@ -1,15 +1,27 @@
-import Ember from 'ember';
+import Ember from 'ember'
+import RSVP from 'rsvp'
 
-const {Route, RSVP} = Ember;
+const {get, Route} = Ember;
 
 export default Route.extend({
 	model() {
-		return RSVP.hash({
-			featured: this.store.query('channel', {
-				orderBy: 'isFeatured',
-				equalTo: true
-			}),
-			userChannel: this.get('session.currentUser.channels.firstObject')
-		});
+		return this.findFeatured().then(featured => {
+			return featured.map(channel => this.findFavorites(channel))
+		})
+	},
+
+	findFeatured(amount = 3) {
+		return this.store.query('channel', {
+			orderBy: 'isFeatured',
+			equalTo: true,
+			limitToLast: amount
+		})
+	},
+
+	findFavorites(channel, amount = 3) {
+		const ids = channel.hasMany('favoriteChannels').ids()
+		const someIds = ids.slice(0, amount)
+		const promises = someIds.map(id => this.store.findRecord('channel', id))
+		return RSVP.all(promises)
 	}
-});
+})
