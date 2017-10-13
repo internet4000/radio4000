@@ -1,12 +1,14 @@
 import Ember from 'ember'
 import RSVP from 'rsvp'
 
-const {get, Route} = Ember;
+const {Route} = Ember;
 
 export default Route.extend({
 	model() {
 		return this.findFeatured().then(featured => {
-			return RSVP.all(featured.map(channel => this.findFavorites(channel)));
+			const promises = featured.map(channel => this.findFavorites(channel))
+			const flattened = promises.reduce((prev, curr) => prev.concat(curr))
+			return RSVP.all(flattened)
 		})
 	},
 
@@ -22,6 +24,6 @@ export default Route.extend({
 		const ids = channel.hasMany('favoriteChannels').ids()
 		const someIds = ids.slice(0, amount)
 		const promises = someIds.map(id => this.store.findRecord('channel', id))
-		return RSVP.all(promises)
+		return promises
 	}
 })
