@@ -1,7 +1,6 @@
 # Radio4000
 
-The main front-end web application for Radio4000, CMS for music
-libraries.
+The main front-end web application for Radio4000, CMS for music libraries.
 
 ## URLs
 
@@ -35,13 +34,12 @@ So, to deploy to production:
 2. Use `release-it` to tag a new release
 3. `git checkout production; git pull; git merge master --no-ff; git push`
 
-For Firebase security rules, see the https://github.com/internet4000/radio4000-api repository.
-
 ## Backend
 
 We use Firebase as our database and API. It's connected through Ember Data and [Emberfire](https://github.com/firebase/emberfire). The security rules are in the [radio4000-api](https://github.com/internet4000/radio4000-api) repository.
 
+For Firebase security rules, see the https://github.com/internet4000/radio4000-api repository.
+
 ## Google API
 
 We use the YouTube API to detect video titles etc. If you run into trouble with permissions or domains, check here https://console.developers.google.com/project/much-play/.
-

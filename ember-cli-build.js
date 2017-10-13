@@ -9,11 +9,17 @@ module.exports = function(defaults) {
 		// Don't pollute our index.html with meta data.
 		storeConfigInMeta: false,
 
+		// Disable testing with localhost:4000/tests. Instead use `npm test`.
+		// tests: EmberApp.env() === 'test',
+
 		// Don't fingerprint favicons.
 		fingerprint: {
 			exclude: [
-				'apple-touch-icon', 'android-chrome',
-				'favicon', 'mstile', 'icns'
+				'apple-touch-icon',
+				'android-chrome',
+				'favicon',
+				'mstile',
+				'icns'
 			]
 		},
 
@@ -40,8 +46,7 @@ module.exports = function(defaults) {
 			],
 			extension: 'scss'
 		}
-	});
+	})
 
-	return app.toTree();
-};
-
+	return app.toTree()
+}
