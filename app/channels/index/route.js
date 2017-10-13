@@ -6,7 +6,7 @@ const {get, Route} = Ember;
 export default Route.extend({
 	model() {
 		return this.findFeatured().then(featured => {
-			return featured.map(channel => this.findFavorites(channel))
+			return RSVP.all(featured.map(channel => this.findFavorites(channel)));
 		})
 	},
 
