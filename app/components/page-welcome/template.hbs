@@ -11,7 +11,7 @@
 				checked=channel.slug}} Create your radio: <span class="Muted">https://radio4000.com/{{channel.slug}}</span>
 		</label>
 	{{/link-to}}
-	{{#link-to 'add' (query-params url="https://www.youtube.com/watch?v=ymdssZOAx3Q")}}
+	{{#link-to 'add'}}
 		<label>
 			{{input type='checkbox'
 				checked=channel.tracks.firstObject}} Add your first track <small>(paste in a YouTube link)</small>
