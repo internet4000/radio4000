@@ -39,13 +39,13 @@
 	</section>
 {{/if}}
 
-{{!--
+
 <section class="Section">
 	<div class="Container">
-		<h3>Share or this radio on any website</h3>
+		<h3>Share or embed this radio on any website</h3>
 		<p title="Tip: use this link to access this radio anywhere easily. You can also customize it for your radio so it is easier to remember">
 			{{#channel-sharer-url
-				channel=model
+				channel=model.channel
 				autoSelect=true}}
 				URL
 				{{#if model.canEdit}}
@@ -55,7 +55,7 @@
 		</p>
 		<p title="Tip: paste this <iframe/> element in the HTML code of any website to embed a player of this radio">
 			{{#channel-sharer-url
-				 channel=model
+				 channel=model.channel
 				 iframe=true
 				 autoSelect=true}}
 				Embed <small>(<a href={{buildApiUrl}} target="_blank" rel="noopener">Try it out</a>)</small>
@@ -63,6 +63,5 @@
 		</p>
 	</div>
 </section>
---}}
 
 {{outlet}}
