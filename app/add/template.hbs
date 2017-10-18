@@ -1,21 +1,34 @@
 <div class="Sections">
 	<div class="Section">
+		<div class="Manchet">
+			<h2><small>Add a </small>new track<small> to your radio</small></h2>
+		</div>
 		<div class="Container">
-			<div class="Manchet">
-				<h2><small>Add a </small>new track<small> to your radio</small></h2>
-				</div>
-				{{track-form-add
+			{{track-form-add
 					initialUrl=url
 					onSubmit=(action "saveTrack")
 					onCancel=(action "goBack")
 					isSubmitting=createTrack.isRunning}}
-				<br>
-				<p>
-					&rarr; {{#link-to "channel" model.slug title=model.title}}Go to your channel <em>{{model.title}}</em>{{/link-to}} <small>(you currently have {{model.totalTracks}} tracks)</small><br>
-					&rarr; {{link-to "Get the bookmarklet" "bookmarklet"}}
-				</p>
 		</div>
 	</div>
+	<section class="Section">
+		<div class="Container Container--full">
+			<div class="Grid">
+				<div class="Grid-cell">
+					<h3>You are adding to:</h3>
+					{{channel-card channel=model}}
+				</div>
+				<div class="Grid-cell">
+					<p>
+						Want to add tracks faster in your radio4000 channel?
+					</p>
+					<p>
+						{{link-to "Get the bookmarklet" "bookmarklet" class="Btn"}}
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
 </div>
 
 {{outlet}}
