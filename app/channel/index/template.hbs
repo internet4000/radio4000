@@ -43,7 +43,11 @@
 <section class="Section">
 	<div class="Container">
 		{{#unless session.currentUser.channels.firstObject.isExperienced}}
-			<h3>Share or embed this radio <small></small></h3>
+			{{#if model.channel.canEdit}}
+				<h3>Share or embed your radio</h3>
+			{{else}}
+				<h3>Share or embed this radio</h3>
+			{{/if}}
 			<p>When you're out of the house, or to insert on your websites, you can use both of the follwing links.</p>
 		{{/unless}}
 		<p>
