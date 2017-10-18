@@ -22,16 +22,22 @@
 
 {{#if isShowingModal}}
 	{{#modal-dialog onClose=(action "toggleModal")}}
-		<div class="Manchet">
-			<h2><small>Add a </small>new track<small> to your radio</small></h2>
+		<div class="Sections">
+			<section class="Section">
+				<div class="Manchet">
+					<h2><small>Add a </small>new track<small> to your radio</small></h2>
+				</div>
+				<div class="Container">
+					{{track-form-add
+							initialUrl=url
+							onSubmit=(action "saveTrack")
+							onCancel=(action "toggleModal")}}
+					<div>
+						Do you want to add tracks directly from YouTube?<br>
+						&rarr;<span {{action "toggleModal"}}>{{link-to "Get the bookmarklet" "bookmarklet" class="Btn Btn--text"}}</span>
+					</div>
+				</div>
+			</section>
 		</div>
-		{{track-form-add
-			initialUrl=url
-			onSubmit=(action "saveTrack")
-			onCancel=(action "toggleModal")}}
-		<p>
-			Do you want to add tracks directly from YouTube?<br>
-			&rarr;<span {{action "toggleModal"}}>{{link-to "Get the bookmarklet" "bookmarklet" class="Btn Btn--text"}}</span>
-		</p>
 	{{/modal-dialog}}
 {{/if}}
