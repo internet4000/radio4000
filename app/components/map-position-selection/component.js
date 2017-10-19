@@ -7,7 +7,7 @@ export default Component.extend({
 	lat: 0,
   lng: 20.7421875,
   zoom: 0.7,
-	location: [45.528298, -122.662986],
+	maxBounds: [[90,-180], [-90, 180]],
 	actions: {
     updateCenter(e) {
 			console.log('center', center)
