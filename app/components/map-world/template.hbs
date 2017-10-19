@@ -1,13 +1,5 @@
 {{#leaflet-map lat=lat lng=lng zoom=zoom}}
 	{{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
-
-	{{#each items as |item|}}
-		{{#marker-layer location=location}}
-			{{#popup-layer }}
-				{{channel-card channel=item}}
-			{{/popup-layer}}
-		{{/marker-layer}}
-	{{/each}}
 {{/leaflet-map}}
 
 {{yield}}

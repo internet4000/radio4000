@@ -13,6 +13,11 @@
 	border-radius: $border-radius;
 	// box-shadow: $box-shadow;
 
+	// so it is always over full screen backgrounds
+	// like .Manchet
+	position: relative;
+	z-index: 1;
+
 	// When several tabs follow each other.
 	& + .Tabs {
 		margin-top: 3px;
