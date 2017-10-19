@@ -61,6 +61,16 @@
 						pattern="https?://.+"
 						placeholder="Link to your website, ex: 'https://example.com'"}}
 			{{/form-group}}
+
+
+			<h2>Localisation</h2>
+			<p>You can place your radio channel on the map, wherever you feel like it.</p>
+			<div class="FormGroup">
+				{{map-position-selection
+						lat=model.coordinatesLatitude
+						lng=model.coordinatesLongitude}}
+			</div>
+
 			<p class="BtnGroupWrapper BtnGroupWrapper--full">
 				<button type="button"
 					{{action "cancelEdit"}}
@@ -78,11 +88,6 @@
 
 <section class="Section">
 	<div class="Container">
-		<h2>Localisation</h2>
-		<p>You can place your radio channel on the map, wherever you feel like it.</p>
-		{{map-position-selection
-				lat=0
-				lng=0}}
 	</div>
 </section>
 

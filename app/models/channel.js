@@ -69,6 +69,9 @@ export default DS.Model.extend(Validations, {
 	isFeatured: attr('boolean'),
 	isPremium: attr('boolean'),
 
+	coordinatesLongitude: attr('number', { defaultValue: () => 1 }),
+	coordinatesLatitude: attr('number', { defaultValue: () => 1 }),
+
 	// Set the latest image as the cover image.
 	coverImage: computed('images.[]', function () {
 		return this.get('images.lastObject');
@@ -84,12 +87,19 @@ export default DS.Model.extend(Validations, {
 	channelPublic: belongsTo('channelPublic', {async: true}),
 
 	// Meta data.
+	totalFavorites: computed('favoriteChannels', function () {
+		return this.hasMany('favoriteChannels').ids().length;
+	}),
+
 	totalTracks: computed('tracks.[]', function () {
 		return this.hasMany('tracks').ids().length;
 	}),
+
 	hasFewTracks: computed.lte('totalTracks', 2),
-	totalFavorites: computed('favoriteChannels', function () {
-		return this.hasMany('favoriteChannels').ids().length;
+
+	// cannot use computed.and since default values are null
+	hasCoordinate: computed('coordinatesLongitude', 'coordinatesLatitude', function() {
+		return Boolean(this.coordinatesLongitude) && Boolean(this.coordinatesLatitude)
 	}),
 
 	// can current logged in user edit the channel
