@@ -4,7 +4,7 @@ const {Controller} = Ember;
 
 export default Controller.extend({
 	queryParams: ['lat', 'lng', 'zoom'],
-	lat: 0,
-  lng: 20.7421875,
+	lat: 22.105998799750566,
+	lng: 33.04687500000001,
 	zoom: 2
 });
