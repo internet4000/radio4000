@@ -71,6 +71,15 @@ export default DS.Model.extend(Validations, {
 
 	coordinatesLongitude: attr('number', { defaultValue: () => 1 }),
 	coordinatesLatitude: attr('number', { defaultValue: () => 1 }),
+	coordinates: computed('coordinatesLatitude', 'coordinatesLongitude', function() {
+		const lat = get(this, 'coordinatesLatitude')
+		const lng = get(this, 'coordinatesLongitude');
+		if(Boolean(lat) && Boolean(lng)) {
+			return [lat, lng]
+		} else {
+			return []
+		}
+	}),
 
 	// Set the latest image as the cover image.
 	coverImage: computed('images.[]', function () {
@@ -96,11 +105,6 @@ export default DS.Model.extend(Validations, {
 	}),
 
 	hasFewTracks: computed.lte('totalTracks', 2),
-
-	// cannot use computed.and since default values are null
-	hasCoordinate: computed('coordinatesLongitude', 'coordinatesLatitude', function() {
-		return Boolean(this.coordinatesLongitude) && Boolean(this.coordinatesLatitude)
-	}),
 
 	// can current logged in user edit the channel
 	canEdit: computed('id', 'session.currentUser.channels.firstObject.id', {

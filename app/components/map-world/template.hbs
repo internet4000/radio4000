@@ -3,7 +3,19 @@
 		 lng=lng
 		 zoom=zoom
 		 onMoveend=(action "updateCenter")}}
+
 	{{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
+
+	{{#each items as |item|}}
+		{{#if item.coordinates}}
+			{{#marker-layer location=item.coordinates}}
+				{{#popup-layer}}
+					{{channel-card channel=item}}
+				{{/popup-layer}}
+			{{/marker-layer}}
+		{{/if}}
+	{{/each}}
+
 {{/leaflet-map}}
 
 {{yield}}

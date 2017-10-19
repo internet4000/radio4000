@@ -6,19 +6,9 @@
 	{{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
 {{/leaflet-map}}
 
-<form class="Form">
-	<div>
-		<p>lat: {{input value=lat }}</p>
-		<p>lng: {{input value=lng }}</p>
-	</div>
-
-	<div class="BtnGroupWrapper BtnGroupWrapper--full">
-		<button class="Btn Btn--large">Cancel changes</button>
-		<button
-			type="submit"
-			class="Btn Btn--large Btn--primary">Save Localisation</button>
-	</div>
-
-</form>
+<div>
+	<label>Latitude: {{input value=lat }}</label>
+	<label>Longitude: {{input value=lng }}</label>
+</div>
 
 {{yield}}
