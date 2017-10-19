@@ -3,7 +3,7 @@ import Ember from 'ember';
 const {Component} = Ember;
 
 export default Component.extend({
-	classNames: ['Map'],
+	classNames: ['Map', 'Map--selection'],
 	lat: 0,
   lng: 20.7421875,
   zoom: 0.7,
