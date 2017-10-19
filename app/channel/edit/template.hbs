@@ -23,11 +23,6 @@
 				{{/if}}
 			</article>
 
-			<article class="Grid-cell Grid-cell--double">
-				<p><strong>Localisation</strong></p>
-				{{map-position-selection}}
-			</article>
-
 			<article class="Grid-cell Grid-cell--triple">
 				<form class="" {{action "trySave" on="submit"}}>
 					{{#form-group model=model valuePath="title" label="Name" as |v|}}
@@ -70,12 +65,19 @@
 										class="Btn Btn--large"
 										disabled={{nothingChanged}}>Cancel changes</button>
 						<button type="submit"
-										class="Btn Btn--large Btn--primary"
-										disabled={{disableSubmit}}>
+							class="Btn Btn--large Btn--primary"
+							disabled={{disableSubmit}}>
 							{{#if isSaving}}Saving…{{else}}Save radio{{/if}}
 						</button>
 					</p>
 				</form>
+			</article>
+
+			<article class="Grid-cell Grid-cell--triple">
+				<p><strong>Localisation</strong></p>
+				{{map-position-selection
+						lat=0
+						lng=0}}
 			</article>
 		</div>
 	</div>
