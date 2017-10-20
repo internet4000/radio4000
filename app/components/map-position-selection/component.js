@@ -12,8 +12,10 @@ export default Component.extend({
     updateCenter(e) {
 			console.log('center', center)
       let center = e.target.getCenter();
-      this.set('newLat', center.lat);
-      this.set('newLng', center.lng);
+      this.setProperties({
+				'newLat': center.lat,
+				'newLng': center.lng
+			});
     }
   }
 });

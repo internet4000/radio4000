@@ -12,9 +12,11 @@ export default Component.extend({
       let center = e.target.getCenter();
 			let zoom = e.target.getZoom();
 
-      this.set('lat', center.lat);
-      this.set('lng', center.lng);
-			this.set('zoom', zoom);
+      this.setProperties({
+				'lat': center.lat,
+				'lng': center.lng,
+				'zoom': zoom
+			});
     }
   }
 });
