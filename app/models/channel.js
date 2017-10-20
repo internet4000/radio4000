@@ -74,11 +74,10 @@ export default DS.Model.extend(Validations, {
 	coordinates: computed('coordinatesLatitude', 'coordinatesLongitude', function() {
 		const lat = get(this, 'coordinatesLatitude')
 		const lng = get(this, 'coordinatesLongitude');
-		if(Boolean(lat) && Boolean(lng)) {
+		if (Boolean(lat) && Boolean(lng)) {
 			return [lat, lng]
-		} else {
-			return []
 		}
+		return []
 	}),
 
 	// Set the latest image as the cover image.
