@@ -1,4 +1,4 @@
-<form class="Form" {{action "updateCoordinates" newLat newLng on="submit"}}>
+<form class="Form" onsubmit={{perform updateCoordinates newLat newLng}}>
 	{{#leaflet-map
 			 maxBounds=maxBounds
 			 lat=newLat
@@ -22,10 +22,8 @@
 			 <label>Longitude: {{input value=newLng }}</label>
 			 </div> -->
 	<div class="BtnGroupWrapper BtnGroupWrapper--full">
-
 		<button class="Btn" {{action "cancel"}}>Cancel</button>
 		<button
-			onclick={{perform updateCoordinates}}
 			class="Btn Btn--primary"
 			title="Update the localisation coordinates of your radio channel"
 			disabled={{updateCoordinates.isRunning}}>

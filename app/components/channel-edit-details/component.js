@@ -1,14 +1,22 @@
-import Ember from 'ember';
+import Ember from 'ember'
 
-const {Component, get} = Ember;
+const { Component, get, computed } = Ember
 
 export default Component.extend({
 	// props
-	channel: null,
+	// channel: ember model,
+	// submitTask: ember concurrency task
+
+	nothingChanged: computed.not('channel.hasDirtyAttributes'),
+	cantSave: computed.or('channel.validations.isInvalid', 'nothingChanged'),
+	disableSubmit: computed.or('submitTask.isRunning', 'cantSave'),
 
 	actions: {
-		updateDetails(details) {
-			get(this, 'updateDetails')(details)
+		submit() {
+			get(this, 'submitTask')()
+		},
+		cancel() {
+			get(this, 'onCancel')()
 		}
 	}
-});
+})

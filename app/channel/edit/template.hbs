@@ -3,32 +3,36 @@
 		<p>Customize the appearance and informations about your radio channel.</p>
 	</div>
 
-	<div class="Container Container--small">
-		<h2>Image</h2>
-
-		<figure>
-			{{channel-cover src=model.coverImage.src}}
-		</figure>
-
-		{{#if model.coverImage}}
-			<button class="Btn Btn--small" title="To change your image, you'll need to delete this one first" {{action "deleteImage"}}>
-				Delete image
-			</button>
-		{{else}}
-			{{cloudinary-upload
+	<div class="Container">
+		<p><label>Image</label></p>
+		<div class="u-flex">
+			{{#if model.coverImage}}
+				<figure style="max-width: 100px">
+					{{channel-cover src=model.coverImage.src}}
+				</figure>
+			{{/if}}
+			
+			{{#if model.coverImage}}
+				<button class="Btn Btn--small" title="To change your image, you'll need to delete this one first" {{action "deleteImage"}}>
+					Delete image
+				</button>
+			{{else}}
+				{{cloudinary-upload
 					cloudName='radio4000'
 					unsignedUploadPreset='tc44ivjo'
 					didUpload=(action "saveImage")}}
-		{{/if}}
+			{{/if}}
+		</div>
 	</div>
 </section>
 
 <section class="Section">
 	<div class="Container">
-		<h2>Details</h2>
+		{{!-- <h2>Details</h2> --}}
 		{{channel-edit-details
-				channel=model
-				updateDetails=updateDetails}}
+			channel=model
+			submitTask=(perform saveChannel)
+			onCancel=(action "goBack")}}
 	</div>
 </section>
 

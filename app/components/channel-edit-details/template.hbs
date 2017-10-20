@@ -1,49 +1,44 @@
-<form class="" {{action "updateDetails" on="submit"}}>
+<form {{action "submit" on="submit"}}>
 	{{#form-group model=channel valuePath="title" label="Name" as |v|}}
 		{{focus-input
-				value=v
-				placeholder="ex: The pirate Radio"
-				autoFocus=true
-				required="required"
-				minlength=titleMinLength
-				maxlength=titleMaxLength}}
+			value=v
+			placeholder="ex: The pirate Radio"
+			autoFocus=true
+			required="required"
+			minlength=titleMinLength
+			maxlength=titleMaxLength}}
 	{{/form-group}}
 
 	{{#form-group model=channel valuePath="slug" label="URL" as |v|}}
 		<p class="Muted" style="font-weight: normal">https://radio4000.com/{{v}}</p>
 		{{input
-				value=v
-				placeholder="ex: pirate-radio"
-				required="required"
-				minlength=titleMinLength
-				maxlength=titleMaxLength}}
+			value=v
+			placeholder="ex: pirate-radio"
+			required="required"
+			minlength=titleMinLength
+			maxlength=titleMaxLength}}
 	{{/form-group}}
 
 	{{#form-group model=channel valuePath="body" label="Description" as |v|}}
 		{{textarea id="body"
-				value=v
-				maxlength=channelDescriptionMaxLength
-				placeholder="What is your radio about? ex: 'Fireplace music'"}}
+			value=v
+			maxlength=channelDescriptionMaxLength
+			placeholder="What is your radio about? ex: 'Fireplace music'"}}
 	{{/form-group}}
 
 	{{#form-group model=channel valuePath="link" label="Website" as |v|}}
 		{{input type="url"
-				value=v
-				aria-invalid=(if channel.validations.attrs.link.isValid "false" "true")
-				pattern="https?://.+"
-				placeholder="Link to your website, ex: 'https://example.com'"}}
+			value=v
+			aria-invalid=(if channel.validations.attrs.link.isValid "false" "true")
+			pattern="https?://.+"
+			placeholder="Link to your website, ex: 'https://example.com'"}}
 	{{/form-group}}
 
 	<p class="BtnGroupWrapper BtnGroupWrapper--full">
-		<button type="button"
-			{{action "cancelEdit"}}
-			class="Btn Btn--large"
-			disabled={{nothingChanged}}>Cancel changes</button>
-		<button type="submit"
-			class="Btn Btn--large Btn--primary"
-			disabled={{disableSubmit}}>
-			{{#if isSaving}}Saving…{{else}}Save {{/if}}
+		<button type="submit" class="Btn Btn--large Btn--primary" disabled={{disableSubmit}}>
+			{{#if submitTask.isRunning}}Saving…{{else}}Save {{/if}}
 		</button>
+		<button type="button" {{action "cancel"}} class="Btn Btn--text">Cancel</button>
 	</p>
 </form>
 
