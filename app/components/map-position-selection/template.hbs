@@ -22,9 +22,14 @@
 			 <label>Longitude: {{input value=newLng }}</label>
 			 </div> -->
 	<div class="BtnGroupWrapper BtnGroupWrapper--full">
+
 		<button class="Btn" {{action "cancel"}}>Cancel</button>
-		<button type="submit" class="Btn Btn--primary">
-			Update localisation
+		<button
+			onclick={{perform updateCoordinates}}
+			class="Btn Btn--primary"
+			title="Update the localisation coordinates of your radio channel"
+			disabled={{updateCoordinates.isRunning}}>
+			{{if updateCoordinates.isIdle "Update localisation" "Updating…"}}
 		</button>
 	</div>
 </form>

@@ -1,5 +1,5 @@
-
 import Ember from 'ember';
+import {task} from 'ember-concurrency';
 import clean from 'radio4000/utils/clean';
 import reservedUrls from 'radio4000/utils/reserved-urls';
 
@@ -27,21 +27,21 @@ export default Controller.extend({
 		}
 
 		// Check the database to see if the slug is free. The filter below should not be neccesary.
-		// And since slug is already set on the channel, there can be a single duplicate.
-		return this.store.query('channel', {
-			orderBy: 'slug',
-			equalTo: slug
-		}).then(query => {
-			if (query.get('firstObject')) {
-				return RSVP.Promise.reject(new Error(errorMessage));
-			}
-			return RSVP.Promise.resolve(slug);
-		});
+			// And since slug is already set on the channel, there can be a single duplicate.
+			return this.store.query('channel', {
+				orderBy: 'slug',
+				equalTo: slug
+			}).then(query => {
+				if (query.get('firstObject')) {
+					return RSVP.Promise.reject(new Error(errorMessage));
+				}
+				return RSVP.Promise.resolve(slug);
+			});
 	},
 
 	deactivate() {
 		// Clear any unsaved changes.
-		this.controllerFor('channel').get('model').rollbackAttributes();
+			this.controllerFor('channel').get('model').rollbackAttributes();
 	},
 
 	actions: {
@@ -61,6 +61,10 @@ export default Controller.extend({
 			}).catch(err => {
 				Ember.debug('could not save image', err)
 			});
+		},
+
+		deleteImage() {
+			return this.get('model.coverImage').destroyRecord();
 		},
 
 		trySave() {
@@ -97,10 +101,6 @@ export default Controller.extend({
 			});
 		},
 
-		deleteImage() {
-			return this.get('model.coverImage').destroyRecord();
-		},
-
 		// Saves the channel
 		save() {
 			const channel = get(this, 'model');
@@ -109,7 +109,7 @@ export default Controller.extend({
 			channel.save().then(() => {
 				flashMessages.info('Saved');
 				// We have to transition if the slug changed. Otherwise reloading is a 404.
-				this.transitionToRoute('channel', channel.get('slug'));
+					this.transitionToRoute('channel', channel.get('slug'));
 			}).catch(() => {
 				// This get triggered for exemple when firebase.security do not validate
 				flashMessages.warning(`Sorry, we couldn't save your radio. Please refresh your browser to try again.`);
@@ -124,13 +124,19 @@ export default Controller.extend({
 			this.set('isSaving', false);
 		},
 
-		updateCoordinates(coordinates) {
+		updateDetails: task(function * (details) {
+			const channel = get(this, 'model');
+			channel.setProperties(details);
+			yield channel.save()
+		}).drop(),
+
+		updateCoordinates: task(function * (coordinates) {
 			const channel = get(this, 'model');
 			channel.setProperties({
 				coordinatesLatitude: coordinates.lat,
 				coordinatesLongitude: coordinates.lng
 			});
-			return channel.save();
-		}
+			yield channel.save();
+		}).drop()
 	}
 });
