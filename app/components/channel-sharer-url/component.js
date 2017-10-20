@@ -8,7 +8,7 @@ export default Component.extend({
 	iframe: false,
 
 	// const
-	iframeApiUrl: 'https://api.radio4000.com/iframe',
+	iframeApiUrl: 'https://api.radio4000.com/embed',
 
 	// logic
 	slug: computed.reads('channel.slug'),
@@ -23,7 +23,7 @@ export default Component.extend({
 		const apiUrl = get(this, 'buildApiUrl');
 
 		if (iframe) {
-			return `<iframe src="${apiUrl}" width="320" height="400" frameborder="0"></iframe>`
+			return `<iframe src="${apiUrl}" width="320" height="500" frameborder="0"></iframe>`
 		}
 		return channelUrl
 	}),

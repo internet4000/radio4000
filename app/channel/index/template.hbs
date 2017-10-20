@@ -39,30 +39,35 @@
 	</section>
 {{/if}}
 
-{{!--
+
 <section class="Section">
 	<div class="Container">
-		<h3>Share or this radio on any website</h3>
-		<p title="Tip: use this link to access this radio anywhere easily. You can also customize it for your radio so it is easier to remember">
+		{{#unless session.currentUser.channels.firstObject.isExperienced}}
+			{{#if model.channel.canEdit}}
+				<h3>Share or embed your radio</h3>
+			{{else}}
+				<h3>Share or embed this radio</h3>
+			{{/if}}
+		{{/unless}}
+		<p>
 			{{#channel-sharer-url
-				channel=model
+				channel=model.channel
 				autoSelect=true}}
 				URL
-				{{#if model.canEdit}}
+				{{#if model.channel.canEdit}}
 					<small>({{link-to 'edit' 'channel.edit'}})</small>
 				{{/if}}
 			{{/channel-sharer-url}}
 		</p>
-		<p title="Tip: paste this <iframe/> element in the HTML code of any website to embed a player of this radio">
+		<p title="Tip: paste this <iframe> element in the HTML code of any website to embed a player of this radio">
 			{{#channel-sharer-url
-				 channel=model
+				 channel=model.channel
 				 iframe=true
 				 autoSelect=true}}
-				Embed <small>(<a href={{buildApiUrl}} target="_blank" rel="noopener">Try it out</a>)</small>
+				Embed
 			{{/channel-sharer-url}}
 		</p>
 	</div>
 </section>
---}}
 
 {{outlet}}
