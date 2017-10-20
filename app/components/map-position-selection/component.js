@@ -1,23 +1,23 @@
-import Ember from 'ember';
+import Ember from 'ember'
 
-const {Component, get} = Ember;
+const { Component, get } = Ember
 
 export default Component.extend({
 	classNames: ['Map', 'Map--selection'],
 	newLat: 0,
-  newLng: 20.7421875,
-  zoom: 0.7,
-	maxBounds: [[90,-180], [-90, 180]],
+	newLng: 20.7421875,
+	zoom: 0.7,
+	maxBounds: [[90, -180], [-90, 180]],
 	actions: {
-    updateCenter(e) {
-      let center = e.target.getCenter();
-      this.setProperties({
-				'newLat': center.lat,
-				'newLng': center.lng
-			});
-    },
+		updateCenter(e) {
+			let center = e.target.getCenter()
+			this.setProperties({
+				newLat: center.lat,
+				newLng: center.lng
+			})
+		},
 		updateCoordinates(lat, lng) {
-			get(this, 'updateCoordinates')({lat, lng})
+			get(this, 'updateCoordinates')({ lat, lng })
 		}
-  }
-});
+	}
+})
