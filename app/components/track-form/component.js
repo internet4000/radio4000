@@ -74,8 +74,7 @@ export default Component.extend({
 		},
 		cancel() {
 			const track = get(this, 'track')
-			console.log('track', track)
-			if(track.hasDirtyAttributes) {
+			if (track.hasDirtyAttributes) {
 				track.rollbackAttributes();
 			}
 			get(this, 'onCancel')();
