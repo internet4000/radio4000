@@ -48,14 +48,13 @@
 			{{else}}
 				<h3>Share or embed this radio</h3>
 			{{/if}}
-			<p>When you're out of the house, or to insert on your websites, you can use both of the following links.</p>
 		{{/unless}}
 		<p>
 			{{#channel-sharer-url
 				channel=model.channel
 				autoSelect=true}}
 				URL
-				{{#if model.canEdit}}
+				{{#if model.channel.canEdit}}
 					<small>({{link-to 'edit' 'channel.edit'}})</small>
 				{{/if}}
 			{{/channel-sharer-url}}
