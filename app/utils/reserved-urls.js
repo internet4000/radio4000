@@ -9,5 +9,12 @@ export default [
 	'job',
 	'jobs',
 	'login',
-	'styleguide'
+	'styleguide',
+	'map',
+	'auth',
+	'settings',
+	'login',
+	'logout',
+	'feedback',
+	'history'
 ]
