@@ -1,15 +1,22 @@
 {{#leaflet-map
 		 maxBounds=maxBounds
-		 lat=lat
-		 lng=lng
+		 lat=newLat
+		 lng=newLng
 		 zoom=zoom
 		 onMoveend=(action "updateCenter")}}
 	{{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
+	{{#marker-layer
+			 lat=currentLat
+			 lng=currentLng}}
+    {{#popup-layer}}
+			Your radio
+    {{/popup-layer}}
+  {{/marker-layer}}
 {{/leaflet-map}}
 
 <div>
-	<label>Latitude: {{input value=lat }}</label>
-	<label>Longitude: {{input value=lng }}</label>
+	<label>Latitude: {{input value=newLat }}</label>
+	<label>Longitude: {{input value=newLng }}</label>
 </div>
 
 {{yield}}
