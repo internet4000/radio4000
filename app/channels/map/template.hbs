@@ -1,9 +1,9 @@
 {{map-world
 	items=model
-	lat=(readonly lat)
-	lng=(readonly lng)
-	zoom=(readonly zoom)
-	onUpdateCenter=(action "setPosition")
+	lat=lat
+	lng=lng
+	zoom=zoom
+	onUpdateCenter=(action "updatePosition")
 }}
 
 {{outlet}}

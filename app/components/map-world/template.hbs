@@ -1,10 +1,11 @@
 {{#leaflet-map
-		 maxBounds=maxBounds
-		 lat=lat
-		 lng=lng
-		 zoom=zoom
-		 minZoom=minZoom
-		 onMoveend=(action "updateCenter")}}
+	maxBounds=maxBounds
+	lat=lat
+	lng=lng
+	zoom=zoom
+	minZoom=minZoom
+	onMoveend=(action "updateCenter")
+}}
 
 	{{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
 

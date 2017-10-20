@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import {task, timeout} from 'ember-concurrency'
 
-const {Controller} = Ember;
+const {Controller, get} = Ember;
 
 export default Controller.extend({
 	queryParams: ['lat', 'lng', 'zoom'],
@@ -8,14 +9,20 @@ export default Controller.extend({
 	lng: 33.04687500000001,
 	zoom: 2,
 
+	// If we do not throttle this,
+	// we get errors trying to "modify twice in a single render".
+	updatePosition: task(function * (pos) {
+		yield timeout(200)
+		this.setProperties({
+			lat: pos.lat,
+			lng: pos.lng,
+			zoom: pos.zoom
+		})
+	}).drop(),
+
 	actions: {
-		setPosition(pos) {
-			Ember.debug('setPosition', pos)
-			this.setProperties({
-				lat: pos.lat,
-				lng: pos.lng,
-				zoom: pos.zoom
-			})
+		updatePosition(pos) {
+			get(this, 'updatePosition').perform(pos)
 		}
 	}
 });
