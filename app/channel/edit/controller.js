@@ -3,7 +3,12 @@ import Ember from 'ember';
 import clean from 'radio4000/utils/clean';
 import reservedUrls from 'radio4000/utils/reserved-urls';
 
-const {debug, get, Controller, computed, RSVP, isEqual} = Ember;
+const {Controller,
+			 debug,
+			 get,
+			 computed,
+			 RSVP,
+			 isEqual} = Ember;
 
 export default Controller.extend({
 	isSaving: false,
@@ -98,7 +103,7 @@ export default Controller.extend({
 
 		// Saves the channel
 		save() {
-			const channel = this.get('model');
+			const channel = get(this, 'model');
 			const flashMessages = Ember.get(this, 'flashMessages');
 
 			channel.save().then(() => {
@@ -117,6 +122,15 @@ export default Controller.extend({
 		cancelEdit() {
 			this.transitionToRoute('channel', this.get('model'));
 			this.set('isSaving', false);
+		},
+
+		updateCoordinates(coordinates) {
+			const channel = get(this, 'model');
+			channel.setProperties({
+				coordinatesLatitude: coordinates.lat,
+				coordinatesLongitude: coordinates.lng
+			});
+			return channel.save();
 		}
 	}
 });

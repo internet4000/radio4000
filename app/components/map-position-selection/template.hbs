@@ -1,22 +1,32 @@
-{{#leaflet-map
-		 maxBounds=maxBounds
-		 lat=newLat
-		 lng=newLng
-		 zoom=zoom
-		 onMoveend=(action "updateCenter")}}
-	{{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
-	{{#marker-layer
-			 lat=currentLat
-			 lng=currentLng}}
-    {{#popup-layer}}
-			Your radio
-    {{/popup-layer}}
-  {{/marker-layer}}
-{{/leaflet-map}}
+<form class="Form" {{action "updateCoordinates" newLat newLng on="submit"}}>
+	{{#leaflet-map
+			 maxBounds=maxBounds
+			 lat=newLat
+			 lng=newLng
+			 zoom=zoom
+			 onMoveend=(action "updateCenter")}}
+		{{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
+		{{#marker-layer
+				 lat=currentLat
+				 lng=currentLng}}
+			{{#popup-layer}}
+				Your radio
+			{{/popup-layer}}
+		{{/marker-layer}}
+	{{/leaflet-map}}
 
-<div>
-	<label>Latitude: {{input value=newLat }}</label>
-	<label>Longitude: {{input value=newLng }}</label>
-</div>
+	<!-- <div class="Form-group">
+			 <label>Latitude: {{input value=newLat }}</label>
+			 </div>
+			 <div class="Form-group">
+			 <label>Longitude: {{input value=newLng }}</label>
+			 </div> -->
+	<div class="BtnGroupWrapper BtnGroupWrapper--full">
+		<button class="Btn" {{action "cancel"}}>Cancel</button>
+		<button type="submit" class="Btn Btn--primary">
+			Update localisation
+		</button>
+	</div>
+</form>
 
 {{yield}}

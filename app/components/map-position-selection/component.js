@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {Component} = Ember;
+const {Component, get} = Ember;
 
 export default Component.extend({
 	classNames: ['Map', 'Map--selection'],
@@ -10,12 +10,14 @@ export default Component.extend({
 	maxBounds: [[90,-180], [-90, 180]],
 	actions: {
     updateCenter(e) {
-			console.log('center', center)
       let center = e.target.getCenter();
       this.setProperties({
 				'newLat': center.lat,
 				'newLng': center.lng
 			});
-    }
+    },
+		updateCoordinates(lat, lng) {
+			get(this, 'updateCoordinates')({lat, lng})
+		}
   }
 });
