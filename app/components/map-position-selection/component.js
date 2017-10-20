@@ -1,7 +1,6 @@
-import Ember from 'ember';
-import {task} from 'ember-concurrency';
+import Ember from 'ember'
 
-const { Component, get } = Ember
+const { Component } = Ember
 
 export default Component.extend({
 	classNames: ['Map', 'Map--selection'],
@@ -10,15 +9,12 @@ export default Component.extend({
 	zoom: 0.7,
 	maxBounds: [[90, -180], [-90, 180]],
 	actions: {
-    updateCenter(e) {
-      let center = e.target.getCenter();
-      this.setProperties({
-				'newLat': center.lat,
-				'newLng': center.lng
-			});
-    },
-		updateCoordinates: task(function * (lat, lng) {
-			yield get(this, 'updateCoordinates').perform();
-		}).drop()
-  }
-});
+		updateCenter(e) {
+			let center = e.target.getCenter()
+			this.setProperties({
+				newLat: center.lat,
+				newLng: center.lng
+			})
+		}
+	}
+})
