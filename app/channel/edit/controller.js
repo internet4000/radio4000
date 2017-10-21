@@ -3,89 +3,70 @@ import { task } from 'ember-concurrency'
 import clean from 'radio4000/utils/clean'
 import reservedUrls from 'radio4000/utils/reserved-urls'
 
-const { Controller, computed, debug, get, set} = Ember
+const { Controller, debug, get, set } = Ember
 
 export default Controller.extend({
-	cleanedSlug: computed('model.slug', function () {
-		return clean(get(this, 'model.slug'))
-	}),
+	initialSlug: undefined,
 
-	slugIsReserved: computed('cleanedSlug', function () {
-		const cleanedSlug = get(this, 'cleanedSlug')
-		return reservedUrls.any(reservedSlug => reservedSlug === cleanedSlug)
-	}),
-
-	validateSlug: task(function * () {
-		const slug = get(this, 'cleanedSlug')
-
-		// Check if slug is reserved.
-		if (get(this, 'slugIsReserved')) {
+	validateSlug: task(function * (slug) {
+		// Is it reserved?
+		const slugIsReserved = reservedUrls.any(reservedSlug => reservedSlug === slug)
+		if (slugIsReserved) {
 			throw new Error(`The slug "${slug}" is reserved`)
 		}
-
-		// Check if the slug is already taken by another channel.
-		const query = yield this.store.query('channel', {
-			orderBy: 'slug',
-			equalTo: slug
-		})
+		// Is is taken by another channel?
+		const query = yield this.store.query('channel', {orderBy: 'slug', equalTo: slug})
 		if (query.get('firstObject')) {
 			throw new Error(`The slug "${slug}" is already taken`)
 		}
-
-		debug('slug is free')
-		return slug
 	}),
 
 	saveChannel: task(function * () {
 		const messages = get(this, 'flashMessages')
 		const channel = get(this, 'model')
-		const slug = get(channel, 'slug')
-		const initialSlug = get(this, 'initialSlug')
 
 		// If nothing changed there's no need to save.
 		if (!channel.get('hasDirtyAttributes')) {
-			debug('nothing changed')
-			this.send('goBack')
-			return
+			return this.send('goBack')
 		}
 
 		// Check form validation.
 		try {
 			yield channel.validate()
 		} catch (err) {
-			debug('form validation failed')
-			console.log(err)
-			throw new Error('channel form is not valid')
+			throw new Error('The channel is not valid')
 		}
 
-		// If the slug changed, we need to validate it as well.
-		if (initialSlug !== slug) {
+		// Check if the cleaned slug is different from original slug.
+		// If so, validate it.
+		const initialSlug = get(this, 'initialSlug')
+		const cleanedSlug = clean(channel.get('slug'))
+		const slugChanged = initialSlug !== cleanedSlug
+		if (slugChanged) {
 			try {
-				const validSlug = yield get(this, 'validateSlug').perform()
-				channel.set('slug', validSlug)
-				this.set('shouldRefresh', true)
+				yield get(this, 'validateSlug').perform(cleanedSlug)
 			} catch (err) {
-				console.log(err)
 				messages.warning(err)
 				return
 			}
+			// Set the cleaned slug.
+			channel.set('slug', cleanedSlug)
 		}
 
+		// Actually save the channel.
 		try {
 			yield channel.save()
-			debug('saved channel')
-			messages.success('Saved channel')
+
 			// We have to transition if the slug changed. Otherwise reloading is a 404.
-			if (get(this, 'shouldRefresh')) {
-				set(this, 'shouldRefresh', false)
+			if (slugChanged) {
 				set(this, 'initialSlug', channel.get('slug'))
 				debug('refreshing because slug changed')
 				this.transitionToRoute('channel.edit', channel.get('slug'))
+				messages.success('Saved channel')
 			}
 		} catch (err) {
-			console.log(err)
-			debug('could not save channel')
 			messages.warning(`Sorry, we couldn't save your radio.`)
+			throw new Error(err)
 		}
 	}).keepLatest(),
 
@@ -112,7 +93,6 @@ export default Controller.extend({
 			return image
 				.save()
 				.then(image => {
-					debug('Image saved.')
 					channel.get('images').addObject(image)
 					channel.save().then(() => {
 						debug('Saved channel with image')
@@ -129,7 +109,7 @@ export default Controller.extend({
 
 		goBack() {
 			// Clear any unsaved changes.
-			Ember.debug('clearing unsaved changes and going back to channel.index')
+			debug('clearing unsaved changes and going back to channel.index')
 			get(this, 'model').rollbackAttributes()
 			this.transitionToRoute('channel', get(this, 'model'))
 		}
