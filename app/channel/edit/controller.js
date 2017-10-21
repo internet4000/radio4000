@@ -3,10 +3,27 @@ import { task } from 'ember-concurrency'
 import clean from 'radio4000/utils/clean'
 import reservedUrls from 'radio4000/utils/reserved-urls'
 
-const { Controller, debug, get, set } = Ember
+const { Controller, computed, debug, get, set } = Ember
 
 export default Controller.extend({
+	// Used to cache the initial slug. Comes from the route's setupController.
 	initialSlug: undefined,
+
+	// Used to cache the lat/lng before saving.
+	newLat: null,
+	newLng: null,
+
+	// sameLatitude: equal('lat', 'model.coordinatesLatitude'),
+	// sameLongitude: equal('lng', 'model.coordinatesLongitude'),
+	// hasNewCoordinates: and('sameLatitude', 'sameLongitude'),
+	hasNewCoordinates: computed('newLat', 'newLng', 'model.{coordinatesLatitude,coordinatesLongitude}', function() {
+		const lat = get(this, 'model.coordinatesLatitude')
+		const lng = get(this, 'model.coordinatesLongitude')
+		const newLat = get(this, 'newLat')
+		const newLng = get(this, 'newLng')
+		console.log({lat, lng, newLat, newLng})
+		return !(lat === newLat && lng === newLng)
+	}),
 
 	validateSlug: task(function * (slug) {
 		// Is it reserved?
@@ -70,16 +87,25 @@ export default Controller.extend({
 		}
 	}).keepLatest(),
 
-	updateCoordinates: task(function * (coordinates) {
+	saveCoordinates: task(function * () {
 		const channel = get(this, 'model')
 		channel.setProperties({
-			coordinatesLatitude: coordinates.lat,
-			coordinatesLongitude: coordinates.lng
+			coordinatesLatitude: get(this, 'newLat'),
+			coordinatesLongitude: get(this, 'newLng')
 		})
 		yield channel.save()
 	}).drop(),
 
 	actions: {
+		resetCoordinates() {
+			// how to reset?
+		},
+		updateCoordinates(position) {
+			this.setProperties({
+				newLat: position.lat,
+				newLng: position.lng
+			})
+		},
 		saveImage(cloudinaryId) {
 			if (!cloudinaryId) {
 				throw new Error('Could not save image. Missing cloudinary id')

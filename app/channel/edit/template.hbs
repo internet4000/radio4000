@@ -23,7 +23,6 @@
 
 <section class="Section">
 	<div class="Container">
-		{{!-- <h2>Details</h2> --}}
 		{{channel-edit-details
 			channel=model
 			submitTask=(perform saveChannel)
@@ -35,12 +34,34 @@
 	<div class="Container">
 		<h2>Localisation</h2>
 		<p>You can place your radio channel on the map, wherever you feel like it.</p>
-		<div class="FormGroup">
-			{{!-- {{map-position-selection
-				currentLat=model.coordinatesLatitude
-				currentLng=model.coordinatesLongitude
-				updateCoordinates=(perform updateCoordinates)}} --}}
-		</div>
+		
+		<ul>
+			<li>lat: {{model.coordinatesLatitude}}</li>
+			<li>lng: {{model.coordinatesLongitude}}</li>
+			<li>new lat: {{newLat}}</li>
+			<li>new lng: {{newLng}}</li>
+			<li>has new coordinates? {{hasNewCoordinates}}</li>
+		</ul>
+
+		{{map-world
+			lat=(readonly model.coordinatesLatitude)
+			lng=(readonly model.coordinatesLongitude)
+			onUpdate=(action "updateCoordinates")
+		}}
+
+		{{#if hasNewCoordinates}}
+			<div class="BtnGroupWrapper BtnGroupWrapper--full">
+				{{!-- <button class="Btn" {{action "resetCoordinates"}}>Cancel</button> --}}
+				<button
+					onclick={{perform saveCoordinates}}
+					class="Btn Btn--primary"
+					title="Update the localisation coordinates of your radio channel"
+					disabled={{saveCoordinates.isRunning}}>
+					{{if saveCoordinates.isIdle "Save new coordinates" "Saving…"}}
+				</button>
+			</div>
+		{{/if}}
+
 	</div>
 </section>
 
