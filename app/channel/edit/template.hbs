@@ -5,24 +5,19 @@
 
 	<div class="Container">
 		<p><label>Image</label></p>
-		<div class="u-flex">
-			{{#if model.coverImage}}
-				<figure style="max-width: 100px">
-					{{channel-cover src=model.coverImage.src}}
-				</figure>
-			{{/if}}
-			
-			{{#if model.coverImage}}
-				<button class="Btn Btn--small" title="To change your image, you'll need to delete this one first" {{action "deleteImage"}}>
-					Delete image
-				</button>
-			{{else}}
-				{{cloudinary-upload
-					cloudName='radio4000'
-					unsignedUploadPreset='tc44ivjo'
-					didUpload=(action "saveImage")}}
-			{{/if}}
-		</div>
+		{{#if model.coverImage}}
+			<figure style="max-width: 100px">
+				{{channel-cover src=model.coverImage.src}}
+			</figure>
+			<button class="Btn Btn--small" title="To change your image, you'll need to delete this one first" {{action "deleteImage"}}>
+				Delete image
+			</button>
+		{{else}}
+			{{cloudinary-upload
+				cloudName='radio4000'
+				unsignedUploadPreset='tc44ivjo'
+				didUpload=(action "saveImage")}}
+		{{/if}}
 	</div>
 </section>
 
