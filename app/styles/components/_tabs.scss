@@ -5,6 +5,7 @@
  */
 .Tabs {
 	display: flex;
+	flex: 1;
 	flex-flow: column wrap;
 	flex-shrink: 0;
 
@@ -61,7 +62,8 @@
 }
 
 .Tabs-divider {
-	margin: auto;
+	margin-top: auto;
+	margin-bottom: auto;
 	color: $slightgray;
 }
 
@@ -88,7 +90,7 @@
 			border-bottom: 3px solid $primary-color;
 		}
 
-		// equal widths
+		// equal widths (not on mobile to save space)
 		@media (min-width: $layout-m) {
 			flex: 1;
 		}
