@@ -1,3 +1,6 @@
+<li>lat: {{currentLat}}</li>
+<li>long: {{currentLng}}</li>
+
 {{#if hasLocation}}
 	{{#leaflet-map
 			 maxBounds=maxBounds
@@ -15,21 +18,31 @@
 		{{/marker-layer}}
 	{{/leaflet-map}}
 
+
+
 	<div class="BtnGroupWrapper BtnGroupWrapper--full">
-		<button class="Btn" onclick={{perform submitTask null null}}>Remove location</button>
+
+		<div class="BtnGroup">
+			<button class="Btn" onclick={{perform submitTask null null}}>Remove location</button>
+			{{#if showButtons}}
+				<button class="Btn Btn--text" {{action "cancel"}}>Cancel</button>
+			{{/if}}
+		</div>
+
 		{{#if showButtons}}
-			<button class="Btn Btn--text" {{action "cancel"}}>Cancel</button>
-			<button
-				class="Btn Btn--primary"
-				title="Update the coordinates of your radio channel"
-				onclick={{perform submitTask currentLat currentLng}}
-				disabled={{submitTask.isRunning}}>
-				{{if submitTask.isIdle "Update coordinates" "Updating…"}}
-			</button>
+			<div class="BtnGroup--right">
+				<button
+					class="Btn Btn--primary"
+					title="Update the coordinates of your radio channel"
+					onclick={{perform submitTask currentLat currentLng}}
+					disabled={{submitTask.isRunning}}>
+					{{if submitTask.isIdle "Update coordinates" "Updating…"}}
+				</button>
+			</div>
 		{{/if}}
 	</div>
 {{else}}
-	<button class="Btn" onclick={{perform submitTask 1 1}}>Add location</button>
+	<button class="Btn Btn--primary" onclick={{perform submitTask 10.499998 40.499998}}>Add location</button>
 {{/if}}
 
 {{yield}}
