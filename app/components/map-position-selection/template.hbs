@@ -14,11 +14,8 @@
 			{{/popup-layer}}
 		{{/marker-layer}}
 	{{/leaflet-map}}
-
-
-
+	
 	<div class="BtnGroupWrapper BtnGroupWrapper--full">
-
 		<div class="BtnGroup">
 			<button class="Btn" onclick={{perform submitTask null null}}>Remove location</button>
 			{{#if showButtons}}
@@ -33,15 +30,13 @@
 					title="Update the coordinates of your radio channel"
 					onclick={{perform submitTask currentLat currentLng}}
 					disabled={{submitTask.isRunning}}>
-					{{if submitTask.isIdle "Update coordinates" "Updating…"}}
+					{{if submitTask.isIdle "Save coordinates" "Saving…"}}
 				</button>
 			</div>
 		{{/if}}
 	</div>
 {{else}}
-	<button class="Btn Btn--primary" onclick={{perform submitTask
-																							 10.487811882056695
-																							 40.42968750000001 }}>Add location</button>
+	<button class="Btn Btn--primary" onclick={{perform submitTask 10.487811882056695 40.42968750000001}}>Add location</button>
 {{/if}}
 
 {{yield}}
