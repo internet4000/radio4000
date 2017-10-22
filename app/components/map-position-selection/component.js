@@ -33,9 +33,7 @@ export default Component.extend({
 		},
 		cancel() {
 			const instance = get(this, 'leafletInstance')
-			const lat = get(this, 'lat')
-			const lng = get(this, 'lng')
-			instance.panTo([lat, lng])
+			instance.flyTo(get(this, 'location'))
 		},
 		setLeafletInstance(event) {
 			set(this, 'leafletInstance', event.target)
