@@ -1,5 +1,5 @@
 import Ember from 'ember'
-import { task, timeout } from 'ember-concurrency'
+import { task } from 'ember-concurrency'
 import clean from 'radio4000/utils/clean'
 import reservedUrls from 'radio4000/utils/reserved-urls'
 
