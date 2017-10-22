@@ -1,6 +1,5 @@
 import Ember from 'ember'
-import { not, equal } from 'ember-awesome-macros'
-
+import { not, equal, hash } from 'ember-awesome-macros'
 const { Component, computed, get, set } = Ember
 
 export default Component.extend({
@@ -10,17 +9,13 @@ export default Component.extend({
 	zoom: 2,
 	maxBounds: [[90, -180], [-90, 180]],
 
+	location: hash('lat', 'lng'),
+	hasLocation: computed.and('lat', 'lng'),
+
 	// Updated by the leaflet map via an action.
 	currentLat: null,
 	currentLng: null,
-
 	showButtons: not(equal('lat', 'currentLat'), equal('lng', 'currentLng')),
-
-	location: computed('lat', 'lng', function() {
-		const lat = get(this, 'lat')
-		const lng = get(this, 'lng')
-		return { lat, lng }
-	}),
 
 	actions: {
 		updateCenter(e) {

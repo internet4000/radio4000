@@ -1,30 +1,35 @@
-{{#leaflet-map
-	maxBounds=maxBounds
-	lat=lat
-	lng=lng
-	zoom=zoom
-	onLoad=(action "setLeafletInstance")
-	onMoveend=(action "updateCenter")
-}}
-	{{tile-layer url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"}}
-	{{#marker-layer location=location}}
-		{{#popup-layer}}
-			<div style="padding:1rem 2rem">Your radio</div>
-		{{/popup-layer}}
-	{{/marker-layer}}
-{{/leaflet-map}}
+{{#if hasLocation}}
+	{{#leaflet-map
+			 maxBounds=maxBounds
+			 lat=lat
+			 lng=lng
+			 zoom=zoom
+			 onLoad=(action "setLeafletInstance")
+			 onMoveend=(action "updateCenter")
+	}}
+		{{tile-layer url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"}}
+		{{#marker-layer location=location}}
+			{{#popup-layer}}
+				<div style="padding:1rem 2rem">Your radio</div>
+			{{/popup-layer}}
+		{{/marker-layer}}
+	{{/leaflet-map}}
 
-{{#if showButtons}}
 	<div class="BtnGroupWrapper BtnGroupWrapper--full">
-		<button class="Btn Btn--text" {{action "cancel"}}>Cancel</button>
-		<button
-			class="Btn Btn--primary"
-			title="Update the coordinates of your radio channel"
-			onclick={{perform submitTask currentLat currentLng}}
-			disabled={{submitTask.isRunning}}>
-			{{if submitTask.isIdle "Update coordinates" "Updating…"}}
-		</button>
+		<button class="Btn" onclick={{perform submitTask null null}}>Remove location</button>
+		{{#if showButtons}}
+			<button class="Btn Btn--text" {{action "cancel"}}>Cancel</button>
+			<button
+				class="Btn Btn--primary"
+				title="Update the coordinates of your radio channel"
+				onclick={{perform submitTask currentLat currentLng}}
+				disabled={{submitTask.isRunning}}>
+				{{if submitTask.isIdle "Update coordinates" "Updating…"}}
+			</button>
+		{{/if}}
 	</div>
+{{else}}
+	<button class="Btn" onclick={{perform submitTask 1 1}}>Add location</button>
 {{/if}}
 
 {{yield}}
