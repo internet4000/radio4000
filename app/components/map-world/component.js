@@ -6,6 +6,8 @@ const { Component, get } = Ember
 
 export default Component.extend({
 	classNames: ['Map'],
+	// lat,
+	// lng
 	zoom: 5,
 	minZoom: 2,
 	maxBounds: [[-90, -180], [90, 180]],

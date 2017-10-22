@@ -5,9 +5,9 @@
 	lng=lng
 	zoom=zoom
 	onUpdate=(action "updatePosition")
-	as |item|
-}}
-	{{channel-card channel=item}}
+	as |channel|
+}}	
+	{{channel-card channel=channel wide=true}}
 {{/map-world}}
 
 {{outlet}}
