@@ -1,10 +1,13 @@
-{{map-world
+{{#map-world
 	class="Map--fullscreen"
 	items=channelsWithCoordinates
 	lat=lat
 	lng=lng
 	zoom=zoom
 	onUpdate=(action "updatePosition")
+	as |item|
 }}
+	{{channel-card channel=item}}
+{{/map-world}}
 
 {{outlet}}

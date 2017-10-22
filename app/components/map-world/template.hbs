@@ -14,12 +14,10 @@
 		{{#if item.coordinates}}
 			{{#marker-layer location=item.coordinates}}
 				{{#popup-layer}}
-					{{channel-card channel=item}}
+					{{yield item}}
 				{{/popup-layer}}
 			{{/marker-layer}}
 		{{/if}}
 	{{/each}}
 
 {{/leaflet-map}}
-
-{{yield}}
