@@ -1,16 +1,16 @@
 import Ember from 'ember'
-import { not, equal, hash } from 'ember-awesome-macros'
-const { Component, computed, get, set } = Ember
+import { and, not, equal, hash } from 'ember-awesome-macros'
+const { Component, get, set } = Ember
 
 export default Component.extend({
 	classNames: ['Map', 'Map--selection'],
 	// lat
 	// lng
-	zoom: 2,
+	zoom: 3,
 	maxBounds: [[90, -180], [-90, 180]],
 
 	location: hash('lat', 'lng'),
-	hasLocation: computed.and('lat', 'lng'),
+	hasLocation: and('lat', 'lng'),
 
 	// Updated by the leaflet map via an action.
 	currentLat: null,
