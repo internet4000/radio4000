@@ -8,12 +8,7 @@ export default Controller.extend({
 	lng: 33.04687500000001,
 	zoom: 2,
 
-	channelsWithCoordinates: computed.filter('model', function(channel) {
-		return (
-			channel.get('coordinatesLatitude') &&
-			channel.get('coordinatesLongitude')
-		)
-	}),
+	channelsWithCoordinates: computed.filterBy('model', 'coordinates'),
 
 	actions: {
 		updatePosition(pos) {
