@@ -7,6 +7,7 @@ const { Component,
 
 export default Component.extend({
 	classNames: ['Map', 'Map--selection'],
+	showButtons: false,
 	newLat: 0,
 	newLng: 20.7421875,
 	location: computed('lat', 'lng', function () {
@@ -16,9 +17,19 @@ export default Component.extend({
 	}),
 	zoom: 0.7,
 	maxBounds: [[90, -180], [-90, 180]],
+
+	update: task(function * () {
+		console.log(test)
+	}),
+
 	actions: {
-		update: task(function * () {
-			console.log(test)
-		})
+		updateCenter() {
+			this.set('showButtons', true)
+		},
+		cancel() {
+			this.set('showButtons', false)
+			console.log(this.$())
+			this.$().panTo(get(this, 'location'))
+		}
 	}
 })

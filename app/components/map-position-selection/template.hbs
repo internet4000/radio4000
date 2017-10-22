@@ -19,15 +19,17 @@
 			 <div class="Form-group">
 			 <label>Longitude: {{input value=newLng }}</label>
 			 </div> -->
-	<div class="BtnGroupWrapper BtnGroupWrapper--full">
-		<button class="Btn" {{action "cancel"}}>Cancel</button>
-		<button
-			class="Btn Btn--primary"
-			title="Update the localisation coordinates of your radio channel"
-			disabled={{update.isRunning}}>
-			{{if update.isIdle "Update localisation" "Updating…"}}
-		</button>
-	</div>
+	{{#if showButtons}}
+		<div class="BtnGroupWrapper BtnGroupWrapper--full">
+			<button class="Btn" {{action "cancel"}}>Cancel</button>
+			<button
+				class="Btn Btn--primary"
+				title="Update the localisation coordinates of your radio channel"
+				disabled={{update.isRunning}}>
+				{{if update.isIdle "Update localisation" "Updating…"}}
+			</button>
+		</div>
+	{{/if}}
 </form>
 
 {{yield}}
