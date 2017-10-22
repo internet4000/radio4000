@@ -69,24 +69,8 @@ export default DS.Model.extend(Validations, {
 	isFeatured: attr('boolean'),
 	isPremium: attr('boolean'),
 
-	coordinatesLongitude: attr('number', {
-		defaultValue() {
-			return 1
-		}
-	}),
-	coordinatesLatitude: attr('number', {
-		defaultValue() {
-			return 1
-		}
-	}),
-	coordinates: computed('coordinatesLatitude', 'coordinatesLongitude', function() {
-		const lat = get(this, 'coordinatesLatitude')
-		const lng = get(this, 'coordinatesLongitude');
-		if (Boolean(lat) && Boolean(lng)) {
-			return [lat, lng]
-		}
-		return null
-	}),
+	coordinatesLongitude: attr('number'),
+	coordinatesLatitude: attr('number'),
 
 	// Set the latest image as the cover image.
 	coverImage: computed('images.[]', function () {
