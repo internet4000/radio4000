@@ -17,6 +17,7 @@ export default Controller.extend({
 
 	actions: {
 		updatePosition(pos) {
+			console.log(pos)
 			this.setProperties({
 				lat: pos.lat,
 				lng: pos.lng,
