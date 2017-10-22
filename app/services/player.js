@@ -43,7 +43,6 @@ export default Service.extend({
 	},
 
 	onTrackEnded(event) {
-		console.log('onTrackEnded:event', event);
 		get(this, 'store').findRecord('track', event.track.id).then(track => {
 			track.set('finishedInCurrentPlayer', true);
 		});

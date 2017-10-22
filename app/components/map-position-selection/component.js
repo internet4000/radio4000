@@ -19,7 +19,6 @@ export default Component.extend({
 
 	actions: {
 		updateCenter(e) {
-			console.log('update center')
 			const center = e.target.getCenter()
 			this.setProperties({
 				currentLat: center.lat,

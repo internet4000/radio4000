@@ -26,8 +26,6 @@ export default Controller.extend({
 		const messages = get(this, 'flashMessages')
 		const channel = get(this, 'model')
 
-		console.log('saveChannelDetails')
-
 		// If nothing changed there's no need to save.
 		if (!channel.get('hasDirtyAttributes')) {
 			debug('nothing changed')
