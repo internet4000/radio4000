@@ -1,4 +1,4 @@
-<form class="Form" onsubmit={{perform updateCoordinates newLat newLng}}>
+<form class="Form" onsubmit={{perform update newLat newLng}}>
 	{{#leaflet-map
 			 maxBounds=maxBounds
 			 lat=newLat
@@ -6,9 +6,7 @@
 			 zoom=zoom
 			 onMoveend=(action "updateCenter")}}
 		{{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
-		{{#marker-layer
-				 lat=currentLat
-				 lng=currentLng}}
+		{{#marker-layer location=location}}
 			{{#popup-layer}}
 				Your radio
 			{{/popup-layer}}
@@ -26,8 +24,8 @@
 		<button
 			class="Btn Btn--primary"
 			title="Update the localisation coordinates of your radio channel"
-			disabled={{updateCoordinates.isRunning}}>
-			{{if updateCoordinates.isIdle "Update localisation" "Updating…"}}
+			disabled={{update.isRunning}}>
+			{{if update.isIdle "Update localisation" "Updating…"}}
 		</button>
 	</div>
 </form>

@@ -34,7 +34,7 @@
 	<div class="Container">
 		<h2>Localisation</h2>
 		<p>You can place your radio channel on the map, wherever you feel like it.</p>
-		
+
 		<ul>
 			<li>lat: {{model.coordinatesLatitude}}</li>
 			<li>lng: {{model.coordinatesLongitude}}</li>
@@ -43,10 +43,9 @@
 			<li>has new coordinates? {{hasNewCoordinates}}</li>
 		</ul>
 
-		{{map-world
+		{{map-position-selection
 			lat=(readonly model.coordinatesLatitude)
 			lng=(readonly model.coordinatesLongitude)
-			onUpdate=(action "updateCoordinates")
 		}}
 
 		{{#if hasNewCoordinates}}
