@@ -1,0 +1,26 @@
+{{!-- 
+  Add content you wish automatically added to the documents head
+  here. The 'model' available in this template can be populated by
+  setting values on the 'head-data' service. 
+--}}
+
+{{#if model.title}}
+	<meta property="og:title" content={{model.title}}>
+	<title>{{model.title}}</title>
+{{else}}
+	<title>Radio4000</title>
+{{/if}}
+
+{{#if model.description}}
+	<meta property="og:description" content={{model.description}}>
+{{/if}}
+
+{{#if model.image}}
+	<meta property="og:image" content={{cover-img model.image format="jpg" size=400}}>
+{{/if}}
+
+{{#if model.slug}}
+	<link rel="alternate" type="application/json+oembed"
+  href={{concat "https://api.radio4000.com/oembed?slug=" model.slug}}
+  title={{concat model.title "'s oEmbed profile"}}>	
+{{/if}}

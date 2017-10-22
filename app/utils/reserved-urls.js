@@ -1,14 +1,13 @@
 export default [
-	'add',
+	'404',
 	'about',
-	'job',
-	'jobs',
+	'add',
 	'blog',
 	'bookmarklet',
-	'dashboard',
 	'help',
 	'intro',
+	'job',
+	'jobs',
 	'login',
-	'404',
 	'styleguide'
-];
+]

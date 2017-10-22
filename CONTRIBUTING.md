@@ -1,8 +1,6 @@
 # The development workflow of Radio4000
 
-https://github.com/internet4000/radio4000/
-
-This document explains the workflow we normally take when developing on Radio4000. We follow a basic Git Flow with two long-lived branches: `master` and `production`. 
+Radio4000 is an open source web application. We welcome anyone to contribute! Also if the workflow detailed below does not make sense to you. It explains the workflow we normally follow when developing on Radio4000. We use a basic Git Flow with two long-lived branches: `master` and `production`. 
 
 ## TLDR
 
