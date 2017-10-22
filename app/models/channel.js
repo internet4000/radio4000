@@ -72,7 +72,10 @@ export default DS.Model.extend(Validations, {
 
 	coordinatesLongitude: attr('number'),
 	coordinatesLatitude: attr('number'),
-	coordinates: hash('coordinatesLongitude', 'coordinatesLatitude'),
+	coordinates: hash({
+		lng: 'coordinatesLongitude',
+		lat: 'coordinatesLatitude'
+	}),
 
 	// Set the latest image as the cover image.
 	coverImage: computed('images.[]', function () {
