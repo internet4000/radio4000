@@ -1,5 +1,6 @@
 import Ember from 'ember'
 import { task, timeout } from 'ember-concurrency'
+import { hash } from 'ember-awesome-macros'
 
 const { Component, get } = Ember
 
@@ -13,6 +14,8 @@ export default Component.extend({
 		yield timeout(200)
 		get(this, 'onUpdate')(position)
 	}).drop(),
+
+	location: hash('lat', 'lng'),
 
 	actions: {
 		updateCenter(e) {

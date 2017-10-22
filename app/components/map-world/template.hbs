@@ -10,11 +10,11 @@
 	{{tile-layer url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"}}
 
 	{{#each items as |item|}}
-		{{#marker-layer location=item.coordinates}}
-			{{#popup-layer}}
-				{{yield item}}
-			{{/popup-layer}}
-		{{/marker-layer}}
+<!-- {{#marker-layer location=item.coordinates}}
+				 {{#popup-layer}}
+				 {{yield item}}
+				 {{/popup-layer}}
+				 {{/marker-layer}} -->
 	{{/each}}
 
 {{/leaflet-map}}

@@ -2,6 +2,7 @@ import Ember from 'ember';
 import DS from 'ember-data';
 import firebase from 'firebase';
 import {task} from 'ember-concurrency';
+import {hash} from 'ember-awesome-macros';
 import {validator, buildValidations} from 'ember-cp-validations';
 import channelConst from 'radio4000/utils/channel-const';
 import toggleObject from 'radio4000/utils/toggle-object';
@@ -71,6 +72,7 @@ export default DS.Model.extend(Validations, {
 
 	coordinatesLongitude: attr('number'),
 	coordinatesLatitude: attr('number'),
+	coordinates: hash('coordinatesLongitude', 'coordinatesLatitude'),
 
 	// Set the latest image as the cover image.
 	coverImage: computed('images.[]', function () {
