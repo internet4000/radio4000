@@ -1,15 +1,17 @@
-import Ember from 'ember';
-import groupBy from 'radio4000/utils/group-by';
+import Ember from 'ember'
+import { array, raw } from 'ember-awesome-macros'
 
-const {Component, computed} = Ember;
+const { Component } = Ember
 
 export default Component.extend({
 	classNames: ['Tracks'],
 	items: null,
 	numbered: false,
+	grouped: false,
 
-	// sorts our items newest on top
-	sortKeys: ['created:desc'],
-	sortedItems: computed.sort('items', 'sortKeys'),
-	groupedItems: groupBy('sortedItems', 'createdMonth')
-});
+	// Newest on top.
+	sortedItems: array.sort('items', ['created:desc']),
+
+	// Tracks grouped by month.
+	groupedItems: array.groupBy('sortedItems', raw('createdMonth'))
+})
