@@ -6,8 +6,9 @@ const { Route, get } = Ember
 
 export default Route.extend({
 	// We will show X random favorites from Y featured channels.
-	maxFeatured: 3,
-	maxFavorites: 3,
+	// 9 total is a good number for our current layout on desktop.
+	maxFeatured: 6,
+	maxFavorites: 2,
 
 	model() {
 		return this.findFeatured().then(featured => {
