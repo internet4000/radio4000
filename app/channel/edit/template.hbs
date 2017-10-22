@@ -35,11 +35,6 @@
 		<h2>Map</h2>
 		<p>You can place your radio channel on the map, wherever you feel like it.</p>
 
-		<ul>
-			<li>lat: {{model.coordinatesLatitude}}</li>
-			<li>long: {{model.coordinatesLongitude}}</li>
-		</ul>
-
 		{{map-position-selection
 			submitTask=saveCoordinates
 			lat=(readonly model.coordinatesLatitude)

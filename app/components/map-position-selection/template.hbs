@@ -1,6 +1,3 @@
-<li>lat: {{currentLat}}</li>
-<li>long: {{currentLng}}</li>
-
 {{#if hasLocation}}
 	{{#leaflet-map
 			 maxBounds=maxBounds
@@ -42,7 +39,9 @@
 		{{/if}}
 	</div>
 {{else}}
-	<button class="Btn Btn--primary" onclick={{perform submitTask 10.499998 40.499998}}>Add location</button>
+	<button class="Btn Btn--primary" onclick={{perform submitTask
+																							 10.487811882056695
+																							 40.42968750000001 }}>Add location</button>
 {{/if}}
 
 {{yield}}
