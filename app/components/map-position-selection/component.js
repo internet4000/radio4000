@@ -19,8 +19,10 @@ export default Component.extend({
 	maxBounds: [[90, -180], [-90, 180]],
 
 	update: task(function * () {
-		console.log(test)
-	}),
+		console.log('test')
+		yield setTimeout(2000)
+		return true
+	}).drop(),
 
 	actions: {
 		updateCenter() {
@@ -28,8 +30,6 @@ export default Component.extend({
 		},
 		cancel() {
 			this.set('showButtons', false)
-			console.log(this.$())
-			this.$().panTo(get(this, 'location'))
 		}
 	}
 })
