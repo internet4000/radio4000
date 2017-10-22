@@ -14,9 +14,9 @@
 
 <div class="BtnGroup Channel-buttons">
 	{{play-shuffle-btn
-		channel=channel
-		expanded=true
-		class="Btn--large Channel-playback"}}
+			channel=channel
+			expanded=true
+			class="Btn--large Channel-playback"}}
 	{{#unless channel.canEdit}}
 		{{btn-favorite channel=channel class="Btn--wide"}}
 	{{/unless}}
@@ -26,16 +26,29 @@
 	<div class="Channel-body">
 		<p class="Channel-slug">
 			<a href="{{href-to 'channel' channel}}" class="" title="To listen, tune in @{{channel.slug}}">@{{channel.slug}}</a>
-		{{#if channel.updated}}
-			<span class="Channel-date Muted" title="{{channel.title}} added music {{time-ago channel.updated}}">{{time-ago channel.updated}}</span>
-		{{/if}}
+		</p>
+		<p>
+			{{#if channel.updated}}
+				<span class="Channel-date Muted" title="{{channel.title}} added music {{time-ago channel.updated}}">{{time-ago channel.updated}}</span>
+			{{/if}}
+			{{#if channel.coordinates}}
+				{{#link-to
+						 'channels.map'
+						 (query-params lat=channel.coordinatesLatitude lng=channel.coordinatesLongitude zoom=8)
+						 class="Muted"
+						 title="Locate {{channel.title}} on the map"}}
+					/{{channel.coordinatesLatitude}}/{{channel.coordinatesLongitude}}
+				{{/link-to}}
+			{{/if}}
 		</p>
 		{{#if channel.body}}
 			<p class="Channel-description">{{channel.body}}</p>
 		{{/if}}
-		{{#if channel.link}}
+		{{#if hasLinks}}
 			<p class="Channel-links">
-				<a class="Muted" href="{{channel.link}}" target="_blank" title="Go to {{channel.title}}'s webpage" rel="noopener">{{channel.link}}</a>
+				{{#if channel.link}}
+					<a class="Muted" href="{{channel.link}}" rel="noopener" target="_blank" title="Go to {{channel.title}}'s webpage">{{channel.link}}</a>
+				{{/if}}
 			</p>
 		{{/if}}
 	</div>
