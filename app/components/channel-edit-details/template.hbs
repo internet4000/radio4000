@@ -1,4 +1,4 @@
-<form {{action "submit" on="submit"}}>
+<form {{action (perform submitTask) on="submit"}}>
 	{{#form-group model=channel valuePath="title" label="Name" as |v|}}
 		{{focus-input
 			value=v
@@ -35,10 +35,10 @@
 	{{/form-group}}
 
 	<p class="BtnGroupWrapper BtnGroupWrapper--full">
+		<button type="button" {{action "cancel"}} class="Btn Btn--text">Cancel</button>
 		<button type="submit" class="Btn Btn--large Btn--primary" disabled={{disableSubmit}}>
 			{{#if submitTask.isRunning}}Saving…{{else}}Save {{/if}}
 		</button>
-		<button type="button" {{action "cancel"}} class="Btn Btn--text">Cancel</button>
 	</p>
 </form>
 

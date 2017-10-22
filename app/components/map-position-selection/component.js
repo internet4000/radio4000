@@ -1,35 +1,44 @@
 import Ember from 'ember'
-import {task} from 'ember-concurrency'
+import { not, equal } from 'ember-awesome-macros'
 
-const { Component,
-				computed,
-				get } = Ember
+const { Component, computed, get, set } = Ember
 
 export default Component.extend({
 	classNames: ['Map', 'Map--selection'],
-	showButtons: false,
-	newLat: 0,
-	newLng: 20.7421875,
-	location: computed('lat', 'lng', function () {
-		const lat = get(this, 'lat'),
-					lng = get(this, 'lng');
-		return { lat, lng }
-	}),
-	zoom: 0.7,
+	// lat
+	// lng
+	zoom: 2,
 	maxBounds: [[90, -180], [-90, 180]],
 
-	update: task(function * () {
-		console.log('test')
-		yield setTimeout(2000)
-		return true
-	}).drop(),
+	// Updated by the leaflet map via an action.
+	currentLat: null,
+	currentLng: null,
+
+	showButtons: not(equal('lat', 'currentLat'), equal('lng', 'currentLng')),
+
+	location: computed('lat', 'lng', function() {
+		const lat = get(this, 'lat')
+		const lng = get(this, 'lng')
+		return { lat, lng }
+	}),
 
 	actions: {
-		updateCenter() {
-			this.set('showButtons', true)
+		updateCenter(e) {
+			console.log('update center')
+			const center = e.target.getCenter()
+			this.setProperties({
+				currentLat: center.lat,
+				currentLng: center.lng
+			})
 		},
 		cancel() {
-			this.set('showButtons', false)
+			const instance = get(this, 'leafletInstance')
+			const lat = get(this, 'lat')
+			const lng = get(this, 'lng')
+			instance.panTo([lat, lng])
+		},
+		setLeafletInstance(event) {
+			set(this, 'leafletInstance', event.target)
 		}
 	}
 })

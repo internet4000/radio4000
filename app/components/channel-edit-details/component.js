@@ -12,9 +12,6 @@ export default Component.extend({
 	disableSubmit: computed.or('submitTask.isRunning', 'cantSave'),
 
 	actions: {
-		submit() {
-			get(this, 'submitTask')()
-		},
 		cancel() {
 			get(this, 'onCancel')()
 		}

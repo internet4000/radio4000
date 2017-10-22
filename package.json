@@ -11,6 +11,7 @@
     "autoprefixer": "^7.1.2",
     "broccoli-asset-rev": "^2.4.5",
     "ember-async-button": "^1.0.2",
+    "ember-awesome-macros": "^0.40.0",
     "ember-browserify": "^1.1.11",
     "ember-cli": "^2.13.3",
     "ember-cli-app-version": "^3.0.0",

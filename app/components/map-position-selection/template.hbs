@@ -1,36 +1,30 @@
-<form class="Form" onsubmit={{perform update newLat newLng}}>
-	{{#leaflet-map
-			 maxBounds=maxBounds
-			 lat=newLat
-			 lng=newLng
-			 zoom=zoom
-			 onMoveend=(action "updateCenter")}}
-		{{!-- {{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}} --}}
-		{{tile-layer url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"}}
-		{{#marker-layer location=location}}
-			{{#popup-layer}}
-				<div style="padding:1rem 2rem">Your radio</div>
-			{{/popup-layer}}
-		{{/marker-layer}}
-	{{/leaflet-map}}
+{{#leaflet-map
+	maxBounds=maxBounds
+	lat=lat
+	lng=lng
+	zoom=zoom
+	onLoad=(action "setLeafletInstance")
+	onMoveend=(action "updateCenter")
+}}
+	{{tile-layer url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"}}
+	{{#marker-layer location=location}}
+		{{#popup-layer}}
+			<div style="padding:1rem 2rem">Your radio</div>
+		{{/popup-layer}}
+	{{/marker-layer}}
+{{/leaflet-map}}
 
-	<!-- <div class="Form-group">
-			 <label>Latitude: {{input value=newLat }}</label>
-			 </div>
-			 <div class="Form-group">
-			 <label>Longitude: {{input value=newLng }}</label>
-			 </div> -->
-	{{#if showButtons}}
-		<div class="BtnGroupWrapper BtnGroupWrapper--full">
-			<button class="Btn" {{action "cancel"}}>Cancel</button>
-			<button
-				class="Btn Btn--primary"
-				title="Update the localisation coordinates of your radio channel"
-				disabled={{update.isRunning}}>
-				{{if update.isIdle "Update localisation" "Updating…"}}
-			</button>
-		</div>
-	{{/if}}
-</form>
+{{#if showButtons}}
+	<div class="BtnGroupWrapper BtnGroupWrapper--full">
+		<button class="Btn Btn--text" {{action "cancel"}}>Cancel</button>
+		<button
+			class="Btn Btn--primary"
+			title="Update the coordinates of your radio channel"
+			onclick={{perform submitTask currentLat currentLng}}
+			disabled={{submitTask.isRunning}}>
+			{{if submitTask.isIdle "Update coordinates" "Updating…"}}
+		</button>
+	</div>
+{{/if}}
 
 {{yield}}
