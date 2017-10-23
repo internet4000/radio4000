@@ -29,8 +29,9 @@ export default Component.extend({
 			const instance = get(this, 'leafletInstance')
 			instance.flyTo(get(this, 'location'))
 		},
-		setLeafletInstance(event) {
+		initMap(event) {
 			set(this, 'leafletInstance', event.target)
+			event.target.zoomControl.setPosition('bottomright')
 		}
 	}
 })

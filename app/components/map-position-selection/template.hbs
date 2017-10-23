@@ -4,7 +4,7 @@
 		lat=lat
 		lng=lng
 		zoom=zoom
-		onLoad=(action "setLeafletInstance")
+		onLoad=(action "initMap")
 		onMoveend=(action "updateCenter")
 	}}
 		{{tile-layer url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"}}
@@ -14,7 +14,7 @@
 			{{/popup-layer}}
 		{{/marker-layer}}
 	{{/leaflet-map}}
-	
+
 	<div class="BtnGroupWrapper BtnGroupWrapper--full">
 		<div class="BtnGroup">
 			<button class="Btn" onclick={{perform submitTask null null}}>Remove location</button>

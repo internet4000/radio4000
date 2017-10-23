@@ -20,6 +20,10 @@ export default Component.extend({
 	location: hash('lat', 'lng'),
 
 	actions: {
+		initMap(event) {
+			const map = event.target
+			map.zoomControl.setPosition('bottomright')
+		},
 		updateCenter(e) {
 			// Create object with lat, lng and zoom.
 			const center = e.target.getCenter()
