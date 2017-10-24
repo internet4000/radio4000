@@ -36,8 +36,9 @@
 						 'channels.map'
 						 (query-params lat=channel.coordinatesLatitude lng=channel.coordinatesLongitude zoom=8)
 						 class="Muted"
-						 title="Locate {{channel.title}} on the map"}}
-					/{{channel.coordinatesLatitude}}/{{channel.coordinatesLongitude}}
+						 title=(concat 'Locate ' channel.title 'on the map')}}
+					/{{do-trucate channel.coordinatesLatitude 5}}
+					/{{do-trucate channel.coordinatesLongitude 5}}
 				{{/link-to}}
 			{{/if}}
 		</p>
