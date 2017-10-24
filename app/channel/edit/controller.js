@@ -1,26 +1,13 @@
 import Ember from 'ember'
 import { task } from 'ember-concurrency'
 import clean from 'radio4000/utils/clean'
-import reservedUrls from 'radio4000/utils/reserved-urls'
+import ValidateSlug from 'radio4000/mixins/validate-slug'
 
 const { Controller, debug, get, set } = Ember
 
-export default Controller.extend({
+export default Controller.extend(ValidateSlug, {
 	// Used to cache the initial slug. Comes from the route's setupController.
 	initialSlug: undefined,
-
-	validateSlug: task(function * (slug) {
-		// Is it reserved?
-		const slugIsReserved = reservedUrls.any(reservedSlug => reservedSlug === slug)
-		if (slugIsReserved) {
-			throw new Error(`The slug "${slug}" is reserved`)
-		}
-		// Is is taken by another channel?
-		const query = yield this.store.query('channel', {orderBy: 'slug', equalTo: slug})
-		if (query.get('firstObject')) {
-			throw new Error(`The slug "${slug}" is already taken`)
-		}
-	}),
 
 	// Props is an optional object with changes.
 	saveChannelDetails: task(function * (props) {

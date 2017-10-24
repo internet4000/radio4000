@@ -1,9 +1,9 @@
 import Ember from 'ember'
 import clean from 'radio4000/utils/clean'
-import randomText from 'radio4000/utils/random-text'
 import { task } from 'ember-concurrency'
 import { validator, buildValidations } from 'ember-cp-validations'
 import channelConst from 'radio4000/utils/channel-const'
+import ValidateSlug from 'radio4000/mixins/validate-slug'
 
 const { warn, computed, get } = Ember
 
@@ -19,23 +19,13 @@ const Validations = buildValidations({
 	]
 })
 
-export default Ember.Controller.extend(Validations, {
+export default Ember.Controller.extend(Validations, ValidateSlug, {
 	title: '',
 
 	disableSubmit: computed.or(
 		'validations.attrs.title.isInvalid',
 		'createRadio.isRunning'
 	),
-
-	// cleans the slug from bad things and suffix it with a random string
-	cleanSlug: computed('title', function() {
-		return clean(this.get('title'))
-	}),
-
-	suffixSlug(slug) {
-		const random = randomText()
-		return `${slug}-${random}`
-	},
 
 	// This tasks calls the other one so we have one place to catch success/fail.
 	createRadio: task(function * (event) {
@@ -56,20 +46,13 @@ export default Ember.Controller.extend(Validations, {
 	reallyCreateRadio: task(function * () {
 		const user = get(this, 'session.currentUser')
 		const title = get(this, 'title').trim()
-		let slug = get(this, 'cleanSlug')
+		let slug = clean(title)
 
 		// If the slug is already taken, suffix it.
 		try {
-			const query = yield this.store.query('channel', {
-				orderBy: 'slug',
-				equalTo: slug
-			})
-			const slugExists = query.get('firstObject')
-			if (slugExists) {
-				slug = this.suffixSlug(slug)
-			}
+			yield get(this, 'validateSlug').perform(slug)
 		} catch (err) {
-			throw new Error(err)
+			slug = this.suffixSlug(slug)
 		}
 
 		// Save the channel, create channel public and relationships, save again
