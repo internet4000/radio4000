@@ -1,6 +1,7 @@
 import Ember from 'ember'
 import { and, not, equal, hash } from 'ember-awesome-macros'
-const { Component, get, set } = Ember
+import {L} from 'ember-leaflet'
+const { Component, computed, get, set } = Ember
 
 export default Component.extend({
 	classNames: ['Map', 'Map--selection'],
@@ -17,7 +18,21 @@ export default Component.extend({
 	currentLng: null,
 	showButtons: not(equal('lat', 'currentLat'), equal('lng', 'currentLng')),
 
+	icon: computed('', {
+		get() {
+			return L.divIcon({
+				className: 'MapMarker',
+				iconSize: [32, 32]
+			})
+		}
+	}),
+
 	actions: {
+		initMap(event) {
+			const map = event.target
+			set(this, 'map', map)
+			map.zoomControl.setPosition('topright')
+		},
 		updateCenter(e) {
 			const center = e.target.getCenter()
 			this.setProperties({
@@ -26,12 +41,8 @@ export default Component.extend({
 			})
 		},
 		cancel() {
-			const instance = get(this, 'leafletInstance')
-			instance.flyTo(get(this, 'location'))
-		},
-		initMap(event) {
-			set(this, 'leafletInstance', event.target)
-			event.target.zoomControl.setPosition('bottomright')
+			const map = get(this, 'map')
+			map.flyTo(get(this, 'location'))
 		}
 	}
 })

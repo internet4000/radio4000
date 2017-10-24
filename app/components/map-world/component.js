@@ -29,7 +29,7 @@ export default Component.extend({
 	actions: {
 		initMap(event) {
 			const map = event.target
-			map.zoomControl.setPosition('bottomright')
+			map.zoomControl.setPosition('topright')
 		},
 		updateCenter(e) {
 			// Create object with lat, lng and zoom.
