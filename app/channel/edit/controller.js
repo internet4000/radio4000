@@ -22,12 +22,16 @@ export default Controller.extend({
 		}
 	}),
 
-	saveChannelDetails: task(function * () {
+	// Props is an optional object with changes.
+	saveChannelDetails: task(function * (props) {
 		const messages = get(this, 'flashMessages')
 		const channel = get(this, 'model')
 
-		// If nothing changed there's no need to save.
-		if (!channel.get('hasDirtyAttributes')) {
+		if (props) {
+			// Merge props into the channel object.
+			Object.assign(channel, props)
+		} else if (!channel.get('hasDirtyAttributes')) {
+			// If nothing changed there's no need to save.
 			debug('nothing changed')
 			return this.send('goBack')
 		}
