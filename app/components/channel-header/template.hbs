@@ -29,17 +29,15 @@
 		</p>
 		<p>
 			{{#if channel.updated}}
-				<span class="Channel-date Muted" title="{{channel.title}} added music {{time-ago channel.updated}}">{{time-ago channel.updated}}</span>
+				<span class="Channel-date Muted" title="{{channel.title}} was last updated {{time-ago channel.updated}}">{{time-ago channel.updated}}</span>
 			{{/if}}
+			<!-- Note here the ``<updated>, (map)` syntax -->
 			{{#if channel.hasCoordinates}}
-				{{#link-to
-						 'channels.map'
-						 (query-params lat=channel.coordinatesLatitude lng=channel.coordinatesLongitude zoom=8)
-						 class="Muted"
-						 title=(concat 'Locate ' channel.title 'on the map')}}
-					/{{do-trucate channel.coordinatesLatitude 5}}
-					/{{do-trucate channel.coordinatesLongitude 5}}
-				{{/link-to}}
+				- {{#link-to
+							 'channels.map'
+							 (query-params lat=channel.coordinatesLatitude lng=channel.coordinatesLongitude zoom=8)
+							 class="Muted"
+							 title=(concat 'Locate ' channel.title ' on the map [' channel.coordinatesLatitude '/' channel.coordinatesLongitude ']')}}map{{/link-to}}
 			{{/if}}
 		</p>
 		{{#if channel.body}}
