@@ -16,7 +16,7 @@ export default Component.extend({
 		get() {
 			return L.divIcon({
 				className: 'MapMarker',
-				iconSize: [40, 40]
+				iconSize: [32, 32]
 			})
 		}
 	}),
