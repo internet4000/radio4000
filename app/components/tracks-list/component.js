@@ -1,5 +1,6 @@
 import Ember from 'ember'
-import { array, raw } from 'ember-awesome-macros'
+import { array } from 'ember-awesome-macros'
+import {raw} from 'ember-awesome-macros/raw'
 
 const { Component } = Ember
 
