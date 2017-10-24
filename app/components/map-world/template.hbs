@@ -10,7 +10,10 @@
 	{{tile-layer url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"}}
 
 	{{#each items as |item|}}
-		{{#marker-layer location=item.coordinates}}
+		{{#marker-layer
+			icon=icon
+			location=item.coordinates
+		}}
 			{{#popup-layer}}
 				{{yield item}}
 			{{/popup-layer}}

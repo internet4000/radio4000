@@ -1,7 +1,8 @@
 import Ember from 'ember'
 import { task, timeout } from 'ember-concurrency'
+import {L} from 'ember-leaflet'
 
-const { Component, get } = Ember
+const { Component, get, computed } = Ember
 
 export default Component.extend({
 	classNames: ['Map'],
@@ -10,6 +11,15 @@ export default Component.extend({
 	zoom: 5,
 	minZoom: 2,
 	maxBounds: [[-90, -180], [90, 180]],
+
+	icon: computed('', {
+		get() {
+			return L.divIcon({
+				className: 'MapMarker',
+				iconSize: [40, 40]
+			})
+		}
+	}),
 
 	throttledUpdate: task(function * (position) {
 		yield timeout(200)
