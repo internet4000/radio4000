@@ -12,10 +12,18 @@ export default Component.extend({
 	minZoom: 2,
 	maxBounds: [[-90, -180], [90, 180]],
 
-	icon: computed('', {
+	iconDefault: computed('', {
 		get() {
 			return L.divIcon({
 				className: 'MapMarker',
+				iconSize: [32, 32]
+			})
+		}
+	}),
+	iconFavorite: computed('', {
+		get() {
+			return L.divIcon({
+				className: 'MapMarker MapMarker--isFavorite',
 				iconSize: [32, 32]
 			})
 		}
