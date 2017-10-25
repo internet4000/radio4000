@@ -95,8 +95,14 @@
     left: 20%;
 	}
 }
+
 .MapMarker--isFavorite {
 	&::after {
 		content: 'ᑍ'
 	}
+}
+
+.ImageMapMarker {
+	border: 1px solid rgba(white, 0.5);
+	box-shadow: 2px 2px 4px rgba(black, 0.8);
 }
