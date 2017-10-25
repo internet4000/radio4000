@@ -97,6 +97,6 @@
 }
 .MapMarker--isFavorite {
 	&::after {
-		color: $purple;
+		content: 'ᑍ'
 	}
 }
