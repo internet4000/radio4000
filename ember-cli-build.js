@@ -1,8 +1,8 @@
 /* eslint-env node */
-const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-const autoprefixer = require('autoprefixer');
-const atImport = require('postcss-import');
-const targets = require('./config/targets');
+const EmberApp = require('ember-cli/lib/broccoli/ember-app')
+const autoprefixer = require('autoprefixer')
+const atImport = require('postcss-import')
+const targets = require('./config/targets')
 
 module.exports = function(defaults) {
 	let app = new EmberApp(defaults, {
@@ -12,14 +12,20 @@ module.exports = function(defaults) {
 		// Disable testing with localhost:4000/tests. Instead use `npm test`.
 		// tests: EmberApp.env() === 'test',
 
-		// Don't fingerprint favicons.
 		fingerprint: {
 			exclude: [
+				// favicons
 				'apple-touch-icon',
 				'android-chrome',
 				'favicon',
 				'mstile',
-				'icns'
+				// ember-leaflet
+				'icns',
+				'images/layers-2x.png',
+				'images/layers.png',
+				'images/marker-icon-2x.png',
+				'images/marker-icon.png',
+				'images/marker-shadow.png'
 			]
 		},
 

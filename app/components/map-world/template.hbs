@@ -1,0 +1,26 @@
+{{#leaflet-map
+		 maxBounds=maxBounds
+		 lat=lat
+		 lng=lng
+		 zoom=zoom
+		 minZoom=minZoom
+		 attributionControl=false
+		 onLoad=(action "initMap")
+		 onMoveend=(action "updateCenter")
+}}
+	{{tile-layer url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"}}
+
+	{{#each items as |item|}}
+		{{!-- {{#marker-layer location=item.coordinates icon=(icon
+			className="ImageMapMarker"
+			iconUrl=(if item.coverImage.src (cover-img item.coverImage.src size=32 format='awebp') "favicon-32x32.png")
+			)
+		}} --}}
+		{{#marker-layer location=item.coordinates icon=(if item.isFavorite iconFavorite iconDefault)}}
+			{{#popup-layer}}
+				{{yield item}}
+			{{/popup-layer}}
+		{{/marker-layer}}
+	{{/each}}
+
+{{/leaflet-map}}

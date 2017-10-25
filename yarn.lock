@@ -1307,7 +1307,7 @@ broccoli-debug@^0.6.1, broccoli-debug@^0.6.2:
     symlink-or-copy "^1.1.8"
     tree-sync "^1.2.2"
 
-broccoli-file-creator@^1.0.0:
+broccoli-file-creator@^1.0.0, broccoli-file-creator@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/broccoli-file-creator/-/broccoli-file-creator-1.1.1.tgz#1b35b67d215abdfadd8d49eeb69493c39e6c3450"
   dependencies:
@@ -1394,7 +1394,7 @@ broccoli-lint-eslint@^3.3.0:
     lodash.defaultsdeep "^4.6.0"
     md5-hex "^2.0.0"
 
-broccoli-merge-trees@^1.0.0, broccoli-merge-trees@^1.1.2, broccoli-merge-trees@^1.2.1:
+broccoli-merge-trees@^1.0.0, broccoli-merge-trees@^1.1.2, broccoli-merge-trees@^1.2.1, broccoli-merge-trees@^1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/broccoli-merge-trees/-/broccoli-merge-trees-1.2.4.tgz#a001519bb5067f06589d91afa2942445a2d0fdb5"
   dependencies:
@@ -1494,7 +1494,7 @@ broccoli-sri-hash@^2.1.0:
     sri-toolbox "^0.2.0"
     symlink-or-copy "^1.0.1"
 
-broccoli-stew@^1.2.0, broccoli-stew@^1.3.3, broccoli-stew@^1.4.2:
+broccoli-stew@^1.2.0, broccoli-stew@^1.3.3, broccoli-stew@^1.4.2, broccoli-stew@^1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/broccoli-stew/-/broccoli-stew-1.5.0.tgz#d7af8c18511dce510e49d308a62e5977f461883c"
   dependencies:
@@ -1686,6 +1686,13 @@ browserslist@^2.1.2, browserslist@^2.1.5:
     caniuse-lite "^1.0.30000710"
     electron-to-chromium "^1.3.17"
 
+browserslist@^2.2.2:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-2.5.1.tgz#68e4bc536bbcc6086d62843a2ffccea8396821c6"
+  dependencies:
+    caniuse-lite "^1.0.30000744"
+    electron-to-chromium "^1.3.24"
+
 bser@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/bser/-/bser-2.0.0.tgz#9ac78d3ed5d915804fd87acb158bc797147a1719"
@@ -1780,6 +1787,10 @@ can-symlink@^1.0.0:
 caniuse-lite@^1.0.30000697, caniuse-lite@^1.0.30000710:
   version "1.0.30000712"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000712.tgz#b4732def2459224f3f78c6a9ba103abfcc705670"
+
+caniuse-lite@^1.0.30000744:
+  version "1.0.30000748"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000748.tgz#44c8d6da52ad65a5d7b9dca4efebd0bdd982ba09"
 
 capture-exit@^1.1.0:
   version "1.2.0"
@@ -2294,6 +2305,12 @@ debug@^2.6.6:
   dependencies:
     ms "2.0.0"
 
+debug@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
+  dependencies:
+    ms "2.0.0"
+
 decamelize@^1.0.0, decamelize@^1.1.1, decamelize@^1.1.2:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
@@ -2490,6 +2507,10 @@ electron-to-chromium@^1.3.17:
   version "1.3.17"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.17.tgz#41c13457cc7166c5c15e767ae61d86a8cacdee5d"
 
+electron-to-chromium@^1.3.24:
+  version "1.3.27"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.27.tgz#78ecb8a399066187bb374eede35d9c70565a803d"
+
 element-ui@^1.3.6:
   version "1.4.6"
   resolved "https://registry.yarnpkg.com/element-ui/-/element-ui-1.4.6.tgz#2f4f718fb3b12f23ef6508251adfae80d7f81793"
@@ -2517,6 +2538,17 @@ ember-async-button@^1.0.2:
   dependencies:
     ember-cli-babel "^5.1.6"
     ember-cli-htmlbars "^1.0.3"
+
+ember-awesome-macros@^0.40.0:
+  version "0.40.0"
+  resolved "https://registry.yarnpkg.com/ember-awesome-macros/-/ember-awesome-macros-0.40.0.tgz#df7243b4b8552be30037006eaa74807f18501fbb"
+  dependencies:
+    broccoli-file-creator "^1.1.1"
+    broccoli-merge-trees "^2.0.0"
+    ember-cli-babel "^6.6.0"
+    ember-cli-string-utils "^1.1.0"
+    ember-macro-helpers "^0.17.0"
+    ember-string-ishtmlsafe-polyfill "^2.0.0"
 
 ember-browserify@^1.1.11:
   version "1.2.0"
@@ -2923,6 +2955,15 @@ ember-cli@^2.13.3:
     walk-sync "^0.3.0"
     yam "0.0.22"
 
+ember-composability-tools@0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/ember-composability-tools/-/ember-composability-tools-0.0.8.tgz#9122e743c0aed759da7f20f3d5a9711a51bac619"
+  dependencies:
+    ember-cli-babel "^5.1.6"
+    ember-cli-htmlbars "^1.0.3"
+    ember-getowner-polyfill "1.1.1"
+    ember-wormhole "0.5.1"
+
 ember-concurrency@^0.8.3:
   version "0.8.7"
   resolved "https://registry.yarnpkg.com/ember-concurrency/-/ember-concurrency-0.8.7.tgz#346f5c88f2d5e987fb7e7324f8eb53ae3bae0970"
@@ -3000,6 +3041,20 @@ ember-fetch@^3.3.0:
     node-fetch "^2.0.0-alpha.3"
     whatwg-fetch "^2.0.3"
 
+ember-get-config@0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/ember-get-config/-/ember-get-config-0.2.1.tgz#a1325cceefcb4534c78fc6ccb2be87a3feda6817"
+  dependencies:
+    broccoli-file-creator "^1.1.1"
+    ember-cli-babel "^5.1.6"
+
+ember-getowner-polyfill@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/ember-getowner-polyfill/-/ember-getowner-polyfill-1.1.1.tgz#6bb6603827dd2f8f33be2434570a86cc9e5273ff"
+  dependencies:
+    ember-cli-babel "^5.1.6"
+    ember-cli-version-checker "^1.2.0"
+
 ember-getowner-polyfill@^1.1.0:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/ember-getowner-polyfill/-/ember-getowner-polyfill-1.2.5.tgz#ceff8a09897d0d7e05c821bb71666a95eb26dc92"
@@ -3045,11 +3100,35 @@ ember-keyboard@^2.1.10:
   dependencies:
     ember-cli-babel "^5.1.6"
 
+ember-leaflet@^3.0.12:
+  version "3.0.12"
+  resolved "https://registry.yarnpkg.com/ember-leaflet/-/ember-leaflet-3.0.12.tgz#ad64a3137cff3dbd2a7b00ea0b525fd69cb14dea"
+  dependencies:
+    broccoli-funnel "^1.2.0"
+    broccoli-merge-trees "^1.2.4"
+    ember-cli-babel "^6.0.0"
+    ember-cli-htmlbars "^1.1.1"
+    ember-cli-version-checker "^1.3.1"
+    ember-composability-tools "0.0.8"
+    ember-get-config "0.2.1"
+    ember-invoke-action "1.4.0"
+    ember-wormhole "^0.5.2"
+    fastboot-transform "^0.1.1"
+
 ember-load-initializers@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/ember-load-initializers/-/ember-load-initializers-1.0.0.tgz#4919eaf06f6dfeca7e134633d8c05a6c9921e6e7"
   dependencies:
     ember-cli-babel "^6.0.0-beta.7"
+
+ember-macro-helpers@^0.17.0:
+  version "0.17.0"
+  resolved "https://registry.yarnpkg.com/ember-macro-helpers/-/ember-macro-helpers-0.17.0.tgz#5e64a49f476e38c1916aff75f949455533cd1abe"
+  dependencies:
+    ember-cli-babel "^6.6.0"
+    ember-cli-string-utils "^1.1.0"
+    ember-cli-test-info "^1.0.0"
+    ember-weakmap "^3.0.0"
 
 ember-maybe-import-regenerator@^0.1.5:
   version "0.1.6"
@@ -3151,6 +3230,12 @@ ember-string-ishtmlsafe-polyfill@^1.1.0:
     ember-cli-babel "^5.1.7"
     ember-cli-version-checker "^1.2.0"
 
+ember-string-ishtmlsafe-polyfill@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ember-string-ishtmlsafe-polyfill/-/ember-string-ishtmlsafe-polyfill-2.0.0.tgz#38f17038c3451999e9f1db748e424d8831e85863"
+  dependencies:
+    ember-cli-version-checker "^1.2.0"
+
 ember-test-helpers@^0.6.3:
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/ember-test-helpers/-/ember-test-helpers-0.6.3.tgz#f864cdf6f4e75f3f8768d6537785b5ab6e82d907"
@@ -3189,7 +3274,22 @@ ember-validators@1.0.3:
     ember-cli-babel "^5.1.6"
     ember-require-module "^0.1.2"
 
-ember-wormhole@^0.5.1:
+ember-weakmap@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/ember-weakmap/-/ember-weakmap-3.0.1.tgz#31f13cee4940d9993e1331c8b150cf4745015c53"
+  dependencies:
+    browserslist "^2.2.2"
+    debug "^3.1.0"
+    ember-cli-babel "^6.3.0"
+
+ember-wormhole@0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/ember-wormhole/-/ember-wormhole-0.5.1.tgz#f2a6fff13b1c037ffa83b2c9291d8b5978878e5b"
+  dependencies:
+    ember-cli-babel "^5.1.6"
+    ember-cli-htmlbars "^1.0.3"
+
+ember-wormhole@^0.5.1, ember-wormhole@^0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/ember-wormhole/-/ember-wormhole-0.5.2.tgz#cc0ceb7db4f8b8da0fd852edc81d75cb1dcd92f1"
   dependencies:
@@ -3621,6 +3721,12 @@ fast-sourcemap-concat@^1.0.1:
     rsvp "^3.0.14"
     source-map "^0.4.2"
     source-map-url "^0.3.0"
+
+fastboot-transform@^0.1.1:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/fastboot-transform/-/fastboot-transform-0.1.2.tgz#f910d666ab93e75604492ea655270d1804bc8de7"
+  dependencies:
+    broccoli-stew "^1.5.0"
 
 faye-websocket@0.9.3:
   version "0.9.3"
@@ -4780,6 +4886,10 @@ lcid@^1.0.0:
   resolved "https://registry.yarnpkg.com/lcid/-/lcid-1.0.0.tgz#308accafa0bc483a3867b4b6f2b9506251d1b835"
   dependencies:
     invert-kv "^1.0.0"
+
+leaflet@^1.0.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/leaflet/-/leaflet-1.2.0.tgz#fd5d93d9cb00091f5f8a69206d0d6744c1c82697"
 
 leek@0.0.24:
   version "0.0.24"

@@ -5,6 +5,7 @@
  */
 .Tabs {
 	display: flex;
+	flex: 1;
 	flex-flow: column wrap;
 	flex-shrink: 0;
 
@@ -13,8 +14,13 @@
 	border-radius: $border-radius;
 	// box-shadow: $box-shadow;
 
+	// so it is always over full screen backgrounds
+	// like .Manchet
+	position: relative;
+	z-index: 1;
+
 	// When several tabs follow each other.
-	& + .Tabs {
+	& + .Tabs:not(.Tabs--horizontal) {
 		margin-top: 3px;
 	}
 }
@@ -56,7 +62,8 @@
 }
 
 .Tabs-divider {
-	margin: auto;
+	margin-top: auto;
+	margin-bottom: auto;
 	color: $slightgray;
 }
 
@@ -76,6 +83,7 @@
 		white-space: nowrap;
 		flex-grow: 1;
 		border-right: 0;
+		border-radius: 0;
 		border-bottom: 3px solid transparent;
 
 		&.is-active {
@@ -83,10 +91,25 @@
 			border-bottom: 3px solid $primary-color;
 		}
 
-		// equal widths
+		// equal widths (not on mobile to save space)
 		@media (min-width: $layout-m) {
 			flex: 1;
 		}
+
+		@media (max-width: $layout-s) {
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
+		}
+	}
+
+	.Tabs-item:first-child {
+		border-top-left-radius: $border-radius;
+		border-bottom-left-radius: $border-radius;
+	}
+
+	.Tabs-item:last-child {
+		border-top-right-radius: $border-radius;
+		border-bottom-right-radius: $border-radius;
 	}
 }
 

@@ -20,6 +20,10 @@
 	margin-right: auto;
 }
 
+.Container--small {
+	max-width: 20rem;
+}
+
 .Container--large {
 	max-width: 83rem;
 }
@@ -55,4 +59,3 @@
 		padding-right: 0;
 	}
 }
-

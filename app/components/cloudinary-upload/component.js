@@ -80,8 +80,11 @@ export default Component.extend({
 			if (xhr.readyState === 4 && xhr.status === 200) {
 				// File uploaded successfully
 				var response = JSON.parse(xhr.responseText)
+
 				component.onUpload(response)
-				component.set('isRunning', false)
+				if (!component.isDestroyed) {
+					component.set('isRunning', false)
+				}
 			}
 		}
 
