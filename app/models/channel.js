@@ -2,6 +2,7 @@ import Ember from 'ember';
 import DS from 'ember-data';
 import firebase from 'firebase';
 import {task} from 'ember-concurrency';
+import {and, hash} from 'ember-awesome-macros';
 import {validator, buildValidations} from 'ember-cp-validations';
 import channelConst from 'radio4000/utils/channel-const';
 import toggleObject from 'radio4000/utils/toggle-object';
@@ -69,6 +70,14 @@ export default DS.Model.extend(Validations, {
 	isFeatured: attr('boolean'),
 	isPremium: attr('boolean'),
 
+	coordinatesLatitude: attr('number'),
+	coordinatesLongitude: attr('number'),
+	hasCoordinates: and('coordinatesLatitude', 'coordinatesLongitude'),
+	coordinates: hash({
+		lng: 'coordinatesLongitude',
+		lat: 'coordinatesLatitude'
+	}),
+
 	// Set the latest image as the cover image.
 	coverImage: computed('images.[]', function () {
 		return this.get('images.lastObject');
@@ -84,13 +93,15 @@ export default DS.Model.extend(Validations, {
 	channelPublic: belongsTo('channelPublic', {async: true}),
 
 	// Meta data.
-	totalTracks: computed('tracks.[]', function () {
-		return this.hasMany('tracks').ids().length;
-	}),
-	hasFewTracks: computed.lte('totalTracks', 2),
 	totalFavorites: computed('favoriteChannels', function () {
 		return this.hasMany('favoriteChannels').ids().length;
 	}),
+
+	totalTracks: computed('tracks.[]', function () {
+		return this.hasMany('tracks').ids().length;
+	}),
+
+	hasFewTracks: computed.lte('totalTracks', 2),
 
 	// can current logged in user edit the channel
 	canEdit: computed('id', 'session.currentUser.channels.firstObject.id', {

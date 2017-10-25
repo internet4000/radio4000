@@ -13,6 +13,7 @@ Router.map(function() {
 		this.route('all')
 		this.route('new')
 		this.route('history')
+		this.route('map')
 	})
 	this.route('channel', { path: '/:channel_slug' }, function() {
 		this.route('index', { path: '/' })

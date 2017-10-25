@@ -7,6 +7,12 @@
 	margin-bottom: 1rem;
 	display: flex;
 	flex-wrap: wrap;
+
+	// so it is always over full screen backgrounds
+	// like .Tabs
+	position: relative;
+	z-index: 1;
+
 	h1, h2, h3 {
 		padding-left: 1rem;
 		padding-right: 2rem;
