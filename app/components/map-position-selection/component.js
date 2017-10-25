@@ -7,7 +7,7 @@ export default Component.extend({
 	classNames: ['Map', 'Map--selection'],
 	// lat
 	// lng
-	zoom: 3,
+	zoom: 5,
 	maxBounds: [[90, -180], [-90, 180]],
 
 	location: hash('lat', 'lng'),
@@ -42,7 +42,9 @@ export default Component.extend({
 		},
 		cancel() {
 			const map = get(this, 'map')
-			map.flyTo(get(this, 'location'))
+			const location = get(this, 'location')
+			location.zoom = get(this, 'zoom')
+			map.flyTo(location)
 		}
 	}
 })
