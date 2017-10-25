@@ -29,7 +29,6 @@ export default Component.extend({
 	actions: {
 		initMap(event) {
 			const map = event.target
-			console.log(map)
 			const credits = L.control.attribution({
 				position: 'topright',
 				prefix: '<a href="http://leafletjs.com" target="_blank" rel="noopener">Leaflet</a>'
