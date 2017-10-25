@@ -1,11 +1,12 @@
 {{#leaflet-map
-	maxBounds=maxBounds
-	lat=lat
-	lng=lng
-	zoom=zoom
-	minZoom=minZoom
-	onLoad=(action "initMap")
-	onMoveend=(action "updateCenter")
+		 maxBounds=maxBounds
+		 lat=lat
+		 lng=lng
+		 zoom=zoom
+		 minZoom=minZoom
+		 attributionControl=false
+		 onLoad=(action "initMap")
+		 onMoveend=(action "updateCenter")
 }}
 	{{tile-layer url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"}}
 
