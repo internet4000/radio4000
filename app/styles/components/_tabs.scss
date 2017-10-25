@@ -20,7 +20,7 @@
 	z-index: 1;
 
 	// When several tabs follow each other.
-	& + .Tabs {
+	& + .Tabs:not(.Tabs--horizontal) {
 		margin-top: 3px;
 	}
 }
@@ -94,6 +94,11 @@
 		// equal widths (not on mobile to save space)
 		@media (min-width: $layout-m) {
 			flex: 1;
+		}
+
+		@media (max-width: $layout-s) {
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
 		}
 	}
 

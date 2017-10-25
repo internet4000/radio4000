@@ -31,7 +31,7 @@
 			{{#if channel.updated}}
 				<span class="Channel-date Muted" title="{{channel.title}} was last updated {{time-ago channel.updated}}">{{time-ago channel.updated}}</span>
 			{{/if}}
-			<!-- Note here the ``<updated>, (map)` syntax -->
+			{{!-- Note here the ``<updated>, (map)` syntax --}}
 			{{#if channel.hasCoordinates}}
 				- {{#link-to
 							 'channels.map'
