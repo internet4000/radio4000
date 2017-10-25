@@ -82,12 +82,17 @@
 		display: block;
 		content: "ᐄ";
 		transform: rotate(180deg);
-		transform-origin: 46% 40%;
 		font-size: 2rem;
 		color: $purple;
 		color: black;
 		// font-weight: bold;
 		// text-shadow: 1px 2px 2px rgba(white, 0.9);
-		text-shadow: -3px -3px 3px rgba(0, 0, 0, 0.4)s;
+		text-shadow: -3px -3px 3px rgba(0, 0, 0, 0.4);
+		// put it in the center of the circle on map-position-selection
+		// it's not exactly the same position of map-world, but it is good
+		// it forces people not to reveal their exact position
+    position: absolute;
+    top: -61%;
+    left: 20%;
 	}
 }
