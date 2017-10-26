@@ -91,7 +91,7 @@ Map
 		// it's not exactly the same position of map-world, but it is good
 		// it forces people not to reveal their exact position
 		position: absolute;
-		top: -110%;
+		top: -80%; // the bottom "dot" is centered within MapMarker
 		left: 0;
 		right: 0;
 		text-align: center;
