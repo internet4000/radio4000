@@ -3,7 +3,6 @@
   "version": "5.3.3",
   "scripts": {
     "build": "ember build -prod",
-    "critical-css": "cat dist/index.html | critical --base dist/ --inline --minify > index.tmp && mv index.tmp dist/index.html",
     "start": "ember server",
     "test": "ember test"
   },
@@ -11,7 +10,6 @@
   "devDependencies": {
     "autoprefixer": "^7.1.2",
     "broccoli-asset-rev": "^2.4.5",
-    "critical": "^0.9.0",
     "ember-async-button": "^1.0.2",
     "ember-awesome-macros": "^0.40.0",
     "ember-browserify": "^1.1.11",

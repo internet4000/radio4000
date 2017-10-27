@@ -11,12 +11,9 @@
 	{{tile-layer url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"}}
 
 	{{#each items as |item|}}
-		{{!-- {{#marker-layer location=item.coordinates icon=(icon
-			className="ImageMapMarker"
-			iconUrl=(if item.coverImage.src (cover-img item.coverImage.src size=32 format='awebp') "favicon-32x32.png")
-			)
-		}} --}}
-		{{#marker-layer location=item.coordinates icon=(if item.isFavorite iconFavorite iconDefault)}}
+		{{#marker-layer
+			location=item.coordinates
+		}}
 			{{#popup-layer}}
 				{{yield item}}
 			{{/popup-layer}}
@@ -24,3 +21,12 @@
 	{{/each}}
 
 {{/leaflet-map}}
+
+{{!-- Icon markers
+icon=(icon
+	className="ImageMapMarker"
+	iconUrl=(if item.coverImage.src (cover-img item.coverImage.src size=32 format='awebp') "favicon-32x32.png")
+)
+icon=(if item.isFavorite iconFavorite iconDefault)
+--}}
+

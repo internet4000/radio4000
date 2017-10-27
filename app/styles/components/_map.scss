@@ -1,6 +1,6 @@
 /*
-	Map
-*/
+Map
+ */
 
 .Map {
 	width: 100%;
@@ -75,7 +75,7 @@
 
 .MapMarker {
 	position: relative;
-	// outline: 1px solid white;
+	// outline: 1px solid red;
 	// The width and height is set with JS.
 
 	&::after {
@@ -90,9 +90,11 @@
 		// put it in the center of the circle on map-position-selection
 		// it's not exactly the same position of map-world, but it is good
 		// it forces people not to reveal their exact position
-    position: absolute;
-    top: -61%;
-    left: 20%;
+		position: absolute;
+		top: -80%; // the bottom "dot" is centered within MapMarker
+		left: 0;
+		right: 0;
+		text-align: center;
 	}
 }
 
