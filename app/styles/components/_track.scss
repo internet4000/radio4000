@@ -92,11 +92,6 @@ a.Track-link {
 	padding-right: rem(60);
 	color: $text-color;
 	transition: border-color 250ms $easing;
-
-	.Widget-container & {
-		padding-left: 0.5rem;
-		padding-right: 0.5rem;
-	}
 }
 
 // Track edit button.
