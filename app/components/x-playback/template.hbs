@@ -18,11 +18,7 @@
 	</button>
 
 	<button class="Btn Btn--small" {{action 'toggleFullscreenFormat'}} title="Toggle fullscreen player (press 'F')">
-		{{#if uiStates.isFullscreen}}
-			{{x-icon i='arrows-compress'}}
-		{{else}}
-			{{x-icon i='arrows-expand'}}
-		{{/if}}
+		{{#if uiStates.isFullscreen}}x{{else}}&#xe140;{{/if}}
 	</button>
 </div>
 
