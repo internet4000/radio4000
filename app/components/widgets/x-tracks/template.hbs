@@ -1,9 +1,0 @@
-<div class="Widget-container">
-	<button class="Widget-title Btn Btn--full Btn--text" {{action "toggleNumber"}}>{{title}} {{lastTracks.length}}</button>
-
-	{{#tracks-list sortedItems=lastTracks as |item|}}
-		{{track-item track=item trackWidget=true}}
-	{{/tracks-list}}
-</div>
-
-{{yield}}
