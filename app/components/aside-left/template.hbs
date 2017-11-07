@@ -15,7 +15,10 @@
 
 		{{#if userChannel}}
 			{{channel-card channel=userChannel wide=true}}
-			<button {{action "addTrack"}} class="Btn Btn--important Btn--topNoRadius" title="Add a new track to your radio">Add track</button>
+			{{#btn-group class="BtnGroup--full"}}
+				<button {{action "addTrack"}} class="Btn Btn--important Btn--topNoRadius" title="Add a new track to your radio">Add track</button>
+				<button {{action "addCurrentTrack"}} class="Btn Btn--topNoRadius" title="Add the current track to your radio">+ ⇢</button>
+			{{/btn-group}}
 		{{/if}}
 
 		{{#unless userChannel}}
