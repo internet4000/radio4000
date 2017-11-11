@@ -1,12 +1,14 @@
-import Ember from 'ember';
+import Application from '@ember/application';
 import Resolver from './resolver';
 import loadInitializers from 'ember-load-initializers';
 import config from './config/environment';
 import RSVP from 'rsvp';
+import LinkComponent from '@ember/routing/link-component';
+import {debug} from '@ember/debug'
 import 'npm:lazysizes/plugins/attrchange/ls.attrchange';
 import 'npm:lazysizes';
 
-let App = Ember.Application.extend({
+const App = Application.extend({
 	rootElement: '#Radio4000',
 	modulePrefix: config.modulePrefix,
 	podModulePrefix: config.podModulePrefix,
@@ -14,7 +16,7 @@ let App = Ember.Application.extend({
 });
 
 // Change the class Ember adds to active elements
-Ember.LinkComponent.reopen({
+LinkComponent.reopen({
 	activeClass: 'is-active'
 });
 
@@ -22,9 +24,9 @@ Ember.LinkComponent.reopen({
 RSVP.on('error', reason => {
 	// An aborted transition propogates an error to RSVP
 	if (reason.name !== 'TransitionAborted') {
-		Ember.debug(reason)
+		debug(reason)
 	}
-});
+})
 
 // Expose the databaseURL so `radio4000-player` can catch it.
 window.r4 = {};

@@ -1,9 +1,10 @@
 /* eslint-env node */
+'use strict';
 
 module.exports = function(environment) {
-  var ENV = {
+  let ENV = {
     modulePrefix: 'radio4000',
-    environment: environment,
+    environment,
     rootURL: '/',
     locationType: 'auto',
     EmberENV: {
@@ -66,6 +67,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    // here you can enable a production-specific feature
 		// Switch to live Firebase
 		ENV.firebase = {
 			apiKey: 'AIzaSyAyeuzsaD353IhPbffzvP8EE88HNTwSTY0',

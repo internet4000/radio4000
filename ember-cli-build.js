@@ -4,7 +4,9 @@ const autoprefixer = require('autoprefixer')
 const atImport = require('postcss-import')
 const targets = require('./config/targets')
 
-module.exports = function(defaults) {
+'use strict';
+
+module.exports = function (defaults) {
 	let app = new EmberApp(defaults, {
 		// Don't pollute our index.html with meta data.
 		storeConfigInMeta: false,
