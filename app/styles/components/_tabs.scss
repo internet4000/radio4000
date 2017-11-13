@@ -5,7 +5,6 @@
  */
 .Tabs {
 	display: flex;
-	flex: 1;
 	flex-flow: column wrap;
 	flex-shrink: 0;
 
@@ -72,7 +71,7 @@
  */
 
 .Tabs--horizontal {
-	flex-flow: row nowrap;
+	flex-direction: row;
 	text-align: center;
 
 	@media (min-width: $layout-s) {
@@ -81,7 +80,6 @@
 
 	.Tabs-item {
 		white-space: nowrap;
-		flex-grow: 1;
 		border-right: 0;
 		border-radius: 0;
 		border-bottom: 3px solid transparent;
@@ -92,9 +90,9 @@
 		}
 
 		// equal widths (not on mobile to save space)
-		@media (min-width: $layout-m) {
-			flex: 1;
-		}
+		// @media (min-width: $layout-m) {
+		// 	flex: 1;
+		// }
 
 		@media (max-width: $layout-s) {
 			padding-left: 0.5rem;
@@ -168,9 +166,9 @@
 .Tabs--transparent {
 	border: 0;
 	background-color: transparent;
-	flex-wrap: wrap;
 
 	.Tabs-item {
 		background-color: transparent;
 	}
 }
+
