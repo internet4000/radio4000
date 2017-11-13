@@ -2,29 +2,27 @@
 	<div class="Container Container--full">
 		{{#list-manipulation list=filteredChannels as |manipulatedList updateSorting|}}
 
-			<div class="Filters">
-				{{#btn-group class="Filter"}}
-					<span class="BtnGroup-label">Search</span>
-					{{list-search
-						items=filteredChannels
-						value=search
-						afterSearching=(action "handleSearch")}}
+			{{#btn-group}}
+				<span class="BtnGroup-label">Search</span>
+				{{list-search
+					items=filteredChannels
+					value=search
+					afterSearching=(action "handleSearch")}}
 
-					<span class="BtnGroup-label" style="margin-left: 1rem">Filter by</span>
-					{{btn-list-manipulation class="is-active" text="Activity"
-							onClick=(action updateSorting "updated")}}
-					{{btn-list-manipulation text="Age"
-							onClick=(action updateSorting "created" true)}}
-					{{btn-list-manipulation text="A-Z"
-							onClick=(action updateSorting "title" true)}}
-					{{!--
-					<span class="BtnGroup-label">&nbsp;</span>
-					<button class="Btn Btn--small" {{action "changeLayout"}}>
-						{{if isList "Bigger" "Smaller"}}
-					</button>
-					--}}
-				{{/btn-group}}
-			</div>
+				<span class="BtnGroup-label" style="margin-left: 1rem">Filter by</span>
+				{{btn-list-manipulation class="is-active" text="Activity"
+						onClick=(action updateSorting "updated")}}
+				{{btn-list-manipulation text="Age"
+						onClick=(action updateSorting "created" true)}}
+				{{btn-list-manipulation text="A-Z"
+						onClick=(action updateSorting "title" true)}}
+				{{!--
+				<span class="BtnGroup-label">&nbsp;</span>
+				<button class="Btn Btn--small" {{action "changeLayout"}}>
+					{{if isList "Bigger" "Smaller"}}
+				</button>
+				--}}
+			{{/btn-group}}
 
 			<div class="Grid {{if isList 'Grid--wide'}}">
 				<div class="Grid-cell">

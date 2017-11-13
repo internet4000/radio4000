@@ -3,17 +3,15 @@
 	<section class="Section">
 		<div class="Container Container--full">
 			{{#list-manipulation list=model.favoriteChannels as |manipulatedList updateSorting|}}
-				<div class="Filters">
-					{{#btn-group class="Filter BtnGroup--right"}}
-						<span class="BtnGroup-label">Filter radio channels by</span>
-						{{btn-list-manipulation text="Activity" class="is-active"
-								onClick=(action updateSorting "updated")}}
-						{{btn-list-manipulation text="Age"
-								onClick=(action updateSorting "created" true)}}
-						{{btn-list-manipulation text="A-Z"
-								onClick=(action updateSorting "title" true)}}
-					{{/btn-group}}
-				</div>
+				{{#btn-group class="BtnGroup--right"}}
+					<span class="BtnGroup-label">Filter radio channels by</span>
+					{{btn-list-manipulation text="Activity" class="is-active"
+						onClick=(action updateSorting "updated")}}
+					{{btn-list-manipulation text="Age"
+						onClick=(action updateSorting "created" true)}}
+					{{btn-list-manipulation text="A-Z"
+						onClick=(action updateSorting "title" true)}}
+				{{/btn-group}}
 
 				{{#if model.favoriteChannels}}
 					<div class="Grid {{if isList 'Grid--wide'}}">
