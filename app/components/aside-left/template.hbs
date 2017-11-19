@@ -11,36 +11,84 @@
 
 <div class="Aside-inner">
 	<div class="Tabs">
-		{{#link-to "channels" title="Find radio channels to enjoy" class="Tabs-item"}}Radios{{/link-to}}
+		{{#link-to
+				 "channels"
+				 title="Find radio channels to enjoy [⌨ g h]"
+				 class="Tabs-item"}}
+			Radios
+		{{/link-to}}
 
 		{{#if userChannel}}
-			{{channel-card channel=userChannel wide=true}}
-			<button {{action "addTrack"}} class="Btn Btn--important Btn--topNoRadius" title="Add a new track to your radio">Add track</button>
+			{{channel-card
+					channel=userChannel
+					wide=true
+					title="Your radio [⌨ g i]"}}
+			<button
+				{{action "addTrack"}}
+				class="Btn Btn--important Btn--topNoRadius"
+				title="Add a new track to your radio [⌨ g a]">
+				Add track
+			</button>
 		{{/if}}
 
 		{{#unless userChannel}}
 			<div class="Tabs-item BtnGroup BtnGroup--full">
 				{{#if isAuthenticated}}
-					{{#link-to "channels.new" class="Btn Btn--full Btn--important" title="Create your Radio4000 channel"}}Create your radio{{/link-to}}
+					{{#link-to
+							 "channels.new"
+							 class="Btn Btn--full Btn--important"
+							 title="Create your Radio4000 channel"}}
+						Create your radio
+					{{/link-to}}
 				{{else}}
-					{{#link-to "auth.signup" class="Btn Btn--important" title="Sign up to Radio4000"}}Sign up{{/link-to}}
-					{{#link-to "auth.login" class="Btn" title="Log in to Radio4000"}}Log in{{/link-to}}
+					{{#link-to
+							 "auth.signup"
+							 class="Btn Btn--important"
+							 title="Sign up to Radio4000"}}
+						Sign up
+					{{/link-to}}
+					{{#link-to
+							 "auth.login"
+							 class="Btn"
+							 title="Log in to Radio4000"}}
+						Log in
+					{{/link-to}}
 				{{/if}}
 			</div>
 		{{/unless}}
 
 		{{#if isAuthenticated}}
-			{{#link-to "auth.settings" class="Tabs-item" title="Customize your Radio4000"}}Settings{{/link-to}}
+			{{#link-to
+					 "auth.settings"
+					 class="Tabs-item"
+					 title="Customize your Radio4000"}}
+				Settings
+			{{/link-to}}
 		{{/if}}
 
-		{{#link-to "about" title="Learn more about Radio4000" class="Tabs-item"}}About{{/link-to}}
+		{{#link-to
+				 "about"
+				 title="Learn more about Radio4000"
+				 class="Tabs-item"}}
+			About
+		{{/link-to}}
 	</div>
 
 	<div class="Tabs Tabs--transparent">
-		{{#link-to "feedback" class="Tabs-item" title="Let us know what you have in mind!"}}Feedback{{/link-to}}
+		{{#link-to
+				 "feedback"
+				 class="Tabs-item"
+				 title="Let us know what you have in mind! [⌨ g f]"}}
+			Feedback
+		{{/link-to}}
 
 		{{#if isAuthenticated}}
-			{{#link-to "auth.logout" class="Tabs-item" title="Log out from Radio4000"}}Log out{{/link-to}}
+			{{#link-to
+					 "auth.logout"
+					 class="Tabs-item"
+					 title="Log out from Radio4000"}}
+				Log out
+			{{/link-to}}
 		{{/if}}
 	</div>
 
