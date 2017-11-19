@@ -10,7 +10,7 @@ export default Component.extend(EKMixin, {
 	classNames: ['Btn'],
 	isVisible: computed.not('keyboardActivated'),
 
-	bindKeyboard: on(keyUp('KeyW'), function () {
+	bindKeyboard: on(keyUp('KeyR'), function () {
 		this.playRandomChannel();
 	}),
 
