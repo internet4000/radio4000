@@ -9,9 +9,24 @@
 				<div class="BtnGroups">
 					{{#btn-group}}
 						<span class="BtnGroup-label">Filter radio channels by</span>
-						{{link-to "Activity" "channel.followers" (query-params sort="updated") class='Btn'}}
-						{{link-to "Age" "channel.followers" (query-params sort="created") class='Btn'}}
-						{{link-to "A-Z" "channel.followers" (query-params sort="title") class='Btn'}}
+						{{link-to
+								"Activity"
+								"channel.followers"
+								(query-params sort="updated")
+								class='Btn'
+								title="Filter by activity, last updated date"}}
+						{{link-to
+								"Age"
+								"channel.followers"
+								(query-params sort="created")
+								class='Btn'
+								title="Filter by age, created date"}}
+						{{link-to
+								"A-Z"
+								"channel.followers"
+								(query-params sort="title")
+								class='Btn'
+								title="Filter by alphabetic order of titles"}}
 					{{/btn-group}}
 				</div>
 

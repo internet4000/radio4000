@@ -8,9 +8,24 @@
 			<div class="BtnGroups">
 				{{#btn-group}}
 					<span class="BtnGroup-label">Filter by</span>
-					{{link-to "Activity" "channels.all" (query-params sort="updated") class='Btn'}}
-					{{link-to "Age" "channels.all" (query-params sort="created") class='Btn'}}
-					{{link-to "A-Z" "channels.all" (query-params sort="title") class='Btn'}}
+					{{link-to
+							"Activity"
+							"channels.all"
+							(query-params sort="updated")
+							class='Btn'
+							title="Filter by activity, last updated date"}}
+					{{link-to
+							"Age"
+							"channels.all"
+							(query-params sort="created")
+							class='Btn'
+							title="Filter by age, created date"}}
+					{{link-to
+							"A-Z"
+							"channels.all"
+							(query-params sort="title")
+							class='Btn'
+							title="Filter by alphabetic order of titles"}}
 				{{/btn-group}}
 
 				{{#btn-group}}
@@ -18,7 +33,8 @@
 					{{list-search
 							items=filteredChannels
 							value=search
-							afterSearching=(action "handleSearch")}}
+							afterSearching=(action "handleSearch")
+							title="Search radio channels, titles and descriptions"}}
 				{{/btn-group}}
 			</div>
 
