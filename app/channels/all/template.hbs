@@ -1,64 +1,91 @@
 <section class="Section">
 	<div class="Container Container--full">
-		{{#list-manipulation list=filteredChannels as |manipulatedList updateSorting|}}
+		{{#list-manipulation
+				 sortKey=sortKey
+				 sortDirection=sortDirection
+				 list=filteredChannels
+				 as |manipulatedList|}}
 
-			<div class="Filters">
-				{{#btn-group class="Filter"}}
+			<div class="BtnGroups">
+				{{#btn-group}}
+					<span class="BtnGroup-label">Sort by</span>
+					{{link-to
+							"Activity"
+							"channels.all"
+							(query-params sort="updated")
+							class='Btn'
+							title="Sort by activity, last updated date"}}
+					{{link-to
+							"Age"
+							"channels.all"
+							(query-params sort="created")
+							class='Btn'
+							title="Sort by age, created date"}}
+					{{link-to
+							"A-Z"
+							"channels.all"
+							(query-params sort="title")
+							class='Btn'
+							title="Sort by alphabetic order of titles"}}
+				{{/btn-group}}
+
+				{{#btn-group}}
+					{{link-to
+							"↑"
+							"channels.all"
+							(query-params sortDirection="asc")
+							class='Btn'
+							title="Sort direction: ascending"}}
+					{{link-to
+							"↓"
+							"channels.all"
+							(query-params sortDirection="desc")
+							class='Btn'
+							title="Sort direction: descending"}}
+				{{/btn-group}}
+
+
+				{{#btn-group}}
 					<span class="BtnGroup-label">Search</span>
 					{{list-search
-						items=filteredChannels
-						value=search
-						afterSearching=(action "handleSearch")}}
-
-					<span class="BtnGroup-label" style="margin-left: 1rem">Filter by</span>
-					{{btn-list-manipulation class="is-active" text="Activity"
-							onClick=(action updateSorting "updated")}}
-					{{btn-list-manipulation text="Age"
-							onClick=(action updateSorting "created" true)}}
-					{{btn-list-manipulation text="A-Z"
-							onClick=(action updateSorting "title" true)}}
-					{{!--
-					<span class="BtnGroup-label">&nbsp;</span>
-					<button class="Btn Btn--small" {{action "changeLayout"}}>
-						{{if isList "Bigger" "Smaller"}}
-					</button>
-					--}}
+							items=filteredChannels
+							value=search
+							afterSearching=(action "handleSearch")
+							title="Search radio channels, titles and descriptions"}}
 				{{/btn-group}}
 			</div>
 
-			<div class="Grid {{if isList 'Grid--wide'}}">
+			<div class="Grid">
 				<div class="Grid-cell">
 					<p>
-						Each radio is curated by one <b>human</b>. Listen, discover someone's personal selection.<br/>
+						Each radio is <a href="{{href-to "about"}}">curated by one <b>human</b></a>. Listen, discover someone's personal selection.<br/>
 					</p>
 					{{#unless session.currentUser.channels.firstObject}}
 						<p>
 							If you feel like sharing yours, we welcome you to <a href="{{href-to "auth.login"}}" title="">create your own radio</a>.
 						</p>
 					{{/unless}}
-					<p>
-						{{play-random-channel}}
-					</p>
+					{{#btn-group class="BtnGroup--full BtnGroup--vertical"}}
+						{{play-random-channel class="Btn--large"}}
+					{{/btn-group}}
 					<p class="Muted">
-						Tip: you can also press <strong>R</strong> anywhere on the site to play a random channel.
+						Tip: you can also press <strong>R</strong> on your keyboard anywhere on the site to play a random channel.
 					</p>
 				</div>
 
-				{{#unless channels}}
-					<div class="Grid-cell">
+				{{#if channels}}
+					{{#each manipulatedList as |item|}}
+						<div class="Grid-cell">
+							{{channel-card channel=item wide=isList}}
+						</div>
+					{{/each}}
+				{{else}}
+					<div class="Grid-cell Grid-cell--double">
 						{{#is-loading}}
-							loading all channels...
+							Loading all radio channels
 						{{/is-loading}}
 					</div>
-				{{/unless}}
-				{{#each manipulatedList as |item|}}
-					<div class="Grid-cell">
-						{{channel-card channel=item wide=isList}}
-					</div>
-				{{/each}}
-				<!-- <div class="Grid-cell">
-						 <p class="Muted">TIP: Press <strong>W</strong> anytime (on your keyboard) to play a random radio. Press <strong>W</strong> again to 'swap' to another one. Radios without music are not shown here.</p>
-						 </div> -->
+				{{/if}}
 			</div>
 		{{/list-manipulation}}
 	</div>

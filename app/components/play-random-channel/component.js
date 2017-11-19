@@ -8,6 +8,8 @@ export default Component.extend(EKMixin, {
 	player: inject.service(),
 	tagNames: ['button'],
 	classNames: ['Btn'],
+	attributeBindings: ['title'],
+	title: 'Play a random Radio4000 channel',
 	isVisible: computed.not('keyboardActivated'),
 
 	bindKeyboard: on(keyUp('KeyR'), function () {
