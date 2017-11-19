@@ -97,8 +97,9 @@ export default Route.extend(EKMixin, {
 
 	gotoCurrentTrack: on(keyUp('KeyX'), function() {
 		const currentTrack = get(this, 'player.currentTrack');
+		const currentChannel = get(this, 'player.currentChannel');
     if (get(this, 'isGoingTo') && currentTrack) {
-      this.transitionTo('channel.tracks.track', currentTrack);
+      this.transitionTo('channel.tracks.track', currentChannel, currentTrack);
     }
   })
 });
