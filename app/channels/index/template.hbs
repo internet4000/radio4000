@@ -11,20 +11,14 @@
 				<div class="Grid">
 					<div class="Grid-cell">
 						<p>Hello and welcome!</p>
-						<p>You can start your journey by listening to one of the radios on this page.</p>
+						<p>You can start your journey by listening to one of the radio channels on this page.</p>
 						<p>Otherwise, let's explore!</p>
 						<p>
 						{{#btn-group class="BtnGroup--full BtnGroup--vertical"}}
 							{{play-random-channel
 									class="Btn--large"}}
 							<a
-								class="Btn"
-								href="{{href-to 'channels.all'}}"
-								title="Almost infinity of tracks currated with love">
-								Discover all radios
-							</a>
-							<a
-								class="Btn"
+								class="Btn Btn--text"
 								href="{{href-to 'about.intro'}}"
 								title="Have you read the manifesto?">
 								What is Radio4000?

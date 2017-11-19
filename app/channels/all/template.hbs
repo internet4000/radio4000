@@ -49,13 +49,7 @@
 						</p>
 					{{/unless}}
 					{{#btn-group class="BtnGroup--full BtnGroup--vertical"}}
-						<a
-							class="Btn Btn--large"
-							href="{{href-to 'channels.map'}}"
-							title="Visualize radio channels on the world map (it's opt-in)">
-							World map
-						</a>
-						{{play-random-channel}}
+						{{play-random-channel class="Btn--large"}}
 					{{/btn-group}}
 					<p class="Muted">
 						Tip: you can also press <strong>W</strong> on your keyboard anywhere on the site to play a random channel.
