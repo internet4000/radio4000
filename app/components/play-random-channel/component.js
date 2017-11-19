@@ -9,7 +9,7 @@ export default Component.extend(EKMixin, {
 	tagNames: ['button'],
 	classNames: ['Btn'],
 	attributeBindings: ['title'],
-	title: 'Play a random Radio4000 channel',
+	title: 'Play a random Radio4000 channel [⌨ r]',
 	isVisible: computed.not('keyboardActivated'),
 
 	bindKeyboard: on(keyUp('KeyR'), function () {
