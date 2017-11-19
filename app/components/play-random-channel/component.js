@@ -12,7 +12,7 @@ export default Component.extend(EKMixin, {
 	title: 'Play a random Radio4000 channel',
 	isVisible: computed.not('keyboardActivated'),
 
-	bindKeyboard: on(keyUp('KeyW'), function () {
+	bindKeyboard: on(keyUp('KeyR'), function () {
 		this.playRandomChannel();
 	}),
 
