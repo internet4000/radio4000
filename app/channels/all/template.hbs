@@ -41,18 +41,24 @@
 			<div class="Grid {{if isList 'Grid--wide'}}">
 				<div class="Grid-cell">
 					<p>
-						Each radio is curated by one <b>human</b>. Listen, discover someone's personal selection.<br/>
+						Each radio is <a href="{{href-to "about"}}">curated by one <b>human</b></a>. Listen, discover someone's personal selection.<br/>
 					</p>
 					{{#unless session.currentUser.channels.firstObject}}
 						<p>
 							If you feel like sharing yours, we welcome you to <a href="{{href-to "auth.login"}}" title="">create your own radio</a>.
 						</p>
 					{{/unless}}
-					<p>
+					{{#btn-group class="BtnGroup--full BtnGroup--vertical"}}
+						<a
+							class="Btn Btn--large"
+							href="{{href-to 'channels.map'}}"
+							title="Visualize radio channels on the world map (it's opt-in)">
+							World map
+						</a>
 						{{play-random-channel}}
-					</p>
+					{{/btn-group}}
 					<p class="Muted">
-						Tip: you can also press <strong>W</strong> anywhere on the site to play a random channel.
+						Tip: you can also press <strong>W</strong> on your keyboard anywhere on the site to play a random channel.
 					</p>
 				</div>
 
