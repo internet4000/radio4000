@@ -1,6 +1,9 @@
 <section class="Section">
 	<div class="Container Container--full">
-		{{#list-manipulation list=filteredChannels as |manipulatedList updateSorting|}}
+		{{#list-manipulation
+				 sortKey=sortKey
+				 list=filteredChannels
+				 as |manipulatedList updateSorting|}}
 
 			<div class="Filters">
 				{{#btn-group class="Filter"}}
@@ -11,7 +14,7 @@
 						afterSearching=(action "handleSearch")}}
 
 					<span class="BtnGroup-label" style="margin-left: 1rem">Filter by</span>
-					{{btn-list-manipulation class="is-active" text="Activity"
+					{{btn-list-manipulation text="Activity"
 							onClick=(action updateSorting "updated")}}
 					{{btn-list-manipulation text="Age"
 							onClick=(action updateSorting "created" true)}}

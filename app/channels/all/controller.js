@@ -3,11 +3,11 @@ import Ember from 'ember';
 const {Controller, get, set, computed} = Ember;
 
 export default Controller.extend({
-	queryParams: ['search'],
+	queryParams: ['search', 'sortKey'],
 	isList: false,
 	search: '',
 	searchResults: null,
-	sortKey: 'created',
+	sortKey: 'updated',
 	sortDirection: 'desc',
 
 	// Only show channels that have tracks.
