@@ -9,12 +9,9 @@
 				<div class="Filters">
 					{{#btn-group class="Filter BtnGroup--right"}}
 						<span class="BtnGroup-label">Filter radio channels by</span>
-						{{btn-list-manipulation text="Activity" class="is-active"
-								onClick=(action updateSorting "updated")}}
-						{{btn-list-manipulation text="Age"
-								onClick=(action updateSorting "created" true)}}
-						{{btn-list-manipulation text="A-Z"
-								onClick=(action updateSorting "title" true)}}
+						{{link-to "Activity" "channel.favorites" (query-params sort="updated") class='Btn'}}
+						{{link-to "Age" "channel.favorites" (query-params sort="created") class='Btn'}}
+						{{link-to "A-Z" "channel.favorites" (query-params sort="title") class='Btn'}}
 					{{/btn-group}}
 				</div>
 

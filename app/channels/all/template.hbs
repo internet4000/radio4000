@@ -5,27 +5,20 @@
 				 list=filteredChannels
 				 as |manipulatedList updateSorting|}}
 
-			<div class="Filters">
-				{{#btn-group class="Filter"}}
+			<div class="BtnGroups">
+				{{#btn-group}}
+					<span class="BtnGroup-label">Filter by</span>
+					{{link-to "Activity" "channels.all" (query-params sort="updated") class='Btn'}}
+					{{link-to "Age" "channels.all" (query-params sort="created") class='Btn'}}
+					{{link-to "A-Z" "channels.all" (query-params sort="title") class='Btn'}}
+				{{/btn-group}}
+
+				{{#btn-group}}
 					<span class="BtnGroup-label">Search</span>
 					{{list-search
-						items=filteredChannels
-						value=search
-						afterSearching=(action "handleSearch")}}
-
-					<span class="BtnGroup-label" style="margin-left: 1rem">Filter by</span>
-					{{btn-list-manipulation text="Activity"
-							onClick=(action updateSorting "updated")}}
-					{{btn-list-manipulation text="Age"
-							onClick=(action updateSorting "created" true)}}
-					{{btn-list-manipulation text="A-Z"
-							onClick=(action updateSorting "title" true)}}
-					{{!--
-					<span class="BtnGroup-label">&nbsp;</span>
-					<button class="Btn Btn--small" {{action "changeLayout"}}>
-						{{if isList "Bigger" "Smaller"}}
-					</button>
-					--}}
+							items=filteredChannels
+							value=search
+							afterSearching=(action "handleSearch")}}
 				{{/btn-group}}
 			</div>
 
