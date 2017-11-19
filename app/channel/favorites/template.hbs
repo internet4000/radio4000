@@ -6,7 +6,7 @@
 					 list=model.favoriteChannels
 					 sortKey=sortKey
 					 sortDirection=sortDirection
-					 as |manipulatedList updateSorting|}}
+					 as |manipulatedList|}}
 				<div class="BtnGroups">
 					{{#btn-group}}
 						<span class="BtnGroup-label">Sort radio channels by</span>
@@ -47,10 +47,10 @@
 				</div>
 
 				{{#if model.favoriteChannels}}
-					<div class="Grid {{if isList 'Grid--wide'}}">
+					<div class="Grid">
 						{{#each manipulatedList as |item|}}
 							<div class="Grid-cell">
-								{{channel-card channel=item wide=isList}}
+								{{channel-card channel=item}}
 							</div>
 						{{/each}}
 					</div>
