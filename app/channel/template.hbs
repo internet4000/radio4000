@@ -1,8 +1,10 @@
 <div class="Sections">
 	<section class="Section">
 		<div class="Manchet">
-			<h1>
-				{{#link-to 'channel.index' model}}
+			<h1 title={{model.body}}>
+				{{#link-to
+						 'channel.index'
+						 model}}
 					{{model.title}}
 				{{/link-to}}
 			</h1>
@@ -11,13 +13,13 @@
 				{{#link-to
 						 'channel.tracks'
 						 class="Tabs-item"
-						 title="All tracks [⌨ g t]"}}
+						 title="All tracks [⌨ g t (my radio)]"}}
 					Tracks <span class="Muted">({{model.totalTracks}})</span>
 				{{/link-to}}
 				{{#link-to
 						 'channel.favorites'
 						 class="Tabs-item"
-						 title="Favorites of this radio [⌨ g s]"}}
+						 title="Favorites of this radio [⌨ g s (my radio)]"}}
 					Favorites
 				{{/link-to}}
 				{{#if model.canEdit}}
