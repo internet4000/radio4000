@@ -6,8 +6,8 @@
 					 list=model.channelPublic.followers
 					 sortKey=sortKey
 					 as |manipulatedList updateSorting|}}
-				<div class="Filters">
-					{{#btn-group class="Filter BtnGroup--right"}}
+				<div class="BtnGroups">
+					{{#btn-group}}
 						<span class="BtnGroup-label">Filter radio channels by</span>
 						{{link-to "Activity" "channel.followers" (query-params sort="updated") class='Btn'}}
 						{{link-to "Age" "channel.followers" (query-params sort="created") class='Btn'}}
