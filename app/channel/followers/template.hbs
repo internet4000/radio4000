@@ -5,28 +5,44 @@
 			{{#list-manipulation
 					 list=model.channelPublic.followers
 					 sortKey=sortKey
+					 sortDirection=sortDirection
 					 as |manipulatedList updateSorting|}}
 				<div class="BtnGroups">
 					{{#btn-group}}
-						<span class="BtnGroup-label">Filter radio channels by</span>
+						<span class="BtnGroup-label">Sort radio channels by</span>
 						{{link-to
 								"Activity"
 								"channel.followers"
 								(query-params sort="updated")
 								class='Btn'
-								title="Filter by activity, last updated date"}}
+								title="Sort by activity, last updated date"}}
 						{{link-to
 								"Age"
 								"channel.followers"
 								(query-params sort="created")
 								class='Btn'
-								title="Filter by age, created date"}}
+								title="Sort by age, created date"}}
 						{{link-to
 								"A-Z"
 								"channel.followers"
 								(query-params sort="title")
 								class='Btn'
-								title="Filter by alphabetic order of titles"}}
+								title="Sort by alphabetic order of titles"}}
+					{{/btn-group}}
+
+					{{#btn-group}}
+						{{link-to
+								"↑"
+								"channel.followers"
+								(query-params sortDirection="asc")
+								class='Btn'
+								title="Sort by alphabetic order of titles"}}
+						{{link-to
+								"↓"
+								"channel.followers"
+								(query-params sortDirection="desc")
+								class='Btn'
+								title="Sort by alphabetic order of titles"}}
 					{{/btn-group}}
 				</div>
 
