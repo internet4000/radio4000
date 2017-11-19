@@ -40,21 +40,39 @@ export default Route.extend(EKMixin, {
     }
   }),
 
-	gotoRadios: on(keyUp('KeyM'), function() {
+	gotoMap: on(keyUp('KeyM'), function() {
     if (get(this, 'isGoingTo')) {
       this.transitionTo('channels.map');
     }
   }),
 
-	gotoRadios: on(keyUp('KeyY'), function() {
+	gotoHistory: on(keyUp('KeyY'), function() {
     if (get(this, 'isGoingTo')) {
       this.transitionTo('channels.history');
     }
   }),
 
+	// go `I`
 	gotoMyRadio: on(keyUp('KeyI'), function() {
-    if (get(this, 'isGoingTo') && get(this, 'session.currentUser')) {
-      this.transitionTo('channel', get(this, 'session.currentUser.channels.firstObject'));
+		const userChannel = get(this, 'session.currentUser.channels.firstObject')
+    if (get(this, 'isGoingTo') && userChannel) {
+      this.transitionTo('channel.index', userChannel);
+    }
+  }),
+
+	// go `Starred`
+	gotoMyRadioFavorites: on(keyUp('KeyS'), function() {
+		const userChannel = get(this, 'session.currentUser.channels.firstObject')
+    if (get(this, 'isGoingTo') && userChannel) {
+      this.transitionTo('channel.favorites', userChannel);
+    }
+  }),
+
+	// go `Starred`
+	gotoMyRadioTracks: on(keyUp('KeyT'), function() {
+		const userChannel = get(this, 'session.currentUser.channels.firstObject')
+    if (get(this, 'isGoingTo') && userChannel) {
+      this.transitionTo('channel.tracks', userChannel);
     }
   }),
 
@@ -77,7 +95,7 @@ export default Route.extend(EKMixin, {
     }
   }),
 
-	gotoCurrentTrack: on(keyUp('KeyT'), function() {
+	gotoCurrentTrack: on(keyUp('KeyX'), function() {
 		const currentTrack = get(this, 'player.currentTrack');
     if (get(this, 'isGoingTo') && currentTrack) {
       this.transitionTo('channel.tracks.track', currentTrack);
