@@ -3,10 +3,9 @@ import Ember from 'ember';
 const {Controller, get, set, computed} = Ember;
 
 export default Controller.extend({
-	queryParams: {
-		search: 'search',
+	queryParams: ['search', {
     sortKey: 'sort'
-  },
+  }],
 	isList: false,
 	search: '',
 	searchResults: null,
