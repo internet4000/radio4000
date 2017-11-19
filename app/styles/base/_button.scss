@@ -202,16 +202,6 @@
 	border-bottom-right-radius: 0;
 }
 
-// Shows either a up or down indicator
-// according to sorting method
-.SortIndicator {
-	display: none;
-	font-size: 0.7em;
-
-	.Btn.is-active & {
-		display: inline;
-	}
-}
 
 /**
  * Non Buttons
@@ -229,4 +219,13 @@
 	&:hover {
 		cursor: pointer;
 	}
+}
+
+/*
+	Button for the map
+	hover the fullscreen map
+*/
+
+.Btn--map {
+	z-index: 2;
 }
