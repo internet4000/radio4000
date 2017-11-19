@@ -17,6 +17,10 @@
 							onClick=(action updateSorting "created" true)}}
 					{{btn-list-manipulation text="A-Z"
 							onClick=(action updateSorting "title" true)}}
+
+					<span class="BtnGroup-label" style="margin-left: 1rem">Pager</span>
+					<button class="Btn" {{action "prev"}}>&larr;</button>
+					<button class="Btn" {{action "next"}}>&rarr;</button>
 					{{!--
 					<span class="BtnGroup-label">&nbsp;</span>
 					<button class="Btn Btn--small" {{action "changeLayout"}}>
