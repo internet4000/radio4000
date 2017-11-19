@@ -2,7 +2,10 @@
 
 	<section class="Section">
 		<div class="Container Container--full">
-			{{#list-manipulation list=model.channelPublic.followers as |manipulatedList updateSorting|}}
+			{{#list-manipulation
+					 list=model.channelPublic.followers
+					 sortKey=sortKey
+					 as |manipulatedList updateSorting|}}
 				<div class="Filters">
 					{{#btn-group class="Filter BtnGroup--right"}}
 						<span class="BtnGroup-label">Filter radio channels by</span>
