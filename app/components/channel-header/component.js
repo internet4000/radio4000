@@ -14,10 +14,11 @@ export default Component.extend({
 	shouldShowUpdated: computed('channel.updated', function() {
 		const updatedTimestamp = get(this, 'channel.updated');
 
-		if(!updatedTimestamp) { return }
+		if (!updatedTimestamp) {
+			return
+		}
 
 		const limit = addMonths(new Date(), -2);
-		console.log('limit', limit)
 		return isAfter(new Date(updatedTimestamp), limit);
 	})
 });
