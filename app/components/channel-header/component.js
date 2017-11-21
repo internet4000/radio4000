@@ -15,7 +15,7 @@ export default Component.extend({
 		const updatedTimestamp = get(this, 'channel.updated');
 
 		if (!updatedTimestamp) {
-			return
+			return false;
 		}
 
 		const limit = addMonths(new Date(), -2);
