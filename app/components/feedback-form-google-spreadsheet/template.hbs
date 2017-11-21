@@ -12,6 +12,14 @@
 			placeholder="Your email (optional, only used to answer you)"}}
 	</div>
 
+	<div style="display:none;" class="Form-group">
+    <label>Don’t fill this out:
+			{{input
+				value=botField
+				placeholder="This input is for botzzz, if filled, do not sent -_-"}}
+		</label>
+  </div>
+
 	<div class="BtnGroupWrapper BtnGroupWrapper--full">
 		{{async-button
 			class="Btn Btn--large"
