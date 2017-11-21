@@ -4,9 +4,9 @@ const {Controller, get, set, computed} = Ember;
 
 export default Controller.extend({
 	queryParams: ['search', {
-    sortKey: 'sort',
+		sortKey: 'sort',
 		sortDirection: 'direction'
-  }],
+	}],
 	search: '',
 	searchResults: null,
 	sortKey: 'updated',
