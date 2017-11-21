@@ -1,8 +1,9 @@
 /**
  * Tabs
-	by default they are boxed and vertical.
-	Use a modifier if you need them horizontal.
+ by default they are boxed and vertical.
+ Use a modifier if you need them horizontal.
  */
+
 .Tabs {
 	display: inline-flex;
 	flex-flow: column wrap;
@@ -50,6 +51,7 @@
 		text-transform: uppercase;
 		font-weight: 400;
 	}
+
 	&.Tabs-item--transparent {
 		background-color: transparent;
 	}
@@ -71,12 +73,7 @@
  */
 
 .Tabs--horizontal {
-	flex-direction: row;
-	text-align: center;
-
-	@media (min-width: $layout-s) {
-		max-width: 90%;
-	}
+	flex-flow: row nowrap;
 
 	.Tabs-item {
 		white-space: nowrap;
@@ -88,11 +85,6 @@
 			border-right: 0;
 			border-bottom: 3px solid $primary-color;
 		}
-
-		// equal widths (not on mobile to save space)
-		// @media (min-width: $layout-m) {
-		// 	flex: 1;
-		// }
 
 		@media (max-width: $layout-s) {
 			padding-left: 0.5rem;
@@ -109,10 +101,6 @@
 		border-top-right-radius: $border-radius;
 		border-bottom-right-radius: $border-radius;
 	}
-}
-
-.Tabs--centered {
-	justify-content: center;
 }
 
 // Used where the background is considered "higher",
