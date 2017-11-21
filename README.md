@@ -1,12 +1,6 @@
 # Radio4000
 
-The main front-end web application for Radio4000, CMS for music libraries.
-
-## URLs
-
-latest production deployment: https://radio4000.com
-development master branch + live db (no authentication):
-https://master--radio4000.netlify.com
+The main front-end web application for Radio4000, CMS for music libraries &rarr; https://radio4000.com
 
 ## How to develop
 
@@ -26,13 +20,7 @@ Run `npm test` for a single test or `ember test --server` to start a test server
 
 ## Deployment
 
-The site is hosted on netlify.com. Netlify will automatically deploy each branch and PR. The `production` branch is mirrored to https://radio4000.com
-
-So, to deploy to production:
-
-1. `git checkout master; git pull`
-2. Use `release-it` to tag a new release
-3. `git checkout production; git pull; git merge master --no-ff; git push`
+The site is hosted on netlify.com. Netlify will automatically deploy each branch and PR. The `production` branch is mirrored to https://radio4000.com and `master` to https://master--radio4000.netlify.com (live db and no authentication). See [contributing.md](https://github.com/internet4000/radio4000/blob/master/CONTRIBUTING.md) for more.
 
 ## Backend
 

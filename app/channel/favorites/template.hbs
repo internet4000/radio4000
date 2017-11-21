@@ -2,22 +2,55 @@
 
 	<section class="Section">
 		<div class="Container Container--full">
-			{{#list-manipulation list=model.favoriteChannels as |manipulatedList updateSorting|}}
-				{{#btn-group class="BtnGroup--right"}}
-					<span class="BtnGroup-label">Filter radio channels by</span>
-					{{btn-list-manipulation text="Activity" class="is-active"
-						onClick=(action updateSorting "updated")}}
-					{{btn-list-manipulation text="Age"
-						onClick=(action updateSorting "created" true)}}
-					{{btn-list-manipulation text="A-Z"
-						onClick=(action updateSorting "title" true)}}
-				{{/btn-group}}
+			{{#list-manipulation
+					 list=model.favoriteChannels
+					 sortKey=sortKey
+					 sortDirection=sortDirection
+					 as |manipulatedList|}}
+				<div class="BtnGroups">
+					{{#btn-group}}
+						<span class="BtnGroup-label">Sort radio channels by</span>
+						{{link-to
+								"Activity"
+								"channel.favorites"
+								(query-params sort="updated")
+								class='Btn'
+								title="Sort by activity, last updated date"}}
+						{{link-to
+								"Age"
+								"channel.favorites"
+								(query-params sort="created")
+								class='Btn'
+								title="Sort by age, created date"}}
+						{{link-to
+								"A-Z"
+								"channel.favorites"
+								(query-params sort="title")
+								class='Btn'
+								title="Sort by alphabetic order of titles"}}
+					{{/btn-group}}
+
+					{{#btn-group}}
+						{{link-to
+								"↑"
+								"channel.favorites"
+								(query-params sortDirection="asc")
+								class='Btn'
+								title="Sort direction: ascending"}}
+						{{link-to
+								"↓"
+								"channel.favorites"
+								(query-params sortDirection="desc")
+								class='Btn'
+								title="Sort direction: descending"}}
+					{{/btn-group}}
+				</div>
 
 				{{#if model.favoriteChannels}}
-					<div class="Grid {{if isList 'Grid--wide'}}">
+					<div class="Grid">
 						{{#each manipulatedList as |item|}}
 							<div class="Grid-cell">
-								{{channel-card channel=item wide=isList}}
+								{{channel-card channel=item}}
 							</div>
 						{{/each}}
 					</div>

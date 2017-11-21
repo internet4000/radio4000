@@ -11,14 +11,19 @@
 				<div class="Grid">
 					<div class="Grid-cell">
 						<p>Hello and welcome!</p>
-						<p>You can start your journey by listening to one of the radios on this page.</p>
+						<p>You can start your journey by listening to one of the radio channels on this page.</p>
 						<p>Otherwise, let's explore!</p>
 						<p>
-							&rarr; <a href="{{href-to 'channels.all'}}">See all radios</a><br>
-							&rarr; <a href="{{href-to 'about.intro'}}">What is Radio4000?</a>
-						</p>
-						<p>
-							{{play-random-channel}}
+						{{#btn-group class="BtnGroup--full BtnGroup--vertical"}}
+							{{play-random-channel
+									class="Btn--large"}}
+							<a
+								class="Btn Btn--text"
+								href="{{href-to 'about.intro'}}"
+								title="Have you read the manifesto?">
+								What is Radio4000?
+							</a>
+						{{/btn-group}}
 						</p>
 					</div>
 					{{#each manipulatedList as |channel|}}

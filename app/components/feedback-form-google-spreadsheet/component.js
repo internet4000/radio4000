@@ -49,6 +49,9 @@ export default Component.extend({
 
 	actions: {
 		send() {
+			if (get(this, 'botField')) {
+				return;
+			}
 			const notification = get(this, 'flashMessages');
 			const url = get(this, 'buildUrl');
 			const data = {

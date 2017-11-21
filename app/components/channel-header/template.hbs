@@ -28,8 +28,13 @@
 			<a href="{{href-to 'channel' channel}}" class="" title="To listen, tune in @{{channel.slug}}">@{{channel.slug}}</a>
 		</p>
 		<p>
-			{{#if channel.updated}}
-				<span class="Channel-date Muted" title="{{channel.title}} was last updated {{time-ago channel.updated}}">{{time-ago channel.updated}}</span>
+			{{#if shouldShowUpdated}}
+				<span
+					class="Channel-date Muted"
+					title="{{channel.title}} was last updated {{time-ago channel.updated}}"
+				>
+					{{time-ago channel.updated}}
+				</span>
 			{{/if}}
 			{{!-- Note here the ``<updated>, (map)` syntax --}}
 			{{#if channel.hasCoordinates}}
