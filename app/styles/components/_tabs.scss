@@ -4,7 +4,7 @@
 	Use a modifier if you need them horizontal.
  */
 .Tabs {
-	display: flex;
+	display: inline-flex;
 	flex-flow: column wrap;
 	flex-shrink: 0;
 
