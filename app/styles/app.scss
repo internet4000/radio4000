@@ -31,7 +31,7 @@
 @import "layout/layout";
 @import "layout/container";
 @import "layout/sections";
-@import "layout/grid"; // @todo refactor
+@import "layout/grid";
 @import "layout/intro";
 
 // Forms
@@ -62,7 +62,6 @@
 @import "components/page-welcome";
 @import "components/playback";
 @import "components/playback-external";
-@import "components/filters";
 @import "components/flash-messages";
 @import "components/modal-dialog";
 @import "components/logo";
@@ -70,6 +69,3 @@
 
 // Major UI States or the UI
 @import "layout/root";
-
-// @import "components/widget";
-// @import "components/toggle-panel";

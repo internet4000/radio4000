@@ -1,12 +1,16 @@
 <div class="Grid">
 	<div class="Grid-cell">
-		<p>This is your listening history.</p>
-		<p class="Muted">This page is private, only you can see it.</p>
-		{{#btn-group}}
-			<button class="Btn"
-							{{action 'clearChannelHistory'}}
-							disabled={{noHistory}}>Clear history</button>
+		<p>This is your listening history. This page is private, only you can see it.</p>
+		{{#btn-group class="BtnGroup--full BtnGroup--vertical"}}
+			<button
+				class="Btn"
+				{{action 'clearChannelHistory'}}
+				disabled={{noHistory}}
+				title="When you click it will really be deleted from Radio4000's servers">
+				Clear history
+			</button>
 		{{/btn-group}}
+		<p class="Muted">Tip: add radios you like to your favorites, and clear your history to start a fresh listening session</p>
 	</div>
 	{{#if items}}
 	{{#each items as |item|}}

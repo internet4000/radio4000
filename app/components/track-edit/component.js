@@ -1,10 +1,10 @@
-import Ember from 'ember';
-import {task} from 'ember-concurrency';
-import TrackFormComponent from 'radio4000/components/track-form/component';
+import Ember from 'ember'
+import {task} from 'ember-concurrency'
+import TrackFormComponent from 'radio4000/components/track-form/component'
 
 const {
 	get,
-	computed} = Ember;
+	computed} = Ember
 
 export default TrackFormComponent.extend({
 	// Track model to edit
@@ -17,15 +17,15 @@ export default TrackFormComponent.extend({
 
 	submitTask: task(function * (event) {
 		event.preventDefault()
-		yield get(this, 'track.update').perform();
+		yield get(this, 'track.update').perform()
 		get(this, 'flashMessages').success('Track updated')
 		yield get(this, 'onSubmit')()
 	}).drop(),
 
 	deleteTrack: task(function * (event) {
 		event.preventDefault()
-		yield get(this, 'track.delete').perform();
+		yield get(this, 'track.delete').perform()
 		get(this, 'flashMessages').success('Track deleted')
 		yield get(this, 'onDelete')()
 	}).drop()
-});
+})

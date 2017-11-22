@@ -51,9 +51,9 @@ export default Route.extend(resetScroll, {
 			return get(this, 'session.currentUser.channels').then(channels => {
 				const userChannel = get(channels, 'firstObject');
 				if (userChannel) {
-					return this.transitionTo('channel', userChannel);
+					return this.replaceWith('channel', userChannel);
 				}
-				return this.transitionTo('channels.new');
+				return this.replaceWith('channels.new');
 			});
 		}
 	}
