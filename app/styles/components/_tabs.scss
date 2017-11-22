@@ -5,7 +5,7 @@
  */
 
 .Tabs {
-	display: inline-flex;
+	display: flex;
 	flex-flow: column wrap;
 	flex-shrink: 0;
 
@@ -73,6 +73,7 @@
  */
 
 .Tabs--horizontal {
+	display: inline-flex;
 	flex-flow: row nowrap;
 
 	.Tabs-item {
