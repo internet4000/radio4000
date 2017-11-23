@@ -1,9 +1,3 @@
-import Controller from '@ember/controller';
+import Controller from 'radio4000/sorting/controller'
 
-export default Controller.extend({
-	queryParams: {
-		sortKey: 'sort',
-		sortDirection: 'direction'
-	},
-	sortKey: 'updated'
-});
+export default Controller.extend({})
