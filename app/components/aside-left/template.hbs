@@ -30,14 +30,6 @@
 					title="Add a new track to your radio [⌨ g a]">
 					Add track
 				</button>
-				{{#if player.isPlaying}}
-				<button
-					{{action "addTrack" player.originTrack}}
-					class="Btn Btn--small Btn--topNoRadius"
-					title="Add a current track to your radio [⌨ a]">
-					+
-				</button>
-				{{/if}}
 			{{/btn-group}}
 		{{/if}}
 

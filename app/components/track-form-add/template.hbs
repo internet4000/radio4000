@@ -1,3 +1,16 @@
+{{#if player.isPlaying}}
+
+	{{#btn-group}}
+		<!-- <span class="BtnGroup-label">Which track?</span> -->
+		<button
+			{{action "addTrack" player.originTrack}}
+			class="Btn"
+			title="Add the current 'on air' track into your radio [⌨ a]">
+			Add current track
+		</button>
+	{{/btn-group}}
+{{/if}}
+
 {{#form-group
 	model=track
 	valuePath="url"
