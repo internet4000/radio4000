@@ -27,16 +27,16 @@
 				<div class="Manchet">
 					<h2><small>Add a </small>new track<small> to your radio</small></h2>
 				</div>
-				<div class="Container">
+				<p class="Container">
 					{{track-form-add
 							initialUrl=url
 							onSubmit=(action "saveTrack")
 							onCancel=(action "closeModal")}}
-					<div>
-						Do you want to add tracks directly from YouTube?<br>
-						&rarr;<span {{action "closeModal"}}>{{link-to "Get the bookmarklet" "bookmarklet" class="Btn Btn--text"}}</span>
-					</div>
-				</div>
+				</p>
+				<p class="Container">
+					<span class="Muted" {{action "closeModal"}}>{{link-to "Add faster with the Bookmarklet" "bookmarklet"}}</span>
+				</p>
+
 			</section>
 		</div>
 	{{/modal-dialog}}
