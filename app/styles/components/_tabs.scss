@@ -57,8 +57,10 @@
 }
 
 .Tabs .BtnGroup {
-	padding-top: 0.2em;
+	padding-top: 0em;
 	padding-bottom: 0.2em;
+	padding-right: 0;
+	margin-bottom: 0;
 }
 
 .Tabs-divider {
@@ -70,6 +72,11 @@
 /**
  * Modifiers
  */
+.Tabs--vertical {
+	.Tabs-item.BtnGroup {
+		padding-left: 0;
+	}
+}
 
 .Tabs--horizontal {
 	flex-flow: row nowrap;
