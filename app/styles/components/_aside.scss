@@ -9,10 +9,6 @@
 }
 
 .Aside-toggle {
-	.Aside-toggleBtn span {
-		transform: rotateY(180deg);
-		transition: transform 300ms $easing;
-	}
 	&.is-active {
 		.Aside-toggleBtn span {
 			transform: rotateY(0);
@@ -22,6 +18,26 @@
 			@media (min-width: $layout-m) {
 				display: none;
 			}
+		}
+	}
+}
+
+.Aside-toggleBtn {
+	display: flex;
+	flex-direction: column;
+	span {
+		width: 8px;
+		height: 5px;
+		border-radius: 2px;
+		margin: 0.1rem;
+		background-color: black;
+		transform: rotateY(180deg);
+		transition: transform 300ms $easing2;
+		&:nth-child(2) {
+			transition-duration: 600ms
+		}
+		&:nth-child(3) {
+			transition-duration: 1000ms
 		}
 	}
 }
@@ -45,7 +61,7 @@
 .Aside--left {
 	.Aside-toggleBtn {
 		position: fixed;
-		top: 2rem;
+		top: 1.7rem;
 		left: -3px;
 		z-index: 6;
 		opacity: 0.3;
