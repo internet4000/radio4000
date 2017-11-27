@@ -1,7 +1,7 @@
 /* global document */
 import Ember from 'ember';
 
-const {Component, inject, run} = Ember;
+const {Component, inject, run, get, set} = Ember;
 
 export default Component.extend({
 	uiStates: inject.service(),
@@ -33,12 +33,20 @@ export default Component.extend({
 	},
 
 	actions: {
-		toggleModal() {
-			this.toggleProperty('isShowingModal');
-			this.set('url', '');
+		openAddTrack(track) {
+			console.log(track)
+			if(track) {
+				set(this, 'url', track.url);
+			} else {
+				set(this, 'url', '');
+			}
+			set(this, 'isShowingModal', true);
+		},
+		closeModal() {
+			set(this, 'isShowingModal', false);
 		},
 		saveTrack(trackProperties) {
-			return this.get('onSaveTrack')(trackProperties);
+			return get(this, 'onSaveTrack')(trackProperties);
 		}
 	}
 });

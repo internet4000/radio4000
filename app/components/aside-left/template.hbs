@@ -23,12 +23,22 @@
 					channel=userChannel
 					wide=true
 					title="Your radio [⌨ g i]"}}
-			<button
-				{{action "addTrack"}}
-				class="Btn Btn--important Btn--topNoRadius"
-				title="Add a new track to your radio [⌨ g a]">
-				Add track
-			</button>
+			{{#btn-group class="BtnGroup--full"}}
+				<button
+					{{action "addTrack"}}
+					class="Btn Btn--important Btn--topNoRadius"
+					title="Add a new track to your radio [⌨ g a]">
+					Add track
+				</button>
+				{{#if player.isPlaying}}
+				<button
+					{{action "addTrack" player.originTrack}}
+					class="Btn Btn--small Btn--topNoRadius"
+					title="Add a current track to your radio [⌨ a]">
+					+
+				</button>
+				{{/if}}
+			{{/btn-group}}
 		{{/if}}
 
 		{{#unless userChannel}}

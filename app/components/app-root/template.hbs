@@ -9,7 +9,7 @@
 {{aside-left
 		isAuthenticated=session.isAuthenticated
 		userChannel=session.currentUser.channels.firstObject
-		toggleModal=(action "toggleModal")}}
+		onClick=(action "openAddTrack")}}
 
 <main class="SiteMain">
 	{{play-random-channel keyboardActivated=true}}
@@ -21,7 +21,7 @@
 </aside>
 
 {{#if isShowingModal}}
-	{{#modal-dialog onClose=(action "toggleModal")}}
+	{{#modal-dialog onClose=(action "closeModal")}}
 		<div class="Sections">
 			<section class="Section">
 				<div class="Manchet">
@@ -31,10 +31,10 @@
 					{{track-form-add
 							initialUrl=url
 							onSubmit=(action "saveTrack")
-							onCancel=(action "toggleModal")}}
+							onCancel=(action "closeModal")}}
 					<div>
 						Do you want to add tracks directly from YouTube?<br>
-						&rarr;<span {{action "toggleModal"}}>{{link-to "Get the bookmarklet" "bookmarklet" class="Btn Btn--text"}}</span>
+						&rarr;<span {{action "closeModal"}}>{{link-to "Get the bookmarklet" "bookmarklet" class="Btn Btn--text"}}</span>
 					</div>
 				</div>
 			</section>
