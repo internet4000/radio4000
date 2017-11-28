@@ -25,19 +25,22 @@
 .Aside-toggleBtn {
 	display: flex;
 	flex-direction: column;
+
 	span {
-		width: 8px;
-		height: 5px;
+		width: 9px;
+		height: 3px;
 		border-radius: 2px;
-		margin: 0.1rem;
+		margin: 1px;
 		background-color: black;
 		transform: rotateY(180deg);
 		transition: transform 300ms $easing2;
+
 		&:nth-child(2) {
 			transition-duration: 600ms
 		}
+
 		&:nth-child(3) {
-			transition-duration: 1000ms
+			transition-duration: 900ms
 		}
 	}
 }
@@ -61,7 +64,7 @@
 .Aside--left {
 	.Aside-toggleBtn {
 		position: fixed;
-		top: 1.7rem;
+		top: 2.1rem;
 		left: -3px;
 		z-index: 6;
 		opacity: 0.3;
