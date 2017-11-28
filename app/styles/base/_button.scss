@@ -16,7 +16,7 @@
 	text-align: center;
 	text-decoration: none;
 	user-select: none; /* 4 */
-	transition: border 150ms, background 150ms, box-shadow 150ms;
+	transition: border 150ms, background 150ms, box-shadow 150ms, opacity 150ms;
 
 	&:hover,
 	&:focus {

@@ -25,6 +25,7 @@
 .Aside-toggleBtn {
 	display: flex;
 	flex-direction: column;
+
 	span {
 		width: 9px;
 		height: 3px;
@@ -33,11 +34,13 @@
 		background-color: black;
 		transform: rotateY(180deg);
 		transition: transform 300ms $easing2;
+
 		&:nth-child(2) {
 			transition-duration: 600ms
 		}
+
 		&:nth-child(3) {
-			transition-duration: 1000ms
+			transition-duration: 900ms
 		}
 	}
 }
