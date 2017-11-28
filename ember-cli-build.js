@@ -35,7 +35,8 @@ module.exports = function (defaults) {
 		styleProcessorOptions: {
 			processors: [
 				{
-					type: 'node-sass'
+					type: 'node-sass',
+					sourcemaps: true
 				},
 				{
 					type: 'postcss',

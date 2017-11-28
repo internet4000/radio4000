@@ -1,33 +1,31 @@
-import Ember from 'ember';
+import Ember from 'ember'
+import Controller from 'radio4000/sorting/controller'
 
-const {Controller, get, set, computed} = Ember;
+const { get, set, computed } = Ember
 
 export default Controller.extend({
-	queryParams: ['search', {
-    sortKey: 'sort',
-		sortDirection: 'direction'
-  }],
+	queryParams: [
+		'search'
+	],
 	search: '',
 	searchResults: null,
-	sortKey: 'updated',
-	sortDirection: 'desc',
 
 	// Only show channels that have tracks.
 	channels: computed.filter('model', m => m.get('totalTracks')),
 
 	// Either show filtered or search-result channels.
-	filteredChannels: computed('channels', 'searchResults', function () {
-		const channels = get(this, 'channels');
-		const searchResults = get(this, 'searchResults');
-		return searchResults ? searchResults : channels;
+	filteredChannels: computed('channels', 'searchResults', function() {
+		const channels = get(this, 'channels')
+		const searchResults = get(this, 'searchResults')
+		return searchResults ? searchResults : channels
 	}),
 
 	actions: {
 		changeLayout() {
-			this.toggleProperty('isList');
+			this.toggleProperty('isList')
 		},
 		handleSearch(searchResults) {
-			set(this, 'searchResults', searchResults);
+			set(this, 'searchResults', searchResults)
 		}
 	}
-});
+})
