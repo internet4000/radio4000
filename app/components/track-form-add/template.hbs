@@ -1,9 +1,8 @@
 {{#if player.isPlaying}}
-
-	{{#btn-group}}
+	{{#btn-group class="BtnGroup--right"}}
 		<!-- <span class="BtnGroup-label">Which track?</span> -->
 		<button
-			{{action "addTrack" player.originTrack}}
+			{{action "prefillCurrentTrack"}}
 			class="Btn"
 			title="Add the current 'on air' track into your radio [⌨ a]">
 			Add current track

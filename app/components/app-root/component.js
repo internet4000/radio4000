@@ -34,8 +34,8 @@ export default Component.extend({
 
 	actions: {
 		openAddTrack(track) {
-			console.log(track)
-			if(track) {
+			console.log('@appRoot:openAddTrack: no track', track)
+			if (track) {
 				set(this, 'url', track.url);
 			} else {
 				set(this, 'url', '');

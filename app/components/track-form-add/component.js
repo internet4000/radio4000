@@ -31,5 +31,16 @@ export default TrackFormComponent.extend({
 	init() {
 		this._super(...arguments);
 		this.resetForm();
+	},
+	actions: {
+		prefillCurrentTrack() {
+			const currentTrack = get(this, 'player.currentTrack');
+			console.log('currentTrack', currentTrack)
+			get(this, 'track').setProperties({
+				url: currentTrack.get('url'),
+				body: `thx @${currentTrack.channel.slug}`
+			});
+		}
 	}
+
 });
