@@ -33,13 +33,14 @@ export default TrackFormComponent.extend({
 		this._super(...arguments);
 		this.resetForm();
 	},
+
 	actions: {
 		prefillCurrentTrack() {
 			const currentTrack = get(this, 'player.currentTrack');
 			get(this, 'track').setProperties({
 				url: currentTrack.get('url'),
 				title: currentTrack.get('title'),
-				body: `thx @${currentTrack.get('channel.slug')}`
+				body: `thanks @${currentTrack.get('channel.slug')}`
 			});
 		},
 		inviteToPremium() {
