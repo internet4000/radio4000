@@ -1,101 +1,111 @@
-import Ember from 'ember';
-import Mixin from '@ember/object/mixin';
-import {EKMixin, keyUp} from 'ember-keyboard';
+import Ember from 'ember'
+import Mixin from '@ember/object/mixin'
+import {EKMixin, keyUp} from 'ember-keyboard'
 
 const {
 	set,
 	get,
 	on,
 	run
-} = Ember;
+} = Ember
+
+/*CHAT BUFFER
+
+*/
 
 export default Mixin.create(EKMixin, {
 	// https://github.com/patience-tema-baron/ember-keyboard/issues/54
 	isGoingTo: false,
 
 	activateKeyboard: Ember.on('init', function() {
-		set(this, 'keyboardActivated', true);
+		set(this, 'keyboardActivated', true)
 	}),
 
 	goto: on(keyUp('KeyG'), function() {
-		set(this, 'isGoingTo', true);
+		set(this, 'isGoingTo', true)
 		run.later(() => {
-			set(this, 'isGoingTo', false);
-		}, 500);
+			set(this, 'isGoingTo', false)
+		}, 500)
 	}),
 
+	goingTo() {
+		if (get(this, 'isGoingTo')) {			
+			this.transitionTo.apply(this, arguments)
+		}
+	},
+
+	onKeyR: on(keyUp('KeyR'), function () {
+		if (get(this, 'isGoingTo')) {
+			this.transitionTo('channels.all')
+		} else {
+			alert('play random')
+		}
+	}),
+	// goingTo not defined
+	// it says
+	// can't see what it is. had it working locally here some days ago
+	// TypeError: undefined has no properties , line 44
+	// wait wait
+	// gotoHome: on(keyUp('KeyH'), function () {
+		// this.goingTo('application')
+	// }),
+	// I think the arrow functions are messing it up
 	gotoHome: on(keyUp('KeyH'), function() {
-		if (get(this, 'isGoingTo')) {
-			this.transitionTo('application');
-		}
+		this.goingTo('application')
 	}),
-
-	gotoRadios: on(keyUp('KeyR'), function() {
-		if (get(this, 'isGoingTo')) {
-			this.transitionTo('channels.all');
-		}
-	}),
-
 	gotoMap: on(keyUp('KeyM'), function() {
-		if (get(this, 'isGoingTo')) {
-			this.transitionTo('channels.map');
-		}
+		this.goingTo('channels.map')
 	}),
-
 	gotoHistory: on(keyUp('KeyY'), function() {
-		if (get(this, 'isGoingTo')) {
-			this.transitionTo('channels.history');
-		}
+		this.goingTo('channels.history')
 	}),
+	gotoAddTrack: on(keyUp('KeyA'), function() {
+		this.goingTo('add')
+	}),
+	gotoFeedback: on(keyUp('KeyF'), function() {
+		this.goingTo('feedback')
+	}),
+	// gotoHome: on(keyUp('KeyH'), () => this.goingTo('application')),
+	// gotoMap: on(keyUp('KeyM'), () => this.goingTo('channels.map')),
+	// gotoHistory: on(keyUp('KeyY'), () => this.goingTo('channels.history')),
+	// gotoAddTrack: on(keyUp('KeyA'), () => this.goingTo('add')),
+	// gotoFeedback: on(keyUp('KeyF'), () => this.goingTo('feedback')),
 
 	// go `I`
 	gotoMyRadio: on(keyUp('KeyI'), function() {
 		const userChannel = get(this, 'session.currentUser.channels.firstObject')
-		if (get(this, 'isGoingTo') && userChannel) {
-			this.transitionTo('channel.index', userChannel);
+		if (userChannel) {
+			this.goingTo('channel.index', userChannel)
 		}
 	}),
 
 	// go `Starred`
 	gotoMyRadioFavorites: on(keyUp('KeyS'), function() {
 		const userChannel = get(this, 'session.currentUser.channels.firstObject')
-		if (get(this, 'isGoingTo') && userChannel) {
-			this.transitionTo('channel.favorites', userChannel);
+		if (userChannel) {
+			this.goingTo('channel.favorites', userChannel)
 		}
 	}),
 
-	// go `Starred`
 	gotoMyRadioTracks: on(keyUp('KeyT'), function() {
-		const userChannel = get(this, 'session.currentUser.channels.firstObject')
-		if (get(this, 'isGoingTo') && userChannel) {
-			this.transitionTo('channel.tracks', userChannel);
-		}
-	}),
-
-	gotoAddTrack: on(keyUp('KeyA'), function() {
-		if (get(this, 'isGoingTo')) {
-			this.transitionTo('add');
-		}
-	}),
-
-	gotoFeedback: on(keyUp('KeyF'), function() {
-		if (get(this, 'isGoingTo')) {
-			this.transitionTo('feedback');
+		const userChannel = get(this, 'session1.currentUser.channels.firstObject')
+		if (userChannel) {
+			this.goingTo('channel.tracks', userChannel)
 		}
 	}),
 
 	gotoCurrentChannel: on(keyUp('KeyC'), function() {
-		const currentChannel = get(this, 'player.currentChannel');
-		if (get(this, 'isGoingTo') && currentChannel) {
-			this.transitionTo('channel', currentChannel);
+		const currentChannel = get(this, 'player.currentChannel')
+		if (currentChannel) {
+			this.goingTo('channel', currentChannel)
 		}
 	}),
 
 	gotoCurrentTrack: on(keyUp('KeyX'), function() {
-		const currentTrack = get(this, 'player.currentTrack');
-		const currentChannel = get(this, 'player.currentChannel');
-		if (get(this, 'isGoingTo') && currentTrack) {
-			this.transitionTo('channel.tracks.track', currentChannel, currentTrack);
+		const currentChannel = get(this, 'player.currentChannel')
+		const currentTrack = get(this, 'player.currentTrack')
+		if (currentChannel && currentTrack) {
+			this.goingTo('channel.tracks.track', currentChannel, currentTrack)
 		}
 	})
-});
+})
