@@ -8,7 +8,8 @@
 					initialUrl=url
 					onSubmit=(action "saveTrack")
 					onCancel=(action "goBack")
-					isSubmitting=createTrack.isRunning}}
+					isSubmitting=createTrack.isRunning
+					session=session}}
 			{{#unless model.tracks}}
 				<p class="Muted">
 					Tip: you are adding your first track.
