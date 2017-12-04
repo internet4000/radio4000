@@ -7,5 +7,5 @@ moduleForComponent('aside-left-toggle', 'Integration | Component | aside left to
 
 test('it renders', function (assert) {
 	this.render(hbs`{{aside-left-toggle}}`);
-	assert.equal(this.$().text().trim(), '<');
+	assert.equal(this.$('span').length, 3);
 });

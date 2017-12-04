@@ -15,14 +15,19 @@
 
 	h1, h2, h3 {
 		padding-left: 1rem;
-		padding-right: 2rem;
 		margin-bottom: 0;
-		@media (min-width: $layout-m) {
-			padding-left: 0;
-		}
 	}
+
 	p {
 		flex-basis: 100%;
+	}
+
+	.Tabs {
+		min-width: 15em;
+	}
+
+	.Tabs-item:first-child {
+		padding-left: 2rem;
 	}
 }
 
