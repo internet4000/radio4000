@@ -1,6 +1,5 @@
 .FlashMessages {
 	@include size-1;
-	z-index: 51;
 	position: fixed;
 	top: 1.4rem;
 	right: 0.7rem;
@@ -8,6 +7,8 @@
 }
 
 .alert {
+	position: relative;
+	z-index: 51;
 	display: table;
 	float: right;
 	clear: both;
