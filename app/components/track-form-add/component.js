@@ -45,8 +45,8 @@ export default TrackFormComponent.extend({
 		},
 		inviteToPremium() {
 			const message = `Hello!
-This feature can be used by upgraded channels only.
-Go to your settings to upgrade your Radio.`
+This feature is for upgraded channels only.
+Go to your settings to upgrade your radio.`
 			get(this, 'flashMessages').info(message, {
 				timeout: 5000
 			})
