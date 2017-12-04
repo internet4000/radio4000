@@ -14,7 +14,6 @@ const {
 const trackObject = Ember.Object.extend(Validations);
 
 export default TrackFormComponent.extend({
-	session: inject.service(),
 	player: inject.service(),
 	flashMessages: inject.service(),
 	disableSubmit: computed.or('submitTask.isRunning', 'isSubmitting', 'track.validations.isInvalid'),
