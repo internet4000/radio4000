@@ -3,10 +3,10 @@ import TrackFormComponent from 'radio4000/components/track-form/component';
 import {Validations} from 'radio4000/models/track';
 
 const {
-	inject,
 	get,
 	set,
-	computed
+	computed,
+	inject
 } = Ember;
 
 // Use a normal object instead af a model.
@@ -22,9 +22,9 @@ export default TrackFormComponent.extend({
 	// Also see the same method on the `TrackForm` component, from which this extends.
 	resetForm() {
 		// The getOwner part is mentioned in the ember-cp-validation docs.
-			const track = trackObject.create(Ember.getOwner(this).ownerInjection(), {
-				url: get(this, 'initialUrl')
-			});
+		const track = trackObject.create(Ember.getOwner(this).ownerInjection(), {
+			url: get(this, 'initialUrl')
+		});
 		set(this, 'track', track);
 		this._super(...arguments);
 	},
@@ -36,12 +36,10 @@ export default TrackFormComponent.extend({
 	actions: {
 		prefillCurrentTrack() {
 			const currentTrack = get(this, 'player.currentTrack');
-			const currentChannel = get(this, 'player.currentChannel');
-			console.log('currentChannel', currentChannel);
 			get(this, 'track').setProperties({
 				url: currentTrack.get('url'),
 				title: currentTrack.get('title'),
-				body: `thx @${currentChannel.get('slug')}`
+				body: `thx @${currentTrack.get('channel.slug')}`
 			});
 		},
 		inviteToPremium() {
@@ -53,5 +51,4 @@ Go to your settings to upgrade your Radio.`
 			})
 		}
 	}
-
 });

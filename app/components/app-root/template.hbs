@@ -7,9 +7,9 @@
 {{/if}}
 
 {{aside-left
-		isAuthenticated=session.isAuthenticated
-		userChannel=session.currentUser.channels.firstObject
-		onClick=(action "openAddTrack")}}
+	isAuthenticated=session.isAuthenticated
+	userChannel=session.currentUser.channels.firstObject
+	onClick=(action "openAddTrack")}}
 
 <main class="SiteMain">
 	{{play-random-channel keyboardActivated=true}}
@@ -29,9 +29,10 @@
 				</div>
 				<p class="Container">
 					{{track-form-add
-							initialUrl=url
-							onSubmit=(action "saveTrack")
-							onCancel=(action "closeModal")}}
+						session=session
+						initialUrl=url
+						onSubmit=(action "saveTrack")
+						onCancel=(action "closeModal")}}
 				</p>
 				<p class="Container">
 					<span class="Muted" {{action "closeModal"}}>{{link-to "Add faster with the Bookmarklet" "bookmarklet"}}</span>
