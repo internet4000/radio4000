@@ -1,4 +1,5 @@
 import Ember from 'ember'
+import $ from 'jquery'
 import Mixin from '@ember/object/mixin'
 import {EKMixin, keyUp} from 'ember-keyboard'
 
@@ -9,10 +10,6 @@ const {
 	run,
 	inject
 } = Ember
-
-/*CHAT BUFFER
-
-*/
 
 export default Mixin.create(EKMixin, {
 	player: inject.service(),
@@ -36,6 +33,25 @@ export default Mixin.create(EKMixin, {
 			this.transitionTo.apply(this, arguments)
 		}
 	},
+
+	triggerClickOnPlayer(selector) {
+		const el = document.querySelector(`${selector}`)
+		if (!el) return
+		$(el).trigger('click')
+	},
+
+	playPause: on(keyUp('KeyP'), function() {
+		this.triggerClickOnPlayer('radio4000-player .PlayPause-state')
+	}),
+	playNext: on(keyUp('KeyN'), function() {
+		this.triggerClickOnPlayer('radio4000-player .Btn--next')
+	}),
+	toggleShuffle: on(keyUp('KeyS'), function() {
+		this.triggerClickOnPlayer('radio4000-player .Btn--shuffle')
+	}),
+	toggleMute: on(keyUp('KeyM'), function() {
+		this.triggerClickOnPlayer('radio4000-player .Btn--mute')
+	}),
 
 	onKeyR: on(keyUp('KeyR'), function () {
 		if (get(this, 'isGoingTo')) {
