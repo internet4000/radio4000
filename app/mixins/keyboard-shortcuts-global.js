@@ -6,7 +6,8 @@ const {
 	set,
 	get,
 	on,
-	run
+	run,
+	inject
 } = Ember
 
 /*CHAT BUFFER
@@ -14,6 +15,8 @@ const {
 */
 
 export default Mixin.create(EKMixin, {
+	player: inject.service(),
+
 	// https://github.com/patience-tema-baron/ember-keyboard/issues/54
 	isGoingTo: false,
 
@@ -29,27 +32,18 @@ export default Mixin.create(EKMixin, {
 	}),
 
 	goingTo() {
-		if (get(this, 'isGoingTo')) {			
+		if (get(this, 'isGoingTo')) {
 			this.transitionTo.apply(this, arguments)
 		}
 	},
 
 	onKeyR: on(keyUp('KeyR'), function () {
 		if (get(this, 'isGoingTo')) {
-			this.transitionTo('channels.all')
+			this.transitionTo('channels.all');
 		} else {
-			alert('play random')
+			get(this, 'player.playRandomChannel').perform();
 		}
 	}),
-	// goingTo not defined
-	// it says
-	// can't see what it is. had it working locally here some days ago
-	// TypeError: undefined has no properties , line 44
-	// wait wait
-	// gotoHome: on(keyUp('KeyH'), function () {
-		// this.goingTo('application')
-	// }),
-	// I think the arrow functions are messing it up
 	gotoHome: on(keyUp('KeyH'), function() {
 		this.goingTo('application')
 	}),
@@ -65,11 +59,6 @@ export default Mixin.create(EKMixin, {
 	gotoFeedback: on(keyUp('KeyF'), function() {
 		this.goingTo('feedback')
 	}),
-	// gotoHome: on(keyUp('KeyH'), () => this.goingTo('application')),
-	// gotoMap: on(keyUp('KeyM'), () => this.goingTo('channels.map')),
-	// gotoHistory: on(keyUp('KeyY'), () => this.goingTo('channels.history')),
-	// gotoAddTrack: on(keyUp('KeyA'), () => this.goingTo('add')),
-	// gotoFeedback: on(keyUp('KeyF'), () => this.goingTo('feedback')),
 
 	// go `I`
 	gotoMyRadio: on(keyUp('KeyI'), function() {
