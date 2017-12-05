@@ -34,11 +34,8 @@ export default Component.extend({
 
 	actions: {
 		openAddTrack(track) {
-			console.log('@appRoot:openAddTrack: no track', track)
 			if (track) {
-				set(this, 'url', track.url);
-			} else {
-				set(this, 'url', '');
+				set(this, 'url', track.url || '');
 			}
 			set(this, 'isShowingModal', true);
 		},
