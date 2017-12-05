@@ -48,7 +48,7 @@ export default TrackFormComponent.extend({
 This feature is for upgraded channels only.
 Go to your settings to upgrade your radio.`
 			get(this, 'flashMessages').info(message, {
-				timeout: 5000
+				timeout: 50000
 			})
 		}
 	}
