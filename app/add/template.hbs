@@ -5,11 +5,10 @@
 		</div>
 		<div class="Container">
 			{{track-form-add
-					initialUrl=url
-					onSubmit=(action "saveTrack")
-					onCancel=(action "goBack")
-					isSubmitting=createTrack.isRunning
-					session=session}}
+				initialUrl=url
+				onSubmit=(action "saveTrack")
+				onCancel=(action "goBack")
+				isSubmitting=createTrack.isRunning}}
 			{{#unless model.tracks}}
 				<p class="Muted">
 					Tip: you are adding your first track.
