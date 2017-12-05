@@ -36,8 +36,9 @@ export default Mixin.create(EKMixin, {
 
 	triggerClickOnPlayer(selector) {
 		const el = document.querySelector(`${selector}`)
-		if (!el) return
-		$(el).trigger('click')
+		if (el) {
+			$(el).trigger('click')
+		}
 	},
 
 	playPause: on(keyUp('KeyP'), function() {
