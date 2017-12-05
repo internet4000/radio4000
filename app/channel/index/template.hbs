@@ -11,14 +11,14 @@
 				Latest tracks
 				<small>({{link-to "see all" "channel.tracks"}})</small>
 			</h3>
-		</div>
-		<div class="Container Container--noPaddingMobile">
 
 			{{#if model.channel.canEdit}}
 				<form class="Form">
 					{{track-add-inline onSubmit=(action "addTrack")}}
 				</form>
 			{{/if}}
+		</div>
+		<div class="Container Container--noPaddingMobile">
 
 			{{#if model.latestTracks}}
 				{{#tracks-list items=model.latestTracks as |item|}}
