@@ -1,13 +1,14 @@
 .FlashMessages {
 	@include size-1;
-	z-index: 3;
 	position: fixed;
+	z-index: 52; // over player
 	top: 1.4rem;
 	right: 0.7rem;
 	max-width: 20rem;
 }
 
 .alert {
+	position: relative;
 	display: table;
 	float: right;
 	clear: both;

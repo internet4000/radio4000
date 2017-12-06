@@ -4,14 +4,15 @@ const {Component, computed, get, inject} = Ember;
 
 export default Component.extend({
 	uiStates: inject.service(),
+	player: inject.service(),
 	tagName: 'aside',
 	classNames: ['Aside', 'Aside--left'],
 
 	isActive: computed.alias('uiStates.isPanelLeftVisible'),
 
 	actions: {
-		addTrack() {
-			get(this, 'toggleModal')();
+		addTrack(trackModel) {
+			get(this, 'onClick')(trackModel);
 		}
 	}
 });

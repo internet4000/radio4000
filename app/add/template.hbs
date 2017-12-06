@@ -5,22 +5,29 @@
 		</div>
 		<div class="Container">
 			{{track-form-add
-					initialUrl=url
-					onSubmit=(action "saveTrack")
-					onCancel=(action "goBack")
-					isSubmitting=createTrack.isRunning}}
+				initialUrl=url
+				onSubmit=(action "saveTrack")
+				onCancel=(action "goBack")
+				isSubmitting=createTrack.isRunning}}
+			{{#unless model.tracks}}
+				<p class="Muted">
+					Tip: you are adding your first track.
+					Copy this link <a href="https://www.youtube.com/watch?v=5EH5GFP2Otk">https://www.youtube.com/watch?v=5EH5GFP2Otk</a>
+					and paste it the the <strong>URL</strong> field above.
+				</p>
+			{{/unless}}
 		</div>
 	</div>
 	<section class="Section">
 		<div class="Container Container--full">
 			<div class="Grid">
-				<div class="Grid-cell">
+				<div class="Grid-cell Grid-cell--double">
 					<p>You are adding to:</p>
-					{{channel-card channel=model}}
+					{{channel-card channel=model wide=true}}
 				</div>
-				<div class="Grid-cell">
+				<div class="Muted Grid-cell">
 					<p>
-						Want to add tracks faster to your Radio4000 channel?
+						Tip: do you want to <strong>add tracks faster</strong> into your Radio4000 channel?
 					</p>
 					<p>
 						{{link-to "Get the bookmarklet" "bookmarklet" class="Btn"}}

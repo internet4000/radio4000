@@ -43,6 +43,8 @@
 
 .BtnGroup--right {
 	justify-content: flex-end;
+	padding-right: 0;
+	padding-left: 1rem;
 }
 
 .BtnGroup-label {
@@ -78,4 +80,5 @@
 
 .BtnGroupWrapper--full {
 	justify-content: space-between;
+	padding-right: 0;
 }
