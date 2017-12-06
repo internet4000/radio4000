@@ -1,4 +1,7 @@
 import Ember from 'ember';
+import {task} from 'ember-concurrency';
+
+import {getRandomIndex} from 'radio4000/utils/random-helpers';
 
 const {Service, inject, get, set, debug, computed} = Ember;
 
@@ -88,5 +91,29 @@ export default Service.extend({
 			settings.set('playedChannels', []);
 			settings.save();
 		});
-	}
+	},
+
+	/*
+		 Play random channel
+	 */
+	playRandomChannel: task(function * () {
+		const store = get(this, 'store')
+
+		let channels = store.peekAll('channel')
+
+		if (channels.get('length') < 15) {
+			channels = yield store.findAll('channel')
+		}
+
+		const channel = channels.objectAt(getRandomIndex(channels.content))
+
+		const tracks = yield channel.get('tracks')
+
+		if (tracks.length < 2) {
+			get(this, 'playRandomChannel').perform()
+		} else {
+			this.playTrack(tracks.get('lastObject'))
+		}
+	}).drop()
+
 });

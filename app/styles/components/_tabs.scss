@@ -58,8 +58,10 @@
 }
 
 .Tabs .BtnGroup {
-	padding-top: 0.2em;
+	padding-top: 0em;
 	padding-bottom: 0.2em;
+	padding-right: 0;
+	margin-bottom: 0;
 }
 
 .Tabs-divider {
@@ -71,6 +73,11 @@
 /**
  * Modifiers
  */
+.Tabs--vertical {
+	.Tabs-item.BtnGroup {
+		padding-left: 0;
+	}
+}
 
 .Tabs--horizontal {
 	display: inline-flex;
@@ -120,37 +127,37 @@
 }
 
 // Animated border
-.Tabs--animated {
-	.Tabs-item {
-		// contain the border
-		position: relative;
+// .Tabs--animated {
+// 	.Tabs-item {
+// 		// contain the border
+// 		position: relative;
 
-		// remove previous borders
-		border-bottom: 0 !important;
+// 		// remove previous borders
+// 		border-bottom: 0 !important;
 
-		// align border vertically with same height as other tabs,
-		// stupid but yes.
-		padding-top: rem(4);
-		padding-bottom: 0;
-		line-height: 2.3;
-	}
+// 		// align border vertically with same height as other tabs,
+// 		// stupid but yes.
+// 		padding-top: rem(4);
+// 		padding-bottom: 0;
+// 		line-height: 2.3;
+// 	}
 
-	// the (hidden) border
-	.Tabs-item::after {
-		content: "";
-		display: block;
-		margin: auto;
-		height: 3px;
-		width: 0;
-		background: $primary-color;
-		transition: width 400ms $easing;
-	}
+// 	// the (hidden) border
+// 	.Tabs-item::after {
+// 		content: "";
+// 		display: block;
+// 		margin: auto;
+// 		height: 3px;
+// 		width: 0;
+// 		background: $primary-color;
+// 		transition: width 400ms $easing;
+// 	}
 
-	// the visible border
-	.Tabs-item.is-active::after {
-		width: 100%;
-	}
-}
+// 	// the visible border
+// 	.Tabs-item.is-active::after {
+// 		width: 100%;
+// 	}
+// }
 
 .Tabs--transparent {
 	border: 0;

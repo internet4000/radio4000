@@ -1,101 +1,117 @@
-import Ember from 'ember';
-import Mixin from '@ember/object/mixin';
-import {EKMixin, keyUp} from 'ember-keyboard';
+import Ember from 'ember'
+import $ from 'jquery'
+import Mixin from '@ember/object/mixin'
+import {EKMixin, keyUp} from 'ember-keyboard'
 
 const {
 	set,
 	get,
 	on,
-	run
-} = Ember;
+	run,
+	inject
+} = Ember
 
 export default Mixin.create(EKMixin, {
+	player: inject.service(),
+
 	// https://github.com/patience-tema-baron/ember-keyboard/issues/54
 	isGoingTo: false,
 
 	activateKeyboard: Ember.on('init', function() {
-		set(this, 'keyboardActivated', true);
+		set(this, 'keyboardActivated', true)
 	}),
 
 	goto: on(keyUp('KeyG'), function() {
-		set(this, 'isGoingTo', true);
+		set(this, 'isGoingTo', true)
 		run.later(() => {
-			set(this, 'isGoingTo', false);
-		}, 500);
+			set(this, 'isGoingTo', false)
+		}, 500)
 	}),
 
-	gotoHome: on(keyUp('KeyH'), function() {
+	goingTo() {
 		if (get(this, 'isGoingTo')) {
-			this.transitionTo('application');
+			this.transitionTo.apply(this, arguments)
 		}
+	},
+
+	triggerClickOnPlayer(selector) {
+		const el = document.querySelector(`${selector}`)
+		if (el) {
+			$(el).trigger('click')
+		}
+	},
+
+	playPause: on(keyUp('KeyP'), function() {
+		this.triggerClickOnPlayer('radio4000-player .PlayPause-state')
+	}),
+	playNext: on(keyUp('KeyN'), function() {
+		this.triggerClickOnPlayer('radio4000-player .Btn--next')
+	}),
+	toggleShuffle: on(keyUp('KeyS'), function() {
+		this.triggerClickOnPlayer('radio4000-player .Btn--shuffle')
+	}),
+	toggleMute: on(keyUp('KeyM'), function() {
+		this.triggerClickOnPlayer('radio4000-player .Btn--mute')
 	}),
 
-	gotoRadios: on(keyUp('KeyR'), function() {
+	onKeyR: on(keyUp('KeyR'), function () {
 		if (get(this, 'isGoingTo')) {
 			this.transitionTo('channels.all');
+		} else {
+			get(this, 'player.playRandomChannel').perform();
 		}
 	}),
-
+	gotoHome: on(keyUp('KeyH'), function() {
+		this.goingTo('application')
+	}),
 	gotoMap: on(keyUp('KeyM'), function() {
-		if (get(this, 'isGoingTo')) {
-			this.transitionTo('channels.map');
-		}
+		this.goingTo('channels.map')
 	}),
-
 	gotoHistory: on(keyUp('KeyY'), function() {
-		if (get(this, 'isGoingTo')) {
-			this.transitionTo('channels.history');
-		}
+		this.goingTo('channels.history')
+	}),
+	gotoAddTrack: on(keyUp('KeyA'), function() {
+		this.goingTo('add')
+	}),
+	gotoFeedback: on(keyUp('KeyF'), function() {
+		this.goingTo('feedback')
 	}),
 
 	// go `I`
 	gotoMyRadio: on(keyUp('KeyI'), function() {
 		const userChannel = get(this, 'session.currentUser.channels.firstObject')
-		if (get(this, 'isGoingTo') && userChannel) {
-			this.transitionTo('channel.index', userChannel);
+		if (userChannel) {
+			this.goingTo('channel.index', userChannel)
 		}
 	}),
 
 	// go `Starred`
 	gotoMyRadioFavorites: on(keyUp('KeyS'), function() {
 		const userChannel = get(this, 'session.currentUser.channels.firstObject')
-		if (get(this, 'isGoingTo') && userChannel) {
-			this.transitionTo('channel.favorites', userChannel);
+		if (userChannel) {
+			this.goingTo('channel.favorites', userChannel)
 		}
 	}),
 
-	// go `Starred`
 	gotoMyRadioTracks: on(keyUp('KeyT'), function() {
-		const userChannel = get(this, 'session.currentUser.channels.firstObject')
-		if (get(this, 'isGoingTo') && userChannel) {
-			this.transitionTo('channel.tracks', userChannel);
-		}
-	}),
-
-	gotoAddTrack: on(keyUp('KeyA'), function() {
-		if (get(this, 'isGoingTo')) {
-			this.transitionTo('add');
-		}
-	}),
-
-	gotoFeedback: on(keyUp('KeyF'), function() {
-		if (get(this, 'isGoingTo')) {
-			this.transitionTo('feedback');
+		const userChannel = get(this, 'session1.currentUser.channels.firstObject')
+		if (userChannel) {
+			this.goingTo('channel.tracks', userChannel)
 		}
 	}),
 
 	gotoCurrentChannel: on(keyUp('KeyC'), function() {
-		const currentChannel = get(this, 'player.currentChannel');
-		if (get(this, 'isGoingTo') && currentChannel) {
-			this.transitionTo('channel', currentChannel);
+		const currentChannel = get(this, 'player.currentChannel')
+		if (currentChannel) {
+			this.goingTo('channel', currentChannel)
 		}
 	}),
 
 	gotoCurrentTrack: on(keyUp('KeyX'), function() {
-		const currentTrack = get(this, 'player.currentTrack');
-		const currentChannel = get(this, 'player.currentChannel');
-		if (get(this, 'isGoingTo') && currentTrack) {
-			this.transitionTo('channel.tracks.track', currentChannel, currentTrack);
+		const currentChannel = get(this, 'player.currentChannel')
+		const currentTrack = get(this, 'player.currentTrack')
+		if (currentChannel && currentTrack) {
+			this.goingTo('channel.tracks.track', currentChannel, currentTrack)
 		}
 	})
-});
+})

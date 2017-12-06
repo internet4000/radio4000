@@ -1,7 +1,7 @@
 /* !
-	RADIO4000
-	by Hugo Vieilledent and Oskar Rough Mosumgaard
-*/
+	 RADIO4000
+	 by Hugo Vieilledent and Oskar Rough Mosumgaard
+ */
 
 // Third party (imported from `./node_modules` because we use postcss-import)
 @import "node_modules/normalize.css/normalize";
@@ -17,6 +17,7 @@
 @import "utilities/text";
 @import "utilities/mediablock";
 @import "utilities/flex";
+@import "utilities/displays";
 
 // Base (config and everything else without classes)
 @import "base/colors";

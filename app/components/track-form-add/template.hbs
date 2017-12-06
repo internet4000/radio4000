@@ -1,3 +1,28 @@
+{{#if player.isPlaying}}
+	<div class="u-dn">
+		{{#btn-group class="BtnGroup--right"}}
+			{{#if session.currentUser.channels.firstObject.isPremium}}
+				<button
+					{{action "prefillCurrentTrack"}}
+					class="Btn"
+					type="button"
+					title="Add the current 'on air' track into your radio [⌨ a]">
+					Copy current track
+				</button>
+			{{else}}
+				<button
+					{{action "inviteToPremium"}}
+					class="Btn Muted"
+					type="button"
+					title="(Upgrade) Add the current 'on air' track into your radio [⌨ a]">
+					Copy current track
+				</button>
+			{{/if}}
+		{{/btn-group}}
+	</div>
+{{/if}}
+
+
 {{#form-group
 	model=track
 	valuePath="url"
@@ -23,10 +48,10 @@
 {{/form-group}}
 
 {{#form-group
-	model=track
-	valuePath="body"
-	label="Description"
-	hint="Give your track an optional description" as |value|}}
+		 model=track
+		 valuePath="body"
+		 label="Description"
+		 hint="Give your track an optional description" as |value|}}
 	{{textarea value=value placeholder="Fantastic track! #fantastic (optional)"}}<br>
 {{/form-group}}
 
@@ -35,6 +60,6 @@
 		<button {{action "submit"}} type="submit" class="Btn Btn--important" title="Add track to your radio" disabled={{disableSubmit}}>
 			{{if submitTask.isIdle "Add track" "Adding…"}}
 		</button>
-		<button {{action "cancel"}} type="button" class="Btn Btn--text" title="Go back, do not add the track">Cancel</button>
+		<button {{action "cancel"}} type="button" class="Btn" title="Go back, do not add the track">Cancel</button>
 	{{/btn-group}}
 </div>

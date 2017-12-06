@@ -1,22 +1,21 @@
 <section class="Section">
 	<div class="Container Container--noPaddingMobile">
-		{{#if model.isLoaded}}
+		{{#if model.tracks.isLoaded}}
 			{{#tracks-list
-				items=model
+				items=model.tracks
 				grouped=true
 				numbered=false as |item|}}
 				{{track-item track=item}}
 			{{/tracks-list}}
 
-			{{#unless model.length}}
-				{{#if model.canEdit}}
-					<p>
-						Your radio has no tracks yet.<br>
-						Try to {{link-to 'add your first' 'add'}}.
+			{{#unless model.tracks.length}}
+					<p class="Muted">
+						{{#if model.channel.canEdit}}
+							Your radio has no tracks yet. Try to {{link-to 'add your first' 'add'}}.
+						{{else}}
+							This radio has no tracks yet.
+						{{/if}}
 					</p>
-				{{else}}
-					<p>This radio has no tracks yet.</p>
-				{{/if}}
 			{{/unless}}
 		{{else}}
 			{{#is-loading}}
