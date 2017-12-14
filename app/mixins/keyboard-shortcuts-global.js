@@ -13,6 +13,7 @@ const {
 
 export default Mixin.create(EKMixin, {
 	player: inject.service(),
+	uiStates: inject.service(),
 
 	// https://github.com/patience-tema-baron/ember-keyboard/issues/54
 	isGoingTo: false,
@@ -21,6 +22,7 @@ export default Mixin.create(EKMixin, {
 		set(this, 'keyboardActivated', true)
 	}),
 
+	// Pressing `g` enables shortcuts that go/transition somewhere.
 	goto: on(keyUp('KeyG'), function() {
 		set(this, 'isGoingTo', true)
 		run.later(() => {
@@ -28,30 +30,49 @@ export default Mixin.create(EKMixin, {
 		}, 500)
 	}),
 
+	// Only transition if `g` was pressed
 	goingTo() {
 		if (get(this, 'isGoingTo')) {
 			this.transitionTo.apply(this, arguments)
 		}
 	},
 
-	triggerClickOnPlayer(selector) {
+	// Only trigger click is `g` WAS NOT pressed.
+	triggerClick(selector) {
 		const el = document.querySelector(`${selector}`)
-		if (el) {
-			$(el).trigger('click')
+		if (get(this, 'isGoingTo') || !el) {
+			return
 		}
+		$(el).trigger('click')
 	},
 
 	playPause: on(keyUp('KeyP'), function() {
-		this.triggerClickOnPlayer('radio4000-player .PlayPause-state')
+		this.triggerClick('radio4000-player .PlayPause-state')
 	}),
 	playNext: on(keyUp('KeyN'), function() {
-		this.triggerClickOnPlayer('radio4000-player .Btn--next')
+		this.triggerClick('radio4000-player .Btn--next')
 	}),
 	toggleShuffle: on(keyUp('KeyS'), function() {
-		this.triggerClickOnPlayer('radio4000-player .Btn--shuffle')
+		this.triggerClick('radio4000-player .Btn--shuffle')
 	}),
 	toggleMute: on(keyUp('KeyM'), function() {
-		this.triggerClickOnPlayer('radio4000-player .Btn--mute')
+		this.triggerClick('radio4000-player .Btn--mute')
+	}),
+
+	closeFullscreen: on(keyUp('Escape'), function () {
+		set(this, 'uiStates.format', 1)
+	}),
+
+	toggleSidebar: on(keyUp('KeyB'), function () {
+		this.toggleProperty('uiStates.isPanelLeftVisible')
+	}),
+
+	onKeyF: on(keyUp('KeyF'), function() {
+		if (get(this, 'isGoingTo')) {
+			this.transitionTo('feedback')
+		} else {
+			get(this, 'uiStates').cycleFormat();
+		}
 	}),
 
 	onKeyR: on(keyUp('KeyR'), function () {
@@ -61,10 +82,11 @@ export default Mixin.create(EKMixin, {
 			get(this, 'player.playRandomChannel').perform();
 		}
 	}),
+
 	gotoHome: on(keyUp('KeyH'), function() {
 		this.goingTo('application')
 	}),
-	gotoMap: on(keyUp('KeyM'), function() {
+	onKeyM: on(keyUp('KeyM'), function() {
 		this.goingTo('channels.map')
 	}),
 	gotoHistory: on(keyUp('KeyY'), function() {
