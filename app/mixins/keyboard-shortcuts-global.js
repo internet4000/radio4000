@@ -60,7 +60,11 @@ export default Mixin.create(EKMixin, {
 	}),
 
 	closeFullscreen: on(keyUp('Escape'), function () {
-		set(this, 'uiStates.format', 1);
+		set(this, 'uiStates.format', 1)
+	}),
+
+	toggleSidebar: on(keyUp('KeyB'), function () {
+		this.toggleProperty('uiStates.isPanelLeftVisible')
 	}),
 
 	onKeyF: on(keyUp('KeyF'), function() {
