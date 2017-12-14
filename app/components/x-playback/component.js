@@ -1,10 +1,9 @@
 import Ember from 'ember';
-import {EKMixin, keyUp} from 'ember-keyboard';
 import 'npm:radio4000-player';
 
-const {Component, get, set, inject, computed, on} = Ember;
+const {Component, get, inject, computed} = Ember;
 
-export default Component.extend(EKMixin, {
+export default Component.extend({
 	player: inject.service(),
 	uiStates: inject.service(),
 	classNames: ['Playback'],
@@ -12,13 +11,6 @@ export default Component.extend(EKMixin, {
 	channel: computed.alias('player.currentChannel'),
 	track: computed('player.originTrack', function () {
 		return get(this, 'player.originTrack');
-	}),
-
-	cycleFormat: on(keyUp('KeyF'), function () {
-		get(this, 'uiStates').cycleFormat();
-	}),
-	closeFullscreen: on(keyUp('Escape'), function () {
-		set(this, 'uiStates.format', 1);
 	}),
 
 	/* register events */
