@@ -5,9 +5,13 @@
 </button>
 
 <select class="ContextualToggle-select" onchange={{ action 'test'}}>
-	<option>Edit</option>
-	<option>Copy to my radio</option>
-	<option>Radio URL</option>
-	<option>Youtube URL</option>
-	<option>Delete</option>
+	<optgroup label="Share">
+		<option>copy Youtube URL</option>
+		<option>Copy Radio4000 URL</option>
+		<option value="copyTracktoRadio">Copy to my radio</option>
+	</optgroup>
+	<optgroup label="Manage">
+		<option>Delete</option>
+		<option value="edit">Edit</option>
+	</optgroup>
 </select>
