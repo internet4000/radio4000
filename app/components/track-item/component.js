@@ -21,12 +21,10 @@ export default Component.extend({
 
 	onEdit() {
 		if (get(this, 'inline')) {
-			// action "edit"
+			console.log('open modal')
 		} else {
-			// go to
-			/* {{link-to 'Edit' 'channel.tracks.track.edit' track
-				 class="Btn Btn--text Muted Track-controls"
-				 title="Edit the track"}}*/
+			//pass `track` to `channel.tracks.track.edit`
+			console.log('transition to track edit route')
 		}
 	},
 
