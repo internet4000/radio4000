@@ -33,6 +33,7 @@ export default Component.extend({
 			const el = event.target;
 			const value = el.options[el.selectedIndex].value;
 			this.send(value);
+			el.selectedIndex = 0
 		}
 	}
 });
