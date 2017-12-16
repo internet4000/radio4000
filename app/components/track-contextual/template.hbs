@@ -4,14 +4,14 @@
 	<span></span>
 </button>
 
-<select class="ContextualToggle-select" onchange={{ action 'test'}}>
+<select class="ContextualToggle-select" onchange={{ action 'handleSelect'}}>
 	<optgroup label="Share">
-		<option>copy Youtube URL</option>
-		<option>Copy Radio4000 URL</option>
+		<option value="copyYTURL">Copy Youtube URL</option>
+		<option value="copyR4URL">Copy Radio4000 URL</option>
 		<option value="copyTracktoRadio">Copy to my radio</option>
 	</optgroup>
 	<optgroup label="Manage">
-		<option>Delete</option>
+		<option value="delete">Delete</option>
 		<option value="edit">Edit</option>
 	</optgroup>
 </select>
