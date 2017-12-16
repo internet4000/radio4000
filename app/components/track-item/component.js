@@ -19,6 +19,17 @@ export default Component.extend({
 		return this.get('player.currentTrack') === this.get('track');
 	}),
 
+	onEdit() {
+		if (get(this, 'inline')) {
+			// action "edit"
+		} else {
+			// go to
+			/* {{link-to 'Edit' 'channel.tracks.track.edit' track
+				 class="Btn Btn--text Muted Track-controls"
+				 title="Edit the track"}}*/
+		}
+	},
+
 	actions: {
 		edit() {
 			this.toggleProperty('isEditing')

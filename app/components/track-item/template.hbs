@@ -14,17 +14,10 @@
 	{{/link-to}}
 {{/if}}
 
-<!-- {{#if track.channel.canEdit}}
-		 {{#if inline}}
-		 <button class="Track-controls Muted" {{action "edit"}}>Edit</button>
-		 {{else}}
-		 {{link-to 'Edit' 'channel.tracks.track.edit' track
-		 class="Btn Btn--text Muted Track-controls"
-		 title="Edit the track"}}
-		 {{/if}}
-		 {{/if}} -->
-
-{{track-contextual}}
+{{track-contextual
+		track=track
+		canEdit=track.channel.canEdit
+		edit=onEdit}}
 
 {{#if isEditing}}
 	{{#modal-dialog onClose=(action "goBack" true)}}
