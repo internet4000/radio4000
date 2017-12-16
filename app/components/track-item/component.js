@@ -19,18 +19,13 @@ export default Component.extend({
 		return this.get('player.currentTrack') === this.get('track');
 	}),
 
-	onEdit() {
-		if (get(this, 'inline')) {
-			console.log('open modal')
-		} else {
-			//pass `track` to `channel.tracks.track.edit`
-			console.log('transition to track edit route')
-		}
-	},
-
 	actions: {
-		edit() {
-			this.toggleProperty('isEditing')
+		onEdit() {
+			if (get(this, 'inline')) {
+				this.toggleProperty('isEditing')
+			} else {
+				window.alert('transition to track.edit')
+			}
 		},
 		play(track) {
 			get(this, 'player').playTrack(track)

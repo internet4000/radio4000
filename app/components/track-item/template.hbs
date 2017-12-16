@@ -17,7 +17,7 @@
 {{track-contextual
 		track=track
 		canEdit=track.channel.canEdit
-		onEdit=onEdit}}
+		onEdit=(action "onEdit")}}
 
 {{#if isEditing}}
 	{{#modal-dialog onClose=(action "goBack" true)}}

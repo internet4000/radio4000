@@ -5,10 +5,11 @@
 </button>
 
 <select class="ContextualToggle-select" onchange={{ action 'handleSelect'}}>
+	<option disabled selected value style="display:none;">-</option>
 	<optgroup label="Share">
-		<option value="copyYTURL">Copy Youtube URL</option>
+		<option value="copyYoutubeURL">Copy Youtube URL</option>
 		<option value="copyR4URL">Copy Radio4000 URL</option>
-		<option value="copyTracktoRadio">Copy to my radio</option>
+		<!-- <option value="copyTracktoRadio">Copy to my radio</option> -->
 	</optgroup>
 	{{#if canEdit}}
 		<optgroup label="Manage">
