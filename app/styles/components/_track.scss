@@ -9,6 +9,8 @@
 	border-left: 2px solid transparent;
 	border-right: 2px solid transparent;
 
+	display: flex;
+
 	.icon-play {
 		position: absolute;
 		left: 0.46em;
@@ -70,6 +72,15 @@
 	.Track-controls {
 		display: none;
 	}
+}
+
+.Track-link {
+	flex-grow: 1;
+}
+
+.Track-contextual {
+	position: relative;
+	align-self: flex-start;
 }
 
 .Track-title {

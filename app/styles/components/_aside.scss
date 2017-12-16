@@ -22,29 +22,6 @@
 	}
 }
 
-.Aside-toggleBtn {
-	display: flex;
-	flex-direction: column;
-
-	span {
-		width: 9px;
-		height: 3px;
-		border-radius: 2px;
-		margin: 1px;
-		background-color: black;
-		transform: rotateY(180deg);
-		transition: transform 300ms $easing2;
-
-		&:nth-child(2) {
-			transition-duration: 600ms
-		}
-
-		&:nth-child(3) {
-			transition-duration: 900ms
-		}
-	}
-}
-
 .Aside-toggleLayer {
 	display: none;
 	position: fixed;
