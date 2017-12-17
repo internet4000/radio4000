@@ -1,6 +1,5 @@
-import Component from '@ember/component';
-
-const { get } = Ember;
+import Component from '@ember/component'
+import { get } from '@ember/object'
 
 export default Component.extend({
 	classNames: ['Track-contextual', 'ContextualToggle'],
@@ -13,16 +12,13 @@ export default Component.extend({
 		editTrack() {
 			get(this, 'onEdit')()
 		},
-
 		copyTracktoRadio() {
 			console.log('copyTracktoRadio');
 		},
-
 		copyYoutubeURL() {
 			console.log('copyYoutubeURL');
 			this.copyURL(get(this, 'track.url'))
 		},
-
 		copyR4URL() {
 			const id = get(this, 'track.id');
 			const slug = get(this, 'track.channel.slug');
