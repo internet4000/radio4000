@@ -1,12 +1,6 @@
 .ContextualToggle {
+	position: relative;
 	overflow: hidden;
-
-	&:hover {
-		.Btn {
-			box-shadow: $box-shadow-hover;
-		}
-	}
-
 }
 
 .ContextualToggle-select {

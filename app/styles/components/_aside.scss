@@ -46,7 +46,12 @@
 		top: 2.1rem;
 		left: -3px;
 		z-index: 6;
-		opacity: 0.3;
+		opacity: 0.5;
+
+		&:focus,
+		&:hover {
+			opacity: 1;
+		}
 	}
 
 	.Aside-inner {

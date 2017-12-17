@@ -204,20 +204,27 @@
 		height: 3px;
 		border-radius: 2px;
 		margin: 1px;
-		background-color: black;
+		background-color: $mediumgray;
 		transform: rotateY(180deg);
-		transition: transform 300ms $easing2;
+		transition: transform 250ms $easing2, background-color 150ms;
 
 		&:nth-child(2) {
-			transition-duration: 600ms
+			transition-duration: 500ms;
 		}
 
 		&:nth-child(3) {
-			transition-duration: 900ms
+			transition-duration: 750ms;
+		}
+	}
+
+	.ContextualToggle:hover &,
+	&:hover,
+	&:focus {
+		span {
+			background-color: $black;
 		}
 	}
 }
-
 
 /**
  * Non Buttons
