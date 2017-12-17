@@ -181,17 +181,6 @@
 	}
 }
 
-// .Btn--round {
-// 	padding: 1.5rem 1.6rem 1.4rem 1.5rem;
-// 	border-radius: 50%;
-// 	border-left: 2px solid $primary-color;
-// 	border-bottom: 2px solid $primary-color;
-
-// 	&:hover {
-// 		border-color: darken($primary-color, 10%);
-// 	}
-// }
-
 .Btn--topNoRadius {
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
@@ -203,8 +192,7 @@
 }
 
 /*
-	 Button used for the aside toggle,
-	 and toggling <select>
+	Button used for the aside toggle and toggling <select>
 */
 
 .Btn--toggle {
@@ -257,3 +245,4 @@
 .Btn--map {
 	z-index: 2;
 }
+
