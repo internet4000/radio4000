@@ -24,7 +24,6 @@
 .List-item {
 	border-bottom: 1px solid hsl(0, 0%, 91%); // $mediumlightgray
 	line-height: normal;
-	margin-bottom: 0;
 
 	&::before {
 		display: none;
@@ -37,14 +36,12 @@
 
 // When a link wraps everything
 .List-item a {
-	@include clearfix;
 	display: block;
 	padding: 0.8rem 1rem 0.7rem;
 	text-decoration: none;
 
 	&:hover,
 	&:focus {
-		background-color: hsla(0, 100%, 100%, 0.2);
 		text-decoration: none;
 	}
 
