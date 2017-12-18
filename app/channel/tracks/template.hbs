@@ -2,6 +2,7 @@
 	<div class="Container Container--noPaddingMobile">
 		{{#if model.tracks.isLoaded}}
 			{{#tracks-list
+					 searchQuery=q
 					 items=model.tracks
 					 grouped=false
 					 search=true
