@@ -1,9 +1,15 @@
 <p>
-	{{jets-search
-			contentTag="#TrackList"
-			content=model.tracks
-			value=searchQuery
-			placeholder="Search tracks"}}
+	<form>
+		{{jets-search
+				contentTag="#TrackList"
+				content=model.tracks
+				value=searchQuery
+				minlength="3"
+				placeholder="Search tracks JetSearch"}}
+	</form>
+	<!-- {{input
+					value=searchQuery
+					placeholder="Search tracks JS"}} -->
 </p>
 
 <p>
