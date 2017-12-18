@@ -136,7 +136,7 @@ export default Service.extend({
 			includeId: true
 		});
 
-		cleanedChannel.tracks = tracks;
+		cleanedChannel.tracks = tracks.reverse();
 		cleanedChannel.image = get(this, 'store').peekRecord('image', channelModel.get('images.firstObject'))
 
 		return cleanedChannel;
