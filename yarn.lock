@@ -3128,6 +3128,14 @@ ember-invoke-action@1.4.0:
   dependencies:
     ember-cli-babel "^5.1.6"
 
+ember-jets:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/ember-jets/-/ember-jets-1.1.0.tgz#3d1466d3e4d459e310a52122551fda1586f4c4c1"
+  dependencies:
+    ember-cli-babel "^6.0.0"
+    ember-cli-htmlbars "^1.1.1"
+    jets "^0.14.0"
+
 ember-keyboard@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/ember-keyboard/-/ember-keyboard-2.3.0.tgz#6a210ccfc3ad8ca19e73cbef291ed2a0afd08ad0"
@@ -4738,6 +4746,10 @@ istextorbinary@2.1.0:
     binaryextensions "1 || 2"
     editions "^1.1.1"
     textextensions "1 || 2"
+
+jets@^0.14.0:
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/jets/-/jets-0.14.0.tgz#840cf6ce446fa8440dc0a63182a7f5931de6af7c"
 
 joi@^6.10.1:
   version "6.10.1"

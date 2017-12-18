@@ -1,7 +1,28 @@
+<p>
+	<!-- {{jets-search
+			 contentTag="#TrackList"
+			 content=model.tracks
+			 value=searchQuery
+			 placeholder="Search tracks"}} -->
+	{{input value=searchQuery}}
+</p>
+
+<p>
+	<div class="BtnGroup BtnGroup--right">
+		<button
+			class="Btn"
+			{{action 'playSelection'}}>
+			Play search results
+		</button>
+	</div>
+</p>
+
 {{#if grouped}}
-	{{#each groupedItems as |group|}}
+	{{#each groupedSearchedItems as |group|}}
 		<h2 class="List-header Muted">{{group.items.firstObject.createdMonth}}</h2>
-		<ol class="List{{if numbered ' List--numbered'}}">
+		<ol
+			id="TrackList"
+			class="List {{if numbered ' List--numbered'}}">
 			{{#each group.items as |item|}}
 				<li class="List-item">
 					{{#if hasBlock}}
@@ -14,7 +35,9 @@
 		</ol>
 	{{/each}}
 {{else}}
-	<ol class="List{{if numbered ' List--numbered'}}">
+	<ol
+		id="TrackList"
+		class="List{{if numbered ' List--numbered'}}">
 		{{#each sortedItems as |item|}}
 			<li class="List-item">
 				{{#if hasBlock}}
