@@ -114,6 +114,28 @@ export default Service.extend({
 		} else {
 			this.playTrack(tracks.get('lastObject'))
 		}
-	}).drop()
+	}).drop(),
+
+	/*
+		 1- build a playlist (like a channel model)
+		 2- pass it to the player
+		 document.querySelector('radio4000-player').__vue_custom_element__.$children[0].updatePlayerWithPlaylist(playlist)
+
+	 */
+	buildPlaylist(channel, trackIds) {
+		console.log('trackIds', typeof(trackIds))
+
+		// fetch all tracks
+		const tracks = trackIds.map(id => {
+			console.log('id', typeof(id));
+			return get(this, 'store').peekRecord('track', id).toJSON()
+		});
+
+		let cleanedChannel = channel.toJSON();
+		cleanedChannel.tracks = tracks;
+
+		return cleanedChannel;
+
+	}
 
 });

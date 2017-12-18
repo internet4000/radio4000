@@ -2,9 +2,10 @@ import Ember from 'ember'
 import { array } from 'ember-awesome-macros'
 import raw from 'ember-macro-helpers/raw'
 
-const { Component, $, computed, get, set } = Ember
+const { Component, $, inject, computed, get, set } = Ember
 
 export default Component.extend({
+	player: inject.service(),
 	classNames: ['Tracks'],
 	items: null,
 	numbered: false,
@@ -16,27 +17,24 @@ export default Component.extend({
 
 	// Newest on top.
 	sortedItems: array.sort('items', ['created:desc']),
-	itemsForSearch: computed.oneWay('sortedItems'),
-
-	cssListCopy: computed('sortedItems', function() {
-		get(this, 'sortedItems')
-	}),
 
 	// Tracks grouped by month.
 	/* groupedItems: array.groupBy('sortedItems', raw('createdMonth')),
 		 groupedSearchedItems: array.groupBy('searchedItems', raw('createdMonth')),*/
 
 	getTrackIdsFromSearch: function() {
-		return this.getTrackIdsFromNodeList ($('#TrackList .List-item:visible'));
+		return this.getTrackIdsFromEls ($('#TrackList .List-item:visible'));
 	},
 
-	getTrackIdsFromNodeList: function(nl) {
-		return Array.from(nl).map(item => item.attributes['data-track-id'].value)
+	getTrackIdsFromEls: function(els) {
+		return $.map(els, el => {
+			const attr = el.getAttribute('data-track-id')
+			return attr
+		})
 	},
 
 	performSearchOnModels: function() {
-		const trackIds = this.getTrackIdsFromSearch();
-		console.log('trackIds', trackIds)
+		set(this, 'searchResultTrackIds', this.getTrackIdsFromSearch())
 	},
 
 	didUpdate() {
@@ -46,6 +44,17 @@ export default Component.extend({
 
 	actions: {
 		playSelection() {
+			get(this, 'items.firstObject.channel').then(channel => {
+
+				console.log('searchResultTrackIds', get(this, 'searchResultTrackIds'))
+
+				const playlist = get(this, 'player').buildPlaylist(
+					channel,
+					get(this, 'searchResultTrackIds')
+				)
+
+				document.querySelector('radio4000-player').__vue_custom_element__.$children[0].updatePlayerWithPlaylist(playlist);
+			})
 		}
 	}
 })
