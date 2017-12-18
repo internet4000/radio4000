@@ -1,10 +1,9 @@
 <p>
-	<!-- {{jets-search
-			 contentTag="#TrackList"
-			 content=model.tracks
-			 value=searchQuery
-			 placeholder="Search tracks"}} -->
-	{{input value=searchQuery}}
+	{{jets-search
+			contentTag="#TrackList"
+			content=model.tracks
+			value=searchQuery
+			placeholder="Search tracks"}}
 </p>
 
 <p>
@@ -24,7 +23,8 @@
 			id="TrackList"
 			class="List {{if numbered ' List--numbered'}}">
 			{{#each group.items as |item|}}
-				<li class="List-item">
+				<li
+					class="List-item">
 					{{#if hasBlock}}
 						{{yield item}}
 					{{else}}
@@ -39,11 +39,14 @@
 		id="TrackList"
 		class="List{{if numbered ' List--numbered'}}">
 		{{#each sortedItems as |item|}}
-			<li class="List-item">
+			<li
+				class="List-item"
+				data-track-id={{item.id}}>
 				{{#if hasBlock}}
-					{{yield item}}
-				{{else}}
+					<!-- {{yield item}} -->
 					{{item.title}}
+					{{item.body}}
+				{{else}}
 				{{/if}}
 			</li>
 		{{/each}}
