@@ -1,11 +1,12 @@
 /**
  * Utilities for text
  */
+
 .u-textStrike {
 	text-decoration: line-through;
 }
 
-.u-textAlignCenter {
+.u-tc {
 	text-align: center;
 }
 
@@ -17,4 +18,3 @@
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
 }
-

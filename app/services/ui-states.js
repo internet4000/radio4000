@@ -10,6 +10,7 @@ export default Service.extend({
 	isMinimized: computed.equal('format', 0),
 	// isNormal: computed.equal('format', 1),
 	isFullscreen: computed.equal('format', 2),
+
 	cycleFormat() {
 		let format = get(this, 'format');
 		if (format >= 2) {
