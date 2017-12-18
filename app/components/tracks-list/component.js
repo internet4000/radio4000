@@ -48,10 +48,11 @@ export default Component.extend({
 
 				console.log('searchResultTrackIds', get(this, 'searchResultTrackIds'))
 
-				const playlist = get(this, 'player').buildPlaylist(
-					channel,
-					get(this, 'searchResultTrackIds')
-				)
+				const playlist = get(this, 'player')
+					.buildPlaylistExport(
+						channel,
+						get(this, 'searchResultTrackIds')
+					)
 
 				document.querySelector('radio4000-player').__vue_custom_element__.$children[0].updatePlayerWithPlaylist(playlist);
 			})

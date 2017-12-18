@@ -122,20 +122,24 @@ export default Service.extend({
 		 document.querySelector('radio4000-player').__vue_custom_element__.$children[0].updatePlayerWithPlaylist(playlist)
 
 	 */
-	buildPlaylist(channel, trackIds) {
-		console.log('trackIds', typeof(trackIds))
-
+	buildPlaylistExport(channelModel, trackIds) {
 		// fetch all tracks
 		const tracks = trackIds.map(id => {
-			console.log('id', typeof(id));
-			return get(this, 'store').peekRecord('track', id).toJSON()
+			return get(this, 'store')
+				.peekRecord('track', id)
+				.serialize({
+					includeId: true
+				})
 		});
 
-		let cleanedChannel = channel.toJSON();
+		let cleanedChannel = channelModel.serialize({
+			includeId: true
+		});
+
 		cleanedChannel.tracks = tracks;
+		cleanedChannel.image = get(this, 'store').peekRecord('image', channelModel.get('images.firstObject'))
 
 		return cleanedChannel;
-
 	}
 
 });
