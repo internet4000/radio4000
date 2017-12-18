@@ -22,7 +22,7 @@
 
 			{{#if model.latestTracks}}
 				{{#tracks-list items=model.latestTracks as |item|}}
-					{{track-item track=item inline=true}}
+					{{track-item track=item inline=true search=false}}
 				{{/tracks-list}}
 			{{else}}
 				{{#is-loading}}

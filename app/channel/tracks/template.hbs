@@ -2,9 +2,10 @@
 	<div class="Container Container--noPaddingMobile">
 		{{#if model.tracks.isLoaded}}
 			{{#tracks-list
-				items=model.tracks
+					 items=model.tracks
 					 grouped=false
-				numbered=false as |item|}}
+					 search=true
+					 numbered=false as |item|}}
 				{{track-item track=item}}
 			{{/tracks-list}}
 
