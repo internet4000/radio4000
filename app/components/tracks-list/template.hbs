@@ -1,6 +1,12 @@
 {{#if search}}
 	<form class="Form" {{action "playSelection" on="submit"}}>
 		<div class="Form-group u-flex">
+			<button type="button"
+				class="Btn"
+				disabled={{noSearchQuery}}
+				{{action 'clearSearchQuery'}}
+			>x</button>
+
 			{{jets-search
 				contentTag="#TrackList"
 				content=model.tracks
@@ -8,24 +14,15 @@
 				title="Search each track in the list (title and description fields); Usage: `word1 & word2 & ...` will filter tracks that have all words at the same time"
 				placeholder="Search tracks"
 			}}
-			<button type="button"
-				class="Btn Btn--large"
-				disabled={{noSearchQuery}}
-				{{action 'clearSearchQuery'}}>x</button>
-		</div>
-		<div class="Form-group">
-			<div class="BtnGroup">
-				<button
-					class="Btn"
-					title="Use all tracks result of a search inside the player"
-					type="submit">
-					{{#if searchQuery}}
-						<i>↳</i> Load track search
-					{{else}}
-						<i>▶</i> Load all tracks
-					{{/if}}
-				</button>
-			</div>
+
+			<button type="submit" class="Btn u-nowrap" style="min-width: 8em"
+				title="Use all tracks result of a search inside the player">
+				{{#if searchQuery}}
+					<i>↳</i> Load tracks {{!-- load track search --}}
+				{{else}}
+					<i>▶</i> Play {{!-- load all tracks --}}
+				{{/if}}
+			</button>
 		</div>
 	</form>
 {{/if}}
