@@ -2,11 +2,12 @@
 	<div class="Container Container--noPaddingMobile">
 		{{#if model.tracks.isLoaded}}
 			{{#tracks-list
-					 searchQuery=q
-					 items=model.tracks
-					 grouped=false
-					 search=true
-					 numbered=false as |item|}}
+				keyboardActivated=true
+				searchQuery=q
+				items=model.tracks
+				grouped=false
+				search=true
+				numbered=false as |item|}}
 				{{track-item track=item}}
 			{{/tracks-list}}
 
