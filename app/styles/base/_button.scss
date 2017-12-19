@@ -2,7 +2,6 @@
 	font-weight: bold;
 	align-items: center;
 	background-color: $superlightgray;
-	box-shadow: $box-shadow;
 	box-sizing: border-box; /* 1 */
 	cursor: pointer;
 	display: inline-block;
@@ -21,6 +20,7 @@
 	&:hover,
 	&:focus {
 		text-decoration: none;
+		background-color: white;
 		box-shadow: $box-shadow-hover;
 	}
 
@@ -31,7 +31,6 @@
 	}
 
 	&:focus {
-		outline: none;
 		border-color: $primary-color;
 	}
 

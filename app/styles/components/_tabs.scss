@@ -12,7 +12,7 @@
 	// A bit of depth.
 	border: 1px solid $mediumlightgray;
 	border-radius: $border-radius;
-	// box-shadow: $box-shadow;
+	box-shadow: $box-shadow;
 
 	// so it is always over full screen backgrounds
 	// like .Manchet
@@ -162,6 +162,7 @@
 .Tabs--transparent {
 	border: 0;
 	background-color: transparent;
+	box-shadow: none;
 
 	.Tabs-item {
 		background-color: transparent;
