@@ -1,6 +1,7 @@
 import Ember from 'ember'
 import { array } from 'ember-awesome-macros'
 // import raw from 'ember-macro-helpers/raw'
+// import { debounce } from '@ember/runloop'
 
 const { Component, $, inject, computed, get, set } = Ember
 
@@ -13,7 +14,6 @@ export default Component.extend({
 
 	searchQuery: '',
 	noSearchQuery: computed.not('searchQuery'),
-	searchResultTrackIds: [],
 	cannotPlay: computed.not('searchQuery'),
 
 	// Newest on top.
@@ -23,26 +23,23 @@ export default Component.extend({
 	// groupedItems: array.groupBy('sortedItems', raw('createdMonth')),
 	// groupedSearchedItems: array.groupBy('searchedItems', raw('createdMonth')),
 
-	didUpdate() {
-		this.performSearchOnModels()
-	},
-
-	performSearchOnModels() {
+	selection: [],
+	setSelectionFromSearch() {
 		const $els = $('#TrackList .List-item:visible')
 		const ids = $.map($els, el => el.getAttribute('data-track-id'))
-		set(this, 'searchResultTrackIds', ids)
+		set(this, 'selection', ids)
 	},
 
 	actions: {
 		clearSearchQuery() {
-			set(this, 'searchQuery', '');
+			set(this, 'searchQuery', '')
 		},
 		playSelection() {
-			const player = get(this, 'player');
-			const trackIds = get(this, 'searchResultTrackIds');
-
+			this.setSelectionFromSearch()
+			const player = get(this, 'player')
+			const selection = get(this, 'selection')
 			get(this, 'items.firstObject.channel').then(channel => {
-				const playlist = player.buildPlaylistExport(channel, trackIds);
+				const playlist = player.buildPlaylistExport(channel, selection)
 				player.loadPlayistInWebComponent(playlist)
 			})
 		}
