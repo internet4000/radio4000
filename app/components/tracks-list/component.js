@@ -22,24 +22,14 @@ export default Component.extend({
 	/* groupedItems: array.groupBy('sortedItems', raw('createdMonth')),
 		 groupedSearchedItems: array.groupBy('searchedItems', raw('createdMonth')),*/
 
-	getTrackIdsFromSearch: function() {
-		return this.getTrackIdsFromEls ($('#TrackList .List-item:visible'));
-	},
-
-	getTrackIdsFromEls: function(els) {
-		return $.map(els, el => {
-			const attr = el.getAttribute('data-track-id')
-			return attr
-		})
-	},
-
-	performSearchOnModels: function() {
-		set(this, 'searchResultTrackIds', this.getTrackIdsFromSearch())
-	},
-
 	didUpdate() {
-		console.log('didUpdate')
-		Ember.run.debounce(this, this.performSearchOnModels, 400)
+		this.performSearchOnModels()
+	},
+
+	performSearchOnModels() {
+		const $els = $('#TrackList .List-item:visible')
+		const ids = $.map($els, el => el.getAttribute('data-track-id'))
+		set(this, 'searchResultTrackIds', ids)
 	},
 
 	actions: {
