@@ -117,10 +117,9 @@ export default Service.extend({
 	}).drop(),
 
 	/*
-		 1- build a playlist (like a channel model)
-		 2- pass it to the player
-		 document.querySelector('radio4000-player').__vue_custom_element__.$children[0].updatePlayerWithPlaylist(playlist)
-
+		 An export of a channel, its tracks and image
+		 in json format
+		 it is almost identic to `channel` model
 	 */
 	buildPlaylistExport(channelModel, trackIds) {
 		// fetch all tracks
@@ -141,12 +140,9 @@ export default Service.extend({
 
 		return cleanedChannel;
 	},
-	radio4000PlayerInstance: computed.oneWay('', function() {
-		return this.document.querySelector('radio4000-player').__vue_custom_element__.$children[0];
-	}),
 	loadPlayistInWebComponent(playlist) {
-		console.log('instance', get(this, 'radio4000PlayerInstance'))
-		get(this, 'radio4000PlayerInstance').updatePlayerWithPlaylist(playlist);
+		const vue = document.querySelector('radio4000-player').__vue_custom_element__.$children[0];
+		vue.updatePlayerWithPlaylist(playlist);
 	}
 
 });
