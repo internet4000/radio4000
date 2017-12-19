@@ -1,26 +1,22 @@
 {{#if inline}}
 	<a href="#" {{action "play" track}}>
-		<h3 class="Track-title">
-			{{track.title}}
-		</h3>
+		<h3 class="Track-title">{{track.title}}</h3>
 		<p class="Track-body">{{track.body}}</p>
 	</a>
 {{else}}
-	{{#link-to 'channel.tracks.track.index' track class="Track-link"}}
-		<h3 class="Track-title">
-			{{track.title}}
-		</h3>
+	{{!-- {{#link-to 'channel.tracks.track.index' track class="Track-link"}} --}}
+	<a href="{{href-to 'channel.tracks.track.index' track}}" class="Track-link">
+		<h3 class="Track-title">{{track.title}}</h3>
 		<p class="Track-body">{{track.body}}</p>
-	{{/link-to}}
+	</a>
+	{{!-- {{/link-to}} --}}
 {{/if}}
 
 {{#if track.channel.canEdit}}
 	{{#if inline}}
 		<button class="Track-controls Muted" {{action "edit"}}>Edit</button>
 	{{else}}
-		{{link-to 'Edit' 'channel.tracks.track.edit' track
-			class="Btn Btn--text Muted Track-controls"
-			title="Edit the track"}}
+		<a href="{{href-to 'channel.tracks.track.edit' track}}" class="Btn Btn--text Muted Track-controls" title="Edit the track">Edit</a>
 	{{/if}}
 {{/if}}
 
@@ -33,10 +29,10 @@
 				</div>
 				<div class="Container">
 					{{track-edit
-							track=track
-							onCancel=(action "goBack" true)
-							onSubmit=(action "goBack")
-							onDelete=(action "goBack")}}
+						track=track
+						onCancel=(action "goBack" true)
+						onSubmit=(action "goBack")
+						onDelete=(action "goBack")}}
 				</div>
 			</section>
 		</div>
