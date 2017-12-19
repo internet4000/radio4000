@@ -1,41 +1,38 @@
 <form {{action "submit" on="submit"}}>
 	{{#form-group model=channel valuePath="title" label="Name" as |v|}}
-		<input type="text" value={{v}}
+		{{input type="text" value=(readonly v)
 			autofocus="autofocus"
 			placeholder="ex: The pirate Radio"
 			required="required"
-			minlength={{titleMinLength}}
-			maxlength={{titleMaxLength}}
-			oninput={{action (mut proxy.title) value="target.value"}}
-		>
+			minlength=titleMinLength
+			maxlength=titleMaxLength
+			input=(action (mut proxy.title) value="target.value")}}
 	{{/form-group}}
 
 	{{#form-group model=channel valuePath="slug" label="URL" as |v|}}
 		<p class="Muted" style="font-weight: normal">https://radio4000.com/{{v}}</p>
-		<input type="text" value={{v}}
+		{{input type="text" value=(readonly v)
 			placeholder="ex: pirate-radio"
 			required="required"
-			minlength={{titleMinLength}}
-			maxlength={{titleMaxLength}}
-			oninput={{action (mut proxy.slug) value="target.value"}}
-		>
+			minlength=titleMinLength
+			maxlength=titleMaxLength
+			input=(action (mut proxy.slug) value="target.value")}}
 	{{/form-group}}
 
 	{{#form-group model=channel valuePath="body" label="Description" as |v|}}
-		<textarea id="body"
-			maxlength={{channelDescriptionMaxLength}}
+		{{textarea value=(readonly v)
+			id="body"
+			maxlength=channelDescriptionMaxLength
 			placeholder="What is your radio about? ex: 'Fireplace music'"
-			oninput={{action (mut proxy.body) value="target.value"}}
-		>{{v}}</textarea>
+			input=(action (mut proxy.body) value="target.value")}}
 	{{/form-group}}
 
 	{{#form-group model=channel valuePath="link" label="Website" as |v|}}
-		<input type="url" value={{v}}
-			aria-invalid={{if channel.validations.attrs.link.isValid "false" "true"}}
+		{{input type="url" value=(readonly v)
+			aria-invalid=(if channel.validations.attrs.link.isValid "false" "true")
 			pattern="https?://.+"
 			placeholder="Link to your website, ex: 'https://example.com'"
-			oninput={{action (mut proxy.link) value="target.value"}}
-		>
+			input=(action (mut proxy.link) value="target.value")}}
 	{{/form-group}}
 
 	<p class="BtnGroupWrapper BtnGroupWrapper--full">
