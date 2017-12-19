@@ -121,7 +121,8 @@ export default Service.extend({
 		 in json format
 		 it is almost identic to `channel` model
 	 */
-	buildPlaylistExport(channelModel, trackIds) {
+	buildPlaylistExport(channelModel, trackIds, query) {
+		set(this, 'query', query)
 		// fetch all tracks
 		const tracks = trackIds.map(id => {
 			return get(this, 'store')
@@ -144,5 +145,4 @@ export default Service.extend({
 		const vue = document.querySelector('radio4000-player').__vue_custom_element__.$children[0];
 		vue.updatePlaylist(playlist);
 	}
-
 });
