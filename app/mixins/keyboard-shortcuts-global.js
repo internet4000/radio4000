@@ -118,7 +118,7 @@ export default Mixin.create(EKMixin, {
 	}),
 
 	gotoMyRadioTracks: on(keyUp('KeyT'), function() {
-		const userChannel = get(this, 'session1.currentUser.channels.firstObject')
+		const userChannel = get(this, 'session.currentUser.channels.firstObject')
 		if (userChannel) {
 			this.goingTo('channel.tracks', userChannel)
 		}
