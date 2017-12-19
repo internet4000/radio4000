@@ -42,14 +42,17 @@ export default Component.extend(EKMixin, {
 			this.setSelectionFromSearch()
 			const player = get(this, 'player')
 			const selection = get(this, 'selection')
-			get(this, 'items.firstObject.channel').then(channel => {
+
+			if(selection.length) {
+				get(this, 'items.firstObject.channel').then(channel => {
 				const playlist = player.buildPlaylistExport(
 					channel,
 					selection,
 					get(this, 'searchQuery')
 				)
 				player.loadPlayistInWebComponent(playlist)
-			})
+				})
+			}
 		}
 	}
 })
