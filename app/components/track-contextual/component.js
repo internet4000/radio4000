@@ -16,8 +16,9 @@ export default Component.extend({
 		editTrack() {
 			get(this, 'onEdit')()
 		},
-		copyTracktoRadio() {
-			console.log('copyTracktoRadio');
+		copyTrackToRadio() {
+			const track = get(this, 'track')
+			get(this, 'onCopyTrack')(track)
 		},
 		copyYoutubeURL() {
 			console.log('copyYoutubeURL');

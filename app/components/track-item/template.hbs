@@ -15,9 +15,10 @@
 {{/if}}
 
 {{track-contextual
-		track=track
-		canEdit=track.channel.canEdit
-		onEdit=(action "onEdit")}}
+	track=track
+	canEdit=track.channel.canEdit
+	onEdit=(action "onEdit")
+	onCopyTrack=(action "copyTrack")}}
 
 {{#if isEditing}}
 	{{#modal-dialog onClose=(action "goBack" true)}}

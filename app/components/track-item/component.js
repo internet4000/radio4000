@@ -4,6 +4,8 @@ const { Component, computed, get, set, inject } = Ember
 
 export default Component.extend({
 	player: inject.service(),
+	router: inject.service(),
+
 	classNames: ['Track'],
 	classNameBindings: [
 		'isCurrent',
@@ -26,6 +28,15 @@ export default Component.extend({
 			} else {
 				window.alert('transition to track.edit')
 			}
+		},
+		copyTrack(track) {
+			get(this, 'router').transitionTo('add', {
+				queryParams: {
+					url: track.get('url'),
+					title: track.get('title'),
+					body: track.get('body')
+				}
+			})
 		},
 		play(track) {
 			get(this, 'player').playTrack(track)
