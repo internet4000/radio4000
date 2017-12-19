@@ -33,6 +33,9 @@ export default Component.extend({
 	},
 
 	actions: {
+		clearSearchQuery() {
+			set(this, 'searchQuery', '');
+		},
 		playSelection() {
 			const player = get(this, 'player');
 			const trackIds = get(this, 'searchResultTrackIds');
