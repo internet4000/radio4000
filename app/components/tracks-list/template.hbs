@@ -1,6 +1,6 @@
 {{#if search}}
 	<form class="Form" {{action "playSelection" on="submit"}}>
-		<div class="Form-group">
+		<div class="Form-group u-flex">
 			{{jets-search
 				contentTag="#TrackList"
 				content=model.tracks
@@ -9,7 +9,7 @@
 				placeholder="Search tracks"
 			}}
 			<button type="button"
-				class="Form-groupStatus Btn Btn--large"
+				class="Btn Btn--large"
 				disabled={{noSearchQuery}}
 				{{action 'clearSearchQuery'}}>x</button>
 		</div>
