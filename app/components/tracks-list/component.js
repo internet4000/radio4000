@@ -1,6 +1,6 @@
 import Ember from 'ember'
 import { array } from 'ember-awesome-macros'
-import {EKMixin, keyUp} from 'ember-keyboard'
+import { EKMixin, keyUp } from 'ember-keyboard'
 // import raw from 'ember-macro-helpers/raw'
 // import { debounce } from '@ember/runloop'
 
@@ -20,7 +20,7 @@ export default Component.extend(EKMixin, {
 	// Newest on top.
 	sortedItems: array.sort('items', ['created:desc']),
 
-	focusSearch: Ember.on(keyUp('KeyS'), function () {
+	focusSearch: Ember.on(keyUp('KeyS'), function() {
 		this.element.querySelector('input[type="search"]').focus()
 	}),
 
@@ -43,7 +43,11 @@ export default Component.extend(EKMixin, {
 			const player = get(this, 'player')
 			const selection = get(this, 'selection')
 			get(this, 'items.firstObject.channel').then(channel => {
-				const playlist = player.buildPlaylistExport(channel, selection, get(this, 'searchQuery'))
+				const playlist = player.buildPlaylistExport(
+					channel,
+					selection,
+					get(this, 'searchQuery')
+				)
 				player.loadPlayistInWebComponent(playlist)
 			})
 		}

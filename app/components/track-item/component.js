@@ -1,12 +1,12 @@
-import Ember from 'ember';
+import Ember from 'ember'
 
-const {Component, computed, get, set, inject} = Ember;
+const { Component, get, set, inject } = Ember
 
 export default Component.extend({
 	player: inject.service(),
 	classNames: ['Track'],
 	classNameBindings: [
-	// 	'isCurrent',
+		// 	'isCurrent',
 		'track.liveInCurrentPlayer:Track--live',
 		'track.playedInCurrentPlayer:Track--played',
 		'track.finishedInCurrentPlayer:Track--finished'
@@ -33,4 +33,4 @@ export default Component.extend({
 			set(this, 'isEditing', false)
 		}
 	}
-});
+})
