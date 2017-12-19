@@ -58,9 +58,11 @@
 				class="List-item"
 				data-track-id={{item.id}}>
 				{{#if hasBlock}}
-					<!-- {{yield item}} -->
-					{{item.title}}
-					{{item.body}}
+					{{!-- {{yield item}} --}}
+					<a href="{{href-to "channel.tracks.track" item}}">
+						{{item.title}}
+						<span class="Muted">{{item.body}}</span>
+					</a>
 				{{else}}
 				{{/if}}
 			</li>
