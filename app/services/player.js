@@ -140,6 +140,13 @@ export default Service.extend({
 		cleanedChannel.image = get(this, 'store').peekRecord('image', channelModel.get('images.firstObject'))
 
 		return cleanedChannel;
+	},
+	radio4000PlayerInstance: computed.oneWay('', function() {
+		return this.document.querySelector('radio4000-player').__vue_custom_element__.$children[0];
+	}),
+	loadPlayistInWebComponent(playlist) {
+		console.log('instance', get(this, 'radio4000PlayerInstance'))
+		get(this, 'radio4000PlayerInstance').updatePlayerWithPlaylist(playlist);
 	}
 
 });

@@ -44,17 +44,12 @@ export default Component.extend({
 
 	actions: {
 		playSelection() {
+			const player = get(this, 'player');
+			const trackIds = get(this, 'searchResultTrackIds');
+
 			get(this, 'items.firstObject.channel').then(channel => {
-
-				console.log('searchResultTrackIds', get(this, 'searchResultTrackIds'))
-
-				const playlist = get(this, 'player')
-					.buildPlaylistExport(
-						channel,
-						get(this, 'searchResultTrackIds')
-					)
-
-				document.querySelector('radio4000-player').__vue_custom_element__.$children[0].updatePlayerWithPlaylist(playlist);
+				const playlist =  player.buildPlaylistExport(channel, trackIds);
+				player.loadPlayistInWebComponent(playlist)
 			})
 		}
 	}
