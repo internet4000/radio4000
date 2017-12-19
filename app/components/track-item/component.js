@@ -1,6 +1,6 @@
-import Ember from 'ember';
+import Ember from 'ember'
 
-const {Component, computed, get, set, inject} = Ember;
+const { Component, computed, get, set, inject } = Ember
 
 export default Component.extend({
 	player: inject.service(),
@@ -15,8 +15,8 @@ export default Component.extend({
 
 	// true if the current track is loaded in the player
 	// isCurrent: computed.equal('player.model', 'track'),
-	isCurrent: computed('player.currentTrack', 'track', function () {
-		return this.get('player.currentTrack') === this.get('track');
+	isCurrent: computed('player.currentTrack', 'track', function() {
+		return this.get('player.currentTrack') === this.get('track')
 	}),
 
 	actions: {
@@ -37,4 +37,4 @@ export default Component.extend({
 			set(this, 'isEditing', false)
 		}
 	}
-});
+})

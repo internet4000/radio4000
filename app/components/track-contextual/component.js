@@ -4,6 +4,10 @@ import { get } from '@ember/object'
 export default Component.extend({
 	classNames: ['Track-contextual', 'ContextualToggle'],
 
+	// track: Object
+	// canEdit: Boolean
+	// onEdit: Function
+
 	copyURL(url, text = 'Copy this URL') {
 		window.prompt(text, url);
 	},
