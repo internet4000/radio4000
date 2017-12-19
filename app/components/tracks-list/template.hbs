@@ -2,14 +2,15 @@
 	<form class="Form">
 		<div class="Form-group u-flex">
 			{{jets-search
-					contentTag="#TrackList"
-					content=model.tracks
-					value=searchQuery
-					minlength="3"
-					title="Search each track in the list (title and description fields); Usage: `word1 & word2 & ...` will filter tracks that have all words at the same time"
-					placeholder="Search tracks"}}
-			<button
-				class="Btn Btn--small"
+				contentTag="#TrackList"
+				content=model.tracks
+				value=searchQuery
+				minlength="3"
+				title="Search each track in the list (title and description fields); Usage: `word1 & word2 & ...` will filter tracks that have all words at the same time"
+				placeholder="Search tracks"}}
+			<button type="button"
+				class="Btn
+				Btn--small"
 				disabled={{noSearchQuery}}
 				{{action 'clearSearchQuery'}}>x</button>
 		</div>
