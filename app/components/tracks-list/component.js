@@ -1,6 +1,6 @@
 import Ember from 'ember'
 import { array } from 'ember-awesome-macros'
-import raw from 'ember-macro-helpers/raw'
+// import raw from 'ember-macro-helpers/raw'
 
 const { Component, $, inject, computed, get, set } = Ember
 
@@ -19,8 +19,8 @@ export default Component.extend({
 	sortedItems: array.sort('items', ['created:desc']),
 
 	// Tracks grouped by month.
-	/* groupedItems: array.groupBy('sortedItems', raw('createdMonth')),
-		 groupedSearchedItems: array.groupBy('searchedItems', raw('createdMonth')),*/
+	// groupedItems: array.groupBy('sortedItems', raw('createdMonth')),
+	// groupedSearchedItems: array.groupBy('searchedItems', raw('createdMonth')),
 
 	didUpdate() {
 		this.performSearchOnModels()
@@ -38,7 +38,7 @@ export default Component.extend({
 			const trackIds = get(this, 'searchResultTrackIds');
 
 			get(this, 'items.firstObject.channel').then(channel => {
-				const playlist =  player.buildPlaylistExport(channel, trackIds);
+				const playlist = player.buildPlaylistExport(channel, trackIds);
 				player.loadPlayistInWebComponent(playlist)
 			})
 		}
