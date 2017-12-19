@@ -142,7 +142,7 @@ export default Service.extend({
 	},
 	loadPlayistInWebComponent(playlist) {
 		const vue = document.querySelector('radio4000-player').__vue_custom_element__.$children[0];
-		vue.updatePlayerWithPlaylist(playlist);
+		vue.updatePlaylist(playlist);
 	}
 
 });
