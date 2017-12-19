@@ -105,6 +105,13 @@
 	}
 }
 
+// List of tracks
+.List--tracks {
+	min-height: 1rem;
+	/* max-height: 60vh;
+		 overflow-y: scroll; */
+}
+
 // Lists with cover images
 .List .Cover {
 	float: left;
