@@ -3175,7 +3175,7 @@ ember-invoke-action@1.4.0:
   dependencies:
     ember-cli-babel "^5.1.6"
 
-ember-jets@^1.2.0:
+ember-jets@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/ember-jets/-/ember-jets-1.2.2.tgz#050802df8a0f6fe58dd78235f2857ea3f867cf5f"
   dependencies:
