@@ -4,6 +4,12 @@ import ResetScroll from 'radio4000/mixins/reset-scroll'
 const {Route, RSVP} = Ember
 
 export default Route.extend(ResetScroll, {
+	queryParams: {
+		q: {
+			replace: true
+		}
+	},
+
 	model() {
 		const channel = this.modelFor('channel')
 		return RSVP.hash({
