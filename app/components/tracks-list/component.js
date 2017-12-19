@@ -12,6 +12,7 @@ export default Component.extend({
 	grouped: false,
 
 	searchQuery: '',
+	noSearchQuery: computed.not('searchQuery'),
 	searchResultTrackIds: [],
 	cannotPlay: computed.not('searchQuery'),
 

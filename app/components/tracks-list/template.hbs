@@ -15,7 +15,7 @@
 				</button>
 			</div>
 		</div>
-		<div class="Form-group">
+		<div class="Form-group u-flex">
 			{{jets-search
 					contentTag="#TrackList"
 					content=model.tracks
@@ -25,6 +25,7 @@
 					placeholder="Search tracks"}}
 			<button
 				class="Btn Btn--small"
+				disabled={{noSearchQuery}}
 				{{action 'clearSearchQuery'}}>x</button>
 		</div>
 	</form>
