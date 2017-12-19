@@ -14,7 +14,6 @@ export default Component.extend({
 
 	searchQuery: '',
 	noSearchQuery: computed.not('searchQuery'),
-	cannotPlay: computed.not('searchQuery'),
 
 	// Newest on top.
 	sortedItems: array.sort('items', ['created:desc']),
