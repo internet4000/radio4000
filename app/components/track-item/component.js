@@ -8,8 +8,8 @@ export default Component.extend({
 	classNameBindings: [
 	// 	'isCurrent',
 		'track.liveInCurrentPlayer:Track--live',
-	// 	'track.playedInCurrentPlayer:Track--played',
-	// 	'track.finishedInCurrentPlayer:Track--finished'
+		'track.playedInCurrentPlayer:Track--played',
+		'track.finishedInCurrentPlayer:Track--finished'
 	],
 	attributeBindings: ['track.ytid:data-pid'],
 
