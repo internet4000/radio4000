@@ -1,5 +1,5 @@
 import Ember from 'ember';
-/* import 'npm:radio4000-player';*/
+// import 'npm:radio4000-player';
 
 const {Component, get, inject, computed} = Ember;
 
@@ -15,10 +15,11 @@ export default Component.extend({
 
 	/* register events */
 	didInsertElement() {
-		var player = this.element.querySelector('radio4000-player');
-		player.addEventListener('trackChanged', event => this.onTrackChanged(event), {passive: false});
-		player.addEventListener('trackEnded', event => this.onTrackEnded(event), {passive: false});
-		player.addEventListener('channelChanged', event => this.onChannelChanged(event), {passive: false});
+		const player = this.element.querySelector('radio4000-player')
+		const options = {passive: false}
+		player.addEventListener('trackChanged', event => this.onTrackChanged(event), options)
+		player.addEventListener('trackEnded', event => this.onTrackEnded(event), options)
+		player.addEventListener('channelChanged', event => this.onChannelChanged(event), options)
 	},
 
 	onTrackChanged(event) {
