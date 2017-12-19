@@ -20,16 +20,21 @@
 
 		{{#if userChannel}}
 			{{channel-card
-				channel=userChannel
-				wide=true
-				title="Your radio [⌨ g i]"}}
+					channel=userChannel
+					wide=true
+					title="Your radio [⌨ g i]"}}
 			{{#btn-group class="BtnGroup--full"}}
-				<button
-					{{action "addTrack"}}
-					class="Btn Btn--important Btn--topNoRadius"
-					title="Add a new track to your radio [⌨ g a]">
-					Add track
-				</button>
+				<!-- <button
+						 {{action "addTrack"}}
+						 class="Btn Btn--important Btn--topNoRadius"
+						 title="Add a new track to your radio [⌨ g a]">
+						 Add track
+						 </button> -->
+				{{link-to
+						'Add track'
+						'add'
+						class="Btn Btn--important Btn--topNoRadius"
+						title="Add a new track to your radio [⌨ g a]"}}
 			{{/btn-group}}
 		{{/if}}
 
