@@ -1,4 +1,9 @@
 import Ember from 'ember';
+// To develop using the radio4000-player served locally
+// (usually served over localhost:4002)
+// 1- comment out the following `import`
+// 2- comment in the `script` tag in the `template.hbs`
+// cheers
 import 'npm:radio4000-player';
 
 const {Component, get, inject, computed} = Ember;
