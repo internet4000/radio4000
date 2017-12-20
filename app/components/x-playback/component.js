@@ -1,5 +1,5 @@
 import Ember from 'ember';
-// import 'npm:radio4000-player';
+import 'npm:radio4000-player';
 
 const {Component, get, inject, computed} = Ember;
 
