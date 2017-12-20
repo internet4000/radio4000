@@ -6,7 +6,7 @@
 					Search
 				</span>
 				{{jets-search
-						contentTag="#TrackList"
+						contentTag=".List--tracks"
 						content=model.tracks
 						value=searchQuery
 						title="Search each track in the list (title and description fields); Usage: `word1 & word2 & ...` will filter tracks that have all words at the same time [⌨ shift + s]"
@@ -33,41 +33,41 @@
 	</form>
 {{/if}}
 
-{{#if grouped}}
-	{{#each groupedSearchedItems as |group|}}
-		<h2 class="List-header Muted">{{group.items.firstObject.createdMonth}}</h2>
+<div class="TrackList">
+	{{#if grouped}}
+		{{#each groupedItems as |group|}}
+			<h2 class="TrackList-header Muted">{{group.items.firstObject.createdMonth}}</h2>
+			<ol
+				class="List {{if numbered ' List--numbered'}} List--tracks">
+				{{#each group.items as |item|}}
+					<li
+						class="List-item">
+						{{#if hasBlock}}
+							{{yield item}}
+						{{else}}
+							{{item.title}}
+						{{/if}}
+					</li>
+				{{/each}}
+			</ol>
+		{{/each}}
+	{{else}}
 		<ol
-			id="TrackList"
-			class="List {{if numbered ' List--numbered'}}">
-			{{#each group.items as |item|}}
+			class="List{{if numbered ' List--numbered'}} List--tracks">
+			{{#each sortedItems as |item|}}
 				<li
-					class="List-item">
+					class="List-item"
+					data-track-id={{item.id}}>
 					{{#if hasBlock}}
 						{{yield item}}
 					{{else}}
-						{{item.title}}
+						<a href="{{href-to "channel.tracks.track" item}}">
+							{{item.title}}
+							<span class="Muted">{{item.body}}</span>
+						</a>
 					{{/if}}
 				</li>
 			{{/each}}
 		</ol>
-	{{/each}}
-{{else}}
-	<ol
-		id="TrackList"
-		class="List{{if numbered ' List--numbered'}} List--tracks">
-		{{#each sortedItems as |item|}}
-			<li
-				class="List-item"
-				data-track-id={{item.id}}>
-				{{#if hasBlock}}
-					{{yield item}}
-				{{else}}
-					<a href="{{href-to "channel.tracks.track" item}}">
-						{{item.title}}
-						<span class="Muted">{{item.body}}</span>
-					</a>
-				{{/if}}
-			</li>
-		{{/each}}
-	</ol>
-{{/if}}
+	{{/if}}
+</div>

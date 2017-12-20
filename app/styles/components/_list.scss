@@ -11,16 +11,6 @@
 	box-shadow: $box-shadow;
 }
 
-.List-header {
-	padding-left: 1rem;
-	padding-right: 1rem;
-	margin-bottom: 0.2rem;
-	font-weight: normal;
-	font-style: italic;
-	text-align: right;
-	color: $mediumgray;
-}
-
 .List-item {
 	border-bottom: 1px solid hsl(0, 0%, 91%); // $mediumlightgray
 	line-height: normal;

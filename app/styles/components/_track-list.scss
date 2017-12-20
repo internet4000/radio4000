@@ -1,0 +1,16 @@
+/**
+	 TrackList
+ */
+
+.TrackList {
+	position: relative;
+}
+.TrackList-header {
+	padding-left: 1rem;
+	padding-right: 1rem;
+	margin-bottom: 0.2rem;
+	font-weight: normal;
+	font-style: italic;
+	text-align: right;
+	color: $mediumgray;
+}
