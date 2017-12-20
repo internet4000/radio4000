@@ -94,6 +94,18 @@ progress {
 	@include size-3;
 }
 
+.Form--full {
+	display: flex;
+	flex-grow: 1;
+	.Label-title {
+		padding-right: 0.5rem;
+	}
+	.Form-group {
+		display: flex;
+		margin-right: 1rem;
+	}
+}
+
 .Form-group {
 	position: relative;
 	margin-bottom: 1rem;
@@ -168,4 +180,10 @@ progress {
 
 .Form--boxSmall {
 	max-width: 27rem;
+}
+
+// labels
+.Label--horizontal {
+	display: flex;
+	align-items: center;
 }
