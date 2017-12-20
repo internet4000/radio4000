@@ -20,7 +20,7 @@ export default Component.extend(EKMixin, {
 	// Newest on top.
 	sortedItems: array.sort('items', ['created:desc']),
 
-	focusSearch: Ember.on(keyUp('KeyS'), function() {
+	focusSearch: Ember.on(keyUp('shift+KeyS'), function() {
 		this.element.querySelector('input[type="search"]').focus()
 	}),
 
