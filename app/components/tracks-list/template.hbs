@@ -6,7 +6,7 @@
 					Search
 				</span>
 				{{jets-search
-						contentTag=".List--tracks"
+						contentTag=".TrackList .List"
 						content=model.tracks
 						value=searchQuery
 						title="Search each track in the list (title and description fields); Usage: `word1 & word2 & ...` will filter tracks that have all words at the same time [⌨ shift + s]"
@@ -33,9 +33,10 @@
 	</form>
 {{/if}}
 
-<div class="TrackList">
-	{{#if grouped}}
-		{{#each groupedItems as |group|}}
+
+{{#if grouped}}
+	{{#each groupedItems as |group|}}
+		<div class="TrackList">
 			<h2 class="TrackList-header Muted">{{group.items.firstObject.createdMonth}}</h2>
 			<ol
 				class="List {{if numbered ' List--numbered'}} List--tracks">
@@ -50,8 +51,10 @@
 					</li>
 				{{/each}}
 			</ol>
-		{{/each}}
-	{{else}}
+		</div>
+	{{/each}}
+{{else}}
+	<div class="TrackList">
 		<ol
 			class="List{{if numbered ' List--numbered'}} List--tracks">
 			{{#each sortedItems as |item|}}
@@ -69,5 +72,5 @@
 				</li>
 			{{/each}}
 		</ol>
-	{{/if}}
-</div>
+	</div>
+{{/if}}
