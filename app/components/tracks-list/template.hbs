@@ -38,19 +38,19 @@
 	{{#each groupedItems as |group|}}
 		<div class="TrackList">
 			<h2 class="TrackList-header Muted">{{group.items.firstObject.createdMonth}}</h2>
-			<ol
+			<div
 				class="List {{if numbered ' List--numbered'}} List--tracks">
 				{{#each group.items as |item|}}
-					<li
+					<article
 						class="List-item">
 						{{#if hasBlock}}
 							{{yield item}}
 						{{else}}
 							{{item.title}}
 						{{/if}}
-					</li>
+					</article>
 				{{/each}}
-			</ol>
+			</div>
 		</div>
 	{{/each}}
 {{else}}
