@@ -42,7 +42,8 @@
 				class="List {{if numbered ' List--numbered'}} List--tracks">
 				{{#each group.items as |item|}}
 					<article
-						class="List-item">
+						class="List-item"
+						data-track-id={{item.id}}>
 						{{#if hasBlock}}
 							{{yield item}}
 						{{else}}
