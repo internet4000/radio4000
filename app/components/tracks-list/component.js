@@ -13,8 +13,16 @@ export default Component.extend(EKMixin, {
 	numbered: false,
 	grouped: false,
 	searchQuery: '',
-	selection: [],
-
+	/* selection: [],*/
+	selection: computed('query', function() {
+		const $els = $('.TrackList .List-item:visible')
+		const ids = $.map($els, el => el.getAttribute('data-track-id'))
+		if(ids.length) {
+			return ids
+		} else {
+			return [];
+		}
+	}),
 	noSearchQuery: computed.not('searchQuery'),
 
 	// Newest on top.
@@ -26,12 +34,6 @@ export default Component.extend(EKMixin, {
 
 	// Tracks grouped by month.
 	groupedItems: array.groupBy('sortedItems', raw('createdMonth')),
-
-	setSelectionFromSearch() {
-		const $els = $('.TrackList .List-item:visible')
-		const ids = $.map($els, el => el.getAttribute('data-track-id'))
-		set(this, 'selection', ids)
-	},
 
 	actions: {
 		clearSearchQuery() {
