@@ -1,5 +1,5 @@
 {{#if search}}
-	<form class="Form Form--full" {{action "playSelection" on="submit"}}>
+	<div class="Form Form--full">
 		<div class="Form-group BtnGroup">
 			<label class="Label Label--horizontal">
 				<span class="Label-title">
@@ -22,7 +22,10 @@
 			>x</button>
 		</div>
 		<div class="Form-group">
-			<button type="submit" class="Btn u-nowrap" style="min-width: 8em"
+			<button
+				class="Btn u-nowrap"
+				style="min-width: 8em"
+				{{action "playSelection"}}
 				title="Use all tracks result of a search inside the player">
 				{{#if searchQuery}}
 					<i>↳</i> Load tracks {{!-- load track search --}}
@@ -31,48 +34,26 @@
 				{{/if}}
 			</button>
 		</div>
-	</form>
+	</div>
 {{/if}}
 
 
-{{#if grouped}}
-	{{#each groupedItems as |group|}}
-		<div class="ListGroup">
-			<div
-				class="List {{if numbered ' List--numbered'}} List--tracks">
-				<h2 class="List-header Muted">{{group.items.firstObject.createdMonth}}</h2>
-				{{#each group.items as |item|}}
-					<article
-						class="List-item"
-						data-track-id={{item.id}}>
-						{{#if hasBlock}}
-							{{yield item}}
-						{{else}}
-							{{item.title}}
-						{{/if}}
-					</article>
-				{{/each}}
-			</div>
-		</div>
-	{{/each}}
-{{else}}
+{{#each groupedItems as |group|}}
 	<div class="ListGroup">
-		<ol
-			class="List{{if numbered ' List--numbered'}} List--tracks">
-			{{#each sortedItems as |item|}}
-				<li
+		<div
+			class="List {{if numbered ' List--numbered'}} List--tracks">
+			<h2 class="List-header Muted">{{group.items.firstObject.createdMonth}}</h2>
+			{{#each group.items as |item|}}
+				<article
 					class="List-item"
 					data-track-id={{item.id}}>
 					{{#if hasBlock}}
 						{{yield item}}
 					{{else}}
-						<a href="{{href-to "channel.tracks.track" item}}">
-							{{item.title}}
-							<span class="Muted">{{item.body}}</span>
-						</a>
+						{{item.title}}
 					{{/if}}
-				</li>
+				</article>
 			{{/each}}
-		</ol>
+		</div>
 	</div>
-{{/if}}
+{{/each}}
