@@ -14,7 +14,8 @@ export default Component.extend(EKMixin, {
 	grouped: false,
 	searchQuery: '',
 	/* selection: [],*/
-	selection: computed('searchQuery', function() {
+
+	getSelection: function() {
 		const $els = $('.ListGroup .List-item:visible')
 		console.log('$els', $els)
 		const ids = $.map($els, el => el.getAttribute('data-track-id'))
@@ -23,7 +24,8 @@ export default Component.extend(EKMixin, {
 		} else {
 			return [];
 		}
-	}),
+	},
+
 	noSearchQuery: computed.not('searchQuery'),
 
 	// Newest on top.
@@ -42,8 +44,8 @@ export default Component.extend(EKMixin, {
 		},
 		playSelection() {
 			const player = get(this, 'player')
-			const selection = get(this, 'selection')
-			console.log('selection', selection)
+			const selection = this.getSelection()
+
 			if(selection.length) {
 				get(this, 'items.firstObject.channel').then(channel => {
 				const playlist = player.buildPlaylistExport(
