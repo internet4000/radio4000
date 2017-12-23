@@ -20,12 +20,14 @@ export default Controller.extend({
 		return searchResults ? searchResults : channels
 	}),
 
+	noSearch: computed.not('search'),
+
 	actions: {
 		changeLayout() {
 			this.toggleProperty('isList')
 		},
-		handleSearch(searchResults) {
-			set(this, 'searchResults', searchResults)
+		clearSearch() {
+			set(this, 'search', '')
 		}
 	}
 })

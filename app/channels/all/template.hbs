@@ -12,12 +12,21 @@
 						<span class="Label-title">
 							Search
 						</span>
-						{{list-search
-								items=filteredChannels
+						{{jets-search
+								contentTag=".Grid"
+								content=filteredChannels
 								value=search
-								afterSearching=(action "handleSearch")
-								title="Search radio channels, titles and descriptions"}}
+								title="Search all radio channels (title and description fields); Usage: `word1 & word2 & ...` will filter channels that have all words at the same time [⌨ shift + s]"
+								placeholder='Explore all radio channels'
+						}}
 					</label>
+
+					<button type="button"
+						class="Btn"
+						disabled={{noSearch}}
+						title="Clear search query, fresh start!"
+						{{action 'clearSearch'}}
+					>x</button>
 				{{/btn-group}}
 
 				{{#btn-group class="BtnGroup--full BtnGroup--vertical"}}
