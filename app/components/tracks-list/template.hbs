@@ -25,10 +25,10 @@
 			<button
 				class="Btn u-nowrap"
 				style="min-width: 8em"
-				{{action "playSelection"}}
+				{{action playSelection}}
 				title="Use all tracks result of a search inside the player">
 				{{#if searchQuery}}
-					<i>↳</i> Load tracks {{!-- load track search --}}
+					<i>↳</i> Load selection {{!-- load track search --}}
 				{{else}}
 					<i>▶</i> Play {{!-- load all tracks --}}
 				{{/if}}
@@ -47,11 +47,10 @@
 				<article
 					class="List-item"
 					data-track-id={{item.id}}>
-					{{#if hasBlock}}
-						{{yield item}}
-					{{else}}
-						{{item.title}}
-					{{/if}}
+					{{track-item
+							track=item
+							playSelection=playSelection
+					}}
 				</article>
 			{{/each}}
 		</div>

@@ -1,6 +1,9 @@
 import Controller from '@ember/controller'
 
+const {inject, get} = Ember;
+
 export default Controller.extend({
+	player: inject.service(),
 	queryParams: ['search'],
 	search: '',
 	getSelectionFromJets: function() {
@@ -12,4 +15,23 @@ export default Controller.extend({
 			return [];
 		}
 	},
+	actions: {
+		playSelection(track) {
+			const player = get(this, 'player')
+			const selection = this.getSelectionFromJets()
+
+			if(track) {
+				get(this, 'player').playTrack(track)
+			}
+
+			if(selection.length) {
+				const playlist = player.buildPlaylistExport(
+					get(this, 'model.channel'),
+					selection,
+					get(this, 'search')
+				)
+				player.loadPlayistInWebComponent(playlist)
+			}
+		}
+	}
 })
