@@ -9,22 +9,11 @@ const { Component, $, inject, computed, get, set } = Ember
 export default Component.extend(EKMixin, {
 	player: inject.service(),
 	classNames: ['Tracks'],
+	classNameBindings: ['searchQuery:is-searching'],
 	items: null,
 	numbered: false,
 	grouped: false,
 	searchQuery: '',
-	/* selection: [],*/
-
-	getSelection: function() {
-		const $els = $('.ListGroup .List-item:visible')
-		console.log('$els', $els)
-		const ids = $.map($els, el => el.getAttribute('data-track-id'))
-		if(ids.length) {
-			return ids
-		} else {
-			return [];
-		}
-	},
 
 	noSearchQuery: computed.not('searchQuery'),
 

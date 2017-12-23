@@ -5,21 +5,24 @@
 				keyboardActivated=true
 				searchQuery=search
 				items=model.tracks
+				getSelection=getSelectionFromJets
 				grouped=true
 				search=true
 				inline=true
 				numbered=false as |item|}}
-				{{track-item track=item}}
+				{{track-item
+						track=item
+				}}
 			{{/tracks-list}}
 
 			{{#unless model.tracks.length}}
-					<p class="Muted">
-						{{#if model.channel.canEdit}}
-							Your radio has no tracks yet. Try to {{link-to 'add your first' 'add'}}.
-						{{else}}
-							This radio has no tracks yet.
-						{{/if}}
-					</p>
+				<p class="Muted">
+					{{#if model.channel.canEdit}}
+						Your radio has no tracks yet. Try to {{link-to 'add your first' 'add'}}.
+					{{else}}
+						This radio has no tracks yet.
+					{{/if}}
+				</p>
 			{{/unless}}
 		{{else}}
 			{{#is-loading}}

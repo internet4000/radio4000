@@ -1,6 +1,18 @@
+.Tracks {
+	&.is-searching {
+		.List-header {
+			display: none;
+		}
+		.List-item:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
 /**
  * Single track
  */
+
 .Track {
 	@include size-1;
 	position: relative;
