@@ -97,9 +97,6 @@ progress {
 .Form--full {
 	display: flex;
 	flex-grow: 1;
-	.Label-title {
-		padding-right: 0.5rem;
-	}
 	.Form-group {
 		display: flex;
 		margin-right: 1rem;
@@ -186,4 +183,7 @@ progress {
 .Label--horizontal {
 	display: flex;
 	align-items: center;
+	.Label-title {
+		padding-right: 0.5rem;
+	}
 }

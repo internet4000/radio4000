@@ -4,6 +4,9 @@
 	display: flex;
 	flex-wrap: wrap;
 }
+.BtnGroups--noPaddingButton {
+	padding-bottom: 0;
+}
 
 .BtnGroup {
 	display: flex;

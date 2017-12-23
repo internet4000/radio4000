@@ -43,7 +43,7 @@
 
 	&.is-active {
 		@extend %font-bold;
-		border-color: $primary-color;
+		border-right-color: $primary-color;
 		background-color: $superlightgray;
 	}
 	& small {
@@ -62,6 +62,7 @@
 	padding-bottom: 0.2em;
 	padding-right: 0;
 	margin-bottom: 0;
+	border-right: 0;
 }
 
 .Tabs-divider {
@@ -168,4 +169,3 @@
 		background-color: transparent;
 	}
 }
-
