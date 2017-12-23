@@ -22,6 +22,10 @@
 	animation: animate-rotate 1600ms linear infinite;
 }
 
+.Loader {
+	display: flex;
+}
+
 // See templates/error.hbs
 .Loader-header {
 	display: flex;
@@ -37,7 +41,8 @@
 .Loader-media {
 	margin-bottom: 0.5rem;
 	border: 1px solid #b3b3b3;
-	width: 3rem;
+	width: 4.7rem;
+	height: 2.5rem;
 	padding-left: 0.2rem;
 	padding-top: 0.2rem;
 	position: relative;
@@ -70,10 +75,15 @@
 }
 
 .Loader-text {
-	margin-bottom: 0.5rem;
 	font-size: 1rem;
 	color: $dark;
 	display: block;
+	p {
+		margin: 0;
+	}
+	p + p {
+		margin-bottom: 0.5rem;
+	}
 }
 
 .Loader--center {
