@@ -15,7 +15,7 @@ export default Component.extend(EKMixin, {
 	searchQuery: '',
 	/* selection: [],*/
 	selection: computed('query', function() {
-		const $els = $('.TrackList .List-item:visible')
+		const $els = $('.ListGroup .List-item:visible')
 		const ids = $.map($els, el => el.getAttribute('data-track-id'))
 		if(ids.length) {
 			return ids
