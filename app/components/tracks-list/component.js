@@ -14,8 +14,9 @@ export default Component.extend(EKMixin, {
 	grouped: false,
 	searchQuery: '',
 	/* selection: [],*/
-	selection: computed('query', function() {
+	selection: computed('searchQuery', function() {
 		const $els = $('.ListGroup .List-item:visible')
+		console.log('$els', $els)
 		const ids = $.map($els, el => el.getAttribute('data-track-id'))
 		if(ids.length) {
 			return ids
@@ -40,10 +41,9 @@ export default Component.extend(EKMixin, {
 			set(this, 'searchQuery', '')
 		},
 		playSelection() {
-			this.setSelectionFromSearch()
 			const player = get(this, 'player')
 			const selection = get(this, 'selection')
-
+			console.log('selection', selection)
 			if(selection.length) {
 				get(this, 'items.firstObject.channel').then(channel => {
 				const playlist = player.buildPlaylistExport(
