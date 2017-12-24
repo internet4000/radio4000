@@ -1,16 +1,7 @@
-{{#if inline}}
-	<a href="#" {{action "play" track}}>
-		<h3 class="Track-title">{{track.title}}</h3>
-		<p class="Track-body">{{track.body}}</p>
-	</a>
-{{else}}
-	{{!-- {{#link-to 'channel.tracks.track.index' track class="Track-link"}} --}}
-	<a href="{{href-to 'channel.tracks.track.index' track}}" class="Track-link">
-		<h3 class="Track-title">{{track.title}}</h3>
-		<p class="Track-body">{{track.body}}</p>
-	</a>
-	{{!-- {{/link-to}} --}}
-{{/if}}
+<a href="#" {{action "play" track}}>
+	<h3 class="Track-title">{{track.title}}</h3>
+	<p class="Track-body">{{track.body}}</p>
+</a>
 
 {{#if track.channel.canEdit}}
 	{{#if inline}}
