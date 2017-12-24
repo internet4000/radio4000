@@ -5,7 +5,7 @@ const {Route, RSVP} = Ember
 
 export default Route.extend(ResetScroll, {
 	queryParams: {
-		q: {
+		search: {
 			replace: true
 		}
 	},
