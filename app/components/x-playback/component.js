@@ -4,7 +4,7 @@ import Ember from 'ember';
 // 1- comment out the following `import`
 // 2- comment in the `script` tag in the `template.hbs`
 // cheers
-/* import 'npm:radio4000-player';*/
+import 'npm:radio4000-player';
 
 const {Component, get, inject, computed} = Ember;
 
