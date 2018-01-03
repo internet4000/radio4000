@@ -1,6 +1,7 @@
+import Ember from 'ember'
 import Controller from '@ember/controller'
 
-const {inject, get} = Ember;
+const {inject, get, $} = Ember;
 
 export default Controller.extend({
 	player: inject.service(),
@@ -9,22 +10,21 @@ export default Controller.extend({
 	getSelectionFromJets: function() {
 		const $els = $('.ListGroup .List-item:visible')
 		const ids = $.map($els, el => el.getAttribute('data-track-id'))
-		if(ids.length) {
+		if (ids.length) {
 			return ids
-		} else {
-			return [];
 		}
+		return []
 	},
 	actions: {
 		playSelection(track) {
 			const player = get(this, 'player')
 			const selection = this.getSelectionFromJets()
 
-			if(track) {
+			if (track) {
 				get(this, 'player').playTrack(track)
 			}
 
-			if(selection.length) {
+			if (selection.length) {
 				const playlist = player.buildPlaylistExport(
 					get(this, 'model.channel'),
 					selection,

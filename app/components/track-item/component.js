@@ -21,8 +21,8 @@ export default Component.extend({
 
 	actions: {
 		play(track) {
-			/* get(this, 'playSelection')(track)*/
-			get(this, 'player').playTrack(track);
+			// get(this, 'playSelection')(track)
+			get(this, 'player').playTrack(track)
 		},
 		edit() {
 			this.toggleProperty('isEditing')
