@@ -11,6 +11,30 @@
 	{{/if}}
 {{/if}}
 
+{{track-contextual
+	track=track
+	canEdit=track.channel.canEdit
+	onEdit=(action "onEdit")
+	onCopyTrack=(action "copyTrack")}}
+
+{{yield}}
+
+{{!-- {{#if inline}}
+	<a href="#" {{action "play" track}} class="Track-link">
+		<h3 class="Track-title">
+			{{track.title}}
+		</h3>
+		<p class="Track-body">{{track.body}}</p>
+	</a>
+{{else}}
+	{{#link-to 'channel.tracks.track.index' track class="Track-link"}}
+		<h3 class="Track-title">
+			{{track.title}}
+		</h3>
+		<p class="Track-body">{{track.body}}</p>
+	{{/link-to}}
+{{/if}}
+
 {{#if isEditing}}
 	{{#modal-dialog onClose=(action "goBack" true)}}
 		<div class="Sections">
@@ -28,6 +52,4 @@
 			</section>
 		</div>
 	{{/modal-dialog}}
-{{/if}}
-
-{{yield}}
+{{/if}} --}}

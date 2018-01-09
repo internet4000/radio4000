@@ -180,17 +180,6 @@
 	}
 }
 
-// .Btn--round {
-// 	padding: 1.5rem 1.6rem 1.4rem 1.5rem;
-// 	border-radius: 50%;
-// 	border-left: 2px solid $primary-color;
-// 	border-bottom: 2px solid $primary-color;
-
-// 	&:hover {
-// 		border-color: darken($primary-color, 10%);
-// 	}
-// }
-
 .Btn--topNoRadius {
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
@@ -201,6 +190,40 @@
 	border-bottom-right-radius: 0;
 }
 
+/*
+	Button used for the aside toggle and toggling <select>
+*/
+
+.Btn--toggle {
+	display: flex;
+	flex-direction: column;
+
+	span {
+		width: 9px;
+		height: 3px;
+		border-radius: 2px;
+		margin: 1px;
+		background-color: $mediumgray;
+		transform: rotateY(180deg);
+		transition: transform 250ms $easing2, background-color 150ms;
+
+		&:nth-child(2) {
+			transition-duration: 500ms;
+		}
+
+		&:nth-child(3) {
+			transition-duration: 750ms;
+		}
+	}
+
+	.ContextualToggle:hover &,
+	&:hover,
+	&:focus {
+		span {
+			background-color: $black;
+		}
+	}
+}
 
 /**
  * Non Buttons
@@ -228,3 +251,4 @@
 .Btn--map {
 	z-index: 2;
 }
+

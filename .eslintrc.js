@@ -14,6 +14,8 @@ module.exports = {
 		'no-mixed-spaces-and-tabs': 'warn',
 		'object-curly-spacing': 'off',
 		'semi': 'off',
-		'space-before-function-paren': 'off'
+		'space-before-function-paren': 'off',
+		'no-alert': 'off',
+		'no-prompt': 'off'
 	}
 };

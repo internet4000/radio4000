@@ -13,34 +13,13 @@
 		.Aside-toggleBtn span {
 			transform: rotateY(0);
 		}
+
 		.Aside-toggleLayer {
 			display: block;
+
 			@media (min-width: $layout-m) {
 				display: none;
 			}
-		}
-	}
-}
-
-.Aside-toggleBtn {
-	display: flex;
-	flex-direction: column;
-
-	span {
-		width: 9px;
-		height: 3px;
-		border-radius: 2px;
-		margin: 1px;
-		background-color: black;
-		transform: rotateY(180deg);
-		transition: transform 300ms $easing2;
-
-		&:nth-child(2) {
-			transition-duration: 600ms
-		}
-
-		&:nth-child(3) {
-			transition-duration: 900ms
 		}
 	}
 }
@@ -67,8 +46,14 @@
 		top: 2.1rem;
 		left: -3px;
 		z-index: 6;
-		opacity: 0.3;
+		opacity: 0.5;
+
+		&:focus,
+		&:hover {
+			opacity: 1;
+		}
 	}
+
 	.Aside-inner {
 		height: 100%;
 		padding-top: 5rem; // space for our top bar
