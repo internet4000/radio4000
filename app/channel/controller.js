@@ -8,7 +8,7 @@ export default Controller.extend({
 
 	editTrack: null,
 
-	trackToEdit: Ember.computed('editTrack', function () {
+	trackToEdit: computed('editTrack', function () {
 		return this.store.peekRecord('track', get(this, 'editTrack'))
 	}),
 
