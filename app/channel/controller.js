@@ -6,6 +6,7 @@ export default Controller.extend({
 	queryParams: ['editTrack'],
 	player: inject.service(),
 
+	// Pass a track id.
 	editTrack: null,
 
 	trackToEdit: computed('editTrack', function () {
