@@ -129,8 +129,10 @@
 	background-color: $primary-color;
 	color: $white;
 
-	&:hover {
+	&:hover,
+	&:focus {
 		background-color: $primary-color;
+		color: $white;
 	}
 }
 

@@ -40,7 +40,6 @@ textarea,
 	background-color: $superlightgray;
 
 	&:focus {
-		outline: hsl(214, 95%, 64%) auto 1px;
 		border-color: $primary-color;
 		background-color: white;
 	}
