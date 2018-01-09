@@ -35,21 +35,4 @@
 	{{/link-to}}
 {{/if}}
 
-{{#if isEditing}}
-	{{#modal-dialog onClose=(action "goBack" true)}}
-		<div class="Sections">
-			<section class="Section">
-				<div class="Manchet">
-					<h2>Edit <small>track</small></h2>
-				</div>
-				<div class="Container">
-					{{track-edit
-						track=track
-						onCancel=(action "goBack" true)
-						onSubmit=(action "goBack")
-						onDelete=(action "goBack")}}
-				</div>
-			</section>
-		</div>
-	{{/modal-dialog}}
-{{/if}} --}}
+--}}

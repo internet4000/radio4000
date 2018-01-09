@@ -17,11 +17,12 @@ export default Component.extend({
 
 	actions: {
 		onEdit(track) {
-			get(this, 'router').transitionTo('channel.tracks.track.edit', track)
-			// if (get(this, 'inline')) {
-			// 	this.toggleProperty('isEditing')
-			// } else {
-			// }
+			// get(this, 'router').transitionTo('channel.tracks.track.edit', track)
+			get(this, 'router').transitionTo({
+				queryParams: {
+					editTrack: track.id
+				}
+			})
 		},
 		copyTrack(track) {
 			get(this, 'router').transitionTo('add', {

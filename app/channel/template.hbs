@@ -41,3 +41,18 @@
 
 	{{outlet}}
 </div>
+
+{{#if editTrack}}
+	{{#modal-dialog onClose=(action "stopEditing")}}
+		<div class="Sections">
+			<section class="Section">
+				<div class="Manchet">
+					<h2>Edit <small>track</small></h2>
+				</div>
+				<div class="Container">
+					{{track-edit track=trackToEdit}}
+				</div>
+			</section>
+		</div>
+	{{/modal-dialog}}
+{{/if}}
