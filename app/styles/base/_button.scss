@@ -90,6 +90,9 @@
 
 .Btn--large {
 	@include size-2;
+	// Adjust padding to vertical center text.
+	padding-top: 0.65em;
+	padding-bottom: 0.55em;
 }
 
 .Btn--huge {
