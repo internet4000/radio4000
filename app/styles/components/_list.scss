@@ -54,28 +54,6 @@
 	}
 }
 
-.List-title {
-	margin: 0;
-
-	small {
-		@extend %font-mono;
-		@include size-1;
-		float: right;
-		color: $mediumgray;
-	}
-}
-
-.List-body {
-	@include size-0;
-	max-width: 80%;
-	margin: 0;
-	color: $gray;
-
-	@media (min-width: $layout-l) {
-		@include size-1;
-	}
-}
-
 // Numbered list
 .List--numbered {
 	counter-reset: counter(list-counter);
@@ -102,13 +80,4 @@
 
 // List of tracks
 .List--tracks {
-}
-
-// Lists with cover images
-.List .Cover {
-	float: left;
-	// fits with two lines of description
-	width: 4rem;
-	margin-right: 1rem;
-	margin-bottom: 0;
 }
