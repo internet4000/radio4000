@@ -1,5 +1,5 @@
 {{#if inline}}
-	<a href="#" {{action "play" track}}>
+	<a href="#" {{action "play" track}} class="Track-link">
 		<h3 class="Track-title">
 			{{track.title}}
 		</h3>
@@ -14,15 +14,11 @@
 	{{/link-to}}
 {{/if}}
 
-{{#if track.channel.canEdit}}
-	{{#if inline}}
-		<button class="Track-controls Muted" {{action "edit"}}>Edit</button>
-	{{else}}
-		{{link-to 'Edit' 'channel.tracks.track.edit' track
-			class="Btn Btn--text Muted Track-controls"
-			title="Edit the track"}}
-	{{/if}}
-{{/if}}
+{{track-contextual
+	track=track
+	canEdit=track.channel.canEdit
+	onEdit=(action "onEdit")
+	onCopyTrack=(action "copyTrack")}}
 
 {{#if isEditing}}
 	{{#modal-dialog onClose=(action "goBack" true)}}

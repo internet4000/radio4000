@@ -6,6 +6,8 @@
 		<div class="Container">
 			{{track-form-add
 				initialUrl=url
+				initialTitle=title
+				initialBody=body
 				onSubmit=(action "saveTrack")
 				onCancel=(action "goBack")
 				isSubmitting=createTrack.isRunning}}

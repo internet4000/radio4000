@@ -24,7 +24,9 @@ export default TrackFormComponent.extend({
 	resetForm() {
 		// The getOwner part is mentioned in the ember-cp-validation docs.
 		const track = trackObject.create(Ember.getOwner(this).ownerInjection(), {
-			url: get(this, 'initialUrl')
+			url: get(this, 'initialUrl'),
+			title: get(this, 'initialTitle'),
+			body: get(this, 'initialBody')
 		});
 		set(this, 'track', track);
 		this._super(...arguments);

@@ -1,9 +1,11 @@
-import Ember from 'ember';
+import Ember from 'ember'
 
-const {Component, computed, get, set, inject} = Ember;
+const { Component, computed, get, set, inject } = Ember
 
 export default Component.extend({
 	player: inject.service(),
+	router: inject.service(),
+
 	classNames: ['Track'],
 	classNameBindings: [
 		'isCurrent',
@@ -15,13 +17,26 @@ export default Component.extend({
 
 	// true if the current track is loaded in the player
 	// isCurrent: computed.equal('player.model', 'track'),
-	isCurrent: computed('player.currentTrack', 'track', function () {
-		return this.get('player.currentTrack') === this.get('track');
+	isCurrent: computed('player.currentTrack', 'track', function() {
+		return this.get('player.currentTrack') === this.get('track')
 	}),
 
 	actions: {
-		edit() {
-			this.toggleProperty('isEditing')
+		onEdit() {
+			if (get(this, 'inline')) {
+				this.toggleProperty('isEditing')
+			} else {
+				window.alert('transition to track.edit')
+			}
+		},
+		copyTrack(track) {
+			get(this, 'router').transitionTo('add', {
+				queryParams: {
+					url: track.get('url'),
+					title: track.get('title'),
+					body: track.get('body')
+				}
+			})
 		},
 		play(track) {
 			get(this, 'player').playTrack(track)
@@ -33,4 +48,4 @@ export default Component.extend({
 			set(this, 'isEditing', false)
 		}
 	}
-});
+})
