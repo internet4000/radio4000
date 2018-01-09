@@ -2,18 +2,15 @@
 	<div class="Container Container--noPaddingMobile">
 		{{#if model.tracks.isLoaded}}
 			{{#tracks-list
-					 keyboardActivated=true
-					 items=model.tracks
-					 grouped=true
-					 search=true
-					 searchQuery=search
-					 playSelection=(action "playSelection")
-					 inline=true
-					 numbered=false
-					 as |item|}}
-				{{track-item
-						track=item
-				}}
+				keyboardActivated=true
+				items=model.tracks
+				grouped=true
+				search=true
+				searchQuery=search
+				playSelection=(action "playSelection")
+				as |item|
+			}}
+				{{track-item track=item}}
 			{{/tracks-list}}
 
 			{{#unless model.tracks.length}}

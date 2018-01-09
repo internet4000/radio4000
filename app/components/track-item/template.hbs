@@ -1,3 +1,4 @@
+{{!-- {{#link-to 'channel.tracks.track.index' track}} --}}
 <a href="#" {{action "play" track}}>
 	<h3 class="Track-title">{{track.title}}</h3>
 	<p class="Track-body">{{track.body}}</p>
@@ -10,28 +11,3 @@
 	onCopyTrack=(action "copyTrack")}}
 
 {{yield}}
-
-{{!-- {{#if track.channel.canEdit}}
-	{{#if inline}}
-		<button class="Track-controls Muted" {{action "edit"}}>Edit</button>
-	{{else}}
-		<a href="{{href-to 'channel.tracks.track.edit' track}}" class="Btn Btn--text Muted Track-controls" title="Edit the track">Edit</a>
-	{{/if}}
-{{/if}} --}}
-
-{{!-- {{#if inline}}
-	<a href="#" {{action "play" track}} class="Track-link">
-		<h3 class="Track-title">
-			{{track.title}}
-		</h3>
-		<p class="Track-body">{{track.body}}</p>
-	</a>
-{{else}}
-	{{#link-to 'channel.tracks.track.index' track class="Track-link"}}
-		<h3 class="Track-title">
-			{{track.title}}
-		</h3>
-		<p class="Track-body">{{track.body}}</p>
-	{{/link-to}}
-{{/if}}
---}}

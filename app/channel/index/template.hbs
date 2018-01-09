@@ -15,7 +15,7 @@
 		<div class="Container Container--noPaddingMobile">
 			{{#if model.latestTracks}}
 				{{#tracks-list items=model.latestTracks as |item|}}
-					{{track-item track=item inline=true search=false}}
+					{{track-item track=item}}
 				{{/tracks-list}}
 			{{else}}
 				{{#is-loading}}
