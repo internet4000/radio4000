@@ -52,16 +52,13 @@
 {{else}}
 	{{#each groupedItems as |group|}}
 		<div class="ListGroup">
-			<div
-				class="List {{if numbered ' List--numbered'}} List--tracks">
-				<h2 class="List-header Muted">{{group.items.firstObject.createdMonth}}</h2>
+			<h4 class="List-header">{{group.items.firstObject.createdMonth}}</h4>
+			<div class="List {{if numbered ' List--numbered'}}">
 				{{#each group.items as |item|}}
-					<article
-						class="List-item"
-						data-track-id={{item.id}}>
+					<article class="List-item" data-track-id={{item.id}}>
 						{{track-item
-								track=item
-								playSelection=playSelection
+							track=item
+							playSelection=playSelection
 						}}
 					</article>
 				{{/each}}

@@ -1,14 +1,9 @@
-// List markup example: .List > .List-item > a
-.List {
-	list-style: none;
-	padding-left: 0;
+/**
+ * Groups of lists
+ */
 
-	/* background-color: $slightgray; */
-	/* border-radius: $border-radius;
-		 box-shadow: $box-shadow; */
-}
-
-.List-header {
+.ListGroup {}
+.ListGroup-header {
 	padding-left: 1rem;
 	padding-right: 1rem;
 	margin-bottom: 0.2rem;
@@ -18,31 +13,36 @@
 	color: $mediumgray;
 }
 
-.List-item {
+/**
+ * Lists
+ * markup example: .List > .List-item > a
+ */
+
+.List {
+	list-style: none;
+	padding-left: 0;
+	border-radius: $border-radius;
 	background-color: $slightgray;
+	border: 1px solid $mediumlightgray;
+}
+
+.List-item {
 	border-bottom: 1px solid hsl(0, 0%, 91%); // $mediumlightgray
 	line-height: normal;
 
 	&::before {
 		display: none;
 	}
-
-	&:last-child {
-		margin-bottom: 1rem;
-	}
 }
 
 // When a link wraps everything
 .List-item a {
 	display: block;
+	flex: 1;
 	padding: 0.8rem 1rem 0.7rem;
 	text-decoration: none;
 
 	&:hover,
-	&:focus {
-		text-decoration: none;
-	}
-
 	&:focus,
 	&:active {
 		text-decoration: none;
@@ -76,8 +76,4 @@
 		font-size: 10px;
 		color: $gray;
 	}
-}
-
-// List of tracks
-.List--tracks {
 }

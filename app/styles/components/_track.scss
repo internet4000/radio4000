@@ -1,14 +1,3 @@
-.Tracks {
-	&.is-searching {
-		.List-header {
-			display: none;
-		}
-		.List-item:last-child {
-			margin-bottom: 0;
-		}
-	}
-}
-
 /**
  * Single track
  */
@@ -39,7 +28,6 @@
 	}
 }
 
-// Conflicts with is-current border
 .Track--live {
 	background-color: $white;
 
@@ -73,31 +61,6 @@
 	border-right-color: $green;
 }
 
-// Edit state
-.Track.is-editing {
-	background-color: $superlightgray;
-	box-shadow: $lighterblue 0 0 10px;
-
-	.Track-link:hover {
-		background-color: transparent;
-		background-image: none;
-	}
-
-	.Track-link,
-	.Track-controls {
-		display: none;
-	}
-}
-
-.Track-link {
-	flex-grow: 1;
-}
-
-.Track-contextual {
-	margin-left: auto;
-	align-self: flex-start;
-}
-
 .Track-title {
 	@extend %font-regular;
 	@include size-1;
@@ -115,36 +78,20 @@
 	}
 }
 
-// Link surrounding the track.
-.Track-link,
-a.Track-link {
-	border-left: 3px solid transparent;
-	padding-right: rem(60);
-	color: $text-color;
-	transition: border-color 250ms $easing;
+.Track-contextual {
+	margin-left: auto;
+	align-self: flex-start;
 }
 
-// Track edit button.
-.Track-controls {
-	@include size-0;
-	position: absolute;
-	top: 0;
-	right: 0;
-	padding: 1rem 1.5rem 1rem 0.5rem;
-}
-
-// .Track .Form {
-// 	margin: 0 1rem 0 2rem;
-
-// 	h2 {
-// 		display: none;
-// 	}
-// }
-
-/*
-	 TrackList
+/**
+ * TracksList
  */
 
-// .List--tracks {
-// 	position: relative;
-// }
+.TracksList.is-searching {
+	.List-header {
+		display: none;
+	}
+	.List-item:last-child {
+		margin-bottom: 0;
+	}
+}

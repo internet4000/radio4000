@@ -7,11 +7,11 @@ import raw from 'ember-macro-helpers/raw'
 const { Component, computed, set } = Ember
 
 export default Component.extend(EKMixin, {
-	classNames: ['Tracks'],
+	classNames: ['TracksList'],
 	classNameBindings: ['searchQuery:is-searching'],
 	items: null,
-	numbered: false,
 	grouped: false,
+	numbered: false,
 	searchQuery: '',
 
 	noSearchQuery: computed.not('searchQuery'),
