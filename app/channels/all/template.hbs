@@ -29,7 +29,7 @@
 					>x</button>
 				{{/btn-group}}
 
-				{{#btn-group class="BtnGroup--full BtnGroup--vertical"}}
+				{{#btn-group}}
 					{{play-random-channel class="Btn--large"}}
 				{{/btn-group}}
 
@@ -59,18 +59,18 @@
 					</label>
 				{{/btn-group}}
 				{{#btn-group}}
-							{{link-to
-									"↑"
-									"channels.all"
-									(query-params sortDirection="asc")
-									class='Btn'
-									title="Sort direction: ascending"}}
-						{{link-to
-								"↓"
-								"channels.all"
-								(query-params sortDirection="desc")
-								class='Btn'
-								title="Sort direction: descending"}}
+					{{link-to
+						"↑"
+						"channels.all"
+						(query-params sortDirection="asc")
+						class='Btn'
+						title="Sort direction: ascending"}}
+					{{link-to
+						"↓"
+						"channels.all"
+						(query-params sortDirection="desc")
+						class='Btn'
+						title="Sort direction: descending"}}
 				{{/btn-group}}
 			</div>
 

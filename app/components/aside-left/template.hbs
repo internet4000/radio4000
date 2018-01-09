@@ -15,64 +15,8 @@
 				 "channels"
 				 title="Find radio channels to enjoy [⌨ g h]"
 				 class="Tabs-item"}}
-			Radios
+			All Radios
 		{{/link-to}}
-
-		{{#if userChannel}}
-			{{channel-card
-					channel=userChannel
-					wide=true
-					title="Your radio [⌨ g i]"}}
-			{{#btn-group class="BtnGroup--full"}}
-				<!-- <button
-						 {{action "addTrack"}}
-						 class="Btn Btn--important Btn--topNoRadius"
-						 title="Add a new track to your radio [⌨ g a]">
-						 Add track
-						 </button> -->
-				{{link-to
-						'Add track'
-						'add'
-						class="Btn Btn--important Btn--topNoRadius"
-						title="Add a new track to your radio [⌨ g a]"}}
-			{{/btn-group}}
-		{{/if}}
-
-		{{#unless userChannel}}
-			<div class="Tabs-item BtnGroup BtnGroup--full">
-				{{#if isAuthenticated}}
-					{{#link-to
-							 "channels.new"
-							 class="Btn Btn--full Btn--important"
-							 title="Create your Radio4000 channel"}}
-						Create your radio
-					{{/link-to}}
-				{{else}}
-					{{#link-to
-							 "auth.signup"
-							 class="Btn Btn--important"
-							 title="Sign up to Radio4000"}}
-						Sign up
-					{{/link-to}}
-					{{#link-to
-							 "auth.login"
-							 class="Btn"
-							 title="Log in to Radio4000"}}
-						Log in
-					{{/link-to}}
-				{{/if}}
-			</div>
-		{{/unless}}
-
-		{{#if isAuthenticated}}
-			{{#link-to
-					 "auth.settings"
-					 class="Tabs-item"
-					 title="Customize your Radio4000"}}
-				Settings
-			{{/link-to}}
-		{{/if}}
-
 		{{#link-to
 				 "about"
 				 title="Learn more about Radio4000"
@@ -81,25 +25,62 @@
 		{{/link-to}}
 	</div>
 
-	<div class="Tabs Tabs--transparent">
-		{{#link-to
-				 "feedback"
-				 class="Tabs-item"
-				 title="Let us know what you have in mind! [⌨ g f]"}}
-			Feedback
-		{{/link-to}}
+	{{#if userChannel}}
+		<div class="Tabs Tabs--vertical">
+			{{channel-card channel=userChannel wide=true title="Your radio [⌨ g i]"}}
+			{{#btn-group class="BtnGroup--full"}}
+				{{!-- <button {{action "addTrack"}} class="Btn Btn--important Btn--topNoRadius" title="Add a new track to your radio [⌨ g a]">Add track</button> --}}
+				{{link-to 'Add track' 'add'
+					class="Btn Btn--important Btn--topNoRadius"
+					title="Add a new track to your radio [⌨ g a]"}}
+				{{/btn-group}}
+				{{#if isAuthenticated}}
+					{{#link-to "auth.settings" class="Tabs-item" title="Customize your Radio4000"}}
+						Settings
+					{{/link-to}}
+					{{#link-to "auth.logout" class="Tabs-item" title="Log out from Radio4000"}}
+						Log out
+					{{/link-to}}
+				{{/if}}
+		</div>
+	{{/if}}
 
-		{{#if isAuthenticated}}
-			{{#link-to
-					 "auth.logout"
-					 class="Tabs-item"
-					 title="Log out from Radio4000"}}
-				Log out
-			{{/link-to}}
-		{{/if}}
-	</div>
+	{{#unless userChannel}}
+	<div class="Tabs">
+		<div class="Tabs-item BtnGroup BtnGroup--full">
+			{{#if isAuthenticated}}
+				{{#link-to
+						 "channels.new"
+						 class="Btn Btn--full Btn--important"
+						 title="Create your Radio4000 channel"}}
+					Create your radio
+				{{/link-to}}
+			{{else}}
+				{{#link-to
+						 "auth.signup"
+						 class="Btn Btn--important"
+						 title="Sign up to Radio4000"}}
+					Sign up
+				{{/link-to}}
+				{{#link-to
+						 "auth.login"
+						 class="Btn"
+						 title="Log in to Radio4000"}}
+					Log in
+				{{/link-to}}
+			{{/if}}
+		</div>
+		</div>
+	{{/unless}}
 
 	<footer class="SiteFooter">
-		{{footer-note}}
+		<small>
+			<a href="https://support.internet4000.com/radio4000" target="_blank" rel="noopener" title="Support with Radio4000">
+				Help &rarr;
+			</a><br>
+			<a href="{{href-to "feedback"}}" title="Let us know what you have in mind! [⌨ g f]">
+				Send feedback
+			</a>
+		</small>
 	</footer>
 </div>

@@ -8,6 +8,7 @@
 	display: flex;
 	flex-flow: column wrap;
 	flex-shrink: 0;
+	margin-bottom: 1rem;
 
 	// A bit of depth.
 	border: 1px solid $mediumlightgray;
@@ -28,7 +29,7 @@
 .Tabs-item {
 	background-color: $superlightgray;
 	margin-bottom: 0;
-	padding: 0.8em 1rem 0.5em;
+	padding: 0.7em 1rem 0.5em;
 	color: $text-color;
 	border-radius: $border-radius;
 	border-right: 3px solid transparent;
@@ -55,14 +56,6 @@
 	&.Tabs-item--transparent {
 		background-color: transparent;
 	}
-}
-
-.Tabs .BtnGroup {
-	padding-top: 0em;
-	padding-bottom: 0.2em;
-	padding-right: 0;
-	margin-bottom: 0;
-	border-right: 0;
 }
 
 .Tabs-divider {
@@ -168,4 +161,9 @@
 	.Tabs-item {
 		background-color: transparent;
 	}
+}
+
+.Tabs .BtnGroup:not(.BtnGroup--full) {
+	margin-bottom: 0;
+	padding-right: 0;
 }
