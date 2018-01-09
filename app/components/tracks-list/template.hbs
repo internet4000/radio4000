@@ -52,7 +52,7 @@
 {{else}}
 	{{#each groupedItems as |group|}}
 		<div class="ListGroup">
-			<h4 class="List-header">{{group.items.firstObject.createdMonth}}</h4>
+			<h4 class="ListGroup-header">{{group.items.firstObject.createdMonth}}</h4>
 			<div class="List {{if numbered ' List--numbered'}}">
 				{{#each group.items as |item|}}
 					<article class="List-item" data-track-id={{item.id}}>
