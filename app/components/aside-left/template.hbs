@@ -29,10 +29,8 @@
 		<div class="Tabs Tabs--vertical">
 			{{channel-card channel=userChannel wide=true title="Your radio [⌨ g i]"}}
 			{{#btn-group class="BtnGroup--full BtnGroup--tight"}}
-				{{!-- <button {{action "addTrack"}} class="Btn Btn--important Btn--topNoRadius" title="Add a new track to your radio [⌨ g a]">Add track</button> --}}
-				{{link-to 'Add track' 'add'
-					class="Btn Btn--important Btn--topNoRadius"
-					title="Add a new track to your radio [⌨ g a]"}}
+				<button {{action "addTrack"}} class="Btn Btn--important Btn--topNoRadius" title="Add a new track to your radio [⌨ g a]">Add track</button>
+				{{!-- {{link-to 'Add track' 'add' class="Btn Btn--important Btn--topNoRadius" title="Add a new track to your radio [⌨ g a]"}} --}}
 				{{/btn-group}}
 				{{#if isAuthenticated}}
 					{{#link-to "auth.settings" class="Tabs-item" title="Customize your Radio4000"}}
