@@ -14,7 +14,8 @@ export default Component.extend({
 
 	actions: {
 		editTrack() {
-			get(this, 'onEdit')()
+			const track = get(this, 'track')
+			get(this, 'onEdit')(track)
 		},
 		copyTrackToRadio() {
 			const track = get(this, 'track')

@@ -16,12 +16,12 @@ export default Component.extend({
 	attributeBindings: ['track.ytid:data-pid'],
 
 	actions: {
-		onEdit() {
-			if (get(this, 'inline')) {
-				this.toggleProperty('isEditing')
-			} else {
-				window.alert('transition to track.edit')
-			}
+		onEdit(track) {
+			get(this, 'router').transitionTo('channel.tracks.track.edit', track)
+			// if (get(this, 'inline')) {
+			// 	this.toggleProperty('isEditing')
+			// } else {
+			// }
 		},
 		copyTrack(track) {
 			get(this, 'router').transitionTo('add', {
