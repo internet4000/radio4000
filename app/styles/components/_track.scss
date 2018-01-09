@@ -36,6 +36,7 @@
 		background-color: $white;
 	}
 
+	// Purple dot.
 	&::before {
 		background-color: $primary-color;
 		position: absolute;
@@ -88,10 +89,11 @@
  */
 
 .TracksList.is-searching {
-	.List-header {
-		display: none;
-	}
-	.List-item:last-child {
+	.ListGroup {
 		margin-bottom: 0;
+	}
+
+	.ListGroup-header {
+		display: none;
 	}
 }

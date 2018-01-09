@@ -26,10 +26,12 @@
 	padding-left: 0;
 	border-radius: $border-radius;
 	background-color: $slightgray;
-	border: 1px solid $mediumlightgray;
+
 }
 
 .List-item {
+	// border-left: 1px solid $mediumlightgray;
+	// border-radius: $border-radius;
 	border-bottom: 1px solid hsl(0, 0%, 91%); // $mediumlightgray
 	line-height: normal;
 
