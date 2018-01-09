@@ -92,6 +92,11 @@
 			padding-left: 0.5rem;
 			padding-right: 0.5rem;
 		}
+
+		@media (min-width: $layout-s) {
+			min-width: 7rem;
+			text-align: center;
+		}
 	}
 
 	.Tabs-item:first-child {
