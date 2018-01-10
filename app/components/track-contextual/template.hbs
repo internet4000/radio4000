@@ -9,7 +9,9 @@
 	<optgroup label="Share">
 		<option value="copyYoutubeURL">Copy YouTube URL</option>
 		<option value="copyR4URL">Copy Radio4000 URL</option>
-		<option value="copyTrackToRadio">Add to my radio</option>
+		{{#if session.currentUser.channels.firstObject.isPremium}}
+			<option value="copyTrackToRadio">Add to my radio</option>
+		{{/if}}
 	</optgroup>
 	{{#if canEdit}}
 		<optgroup label="Manage">
