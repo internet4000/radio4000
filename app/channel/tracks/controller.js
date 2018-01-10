@@ -8,7 +8,7 @@ export default Controller.extend({
 	queryParams: ['search'],
 	search: '',
 	getSelectionFromJets: function() {
-		const $els = $('.ListGroup .List-item:visible')
+		const $els = $('.ListGroup .Track:visible')
 		const ids = $.map($els, el => el.getAttribute('data-track-id'))
 		if (ids.length) {
 			return ids

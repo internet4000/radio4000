@@ -13,7 +13,11 @@ export default Component.extend({
 		'track.playedInCurrentPlayer:Track--played',
 		'track.finishedInCurrentPlayer:Track--finished'
 	],
-	attributeBindings: ['track.ytid:data-pid'],
+
+	attributeBindings: [
+		'track.ytid:data-pid',
+		'track.id:data-track-id'
+	],
 
 	actions: {
 		onEdit(track) {

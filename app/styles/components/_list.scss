@@ -18,7 +18,6 @@
 
 /**
  * Lists
- * markup example: .List > .List-item > a
  */
 
 .List {
@@ -26,22 +25,10 @@
 	padding-left: 0;
 	border-radius: $border-radius;
 	background-color: $slightgray;
-
-}
-
-.List-item {
-	// border-left: 1px solid $mediumlightgray;
-	// border-radius: $border-radius;
-	border-bottom: 1px solid hsl(0, 0%, 91%); // $mediumlightgray
-	line-height: normal;
-
-	&::before {
-		display: none;
-	}
 }
 
 // When a link wraps everything
-.List-item a {
+.List a {
 	display: block;
 	flex: 1;
 	padding: 0.8rem 1rem 0.7rem;
