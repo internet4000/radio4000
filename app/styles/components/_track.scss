@@ -7,7 +7,10 @@
 	display: flex;
 	position: relative;
 	overflow: hidden; // hide controls
-	// define empty borders so it doesn't jump
+	border-bottom: 1px solid $lightgray;
+	box-shadow: 1px 0 0 $mediumlightgray;
+
+	// Empty border to avoid jumps when indicating state.
 	border-right: 2px solid transparent;
 
 	.icon-play {

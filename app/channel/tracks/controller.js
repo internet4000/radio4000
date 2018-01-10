@@ -7,7 +7,8 @@ export default Controller.extend({
 	player: inject.service(),
 	queryParams: ['search'],
 	search: '',
-	getSelectionFromJets: function() {
+
+	getSelectionFromJets() {
 		const $els = $('.ListGroup .Track:visible')
 		const ids = $.map($els, el => el.getAttribute('data-track-id'))
 		if (ids.length) {
@@ -15,6 +16,7 @@ export default Controller.extend({
 		}
 		return []
 	},
+
 	actions: {
 		playSelection(track) {
 			const player = get(this, 'player')
