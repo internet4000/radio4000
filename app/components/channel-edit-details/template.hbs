@@ -36,9 +36,9 @@
 	{{/form-group}}
 
 	<p class="BtnGroupWrapper BtnGroupWrapper--full">
-		<button type="button" {{action "cancel"}} class="Btn Btn--text">Cancel</button>
+		<button type="button" class="Btn Btn--text" {{action "cancel"}}>Cancel</button>
 		<button type="submit" class="Btn Btn--large Btn--primary" disabled={{submitTask.isRunning}}>
-			{{#if submitTask.isRunning}}Saving…{{else}}Save {{/if}}
+			{{#if submitTask.isRunning}}Saving…{{else}}Save{{/if}}
 		</button>
 	</p>
 </form>
