@@ -76,6 +76,7 @@
 .Tabs--horizontal {
 	display: inline-flex;
 	flex-flow: row nowrap;
+	margin-bottom: 0;
 
 	.Tabs-item {
 		white-space: nowrap;
