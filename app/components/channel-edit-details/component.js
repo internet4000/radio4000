@@ -1,6 +1,6 @@
 import Ember from 'ember'
 
-const { Component, get, set, computed } = Ember
+const {Component, get, set} = Ember
 
 export default Component.extend({
 	// channel: ember model,
@@ -18,8 +18,6 @@ export default Component.extend({
 		},
 		submit() {
 			const proxy = get(this, 'proxy')
-			const channel = get(this, 'channel')
-			const updated = Object.assign(channel, proxy)
 			get(this, 'submitTask').perform(proxy)
 		}
 	}
