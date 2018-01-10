@@ -209,16 +209,7 @@
 		border-radius: 2px;
 		margin: 1px;
 		background-color: $mediumlightgray;
-		transform: rotateY(180deg);
-		transition: transform 250ms $easing2, background-color 150ms;
-
-		&:nth-child(2) {
-			transition-duration: 500ms;
-		}
-
-		&:nth-child(3) {
-			transition-duration: 750ms;
-		}
+		transition: background-color 150ms;
 	}
 
 	.ContextualToggle:hover &,
