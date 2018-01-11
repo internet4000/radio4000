@@ -9,7 +9,6 @@ export default ToriiFirebaseAdapter.extend({
 	// Extacts session information from authentication response
 	open(user) {
 		this._super(user);
-		let provider = this.extractProviderId_(user);
 
 		// reject login and send email is loging with email && not verified
 		return new RSVP.Promise((resolve, reject) => {
