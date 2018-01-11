@@ -25,49 +25,47 @@
 		{{/link-to}}
 	</div>
 
-	{{#if userChannel}}
-		<div class="Tabs Tabs--vertical">
-			{{channel-card channel=userChannel wide=true title="Your radio [⌨ g i]"}}
-			{{#btn-group class="BtnGroup--full BtnGroup--tight"}}
-				<button {{action "addTrack"}} class="Btn Btn--important Btn--topNoRadius" title="Add a new track to your radio [⌨ g a]">Add track</button>
-				{{!-- {{link-to 'Add track' 'add' class="Btn Btn--important Btn--topNoRadius" title="Add a new track to your radio [⌨ g a]"}} --}}
-				{{/btn-group}}
-				{{#if isAuthenticated}}
-					{{#link-to "auth.settings" class="Tabs-item" title="Customize your Radio4000"}}
-						Settings
-					{{/link-to}}
-					{{#link-to "auth.logout" class="Tabs-item" title="Log out from Radio4000"}}
-						Log out
-					{{/link-to}}
-				{{/if}}
-		</div>
-	{{/if}}
 
-	{{#unless userChannel}}
-	<div class="Tabs">
-		<div class="Tabs-item BtnGroup BtnGroup--full">
-			{{#if isAuthenticated}}
+	{{#if isAuthenticated}}
+		<div class="Tabs Tabs--vertical">
+			{{#if userChannel}}
+				{{channel-card channel=userChannel wide=true title="Your radio [⌨ g i]"}}
+
+				{{#btn-group class="BtnGroup--full BtnGroup--tight"}}
+					<button {{action "addTrack"}} class="Btn Btn--important Btn--topNoRadius" title="Add a new track to your radio [⌨ g a]">Add track</button>
+				{{/btn-group}}
+			{{else}}
 				{{#link-to
 						 "channels.new"
 						 class="Btn Btn--full Btn--important"
 						 title="Create your Radio4000 channel"}}
 					Create your radio
 				{{/link-to}}
-			{{else}}
-				{{#link-to
-						 "auth.signup"
-						 class="Btn Btn--important"
-						 title="Sign up to Radio4000"}}
-					Sign up
-				{{/link-to}}
-				{{#link-to
-						 "auth.login"
-						 class="Btn"
-						 title="Log in to Radio4000"}}
-					Log in
-				{{/link-to}}
 			{{/if}}
+
+			{{#link-to "auth.settings" class="Tabs-item" title="Customize your Radio4000"}}
+				Settings
+			{{/link-to}}
+			{{#link-to "auth.logout" class="Tabs-item" title="Log out from Radio4000"}}
+				Log out
+			{{/link-to}}
 		</div>
+	{{/if}}
+
+	{{#unless isAuthenticated}}
+		<div class="BtnGroup BtnGroup--full">
+			{{#link-to
+					 "auth.signup"
+					 class="Btn Btn--important"
+					 title="Sign up to Radio4000"}}
+				Sign up
+			{{/link-to}}
+			{{#link-to
+					 "auth.login"
+					 class="Btn"
+					 title="Log in to Radio4000"}}
+				Log in
+			{{/link-to}}
 		</div>
 	{{/unless}}
 
