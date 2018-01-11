@@ -18,8 +18,7 @@ export default Controller.extend(createTrackMixin, {
 			return this.get('createTrack').perform(trackProperties, userChannel);
 		},
 		goBack() {
-			const userChannel = get(this, 'model');
-			this.transitionToRoute('channel', userChannel);
+			history.back();
 		}
 	}
 });
