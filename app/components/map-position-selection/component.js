@@ -30,8 +30,17 @@ export default Component.extend({
 	actions: {
 		initMap(event) {
 			const map = event.target
-			set(this, 'map', map)
+			const credits = L.control.attribution({
+				position: 'bottomright',
+				prefix: '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>'
+			}).addAttribution(`
+<a href="https://opentopomap.org/about" target="_blank" rel="noopener">OpenTopoMap</a> |
+<a href="http://leafletjs.com" target="_blank" rel="noopener">Leaflet</a>
+`)
+
+			map.addControl(credits)
 			map.zoomControl.setPosition('topright')
+			set(this, 'map', map)
 		},
 		updateCenter(e) {
 			const center = e.target.getCenter()
