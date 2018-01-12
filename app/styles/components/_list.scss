@@ -31,18 +31,13 @@
 .List a {
 	display: block;
 	flex: 1;
-	padding: 0.7rem 1rem 0.6rem;
+	padding: 0.7rem 1rem 0.6rem 2rem;
 	text-decoration: none;
 
 	&:hover,
 	&:focus,
 	&:active {
 		text-decoration: none;
-	}
-
-	@media (min-width: $layout-m) {
-		padding-left: 2rem;
-		padding-right: 2rem;
 	}
 }
 
