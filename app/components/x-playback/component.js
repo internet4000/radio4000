@@ -1,4 +1,9 @@
 import Ember from 'ember';
+// To develop using the radio4000-player served locally
+// (usually served over localhost:4002)
+// 1- comment out the following `import`
+// 2- comment in the `script` tag in the `template.hbs`
+// cheers
 import 'npm:radio4000-player';
 
 const {Component, get, inject, computed} = Ember;
@@ -15,10 +20,11 @@ export default Component.extend({
 
 	/* register events */
 	didInsertElement() {
-		var player = this.element.querySelector('radio4000-player');
-		player.addEventListener('trackChanged', event => this.onTrackChanged(event), {passive: false});
-		player.addEventListener('trackEnded', event => this.onTrackEnded(event), {passive: false});
-		player.addEventListener('channelChanged', event => this.onChannelChanged(event), {passive: false});
+		const player = this.element.querySelector('radio4000-player')
+		const options = {passive: false}
+		player.addEventListener('trackChanged', event => this.onTrackChanged(event), options)
+		player.addEventListener('trackEnded', event => this.onTrackEnded(event), options)
+		player.addEventListener('channelChanged', event => this.onChannelChanged(event), options)
 	},
 
 	onTrackChanged(event) {

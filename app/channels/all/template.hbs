@@ -6,56 +6,76 @@
 			list=filteredChannels
 			as |manipulatedList|}}
 
-			<div class="BtnGroups">
+			<div class="BtnGroups BtnGroups--noPaddingButton">
 				{{#btn-group}}
-					<span class="BtnGroup-label">Sort by</span>
-					{{link-to
-							"Activity"
-							"channels.all"
-							(query-params sort="updated")
-							class='Btn'
-							title="Sort by activity, last updated date"}}
-					{{link-to
-							"Age"
-							"channels.all"
-							(query-params sort="created")
-							class='Btn'
-							title="Sort by age, created date"}}
-					{{link-to
-							"A-Z"
-							"channels.all"
-							(query-params sort="title")
-							class='Btn'
-							title="Sort by alphabetic order of titles"}}
+					<label class="Label Label--horizontal">
+						<span class="Label-title">
+							Search
+						</span>
+						{{jets-search
+								contentTag=".Grid"
+								content=filteredChannels
+								value=search
+								title="Search all radio channels (title and description fields); Usage: `word1 & word2 & ...` will filter channels that have all words at the same time [⌨ shift + s]"
+								placeholder='Explore all radio channels'
+						}}
+					</label>
+
+					<button type="button"
+						class="Btn"
+						disabled={{noSearch}}
+						title="Clear search query, fresh start!"
+						{{action 'clearSearch'}}
+					>x</button>
 				{{/btn-group}}
 
 				{{#btn-group}}
-					{{link-to
-							"↑"
-							"channels.all"
-							(query-params sortDirection="asc")
-							class='Btn'
-							title="Sort direction: ascending"}}
-					{{link-to
-							"↓"
-							"channels.all"
-							(query-params sortDirection="desc")
-							class='Btn'
-							title="Sort direction: descending"}}
+					{{play-random-channel class="Btn--large"}}
 				{{/btn-group}}
 
-
 				{{#btn-group}}
-					<span class="BtnGroup-label">Search</span>
-					{{list-search
-							items=filteredChannels
-							value=search
-							afterSearching=(action "handleSearch")
-							title="Search radio channels, titles and descriptions"}}
+					<label class="Label Label--horizontal">
+						<span class="Label-title">
+							Sort by
+						</span>
+						{{link-to
+								"Activity"
+								"channels.all"
+								(query-params sort="updated")
+								class='Btn'
+								title="Sort by activity, last updated date"}}
+						{{link-to
+								"Age"
+								"channels.all"
+								(query-params sort="created")
+								class='Btn'
+								title="Sort by age, created date"}}
+						{{link-to
+								"A-Z"
+								"channels.all"
+								(query-params sort="title")
+								class='Btn'
+								title="Sort by alphabetic order of titles"}}
+					</label>
+				{{/btn-group}}
+				{{#btn-group}}
+					{{link-to
+						"↑"
+						"channels.all"
+						(query-params sortDirection="asc")
+						class='Btn'
+						title="Sort direction: ascending"}}
+					{{link-to
+						"↓"
+						"channels.all"
+						(query-params sortDirection="desc")
+						class='Btn'
+						title="Sort direction: descending"}}
 				{{/btn-group}}
 			</div>
 
 			<div class="Grid">
+
 				<div class="Grid-cell">
 					<p>
 						Each radio is <a href="{{href-to "about"}}">curated by one <b>human</b></a>. Listen, discover someone's personal selection.<br/>
@@ -65,24 +85,19 @@
 							If you feel like sharing yours, we welcome you to <a href="{{href-to "auth.login"}}" title="">create your own radio</a>.
 						</p>
 					{{/unless}}
-					{{#btn-group class="BtnGroup--full BtnGroup--vertical"}}
-						{{play-random-channel class="Btn--large"}}
-					{{/btn-group}}
-					<p class="Muted">
-						Tip: you can also press <strong>R</strong> on your keyboard anywhere on the site to play a random channel.
-					</p>
 				</div>
-
-				{{#if channels}}
+				{{#if filteredChannels}}
 					{{#each manipulatedList as |item|}}
 						<div class="Grid-cell">
 							{{channel-card channel=item wide=isList}}
 						</div>
 					{{/each}}
 				{{else}}
-					<div class="Grid-cell Grid-cell--double">
+					<div class="Grid-cell">
 						{{#is-loading}}
-							Loading all radio channels
+							<p>
+								Loading all radio channels.
+							</p>
 						{{/is-loading}}
 					</div>
 				{{/if}}
@@ -92,5 +107,5 @@
 </section>
 
 <section class="Section Container">
-	<p><a href="{{href-to 'channels'}}">See all featured radios &rarr;</a></p>
+	<p>Not sure what to listen to? Try one of the <a href="{{href-to 'channels'}}">featured radios</a>.</p>
 </section>

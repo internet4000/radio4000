@@ -70,6 +70,13 @@ export default Model.extend(Validations, {
 		return format(created, 'MMMM YYYY');
 	}),
 
+	searchableData: computed('title', 'body', function() {
+		return [
+			get(this, 'title'),
+			get(this, 'body')
+		].join(' ');
+	}),
+
 	// If the user changes the url, we need to update the YouTube id.
 	updateYoutubeId() {
 		const url = get(this, 'url');

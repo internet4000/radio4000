@@ -3,6 +3,11 @@
 .CloudinaryUpload {
 	border: 2px dotted $gray;
 	border-radius: $border-radius;
+	.Btn {
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
+	}
 }
 
 .CloudinaryUpload button {

@@ -2,7 +2,6 @@
 	font-weight: bold;
 	align-items: center;
 	background-color: $superlightgray;
-	box-shadow: $box-shadow;
 	box-sizing: border-box; /* 1 */
 	cursor: pointer;
 	display: inline-block;
@@ -21,6 +20,7 @@
 	&:hover,
 	&:focus {
 		text-decoration: none;
+		background-color: white;
 		box-shadow: $box-shadow-hover;
 	}
 
@@ -31,7 +31,6 @@
 	}
 
 	&:focus {
-		outline: none;
 		border-color: $primary-color;
 	}
 
@@ -47,7 +46,7 @@
 
 	svg,
 	i {
-		margin-right: 0.3rem;
+		margin-right: 0.5rem;
 	}
 
 	svg {
@@ -91,6 +90,9 @@
 
 .Btn--large {
 	@include size-2;
+	// Adjust padding to vertical center text.
+	padding-top: 0.65em;
+	padding-bottom: 0.55em;
 }
 
 .Btn--huge {
@@ -130,8 +132,10 @@
 	background-color: $primary-color;
 	color: $white;
 
-	&:hover {
+	&:hover,
+	&:focus {
 		background-color: $primary-color;
+		color: $white;
 	}
 }
 
@@ -181,17 +185,6 @@
 	}
 }
 
-// .Btn--round {
-// 	padding: 1.5rem 1.6rem 1.4rem 1.5rem;
-// 	border-radius: 50%;
-// 	border-left: 2px solid $primary-color;
-// 	border-bottom: 2px solid $primary-color;
-
-// 	&:hover {
-// 		border-color: darken($primary-color, 10%);
-// 	}
-// }
-
 .Btn--topNoRadius {
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
@@ -202,6 +195,31 @@
 	border-bottom-right-radius: 0;
 }
 
+/*
+	Button used for the aside toggle and toggling <select>
+*/
+
+.Btn--toggle {
+	display: flex;
+	flex-direction: column;
+
+	span {
+		width: 9px;
+		height: 3px;
+		border-radius: 2px;
+		margin: 1px;
+		background-color: $mediumlightgray;
+		transition: background-color 150ms;
+	}
+
+	.ContextualToggle:hover &,
+	&:hover,
+	&:focus {
+		span {
+			background-color: $black;
+		}
+	}
+}
 
 /**
  * Non Buttons

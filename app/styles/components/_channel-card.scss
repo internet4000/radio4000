@@ -172,5 +172,6 @@ $card-wide-cover-size: 4.8rem;
 
 // Modifier inside .Tabs
 .Tabs .ChannelCard {
-	border-top: 1px solid $mediumlightgray; // same as .Tabs
+	border-top: 0;
+	border-radius: 0;
 }
