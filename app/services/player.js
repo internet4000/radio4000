@@ -2,6 +2,7 @@ import Ember from 'ember';
 import {task} from 'ember-concurrency';
 
 import {getRandomIndex} from 'radio4000/utils/random-helpers';
+import {coverImg} from 'radio4000/helpers/cover-img';
 
 const {Service, inject, get, set, debug, computed} = Ember;
 
@@ -137,9 +138,13 @@ export default Service.extend({
 		});
 
 		cleanedChannel.tracks = tracks.reverse();
-		cleanedChannel.image = get(this, 'store').peekRecord('image', channelModel.get('images.firstObject'))
 
-		return cleanedChannel;
+		// Get a full image src to pass.
+		const imageModel = channelModel.get('coverImage')
+		const src = coverImg([imageModel.get('src')], {size: 56})
+		cleanedChannel.image = src
+
+		return cleanedChannel
 	},
 	loadPlayistInWebComponent(playlist) {
 		const vue = document.querySelector('radio4000-player').__vue_custom_element__.$children[0];
