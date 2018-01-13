@@ -4,6 +4,10 @@
 
 .ListGroup {
 	margin-bottom: 1rem;
+
+	.List {
+		margin-bottom: 0;
+	}
 }
 
 .ListGroup-header {
@@ -21,6 +25,7 @@
  */
 
 .List {
+	margin-bottom: 1rem;
 	list-style: none;
 	padding-left: 0;
 	border-radius: $border-radius;

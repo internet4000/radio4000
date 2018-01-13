@@ -23,6 +23,11 @@
 				{{/is-loading}}
 			{{/if}}
 		</div>
+		<div class="Container">
+			<p class="u-textRight">
+				{{link-to "See all tracks" "channel.tracks"}}
+			</p>
+		</div>
 	{{/if}}
 </section>
 
@@ -36,20 +41,13 @@
 
 <section class="Section">
 	<div class="Container">
-		{{#unless session.currentUser.channels.firstObject.isExperienced}}
-			{{#if model.channel.canEdit}}
-				<h3>Share or embed your radio</h3>
-			{{else}}
-				<h3>Share or embed this radio</h3>
-			{{/if}}
-		{{/unless}}
 		<p>
 			{{#channel-sharer-url
 				channel=model.channel
 				autoSelect=true}}
-				URL
+				Share {{if model.channel.canEdit "your" "this"}} radio
 				{{#if model.channel.canEdit}}
-					<small>({{link-to 'edit' 'channel.edit'}})</small>
+					<small>{{link-to 'edit' 'channel.edit'}}</small>
 				{{/if}}
 			{{/channel-sharer-url}}
 		</p>
