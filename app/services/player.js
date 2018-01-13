@@ -99,22 +99,22 @@ export default Service.extend({
 	 */
 	playRandomChannel: task(function * () {
 		const store = get(this, 'store')
-
 		let channels = store.peekAll('channel')
 
+		// Find a random channel with an optional request.
 		if (channels.get('length') < 15) {
 			channels = yield store.findAll('channel')
 		}
-
 		const channel = channels.objectAt(getRandomIndex(channels.content))
 
+		// If the channel doesn't have many tracks, choose another.
 		const tracks = yield channel.get('tracks')
-
 		if (tracks.length < 2) {
 			get(this, 'playRandomChannel').perform()
-		} else {
-			this.playTrack(tracks.get('lastObject'))
+			return
 		}
+
+		this.playTrack(tracks.get('lastObject'))
 	}).drop(),
 
 	/*
