@@ -96,6 +96,7 @@ progress {
 .Form--full {
 	display: flex;
 	flex-grow: 1;
+	flex-wrap: wrap;
 	.Form-group {
 		display: flex;
 		margin-right: 1rem;
