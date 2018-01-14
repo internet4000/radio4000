@@ -118,12 +118,10 @@ export default Service.extend({
 	}).drop(),
 
 	/*
-		 An export of a channel, its tracks and image
-		 in json format
-		 it is almost identic to `channel` model
+		An export of a channel, its tracks and image in json format
+		it is almost identic to `channel` model
 	 */
 	buildPlaylistExport(channelModel, trackIds, query) {
-		set(this, 'query', query)
 		// fetch all tracks
 		const tracks = trackIds.map(id => {
 			return get(this, 'store')
@@ -136,8 +134,8 @@ export default Service.extend({
 		let cleanedChannel = channelModel.serialize({
 			includeId: true
 		});
-
-		cleanedChannel.tracks = tracks.reverse();
+		cleanedChannel.query = query
+		cleanedChannel.tracks = tracks.reverse()
 
 		// Get a full image src to pass.
 		const imageModel = channelModel.get('coverImage')
