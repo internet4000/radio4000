@@ -1,35 +1,24 @@
-import Ember from 'ember';
+import Ember from 'ember'
 
-const {Component, computed, get} = Ember;
+const { Component, computed, get } = Ember
+
+// Render an input to share the channel url OR the embed code.
 
 export default Component.extend({
-	// props
-	channel: null,
-	iframe: false,
+	// slug: '',
+	// showEmbed: false,
 
-	// const
-	iframeApiUrl: 'https://api.radio4000.com/embed',
-
-	// logic
-	slug: computed.reads('channel.slug'),
-
-	channelUrl: computed('slug', function() {
-		return 'https://radio4000.com/' + get(this, 'slug')
+	permalink: computed('slug', function () {
+		return `https://radio4000.com/${get(this, 'slug')}`
+	}),
+	embedCode: computed('slug', function () {
+		return `<iframe src="https://api.radio4000.com/embed?slug=${get(this, 'slug')}" width="320" height="500" frameborder="0"></iframe>`
 	}),
 
-	buildUrl: computed('slug', function() {
-		const channelUrl = get(this, 'channelUrl');
-		const iframe = get(this, 'iframe');
-		const apiUrl = get(this, 'buildApiUrl');
-
-		if (iframe) {
-			return `<iframe src="${apiUrl}" width="320" height="500" frameborder="0"></iframe>`
+	url: computed('slug', 'showEmbed', function() {
+		if (get(this, 'showEmbed')) {
+			return get(this, 'embedCode')
 		}
-		return channelUrl
-	}),
-	buildApiUrl: computed('slug', function() {
-		const iframeApiUrl = get(this, 'iframeApiUrl');
-		const slug = get(this, 'slug');
-		return `${iframeApiUrl}?slug=${slug}`;
+		return get(this, 'permalink')
 	})
-});
+})
