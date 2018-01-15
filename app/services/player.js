@@ -2,6 +2,7 @@ import Ember from 'ember';
 import {task} from 'ember-concurrency';
 
 import {getRandomIndex} from 'radio4000/utils/random-helpers';
+import {coverImg} from 'radio4000/helpers/cover-img';
 
 const {Service, inject, get, set, debug, computed} = Ember;
 
@@ -98,22 +99,53 @@ export default Service.extend({
 	 */
 	playRandomChannel: task(function * () {
 		const store = get(this, 'store')
-
 		let channels = store.peekAll('channel')
 
+		// Find a random channel with an optional request.
 		if (channels.get('length') < 15) {
 			channels = yield store.findAll('channel')
 		}
-
 		const channel = channels.objectAt(getRandomIndex(channels.content))
 
+		// If the channel doesn't have many tracks, choose another.
 		const tracks = yield channel.get('tracks')
-
 		if (tracks.length < 2) {
 			get(this, 'playRandomChannel').perform()
-		} else {
-			this.playTrack(tracks.get('lastObject'))
+			return
 		}
-	}).drop()
 
+		this.playTrack(tracks.get('lastObject'))
+	}).drop(),
+
+	/*
+		An export of a channel, its tracks and image in json format
+		it is almost identic to `channel` model
+	 */
+	buildPlaylistExport(channelModel, trackIds, query) {
+		// fetch all tracks
+		const tracks = trackIds.map(id => {
+			return get(this, 'store')
+				.peekRecord('track', id)
+				.serialize({
+					includeId: true
+				})
+		});
+
+		let cleanedChannel = channelModel.serialize({
+			includeId: true
+		});
+		cleanedChannel.query = query
+		cleanedChannel.tracks = tracks.reverse()
+
+		// Get a full image src to pass.
+		const imageModel = channelModel.get('coverImage')
+		const src = coverImg([imageModel.get('src')], {size: 56})
+		cleanedChannel.image = src
+
+		return cleanedChannel
+	},
+	loadPlayistInWebComponent(playlist) {
+		const vue = document.querySelector('radio4000-player').__vue_custom_element__.$children[0];
+		vue.updatePlaylist(playlist);
+	}
 });

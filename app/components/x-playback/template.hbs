@@ -7,15 +7,15 @@
 		track-id={{track.id}}
 		title="Radio4000 player. [⌨ g c = current channel] [⌨ g x = curent track]"
 	></radio4000-player>
-	{{!-- <script src="http://localhost:4002/dist/radio4000-player.js"></script> --}}
+	{{!--  <script src="http://localhost:4002/radio4000-player.min.js"></script> --}}
 </div>
 
 <div class="Playback-layoutButtons">
-	<button class="Btn Btn--small" {{action 'toggleMinimizedFormat'}} title="Toggle minimized player [⌨ f]">
+	<button class="Btn" {{action 'toggleMinimizedFormat'}} title="Toggle minimized player [⌨ f]">
 		{{if uiStates.isMinimized '⬒' '_'}}
 	</button>
 
-	<button class="Btn Btn--small" {{action 'toggleFullscreenFormat'}} title="Toggle fullscreen player [⌨ f]">
+	<button class="Btn" {{action 'toggleFullscreenFormat'}} title="Toggle fullscreen player [⌨ f]">
 		⤢
 	</button>
 </div>

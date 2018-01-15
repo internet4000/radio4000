@@ -1,46 +1,12 @@
-{{#if inline}}
-	<a href="#" {{action "play" track}}>
-		<h3 class="Track-title">
-			{{track.title}}
-		</h3>
-		<p class="Track-body">{{track.body}}</p>
-	</a>
-{{else}}
-	{{#link-to 'channel.tracks.track.index' track class="Track-link"}}
-		<h3 class="Track-title">
-			{{track.title}}
-		</h3>
-		<p class="Track-body">{{track.body}}</p>
-	{{/link-to}}
-{{/if}}
+<a href="{{href-to 'channel.tracks.track' track}}" {{action "play" track}}>
+	<h3 class="Track-title">{{track.title}}</h3>
+	<p class="Track-body">{{track.body}}</p>
+</a>
 
-{{#if track.channel.canEdit}}
-	{{#if inline}}
-		<button class="Track-controls Muted" {{action "edit"}}>Edit</button>
-	{{else}}
-		{{link-to 'Edit' 'channel.tracks.track.edit' track
-			class="Btn Btn--text Muted Track-controls"
-			title="Edit the track"}}
-	{{/if}}
-{{/if}}
-
-{{#if isEditing}}
-	{{#modal-dialog onClose=(action "goBack" true)}}
-		<div class="Sections">
-			<section class="Section">
-				<div class="Manchet">
-					<h2>Edit <small>track</small></h2>
-				</div>
-				<div class="Container">
-					{{track-edit
-							track=track
-							onCancel=(action "goBack" true)
-							onSubmit=(action "goBack")
-							onDelete=(action "goBack")}}
-				</div>
-			</section>
-		</div>
-	{{/modal-dialog}}
-{{/if}}
+{{track-contextual
+	track=track
+	canEdit=track.channel.canEdit
+	onEdit=(action "onEdit")
+	onCopyTrack=(action "copyTrack")}}
 
 {{yield}}

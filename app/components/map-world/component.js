@@ -39,8 +39,11 @@ export default Component.extend({
 			const map = event.target
 			const credits = L.control.attribution({
 				position: 'topright',
-				prefix: '<a href="http://leafletjs.com" target="_blank" rel="noopener">Leaflet</a>'
-			}).addAttribution('<a href="https://opentopomap.org/about" target="_blank" rel="noopener">OpenTopoMap</a>')
+				prefix: '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>'
+			}).addAttribution(`
+<a href="https://opentopomap.org/about" target="_blank" rel="noopener">OpenTopoMap</a> |
+<a href="http://leafletjs.com" target="_blank" rel="noopener">Leaflet</a>
+`)
 
 			map.addControl(credits)
 			map.zoomControl.setPosition('topright');

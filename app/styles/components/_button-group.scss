@@ -1,8 +1,11 @@
 // A group of buttons
 .BtnGroups {
-	padding-bottom: 2rem;
+	margin-bottom: 2rem;
 	display: flex;
 	flex-wrap: wrap;
+}
+.BtnGroups--noPaddingButton {
+	padding-bottom: 0;
 }
 
 .BtnGroup {
@@ -13,18 +16,15 @@
 	margin-bottom: 1rem;
 	padding-right: 1rem;
 
-	.Btn {
-		margin-left: 0.2rem;
-
-		&:first-child {
-			margin-left: 0;
-		}
+	.BtnGroups & {
+		margin-bottom: 0.4rem;
 	}
 }
 
 .BtnGroup--vertical {
 	flex-direction: column;
 	align-items: flex-start;
+	padding-right: 0;
 
 	.Btn {
 		margin-bottom: 0.2rem;
@@ -35,6 +35,7 @@
 .BtnGroup--full {
 	flex-wrap: nowrap;
 	align-items: stretch;
+	padding-right: 0;
 
 	.Btn {
 		flex-grow: 1;
@@ -80,5 +81,10 @@
 
 .BtnGroupWrapper--full {
 	justify-content: space-between;
+	padding-right: 0;
+}
+
+.BtnGroup--tight {
+	margin-bottom: 0;
 	padding-right: 0;
 }

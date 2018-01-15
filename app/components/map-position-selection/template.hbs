@@ -1,9 +1,10 @@
 {{#if hasLocation}}
 	{{#leaflet-map
-		maxBounds=maxBounds
+	  maxBounds=maxBounds
 		lat=lat
 		lng=lng
 		zoom=zoom
+		attributionControl=false
 		onLoad=(action "initMap")
 		onMoveend=(action "updateCenter")
 	}}

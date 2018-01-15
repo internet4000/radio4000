@@ -1,30 +1,48 @@
-import Ember from 'ember';
+import Ember from 'ember'
 
-const {Component, computed, get, set, inject} = Ember;
+const { Component, get, set, inject } = Ember
 
 export default Component.extend({
 	player: inject.service(),
+	router: inject.service(),
+
 	classNames: ['Track'],
 	classNameBindings: [
-		'isCurrent',
+		// 	'isCurrent',
 		'track.liveInCurrentPlayer:Track--live',
 		'track.playedInCurrentPlayer:Track--played',
 		'track.finishedInCurrentPlayer:Track--finished'
 	],
-	attributeBindings: ['track.ytid:data-pid'],
 
-	// true if the current track is loaded in the player
-	// isCurrent: computed.equal('player.model', 'track'),
-	isCurrent: computed('player.currentTrack', 'track', function () {
-		return this.get('player.currentTrack') === this.get('track');
-	}),
+	attributeBindings: [
+		'track.ytid:data-pid',
+		'track.id:data-track-id'
+	],
 
 	actions: {
-		edit() {
-			this.toggleProperty('isEditing')
+		onEdit(track) {
+			// get(this, 'router').transitionTo('channel.tracks.track.edit', track)
+			get(this, 'router').transitionTo({
+				queryParams: {
+					editTrack: track.id
+				}
+			})
+		},
+		copyTrack(track) {
+			get(this, 'router').transitionTo('add', {
+				queryParams: {
+					url: track.get('url'),
+					title: track.get('title'),
+					body: track.get('body')
+				}
+			})
 		},
 		play(track) {
+			// get(this, 'playSelection')(track)
 			get(this, 'player').playTrack(track)
+		},
+		edit() {
+			this.toggleProperty('isEditing')
 		},
 		goBack(rollback) {
 			if (rollback) {
@@ -33,4 +51,4 @@ export default Component.extend({
 			set(this, 'isEditing', false)
 		}
 	}
-});
+})

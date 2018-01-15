@@ -77,7 +77,10 @@ export default Component.extend({
 			if (track.hasDirtyAttributes) {
 				track.rollbackAttributes();
 			}
-			get(this, 'onCancel')();
+			const onCancel = get(this, 'onCancel')
+			if (onCancel) {
+				onCancel();
+			}
 		}
 	}
 });
