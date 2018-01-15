@@ -17,7 +17,11 @@ module.exports = function (defaults) {
 		// Use <script async>
 		emberCliConcat: {
 			js: {
+				concat: true,
 				useAsync: true
+			},
+			css: {
+				concat: true
 			}
 		},
 
