@@ -10,7 +10,7 @@ const Router = EmberRouter.extend(googlePageview, {
 
 Router.map(function() {
 	this.route('channels', { path: '/' }, function() {
-		this.route('all')
+		this.route('all', {path: 'search'})
 		this.route('new')
 		this.route('history')
 		this.route('map')

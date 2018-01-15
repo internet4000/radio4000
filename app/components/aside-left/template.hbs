@@ -11,20 +11,9 @@
 
 <div class="Aside-inner">
 	<div class="Tabs Tabs--vertical">
-		{{#link-to
-				 "channels"
-				 title="Find radio channels to enjoy [⌨ g h]"
-				 class="Tabs-item"}}
-			All Radios
-		{{/link-to}}
-		{{#link-to
-				 "about"
-				 title="Learn more about Radio4000"
-				 class="Tabs-item"}}
-			About
-		{{/link-to}}
+		{{link-to "Radios" "channels" title="Find radio channels to enjoy [⌨ g h]" class="Tabs-item"}}
+		{{link-to "About" "about" title="Learn more about Radio4000" class="Tabs-item"}}
 	</div>
-
 
 	{{#if isAuthenticated}}
 		<div class="Tabs Tabs--vertical">
