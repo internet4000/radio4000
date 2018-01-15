@@ -79,7 +79,7 @@ export default Mixin.create(EKMixin, {
 
 	onKeyR: on(keyUp('KeyR'), function () {
 		if (get(this, 'isGoingTo')) {
-			this.transitionTo('channels.all');
+			this.transitionTo('channels.search');
 		} else {
 			get(this, 'player.playRandomChannel').perform();
 		}
