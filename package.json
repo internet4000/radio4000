@@ -60,7 +60,7 @@
     "emberfire": "^2.0.8",
     "js-cookie": "^2.2.0",
     "lazysizes": "^4.0.1",
-    "radio4000-player": "^0.4.1",
+    "radio4000-player": "^0.4.4",
     "suitcss-base": "^3.0.0",
     "torii": "^0.9.3",
     "youtube-regex": "^1.0.4"
