@@ -7,7 +7,8 @@ const {
 
 export default Component.extend({
 	player: inject.service(),
-	tagNames: ['button'],
+
+	tagName: 'button',
 	classNames: ['Btn'],
 	attributeBindings: ['title'],
 	title: 'Play a random Radio4000 channel [⌨ r]',

@@ -6,7 +6,7 @@ const {Component,
 	get} = Ember;
 
 export default Component.extend({
-	tagName: ['button'],
+	tagName: 'button',
 	session: inject.service(),
 	attributeBindings: ['title', 'disabled'],
 	classNames: ['Btn'],
