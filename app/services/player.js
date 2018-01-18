@@ -14,7 +14,10 @@ export default Service.extend({
 	currentChannel: computed.alias('currentTrack.channel'),
 	isPlaying: computed.bool('currentTrack'),
 
-	// play a track model
+	/**
+	 * Different play methods
+	 */
+
 	playTrack(model) {
 		if (!model) {
 			debug('playTrack() was called without a track.');
@@ -22,6 +25,41 @@ export default Service.extend({
 		}
 		set(this, 'originTrack', model);
 	},
+
+	playFirstTrack: task(function * (channel) {
+		const tracks = yield get(channel, 'tracks')
+		const firstTrack = tracks.get('lastObject');
+		this.playTrack(firstTrack)
+	}),
+
+	playRandomTrack: task(function * (channel) {
+		const tracks = yield get(channel, 'tracks')
+		const randomIndex = getRandomIndex(tracks);
+		const randomTrack = tracks.objectAt(randomIndex);
+		this.playTrack(randomTrack)
+	}),
+
+	playRandomChannel: task(function * () {
+		const store = get(this, 'store')
+		let channels = store.peekAll('channel')
+
+		// Find a random channel with an optional request.
+		if (channels.get('length') < 15) {
+			channels = yield store.findAll('channel')
+		}
+		const channel = channels.objectAt(getRandomIndex(channels.content))
+
+		// If the channel doesn't have many tracks, choose another.
+		const tracks = yield channel.get('tracks')
+		if (tracks.length < 2) {
+			get(this, 'playRandomChannel').perform()
+			return
+		}
+
+		// yield timeout(2000)
+
+		this.playTrack(tracks.get('lastObject'))
+	}).drop(),
 
 	onTrackChanged(event) {
 		// set channels as active/inactive/add-to-history

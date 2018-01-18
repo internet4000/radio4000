@@ -13,19 +13,10 @@ export default PlayButtonComponent.extend({
 		return get(this, 'isPlaying') ? 'Play a new random track from "all" tracks in this radio channel' : 'Play this radio';
 	}),
 
-	click() {
-		if (get(this, 'isPlaying') === true) {
-			this.playRandomTrack();
-		} else {
-			this.playFirstTrack();
-		}
-	},
 
-	playRandomTrack() {
-		get(this, 'channel.tracks').then(tracks => {
-			const randomIndex = getRandomIndex(tracks);
-			const randomTrack = tracks.objectAt(randomIndex);
-			get(this, 'player').playTrack(randomTrack);
-		});
-	}
-});
+	clickTask: task(function * () {
+		const player = get(this, 'player')
+		const taskName = get(this, 'isPlaying') ? 'playRandomTrack' : 'playFirstTrack'
+		yield get(player, taskName).perform(get(this, 'channel'))
+	})
+})

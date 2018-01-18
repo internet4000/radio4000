@@ -1,19 +1,10 @@
-import Ember from 'ember';
-const {
-	Component,
-	inject,
-	get
-} = Ember;
+import PlayButtonComponent from 'radio4000/components/play-btn/component'
+import {task} from 'ember-concurrency'
 
-export default Component.extend({
-	player: inject.service(),
-
-	tagName: 'button',
-	classNames: ['Btn'],
-	attributeBindings: ['title'],
+export default PlayButtonComponent.extend({
 	title: 'Play a random Radio4000 channel [⌨ r]',
 
-	click() {
-		get(this, 'player.playRandomChannel').perform();
-	}
-});
+	clickTask: task(function * () {
+		yield this.get('player.playRandomChannel').perform()
+	})
+})

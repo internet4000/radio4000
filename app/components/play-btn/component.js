@@ -1,22 +1,23 @@
-import Ember from 'ember';
-
-const {Component, inject, get} = Ember;
+import Component from '@ember/component'
+import { inject as service } from '@ember/service'
+import {task} from 'ember-concurrency'
 
 export default Component.extend({
-	player: inject.service('player'),
+	player: service('player'),
 
 	tagName: 'button',
 	classNames: ['Btn'],
+	classNameBindings: ['clickTask.isRunning'],
+	attributeBindings: ['title'],
+	title: 'Play this radio',
 	showText: true,
+	// channel: {}
 
 	click() {
-		this.playFirstTrack();
+		this.get('clickTask').perform()
 	},
 
-	playFirstTrack() {
-		get(this, 'channel.tracks').then(tracks => {
-			const firstTrack = tracks.get('lastObject');
-			get(this, 'player').playTrack(firstTrack);
-		});
-	}
-});
+	clickTask: task(function * () {
+		yield this.get('player.playFirstTrack').perform(this.get('channel'))
+	})
+})
