@@ -1,9 +1,11 @@
-{{#if isPlaying}}
-	<i>⇢</i>
-	{{if showText 'Play another track'}}
-{{else}}
-	<i>▶</i>
-	{{if showText 'Listen'}}
-{{/if}}
+<i>
+		{{if isPlaying "⇢" "▶"}}
+{{!-- 	{{#if clickTask.isRunning}}
+		💽
+	{{else}}
+	{{/if}} --}}
+</i>
 
-{{if clickTask.isRunning "Loading…"}}
+{{#if showText}}
+	{{if isPlaying "Play another track" "Listen"}}
+{{/if}}

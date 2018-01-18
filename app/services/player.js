@@ -47,17 +47,16 @@ export default Service.extend({
 		if (channels.get('length') < 15) {
 			channels = yield store.findAll('channel')
 		}
+
 		const channel = channels.objectAt(getRandomIndex(channels.content))
 
-		// If the channel doesn't have many tracks, choose another.
+		// Run again if channel has few tracks
 		const tracks = yield channel.get('tracks')
-		if (tracks.length < 2) {
+		const fewTracks = tracks.length < 5
+		if (fewTracks) {
 			get(this, 'playRandomChannel').perform()
 			return
 		}
-
-		// yield timeout(2000)
-
 		this.playTrack(tracks.get('lastObject'))
 	}).drop(),
 
