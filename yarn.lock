@@ -2592,13 +2592,6 @@ elliptic@^6.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.0"
 
-ember-async-button@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/ember-async-button/-/ember-async-button-1.0.2.tgz#c2d3575f9f464d710adc97152536449058040b96"
-  dependencies:
-    ember-cli-babel "^5.1.6"
-    ember-cli-htmlbars "^1.0.3"
-
 ember-awesome-macros@^0.40.0:
   version "0.40.0"
   resolved "https://registry.yarnpkg.com/ember-awesome-macros/-/ember-awesome-macros-0.40.0.tgz#df7243b4b8552be30037006eaa74807f18501fbb"
