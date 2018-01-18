@@ -1,9 +1,6 @@
 <i>
-		{{if isPlaying "⇢" "▶"}}
-{{!-- 	{{#if clickTask.isRunning}}
-		💽
-	{{else}}
-	{{/if}} --}}
+	{{if isPlaying "⇢" "▶"}}
+	<span class="PulseLoader animate-rotate {{if clickTask.isIdle "u-dn"}}"></span>
 </i>
 
 {{#if showText}}
