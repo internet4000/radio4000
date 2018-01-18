@@ -7,10 +7,12 @@
 	color: $dark;
 	display: block;
 	align-self: center;
-  margin-left: 0.5rem;
-p {
-	margin: 0;
-}
+	margin-left: 0.5rem;
+
+	p {
+		margin: 0;
+	}
+
 	p + p {
 		margin-bottom: 0.5rem;
 	}

@@ -10,7 +10,11 @@ export default Component.extend({
 	classNameBindings: ['clickTask.isRunning'],
 	attributeBindings: ['title'],
 	title: 'Play this radio',
+
+	// Display text in template or only icon
 	showText: true,
+
+	// Pass it a full `channel` model
 	// channel: {}
 
 	click() {
