@@ -1,2 +1,7 @@
-<i>▶</i> <small>random channel</small>
+<i>▶</i>
+{{#if clickTask.isRunning}}
+	Tuning…
+{{else}}
+	{{if clickTask.performCount "Play another radio" "Start listening"}}
+{{/if}}
 {{yield}}

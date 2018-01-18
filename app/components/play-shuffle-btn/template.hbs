@@ -1,7 +1,9 @@
 {{#if isPlaying}}
 	<i>⇢</i>
-	{{if showText 'New random track'}}
+	{{if showText 'Play another track'}}
 {{else}}
 	<i>▶</i>
 	{{if showText 'Listen'}}
 {{/if}}
+
+{{if clickTask.isRunning "Loading…"}}

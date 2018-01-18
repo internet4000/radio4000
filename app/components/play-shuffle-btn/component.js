@@ -1,18 +1,19 @@
 import Ember from 'ember';
 import PlayButtonComponent from 'radio4000/components/play-btn/component';
-import {getRandomIndex} from 'radio4000/utils/random-helpers';
+import {task} from 'ember-concurrency'
+import {conditional} from 'ember-awesome-macros'
+import raw from 'ember-macro-helpers/raw'
 
 const {computed, get} = Ember;
 
-// Extends the play button with a different title and template
-
 export default PlayButtonComponent.extend({
-	attributeBindings: ['title'],
-	isPlaying: computed.alias('channel.isInPlayer'),
-	title: computed('isPlaying', function () {
-		return get(this, 'isPlaying') ? 'Play a new random track from "all" tracks in this radio channel' : 'Play this radio';
-	}),
+	isPlaying: computed.reads('channel.isInPlayer'),
 
+	title: conditional(
+		'isPlaying',
+		raw('Play a new random track from "all" tracks in this radio channel'),
+		raw('Play this radio')
+	),
 
 	clickTask: task(function * () {
 		const player = get(this, 'player')
