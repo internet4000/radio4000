@@ -1,7 +1,7 @@
 <i>▶</i>
-{{#if clickTask.isRunning}}
+{{#if isRunning}}
 	Tuning…
 {{else}}
-	{{if clickTask.performCount "Play another radio" "Start listening"}}
+	{{if player.isPlaying "Play another radio" "Start listening"}}
 {{/if}}
 {{yield}}
