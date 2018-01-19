@@ -1,14 +1,12 @@
 <i>
 	{{if isPlaying "⇢" "▶"}}
-	{{#unless showText}}
-		<span class="PulseLoader animate-rotate {{if clickTask.isIdle "u-dn"}}"></span>
-	{{/unless}}
+	<span class="PulseLoader animate-rotate"></span>
 </i>
 
 {{#if showText}}
 	{{#if clickTask.isRunning}}
 		Loading
 	{{else}}
-		{{if isPlaying "Play another track" "Listen"}}
+		{{if isPlaying "Play another" "Listen"}}
 	{{/if}}
 {{/if}}
