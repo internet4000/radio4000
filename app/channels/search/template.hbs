@@ -42,19 +42,19 @@
 								"Activity"
 								"channels.search"
 								(query-params sort="updated")
-								class='Btn'
+								class="Btn"
 								title="Sort by activity, last updated date"}}
 						{{link-to
 								"Age"
 								"channels.search"
 								(query-params sort="created")
-								class='Btn'
+								class="Btn"
 								title="Sort by age, created date"}}
 						{{link-to
 								"A-Z"
 								"channels.search"
 								(query-params sort="title")
-								class='Btn'
+								class="Btn"
 								title="Sort by alphabetic order of titles"}}
 					</label>
 				{{/btn-group}}
@@ -63,13 +63,13 @@
 						"↑"
 						"channels.search"
 						(query-params sortDirection="asc")
-						class='Btn'
+						class="Btn"
 						title="Sort direction: ascending"}}
 					{{link-to
 						"↓"
 						"channels.search"
 						(query-params sortDirection="desc")
-						class='Btn'
+						class="Btn"
 						title="Sort direction: descending"}}
 				{{/btn-group}}
 			</div>
@@ -89,7 +89,7 @@
 				{{#if filteredChannels}}
 					{{#each manipulatedList as |item|}}
 						<div class="Grid-cell">
-							{{channel-card channel=item wide=isList}}
+							{{channel-card channel=item}}
 						</div>
 					{{/each}}
 				{{else}}
