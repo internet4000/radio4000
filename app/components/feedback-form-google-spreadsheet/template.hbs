@@ -1,4 +1,4 @@
-<form class="Form" {{action "send" message email on="submit"}}>
+<form class="Form" {{action "send" on="submit"}}>
 	<div class="Form-group">
 		{{textarea
 			value=message
@@ -13,22 +13,24 @@
 	</div>
 
 	<div style="display:none;" class="Form-group">
-    <label>Don’t fill this out:
+		<label>Don’t fill this out:
 			{{input
 				value=botField
 				placeholder="This input is for botzzz, if filled, do not sent -_-"}}
 		</label>
-  </div>
+	</div>
 
 	<div class="BtnGroupWrapper BtnGroupWrapper--full">
-		{{async-button
-			class="Btn Btn--large"
-			action=(action "send" message email)
-			default="Send feedback"
-			pending="Sending..."
-			fulfilled="Sent!"
-			rejected="Error, try to refresh the page"
-			disableWhen=notValid
-			reset=message}}
+		<button type="submit" class="Btn Btn--large" disabled={{notValid}}>
+			{{#if sendFeedback.isRunning}}
+					Sending…
+				{{!-- {{else if sendFeedback.last.isSuccessful}}
+					Sent! --}}
+				{{else if sendFeedback.isError}}
+					Error, try to refresh the page
+				{{else}}
+					Send feedback
+				{{/if}}
+		</button>
 	</div>
 </form>
