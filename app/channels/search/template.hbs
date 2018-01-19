@@ -30,10 +30,6 @@
 				{{/btn-group}}
 
 				{{#btn-group}}
-					{{play-random-channel class="Btn--large"}}
-				{{/btn-group}}
-
-				{{#btn-group}}
 					<label class="Label Label--horizontal">
 						<span class="Label-title">
 							Sort by
@@ -82,9 +78,12 @@
 					</p>
 					{{#unless session.currentUser.channels.firstObject}}
 						<p>
-							If you feel like sharing yours, we welcome you to <a href="{{href-to "auth.login"}}" title="">create your own radio</a>.
+							Feel like sharing yours? We welcome you to <a href="{{href-to "auth.login"}}">create your own radio</a>.
 						</p>
 					{{/unless}}
+					<p>
+						{{play-random-channel class="Btn--large"}}
+					</p>
 				</div>
 				{{#if filteredChannels}}
 					{{#each manipulatedList as |item|}}
