@@ -4,7 +4,7 @@ import {computed} from '@ember/object'
 import {task} from 'ember-concurrency'
 
 export default Component.extend({
-	player: service('player'),
+	player: service(),
 
 	tagName: 'button',
 	classNames: ['Btn'],
