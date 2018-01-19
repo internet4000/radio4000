@@ -4,23 +4,29 @@ The main front-end web application for Radio4000, CMS for music libraries &rarr;
 
 ## How to develop
 
-Make sure Ember CLI is installed globally, then clone this project and install it's dependencies:
+Install `then clone this project and install it's dependencies:
 
 ```
-npm install --global ember-cli
 git clone git@gitlab.com:internet4000/radio4000.git
 cd radio4000
-npm install
-npm start
+yarn
+yarn start
 ```
+
+> Note: We recommend `yarn` to ensure you get exact dependencies. But you can also use `npm`. 
 
 ## Testing
 
-Run `npm test` for a single test or `ember test --server` to start a test server.
+Run `yarn test` for a single test or `yarn ember test --server` to start a test server.
 
 ## Deployment
 
-The site is hosted on netlify.com. Netlify will automatically deploy each branch and PR. The `production` branch is mirrored to https://radio4000.com and `master` to https://master--radio4000.netlify.com (live db and no authentication). See [contributing.md](https://github.com/internet4000/radio4000/blob/master/CONTRIBUTING.md) for more.
+The site is hosted on netlify.com. Netlify will automatically deploy each branch and pull request.
+
+- The `production` branch is mirrored to https://radio4000.com
+- The `master` branch to https://master--radio4000.netlify.com
+
+See [contributing.md](https://github.com/internet4000/radio4000/blob/master/CONTRIBUTING.md) for more.
 
 ## Backend
 
