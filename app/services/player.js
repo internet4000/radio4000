@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import {task} from 'ember-concurrency';
-
 import {getRandomIndex} from 'radio4000/utils/random-helpers';
 import {coverImg} from 'radio4000/helpers/cover-img';
 

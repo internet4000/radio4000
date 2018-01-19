@@ -15,6 +15,10 @@
 }
 
 // Little circle that indicates the channel is playing.
+.ChannelCard.is-active {
+	border-color: $primary-color;
+}
+
 .ChannelCard.is-active::before {
 	content: "";
 	display: block;
