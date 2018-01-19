@@ -10,7 +10,11 @@ const {
 
 export default Component.extend({
 	classNames: ['ChannelHeader'],
+
 	hasLinks: computed.or('channel.link', 'channel.hasCoordinates'),
+	lat: computed.alias('channel.coordinatesLatitude'),
+	lng: computed.alias('channel.coordinatesLongitude'),
+
 	shouldShowUpdated: computed('channel.updated', function() {
 		const updatedTimestamp = get(this, 'channel.updated');
 

@@ -23,9 +23,6 @@ export default Controller.extend({
 	noSearch: computed.not('search'),
 
 	actions: {
-		changeLayout() {
-			this.toggleProperty('isList')
-		},
 		clearSearch() {
 			set(this, 'search', '')
 		}

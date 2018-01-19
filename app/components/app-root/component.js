@@ -1,13 +1,14 @@
 /* global document */
 import Ember from 'ember';
+import { inject as service } from '@ember/service'
 
-const {Component, inject, run, get, set} = Ember;
+const {Component, run, get, set} = Ember;
 
 export default Component.extend({
-	uiStates: inject.service(),
-	player: inject.service(),
-	store: inject.service(),
-	session: inject.service(),
+	uiStates: service(),
+	player: service(),
+	store: service(),
+	session: service(),
 
 	classNames: ['Root'],
 	classNameBindings: [

@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import {task} from 'ember-concurrency';
-
 import {getRandomIndex} from 'radio4000/utils/random-helpers';
 import {coverImg} from 'radio4000/helpers/cover-img';
 
@@ -14,7 +13,10 @@ export default Service.extend({
 	currentChannel: computed.alias('currentTrack.channel'),
 	isPlaying: computed.bool('currentTrack'),
 
-	// play a track model
+	/**
+	 * Different play methods
+	 */
+
 	playTrack(model) {
 		if (!model) {
 			debug('playTrack() was called without a track.');
@@ -22,6 +24,44 @@ export default Service.extend({
 		}
 		set(this, 'originTrack', model);
 	},
+
+	playFirstTrack: task(function * (channel) {
+		const tracks = yield get(channel, 'tracks')
+		const firstTrack = tracks.get('lastObject');
+		this.playTrack(firstTrack)
+	}),
+
+	playRandomTrack: task(function * (channel) {
+		const tracks = yield get(channel, 'tracks')
+		const randomIndex = getRandomIndex(tracks);
+		const randomTrack = tracks.objectAt(randomIndex);
+		this.playTrack(randomTrack)
+	}),
+
+	playRandomChannel: task(function * () {
+		const store = get(this, 'store')
+		let channels = store.peekAll('channel')
+
+		// Find a random channel with an optional request.
+		if (channels.get('length') < 15) {
+			channels = yield store.findAll('channel')
+		}
+
+		const channel = channels.objectAt(getRandomIndex(channels.content))
+
+		// Run again if channel has few tracks
+		const tracks = yield channel.get('tracks')
+		const fewTracks = tracks.length < 5
+		if (fewTracks) {
+			get(this, 'playRandomChannel').perform()
+			return
+		}
+		this.playTrack(tracks.get('lastObject'))
+	}).drop(),
+
+	/**
+	 * Events from <radio4000-player>
+	 */
 
 	onTrackChanged(event) {
 		// set channels as active/inactive/add-to-history
@@ -67,6 +107,10 @@ export default Service.extend({
 		}).then(channel => this.updateChannelHistory(channel));
 	},
 
+	/**
+	 * Listening history
+	 */
+
 	// add a channel to the History of played channels
 	updateChannelHistory(channel) {
 		const settings = get(this, 'session.currentUser.settings');
@@ -93,29 +137,6 @@ export default Service.extend({
 			settings.save();
 		});
 	},
-
-	/*
-		 Play random channel
-	 */
-	playRandomChannel: task(function * () {
-		const store = get(this, 'store')
-		let channels = store.peekAll('channel')
-
-		// Find a random channel with an optional request.
-		if (channels.get('length') < 15) {
-			channels = yield store.findAll('channel')
-		}
-		const channel = channels.objectAt(getRandomIndex(channels.content))
-
-		// If the channel doesn't have many tracks, choose another.
-		const tracks = yield channel.get('tracks')
-		if (tracks.length < 2) {
-			get(this, 'playRandomChannel').perform()
-			return
-		}
-
-		this.playTrack(tracks.get('lastObject'))
-	}).drop(),
 
 	/*
 		An export of a channel, its tracks and image in json format

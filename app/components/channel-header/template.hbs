@@ -13,10 +13,7 @@
 </div>
 
 <div class="BtnGroup Channel-buttons">
-	{{play-shuffle-btn
-			channel=channel
-			expanded=true
-			class="Btn--large Channel-playback"}}
+	{{play-shuffle-btn channel=channel class="Btn--large Channel-playback"}}
 	{{#unless channel.canEdit}}
 		{{btn-favorite channel=channel class="Btn--wide"}}
 	{{/unless}}
@@ -25,7 +22,9 @@
 <div class="Channel-header">
 	<div class="Channel-body">
 		<p class="Channel-slug">
-			<a href="{{href-to 'channel' channel}}" class="" title="To listen, tune in @{{channel.slug}}">@{{channel.slug}}</a>
+			<a href="{{href-to 'channel' channel}}" title="To listen, tune in @{{channel.slug}}">
+				@{{channel.slug}}
+			</a>
 		</p>
 		<p>
 			{{#if shouldShowUpdated}}
@@ -39,10 +38,15 @@
 			{{!-- Note here the ``<updated>, (map)` syntax --}}
 			{{#if channel.hasCoordinates}}
 				- {{#link-to
-							 'channels.map'
-							 (query-params lat=channel.coordinatesLatitude lng=channel.coordinatesLongitude zoom=8)
-							 class="Muted"
-							 title=(concat 'Locate ' channel.title ' on the map [' channel.coordinatesLatitude '/' channel.coordinatesLongitude ']')}}map{{/link-to}}
+						'channels.map'
+						(query-params
+							lat=lat
+							lng=lng
+							zoom=8
+						)
+						class="Muted"
+						title=(concat 'Locate ' channel.title ' on the map [' lat '/' lng ']')
+						}}map{{/link-to}}
 			{{/if}}
 		</p>
 		{{#if channel.body}}

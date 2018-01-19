@@ -4,11 +4,13 @@
 		{{channel.title}}
 	</h3>
 {{/link-to}}
+
 <div class="ChannelCard-controls">
 	{{play-shuffle-btn
 		class="Btn--small"
 		channel=channel
-		showText=showText}}
+		showText=false
+	}}
 </div>
 <p class="ChannelCard-body">
 	{{do-truncate channel.body 200}}
@@ -18,7 +20,8 @@
 	{{btn-favorite
 		class="ChannelCard-favorite Btn Btn--text Muted"
 		channel=channel
-		showText=showText}}
+		showText=false
+	}}
 {{/unless}}
 
 {{yield}}

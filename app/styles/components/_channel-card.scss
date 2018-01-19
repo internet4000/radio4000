@@ -14,19 +14,23 @@
 	}
 }
 
+// Little circle that indicates the channel is playing.
 .ChannelCard.is-active {
-	&::before {
-		background-color: $primary-color;
-		position: absolute;
-		z-index: 1;
-		top: -0.4rem;
-		right: -0.4rem;
-		height: 1rem;
-		width: 1rem;
-		display: block;
-		content: "";
-		border-radius: 50%;
-	}
+	border-color: $primary-color;
+}
+
+.ChannelCard.is-active::before {
+	content: "";
+	display: block;
+	height: 1rem;
+	width: 1rem;
+	background-color: $primary-color;
+	border-radius: 50%;
+
+	position: absolute;
+	z-index: 1;
+	top: -0.4rem;
+	left: -0.4rem;
 }
 
 .ChannelCard-title,
@@ -70,48 +74,6 @@
 	position: absolute;
 	bottom: 0;
 	right: 0;
-}
-
-.ChannelCard-overlayBtn {
-	position: absolute;
-	top: 0.3rem;
-	right: 0.3rem;
-}
-
-.ChannelCard-overlayBtn .Btn {
-	display: flex;
-	font-size: 1.4rem;
-	background: none;
-	font-size: 1.4rem;
-	border: 0;
-	border-radius: 50%;
-	padding: 0.6rem;
-	background: rgba(black, 0);
-	color: rgba(white, 0.8);
-	transition: background 200ms, transform 200ms $easing4;
-	transform: scale(0.95);
-
-	svg {
-		left: auto !important;
-		top: auto !important;
-	}
-
-	&:hover,
-	&.is-loading {
-		background: rgba(black, 0.4);
-		color: rgba(white, 1);
-		transform: scale(1);
-		border-radius: 50%;
-	}
-
-	&:active {
-		transform: scale(0.98);
-	}
-
-	&.is-loading {
-		transition-duration: 800ms;
-		background-color: $primary-color;
-	}
 }
 
 // Modifier

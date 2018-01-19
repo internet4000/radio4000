@@ -14,6 +14,17 @@ module.exports = function (defaults) {
 		// Disable testing with localhost:4000/tests. Instead use `npm test`.
 		// tests: EmberApp.env() === 'test',
 
+		// Use <script async>
+		emberCliConcat: {
+			js: {
+				concat: true,
+				useAsync: true
+			},
+			css: {
+				concat: true
+			}
+		},
+
 		fingerprint: {
 			exclude: [
 				// favicons

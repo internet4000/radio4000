@@ -7,10 +7,12 @@
 	color: $dark;
 	display: block;
 	align-self: center;
-  margin-left: 0.5rem;
-p {
-	margin: 0;
-}
+	margin-left: 0.5rem;
+
+	p {
+		margin: 0;
+	}
+
 	p + p {
 		margin-bottom: 0.5rem;
 	}
@@ -29,4 +31,37 @@ p {
 // 60 sec / 33 rpm = 1.333 sec
 .animate-rotate {
 	animation: animate-rotate 1333ms linear infinite;
+}
+
+.PulseLoader {
+	display: inline-block;
+	width: 1.5em;
+	height: 1.5em;
+	background-color: $gray;
+	border-radius: 50%;
+	animation: sk-scaleout 1333ms infinite ease-in-out;
+
+	.Btn & {
+		position: absolute;
+		top: calc(50% - 0.75em);
+		left: calc(50% - 0.75em);
+		animation-play-state: paused;
+		visibility: hidden;
+	}
+
+	.Btn.is-running & {
+		animation-play-state: running;
+		visibility: visible;
+	}
+}
+
+@keyframes sk-scaleout {
+	0% {
+		transform: scale(0);
+		opacity: 0;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
 }
