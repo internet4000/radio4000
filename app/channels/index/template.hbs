@@ -10,17 +10,16 @@
 			{{#list-manipulation list=model.featured as |manipulatedList|}}
 				<div class="Grid">
 					<div class="Grid-cell">
-						<p>Hello and welcome!</p>
-						<p>You can start your journey by listening to one of the radio channels on this page.</p>
-						<p>Otherwise, let's explore!</p>
+						<p>Welcome!</p>
+						<p>Start your journey by listening to one of the radio channels on this page.</p>
 						<p>
 						{{#btn-group class="BtnGroup--full BtnGroup--vertical"}}
 							{{play-random-channel class="Btn--large"}}
 							<a
 								class="Btn Btn--text"
-								href="{{href-to 'about.intro'}}"
-								title="Have you read the manifesto?">
-								What is Radio4000?
+								href="{{href-to 'auth.signup'}}"
+							>
+								Sign up to start your own radio
 							</a>
 						{{/btn-group}}
 						</p>

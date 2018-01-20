@@ -1,17 +1,33 @@
 <div class="Sections">
+
 	<section class="Section">
 		<header class="Manchet">
-			<h1>Sign up<small> to Radio4000</small></h1>
 			<p>
-				Start a radio <a href="{{href-to 'about.intro'}}" class="Muted" title="Read more about Radio4000, we prepared you an introduction">(what?)</a> and interact with others.
+				Hello, we're glad you're interested in Radio4000!<br>
+				By signing up you'll be able to:
 			</p>
+			<ul>
+				<li>Create and manage your own radio</li>
+				<li>Add tracks via YouTube</li>
+				<li>Save other radio channels as favorites</li>
+				<li>And more…</li>
+			</ul>
+			<p>It is free. It's open source.</p>
 		</header>
+
 		<div class="Container">
+			<h1>Sign up<small> to Radio4000</small></h1>
 			{{user-signup onSignup=(action "signup")}}
-			<br>
+		</div>
+	</section>
+
+	<section class="Section">
+		<div class="Container">
 			<p>
-				Already have one? <a href="{{href-to 'auth.login'}}">Log in</a>.
+				Already have a radio? <a href="{{href-to 'auth.login'}}">Log in</a>.<br>
+				Have a question? <a href="{{href-to 'about.contact'}}">Contact us</a>.
 			</p>
 		</div>
 	</section>
+
 </div>
