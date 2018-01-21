@@ -12,12 +12,14 @@ export default Route.extend({
 
 	model() {
 		return this.findFeatured().then(featured => {
-			const ids = featured.map(channel => this.findFavorites(channel))
-			const flattened = ids.reduce((prev, curr) => prev.concat(curr))
+			const idsOfFavorites = featured.map(channel => this.getRandomFavorites(channel))
+			const flattened = idsOfFavorites.reduce((prev, curr) => prev.concat(curr))
 			const unique = flattened.uniq()
-			// console.log({ ids, flattened, unique })
-			const promises = unique.map(id => this.store.findRecord('channel', id))
-			return RSVP.all(promises)
+			const favorites = unique.map(id => this.store.findRecord('channel', id))
+			return RSVP.hash({
+				featured,
+				favorites
+			})
 		})
 	},
 
@@ -29,9 +31,12 @@ export default Route.extend({
 		})
 	},
 
-	findFavorites(channel) {
+	// Returns an array of arrays with ids of favorites.
+	// [[1,6,2], [3,4,5]]
+	getRandomFavorites(channel) {
 		const ids = channel.hasMany('favoriteChannels').ids()
 		const shuffled = shuffleArray(ids)
-		return shuffled.slice(0, get(this, 'maxFavorites'))
+		const someOfThem = shuffled.slice(0, get(this, 'maxFavorites'))
+		return someOfThem
 	}
 })
