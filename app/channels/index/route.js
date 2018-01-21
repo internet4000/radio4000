@@ -1,25 +1,22 @@
-import Ember from 'ember'
-import RSVP from 'rsvp'
+import Route from '@ember/routing/route';
+import {get} from '@ember/object'
 import { shuffleArray } from 'radio4000/utils/random-helpers'
-
-const { Route, get } = Ember
 
 export default Route.extend({
 	// We will show X random favorites from Y featured channels.
 	// 9 total is a good number for our current layout on desktop.
-	maxFeatured: 6,
+	maxFeatured: 4,
 	maxFavorites: 2,
 
 	model() {
 		return this.findFeatured().then(featured => {
+			// console.log(`Found ${featured.get('length')} featured radios:`)
+			// console.log(`${featured.map(f => f.get('title'))}`)
 			const idsOfFavorites = featured.map(channel => this.getRandomFavorites(channel))
 			const flattened = idsOfFavorites.reduce((prev, curr) => prev.concat(curr))
 			const unique = flattened.uniq()
 			const favorites = unique.map(id => this.store.findRecord('channel', id))
-			return RSVP.hash({
-				featured,
-				favorites
-			})
+			return featured.toArray().concat(favorites)
 		})
 	},
 
