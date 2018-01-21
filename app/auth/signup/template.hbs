@@ -1,10 +1,10 @@
 <div class="Sections">
 
 	<section class="Section">
-		<header class="Manchet">
+		<div class="Container">
+			<h1>Sign up <small>to Radio4000</small></h1>
 			<p>
-				Hello, we're glad you're interested in Radio4000!<br>
-				By signing up you'll be able to:
+				We've been expecting you… By signing up you'll be able to:
 			</p>
 			<ul>
 				<li>Create and manage your own radio</li>
@@ -13,10 +13,11 @@
 				<li>And more…</li>
 			</ul>
 			<p>It is free. It's open source.</p>
-		</header>
+		</div>
+	</section>
 
-		<div class="Container">
-			<h1>Sign up<small> to Radio4000</small></h1>
+	<section class="Section">
+		<div class="Container Container--small">
 			{{user-signup onSignup=(action "signup")}}
 		</div>
 	</section>
