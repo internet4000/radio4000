@@ -7,30 +7,32 @@ export default Route.extend({
 	// with their favorites we get a more exciting selection.
 
 	maxFeatured: 20,
-	maxFavoritesPerChannel: 3,
+	maxFavoritesPerChannel: 10,
 	maxTotal: 9,
 
 	model() {
 		return this.findFeatured().then(featured => {
-			// console.log(`Found ${featured.get('length')} featured radios:`)
-			// console.log(`${featured.map(f => f.get('title'))}`)
+			// console.log({featured: featured.map(f => f.get('title'))})
 
+			// Find favorites from the featured channels
 			let favorites = featured
 				.map(channel => this.getRandomFavorites(channel))
 				.reduce((prev, curr) => prev.concat(curr))
 				.uniq()
+			// Turn them into requests for their channel model
+			// favorites = favorites.map(id => this.store.findRecord('channel', id))
+			// console.log({favorites});
 
-			console.log(`Found ${favorites.length} favorites:`)
-			console.log(`${favorites}`)
+			// Merge featured + favorites, remove duplicates and randomize.
+			let merged = featured.toArray().map(f => f.id).concat(favorites)
+			// console.log({merged})
+			merged = merged.uniq()
+			// console.log({mergedUnique: merged})
 
-			favorites = favorites.map(id => this.store.findRecord('channel', id))
-			// console.log('… converting them to `findRecord()` promises')
-			// console.log(favorites)
-
-			const merged = featured.toArray().concat(favorites)
-			const uniq = merged.uniq()
-			const shuffled = shuffleArray(uniq)
-			return shuffled.slice(0, get(this, 'maxTotal'))
+			// Limit how many and make it random.
+			const result = pickRandom(merged, get(this, 'maxTotal'))
+			// console.log({result});
+			return result.map(id => this.store.findRecord('channel', id))
 		})
 	},
 
