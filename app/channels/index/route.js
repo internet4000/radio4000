@@ -1,6 +1,6 @@
 import Route from '@ember/routing/route';
 import {get} from '@ember/object'
-import { shuffleArray } from 'radio4000/utils/random-helpers'
+import {shuffleArray} from 'radio4000/utils/random-helpers'
 
 export default Route.extend({
 	// By combining and shuffling/randomizing featured channels
@@ -14,12 +14,21 @@ export default Route.extend({
 		return this.findFeatured().then(featured => {
 			// console.log(`Found ${featured.get('length')} featured radios:`)
 			// console.log(`${featured.map(f => f.get('title'))}`)
-			const idsOfFavorites = featured.map(channel => this.getRandomFavorites(channel))
-			const flattened = idsOfFavorites.reduce((prev, curr) => prev.concat(curr))
-			const unique = flattened.uniq()
-			const favorites = unique.map(id => this.store.findRecord('channel', id))
-			const both = featured.toArray().concat(favorites).uniq()
-			const uniq = both.uniq()
+
+			let favorites = featured
+				.map(channel => this.getRandomFavorites(channel))
+				.reduce((prev, curr) => prev.concat(curr))
+				.uniq()
+
+			console.log(`Found ${favorites.length} favorites:`)
+			console.log(`${favorites}`)
+
+			favorites = favorites.map(id => this.store.findRecord('channel', id))
+			// console.log('… converting them to `findRecord()` promises')
+			// console.log(favorites)
+
+			const merged = featured.toArray().concat(favorites)
+			const uniq = merged.uniq()
 			const shuffled = shuffleArray(uniq)
 			return shuffled.slice(0, get(this, 'maxTotal'))
 		})
