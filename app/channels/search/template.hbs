@@ -74,17 +74,19 @@
 
 				<div class="Grid-cell">
 					<p>
-						Each radio is <a href="{{href-to "about"}}">curated by one <b>human</b></a>. Listen, discover someone's personal selection.<br/>
+						Each radio is <a href="{{href-to "about"}}">curated by one human</a>. Listen, discover someone's personal selection.<br/>
+					</p>
+					<p class="BtnGroup--full BtnGroup--vertical">
+						{{play-random-channel class="Btn--large"}}
 					</p>
 					{{#unless session.currentUser.channels.firstObject}}
 						<p>
-							Feel like sharing yours? We welcome you to <a href="{{href-to "auth.login"}}">create your own radio</a>.
+							Feel like sharing yours?<br>
+							<a href="{{href-to 'auth.signup'}}">Create your own radio</a>.
 						</p>
 					{{/unless}}
-					<p>
-						{{play-random-channel class="Btn--large"}}
-					</p>
 				</div>
+
 				{{#if filteredChannels}}
 					{{#each manipulatedList as |item|}}
 						<div class="Grid-cell">

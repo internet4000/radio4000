@@ -10,19 +10,15 @@
 			{{#list-manipulation list=model.featured as |manipulatedList|}}
 				<div class="Grid">
 					<div class="Grid-cell">
-						<p>Welcome!</p>
-						<p>Start your journey by listening to one of the radio channels on this page.</p>
-						<p>
-						{{#btn-group class="BtnGroup--full BtnGroup--vertical"}}
+						<p>Welcome! Start your journey by listening to one of the radio channels here.</p>
+						<p class="BtnGroup--full BtnGroup--vertical">
 							{{play-random-channel class="Btn--large"}}
-							<a
-								class="Btn Btn--text"
-								href="{{href-to 'auth.signup'}}"
-							>
-								Sign up to start your own radio
-							</a>
-						{{/btn-group}}
 						</p>
+						{{#unless session.currentUser.channels.firstObject}}
+							<p>
+								With Radio4000 you have the tools to create and maintain a radio with all your favorite tracks from YouTube. <a href="{{href-to 'auth.signup'}}">Create my radio</a>.
+							</p>
+						{{/unless}}
 					</div>
 					{{#each manipulatedList as |channel|}}
 						<div class="Grid-cell">
