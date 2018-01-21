@@ -3,10 +3,12 @@ import {get} from '@ember/object'
 import { shuffleArray } from 'radio4000/utils/random-helpers'
 
 export default Route.extend({
-	// We will show X random favorites from Y featured channels.
-	// 9 total is a good number for our current layout on desktop.
-	maxFeatured: 4,
-	maxFavorites: 2,
+	// By combining and shuffling/randomizing featured channels
+	// with their favorites we get a more exciting selection.
+
+	maxFeatured: 20,
+	maxFavoritesPerChannel: 3,
+	maxTotal: 9,
 
 	model() {
 		return this.findFeatured().then(featured => {
@@ -16,7 +18,10 @@ export default Route.extend({
 			const flattened = idsOfFavorites.reduce((prev, curr) => prev.concat(curr))
 			const unique = flattened.uniq()
 			const favorites = unique.map(id => this.store.findRecord('channel', id))
-			return featured.toArray().concat(favorites)
+			const both = featured.toArray().concat(favorites).uniq()
+			const uniq = both.uniq()
+			const shuffled = shuffleArray(uniq)
+			return shuffled.slice(0, get(this, 'maxTotal'))
 		})
 	},
 
@@ -33,7 +38,7 @@ export default Route.extend({
 	getRandomFavorites(channel) {
 		const ids = channel.hasMany('favoriteChannels').ids()
 		const shuffled = shuffleArray(ids)
-		const someOfThem = shuffled.slice(0, get(this, 'maxFavorites'))
+		const someOfThem = shuffled.slice(0, get(this, 'maxFavoritesPerChannel'))
 		return someOfThem
 	}
 })
