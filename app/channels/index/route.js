@@ -1,6 +1,6 @@
 import Route from '@ember/routing/route';
 import {get} from '@ember/object'
-import {shuffleArray} from 'radio4000/utils/random-helpers'
+import {pickRandom} from 'radio4000/utils/random-helpers'
 
 export default Route.extend({
 	// By combining and shuffling/randomizing featured channels
@@ -46,8 +46,6 @@ export default Route.extend({
 	// [[1,6,2], [3,4,5]]
 	getRandomFavorites(channel) {
 		const ids = channel.hasMany('favoriteChannels').ids()
-		const shuffled = shuffleArray(ids)
-		const someOfThem = shuffled.slice(0, get(this, 'maxFavoritesPerChannel'))
-		return someOfThem
+		return pickRandom(ids, get(this, 'maxFavoritesPerChannel'))
 	}
 })
