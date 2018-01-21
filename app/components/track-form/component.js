@@ -73,9 +73,14 @@ export default Component.extend({
 			get(this, 'submitTask').perform();
 		},
 		cancel() {
-			get(this, 'track').rollbackAttributes();
-			get(this, 'onCancel')();
+			const track = get(this, 'track')
+			if (track.hasDirtyAttributes) {
+				track.rollbackAttributes();
+			}
+			const onCancel = get(this, 'onCancel')
+			if (onCancel) {
+				onCancel();
+			}
 		}
 	}
 });
-

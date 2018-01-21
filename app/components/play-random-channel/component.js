@@ -1,34 +1,18 @@
-import Ember from 'ember';
-const {Component, inject, get, on, computed} = Ember;
-import {getRandomIndex} from 'radio4000/utils/random-helpers';
-import {EKMixin, keyUp} from 'ember-keyboard';
+import PlayButtonComponent from 'radio4000/components/play-btn/component'
+import {task} from 'ember-concurrency'
+import {or} from 'ember-awesome-macros'
+import {computed} from '@ember/object'
 
-export default Component.extend(EKMixin, {
-	store: inject.service(),
-	player: inject.service(),
-	tagNames: ['button'],
-	classNames: ['Btn'],
-	isVisible: computed.not('keyboardActivated'),
+export default PlayButtonComponent.extend({
+	title: 'Play a random Radio4000 channel [⌨ r]',
 
-	bindKeyboard: on(keyUp('KeyW'), function () {
-		this.playRandomChannel();
-	}),
+	// Slightly different logic here so that the button also reacts
+	// when the random channel task is running OUTSIDE of this component.
+	// Like when you press the "R" shortcut.
+	isRunning: or('player.playRandomChannel.isRunning', 'clickTask.isRunning'),
+	disabled: computed.reads('isRunning'),
 
-	click() {
-		this.playRandomChannel();
-	},
-
-	playRandomChannel() {
-		const store = this.get('store');
-		store.findAll('channel').then(data => {
-			const channel = data.objectAt(getRandomIndex(data.content));
-			channel.get('tracks').then(tracks => {
-				if (tracks.length < 2) {
-					this.playRandomChannel();
-				} else {
-					get(this, 'player').playTrack(tracks.get('lastObject'));
-				}
-			});
-		});
-	}
-});
+	clickTask: task(function * () {
+		yield this.get('player.playRandomChannel').perform()
+	})
+})

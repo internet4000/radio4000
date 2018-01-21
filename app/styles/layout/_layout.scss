@@ -20,6 +20,7 @@ body {
 	min-height: 100vh;
 	width: 100%;
 	flex: 2;
+	overflow-x: hidden;
 }
 
 .SiteFooter {
@@ -32,4 +33,8 @@ body {
 .FooterNote {
 	user-select: none;
 	cursor: n-resize;
+}
+
+.overflow-x-auto {
+	overflow-x: auto;
 }

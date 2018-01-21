@@ -1,7 +1,7 @@
 /* !
-	RADIO4000
-	by Hugo Vieilledent and Oskar Rough Mosumgaard
-*/
+	 RADIO4000
+	 by Hugo Vieilledent and Oskar Rough Mosumgaard
+ */
 
 // Third party (imported from `./node_modules` because we use postcss-import)
 @import "node_modules/normalize.css/normalize";
@@ -15,8 +15,7 @@
 @import "utilities/functions";
 @import "utilities/push";
 @import "utilities/text";
-@import "utilities/mediablock";
-@import "utilities/flex";
+@import "utilities/displays";
 
 // Base (config and everything else without classes)
 @import "base/colors";
@@ -31,7 +30,7 @@
 @import "layout/layout";
 @import "layout/container";
 @import "layout/sections";
-@import "layout/grid"; // @todo refactor
+@import "layout/grid";
 @import "layout/intro";
 
 // Forms
@@ -56,19 +55,17 @@
 @import "components/channel-card";
 @import "components/channel-header";
 @import "components/cloudinary-upload";
+@import "components/contextual-toggle";
 @import "components/track";
 @import "components/provider-account";
 @import "components/login";
 @import "components/page-welcome";
 @import "components/playback";
 @import "components/playback-external";
-@import "components/filters";
 @import "components/flash-messages";
 @import "components/modal-dialog";
 @import "components/logo";
+@import "components/map";
 
 // Major UI States or the UI
 @import "layout/root";
-
-// @import "components/widget";
-// @import "components/toggle-panel";

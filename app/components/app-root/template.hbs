@@ -7,31 +7,35 @@
 {{/if}}
 
 {{aside-left
-		isAuthenticated=session.isAuthenticated
-		userChannel=session.currentUser.channels.firstObject
-		toggleModal=(action "toggleModal")}}
+	isAuthenticated=session.isAuthenticated
+	userChannel=session.currentUser.channels.firstObject
+	onClick=(action "openAddTrack")}}
 
 <main class="SiteMain">
-	{{play-random-channel keyboardActivated=true}}
 	{{yield}}
 </main>
 
 <aside class="Aside Aside--right">
-	{{x-playback keyboardActivated=true}}
+	{{x-playback}}
 </aside>
 
 {{#if isShowingModal}}
-	{{#modal-dialog onClose=(action "toggleModal")}}
-		<div class="Manchet">
-			<h2><small>Add a </small>new track<small> to your radio</small></h2>
+	{{#modal-dialog onClose=(action "closeModal")}}
+		<div class="Sections">
+			<section class="Section">
+				<div class="Manchet">
+					<h2><small>Add a </small>new track<small> to your radio</small></h2>
+				</div>
+				<p class="Container">
+					{{track-form-add
+						initialUrl=url
+						onSubmit=(action "saveTrack")
+						onCancel=(action "closeModal")}}
+				</p>
+				<p class="Container">
+					<span class="Muted" {{action "closeModal"}}>{{link-to "Add faster with the Bookmarklet" "bookmarklet"}}</span>
+				</p>
+			</section>
 		</div>
-		{{track-form-add
-			initialUrl=url
-			onSubmit=(action "saveTrack")
-			onCancel=(action "toggleModal")}}
-		<p>
-			Do you want to add tracks directly from YouTube?<br>
-			&rarr;<span {{action "toggleModal"}}>{{link-to "Get the bookmarklet" "bookmarklet" class="Btn Btn--text"}}</span>
-		</p>
 	{{/modal-dialog}}
 {{/if}}

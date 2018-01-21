@@ -1,9 +1,13 @@
 /**
  * PlaybackExternal
  */
+
 // .PlaybackExternal {}
-.PlaybackExternal-action {
-	&:hover {
-		cursor: pointer;
-	}
+
+.PlaybackExternal-action:hover {
+	cursor: pointer;
+}
+
+radio4000-player .Btn {
+	min-height: initial;
 }

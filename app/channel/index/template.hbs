@@ -11,22 +11,22 @@
 				Latest tracks
 				<small>({{link-to "see all" "channel.tracks"}})</small>
 			</h3>
-
-			{{#if model.channel.canEdit}}
-				<form class="Form">
-					{{track-add-inline onSubmit=(action "addTrack")}}
-				</form>
-			{{/if}}
-
+		</div>
+		<div class="Container Container--noPaddingMobile">
 			{{#if model.latestTracks}}
 				{{#tracks-list items=model.latestTracks as |item|}}
-					{{track-item track=item inline=true}}
+					{{track-item track=item}}
 				{{/tracks-list}}
 			{{else}}
 				{{#is-loading}}
 					Loading latest tracks
 				{{/is-loading}}
 			{{/if}}
+		</div>
+		<div class="Container">
+			<p class="u-textRight">
+				{{link-to "See all tracks" "channel.tracks"}}
+			</p>
 		</div>
 	{{/if}}
 </section>
@@ -39,30 +39,29 @@
 	</section>
 {{/if}}
 
-{{!--
 <section class="Section">
 	<div class="Container">
-		<h3>Share or this radio on any website</h3>
-		<p title="Tip: use this link to access this radio anywhere easily. You can also customize it for your radio so it is easier to remember">
+		<p>
 			{{#channel-sharer-url
-				channel=model
-				autoSelect=true}}
-				URL
-				{{#if model.canEdit}}
-					<small>({{link-to 'edit' 'channel.edit'}})</small>
+				slug=model.channel.slug
+				autoSelect=true
+			}}
+				Share {{if model.channel.canEdit "your" "this"}} radio
+				{{#if model.channel.canEdit}}
+					<small>{{link-to 'edit' 'channel.edit'}}</small>
 				{{/if}}
 			{{/channel-sharer-url}}
 		</p>
-		<p title="Tip: paste this <iframe/> element in the HTML code of any website to embed a player of this radio">
+		<p title="Tip: paste this <iframe> element in the HTML code of any website to embed a player of this radio">
 			{{#channel-sharer-url
-				 channel=model
-				 iframe=true
-				 autoSelect=true}}
-				Embed <small>(<a href={{buildApiUrl}} target="_blank" rel="noopener">Try it out</a>)</small>
+				 slug=model.channel.slug
+				 showEmbed=true
+				 autoSelect=true
+			}}
+				Embed
 			{{/channel-sharer-url}}
 		</p>
 	</div>
 </section>
---}}
 
 {{outlet}}

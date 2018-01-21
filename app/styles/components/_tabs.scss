@@ -1,20 +1,27 @@
 /**
  * Tabs
-	by default they are boxed and vertical.
-	Use a modifier if you need them horizontal.
+ by default they are boxed and vertical.
+ Use a modifier if you need them horizontal.
  */
+
 .Tabs {
 	display: flex;
 	flex-flow: column wrap;
 	flex-shrink: 0;
+	margin-bottom: 1rem;
 
 	// A bit of depth.
 	border: 1px solid $mediumlightgray;
 	border-radius: $border-radius;
-	// box-shadow: $box-shadow;
+	box-shadow: $box-shadow;
+
+	// so it is always over full screen backgrounds
+	// like .Manchet
+	position: relative;
+	z-index: 1;
 
 	// When several tabs follow each other.
-	& + .Tabs {
+	& + .Tabs:not(.Tabs--horizontal) {
 		margin-top: 3px;
 	}
 }
@@ -22,7 +29,7 @@
 .Tabs-item {
 	background-color: $superlightgray;
 	margin-bottom: 0;
-	padding: 0.8em 1rem 0.5em;
+	padding: 0.7em 1rem 0.5em;
 	color: $text-color;
 	border-radius: $border-radius;
 	border-right: 3px solid transparent;
@@ -37,7 +44,7 @@
 
 	&.is-active {
 		@extend %font-bold;
-		border-color: $primary-color;
+		border-right-color: $primary-color;
 		background-color: $superlightgray;
 	}
 	& small {
@@ -45,37 +52,36 @@
 		text-transform: uppercase;
 		font-weight: 400;
 	}
+
 	&.Tabs-item--transparent {
 		background-color: transparent;
 	}
 }
 
-.Tabs .BtnGroup {
-	padding-top: 0.2em;
-	padding-bottom: 0.2em;
-}
-
 .Tabs-divider {
-	margin: auto;
+	margin-top: auto;
+	margin-bottom: auto;
 	color: $slightgray;
 }
 
 /**
  * Modifiers
  */
+.Tabs--vertical {
+	.Tabs-item.BtnGroup {
+		padding-left: 0;
+	}
+}
 
 .Tabs--horizontal {
+	display: inline-flex;
 	flex-flow: row nowrap;
-	text-align: center;
-
-	@media (min-width: $layout-s) {
-		max-width: 90%;
-	}
+	margin-bottom: 0;
 
 	.Tabs-item {
 		white-space: nowrap;
-		flex-grow: 1;
 		border-right: 0;
+		border-radius: 0;
 		border-bottom: 3px solid transparent;
 
 		&.is-active {
@@ -83,15 +89,26 @@
 			border-bottom: 3px solid $primary-color;
 		}
 
-		// equal widths
-		@media (min-width: $layout-m) {
-			flex: 1;
+		@media (max-width: $layout-s) {
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
+		}
+
+		@media (min-width: $layout-s) {
+			min-width: 7rem;
+			text-align: center;
 		}
 	}
-}
 
-.Tabs--centered {
-	justify-content: center;
+	.Tabs-item:first-child {
+		border-top-left-radius: $border-radius;
+		border-bottom-left-radius: $border-radius;
+	}
+
+	.Tabs-item:last-child {
+		border-top-right-radius: $border-radius;
+		border-bottom-right-radius: $border-radius;
+	}
 }
 
 // Used where the background is considered "higher",
@@ -110,42 +127,42 @@
 }
 
 // Animated border
-.Tabs--animated {
-	.Tabs-item {
-		// contain the border
-		position: relative;
+// .Tabs--animated {
+// 	.Tabs-item {
+// 		// contain the border
+// 		position: relative;
 
-		// remove previous borders
-		border-bottom: 0 !important;
+// 		// remove previous borders
+// 		border-bottom: 0 !important;
 
-		// align border vertically with same height as other tabs,
-		// stupid but yes.
-		padding-top: rem(4);
-		padding-bottom: 0;
-		line-height: 2.3;
-	}
+// 		// align border vertically with same height as other tabs,
+// 		// stupid but yes.
+// 		padding-top: rem(4);
+// 		padding-bottom: 0;
+// 		line-height: 2.3;
+// 	}
 
-	// the (hidden) border
-	.Tabs-item::after {
-		content: "";
-		display: block;
-		margin: auto;
-		height: 3px;
-		width: 0;
-		background: $primary-color;
-		transition: width 400ms $easing;
-	}
+// 	// the (hidden) border
+// 	.Tabs-item::after {
+// 		content: "";
+// 		display: block;
+// 		margin: auto;
+// 		height: 3px;
+// 		width: 0;
+// 		background: $primary-color;
+// 		transition: width 400ms $easing;
+// 	}
 
-	// the visible border
-	.Tabs-item.is-active::after {
-		width: 100%;
-	}
-}
+// 	// the visible border
+// 	.Tabs-item.is-active::after {
+// 		width: 100%;
+// 	}
+// }
 
 .Tabs--transparent {
 	border: 0;
 	background-color: transparent;
-	flex-wrap: wrap;
+	box-shadow: none;
 
 	.Tabs-item {
 		background-color: transparent;

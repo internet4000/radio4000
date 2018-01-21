@@ -33,7 +33,7 @@
 .Channel-slug {
 	display: flex;
 	justify-content: space-between;
-	// margin-bottom: 0;
+	margin-bottom: 0.2rem;
 
 	a {
 		font-weight: bold;
@@ -46,9 +46,16 @@
 	word-break: break-word;
 }
 
-.Channel-links a {
-	word-wrap: break-word;
-	text-decoration: none;
+.Channel-links {
+	display: flex;
+	flex-direction: column;
+	a {
+		word-wrap: break-word;
+		text-decoration: none;
+	}
+	a + a {
+		padding-top: 0.3rem;
+	}
 }
 
 .Channel-buttons {

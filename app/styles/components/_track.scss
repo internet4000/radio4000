@@ -1,12 +1,16 @@
 /**
  * Single track
  */
+
 .Track {
 	@include size-1;
+	display: flex;
 	position: relative;
 	overflow: hidden; // hide controls
-	// define empty borders so it doesn't jump
-	border-left: 2px solid transparent;
+	border-bottom: 1px solid $lightgray;
+	box-shadow: 1px 0 0 $mediumlightgray;
+
+	// Empty border to avoid jumps when indicating state.
 	border-right: 2px solid transparent;
 
 	.icon-play {
@@ -19,53 +23,45 @@
 			left: 0.8em;
 		}
 	}
+
+	&:hover,
+	&:focus {
+		background-color: hsla(0, 100%, 100%, 0.3);
+	}
 }
 
-// Active state
-.Track.is-current {
-
-}
-
-// Conflicts with is-current border
 .Track--live {
-	.Track-link,
-	a.Track-link {
+	background-color: $white;
+
+	&:hover,
+	&:focus {
 		background-color: $white;
 	}
+
+	// Purple dot.
 	&::before {
-			background-color: $primary-color;
-			position: absolute;
-			top: 50%;
+		background-color: $primary-color;
+		position: absolute;
+		top: 50%;
+		left: -0.5rem;
+		height: 0.75rem;
+		width: 0.75rem;
+		display: block;
+		content: "";
+		border-radius: 50%;
+		transform: translateY(-50%);
+
+		@media (min-width: $layout-s) {
 			left: 0.5rem;
-			height: 1rem;
-			width: 1rem;
-			display: block;
-			content: "";
-			border-radius: 50%;
-			transform: translateY(-50%);
 		}
+	}
 }
+
 .Track--played {
 	border-right-color: $white;
 }
 .Track--finished {
 	border-right-color: $green;
-}
-
-// Edit state
-.Track.is-editing {
-	background-color: $superlightgray;
-	box-shadow: $lighterblue 0 0 10px;
-
-	.Track-link:hover {
-		background-color: transparent;
-		background-image: none;
-	}
-
-	.Track-link,
-	.Track-controls {
-		display: none;
-	}
 }
 
 .Track-title {
@@ -85,33 +81,21 @@
 	}
 }
 
-// Link surrounding the track.
-.Track-link,
-a.Track-link {
-	border-left: 3px solid transparent;
-	padding-right: rem(60);
-	color: $text-color;
-	transition: border-color 250ms $easing;
+.Track-contextual {
+	margin-left: auto;
+	align-self: flex-start;
+}
 
-	.Widget-container & {
-		padding-left: 0.5rem;
-		padding-right: 0.5rem;
+/**
+ * TracksList
+ */
+
+.TracksList.is-searching {
+	.ListGroup {
+		margin-bottom: 0;
 	}
-}
 
-// Track edit button.
-.Track-controls {
-	@include size-0;
-	position: absolute;
-	top: 0;
-	right: 0;
-	padding: 1rem 1.5rem 1rem 0.5rem;
-}
-
-.Track .Form {
-	margin: 0 1rem 0 2rem;
-
-	h2 {
+	.ListGroup-header {
 		display: none;
 	}
 }

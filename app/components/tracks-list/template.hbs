@@ -1,28 +1,64 @@
-{{#if grouped}}
-	{{#each groupedItems as |group|}}
-		<h2 class="List-header Muted">{{group.items.firstObject.createdMonth}}</h2>
-		<ol class="List{{if numbered ' List--numbered'}}">
-			{{#each group.items as |item|}}
-				<li class="List-item">
-					{{#if hasBlock}}
-						{{yield item}}
-					{{else}}
-						{{item.title}}
-					{{/if}}
-				</li>
-			{{/each}}
-		</ol>
-	{{/each}}
-{{else}}
-	<ol class="List{{if numbered ' List--numbered'}}">
-		{{#each sortedItems as |item|}}
-			<li class="List-item">
-				{{#if hasBlock}}
-					{{yield item}}
+{{#if search}}
+	<div class="Form Form--full">
+		<div class="Form-group BtnGroup">
+			<label class="Label Label--horizontal">
+				<span class="Label-title">
+					Search
+				</span>
+				{{jets-search
+					contentTag=".List"
+					content=model.tracks
+					value=searchQuery
+					title="Search each track in the list (title and description fields); Usage: `word1 word2 word3` will filter tracks that have all these words [⌨ shift + s]"
+					placeholder='Explore the tracks'
+				}}
+			</label>
+
+			<button type="button"
+				class="Btn"
+				disabled={{noSearchQuery}}
+				title="Clear search query, fresh start!"
+				{{action 'clearSearchQuery'}}
+			>x</button>
+		</div>
+		<div class="Form-group">
+			<button
+				class="Btn u-nowrap"
+				style="min-width: 8em"
+				onClick={{playSelection}}
+				title="Use all tracks result of a search inside the player">
+				{{#if searchQuery}}
+					<i>↳</i> Load selection {{!-- load track search --}}
 				{{else}}
-					{{item.title}}
+					<i>▶</i> Load all tracks {{!-- load all tracks --}}
 				{{/if}}
-			</li>
-		{{/each}}
-	</ol>
+			</button>
+		</div>
+	</div>
 {{/if}}
+
+{{#unless grouped}}
+	<div class="List {{if numbered ' List--numbered'}}">
+		{{#each sortedItems as |item|}}
+			{{#if hasBlock}}
+				{{yield item}}
+			{{else}}
+				{{track-item track=item}}
+			{{/if}}
+		{{/each}}
+	</div>
+{{else}}
+	{{#each groupedItems as |group|}}
+		<div class="ListGroup">
+			<h4 class="ListGroup-header">{{group.items.firstObject.createdMonth}}</h4>
+			<div class="List {{if numbered ' List--numbered'}}">
+				{{#each group.items as |item|}}
+					{{track-item
+						track=item
+						playSelection=playSelection
+					}}
+				{{/each}}
+			</div>
+		</div>
+	{{/each}}
+{{/unless}}

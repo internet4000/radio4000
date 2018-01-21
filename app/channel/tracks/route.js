@@ -1,12 +1,23 @@
 import Ember from 'ember';
 import ResetScroll from 'radio4000/mixins/reset-scroll'
 
-export default Ember.Route.extend(ResetScroll, {
+const {Route, RSVP} = Ember
+
+export default Route.extend(ResetScroll, {
+	queryParams: {
+		search: {
+			replace: true
+		}
+	},
+
 	model() {
 		const channel = this.modelFor('channel')
-		return this.store.query('track', {
-			orderBy: 'channel',
-			equalTo: channel.id
-		})
+		return RSVP.hash({
+			channel,
+			tracks: this.store.query('track', {
+				orderBy: 'channel',
+				equalTo: channel.id
+			})
+		});
 	}
 });

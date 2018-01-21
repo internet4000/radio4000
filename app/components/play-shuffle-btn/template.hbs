@@ -1,7 +1,12 @@
-{{#if isPlaying}}
-	<i>⇢</i>
-	{{if showText 'Next random'}}
-{{else}}
-	<i>▶</i>
-	{{if showText 'Play'}}
+<i>
+	{{if isPlaying "⇢" "▶"}}
+	<span class="PulseLoader animate-rotate"></span>
+</i>
+
+{{#if showText}}
+	{{#if clickTask.isRunning}}
+		Loading
+	{{else}}
+		{{if isPlaying "Play another" "Listen"}}
+	{{/if}}
 {{/if}}

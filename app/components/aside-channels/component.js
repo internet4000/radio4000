@@ -1,6 +1,6 @@
-import Ember from 'ember';
+import Ember from 'ember'
 
 export default Ember.Component.extend({
-	tagName: ['nav'],
-	classNames: ['Tabs', 'Tabs--horizontal', 'Tabs--animated']
-});
+	tagName: 'nav',
+	classNames: ['u-flex', 'overflow-x-auto']
+})

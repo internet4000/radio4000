@@ -33,15 +33,15 @@ textarea,
 [type="search"],
 textarea,
 .Btn--textInput {
-	border-bottom: 0;
-	box-shadow: $box-shadow, 1px 2px 2px $lightgray inset;
-	background-color: $superlightgray;
 	max-width: 100%;
 	padding: em(10, 13) 0.8rem em(8, 13);
 	width: 100%;
+	box-shadow: 1px 2px 2px $lightgray inset;
+	background-color: $superlightgray;
 
 	&:focus {
-		outline: hsl(214, 95%, 64%) auto 1px;
+		border-color: $primary-color;
+		background-color: white;
 	}
 
 	// &:focus:invalid {
@@ -91,6 +91,16 @@ progress {
 
 .Form-bigInput {
 	@include size-3;
+}
+
+.Form--full {
+	display: flex;
+	flex-grow: 1;
+	flex-wrap: wrap;
+	.Form-group {
+		display: flex;
+		margin-right: 1rem;
+	}
 }
 
 .Form-group {
@@ -167,4 +177,13 @@ progress {
 
 .Form--boxSmall {
 	max-width: 27rem;
+}
+
+// labels
+.Label--horizontal {
+	display: flex;
+	align-items: center;
+	.Label-title {
+		padding-right: 0.5rem;
+	}
 }

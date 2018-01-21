@@ -1,12 +1,17 @@
 /**
  * Utilities for text
  */
+
 .u-textStrike {
 	text-decoration: line-through;
 }
 
-.u-textAlignCenter {
+.u-tc {
 	text-align: center;
+}
+
+.u-nowrap {
+	white-space: nowrap;
 }
 
 /**

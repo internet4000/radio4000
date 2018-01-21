@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import {task} from 'ember-concurrency'
 
 const {
 	Component,
@@ -47,27 +48,36 @@ export default Component.extend({
 		});
 	},
 
+	sendFeedback: task(function * () {
+		const notification = get(this, 'flashMessages');
+		const url = get(this, 'buildUrl');
+		const data = {
+			message: get(this, 'message'),
+			email: get(this, 'email'),
+			userChannelId: get(this, 'userChannelId'),
+			playerChannelId: get(this, 'playerChannelId'),
+			playerTrackId: get(this, 'playerTrackId')
+		};
+		// Tried to use `fetch` instead of `$.ajax` but could not get
+		// the Google Docs script to parse the incoming body.
+		try {
+			yield $.ajax({
+				type: 'post',
+				url,
+				data
+			})
+			this.clearData();
+			notification.success('Thank you for the feedback!');
+		} catch (err) {
+		}
+	}),
+
 	actions: {
 		send() {
-			const notification = get(this, 'flashMessages');
-			const url = get(this, 'buildUrl');
-			const data = {
-				message: get(this, 'message'),
-				email: get(this, 'email'),
-				userChannelId: get(this, 'userChannelId'),
-				playerChannelId: get(this, 'playerChannelId'),
-				playerTrackId: get(this, 'playerTrackId')
-			};
-			// Tried to use `fetch` instead of `$.ajax` but could not get
-			// the Google Docs script to parse the incoming body.
-			return $.ajax({
-				url,
-				type: 'post',
-				data
-			}).then(() => {
-				this.clearData();
-				notification.success('Thank you for the feedback!');
-			});
+			if (get(this, 'botField')) {
+				return
+			}
+			get(this, 'sendFeedback').perform()
 		}
 	}
 });

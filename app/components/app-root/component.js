@@ -1,13 +1,14 @@
 /* global document */
 import Ember from 'ember';
+import { inject as service } from '@ember/service'
 
-const {Component, inject, run} = Ember;
+const {Component, run, get, set} = Ember;
 
 export default Component.extend({
-	uiStates: inject.service(),
-	player: inject.service(),
-	store: inject.service(),
-	session: inject.service(),
+	uiStates: service(),
+	player: service(),
+	store: service(),
+	session: service(),
 
 	classNames: ['Root'],
 	classNameBindings: [
@@ -33,12 +34,17 @@ export default Component.extend({
 	},
 
 	actions: {
-		toggleModal() {
-			this.toggleProperty('isShowingModal');
-			this.set('url', '');
+		openAddTrack(track) {
+			if (track) {
+				set(this, 'url', track.url || '');
+			}
+			set(this, 'isShowingModal', true);
+		},
+		closeModal() {
+			set(this, 'isShowingModal', false);
 		},
 		saveTrack(trackProperties) {
-			return this.get('onSaveTrack')(trackProperties);
+			return get(this, 'onSaveTrack')(trackProperties);
 		}
 	}
 });

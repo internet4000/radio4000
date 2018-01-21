@@ -7,7 +7,7 @@
 				<label class="ProviderAccount-body">
 					<p class="ProviderAccount-id">
 						{{#unless currentUser.emailVerified}}
-							Your email is not yet verified. We have sent a verification email to your new address. <a href="#" {{action "verifyEmail"}} title="Click to send a new verification email. After clicking the link in the email, please refresh this page.">Need a new verification link?</a>.
+							Your email is not yet verified; check your email for a verification link, or <a href="#" {{action "verifyEmail"}} title="Click to send a new verification email. After clicking the link in the email, please refresh this page.">send a new verification link</a>.
 						{{/unless}}
 						{{input placeholder=currentUser.email value=newEmail}}
 					</p>

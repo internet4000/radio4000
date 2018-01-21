@@ -1,2 +1,7 @@
-▶ play <small>a random channel</small>
+<i>▶</i>
+{{#if isRunning}}
+	Tuning…
+{{else}}
+	{{if player.isPlaying "Play another radio" "Start listening"}}
+{{/if}}
 {{yield}}

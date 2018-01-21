@@ -1,0 +1,29 @@
+{{#if session.isAuthenticated}}
+	{{#unless session.currentUser.channels.firstObject.hasCoordinates}}
+		<div class="Container">
+			{{link-to
+					'Add my radio'
+					'channel.edit'
+					session.currentUser.channels.firstObject
+					class="Btn Btn--map"
+			}}
+		</div>
+	{{/unless}}
+{{/if}}
+
+{{#map-world
+		 class="Map--fullscreen"
+		 items=channelsWithCoordinates
+		 lat=lat
+		 lng=lng
+		 zoom=zoom
+		 onUpdate=(action "updatePosition")
+		 as |channel|
+}}
+	{{channel-card
+			channel=channel
+			wide=true
+	}}
+{{/map-world}}
+
+{{outlet}}

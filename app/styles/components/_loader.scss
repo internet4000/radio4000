@@ -1,10 +1,20 @@
-@keyframes spin {
-	from {
-		transform: rotate(0);
+.Loader {
+	display: flex;
+}
+
+.Loader-text {
+	font-size: 1rem;
+	color: $dark;
+	display: block;
+	align-self: center;
+	margin-left: 0.5rem;
+
+	p {
+		margin: 0;
 	}
 
-	to {
-		transform: rotate(360deg);
+	p + p {
+		margin-bottom: 0.5rem;
 	}
 }
 
@@ -18,41 +28,40 @@
 	}
 }
 
+// 60 sec / 33 rpm = 1.333 sec
 .animate-rotate {
-	animation: animate-rotate 400ms linear infinite;
+	animation: animate-rotate 1333ms linear infinite;
 }
 
-// See templates/error.hbs
-.Loader {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
+.PulseLoader {
+	display: inline-block;
+	width: 1.5em;
+	height: 1.5em;
+	background-color: $gray;
+	border-radius: 50%;
+	animation: sk-scaleout 1333ms infinite ease-in-out;
 
-	// on top of other things
-	position: relative;
-	z-index: 1;
+	.Btn & {
+		position: absolute;
+		top: calc(50% - 0.75em);
+		left: calc(50% - 0.75em);
+		animation-play-state: paused;
+		visibility: hidden;
+	}
+
+	.Btn.is-running & {
+		animation-play-state: running;
+		visibility: visible;
+	}
 }
 
-.Loader img {
-	width: 2rem;
-	margin-right: 1rem;
-}
-
-.Loader-text {
-	margin-bottom: 0.5rem;
-	font-size: 1rem;
-	color: $dark;
-	display: block;
-}
-
-.Loader--center {
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.Loader--middle {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translateX(-50%);
+@keyframes sk-scaleout {
+	0% {
+		transform: scale(0);
+		opacity: 0;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
 }

@@ -4,7 +4,7 @@ import firebase from 'npm:firebase';
 const {Component, get} = Ember;
 
 export default Component.extend({
-	tagName: ['article'],
+	tagName: 'article',
 	classNames: ['ProviderAccount'],
 
 	extractProvider(providerId) {

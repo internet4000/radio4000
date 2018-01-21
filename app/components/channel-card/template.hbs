@@ -4,24 +4,24 @@
 		{{channel.title}}
 	</h3>
 {{/link-to}}
+
 <div class="ChannelCard-controls">
 	{{play-shuffle-btn
 		class="Btn--small"
 		channel=channel
-		showText=false}}
+		showText=false
+	}}
 </div>
 <p class="ChannelCard-body">
 	{{do-truncate channel.body 200}}
 </p>
+
 {{#unless channel.canEdit}}
-	<p>
-		<div class="ChannelCard-favorite">
-			{{btn-favorite
-				class="Btn Btn--text Muted"
-				channel=channel
-				showText=false}}
-		</div>
-	</p>
+	{{btn-favorite
+		class="ChannelCard-favorite Btn Btn--text Muted"
+		channel=channel
+		showText=false
+	}}
 {{/unless}}
 
 {{yield}}

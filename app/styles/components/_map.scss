@@ -1,0 +1,110 @@
+/*
+Map
+ */
+
+.Map {
+	width: 100%;
+	height: 100%;
+}
+
+.Map--fullscreen {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 0;
+
+	.leaflet-container {
+		width: 100%;
+		height: 100%;
+		margin-bottom: 0;
+	}
+
+	.leaflet-control-zoom {
+		@media (max-width: $layout-s) {
+			display: none;
+		}
+	}
+}
+
+.Map--selection {
+	position: relative;
+
+	// a circle to position the center of the map
+	// used for the user to locate a point (works well mobile
+	// instead of drag and drop)
+	.leaflet-container:before {
+		display: block;
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 2.5rem;
+		height: 2.5rem;
+		border: 4px solid $black;
+		border-radius: 50%;
+		z-index: 999;
+	}
+}
+
+// Default size for a map
+.leaflet-container {
+	width: 100%;
+	height: 20rem;
+	margin-bottom: 1rem;
+	font: inherit;
+}
+
+// Overwrite default styles
+.leaflet-popup-content-wrapper {
+	padding: 0;
+	border-radius: $border-radius;
+}
+
+.leaflet-popup-content {
+	margin: 0;
+}
+
+// Adapt .ChannelCard when inside a map popup
+.leaflet-popup-content .ChannelCard {
+	width: 220px;
+	border: 0;
+}
+
+.MapMarker {
+	position: relative;
+	// outline: 1px solid red;
+	// The width and height is set with JS.
+
+	&::after {
+		display: block;
+		content: "ᐄ";
+		transform: rotate(180deg);
+		font-size: 2rem;
+		color: black;
+		// font-weight: bold;
+		// text-shadow: 1px 2px 2px rgba(white, 0.9);
+		text-shadow: -3px -3px 3px rgba(0, 0, 0, 0.4);
+		// put it in the center of the circle on map-position-selection
+		// it's not exactly the same position of map-world, but it is good
+		// it forces people not to reveal their exact position
+		position: absolute;
+		top: -80%; // the bottom "dot" is centered within MapMarker
+		left: 0;
+		right: 0;
+		text-align: center;
+	}
+}
+
+.MapMarker--isFavorite {
+	&::after {
+		content: 'ᑍ'
+	}
+}
+
+.ImageMapMarker {
+	border: 1px solid rgba(white, 0.5);
+	box-shadow: 2px 2px 4px rgba(black, 0.8);
+}

@@ -1,31 +1,24 @@
 import Ember from 'ember';
 import PlayButtonComponent from 'radio4000/components/play-btn/component';
-import {getRandomIndex} from 'radio4000/utils/random-helpers';
+import {task, timeout} from 'ember-concurrency'
+import {conditional} from 'ember-awesome-macros'
+import raw from 'ember-macro-helpers/raw'
 
 const {computed, get} = Ember;
 
-// Extends the play button with a different title and template
-
 export default PlayButtonComponent.extend({
-	attributeBindings: ['title'],
-	isPlaying: computed.alias('channel.isInPlayer'),
-	title: computed('isPlaying', function () {
-		return get(this, 'isPlaying') ? 'Play a random track' : 'Play this radio';
-	}),
+	isPlaying: computed.reads('channel.isInPlayer'),
 
-	click() {
-		if (get(this, 'isPlaying') === true) {
-			this.playRandomTrack();
-		} else {
-			this.playFirstTrack();
-		}
-	},
+	title: conditional(
+		'isPlaying',
+		raw('Play a new random track from "all" tracks in this radio channel'),
+		raw('Play this radio')
+	),
 
-	playRandomTrack() {
-		get(this, 'channel.tracks').then(tracks => {
-			const randomIndex = getRandomIndex(tracks);
-			const randomTrack = tracks.objectAt(randomIndex);
-			get(this, 'player').playTrack(randomTrack);
-		});
-	}
-});
+	clickTask: task(function * () {
+		const player = get(this, 'player')
+		const taskName = get(this, 'isPlaying') ? 'playRandomTrack' : 'playFirstTrack'
+		yield get(player, taskName).perform(get(this, 'channel'))
+		yield timeout(100) // average user fast-tapping is 140ms
+	}).drop()
+})

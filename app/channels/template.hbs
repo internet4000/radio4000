@@ -1,10 +1,11 @@
 <div class="Sections">
 	<div class="Section">
 		<div class="Manchet">
-			<h1>Listen <small>to radios</small></h1>
+			<h1>Explore <small> radios</small></h1>
 		</div>
 		<div class="Container Container--noPaddingMobile">
-			{{aside-channels userChannel=session.currentUser.channels.firstObject}}
+			{{aside-channels
+				userChannel=session.currentUser.channels.firstObject}}
 		</div>
 	</div>
 

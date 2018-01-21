@@ -1,28 +1,21 @@
 <div class="Playback-player">
 	<!-- Do you like this player? It's open source!
 	 github.com/internet4000/radio4000-player -->
-	 {{!--
-	<script src="http://localhost:4002/dist/radio4000-player.js"></script>
-	--}}
 	<radio4000-player
 		autoplay="true"
 		r4-url="true"
 		track-id={{track.id}}
-		class="{{if uiStates.isMinimized 'mini'}}"
+		title="Radio4000 player. [⌨ g c = current channel] [⌨ g x = curent track]"
 	></radio4000-player>
+	{{!--  <script src="http://localhost:4002/radio4000-player.min.js"></script> --}}
 </div>
 
 <div class="Playback-layoutButtons">
-	<button class="Btn Btn--small" {{action 'toggleMinimizedFormat'}} title="Toggle minimized player (press 'F')">
+	<button class="Btn" {{action 'toggleMinimizedFormat'}} title="Toggle minimized player [⌨ f]">
 		{{if uiStates.isMinimized '⬒' '_'}}
 	</button>
 
-	<button class="Btn Btn--small" {{action 'toggleFullscreenFormat'}} title="Toggle fullscreen player (press 'F')">
-		{{#if uiStates.isFullscreen}}
-			{{x-icon i='arrows-compress'}}
-		{{else}}
-			{{x-icon i='arrows-expand'}}
-		{{/if}}
+	<button class="Btn" {{action 'toggleFullscreenFormat'}} title="Toggle fullscreen player [⌨ f]">
+		⤢
 	</button>
 </div>
-
