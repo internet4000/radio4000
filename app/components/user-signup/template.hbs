@@ -21,14 +21,22 @@
 </form>
 
 <br>
-<p>Or, if you prefer…</p>
 <p>
-	<button class="Btn Btn--text Btn--large" {{action "submit" "google"}}>
-		Sign up with your&nbsp;<span style="color: #4285f4;">G</span><span style="color: #ea4335;">o</span><span style="color: #fbbc05;">o</span><span style="color: #4285f4;">g</span><span style="color: #34a853;">l</span><span style="color: #ea4335;">e</span>&nbsp; account
+	Or, if you prefer, sign up with your:<br>
+	<button
+		class="Btn Btn--text Btn--large"
+		title="Sign up wtih your Google account"
+		{{action "submit" "google"}}
+	>
+		<span style="color: #4285f4;">G</span><span style="color: #ea4335;">o</span><span style="color: #fbbc05;">o</span><span style="color: #4285f4;">g</span><span style="color: #34a853;">l</span><span style="color: #ea4335;">e</span>&nbsp; account
 	</button>
-	<br>
-	<button class="Btn Btn--text Btn--large" {{action "submit" "facebook"}}>
-		Sign up with your&nbsp;<span style="color: #365899">Facebook</span>&nbsp;account
+	or
+	<button
+		class="Btn Btn--text Btn--large"
+		title="Signup with your Facebook account"
+		{{action "submit" "facebook"}}
+	>
+		<span style="color: #365899">Facebook</span>&nbsp;account
 	</button>
 </p>
 
