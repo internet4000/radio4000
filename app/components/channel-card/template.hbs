@@ -13,7 +13,7 @@
 	}}
 </div>
 <p class="ChannelCard-body">
-	{{do-truncate channel.body 200}}
+	{{link-hashtags (do-truncate channel.body 200) channel.slug}}
 </p>
 
 {{#unless channel.canEdit}}
