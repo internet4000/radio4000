@@ -11,7 +11,7 @@ export function linkHashtags([string, slug]) {
 	}
 
 	let stringWithLinks = string
-		.replace(hashtagRegex, `$1<a href="${slug}/tracks?search=$2">$2</a>`)
+		.replace(hashtagRegex, `$1<a href="/${slug}/tracks?search=$2">$2</a>`)
 
 	// Ember doesn't understand # in the URL. Replacing "#" with "%23" works.
 	// link = encodeURIComponent(link)

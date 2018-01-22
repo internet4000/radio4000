@@ -15,5 +15,5 @@ test('without slug it returns original string', function(assert) {
 
 test('with slug it transforms hashtags to links', function(assert) {
 	const result = linkHashtags(['1234 #cool', '200ok'])
-	assert.equal(result.string, '1234 <a href="200ok/tracks?search=%23cool">#cool</a>')
+	assert.equal(result.string, '1234 <a href="/200ok/tracks?search=%23cool">#cool</a>')
 })
