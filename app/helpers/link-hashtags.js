@@ -1,4 +1,6 @@
-import { helper } from '@ember/component/helper';
+import Ember from 'ember'
+import {helper} from '@ember/component/helper'
+import {htmlSafe} from '@ember/string'
 
 // https://regex101.com/r/pJ4wC5/1
 const hashtagRegex = /(^|\s)(#[a-z\d-]+)/ig
@@ -8,16 +10,18 @@ export function linkHashtags([string, slug]) {
 		return string
 	}
 
-	let href = `/${slug}/tracks?search=$2`
-	let link = string.replace(hashtagRegex, `$1<a href="${href}">$2</a>`)
-
-	// link = encodeURIComponent(link)
+	let stringWithLinks = string
+		.replace(hashtagRegex, `$1<a href="${slug}/tracks?search=$2">$2</a>`)
 
 	// Ember doesn't understand # in the URL. Replacing "#" with "%23" works.
-	link = link.replace(/(=#)/gi, '=%23')
+	// link = encodeURIComponent(link)
+	stringWithLinks = stringWithLinks.replace(/(=#)/gi, '=%23')
 
-	return link
+	// Make sure result is html safe.
+	Ember.Handlebars.Utils.escapeExpression(stringWithLinks)
+
+	// And "mark" it as safe.
+	return htmlSafe(stringWithLinks)
 }
 
 export default helper(linkHashtags)
-
