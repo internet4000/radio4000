@@ -1,6 +1,6 @@
 import Ember from 'ember'
 import {helper} from '@ember/component/helper'
-import {htmlSafe} from '@ember/string'
+import {htmlSafe, isHTMLSafe} from '@ember/string'
 
 // https://regex101.com/r/pJ4wC5/1
 const hashtagRegex = /(^|\s)(#[a-z\d-]+)/ig
@@ -8,6 +8,11 @@ const hashtagRegex = /(^|\s)(#[a-z\d-]+)/ig
 export function linkHashtags([string, slug]) {
 	if (!slug) {
 		return string
+	}
+
+	// Support use cases like {{link-hashtags (do-truncate "my-string" 20)}}
+	if (isHTMLSafe(string)) {
+		string = string.string
 	}
 
 	let stringWithLinks = string
