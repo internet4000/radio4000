@@ -2,6 +2,10 @@
 	display: flex;
 }
 
+.Loader img {
+	width: 3rem;
+}
+
 .Loader-text {
 	font-size: 1rem;
 	color: $dark;
@@ -33,6 +37,7 @@
 	animation: animate-rotate 1333ms linear infinite;
 }
 
+// Used for async-buttons to indicate that it's loading/working
 .PulseLoader {
 	display: inline-block;
 	width: 1.5em;
