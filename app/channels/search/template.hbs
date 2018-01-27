@@ -76,15 +76,9 @@
 					<p>
 						Each radio is <a href="{{href-to 'about'}}">curated by one human</a>. Listen, discover someone's personal selection.<br/>
 					</p>
-					<p class="BtnGroup--full BtnGroup--vertical">
+					<p>
 						{{play-random-channel class="Btn--large"}}
 					</p>
-					{{#unless session.currentUser.channels.firstObject}}
-						<p>
-							Feel like sharing yours?<br>
-							<a href="{{href-to 'auth.signup'}}">Create your own radio</a>.
-						</p>
-					{{/unless}}
 				</div>
 
 				{{#if filteredChannels}}
