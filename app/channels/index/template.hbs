@@ -10,8 +10,13 @@
 
 			<div class="Grid">
 				<div class="Grid-cell">
-					<p>Welcome! Start your journey by listening to one of the radio channels here.</p>
-					<p class="BtnGroup BtnGroup--vertical">
+					<h3>Welcome to Radio4000!</h3>
+					{{#if session.currentUser.channels.firstObject}}
+						<p>Start your journey by listening to one of the radio channels here.</p>
+					{{else}}
+						<p>Start your journey by listening to one of the radio channels here, <a href={{href-to "about"}}>learn more</a> or <a href={{href-to "auth.signup"}}>create my radio</a>.</p>
+					{{/if}}
+					<p>
 						{{play-random-channel class="Btn--full"}}
 					</p>
 				</div>
