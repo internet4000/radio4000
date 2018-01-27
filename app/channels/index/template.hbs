@@ -11,11 +11,9 @@
 			<div class="Grid">
 				<div class="Grid-cell">
 					<p>Welcome! Start your journey by listening to one of the radio channels here.</p>
-					<p>{{play-random-channel class="Btn--full"}}</p>
-					{{#unless session.currentUser.channels.firstObject}}
-						<p class="Muted">With Radio4000 you have the tools to create and maintain a radio with all your favorite tracks from YouTube.</p>
-						<p><a href="{{href-to 'auth.signup'}}" class="Btn Btn--full">Create my radio</a></p>
-					{{/unless}}
+					<p class="BtnGroup BtnGroup--vertical">
+						{{play-random-channel class="Btn--full"}}
+					</p>
 				</div>
 
 				{{#each model as |channel|}}
