@@ -1,17 +1,48 @@
 <div class="Sections">
+	<section class="Manchet">
+		<h1>Sign up <small>to Radio4000</small></h1>
+		<p>Create an account to start with your radio</p>
+	</section>
 	<section class="Section">
-		<header class="Manchet">
-			<h1>Sign up<small> to Radio4000</small></h1>
-			<p>
-				Start a radio <a href="{{href-to 'about.intro'}}" class="Muted" title="Read more about Radio4000, we prepared you an introduction">(what?)</a> and interact with others.
-			</p>
-		</header>
+		<div class="Grid">
+			<div class="Grid-cell Grid-cell--double">
+				<div class="Container Container--small">
+					{{user-signup onSignup=(action "signup")}}
+				</div>
+			</div>
+			<div class="Grid-cell Grid-cell--double">
+				<p>
+					<em>"Alright, but why should I start a radio?!"</em>
+				</p>
+				<ul>
+					<li>Radio4000 is open to everyone, no special skills or knowledge required</li>
+					<li>Create and manage your music selection in your radio</li>
+					<li>Quickly add music to your radio, directly from YouTube videos</li>
+					<li>Organise your music with #hashtags, dig deeper to understand your discoveries</li>
+					<li>Play custom selections of music in any radio (anyone can suggest their favorite selections)</li>
+					<li>Share and embed every radio, anywhere online</li>
+				</ul>
+
+				<p>More reasons?</p>
+				<ul>
+					<li>Start a peaceful experiment, Radio4000 is designed to be non-intrusive software. There are no notifications here ({{link-to 'read more in the introduction' 'about.intro'}})</li>
+					<li>It's free and <a href="https://github.com/internet4000/radio4000" target="_blank" rel="noopener">open source</a></li>
+					<li>Your radio is as anonymous as you want it, it is about music</li>
+					<li>Discover and support underground and upcoming artists in the context of music you like</li>
+					<li>Explore other people's selection, we're already many sharing our favorite tunes</li>
+					<li>Favorite and follow other radio channels</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<section class="Section">
 		<div class="Container">
-			{{user-signup onSignup=(action "signup")}}
-			<br>
 			<p>
-				Already have one? <a href="{{href-to 'auth.login'}}">Log in</a>.
+				Already have a radio? <a href="{{href-to 'auth.login'}}">Log in</a>.<br>
+				Have a question? <a href="{{href-to 'about.contact'}}">Contact us</a>.
 			</p>
 		</div>
 	</section>
+
 </div>

@@ -1,5 +1,5 @@
 <form {{action "submit" "password" email password on="submit"}} class="Form">
-	{{#form-group model=this valuePath="email" label="Email" as |v|}}
+	{{#form-group model=this valuePath="email" label="Sign up with your e-mail addresss" as |v|}}
 		{{focus-input
 			type="email"
 			value=v
@@ -21,12 +21,21 @@
 </form>
 
 <br>
-<p>Or sign up with:</p>
-<p class="BtnGroup">
-	<button class="Btn Btn--large" title="Sign up with Google" {{action "submit" "google"}}>
-		Google
+<p>
+	Alternatively you can sign up with your:<br>
+	<button
+		class="Btn Btn--text Btn--large"
+		title="Sign up wtih your Google account"
+		{{action "submit" "google"}}
+	>
+		<span style="color: #4285f4;">G</span><span style="color: #ea4335;">o</span><span style="color: #fbbc05;">o</span><span style="color: #4285f4;">g</span><span style="color: #34a853;">l</span><span style="color: #ea4335;">e</span>&nbsp; account
 	</button>
-	<button class="Btn Btn--large" title="Sign up with Facebook" {{action "submit" "facebook"}}>
-		Facebook
+	or
+	<button
+		class="Btn Btn--text Btn--large"
+		title="Signup with your Facebook account"
+		{{action "submit" "facebook"}}
+	>
+		<span style="color: #365899">Facebook</span>&nbsp;account
 	</button>
 </p>
