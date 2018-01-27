@@ -4,7 +4,7 @@ The main front-end web application for Radio4000, CMS for music libraries &rarr;
 
 ## How to develop
 
-Install `then clone this project and install it's dependencies:
+Clone repository, install dependencies and start a development server:
 
 ```
 git clone git@gitlab.com:internet4000/radio4000.git
