@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import {task} from 'ember-concurrency';
+import {task, timeout} from 'ember-concurrency';
 import {getRandomIndex} from 'radio4000/utils/random-helpers';
 import {coverImg} from 'radio4000/helpers/cover-img';
 
@@ -57,6 +57,10 @@ export default Service.extend({
 			return
 		}
 		this.playTrack(tracks.get('lastObject'))
+
+		// After the above task finishes, <radio4000-player> still
+		// needs to do stuff. We wait because it feels nicer #ux
+		yield timeout(250)
 	}).drop(),
 
 	/**

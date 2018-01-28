@@ -1,5 +1,5 @@
 <section class="Section">
-	{{#unless model.featured}}
+	{{#unless model}}
 		<div class="Container">
 			{{#is-loading}}
 				Loading featured radio channels…
@@ -7,31 +7,27 @@
 		</div>
 	{{else}}
 		<div class="Container Container--full">
-			{{#list-manipulation list=model.featured as |manipulatedList|}}
-				<div class="Grid">
-					<div class="Grid-cell">
-						<p>Hello and welcome!</p>
-						<p>You can start your journey by listening to one of the radio channels on this page.</p>
-						<p>Otherwise, let's explore!</p>
-						<p>
-						{{#btn-group class="BtnGroup--full BtnGroup--vertical"}}
-							{{play-random-channel class="Btn--large"}}
-							<a
-								class="Btn Btn--text"
-								href="{{href-to 'about.intro'}}"
-								title="Have you read the manifesto?">
-								What is Radio4000?
-							</a>
-						{{/btn-group}}
-						</p>
-					</div>
-					{{#each manipulatedList as |channel|}}
-						<div class="Grid-cell">
-							{{channel-card channel=channel}}
-						</div>
-					{{/each}}
+
+			<div class="Grid">
+				<div class="Grid-cell">
+					<h3>Welcome to Radio4000!</h3>
+					{{#if session.isAuthenticated}}
+						<p>Start your journey by listening to one of the radio channels here.</p>
+					{{else}}
+						<p>Start your journey by listening to one of the radio channels here, <a href={{href-to "about"}}>learn more</a> or <a href={{href-to "auth.signup"}}>create my radio</a>.</p>
+					{{/if}}
+					<p>
+						{{play-random-channel class="Btn--full"}}
+					</p>
 				</div>
-			{{/list-manipulation}}
+
+				{{#each model as |channel|}}
+					<div class="Grid-cell">
+						{{channel-card channel=channel}}
+					</div>
+				{{/each}}
+			</div>
+
 		</div>
 	{{/unless}}
 </section>

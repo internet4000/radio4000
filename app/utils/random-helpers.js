@@ -25,3 +25,8 @@ export function shuffleArray(array) {
 	}
 	return array;
 }
+
+export function pickRandom(arr, amount) {
+	const shuffled = shuffleArray(arr)
+	return shuffled.slice(0, amount)
+}
