@@ -44,6 +44,10 @@ module.exports = function(environment) {
 		flashMessageDefaults: {
 			timeout: 3000,
 			extendedTimeout: 1000
+		},
+
+		pageTitle: {
+			prepend: true
 		}
 	};
 
