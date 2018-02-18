@@ -1,33 +1,37 @@
 <section class="Section">
-	{{#unless model}}
-		<div class="Container">
-			{{#is-loading}}
-				Loading featured radio channels…
-			{{/is-loading}}
-		</div>
-	{{else}}
-		<div class="Container Container--full">
+	<div class="Container Container--full">
+		<div class="Grid">
 
-			<div class="Grid">
-				<div class="Grid-cell">
-					<h3>Welcome to Radio4000!</h3>
-					{{#if session.isAuthenticated}}
-						<p>Start your journey by listening to one of the radio channels here.</p>
-					{{else}}
-						<p>Start your journey by listening to one of the radio channels here, <a href={{href-to "about"}}>learn more</a> or <a href={{href-to "auth.signup"}}>create my radio</a>.</p>
-					{{/if}}
-					<p>
-						{{play-random-channel class="Btn--full"}}
-					</p>
-				</div>
+			<div class="Grid-cell">
+				<h3>Welcome to Radio4000!</h3>
+				{{#if session.isAuthenticated}}
+					<p>Start your journey by listening to one of the radio channels here.</p>
+				{{else}}
+					<p>Start your journey by listening to one of the radio channels here, <a href={{href-to "about"}}>learn more</a> or <a href={{href-to "auth.signup"}}>create my radio</a>.</p>
+				{{/if}}
+				<p>
+					{{play-random-channel class="Btn--full"}}
+				</p>
+				<p>
+					<button {{action 'refreshSelection'}} class="Btn Btn--full">⟳ Reload selection</button>
+				</p>
+			</div>
 
+			{{#if model}}
 				{{#each model as |channel|}}
 					<div class="Grid-cell">
 						{{channel-card channel=channel}}
 					</div>
 				{{/each}}
-			</div>
+			{{else}}
+				<div class="Grid-cell">
+					{{#is-loading}}
+						Loading featured radio channels…
+					{{/is-loading}}
+				</div>
+			{{/if}}
 
 		</div>
-	{{/unless}}
+
+	</div>
 </section>

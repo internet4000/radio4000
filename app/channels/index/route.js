@@ -49,5 +49,12 @@ export default Route.extend({
 	getRandomFavorites(channel) {
 		const ids = channel.hasMany('favoriteChannels').ids()
 		return pickRandom(ids, get(this, 'maxFavoritesPerChannel'))
+	},
+
+	actions: {
+		refreshSelection() {
+			// refresh the model
+			this.refresh();
+		}
 	}
 })
