@@ -26,10 +26,6 @@ export default Route.extend({
 		}
 	},
 
-	afterModel() {
-		document.title = 'New - Radio4000';
-	},
-
 	// Don't render into the channels outlet.
 	// This avoids the tabs we have on channels.hbs.
 	renderTemplate() {
@@ -44,8 +40,5 @@ export default Route.extend({
 			'controller.title': '',
 			'controller.didCreate': false
 		});
-
-		// Reset document title.
-		document.title = 'Radio4000';
 	}
 });

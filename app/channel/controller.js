@@ -1,8 +1,9 @@
 import Ember from 'ember';
+import resetScroll from 'radio4000/mixins/reset-scroll'
 
 const {Controller, get, inject, computed} = Ember
 
-export default Controller.extend({
+export default Controller.extend(resetScroll, {
 	queryParams: ['editTrack'],
 	player: inject.service(),
 

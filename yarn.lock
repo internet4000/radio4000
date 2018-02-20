@@ -2657,7 +2657,7 @@ ember-cli-babel@^5.1.6, ember-cli-babel@^5.1.7:
     ember-cli-version-checker "^1.0.2"
     resolve "^1.1.2"
 
-ember-cli-babel@^6.0.0:
+ember-cli-babel@^6.0.0, ember-cli-babel@^6.7.1:
   version "6.11.0"
   resolved "https://registry.yarnpkg.com/ember-cli-babel/-/ember-cli-babel-6.11.0.tgz#79cb184bac3c05bfe181ddc306bac100ab1f9493"
   dependencies:
@@ -3242,6 +3242,14 @@ ember-modal-dialog@^2.3.0:
     ember-cli-htmlbars "^2.0.1"
     ember-ignore-children-helper "^1.0.0"
     ember-wormhole "^0.5.1"
+
+ember-page-title@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/ember-page-title/-/ember-page-title-4.0.3.tgz#0bb83c4519a5c79ed04a167bba3160884c198f86"
+  dependencies:
+    ember-cli-babel "^6.7.1"
+    ember-cli-head "^0.4.0"
+    ember-cli-htmlbars "^2.0.1"
 
 ember-qunit@^2.2.0:
   version "2.2.0"
