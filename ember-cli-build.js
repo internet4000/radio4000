@@ -1,10 +1,9 @@
-/* eslint-env node */
+'use strict';
+
 const EmberApp = require('ember-cli/lib/broccoli/ember-app')
 const autoprefixer = require('autoprefixer')
 const atImport = require('postcss-import')
 const targets = require('./config/targets')
-
-'use strict';
 
 module.exports = function (defaults) {
 	let app = new EmberApp(defaults, {
