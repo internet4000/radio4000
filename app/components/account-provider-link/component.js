@@ -9,11 +9,15 @@ export default Component.extend({
 
 	extractProvider(providerId) {
 		const auth = firebase.auth;
+
 		if (providerId === 'google.com') {
 			return new auth.GoogleAuthProvider();
-		} else if (providerId === 'facebook.com') {
+		}
+
+		if (providerId === 'facebook.com') {
 			return new auth.FacebookAuthProvider();
 		}
+
 		throw new Error('Provider is not supported for extraction');
 	},
 

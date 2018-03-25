@@ -52,7 +52,7 @@ export default Controller.extend({
 				},
 				body: JSON.stringify(charge)
 			}).then(response => {
-				console.log('@processStripeToken:response', response);
+				// console.log('@processStripeToken:response', response);
 
 				if (response.status > 299) {
 					throw Error(response);
@@ -63,13 +63,12 @@ export default Controller.extend({
 					message: '(2/2) - Payment success. Channel upgraded. Thank you!',
 					sticky: true
 				});
-			}).catch(error => {
+			}).catch(() => {
 				messages.add({
 					type: 'alert',
 					message: '(2/2) - Payment failed (on the server). Card was not charged.',
 					sticky: true
 				});
-				console.log(error);
 			});
 		}
 	}
