@@ -25,7 +25,8 @@ module.exports = {
 		'space-before-function-paren': 'off',
 		'ember/closure-actions': 'warn',
 		'ember/new-module-imports': 'off',
-		'ember/no-on-calls-in-components': 'warn'
+		'ember/no-on-calls-in-components': 'warn',
+		'ember/use-brace-expansion': 'warn'
 	},
 	overrides: [
 		// node files
