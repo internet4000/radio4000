@@ -11,8 +11,8 @@
   },
   "devDependencies": {
     "autoprefixer": "^7.1.6",
-    "broccoli-asset-rev": "^2.4.5",
-    "ember-awesome-macros": "^0.40.0",
+    "broccoli-asset-rev": "^2.7.0",
+    "ember-awesome-macros": "^0.41.0",
     "ember-browserify": "^1.1.11",
     "ember-cli": "~2.18.2",
     "ember-cli-app-version": "^3.1.0",
@@ -29,7 +29,7 @@
     "ember-cli-shims": "^1.2.0",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-stripe": "^1.0.1",
-    "ember-cli-uglify": "^2.0.0",
+    "ember-cli-uglify": "^2.1.0",
     "ember-concurrency": "^0.8.12",
     "ember-cp-validations": "^3.5.0",
     "ember-data": "~2.18.0",
@@ -55,15 +55,15 @@
   "dependencies": {
     "date-fns": "^1.29.0",
     "ember-cli-concat": "^1.3.0",
-    "ember-fetch": "^3.4.3",
+    "ember-fetch": "^3.4.5",
     "ember-href-to": "^1.15.1",
-    "ember-jets": "^1.2.2",
-    "emberfire": "^2.0.8",
+    "ember-jets": "^1.3.0",
+    "emberfire": "^2.0.10",
     "js-cookie": "^2.2.0",
     "lazysizes": "^4.0.1",
-    "radio4000-player": "^0.4.4",
+    "radio4000-player": "^0.4.6",
     "suitcss-base": "^3.0.0",
-    "torii": "^0.9.3",
+    "torii": "^0.10.1",
     "youtube-regex": "^1.0.4"
   }
 }
