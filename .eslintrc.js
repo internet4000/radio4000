@@ -23,7 +23,9 @@ module.exports = {
 		'object-curly-spacing': 'off',
 		'semi': 'off',
 		'space-before-function-paren': 'off',
-		'ember/new-module-imports': 'off'
+		'ember/closure-actions': 'warn',
+		'ember/new-module-imports': 'off',
+		'ember/no-on-calls-in-components': 'warn'
 	},
 	overrides: [
 		// node files
