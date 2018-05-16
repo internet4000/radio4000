@@ -1,5 +1,5 @@
-import Route from 'radio4000/channels/index/route'
+import ChannelsIndexRoute from 'radio4000/channels/index/route'
 
 // Reuse the "random featured radios" model
 
-export default Route.extend({})
+export default ChannelsIndexRoute.extend({})
