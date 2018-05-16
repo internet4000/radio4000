@@ -35,7 +35,7 @@
     "ember-data": "~2.18.0",
     "ember-export-application-global": "^2.0.0",
     "ember-keyboard": "^2.3.0",
-    "ember-leaflet": "^3.0.12",
+    "ember-leaflet": "^3.0.14",
     "ember-load-initializers": "^1.0.0",
     "ember-modal-dialog": "^2.3.0",
     "ember-page-title": "^4.0.3",

@@ -2997,7 +2997,7 @@ ember-cli-valid-component-name@^1.0.0:
   dependencies:
     silent-error "^1.0.0"
 
-ember-cli-version-checker@^1.0.2, ember-cli-version-checker@^1.2.0, ember-cli-version-checker@^1.3.1:
+ember-cli-version-checker@^1.0.2, ember-cli-version-checker@^1.2.0:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/ember-cli-version-checker/-/ember-cli-version-checker-1.3.1.tgz#0bc2d134c830142da64bf9627a0eded10b61ae72"
   dependencies:
@@ -3099,14 +3099,13 @@ ember-cli@~2.18.2:
     walk-sync "^0.3.0"
     yam "0.0.22"
 
-ember-composability-tools@0.0.8:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/ember-composability-tools/-/ember-composability-tools-0.0.8.tgz#9122e743c0aed759da7f20f3d5a9711a51bac619"
+ember-composability-tools@^0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/ember-composability-tools/-/ember-composability-tools-0.0.9.tgz#b5e790cc337c6546b55fe2a793ca6da3791916bb"
   dependencies:
-    ember-cli-babel "^5.1.6"
+    ember-cli-babel "^6.10.0"
     ember-cli-htmlbars "^1.0.3"
-    ember-getowner-polyfill "1.1.1"
-    ember-wormhole "0.5.1"
+    ember-wormhole "0.5.3"
 
 ember-concurrency@^0.8.12:
   version "0.8.17"
@@ -3176,19 +3175,12 @@ ember-fetch@^3.4.5:
     node-fetch "^2.0.0-alpha.9"
     whatwg-fetch "^2.0.3"
 
-ember-get-config@0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/ember-get-config/-/ember-get-config-0.2.1.tgz#a1325cceefcb4534c78fc6ccb2be87a3feda6817"
+ember-get-config@^0.2.3:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/ember-get-config/-/ember-get-config-0.2.4.tgz#118492a2a03d73e46004ed777928942021fe1ecd"
   dependencies:
     broccoli-file-creator "^1.1.1"
-    ember-cli-babel "^5.1.6"
-
-ember-getowner-polyfill@1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/ember-getowner-polyfill/-/ember-getowner-polyfill-1.1.1.tgz#6bb6603827dd2f8f33be2434570a86cc9e5273ff"
-  dependencies:
-    ember-cli-babel "^5.1.6"
-    ember-cli-version-checker "^1.2.0"
+    ember-cli-babel "^6.3.0"
 
 ember-href-to@^1.15.1:
   version "1.15.1"
@@ -3215,6 +3207,12 @@ ember-invoke-action@1.4.0:
   dependencies:
     ember-cli-babel "^5.1.6"
 
+ember-invoke-action@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/ember-invoke-action/-/ember-invoke-action-1.5.0.tgz#0370f187f39f22d54ddd039cd01aa7e685edbbec"
+  dependencies:
+    ember-cli-babel "^6.6.0"
+
 ember-jets@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/ember-jets/-/ember-jets-1.3.0.tgz#5fc1938345b41e9723a0342b5f662c1c2c3d2009"
@@ -3229,20 +3227,21 @@ ember-keyboard@^2.3.0:
   dependencies:
     ember-cli-babel "^6.8.2"
 
-ember-leaflet@^3.0.12:
-  version "3.0.13"
-  resolved "https://registry.yarnpkg.com/ember-leaflet/-/ember-leaflet-3.0.13.tgz#9e9d96e0a501bc713142e539399f9f182c09e0df"
+ember-leaflet@^3.0.14:
+  version "3.0.14"
+  resolved "https://registry.yarnpkg.com/ember-leaflet/-/ember-leaflet-3.0.14.tgz#64baac89e3f327625e143956f3a287e38deaf037"
   dependencies:
     broccoli-funnel "^1.2.0"
     broccoli-merge-trees "^1.2.4"
     ember-cli-babel "^6.10.0"
-    ember-cli-htmlbars "^1.1.1"
-    ember-cli-version-checker "^1.3.1"
-    ember-composability-tools "0.0.8"
-    ember-get-config "0.2.1"
-    ember-invoke-action "1.4.0"
+    ember-cli-htmlbars "^2.0.1"
+    ember-cli-version-checker "^2.1.0"
+    ember-composability-tools "^0.0.9"
+    ember-get-config "^0.2.3"
+    ember-invoke-action "^1.5.0"
     ember-wormhole "^0.5.2"
     fastboot-transform "^0.1.1"
+    resolve "^1.7.0"
 
 ember-load-initializers@^1.0.0:
   version "1.0.0"
@@ -3409,12 +3408,12 @@ ember-weakmap@^3.0.0:
     debug "^3.1.0"
     ember-cli-babel "^6.6.0"
 
-ember-wormhole@0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/ember-wormhole/-/ember-wormhole-0.5.1.tgz#f2a6fff13b1c037ffa83b2c9291d8b5978878e5b"
+ember-wormhole@0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/ember-wormhole/-/ember-wormhole-0.5.3.tgz#441fdd7729a3b5eed3b0103db84f0ab880ac7f87"
   dependencies:
-    ember-cli-babel "^5.1.6"
-    ember-cli-htmlbars "^1.0.3"
+    ember-cli-babel "^6.8.2"
+    ember-cli-htmlbars "^2.0.1"
 
 ember-wormhole@^0.5.1, ember-wormhole@^0.5.2:
   version "0.5.4"
@@ -7315,6 +7314,12 @@ resolve@1.5.0:
 resolve@^1.1.2, resolve@^1.1.3, resolve@^1.1.4, resolve@^1.1.6, resolve@^1.1.7, resolve@^1.3.0, resolve@^1.3.3, resolve@^1.4.0, resolve@^1.5.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.7.0.tgz#2bdf5374811207285df0df652b78f118ab8f3c5e"
+  dependencies:
+    path-parse "^1.0.5"
+
+resolve@^1.7.0:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.7.1.tgz#aadd656374fd298aee895bc026b8297418677fd3"
   dependencies:
     path-parse "^1.0.5"
 
