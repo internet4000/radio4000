@@ -12,7 +12,6 @@ export default Route.extend({
 
 	model() {
 		return this.findFeatured().then(featured => {
-
 			// Find favorites from the featured channels
 			let favorites = featured
 				.map(channel => this.getRandomFavorites(channel))
