@@ -12,26 +12,20 @@ export default Route.extend({
 
 	model() {
 		return this.findFeatured().then(featured => {
-			// console.log({featured: featured.map(f => f.get('title'))})
-
 			// Find favorites from the featured channels
 			let favorites = featured
 				.map(channel => this.getRandomFavorites(channel))
 				.reduce((prev, curr) => prev.concat(curr))
 				.uniq()
-			// Turn them into requests for their channel model
-			// favorites = favorites.map(id => this.store.findRecord('channel', id))
-			// console.log({favorites});
 
 			// Merge featured + favorites, remove duplicates and randomize.
 			let merged = featured.toArray().map(f => f.id).concat(favorites)
-			// console.log({merged})
 			merged = merged.uniq()
-			// console.log({mergedUnique: merged})
 
 			// Limit how many and make it random.
 			const result = pickRandom(merged, get(this, 'maxTotal'))
-			// console.log({result});
+
+			// Return an array of promises to find the records
 			return result.map(id => this.store.findRecord('channel', id))
 		})
 	},
