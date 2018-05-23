@@ -6,6 +6,6 @@ export default UserChannelRoute.extend(resetScroll, {
 		this.super(...arguments)
 		let parsedUrl = new URL(window.location.href)
 		let videoUrl = parsedUrl.searchParams.get('url')
-		controller.st('url', videoUrl)
+		controller.set('url', videoUrl)
 	}
 })
