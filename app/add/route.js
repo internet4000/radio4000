@@ -8,8 +8,8 @@ export default UserChannelRoute.extend(resetScroll, {
 		// /add?url=https://www.youtube.com/watch?v=zxnJD7exFEM
 		// Ember will ignore everything after the `v=` part. So we parse
 		// the URL and set the query param manually.
-		let parsedUrl = new URL(window.location.href)
-		let videoUrl = parsedUrl.searchParams.get('url')
-		controller.set('url', videoUrl)
+		const parsedUrl = new URL(window.location.href)
+		const videoUrl = parsedUrl.searchParams.get('url')
+		if (videoUrl) controller.set('url', videoUrl)
 	}
 })
