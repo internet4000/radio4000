@@ -10,6 +10,8 @@ export default UserChannelRoute.extend(resetScroll, {
 		// the URL and set the query param manually.
 		const parsedUrl = new URL(window.location.href)
 		const videoUrl = parsedUrl.searchParams.get('url')
-		if (videoUrl) controller.set('url', videoUrl)
+		if (videoUrl) {
+			controller.set('url', videoUrl)
+		}
 	}
 })
