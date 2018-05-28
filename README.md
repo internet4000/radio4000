@@ -52,8 +52,8 @@ npm install
 npm start
 ```
 
-This last command will launch the application locally, so you can find
-it in your browser at this URL: `localhost:4000`.
+The start command will launch the application locally, so you can find
+it in your browser at this URL: `http://localhost:4000`.
 
 ## Testing
 
