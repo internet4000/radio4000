@@ -52,7 +52,21 @@ npm install
 npm start
 ```
 
-By default the project will use radio4000 development database, but it will work
+This last command will launch the application locally, so you can find
+it in your browser at this URL: `localhost:4000`.
+
+## Testing
+
+Run `yarn test` for a single test or `yarn ember test --server` to start a test server.
+
+## Backend
+
+We use Google's Firebase as our database and API, as for
+authentication (see next section).
+
+The security rules, deciding what can be done on each endpoint are in the [radio4000-api](https://github.com/internet4000/radio4000-api) repository.
+
+By default this repository will use the radio4000 development database, but it will work
 with any Firebase database instance.
 
 To run your own firebase instance, in the file
@@ -60,17 +74,38 @@ To run your own firebase instance, in the file
 `ENV.firebase.databaseURL` to the URL of your instance as provided by
 Firebase. 
 
-For authentication to work, also update the `authDomain` to the URL
-provided by Firebase after having activated it your Firebase's project
-authentication settings panel.
+Ember Data is used for the local data store, and also to build the API calls.
+[Emberfire](https://github.com/firebase/emberfire) is used for its
+adapter and serializers to our Firebase database.
+
+The YouTube API can be used to fetch video titles when you paste in a
+URL. The API key comes from
+https://console.developers.google.com/apis/credentials?project=firebase-radio4000.
+
+## Authentication
+
+We're using a combination of [Firebase
+Authentication](https://firebase.google.com/products/auth/),
+[Torii](https://github.com/vestorly/torii) and
+[EmberFire](https://github.com/firebase/emberfire/blob/master/docs/guide/authentication.md)
+to handle authentication.
+
+For authentication to work, in the file
+`radio4000/config/environment.js` you will have to update the the key
+`ENV.firebase.authDomain` to the URL of your instance as provided by
+Firebase. For this, first activate authentication in your Firebase's
+project authentication settings panel.
 
 At the moment, authentication can be enabled with `Email and Password`,
 `Google`, `Facebook`. Note that social providers authentication with
 Google and Facebook will be shutdown in future versions.
 
-## Testing
+To access authentication in the Ember application, all routes and
+controllers come with the `session` service already injected.
 
-Run `yarn test` for a single test or `yarn ember test --server` to start a test server.
+To get the current user (model), do `this.get('session.currentUser')`. 
+
+For more on auth, check the folders `app/auth` and `app/torii-adapters` as well as the above links.
 
 ## Deployment
 
@@ -80,17 +115,3 @@ The site is hosted on netlify.com. Netlify will automatically deploy each branch
 - The `master` branch to https://master--radio4000.netlify.com
 
 See [contributing.md](https://github.com/internet4000/radio4000/blob/master/CONTRIBUTING.md) for more.
-
-## Backend
-
-We use Firebase as our database and API. It's connected through Ember Data and [Emberfire](https://github.com/firebase/emberfire). The security rules are in the [radio4000-api](https://github.com/internet4000/radio4000-api) repository.
-
-We use the YouTube API to fetch video titles when you paste in a URL. The API key comes from https://console.developers.google.com/apis/credentials?project=firebase-radio4000.
-
-## Authentication
-
-We're using a combination of [Firebase Authentication](https://firebase.google.com/products/auth/), [Torii](https://github.com/vestorly/torii) and [EmberFire](https://github.com/firebase/emberfire/blob/master/docs/guide/authentication.md) to handle authentication.
-
-All routes and controllers come with the `session` service already injected. To get the current user (model), do `this.get('session.currentUser')`. 
-
-For more on auth, check the folders `app/auth` and `app/torii-adapters` as well as the above links.
