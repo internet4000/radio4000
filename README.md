@@ -11,7 +11,7 @@ project on the Github issues, and on the matrix chat
 
 This project aims at development and discussions on building a fair
 and open access ecosystem of tools and services; for music and
-cultural goods to be globaly accessed and explored.
+cultural goods to be globally accessed and explored.
 
 Radio4000 goals and objectives are defined in its
 [manifest](https://github.com/internet4000/publications/blob/master/radio4000-manifest.md).
@@ -33,10 +33,10 @@ is written using the framework vue.js.
 
 ## Development
 
-Clone repository, install dependencies and start a development server:
+Clone this repository, install dependencies and start a development server:
 
 ```
-git clone git@gitlab.com:internet4000/radio4000.git
+git clone git@github.com:internet4000/radio4000.git
 cd radio4000
 yarn
 yarn start
@@ -46,14 +46,14 @@ Note: We recommend `yarn` to ensure you get exact dependencies. But
 you can also use `npm` this way:
 
 ```
-git clone git@gitlab.com:internet4000/radio4000.git
+git clone git@github.com:internet4000/radio4000.git
 cd radio4000
 npm install
 npm start
 ```
 
 By default the project will use radio4000 development database, but it will work
-Firebase instance can be used.
+with any Firebase database instance.
 
 To run your own firebase instance, in the file
 `radio4000/config/environment.js` you will have to update the the key
@@ -64,7 +64,7 @@ For authentication to work, also update the `authDomain` to the URL
 provided by Firebase after having activated it your Firebase's project
 authentication settings panel.
 
-At the moment, authentication can be enable with `Email and Password`,
+At the moment, authentication can be enabled with `Email and Password`,
 `Google`, `Facebook`. Note that social providers authentication with
 Google and Facebook will be shutdown in future versions.
 
