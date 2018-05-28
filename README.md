@@ -1,8 +1,37 @@
 # Radio4000
 
-The main front-end web application for Radio4000, CMS for music libraries &rarr; https://radio4000.com
+This project is the main front-end web application for Radio4000, CMS for music
+libraries &rarr; https://radio4000.com.
 
-## How to develop
+Join the discussion about the evolution and the development of this
+project on the Github issues, and on the matrix chat
+[radio4000:matrix.org](https://riot.im/app/#/group/+radio4000:matrix.org).
+
+## Presentation
+
+This project aims at development and discussions on building a fair
+and open access ecosystem of tools and services; for music and
+cultural goods to be globaly accessed and explored.
+
+Radio4000 goals and objectives are defined in its
+[manifest](https://github.com/internet4000/publications/blob/master/radio4000-manifest.md).
+
+The application in this repository is written in Javascript, using the frontend framework
+[Ember.js](https://emberjs.com) for the client part of the
+application.
+
+The server part, is for now using Google's
+Firebase, and the code can
+be found on the [radio4000-api](https://github.com/internet4000/radio4000-api)
+repository. The plan is to move everything to libre software,
+self-hosted, with decentralization in mind. It is not there yet and
+would love some assistance in architecture and development.
+
+The music player used by this project,
+[radio4000-player](https://github.com/internet4000/radio4000-player),
+is written using the framework vue.js.
+
+## Development
 
 Clone repository, install dependencies and start a development server:
 
@@ -13,7 +42,31 @@ yarn
 yarn start
 ```
 
-> Note: We recommend `yarn` to ensure you get exact dependencies. But you can also use `npm`. 
+Note: We recommend `yarn` to ensure you get exact dependencies. But
+you can also use `npm` this way:
+
+```
+git clone git@gitlab.com:internet4000/radio4000.git
+cd radio4000
+npm install
+npm start
+```
+
+By default the project will use radio4000 development database, but it will work
+Firebase instance can be used.
+
+To run your own firebase instance, in the file
+`radio4000/config/environment.js` you will have to update the the key
+`ENV.firebase.databaseURL` to the URL of your instance as provided by
+Firebase. 
+
+For authentication to work, also update the `authDomain` to the URL
+provided by Firebase after having activated it your Firebase's project
+authentication settings panel.
+
+At the moment, authentication can be enable with `Email and Password`,
+`Google`, `Facebook`. Note that social providers authentication with
+Google and Facebook will be shutdown in future versions.
 
 ## Testing
 
