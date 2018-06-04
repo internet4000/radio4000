@@ -1,12 +1,14 @@
-import Ember from 'ember'
+import Controller from '@ember/controller';
 import { task } from 'ember-concurrency'
 import clean from 'radio4000/utils/clean'
 import ValidateSlug from 'radio4000/mixins/validate-slug'
+import Ember from 'ember'
+import {get, set} from '@ember/object'
 
-const { Controller, debug, get, set } = Ember
+const { debug } = Ember
 
 export default Controller.extend(ValidateSlug, {
-	// Used to cache the initial slug. Comes from the route's setupController.
+	// Used to cache the initial slug  Comes from the route's setupController.
 	initialSlug: undefined,
 
 	// Props is an optional object with changes.
