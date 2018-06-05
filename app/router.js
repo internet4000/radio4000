@@ -57,6 +57,7 @@ Router.map(function() {
 	this.route('404')
 	this.authenticatedRoute('settings', function() {
 		this.route('account')
+		this.route('map')
 	})
 })
 

@@ -1,9 +1,9 @@
+import Ember from 'ember'
 import Controller from '@ember/controller';
-import { task } from 'ember-concurrency'
+import {get, set} from '@ember/object'
+import {task} from 'ember-concurrency'
 import clean from 'radio4000/utils/clean'
 import ValidateSlug from 'radio4000/mixins/validate-slug'
-import Ember from 'ember'
-import {get, set} from '@ember/object'
 
 const { debug } = Ember
 
@@ -64,15 +64,6 @@ export default Controller.extend(ValidateSlug, {
 			throw new Error(err)
 		}
 	}).keepLatest(),
-
-	saveCoordinates: task(function * (lat, lng) {
-		const channel = get(this, 'model')
-		channel.setProperties({
-			coordinatesLatitude: lat,
-			coordinatesLongitude: lng
-		})
-		yield channel.save()
-	}).drop(),
 
 	actions: {
 		saveImage(cloudinaryId) {
