@@ -1,4 +1,5 @@
-import UserChannelRoute from 'radio4000/routes/user-channel'
+// import UserChannelRoute from 'radio4000/routes/user-channel'
+import Route from '@ember/routing/route'
 
-export default UserChannelRoute.extend({
+export default Route.extend({
 })
