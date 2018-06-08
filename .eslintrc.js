@@ -23,6 +23,7 @@ module.exports = {
 		'object-curly-spacing': 'off',
 		'semi': 'off',
 		'space-before-function-paren': 'off',
+		// Disable a few "best practices" for now
 		'ember/closure-actions': 'warn',
 		'ember/new-module-imports': 'off',
 		'ember/no-on-calls-in-components': 'warn',

@@ -1,3 +1,5 @@
+/* eslint ember/closure-actions:0 */
+
 import Ember from 'ember'
 
 const {observer} = Ember

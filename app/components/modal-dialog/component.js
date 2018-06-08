@@ -1,24 +1,27 @@
-import Ember from 'ember';
+/* eslint ember/closure-actions:0 */
 import ModalDialog from 'ember-modal-dialog/components/modal-dialog';
+import Ember from 'ember'
 
-const {on, $} = Ember;
+const {$} = Ember
 
 export default ModalDialog.extend({
 	// Change the default value to use overlay.
 	translucentOverlay: true,
 
-	// Close modal on ESC.
-	setup: on('didInsertElement', function () {
+	didInsertElement() {
 		this._super()
+
+		// Close modal on ESC.
 		$('body').on('keyup.modal-dialog', e => {
 			if (e.keyCode === 27) {
 				this.sendAction('close');
 			}
 		});
-	}),
+	},
 
 	// Remove custom events.
-	teardown: on('willDestroyElement', function () {
-		$('body').off('keyup.modal-dialog');
-	})
+	willDestroyElement() {
+		this._super()
+		$('body').off('keyup.modal-dialog')
+	}
 });
