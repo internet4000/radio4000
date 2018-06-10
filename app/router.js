@@ -44,9 +44,6 @@ Router.map(function() {
 		this.route('signup')
 		this.route('login')
 		this.route('logout', {path: '/logout'})
-		this.route('settings', function() {
-			this.route('payments')
-		})
 	})
 	this.route('styleguide', function() {
 		this.route('typography')
@@ -63,6 +60,7 @@ Router.map(function() {
 		})
 		this.route('account')
 	})
+	this.authenticatedRoute('premium');
 })
 
 export default Router
