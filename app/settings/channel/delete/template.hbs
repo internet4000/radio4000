@@ -1,0 +1,15 @@
+<section class="Section">
+	<div class="Container">
+		<h2>Delete your radio</h2>
+		<p>If you don't think you'll use Radio4000 again, you can delete your radio channel permanently. Remember, you won't be able
+			to reactivate it or retrieve anything you've added.</p>
+		<p>
+			{{#link-to "channel.delete" model.slug class="Btn Btn--danger"}} Delete radio channel {{/link-to}}
+		</p>
+		<p>
+			<small>Note, deleting your radio doesn't not delete your {{link-to "account" "settings.account"}}.</small>
+		</p>
+	</div>
+</section>
+
+{{outlet}}
