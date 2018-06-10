@@ -2,14 +2,14 @@
 {{#if currentUser.email}}
 	<section class="Section">
 		<div class="Container">
-			<h2>Email</h2>
+			{{#unless currentUser.emailVerified}}
+				<p class="Note">Your email is not yet verified; check your email for a verification link, or <a href="#" {{action "verifyEmail"}} title="Click to send a new verification email. After clicking the link in the email, please refresh this page.">send a new verification link</a>.</p>
+			{{/unless}}
 
 			<form class="ProviderAccount" {{action "updateEmail" newEmail on="submit"}}>
 				<label class="ProviderAccount-body">
+					Email
 					<p class="ProviderAccount-id">
-						{{#unless currentUser.emailVerified}}
-							Your email is not yet verified; check your email for a verification link, or <a href="#" {{action "verifyEmail"}} title="Click to send a new verification email. After clicking the link in the email, please refresh this page.">send a new verification link</a>.
-						{{/unless}}
 						{{input placeholder=currentUser.email value=newEmail}}
 					</p>
 				</label>
@@ -21,8 +21,6 @@
 
 <section class="Section">
 	<div class="Container">
-		<h2>Manage your account</h2>
-
 		<p>You can use any combination of email, google and facebook to sign in to Radio4000.</p>
 
 		{{account-provider-list
