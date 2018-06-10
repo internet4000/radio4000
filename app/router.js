@@ -61,7 +61,6 @@ Router.map(function() {
 			this.route('delete')
 			this.route('map')
 		})
-		this.route('map')
 		this.route('account')
 	})
 })
