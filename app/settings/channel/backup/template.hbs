@@ -1,0 +1,21 @@
+<section class="Section">
+	<div class="Container">
+		<p>
+			You can export and save all data from this Radio4000 channel at any time.
+			The backup comes in the form of a <em>json</em> text file. Once opened,
+			you should save and store this file on your own device.
+			Preferably in a vault under the mountains.
+		</p>
+		<p>
+			<a href="https://api.radio4000.com/backup?slug={{model.slug}}" rel="noopener" target="_blank" class="Btn">Create backup</a>
+		</p>
+		<p>
+			Note, the backup does not contain any audio files, because they are hosted on YouTube.
+			It is also safe to share, no private information is included.
+		</p>
+	</div>
+</section>
+
+{{outlet}}
+
+{{title "Backup your radio" replace=true}}

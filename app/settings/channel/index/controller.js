@@ -1,12 +1,14 @@
 import Ember from 'ember'
-import { task } from 'ember-concurrency'
+import Controller from '@ember/controller';
+import {get, set} from '@ember/object'
+import {task} from 'ember-concurrency'
 import clean from 'radio4000/utils/clean'
 import ValidateSlug from 'radio4000/mixins/validate-slug'
 
-const { Controller, debug, get, set } = Ember
+const { debug } = Ember
 
 export default Controller.extend(ValidateSlug, {
-	// Used to cache the initial slug. Comes from the route's setupController.
+	// Used to cache the initial slug  Comes from the route's setupController.
 	initialSlug: undefined,
 
 	// Props is an optional object with changes.
@@ -62,15 +64,6 @@ export default Controller.extend(ValidateSlug, {
 			throw new Error(err)
 		}
 	}).keepLatest(),
-
-	saveCoordinates: task(function * (lat, lng) {
-		const channel = get(this, 'model')
-		channel.setProperties({
-			coordinatesLatitude: lat,
-			coordinatesLongitude: lng
-		})
-		yield channel.save()
-	}).drop(),
 
 	actions: {
 		saveImage(cloudinaryId) {

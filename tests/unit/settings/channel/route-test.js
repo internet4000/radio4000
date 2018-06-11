@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('route:auth/settings/account', 'Unit | Route | auth/settings/account', {
+moduleFor('route:settings/channel', 'Unit | Route | settings/channel', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
 });

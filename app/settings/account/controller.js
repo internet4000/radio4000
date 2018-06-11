@@ -49,6 +49,7 @@ export default Controller.extend({
 		get(this, 'firebaseApp').auth().currentUser.sendEmailVerification();
 		get(this, 'flashMessages').success(`Email sent. Check your inbox to verify your email.`, {sticky: true});
 	},
+
 	handleError(err, _this) {
 		debug('@handledError');
 		let messages = get(_this, 'flashMessages');
@@ -64,6 +65,9 @@ export default Controller.extend({
 		} else if (err.code === 'auth/requires-recent-login') {
 			msg = 'This is a SENSITIVE operation, logout and login again to perform this action.';
 			options.sticky = true;
+		} else if (err.code === 'auth/cancelled-popup-request') {
+			debug(err.code, err.message)
+			return
 		} else {
 			msg = 'An error occured. Please refresh the page and try again.';
 			debug('error in accounts.');

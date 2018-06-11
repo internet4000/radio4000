@@ -1,7 +1,6 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
+import {computed, get} from '@ember/object'
 import fetch from 'fetch';
-
-const {Controller, computed, get} = Ember;
 
 export default Controller.extend({
 	userChannel: computed.alias('session.currentUser.channels.firstObject'),

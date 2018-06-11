@@ -1,6 +1,6 @@
 <div class="Channel-media" title="Image for {{model.title}}">
 	{{#if channel.canEdit}}
-		{{#link-to 'channel.edit' channel}}
+		{{#link-to "settings.channel"}}
 			<div class="Channel-cover">
 				{{channel-cover src=channel.coverImage.src}}
 			</div>

@@ -1,43 +1,44 @@
 <div class="Sections">
 	<section class="Section">
-		<div class="Manchet">
-			<h1><small>Permanently</small> delete <small>{{model.title}}</small></h1>
-			<p>Delete your channel from Radio4000.</p>
-		</div>
+		<div class="Container">
+			<p>Deleting your radio channel <strong>{{model.title}}</strong> will result in:</p>
+			<ul>
+				<li>Deletition of all your radio's data, your favorites and all tracks</li>
+				<li>Your radio will therefore be inaccessible to any other user</li>
+			</ul>
 
-		<div class="Container Container--full">
+			<p><strong>Are you sure you want to delete your radio?</strong></p>
+
+			<div class="BtnGroup">
+				<a href="{{href-to 'channel.index' model}}" class="Btn">
+					No, keep my radio
+				</a>
+				<button disabled={{isDeleting}} class="Btn Btn--danger" {{action 'deleteChannel'}}>
+					{{#if isDeleting}}
+						Deleting…
+					{{else}}
+						Yes, delete my radio (for real)
+					{{/if}}
+				</button>
+			</div>
+
+			<p>Note:</p>
+			<ul>
+				<li>
+					This action <strong>does not</strong> <a href="https://support.internet4000.com/radio4000/#how-to-delete-my-radio4000-account" target="_blank" rel="noopener">delete your Radio4000 account</a>
+				</li>
+				<li>You can {{link-to "make a backup" "settings"}} of your radio</li>
+				<li>We can not bring your radio back</li>
+				<li>You can always create a new radio</li>
+			</ul>
+
 			<div class="Grid">
-				<article class="Grid-cell">
-					{{channel-card channel=model}}
-				</article>
 				<article class="Grid-cell Grid-cell--double">
-					<p>Deleting your radio channel will result in:</p>
-					<ul>
-						<li>Deletion of all information and music saved in your radio.</li>
-						<li>Deletion of all radios you saved as favorites.</li>
-						<li>Your radio will therefore be inaccessible to any other user.</li>
-					</ul>
-
-					<p>Note:</p>
-					<ul>
-						<li>
-							This action does not <a href="https://support.internet4000.com/radio4000/#how-to-delete-my-radio4000-account" target="_blank" rel="noopener">delete your Radio4000 account</a>.
-						</li>
-						<li>You can always create a new radio later.</li>
-					</ul>
-
-					<div class="BtnGroup">
-						<a href="{{href-to 'channel.index' model}}" class="Btn">Keep my channel online</a>
-						<button disabled={{isDeleting}} class="Btn Btn--danger" {{action 'deleteChannel'}}>
-							{{#if isDeleting}}
-								Deleting…
-							{{else}}
-								Delete channel (for real)
-							{{/if}}
-						</button>
-					</div>
+					{{channel-card channel=model}}
 				</article>
 			</div>
 		</div>
 	</section>
 </div>
+
+{{title "Delete your radio" replace=true}}
