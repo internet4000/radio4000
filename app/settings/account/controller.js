@@ -65,7 +65,7 @@ export default Controller.extend({
 		} else if (err.code === 'auth/requires-recent-login') {
 			msg = 'This is a SENSITIVE operation, logout and login again to perform this action.';
 			options.sticky = true;
-		} else if (err.code = 'auth/cancelled-popup-request') {
+		} else if (err.code === 'auth/cancelled-popup-request') {
 			debug(err.code, err.message)
 			return
 		} else {
