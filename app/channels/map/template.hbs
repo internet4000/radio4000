@@ -3,12 +3,7 @@
 {{#if session.isAuthenticated}}
 	{{#unless session.currentUser.channels.firstObject.hasCoordinates}}
 		<div class="Container">
-			{{link-to
-					'Add my radio'
-					'channel.edit'
-					session.currentUser.channels.firstObject
-					class="Btn Btn--map"
-			}}
+			{{link-to 'Add my radio to the map' 'settings.map' class="Btn Btn--map"}}
 		</div>
 	{{/unless}}
 {{/if}}

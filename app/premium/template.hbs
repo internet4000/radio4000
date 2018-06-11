@@ -1,0 +1,52 @@
+<div class="Sections">
+	<section class="Section">
+		<div class="Container">
+			<h2>Premium</h2>
+			<p>Radio4000 will always be free to use.</p>
+		</div>
+		<div class="Container Container--full">
+			<div class="Grid">
+				<article class="Grid-cell">
+					{{channel-card channel=userChannel}}
+				</article>
+
+				<article class="Grid-cell Grid-cell--double">
+					<p>
+						To support the team in creating the best music experiences, you can upgrade your Radio4000 channel.
+					</p>
+					<p>
+						For <strong>14€, one time payment</strong>, access all Radio4000 features
+					</p>
+					<p>Pay once, enjoy Radio4000 for ever.</p>
+
+					<ul>
+						<li>reblog music from a radio channel to yours</li>
+						<li>filter tracks in radios channels by their data and tags</li>
+						<li>analyse channels and their music</li>
+						<li>every future features the team will develop</li>
+						<li>the satisfaction of supporting a great open source project</li>
+					</ul>
+					{{#if userChannel}}
+						{{#if userChannel.isPremium}}
+							<p><strong>Your channel is upgraded. Thank you!</strong></p>
+						{{else}}
+							{{#stripe-checkout
+									 class="Btn Btn--important"
+									 name="Radio4000.com"
+									 description="Pay once, enjoy for ever"
+									 amount=1400
+									 onToken=(action "processStripeToken")}}
+								Upgrade for 14€
+							{{/stripe-checkout}}
+						{{/if}}
+					{{else}}
+						<p>You first need to create a radio channel before being able to upgrade it to premium</p>
+						<p>{{#link-to "channels.new" class="Btn Btn--full Btn--important" title="Create your Radio4000 channel"}}Create your radio{{/link-to}}</p>
+					{{/if}}
+				</article>
+			</div>
+		</div>
+	</section>
+</div>
+
+{{outlet}}
