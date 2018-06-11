@@ -1,11 +1,9 @@
 {{#if channel}}
-	<p>
-		Before you can delete your account, please
-		{{link-to "delete your radio" "channel.delete" channel}} ({{channel.title}}), and come back here.
+	<p>Your account currently owns this radio channel: {{link-to channel.title "channel" channel.slug}}.</p>
+	<p>You must {{link-to "delete your radio" "channel.delete" channel}} before you can delete your account.
 	</p>
 {{else}}
-	<button class="Btn Btn--danger" title="Once deleted, it's deleted"
-		{{action "delete"}}>
+	<button class="Btn Btn--danger" title="Once deleted, it's deleted" {{action "delete"}}>
 		{{if deleteAccount.isIdle "Yes, delete my account" "Deleting..."}}
 	</button>
 {{/if}}
