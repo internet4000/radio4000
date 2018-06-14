@@ -1,7 +1,6 @@
 import Route from '@ember/routing/route'
 import {get} from '@ember/object'
 import {pickRandom} from 'radio4000/utils/random-helpers'
-import {all} from 'rsvp'
 
 // By combining and shuffling/randomizing featured channels
 // with their favorites we get a more exciting selection.
