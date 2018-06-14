@@ -3,23 +3,24 @@ import {get} from '@ember/object'
 import {pickRandom} from 'radio4000/utils/random-helpers'
 import {all} from 'rsvp'
 
-export default Route.extend({
-	// By combining and shuffling/randomizing featured channels
-	// with their favorites we get a more exciting selection.
+// By combining and shuffling/randomizing featured channels
+// with their favorites we get a more exciting selection.
 
+export default Route.extend({
 	maxFeatured: 20,
 	maxFavoritesPerChannel: 10,
 	maxTotal: 9,
 
 	model() {
 		return this.findFeatured().then(featured => {
-			// Find favorites from the featured channels
+			// Collect the unique favorites from the featured radios.
 			let favorites = featured
 				.map(channel => this.getRandomFavorites(channel))
 				.reduce((prev, curr) => prev.concat(curr))
 				.uniq()
 
-			// Merge featured + favorites, remove duplicates and randomize.
+			// We want to show a mix of featured and favorites,
+			// so we merge them, remove duplicates and randomize.
 			let merged = featured
 				.toArray()
 				.map(f => f.id)
@@ -27,14 +28,11 @@ export default Route.extend({
 			merged = merged.uniq()
 
 			// Limit how many and make it random.
-			const result = pickRandom(merged, get(this, 'maxTotal'))
+			const channelIds = pickRandom(merged, get(this, 'maxTotal'))
 
-			// Create an array of promises.
-			const promises = result.map(id => this.store.findRecord('channel', id))
-
-			return all(promises).then(channels => {
-				return channels.filterBy('coverImage')
-			})
+			// Return an array of promises.
+			const promises = channelIds.map(id => this.store.findRecord('channel', id))
+			return promises
 		})
 	},
 

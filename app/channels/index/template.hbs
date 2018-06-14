@@ -12,12 +12,13 @@
 					{{play-random-channel class="Btn--full"}}
 				</p>
 				<p>
-					<button {{action 'refreshSelection'}} class="Btn Btn--full"><i>⟳</i> Load new radios</button>
+					<button {{action 'refreshSelection'}} class="Btn Btn--full">
+						<i>⟳</i> Load new radios
+					</button>
 				</p>
 			</div>
-
-			{{#if model}}
-				{{#each model as |channel|}}
+			{{#if filteredModel.length}}
+				{{#each filteredModel as |channel|}}
 					<div class="Grid-cell">
 						{{channel-card channel=channel}}
 					</div>
