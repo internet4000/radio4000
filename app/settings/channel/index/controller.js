@@ -8,47 +8,46 @@ import ValidateSlug from 'radio4000/mixins/validate-slug'
 const { debug } = Ember
 
 export default Controller.extend(ValidateSlug, {
-	// Used to cache the initial slug  Comes from the route's setupController.
-	initialSlug: undefined,
-
-	// Props is an optional object with changes.
-	saveChannelDetails: task(function * (props) {
+	// Props is an object with changes to be merged onto the channel.
+	// If slug changed, it will be validated and on success we transition the URL.
+	saveChannelDetails: task(function*(props) {
 		const messages = get(this, 'flashMessages')
 		const channel = get(this, 'model')
 
-		if (props) {
-			// Merge props into the channel object.
-			Object.assign(channel, props)
-		} else if (!channel.get('hasDirtyAttributes')) {
-			// If nothing changed there's no need to save.
-			debug('nothing changed')
-			return this.send('goBack')
+		// If nothing changed we return with a notification
+		const changes = Object.keys(props).length > 0
+		if (!changes && !channel.get('hasDirtyAttributes')) {
+			messages.info('Saved', {timeout: 1000}) // not really, but ux
+			return
 		}
 
-		// Check form validation.
+		// Check if slug changed (before merging)
+		const slugChanged =
+			props.slug && clean(props.slug) !== get(this, 'channel.slug')
+
+		// Merge changes (props) onto the channel.
+		Object.assign(channel, props)
+
+		// Validate channel.
 		try {
 			yield channel.validate()
 		} catch (err) {
 			throw new Error('The channel is not valid')
 		}
 
-		// Check if the cleaned slug is different from original slug.
-		// If so, validate it.
-		const initialSlug = get(this, 'initialSlug')
-		const cleanedSlug = clean(channel.get('slug'))
-		const slugChanged = initialSlug !== cleanedSlug
+		// Validate slug.
+		const newSlug = clean(channel.get('slug'))
 		if (slugChanged) {
 			try {
-				yield get(this, 'validateSlug').perform(cleanedSlug)
+				yield get(this, 'validateSlug').perform(newSlug)
+				channel.set('slug', newSlug)
 			} catch (err) {
 				messages.warning(err)
 				return
 			}
-			// Set the cleaned slug.
-			channel.set('slug', cleanedSlug)
 		}
 
-		// Actually save the channel.
+		// Save the channel.
 		try {
 			yield channel.save()
 			messages.success('Saved channel')
