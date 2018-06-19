@@ -1,5 +1,5 @@
 import Ember from 'ember'
-import { task } from 'ember-concurrency'
+import {task} from 'ember-concurrency'
 import reservedUrls from 'radio4000/utils/reserved-urls'
 import randomText from 'radio4000/utils/random-text'
 import clean from 'radio4000/utils/clean'
@@ -18,17 +18,19 @@ export default Ember.Mixin.create({
 		const slugIsReserved = reservedUrls.any(
 			reservedSlug => reservedSlug === slug
 		)
-		if (slugIsReserved) {
-			throw new Error(`The slug "${slug}" is reserved`)
-		}
 
 		// Check if it is taken by another channel.
 		const query = yield this.store.query('channel', {
 			orderBy: 'slug',
 			equalTo: slug
 		})
-		if (query.get('firstObject')) {
+		const slugIsTaken = Boolean(query.get('firstObject'))
+
+		if (slugIsReserved || slugIsTaken) {
 			throw new Error(`The slug "${slug}" is already taken`)
+			return false
 		}
+
+		return true
 	})
 })
