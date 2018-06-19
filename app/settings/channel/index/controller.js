@@ -22,11 +22,11 @@ export default Controller.extend(ValidateSlug, {
 		}
 
 		// Check if slug changed (before merging)
-		const slug = channel.get('slug')
+		const oldSlug = channel.get('slug')
 		const newSlug = clean(props.slug)
-		const slugChanged = Boolean(props.slug) && newSlug !== slug
+		const slugChanged = Boolean(props.slug) && newSlug !== oldSlug
 
-		// Validate slug.
+		// Set new, cleaned slug if it is valid.
 		if (slugChanged) {
 			try {
 				yield get(this, 'validateSlug').perform(newSlug)
@@ -37,16 +37,11 @@ export default Controller.extend(ValidateSlug, {
 			}
 		}
 
-		// Merge changes (props) onto the channel.
-		if (props.title) {
-			channel.set('title', props.title)
-		}
-		if (props.body) {
-			channel.set('body', props.body)
-		}
-		if (props.link) {
-			channel.set('link', props.link)
-		}
+		// Merge changes/props onto the channel (except slug)
+		delete props.slug
+		Object.keys(props).forEach(prop => {
+			channel.set(prop, props[prop])
+		})
 
 		// Validate the model.
 		const isValid = channel.get('validations.isValid')
