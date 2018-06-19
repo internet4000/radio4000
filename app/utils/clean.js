@@ -5,5 +5,11 @@
 // For something with actual tests, consider https://github.com/pid/speakingurl
 
 export default function clean(string) {
-	return string.trim().dasherize().replace(/[`~!@#$%^&*()_|+=?;:'",.<>{}[\]\\/]/gi, '');
+	if (!string) {
+		return ''
+	}
+	return string
+		.trim()
+		.dasherize()
+		.replace(/[`~!@#$%^&*()_|+=?;:'",.<>{}[\]\\/]/gi, '');
 }
