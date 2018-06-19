@@ -17,26 +17,16 @@ export default Controller.extend(ValidateSlug, {
 		// If nothing changed we return with a notification
 		const changes = Object.keys(props).length > 0
 		if (!changes && !channel.get('hasDirtyAttributes')) {
-			messages.info('Saved', {timeout: 1000}) // not really, but ux
+			messages.info('No changes to save', {timeout: 1000})
 			return
 		}
 
 		// Check if slug changed (before merging)
-		const slugChanged =
-			props.slug && clean(props.slug) !== get(this, 'channel.slug')
-
-		// Merge changes (props) onto the channel.
-		Object.assign(channel, props)
-
-		// Validate channel.
-		try {
-			yield channel.validate()
-		} catch (err) {
-			throw new Error('The channel is not valid')
-		}
+		const slug = channel.get('slug')
+		const newSlug = clean(props.slug)
+		const slugChanged = Boolean(props.slug) && newSlug !== slug
 
 		// Validate slug.
-		const newSlug = clean(channel.get('slug'))
 		if (slugChanged) {
 			try {
 				yield get(this, 'validateSlug').perform(newSlug)
@@ -47,10 +37,26 @@ export default Controller.extend(ValidateSlug, {
 			}
 		}
 
+		// Merge changes (props) onto the channel.
+		if (props.title) channel.set('title', props.title)
+		if (props.body) channel.set('body', props.body)
+		if (props.link) channel.set('link', props.link)
+
+		// Validate the model.
+		const isValid = channel.get('validations.isValid')
+		if (!isValid) {
+			messages.warning('Could not save. Channel is not valid')
+			return
+		}
+
 		// Save the channel.
 		try {
 			yield channel.save()
-			messages.success('Saved channel')
+			let msg = `Saved channel`
+			if (slugChanged) {
+				msg = `${msg}. It's now available at https://radio4000.com/${newSlug}`
+			}
+			messages.success(msg)
 		} catch (err) {
 			messages.warning(`Sorry, we couldn't save your radio.`)
 			throw new Error(err)
