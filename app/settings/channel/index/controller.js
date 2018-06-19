@@ -38,9 +38,15 @@ export default Controller.extend(ValidateSlug, {
 		}
 
 		// Merge changes (props) onto the channel.
-		if (props.title) channel.set('title', props.title)
-		if (props.body) channel.set('body', props.body)
-		if (props.link) channel.set('link', props.link)
+		if (props.title) {
+			channel.set('title', props.title)
+		}
+		if (props.body) {
+			channel.set('body', props.body)
+		}
+		if (props.link) {
+			channel.set('link', props.link)
+		}
 
 		// Validate the model.
 		const isValid = channel.get('validations.isValid')

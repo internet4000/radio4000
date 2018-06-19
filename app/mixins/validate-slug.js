@@ -28,7 +28,6 @@ export default Ember.Mixin.create({
 
 		if (slugIsReserved || slugIsTaken) {
 			throw new Error(`The slug "${slug}" is already taken`)
-			return false
 		}
 
 		return true
