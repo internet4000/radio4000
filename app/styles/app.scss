@@ -4,8 +4,6 @@
  */
 
 // Third party (imported from `./node_modules` because we use postcss-import)
-@import "node_modules/normalize.css/normalize";
-@import "node_modules/suitcss-base/lib/base";
 @import "node_modules/ember-modal-dialog/app/styles/ember-modal-dialog/ember-modal-structure";
 @import "node_modules/ember-modal-dialog/app/styles/ember-modal-dialog/ember-modal-appearance";
 
@@ -18,6 +16,7 @@
 @import "utilities/displays";
 
 // Base (config and everything else without classes)
+@import "base/normalize";
 @import "base/colors";
 @import "base/fonts";
 @import "base/config";
