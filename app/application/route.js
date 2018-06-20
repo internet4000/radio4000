@@ -8,5 +8,11 @@ const {
 
 export default Route.extend(KeyboardShortcutsGlobal, {
 	session: inject.service(),
-	player: inject.service()
+	player: inject.service(),
+
+	actions: {
+		accessDenied(a, b) {
+			Ember.debug('torii access denied', a, b)
+		}
+	}
 });

@@ -1,0 +1,12 @@
+<section class="Section">
+	<div class="Container">
+		<nav class="Tabs Tabs--transparent Tabs--horizontal">
+			{{link-to "General" "settings.channel.index" class="Tabs-item"}}
+			{{link-to "Map" "settings.channel.map" class="Tabs-item"}}
+			{{link-to "Backup" "settings.channel.backup" class="Tabs-item"}}
+			{{link-to "Delete" "settings.channel.delete" class="Tabs-item"}}
+		</nav>
+	</div>
+</section>
+
+{{outlet}} {{title "Channel settings" replace=true}}

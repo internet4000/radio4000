@@ -1,38 +1,37 @@
-import Route from '@ember/routing/route';
+import Route from '@ember/routing/route'
 import {get} from '@ember/object'
 import {pickRandom} from 'radio4000/utils/random-helpers'
 
-export default Route.extend({
-	// By combining and shuffling/randomizing featured channels
-	// with their favorites we get a more exciting selection.
+// By combining and shuffling/randomizing featured channels
+// with their favorites we get a more exciting selection.
 
+export default Route.extend({
 	maxFeatured: 20,
 	maxFavoritesPerChannel: 10,
 	maxTotal: 9,
 
 	model() {
 		return this.findFeatured().then(featured => {
-			// console.log({featured: featured.map(f => f.get('title'))})
-
-			// Find favorites from the featured channels
+			// Collect the unique favorites from the featured radios.
 			let favorites = featured
 				.map(channel => this.getRandomFavorites(channel))
 				.reduce((prev, curr) => prev.concat(curr))
 				.uniq()
-			// Turn them into requests for their channel model
-			// favorites = favorites.map(id => this.store.findRecord('channel', id))
-			// console.log({favorites});
 
-			// Merge featured + favorites, remove duplicates and randomize.
-			let merged = featured.toArray().map(f => f.id).concat(favorites)
-			// console.log({merged})
+			// We want to show a mix of featured and favorites,
+			// so we merge them, remove duplicates and randomize.
+			let merged = featured
+				.toArray()
+				.map(f => f.id)
+				.concat(favorites)
 			merged = merged.uniq()
-			// console.log({mergedUnique: merged})
 
 			// Limit how many and make it random.
-			const result = pickRandom(merged, get(this, 'maxTotal'))
-			// console.log({result});
-			return result.map(id => this.store.findRecord('channel', id))
+			const channelIds = pickRandom(merged, get(this, 'maxTotal'))
+
+			// Return an array of promises.
+			const promises = channelIds.map(id => this.store.findRecord('channel', id))
+			return promises
 		})
 	},
 
@@ -54,7 +53,7 @@ export default Route.extend({
 	actions: {
 		refreshSelection() {
 			// refresh the model
-			this.refresh();
+			this.refresh()
 		}
 	}
 })

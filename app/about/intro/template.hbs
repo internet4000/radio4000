@@ -23,7 +23,7 @@
 		<img class="Banner-media" src="/assets/images/illustrations/the-burning-of-the-library-at-alexandria-in-391-ad-ambrose-dudley.jpg" alt="">
 		<p class="Banner-credits">
 			<a href="https://commons.wikimedia.org/wiki/File:The_Burning_of_the_Library_at_Alexandria_in_391_AD.jpg" target="_blank" rel="noopener">
-				The Burning of the Library at Alexandria in 391 AD <br>
+				The Burning of the Library at Alexandria in 391 AD<br>
 				Ambrose Dudley
 			</a>
 		</p>
@@ -48,7 +48,7 @@
 <section class="Section">
 	<div class="Container Container--full">
 		<div class="Grid Grid--center Grid--firstHidden">
-			{{#each model.featured as |item|}}
+			{{#each model as |item|}}
 				<div class="Grid-cell">
 					{{channel-card channel=item}}
 				</div>
@@ -197,10 +197,10 @@
 		<h1 class="u-tc">Explore<small> Radio4000</small></h1>
 		<div class="Grid Grid--center u-push-3">
 			<div class="Grid-cell">
-				{{channel-card channel=model.featured.firstObject}}
+				{{channel-card channel=model.firstObject}}
 			</div>
 			<div class="Grid-cell Muted">
-				<p>This channel is called <strong>{{model.featured.firstObject.title}}</strong>.</p>
+				<p>This channel is called <strong>{{model.firstObject.title}}</strong>.</p>
 				<p>Because the human behind can only have one channel, there's nowhere for the good music to hide. Highs and lows, ebbs and flows, Cambodian funk and techno. Each mix is exactly that — a mix.</p>
 				<p>Click on the channel card to start exploring it.</p>
 			</div>

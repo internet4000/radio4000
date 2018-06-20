@@ -160,11 +160,15 @@
 // }
 
 .Tabs--transparent {
-	border: 0;
 	background-color: transparent;
 	box-shadow: none;
 
 	.Tabs-item {
 		background-color: transparent;
+		min-width: 5em;
+	}
+
+	.Tabs-item.is-active {
+		// border-bottom: 0;
 	}
 }
