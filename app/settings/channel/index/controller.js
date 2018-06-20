@@ -1,64 +1,63 @@
 import Ember from 'ember'
-import Controller from '@ember/controller';
-import {get, set} from '@ember/object'
+import Controller from '@ember/controller'
+import {get} from '@ember/object'
 import {task} from 'ember-concurrency'
 import clean from 'radio4000/utils/clean'
 import ValidateSlug from 'radio4000/mixins/validate-slug'
 
-const { debug } = Ember
+const {debug} = Ember
 
 export default Controller.extend(ValidateSlug, {
-	// Used to cache the initial slug  Comes from the route's setupController.
-	initialSlug: undefined,
-
-	// Props is an optional object with changes.
+	// Props is an object with changes to be merged onto the channel.
+	// If slug changed, it will be validated and on success we transition the URL.
 	saveChannelDetails: task(function * (props) {
 		const messages = get(this, 'flashMessages')
 		const channel = get(this, 'model')
 
-		if (props) {
-			// Merge props into the channel object.
-			Object.assign(channel, props)
-		} else if (!channel.get('hasDirtyAttributes')) {
-			// If nothing changed there's no need to save.
-			debug('nothing changed')
-			return this.send('goBack')
+		// If nothing changed we return with a notification
+		const changes = Object.keys(props).length > 0
+		if (!changes && !channel.get('hasDirtyAttributes')) {
+			messages.info('No changes to save', {timeout: 1000})
+			return
 		}
 
-		// Check form validation.
-		try {
-			yield channel.validate()
-		} catch (err) {
-			throw new Error('The channel is not valid')
-		}
+		// Check if slug changed (before merging)
+		const oldSlug = channel.get('slug')
+		const newSlug = clean(props.slug)
+		const slugChanged = Boolean(props.slug) && newSlug !== oldSlug
 
-		// Check if the cleaned slug is different from original slug.
-		// If so, validate it.
-		const initialSlug = get(this, 'initialSlug')
-		const cleanedSlug = clean(channel.get('slug'))
-		const slugChanged = initialSlug !== cleanedSlug
+		// Set new, cleaned slug if it is valid.
 		if (slugChanged) {
 			try {
-				yield get(this, 'validateSlug').perform(cleanedSlug)
+				yield get(this, 'validateSlug').perform(newSlug)
+				channel.set('slug', newSlug)
 			} catch (err) {
 				messages.warning(err)
 				return
 			}
-			// Set the cleaned slug.
-			channel.set('slug', cleanedSlug)
 		}
 
-		// Actually save the channel.
+		// Merge changes/props onto the channel (except slug)
+		delete props.slug
+		Object.keys(props).forEach(prop => {
+			channel.set(prop, props[prop])
+		})
+
+		// Validate the model.
+		const isValid = channel.get('validations.isValid')
+		if (!isValid) {
+			messages.warning('Could not save. Channel is not valid')
+			return
+		}
+
+		// Save the channel.
 		try {
 			yield channel.save()
-			messages.success('Saved channel')
-
-			// We have to transition if the slug changed. Otherwise reloading is a 404.
+			let msg = `Saved channel`
 			if (slugChanged) {
-				set(this, 'initialSlug', channel.get('slug'))
-				debug('refreshing because slug changed')
-				this.transitionToRoute('channel.edit', channel.get('slug'))
+				msg = `${msg}. It's now available at https://radio4000.com/${newSlug}`
 			}
+			messages.success(msg)
 		} catch (err) {
 			messages.warning(`Sorry, we couldn't save your radio.`)
 			throw new Error(err)

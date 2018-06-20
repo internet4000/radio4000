@@ -1,6 +1,6 @@
 {
   "name": "radio4000",
-  "version": "5.9.0",
+  "version": "5.9.1",
   "private": true,
   "repository": "internet4000/radio4000",
   "scripts": {
@@ -43,7 +43,7 @@
     "eslint-config-xo": "^0.17.0",
     "leaflet": "^1.0.0",
     "loader.js": "^4.2.3",
-    "node-sass": "^4.6.0",
+    "node-sass": "^4.9.0",
     "postcss": "^6.0.14",
     "postcss-import": "^11.0.0"
   },
