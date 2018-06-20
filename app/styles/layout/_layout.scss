@@ -6,7 +6,15 @@ html {
 	height: 100%;
 	background-color: $bg-color;
 	color: $text-color;
+	box-sizing: border-box;
 }
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
 
 body {
 	overflow-y: scroll;
