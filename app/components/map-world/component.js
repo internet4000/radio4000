@@ -10,7 +10,11 @@ export default Component.extend({
 	// lng
 	zoom: 5,
 	minZoom: 2,
-	maxBounds: [[-90, -180], [90, 180]],
+
+	init() {
+		this._super(...arguments)
+		this.set('maxBounds', [[90, -180], [-90, 180]])
+	},
 
 	iconDefault: computed('', {
 		get() {
