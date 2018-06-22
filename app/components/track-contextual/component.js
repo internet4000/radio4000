@@ -24,7 +24,6 @@ export default Component.extend({
 			get(this, 'onCopyTrack')(track)
 		},
 		copyYoutubeURL() {
-			console.log('copyYoutubeURL');
 			this.copyURL(get(this, 'track.url'))
 		},
 		copyR4URL() {

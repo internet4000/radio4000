@@ -1,11 +1,16 @@
 import Ember from 'ember';
 
-const {on, $} = Ember;
+const {$} = Ember;
 
 export default Ember.Component.extend({
 	classNames: ['BtnGroup'],
 
-	attachButtonHandlers: on('didInsertElement', function () {
+	didInsertElement() {
+		this._super()
+		this.attachButtonHandlers()
+	},
+
+	attachButtonHandlers() {
 		const $buttons = this.$().find('.Btn');
 
 		$buttons.on('click', event => {
@@ -15,5 +20,5 @@ export default Ember.Component.extend({
 			$clicked.addClass('is-active');
 			$notClicked.removeClass('is-active');
 		});
-	})
+	}
 });

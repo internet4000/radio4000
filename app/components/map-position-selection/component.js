@@ -8,7 +8,11 @@ export default Component.extend({
 	// lat
 	// lng
 	zoom: 5,
-	maxBounds: [[90, -180], [-90, 180]],
+
+	init() {
+		this._super(...arguments)
+		this.set('maxBounds', [[90, -180], [-90, 180]])
+	},
 
 	location: hash('lat', 'lng'),
 	hasLocation: and('lat', 'lng'),

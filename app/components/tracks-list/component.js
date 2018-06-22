@@ -1,3 +1,5 @@
+/* eslint ember/no-on-calls-in-components:0 */
+
 import Ember from 'ember'
 import { array } from 'ember-awesome-macros'
 import { EKMixin, keyUp } from 'ember-keyboard'

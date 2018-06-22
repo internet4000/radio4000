@@ -10,7 +10,7 @@ const {
 } = Ember;
 
 /*
-	 Source: https://mashe.hawksey.info/2014/07/google-sheets-as-a-database-insert-with-apps-script-using-postget-methods-with-ajax-example/
+	Source: https://mashe.hawksey.info/2014/07/google-sheets-as-a-database-insert-with-apps-script-using-postget-methods-with-ajax-example/
 	 Required param: `scriptId` (on handlebar component)
 	 {{feedback-form-google-spreadsheet scriptId="id"}}
 	 where `id` is the script id associated to the spreadsheet you will
@@ -69,6 +69,7 @@ export default Component.extend({
 			this.clearData();
 			notification.success('Thank you for the feedback!');
 		} catch (err) {
+			notification.warning(`Sorry, could not send feedback ${err}`);
 		}
 	}),
 

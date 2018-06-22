@@ -3,7 +3,7 @@ import config from 'radio4000/config/environment';
 import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
 import {task, timeout} from 'ember-concurrency';
 
-const {Component, debug, get, set, on, observer} = Ember;
+const {Component, debug, get, set, observer} = Ember;
 
 export default Component.extend({
 	tagName: 'form',
@@ -14,9 +14,15 @@ export default Component.extend({
 	track: null,
 	initialUrl: '',
 
-	// This gets called when you paste something into the input-url component
-	// it takes a URL and turns it into a YouTube ID which we use to query the API for a title
-	automaticSetTitle: on('init', observer('track.url', function () {
+	init() {
+		this._super()
+		this.automaticSetTitle()
+	},
+
+	// Gets called when you paste into the input-url component.
+	// Takes an URL and turns it into a YouTube ID,
+	// which we use to query the API for a title.
+	automaticSetTitle: observer('track.url', function () {
 		const track = get(this, 'track');
 
 		// Can not continue without a track or URL.
@@ -35,7 +41,7 @@ export default Component.extend({
 			track.set('ytid', newid);
 			get(this, 'fetchTitle').perform();
 		}
-	})),
+	}),
 
 	fetchTitle: task(function * () {
 		yield timeout(250); // throttle

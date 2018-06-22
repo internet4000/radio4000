@@ -1,3 +1,4 @@
+/* eslint ember/use-brace-expansion:0 */
 import Ember from 'ember';
 import addMonths from 'npm:date-fns/add_months';
 import isAfter from 'npm:date-fns/is_after';
