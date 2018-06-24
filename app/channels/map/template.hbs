@@ -9,18 +9,15 @@
 {{/if}}
 
 {{#map-world
-		 class="Map--fullscreen"
-		 items=channelsWithCoordinates
-		 lat=lat
-		 lng=lng
-		 zoom=zoom
-		 onUpdate=(action "updatePosition")
-		 as |channel|
+	class="Map--fullscreen"
+	items=channelsWithCoordinates
+	lat=lat
+	lng=lng
+	zoom=zoom
+	onUpdate=(action "updatePosition")
+	as |channel|
 }}
-	{{channel-card
-			channel=channel
-			wide=true
-	}}
+	{{channel-card channel=channel wide=true}}
 {{/map-world}}
 
 {{outlet}}
