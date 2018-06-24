@@ -2930,9 +2930,9 @@ ember-cli-string-utils@^1.0.0, ember-cli-string-utils@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/ember-cli-string-utils/-/ember-cli-string-utils-1.1.0.tgz#39b677fc2805f55173735376fcef278eaa4452a1"
 
-ember-cli-stripe@smile-io/ember-cli-stripe#master:
-  version "1.0.3"
-  resolved "https://codeload.github.com/smile-io/ember-cli-stripe/tar.gz/dcf090f42b4f1c5ad56bb5c68dfa1e062766db61"
+ember-cli-stripe@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/ember-cli-stripe/-/ember-cli-stripe-1.0.4.tgz#80785415af0e223f242f52818d6bf2c44b37d9c1"
   dependencies:
     ember-cli-babel "^6.0.0"
     ember-cli-htmlbars "^1.1.1"
