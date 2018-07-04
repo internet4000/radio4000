@@ -100,6 +100,9 @@ export default Mixin.create(EKMixin, {
 	gotoFeedback: on(keyUp('KeyF'), function() {
 		this.goingTo('feedback')
 	}),
+	toggleShortcutsModal: on(keyUp('shift+Slash'), function() {
+		this.toggleProperty('uiStates.showShortcutsModal')
+	}),
 
 	// go `I`
 	gotoMyRadio: on(keyUp('KeyI'), function() {

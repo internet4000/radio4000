@@ -13,6 +13,9 @@ export default Component.extend({
 	actions: {
 		addTrack(trackModel) {
 			get(this, 'onClick')(trackModel);
+		},
+		openShortcutsModal() {
+			this.set('uiStates.showShortcutsModal', true)
 		}
 	}
 });
