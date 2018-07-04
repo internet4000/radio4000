@@ -255,8 +255,8 @@
 /* keyboard "button" */
 .ember-modal-dialog kbd {
   display: inline-block;
-  padding: 3px 5px;
-  font: 11px monospace;
+	padding: 0 5px 4px;
+	font: 13px monospace;
 	background-color: $superlightgray;
   border: solid 1px #d1d5da;
   border-radius: $border-radius;

@@ -6,6 +6,8 @@
 	border-radius: $border-radius;
 	width: calc(100% - 2rem);
 	max-width: 500px;
+	max-height: 95vh;
+	overflow: auto;
 }
 
 // Set background for ember-modals
@@ -13,15 +15,3 @@ div.ember-modal-overlay.translucent {
 	background-color: hsla(0, 0%, 20%, 0.6);
 }
 
-/* spacing between shortcuts */
-.ember-modal-dialog li {
-  margin-bottom: 0.2em;
-
-	// remove default list arrow
-	&::before {
-		display: none;
-	}
-}
-.ember-modal-dialog li kbd:last-of-type {
-  margin-right: 1em;
-}

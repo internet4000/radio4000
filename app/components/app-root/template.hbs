@@ -46,8 +46,9 @@
 		onClose=(action "closeShortcutsModal")
 	}}
 		<button class="Btn u-alignRight" {{action "closeShortcutsModal"}}>close</button>
-		<h3>Player shortcuts</h3>
-		<ul>
+		<h2>Keyboard shortcuts</h2>
+		<h3>Player</h3>
+		<ul class="KeyboardList">
 			<li><kbd>p</kbd> play/pause</li>
 			<li><kbd>n</kbd> play <strong>next</strong> track</li>
 			<li><kbd>s</kbd> <strong>s</strong>huffle current track selection</li>
@@ -56,10 +57,10 @@
 			<li><kbd>f</kbd> cycle through <strong>f</strong>ormats (default, fullscreen, minimized)</li>
 		</ul>
 
-		<h3>Go-to shortcuts</h3>
-		<p><small>These shortcuts are used to move around the website. First press the key <kbd>g</kbd>, then on the other key (you have a window of 500ms to press the second key).</small></p>
-		<ul>
-			<li><kbd>g</kbd><kbd>h</kbd> <strong>h</strong>ome</li>
+		<h3>Movement</h3>
+		<p><small>Use these to move around the webiste. First press the <kbd>g</kbd> key followed by the second key before 500ms.</small></p>
+		<ul class="KeyboardList">
+			<li><kbd>g</kbd><kbd>h</kbd> <strong>h</strong>omepage</li>
 			<li><kbd>g</kbd><kbd>r</kbd> <strong>r</strong>adios</li>
 			<li><kbd>g</kbd><kbd>m</kbd> <strong>m</strong>ap</li>
 			<li><kbd>g</kbd><kbd>y</kbd> history (y, as in your web-browser)</li>
@@ -67,9 +68,9 @@
 			<li><kbd>g</kbd><kbd>s</kbd> my favorite radios (s, as in starred)</li>
 			<li><kbd>g</kbd><kbd>t</kbd> my <strong>t</strong>racks</li>
 			<li><kbd>g</kbd><kbd>a</kbd> <strong>a</strong>dd track</li>
+			<li><kbd>g</kbd><kbd>,</kbd> settings</li>
 			<li><kbd>g</kbd><kbd>f</kbd> <strong>f</strong>eedback</li>
 			<li><kbd>g</kbd><kbd>c</kbd> <strong>c</strong>urrent channel being played</li>
-			<li><kbd>g</kbd><kbd>,</kbd> settings</li>
 			<li><kbd>g</kbd><kbd>x</kbd> track being played (<strong>x</strong>, as in a cross to locate the track/trax)</li>
 		</ul>
 	{{/modal-dialog}}
