@@ -1,27 +1,20 @@
-/* eslint ember/closure-actions:0 */
-import ModalDialog from 'ember-modal-dialog/components/modal-dialog';
-import Ember from 'ember'
+import {on} from '@ember/object/evented'
+import ModalDialog from 'ember-modal-dialog/components/modal-dialog'
+import {EKMixin as EmberKeyboardMixin, keyDown} from 'ember-keyboard'
 
-const {$} = Ember
-
-export default ModalDialog.extend({
-	// Change the default value to use overlay.
+export default ModalDialog.extend(EmberKeyboardMixin, {
 	translucentOverlay: true,
 
-	didInsertElement() {
-		this._super()
+	init() {
+		this._super(...arguments)
 
-		// Close modal on ESC.
-		$('body').on('keyup.modal-dialog', e => {
-			if (e.keyCode === 27) {
-				this.sendAction('close');
-			}
-		});
+		this.set('keyboardActivated', true)
 	},
 
-	// Remove custom events.
-	willDestroyElement() {
-		this._super()
-		$('body').off('keyup.modal-dialog')
-	}
-});
+	closeOnEsc: on(keyDown('Escape'), function() {
+		if (this.get('onClose')) {
+			this.get('onClose')()
+			this.set('keyboardActivated', false)
+		}
+	})
+})
