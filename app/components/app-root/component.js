@@ -1,8 +1,8 @@
 /* global document */
-import Ember from 'ember';
+import Component from '@ember/component'
+import {get, set} from '@ember/object'
 import { inject as service } from '@ember/service'
-
-const {Component, run, get, set} = Ember;
+import {run} from '@ember/runloop'
 
 export default Component.extend({
 	uiStates: service(),
@@ -17,6 +17,7 @@ export default Component.extend({
 		'uiStates.isPanelLeftVisible:is-panelLeftVisible',
 		'player.isPlaying:is-withPlayer:is-withoutPlayer'
 	],
+
 	isShowingModal: false,
 
 	didInsertElement() {
@@ -42,6 +43,9 @@ export default Component.extend({
 		},
 		closeModal() {
 			set(this, 'isShowingModal', false);
+		},
+		closeShortcutsModal() {
+			set(this, 'uiStates.showShortcutsModal', false)
 		},
 		saveTrack(trackProperties) {
 			return get(this, 'onSaveTrack')(trackProperties);

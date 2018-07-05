@@ -5,6 +5,9 @@ import Cookies from 'npm:js-cookie';
 const {Service, computed, get, set, on} = Ember;
 
 export default Service.extend({
+	// Logic for showing keyboard shortcuts modal
+	showShortcutsModal: false,
+
 	// Set the format to 0 for mini, 1 for normal or 2 for max
 	format: 1,
 	isMinimized: computed.equal('format', 0),

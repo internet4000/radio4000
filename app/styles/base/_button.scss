@@ -239,6 +239,10 @@
 	}
 }
 
+.NonBtn--link {
+	text-decoration: underline;
+}
+
 /*
 	Button for the map
 	hover the fullscreen map
@@ -247,3 +251,15 @@
 .Btn--map {
 	z-index: 2;
 }
+
+/* keyboard "button" */
+.ember-modal-dialog kbd {
+  display: inline-block;
+	padding: 0 5px 4px;
+	font: 13px monospace;
+	background-color: $superlightgray;
+  border: solid 1px #d1d5da;
+  border-radius: $border-radius;
+  box-shadow: inset 0 -1px 0 #c6cbd1;
+}
+

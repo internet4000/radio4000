@@ -8,7 +8,10 @@
 		<div class="Container">
 			{{user-login onLogin="login"}}
 			<br>
-			<p>Don't have a radio yet? <a href="{{href-to 'auth.signup'}}">Sign up</a>.</p>
+			<p>
+				Don't have a radio yet? <a href="{{href-to 'auth.signup'}}">Sign up</a>.<br>
+				Can't sign in? {{link-to "Find help" "feedback"}}.
+			</p>
 		</div>
 	</section>
 </div>
