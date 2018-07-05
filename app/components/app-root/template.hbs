@@ -48,9 +48,6 @@
 		<button class="Btn u-alignRight" {{action "closeShortcutsModal"}}>close</button>
 		<h2>Keyboard shortcuts</h2>
 
-		<ul class="KeyboardList">
-			<li>Press <kbd>?</kbd> to toggle this window.</li>
-		</ul>
 		<h3>Player</h3>
 		<ul class="KeyboardList">
 			<li><kbd>p</kbd> play/pause</li>
@@ -76,6 +73,18 @@
 			<li><kbd>g</kbd><kbd>f</kbd> <strong>f</strong>eedback</li>
 			<li><kbd>g</kbd><kbd>c</kbd> <strong>c</strong>urrent channel being played</li>
 			<li><kbd>g</kbd><kbd>x</kbd> track being played (<strong>x</strong>, as in a cross to locate the track/trax)</li>
+		</ul>
+
+		<ul class="KeyboardList">
+			<li>
+				<small>
+					Press <kbd>?</kbd> to toggle this window.
+					Something missing?
+					<span {{action "closeShortcutsModal"}}>
+						{{link-to "Ask for it!" "feedback"}}
+					</span>
+				</small>
+			</li>
 		</ul>
 	{{/modal-dialog}}
 {{/if}}
