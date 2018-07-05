@@ -69,3 +69,19 @@
 		color: $gray;
 	}
 }
+
+.KeyboardList {
+	padding-left: 0;
+
+	li {
+		margin-bottom: 0.2em;
+	}
+
+	li::before {
+		display: none;
+	}
+
+	li kbd:last-of-type {
+		margin-right: 0.5em;
+	}
+}
