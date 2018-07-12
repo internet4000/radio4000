@@ -15,6 +15,10 @@ export default TrackFormComponent.extend({
 
 	disableSubmit: computed.oneWay('track.validations.isInvalid'),
 
+	youtubeSearchUrl: computed('track.title', function() {
+		return `https://www.youtube.com/results?search_query=${this.get('track.title')}`
+	}),
+
 	submitTask: task(function * (event) {
 		event.preventDefault()
 		yield get(this, 'track.update').perform()

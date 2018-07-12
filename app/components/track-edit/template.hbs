@@ -1,8 +1,8 @@
 {{#form-group
-	model=track
-	valuePath="url"
-	label="URL"
-	hint="Paste in the URL of a YouTube video" as |value|}}
+		 model=track
+		 valuePath="url"
+		 label="URL"
+		 hint="Paste in the URL of a YouTube video" as |value|}}
 	{{focus-input
 			type="url"
 			value=value
@@ -11,6 +11,10 @@
 			autoFocus=true
 			autoSelect=true}}
 {{/form-group}}
+
+{{#if track.mediaNotAvailable}}
+	<p>This link seems to be broken, <a href={{youtubeSearchUrl}} target="_blank" rel="noopener">find a new one</a>!</p>
+{{/if}}
 
 {{#form-group
 	model=track

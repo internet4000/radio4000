@@ -17,5 +17,11 @@
 		<optgroup label="Manage">
 			<option value="editTrack">Edit</option>
 		</optgroup>
+		{{#if track.mediaNotAvailable}}
+			<optgroup label="Suggestions">
+				<option value="editTrack">-> Fix broken media URL</option>
+			</optgroup>
+		{{/if}}
 	{{/if}}
+
 </select>

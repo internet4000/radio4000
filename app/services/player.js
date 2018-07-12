@@ -96,6 +96,13 @@ export default Service.extend({
 		});
 	},
 
+	onMediaNotAvailable(event) {
+		get(this, 'store').findRecord('track', event.track.id).then(track => {
+			track.set('mediaNotAvailable', true);
+			track.save();
+		});
+	},
+
 	channelChanged(previousChannelId, channelId) {
 		// set previous channel as not active
 		if (previousChannelId !== undefined) {

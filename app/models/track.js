@@ -45,6 +45,10 @@ export default Model.extend(Validations, {
 	body: attr('string'),
 	ytid: attr('string'),
 
+	mediaNotAvailable: attr('boolean', {
+		defaultValue: false
+	}),
+
 	// relationships
 	channel: belongsTo('channel', {
 		async: true,
