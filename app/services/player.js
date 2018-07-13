@@ -101,7 +101,8 @@ export default Service.extend({
 		get(this, 'store').findRecord('track', event.track.id)
 			.then(track => {
 				// only set media as not-available for track owner (for now)
-				if(channel.get('id') === track.get('channel.id')) {
+				const isOwner = channel.get('id') === track.get('channel.id')
+				if (isOwner) {
 					track.set('mediaNotAvailable', true);
 					track.save();
 				}

@@ -102,7 +102,7 @@ export default Model.extend(Validations, {
 
 		let mediaNotAvailable = yield !fetchTrackAvailability(ytid)
 
-		if(mediaNotAvailable) {
+		if (mediaNotAvailable) {
 			this.set('mediaNotAvailable', true)
 		} else {
 			this.set('mediaNotAvailable', false)
