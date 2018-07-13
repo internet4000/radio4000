@@ -23,7 +23,7 @@ const fetchYoutubeTrack = async (ytid, fields) => {
 
 const fetchTitle = async function (ytid) {
 	let data = await fetchYoutubeTrack(ytid, 'items(id,snippet(title))&part=snippet');
-	return data.snippet.title
+	return data && data.snippet.title
 }
 
 
