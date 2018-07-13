@@ -13,7 +13,15 @@
 {{/form-group}}
 
 {{#if track.mediaNotAvailable}}
-	<p>This link seems to be broken, <a href={{youtubeSearchUrl}} target="_blank" rel="noopener">find a new one</a>!</p>
+	<p>
+		<a href={{track.url}} target="_blank" rel="noopener">This link</a> seems to be broken, <a href={{youtubeSearchUrl}} target="_blank" rel="noopener">find a new one</a>!
+		<button
+			class="Btn Btn--small"
+			title="Signal that this link is not really broken, maybe just unavailable temporarily (ex: in the country you are currently)."
+			onclick={{perform setMediaAvailable}}>
+			No problem
+		</button>
+	</p>
 {{/if}}
 
 {{#form-group

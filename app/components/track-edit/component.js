@@ -4,6 +4,7 @@ import TrackFormComponent from 'radio4000/components/track-form/component'
 
 const {
 	get,
+	set,
 	computed} = Ember
 
 export default TrackFormComponent.extend({
@@ -31,5 +32,11 @@ export default TrackFormComponent.extend({
 		yield get(this, 'track.delete').perform()
 		get(this, 'flashMessages').success('Track deleted')
 		yield get(this, 'onDelete')()
+	}).drop(),
+
+	setMediaAvailable: task(function * (event) {
+		event.preventDefault()
+		set(this, 'track.mediaNotAvailable', false)
+		get(this, 'submitTask').perform(event)
 	}).drop()
 })
