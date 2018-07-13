@@ -3,7 +3,7 @@ import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
 import {fetchTitle} from 'radio4000/utils/youtube-api';
 import {task, timeout} from 'ember-concurrency';
 
-const {Component, get, set, observer} = Ember;
+const {Component, get, set, observer, computed} = Ember;
 
 export default Component.extend({
 	tagName: 'form',
@@ -41,6 +41,10 @@ export default Component.extend({
 			track.set('ytid', newid);
 			get(this, 'fetchTitle').perform();
 		}
+	}),
+
+	submitDisabled: computed('track.hasDirtyAttributes', 'submitTask', function() {
+		return !this.get('track.hasDirtyAttributes') || this.get('submitTask.isRunning')
 	}),
 
 	fetchTitle: task(function * () {

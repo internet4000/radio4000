@@ -49,9 +49,9 @@
 			<button
 					onclick={{perform submitTask}}
 					type="submit"
-					class="Btn Btn--primary"
+					class="Btn"
 					title="Save the track"
-					disabled={{submitTask.isRunning}}>
+				  disabled={{submitDisabled}}>
 				{{if submitTask.isIdle "Save" "Saving…"}}
 			</button>
 

@@ -37,6 +37,5 @@ export default TrackFormComponent.extend({
 	setMediaAvailable: task(function * (event) {
 		event.preventDefault()
 		set(this, 'track.mediaNotAvailable', false)
-		get(this, 'submitTask').perform(event)
 	}).drop()
 })
