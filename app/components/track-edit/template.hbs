@@ -14,12 +14,13 @@
 
 {{#if track.mediaNotAvailable}}
 	<p>
-		<a href={{track.url}} target="_blank" rel="noopener">This link</a> seems to be broken, <a href={{youtubeSearchUrl}} target="_blank" rel="noopener">find a new one</a>!
+		This <a href={{track.url}} target="_blank" rel="noopener">URL</a> seems to be broken.<br>
+		<a href={{youtubeSearchUrl}} target="_blank" rel="noopener">Find a new one</a> or
 		<button
 			class="Btn Btn--small"
-			title="Signal that this link is not really broken, maybe just unavailable temporarily (ex: in the country you are currently)."
+			title="Signal that the link is ok and maybe just unavailable temporarily (ex: in the country you are currently)."
 			onclick={{perform setMediaAvailable}}>
-			No problem
+			ignore
 		</button>
 	</p>
 {{/if}}
@@ -49,7 +50,7 @@
 			<button
 					onclick={{perform submitTask}}
 					type="submit"
-					class="Btn"
+					class="Btn Btn--primary"
 					title="Save the track"
 				  disabled={{submitDisabled}}>
 				{{if submitTask.isIdle "Save" "Saving…"}}
