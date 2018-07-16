@@ -4,6 +4,7 @@ import TrackFormComponent from 'radio4000/components/track-form/component'
 
 const {
 	get,
+	set,
 	computed} = Ember
 
 export default TrackFormComponent.extend({
@@ -14,6 +15,10 @@ export default TrackFormComponent.extend({
 	onDelete: null,
 
 	disableSubmit: computed.oneWay('track.validations.isInvalid'),
+
+	youtubeSearchUrl: computed('track.title', function() {
+		return `https://www.youtube.com/results?search_query=${this.get('track.title')}`
+	}),
 
 	submitTask: task(function * (event) {
 		event.preventDefault()
@@ -27,5 +32,10 @@ export default TrackFormComponent.extend({
 		yield get(this, 'track.delete').perform()
 		get(this, 'flashMessages').success('Track deleted')
 		yield get(this, 'onDelete')()
+	}).drop(),
+
+	setMediaAvailable: task(function * (event) {
+		event.preventDefault()
+		yield set(this, 'track.mediaNotAvailable', false)
 	}).drop()
 })

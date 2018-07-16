@@ -24,15 +24,21 @@ export default Component.extend({
 		const options = {passive: false}
 		player.addEventListener('trackChanged', event => this.onTrackChanged(event), options)
 		player.addEventListener('trackEnded', event => this.onTrackEnded(event), options)
+		player.addEventListener('mediaNotAvailable', event => this.onMediaNotAvailable(event), options)
 		player.addEventListener('channelChanged', event => this.onChannelChanged(event), options)
 	},
 
+	/* events */
 	onTrackChanged(event) {
 		get(this, 'player').onTrackChanged(event.detail[0]);
 	},
 
 	onTrackEnded(event) {
 		get(this, 'player').onTrackEnded(event.detail[0]);
+	},
+
+	onMediaNotAvailable(event) {
+		get(this, 'player').onMediaNotAvailable(event.detail[0]);
 	},
 
 	actions: {

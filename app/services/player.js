@@ -96,6 +96,19 @@ export default Service.extend({
 		});
 	},
 
+	onMediaNotAvailable(event) {
+		let channel = this.get('session.currentUser.channels.firstObject')
+		get(this, 'store').findRecord('track', event.track.id)
+			.then(track => {
+				// only set media as not-available for track owner (for now)
+				const isOwner = channel.get('id') === track.get('channel.id')
+				if (isOwner) {
+					track.set('mediaNotAvailable', true);
+					track.save();
+				}
+			});
+	},
+
 	channelChanged(previousChannelId, channelId) {
 		// set previous channel as not active
 		if (previousChannelId !== undefined) {

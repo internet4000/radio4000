@@ -1,6 +1,6 @@
 import Ember from 'ember'
 
-const { Component, get, set, inject } = Ember
+const { Component, get, set, inject, computed } = Ember
 
 export default Component.extend({
 	player: inject.service(),
@@ -11,13 +11,17 @@ export default Component.extend({
 		// 	'isCurrent',
 		'track.liveInCurrentPlayer:Track--live',
 		'track.playedInCurrentPlayer:Track--played',
-		'track.finishedInCurrentPlayer:Track--finished'
+		'track.finishedInCurrentPlayer:Track--finished',
+		'mediaNotAvailable:Track--mediaNotAvailable'
 	],
 
 	attributeBindings: [
 		'track.ytid:data-pid',
 		'track.id:data-track-id'
 	],
+
+	canEdit: computed.reads('track.channel.canEdit'),
+	mediaNotAvailable: computed.and('track.mediaNotAvailable', 'canEdit'),
 
 	actions: {
 		onEdit(track) {
