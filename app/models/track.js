@@ -100,13 +100,8 @@ export default Model.extend(Validations, {
 
 		const ytid = this.get('ytid')
 
-		let mediaNotAvailable = yield !fetchTrackAvailability(ytid)
-
-		if (mediaNotAvailable) {
-			this.set('mediaNotAvailable', true)
-		} else {
-			this.set('mediaNotAvailable', false)
-		}
+		let isAvailable = yield fetchTrackAvailability(ytid)
+		this.set('mediaNotAvailable', !isAvailable)
 
 		yield this.updateYoutubeId();
 		yield this.save()
