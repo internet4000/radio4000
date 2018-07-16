@@ -63,6 +63,9 @@
 .Track--finished {
 	border-right-color: $green;
 }
+.Track--mediaNotAvailable {
+	border-right-color: $red;
+}
 
 .Track-title {
 	@extend %font-regular;

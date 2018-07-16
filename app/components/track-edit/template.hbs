@@ -1,8 +1,8 @@
 {{#form-group
-	model=track
-	valuePath="url"
-	label="URL"
-	hint="Paste in the URL of a YouTube video" as |value|}}
+		 model=track
+		 valuePath="url"
+		 label="URL"
+		 hint="Paste in the URL of a YouTube video" as |value|}}
 	{{focus-input
 			type="url"
 			value=value
@@ -11,6 +11,19 @@
 			autoFocus=true
 			autoSelect=true}}
 {{/form-group}}
+
+{{#if track.mediaNotAvailable}}
+	<p>
+		This <a href={{track.url}} target="_blank" rel="noopener">URL</a> seems to be broken.<br>
+		<a href={{youtubeSearchUrl}} target="_blank" rel="noopener">Find a new one</a> or
+		<button
+			class="Btn Btn--small"
+			title="Signal that the link is ok and maybe just unavailable temporarily (ex: in the country you are currently)."
+			onclick={{perform setMediaAvailable}}>
+			ignore
+		</button>
+	</p>
+{{/if}}
 
 {{#form-group
 	model=track
@@ -39,7 +52,7 @@
 					type="submit"
 					class="Btn Btn--primary"
 					title="Save the track"
-					disabled={{submitTask.isRunning}}>
+				  disabled={{submitDisabled}}>
 				{{if submitTask.isIdle "Save" "Saving…"}}
 			</button>
 

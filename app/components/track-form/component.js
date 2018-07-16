@@ -1,9 +1,9 @@
 import Ember from 'ember';
-import config from 'radio4000/config/environment';
 import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
+import {fetchTitle} from 'radio4000/utils/youtube-api';
 import {task, timeout} from 'ember-concurrency';
 
-const {Component, debug, get, set, observer} = Ember;
+const {Component, get, set, observer, computed} = Ember;
 
 export default Component.extend({
 	tagName: 'form',
@@ -43,19 +43,16 @@ export default Component.extend({
 		}
 	}),
 
+	submitDisabled: computed('track.hasDirtyAttributes', 'submitTask', function() {
+		return !this.get('track.hasDirtyAttributes') || this.get('submitTask.isRunning')
+	}),
+
 	fetchTitle: task(function * () {
 		yield timeout(250); // throttle
-		const track = get(this, 'track');
-		const ytid = track.get('ytid');
-		const url = `https://www.googleapis.com/youtube/v3/videos?id=${ytid}&key=${config.youtubeApiKey}&fields=items(id,snippet(title))&part=snippet`;
-		const response = yield fetch(url);
-		const data = yield response.json();
-		if (!data.items.length) {
-			debug('Could not find title for track');
-			return;
-		}
-		const title = data.items[0].snippet.title;
-		track.set('title', title);
+		const track = get(this, 'track')
+		const ytid = track.get('ytid')
+		let title = yield fetchTitle(ytid)
+		track.set('title', title)
 	}).restartable(),
 
 	submitTask: task(function * () {

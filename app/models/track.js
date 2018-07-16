@@ -4,6 +4,7 @@ import firebase from 'firebase';
 import {task} from 'ember-concurrency';
 import {validator, buildValidations} from 'ember-cp-validations';
 import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
+import {fetchTrackAvailability} from 'radio4000/utils/youtube-api';
 import format from 'npm:date-fns/format';
 
 const {Model, attr, belongsTo} = DS;
@@ -44,6 +45,10 @@ export default Model.extend(Validations, {
 	title: attr('string'),
 	body: attr('string'),
 	ytid: attr('string'),
+
+	mediaNotAvailable: attr('boolean', {
+		defaultValue: false
+	}),
 
 	// relationships
 	channel: belongsTo('channel', {
@@ -87,10 +92,17 @@ export default Model.extend(Validations, {
 	},
 
 	// In case url changed, we need to set the ytid.
+	// and also check if the track is available on the provider
 	update: task(function * () {
 		if (!get(this, 'hasDirtyAttributes')) {
 			return
 		}
+
+		const ytid = this.get('ytid')
+
+		let isAvailable = yield fetchTrackAvailability(ytid)
+		this.set('mediaNotAvailable', !isAvailable)
+
 		yield this.updateYoutubeId();
 		yield this.save()
 	}).drop(),
