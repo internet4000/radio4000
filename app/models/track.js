@@ -98,12 +98,12 @@ export default Model.extend(Validations, {
 			return
 		}
 
+		yield this.updateYoutubeId()
 		const ytid = this.get('ytid')
 
 		let isAvailable = yield fetchTrackAvailability(ytid)
 		this.set('mediaNotAvailable', !isAvailable)
 
-		yield this.updateYoutubeId();
 		yield this.save()
 	}).drop(),
 
