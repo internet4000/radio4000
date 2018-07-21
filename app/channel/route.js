@@ -7,6 +7,11 @@ export default Route.extend({
 	headData: inject.service(),
 
 	model(params) {
+		if (params.editTrack) {
+			// Make sure you can edit a track without loading all.
+			this.store.findRecord('track', params.editTrack)
+		}
+
 		return this.store
 			.query('channel', {
 				orderBy: 'slug',
