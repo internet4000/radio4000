@@ -9,8 +9,8 @@ module.exports = {
 	],
 	extends: [
 		'eslint:recommended',
-		'xo',
 		'plugin:ember/recommended',
+		'xo'
 	],
 	env: {
 		browser: true
@@ -45,15 +45,6 @@ module.exports = {
 			env: {
 				browser: false,
 				node: true
-			}
-		},
-
-		// test files
-		{
-			files: ['tests/**/*.js'],
-			excludedFiles: ['tests/dummy/**/*.js'],
-			env: {
-				embertest: true
 			}
 		}
 	]
