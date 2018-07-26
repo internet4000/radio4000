@@ -1,19 +1,21 @@
-import {moduleForComponent, test} from 'ember-qunit';
-import hbs from 'htmlbars-inline-precompile';
+import {module, test} from 'qunit'
+import {setupRenderingTest} from 'ember-qunit'
+import {render} from '@ember/test-helpers'
+import hbs from 'htmlbars-inline-precompile'
 
-moduleForComponent('x-aside', 'Integration | Component | x aside', {
-	integration: true
-});
+module('Integration | Component | x aside', function(hooks) {
+	setupRenderingTest(hooks)
 
-test('it renders', function (assert) {
-	assert.expect(1);
+	test('it renders', async function(assert) {
+		assert.expect(1)
 
-	// Set any properties with this.set('myProperty', 'value');
-	// Handle any actions with this.on('myAction', function(val) { ... });
+		// Set any properties with this.set('myProperty', 'value');
+		// Handle any actions with this.on('myAction', function(val) { ... });
 
-	this.render(hbs`{{aside-left}}`);
-	assert.ok(this.$('a').length > 0);
+		await render(hbs`{{aside-left}}`)
+		assert.ok(this.$('a').length > 0)
 
-	// @todo make sure the click handler runs
-	// this.$('a').eq(0).click();
-});
+		// @todo make sure the click handler runs
+		// this.$('a').eq(0).click();
+	})
+})

@@ -1,14 +1,16 @@
 import Ember from 'ember'
-import { moduleForComponent, test } from 'ember-qunit';
-import hbs from 'htmlbars-inline-precompile';
+import {module, test} from 'qunit'
+import {setupRenderingTest} from 'ember-qunit'
+import {render} from '@ember/test-helpers'
+import hbs from 'htmlbars-inline-precompile'
 
-moduleForComponent('track-contextual', 'Integration | Component | track contextual', {
-  integration: true
-});
+module('Integration | Component | track contextual', function(hooks) {
+	setupRenderingTest(hooks)
 
-test('it renders', function(assert) {
-	this.register('service:session', Ember.Service.extend())
-  this.render(hbs`{{track-contextual}}`);
-  assert.ok(this.$().find('button').length > 0)
-  assert.ok(this.$().find('select').length > 0)
-});
+	test('it renders', async function(assert) {
+		this.owner.register('service:session', Ember.Service.extend())
+		await render(hbs`{{track-contextual}}`)
+		assert.ok(this.$().find('button').length > 0)
+		assert.ok(this.$().find('select').length > 0)
+	})
+})

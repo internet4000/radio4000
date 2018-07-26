@@ -1,11 +1,17 @@
-import {moduleForComponent, test} from 'ember-qunit';
-import hbs from 'htmlbars-inline-precompile';
+import {module, test} from 'qunit'
+import {setupRenderingTest} from 'ember-qunit'
+import {render} from '@ember/test-helpers'
+import hbs from 'htmlbars-inline-precompile'
 
-moduleForComponent('play-shuffle-btn', 'Integration | Component | play shuffle btn', {
-	integration: true
-});
+module('Integration | Component | play shuffle btn', function(hooks) {
+	setupRenderingTest(hooks)
 
-test('it renders', function (assert) {
-	this.render(hbs`{{play-shuffle-btn}}`);
-	assert.ok(this.$().text().indexOf('▶'));
-});
+	test('it renders', async function(assert) {
+		await render(hbs`{{play-shuffle-btn}}`)
+		assert.ok(
+			this.$()
+				.text()
+				.indexOf('▶')
+		)
+	})
+})

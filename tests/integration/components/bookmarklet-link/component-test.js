@@ -1,12 +1,14 @@
-import {moduleForComponent, test} from 'ember-qunit';
-import hbs from 'htmlbars-inline-precompile';
+import {module, test} from 'qunit'
+import {setupRenderingTest} from 'ember-qunit'
+import {render} from '@ember/test-helpers'
+import hbs from 'htmlbars-inline-precompile'
 
-moduleForComponent('bookmarklet-link', 'Integration | Component | bookmarklet link', {
-	integration: true
-});
+module('Integration | Component | bookmarklet link', function(hooks) {
+	setupRenderingTest(hooks)
 
-test('it renders', function (assert) {
-	// assert.expect(1);
-	this.render(hbs`{{bookmarklet-link}}`);
-	assert.ok(this.$().find('a').length);
-});
+	test('it renders', async function(assert) {
+		// assert.expect(1);
+		await render(hbs`{{bookmarklet-link}}`)
+		assert.ok(this.$().find('a').length)
+	})
+})
