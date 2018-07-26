@@ -2821,9 +2821,9 @@ ember-cli-eslint@^4.2.1:
     rsvp "^4.6.1"
     walk-sync "^0.3.0"
 
-ember-cli-flash@^1.5.0:
-  version "1.6.4"
-  resolved "https://registry.yarnpkg.com/ember-cli-flash/-/ember-cli-flash-1.6.4.tgz#9830e11f76d8b3863d37bbe604b3cb6b9a92d2f2"
+ember-cli-flash@^1.6.5:
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/ember-cli-flash/-/ember-cli-flash-1.6.5.tgz#a7d77ca5aab51f9406e8df7826a9b885dac8a701"
   dependencies:
     ember-cli-babel "^6.10.0"
     ember-cli-htmlbars "^2.0.1"
