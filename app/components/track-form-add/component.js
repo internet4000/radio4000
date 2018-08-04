@@ -18,6 +18,7 @@ export default TrackFormComponent.extend({
 	session: inject.service(),
 	flashMessages: inject.service(),
 	disableSubmit: computed.or('submitTask.isRunning', 'isSubmitting', 'track.validations.isInvalid'),
+	showDiscogs: false,
 
 	// Called on init as well as after submitting a track.
 	// Also see the same method on the `TrackForm` component, from which this extends.
@@ -26,7 +27,8 @@ export default TrackFormComponent.extend({
 		const track = trackObject.create(Ember.getOwner(this).ownerInjection(), {
 			url: get(this, 'initialUrl'),
 			title: get(this, 'initialTitle'),
-			body: get(this, 'initialBody')
+			body: get(this, 'initialBody'),
+			discogsUrl: get(this, 'initialDiscogsUrl')
 		});
 		set(this, 'track', track);
 		this._super(...arguments);
@@ -43,7 +45,8 @@ export default TrackFormComponent.extend({
 			get(this, 'track').setProperties({
 				url: currentTrack.get('url'),
 				title: currentTrack.get('title'),
-				body: `thanks @${currentTrack.get('channel.slug')}`
+				body: `thanks @${currentTrack.get('channel.slug')}`,
+				discogsUrl: currentTrack.get('discogsUrl')
 			});
 		},
 		inviteToPremium() {
@@ -51,6 +54,9 @@ export default TrackFormComponent.extend({
 This feature is for upgraded channels only.
 Go to your settings to upgrade your radio.`
 			get(this, 'flashMessages').info(message)
+		},
+		showDiscogs() {
+			this.set('showDiscogs', true);
 		}
 	}
 });

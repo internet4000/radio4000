@@ -14,9 +14,16 @@ export const Validations = buildValidations({
 	url: [
 		validator('presence', {
 			presence: true,
-			message: 'Paste a YouTube URL here'
+			message: 'Use a valid a YouTube video URL'
 		}),
 		validator('youtube-url')
+	],
+	discogsUrl: [
+		validator('presence', {
+			presence: true,
+			message: 'Use a Discogs release URL'
+		}),
+		validator('discogs-url')
 	],
 	title: [
 		validator('presence', {
@@ -45,6 +52,8 @@ export default Model.extend(Validations, {
 	title: attr('string'),
 	body: attr('string'),
 	ytid: attr('string'),
+
+	discogsUrl: attr('string'),
 
 	mediaNotAvailable: attr('boolean', {
 		defaultValue: false
