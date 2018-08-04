@@ -1,5 +1,5 @@
 import BaseValidator from 'ember-cp-validations/validators/base';
-import youtubeRegex from 'npm:youtube-regex';
+import youtubeRegex from 'youtube-regex';
 
 const YoutubeUrl = BaseValidator.extend({
 	validate(value) {

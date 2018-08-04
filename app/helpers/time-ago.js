@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import addHours from 'npm:date-fns/add_hours';
-import differenceInHours from 'npm:date-fns/difference_in_hours';
-import distanceInWordsToNow from 'npm:date-fns/distance_in_words_to_now';
+import addHours from 'date-fns/add_hours';
+import differenceInHours from 'date-fns/difference_in_hours';
+import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 
 // Accepts a Date object or Number timestamp
 // Returns a string like "x days ago" or "x months ago"
@@ -16,4 +16,3 @@ export function timeAgo([date]) {
 }
 
 export default Ember.Helper.helper(timeAgo);
-

@@ -1,4 +1,4 @@
-import youtubeRegex from 'npm:youtube-regex';
+import youtubeRegex from 'youtube-regex';
 
 export default function youtubeUrlToId(url) {
 	const results = youtubeRegex().exec(url);

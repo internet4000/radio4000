@@ -5,8 +5,8 @@ import config from './config/environment';
 import RSVP from 'rsvp';
 import LinkComponent from '@ember/routing/link-component';
 import {debug} from '@ember/debug'
-import 'npm:lazysizes/plugins/attrchange/ls.attrchange';
-import 'npm:lazysizes';
+import 'lazysizes/plugins/attrchange/ls.attrchange';
+import 'lazysizes';
 
 const App = Application.extend({
 	rootElement: '#Radio4000',

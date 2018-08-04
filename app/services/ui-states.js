@@ -1,6 +1,6 @@
 /* global document */
 import Ember from 'ember';
-import Cookies from 'npm:js-cookie';
+import Cookies from 'js-cookie';
 
 const {Service, computed, get, set, on} = Ember;
 
