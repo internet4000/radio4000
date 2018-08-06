@@ -5,7 +5,7 @@ import {task} from 'ember-concurrency';
 import {validator, buildValidations} from 'ember-cp-validations';
 import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
 import {fetchTrackAvailability} from 'radio4000/utils/youtube-api';
-import format from 'npm:date-fns/format';
+import format from 'date-fns/format';
 
 const {Model, attr, belongsTo} = DS;
 const {get, set, computed} = Ember;

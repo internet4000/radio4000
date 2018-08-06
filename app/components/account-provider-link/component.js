@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import firebase from 'npm:firebase';
+import firebase from 'firebase';
 
 const {Component, get} = Ember;
 
