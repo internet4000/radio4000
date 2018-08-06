@@ -22,12 +22,6 @@
 	{{content-for "body"}}
 
 	<div id="Radio4000" class="Radio4000"></div>
-	<noscript>Sorry, to use Radio4000 you need to enable JavaScript in your browser.</noscript>
-
-	<script src="{{rootURL}}assets/vendor.js"></script>
-	<script src="{{rootURL}}assets/radio4000.js"></script>
-
-	{{content-for "body-footer"}}
 
 	<div class="DummyApp DummyApp--hidden">
 		<!-- a dummy app that appears independently from Ember and is removed by ember asap -->
@@ -99,6 +93,12 @@
 			</script>
 		</div>
 	</div>
+
+	<noscript>Sorry, to use Radio4000 you need to enable JavaScript in your browser.</noscript>
+	<script src="{{rootURL}}assets/vendor.js"></script>
+	<script src="{{rootURL}}assets/radio4000.js" async></script>
+
+	{{content-for "body-footer"}}
 
 </body>
 </html>
