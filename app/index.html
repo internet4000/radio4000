@@ -14,22 +14,14 @@
 	{{content-for "head"}}
 	<link rel="preload" as="font" href="https://res.cloudinary.com/radio4000/raw/upload/v1492541388/maisonneueweb-book_ee98sm.woff2" type="font/woff2" crossorigin />
 	<link rel="preload" as="font" href="https://res.cloudinary.com/radio4000/raw/upload/v1492541388/maisonneueweb-bold_rvmbzr.woff2" type="font/woff2" crossorigin />
-	<!-- <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css"> -->
-	<!-- <link integrity="" rel="stylesheet" href="{{rootURL}}assets/radio4000.css"> -->
-	{{content-for "concat-css"}}
+	<link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css">
+	<link integrity="" rel="stylesheet" href="{{rootURL}}assets/radio4000.css">
 	{{content-for "head-footer"}}
 </head>
 <body>
 	{{content-for "body"}}
 
 	<div id="Radio4000" class="Radio4000"></div>
-	<noscript>Sorry, to use Radio4000 you need to enable JavaScript in your browser.</noscript>
-
-	<!-- <script src="{{rootURL}}assets/vendor.js"></script> -->
-	<!-- <script src="{{rootURL}}assets/radio4000.js"></script> -->
-	{{content-for "concat-js"}}
-
-	{{content-for "body-footer"}}
 
 	<div class="DummyApp DummyApp--hidden">
 		<!-- a dummy app that appears independently from Ember and is removed by ember asap -->
@@ -101,6 +93,12 @@
 			</script>
 		</div>
 	</div>
+
+	<noscript>Sorry, to use Radio4000 you need to enable JavaScript in your browser.</noscript>
+	<script src="{{rootURL}}assets/vendor.js"></script>
+	<script src="{{rootURL}}assets/radio4000.js" async></script>
+
+	{{content-for "body-footer"}}
 
 </body>
 </html>

@@ -1,15 +1,15 @@
-import Ember from 'ember';
-import {moduleFor, test} from 'ember-qunit';
+import Ember from 'ember'
+import {module, test} from 'qunit'
+import {setupTest} from 'ember-qunit'
 
-moduleFor('service:player', {
-	// Specify the other units that are required for this test.
-	// needs: ['service:foo']
-});
+module('service:player', function(hooks) {
+	setupTest(hooks)
 
-// Replace this with your real tests.
-test('it exists', function (assert) {
-	this.register('service:playerRandom', Ember.Service.extend());
-	this.register('service:session', Ember.Service.extend());
-	var service = this.subject();
-	assert.ok(service);
-});
+	// Replace this with your real tests.
+	test('it exists', function(assert) {
+		this.owner.register('service:playerRandom', Ember.Service.extend())
+		this.owner.register('service:session', Ember.Service.extend())
+		var service = this.owner.lookup('service:player')
+		assert.ok(service)
+	})
+})

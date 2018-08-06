@@ -1,17 +1,19 @@
-import {moduleForComponent, test} from 'ember-qunit';
-import hbs from 'htmlbars-inline-precompile';
+import {module, test} from 'qunit'
+import {setupRenderingTest} from 'ember-qunit'
+import {render} from '@ember/test-helpers'
+import hbs from 'htmlbars-inline-precompile'
 
-moduleForComponent('track-add-inline', 'Integration | Component | track add inline', {
-	integration: true
-});
+module('Integration | Component | track add inline', function(hooks) {
+	setupRenderingTest(hooks)
 
-test('it renders', function (assert) {
-	assert.expect(1);
+	test('it renders', async function(assert) {
+		assert.expect(1)
 
-	// Set any properties with this.set('myProperty', 'value');
-	// Handle any actions with this.on('myAction', function(val) { ... });
+		// Set any properties with this.set('myProperty', 'value');
+		// Handle any actions with this.on('myAction', function(val) { ... });
 
-	this.render(hbs`{{track-add-inline}}`);
+		await render(hbs`{{track-add-inline}}`)
 
-	assert.equal(this.$('input').length, 1);
-});
+		assert.equal(this.$('input').length, 1)
+	})
+})

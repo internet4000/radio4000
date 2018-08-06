@@ -1,17 +1,15 @@
-import { moduleForComponent, test } from 'ember-qunit'
+import {module, test} from 'qunit'
+import {setupRenderingTest} from 'ember-qunit'
+import {render} from '@ember/test-helpers'
 import hbs from 'htmlbars-inline-precompile'
 import Ember from 'ember'
 
-moduleForComponent(
-	'play-random-channel',
-	'Integration | Component | play random channel',
-	{
-		integration: true
-	}
-)
+module('Integration | Component | play random channel', function(hooks) {
+	setupRenderingTest(hooks)
 
-test('it renders', function(assert) {
-	this.register('service:session', Ember.Service.extend())
-	this.render(hbs`{{play-random-channel}}`)
-	assert.equal(1, 1)
+	test('it renders', async function(assert) {
+		this.owner.register('service:session', Ember.Service.extend())
+		await render(hbs`{{play-random-channel}}`)
+		assert.equal(1, 1)
+	})
 })

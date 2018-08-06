@@ -1,12 +1,14 @@
-import { moduleForComponent, test } from 'ember-qunit';
-import hbs from 'htmlbars-inline-precompile';
+import {module, test} from 'qunit'
+import {setupRenderingTest} from 'ember-qunit'
+import {render} from '@ember/test-helpers'
+import hbs from 'htmlbars-inline-precompile'
 
-moduleForComponent('cloudinary-upload', 'Integration | Component | cloudinary upload', {
-  integration: true
-});
+module('Integration | Component | cloudinary upload', function(hooks) {
+	setupRenderingTest(hooks)
 
-test('it renders', function(assert) {
-  this.render(hbs`{{cloudinary-upload}}`);
-  assert.equal(this.$('input[type="file"]').length, 1);
-  assert.ok(this.$('button').length > 0);
-});
+	test('it renders', async function(assert) {
+		await render(hbs`{{cloudinary-upload}}`)
+		assert.equal(this.$('input[type="file"]').length, 1)
+		assert.ok(this.$('button').length > 0)
+	})
+})

@@ -59,6 +59,11 @@ it in your browser at this URL: `http://localhost:4000`.
 
 Run `yarn test` for a single test or `yarn ember test --server` to start a test server.
 
+Lint scripts with:
+
+* `npm run lint:js`
+* `npm run lint:js -- --fix`
+
 ## Backend
 
 We use Google's Firebase as our database and API, as for

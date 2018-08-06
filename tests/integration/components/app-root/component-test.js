@@ -1,15 +1,17 @@
-import Ember from 'ember';
-import {moduleForComponent, test} from 'ember-qunit';
-import hbs from 'htmlbars-inline-precompile';
+import Ember from 'ember'
+import {module, test} from 'qunit'
+import {setupRenderingTest} from 'ember-qunit'
+import {render} from '@ember/test-helpers'
+import hbs from 'htmlbars-inline-precompile'
 
-moduleForComponent('app-root', 'Integration | Component | app root', {
-	integration: true
-});
+module('Integration | Component | app root', function(hooks) {
+	setupRenderingTest(hooks)
 
-test('it renders', function (assert) {
-	this.register('service:session', Ember.Service.extend());
+	test('it renders', async function(assert) {
+		this.owner.register('service:session', Ember.Service.extend())
 
-	// assert.expect(2);
-	this.render(hbs`{{app-root}}`);
-	assert.ok(true);
-});
+		// assert.expect(2);
+		await render(hbs`{{app-root}}`)
+		assert.ok(true)
+	})
+})
