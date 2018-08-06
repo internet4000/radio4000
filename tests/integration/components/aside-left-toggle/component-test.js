@@ -1,11 +1,13 @@
-import {moduleForComponent, test} from 'ember-qunit';
-import hbs from 'htmlbars-inline-precompile';
+import {module, test} from 'qunit'
+import {setupRenderingTest} from 'ember-qunit'
+import {render} from '@ember/test-helpers'
+import hbs from 'htmlbars-inline-precompile'
 
-moduleForComponent('aside-left-toggle', 'Integration | Component | aside left toggle', {
-	integration: true
-});
+module('Integration | Component | aside left toggle', function(hooks) {
+	setupRenderingTest(hooks)
 
-test('it renders', function (assert) {
-	this.render(hbs`{{aside-left-toggle}}`);
-	assert.equal(this.$('span').length, 3);
-});
+	test('it renders', async function(assert) {
+		await render(hbs`{{aside-left-toggle}}`)
+		assert.equal(this.$('span').length, 3)
+	})
+})

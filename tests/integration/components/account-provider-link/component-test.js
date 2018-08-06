@@ -1,11 +1,18 @@
-import {moduleForComponent, test} from 'ember-qunit';
-import hbs from 'htmlbars-inline-precompile';
+import {module, test} from 'qunit'
+import {setupRenderingTest} from 'ember-qunit'
+import {render} from '@ember/test-helpers'
+import hbs from 'htmlbars-inline-precompile'
 
-moduleForComponent('account-provider-link', 'Integration | Component | account provider link', {
-	integration: true
-});
+module('Integration | Component | account provider link', function(hooks) {
+	setupRenderingTest(hooks)
 
-test('it renders', function (assert) {
-	this.render(hbs`{{account-provider-link}}`);
-	assert.equal(this.$().text().trim(), 'Add');
-});
+	test('it renders', async function(assert) {
+		await render(hbs`{{account-provider-link}}`)
+		assert.equal(
+			this.$()
+				.text()
+				.trim(),
+			'Add'
+		)
+	})
+})

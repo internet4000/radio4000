@@ -1,8 +1,8 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-/dist
-/tmp
+/dist/
+/tmp/
 
 # dependencies
 /node_modules
@@ -10,21 +10,13 @@
 # misc
 /.sass-cache
 /connect.lock
-/coverage/*
+/coverage/
 /libpeerconnection.log
-package-lock.json
-npm-debug.log*
-yarn-error.log
-testem.log
+/npm-debug.log*
+/testem.log
+/yarn-error.log
 
 # ember-try
-.node_modules.ember-try/
-bower.json.ember-try
-package.json.ember-try
-
-# editors
-*.sublime-project
-*.sublime-workspace
-/.vscode
-jsconfig.json
-typings/
+/.node_modules.ember-try/
+/bower.json.ember-try
+/package.json.ember-try

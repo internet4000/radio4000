@@ -1,14 +1,14 @@
-import Ember from 'ember';
-import {moduleFor, test} from 'ember-qunit';
+import Ember from 'ember'
+import {module, test} from 'qunit'
+import {setupTest} from 'ember-qunit'
 
-moduleFor('route:auth', 'Unit | Route | auth', {
-	// Specify the other units that are required for this test.
-	// needs: ['controller:foo']
-});
+module('Unit | Route | auth', function(hooks) {
+	setupTest(hooks)
 
-test('it exists', function (assert) {
-	this.register('service:session', Ember.Service.extend());
-	this.register('service:flashMessages', Ember.Service.extend());
-	let route = this.subject();
-	assert.ok(route);
-});
+	test('it exists', function(assert) {
+		this.owner.register('service:session', Ember.Service.extend())
+		this.owner.register('service:flashMessages', Ember.Service.extend())
+		let route = this.owner.lookup('route:auth')
+		assert.ok(route)
+	})
+})

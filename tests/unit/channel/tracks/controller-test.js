@@ -1,12 +1,12 @@
-import { moduleFor, test } from 'ember-qunit';
+import {module, test} from 'qunit'
+import {setupTest} from 'ember-qunit'
 
-moduleFor('controller:channel/tracks', 'Unit | Controller | channel/tracks', {
-  // Specify the other units that are required for this test.
-	needs: ['service:player']
-});
+module('Unit | Controller | channel/tracks', function(hooks) {
+	setupTest(hooks)
 
-// Replace this with your real tests.
-test('it exists', function(assert) {
-  let controller = this.subject();
-  assert.ok(controller);
-});
+	// Replace this with your real tests.
+	test('it exists', function(assert) {
+		let controller = this.owner.lookup('controller:channel/tracks')
+		assert.ok(controller)
+	})
+})

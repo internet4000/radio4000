@@ -1,11 +1,11 @@
-import { moduleFor, test } from 'ember-qunit';
+import {module, test} from 'qunit'
+import {setupTest} from 'ember-qunit'
 
-moduleFor('route:channels/all', 'Unit | Route | channels/all', {
-  // Specify the other units that are required for this test.
-  // needs: ['controller:foo']
-});
+module('Unit | Route | channels/all', function(hooks) {
+	setupTest(hooks)
 
-test('it exists', function(assert) {
-  let route = this.subject();
-  assert.ok(route);
-});
+	test('it exists', function(assert) {
+		let route = this.owner.lookup('route:channels/all')
+		assert.ok(route)
+	})
+})

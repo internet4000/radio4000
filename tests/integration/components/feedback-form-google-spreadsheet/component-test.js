@@ -1,5 +1,10 @@
-import {moduleForComponent} from 'ember-qunit';
+import {module} from 'qunit'
+import {setupRenderingTest} from 'ember-qunit'
 
-moduleForComponent('feedback-form-google-spreadsheet', 'Integration | Component | feedback form google spreadsheet', {
-	integration: true
-});
+import '@ember/test-helpers'
+
+module('Integration | Component | feedback form google spreadsheet', function(
+	hooks
+) {
+	setupRenderingTest(hooks)
+})
