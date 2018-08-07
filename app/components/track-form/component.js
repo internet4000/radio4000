@@ -14,9 +14,9 @@ export default Component.extend({
 	track: null,
 	initialUrl: '',
 
-	init() {
-		this._super()
+	didInsertElement() {
 		this.automaticSetTitle()
+		this._super()
 	},
 
 	// Gets called when you paste into the input-url component.
