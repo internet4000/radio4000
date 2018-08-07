@@ -8,6 +8,11 @@
 	cursor: pointer;
 }
 
+radio4000-player .Layout {
+	// Because it's fixed to bottom.
+	border-bottom: 0;
+}
+
 radio4000-player .Btn {
 	min-height: initial;
 }
