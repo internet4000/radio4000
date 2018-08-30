@@ -75,7 +75,7 @@ By default this repository will use the radio4000 development database, but it w
 with any Firebase database instance.
 
 To run your own firebase instance, in the file
-`radio4000/config/environment.js` you will have to update the the key
+`radio4000/config/environment.js` you will have to update the key
 `ENV.firebase.databaseURL` to the URL of your instance as provided by
 Firebase. 
 
@@ -96,7 +96,7 @@ Authentication](https://firebase.google.com/products/auth/),
 to handle authentication.
 
 For authentication to work, in the file
-`radio4000/config/environment.js` you will have to update the the key
+`radio4000/config/environment.js` you will have to update the key
 `ENV.firebase.authDomain` to the URL of your instance as provided by
 Firebase. For this, first activate authentication in your Firebase's
 project authentication settings panel.
