@@ -50,6 +50,7 @@ Router.map(function() {
 		this.route('colors')
 		this.route('forms')
 		this.route('tabs')
+		this.route('buttons')
 	})
 	this.route('404')
 	this.authenticatedRoute('settings', function() {
@@ -60,7 +61,7 @@ Router.map(function() {
 		})
 		this.route('account')
 	})
-	this.authenticatedRoute('premium');
+	this.authenticatedRoute('premium')
 })
 
 export default Router

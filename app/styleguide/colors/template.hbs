@@ -1,40 +1,39 @@
-<article>
-	<header class="Manchet">
-		<h1>Colors<small> — styleguide</small></h1>
-	</header>
+<header class="Manchet">
+	<h1>Colors<small> — styleguide</small></h1>
+</header>
 
-	<div class="Container">
-		<p>Links are <a href="#">underlined and black</a> — unless inside a navigation bar or tabs where they can be either white or black.</p>
-		<p>Our primary purple color is used to highlight active items.</p>
+<div class="Container">
+	<p>Links are <a href="#">underlined and black</a> — unless inside a navigation bar or tabs where they can be either white or black.</p>
+	<p>Our primary purple color is used to highlight active items.</p>
 
-		<h2>All colors</h2>
-		<p>Here's a list of all colors from _colors.scss - it's not dynamic - so it might be out of date.</p>
-	</div>
-	<div class="Container Container--full">
-		<style>
-			.Colors {
-				display: flex;
-				flex-flow: row wrap;
-			}
-			.Colors-item {
-				flex: 0 1 10rem;
-				padding: 1rem 1rem 0.9rem;
-				text-transform: capitalize;
-			}
-		</style>
-		<figure class="Colors">
-			{{#each model.colors as |color|}}
-				<div class="Colors-item" style="background-color: {{{color.value}}};">
-					{{color.title}}
-				</div>
-			{{/each}}
-		</figure>
-		<figure class="Colors">
-			{{#each model.grays as |color|}}
-				<div class="Colors-item" style="background-color: {{{color.value}}};">
-					{{color.title}}
-				</div>
-			{{/each}}
-		</figure>
-	</div>
-</article>
+	<h2>All colors</h2>
+	<p>Here's a list of all colors from _colors.scss - it's not dynamic - so it might be out of date.</p>
+</div>
+<div class="Container Container--full">
+	<style>
+		.Colors {
+			display: flex;
+			flex-flow: row wrap;
+		}
+		.Colors-item {
+			flex: 0 1 9rem;
+			padding: 1rem 1rem 0.9rem;
+			text-transform: capitalize;
+			text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+		}
+	</style>
+	<figure class="Colors">
+		{{#each model.colors as |color|}}
+			<div class="Colors-item" style="background-color: {{{color.value}}};">
+				{{color.title}}
+			</div>
+		{{/each}}
+	</figure>
+	<figure class="Colors">
+		{{#each model.grays as |color|}}
+			<div class="Colors-item" style="background-color: {{{color.value}}};">
+				{{color.title}}
+			</div>
+		{{/each}}
+	</figure>
+</div>

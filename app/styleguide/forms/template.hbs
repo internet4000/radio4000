@@ -1,114 +1,39 @@
-<article>
-	<header class="Manchet">
-		<h1>Forms<small> — styleguide</small></h1>
-	</header>
+<header class="Manchet">
+	<h1>Forms<small> — styleguide</small></h1>
+</header>
 
-	<div class="Container">
-		<h2>Forms</h2>
-		<form class="Form">
-			<div class="Form-group">
-				<label>A text input
-					<input type="text" value="Text input">
-				</label>
-			</div>
-			<div class="Form-group">
-				<label>An input with placeholder
-					<input type="text" placeholder="Placeholder…">
-				</label>
-			</div>
-			<div class="Form-group">
-				<label>Select something
-					<div class="CustomSelect">
-						<select>
-							<option value="0">Choose genre</option>
-							<option value="0">Jazz</option>
-							<option value="0">Techno</option>
-							<option value="0">Ultrafunkalisticpop</option>
-						</select>
-					</div>
-				</label>
-			</div>
-			<div class="Form-group">
-				<label>A textarea
-					<textarea>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</textarea>
-				</label>
-			</div>
-			<div class="Form-group">
-				<button class="Btn" type="submit">Submit</button>
-			</div>
-		</form>
-
-		<h2>Buttons</h2>
-		<button class="Btn Btn--small">Small button</button><br>
-		<button class="Btn">Normal button</button><br>
-		<button class="Btn Btn--full">Normal, full button</button><br>
-		<button class="Btn Btn--large">Large button</button><br>
-		<button class="Btn Btn--huge">Huge button</button><br>
-
-		<h2>Button variants</h2>
-		<button class="Btn">Button</button><br>
-		<button class="Btn Btn--primary">Primary button</button><br>
-		<button class="Btn Btn--important">Important button</button><br>
-		<button class="Btn Btn--danger">Danger button</button><br>
-
-		<h2>Less important buttons</h2>
-		<button class="Btn Btn--text">Text button</button><br>
-		<button class="Btn Btn--transparent">Transparent button</button><br>
-		<button class="Btn NonBtn">Btn + NonBtn</button><br>
-		<button class="NonBtn">NonBtn</button>
-
-		<h2>Buttons with icons</h2>
-		<button class="Btn">{{x-icon i="play"}} Button</button><br>
-		<button class="Btn Btn--primary">{{x-icon i="play"}} Primary button</button><br>
-		<button class="Btn Btn--danger">{{x-icon i="play"}} Danger button</button><br>
-		<button class="Btn Btn--small">{{x-icon i="play"}} Small button</button><br>
-		<button class="Btn Btn--large">{{x-icon i="play"}} Large button</button><br>
-		<button class="Btn Btn--huge">{{x-icon i="play"}} Huge button</button><br>
-		<button class="Btn Btn--full">{{x-icon i="play"}} Full button</button><br>
-		<button class="Btn Btn--text">{{x-icon i="play"}} Text button</button><br>
-		<button class="Btn NonBtn">{{x-icon i="play"}} Btn + NonBtn</button><br>
-		<button class="NonBtn">{{x-icon i="play"}} NonBtn</button><br>
-		<button class="Btn Btn--large">{{x-icon i="play"}} Large button</button><br>
-		<button class="Btn Btn--primary Btn--large">{{x-icon i="play"}} Primary and large</button>
-
-		<h2>Button groups</h2>
-		{{#btn-group}}
-			<button class="Btn">Sir</button>
-			<button class="Btn">Alex</button>
-			<button class="Btn is-active">Active Button</button>
-			<button class="Btn">Ferguson</button>
-		{{/btn-group}}
-
-		<h2>A group of button groups</h2>
-		<div class="BtnGroupWrapper">
-			{{#btn-group}}
-				<button class="Btn">Cheese</button>
-				<button class="Btn">And</button>
-				<button class="Btn">Bread</button>
-			{{/btn-group}}
-			{{#btn-group}}
-				<button class="Btn">Another</button>
-				<button class="Btn">Button</button>
-				<button class="Btn">Group</button>
-				<button class="Btn">With</button>
-				<button class="Btn">Tuna</button>
-			{{/btn-group}}
+<div class="Container">
+	<form class="Form">
+		<div class="Form-group">
+			<label>A text input
+				<input type="text" value="Text input">
+			</label>
 		</div>
-
-		<h2>A full group of button groups</h2>
-		<div class="BtnGroupWrapper BtnGroupWrapper--full">
-			{{#btn-group}}
-				<button class="Btn">Cheese</button>
-				<button class="Btn">And</button>
-				<button class="Btn">Bread</button>
-			{{/btn-group}}
-			{{#btn-group}}
-				<button class="Btn">Another</button>
-				<button class="Btn">Button</button>
-				<button class="Btn">Group</button>
-				<button class="Btn">With</button>
-				<button class="Btn">Tuna</button>
-			{{/btn-group}}
+		<div class="Form-group">
+			<label>An input with placeholder
+				<input type="text" placeholder="Placeholder…">
+			</label>
+			<p class="Warning">This is an example warning message.</p>
 		</div>
-	</div>
-</article>
+		<div class="Form-group">
+			<label>Select something
+				<div class="CustomSelect">
+					<select>
+						<option value="0">Choose genre</option>
+						<option value="0">Jazz</option>
+						<option value="0">Techno</option>
+						<option value="0">Ultrafunkalisticpop</option>
+					</select>
+				</div>
+			</label>
+		</div>
+		<div class="Form-group">
+			<label>A textarea
+				<textarea>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</textarea>
+			</label>
+		</div>
+		<div class="Form-group">
+			<button class="Btn" type="submit">Submit</button>
+		</div>
+	</form>
+</div>
