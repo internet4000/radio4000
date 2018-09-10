@@ -22,3 +22,15 @@ $primary-color: $purple;
 $bg-color: $lightgray;
 $text-color: $black;
 $link-color: $text-color;
+
+// Used to present colors in /styleguide/colors.
+.Colors {
+	display: flex;
+	flex-flow: row wrap;
+}
+.Colors-item {
+	flex: 0 1 10rem;
+	padding: 1rem 1rem 0.9rem;
+	text-shadow: 1px 1px 0 rgba(white, 0.5);
+	text-transform: capitalize;
+}

@@ -11,17 +11,6 @@
 		<p>Here's a list of all colors from _colors.scss - it's not dynamic - so it might be out of date.</p>
 	</div>
 	<div class="Container Container--full">
-		<style>
-			.Colors {
-				display: flex;
-				flex-flow: row wrap;
-			}
-			.Colors-item {
-				flex: 0 1 10rem;
-				padding: 1rem 1rem 0.9rem;
-				text-transform: capitalize;
-			}
-		</style>
 		<figure class="Colors">
 			{{#each model.colors as |color|}}
 				<div class="Colors-item" style="background-color: {{{color.value}}};">
