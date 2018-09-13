@@ -1,9 +1,6 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app')
-const autoprefixer = require('autoprefixer')
-const atImport = require('postcss-import')
-const targets = require('./config/targets')
 
 module.exports = function (defaults) {
 	let app = new EmberApp(defaults, {
@@ -39,31 +36,6 @@ module.exports = function (defaults) {
 				'images/marker-icon.png',
 				'images/marker-shadow.png'
 			]
-		},
-
-		// Enable autoprefixer and imports from node modules.
-		styleProcessorOptions: {
-			processors: [
-				{
-					type: 'node-sass',
-					sourcemaps: true
-				},
-				{
-					type: 'postcss',
-					plugins: [
-						{
-							module: atImport
-						},
-						{
-							module: autoprefixer,
-							options: {
-								browsers: targets.browsers
-							}
-						}
-					]
-				}
-			],
-			extension: 'scss'
 		}
 	})
 

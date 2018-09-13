@@ -4,8 +4,8 @@
  */
 
 // Third party (imported from `./node_modules` because we use postcss-import)
-@import "node_modules/ember-modal-dialog/app/styles/ember-modal-dialog/ember-modal-structure";
-@import "node_modules/ember-modal-dialog/app/styles/ember-modal-dialog/ember-modal-appearance";
+@import "ember-modal-dialog/ember-modal-structure";
+@import "ember-modal-dialog/ember-modal-appearance";
 
 // Utilities
 @import "utilities/align";
