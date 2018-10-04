@@ -1,4 +1,6 @@
-import Route from '@ember/routing/route';
+import Route from '@ember/routing/route'
+
+let didFetch = false
 
 export default Route.extend({
 	// When search changes the url, don't replace (add) to the history.
@@ -10,8 +12,14 @@ export default Route.extend({
 	},
 
 	model() {
-		// return this.store.query('channel', {limitToLast: 100})
-		this.store.findAll('channel')
 		return this.store.peekAll('channel')
+		// return this.store.query('channel', {limitToLast: 100})
+	},
+
+	afterModel () {
+		if (!didFetch) {
+			this.store.findAll('channel')
+			didFetch = true
+		}
 	}
-});
+})
