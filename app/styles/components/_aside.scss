@@ -42,12 +42,14 @@
 
 .Aside--left {
 	.Aside-toggleBtn {
+		font-size: 1.3rem;
 		position: fixed;
-		top: 2.1rem;
-		left: -3px;
+		top: 1.8rem;
+		left: -0.4rem;
 		z-index: 6;
 		opacity: 0.5;
 		border-color: $purple;
+
 
 		&:focus,
 		&:hover {
