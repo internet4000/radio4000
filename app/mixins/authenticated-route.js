@@ -1,12 +1,10 @@
-import Ember from 'ember';
-
-const {Mixin} = Ember;
+import Mixin from '@ember/object/mixin'
 
 export default Mixin.create({
 	beforeModel() {
 		if (!this.get('session.isAuthenticated')) {
-			this.transitionTo('auth.login');
+			this.transitionTo('auth.login')
 		}
-		this._super();
+		this._super()
 	}
-});
+})
