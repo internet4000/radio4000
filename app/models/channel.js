@@ -82,12 +82,13 @@ export default DS.Model.extend(Validations, {
 	coverImage: computed('images.[]', function () {
 		return this.get('images.lastObject');
 	}),
+	// A Cloudinary media ID. Use the "cover-img" helper to generate a full URL.
+	image: attr('string'),
 
 	// This property is toggled by the player setChannel.
 	isInPlayer: false,
 
 	// Relationships.
-	images: hasMany('image', {async: true}),
 	tracks: hasMany('track', {async: true}),
 	favoriteChannels: hasMany('channel', {inverse: null, async: true}),
 	channelPublic: belongsTo('channelPublic', {async: true}),
