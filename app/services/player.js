@@ -174,11 +174,7 @@ export default Service.extend({
 		});
 		cleanedChannel.query = query
 		cleanedChannel.tracks = tracks.reverse()
-
-		// Get a full image src to pass.
-		const imageModel = channelModel.get('coverImage')
-		const src = coverImg([imageModel.get('src')], {size: 56})
-		cleanedChannel.image = src
+		cleanedChannel.image = coverImg([cleanedChannel.image], {size: 56})
 
 		return cleanedChannel
 	},

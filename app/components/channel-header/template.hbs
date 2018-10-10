@@ -2,12 +2,12 @@
 	{{#if channel.canEdit}}
 		{{#link-to "settings.channel"}}
 			<div class="Channel-cover">
-				{{channel-cover src=channel.coverImage.src}}
+				{{channel-cover src=channel.image}}
 			</div>
 		{{/link-to}}
 	{{else}}
 		<div class="Channel-cover">
-			{{channel-cover src=channel.coverImage.src}}
+			{{channel-cover src=channel.image}}
 		</div>
 	{{/if}}
 </div>
