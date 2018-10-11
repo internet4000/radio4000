@@ -6,10 +6,7 @@
 	@include size-1;
 	display: flex;
 	position: relative;
-	overflow: hidden; // hide controls
 	border-bottom: 1px solid $lightgray;
-	box-shadow: 1px 0 0 $mediumlightgray;
-
 	// Empty border to avoid jumps when indicating state.
 	border-right: 2px solid transparent;
 
@@ -24,36 +21,42 @@
 		}
 	}
 
-	&:hover,
-	&:focus {
-		background-color: hsla(0, 100%, 100%, 0.3);
+	&:hover {
+		background-color: $superlightgray;
+	}
+}
+
+// When you focus the contextual <select>,
+// we actually use a button to indicate it.
+.ContextualToggle-select:focus ~ .Btn--toggle span {
+	background-color: black;
+}
+
+// Hidden purple dot.
+.Track--live::before {
+	display: block;
+	height: 0.7rem;
+	width: 0.7rem;
+	content: "";
+	border-radius: 50%;
+	background-color: $primary-color;
+
+	position: absolute;
+	top: 50%;
+	left: -0.5rem;
+	transform: translateY(-50%);
+
+	@media (min-width: $layout-s) {
+		left: 0.5rem;
 	}
 }
 
 .Track--live {
 	background-color: $white;
 
-	&:hover,
-	&:focus {
+	> a:hover,
+	> a:hover + .Track-contextual {
 		background-color: $white;
-	}
-
-	// Purple dot.
-	&::before {
-		background-color: $primary-color;
-		position: absolute;
-		top: 50%;
-		left: -0.5rem;
-		height: 0.75rem;
-		width: 0.75rem;
-		display: block;
-		content: "";
-		border-radius: 50%;
-		transform: translateY(-50%);
-
-		@media (min-width: $layout-s) {
-			left: 0.5rem;
-		}
 	}
 }
 
@@ -86,7 +89,11 @@
 
 .Track-contextual {
 	margin-left: auto;
-	align-self: flex-start;
+	margin-bottom: auto;
+
+	.Btn--toggle {
+		pointer-events: none;
+	}
 }
 
 /**

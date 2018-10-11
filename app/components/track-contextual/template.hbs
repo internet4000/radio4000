@@ -1,27 +1,28 @@
-<button class="Btn Btn--toggle Btn--text">
-	<span></span>
-	<span></span>
-	<span></span>
-</button>
-
-<select class="ContextualToggle-select" onchange={{ action 'handleSelect'}}>
-	<option disabled selected value style="display:none;">-</option>
-	<optgroup label="Share">
-		<option value="copyYoutubeURL">Copy YouTube URL</option>
-		<option value="copyR4URL">Copy Radio4000 URL</option>
-		{{#if session.currentUser.channels.firstObject.isPremium}}
-			<option value="copyTrackToRadio">Add to my radio</option>
-		{{/if}}
-	</optgroup>
-	{{#if canEdit}}
-		<optgroup label="Manage">
-			<option value="editTrack">Edit</option>
+<label>
+	<select class="ContextualToggle-select" onchange={{ action 'handleSelect'}}>
+		<option disabled selected value style="display:none;">-</option>
+		<optgroup label="Share">
+			<option value="copyYoutubeURL">Copy YouTube URL</option>
+			<option value="copyR4URL">Copy Radio4000 URL</option>
+			{{#if session.currentUser.channels.firstObject.isPremium}}
+				<option value="copyTrackToRadio">Add to my radio</option>
+			{{/if}}
 		</optgroup>
-		{{#if track.mediaNotAvailable}}
-			<optgroup label="Suggestions">
-				<option value="editTrack">-> Fix broken media URL</option>
+		{{#if canEdit}}
+			<optgroup label="Manage">
+				<option value="editTrack">Edit</option>
 			</optgroup>
+			{{#if track.mediaNotAvailable}}
+				<optgroup label="Suggestions">
+					<option value="editTrack">-> Fix broken media URL</option>
+				</optgroup>
+			{{/if}}
 		{{/if}}
-	{{/if}}
-
-</select>
+	</select>
+	<button class="Btn Btn--toggle Btn--text" tabindex="-1">
+		<span></span>
+		<span></span>
+		<span></span>
+		<span class="u-hiddenVisually">More</span>
+	</button>
+</label>
