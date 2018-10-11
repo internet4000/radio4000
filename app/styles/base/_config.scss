@@ -4,7 +4,7 @@
 
 $base-font-size: 15px;
 $base-line-height: (21 / 16);
-$sans-fallback: "system-ui", "Lucida Grande", "Lucida Sans", sans-serif;
+$sans-fallback: "system-ui", "Lucida Grande", "Lucida Sans", sans-serif, "Segoe UI Symbol";
 
 %font-regular {
 	font-family: "Maison Neue", $sans-fallback;
