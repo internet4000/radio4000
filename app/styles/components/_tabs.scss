@@ -68,10 +68,10 @@
  * Modifiers
  */
 .Tabs--vertical {
+	.Tabs-item:focus {
+		border-right-color: rgba($primary-color, 0.5);
+	}
 
-		.Tabs-item:focus {
-			border-right-color: rgba($primary-color, 0.5);
-		}
 	.Tabs-item.BtnGroup {
 		padding-left: 0;
 	}
