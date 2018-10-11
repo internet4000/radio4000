@@ -68,6 +68,10 @@
  * Modifiers
  */
 .Tabs--vertical {
+	.Tabs-item:focus {
+		border-right-color: rgba($primary-color, 0.5);
+	}
+
 	.Tabs-item.BtnGroup {
 		padding-left: 0;
 	}
@@ -83,6 +87,10 @@
 		border-right: 0;
 		border-radius: 0;
 		border-bottom: 3px solid transparent;
+
+		&:focus {
+			border-bottom-color: rgba($primary-color, 0.5);
+		}
 
 		&.is-active {
 			border-right: 0;
