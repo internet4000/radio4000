@@ -10,10 +10,6 @@
 
 .Aside-toggle {
 	&.is-active {
-		.Aside-toggleBtn span {
-			transform: rotateY(0);
-		}
-
 		.Aside-toggleLayer {
 			display: block;
 
