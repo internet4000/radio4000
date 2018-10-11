@@ -11,7 +11,7 @@ export default PlayButtonComponent.extend({
 
 	title: conditional(
 		'isPlaying',
-		raw('Play a new random track from "all" tracks in this radio channel'),
+		raw('Play a new random track from all tracks in this radio channel'),
 		raw('Play this radio')
 	),
 

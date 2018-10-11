@@ -4,14 +4,67 @@
 	background-color: $superlightgray;
 	border: 1px solid $mediumlightgray;
 	border-radius: $border-radius;
+}
 
-	a {
-		text-decoration: none;
-		font-weight: bold;
+.ChannelCard > a {
+	text-decoration: none;
+
+	&:focus {
+		outline: none;
+
+		.ChannelCard-title {
+			outline: 1px dotted $primary-color;
+		}
+	}
+}
+
+.ChannelCard-title {
+	word-break: break-word;
+	color: $text-color;
+}
+
+.ChannelCard-body {
+	@include size-0;
+	color: $dark;
+	// Ensure very long words don't mess up the layout.
+	word-break: break-word;
+}
+
+.ChannelCard-controls {
+	position: absolute;
+	top: 0.4rem;
+	left: 0.4rem;
+	z-index: 1;
+
+	.Btn:focus {
+		// Because it is on top of images.
+		box-shadow: 0 0px 4px 4px rgba(255, 255, 255, 0.6);
 	}
 
-	.Playback-channel &.is-active > a {
-		outline-color: transparent;
+	.Btn.is-hidden {
+		transform: scale(0.9) translate3d(0.5rem, 0, 0);
+		transform-origin: right;
+		opacity: 0;
+		pointer-events: none;
+	}
+}
+
+.ChannelCard-favorite {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+// Modifier
+.ChannelCard--text {
+	@include size-1;
+	position: relative;
+	padding: 1rem;
+	color: $gray;
+	background-color: transparent;
+
+	p:last-child {
+		margin-bottom: 0;
 	}
 }
 
@@ -45,50 +98,7 @@
 	}
 }
 
-.ChannelCard-title {
-	word-break: break-word;
-	color: $text-color;
-}
 
-.ChannelCard-body {
-	@include size-0;
-	color: $dark;
-	// Ensure very long words don't mess up the layout.
-	word-break: break-word;
-}
-
-.ChannelCard-controls {
-	position: absolute;
-	top: 0.4rem;
-	left: 0.4rem;
-	z-index: 1;
-
-	.Btn.is-hidden {
-		transform: scale(0.9) translate3d(0.5rem, 0, 0);
-		transform-origin: right;
-		opacity: 0;
-		pointer-events: none;
-	}
-}
-
-.ChannelCard-favorite {
-	position: absolute;
-	bottom: 0;
-	right: 0;
-}
-
-// Modifier
-.ChannelCard--text {
-	@include size-1;
-	position: relative;
-	padding: 1rem;
-	color: $gray;
-	background-color: transparent;
-
-	p:last-child {
-		margin-bottom: 0;
-	}
-}
 
 // Wide modifier (also smaller)
 $card-wide-cover-size: 4.8rem;
