@@ -4,7 +4,7 @@
 
 $base-font-size: 15px;
 $base-line-height: (21 / 16);
-$sans-fallback: "system-ui", "Lucida Grande", "Lucida Sans", sans-serif;
+$sans-fallback: "system-ui", "Lucida Grande", "Lucida Sans", sans-serif, "Segoe UI Symbol";
 
 %font-regular {
 	font-family: "Maison Neue", $sans-fallback;
@@ -82,6 +82,7 @@ $layout-xxl: 1700px;
 $layout-xxxl: 1921px;
 
 // Other stuff
+$boxshadowgray: hsla(0, 0%, 70%, 0.6);
 $box-shadow: 0 2px 0 -1px $boxshadowgray;
 $box-shadow-hover: 0 2px 0 -1px $boxshadowgray;
 $box-shadow-active: 0 1px 0 -1px $boxshadowgray;

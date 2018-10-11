@@ -10,10 +10,6 @@
 
 .Aside-toggle {
 	&.is-active {
-		.Aside-toggleBtn span {
-			transform: rotateY(0);
-		}
-
 		.Aside-toggleLayer {
 			display: block;
 
@@ -43,14 +39,17 @@
 .Aside--left {
 	.Aside-toggleBtn {
 		position: fixed;
-		top: 2.1rem;
-		left: -3px;
+		top: 1.8rem;
+		left: -0.4rem;
 		z-index: 6;
-		opacity: 0.5;
+		font-size: 1.1rem;
 
-		&:focus,
 		&:hover {
-			opacity: 1;
+			border-color: $purple;
+		}
+
+		span {
+			background-color: $dark;
 		}
 	}
 
