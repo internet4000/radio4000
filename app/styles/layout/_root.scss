@@ -9,6 +9,11 @@
 	flex-direction: row;
 }
 
+// Panel is closed
+.Aside-inner {
+	visibility: hidden;
+}
+
 
 /**
  * Panel is open
@@ -21,6 +26,7 @@
 	}
 
 	.Aside--left .Aside-inner {
+		visibility: visible;
 		transform: translateX(0);
 	}
 	.Aside-toggleBtn {
