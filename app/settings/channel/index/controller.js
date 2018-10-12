@@ -1,6 +1,6 @@
 import Ember from 'ember'
 import Controller from '@ember/controller'
-import {get} from '@ember/object'
+import {get, set} from '@ember/object'
 import {task} from 'ember-concurrency'
 import clean from 'radio4000/utils/clean'
 import ValidateSlug from 'radio4000/mixins/validate-slug'
@@ -30,7 +30,7 @@ export default Controller.extend(ValidateSlug, {
 		if (slugChanged) {
 			try {
 				yield get(this, 'validateSlug').perform(newSlug)
-				channel.set('slug', newSlug)
+				set(channel, 'slug', newSlug)
 			} catch (err) {
 				messages.warning(err)
 				return
@@ -66,30 +66,29 @@ export default Controller.extend(ValidateSlug, {
 
 	actions: {
 		saveImage(cloudinaryId) {
+			const messages = get(this, 'flashMessages')
+			const channel = get(this, 'model')
+
 			if (!cloudinaryId) {
 				throw new Error('Could not save image. Missing cloudinary id')
 			}
-			const channel = get(this, 'model')
-			const image = this.store.createRecord('image', {
-				src: cloudinaryId,
-				channel
-			})
-			// save and add it to the channel
-			return image
+
+			channel.set('image', cloudinaryId)
+
+			return channel
 				.save()
-				.then(image => {
-					channel.get('images').addObject(image)
-					channel.save().then(() => {
-						debug('Saved channel with image')
-					})
+				.then(() => {
+					debug('Saved channel with image')
 				})
-				.catch(err => {
-					Ember.debug('could not save image', err)
+				.catch(() => {
+					messages.warning('Could not save the image to your channel')
+					channel.set('image', undefined)
 				})
 		},
 
 		deleteImage() {
-			return this.get('model.coverImage').destroyRecord()
+			set(this, 'model.image', undefined)
+			return this.get('model').save()
 		},
 
 		goBack() {

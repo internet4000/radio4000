@@ -1,5 +1,6 @@
 {{#link-to "channel" channel title=title}}
-	{{channel-cover src=channel.coverImage.src}}
+	{{channel-cover src=channel.image}}
+
 	<h3 class="ChannelCard-title">
 		{{channel.title}}
 	</h3>
@@ -12,6 +13,7 @@
 		showText=false
 	}}
 </div>
+
 <p class="ChannelCard-body">
 	{{link-hashtags (do-truncate channel.body 200) channel.slug}}
 </p>

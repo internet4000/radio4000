@@ -78,16 +78,13 @@ export default DS.Model.extend(Validations, {
 		lat: 'coordinatesLatitude'
 	}),
 
-	// Set the latest image as the cover image.
-	coverImage: computed('images.[]', function () {
-		return this.get('images.lastObject');
-	}),
+	// A Cloudinary media ID. Use the "cover-img" helper to generate a full URL.
+	image: attr('string'),
 
 	// This property is toggled by the player setChannel.
 	isInPlayer: false,
 
 	// Relationships.
-	images: hasMany('image', {async: true}),
 	tracks: hasMany('track', {async: true}),
 	favoriteChannels: hasMany('channel', {inverse: null, async: true}),
 	channelPublic: belongsTo('channelPublic', {async: true}),
@@ -120,7 +117,7 @@ export default DS.Model.extend(Validations, {
 		}
 	}),
 
-	isExperienced: computed.and('images.firstObject', 'totalTracks', 'favoriteChannels.firstObject'),
+	isExperienced: computed.and('image', 'totalTracks', 'favoriteChannels.firstObject'),
 
 	// Is already a favorite channel of session.currentUser.
 	isFavorite: computed('model', 'session.currentUser.channels.firstObject.favoriteChannels.[]', function () {
