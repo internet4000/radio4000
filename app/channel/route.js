@@ -30,15 +30,10 @@ export default Route.extend({
 		const headData = get(this, 'headData')
 		const description = model.get('body')
 		const slug = model.get('slug')
+		const image = model.get('image')
 		set(headData, 'description', description)
 		set(headData, 'slug', slug)
-		// Because images come from a model relationship…
-		model.get('images').then(images => {
-			const image = images.get('lastObject.src')
-			if (image) {
-				set(headData, 'image', image)
-			}
-		})
+		set(headData, 'image', image)
 	},
 
 	serialize(model) {

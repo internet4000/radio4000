@@ -25,7 +25,7 @@
 {{!-- Icon markers
 icon=(icon
 	className="ImageMapMarker"
-	iconUrl=(if item.coverImage.src (cover-img item.coverImage.src size=32 format='awebp') "favicon-32x32.png")
+	iconUrl=(if item.image (cover-img item.image size=32 format='awebp') "favicon-32x32.png")
 )
 icon=(if item.isFavorite iconFavorite iconDefault)
 --}}
