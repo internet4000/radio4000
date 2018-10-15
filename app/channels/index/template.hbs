@@ -6,7 +6,8 @@
 				{{#if session.isAuthenticated}}
 					<p>Start your journey by listening to one of the radio channels here.</p>
 				{{else}}
-					<p>Start your journey by listening to one of the radio channels here, <a href={{href-to "about"}}>learn more</a> or <a href={{href-to "auth.signup"}}>create my radio</a>.</p>
+					<p>Start your journey by listening to one of the radio channels here, 
+						<a href={{href-to "about"}}>learn more</a> or <a href={{href-to "auth.signup"}}>create my radio</a>.</p>
 				{{/if}}
 				<p>
 					{{play-random-channel class="Btn--full"}}
@@ -17,10 +18,10 @@
 					</button>
 				</p>
 			</div>
-			{{#if filteredModel.length}}
+			{{#if filteredModel}}
 				{{#each filteredModel as |channel|}}
 					<div class="Grid-cell">
-						{{channel-card channel=channel}}
+						{{channel-card-lite channel=channel}}
 					</div>
 				{{/each}}
 			{{else}}
