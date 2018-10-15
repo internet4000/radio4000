@@ -6,8 +6,7 @@
 				{{#if session.isAuthenticated}}
 					<p>Start your journey by listening to one of the radio channels here.</p>
 				{{else}}
-					<p>Start your journey by listening to one of the radio channels here, 
-						<a href={{href-to "about"}}>learn more</a> or <a href={{href-to "auth.signup"}}>create my radio</a>.</p>
+					<p>Start your journey by listening to one of the radio channels here, <a href={{href-to "about"}}>learn more</a> or <a href={{href-to "auth.signup"}}>create my radio</a>.</p>
 				{{/if}}
 				<p>
 					{{play-random-channel class="Btn--full"}}
