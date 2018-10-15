@@ -1,32 +1,29 @@
-<article class="ChannelCard">
-	<h3 class="ChannelCard-title">
-		<a href="{{href-to 'channel' channel}}" title={{title}}>
-			{{channel.title}}
-		</a>
-	</h3>
-</article>
+<a href={{href-to "channel" channel}} title={{concat channel.title " " channel.body}}>
+	{{channel-cover src=channel.image}}
 
-{{!--
-{{channel-cover src=channel.coverImage.src}}
+	<h3 class="ChannelCard-title">
+		{{channel.title}}
+	</h3>
 </a>
+
+<p class="ChannelCard-body">
+	{{!-- {{channel.body}} --}}
+	{{!-- {{do-truncate channel.body}} --}}
+	{{link-hashtags (do-truncate channel.body) channel.slug}}
+</p>
 
 <div class="ChannelCard-controls">
 	{{play-shuffle-btn
-	class="Btn--small"
-	channel=channel
-	showText=false
-	}}
+		class="Btn--small"
+		channel=channel
+		showText=false}}
 </div>
 
-<p class="ChannelCard-body">
-	{{link-hashtags (do-truncate channel.body 200) channel.slug}}
-</p>
-
+{{!-- 
 {{#unless channel.canEdit}}
 	{{btn-favorite
-	class="ChannelCard-favorite Btn Btn--text Muted"
-	channel=channel
-	showText=false
-	}}
+		class="ChannelCard-favorite Btn Btn--text Muted"
+		channel=channel
+		showText=false}}
 {{/unless}}
 --}}

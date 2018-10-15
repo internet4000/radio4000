@@ -10,6 +10,7 @@
     "test": "ember test"
   },
   "devDependencies": {
+    "@html-next/vertical-collection": "^1.0.0-beta.12",
     "broccoli-asset-rev": "^2.7.0",
     "ember-auto-import": "^1.2.6",
     "ember-awesome-macros": "^2.0.0",
