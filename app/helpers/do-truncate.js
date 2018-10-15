@@ -10,23 +10,15 @@
 	{{do-truncate someVariable 140}}
 */
 
-import Ember from 'ember';
+import Ember from 'ember'
 
-export default Ember.Helper.helper(([str, len]) => {
-	if (!str) {
-		return '';
+export default Ember.Helper.helper(([text, maxLength = 200]) => {
+	if (!text) {
+		return ''
 	}
 
-	const shouldTruncate = str.length > len && str.length > 0;
-	if (shouldTruncate) {
-		let newString = `${str} `;
+	let truncated = text.length > maxLength ?
+		text.substr(0, maxLength - 1) + '…' : text
 
-		newString = str.substr(0, len);
-		newString = str.substr(0, newString.lastIndexOf(' '));
-		newString = (newString.length > 0) ? newString : str.substr(0, len);
-
-		return Ember.String.htmlSafe(`${newString}…`);
-	}
-
-	return str;
-});
+	return Ember.String.htmlSafe(truncated)
+})

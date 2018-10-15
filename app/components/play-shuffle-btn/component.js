@@ -1,10 +1,8 @@
-import Ember from 'ember';
-import PlayButtonComponent from 'radio4000/components/play-btn/component';
+import PlayButtonComponent from 'radio4000/components/play-btn/component'
+import {computed, get} from '@ember/object'
 import {task, timeout} from 'ember-concurrency'
 import {conditional} from 'ember-awesome-macros'
 import raw from 'ember-macro-helpers/raw'
-
-const {computed, get} = Ember;
 
 export default PlayButtonComponent.extend({
 	isPlaying: computed.reads('channel.isInPlayer'),
