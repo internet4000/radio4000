@@ -3,7 +3,7 @@ import Ember from 'ember'
 // This helper returns a full Cloudinary image url
 // with some optimization and formats.
 
-const quality = 50;
+let quality = '60'
 
 export function coverImg([id], {size = 200, format}) {
 	const base = `https://res.cloudinary.com/radio4000/image/upload/w_${size},h_${size},c_thumb`
