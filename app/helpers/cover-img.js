@@ -12,21 +12,20 @@ export function coverImg([id], {size = 250, width, height, format}) {
 	if (!height) {
 		height = size
 	}
-	const base = `https://res.cloudinary.com/radio4000/image/upload/w_${width},h_${height},c_thumb`
+	const base = `https://res.cloudinary.com/radio4000/image/upload/w_${width},h_${height},c_thumb,q_${quality}`
 
 	// This is a predefined animated version of webp.
 	if (format === 'awebp') {
-		return `${base},q_${quality},fl_awebp/${id}.webp`
+		return `${base},fl_awebp/${id}.webp`
 	}
 
 	// Use this to overwrite the image format.
 	if (format) {
-		// quality = 'auto'
-		return `${base},q_${quality}/${id}.${format}`
+		return `${base}/${id}.${format}`
 	}
 
 	// The default cover image.
-	return `${base},q_${quality},c_fill,fl_lossy/${id}`
+	return `${base},fl_lossy/${id}`
 }
 
 export default Ember.Helper.helper(coverImg)
