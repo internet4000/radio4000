@@ -1,14 +1,10 @@
-<div class="Channel-media" title="Image for {{channel.title}}">
+<div class="Channel-media">
 	{{#if channel.canEdit}}
 		{{#link-to "settings.channel"}}
-			<div class="Channel-cover">
-				{{channel-cover src=channel.image}}
-			</div>
+			{{channel-cover src=channel.image alt=channel.title}}
 		{{/link-to}}
 	{{else}}
-		<div class="Channel-cover">
-			{{channel-cover src=channel.image}}
-		</div>
+		{{channel-cover src=channel.image alt=channel.title}}
 	{{/if}}
 </div>
 

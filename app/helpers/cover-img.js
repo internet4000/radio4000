@@ -1,24 +1,31 @@
-import Ember from 'ember';
+import Ember from 'ember'
 
 // This helper returns a full Cloudinary image url
 // with some optimization and formats.
 
-const base = 'https://res.cloudinary.com/radio4000/image/upload';
-const quality = 50;
+let quality = '60'
 
-export function coverImg(params, {size, format}) {
-	const id = params[0];
+export function coverImg([id], {size = 250, width, height, format}) {
+	if (!width) {
+		width = size
+	}
+	if (!height) {
+		height = size
+	}
+	const base = `https://res.cloudinary.com/radio4000/image/upload/w_${width},h_${height},c_thumb,q_${quality}`
 
+	// This is a predefined animated version of webp.
 	if (format === 'awebp') {
-		// This is an animated version of webp.
-		return `${base}/w_${size},h_${size},q_${quality},c_thumb,fl_awebp/${id}.webp`;
+		return `${base},fl_awebp/${id}.webp`
 	}
 
+	// Use this to overwrite the image format.
 	if (format) {
-		return `${base}/w_${size},h_${size},q_auto,c_thumb/${id}.${format}`;
+		return `${base}/${id}.${format}`
 	}
 
-	return `${base}/q_${quality},w_${size},h_${size},c_thumb,c_fill,fl_lossy/${id}`;
+	// The default cover image.
+	return `${base},fl_lossy/${id}`
 }
 
-export default Ember.Helper.helper(coverImg);
+export default Ember.Helper.helper(coverImg)
