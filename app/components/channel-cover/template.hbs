@@ -3,12 +3,20 @@
 		{{yield}}
 	{{else if src}}
 		<picture>
-			<source data-srcset="{{cover-img src size=200 format='jpg'}}" media="(max-width: 500px)">
-			<source data-srcset="{{cover-img src size=200 format='awebp'}}" type="image/webp">
-			<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-				class="lazyload"
-				data-src="{{cover-img src size=200}}"
-				alt="">
+			{{!-- devices with webp --}}
+			<source type="image/webp" data-srcset="
+				{{cover-img src format='awebp'}} 1x,
+				{{cover-img src format='awebp' size=500}} 2x">
+
+			{{!-- devices without webp --}}
+			<source data-srcset="
+				{{cover-img src format='jpg'}} 1x,
+				{{cover-img src format='jpg' size=500 }} 2x">
+
+			{{!-- devices without responsive images --}}
+			<img data-src="{{cover-img src}}"
+				src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+				sizes="auto" class="lazyload" alt={{alt}}>
 		</picture>
 	{{/if}}
 </div>

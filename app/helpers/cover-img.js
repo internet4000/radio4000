@@ -5,8 +5,14 @@ import Ember from 'ember'
 
 let quality = '60'
 
-export function coverImg([id], {size = 200, format}) {
-	const base = `https://res.cloudinary.com/radio4000/image/upload/w_${size},h_${size},c_thumb`
+export function coverImg([id], {size = 250, width, height, format}) {
+	if (!width) {
+		width = size
+	}
+	if (!height) {
+		height = size
+	}
+	const base = `https://res.cloudinary.com/radio4000/image/upload/w_${width},h_${height},c_thumb`
 
 	// This is a predefined animated version of webp.
 	if (format === 'awebp') {
@@ -15,7 +21,7 @@ export function coverImg([id], {size = 200, format}) {
 
 	// Use this to overwrite the image format.
 	if (format) {
-		quality = 'auto'
+		// quality = 'auto'
 		return `${base},q_${quality}/${id}.${format}`
 	}
 
