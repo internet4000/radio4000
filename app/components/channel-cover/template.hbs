@@ -3,15 +3,19 @@
 		{{yield}}
 	{{else if src}}
 		<picture>
-			{{!-- devices with webp --}}
+			{{!-- first priority devices with webp --}}
 			<source type="image/webp" data-srcset="
 				{{cover-img src format='awebp'}} 1x,
 				{{cover-img src format='awebp' size=500}} 2x">
 
-			{{!-- devices without webp --}}
-			<source data-srcset="
+			{{!-- small devices don't get gifs --}}
+			<source media="(max-width: 500px)" data-srcset="
 				{{cover-img src format='jpg'}} 1x,
 				{{cover-img src format='jpg' size=500 }} 2x">
+
+			<source data-srcset="
+				{{cover-img src}} 1x,
+				{{cover-img src size=500}} 2x">
 
 			{{!-- devices without responsive images --}}
 			<img data-src="{{cover-img src}}"
