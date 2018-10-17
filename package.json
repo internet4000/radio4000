@@ -59,7 +59,7 @@
     "emberfire": "^2.0.10",
     "js-cookie": "^2.2.0",
     "lazysizes": "^4.0.1",
-    "radio4000-player": "^0.5.2",
+    "radio4000-player": "^0.6.0",
     "torii": "^0.10.1",
     "youtube-regex": "^1.0.4"
   }
