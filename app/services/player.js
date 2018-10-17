@@ -174,7 +174,8 @@ export default Service.extend({
 		});
 		cleanedChannel.query = query
 		cleanedChannel.tracks = tracks.reverse()
-		cleanedChannel.image = coverImg([cleanedChannel.image], {size: 56})
+		// By using 250px we reuse the image already loaded on R4.
+		cleanedChannel.image = coverImg([cleanedChannel.image], {size: 250})
 
 		return cleanedChannel
 	},

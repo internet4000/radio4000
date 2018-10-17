@@ -4133,6 +4133,11 @@ eslint@^4.0.0:
     table "4.0.2"
     text-table "~0.2.0"
 
+esm@^3.0.72:
+  version "3.0.84"
+  resolved "https://registry.yarnpkg.com/esm/-/esm-3.0.84.tgz#bb108989f4673b32d4f62406869c28eed3815a63"
+  integrity sha512-SzSGoZc17S7P+12R9cg21Bdb7eybX25RnIeRZ80xZs+VZ3kdQKzqTp2k4hZJjR7p9l0186TTXSgrxzlMDBktlw==
+
 espree@^3.5.4:
   version "3.5.4"
   resolved "https://registry.yarnpkg.com/espree/-/espree-3.5.4.tgz#b0f447187c8a8bed944b815a660bddf5deb5d1a7"
@@ -6527,6 +6532,14 @@ media-typer@0.3.0:
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
   integrity sha1-hxDXrwqmJvj/+hzgAWhUUmMlV0g=
 
+media-url-parser@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/media-url-parser/-/media-url-parser-0.0.7.tgz#4ff0cf9e521b83a4d0b50b02ff9e7ed9b38770c1"
+  integrity sha1-T/DPnlIbg6TQtQsC/55+2bOHcME=
+  dependencies:
+    esm "^3.0.72"
+    youtube-regex "^1.0.5"
+
 memory-fs@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/memory-fs/-/memory-fs-0.2.0.tgz#f2bb25368bc121e391c2520de92969caee0a0290"
@@ -7666,13 +7679,14 @@ qunit@^2.5.0:
     resolve "1.5.0"
     walk-sync "0.3.2"
 
-radio4000-player@^0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/radio4000-player/-/radio4000-player-0.5.2.tgz#962610cba7b9e4a3d7d41d556c76e7a9af23a753"
-  integrity sha512-yr8qYaz4j71Mb4rUxEnezqN++sfE2tPk7VOXaYHRCY85kQ+miVmLfWsXihTXDehIaJOguFZFf5SQkHbGa248NA==
+radio4000-player@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/radio4000-player/-/radio4000-player-0.6.0.tgz#cbc4ae265c403be2a15b8af5179695fd4d959021"
+  integrity sha512-BIoCUyzUhcIa8Gd95HI+aspzqOIM/N4Us7ee88234q1E5t8viRySL06UPdBiu3QTl18RSW6BnUKBrTnLvc79/g==
   dependencies:
     document-register-element "^1.8.1"
     lodash.debounce "^4.0.8"
+    media-url-parser "^0.0.7"
     unfetch "^3.0.0"
     vue "^2.5.16"
     vue-custom-element "^3.0.6"
@@ -9650,7 +9664,7 @@ youtube-player@^5.5.0:
     load-script "^1.0.0"
     sister "^3.0.0"
 
-youtube-regex@^1.0.4:
+youtube-regex@^1.0.4, youtube-regex@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/youtube-regex/-/youtube-regex-1.0.5.tgz#5f27facab0b7d66d01eebc7afc9a6a69cf61abd8"
   integrity sha1-Xyf6yrC31m0B7rx6/Jpqac9hq9g=
