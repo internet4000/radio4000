@@ -4,6 +4,7 @@ import {pickRandom} from 'radio4000/utils/random-helpers'
 
 // By combining and shuffling/randomizing featured channels
 // with their favorites we get a more exciting selection.
+let modelCache
 
 export default Route.extend({
 	maxFeatured: 20,
@@ -11,6 +12,7 @@ export default Route.extend({
 	maxTotal: 9,
 
 	model() {
+		if (modelCache) return modelCache
 		return this.findFeatured().then(featured => {
 			// Collect the unique favorites from the featured radios.
 			let favorites = featured
@@ -31,6 +33,7 @@ export default Route.extend({
 
 			// Return an array of promises.
 			const promises = channelIds.map(id => this.store.findRecord('channel', id))
+			modelCache = promises
 			return promises
 		})
 	},
@@ -53,6 +56,7 @@ export default Route.extend({
 	actions: {
 		refreshSelection() {
 			// refresh the model
+			modelCache = null
 			this.refresh()
 		}
 	}
