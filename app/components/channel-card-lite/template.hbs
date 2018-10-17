@@ -7,8 +7,6 @@
 </a>
 
 <p class="ChannelCard-body">
-	{{!-- {{channel.body}} --}}
-	{{!-- {{do-truncate channel.body}} --}}
 	{{link-hashtags (do-truncate channel.body) channel.slug}}
 </p>
 
@@ -19,7 +17,7 @@
 		showText=false}}
 </div>
 
-{{!-- 
+{{!--
 {{#unless channel.canEdit}}
 	{{btn-favorite
 		class="ChannelCard-favorite Btn Btn--text Muted"

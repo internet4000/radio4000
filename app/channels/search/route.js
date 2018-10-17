@@ -11,6 +11,5 @@ export default Route.extend({
 
 	model() {
 		return this.store.findAll('channel')
-		// return this.store.query('channel', {limitToLast: 200})
 	}
 })
