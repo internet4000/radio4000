@@ -1,24 +1,27 @@
-.Channel-header {
-	border: 1px solid $mediumlightgray;
-	border-radius: $border-radius;
-	background-color: $superlightgray;
-	min-height: 10rem; // visual perf
-	display: flex;
-}
-
 .Channel-media {
 	position: relative;
 	float: left;
 	margin-top: -1.5rem;
 	margin-right: -2rem;
-	width: 36%;
+	width: 40%;
 
-	@media (min-width: $layout-s) {
+	@media (min-width: $layout-l) {
+		// Avoid scaling images by setting exact image size.
 		width: 250px;
 	}
+}
 
-	.Cover {
-		margin-bottom: 0;
+.Channel-header {
+	min-height: 10rem; // visual perf
+	display: flex;
+	clear: both;
+	border: 1px solid $mediumlightgray;
+	border-radius: $border-radius;
+	background-color: $superlightgray;
+
+	@media (min-width: $layout-sm) {
+		// Allow Channel-media to overlap
+		clear: none;
 	}
 }
 
@@ -26,7 +29,7 @@
 	flex: 1;
 	padding: 1.5rem 1rem 0;
 
-	@media (min-width: $layout-s) {
+	@media (min-width: $layout-sm) {
 		padding-left: 3rem;
 		padding-right: 3rem;
 	}
@@ -51,6 +54,7 @@
 .Channel-links {
 	display: flex;
 	flex-direction: column;
+
 	a {
 		word-wrap: break-word;
 		text-decoration: none;
@@ -66,3 +70,4 @@
 	min-width: 7rem;
 	justify-content: flex-end;
 }
+
