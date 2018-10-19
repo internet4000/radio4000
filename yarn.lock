@@ -2960,11 +2960,11 @@ doctrine@^2.1.0:
     esutils "^2.0.2"
 
 document-register-element@^1.8.1:
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/document-register-element/-/document-register-element-1.9.1.tgz#149ba55e1590e1629ea7644a261ef8b95e543d09"
-  integrity sha512-ArQSveb/KWF6WTYKvB4uv7kzWQtxpo0Yz+VZC5E1nV8uZDqLsh0eTOvUiHio15PFz8Etuu+MwQI64oq6R0n2DQ==
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/document-register-element/-/document-register-element-1.11.1.tgz#cc40170cbbe4286946326603615b3bb0f4564f64"
+  integrity sha512-MvvjYBv6JUrmo+qqnlQXXw6ogW72asARm2QoQRsdKBAC7e4RGf95Cv2hmm+3E5/XuJnbtPXv33PEvro9KCdUAQ==
   dependencies:
-    lightercollective "^0.0.0"
+    lightercollective "^0.1.0"
 
 dom-storage@^2.0.2:
   version "2.1.0"
@@ -5799,10 +5799,10 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
-lightercollective@^0.0.0:
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/lightercollective/-/lightercollective-0.0.0.tgz#5b85f6755b78c1f94db590e479f954cbfeeb0409"
-  integrity sha512-4SdGgHgQjlqhk90QxAYsltGEI6HHt30xy9fOIPKi+c3vcGRcpPDtzm6+kxr1N9ixkrx/ngMhTCe/VpBc/HmNBQ==
+lightercollective@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/lightercollective/-/lightercollective-0.1.0.tgz#70df102c530dcb8d0ccabfe6175a8d00d5f61300"
+  integrity sha512-J9tg5uraYoQKaWbmrzDDexbG6hHnMcWS1qLYgJSWE+mpA3U5OCSeMUhb+K55otgZJ34oFdR0ECvdIb3xuO5JOQ==
 
 linkify-it@^2.0.0:
   version "2.0.3"
@@ -7560,10 +7560,10 @@ qunit@^2.5.0:
     resolve "1.5.0"
     walk-sync "0.3.2"
 
-radio4000-player@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/radio4000-player/-/radio4000-player-0.6.0.tgz#cbc4ae265c403be2a15b8af5179695fd4d959021"
-  integrity sha512-BIoCUyzUhcIa8Gd95HI+aspzqOIM/N4Us7ee88234q1E5t8viRySL06UPdBiu3QTl18RSW6BnUKBrTnLvc79/g==
+radio4000-player@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/radio4000-player/-/radio4000-player-0.6.2.tgz#94b48ddda2bbc01ce5ab8399853b5ebcb6b87073"
+  integrity sha512-JDXVzr5UAmzcBNE2krwPZfqAO/NwuIQdpBWtTVFo+bkrf4Zbd2q4W8/PGqT5NFYkOboy2uJo8d82BPkahLvGOg==
   dependencies:
     document-register-element "^1.8.1"
     lodash.debounce "^4.0.8"
@@ -9001,9 +9001,9 @@ underscore@>=1.8.3:
   integrity sha512-5/4etnCkd9c8gwgowi5/om/mYO5ajCaOgdzj/oW+0eQV9WxKBDZw5+ycmKmeaTXjInS/W0BzpGLo2xR2aBwZdg==
 
 unfetch@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/unfetch/-/unfetch-3.0.0.tgz#8d1e0513a4ecd0e5ff2d41a6ba77771aae8b6482"
-  integrity sha1-jR4FE6Ts0OX/LUGmund3Gq6LZII=
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/unfetch/-/unfetch-3.1.2.tgz#dc271ef77a2800768f7b459673c5604b5101ef77"
+  integrity sha512-L0qrK7ZeAudGiKYw6nzFjnJ2D5WHblUBwmHIqtPS6oKUd+Hcpk7/hKsSmcHsTlpd1TbTNsiRBUKRq3bHLNIqIw==
 
 union-value@^1.0.0:
   version "1.0.0"
@@ -9176,14 +9176,14 @@ vm-browserify@0.0.4:
     indexof "0.0.1"
 
 vue-custom-element@^3.0.6:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/vue-custom-element/-/vue-custom-element-3.2.1.tgz#e499c80a5e02babc7949c620a79a414cd2f74889"
-  integrity sha512-U5WypI9kqvKle3aotUShGTyila0oENBHM1OOKuyxOY5Ls7tS8gBtrQ77iJ0ggVrfnRlb292RSzWMauhBAylY+Q==
+  version "3.2.6"
+  resolved "https://registry.yarnpkg.com/vue-custom-element/-/vue-custom-element-3.2.6.tgz#9e3f52eb5c5014c298cad731321ed64487fada0b"
+  integrity sha512-tNWsax/Rq4Sr1QHj0pi4CWaBnAYfva75rlQg2fBKGja35+6AmdcZre/ztoiBWCSlSJ7APsMakG5R0A+GWBAc4Q==
 
 vue@^2.5.16:
-  version "2.5.16"
-  resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.16.tgz#07edb75e8412aaeed871ebafa99f4672584a0085"
-  integrity sha512-/ffmsiVuPC8PsWcFkZngdpas19ABm5mh2wA7iDqcltyCTwlgZjHGeJYOXkBMo422iPwIcviOtrTCUpSfXmToLQ==
+  version "2.5.17"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.17.tgz#0f8789ad718be68ca1872629832ed533589c6ada"
+  integrity sha512-mFbcWoDIJi0w0Za4emyLiW72Jae0yjANHbCVquMKijcavBGypqlF7zHRgMa5k4sesdv7hv2rB4JPdZfR+TPfhQ==
 
 walk-sync@0.3.2, walk-sync@^0.3.0, walk-sync@^0.3.1, walk-sync@^0.3.2:
   version "0.3.2"
@@ -9497,9 +9497,9 @@ yeast@0.1.2:
   integrity sha1-AI4G2AlDIMNy28L47XagymyKxBk=
 
 youtube-player@^5.5.0:
-  version "5.5.0"
-  resolved "https://registry.yarnpkg.com/youtube-player/-/youtube-player-5.5.0.tgz#95f058534f9544586185551d0d2d33f381f6587a"
-  integrity sha1-lfBYU0+VRFhhhVUdDS0z84H2WHo=
+  version "5.5.1"
+  resolved "https://registry.yarnpkg.com/youtube-player/-/youtube-player-5.5.1.tgz#74a660a452f598cb241677e3222bbc3cff5cc58e"
+  integrity sha512-1d62W9She0B1uKNyY6K7jtWFbOW3dYsm6hyKzrh11BLOuYFzkt8K6AcQ3QdPF3aU47dzhZ82clzOJVVWus4HTw==
   dependencies:
     debug "^2.6.6"
     load-script "^1.0.0"
