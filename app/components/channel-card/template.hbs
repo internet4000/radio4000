@@ -1,7 +1,4 @@
 <a href={{href-to "channel" channel}}>
-	{{!--
-	{{channel-cover src=channel.image alt=channel.title}}
-	--}}
 	{{#let channel.image as |src|}}
 		<figure class="Cover">
 			<div class="Cover-image">
@@ -65,3 +62,11 @@
 {{/unless}}
 
 {{yield}}
+
+{{!--
+{{#link-to "channel" channel}}
+<a href={{href-to "channel" channel}}>
+	{{channel-cover src=channel.image alt=channel.title}}
+{{/link-to}}
+--}}
+
