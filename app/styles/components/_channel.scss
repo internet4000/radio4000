@@ -4,18 +4,18 @@
 	background-color: $superlightgray;
 	min-height: 10rem; // visual perf
 	display: flex;
+	margin-top: 0.5rem;
+	@media (min-width: $layout-s) {
+		margin-left: 2rem;
+		margin-top: -1rem;
+	}
 }
 
 .Channel-media {
 	position: relative;
 	float: left;
-	margin-top: -1.5rem;
-	margin-right: -2rem;
-	width: 36%;
-
-	@media (min-width: $layout-s) {
-		width: 250px;
-	}
+	width: 100%;
+	max-width: 10rem;
 
 	.Cover {
 		margin-bottom: 0;
@@ -53,6 +53,7 @@
 	flex-direction: column;
 	a {
 		word-wrap: break-word;
+		word-break: break-word;
 		text-decoration: none;
 	}
 	a + a {
@@ -64,5 +65,10 @@
 	padding: 0.5rem;
 	padding-right: 0;
 	min-width: 7rem;
-	justify-content: flex-end;
+	margin-bottom: 0;
+	justify-content: center;
+  flex-grow: 1;
+	@media (min-width: $layout-s) {
+		justify-content: flex-end;
+	}
 }
