@@ -1,10 +1,52 @@
-{{#link-to "channel" channel title=title}}
+<a href={{href-to "channel" channel}}>
+	{{!--
 	{{channel-cover src=channel.image alt=channel.title}}
+	--}}
+	{{#let channel.image as |src|}}
+		<figure class="Cover">
+			<div class="Cover-image">
+				{{#if src}}
+					<picture>
+						{{#if disableLazyload}}
+							{{!-- first priority devices with webp --}}
+							<source type="image/webp" srcset="{{cover-img src format='awebp'}} 1x, {{cover-img src format='awebp' size=500}} 2x">
+							{{!-- small devices don't get gifs --}}
+							<source media="(max-width: 500px)" srcset="{{cover-img src format='jpg'}} 1x, {{cover-img src format='jpg' size=500 }} 2x">
+							<source srcset="{{cover-img src}} 1x, {{cover-img src size=500}} 2x">
+							{{!-- devices without responsive images --}}
+							<img src={{cover-img src}} alt={{alt}}>
+						{{else}}
+							{{!-- first priority devices with webp --}}
+							<source type="image/webp" data-srcset="
+								{{cover-img src format='awebp'}} 1x,
+								{{cover-img src format='awebp' size=500}} 2x">
+							{{!-- small devices don't get gifs --}}
+							<source media="(max-width: 500px)" data-srcset="
+								{{cover-img src format='jpg'}} 1x,
+								{{cover-img src format='jpg' size=500 }} 2x">
+							<source data-srcset="
+								{{cover-img src}} 1x,
+								{{cover-img src size=500}} 2x">
+							{{!-- devices without responsive images --}}
+							<img data-src={{cover-img src}}
+								src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+								class="lazyload"
+								alt={{alt}}>
+						{{/if}}
+					</picture>
+				{{/if}}
+			</div>
+		</figure>
+	{{/let}}
 
 	<h3 class="ChannelCard-title">
 		{{channel.title}}
 	</h3>
-{{/link-to}}
+</a>
+
+<p class="ChannelCard-body">
+	{{link-hashtags (do-truncate channel.body 200) channel.slug}}
+</p>
 
 <div class="ChannelCard-controls">
 	{{play-shuffle-btn
@@ -13,10 +55,6 @@
 		showText=false
 	}}
 </div>
-
-<p class="ChannelCard-body">
-	{{link-hashtags (do-truncate channel.body 200) channel.slug}}
-</p>
 
 {{#unless channel.canEdit}}
 	{{btn-favorite
