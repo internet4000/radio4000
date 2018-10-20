@@ -17,32 +17,36 @@
 
 <div class="Channel-header">
 	<div class="Channel-body">
-		<p class="Channel-slug">
-			<a href="{{href-to 'channel' channel}}" title="To listen, tune in @{{channel.slug}}">
-				@{{channel.slug}}
-			</a>
-		</p>
 		<p>
+			<span class="Channel-slug">
+				<a href="{{href-to 'channel' channel}}" title="To listen, tune in @{{channel.slug}}">
+					@{{channel.slug}}
+				</a>
+			</span>
+
+			{{!-- Note here the ``<updated>, (map)` syntax --}}
+			{{#if channel.hasCoordinates}}
+				—
+				{{#link-to
+						 'channels.map'
+						 (query-params
+						 lat=lat
+						 lng=lng
+						 zoom=8
+						 )
+						 class="Channel-mapLink Muted"
+						 title=(concat 'Locate ' channel.title ' on the map [' lat '/' lng ']')
+				}}map{{/link-to}}
+			{{/if}}
+
 			{{#if shouldShowUpdated}}
 				<span
 					class="Channel-date Muted"
 					title="{{channel.title}} was last updated {{time-ago channel.updated}}"
 				>
+					—
 					{{time-ago channel.updated}}
 				</span>
-			{{/if}}
-			{{!-- Note here the ``<updated>, (map)` syntax --}}
-			{{#if channel.hasCoordinates}}
-				- {{#link-to
-						'channels.map'
-						(query-params
-							lat=lat
-							lng=lng
-							zoom=8
-						)
-						class="Muted"
-						title=(concat 'Locate ' channel.title ' on the map [' lat '/' lng ']')
-						}}map{{/link-to}}
 			{{/if}}
 		</p>
 		{{#if channel.body}}
