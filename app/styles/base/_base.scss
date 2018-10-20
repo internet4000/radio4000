@@ -38,9 +38,9 @@ a:hover {
 }
 
 h1 a {
-	text-decoration: none;
+	text-decoration: underline;
 	&.is-active {
-		text-decoration: underline;
+		text-decoration: none;
 	}
 }
 
