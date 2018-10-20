@@ -11,7 +11,6 @@ export default Component.extend({
 		const title = get(this, 'channel.title') || ''
 		return `${body} (${title})`
 	}),
-	disableLazyload: computed('index', function() {
-		return get(this, 'index') > 0 && get(this, 'index') < 10
-	})
+	// Used to disable lazy loading of images for the first X items.
+	isFirstInGrid: computed.lt('index', 10)
 })
