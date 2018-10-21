@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
 import {fetchTitle} from 'radio4000/utils/youtube-api';
-import {fetchReleaseInfos} from 'radio4000/utils/discogs-api';
+import {fetchDiscogsInfo} from 'radio4000/utils/discogs-api';
 import {task, timeout} from 'ember-concurrency';
 import { mediaUrlParser } from 'media-url-parser';
 
@@ -59,7 +59,8 @@ export default Component.extend({
 		// Because the URL might have changed
 		const mediaUrl = mediaUrlParser(track.get('discogsUrl'))
 		if (mediaUrl.id && mediaUrl.provider === 'discogs') {
-			let info = await fetchReleaseInfos(mediaUrl.id)
+			const type = mediaUrl.url.includes('master/') ? 'master' : 'release'
+			const info = await fetchDiscogsInfo(mediaUrl.id, type)
 			this.set('discogsInfo', info)
 		}
 	}),

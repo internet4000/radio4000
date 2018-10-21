@@ -32,19 +32,14 @@ const buildUrl = ({type, id}) => {
 	return undefined
 }
 
-const fetchReleaseInfos = async (releaseId) => {
-	let url = buildUrl({
-		type: 'release',
-		id: releaseId
-	})
+const fetchDiscogsInfo = async (id, type = 'release') => {
+	let url = buildUrl({type, id})
 	let response = await fetch(url)
 	let data = await response.json()
-
-	if (!data.errors) {
-		return serializeRelease(data);
-	} else {
-		throw new Error(data.errors.msg);
+	if (data.errors) {
+		throw new Error(data.errors.msg)
 	}
+	return serializeRelease(data)
 }
 
-export { fetchReleaseInfos }
+export { fetchDiscogsInfo }
