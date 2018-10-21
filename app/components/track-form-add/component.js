@@ -57,6 +57,10 @@ Go to your settings to upgrade your radio.`
 		},
 		showDiscogs() {
 			this.set('showDiscogs', true);
+		},
+		addDiscogsInfo(info) {
+			let body = this.get('track.body') || ''
+			this.set('track.body', `${body} ${info}`)
 		}
 	}
 });

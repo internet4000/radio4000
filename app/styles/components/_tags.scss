@@ -1,9 +1,13 @@
 .Tags {
 	display: flex;
 	flex-wrap: wrap;
+	align-items: center;
 	a {
 		padding: 0.2rem;
 		margin-right: 0.4rem;
+	}
+	label {
+		margin-right: 0.5rem;
 	}
 }
 
@@ -12,4 +16,12 @@
 	a {
 		margin-bottom: 0.4rem;
 	}
+}
+
+
+.Tag {
+  background-color: $slightgray;
+  padding: 0.5rem;
+  margin: 0.2rem;
+  margin-right: 0.6rem;
 }

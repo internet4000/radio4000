@@ -1,0 +1,29 @@
+<p class="Muted">Click the tags to add them to your tracks description</p>
+
+<div class="Tags">
+	{{#if info.styles}}
+		<label>Styles</label>
+		{{#each info.styles as |item|}}
+			<span class="Tag" {{action 'add' item}}>{{item}}</span>
+		{{/each}}
+	{{/if}}
+
+	{{#if info.country}}
+		<label>Country</label>
+		<span class="Tag" {{action 'add' info.country}}>{{info.country}}</span>
+	{{/if}}
+
+	{{#if info.year}}
+		<label>Release Year</label>
+		<span class="Tag" {{action 'add' info.year}}>{{info.year}}</span>
+	{{/if}}
+
+	{{#if info.labels}}
+		<label>Labels</label>
+		{{#each info.labels as |item|}}
+			<span class="Tag" {{action 'add' item}}>{{item}}</span>
+		{{/each}}
+	{{/if}}
+</div>
+
+{{yield}}
