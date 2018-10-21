@@ -1,29 +1,29 @@
 {{#if info}}
-	<p class="Muted">Click the tags to add them to your tracks description</p>
+	<p class="Muted">Click tags to add them to the track's description</p>
 {{/if}}
 
 <div class="Tags">
 	{{#if info.styles}}
 		<label>Styles</label>
 		{{#each info.styles as |item|}}
-			<span class="Tag" {{action 'add' item}}>{{item}}</span>
+			<button class="Btn Btn--small" {{action 'add' item}}>{{item}}</button>
 		{{/each}}
 	{{/if}}
 
 	{{#if info.country}}
 		<label>Country</label>
-		<span class="Tag" {{action 'add' info.country}}>{{info.country}}</span>
+		<button class="Btn Btn--small" {{action 'add' info.country}}>{{info.country}}</button>
 	{{/if}}
 
 	{{#if info.year}}
 		<label>Release Year</label>
-		<span class="Tag" {{action 'add' info.year}}>{{info.year}}</span>
+		<button class="Btn Btn--small" {{action 'add' info.year}}>{{info.year}}</button>
 	{{/if}}
 
 	{{#if info.labels}}
 		<label>Labels</label>
 		{{#each info.labels as |item|}}
-			<span class="Tag" {{action 'add' item}}>{{item}}</span>
+			<button class="Btn Btn--small" {{action 'add' item}}>{{item}}</button>
 		{{/each}}
 	{{/if}}
 </div>
