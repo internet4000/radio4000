@@ -20,6 +20,8 @@ export default TrackFormComponent.extend({
 		return `https://www.youtube.com/results?search_query=${this.get('track.title')}`
 	}),
 
+	showDiscogsUI: computed.or('showDiscogs', 'track.discogsUrl'),
+
 	submitTask: task(function * (event) {
 		event.preventDefault()
 		yield get(this, 'track.update').perform()

@@ -16,9 +16,12 @@ export default Component.extend({
 	track: null,
 	initialUrl: '',
 
+		// display discogs interface
+	showDiscogs: false,
+
 	didInsertElement() {
-		this.automaticSetTitle()
 		this._super()
+		this.automaticSetTitle()
 	},
 
 	// Gets called when you paste into the input-url component.
@@ -102,6 +105,13 @@ export default Component.extend({
 			if (onCancel) {
 				onCancel();
 			}
+		},
+		showDiscogs() {
+			this.set('showDiscogs', true);
+		},
+		addDiscogsInfo(info) {
+			let body = this.get('track.body') || ''
+			this.set('track.body', `${body} ${info}`)
 		}
 	}
 });

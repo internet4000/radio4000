@@ -18,7 +18,6 @@ export default TrackFormComponent.extend({
 	session: inject.service(),
 	flashMessages: inject.service(),
 	disableSubmit: computed.or('submitTask.isRunning', 'isSubmitting', 'track.validations.isInvalid'),
-	showDiscogs: false,
 
 	// Called on init as well as after submitting a track.
 	// Also see the same method on the `TrackForm` component, from which this extends.
@@ -54,13 +53,6 @@ export default TrackFormComponent.extend({
 This feature is for upgraded channels only.
 Go to your settings to upgrade your radio.`
 			get(this, 'flashMessages').info(message)
-		},
-		showDiscogs() {
-			this.set('showDiscogs', true);
-		},
-		addDiscogsInfo(info) {
-			let body = this.get('track.body') || ''
-			this.set('track.body', `${body} ${info}`)
 		}
 	}
 });
