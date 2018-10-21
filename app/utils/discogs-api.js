@@ -1,6 +1,9 @@
 const discogsApiUrl = 'https://edapi.glitch.me/'
 
 const serializeInfo = info => {
+	if (!info) {
+		return ''
+	}
 	return info.toLowerCase().dasherize()
 }
 
