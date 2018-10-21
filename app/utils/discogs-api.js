@@ -4,7 +4,7 @@ const serializeInfo = info => {
 	return info.toLowerCase().dasherize()
 }
 
-const serializeRelease = (release) => {
+const serializeRelease = release => {
 	let styles = [];
 	let allStyles = styles.concat(
 		release.styles,
@@ -15,8 +15,8 @@ const serializeRelease = (release) => {
 
 	let result = {
 		styles: allStyles.map(serializeInfo),
-		labels: release.labels.map(i => serializeInfo(i.name)),
-		country: serializeInfo(release.country),
+		labels: release.labels ? release.labels.map(i => serializeInfo(i.name)) : [],
+		country: release.country ? serializeInfo(release.country) : '',
 		year: release.year
 	}
 	return result
