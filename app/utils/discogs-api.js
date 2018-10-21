@@ -5,10 +5,14 @@ const serializeInfo = info => {
 }
 
 const serializeRelease = (release) => {
-	let allStyles = [...release.styles, ...release.genres]
-			.filter((elem, index, self) => {
-				return index === self.indexOf(elem);
-			})
+	let styles = [];
+	let allStyles = styles.concat(
+		release.styles,
+		release.genres
+	).filter((elem, index, self) => {
+		return index === self.indexOf(elem);
+	})
+
 	let result = {
 		styles: allStyles.map(serializeInfo),
 		labels: release.labels.map(i => serializeInfo(i.name)),
@@ -35,7 +39,12 @@ const fetchReleaseInfos = async (releaseId) => {
 	})
 	let response = await fetch(url)
 	let data = await response.json()
-	return serializeRelease(data);
+
+	if (!data.errors) {
+		return serializeRelease(data);
+	} else {
+		throw new Error(data.errors.msg);
+	}
 }
 
 export { fetchReleaseInfos }

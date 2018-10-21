@@ -14,15 +14,11 @@ export const Validations = buildValidations({
 	url: [
 		validator('presence', {
 			presence: true,
-			message: 'Use a valid a YouTube video URL'
+			message: 'Use a valid YouTube video URL'
 		}),
 		validator('youtube-url')
 	],
 	discogsUrl: [
-		validator('presence', {
-			presence: true,
-			message: 'Use a Discogs release URL'
-		}),
 		validator('discogs-url')
 	],
 	title: [
