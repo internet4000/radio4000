@@ -47,6 +47,11 @@
 				value=value
 				placeholder="Paste in a Discogs link"}}
 	{{/form-group}}
+	{{#if showDiscogsSearchSuggestion}}
+		<p>
+			Search for this <a href={{discogsSearchUrl}} target="_blank" rel="noopener">track on discogs</a>.
+		</p>
+	{{/if}}
 {{else}}
 	<p class="Muted">
 		<button

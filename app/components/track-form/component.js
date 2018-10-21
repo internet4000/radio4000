@@ -69,6 +69,14 @@ export default Component.extend({
 		return !this.get('track.hasDirtyAttributes') || this.get('submitTask.isRunning')
 	}),
 
+	showDiscogsSearchSuggestion: computed('track.title', 'track.discogsUrl', function() {
+		return this.get('track.title') && !this.get('track.discogsUrl')
+	}),
+	discogsSearchUrl: computed('track.title', function() {
+		let title = encodeURIComponent(this.get('track.title'));
+		return `https://www.discogs.com/search/?q=${title}&type=all`
+	}),
+
 	fetchTitle: task(function * () {
 		yield timeout(250); // throttle
 		const track = get(this, 'track')
