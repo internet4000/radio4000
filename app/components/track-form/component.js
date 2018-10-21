@@ -111,8 +111,8 @@ export default Component.extend({
 			this.set('showDiscogs', true);
 		},
 		addDiscogsInfo(info) {
-			let body = this.get('track.body') || ''
-			this.set('track.body', `${body} ${info}`)
+			let body = this.get('track.body')
+			this.set('track.body', `${body ? body + ' ' : ''}${info}`)
 		}
 	}
 });
