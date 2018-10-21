@@ -1,7 +1,7 @@
 import BaseValidator from 'ember-cp-validations/validators/base'
 import {mediaUrlParser} from 'media-url-parser'
 
-const defaultError = 'Please enter a full and valid Discogs release or master URL'
+const defaultError = 'Enter a valid Discogs release or master URL'
 
 const DiscogsUrl = BaseValidator.extend({
 	validate(value) {
