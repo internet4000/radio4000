@@ -14,7 +14,7 @@ export const Validations = buildValidations({
 	url: [
 		validator('presence', {
 			presence: true,
-			message: 'Use a valid YouTube video URL'
+			message: 'A YouTube URL (https://...) is required to add a new track'
 		}),
 		validator('youtube-url')
 	],
@@ -23,9 +23,10 @@ export const Validations = buildValidations({
 	],
 	title: [
 		validator('presence', {
+			dependentKeys: ['model.url'],
 			presence: true,
 			ignoreBlank: true,
-			message: 'Field should not be empty'
+			message: 'The track Title should not be left empty'
 		}),
 		validator('length', {
 			max: 256

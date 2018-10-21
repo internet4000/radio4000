@@ -7,7 +7,9 @@ const DiscogsUrl = BaseValidator.extend({
 	validate(value) {
 		// if there is an empty value, it is value
 		// as we allow not to have a discogsURL
-		if (!value) return true
+		if (!value) {
+			return true
+		}
 
 		// If the parser finds a Discogs id it is valid.
 		try {
