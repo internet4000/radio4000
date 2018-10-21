@@ -1,25 +1,22 @@
-import BaseValidator from 'ember-cp-validations/validators/base';
-import { mediaUrlParser } from 'media-url-parser';
+import BaseValidator from 'ember-cp-validations/validators/base'
+import {mediaUrlParser} from 'media-url-parser'
+
+const defaultError = 'Please enter a full and valid Discogs release or master URL'
 
 const DiscogsUrl = BaseValidator.extend({
 	validate(value) {
-		let result = mediaUrlParser(value);
-
-		// there is no result, it is valid
-		// because we allow empty discogsUrl
-		if (!result) {
-			return true;
+		// If the parser finds a Discogs id it is valid.
+		try {
+			let result = mediaUrlParser(value)
+			if (result.id && result.provider === 'discogs') {
+				return true
+			}
+			return defaultError
+		} catch (err) {
+			// Catch errors from media url parser.
+			return defaultError
 		}
-
-		// there is a result, but no id
-		// that means it is not a correct url
-		if (!result.id) {
-			return false;
-		}
-
-		// otherwise it is correct
-		return true;
 	}
-});
+})
 
-export default DiscogsUrl;
+export default DiscogsUrl

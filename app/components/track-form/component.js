@@ -58,7 +58,7 @@ export default Component.extend({
 
 		// Because the URL might have changed
 		const mediaUrl = mediaUrlParser(track.get('discogsUrl'))
-		if (mediaUrl.id) {
+		if (mediaUrl.id && mediaUrl.provider === 'discogs') {
 			let info = await fetchReleaseInfos(mediaUrl.id)
 			this.set('discogsInfo', info)
 		}
