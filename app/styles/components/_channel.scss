@@ -5,10 +5,12 @@
 	display: flex;
 	width: 100%;
 	margin-top: 0.5rem;
+
 	@media (min-width: $layout-s) {
 		margin-left: 2rem;
 		margin-top: -1rem;
 	}
+
 	@media (min-width: $layout-l) {
 		margin-right: 4rem;
 	}
@@ -27,11 +29,10 @@
 
 .Channel-body {
 	flex: 1;
-	padding: 1.5rem;
+	padding: 1.5rem 1.5rem 0;
 
 	@media (min-width: $layout-s) {
-		padding-left: 3rem;
-		padding-right: 3rem;
+		padding-top: 2rem;
 	}
 }
 
