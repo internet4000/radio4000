@@ -83,7 +83,6 @@
 			{{#vertical-collection manipulatedList
 				estimateHeight=333
 				bufferSize=8
-				firstReached="firstReached"
 				as |item index|}}
 				<div class="Grid-cell">
 					{{channel-card channel=item index=index}}
@@ -92,9 +91,7 @@
 			{{#unless filteredChannels}}
 				<div class="Grid-cell">
 					{{#is-loading}}
-						<p>
-							Loading radios
-						</p>
+						<p>Loading radios</p>
 					{{/is-loading}}
 				</div>
 			{{/unless}}
