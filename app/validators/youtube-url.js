@@ -5,7 +5,7 @@ const YoutubeUrl = BaseValidator.extend({
 	validate(value) {
 		const valid = youtubeRegex().test(value);
 		if (!valid) {
-			return 'Please enter a full and valid YouTube URL';
+			return 'Use a valid YouTube video URL';
 		}
 		return true;
 	}

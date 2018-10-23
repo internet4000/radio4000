@@ -26,7 +26,8 @@ export default TrackFormComponent.extend({
 		const track = trackObject.create(Ember.getOwner(this).ownerInjection(), {
 			url: get(this, 'initialUrl'),
 			title: get(this, 'initialTitle'),
-			body: get(this, 'initialBody')
+			body: get(this, 'initialBody'),
+			discogsUrl: get(this, 'initialDiscogsUrl')
 		});
 		set(this, 'track', track);
 		this._super(...arguments);
@@ -43,7 +44,8 @@ export default TrackFormComponent.extend({
 			get(this, 'track').setProperties({
 				url: currentTrack.get('url'),
 				title: currentTrack.get('title'),
-				body: `thanks @${currentTrack.get('channel.slug')}`
+				body: `thanks @${currentTrack.get('channel.slug')}`,
+				discogsUrl: currentTrack.get('discogsUrl')
 			});
 		},
 		inviteToPremium() {

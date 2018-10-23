@@ -1,0 +1,31 @@
+{{#if info}}
+	<p class="Muted">Click a tag to add it to the track's description</p>
+{{/if}}
+
+<div class="Tags">
+	{{#if info.styles}}
+		<label>Styles</label>
+		{{#each info.styles as |item|}}
+			<button class="Btn Btn--small" {{action 'add' item}}>{{item}}</button>
+		{{/each}}
+	{{/if}}
+
+	{{#if info.country}}
+		<label>Country</label>
+		<button class="Btn Btn--small" {{action 'add' info.country}}>{{info.country}}</button>
+	{{/if}}
+
+	{{#if info.year}}
+		<label>Release Year</label>
+		<button class="Btn Btn--small" {{action 'add' info.year}}>{{info.year}}</button>
+	{{/if}}
+
+	{{#if info.labels}}
+		<label>Labels</label>
+		{{#each info.labels as |item|}}
+			<button class="Btn Btn--small" {{action 'add' item}}>{{item}}</button>
+		{{/each}}
+	{{/if}}
+</div>
+
+{{yield}}

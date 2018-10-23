@@ -24,10 +24,10 @@
 
 
 {{#form-group
-	model=track
-	valuePath="url"
-	label="URL"
-	hint="Paste in the URL of a YouTube video" as |value|}}
+		 model=track
+		 valuePath="url"
+		 label="URL"
+		 hint="Paste in the URL of a YouTube video" as |value|}}
 	{{focus-input
 			type="url"
 			value=value
@@ -46,6 +46,39 @@
 		<p class="Form-groupStatus">Updating…</p>
 	{{/if}}
 {{/form-group}}
+
+{{#if showDiscogs}}
+	{{#form-group
+			 model=track
+			 valuePath="discogsUrl"
+			 label="Discogs URL"
+			 hint="Add the Discogs release URL related to the track. Discogs can provide aditional interesting data, such as the release year, label, and many more" as |value|}}
+
+		{{focus-input
+				type="url"
+				value=value
+				placeholder="Paste in a Discogs link"}}
+	{{/form-group}}
+
+	{{#if showDiscogsSearchSuggestion}}
+		<p>
+			Search for this <a href={{discogsSearchUrl}} target="_blank" rel="noopener">track on discogs</a>.
+		</p>
+	{{/if}}
+
+	{{#if discogsInfo}}
+		{{add-discogs-info
+				info=discogsInfo
+				addInfo=(action 'addDiscogsInfo')}}
+	{{/if}}
+
+{{else}}
+	<p class="Muted">
+		<button
+			class="Btn"
+			{{action 'showDiscogs'}}>Link Discogs release</button>
+		(optional)</p>
+{{/if}}
 
 {{#form-group
 		 model=track
