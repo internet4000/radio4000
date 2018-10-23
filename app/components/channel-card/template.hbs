@@ -1,10 +1,16 @@
-{{#link-to "channel" channel title=title}}
-	{{channel-cover src=channel.image alt=channel.title}}
-
+<a href={{href-to "channel" channel}} title={{title}}>
+	{{channel-cover
+		src=channel.image
+		alt=channel.title
+		disableLazyload=isFirstInGrid}}
 	<h3 class="ChannelCard-title">
 		{{channel.title}}
 	</h3>
-{{/link-to}}
+</a>
+
+<p class="ChannelCard-body">
+	{{link-hashtags (do-truncate channel.body 200) channel.slug}}
+</p>
 
 <div class="ChannelCard-controls">
 	{{play-shuffle-btn
@@ -13,10 +19,6 @@
 		showText=false
 	}}
 </div>
-
-<p class="ChannelCard-body">
-	{{link-hashtags (do-truncate channel.body 200) channel.slug}}
-</p>
 
 {{#unless channel.canEdit}}
 	{{btn-favorite
@@ -27,3 +29,4 @@
 {{/unless}}
 
 {{yield}}
+

@@ -159,3 +159,10 @@
 		min-width: 17rem;
 	}
 }
+
+// From the "vertical-collection" addon.
+// Make sure it doesn't show in the grid.
+.Grid .occluded-content {
+	flex: 0;
+}
+

@@ -1,5 +1,7 @@
 import Route from '@ember/routing/route'
 
+let cache
+
 export default Route.extend({
 	// When search changes the url, don't replace (add) to the history.
 	// e.g. back/forth in browser works as expected.
@@ -10,8 +12,12 @@ export default Route.extend({
 	},
 
 	model() {
-		// return this.store.query('channel', {limitToLast: 100})
-		this.store.findAll('channel')
-		return this.store.peekAll('channel')
+		if (cache) {
+			return cache
+		}
+		return this.store.findAll('channel').then(model => {
+			cache = model
+			return model
+		})
 	}
 });
