@@ -19,7 +19,8 @@ export default Mixin.create({
 			url: props.url,
 			title: props.title,
 			body: props.body,
-			ytid: props.ytid
+			ytid: props.ytid,
+			discogsUrl: props.discogsUrl
 		});
 
 		// 2. Add it to the channel's tracks.

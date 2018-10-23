@@ -26,21 +26,53 @@
 {{/if}}
 
 {{#form-group
-	model=track
-	valuePath="title"
-	label="Title"
-	hint="Paste in the URL of a YouTube video" as |value|}}
+		 model=track
+		 valuePath="title"
+		 label="Title"
+		 hint="Paste in the URL of a YouTube video" as |value|}}
 	{{input value=value placeholder="Enter the track title" required="required"}}
 	{{#if fetchTitle.isRunning}}
 		<p class="Form-groupStatus">Updating…</p>
 	{{/if}}
 {{/form-group}}
 
+{{#if showDiscogsUI}}
+	{{#form-group
+			 model=track
+			 valuePath="discogsUrl"
+			 label="Discogs URL"
+			 hint="Add the Discogs release URL related to the track. Discogs can provide aditional interesting data, such as the release year, label, and many more" as |value|}}
+		{{focus-input
+				type="url"
+				value=value
+				placeholder="Paste in a Discogs link"}}
+	{{/form-group}}
+	{{#if showDiscogsSearchSuggestion}}
+		<p>
+			Search for this <a href={{discogsSearchUrl}} target="_blank" rel="noopener">track on discogs</a>.
+		</p>
+	{{/if}}
+{{else}}
+	<p class="Muted">
+		<button
+			class="Btn"
+			{{action 'showDiscogs'}}>Link Discogs release</button>
+		(optional)</p>
+{{/if}}
+
+{{#if showDiscogsUI}}
+	{{#if discogsInfo}}
+		{{add-discogs-info
+				info=discogsInfo
+				addInfo=(action 'addDiscogsInfo')}}
+	{{/if}}
+{{/if}}
+
 {{#form-group
-	model=track
-	valuePath="body"
-	label="Description"
-	hint="Give your track an optional description" as |value|}}
+		 model=track
+		 valuePath="body"
+		 label="Description"
+		 hint="Give your track an optional description" as |value|}}
 	{{textarea value=value placeholder="Track description"}}<br>
 {{/form-group}}
 
@@ -48,11 +80,11 @@
 	<div class="BtnGroupWrapper BtnGroupWrapper--full">
 		{{#btn-group}}
 			<button
-					onclick={{perform submitTask}}
-					type="submit"
-					class="Btn Btn--primary"
-					title="Save the track"
-				  disabled={{submitDisabled}}>
+				onclick={{perform submitTask}}
+				type="submit"
+				class="Btn Btn--primary"
+				title="Save the track"
+				disabled={{submitDisabled}}>
 				{{if submitTask.isIdle "Save" "Saving…"}}
 			</button>
 
@@ -60,10 +92,10 @@
 		{{/btn-group}}
 		{{#btn-group class="BtnGroup--right"}}
 			<button
-					onclick={{perform deleteTrack}}
-					class="Btn Btn--text Btn--danger u-alignRight"
-					title="Delete this track from your radio"
-					disabled={{deleteTrack.isRunning}}>
+				onclick={{perform deleteTrack}}
+				class="Btn Btn--text Btn--danger u-alignRight"
+				title="Delete this track from your radio"
+				disabled={{deleteTrack.isRunning}}>
 				{{if deleteTrack.isIdle "Delete" "Deleting…"}}
 			</button>
 		{{/btn-group}}

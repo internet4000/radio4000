@@ -14,15 +14,19 @@ export const Validations = buildValidations({
 	url: [
 		validator('presence', {
 			presence: true,
-			message: 'Paste a YouTube URL here'
+			message: 'A YouTube URL (https://...) is required to add a new track'
 		}),
 		validator('youtube-url')
 	],
+	discogsUrl: [
+		validator('discogs-url')
+	],
 	title: [
 		validator('presence', {
+			dependentKeys: ['model.url'],
 			presence: true,
 			ignoreBlank: true,
-			message: 'Field should not be empty'
+			message: 'The track Title should not be left empty'
 		}),
 		validator('length', {
 			max: 256
@@ -45,6 +49,8 @@ export default Model.extend(Validations, {
 	title: attr('string'),
 	body: attr('string'),
 	ytid: attr('string'),
+
+	discogsUrl: attr('string'),
 
 	mediaNotAvailable: attr('boolean', {
 		defaultValue: false
