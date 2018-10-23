@@ -46,11 +46,10 @@
  * Lazysizes loading
  */
 .Cover img {
-	// filter: blur(2px);
-	transition: filter 250ms, opacity 250ms;
+	transition: opacity 250ms;
 
 	&.lazyload {
-		opacity: 0;
+		opacity: 0.00001;
 	}
 
 	&.lazyloading {
@@ -59,10 +58,6 @@
 		background-size: 30px;
 		background-repeat: no-repeat;
 		background-position: center;
-	}
-
-	&.lazyloaded {
-		filter: blur(0);
 	}
 }
 

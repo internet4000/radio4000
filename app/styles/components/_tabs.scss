@@ -46,6 +46,9 @@
 		@extend %font-bold;
 		border-right-color: $primary-color;
 		background-color: $superlightgray;
+		.Muted {
+			font-weight: normal;
+		}
 	}
 	& small {
 		font-size: rem(9);

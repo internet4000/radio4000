@@ -2,20 +2,25 @@
 	border: 1px solid $mediumlightgray;
 	border-radius: $border-radius;
 	background-color: $superlightgray;
-	min-height: 10rem; // visual perf
 	display: flex;
+	width: 100%;
+	margin-top: 0.5rem;
+
+	@media (min-width: $layout-s) {
+		margin-left: 2rem;
+		margin-top: -1rem;
+	}
+
+	@media (min-width: $layout-l) {
+		margin-right: 4rem;
+	}
 }
 
 .Channel-media {
 	position: relative;
 	float: left;
-	margin-top: -1.5rem;
-	margin-right: -2rem;
-	width: 36%;
-
-	@media (min-width: $layout-s) {
-		width: 250px;
-	}
+	width: 100%;
+	max-width: 13rem;
 
 	.Cover {
 		margin-bottom: 0;
@@ -24,17 +29,14 @@
 
 .Channel-body {
 	flex: 1;
-	padding: 1.5rem 1rem 0;
+	padding: 1.5rem 1.5rem 0;
 
 	@media (min-width: $layout-s) {
-		padding-left: 3rem;
-		padding-right: 3rem;
+		padding-top: 2rem;
 	}
 }
 
 .Channel-slug {
-	display: flex;
-	justify-content: space-between;
 	margin-bottom: 0.2rem;
 
 	a {
@@ -43,16 +45,16 @@
 	}
 }
 
+
 .Channel-description {
 	@include size-2;
 	word-break: break-word;
 }
 
 .Channel-links {
-	display: flex;
-	flex-direction: column;
 	a {
 		word-wrap: break-word;
+		word-break: break-word;
 		text-decoration: none;
 	}
 	a + a {
@@ -64,5 +66,10 @@
 	padding: 0.5rem;
 	padding-right: 0;
 	min-width: 7rem;
-	justify-content: flex-end;
+	margin-bottom: 0;
+	justify-content: center;
+  flex-grow: 1;
+	@media (min-width: $layout-s) {
+		justify-content: flex-end;
+	}
 }
