@@ -1,10 +1,10 @@
-import Ember from 'ember'
-
-const { Component, get, set, inject, computed } = Ember
+import Component from '@ember/component'
+import {get, computed} from '@ember/object'
+import {inject as service} from '@ember/service'
 
 export default Component.extend({
-	player: inject.service(),
-	router: inject.service(),
+	player: service(),
+	router: service(),
 
 	classNames: ['Track'],
 	classNameBindings: [
@@ -22,6 +22,10 @@ export default Component.extend({
 
 	canEdit: computed.reads('track.channel.canEdit'),
 	mediaNotAvailable: computed.and('track.mediaNotAvailable', 'canEdit'),
+
+	play(track) {
+		get(this, 'player').playTrack(track)
+	},
 
 	actions: {
 		onEdit(track) {
@@ -42,17 +46,7 @@ export default Component.extend({
 			})
 		},
 		play(track) {
-			// get(this, 'playSelection')(track)
-			get(this, 'player').playTrack(track)
-		},
-		edit() {
-			this.toggleProperty('isEditing')
-		},
-		goBack(rollback) {
-			if (rollback) {
-				get(this, 'track').rollbackAttributes()
-			}
-			set(this, 'isEditing', false)
+			this.play(track)
 		}
 	}
 })
