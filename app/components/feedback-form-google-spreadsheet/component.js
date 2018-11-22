@@ -1,13 +1,7 @@
-import Ember from 'ember';
+import Component from '@ember/component'
+import {get, computed} from '@ember/object'
+import {inject as service} from '@ember/service'
 import {task} from 'ember-concurrency'
-
-const {
-	Component,
-	inject,
-	computed,
-	get,
-	$
-} = Ember;
 
 /*
 	Source: https://mashe.hawksey.info/2014/07/google-sheets-as-a-database-insert-with-apps-script-using-postget-methods-with-ajax-example/
@@ -18,9 +12,9 @@ const {
  */
 
 export default Component.extend({
-	session: inject.service(),
-	player: inject.service(),
-	flashMessages: inject.service(),
+	session: service(),
+	player: service(),
+	flashMessages: service(),
 
 	message: '',
 	email: '',
