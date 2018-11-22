@@ -16,63 +16,57 @@ export default Component.extend({
 	player: service(),
 	flashMessages: service(),
 
+	// scriptUrl
 	message: '',
 	email: '',
-	scriptId: '',
 
-	buildUrl: computed('scriptId', function () {
-		const scriptId = get(this, 'scriptId');
-		return `https://script.google.com/macros/s/${scriptId}/exec`;
-	}),
-	notValid: computed.empty('message'),
-	userChannelId: computed('session.currentUser.channels.firstObject.id', function () {
-		return get(this, 'session.currentUser.channels.firstObject.id') || '';
-	}),
-	playerChannelId: computed('player.currentChannel.id', function () {
-		return get(this, 'player.currentChannel.id') || '';
-	}),
-	playerTrackId: computed('player.currentTrack', function () {
-		return get(this, 'player.currentTrack.id') || '';
-	}),
-
-	clearData() {
+	clearForm() {
 		this.setProperties({
 			message: '',
 			email: ''
-		});
+		})
 	},
 
+	notValid: computed.empty('message'),
+	userChannelId: computed('session.currentUser.channels.firstObject.id', function() {
+		return get(this, 'session.currentUser.channels.firstObject.id') || ''
+	}),
+	playerChannelId: computed('player.currentChannel.id', function() {
+		return get(this, 'player.currentChannel.id') || ''
+	}),
+	playerTrackId: computed('player.currentTrack', function() {
+		return get(this, 'player.currentTrack.id') || ''
+	}),
+
 	sendFeedback: task(function * () {
-		const notification = get(this, 'flashMessages');
-		const url = get(this, 'buildUrl');
-		const data = {
-			message: get(this, 'message'),
-			email: get(this, 'email'),
-			userChannelId: get(this, 'userChannelId'),
-			playerChannelId: get(this, 'playerChannelId'),
-			playerTrackId: get(this, 'playerTrackId')
-		};
-		// Tried to use `fetch` instead of `$.ajax` but could not get
-		// the Google Docs script to parse the incoming body.
+		const notification = get(this, 'flashMessages')
+		const scriptUrl = get(this, 'scriptUrl')
+
+		const formData = new FormData()
+		formData.append('message', get(this, 'message'))
+		formData.append('email', get(this, 'email'))
+		formData.append('userChannelId', get(this, 'userChannelId'))
+		formData.append('playerChannelId', get(this, 'playerChannelId'))
+		formData.append('playerTrackId', get(this, 'playerTrackId'))
+
 		try {
-			yield $.ajax({
-				type: 'post',
-				url,
-				data
+			yield fetch(scriptUrl, {
+				method: 'POST',
+				body: formData
 			})
-			this.clearData();
-			notification.success('Thank you for the feedback!');
+			this.clearForm()
+			notification.success('Thank you for the feedback!')
 		} catch (err) {
-			notification.warning(`Sorry, could not send feedback ${err}`);
+			notification.warning(`Sorry, could not send feedback ${err}`)
 		}
 	}),
 
 	actions: {
-		send() {
+		submit() {
 			if (get(this, 'botField')) {
 				return
 			}
 			get(this, 'sendFeedback').perform()
 		}
 	}
-});
+})
