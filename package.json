@@ -37,7 +37,7 @@
     "ember-leaflet": "^3.0.17",
     "ember-load-initializers": "^1.1.0",
     "ember-maybe-import-regenerator": "^0.1.6",
-    "ember-modal-dialog": "^3.0.0-beta.0",
+    "ember-modal-dialog": "^3.0.0-beta.3",
     "ember-page-title": "^4.0.5",
     "ember-resolver": "^4.0.0",
     "ember-source": "~3.3.0",

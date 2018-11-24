@@ -7,14 +7,13 @@ export default ModalDialog.extend(EmberKeyboardMixin, {
 
 	init() {
 		this._super(...arguments)
-
 		this.set('keyboardActivated', true)
 	},
 
 	closeOnEsc: on(keyDown('Escape'), function() {
-		if (this.get('onClose')) {
-			this.get('onClose')()
-			this.set('keyboardActivated', false)
+		const onClose = this.get('onClose')
+		if (onClose) {
+			onClose()
 		}
 	})
 })
