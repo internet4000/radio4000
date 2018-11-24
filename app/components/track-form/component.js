@@ -16,7 +16,7 @@ export default Component.extend({
 	track: null,
 	initialUrl: '',
 
-		// display discogs interface
+	// Display discogs interface.
 	showDiscogs: false,
 
 	didInsertElement() {
@@ -72,6 +72,7 @@ export default Component.extend({
 	showDiscogsSearchSuggestion: computed('track.title', 'track.discogsUrl', function() {
 		return this.get('track.title') && !this.get('track.discogsUrl')
 	}),
+
 	discogsSearchUrl: computed('track.title', function() {
 		let title = encodeURIComponent(this.get('track.title'));
 		return `https://www.discogs.com/search/?q=${title}&type=all`
