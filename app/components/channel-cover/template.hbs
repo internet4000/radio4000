@@ -1,38 +1,40 @@
-<div class="Cover-image">
-	{{#if src}}
-		<picture>
-			{{#if disableLazyload}}
-				{{!-- first priority devices with webp --}}
-				<source type="image/webp" srcset="
-					{{cover-img src format='awebp'}} 1x,
-					{{cover-img src format='awebp' size=500}} 2x">
+<figure class="Cover">
+	<div class="Cover-image">
+		{{#if @src}}
+			<picture>
+				{{#if @disableLazyload}}
+					{{!-- first priority devices with webp --}}
+					<source type="image/webp" srcset="
+						{{cover-img @src format='awebp'}} 1x,
+						{{cover-img @src format='awebp' size=500}} 2x">
 
-				{{!-- small devices don't get gifs --}}
-				<source media="(max-width: 500px)" srcset="
-					{{cover-img src format='jpg'}} 1x,
-					{{cover-img src format='jpg' size=500 }} 2x">
-				<source srcset="{{cover-img src}} 1x, {{cover-img src size=500}} 2x">
+					{{!-- small devices don't get gifs --}}
+					<source media="(max-width: 500px)" srcset="
+						{{cover-img @src format='jpg'}} 1x,
+						{{cover-img @src format='jpg' size=500 }} 2x">
+					<source srcset="{{cover-img @src}} 1x, {{cover-img @src size=500}} 2x">
 
-				{{!-- devices without responsive images --}}
-				<img src={{cover-img src}} alt={{alt}}>
-			{{else}}
-				{{!-- first priority devices with webp --}}
-				<source type="image/webp" data-srcset="
-					{{cover-img src format='awebp'}} 1x,
-					{{cover-img src format='awebp' size=500}} 2x">
+					{{!-- devices without responsive images --}}
+					<img src={{cover-img @src}} alt={{alt}}>
+				{{else}}
+					{{!-- first priority devices with webp --}}
+					<source type="image/webp" data-srcset="
+						{{cover-img @src format='awebp'}} 1x,
+						{{cover-img @src format='awebp' size=500}} 2x">
 
-				{{!-- small devices don't get gifs --}}
-				<source media="(max-width: 500px)" data-srcset="
-					{{cover-img src format='jpg'}} 1x,
-					{{cover-img src format='jpg' size=500 }} 2x">
-				<source data-srcset="{{cover-img src}} 1x, {{cover-img src size=500}} 2x">
+					{{!-- small devices don't get gifs --}}
+					<source media="(max-width: 500px)" data-srcset="
+						{{cover-img @src format='jpg'}} 1x,
+						{{cover-img @src format='jpg' size=500 }} 2x">
+					<source data-srcset="{{cover-img @src}} 1x, {{cover-img @src size=500}} 2x">
 
-				{{!-- devices without responsive images --}}
-				<img data-src={{cover-img src}}
-					src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-					class="lazyload"
-					alt={{alt}}>
-			{{/if}}
-		</picture>
-	{{/if}}
-</div>
+					{{!-- devices without responsive images --}}
+					<img data-src={{cover-img @src}}
+						src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+						class="lazyload"
+						alt={{@alt}}>
+				{{/if}}
+			</picture>
+		{{/if}}
+	</div>
+</figure>

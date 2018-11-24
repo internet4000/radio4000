@@ -1,47 +1,46 @@
-<div class="Tabs Tabs--horizontal Tabs--animated">
-	{{#link-to
-			 "channels.index"
-			 title="Listen to the editor's selection [⌨ g h]"
-			 class="Tabs-item"}}
-		Featured
-	{{/link-to}}
-
-	{{#link-to
-			 "channels.search"
-			 title="Explore all radios on Radio4000 [⌨ g r]"
-			 class="Tabs-item"}}
-		Search
-	{{/link-to}}
-
-	{{#link-to
-			 "channels.map"
-			 title="Visualize radio on planet earth's world map [⌨ g m]"
-			 class="Tabs-item"}}
-		Map
-	{{/link-to}}
-</div>
-
-{{#if userChannel}}
-
-	<div class="Tabs-divider">|</div>
-
+<nav class="u-flex overflow-x-auto">
 	<div class="Tabs Tabs--horizontal Tabs--animated">
 		{{#link-to
-				 "channels.history"
-				 title="Your listening history [⌨ g y]"
-				 class="Tabs-item"}}
-			History
+			"channels.index"
+			title="Listen to the editor's selection [⌨ g h]"
+			class="Tabs-item"}}
+			Featured
 		{{/link-to}}
 
 		{{#link-to
-				 "channel.favorites"
-				 userChannel
-				 title="Your favorite radios [⌨ g s]"
-				 class="Tabs-item"}}
-			&rarr; Favorites
+			"channels.search"
+			title="Explore all radios on Radio4000 [⌨ g r]"
+			class="Tabs-item"}}
+			Search
+		{{/link-to}}
+
+		{{#link-to
+			"channels.map"
+			title="Visualize radio on planet earth's world map [⌨ g m]"
+			class="Tabs-item"}}
+			Map
 		{{/link-to}}
 	</div>
 
-{{/if}}
+	{{#if @userChannel}}
+		<div class="Tabs-divider">|</div>
+		<div class="Tabs Tabs--horizontal Tabs--animated">
+			{{#link-to
+				"channels.history"
+				title="Your listening history [⌨ g y]"
+				class="Tabs-item"}}
+				History
+			{{/link-to}}
 
-{{yield}}
+			{{#link-to
+				"channel.favorites"
+				@userChannel
+				title="Your favorite radios [⌨ g s]"
+				class="Tabs-item"}}
+				&rarr; Favorites
+			{{/link-to}}
+		</div>
+	{{/if}}
+
+	{{yield}}
+</nav>
