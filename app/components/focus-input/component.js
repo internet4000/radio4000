@@ -1,6 +1,7 @@
-import Ember from 'ember'
-
-const { TextField, get } = Ember
+import TextField from '@ember/component/text-field'
+import {get} from '@ember/object'
+import {on} from '@ember/object/evented'
+import {keyUp} from 'ember-keyboard'
 
 // http://emberjs.com/guides/cookbook/user_interface_and_interaction/focusing_a_textfield_after_its_been_inserted/
 
@@ -12,8 +13,9 @@ export default TextField.extend({
 	didInsertElement() {
 		this._super(...arguments)
 
-		// ember-keyboard prevents key-events when a TextField is focused.
-		// This reverses it so the parent modal can close on "Escape."
+		// ember-keyboard captures all keyboard events on TextField class,
+		// so they don't bubble up. We want to allow bubbling but only for "Escape",
+		// which closes modals.
 		this.set('keyboard.isPropagationEnabled', true)
 
 		if (get(this, 'autoFocus')) {
@@ -29,5 +31,11 @@ export default TextField.extend({
 		if (get(this, 'autoSelect')) {
 			this.element.select()
 		}
-	}
+	},
+
+	allowEscapeKeyOnly: on(keyUp(), function(event, emberKeyboardEvent) {
+		if (event.key !== 'Escape') {
+			emberKeyboardEvent.stopPropagation()
+		}
+	})
 })
