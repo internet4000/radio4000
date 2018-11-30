@@ -7382,18 +7382,18 @@ media-typer@0.3.0:
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
   integrity sha1-hxDXrwqmJvj/+hzgAWhUUmMlV0g=
 
-media-url-parser@^0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/media-url-parser/-/media-url-parser-0.0.7.tgz#4ff0cf9e521b83a4d0b50b02ff9e7ed9b38770c1"
-  integrity sha1-T/DPnlIbg6TQtQsC/55+2bOHcME=
-  dependencies:
-    esm "^3.0.72"
-    youtube-regex "^1.0.5"
-
 media-url-parser@^0.0.8:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/media-url-parser/-/media-url-parser-0.0.8.tgz#df0c60311f96f1073f97230edd3054c290648f8f"
   integrity sha512-NpstVn151G5eA+HmlRvq+4bQ0IE4u+RPpIBuuyeN8FzudEMOQES21MoG5itTAHZZPg+rLuGCMv/yOAHOS3hoxg==
+  dependencies:
+    esm "^3.0.72"
+    youtube-regex "^1.0.5"
+
+media-url-parser@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/media-url-parser/-/media-url-parser-0.1.0.tgz#2f243a66e0f39c3b79f48d35b92ed2e72b2e26e4"
+  integrity sha512-84ZqvEsJWe8ltOELCiEvdJ8EwZnZnQnB4kbvqOTxnPm4nAWdVJ4H6byMtb5+n/M33/QHvDWYzc9rmuFPcN6AEg==
   dependencies:
     esm "^3.0.72"
     youtube-regex "^1.0.5"
@@ -8557,14 +8557,14 @@ qunit@^2.5.0:
     resolve "1.5.0"
     walk-sync "0.3.2"
 
-radio4000-player@^0.6.2:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/radio4000-player/-/radio4000-player-0.6.2.tgz#94b48ddda2bbc01ce5ab8399853b5ebcb6b87073"
-  integrity sha512-JDXVzr5UAmzcBNE2krwPZfqAO/NwuIQdpBWtTVFo+bkrf4Zbd2q4W8/PGqT5NFYkOboy2uJo8d82BPkahLvGOg==
+radio4000-player@^0.6.3:
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/radio4000-player/-/radio4000-player-0.6.3.tgz#4937956463e85fc7ce3769fc21efc07342ddf872"
+  integrity sha512-8j5H41GbT3WwD9TT9dhvSHl6rLeEVyWR9Na696mHEqdbypXGb6dL40XpAdnPk/i/P4c7uEmHhxhn6uu0R2rmzQ==
   dependencies:
     document-register-element "^1.8.1"
     lodash.debounce "^4.0.8"
-    media-url-parser "^0.0.7"
+    media-url-parser "^0.1.0"
     unfetch "^3.0.0"
     vue "^2.5.16"
     vue-custom-element "^3.0.6"
