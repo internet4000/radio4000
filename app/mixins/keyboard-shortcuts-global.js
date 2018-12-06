@@ -1,24 +1,19 @@
-import Ember from 'ember'
-import $ from 'jquery'
 import Mixin from '@ember/object/mixin'
+import {get, set} from '@ember/object'
+import {on} from '@ember/object/evented'
+import {inject as service} from '@ember/service'
+import {run} from '@ember/runloop'
 import {EKMixin, keyUp} from 'ember-keyboard'
-
-const {
-	set,
-	get,
-	on,
-	run,
-	inject
-} = Ember
+import $ from 'jquery'
 
 export default Mixin.create(EKMixin, {
-	player: inject.service(),
-	uiStates: inject.service(),
+	player: service(),
+	uiStates: service(),
 
 	// https://github.com/patience-tema-baron/ember-keyboard/issues/54
 	isGoingTo: false,
 
-	activateKeyboard: Ember.on('init', function() {
+	activateKeyboard: on('init', function() {
 		set(this, 'keyboardActivated', true)
 	}),
 

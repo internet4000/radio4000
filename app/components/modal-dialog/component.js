@@ -8,6 +8,9 @@ export default ModalDialog.extend(EmberKeyboardMixin, {
 	init() {
 		this._super(...arguments)
 		this.set('keyboardActivated', true)
+		// This ensures the modal has first priority to respond to keybard events.
+		// Useful when the modal contains {{inputs}} that otherwise swallow the event.
+		this.set('keyboardFirstResponder', true)
 	},
 
 	closeOnEsc: on(keyDown('Escape'), function() {

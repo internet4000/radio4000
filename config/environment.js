@@ -48,10 +48,6 @@ module.exports = function(environment) {
 		pageTitle: {
 			separator: ' - ',
 			prepend: true
-		},
-
-		emberKeyboard: {
-			propagation: true
 		}
 	};
 
