@@ -4,7 +4,6 @@ import Ember from 'ember'
 import { array } from 'ember-awesome-macros'
 import { EKMixin, keyUp } from 'ember-keyboard'
 import raw from 'ember-macro-helpers/raw'
-// import { debounce } from '@ember/runloop'
 
 const { Component, computed, set } = Ember
 
