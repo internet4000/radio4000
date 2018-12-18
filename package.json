@@ -12,6 +12,7 @@
   "devDependencies": {
     "@ember/optional-features": "^0.7.0",
     "@html-next/vertical-collection": "^1.0.0-beta.12",
+    "babel-eslint": "^10.0.1",
     "broccoli-asset-rev": "^2.7.0",
     "ember-auto-import": "^1.2.6",
     "ember-awesome-macros": "^2.0.0",
@@ -38,7 +39,7 @@
     "ember-load-initializers": "^1.1.0",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-modal-dialog": "^3.0.0-beta.3",
-    "ember-page-title": "^4.0.5",
+    "ember-page-title": "^5.0.0",
     "ember-resolver": "^4.0.0",
     "ember-source": "~3.3.0",
     "eslint-config-xo": "^0.20.1",
