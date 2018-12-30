@@ -2,7 +2,7 @@
   "name": "Radio4000",
   "short_name": "Radio4000",
   "description": "Collect, curate, play and share your own radio channel",
-  "start_url": "index.html",
+  "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#5d1ae6",
