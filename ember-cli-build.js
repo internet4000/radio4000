@@ -21,6 +21,11 @@ module.exports = function (defaults) {
 			}
 		},
 
+		// http://ember-service-worker.com/documentation/configuration/
+		'ember-service-worker': {
+			versionStrategy: 'every-build'
+		},
+
 		fingerprint: {
 			exclude: [
 				// favicons
