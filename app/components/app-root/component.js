@@ -1,8 +1,9 @@
 /* global document */
 import Component from '@ember/component'
 import {get, set} from '@ember/object'
-import { inject as service } from '@ember/service'
+import {inject as service} from '@ember/service'
 import {run} from '@ember/runloop'
+import firebase from 'firebase'
 
 export default Component.extend({
 	uiStates: service(),
@@ -21,34 +22,43 @@ export default Component.extend({
 	isShowingModal: false,
 
 	didInsertElement() {
-		run.scheduleOnce('afterRender', () => {
-			this.removeDummyHTML();
-		});
+		var connectedRef = firebase.database().ref('.info/connected')
+
+		// Don't remove dummy HTML if offline.
+		connectedRef.on('value', snap => {
+			if (snap.val() === true) {
+				run.scheduleOnce('afterRender', () => {
+					this.removeDummyHTML()
+				})
+			} else {
+				// not connected
+			}
+		})
 	},
 
 	// Remove our dummy app with inline styles.
 	removeDummyHTML() {
-		const dummy = document.querySelector('.DummyApp');
+		const dummy = document.querySelector('.DummyApp')
 		if (dummy) {
-			dummy.parentNode.removeChild(dummy);
+			dummy.parentNode.removeChild(dummy)
 		}
 	},
 
 	actions: {
 		openAddTrack(track) {
 			if (track) {
-				set(this, 'url', track.url || '');
+				set(this, 'url', track.url || '')
 			}
-			set(this, 'isShowingModal', true);
+			set(this, 'isShowingModal', true)
 		},
 		closeModal() {
-			set(this, 'isShowingModal', false);
+			set(this, 'isShowingModal', false)
 		},
 		closeShortcutsModal() {
 			set(this, 'uiStates.showShortcutsModal', false)
 		},
 		saveTrack(trackProperties) {
-			return get(this, 'onSaveTrack')(trackProperties);
+			return get(this, 'onSaveTrack')(trackProperties)
 		}
 	}
-});
+})
