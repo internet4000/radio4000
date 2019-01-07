@@ -2,7 +2,6 @@
 import Component from '@ember/component'
 import {get, set} from '@ember/object'
 import {inject as service} from '@ember/service'
-import {run} from '@ember/runloop'
 import firebase from 'firebase'
 
 export default Component.extend({
@@ -27,9 +26,7 @@ export default Component.extend({
 		// Don't remove dummy HTML if offline.
 		connectedRef.on('value', snap => {
 			if (snap.val() === true) {
-				run.scheduleOnce('afterRender', () => {
-					this.removeDummyHTML()
-				})
+				this.removeDummyHTML()
 			} else {
 				// not connected
 			}
