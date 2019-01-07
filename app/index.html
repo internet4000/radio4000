@@ -87,7 +87,7 @@
 					// Internet connection check
 					var dummyBody = document.querySelectorAll('.DummyApp-body');
 					if (!navigator.onLine) {
-						dummyBody[0].innerHTML = '<p><strong>It seems that you are not connected to the internet -_-</strong></p><p>Find the internet and then reload this page.</p>';
+						dummyBody[0].innerHTML = '<p><strong>It seems that you are not connected to the internet -_-</strong></p><p>Find the internet and then reload this page.</p><p><button class="Btn" onclick="window.location.reload()">Reload</button></p>';
 					};
 				}();
 			</script>
