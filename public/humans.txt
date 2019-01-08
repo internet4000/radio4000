@@ -20,12 +20,12 @@
 The humans.txt file explains the team, technology,
 and graphic assets behind this site.
 
-This project was made by Internet4000. We do hope you enjoy.
+This project was made by its users and contributors.
 
-TEAM
+We do hope you enjoy.
 
-Hugo Vieilledent & Oskar Roug Mosumgaard
+Technical documentation and code:
 
-TECHNOLOGY
-
-Ember.js + Ember Data, Firebase, SCSS
+CMS: https://github.com/internet4000/radio4000
+API: https://github.com/internet4000/radio4000-api
+Player: https://github.com/internet4000/radio4000-player
