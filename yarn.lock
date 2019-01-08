@@ -7657,9 +7657,9 @@ media-typer@0.3.0:
   integrity sha1-hxDXrwqmJvj/+hzgAWhUUmMlV0g=
 
 media-url-parser@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/media-url-parser/-/media-url-parser-0.1.0.tgz#2f243a66e0f39c3b79f48d35b92ed2e72b2e26e4"
-  integrity sha512-84ZqvEsJWe8ltOELCiEvdJ8EwZnZnQnB4kbvqOTxnPm4nAWdVJ4H6byMtb5+n/M33/QHvDWYzc9rmuFPcN6AEg==
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/media-url-parser/-/media-url-parser-0.1.1.tgz#3c19558cbd653bdad6bc0570a8f34c6ddea8e64e"
+  integrity sha512-v649XLkCBiYjxEcEjxKLmYvpdK4VXUegVvW+htFE4n7f8wKckVQqfrUcsBd+5AR4EpZeHlQ3Lr13mwem2OLTNw==
   dependencies:
     esm "^3.0.72"
     youtube-regex "^1.0.5"
