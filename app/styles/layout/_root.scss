@@ -29,21 +29,22 @@
 		visibility: visible;
 		transform: translateX(0);
 	}
+
 	.Aside-toggleBtn {
 		opacity: 1;
 	}
 
 	.SiteMain {
 		@media (min-width: $layout-m) {
-			padding-left: $sidebar-width;
+			// padding-left: $sidebar-width;
 			opacity: 1;
 		}
 	}
-	.Manchet {
-		h1, h2, h3 {
-			padding-left: 0;
-		}
-	}
+	// .Manchet {
+	// 	h1, h2, h3 {
+	// 		padding-left: 0;
+	// 	}
+	// }
 }
 
 

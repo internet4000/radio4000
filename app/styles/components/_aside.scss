@@ -37,6 +37,11 @@
  */
 
 .Aside--left {
+	position: fixed;
+	top: 0rem;
+	left: 0rem;
+	z-index: 6;
+
 	.Aside-toggleBtn {
 		position: fixed;
 		top: 1.8rem;
@@ -54,25 +59,25 @@
 	}
 
 	.Aside-inner {
-		height: 100%;
-		padding-top: 5.45rem; // space for our top bar
+		width: 100%;
+		min-width: 15rem;
+		max-width: 70%;
 		height: 100vh;
+		padding-top: 5.45rem; // space for our top bar
 		padding-left: 0.7rem; // same
 		padding-right: 1rem;
+		overflow-y: auto;
 		transform: translateX(-100%);
+		background-color: $superlightgray;
+
 		position: fixed;
 		top: 0;
 		left: 0;
 		bottom: 0;
 		z-index: 5;
-		width: 100%;
-		background-color: $superlightgray;
-		min-width: 15rem;
-		max-width: 70%;
+
 
 		@media (min-width: $layout-m) {
-			// transform: translate3d(0, 0, 0);
-			// overflow: hidden;
 			background-color: transparent;
 			width: $sidebar-width;
 			max-width: 100%;
