@@ -64,7 +64,7 @@ export default Service.extend({
 
 			// if the cookie is undefined (not set), it returns true
 			// or if the cookie has 'true' as value, return true
-			const noCookie = Cookies.get('isPanelOpen') === undefined;
+			const noCookie = Cookies.get('isPanelOpen') === undefined || false;
 			return noCookie || Cookies.get('isPanelOpen') === 'true';
 		},
 		set(key, value) {

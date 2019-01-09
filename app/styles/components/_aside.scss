@@ -12,10 +12,6 @@
 	&.is-active {
 		.Aside-toggleLayer {
 			display: block;
-
-			@media (min-width: $layout-m) {
-				display: none;
-			}
 		}
 	}
 }
@@ -29,7 +25,7 @@
 	bottom: 0;
 	z-index: 4;
 	background-color: $slightgray;
-	opacity: 0.6;
+	opacity: 0.8;
 }
 
 /**
@@ -44,7 +40,7 @@
 
 	.Aside-toggleBtn {
 		position: fixed;
-		top: 1.8rem;
+		top: 1.2rem;
 		left: 1rem;
 		width: 3rem;
 		height: 3rem;
@@ -54,28 +50,27 @@
 	}
 
 	.Aside-inner {
-		width: 100%;
-		min-width: 15rem;
-		max-width: 70%;
-		height: 100vh;
-		padding-top: 5.45rem; // space for our top bar
-		padding-left: 0.7rem; // same
-		padding-right: 1rem;
-		overflow-y: auto;
 		transform: translateX(-100%);
-		background-color: $superlightgray;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 
 		position: fixed;
 		top: 0;
 		left: 0;
-		bottom: 0;
 		z-index: 5;
-
 
 		@media (min-width: $layout-m) {
 			background-color: transparent;
-			width: $sidebar-width;
-			max-width: 100%;
+		}
+
+		.Tabs {
+			width: 100%;
+			max-width: 25rem;
+			margin-top: 4rem;
+			margin-left: 3.2rem;
+			margin-right: 3.2rem;
 		}
 	}
 }
@@ -107,7 +102,7 @@
 // Children of .Aside
 .Aside-link {
 	display: inline-block;
-	padding: 0.5em 0.5rem 0.5rem 1rem;
+	margin: 0.5em 0.5rem 0.5rem 1rem;
 	transition: color 200ms;
 	color: $text-color;
 	text-decoration: none;
