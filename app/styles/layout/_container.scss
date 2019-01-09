@@ -6,6 +6,8 @@
 	max-width: 45em;
 	padding-left: 1rem;
 	padding-right: 1rem;
+	margin-left: auto;
+	margin-right: auto;
 
 	@media (min-width: $layout-m) {
 		padding-left: 2rem;
