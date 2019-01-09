@@ -8,8 +8,12 @@
  */
 .Sections {
 	// Push it below the logo.
-	padding-top: 2rem;
+	padding-top: 1.5rem;
 	/* padding-top: 6rem; */
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .Section {
