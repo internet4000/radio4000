@@ -8,9 +8,14 @@
 	cursor: pointer;
 }
 
+radio4000-player {
+	height: 100vh !important;
+}
+
 radio4000-player .Layout {
 	// Because it's fixed to bottom.
-	border-bottom: 0;
+	border-top: 0 !important;
+	border-bottom: 0 !important;
 }
 
 radio4000-player .Btn {

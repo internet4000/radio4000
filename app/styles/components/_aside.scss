@@ -89,20 +89,21 @@
 	position: fixed;
 	z-index: 2;
 	top: auto;
-	right: 1rem;
+	right: 0;
 	bottom: 0;
 	overflow: visible;
 	width: 20rem;
+	height: 100%;
 
 	.Root.is-minimized & {
 		width: auto;
+		height: auto;
 	}
 
 	.Root.is-maximized & {
 		top: 0;
 		right: 0;
 		width: 100%;
-		height: 100%;
 		background-color: black;
 		z-index: 7;
 	}

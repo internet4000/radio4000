@@ -14,6 +14,9 @@
 	visibility: hidden;
 }
 
+.Root:not(.is-minimized).is-withPlayer .SiteMain {
+	margin-right: 20rem;
+}
 
 /**
  * Panel is open
@@ -59,11 +62,6 @@
 	.Playback {
 		height: 100%;
 		background: black;
-	}
-
-	.Playback-layoutButtons {
-		top: 0;
-		right: 0;
 	}
 
 	radio4000-player {
