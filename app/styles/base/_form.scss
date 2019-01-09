@@ -96,6 +96,8 @@ progress {
 	display: flex;
 	flex-grow: 1;
 	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
 	.Form-group {
 		display: flex;
 		margin-right: 1rem;
