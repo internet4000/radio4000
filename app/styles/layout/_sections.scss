@@ -19,6 +19,11 @@
 	margin-bottom: 2rem;
 }
 
+.Section--horizontal {
+	display: flex;
+	flex-wrap: wrap;
+}
+
 // Section-inner
 // Used to position some content inside a section
 // Often used on a Section--flex
