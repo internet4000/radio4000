@@ -71,9 +71,22 @@
 			border: 0;
 		}
 	}
+
+	.Playback-layoutButtons {
+		flex-direction: row;
+		top: 0.2rem;
+		right: 0;
+		left: auto;
+	}
 }
 
 .Root.is-minimized {
+	.Playback-layoutButtons {
+		flex-direction: row;
+		top: -3rem;
+		right: 0;
+		left: 0;
+	}
 	.Playback {
 		width: 200px;
 		height: 200px;
