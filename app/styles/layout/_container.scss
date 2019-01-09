@@ -56,6 +56,8 @@
 }
 
 .Container--noPaddingMobile {
+    justify-content: center;
+    display: flex;
 	@media (max-width: $layout-m) {
 		padding-left: 0;
 		padding-right: 0;

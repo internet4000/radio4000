@@ -7,13 +7,7 @@
  Will be the children of .Sections if there exist multiple in a template
  */
 .Sections {
-	// Push it below the logo.
 	padding-top: 1.5rem;
-	/* padding-top: 6rem; */
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
 }
 
 .Section {
@@ -21,11 +15,6 @@
 
 	// padding instead of margin - otherwise it cuts the box-shadow of .Box -_-
 	margin-bottom: 2rem;
-}
-
-.Section--horizontal {
-	display: flex;
-	flex-wrap: wrap;
 }
 
 // Section-inner
