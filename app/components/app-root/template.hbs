@@ -43,6 +43,11 @@
 				{{link-to "Settings" "settings" class="Tabs-item" title="Customize your Radio4000"}}
 				{{link-to "Log out" "auth.logout" class="Tabs-item" title="Log out from Radio4000"}}
 			{{/if}}
+
+			{{#unless session.isAuthenticated}}
+				{{link-to "Create radio" "auth.signup" class="Btn Btn--full Btn--important" title="Sign up to create your Radio4000"}}
+				{{link-to "Log in" "auth.login" class="Btn Btn--full" title="Log in to Radio4000"}}
+			{{/unless}}
 		</div>
 	</div>
 </aside>
