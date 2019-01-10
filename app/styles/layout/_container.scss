@@ -58,8 +58,10 @@
 .Container--noPaddingMobile {
     justify-content: center;
     display: flex;
-	@media (max-width: $layout-m) {
-		padding-left: 0;
-		padding-right: 0;
+		overflow-x: auto;
+		@media (max-width: $layout-m) {
+			overflow-x: scroll;
+			padding-left: 0;
+			padding-right: 0;
 	}
 }
