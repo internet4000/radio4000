@@ -1,14 +1,21 @@
 <div class="Sections">
 	<section class="Manchet">
 		<h1>Sign up <small>to Radio4000</small></h1>
-		<p>Create an account to start with your radio</p>
+		<p class="u-tc">Create an account to start with your radio</p>
 	</section>
 	<section class="Section">
 		<div class="Grid">
 			<div class="Grid-cell Grid-cell--double">
-				<div class="Container Container--small">
-					{{user-signup onSignup=(action "signup")}}
-				</div>
+			    <div class="Container Container--small">
+				{{user-signup onSignup=(action "signup")}}
+
+				<p>
+				    Already have a radio? <a href="{{href-to 'auth.login'}}">Log in</a>.<br>
+				</p>
+				<p>
+				    Have a question? <a href="{{href-to 'about.contact'}}">Contact us</a>.
+				</p>
+			    </div>
 			</div>
 			<div class="Grid-cell Grid-cell--double">
 				<p>
@@ -35,14 +42,4 @@
 			</div>
 		</div>
 	</section>
-
-	<section class="Section">
-		<div class="Container">
-			<p>
-				Already have a radio? <a href="{{href-to 'auth.login'}}">Log in</a>.<br>
-				Have a question? <a href="{{href-to 'about.contact'}}">Contact us</a>.
-			</p>
-		</div>
-	</section>
-
 </div>

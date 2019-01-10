@@ -1,6 +1,6 @@
 {{title "Create radio"}}
 
-<section class="Sections">
+<section class="Sections Sections--center">
 	<div class="Section">
 
 		<header class="Manchet">
@@ -12,7 +12,7 @@
 		</header>
 
 		<div class="Container">
-			<form class="Form" onsubmit={{perform createRadio}}>
+			<form class="Form Form--full" onsubmit={{perform createRadio}}>
 				{{#form-group model=this valuePath="title" label="Name" as |v|}}
 					{{focus-input
 						autoFocus=true
@@ -21,14 +21,12 @@
 						placeholder="ex: “The Pirate Radio”"}}
 				{{/form-group}}
 
-				<div class="BtnGroupWrapper BtnGroupWrapper--full">
-					<button type="submit"
-						class="Btn Btn--large"
-						title="Create your radio channel"
-						disabled={{disableSubmit}}>
-						{{if createRadio.isRunning "Creating…" "Create your radio channel"}}
-					</button>
-				</div>
+			    <button type="submit"
+					  class="Btn Btn--large"
+					  title="Create your radio channel"
+					  disabled={{disableSubmit}}>
+				{{if createRadio.isRunning "Creating…" "Create radio channel"}}
+			    </button>
 			</form>
 		</div>
 	</div>
