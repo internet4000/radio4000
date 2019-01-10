@@ -2,81 +2,64 @@
 	Site Aside
 */
 
-.Aside {
-	overflow-y: auto;
-	display: flex;
-	flex-flow: column nowrap;
-}
 
-.Aside-toggle {
-	&.is-active {
-		.Aside-toggleLayer {
-			display: block;
-		}
+.NavigationToggle {
+	position: fixed;
+	top: 1.2rem;
+	left: 1rem;
+	width: 3rem;
+	height: 3rem;
+	z-index: 7;
+	background-color: $purple;
+	boder-color: $purple;
+
+	&:active,
+	&:hover,
+	&:focus {
+		box-shadow: 2px 3px 4px cyan;
 	}
 }
 
-.Aside-toggleLayer {
-	display: none;
+.NavigationToggleLayer {
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
-	z-index: 4;
-	background-color: $slightgray;
-	opacity: 0.8;
+	background-color: $overlay-color;
 }
 
 /**
  * Modifiers
  */
 
-.Aside--left {
+.Aside--navigation {
+	display: none;
+
 	position: fixed;
-	top: 0rem;
-	left: 0rem;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
 	z-index: 6;
 
-	.Aside-toggleBtn {
-		position: fixed;
-		top: 1.2rem;
-		left: 1rem;
-		width: 3rem;
-		height: 3rem;
-		z-index: 6;
-		background-color: $purple;
-		boder-color: $purple;
-
-		&:active,
-		&:hover,
-		&:focus {
-			box-shadow: 2px 3px 4px cyan;
-		}
-	}
+	overflow-y: scroll;
 
 	.Aside-inner {
-		transform: translateX(-100%);
-
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-
-		position: fixed;
-		top: 0;
-		left: 0;
-		z-index: 5;
-
-		@media (min-width: $layout-m) {
-			background-color: transparent;
-		}
+		padding-left: 3rem;
+		padding-top: 4rem;
+		padding-right: 2rem;
+		overflow-y: scroll;
 
 		.Tabs {
 			width: 100%;
 			max-width: 25rem;
-			margin-top: 4rem;
-			margin-left: 3.2rem;
-			margin-right: 3.2rem;
+		}
+
+		.Tabs-item,
+		.Btn {
+			width: 100%;
 		}
 	}
 }

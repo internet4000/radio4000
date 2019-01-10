@@ -4,10 +4,8 @@ const {Component, inject, computed, get} = Ember
 
 export default Component.extend({
 	uiStates: inject.service(),
-
-	html: '<',
 	attributeBindings: ['title'],
-	classNames: ['Aside-toggle'],
+	classNames: ['NavigationToggleLayer'],
 	classNameBindings: ['isToggled:is-active'],
 
 	isToggled: computed.oneWay('uiStates.isPanelLeftVisible'),

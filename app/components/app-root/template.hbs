@@ -6,11 +6,12 @@
 	</aside>
 {{/if}}
 
-{{aside-left
+{{navigation-toggle-btn}}
+
+{{aside-navigation
 	isAuthenticated=session.isAuthenticated
 	userChannel=session.currentUser.channels.firstObject
 	onClick=(action "openAddTrack")}}
-
 
 <main class="SiteMain">
 	{{yield}}

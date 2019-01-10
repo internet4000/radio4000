@@ -5,9 +5,13 @@
 	transition: transform 300ms $easing2, background-color 200ms;
 	max-width: 6rem;
 	padding-top: 0.8rem;
-	margin-left: 5rem;
 	user-select: none; // don't highlight
 	display: none;
+	margin-bottom: 2rem;
+
+	position: fixed;
+	top: 0rem;
+	left: 4.5rem;
 
 	.Root.is-panelLeftVisible & {
 		display: block;

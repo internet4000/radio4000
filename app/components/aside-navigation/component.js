@@ -7,7 +7,7 @@ export default Component.extend({
 	player: inject.service(),
 	session: inject.service(),
 	tagName: 'aside',
-	classNames: ['Aside', 'Aside--left'],
+	classNames: ['Aside', 'Aside--navigation'],
 
 	isActive: computed.alias('uiStates.isPanelLeftVisible'),
 
