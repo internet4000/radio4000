@@ -1,10 +1,12 @@
 /* global document */
 import Ember from 'ember';
-import Cookies from 'js-cookie';
 
 const {Service, computed, get, set, on} = Ember;
 
 export default Service.extend({
+
+	isPanelLeftVisible: false,
+
 	// Logic for showing keyboard shortcuts modal
 	showShortcutsModal: false,
 
@@ -59,24 +61,6 @@ export default Service.extend({
 
 	isMediumScreen: computed('initialWidth', function () {
 		return this.get('initialWidth') < 1000;
-	}),
-
-	// isPanelLeftVisible: true,
-	isPanelLeftVisible: computed({
-		get() {
-			if (this.get('isSmallScreen')) {
-				return false;
-			}
-
-			// if the cookie is undefined (not set), it returns true
-			// or if the cookie has 'true' as value, return true
-			const noCookie = Cookies.get('isPanelOpen') === undefined || false;
-			return noCookie || Cookies.get('isPanelOpen') === 'true';
-		},
-		set(key, value) {
-			Cookies.set('isPanelOpen', value, {expires: 7});
-			return value;
-		}
 	}),
 
 	togglePanelLeft() {
