@@ -47,6 +47,12 @@
 		z-index: 6;
 		background-color: $purple;
 		boder-color: $purple;
+
+		&:active,
+		&:hover,
+		&:focus {
+			box-shadow: 2px 3px 4px cyan;
+		}
 	}
 
 	.Aside-inner {
