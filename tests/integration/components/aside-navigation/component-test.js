@@ -12,15 +12,6 @@ module('Integration | Component | aside-navigation', function(hooks) {
 
     await render(hbs`{{aside-navigation}}`);
 
-    assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      {{#aside-navigation}}
-        template block text
-      {{/aside-navigation}}
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.ok(this.element.querySelectorAll('a').length > 3);
   });
 });

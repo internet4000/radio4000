@@ -12,15 +12,6 @@ module('Integration | Component | aside-settings', function(hooks) {
 
     await render(hbs`{{aside-settings}}`);
 
-    assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      {{#aside-settings}}
-        template block text
-      {{/aside-settings}}
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.ok(this.element.querySelectorAll('a').length > 1);
   });
 });

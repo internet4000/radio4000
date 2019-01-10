@@ -12,15 +12,6 @@ module('Integration | Component | application-logo', function(hooks) {
 
     await render(hbs`{{application-logo}}`);
 
-    assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      {{#application-logo}}
-        template block text
-      {{/application-logo}}
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.equal(this.element.querySelectorAll('h1').length, 1);
   });
 });
