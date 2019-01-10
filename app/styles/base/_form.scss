@@ -97,7 +97,7 @@ progress {
 	flex-grow: 1;
 	flex-wrap: wrap;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: space-evenly;
 	.Form-group {
 		display: flex;
 		margin-right: 1rem;
@@ -183,4 +183,12 @@ progress {
 	.Label-title {
 		padding-right: 0.5rem;
 	}
+}
+
+
+.ErrorsDisplay {
+    position: absolute;
+    top: 33%;
+    right: 0;
+    max-width: 50%;
 }
