@@ -30,12 +30,21 @@
     History
     {{/link-to}}
 
+
+    {{#link-to
+    "channel"
+    @userChannel.slug
+    title="Go to your radio channel [⌨ g i]"
+    class="Tabs-item"}}
+    &rarr; My Radio
+    {{/link-to}}
+
     {{#link-to
     "channel.favorites"
     @userChannel.slug
-    title="Your favorite radios [⌨ g s]"
+    title="Go to your favorite radio channels [⌨ g s]"
     class="Tabs-item"}}
-    &rarr; Favorites
+    &rarr; My Favorites
     {{/link-to}}
 </div>
 {{/if}}
