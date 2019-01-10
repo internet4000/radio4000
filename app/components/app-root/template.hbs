@@ -6,48 +6,11 @@
 	</aside>
 {{/if}}
 
-
-<aside class="Aside Aside--left">
-	{{aside-left-toggle}}
-	<div class="Aside-inner">
-		<div class="Tabs">
-			{{link-to "Radios" "channels" title="Find radio channels to enjoy [⌨ g h]" class="Tabs-item"}}
-			{{link-to "About" "about" title="Learn more about Radio4000" class="Tabs-item"}}
-
-			{{#if session.isAuthenticated}}
-				{{#if session.currentUser.channels.firstObject}}
-		    {{#link-to "channel" session.currentUser.channels.firstObject class="Tabs-item"}}My radio{{/link-to}}
-					{{#btn-group class="BtnGroup--full BtnGroup--tight"}}
-						<button {{action "addTrack"}} class="Btn Btn--important Btn--topNoRadius" title="Add a new track to your radio [⌨ g a]">
-							Add track
-						</button>
-					{{/btn-group}}
-				{{else}}
-					{{#link-to
-						 "channels.new"
-						 class="Btn Btn--full Btn--important"
-						 title="Create your Radio4000 channel"}}
-						Create your radio
-					{{/link-to}}
-				{{/if}}
-
-				{{link-to "Settings" "settings" class="Tabs-item" title="Customize your Radio4000"}}
-				{{link-to "Log out" "auth.logout" class="Tabs-item" title="Log out from Radio4000"}}
-			{{/if}}
-
-			{{#unless session.isAuthenticated}}
-				{{link-to "Create radio" "auth.signup" class="Btn Btn--full Btn--important" title="Sign up to create your Radio4000"}}
-				{{link-to "Log in" "auth.login" class="Btn Btn--full" title="Log in to Radio4000"}}
-			{{/unless}}
-		</div>
-	</div>
-</aside>
-
-
-{{!-- {{aside-left
+{{aside-left
 	isAuthenticated=session.isAuthenticated
 	userChannel=session.currentUser.channels.firstObject
-	onClick=(action "openAddTrack")}} --}}
+	onClick=(action "openAddTrack")}}
+
 
 <main class="SiteMain">
 	{{yield}}

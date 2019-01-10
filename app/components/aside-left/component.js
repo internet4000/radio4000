@@ -5,6 +5,7 @@ const {Component, computed, get, inject} = Ember;
 export default Component.extend({
 	uiStates: inject.service(),
 	player: inject.service(),
+	session: inject.service(),
 	tagName: 'aside',
 	classNames: ['Aside', 'Aside--left'],
 

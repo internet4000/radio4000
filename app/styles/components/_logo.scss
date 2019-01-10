@@ -4,15 +4,13 @@
 	z-index: 6;
 	transition: transform 300ms $easing2, background-color 200ms;
 	max-width: 6rem;
-	padding-top: 1.9rem;
-	margin-left: 2.8rem;
+	padding-top: 0.8rem;
+	margin-left: 5rem;
 	user-select: none; // don't highlight
+	display: none;
 
 	.Root.is-panelLeftVisible & {
-		// position: fixed;
-		// top: 0;
-		// left: 0;
-		// display: block;
+		display: block;
 	}
 }
 
