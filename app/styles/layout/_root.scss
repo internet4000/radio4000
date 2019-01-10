@@ -60,6 +60,13 @@
 		right: 0;
 		left: auto;
 	}
+
+	.Playback-fullscreen {
+		display: none;
+		@media (min-width: $layout-m) {
+			display: block;
+		}
+	}
 }
 
 .Root.is-minimized {
@@ -67,7 +74,7 @@
 		flex-direction: row;
 		top: -3rem;
 		right: 0;
-		left: 0;
+		left: auto;
 	}
 	.Playback {
 		width: 200px;
@@ -77,6 +84,12 @@
 		.Layout-header,
 		.Layout-footer {
 			display: none;
+		}
+	}
+	.Playback-minimize {
+		display: none;
+		@media (min-width: $layout-m) {
+			display: block;
 		}
 	}
 }

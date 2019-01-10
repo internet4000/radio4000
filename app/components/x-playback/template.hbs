@@ -11,10 +11,10 @@
 </div>
 
 <div class="Playback-layoutButtons">
-    <button class="Btn" {{action 'toggleFullscreenFormat'}} title="Toggle fullscreen player [⌨ f]">
+    <button class="Btn Playback-fullscreen" {{action 'toggleFullscreenFormat'}} title="Toggle fullscreen player [⌨ f]">
 	⤢
     </button>
-    <button class="Btn" {{action 'toggleMinimizedFormat'}} title="Toggle minimized player [⌨ f]">
+    <button class="Btn Playback-minimize" {{action 'toggleMinimizedFormat'}} title="Toggle minimized player [⌨ f]">
 	{{if uiStates.isMinimized '⬒' '_'}}
     </button>
 </div>
