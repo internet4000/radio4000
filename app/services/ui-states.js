@@ -9,7 +9,9 @@ export default Service.extend({
 	showShortcutsModal: false,
 
 	// Set the format to 0 for mini, 1 for normal or 2 for max
-	format: 1,
+	format: computed('isMediumScreen', function() {
+		return get(this, 'isMediumScreen') ? 0 : 1
+	}),
 	isMinimized: computed.equal('format', 0),
 	// isNormal: computed.equal('format', 1),
 	isFullscreen: computed.equal('format', 2),
@@ -53,6 +55,10 @@ export default Service.extend({
 	// 513px is our current breakpoint for panel to be full width.
 	isSmallScreen: computed('initialWidth', function () {
 		return this.get('initialWidth') < 650;
+	}),
+
+	isMediumScreen: computed('initialWidth', function () {
+		return this.get('initialWidth') < 1000;
 	}),
 
 	// isPanelLeftVisible: true,

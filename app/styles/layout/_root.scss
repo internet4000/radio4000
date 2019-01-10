@@ -63,7 +63,7 @@
 
 	.Playback-fullscreen {
 		display: none;
-		@media (min-width: $layout-m) {
+		@media (min-width: $layout-l) {
 			display: block;
 		}
 	}
@@ -88,7 +88,7 @@
 	}
 	.Playback-minimize {
 		display: none;
-		@media (min-width: $layout-m) {
+		@media (min-width: $layout-l) {
 			display: block;
 		}
 	}
