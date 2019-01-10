@@ -8,6 +8,13 @@
  */
 .Sections {
 	padding-top: 1.5rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.Sections--center {
+	min-height: 100vh;
+	justify-content: center;
 }
 
 .Section {
