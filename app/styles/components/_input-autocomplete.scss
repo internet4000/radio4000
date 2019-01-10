@@ -1,24 +1,24 @@
 .aa-container {
 	width: 100%;
 	margin-bottom: 1rem;
-}
-
-.aa-input-search {
-	min-height: 2rem;
-	border-radius: 3px;
-	border: 0;
-}
-
-.aa-container {
 	display: inline-block;
 	position: relative;
 	// width: 100%;
 }
 
-.algolia-autocomplete {
-	width: 100%;
+.aa-input-search {
+	min-height: 2rem;
+	border-radius: 3px;
+	border-color: $mediumlightgray;
+	border-radius: $border-radius;
+
+	&:focus {
+		border-color: $mediumgray;
+		outline: 0;
+	}
 }
 
+.algolia-autocomplete,
 .algolia-autocomplete .aa-input,
 .algolia-autocomplete .aa-hint {
 	width: 100%;
@@ -26,15 +26,6 @@
 
 .algolia-autocomplete .aa-hint {
 	color: $gray;
-}
-
-.aa-input-search {
-	// border: 1px solid #000;
-	// padding: 0.5em 1em 0.5em 0.5em;
-	// -webkit-appearance: none;
-	// -moz-appearance: none;
-	// appearance: none;
-	// font-size: 1em;
 }
 
 /* hide default browser "x" button */
@@ -56,24 +47,27 @@
 }
 
 .aa-dropdown-menu {
-	box-sizing: border-box;
+	margin-top: -1px;
 	width: 100%;
-	background-color: #fff;
-	border: 1px solid #999;
+	background-color: $superlightgray;
+	box-shadow: 0 1px 15px rgba(27,31,35,.15);
+	border: 1px solid $mediumgray;
 	border-top: none;
+	border-bottom-left-radius: $border-radius;
+	border-bottom-right-radius: $border-radius;
 }
 
-.aa-dropdown-menu .aa-suggestion {
+.aa-suggestion {
 	cursor: pointer;
-	padding: 0.4em;
-	font-family: system-ui, sans-serif;
-	min-height: 30px;
+	padding: 0.2em 0.4em;
+	min-height: rem(36); // for suggestions without images
 	display: flex;
 	align-items: center;
 }
 
-.aa-dropdown-menu .aa-suggestion.aa-cursor {
-	background-color: #b2d7ff;
+.aa-suggestion.aa-cursor {
+	background-color: $purple;
+	color: white;
 }
 
 .aa-suggestion img {
