@@ -6,7 +6,7 @@
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#5d1ae6",
-  "theme_color": "#5d1ae6",
+  "theme_color": "#fff",
   "app": {
     "launch": {
       "web_url": "https://radio4000.com/"
@@ -14,9 +14,14 @@
   },
   "icons": [
     {
-      "src": "\/favicon.png",
+      "src": "/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.png",
       "sizes": "512x512",
-      "type": "image\/png"
+      "type": "image/png"
     }
   ]
 }
