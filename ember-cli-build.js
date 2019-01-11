@@ -23,6 +23,7 @@ module.exports = function (defaults) {
 
 		// http://ember-service-worker.com/documentation/configuration/
 		'ember-service-worker': {
+			enabled: EmberApp.env() === 'production',
 			versionStrategy: 'every-build'
 		},
 
