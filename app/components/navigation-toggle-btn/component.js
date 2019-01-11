@@ -6,7 +6,7 @@ export default Component.extend({
 	tagName: 'button',
 	uiStates: inject.service(),
 	attributeBindings: ['title'],
-	classNames: ['NavigationToggle'],
+	classNames: ['NavigationToggleBtn'],
 	classNameBindings: ['isToggled:is-active'],
 
 	isToggled: computed.oneWay('uiStates.isPanelLeftVisible'),
