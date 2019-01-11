@@ -12,14 +12,13 @@ module.exports = function (defaults) {
 
 		// http://ember-service-worker.com/documentation/configuration/
 		'ember-service-worker': {
-			enabled: EmberApp.env() === 'production',
+			// enabled: EmberApp.env() === 'production',
+			registrationStategy: 'async',
 			versionStrategy: 'every-build'
 		},
-
 		'asset-cache': {
 			include: ['assets/**/*', '**/*.html', 'index.html', '*.webmanifest']
 		},
-
 		'esw-index': {
 			excludeScope: [
 				/\/favicon.png?$/
