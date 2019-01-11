@@ -5,13 +5,21 @@
 
 .NavigationToggleBtn {
 	position: fixed;
-	top: 1.2rem;
+	top: 1.5rem;
 	left: 1rem;
-	width: 3rem;
-	height: 3rem;
+	width: 2.6rem;
+	height: 2.6rem;
 	z-index: 7;
 	background-color: $purple;
-	boder-color: $purple;
+	border: 0;
+	border-radius: $border-radius;
+	// border-radius: 50%;
+	box-shadow: $box-shadow;
+
+	&:active,
+	&:focus {
+		outline: none;
+	}
 
 	&:active,
 	&:hover,
@@ -47,14 +55,16 @@
 	overflow-y: scroll;
 
 	.Aside-inner {
-		padding-left: 3rem;
-		padding-top: 4rem;
+		padding-top: 3.7rem;
+		padding-left: 1.8rem;
 		padding-right: 2rem;
 		overflow-y: scroll;
 
 		.Tabs {
 			width: 100%;
-			max-width: 25rem;
+			max-width: 15rem;
+			border-color: $dark;
+			box-shadow: 0 1px 1rem rgba($gray, 0.5);
 		}
 
 		.Tabs-item,
