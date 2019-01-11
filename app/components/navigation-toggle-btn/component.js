@@ -15,7 +15,7 @@ export default Component.extend({
 		if (get(this, 'isToggled')) {
 			return 'Close the navigation menu'
 		}
-		return 'Open the navigation menu'
+		return 'Open the navigation menu [shortcut: "b"]'
 	}),
 
 	click() {
