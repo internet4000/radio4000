@@ -6,14 +6,15 @@
  Group components vertically
  Will be the children of .Sections if there exist multiple in a template
  */
+
 .Sections {
-	padding-top: 1.5rem;
-	display: flex;
-	flex-direction: column;
+	padding-top: 2rem;
 }
 
 .Sections--center {
 	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 	justify-content: center;
 }
 

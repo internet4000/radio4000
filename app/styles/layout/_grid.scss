@@ -1,8 +1,6 @@
 .Grid {
 	display: flex;
 	flex-flow: row wrap;
-	justify-content: center;
-	align-items: center;
 
 	// because items have gutters on both sides
 	margin-left: -0.5rem;
