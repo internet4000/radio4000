@@ -16,6 +16,16 @@ module.exports = function (defaults) {
 			versionStrategy: 'every-build'
 		},
 
+		'asset-cache': {
+			include: ['assets/**/*', '**/*.html', 'index.html', '*.webmanifest']
+		},
+
+		'esw-index': {
+			excludeScope: [
+				/\/favicon.png?$/
+			]
+		},
+
 		fingerprint: {
 			exclude: [
 				// favicons
