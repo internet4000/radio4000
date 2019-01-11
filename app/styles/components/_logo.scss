@@ -1,45 +1,41 @@
 .Logo {
-	background: transparent;
-	backface-visibility: hidden; // perf
-	z-index: 6;
-	transition: transform 300ms $easing2, background-color 200ms;
-	max-width: 6rem;
-	padding-top: 0.8rem;
-	user-select: none; // don't highlight
-	display: none;
-	margin-bottom: 2rem;
-
 	position: fixed;
-	top: 0rem;
-	left: 4.5rem;
+	top: 1rem;
+	left: 4.3rem;
+	z-index: 6;
+	margin-bottom: 0;
+	backface-visibility: hidden; // perf
+	// user-select: none; // don't highlight
+
+	// Only show when menu is open.
+	display: none;
 
 	.Root.is-panelLeftVisible & {
 		display: block;
 	}
 }
 
-.Logo h1 {
+.Logo > a {
+	display: block;
+	// remove default link styles inside <h1>
 	margin-bottom: 0;
-	font-size: inherit;
-	position: relative;
-	z-index: 3;
+	border-bottom: 0;
 }
 
 .Logo-img {
-	max-width: 100%;
-	height: auto;
-	max-height: 100%; // Safari fix
-	vertical-align: middle;
+	width: auto;
+	height: 2.3rem;
 }
 
+// Switch between small and big logo.
 .Logo-img--small {
 	display: block;
-	width: 2rem;
 
 	@media (min-width: $layout-m) {
 		display: none;
 	}
 }
+
 .Logo-img--large {
 	display: none;
 
