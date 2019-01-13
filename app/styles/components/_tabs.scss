@@ -51,11 +51,6 @@
 			font-weight: normal;
 		}
 	}
-	& small {
-		font-size: rem(9);
-		text-transform: uppercase;
-		font-weight: 400;
-	}
 
 	&.Tabs-item--transparent {
 		background-color: transparent;
@@ -123,19 +118,8 @@
 	}
 }
 
-// Used where the background is considered "higher",
-// for instance on a light bg as channel header.
-.Tabs--lighter {
-	border: 0;
-	border-left: 0;
-	border-right: 0;
-	box-shadow: none;
-	max-width: none;
-	background-color: $superlightgray;
-
-	.Tabs-item.is-active {
-		background-color: $superlightgray;
-	}
+.Tabs--smaller {
+	font-size: 0.9em;
 }
 
 .Tabs--transparent {
