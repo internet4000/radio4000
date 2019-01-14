@@ -1,11 +1,10 @@
 # Radio4000
 
-This project is the main front-end web application for Radio4000, CMS for music
-libraries &rarr; https://radio4000.com.
+This repository is the main website for Radio4000, CMS for music libraries &rarr; https://radio4000.com.
 
-Join the discussion about the evolution and the development of this
-project on the Github issues, and on the matrix chat
-[radio4000:matrix.org](https://riot.im/app/#/group/+radio4000:matrix.org).
+Join the discussion about the evolution and the development of Radio4000 on 
+[GitHub issues](https://github.com/internet4000/radio4000/issues) and the 
+[radio4000:matrix.org](https://riot.im/app/#/group/+radio4000:matrix.org) chat.
 
 ## Presentation
 
@@ -13,23 +12,18 @@ This project aims at development and discussions on building a fair
 and open access ecosystem of tools and services; for music and
 cultural goods to be globally accessed and explored.
 
-Radio4000 goals and objectives are defined in its
+The goals and objectives of Radio4000 are defined in its
 [manifest](https://github.com/internet4000/publications/blob/master/radio4000-manifest.md).
 
-The application in this repository is written in Javascript, using the frontend framework
-[Ember.js](https://emberjs.com) for the client part of the
-application.
+The application in this repository is written in JavaScript, using the frontend framework
+[Ember.js](https://emberjs.com) for the client part of the application. The server part is, 
+for now, using Google's Firebase and the code can be found on the 
+[radio4000-api](https://github.com/internet4000/radio4000-api) repository.
 
-The server part, is for now using Google's
-Firebase, and the code can
-be found on the [radio4000-api](https://github.com/internet4000/radio4000-api)
-repository. The plan is to move everything to libre software,
-self-hosted, with decentralization in mind. It is not there yet and
-would love some assistance in architecture and development.
+The code for the music player used by this project can be found at 
+[radio4000-player](https://github.com/internet4000/radio4000-player).
 
-The music player used by this project,
-[radio4000-player](https://github.com/internet4000/radio4000-player),
-is written using the framework vue.js.
+The plan is to move everything to libre software, self-hosted, with decentralization in mind. It is not there yet and we would love assistance in architecture and development.
 
 ## Development
 
@@ -42,18 +36,9 @@ yarn
 yarn start
 ```
 
-Note: We recommend `yarn` to ensure you get exact dependencies. But
-you can also use `npm` this way:
+Note: we recommend `yarn` to ensure you get exact dependencies, but you can also use `npm` and `npm install`.
 
-```
-git clone git@github.com:internet4000/radio4000.git
-cd radio4000
-npm install
-npm start
-```
-
-The start command will launch the application locally, so you can find
-it in your browser at this URL: `http://localhost:4000`.
+The start command will launch the application locally, find it in your browser at http://localhost:4000.
 
 ## Testing
 
@@ -61,18 +46,28 @@ Run `yarn test` for a single test or `yarn ember test --server` to start a test 
 
 Lint scripts with:
 
-* `npm run lint:js`
-* `npm run lint:js -- --fix`
+* `yarn lint:js`
+* `yarn lint:js -- --fix`
+
+## Deployment
+
+The site is hosted on netlify.com. Netlify deploys each branch and pull request automatically. 
+
+- The `production` branch to https://radio4000.com ([request new deployment](https://github.com/internet4000/radio4000/compare/production...master?expand=1))
+- The `master` branch to https://master--radio4000.netlify.com
+
+> Branch deploys are lowercased and hyphenated. That is, a branch named `feat/my-feature` would result in the URL `feat-my-feature--radio4000.netlify.com`. It usually takes ~2 minutes from git push to deployment is live.
+
+See [contributing.md](https://github.com/internet4000/radio4000/blob/master/CONTRIBUTING.md) for more.
 
 ## Backend
 
-We use Google's Firebase as our database and API, as for
-authentication (see next section).
+We use Google's Firebase as our database and API, as well as for authentication (see next section).
+
+By default this repository will use the Radio4000 staging database, but it will work
+with any Firebase database instance.
 
 The security rules, deciding what can be done on each endpoint are in the [radio4000-api](https://github.com/internet4000/radio4000-api) repository.
-
-By default this repository will use the radio4000 development database, but it will work
-with any Firebase database instance.
 
 To run your own firebase instance, in the file
 `radio4000/config/environment.js` you will have to update the key
@@ -111,12 +106,3 @@ controllers come with the `session` service already injected.
 To get the current user (model), do `this.get('session.currentUser')`. 
 
 For more on auth, check the folders `app/auth` and `app/torii-adapters` as well as the above links.
-
-## Deployment
-
-The site is hosted on netlify.com. Netlify will automatically deploy each branch and pull request.
-
-- The `production` branch is mirrored to https://radio4000.com
-- The `master` branch to https://master--radio4000.netlify.com
-
-See [contributing.md](https://github.com/internet4000/radio4000/blob/master/CONTRIBUTING.md) for more.
