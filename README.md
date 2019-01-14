@@ -49,14 +49,25 @@ Lint scripts with:
 * `yarn lint:js`
 * `yarn lint:js -- --fix`
 
+## Deployment
+
+The site is hosted on netlify.com. Netlify deploys each branch and pull request automatically. 
+
+- The `production` branch to https://radio4000.com ([request new deployment](https://github.com/internet4000/radio4000/compare/production...master?expand=1))
+- The `master` branch to https://master--radio4000.netlify.com
+
+> Branch deploys are lowercased and hyphenated. That is, a branch named `feat/my-feature` would result in the URL `feat-my-feature--radio4000.netlify.com`. It usually takes ~2 minutes from git push to deployment is live.
+
+See [contributing.md](https://github.com/internet4000/radio4000/blob/master/CONTRIBUTING.md) for more.
+
 ## Backend
 
-We use Google's Firebase as our database and API, as for authentication (see next section).
-
-The security rules, deciding what can be done on each endpoint are in the [radio4000-api](https://github.com/internet4000/radio4000-api) repository.
+We use Google's Firebase as our database and API, as well as for authentication (see next section).
 
 By default this repository will use the Radio4000 staging database, but it will work
 with any Firebase database instance.
+
+The security rules, deciding what can be done on each endpoint are in the [radio4000-api](https://github.com/internet4000/radio4000-api) repository.
 
 To run your own firebase instance, in the file
 `radio4000/config/environment.js` you will have to update the key
@@ -95,14 +106,3 @@ controllers come with the `session` service already injected.
 To get the current user (model), do `this.get('session.currentUser')`. 
 
 For more on auth, check the folders `app/auth` and `app/torii-adapters` as well as the above links.
-
-## Deployment
-
-The site is hosted on netlify.com. Netlify will automatically deploy each branch and pull request.
-
-- The `production` branch is mirrored to https://radio4000.com
-- The `master` branch to https://master--radio4000.netlify.com
-
-Branch deploys are lowercased and hyphenated. That is, a branch named `feat/my-feature` would result in the URL `feat-my-feature--radio4000.netlify.com`. It usually takes ~2 minutes from git push to deployment is live.
-
-See [contributing.md](https://github.com/internet4000/radio4000/blob/master/CONTRIBUTING.md) for more.
