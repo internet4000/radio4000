@@ -25,7 +25,11 @@
 	padding-left: 0.5rem;
 	padding-right: 0.5rem;
 	margin-bottom: 1em;
+	flex-grow: 1;
 
+	@media (min-width: $layout-s) {
+		flex-grow: 0;
+	}
 	// bigger version
 	@media (min-width: $layout-m) {
 		padding-left: 0.75rem;
