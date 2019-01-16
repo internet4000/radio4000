@@ -25,6 +25,7 @@
 .Container--contentCentered {
 	display: flex;
 	justify-content: center;
+	flex-wrap: wrap;
 }
 
 .Container--small {
