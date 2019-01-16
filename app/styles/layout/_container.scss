@@ -22,6 +22,11 @@
 	margin-right: auto;
 }
 
+.Container--contentCentered {
+	display: flex;
+	justify-content: center;
+}
+
 .Container--small {
 	max-width: 30rem;
 }

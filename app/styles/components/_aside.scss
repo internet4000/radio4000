@@ -7,24 +7,31 @@
 	position: fixed;
 	top: 1.5rem;
 	left: 1rem;
-	width: 2.6rem;
-	height: 2.6rem;
+	width: 2.7rem;
+	height: 2.7rem;
 	z-index: 7;
-	background-color: $purple;
 	border: 0;
 	border-radius: $border-radius;
 	// border-radius: 50%;
 	box-shadow: $box-shadow;
 
-	&:active,
-	&:focus {
-		outline: none;
-	}
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	padding-top: 0.7rem;
+	padding-bottom: 0.7rem;
+	padding-left: 0.8rem;
+	padding-right: 0.8rem;
 
-	&:active,
-	&:hover,
-	&:focus {
-		box-shadow: 2px 3px 4px cyan;
+	background-color: $white;
+	border: 1px solid $gray;
+	span {
+		height: 0.2rem;
+		background-color: black;
+		border-radius: 2px;
+	}
+	&.is-active {
+		border-color: $primary-color;
 	}
 }
 
@@ -63,7 +70,6 @@
 		.Tabs {
 			width: 100%;
 			max-width: 15rem;
-			border-color: $dark;
 			box-shadow: 0 1px 1rem rgba($gray, 0.5);
 		}
 
