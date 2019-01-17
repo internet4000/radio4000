@@ -7,8 +7,10 @@
 	display: flex;
 	position: relative;
 	border-bottom: 1px solid $lightgray;
-	// Empty border to avoid jumps when indicating state.
+	// Empty border to avoid jumps when indicating playback state.
 	border-right: 2px solid transparent;
+	// This border is for indicating track data state (discogs).
+	border-left: 2px solid transparent;
 
 	.icon-play {
 		position: absolute;
@@ -68,6 +70,9 @@
 }
 .Track--mediaNotAvailable {
 	border-right-color: $red;
+}
+.Track--hasDiscogs {
+	border-left-color: $yellow;
 }
 
 .Track-title {

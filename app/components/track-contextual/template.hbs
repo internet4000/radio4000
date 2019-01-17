@@ -1,11 +1,14 @@
 <label>
 	<select class="ContextualToggle-select" onchange={{ action 'handleSelect'}}>
 		<option disabled selected value style="display:none;">-</option>
-		<optgroup label="Share">
-			<option value="copyYoutubeURL">Copy YouTube URL</option>
-			<option value="copyR4URL">Copy Radio4000 URL</option>
+		<optgroup label="Links">
 			{{#if session.currentUser.channels.firstObject.isPremium}}
 				<option value="copyTrackToRadio">Add to my radio</option>
+			{{/if}}
+			<option value="copyR4URL">Copy Radio4000 URL</option>
+			<option value="copyYoutubeURL">Copy YouTube URL</option>
+			{{#if track.discogsUrl}}
+				<option value="copyDiscogsURL">Copy Discogs URL</option>
 			{{/if}}
 		</optgroup>
 		{{#if canEdit}}
