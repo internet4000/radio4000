@@ -42,7 +42,7 @@ export default Component.extend({
 		initMap(event) {
 			const map = event.target
 			const credits = L.control.attribution({
-				position: 'topright',
+				position: 'bottomleft',
 				prefix: '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>'
 			}).addAttribution(`
 <a href="https://opentopomap.org/about" target="_blank" rel="noopener">OpenTopoMap</a> |

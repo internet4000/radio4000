@@ -1,7 +1,7 @@
 {{title model.title}}
 
 <div class="Sections">
-	<section class="Section">
+        <section class="Section Section--horizontal">
 		<div class="Manchet">
 			<h1 title={{model.body}}>
 				{{#link-to "channel.index" model}}
@@ -9,8 +9,8 @@
 				{{/link-to}}
 			</h1>
 		</div>
-		<div class="Container Container--noPaddingMobile">
-			<nav class="Tabs Tabs--horizontal Tabs--animated">
+		<div class="Container Container--noPaddingMobile Container--contentCentered Container--full">
+			<nav class="Tabs Tabs--horizontal">
 				{{#link-to
 						 'channel.tracks'
 						 class="Tabs-item"
@@ -32,7 +32,7 @@
 					{{/link-to}}
 					<div class="Tabs-divider"></div>
 					{{#link-to "settings" class="Tabs-item" title="Edit your radio"}}
-						Settings
+						&rarr; Settings
 					{{/link-to}}
 				{{/if}}
 			</nav>

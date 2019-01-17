@@ -6,15 +6,15 @@
 
 .Playback-layoutButtons {
 	position: absolute;
-	top: -1.4rem;
-	right: -1rem;
+	top: 0.3rem;
+	right: $sidebar-width;
 	z-index: 2;
-	padding: 0.5rem;
 	display: flex;
-	justify-content: flex-end;
+	flex-direction: column;
+	justify-content: space-between;
 
-	> *:not(:first-child) {
-		margin-left: 0.2em;
+	> .Btn {
+		margin: 1px;
+		min-height: 0;
 	}
 }
-

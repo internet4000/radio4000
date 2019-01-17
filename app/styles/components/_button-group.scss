@@ -1,11 +1,12 @@
 // A group of buttons
 .BtnGroups {
-	margin-bottom: 2rem;
+	margin-bottom: 1rem;
 	display: flex;
 	flex-wrap: wrap;
 }
-.BtnGroups--noPaddingButton {
-	padding-bottom: 0;
+
+.BtnGroups--center {
+	justify-content: center;
 }
 
 .BtnGroup {

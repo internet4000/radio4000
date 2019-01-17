@@ -19,17 +19,13 @@
 	// like .Manchet
 	position: relative;
 	z-index: 1;
-
-	// When several tabs follow each other.
-	& + .Tabs:not(.Tabs--horizontal) {
-		margin-top: 3px;
-	}
 }
 
 .Tabs-item {
 	background-color: $superlightgray;
 	margin-bottom: 0;
 	padding: 0.7em 1rem 0.5em;
+	text-align: left;
 	color: $text-color;
 	border-radius: $border-radius;
 	border-right: 3px solid transparent;
@@ -49,11 +45,6 @@
 		.Muted {
 			font-weight: normal;
 		}
-	}
-	& small {
-		font-size: rem(9);
-		text-transform: uppercase;
-		font-weight: 400;
 	}
 
 	&.Tabs-item--transparent {
@@ -122,53 +113,9 @@
 	}
 }
 
-// Used where the background is considered "higher",
-// for instance on a light bg as channel header.
-.Tabs--lighter {
-	border: 0;
-	border-left: 0;
-	border-right: 0;
-	box-shadow: none;
-	max-width: none;
-	background-color: $superlightgray;
-
-	.Tabs-item.is-active {
-		background-color: $superlightgray;
-	}
+.Tabs--smaller {
+	font-size: 0.9em;
 }
-
-// Animated border
-// .Tabs--animated {
-// 	.Tabs-item {
-// 		// contain the border
-// 		position: relative;
-
-// 		// remove previous borders
-// 		border-bottom: 0 !important;
-
-// 		// align border vertically with same height as other tabs,
-// 		// stupid but yes.
-// 		padding-top: rem(4);
-// 		padding-bottom: 0;
-// 		line-height: 2.3;
-// 	}
-
-// 	// the (hidden) border
-// 	.Tabs-item::after {
-// 		content: "";
-// 		display: block;
-// 		margin: auto;
-// 		height: 3px;
-// 		width: 0;
-// 		background: $primary-color;
-// 		transition: width 400ms $easing;
-// 	}
-
-// 	// the visible border
-// 	.Tabs-item.is-active::after {
-// 		width: 100%;
-// 	}
-// }
 
 .Tabs--transparent {
 	background-color: transparent;

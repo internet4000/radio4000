@@ -1,61 +1,44 @@
 .Logo {
-	background: transparent;
-	backface-visibility: hidden; // perf
+	position: fixed;
+	top: 1.1rem;
+	left: 4.3rem;
 	z-index: 6;
-	min-height: rem($bar-height);
-	transition: transform 300ms $easing2, background-color 200ms;
-	max-width: 7.5rem;
-	padding-top: 2.3rem;
-	padding-left: 2.8rem;
-	user-select: none; // don't highlight
+	margin-bottom: 0;
+	backface-visibility: hidden; // perf
+	// user-select: none; // don't highlight
+
+	// Only show when menu is open.
 	display: none;
 
 	.Root.is-panelLeftVisible & {
-		position: fixed;
-		top: 0;
-		left: 0;
 		display: block;
 	}
-
 }
 
-.Logo h1 {
+.Logo > a {
+	display: block;
+	// remove default link styles inside <h1>
 	margin-bottom: 0;
-	font-size: inherit;
-	position: relative;
-	z-index: 3;
-}
-
-.Logo-icon {
-	position: relative;
-	top: 0.25em;
-	transition: margin 400ms $easing;
-	opacity: 0.8;
-
-	.Logo.is-active & {
-		margin-right: 0.3rem;
-	}
+	border-bottom: 0;
 }
 
 .Logo-img {
-	vertical-align: middle;
+	width: auto;
+	height: 2.1rem;
 }
 
-.Logo-img {
-	max-width: 100%;
-	height: auto;
-	max-height: 100%; // Safari fix
-}
-
+// Switch between small and big logo.
 .Logo-img--small {
 	display: block;
-	width: 2rem;
+
 	@media (min-width: $layout-m) {
 		display: none;
 	}
 }
+
 .Logo-img--large {
 	display: none;
+
 	@media (min-width: $layout-m) {
 		display: block;
 	}

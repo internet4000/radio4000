@@ -1,27 +1,18 @@
 <section class="Section">
-	<div class="Container Container--noPaddingMobile">
+	<div class="Container">
 		{{#if model.tracks.isLoaded}}
 			{{#tracks-list
-				keyboardActivated=true
-				items=model.tracks
-				grouped=true
-				search=true
-				searchQuery=search
-				playSelection=(action "playSelection")
-				as |item|
+					 keyboardActivated=true
+					 items=model.tracks
+					 grouped=true
+					 search=true
+					 searchQuery=search
+					 playSelection=(action "playSelection")
+					 as |item|
 			}}
 				{{track-item track=item}}
 			{{/tracks-list}}
 
-			{{#unless model.tracks.length}}
-				<p class="Muted">
-					{{#if model.channel.canEdit}}
-						Your radio has no tracks yet. Try to {{link-to 'add your first' 'add'}}.
-					{{else}}
-						This radio has no tracks yet.
-					{{/if}}
-				</p>
-			{{/unless}}
 		{{else}}
 			{{#is-loading}}
 				Loading all tracks…
@@ -30,4 +21,16 @@
 
 		{{outlet}}
 	</div>
+</section>
+
+<section class="Section">
+	{{#unless model.tracks.length}}
+		<p class="u-tc">
+			{{#if model.channel.canEdit}}
+				{{link-to 'Add a first track' 'add'}} to your radio, and watch this list grow!
+			{{else}}
+				This radio has no tracks yet.
+			{{/if}}
+		</p>
+	{{/unless}}
 </section>

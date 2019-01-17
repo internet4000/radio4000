@@ -1,6 +1,7 @@
 .Grid {
 	display: flex;
 	flex-flow: row wrap;
+	justify-content: center;
 
 	// because items have gutters on both sides
 	margin-left: -0.5rem;
@@ -17,13 +18,20 @@
 		}
 	}
 }
+.Grid--vcenter {
+	align-items: center;
+}
 
 .Grid-cell {
 	flex: 0 1 50%;
 	padding-left: 0.5rem;
 	padding-right: 0.5rem;
 	margin-bottom: 1em;
+	flex-grow: 1;
 
+	@media (min-width: $layout-s) {
+		flex-grow: 0;
+	}
 	// bigger version
 	@media (min-width: $layout-m) {
 		padding-left: 0.75rem;
@@ -137,15 +145,6 @@
 	}
 }
 
-// Make a grid's items equal height.
-.Grid--full {
-	align-items: stretch;
-
-	.Grid-cell {
-		display: flex;
-	}
-}
-
 .Grid--center {
 	justify-content: center;
 }
@@ -165,4 +164,3 @@
 .Grid .occluded-content {
 	flex: 0;
 }
-
