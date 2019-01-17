@@ -19,11 +19,6 @@
 	// like .Manchet
 	position: relative;
 	z-index: 1;
-
-	// When several tabs follow each other.
-	& + .Tabs:not(.Tabs--horizontal) {
-		margin-top: 3px;
-	}
 }
 
 .Tabs-item {

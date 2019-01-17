@@ -10,7 +10,7 @@
 }
 
 .Root:not(.is-minimized).is-withPlayer .SiteMain {
-	margin-right: 20rem;
+	margin-right: $sidebar-width;
 }
 
 /**
@@ -18,34 +18,16 @@
  */
 
 .Root.is-panelLeftVisible {
-	overflow: hidden;
 	.Aside--navigation {
 		display: flex;
 	}
-	.SiteMain {
-		@media (min-width: $layout-m) {
-			opacity: 1;
-		}
-	}
-	//otherwise the scrollbar is z-index infinite (browser bug?)
-	.Container--noPaddingMobile {
-		overflow: hidden;
-	}
 }
-
 
 /*
 	 Player is in maximized state
  */
 
 .Root.is-maximized {
-	overflow: hidden;
-
-	.Playback {
-		height: 100%;
-		background: black;
-	}
-
 	radio4000-player {
 		height: 100vh;
 
@@ -88,6 +70,7 @@
 	}
 	.Playback-minimize {
 		display: none;
+
 		@media (min-width: $layout-l) {
 			display: block;
 		}
