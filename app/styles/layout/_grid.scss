@@ -143,15 +143,6 @@
 	}
 }
 
-// Make a grid's items equal height.
-.Grid--full {
-	align-items: stretch;
-
-	.Grid-cell {
-		display: flex;
-	}
-}
-
 .Grid--center {
 	justify-content: center;
 }
