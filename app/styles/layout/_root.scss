@@ -54,20 +54,26 @@
 .Root.is-minimized {
 	.Playback-layoutButtons {
 		flex-direction: row;
-		top: -3rem;
+		top: -2.3rem;
 		right: 0;
 		left: auto;
 	}
+
 	.Playback {
 		width: 200px;
 		height: 200px;
 	}
+
 	radio4000-player {
+		height: 200px !important;
+
+		.TrackList,
 		.Layout-header,
 		.Layout-footer {
 			display: none;
 		}
 	}
+
 	.Playback-minimize {
 		display: none;
 
@@ -77,11 +83,7 @@
 	}
 }
 
-
-/**
- * Player
- */
-
+// Hide the sidebar completely when we don't need it.
 .Root.is-withoutPlayer {
 	.Aside--right {
 		display: none;
