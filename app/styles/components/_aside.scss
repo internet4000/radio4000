@@ -2,34 +2,29 @@
 	Site Aside
 */
 
-
 .NavigationToggleBtn {
 	position: fixed;
 	top: 1.5rem;
 	left: 1rem;
+	z-index: 7;
+
 	width: 2.7rem;
 	height: 2.7rem;
-	z-index: 7;
-	border: 0;
-	border-radius: $border-radius;
-	// border-radius: 50%;
-	box-shadow: $box-shadow;
 
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-	padding-top: 0.7rem;
-	padding-bottom: 0.7rem;
-	padding-left: 0.8rem;
-	padding-right: 0.8rem;
+	// Make it stand out more
+	border: 1px solid $mediumgray;
+	box-shadow: $box-shadow-large;
 
-	background-color: $white;
-	border: 1px solid $gray;
+	// "burger" lines inside
+	display: block;
 	span {
+		display: block;
 		height: 0.2rem;
+		margin: 0.2rem;
 		background-color: black;
-		border-radius: 2px;
+		border-radius: $border-radius;
 	}
+
 	&.is-active {
 		border-color: $primary-color;
 	}
@@ -41,8 +36,8 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: $overlay-color;
 	overflow-y: auto;
+	background-color: $overlay-color;
 }
 
 /**
@@ -66,7 +61,7 @@
 
 	.Tabs {
 		max-width: 15rem;
-		box-shadow: 0 1px 1rem rgba($gray, 0.4);
+		box-shadow: $box-shadow-large;
 	}
 }
 
