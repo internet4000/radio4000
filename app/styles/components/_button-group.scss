@@ -5,6 +5,10 @@
 	flex-wrap: wrap;
 }
 
+.BtnGroups--center {
+	justify-content: center;
+}
+
 .BtnGroup {
 	display: flex;
 	flex-shrink: 0;
