@@ -21,9 +21,9 @@
 					Each radio is <a href="{{href-to 'about'}}">curated by a human</a>.
 				</p>
 				{{#if session.isAuthenticated}}
-					<p>If anything, <a href="{{href-to 'feedback'}}">contact an other human</a>.</p>
+					<p>If anything, <a href="{{href-to 'feedback'}}">contact another human</a>.</p>
 				{{else}}
-					<p>It is always possible to <a href={{href-to "auth.signup"}}>create yourself a radio</a>.</p>
+					<p>It is always possible to <a href={{href-to "auth.signup"}}>create a radio yourself</a>.</p>
 				{{/if}}
 			</div>
 			{{#if filteredModel.length}}
