@@ -32,6 +32,10 @@ export default Component.extend({
 			const url = `https://radio4000.com/${slug}/${id}`;
 			this.copyURL(url);
 		},
+		copyDiscogsURL() {
+			const url = get(this, 'track.discogsUrl');
+			this.copyURL(url);
+		},
 		handleSelect(event) {
 			const el = event.target;
 			const value = el.options[el.selectedIndex].value;
