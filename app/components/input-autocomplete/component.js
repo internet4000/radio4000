@@ -6,11 +6,14 @@ import autocomplete from 'autocomplete.js'
 export default Component.extend({
 	router: service(),
 
+	classNames: ['InputAutocomplete'],
+
 	didInsertElement() {
 		this.enableAutocomplete()
 	},
 
 	selected(channel) {
+		document.querySelector('html').focus()
 		this.get('router').transitionTo('channel', channel.slug)
 	},
 

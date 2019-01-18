@@ -8,10 +8,12 @@
 
 {{navigation-toggle-btn}}
 
+{{input-autocomplete}}
+
 {{aside-navigation
-	isAuthenticated=session.isAuthenticated
-	userChannel=session.currentUser.channels.firstObject
-	onClick=(action "openAddTrack")}}
+		isAuthenticated=session.isAuthenticated
+		userChannel=session.currentUser.channels.firstObject
+		onClick=(action "openAddTrack")}}
 
 <main class="SiteMain">
 	{{yield}}

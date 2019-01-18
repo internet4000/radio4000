@@ -1,3 +1,10 @@
+.InputAutocomplete {
+	position: fixed;
+	z-index: 2;
+	top: 4.6rem;
+	left: 1rem;
+}
+
 .aa-container {
 	width: 100%;
 	margin-bottom: 1rem;
@@ -11,10 +18,18 @@
 	border-radius: 3px;
 	border-color: $mediumlightgray;
 	border-radius: $border-radius;
-
+	background-color: white !important; // js widget with forced inline styles
+	color: transparent;
 	&:focus {
 		border-color: $mediumgray;
 		outline: 0;
+		color: $text-color;
+		.aa-input-icon {
+			display: none;
+		}
+	}
+	&:not(:focus) {
+		max-width: 2.8rem;
 	}
 }
 
@@ -37,11 +52,12 @@
 }
 
 .aa-input-icon {
+	pointer-events: none;
 	height: 16px;
 	width: 16px;
 	position: absolute;
 	top: 50%;
-	right: 15px;
+	right: 13px;
 	transform: translateY(-50%);
 	color: $lightgray;
 }
