@@ -6,41 +6,29 @@
 }
 
 .aa-container {
-	width: 100%;
-	margin-bottom: 1rem;
 	display: inline-block;
 	position: relative;
-	// width: 100%;
+	margin-bottom: 1rem;
+	width: 100%;
 }
 
 .aa-input-search {
-	min-height: 2rem;
-	border-radius: 3px;
-	border-color: $mediumlightgray;
-	border-radius: $border-radius;
 	background-color: white !important; // js widget with forced inline styles
-	color: transparent;
+	transition: width 200ms $easing;
+	width: 14rem; // wide enough to show placeholder
+
 	&:focus {
-		border-color: $mediumgray;
+		// border-color: $mediumgray;
 		outline: 0;
-		color: $text-color;
+
 		.aa-input-icon {
 			display: none;
 		}
 	}
+
 	&:not(:focus) {
-		max-width: 2.8rem;
+		width: 2.8rem;
 	}
-}
-
-.algolia-autocomplete,
-.algolia-autocomplete .aa-input,
-.algolia-autocomplete .aa-hint {
-	width: 100%;
-}
-
-.algolia-autocomplete .aa-hint {
-	color: $gray;
 }
 
 /* hide default browser "x" button */
@@ -59,14 +47,16 @@
 	top: 50%;
 	right: 13px;
 	transform: translateY(-50%);
-	color: $lightgray;
+	color: $mediumlightgray;
+	// hide placeholder below
+	background: $white;
 }
 
 .aa-dropdown-menu {
 	margin-top: -1px;
 	width: 100%;
 	background-color: $superlightgray;
-	box-shadow: 0 1px 15px rgba(27,31,35,.15);
+	box-shadow: $box-shadow-large;
 	border: 1px solid $mediumgray;
 	border-top: none;
 	border-bottom-left-radius: $border-radius;
