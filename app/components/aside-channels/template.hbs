@@ -1,45 +1,45 @@
 <div class="Tabs Tabs--horizontal Tabs--transparent">
-	{{play-random-channel class="Btn--full"}}
+	{{play-random-channel}}
 </div>
+
 <div class="Tabs Tabs--horizontal">
-  {{#link-to
-			 "channels.index"
-			 title="Listen to the editor's selection [⌨ g h]"
-			 class="Tabs-item"}}
-    Featured
-  {{/link-to}}
+	{{#link-to
+		"channels.index"
+		title="Listen to the editor's selection [⌨ g h]"
+		class="Tabs-item"}}
+		Featured
+	{{/link-to}}
 
-  {{#link-to
-			 "channels.explore"
-			 title="Explore all radios on Radio4000 [⌨ g r]"
-			 class="Tabs-item"}}
-    Explore
-  {{/link-to}}
+	{{#link-to
+		"channels.explore"
+		title="Explore all radios on Radio4000 [⌨ g r]"
+		class="Tabs-item"}}
+		Explore
+	{{/link-to}}
 
-  {{#link-to
-			 "channels.map"
-			 title="Visualize radio on planet earth's world map [⌨ g m]"
-			 class="Tabs-item"}}
-    Map
-  {{/link-to}}
+	{{#link-to
+		"channels.map"
+		title="Visualize radio on planet earth's world map [⌨ g m]"
+		class="Tabs-item"}}
+		Map
+	{{/link-to}}
 </div>
 
 {{#if @userChannel}}
-<div class="Tabs Tabs--horizontal">
-    {{#link-to
-    "channels.history"
-    title="Your listening history [⌨ g y]"
-    class="Tabs-item"}}
+	<div class="Tabs Tabs--horizontal">
+		{{#link-to
+			"channels.history"
+			title="Your listening history [⌨ g y]"
+			class="Tabs-item"}}
 			My history
-    {{/link-to}}
+		{{/link-to}}
 
-
-    {{#link-to
-    "channel"
-    @userChannel.slug
-    title="Go to your radio channel [⌨ g i]"
-    class="Tabs-item"}}
+		{{#link-to
+			"channel"
+			@userChannel.slug
+			title="Go to your radio channel [⌨ g i]"
+			class="Tabs-item"}}
 			&rarr; My radio
-    {{/link-to}}
-</div>
+		{{/link-to}}
+	</div>
 {{/if}}

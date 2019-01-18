@@ -111,6 +111,11 @@
 		border-top-right-radius: $border-radius;
 		border-bottom-right-radius: $border-radius;
 	}
+
+	// When more are next to each other, add spacing.
+	& + & {
+		margin-left: 0.2em;
+	}
 }
 
 .Tabs--smaller {

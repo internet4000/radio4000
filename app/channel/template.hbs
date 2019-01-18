@@ -1,7 +1,7 @@
 {{title model.title}}
 
 <div class="Sections">
-        <section class="Section Section--horizontal">
+	<section class="Section Section--horizontal">
 		<div class="Manchet">
 			<h1 title={{model.body}}>
 				{{#link-to "channel.index" model}}
@@ -12,22 +12,22 @@
 		<div class="Container Container--noPaddingMobile Container--contentCentered Container--full">
 			<nav class="Tabs Tabs--horizontal">
 				{{#link-to
-						 'channel.tracks'
-						 class="Tabs-item"
-						 title="All tracks [⌨ g t (my radio)]"}}
+					'channel.tracks'
+					class="Tabs-item"
+					title="All tracks [⌨ g t (my radio)]"}}
 					Tracks <span class="Muted">({{model.totalTracks}})</span>
 				{{/link-to}}
 				{{#link-to
-						 'channel.favorites'
-						 class="Tabs-item"
-						 title="Favorites of this radio [⌨ g s (my radio)]"}}
+					'channel.favorites'
+					class="Tabs-item"
+					title="Favorites of this radio [⌨ g s (my radio)]"}}
 					Favorites
 				{{/link-to}}
 				{{#if model.canEdit}}
 					{{#link-to
-							 'channel.followers'
-							 class="Tabs-item"
-							 title="Followers of this radio"}}
+						'channel.followers'
+						class="Tabs-item"
+						title="Followers of this radio"}}
 						Followers
 					{{/link-to}}
 					<div class="Tabs-divider"></div>
