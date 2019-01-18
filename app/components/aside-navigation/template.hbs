@@ -12,8 +12,9 @@
 			{{#if userChannel}}
 				{{channel-card channel=userChannel wide=true title="Your radio [⌨ g i]"}}
 				{{#btn-group class="BtnGroup--full BtnGroup--tight"}}
-					<button {{action "addTrack"}} class="Btn Btn--important Btn--topNoRadius" title="Add a new track to your radio [⌨ g a]">Add
-					track</button>
+					<button {{action "addTrack"}} class="Btn Btn--important Btn--topNoRadius" title="Add a new track to your radio [⌨ g a]">
+						Add track
+					</button>
 				{{/btn-group}}
 			{{else}}
 				{{#link-to
@@ -52,8 +53,7 @@
 		<a class="Tabs-item" href="https://support.internet4000.com/radio4000" target="_blank" rel="noopener" title="Support with Radio4000">
 			Help &rarr;
 		</a>
-		<a class="Tabs-item" href="https://github.com/internet4000/publications/blob/master/user-agreement-privacy-policy-terms-of-use.md"
-		target="_blank" rel="noopener">
+		<a class="Tabs-item" href="https://github.com/internet4000/publications/blob/master/user-agreement-privacy-policy-terms-of-use.md" target="_blank" rel="noopener">
 			Privacy &rarr;
 		</a>
 		{{#link-to "feedback" title="Send some feedback about this site to the developers [⌨ g f]" class="Tabs-item"}}
