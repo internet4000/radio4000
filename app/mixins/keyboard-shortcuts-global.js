@@ -7,10 +7,10 @@ import {EKMixin, keyUp} from 'ember-keyboard'
 import $ from 'jquery'
 
 export default Mixin.create(EKMixin, {
+	flashMessages: service(),
 	player: service(),
 	router: service(),
 	uiStates: service(),
-	flashMessages: service(),
 
 	// https://github.com/patience-tema-baron/ember-keyboard/issues/54
 	isGoingTo: false,
@@ -26,8 +26,6 @@ export default Mixin.create(EKMixin, {
 			set(this, 'isGoingTo', false)
 		}, 500)
 	}),
-
-	// Only transition if `g` was pressed
 	goingTo() {
 		if (get(this, 'isGoingTo')) {
 			this.transitionTo.apply(this, arguments)
@@ -43,6 +41,9 @@ export default Mixin.create(EKMixin, {
 		$(el).trigger('click')
 	},
 
+	toggleShortcutsModal: on(keyUp('shift+Slash'), function() {
+		this.toggleProperty('uiStates.showShortcutsModal')
+	}),
 	focusSearchInput: on(keyUp('Slash'), function() {
 		document.querySelector('.InputAutocomplete .aa-input').focus()
 	}),
@@ -59,26 +60,22 @@ export default Mixin.create(EKMixin, {
 	toggleMute: on(keyUp('KeyM'), function() {
 		this.triggerClick('radio4000-player .Btn--mute')
 	}),
-
-	closeFullscreen: on(keyUp('Escape'), function () {
+	closeFullscreen: on(keyUp('Escape'), function() {
 		if (get(this, 'uiStates.isFullscreen')) {
 			set(this, 'uiStates.format', 1)
 		}
 	}),
-
-	toggleSidebar: on(keyUp('KeyB'), function () {
+	toggleSidebar: on(keyUp('KeyB'), function() {
 		this.toggleProperty('uiStates.isPanelLeftVisible')
 	}),
-	onKeyR: on(keyUp('KeyR'), function () {
+	onKeyR: on(keyUp('KeyR'), function() {
 		if (get(this, 'isGoingTo')) {
-			this.transitionTo('channels.search');
+			this.transitionTo('channels.search')
 		} else {
-			const flashMessages = get(this, 'flashMessages');
-			flashMessages.info('...loading a random radio channel to play!')
-			get(this, 'player.playRandomChannel').perform();
+			get(this, 'flashMessages').info('...finding a random radio channel to play')
+			get(this, 'player.playRandomChannel').perform()
 		}
 	}),
-
 	gotoHome: on(keyUp('KeyG'), function() {
 		this.goingTo('application')
 	}),
@@ -94,16 +91,12 @@ export default Mixin.create(EKMixin, {
 	goToSettings: on(keyUp('Comma'), function() {
 		this.goingTo('settings')
 	}),
-	toggleShortcutsModal: on(keyUp('shift+Slash'), function() {
-		this.toggleProperty('uiStates.showShortcutsModal')
-	}),
 	cyclePlayerLayout: on(keyUp('KeyF'), function() {
 		// because we use f for another shortcut.
 		if (!get(this, 'isGoingTo')) {
 			get(this, 'uiStates').cycleFormat()
 		}
 	}),
-
 	// go `I`
 	gotoMyRadio: on(keyUp('KeyI'), function() {
 		const userChannel = get(this, 'session.currentUser.channels.firstObject')
@@ -111,7 +104,6 @@ export default Mixin.create(EKMixin, {
 			this.goingTo('channel.index', userChannel)
 		}
 	}),
-
 	gotoMyRadioFavorites: on(keyUp('KeyF'), function() {
 		const userChannel = get(this, 'session.currentUser.channels.firstObject')
 		const onChannelRoute = this.router.currentRouteName.startsWith('channel.')
@@ -124,14 +116,12 @@ export default Mixin.create(EKMixin, {
 		const channel = onChannelRoute ? this.modelFor('channel') : userChannel
 		this.goingTo('channel.tracks', channel)
 	}),
-
 	gotoCurrentChannel: on(keyUp('KeyC'), function() {
 		const currentChannel = get(this, 'player.currentChannel')
 		if (currentChannel) {
 			this.goingTo('channel', currentChannel)
 		}
 	}),
-
 	gotoCurrentTrack: on(keyUp('KeyX'), function() {
 		const currentChannel = get(this, 'player.currentChannel')
 		const currentTrack = get(this, 'player.currentTrack')
