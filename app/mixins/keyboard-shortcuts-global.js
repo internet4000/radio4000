@@ -87,7 +87,7 @@ export default Mixin.create(EKMixin, {
 		}
 	}),
 
-	gotoHome: on(keyUp('KeyH'), function() {
+	gotoHome: on(keyUp('KeyG'), function() {
 		this.goingTo('application')
 	}),
 	onKeyM: on(keyUp('KeyM'), function() {
