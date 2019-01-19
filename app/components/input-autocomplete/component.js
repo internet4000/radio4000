@@ -12,14 +12,9 @@ export default Component.extend({
 		this.enableAutocomplete()
 	},
 
-	selected(channel) {
-		document.querySelector('html').focus()
+	onSelected(channel) {
 		this.get('router').transitionTo('channel', channel.slug)
 	},
-
-	// clearSearch() {
-	// 	this.search.autocomplete.setVal('')
-	// },
 
 	enableAutocomplete() {
 		// Enable algolia index.
@@ -31,10 +26,9 @@ export default Component.extend({
 			clearOnSelected: true,
 			hint: true,
 			openOnFocus: true,
-			ariaLabel: 'Search Radio4000 channels',
+			ariaLabel: 'Search Radio4000 channels'
 			// debug: true, // keeps the dropdown open for styling
 			// autoselectOnBlur: true, // should be enabled on mobile they say?
-
 		}
 		const templates = [{
 			source: autocomplete.sources.hits(index, {hitsPerPage: 8}),
@@ -57,7 +51,8 @@ export default Component.extend({
 
 		// Send a custom event up.
 		search.on('autocomplete:selected', (event, suggestion) => {
-			this.selected(suggestion)
+			inputElement.blur()
+			this.onSelected(suggestion)
 		})
 	}
 })
