@@ -8,9 +8,11 @@ export default Component.extend({
 	session: inject.service(),
 	tagName: 'aside',
 	classNames: ['Aside', 'Aside--navigation'],
+	attributeBindings: ['hidden'],
 	ariaRole: 'navigation',
 
 	isActive: computed.alias('uiStates.isPanelLeftVisible'),
+	hidden: computed.not('isActive'),
 
 	actions: {
 		addTrack(trackModel) {
