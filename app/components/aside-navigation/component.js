@@ -8,6 +8,7 @@ export default Component.extend({
 	session: inject.service(),
 	tagName: 'aside',
 	classNames: ['Aside', 'Aside--navigation'],
+	ariaRole: 'navigation',
 
 	isActive: computed.alias('uiStates.isPanelLeftVisible'),
 
