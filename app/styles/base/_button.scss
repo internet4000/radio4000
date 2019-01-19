@@ -253,6 +253,9 @@
 	position: fixed;
 	left: 2rem;
 	bottom: 2rem;
+	@media (max-width: $layout-xs), (max-height: $layout-xs){
+		display: none;
+	}
 }
 
 /* keyboard "button" */

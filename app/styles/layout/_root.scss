@@ -45,6 +45,7 @@
 
 	.Playback-fullscreen {
 		display: none;
+		order: 1;
 		@media (min-width: $layout-l) {
 			display: block;
 		}
