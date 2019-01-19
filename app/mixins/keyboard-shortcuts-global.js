@@ -8,6 +8,7 @@ import $ from 'jquery'
 
 export default Mixin.create(EKMixin, {
 	player: service(),
+	router: service(),
 	uiStates: service(),
 	flashMessages: service(),
 
@@ -68,15 +69,6 @@ export default Mixin.create(EKMixin, {
 	toggleSidebar: on(keyUp('KeyB'), function () {
 		this.toggleProperty('uiStates.isPanelLeftVisible')
 	}),
-
-	onKeyF: on(keyUp('KeyF'), function() {
-		if (get(this, 'isGoingTo')) {
-			this.transitionTo('feedback')
-		} else {
-			get(this, 'uiStates').cycleFormat();
-		}
-	}),
-
 	onKeyR: on(keyUp('KeyR'), function () {
 		if (get(this, 'isGoingTo')) {
 			this.transitionTo('channels.search');
@@ -99,14 +91,17 @@ export default Mixin.create(EKMixin, {
 	gotoAddTrack: on(keyUp('KeyA'), function() {
 		this.goingTo('add')
 	}),
-	gotoFeedback: on(keyUp('KeyF'), function() {
-		this.goingTo('feedback')
-	}),
 	goToSettings: on(keyUp('Comma'), function() {
 		this.goingTo('settings')
 	}),
 	toggleShortcutsModal: on(keyUp('shift+Slash'), function() {
 		this.toggleProperty('uiStates.showShortcutsModal')
+	}),
+	cyclePlayerLayout: on(keyUp('KeyF'), function() {
+		// because we use f for another shortcut.
+		if (!get(this, 'isGoingTo')) {
+			get(this, 'uiStates').cycleFormat()
+		}
 	}),
 
 	// go `I`
@@ -117,19 +112,17 @@ export default Mixin.create(EKMixin, {
 		}
 	}),
 
-	// go `Starred`
-	gotoMyRadioFavorites: on(keyUp('KeyS'), function() {
+	gotoMyRadioFavorites: on(keyUp('KeyF'), function() {
 		const userChannel = get(this, 'session.currentUser.channels.firstObject')
-		if (userChannel) {
-			this.goingTo('channel.favorites', userChannel)
-		}
+		const onChannelRoute = this.router.currentRouteName.startsWith('channel.')
+		const channel = onChannelRoute ? this.modelFor('channel') : userChannel
+		this.goingTo('channel.favorites', channel)
 	}),
-
 	gotoMyRadioTracks: on(keyUp('KeyT'), function() {
 		const userChannel = get(this, 'session.currentUser.channels.firstObject')
-		if (userChannel) {
-			this.goingTo('channel.tracks', userChannel)
-		}
+		const onChannelRoute = this.router.currentRouteName.startsWith('channel.')
+		const channel = onChannelRoute ? this.modelFor('channel') : userChannel
+		this.goingTo('channel.tracks', channel)
 	}),
 
 	gotoCurrentChannel: on(keyUp('KeyC'), function() {
