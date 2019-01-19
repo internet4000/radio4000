@@ -9,6 +9,7 @@ import $ from 'jquery'
 export default Mixin.create(EKMixin, {
 	player: service(),
 	uiStates: service(),
+	flashMessages: service(),
 
 	// https://github.com/patience-tema-baron/ember-keyboard/issues/54
 	isGoingTo: false,
@@ -76,6 +77,8 @@ export default Mixin.create(EKMixin, {
 		if (get(this, 'isGoingTo')) {
 			this.transitionTo('channels.search');
 		} else {
+			const flashMessages = get(this, 'flashMessages');
+			flashMessages.info('...loading a random radio channel to play!')
 			get(this, 'player.playRandomChannel').perform();
 		}
 	}),
