@@ -42,6 +42,7 @@ export default Service.extend({
 		const store = get(this, 'store')
 		let channels = store.peekAll('channel')
 
+
 		// Find a random channel with an optional request.
 		if (channels.get('length') < 15) {
 			channels = yield store.findAll('channel')
@@ -53,15 +54,15 @@ export default Service.extend({
 		const tracks = yield channel.get('tracks')
 		const fewTracks = tracks.length < 5
 		if (fewTracks) {
-			get(this, 'playRandomChannel').perform()
-			return
+			return get(this, 'playRandomChannel').perform()
 		}
+
 		this.playTrack(tracks.get('lastObject'))
 
 		// After the above task finishes, <radio4000-player> still
 		// needs to do stuff. We wait because it feels nicer #ux
 		yield timeout(250)
-	}).drop(),
+	}).restartable(),
 
 	/**
 	 * Events from <radio4000-player>
