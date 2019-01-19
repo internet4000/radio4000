@@ -34,8 +34,7 @@ export default Component.extend({
 			ariaLabel: 'Search Radio4000 channels',
 			// debug: true, // keeps the dropdown open for styling
 			// autoselectOnBlur: true, // should be enabled on mobile they say?
-			// 191 is the "/" (forward slash) key
-			keyboardShortcuts: [191]
+
 		}
 		const templates = [{
 			source: autocomplete.sources.hits(index, {hitsPerPage: 8}),

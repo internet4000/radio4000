@@ -17,6 +17,10 @@
 	transition: width 200ms $easing;
 	width: 14rem; // wide enough to show placeholder
 
+	&:not(:focus) {
+		width: 2.8rem;
+	}
+
 	&:focus {
 		// border-color: $mediumgray;
 		outline: 0;
@@ -24,10 +28,6 @@
 		.aa-input-icon {
 			display: none;
 		}
-	}
-
-	&:not(:focus) {
-		width: 2.8rem;
 	}
 }
 
