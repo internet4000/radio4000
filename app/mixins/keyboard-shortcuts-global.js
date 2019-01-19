@@ -42,6 +42,10 @@ export default Mixin.create(EKMixin, {
 		$(el).trigger('click')
 	},
 
+	focusSearchInput: on(keyUp('Slash'), function() {
+		document.querySelector('.InputAutocomplete .aa-input').focus()
+	}),
+
 	playPause: on(keyUp('KeyP'), function() {
 		this.triggerClick('radio4000-player .PlayPause-state')
 	}),
