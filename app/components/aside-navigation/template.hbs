@@ -1,7 +1,7 @@
 {{#navigation-toggle-layer overlay=true class="Aside-inner"}}
 	{{application-logo}}
 
-	<div class="Tabs">
+	<nav class="Tabs" role="navigation">
 		{{link-to "Radio channels" "channels" title="Find radio channels to enjoy [⌨ g h]" class="Tabs-item"}}
 
 		{{#if isAuthenticated}}
@@ -45,7 +45,7 @@
 				Log in
 			{{/link-to}}
 		{{/unless}}
-	</div>
+	</nav>
 
 	<footer class="Tabs Tabs--smaller">
 		{{link-to "About" "about" title="Learn more about Radio4000" class="Tabs-item"}}

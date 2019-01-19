@@ -65,6 +65,7 @@ export default Service.extend({
 
 	togglePanelLeft() {
 		this.toggleProperty('isPanelLeftVisible');
+		document.querySelector('.NavigationToggleLayer .Tabs-item').focus();
 	},
 
 	// Only close if we're on a small screen.

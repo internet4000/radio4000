@@ -66,7 +66,7 @@ export default Mixin.create(EKMixin, {
 	}),
 
 	toggleSidebar: on(keyUp('KeyB'), function () {
-		this.toggleProperty('uiStates.isPanelLeftVisible')
+		this.get('uiStates').togglePanelLeft();
 	}),
 
 	onKeyF: on(keyUp('KeyF'), function() {
