@@ -1,10 +1,9 @@
 /* global document */
 import Ember from 'ember';
 
-const {Service, computed, get, set, on} = Ember;
+const {Service, computed, get, set, run, on} = Ember;
 
 export default Service.extend({
-
 	isPanelLeftVisible: false,
 
 	// Logic for showing keyboard shortcuts modal
@@ -64,7 +63,14 @@ export default Service.extend({
 	}),
 
 	togglePanelLeft() {
-		this.toggleProperty('isPanelLeftVisible');
+		this.toggleProperty('isPanelLeftVisible')
+
+		if (this.isPanelLeftVisible) {
+			const firstLink = document.querySelector('[role="navigation"] .Tabs-item')
+			run.schedule('render', () => {
+				firstLink.focus()
+			})
+		}
 	},
 
 	// Only close if we're on a small screen.
