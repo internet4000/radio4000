@@ -52,7 +52,9 @@ export default Mixin.create(EKMixin, {
 	focusSearchInput: on(keyDown('Slash'), function(event) {
 		event.preventDefault()
 		const input = document.querySelector('.InputAutocomplete .aa-input')
-		if (input) input.focus()
+		if (input) {
+			input.focus()
+		}
 	}),
 
 	playPause: on(keyUp('KeyP'), function() {
