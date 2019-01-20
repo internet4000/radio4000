@@ -3,7 +3,7 @@ import {get, set, computed} from '@ember/object'
 import {on} from '@ember/object/evented'
 import {inject as service} from '@ember/service'
 import {run} from '@ember/runloop'
-import {EKMixin, keyUp} from 'ember-keyboard'
+import {EKMixin, keyUp, keyDown} from 'ember-keyboard'
 import $ from 'jquery'
 
 export default Mixin.create(EKMixin, {
@@ -48,8 +48,11 @@ export default Mixin.create(EKMixin, {
 	toggleShortcutsModal: on(keyUp('shift+Slash'), function() {
 		this.toggleProperty('uiStates.showShortcutsModal')
 	}),
-	focusSearchInput: on(keyUp('Slash'), function() {
-		document.querySelector('.InputAutocomplete .aa-input').focus()
+
+	focusSearchInput: on(keyDown('Slash'), function(event) {
+		event.preventDefault()
+		const input = document.querySelector('.InputAutocomplete .aa-input')
+		if (input) input.focus()
 	}),
 
 	playPause: on(keyUp('KeyP'), function() {
