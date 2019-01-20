@@ -1,5 +1,5 @@
 import Mixin from '@ember/object/mixin'
-import {get, set} from '@ember/object'
+import {get, set, computed} from '@ember/object'
 import {on} from '@ember/object/evented'
 import {inject as service} from '@ember/service'
 import {run} from '@ember/runloop'
@@ -14,6 +14,10 @@ export default Mixin.create(EKMixin, {
 
 	// https://github.com/patience-tema-baron/ember-keyboard/issues/54
 	isGoingTo: false,
+
+	onChannelRoute: computed(function() {
+		return this.router.currentRouteName.startsWith('channel.')
+	}),
 
 	activateKeyboard: on('init', function() {
 		set(this, 'keyboardActivated', true)
@@ -76,10 +80,13 @@ export default Mixin.create(EKMixin, {
 			get(this, 'player.playRandomChannel').perform()
 		}
 	}),
+	gotoChannelHome: on(keyUp('KeyH'), function() {
+		this.goingTo('channel.index', this.modelFor('channel'))
+	}),
 	gotoHome: on(keyUp('KeyG'), function() {
 		this.goingTo('application')
 	}),
-	onKeyM: on(keyUp('KeyM'), function() {
+	gotoMap: on(keyUp('KeyM'), function() {
 		this.goingTo('channels.map')
 	}),
 	gotoHistory: on(keyUp('KeyY'), function() {
@@ -88,7 +95,7 @@ export default Mixin.create(EKMixin, {
 	gotoAddTrack: on(keyUp('KeyA'), function() {
 		this.goingTo('add')
 	}),
-	goToSettings: on(keyUp('Comma'), function() {
+	goToSettings: on(keyUp('KeyS'), function() {
 		this.goingTo('settings')
 	}),
 	cyclePlayerLayout: on(keyUp('KeyF'), function() {
@@ -106,13 +113,13 @@ export default Mixin.create(EKMixin, {
 	}),
 	gotoMyRadioFavorites: on(keyUp('KeyF'), function() {
 		const userChannel = get(this, 'session.currentUser.channels.firstObject')
-		const onChannelRoute = this.router.currentRouteName.startsWith('channel.')
+		const onChannelRoute = get(this, 'onChannelRoute')
 		const channel = onChannelRoute ? this.modelFor('channel') : userChannel
 		this.goingTo('channel.favorites', channel)
 	}),
 	gotoMyRadioTracks: on(keyUp('KeyT'), function() {
 		const userChannel = get(this, 'session.currentUser.channels.firstObject')
-		const onChannelRoute = this.router.currentRouteName.startsWith('channel.')
+		const onChannelRoute = get(this, 'onChannelRoute')
 		const channel = onChannelRoute ? this.modelFor('channel') : userChannel
 		this.goingTo('channel.tracks', channel)
 	}),
