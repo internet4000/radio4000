@@ -85,6 +85,13 @@ export default Mixin.create(EKMixin, {
 			get(this, 'player.playRandomChannel').perform()
 		}
 	}),
+
+	playCurrentChannel: on(keyUp('shift+KeyP'), function() {
+		if (get(this, 'onChannelRoute')) {
+			this.get('player.playFirstTrack').perform(this.modelFor('channel'))
+		}
+	}),
+
 	gotoChannelHome: on(keyUp('KeyH'), function() {
 		this.goingTo('channel.index', this.modelFor('channel'))
 	}),
