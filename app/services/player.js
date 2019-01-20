@@ -42,7 +42,6 @@ export default Service.extend({
 		const store = get(this, 'store')
 		let channels = store.peekAll('channel')
 
-
 		// Find a random channel with an optional request.
 		if (channels.get('length') < 15) {
 			channels = yield store.findAll('channel')
