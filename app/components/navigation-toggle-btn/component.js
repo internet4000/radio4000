@@ -8,7 +8,7 @@ export default Component.extend({
 	attributeBindings: [
 		'title',
 		'ariaExpanded:aria-expanded',
-		'ariaExpanded:aria-haspopup'
+		'ariaHaspopup:aria-haspopup'
 	],
 	classNames: ['Btn', 'NavigationToggleBtn'],
 	classNameBindings: ['isToggled:is-active'],
@@ -22,6 +22,7 @@ export default Component.extend({
 		return 'Open the navigation menu [shortcut: "b"]'
 	}),
 
+	ariaHaspopup: 'true',
 	ariaExpanded: computed('isToggled', function() {
 		return `${get(this, 'isToggled')}`
 	}),
