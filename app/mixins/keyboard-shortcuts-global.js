@@ -79,7 +79,7 @@ export default Mixin.create(EKMixin, {
 	}),
 	onKeyR: on(keyUp('KeyR'), function() {
 		if (get(this, 'isGoingTo')) {
-			this.transitionTo('channels.search')
+			this.transitionTo('channels.explore')
 		} else {
 			get(this, 'flashMessages').info('...finding a random radio channel to play')
 			get(this, 'player.playRandomChannel').perform()
