@@ -2,81 +2,66 @@
 	Site Aside
 */
 
-.Aside {
-	overflow-y: auto;
-	display: flex;
-	flex-flow: column nowrap;
-}
+.NavigationToggleBtn {
+	position: fixed;
+	top: 1.5rem;
+	left: 1rem;
+	z-index: 7;
 
-.Aside-toggle {
+	width: 2.7rem;
+	height: 2.7rem;
+
+	// Make it stand out more
+	border: 1px solid $mediumgray;
+	box-shadow: $box-shadow-large;
+
+	// "burger" lines inside
+	display: block;
+	span {
+		display: block;
+		height: 0.2rem;
+		margin: 0.2rem;
+		background-color: black;
+		border-radius: $border-radius;
+	}
+
 	&.is-active {
-		.Aside-toggleLayer {
-			display: block;
-
-			@media (min-width: $layout-m) {
-				display: none;
-			}
-		}
+		border-color: $primary-color;
 	}
 }
 
-.Aside-toggleLayer {
-	display: none;
+.NavigationToggleLayer {
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
-	z-index: 4;
-	background-color: $slightgray;
-	opacity: 0.6;
+	overflow-y: auto;
+	background-color: $overlay-color;
 }
 
 /**
  * Modifiers
  */
 
-.Aside--left {
-	.Aside-toggleBtn {
-		position: fixed;
-		top: 1.8rem;
-		left: -0.4rem;
-		z-index: 6;
-		font-size: 1.1rem;
-
-		&:hover {
-			border-color: $purple;
-		}
-
-		span {
-			background-color: $dark;
-		}
-	}
+.Aside--navigation {
+	display: none;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 6;
 
 	.Aside-inner {
-		height: 100%;
-		padding-top: 5.45rem; // space for our top bar
-		height: 100vh;
-		padding-left: 0.7rem; // same
-		padding-right: 1rem;
-		transform: translateX(-100%);
-		position: fixed;
-		top: 0;
-		left: 0;
-		bottom: 0;
-		z-index: 5;
-		width: 100%;
-		background-color: $superlightgray;
-		min-width: 15rem;
-		max-width: 70%;
+		padding-top: 3.7rem;
+		padding-left: 1.8rem;
+		padding-right: 2rem;
+	}
 
-		@media (min-width: $layout-m) {
-			// transform: translate3d(0, 0, 0);
-			// overflow: hidden;
-			background-color: transparent;
-			width: $sidebar-width;
-			max-width: 100%;
-		}
+	.Tabs {
+		max-width: 15rem;
+		box-shadow: $box-shadow-large;
 	}
 }
 
@@ -84,20 +69,19 @@
 	position: fixed;
 	z-index: 2;
 	top: auto;
-	right: 1rem;
+	right: 0;
 	bottom: 0;
-	overflow: visible;
-	width: 20rem;
+	width: $sidebar-width;
 
 	.Root.is-minimized & {
 		width: auto;
+		height: auto;
 	}
 
 	.Root.is-maximized & {
 		top: 0;
 		right: 0;
 		width: 100%;
-		height: 100%;
 		background-color: black;
 		z-index: 7;
 	}
@@ -106,7 +90,7 @@
 // Children of .Aside
 .Aside-link {
 	display: inline-block;
-	padding: 0.5em 0.5rem 0.5rem 1rem;
+	margin: 0.5em 0.5rem 0.5rem 1rem;
 	transition: color 200ms;
 	color: $text-color;
 	text-decoration: none;

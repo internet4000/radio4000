@@ -99,7 +99,7 @@
 }
 
 // Wide modifier (also smaller)
-$card-wide-cover-size: 4.8rem;
+$card-wide-cover-size: 4rem;
 
 .ChannelCard--wide {
 	padding-bottom: 0;
@@ -143,6 +143,13 @@ $card-wide-cover-size: 4.8rem;
 
 // Modifier inside .Tabs
 .Tabs .ChannelCard {
-	border-top: 0;
 	border-radius: 0;
+	border-left: 0;
+	border-right: 0;
+	border-bottom: 2px solid darken($purple, 10%);
+
+	a {
+		background-color: $white;
+	}
 }
+

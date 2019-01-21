@@ -1,0 +1,10 @@
+<nav class="Tabs Tabs--horizontal">
+	{{link-to "Radio channel" "settings.channel" class="Tabs-item"}}
+	{{link-to "Account" "settings.account" class="Tabs-item"}}
+
+	{{#if session.isAuthenticated}}
+		{{#if session.currentUser.channels.firstObject}}
+			{{#link-to "channel" session.currentUser.channels.firstObject class="Tabs-item"}}&rarr; My radio channel{{/link-to}}
+		{{/if}}
+	{{/if}}
+</nav>

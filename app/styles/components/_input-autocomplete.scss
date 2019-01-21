@@ -1,0 +1,81 @@
+.InputAutocomplete {
+	position: fixed;
+	z-index: 2;
+	top: 4.6rem;
+	left: 1rem;
+}
+
+.aa-container {
+	display: inline-block;
+	position: relative;
+	margin-bottom: 1rem;
+	width: 100%;
+}
+
+.aa-input-search {
+	background-color: white !important; // js widget with forced inline styles
+	transition: width 200ms $easing;
+	width: 14rem; // wide enough to show placeholder
+
+	&:not(:focus) {
+		width: 2.8rem;
+	}
+
+	&:focus {
+		// border-color: $mediumgray;
+		outline: 0;
+
+		.aa-input-icon {
+			display: none;
+		}
+	}
+}
+
+/* hide default browser "x" button */
+.aa-input-search::-webkit-search-decoration,
+.aa-input-search::-webkit-search-cancel-button,
+.aa-input-search::-webkit-search-results-button,
+.aa-input-search::-webkit-search-results-decoration {
+	display: none;
+}
+
+.aa-input-icon {
+	pointer-events: none;
+	height: 16px;
+	width: 16px;
+	position: absolute;
+	top: 50%;
+	right: 13px;
+	transform: translateY(-50%);
+	color: $mediumlightgray;
+	// hide placeholder below
+	background: $white;
+}
+
+.aa-dropdown-menu {
+	margin-top: -1px;
+	width: 100%;
+	background-color: $superlightgray;
+	box-shadow: $box-shadow-large;
+	border: 1px solid $mediumgray;
+	border-top: none;
+	border-bottom-left-radius: $border-radius;
+	border-bottom-right-radius: $border-radius;
+}
+
+.aa-suggestion {
+	cursor: pointer;
+	padding: 0.2em 0.4em;
+	min-height: rem(36); // for suggestions without images
+	display: flex;
+	align-items: center;
+}
+
+.aa-suggestion.aa-cursor {
+	background-color: $purple;
+	color: white;
+}
+
+.aa-suggestion img {
+	margin-right: 0.4em;
+}

@@ -2,33 +2,35 @@
 
 Radio4000 is an open source web application. We welcome anyone to contribute.
 
-This document explains the workflow for developing on Radio4000. We use a basic Git Flow with two long-lived branches: `master` and `production`. 
+This document explains the workflow for developing on Radio4000.
+We use a basic Git Flow with two long-lived branches: `master` and `production`. 
 
 ## Workflow TLDR
 
 - Fork the repository
-- Create a branch in your fork
+- Create a branch from `master` in your fork
 - Create commits and push
 - Open a pull request (PR) from your fork to this repo via github.com 
 
 ## Workflow
 
-Start your work by creating a branch from an up to date `master` branch. It makes sense to name your branch like “feature/track-search” or “fix/wrong-sidebar-width” but anything goes.
+It makes sense to name your branch like “feature/track-search” or “fix/wrong-sidebar-width” but anything goes.
 
 ```
-git branch my-branch # create your branch
-git checkout my-branch # switch to your new branch
+git@github.com:internet4000/radio4000.git
+cd radio4000
+git checkout master
+git pull
+git checkout -b my-branch # create and switch to your branch
 ```
 
-Now is the time to do your work and commit it.
-
-Next, you push your changes:
+Now is the time to do what you'd like to do, commit it and push your changes:
 
 ```
 git push origin my-branch
 ```
 
-And create a pull request: https://github.com/internet4000/radio4000/pulls
+And create a pull request: https://github.com/internet4000/radio4000/pulls. Now people have a chance to give feedback.
 
 ## Deployment previews
 
@@ -38,7 +40,9 @@ We will help review the PR and merge it back into master once done. Travis also 
 
 ## Deploying to production aka radio4000.com
 
-To deploy to production, you you should create a "tagged release commit" and merge `master` into `production`.
+To deploy to production, you should merge `master` into `production`.
+
+## Updating the version
 
 ```
 # bump version in package.json

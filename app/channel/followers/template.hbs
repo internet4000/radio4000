@@ -65,8 +65,14 @@
 {{else}}
 	<section class="Section">
 		<div class="Container">
+			<p class="u-tc">
+				Copy and share this URL address to friends, familly and beyond for your first listeners!
+			</p>
+			{{channel-sharer-url
+					slug=model.slug
+					autoSelect=true}}
 			<p class="Muted">
-				There are no followers yet.
+				You can edit your radio's URL address in your {{link-to 'channel\'s settings' 'settings'}}.
 			</p>
 		</div>
 	</section>

@@ -2,8 +2,8 @@
 	@include size-1;
 	position: fixed;
 	z-index: 52; // over player
-	top: 1.4rem;
-	right: 0.7rem;
+	bottom: 1.4rem;
+	left: 0.7rem;
 	max-width: 20rem;
 }
 
@@ -13,10 +13,10 @@
 	float: right;
 	clear: both;
 	margin-bottom: 0.2rem;
-	padding: rem(4) rem(9) rem(4);
+	padding: 0.4rem 0.6rem;
 	border-radius: $border-radius;
 	color: $white;
-	background-color: $gray;
+	background-color: $slightgray;
 
 	// initial state
 	transform: translateX(110%);
@@ -27,16 +27,17 @@
 	}
 
 	&.exiting {
-		transform: translateX(110%);
+		transform: translateX(-110%);
 	}
 }
 
 .alert-success {
-	background-color: lighten($purple, 20%);
+	background-color: $purple;
 }
 
 .alert-info {
-	background-color: lighten($purple, 20%);
+	border: 2px solid $purple;
+	color: $black;
 }
 
 .alert-warning {

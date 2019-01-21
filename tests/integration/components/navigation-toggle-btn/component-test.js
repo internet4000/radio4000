@@ -3,11 +3,11 @@ import {setupRenderingTest} from 'ember-qunit'
 import {render} from '@ember/test-helpers'
 import hbs from 'htmlbars-inline-precompile'
 
-module('Integration | Component | aside left toggle', function(hooks) {
+module('Integration | Component | navigation-toggle-btn', function(hooks) {
 	setupRenderingTest(hooks)
 
 	test('it renders', async function(assert) {
-		await render(hbs`{{aside-left-toggle}}`)
-		assert.equal(this.$('span').length, 3)
+		await render(hbs`{{navigation-toggle-btn}}`)
+		assert.equal(this.element.textContent.trim(), '')
 	})
 })

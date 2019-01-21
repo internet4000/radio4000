@@ -250,6 +250,12 @@
 
 .Btn--map {
 	z-index: 2;
+	position: fixed;
+	left: 2rem;
+	bottom: 2rem;
+	@media (max-width: $layout-xs), (max-height: $layout-xs){
+		display: none;
+	}
 }
 
 /* keyboard "button" */
@@ -262,4 +268,3 @@
   border-radius: $border-radius;
   box-shadow: inset 0 -1px 0 #c6cbd1;
 }
-

@@ -6,10 +6,16 @@
  Group components vertically
  Will be the children of .Sections if there exist multiple in a template
  */
+
 .Sections {
-	// Push it below the logo.
 	padding-top: 2rem;
-	/* padding-top: 6rem; */
+}
+
+.Sections--center {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .Section {

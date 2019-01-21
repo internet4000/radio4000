@@ -9,62 +9,25 @@
 	flex-direction: row;
 }
 
-// Panel is closed
-.Aside-inner {
-	visibility: hidden;
+.Root:not(.is-minimized).is-withPlayer .SiteMain {
+	margin-right: $sidebar-width;
 }
-
 
 /**
  * Panel is open
  */
 
 .Root.is-panelLeftVisible {
-	@media (max-width: $layout-m) {
-		height: 100vh;
-		overflow: hidden;
-	}
-
-	.Aside--left .Aside-inner {
-		visibility: visible;
-		transform: translateX(0);
-	}
-	.Aside-toggleBtn {
-		opacity: 1;
-	}
-
-	.SiteMain {
-		@media (min-width: $layout-m) {
-			padding-left: $sidebar-width;
-			opacity: 1;
-		}
-	}
-	.Manchet {
-		h1, h2, h3 {
-			padding-left: 0;
-		}
+	.Aside--navigation {
+		display: flex;
 	}
 }
-
 
 /*
 	 Player is in maximized state
  */
 
 .Root.is-maximized {
-	max-height: 100vh;
-	overflow: hidden;
-
-	.Playback {
-		height: 100%;
-		background: black;
-	}
-
-	.Playback-layoutButtons {
-		top: 0;
-		right: 0;
-	}
-
 	radio4000-player {
 		height: 100vh;
 
@@ -72,26 +35,56 @@
 			border: 0;
 		}
 	}
+
+	.Playback-layoutButtons {
+		flex-direction: row;
+		top: 0.2rem;
+		right: 0;
+		left: auto;
+	}
+
+	.Playback-fullscreen {
+		display: none;
+		order: 1;
+		@media (min-width: $layout-l) {
+			display: block;
+		}
+	}
 }
 
 .Root.is-minimized {
+	.Playback-layoutButtons {
+		flex-direction: row;
+		top: -2.3rem;
+		right: 0;
+		left: auto;
+	}
+
 	.Playback {
 		width: 200px;
 		height: 200px;
 	}
+
 	radio4000-player {
+		height: 200px !important;
+
+		.TrackList,
 		.Layout-header,
 		.Layout-footer {
 			display: none;
 		}
 	}
+
+	.Playback-minimize {
+		display: none;
+
+		@media (min-width: $layout-l) {
+			display: block;
+		}
+	}
 }
 
-
-/**
- * Player
- */
-
+// Hide the sidebar completely when we don't need it.
 .Root.is-withoutPlayer {
 	.Aside--right {
 		display: none;

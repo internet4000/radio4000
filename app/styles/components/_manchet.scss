@@ -5,8 +5,11 @@
 .Manchet {
 	@extend %Container;
 	margin-bottom: 1.5rem;
+	padding-left: 3rem;
+	padding-right: 3rem;
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: center;
 
 	// so it is always over full screen backgrounds
 	// like .Tabs
@@ -16,11 +19,11 @@
 	h1, h2, h3 {
 		padding-left: 1.5rem;
 		margin-bottom: 0;
+		text-align: center;
 		.ember-modal-overlay & {
 			padding-left: 0;
 		}
 	}
-
 
 	p {
 		flex-basis: 100%;

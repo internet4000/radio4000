@@ -72,6 +72,7 @@ $easing4: cubic-bezier(0.25, 1.4, 0.18, 1); // try with 200ms
 $easing6: cubic-bezier(0.56, 1, 0.86, 1.139);
 
 // Layout: Breakpoints
+$layout-xs: 333px;
 $layout-s: 480px;
 $layout-sm: 550px;
 $layout-m: 650px;
@@ -86,8 +87,9 @@ $boxshadowgray: hsla(0, 0%, 70%, 0.6);
 $box-shadow: 0 2px 0 -1px $boxshadowgray;
 $box-shadow-hover: 0 2px 0 -1px $boxshadowgray;
 $box-shadow-active: 0 1px 0 -1px $boxshadowgray;
+$box-shadow-large: 0 1px 1rem rgba($gray, 0.4);
 $border-radius: 3px;
 $bar-height: 50px;
 $bar-border-size: 2px;
 $progress-height: 10px;
-$sidebar-width: 15rem;
+$sidebar-width: 20rem;

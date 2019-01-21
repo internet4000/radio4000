@@ -10,6 +10,8 @@ export default PlayButtonComponent.extend({
 	// when the random channel task is running OUTSIDE of this component.
 	// Like when you press the "R" shortcut.
 	isRunning: or('player.playRandomChannel.isRunning', 'clickTask.isRunning'),
+
+	// Attribute binding from parent component.
 	disabled: computed.reads('isRunning'),
 
 	clickTask: task(function * () {

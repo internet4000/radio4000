@@ -12,7 +12,8 @@ export default Component.extend({
 		'track.liveInCurrentPlayer:Track--live',
 		'track.playedInCurrentPlayer:Track--played',
 		'track.finishedInCurrentPlayer:Track--finished',
-		'mediaNotAvailable:Track--mediaNotAvailable'
+		'mediaNotAvailable:Track--mediaNotAvailable',
+		'track.discogsUrl:Track--hasDiscogs'
 	],
 
 	attributeBindings: [

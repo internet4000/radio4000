@@ -15,6 +15,7 @@ Router.map(function() {
 		this.route('map')
 		this.route('new')
 		this.route('search')
+		this.route('explore');
 	})
 	this.route('channel', {path: '/:channel_slug'}, function() {
 		this.route('index', {path: '/'})

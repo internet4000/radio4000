@@ -2,20 +2,29 @@
 	<div class="Container Container--full">
 		<div class="Grid">
 			<div class="Grid-cell">
-				<h3>Welcome to Radio4000!</h3>
+
 				{{#if session.isAuthenticated}}
-					<p>Start your journey by listening to one of the radio channels here.</p>
+					<h2>Ciao!</h2>
+					<p>This is a selection of radio channels. Click one to listen and explore it.</p>
+					<p></p>
 				{{else}}
-					<p>Start your journey by listening to one of the radio channels here, <a href={{href-to "about"}}>learn more</a> or <a href={{href-to "auth.signup"}}>create my radio</a>.</p>
+					<h3>Welcome to Radio4000!</h3>
+					<p>The button in the top left corner is the main navigation menu, to browse through this site.</p>
+					<p>Start your journey by listening to one of the radio channels on this page.</p>
 				{{/if}}
-				<p>
-					{{play-random-channel class="Btn--full"}}
-				</p>
 				<p>
 					<button {{action 'refreshSelection'}} class="Btn Btn--full">
 						<i>⟳</i> Load new radios
 					</button>
 				</p>
+				<p>
+					Each radio is <a href="{{href-to 'about'}}">curated by a human</a>.
+				</p>
+				{{#if session.isAuthenticated}}
+					<p>If anything, <a href="{{href-to 'feedback'}}">contact another human</a>.</p>
+				{{else}}
+					<p>It is always possible to <a href={{href-to "auth.signup"}}>create a radio yourself</a>.</p>
+				{{/if}}
 			</div>
 			{{#if filteredModel.length}}
 				{{#each filteredModel as |channel|}}

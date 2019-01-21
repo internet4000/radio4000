@@ -6,6 +6,8 @@
 	max-width: 45em;
 	padding-left: 1rem;
 	padding-right: 1rem;
+	margin-left: auto;
+	margin-right: auto;
 
 	@media (min-width: $layout-m) {
 		padding-left: 2rem;
@@ -18,6 +20,12 @@
 .Container--centered {
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.Container--contentCentered {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
 }
 
 .Container--small {

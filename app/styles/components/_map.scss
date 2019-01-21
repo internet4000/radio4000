@@ -5,6 +5,7 @@ Map
 .Map {
 	width: 100%;
 	height: 100%;
+	z-index: 0;
 }
 
 .Map--fullscreen {
@@ -13,7 +14,9 @@ Map
 	right: 0;
 	bottom: 0;
 	left: 0;
-	z-index: 0;
+	@media (max-width: $layout-m), (max-height: $layout-s){
+		z-index: 1;
+	}
 
 	.leaflet-container {
 		width: 100%;
@@ -30,7 +33,6 @@ Map
 
 .Map--selection {
 	position: relative;
-
 	// a circle to position the center of the map
 	// used for the user to locate a point (works well mobile
 	// instead of drag and drop)
