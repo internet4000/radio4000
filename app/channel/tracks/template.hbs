@@ -2,13 +2,13 @@
 	<div class="Container">
 		{{#if model.tracks.isLoaded}}
 			{{#tracks-list
-					 keyboardActivated=true
-					 items=model.tracks
-					 grouped=true
-					 search=true
-					 searchQuery=search
-					 playSelection=(action "playSelection")
-					 as |item|
+				keyboardActivated=true
+				items=model.tracks
+				grouped=true
+				search=true
+				searchQuery=search
+				playSelection=(action "playSelection")
+				as |item|
 			}}
 				{{track-item track=item}}
 			{{/tracks-list}}
