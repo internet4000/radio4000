@@ -15,7 +15,7 @@ export default Mixin.create(EKMixin, {
 	// https://github.com/patience-tema-baron/ember-keyboard/issues/54
 	isGoingTo: false,
 
-	onChannelRoute: computed(function() {
+	onChannelRoute: computed('router.currentRouteName', function() {
 		return this.router.currentRouteName.startsWith('channel.')
 	}),
 
