@@ -4,7 +4,7 @@
 
 .NavigationToggleBtn {
 	position: fixed;
-	top: 1.5rem;
+	top: 1rem;
 	left: 1rem;
 	z-index: 7;
 	width: 2.7rem;
@@ -49,8 +49,8 @@
 	z-index: 6;
 
 	.Aside-inner {
-		padding-top: 3.7rem;
-		padding-left: 1.8rem;
+		padding-top: 3.5rem;
+		padding-left: 1.5rem;
 		padding-right: 2rem;
 	}
 
@@ -83,15 +83,3 @@
 	}
 }
 
-// Children of .Aside
-.Aside-link {
-	display: inline-block;
-	margin: 0.5em 0.5rem 0.5rem 1rem;
-	transition: color 200ms;
-	color: $text-color;
-	text-decoration: none;
-
-	&.is-active {
-		text-decoration: underline;
-	}
-}
