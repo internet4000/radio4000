@@ -7,13 +7,8 @@
 	top: 1.5rem;
 	left: 1rem;
 	z-index: 7;
-
 	width: 2.7rem;
 	height: 2.7rem;
-
-	// Make it stand out more
-	border: 1px solid $mediumgray;
-	box-shadow: $box-shadow-large;
 
 	// "burger" lines inside
 	display: block;
@@ -61,7 +56,8 @@
 
 	.Tabs {
 		max-width: 15rem;
-		box-shadow: $box-shadow-large;
+		// Make it stand out more
+		border: 1px solid $gray;
 	}
 }
 
