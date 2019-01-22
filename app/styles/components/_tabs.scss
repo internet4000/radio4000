@@ -130,8 +130,9 @@
 		background-color: transparent;
 		min-width: 5em;
 	}
+}
 
-	.Tabs-item.is-active {
-		// border-bottom: 0;
-	}
+.Btn + .Tabs {
+	// when a button is before tabs, add some space between.
+	margin-left: 0.5em;
 }
