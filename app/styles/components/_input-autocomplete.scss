@@ -1,7 +1,7 @@
 .InputAutocomplete {
 	position: fixed;
 	z-index: 2;
-	top: 4.6rem;
+	top: 4.1rem;
 	left: 1rem;
 }
 
@@ -41,11 +41,11 @@
 
 .aa-input-icon {
 	pointer-events: none;
-	height: 16px;
-	width: 16px;
+	height: 1.2em;
+	width: 1.2em;
 	position: absolute;
 	top: 50%;
-	right: 13px;
+	right: 0.8em;
 	transform: translateY(-50%);
 	color: $mediumlightgray;
 	// hide placeholder below
