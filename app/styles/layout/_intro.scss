@@ -4,16 +4,6 @@
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: center;
-
-	// When panel is open, avoid sticking.
-	.is-panelLeftVisible & {
-		margin-left: 2rem;
-		border-bottom-left-radius: $border-radius;
-
-		.Intro-bg {
-			border-bottom-left-radius: $border-radius;
-		}
-	}
 }
 
 .Intro-title {
