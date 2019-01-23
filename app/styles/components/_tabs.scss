@@ -27,7 +27,6 @@
 	padding: 0.7em 1rem 0.5em;
 	text-align: left;
 	color: $text-color;
-	border-radius: $border-radius;
 	border-right: 3px solid transparent;
 	transition: border-color 260ms $easing, border-bottom-color 200ms $easing, background-image 200ms $easing;
 
@@ -50,6 +49,17 @@
 	&.Tabs-item--transparent {
 		background-color: transparent;
 	}
+
+	&:first-child {
+		border-top-left-radius: $border-radius;
+		border-top-right-radius: $border-radius;
+	}
+
+	&:last-child {
+		border-bottom-left-radius: $border-radius;
+		border-bottom-right-radius: $border-radius;
+	}
+
 }
 
 .Tabs-divider {
@@ -64,10 +74,6 @@
 .Tabs--vertical {
 	.Tabs-item:focus {
 		border-right-color: rgba($primary-color, 0.5);
-	}
-
-	.Tabs-item.BtnGroup {
-		padding-left: 0;
 	}
 }
 
@@ -130,8 +136,9 @@
 		background-color: transparent;
 		min-width: 5em;
 	}
+}
 
-	.Tabs-item.is-active {
-		// border-bottom: 0;
-	}
+.Btn + .Tabs {
+	// when a button is before tabs, add some space between.
+	margin-left: 0.5em;
 }

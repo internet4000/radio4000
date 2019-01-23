@@ -5,10 +5,6 @@
 		{{link-to "Radio channels" "channels" title="Find radio channels to enjoy [⌨ g h]" class="Tabs-item"}}
 
 		{{#if isAuthenticated}}
-			{{#link-to "settings" class="Tabs-item" title="Customize your Radio4000"}}
-				Settings
-			{{/link-to}}
-
 			{{#if userChannel}}
 				{{channel-card channel=userChannel wide=true title="Your radio [⌨ g i]"}}
 				{{#btn-group class="BtnGroup--full BtnGroup--tight"}}
@@ -24,7 +20,9 @@
 					Create my radio
 				{{/link-to}}
 			{{/if}}
-
+			{{#link-to "settings" class="Tabs-item" title="Customize your Radio4000"}}
+				Settings
+			{{/link-to}}
 			{{#link-to "auth.logout" class="Tabs-item" title="Log out from Radio4000"}}
 				Log out
 			{{/link-to}}
@@ -47,7 +45,7 @@
 		{{/unless}}
 	</nav>
 
-	<footer class="Tabs Tabs--smaller">
+	<nav class="Tabs">
 		{{link-to "About" "about" title="Learn more about Radio4000" class="Tabs-item"}}
 
 		<a class="Tabs-item" href="https://support.internet4000.com/radio4000" target="_blank" rel="noopener" title="Support with Radio4000">
@@ -62,6 +60,6 @@
 		<button class="Tabs-item NonBtn NonBtn--link" {{action "openShortcutsModal"}} title="Show keyboard shortcut [⌨  ?]">
 			Keyboard shortcuts
 		</button>
-	</footer>
+	</nav>
 
 {{/navigation-toggle-layer}}
