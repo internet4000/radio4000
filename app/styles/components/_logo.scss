@@ -1,6 +1,6 @@
 .Logo {
-	margin-left: 1.5rem;
-	margin-right: 1.5rem;
+	margin-left: 3rem;
+	margin-right: 3rem;
 	margin-bottom: 1.5rem;
 	backface-visibility: hidden; // perf
 	// user-select: none; // don't highlight
@@ -9,7 +9,7 @@
 	display: none;
 
 	.Root.is-panelLeftVisible & {
-		display: block;
+		display: inline-block;
 	}
 }
 
