@@ -28,6 +28,7 @@
 	padding-right: 0.5rem;
 	margin-bottom: 1em;
 	flex-grow: 1;
+	flex-basis: 15rem;
 
 	@media (min-width: $layout-s) {
 		flex-grow: 0;
