@@ -1,9 +1,7 @@
 .Logo {
-	position: fixed;
-	top: 1.5rem;
-	left: 4.5rem;
-	z-index: 6;
-	margin-bottom: 0;
+	margin-left: 1.5rem;
+	margin-right: 1.5rem;
+	margin-bottom: 1.5rem;
 	backface-visibility: hidden; // perf
 	// user-select: none; // don't highlight
 
