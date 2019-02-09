@@ -57,6 +57,9 @@
 				type="url"
 				value=value
 				placeholder="Paste in a Discogs link"}}
+		{{#if fetchDiscogsInfo.isRunning}}
+			<p class="Form-groupStatus">Updating…</p>
+		{{/if}}
 	{{/form-group}}
 
 	{{#if showDiscogsSearchSuggestion}}

@@ -3,7 +3,7 @@ import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
 import {fetchTitle} from 'radio4000/utils/youtube-api';
 import {fetchDiscogsInfo} from 'radio4000/utils/discogs-api';
 import {task, timeout} from 'ember-concurrency';
-import { mediaUrlParser } from 'media-url-parser';
+import {mediaUrlParser} from 'media-url-parser';
 
 const {Component, get, set, observer, computed} = Ember;
 
@@ -48,20 +48,10 @@ export default Component.extend({
 		}
 	}),
 
-	automaticGetDiscogsInfo: observer('track.discogsUrl', async function () {
-		const track = get(this, 'track');
-
-		// Can not continue without a track or URL.
-		if (!track || !track.get('discogsUrl')) {
-			return;
-		}
-
-		// Because the URL might have changed
-		const mediaUrl = mediaUrlParser(track.get('discogsUrl'))
-		if (mediaUrl.id && mediaUrl.provider === 'discogs') {
-			const type = mediaUrl.url.includes('master/') ? 'master' : 'release'
-			const info = await fetchDiscogsInfo(mediaUrl.id, type)
-			this.set('discogsInfo', info)
+	automaticSetDiscogsInfo: observer('track.discogsUrl', function () {
+		const track = get(this, 'track')
+		if (track && track.get('discogsUrl')) {
+			get(this, 'fetchDiscogsInfo').perform()
 		}
 	}),
 
@@ -84,6 +74,16 @@ export default Component.extend({
 		const ytid = track.get('ytid')
 		let title = yield fetchTitle(ytid)
 		track.set('title', title)
+	}).restartable(),
+
+	fetchDiscogsInfo: task(function * () {
+		const mediaUrl = mediaUrlParser(this.get('track.discogsUrl'))
+		// Make sure we are dealing with a Discogs URL
+		if (mediaUrl.id && mediaUrl.provider === 'discogs') {
+			const type = mediaUrl.url.includes('master/') ? 'master' : 'release'
+			const info = yield fetchDiscogsInfo(mediaUrl.id, type)
+			this.set('discogsInfo', info)
+		}
 	}).restartable(),
 
 	submitTask: task(function * () {
