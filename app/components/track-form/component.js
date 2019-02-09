@@ -4,6 +4,7 @@ import {fetchTitle} from 'radio4000/utils/youtube-api';
 import {fetchDiscogsInfo} from 'radio4000/utils/discogs-api';
 import {task, timeout} from 'ember-concurrency';
 import {mediaUrlParser} from 'media-url-parser';
+import {and, or, not} from 'ember-awesome-macros'
 
 const {Component, get, set, observer, computed} = Ember;
 
@@ -55,13 +56,8 @@ export default Component.extend({
 		}
 	}),
 
-	submitDisabled: computed('track.hasDirtyAttributes', 'submitTask', function() {
-		return !this.get('track.hasDirtyAttributes') || this.get('submitTask.isRunning')
-	}),
-
-	showDiscogsSearchSuggestion: computed('track.title', 'track.discogsUrl', function() {
-		return this.get('track.title') && !this.get('track.discogsUrl')
-	}),
+	submitDisabled: or(not('track.hasDirtyAttributes'), 'submitTask.isRunning'),
+	showDiscogsSearchSuggestion: and('track.title', not('track.discogsUrl')),
 
 	discogsSearchUrl: computed('track.title', function() {
 		let title = encodeURIComponent(this.get('track.title'));
