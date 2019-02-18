@@ -2,7 +2,7 @@ import Ember from 'ember'
 import Controller from '@ember/controller'
 import {get, set} from '@ember/object'
 import {task} from 'ember-concurrency'
-import clean from 'radio4000/utils/clean'
+import slugify from 'radio4000/utils/slugify'
 import ValidateSlug from 'radio4000/mixins/validate-slug'
 
 const {debug} = Ember
@@ -23,7 +23,7 @@ export default Controller.extend(ValidateSlug, {
 
 		// Check if slug changed (before merging)
 		const oldSlug = channel.get('slug')
-		const newSlug = clean(props.slug)
+		const newSlug = slugify(props.slug)
 		const slugChanged = Boolean(props.slug) && newSlug !== oldSlug
 
 		// Set new, cleaned slug if it is valid.

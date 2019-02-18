@@ -1,5 +1,5 @@
 import Ember from 'ember'
-import clean from 'radio4000/utils/clean'
+import slugify from 'radio4000/utils/slugify'
 import { task } from 'ember-concurrency'
 import { validator, buildValidations } from 'ember-cp-validations'
 import channelConst from 'radio4000/utils/channel-const'
@@ -46,7 +46,7 @@ export default Ember.Controller.extend(Validations, ValidateSlug, {
 	reallyCreateRadio: task(function * () {
 		const user = get(this, 'session.currentUser')
 		const title = get(this, 'title').trim()
-		let slug = clean(title)
+		let slug = slugify(title)
 
 		// If the slug is already taken, suffix it.
 		try {
