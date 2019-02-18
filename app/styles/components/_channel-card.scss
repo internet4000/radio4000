@@ -26,7 +26,7 @@
 .ChannelCard-body {
 	@include size-0;
 	color: $dark;
-	// Ensure very long words don't mess up the layout.
+  // Ensure very long words do not mess up the layout.
 	word-break: break-word;
 }
 
@@ -119,6 +119,7 @@ $card-wide-cover-size: 4rem;
 	.ChannelCard-title {
 		margin-top: auto;
 		margin-bottom: auto;
+		overflow-x: auto;
 		// Commented out, it broke channels with longer words.
 		// word-break: inherit;
 	}
@@ -152,4 +153,3 @@ $card-wide-cover-size: 4rem;
 		background-color: $white;
 	}
 }
-

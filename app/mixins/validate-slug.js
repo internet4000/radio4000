@@ -2,7 +2,7 @@ import Ember from 'ember'
 import {task} from 'ember-concurrency'
 import reservedUrls from 'radio4000/utils/reserved-urls'
 import randomText from 'radio4000/utils/random-text'
-import clean from 'radio4000/utils/clean'
+import slugify from 'radio4000/utils/slugify'
 
 export default Ember.Mixin.create({
 	// Prepends a random string to a string
@@ -12,7 +12,7 @@ export default Ember.Mixin.create({
 
 	validateSlug: task(function * (slug) {
 		// Make sure we are testing the 'cleaned' version.
-		slug = clean(slug)
+		slug = slugify(slug)
 
 		// Check if it reserved.
 		const slugIsReserved = reservedUrls.any(

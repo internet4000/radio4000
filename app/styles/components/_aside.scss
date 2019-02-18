@@ -49,9 +49,14 @@
 	z-index: 6;
 
 	.Aside-inner {
-		padding-top: 3.5rem;
+		padding-top: 1.5rem;
 		padding-left: 1.5rem;
 		padding-right: 2rem;
+	}
+	.Aside-inner .Grid {
+		justify-content: flex-start;
+		align-items: flex-start;
+		align-content: flex-start;
 	}
 
 	.Tabs {
@@ -82,4 +87,3 @@
 		z-index: 7;
 	}
 }
-
