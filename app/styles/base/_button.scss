@@ -1,4 +1,5 @@
 .Btn {
+	@include negative-text;
 	font-weight: bold;
 	align-items: center;
 	background-color: $superlightgray;
