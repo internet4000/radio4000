@@ -1,8 +1,8 @@
 {
   "name": "radio4000",
-  "version": "6.0.1",
+  "version": "6.0.2",
   "private": true,
-  "repository": "internet4000/radio4000",
+  "repository": "https://github.com/internet4000/radio4000",
   "scripts": {
     "build": "ember build -prod",
     "lint:js": "eslint .",
