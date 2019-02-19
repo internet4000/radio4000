@@ -5,7 +5,7 @@ import Ember from 'ember'
 
 const colors = [
 	{title: 'purple', value: 'hsl(260, 80%, 50%)'},
-	{title: 'red', value: 'hsl(0, 75%, 50%)'},
+	{title: 'red', value: 'hotpink'},
 	{title: 'yellow', value: 'rgba(255, 233, 87, 0.5)'},
 	{title: 'green', value: 'hsl(125, 82%, 35%)'},
 	{title: 'fadedblue', value: 'hsl(231, 48%, 95%)'},

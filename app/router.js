@@ -15,7 +15,7 @@ Router.map(function() {
 		this.route('map')
 		this.route('new')
 		this.route('search')
-		this.route('explore');
+		this.route('explore')
 	})
 	this.route('channel', {path: '/:channel_slug'}, function() {
 		this.route('index', {path: '/'})
@@ -51,6 +51,7 @@ Router.map(function() {
 		this.route('colors')
 		this.route('forms')
 		this.route('tabs')
+		this.route('buttons')
 	})
 	this.route('404')
 	this.authenticatedRoute('settings', function() {
@@ -61,7 +62,7 @@ Router.map(function() {
 		})
 		this.route('account')
 	})
-	this.authenticatedRoute('premium');
+	this.authenticatedRoute('premium')
 })
 
 export default Router
