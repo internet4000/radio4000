@@ -1,4 +1,4 @@
-@mixin button {
+.Btn {
 	font-weight: bold;
 	align-items: center;
 	background-color: $superlightgray;
@@ -56,10 +56,6 @@
 	i {
 		font-style: normal;
 	}
-}
-
-.Btn {
-	@include button;
 
 	small {
 		padding-left: 0.2rem;
