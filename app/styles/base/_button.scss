@@ -1,4 +1,5 @@
-@mixin button {
+.Btn {
+	@include negative-text;
 	font-weight: bold;
 	align-items: center;
 	background-color: $superlightgray;
@@ -56,10 +57,6 @@
 	i {
 		font-style: normal;
 	}
-}
-
-.Btn {
-	@include button;
 
 	small {
 		padding-left: 0.2rem;
@@ -259,6 +256,7 @@
 }
 
 /* keyboard "button" */
+.kbd,
 .ember-modal-dialog kbd {
   display: inline-block;
 	padding: 0 5px 4px;
