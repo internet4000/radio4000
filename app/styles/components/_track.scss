@@ -84,6 +84,8 @@
 .Track-contextual {
 	margin-left: auto;
 	margin-bottom: auto;
+	position: relative;
+	overflow: hidden;
 
 	.Btn--toggle {
 		pointer-events: none;
