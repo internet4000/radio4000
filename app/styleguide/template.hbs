@@ -1,21 +1,21 @@
-<div class="Container">
-	<div class="Tabs Tabs--horizontal">
-		{{#link-to 'styleguide.index' class="Tabs-item"}}
-			Styleguide
-		{{/link-to}}
-		{{#link-to 'styleguide.typography' class="Tabs-item"}}
-			Typography
-		{{/link-to}}
-		{{#link-to 'styleguide.colors' class="Tabs-item"}}
-			Colors
-		{{/link-to}}
-		{{#link-to 'styleguide.forms' class="Tabs-item"}}
-			Forms
-		{{/link-to}}
-		{{#link-to 'styleguide.tabs' class="Tabs-item"}}
-			Tabs
-		{{/link-to}}
-	</div>
-</div>
+<div class="Sections">
+	<div class="Section">
 
-{{outlet}}
+		<div class="Manchet">
+			<h1>Styleguide</h1>
+		</div>
+		<div class="Container Container--noPaddingMobile Container--contentCentered">
+			<div class="Tabs Tabs--horizontal">
+				{{link-to 'Styleguide' 'styleguide.index' class="Tabs-item"}}
+				{{link-to 'Typography' 'styleguide.typography' class="Tabs-item"}}
+				{{link-to 'Colors' 'styleguide.colors' class="Tabs-item"}}
+				{{link-to 'Forms' 'styleguide.forms' class="Tabs-item"}}
+				{{link-to 'Buttons' 'styleguide.buttons' class="Tabs-item"}}
+				{{link-to 'Tabs' 'styleguide.tabs' class="Tabs-item"}}
+			</div>
+		</div>
+
+	</div>
+
+	{{outlet}}
+</div>

@@ -40,13 +40,6 @@
 		// Because it is on top of images.
 		box-shadow: 0 0px 4px 4px rgba(255, 255, 255, 0.6);
 	}
-
-	.Btn.is-hidden {
-		transform: scale(0.9) translate3d(0.5rem, 0, 0);
-		transform-origin: right;
-		opacity: 0;
-		pointer-events: none;
-	}
 }
 
 .ChannelCard-favorite {

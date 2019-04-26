@@ -1,0 +1,146 @@
+<div class="Section Container">
+	<h2>Sizes</h2>
+	<p>
+		<button class="Btn Btn--small">Small button</button><br>
+		<button class="Btn">Normal button</button><br>
+		<button class="Btn Btn--wide">Wide button</button><br>
+		<button class="Btn Btn--large">Large button</button><br>
+		<button class="Btn Btn--huge">Huge button</button><br>
+	</p>
+
+	<h2>Variants</h2>
+	<p>
+		<button class="Btn">Normal</button><br>
+		<button class="Btn Btn--full">Full button</button><br>
+		<button class="Btn Btn--primary">Primary button</button><br>
+		<button class="Btn Btn--important">Important button</button><br>
+		<button class="Btn Btn--danger">Danger button</button><br>
+		</p>
+
+	<h2>Toggle button</h2>
+	<p>
+		<button class="Btn Btn--toggle">
+			<span></span>
+			<span></span>
+			<span></span>
+		</button>
+	</p>
+
+	<h2>Less important buttons</h2>
+	<p>
+		<button class="Btn Btn--text">Text button</button><br>
+		<button class="Btn Btn--transparent">Transparent button</button><br>
+		<button class="Btn NonBtn">Btn + NonBtn</button><br>
+		<button class="NonBtn">NonBtn</button>
+	</p>
+
+	<h2>Keyboard shortcut button</h2>
+	<p>
+		<kbd class="kbd">ctrl+space</kbd>
+	</p>
+
+	<h2>Buttons with icons</h2>
+	<p>
+		<button class="Btn"><i>▶</i> Button</button><br>
+		<button class="Btn Btn--primary"><i>▶</i> Primary button</button><br>
+		<button class="Btn Btn--danger"><i>▶</i> Danger button</button><br>
+		<button class="Btn Btn--small"><i>▶</i> Small button</button><br>
+		<button class="Btn Btn--large"><i>▶</i> Large button</button><br>
+		<button class="Btn Btn--huge"><i>▶</i> Huge button</button><br>
+		<button class="Btn Btn--full"><i>▶</i> Full button</button><br>
+		<button class="Btn Btn--text"><i>▶</i> Text button</button><br>
+		<button class="Btn NonBtn"><i>▶</i> Btn + NonBtn</button><br>
+		<button class="NonBtn"><i>▶</i> NonBtn</button><br>
+		<button class="Btn Btn--large"><i>▶</i> Large button</button><br>
+		<button class="Btn Btn--primary Btn--large"><i>▶</i> Primary and large</button>
+	</p>
+</div>
+
+<div class="Section Container">
+	<h2>Button groups</h2>
+	{{#btn-group}}
+		<button class="Btn">Sir</button>
+		<button class="Btn">Alex</button>
+		<button class="Btn is-active">Active Button</button>
+		<button class="Btn">Ferguson</button>
+	{{/btn-group}}
+
+	<h2>Vertical button group</h2>
+	{{#btn-group class="BtnGroup--vertical"}}
+		<button class="Btn">Sir</button>
+		<button class="Btn">Alex</button>
+		<button class="Btn is-active">Active Button</button>
+		<button class="Btn">Ferguson</button>
+	{{/btn-group}}
+
+	<h2>Right button group</h2>
+	{{#btn-group class="BtnGroup--right"}}
+		<button class="Btn">Sir</button>
+		<button class="Btn">Alex</button>
+		<button class="Btn is-active">Active Button</button>
+		<button class="Btn">Ferguson</button>
+	{{/btn-group}}
+
+	<h2>BtnGroupWrapper</h2>
+	<div class="BtnGroupWrapper">
+		{{#btn-group}}
+			<button class="Btn">Cheese</button>
+			<button class="Btn">And</button>
+			<button class="Btn">Bread</button>
+		{{/btn-group}}
+		{{#btn-group}}
+			<button class="Btn">Another</button>
+			<button class="Btn">Button</button>
+			<button class="Btn">Group</button>
+			<button class="Btn">With</button>
+			<button class="Btn">Tuna</button>
+		{{/btn-group}}
+	</div>
+
+	<h2>BtnGroupWrapper--full</h2>
+	<div class="BtnGroupWrapper BtnGroupWrapper--full">
+		{{#btn-group}}
+			<button class="Btn">Cheese</button>
+			<button class="Btn">And</button>
+			<button class="Btn">Bread</button>
+		{{/btn-group}}
+		{{#btn-group}}
+			<button class="Btn">Another</button>
+			<button class="Btn">Button</button>
+			<button class="Btn">Group</button>
+			<button class="Btn">With</button>
+			<button class="Btn">Tuna</button>
+		{{/btn-group}}
+	</div>
+
+	<h2>BtnGroups</h2>
+	<div class="BtnGroups">
+		{{#btn-group}}
+			<button class="Btn">Cheese</button>
+			<button class="Btn">And</button>
+			<button class="Btn">Bread</button>
+		{{/btn-group}}
+		{{#btn-group}}
+			<button class="Btn">Another</button>
+			<button class="Btn">Button</button>
+			<button class="Btn">With</button>
+			<button class="Btn">Tuna</button>
+		{{/btn-group}}
+	</div>
+
+	<h2>BtnGroups--center</h2>
+	<div class="BtnGroups BtnGroups--center">
+		{{#btn-group}}
+			<button class="Btn">Cheese</button>
+			<button class="Btn">And</button>
+			<button class="Btn">Bread</button>
+		{{/btn-group}}
+		{{#btn-group}}
+			<button class="Btn">Another</button>
+			<button class="Btn">Button</button>
+			<button class="Btn">With</button>
+			<button class="Btn">Tuna</button>
+		{{/btn-group}}
+	</div>
+
+</div>

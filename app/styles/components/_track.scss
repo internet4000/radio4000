@@ -12,17 +12,6 @@
 	// This border is for indicating track data state (discogs).
 	border-left: 2px solid transparent;
 
-	.icon-play {
-		position: absolute;
-		left: 0.46em;
-		top: 1em;
-		display: none;
-
-		@media (min-width: $layout-s) {
-			left: 0.8em;
-		}
-	}
-
 	&:hover {
 		background-color: $superlightgray;
 	}
@@ -95,6 +84,8 @@
 .Track-contextual {
 	margin-left: auto;
 	margin-bottom: auto;
+	position: relative;
+	overflow: hidden;
 
 	.Btn--toggle {
 		pointer-events: none;
