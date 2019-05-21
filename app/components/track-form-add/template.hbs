@@ -23,10 +23,11 @@
 {{/if}}
 
 {{#form-group
-		 model=track
-		 valuePath="url"
-		 label="URL"
-		 hint="Paste in the URL of a YouTube video" as |value|}}
+	showValidations=showValidations
+	model=track
+	valuePath="url"
+	label="URL"
+	hint="Paste in the URL of a YouTube video" as |value|}}
 	{{focus-input
 			type="url"
 			value=value
@@ -36,6 +37,7 @@
 {{/form-group}}
 
 {{#form-group
+	showValidations=showValidations
 	model=track
 	valuePath="title"
 	label="Title"

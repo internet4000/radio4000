@@ -26,7 +26,7 @@ export const Validations = buildValidations({
 			dependentKeys: ['model.url'],
 			presence: true,
 			ignoreBlank: true,
-			message: 'The track Title should not be left empty'
+			message: 'The track title should not be left empty'
 		}),
 		validator('length', {
 			max: 256
