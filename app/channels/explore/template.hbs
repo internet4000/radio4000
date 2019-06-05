@@ -13,7 +13,7 @@
 						Search
 					</span>
 					{{jets-search
-							contentTag=".Grid"
+							contentTag=".JetsSearchContainer"
 							content=filteredChannels
 							value=search
 							title="Search all radio channels (title and description); Usage: `word1 word2 ...` will find channels that have all words at the same time"
@@ -70,7 +70,7 @@
 			{{/btn-group}}
 		</div>
 
-		<div class="Grid">
+		<div class="Grid JetsSearchContainer">
 			{{#vertical-collection manipulatedList
 				estimateHeight=333
 				bufferSize=8
