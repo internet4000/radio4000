@@ -34,13 +34,18 @@ export default Route.extend(resetScroll, {
 	actions: {
 		login(provider, email, password) {
 			const flashMessages = get(this, 'flashMessages');
-			let data = {
+
+			let options = {
 				provider,
 				email,
 				password
-			};
+			}
 
-			get(this, 'session').open('firebase', data).then(() => {
+			// iOS has issues with the default 'popup' method, so we switch to redirect.
+			const iOS = !!navigator.platform && /iPhone|iPod/.test(navigator.platform)
+			if (iOS) options.redirect = true
+
+			get(this, 'session').open('firebase', options).then(() => {
 				flashMessages.info('You are now signed in!');
 				this.send('redirectAfterAuth');
 			}).catch(error => {
