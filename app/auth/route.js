@@ -5,6 +5,7 @@ const {Route, get, inject, debug} = Ember;
 
 export default Route.extend(resetScroll, {
 	flashMessages: inject.service(),
+
 	onLoginError(err) {
 		const messages = get(this, 'flashMessages');
 		let msg;
@@ -31,6 +32,7 @@ export default Route.extend(resetScroll, {
 			messages.warning(msg, {timeout: 10000});
 		}
 	},
+
 	actions: {
 		login(provider, email, password) {
 			const flashMessages = get(this, 'flashMessages');
@@ -42,7 +44,7 @@ export default Route.extend(resetScroll, {
 			}
 
 			// iOS has issues with the default 'popup' method, so we switch to redirect.
-			const iOS = !!navigator.platform && /iPhone|iPod/.test(navigator.platform)
+			const iOS = Boolean(navigator.platform) && /iPhone|iPod/.test(navigator.platform)
 			if (iOS) options.redirect = true
 
 			get(this, 'session').open('firebase', options).then(() => {
