@@ -8,7 +8,7 @@ export default Component.extend({
 
 	actions: {
 		login(provider, email, password) {
-			this.sendAction('onLogin', provider, email, password);
+			this.onLogin(provider, email, password)
 		},
 
 		resetPassword(email) {
