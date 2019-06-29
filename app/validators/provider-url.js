@@ -11,8 +11,6 @@ const ProviderUrl = BaseValidator.extend({
 
 		if (parsed.url && parsed.id && parsed.provider) {
 			const canParse = knownProviders[parsed.provider] === true
-			console.log(parsed)
-			console.log(canParse)
 			return canParse
 		}
 		return 'Provide a valid Youtube or Soundcloud media URL'
