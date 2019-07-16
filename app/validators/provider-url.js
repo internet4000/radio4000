@@ -3,17 +3,26 @@ import { mediaUrlParser } from 'media-url-parser'
 
 const ProviderUrl = BaseValidator.extend({
 	validate(value) {
-		const parsed = mediaUrlParser(value)
+		let parsed;
+		try {
+			parsed = mediaUrlParser(value)
+		} catch(e) {
+			return 'Use a valid URL, starting with `https://`'
+		}
+
 		const knownProviders = {
 			youtube: true,
 			soundcloud: true
 		}
+		const p = Object.keys(knownProviders)
+					.map((provider) => provider.capitalize())
+					.join(', ')
 
 		if (parsed.url && parsed.id && parsed.provider) {
 			const canParse = knownProviders[parsed.provider] === true
-			return canParse
+			return canParse || `Use a URL from a valid provider: ${p}`
 		}
-		return 'Provide a valid Youtube or Soundcloud media URL'
+		return `Use a valid media URL from: ${p}`
 	}
 });
 
