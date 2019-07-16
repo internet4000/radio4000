@@ -26,7 +26,8 @@
 			<!-- a dummy app that appears independently from Ember and is removed by ember asap -->
 			<style>
 				.DummyApp {
-					z-index: 2;
+					/* above the main r4 nav menu */
+					z-index: 7;
 					position: fixed;
 					top: 0;
 					left: 0;
@@ -34,9 +35,19 @@
 					height: 100%;
 					background-color: hsl(60, 4%, 91%);
 				}
-				.DummyApp--hidden {
-					display: none;
+				.DummyApp--hidden .DummyApp-inner {
+					opacity: 0;
 				}
+
+				.DummyApp-inner {
+					transition: opacity 700ms ease-in;
+					opacity: 1;
+				}
+
+				.DummyApp--hidden .DummyApp-loading {
+					transform: translateY(50%);
+				}
+
 				.DummyApp-inner {
 					position: absolute;
 					top: 50%;
@@ -55,6 +66,8 @@
 				}
 				.DummyApp-loading {
 					margin-bottom: 1rem;
+					transition: transform 500ms ease-in;
+					transform: translateY(0%);
 				}
 				.DummyApp p {
 					color: hsl(0, 0%, 30%); /*$dark*/
@@ -103,8 +116,8 @@
 					console.log('A human feel.')
 
 					// Show dummy app
-					var dummyApp = document.querySelectorAll('.DummyApp')
-					dummyApp[0].classList.remove('DummyApp--hidden')
+					var dummyApp = document.querySelector('.DummyApp')
+					dummyApp.classList.remove('DummyApp--hidden')
 
 					// Insert a random sentence to make waiting fun/less annoying
 					var sentences = [
@@ -139,13 +152,13 @@
 						'Omunye mzuzu, sicela'
 					]
 					var randomSentence = sentences[Math.floor(Math.random() * sentences.length)]
-					var slogan = document.querySelectorAll('.DummyApp-slogan')
-					slogan[0].innerHTML = randomSentence + '…'
+					var slogan = document.querySelector('.DummyApp-slogan')
+					slogan.innerHTML = randomSentence + '…'
 
 					// Internet connection check
-					var dummyBody = document.querySelectorAll('.DummyApp-body')
+					var dummyBody = document.querySelector('.DummyApp-inner')
 					if (!navigator.onLine) {
-						dummyBody[0].innerHTML =
+						dummyBody.innerHTML =
 							'<p><strong>It seems that you are not connected to the internet -_-</strong></p><p>Find the internet and then reload this page.</p><p><button class="Btn" onclick="window.location.reload()">Reload</button></p>'
 					}
 				})()
