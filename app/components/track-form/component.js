@@ -42,10 +42,15 @@ export default Component.extend({
 		}
 
 		// Because the URL might have changed
-		const newid = youtubeUrlToId(track.get('url'))
+		const parsedMediaUrl = mediaUrlParser(track.get('url'))
+		const newid = parsedMediaUrl.id
 		if (newid) {
 			track.set('ytid', newid);
-			get(this, 'fetchTitle').perform()
+			if (parsedMediaUrl.provider === 'youtube') {
+				get(this, 'fetchYoutubeTitle').perform()
+			} else if (parsedMediaUrl.provider === 'soundcloud') {
+				get(this, 'fetchSoundcloudTitle').perform()
+			}
 		}
 	}),
 
@@ -64,12 +69,49 @@ export default Component.extend({
 		return `https://www.discogs.com/search/?q=${title}&type=all`
 	}),
 
-	fetchTitle: task(function * () {
+	fetchYoutubeTitle: task(function * () {
 		yield timeout(250); // throttle
 		const track = get(this, 'track')
 		const ytid = track.get('ytid')
 		let title = yield fetchTitle(ytid)
 		track.set('title', title)
+	}).restartable(),
+
+	fetchSoundcloudTitle: task(function * () {
+		yield timeout(250); // throttle
+		const track = get(this, 'track')
+		const url = track.get('url')
+
+		// insert temporarily the soundcloud API script
+		// for the widget to work
+		if (!window.SC) {
+			let soundcloudApiScript = document.createElement('script')
+			soundcloudApiScript.setAttribute('src', 'https://w.soundcloud.com/player/api.js')
+			soundcloudApiScript.setAttribute('id', 'SoundcloudApiScript')
+			this.get('element').appendChild(soundcloudApiScript)
+		}
+
+		// create and insert a soundcloud widget,
+		// so we can fetch the title from the track
+		let soundcloudIframe = document.createElement('iframe');
+		soundcloudIframe.setAttribute('id', 'SoundcloudIframe')
+		soundcloudIframe.setAttribute("src", "https://w.soundcloud.com/player/?url=https://soundcloud.com/krmnn")
+		soundcloudIframe.classList.add('u-dn');
+		this.get('element').appendChild(soundcloudIframe)
+		var widget = SC.Widget(soundcloudIframe)
+		const readyEvent = SC.Widget.Events.READY
+
+		// attach the ready event to query the track
+		widget.bind(readyEvent, () => {
+			widget.getCurrentSound(sound => {
+				track.set('title', sound.title)
+
+				// cleanup all this mess like nothing happened
+				widget.unbind(readyEvent)
+				// this.get('element').removeChild(document.querySelector('#SoundcloudApiScript'))
+				this.get('element').removeChild(document.querySelector('#SoundcloudIframe'))
+			})
+		})
 	}).restartable(),
 
 	fetchDiscogsInfo: task(function * () {
