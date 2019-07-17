@@ -8116,10 +8116,10 @@ qunit@^2.5.0:
     resolve "1.5.0"
     walk-sync "0.3.2"
 
-radio4000-player@^0.6.6:
-  version "0.6.6"
-  resolved "https://registry.yarnpkg.com/radio4000-player/-/radio4000-player-0.6.6.tgz#03b151fa3fb08b86bc7cd977b7bbfc6223e25b75"
-  integrity sha512-BcpSFkpIshue7c6+wGpWGU4HMyMGwpUacKNlvheMZKbjE+/m6CGndHizrMHAxg08fdpXo4MxOQp++2eZ54QRHQ==
+radio4000-player@^0.6.7:
+  version "0.6.7"
+  resolved "https://registry.yarnpkg.com/radio4000-player/-/radio4000-player-0.6.7.tgz#9f2418510bfcab0459f0505b623cae70547c9b1c"
+  integrity sha512-n5Z4ZBD13Crtpw5/l7GKnZ/2QXnnDkvzl7OaiVc7346bzD69j6GHSguHaq/h8COtBicNAFs9ptPxFoF/GzVqlg==
   dependencies:
     "@vimeo/player" "^2.9.1"
     document-register-element "^1.8.1"

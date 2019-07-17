@@ -67,7 +67,7 @@
     "emberfire": "^2.0.10",
     "lazysizes": "^4.1.5",
     "media-url-parser": "^0.1.3",
-    "radio4000-player": "^0.6.6",
+    "radio4000-player": "^0.6.7",
     "torii": "^0.10.1",
     "youtube-regex": "^1.0.4"
   }
