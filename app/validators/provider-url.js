@@ -6,7 +6,7 @@ const ProviderUrl = BaseValidator.extend({
 		let parsed;
 		try {
 			parsed = mediaUrlParser(value)
-		} catch(e) {
+		} catch (e) {
 			return 'Use a valid URL, starting with `https://`'
 		}
 
@@ -14,9 +14,11 @@ const ProviderUrl = BaseValidator.extend({
 			youtube: true,
 			soundcloud: true
 		}
-		const p = Object.keys(knownProviders)
-					.map((provider) => provider.capitalize())
-					.join(', ')
+
+		// make a nice list of providers to display in error message
+		const p = Object.keys(knownProviders).map(provider => {
+			return provider.capitalize()
+		}).join(', ')
 
 		if (parsed.url && parsed.id && parsed.provider) {
 			const canParse = knownProviders[parsed.provider] === true

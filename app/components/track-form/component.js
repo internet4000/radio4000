@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
 import {fetchTitle} from 'radio4000/utils/youtube-api';
 import {fetchDiscogsInfo} from 'radio4000/utils/discogs-api';
 import {task, timeout} from 'ember-concurrency';
@@ -42,7 +41,14 @@ export default Component.extend({
 		}
 
 		// Because the URL might have changed
-		const parsedMediaUrl = mediaUrlParser(track.get('url'))
+		let parsedMediaUrl;
+
+		try {
+			parsedMediaUrl = mediaUrlParser(track.get('url'))
+		} catch (e) {
+			return;
+		}
+
 		const newid = parsedMediaUrl.id
 		if (newid) {
 			track.set('ytid', newid);
@@ -80,24 +86,30 @@ export default Component.extend({
 	fetchSoundcloudTitle: task(function * () {
 		yield timeout(250); // throttle
 		const track = get(this, 'track')
-		const url = track.get('url')
+		const trackUrl = track.get('url')
 
 		// insert temporarily the soundcloud API script
 		// for the widget to work
+		// maybe the soundcloud widget code does already exist
+		let SC = window.SC
 		if (!window.SC) {
 			let soundcloudApiScript = document.createElement('script')
 			soundcloudApiScript.setAttribute('src', 'https://w.soundcloud.com/player/api.js')
 			soundcloudApiScript.setAttribute('id', 'SoundcloudApiScript')
 			this.get('element').appendChild(soundcloudApiScript)
+			// assign the newly created soundcloud API code to our variable
+			SC = window.SC
 		}
 
 		// create and insert a soundcloud widget,
 		// so we can fetch the title from the track
 		let soundcloudIframe = document.createElement('iframe');
 		soundcloudIframe.setAttribute('id', 'SoundcloudIframe')
-		soundcloudIframe.setAttribute("src", "https://w.soundcloud.com/player/?url=https://soundcloud.com/krmnn")
+		soundcloudIframe.setAttribute('src', `https://w.soundcloud.com/player/?url=${trackUrl}`)
 		soundcloudIframe.classList.add('u-dn');
 		this.get('element').appendChild(soundcloudIframe)
+
+		// eslint-disable-next-line new-cap
 		var widget = SC.Widget(soundcloudIframe)
 		const readyEvent = SC.Widget.Events.READY
 
