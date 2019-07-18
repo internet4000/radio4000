@@ -14,9 +14,9 @@ export const Validations = buildValidations({
 	url: [
 		validator('presence', {
 			presence: true,
-			message: 'A YouTube URL (https://...) is required to add a new track'
+			message: 'A YouTube or Soundcloud media URL (https://...) are required to add a new track'
 		}),
-		validator('youtube-url')
+		validator('provider-url')
 	],
 	discogsUrl: [
 		validator('discogs-url')
