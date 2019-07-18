@@ -1,25 +1,13 @@
 {{#if player.isPlaying}}
-	<div class="u-dn">
-		{{#btn-group class="BtnGroup--right"}}
-			{{#if session.currentUser.channels.firstObject.isPremium}}
-				<button
-					{{action "prefillCurrentTrack"}}
-					class="Btn"
-					type="button"
-					title="Add the current 'on air' track into your radio [⌨ a]">
-					Copy current track
-				</button>
-			{{else}}
-				<button
-					{{action "inviteToPremium"}}
-					class="Btn Muted"
-					type="button"
-					title="(Upgrade) Add the current 'on air' track into your radio [⌨ a]">
-					Copy current track
-				</button>
-			{{/if}}
-		{{/btn-group}}
-	</div>
+	{{#btn-group class="BtnGroup--right"}}
+		<button
+			{{action "prefillCurrentTrack"}}
+			class="Btn"
+			type="button"
+			title="Add the current 'on air' track into your radio">
+			Copy current track
+		</button>
+	{{/btn-group}}
 {{/if}}
 
 {{#form-group
@@ -32,7 +20,7 @@
 			type="url"
 			value=value
 			required="required"
-			placeholder="Paste in a YouTube link"
+			placeholder="Link to a Youtube or Soundcloud media"
 			autoFocus=true}}
 {{/form-group}}
 

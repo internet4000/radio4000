@@ -12,16 +12,17 @@ module.exports = {
 	// Change errors to warnings to avoid the CI builds failing.
 	rules: {
 		'capitalized-comments': 'off',
-		indent: 'warn',
-		'no-alert': 'off',
-		'object-curly-spacing': 'off',
-		semi: 'off',
-		'space-before-function-paren': 'off',
-		// Disable a few "best practices" for now
 		'ember/closure-actions': 'warn',
 		'ember/new-module-imports': 'off',
 		'ember/no-on-calls-in-components': 'warn',
-		'ember/use-brace-expansion': 'warn'
+		'ember/use-brace-expansion': 'warn',
+		'no-alert': 'off',
+		'object-curly-spacing': 'off',
+		'space-before-function-paren': 'off',
+		// Disable a few "best practices" for now
+		curly: ['error', 'multi-line'],
+		indent: 'warn',
+		semi: 'off'
 	},
 	overrides: [
 		// node files

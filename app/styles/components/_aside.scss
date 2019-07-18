@@ -7,15 +7,16 @@
 	top: 1rem;
 	left: 1rem;
 	z-index: 7;
+
+	display: block;
 	width: 2.7rem;
 	height: 2.7rem;
 
 	// "burger" lines inside
-	display: block;
 	span {
 		display: block;
-		height: 0.2rem;
-		margin: 0.2rem;
+		height: 3px;
+		margin: 3px;
 		background-color: black;
 		border-radius: $border-radius;
 	}
