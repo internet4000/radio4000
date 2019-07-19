@@ -85,7 +85,7 @@ export default DS.Model.extend(Validations, {
 	isInPlayer: false,
 
 	// Relationships.
-	tracks: hasMany('track', {async: true}),
+	tracks: hasMany('track'),
 	favoriteChannels: hasMany('channel', {inverse: null, async: true}),
 	channelPublic: belongsTo('channelPublic', {async: true}),
 
