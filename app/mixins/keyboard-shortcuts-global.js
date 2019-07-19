@@ -88,7 +88,9 @@ export default Mixin.create(EKMixin, {
 
 	playCurrentChannel: on(keyUp('shift+KeyP'), function() {
 		if (get(this, 'onChannelRoute')) {
-			this.get('player.playFirstTrack').perform(this.modelFor('channel'))
+			const channel = this.modelFor('channel')
+			this.get('player.playFirstTrack').perform(channel)
+			get(this, 'flashMessages').info(`Playing channel ${channel.get('title')}...`)
 		}
 	}),
 
