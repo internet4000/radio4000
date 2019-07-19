@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import DS from 'ember-data';
-import firebase from 'firebase';
 import {task} from 'ember-concurrency';
 import {and, hash} from 'ember-awesome-macros';
 import {validator, buildValidations} from 'ember-cp-validations';
@@ -55,10 +54,11 @@ const Validations = buildValidations({
 export default DS.Model.extend(Validations, {
 	session: inject.service(),
 	flashMessages: inject.service(),
+	firebaseApp: inject.service(),
 
 	created: attr('number', {
 		defaultValue() {
-			return firebase.database.ServerValue.TIMESTAMP;
+			return this.firebaseApp.database.ServerValue.TIMESTAMP;
 		}
 	}),
 	updated: attr('timestamp'),

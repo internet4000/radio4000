@@ -1,12 +1,14 @@
 import DS from 'ember-data';
-import firebase from 'firebase';
+import { inject as service } from '@ember/service';
 
 const {Model, attr, belongsTo, hasMany} = DS;
 
 export default Model.extend({
+	firebaseApp: service(),
+
 	created: attr('number', {
 		defaultValue() {
-			return firebase.database.ServerValue.TIMESTAMP;
+			return this.firebaseApp.database.ServerValue.TIMESTAMP;
 		}
 	}),
 	channels: hasMany('channel', {

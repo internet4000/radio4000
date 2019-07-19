@@ -1,11 +1,11 @@
 import Ember from 'ember';
 import DS from 'ember-data';
-import firebase from 'firebase';
 import {task} from 'ember-concurrency';
 import {validator, buildValidations} from 'ember-cp-validations';
+import format from 'date-fns/format';
 import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
 import {fetchTrackAvailability} from 'radio4000/utils/youtube-api';
-import format from 'date-fns/format';
+import { inject as service } from '@ember/service';
 
 const {Model, attr, belongsTo} = DS;
 const {get, set, computed} = Ember;
@@ -40,9 +40,11 @@ export const Validations = buildValidations({
 });
 
 export default Model.extend(Validations, {
+	firebaseApp: service(),
+
 	created: attr('number', {
 		defaultValue() {
-			return firebase.database.ServerValue.TIMESTAMP;
+			return this.firebaseApp.database.ServerValue.TIMESTAMP;
 		}
 	}),
 	url: attr('string'),
