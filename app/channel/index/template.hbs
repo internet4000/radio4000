@@ -41,26 +41,33 @@
 
 <section class="Section">
 	<div class="Container">
-		<p>
-			{{#channel-sharer-url
-				slug=model.channel.slug
-				autoSelect=true
-			}}
-				Share {{if model.channel.canEdit "your" "this"}} radio
-				{{#if model.channel.canEdit}}
-					<small>{{link-to 'edit' 'channel.edit'}}</small>
-				{{/if}}
-			{{/channel-sharer-url}}
-		</p>
-		<p title="Tip: paste this <iframe> element in the HTML code of any website to embed a player of this radio">
-			{{#channel-sharer-url
-				 slug=model.channel.slug
-				 showEmbed=true
-				 autoSelect=true
-			}}
-				Embed
-			{{/channel-sharer-url}}
-		</p>
+		<details class="Details">
+			<summary>
+				Embed and share {{if model.channel.canEdit "your" "this"}} radio
+			</summary>
+			<aside class="Details-body">
+				<p>
+					{{#channel-sharer-url
+							 slug=model.channel.slug
+							 autoSelect=true
+					}}
+						Radio homepage
+						{{#if model.channel.canEdit}}
+							<small>{{link-to 'edit' 'channel.edit'}}</small>
+						{{/if}}
+					{{/channel-sharer-url}}
+				</p>
+				<p title="Tip: paste this <iframe> element in the HTML code of any website to embed a player of this radio">
+					{{#channel-sharer-url
+							 slug=model.channel.slug
+							 showEmbed=true
+							 autoSelect=true
+					}}
+						Embed
+					{{/channel-sharer-url}}
+				</p>
+			</aside>
+		</details>
 	</div>
 </section>
 
