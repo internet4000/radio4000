@@ -2,13 +2,13 @@
 import Component from '@ember/component'
 import {get, set} from '@ember/object'
 import {inject as service} from '@ember/service'
-import firebase from 'firebase'
 
 export default Component.extend({
 	uiStates: service(),
 	player: service(),
 	store: service(),
 	session: service(),
+	firebaseApp: service(),
 
 	classNames: ['Root'],
 	classNameBindings: [
@@ -21,15 +21,16 @@ export default Component.extend({
 	isShowingModal: false,
 
 	didInsertElement() {
-		var connectedRef = firebase.database().ref('.info/connected')
-
-		// Don't remove dummy HTML if offline.
-		connectedRef.on('value', snap => {
-			if (snap.val() === true) {
-				this.removeDummyHTML()
-			} else {
-				// not connected
-			}
+		this.firebaseApp.database().then(db => {
+			var connectedRef = db.ref('.info/connected')
+			// Don't remove dummy HTML if offline.
+			connectedRef.on('value', snap => {
+				if (snap.val() === true) {
+					this.removeDummyHTML()
+				} else {
+					// not connected
+				}
+			})
 		})
 	},
 
