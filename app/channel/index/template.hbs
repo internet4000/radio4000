@@ -46,7 +46,7 @@
 				Embed and share {{if model.channel.canEdit "your" "this"}} radio
 			</summary>
 			<aside class="Details-body">
-				<p>
+				<div class="u-push-1">
 					{{#channel-sharer-url
 							 slug=model.channel.slug
 							 autoSelect=true
@@ -56,8 +56,8 @@
 							<small>{{link-to 'edit' 'channel.edit'}}</small>
 						{{/if}}
 					{{/channel-sharer-url}}
-				</p>
-				<p title="Tip: paste this <iframe> element in the HTML code of any website to embed a player of this radio">
+				</div>
+				<div title="Tip: paste this <iframe> element in the HTML code of any website to embed a player of this radio">
 					{{#channel-sharer-url
 							 slug=model.channel.slug
 							 showEmbed=true
@@ -65,7 +65,7 @@
 					}}
 						Embed
 					{{/channel-sharer-url}}
-				</p>
+				</div>
 			</aside>
 		</details>
 	</div>
