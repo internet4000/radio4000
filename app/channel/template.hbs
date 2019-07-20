@@ -15,7 +15,7 @@
 					'channel.tracks'
 					class="Tabs-item"
 					title="All tracks [⌨ g t]"}}
-					Tracks <span class="Muted">({{model.totalTracks}})</span>
+					Tracks {{#if model.totalTracks}}<span class="Muted">({{model.totalTracks}})</span>{{/if}}
 				{{/link-to}}
 				{{#link-to
 					'channel.favorites'
