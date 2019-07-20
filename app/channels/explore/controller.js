@@ -1,7 +1,5 @@
-import Ember from 'ember'
 import Controller from 'radio4000/sorting/controller'
-
-const {get, set, computed} = Ember
+import {computed, get, set} from '@ember/object'
 
 export default Controller.extend({
 	queryParams: ['search'],

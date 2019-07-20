@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import firebase from 'firebase';
 
 const {Controller, inject, get, set, computed, debug} = Ember;
 
@@ -85,7 +84,7 @@ export default Controller.extend({
 		let promise;
 
 		if (provider === 'password') {
-			let credential = firebase.auth.EmailAuthProvider.credential(email, password);
+			let credential = this.firebaseApp.auth().EmailAuthProvider.credential(email, password);
 			promise = auth.currentUser.link(credential);
 		} else {
 			promise = auth.currentUser.linkWithPopup(provider);
