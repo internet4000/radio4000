@@ -33,6 +33,13 @@
 	color: $dark;
   // Ensure very long words do not mess up the layout.
 	word-break: break-word;
+	a {
+		text-decoration: none;
+		font-weight: bold;
+		&:hover {
+			background-color: $lightgray;
+		}
+	}
 }
 
 .ChannelCard-controls {
