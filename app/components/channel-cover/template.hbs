@@ -1,6 +1,6 @@
-<figure class="Cover">
-	<div class="Cover-image">
-		{{#if @src}}
+{{#if @src}}
+	<figure class="Cover">
+		<div class="Cover-image">
 			<picture>
 				{{#if @disableLazyload}}
 					{{!-- first priority devices with webp --}}
@@ -35,6 +35,11 @@
 						alt={{@alt}}>
 				{{/if}}
 			</picture>
-		{{/if}}
+		</div>
+	</figure>
+{{else}}
+	<div class="Cover Cover--noImage">
+		<div class="Cover-image">
+		</div>
 	</div>
-</figure>
+{{/if}}

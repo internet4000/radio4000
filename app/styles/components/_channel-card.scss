@@ -4,6 +4,11 @@
 	background-color: $superlightgray;
 	border: 1px solid $mediumlightgray;
 	border-radius: $border-radius;
+	.Cover--noImage .Cover-image {
+		background-color: $fadedblue;
+		outline-width: 0;
+		color: transparent;
+	}
 }
 
 .ChannelCard > a {
