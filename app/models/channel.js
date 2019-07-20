@@ -95,7 +95,7 @@ export default DS.Model.extend(Validations, {
 	}),
 
 	totalTracks: computed('tracks.[]', function () {
-		return this.hasMany('tracks').ids().length;
+		return this.hasMany('tracks').ids().length
 	}),
 
 	hasFewTracks: computed.lte('totalTracks', 2),

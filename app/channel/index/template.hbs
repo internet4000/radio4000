@@ -4,32 +4,32 @@
 	</div>
 </section>
 
-<section class="Section">
-	{{#if model.channel.totalTracks}}
-		<div class="Container">
-			<h3>
-				Latest tracks
-				<small>({{link-to "see all" "channel.tracks"}})</small>
-			</h3>
-		</div>
-		<div class="Container Container--noPaddingMobile">
-			{{#if model.latestTracks}}
-				{{#tracks-list items=model.latestTracks as |item|}}
-					{{track-item track=item}}
-				{{/tracks-list}}
-			{{else}}
-				{{#is-loading}}
-					Loading latest tracks
-				{{/is-loading}}
-			{{/if}}
-		</div>
-		<div class="Container">
-			<p class="u-textRight">
-				{{link-to "See all tracks" "channel.tracks"}}
-			</p>
-		</div>
-	{{/if}}
-</section>
+{{#if model.channel.tracks.length}}
+	<section class="Section">
+			<div class="Container">
+				<h3>
+					Latest tracks
+					<small>({{link-to "see all" "channel.tracks"}})</small>
+				</h3>
+			</div>
+			<div class="Container Container--noPaddingMobile">
+				{{#if model.latestTracks}}
+					{{#tracks-list items=model.latestTracks as |item|}}
+						{{track-item track=item}}
+					{{/tracks-list}}
+				{{else}}
+					{{#is-loading}}
+						Loading latest tracks
+					{{/is-loading}}
+				{{/if}}
+			</div>
+			<div class="Container">
+				<p class="u-textRight">
+					{{link-to "See all tracks" "channel.tracks"}}
+				</p>
+			</div>
+	</section>
+{{/if}}
 
 {{#if showWelcome}}
 	<section class="Section">

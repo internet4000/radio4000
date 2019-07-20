@@ -20,4 +20,4 @@ export default Route.extend({
 			return model
 		})
 	}
-});
+})
