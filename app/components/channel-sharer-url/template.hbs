@@ -1,10 +1,12 @@
 <form class="Form">
-	{{#if hasBlock}}
-		<label>{{yield}}</label>
-	{{/if}}
-	{{focus-input
-		value=url
-		readonly=true
-		autoFocus=autoFocus
-		autoSelect=autoSelect}}
+	<label>
+		{{#if hasBlock}}
+			<strong>{{yield}}</strong>
+		{{/if}}
+		{{focus-input
+				value=url
+				readonly=true
+				autoFocus=autoFocus
+				autoSelect=autoSelect}}
+	</label>
 </form>
