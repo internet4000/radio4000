@@ -1,6 +1,7 @@
 .Cover {
 	position: relative;
 	text-align: left;
+	margin-bottom: 1rem;
 
 	// wrap link
 	> a {
@@ -17,11 +18,19 @@
  * Image wrapper
  */
 .Cover-image {
-	background-color: $fadedblue;
 	position: relative;
 	overflow: hidden;
 	height: 0;
 	padding-bottom: 100%; // because we use square images
+	.Cover--noImage & {
+		outline: 0.1rem solid $fadedblue;
+		outline-style: inset;
+		&:before {
+			content: '◳';
+			display: flex;
+			align-items: center;
+		}
+	}
 }
 
 /**
@@ -70,4 +79,3 @@
 		}
 	}
 }
-

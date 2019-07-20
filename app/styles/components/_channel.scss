@@ -22,6 +22,10 @@
 	width: 100%;
 	max-width: 13rem;
 
+	a {
+		text-decoration: none;
+	}
+
 	.Cover {
 		margin-bottom: 0;
 	}
@@ -30,6 +34,14 @@
 .Channel-body {
 	flex: 1;
 	padding: 1.5rem 1.5rem 0;
+
+	a {
+		text-decoration: none;
+		font-weight: bold;
+		&:hover {
+			background-color: $lightgray;
+		}
+	}
 
 	@media (min-width: $layout-s) {
 		padding-top: 2rem;
