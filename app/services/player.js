@@ -68,25 +68,29 @@ export default Service.extend({
 	 */
 
 	onTrackChanged(event) {
-		// set channels as active/inactive/add-to-history
-		if (event.previousTrack.channel !== event.track.channel) {
-			this.channelChanged(event.previousTrack.channel, event.track.channel);
-		}
-
-		// set previous track as non active
-		if (event.previousTrack.id !== undefined) {
-			get(this, 'store').findRecord('track', event.previousTrack.id).then(previousTrack => {
-				previousTrack.set('liveInCurrentPlayer', false);
-			});
-		}
-
-		// set new track as played and active
 		get(this, 'store').findRecord('track', event.track.id).then(track => {
+			// set new track as played and active
 			set(this, 'currentTrack', track);
 			track.setProperties({
 				playedInCurrentPlayer: true,
 				liveInCurrentPlayer: true
 			});
+
+			// set previous track as non active
+			if (event.previousTrack.id !== undefined) {
+				get(this, 'store').findRecord('track', event.previousTrack.id).then(previousTrack => {
+					previousTrack.set('liveInCurrentPlayer', false);
+
+					// set channels as active/inactive/add-to-history
+					const prevChannel = previousTrack.get('channel.id')
+					const nextChannel = track.get('channel.id')
+					this.channelChanged(prevChannel, nextChannel);
+				});
+			} else {
+				// set channels as active/inactive/add-to-history
+				const nextChannel = track.get('channel.id')
+				this.channelChanged(undefined, nextChannel);
+			}
 		});
 	},
 
