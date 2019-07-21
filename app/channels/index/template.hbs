@@ -1,4 +1,12 @@
-<section class="Section">
+<section class="Container Container--full">
+	<div class="BtnGroup BtnGroup--right">
+		<button {{action 'refreshSelection'}} class="Btn">
+			<i>⟳</i> Load new radios
+		</button>
+	</div>
+</section>
+
+<section class="Section Section--flex Section--flexCenter">
 	<div class="Container Container--full">
 		<div class="Grid Grid--vcenter">
 			<div class="Grid-cell">
@@ -12,11 +20,6 @@
 					<p>The button in the top left corner is the main navigation menu, to browse through this site.</p>
 					<p>Start your journey by listening to one of the radio channels on this page.</p>
 				{{/if}}
-				<p>
-					<button {{action 'refreshSelection'}} class="Btn Btn--full">
-						<i>⟳</i> Load new radios
-					</button>
-				</p>
 				<p>
 					Each radio is <a href="{{href-to 'about'}}">curated by a human</a>.
 				</p>

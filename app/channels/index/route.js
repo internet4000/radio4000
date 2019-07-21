@@ -9,7 +9,7 @@ let cache
 export default Route.extend({
 	maxFeatured: 20,
 	maxFavoritesPerChannel: 10,
-	maxTotal: 9,
+	maxTotal: 3,
 
 	model() {
 		if (cache) {
