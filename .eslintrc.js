@@ -11,6 +11,7 @@ module.exports = {
 	},
 	// Change errors to warnings to avoid the CI builds failing.
 	rules: {
+		'no-console': 'warn',
 		'capitalized-comments': 'off',
 		'ember/closure-actions': 'warn',
 		'ember/new-module-imports': 'off',
