@@ -36,7 +36,7 @@
 	{{/form-group}}
 
 	<p class="BtnGroupWrapper BtnGroupWrapper--full">
-		<button type="button" class="Btn Btn--text" {{action "cancel"}}>Cancel changes</button>
+		<button type="button" class="Btn" {{action "cancel"}}>Cancel changes</button>
 		<button type="submit" class="Btn Btn--large Btn--primary" disabled={{submitTask.isRunning}}>
 			{{#if submitTask.isRunning}}Saving…{{else}}Save{{/if}}
 		</button>

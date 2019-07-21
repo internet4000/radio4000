@@ -1,7 +1,7 @@
-<br>
-{{#if currentUser.email}}
 	<section class="Section">
 		<div class="Container">
+			<h2>How you login</h2>
+			{{#if currentUser.email}}
 			{{#unless currentUser.emailVerified}}
 				<p class="Note">Your email is not yet verified; check your email for a verification link, or <a href="#" {{action "verifyEmail"}} title="Click to send a new verification email. After clicking the link in the email, please refresh this page.">send a new verification link</a>.</p>
 			{{/unless}}
@@ -15,12 +15,8 @@
 				</label>
 				<button class="Btn" type="submit">Update</button>
 			</form>
-		</div>
-	</section>
-{{/if}}
+		{{/if}}
 
-<section class="Section">
-	<div class="Container">
 		<p>You can use any combination of email, google and facebook to sign in to Radio4000.</p>
 
 		{{account-provider-list
@@ -54,8 +50,19 @@
 						onLink=(action "linkEmail")}}
 			{{/unless}}
 		</div>
+
 	</div>
 </section>
+
+{{#if hasEmail}}
+	<section class="Section">
+		<div class="Container">
+			<h2>Update password</h2>
+			<p>To change your password, we will send you an email with the instructions.</p>
+			<button class="Btn" onclick={{action "resetPassword"}}>Send a password reset link</button>
+		</div>
+	</section>
+{{/if}}
 
 <section class="Section">
 	<div class="Container">

@@ -3,23 +3,16 @@
 
 	<div class="Grid">
 		{{#if isAuthenticated}}
-			<article class="Grid-cell">
-				{{#if userChannel}}
+			{{#if userChannel}}
+				<article class="Grid-cell">
 					{{channel-card channel=userChannel wide=true title="Your radio [⌨ g i]"}}
 					{{#btn-group class="BtnGroup--full BtnGroup--tight"}}
 						<button {{action "addTrack"}} class="Btn Btn--important Btn--topNoRadius" title="Add a new track to your radio [⌨ g a]">
 							Add track
 						</button>
 					{{/btn-group}}
-				{{else}}
-					{{#link-to
-							 "channels.new"
-							 class="Btn Btn--full Btn--important"
-							 title="Create your Radio4000 channel"}}
-						Create my radio
-					{{/link-to}}
-				{{/if}}
-			</article>
+				</article>
+			{{/if}}
 		{{/if}}
 
 		<article class="Grid-cell">
@@ -38,7 +31,7 @@
 					{{else}}
 						{{#link-to
 								 "channels.new"
-								 class="Btn Btn--full Btn--important"
+								 class="Tabs-item"
 								 title="Create your Radio4000 channel"}}
 							Create my radio
 						{{/link-to}}
@@ -54,17 +47,16 @@
 
 				{{#unless isAuthenticated}}
 					{{#link-to
-							 "auth.signup"
-							 class="Tabs-item"
-							 title="Sign up to create your Radio4000"}}
-						Create radio
-					{{/link-to}}
-
-					{{#link-to
 							 "auth.login"
 							 class="Tabs-item"
 							 title="Log in to Radio4000"}}
 						Log in
+					{{/link-to}}
+					{{#link-to
+							 "auth.signup"
+							 class="Tabs-item"
+							 title="Sign up to create your Radio4000"}}
+						Create radio
 					{{/link-to}}
 				{{/unless}}
 			</nav>

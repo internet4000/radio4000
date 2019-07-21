@@ -19,11 +19,18 @@
 }
 
 .PageWelcome-actions {
+	display: flex;
+	flex-direction: column;
 	input {
 		margin-bottom: 0;
 		cursor: pointer;
 		margin-right: 0.6rem;
 		top: 0.2rem;
 		position: relative;
+	}
+	a {
+		display: flex;
+		margin-bottom: 0.3rem;
+		padding: 0.3rem;
 	}
 }

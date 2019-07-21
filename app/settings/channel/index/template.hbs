@@ -1,24 +1,3 @@
-<section class="Section Section--smallMarginB">
-	<div class="Container">
-		<p>
-			<label>Cover image</label>
-		</p>
-		{{#if model.image}}
-			<figure style="max-width: 100px">
-				{{channel-cover src=model.image}}
-			</figure>
-			<button class="Btn Btn--small" title="To change your image, you'll need to delete this one first" {{action "deleteImage"}}>
-				Delete image
-			</button>
-		{{else}}
-			{{cloudinary-upload
-				cloudName='radio4000'
-				unsignedUploadPreset='tc44ivjo'
-				didUpload=(action "saveImage")}}
-		{{/if}}
-	</div>
-</section>
-
 <section class="Section">
 	<div class="Container">
 		{{channel-edit-details

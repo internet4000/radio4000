@@ -8,6 +8,8 @@
  */
 
 .Sections {
+	display: flex;
+	flex-direction: column;
 	flex-grow: 1;
 	padding-top: 2rem;
 }
@@ -68,5 +70,16 @@
 // flex section, becomes a reference to position its children
 .Section--flex {
 	display: flex;
+	flex-direction: column;
 	flex-grow: 1;
+}
+
+.Section--flexCenter {
+	justify-content: center;
+	align-items: center;
+
+	> .Container {
+		// Expand containers so they rely on max-width.
+		width: 100%;
+	}
 }

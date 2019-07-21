@@ -57,6 +57,7 @@ Router.map(function() {
 	this.route('404')
 	this.authenticatedRoute('settings', function() {
 		this.route('channel', function() {
+			this.route('image')
 			this.route('backup')
 			this.route('delete')
 			this.route('map')
