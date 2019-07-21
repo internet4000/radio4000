@@ -1,16 +1,14 @@
-import Ember from 'ember';
-import authenticatedRouteMixin from 'radio4000/mixins/authenticated-route';
+import Route from '@ember/routing/route'
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin'
 
-const {Route} = Ember;
-
-export default Route.extend(authenticatedRouteMixin, {
+export default Route.extend(AuthenticatedRouteMixin, {
 	setupController() {
-		this._super();
-		this.controller.updateCurrentUser();
+		this._super()
+		this.controller.updateCurrentUser()
 	},
 
 	deactivate() {
-		this._super();
-		this.controller.resetCurrentUser();
+		this._super()
+		this.controller.resetCurrentUser()
 	}
-});
+})
