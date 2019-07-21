@@ -65,32 +65,6 @@ export default Controller.extend(ValidateSlug, {
 	}).keepLatest(),
 
 	actions: {
-		saveImage(cloudinaryId) {
-			const messages = get(this, 'flashMessages')
-			const channel = get(this, 'model')
-
-			if (!cloudinaryId) {
-				throw new Error('Could not save image. Missing cloudinary id')
-			}
-
-			channel.set('image', cloudinaryId)
-
-			return channel
-				.save()
-				.then(() => {
-					debug('Saved channel with image')
-				})
-				.catch(() => {
-					messages.warning('Could not save the image to your channel')
-					channel.set('image', undefined)
-				})
-		},
-
-		deleteImage() {
-			set(this, 'model.image', undefined)
-			return this.get('model').save()
-		},
-
 		goBack() {
 			// Clear any unsaved changes.
 			debug('clearing unsaved changes and going back to channel.index')

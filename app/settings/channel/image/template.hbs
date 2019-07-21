@@ -1,0 +1,31 @@
+<section class="Section Section--smallMarginB">
+		{{#if model.image}}
+			<div class="Container Container--contentCentered">
+				<div>
+					<label>
+						<span>Cover image</span>
+						<figure>
+							{{channel-cover src=model.image}}
+						</figure>
+					</label>
+
+					<button class="Btn Btn--small" title="To change your image, you'll need to delete this one first" {{action "deleteImage"}}>
+						Delete image
+					</button>
+				</div>
+			</div>
+		{{else}}
+			<div class="Container">
+				<label class="Label u-push-1">
+					<span class="Label-title">Add an image</span>
+					{{cloudinary-upload
+							cloudName='radio4000'
+							unsignedUploadPreset='tc44ivjo'
+							didUpload=(action "saveImage")}}
+				</label>
+				<p>You can customize your radio visually with an image.</p>
+			</div>
+		{{/if}}
+</section>
+
+{{outlet}}

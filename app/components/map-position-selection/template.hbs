@@ -1,12 +1,12 @@
 {{#if hasLocation}}
 	{{#leaflet-map
-	  maxBounds=maxBounds
-		lat=lat
-		lng=lng
-		zoom=zoom
-		attributionControl=false
-		onLoad=(action "initMap")
-		onMoveend=(action "updateCenter")
+			 maxBounds=maxBounds
+			 lat=lat
+			 lng=lng
+			 zoom=zoom
+			 attributionControl=false
+			 onLoad=(action "initMap")
+			 onMoveend=(action "updateCenter")
 	}}
 		{{tile-layer url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"}}
 
@@ -38,7 +38,9 @@
 		{{/if}}
 	</div>
 {{else}}
-	<button class="Btn Btn--primary" onclick={{perform submitTask 10.487811882056695 40.42968750000001}}>Add location</button>
+	<div class="ClickArea">
+		<button class="Btn" onclick={{perform submitTask 10.487811882056695 40.42968750000001}}>Add location</button>
+	</div>
 {{/if}}
 
 {{yield}}

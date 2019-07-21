@@ -1,0 +1,16 @@
+// Use this together with {{cloudinary-upload}}
+
+.ClickArea {
+	border: 2px dotted $gray;
+	border-radius: $border-radius;
+	cursor: pointer;
+	.Btn {
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
+	}
+}
+
+.ClickArea button {
+	margin: 1rem;
+}
