@@ -10,22 +10,22 @@
 	{{/btn-group}}
 </div>
 
-<div class="Grid">
-	{{#if items}}
-		{{#each items as |item|}}
-			<div class="Grid-cell">
-				{{channel-card channel=item}}
-			</div>
-		{{/each}}
-	{{else}}
-		<p class="Muted">Your history is empty</p>
-	{{/if}}
+<div class="Container Container--full">
+	<div class="Grid">
+		{{#if items}}
+			{{#each items as |item|}}
+				<div class="Grid-cell">
+					{{channel-card channel=item}}
+				</div>
+			{{/each}}
+		{{/if}}
+	</div>
 </div>
 
 
-	<div class="Container">
-		<p>This is your listening history. This page is private, only you can see it.</p>
-		{{#unless items}}
-			<p class="Muted">Tip: add radios you like to your favorites, and clear your history to start a fresh listening session</p>
-		{{/unless}}
-	</div>
+<div class="Container Container--small">
+	<p>This is your <strong>{{if items "" "empty"}} listening history </strong>. This page is <strong>private</strong>, only you can see it.</p>
+	{{#unless items}}
+		<p class="Muted">Tip: add radios you like to your favorites, and clear your history to start a fresh listening session</p>
+	{{/unless}}
+</div>
