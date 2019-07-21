@@ -7,7 +7,7 @@ import {get} from '@ember/object'
 
 export default Route.extend(AuthenticatedRouteMixin, {
 	model() {
-		const user = get(this, 'session.currentUser');
+		const user = get(this, 'session.data.currentUser');
 		if (!user) {
 			this.transitionTo('auth.login');
 		}

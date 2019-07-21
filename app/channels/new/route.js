@@ -1,14 +1,18 @@
 /* global document */
 import Ember from 'ember';
+import Route from '@ember/routing/route'
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
+import {inject as service} from '@ember/service'
+import {get} from '@ember/object'
+const {debug} = Ember;
 
-const {Route, debug, get, inject} = Ember;
-
-export default Route.extend({
-	uiStates: inject.service(),
+export default Route.extend(AuthenticatedRouteMixin, {
+	uiStates: service(),
+	session: service(),
 
 	beforeModel() {
 		const authed = get(this, 'session.isAuthenticated');
-		const userChannels = get(this, 'session.currentUser.channels');
+		const userChannels = get(this, 'session.data.currentUser.channels');
 
 		if (!authed) {
 			return this.transitionTo('auth.login');
