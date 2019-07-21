@@ -31,16 +31,19 @@
 	{{/if}}
 </section>
 
-{{#if showWelcome}}
-	<section class="Section">
-		<div class="Container">
-			{{page-welcome channel=model.channel}}
-		</div>
-	</section>
-{{/if}}
-
 <section class="Section">
 	<div class="Container">
+		{{#if showWelcome}}
+			<details class="Details">
+				<summary>
+					Getting started?
+				</summary>
+				<aside class="Details-body">
+					{{page-welcome channel=model.channel}}
+				</aside>
+			</details>
+		{{/if}}
+
 		<details class="Details">
 			<summary>
 				Embed and share {{if model.channel.canEdit "your" "this"}} radio
