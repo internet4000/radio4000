@@ -1,5 +1,6 @@
 language: node_js
-node_js: 10
+node_js:
+  - "10"
 
 sudo: false
 dist: trusty
@@ -16,5 +17,6 @@ env:
     - JOBS=1
 
 script:
-  - yarn lint:js
-  - yarn test
+  - npm run lint:hbs
+  - npm run lint:js
+  - npm test

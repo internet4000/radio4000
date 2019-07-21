@@ -44,10 +44,11 @@ The start command will launch the application locally, find it in your browser a
 
 Run `yarn test` for a single test or `yarn ember test --server` to start a test server.
 
-Lint scripts with:
+Use these to lint scripts and templates:
 
-* `yarn lint:js`
-* `yarn lint:js -- --fix`
+* `npm run lint:hbs`
+* `npm run lint:js`
+* `npm run lint:js -- --fix`
 
 ## Deployment
 
