@@ -4,7 +4,7 @@
 		<p>Getting logged in!</p>
 	{{/is-loading}}
 {{else}}
-	<form class="Form" {{action "login" "password" email password on="submit"}}>
+	<form class="Form u-push-2" {{action "login" "password" email password on="submit"}}>
 		<div class="Form-group">
 			{{focus-input
 					type="email"
@@ -17,27 +17,28 @@
 			{{input type="password" value=password placeholder="Password" required="required"}}
 		</div>
 		<div class="BtnGroupWrapper BtnGroupWrapper--full">
+			<button class="Btn Btn--text" {{action "resetPassword" email}}>Forgot password?</button>
 			<button type="submit" class="Btn Btn--large">
 				Log in with email
 			</button>
-			<button class="Btn Btn--text" {{action "resetPassword" email}}>Forgot password?</button>
 		</div>
 	</form>
 
-	<br/>
-	<p>Or log in with:</p>
-	<p class="BtnGroup">
-		<button class="Btn Btn--large" title="Log in with Google" {{action "login" "google"}}>
+	<p class="u-tc">Or login with...</p>
+
+	<div class="BtnGroup BtnGroup--full u-push-1">
+		<button class="Btn" title="Log in with Google" {{action "login" "google"}}>
 			Google
 		</button>
-		<button class="Btn Btn--large" title="Log in with Facebook" {{action "login" "facebook"}}>
+		<span>
+
+		</span>
+		<button class="Btn" title="Log in with Facebook" {{action "login" "facebook"}}>
 			Facebook
 		</button>
-	</p>
-	<p>
-		Don't have a radio yet? <a href="{{href-to 'auth.signup'}}">Sign up</a>.<br>
-	</p>
-	<p>
-		Can't sign in? {{link-to "Find help" "feedback"}}.
+	</div>
+
+	<p class="u-tc">
+		No account? <a href="{{href-to 'auth.signup'}}">Sign up!</a>
 	</p>
 {{/if}}
