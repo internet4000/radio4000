@@ -44,17 +44,24 @@ export default Route.extend(resetScroll, {
 			const providers = {
 				google: firebase.auth.GoogleAuthProvider,
 				facebook: firebase.auth.FacebookAuthProvider,
-				email: firebase.auth.EmailAuthProvider
+				password: function () {}
 			}
 			const provider = new providers[providerName]()
 
 			// Decide whether to use popup or redirect.
 			// iOS has issues with the default 'popup' method, so we switch to redirect.
-			// const iOS =
-			// 	Boolean(navigator.platform) && /iPhone|iPod/.test(navigator.platform)
+			const iOS =
+				Boolean(navigator.platform) && /iPhone|iPod/.test(navigator.platform)
 
 			try {
-				const result = await auth.signInWithPopup(provider)
+				let result
+				if (providerName === 'password') {
+					result = await auth.signInWithEmailAndPassword(email, password)
+				} else if (iOS) {
+					result = await auth.signInWithRedirect(provider)
+				} else {
+					result = await auth.signInWithPopup(provider)
+				}
 				console.log({result})
 				flashMessages.info('You are now signed in!')
 				this.send('redirectAfterAuth')
@@ -66,6 +73,7 @@ export default Route.extend(resetScroll, {
 			const firebaseUid = this.session.data.authenticated.user.uid
 			const user = await this.store.findRecord('user', firebaseUid)
 
+			console.log('Found R4 user from login, storing in session.')
 			this.set('session.data.currentUser', user)
 
 			return user.get('channels').then(channels => {
