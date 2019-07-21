@@ -1,4 +1,12 @@
-<section class="Section">
+<section class="Container Container--full">
+	<div class="BtnGroup BtnGroup--right">
+		<button {{action 'refreshSelection'}} class="Btn">
+			<i>⟳</i> Load new radios
+		</button>
+	</div>
+</section>
+
+<section class="Section Section--flex Section--flexCenter">
 	<div class="Container Container--full">
 		<div class="Grid Grid--vcenter">
 			<div class="Grid-cell">
@@ -12,18 +20,8 @@
 					<p>Start your journey by listening to one of the radio channels on this page.</p>
 				{{/if}}
 				<p>
-					<button {{action 'refreshSelection'}} class="Btn Btn--full">
-						<i>⟳</i> Load new radios
-					</button>
-				</p>
-				<p>
 					Each radio is <a href="{{href-to 'about'}}">curated by a human</a>.
 				</p>
-				{{#if session.isAuthenticated}}
-					<p>If anything, <a href="{{href-to 'feedback'}}">contact another human</a>.</p>
-				{{else}}
-					<p>It is always possible to <a href={{href-to "auth.signup"}}>create a radio yourself</a>.</p>
-				{{/if}}
 			</div>
 			{{#if filteredModel.length}}
 				{{#each filteredModel as |channel|}}
@@ -39,5 +37,15 @@
 				</div>
 			{{/if}}
 		</div>
+	</div>
+</section>
+
+<section class="Container">
+	<div class="u-tc">
+		{{#if session.isAuthenticated}}
+			<p>If anything, <a href="{{href-to 'feedback'}}">contact another human</a>.</p>
+		{{else}}
+			<p>It is always possible to <a href={{href-to "auth.signup"}}>create a radio yourself</a>.</p>
+		{{/if}}
 	</div>
 </section>

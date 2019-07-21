@@ -56,6 +56,10 @@
 	}
 }
 
+.BtnGroup--center {
+	justify-content: center;
+}
+
 // Groups of BtnGroup
 // (eliminates double-borders and extra spacing between buttons)
 .BtnGroupWrapper {
