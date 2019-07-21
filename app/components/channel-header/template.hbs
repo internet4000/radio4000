@@ -17,7 +17,9 @@
 </div>
 
 <div class="BtnGroup Channel-buttons">
-	{{play-shuffle-btn channel=channel class="Btn--large Channel-playback"}}
+	{{#if channel.tracks}}
+		{{play-shuffle-btn channel=channel class="Btn--large Channel-playback"}}
+	{{/if}}
 	{{#if channel.canEdit}}
 		{{link-to "Add track" "add" class="Btn"}}
 	{{else}}
