@@ -77,4 +77,9 @@
 .Section--flexCenter {
 	justify-content: center;
 	align-items: center;
+
+	> .Container {
+		// Expand containers so they rely on max-width.
+		width: 100%;
+	}
 }

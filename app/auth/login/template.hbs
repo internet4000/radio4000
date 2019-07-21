@@ -4,6 +4,9 @@
 			<h1>
 				Log in <small>to Radio4000</small>
 			</h1>
+			<p class="u-tc">
+				No account? <a href="{{href-to 'auth.signup'}}">Sign up</a> &rarr;
+			</p>
 		</header>
 		<div class="Container Container--small">
 			{{user-login onLogin=(action "submitLogin")}}
