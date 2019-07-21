@@ -19,6 +19,7 @@ Router.map(function() {
 	})
 	this.route('channel', {path: '/:channel_slug'}, function() {
 		this.route('index', {path: '/'})
+		this.route('home')
 		this.route('deprecated-track', {path: ':track_id'})
 		this.route('tracks', function() {
 			this.route('track', {path: ':track_id'}, function() {
@@ -60,6 +61,7 @@ Router.map(function() {
 	this.route('bookmarklet')
 	this.route('settings', function() {
 		this.route('channel', function() {
+			this.route('image')
 			this.route('backup')
 			this.route('delete')
 			this.route('map')

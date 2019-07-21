@@ -1,15 +1,25 @@
 <div class="Channel-media">
 	{{#if channel.canEdit}}
-		{{#link-to "settings.channel"}}
+		{{#if channel.image}}
+			{{#link-to "channel.home"}}
+				{{channel-cover src=channel.image alt=channel.title}}
+			{{/link-to}}
+		{{else}}
+			{{#link-to "settings.channel.image"}}
+				{{channel-cover src=channel.image alt=channel.title}}
+			{{/link-to}}
+		{{/if}}
+	{{else}}
+		{{#link-to "channel.home"}}
 			{{channel-cover src=channel.image alt=channel.title}}
 		{{/link-to}}
-	{{else}}
-		{{channel-cover src=channel.image alt=channel.title}}
 	{{/if}}
 </div>
 
 <div class="BtnGroup Channel-buttons">
-	{{play-shuffle-btn channel=channel class="Btn--large Channel-playback"}}
+	{{#if channel.tracks}}
+		{{play-shuffle-btn channel=channel class="Btn--large Channel-playback"}}
+	{{/if}}
 	{{#if channel.canEdit}}
 		{{link-to "Add track" "add" class="Btn"}}
 	{{else}}
