@@ -1,10 +1,12 @@
 import Ember from 'ember';
+import Controller from '@ember/controller'
 
-const {Controller, inject, get, set, computed, debug} = Ember;
+const {inject, get, set, computed, debug} = Ember;
 
 export default Controller.extend({
 	firebaseApp: inject.service(),
 	flashMessages: inject.service(),
+	session: inject.service(),
 
 	newEmail: null,
 	currentUser: null,
@@ -32,7 +34,7 @@ export default Controller.extend({
 		if (!firebaseApp) {
 			return;
 		}
-		let currentUser = firebaseApp.auth().currentUser;
+		let currentUser = this.session.get('data.authenticated.user')
 		set(this, 'currentUser', currentUser);
 		set(this, 'providerData', currentUser.providerData);
 		debug('updated current user');
@@ -45,7 +47,7 @@ export default Controller.extend({
 	},
 
 	sendEmailVerification() {
-		get(this, 'firebaseApp').auth().currentUser.sendEmailVerification();
+		this.session.get('data.authenticated.user').sendEmailVerification();
 		get(this, 'flashMessages').success(`Email sent. Check your inbox to verify your email.`, {sticky: true});
 	},
 

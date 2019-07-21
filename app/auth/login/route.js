@@ -9,6 +9,7 @@ export default Route.extend({
 			return transition.send('redirectAfterAuth')
 		}
 	},
+
 	actions: {
 		login() {
 			return true
