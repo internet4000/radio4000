@@ -8,13 +8,10 @@ export default Model.extend({
 
 	created: attr('number', {
 		defaultValue() {
-			return this.firebaseApp.database.ServerValue.TIMESTAMP;
+			return new Date().getTime()
+			// return this.firebaseApp.database.ServerValue.TIMESTAMP;
 		}
 	}),
-	channels: hasMany('channel', {
-		async: true
-	}),
-	settings: belongsTo('user-setting', {
-		async: true
-	})
+	channels: hasMany('channel'),
+	settings: belongsTo('user-setting')
 });
