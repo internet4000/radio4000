@@ -15,19 +15,9 @@ module.exports = {
     browser: true
   },
   rules: {
-		// 'no-console': 'warn',
-		// 'capitalized-comments': 'off',
-		// 'ember/closure-actions': 'warn',
-		// 'ember/new-module-imports': 'off',
-		// 'ember/no-on-calls-in-components': 'warn',
-		// 'ember/use-brace-expansion': 'warn',
-		// 'no-alert': 'off',
-		// 'object-curly-spacing': 'off',
-		// 'space-before-function-paren': 'off',
-		// // Disable a few "best practices" for now
-		// curly: ['error', 'multi-line'],
-		// indent: 'warn',
-		// semi: 'off'
+		'no-console': 'warn',
+		'ember/new-module-imports': 'off',
+		'ember/no-observers': 'warn'
   },
   overrides: [
     // node files

@@ -48,7 +48,6 @@
     "ember-service-worker-index": "^0.7.0",
     "ember-simple-auth": "^1.9.2",
     "ember-source": "~3.11.1",
-    "eslint-config-xo": "^0.20.1",
     "eslint-plugin-ember": "^6.2.0",
     "eslint-plugin-node": "^9.0.1",
     "leaflet": "^1.5.1",
