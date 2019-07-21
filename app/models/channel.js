@@ -58,7 +58,7 @@ export default DS.Model.extend(Validations, {
 
 	created: attr('number', {
 		defaultValue() {
-			return this.firebaseApp.database.ServerValue.TIMESTAMP;
+			return new Date().getTime()
 		}
 	}),
 	updated: attr('timestamp'),
