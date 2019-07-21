@@ -2,6 +2,7 @@ import Route from '@ember/routing/route'
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin'
 import {inject as service} from '@ember/service'
 import KeyboardShortcutsGlobal from 'radio4000/mixins/keyboard-shortcuts-global'
+import RSVP from 'rsvp'
 
 export default Route.extend(ApplicationRouteMixin, KeyboardShortcutsGlobal, {
 	session: service(),
@@ -11,40 +12,73 @@ export default Route.extend(ApplicationRouteMixin, KeyboardShortcutsGlobal, {
 	routeAfterAuthentication: 'auth.login',
 
 	beforeModel() {
-		// if user is already authenticated, load it.
 		if (this.session.isAuthenticated) {
-			this.loadCurrentUser()
+			this.setupUser()
 		}
 	},
 
 	sessionAuthenticated() {
-		this.loadCurrentUser()
+		this.setupUser()
 		this._super(...arguments)
 	},
 
-	// sessionInvalidated() {
-	// 	console.log('no')
-	// 	this._super(...arguments)
-	// },
+	async setupUser() {
+		const uid = this.session.get('data.authenticated.user.uid')
+		let user
 
-	// Runs after a user has authenticated.
-	// Loads the R4 user model from a Firebase UID and stores it in the session.data.
-	async loadCurrentUser() {
-		const firebaseUserUid = this.session.get('data.authenticated.user.uid')
-		const user = await this.store.findRecord('user', firebaseUserUid)
+		try {
+			// Get user model from the Firebase UID.
+			user = await this.store.findRecord('user', uid)
+		} catch (err) {
+			// ... or create a new user with settings.
+			user = this.store.createRecord('user', {id: uid});
+			try {
+				await user.save()
+				await this.createUserSetting(user)
+			} catch (err) {
+				console.log('could not create new user model', err)
+				return this.session.invalidate()
+			}
+		}
 
+		// Store the user model in the session so it's available everywhere.
 		console.log('Found R4 user from login, storing in session.')
-
 		this.set('session.data.currentUser', user)
 
+		// See if the user has a channel.
 		const channels = await user.get('channels')
 		const userChannel = channels.get('firstObject')
 
 		console.log({userChannel})
 
+		// and redirect..
 		if (userChannel) {
 			return this.replaceWith('channel', userChannel)
 		}
 		return this.replaceWith('channels.new')
+	},
+
+	// Returns a promise that resolves either a new user-setting or an already existing one.
+	createUserSetting(user) {
+		const hasSettings = user.belongsTo('settings').id();
+
+		if (hasSettings) {
+			console.log('user has settings');
+			return RSVP.Promise.resolve(user.get('settings.firstObject'));
+		}
+
+		console.log('No user settings found, creating…');
+
+		const userSetting = this.get('store').createRecord('user-setting', {user});
+
+		return new RSVP.Promise(resolve => {
+			userSetting.save().then(() => {
+				user.set('settings', userSetting);
+				user.save().then(() => {
+					// debug('created new user settings');
+					resolve(userSetting);
+				});
+			});
+		});
 	}
 })
