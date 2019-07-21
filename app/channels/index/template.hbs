@@ -23,11 +23,6 @@
 				<p>
 					Each radio is <a href="{{href-to 'about'}}">curated by a human</a>.
 				</p>
-				{{#if session.isAuthenticated}}
-					<p>If anything, <a href="{{href-to 'feedback'}}">contact another human</a>.</p>
-				{{else}}
-					<p>It is always possible to <a href={{href-to "auth.signup"}}>create a radio yourself</a>.</p>
-				{{/if}}
 			</div>
 			{{#if filteredModel.length}}
 				{{#each filteredModel as |channel|}}
@@ -43,5 +38,15 @@
 				</div>
 			{{/if}}
 		</div>
+	</div>
+</section>
+
+<section class="Container">
+	<div class="u-tc">
+		{{#if session.isAuthenticated}}
+			<p>If anything, <a href="{{href-to 'feedback'}}">contact another human</a>.</p>
+		{{else}}
+			<p>It is always possible to <a href={{href-to "auth.signup"}}>create a radio yourself</a>.</p>
+		{{/if}}
 	</div>
 </section>
