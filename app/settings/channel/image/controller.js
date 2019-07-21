@@ -17,9 +17,8 @@ export default Controller.extend({
 				.then(() => {
 					messages.success('Saved image!')
 				})
-				.catch(e => {
+				.catch(() => {
 					messages.warning('Could not save the image to your channel')
-					console.log(e)
 					channel.set('image', undefined)
 				})
 		},
