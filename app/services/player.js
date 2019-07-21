@@ -76,8 +76,8 @@ export default Service.extend({
 				liveInCurrentPlayer: true
 			});
 
-			// set previous track as non active
-			if (event.previousTrack.id !== undefined) {
+			if (event.previousTrack && event.previousTrack.id) {
+				// set previous track as non active
 				get(this, 'store').findRecord('track', event.previousTrack.id).then(previousTrack => {
 					previousTrack.set('liveInCurrentPlayer', false);
 
