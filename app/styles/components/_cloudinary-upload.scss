@@ -1,15 +1,5 @@
 // Use this together with {{cloudinary-upload}}
 
-.CloudinaryUpload {
-	border: 2px dotted $gray;
-	border-radius: $border-radius;
-	.Btn {
-		margin-left: auto;
-		margin-right: auto;
-		display: block;
-	}
-}
-
 .CloudinaryUpload button {
 	margin: 1rem;
 }

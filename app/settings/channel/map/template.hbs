@@ -1,16 +1,24 @@
 <section class="Section">
 	<div class="Container">
-		<p>
-			Give your radio channel a location. Anywhere you feel like.<br>
-			If you do, it will appear on the {{link-to "map" "channels.map"}} together with other channels.
-		</p>
-		<br>
+		<label class="u-push-1">
+			<p>Position your radio on the world map</p>
+			{{map-position-selection
+					submitTask=saveCoordinates
+					lat=(readonly model.coordinatesLatitude)
+					lng=(readonly model.coordinatesLongitude)
+			}}
+		</label>
 
-		{{map-position-selection
-			submitTask=saveCoordinates
-			lat=(readonly model.coordinatesLatitude)
-			lng=(readonly model.coordinatesLongitude)
-		}}
+		{{#unless model.coordinatesLatitude}}
+			<aside>
+				<p>
+					You can position your radio channel on planet earth map. Anywhere, just as you feel.
+				</p>
+				<p>
+					If you do, it will appear on the {{link-to "map" "channels.map"}} together with other channels.
+				</p>
+			</aside>
+		{{/unless}}
 
 		{{outlet}}
 	</div>
