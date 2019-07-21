@@ -123,9 +123,6 @@ export default Controller.extend({
 		verifyEmail() {
 			this.sendEmailVerification();
 		},
-		resetPassword() {
-			debug('todo reset password');
-		},
 		updateEmail(newEmail) {
 			var user = get(this, 'firebaseApp').auth().currentUser;
 			let messages = get(this, 'flashMessages');
@@ -161,6 +158,26 @@ export default Controller.extend({
 				sticky: true
 			});
 			this.transitionToRoute('auth.logout');
+		},
+		resetPassword() {
+			const auth = get(this, 'firebaseApp').auth();
+			const messages = get(this, 'flashMessages');
+			const email = get(this, 'currentUser.email')
+
+			if (!email) {
+				messages.warning('Add the email provider to be able to set, anbd reset your password.');
+				return;
+			}
+
+			auth.sendPasswordResetEmail(email).then(() => {
+				messages.success('A link to change your password has been sent to your email.', {
+					autoClear: false
+				});
+			}).catch(err => {
+				if (err.code === 'auth/user-not-found') {
+					messages.warning(`Could not reset password for ${email}`);
+				}
+			});
 		}
 	}
 });
