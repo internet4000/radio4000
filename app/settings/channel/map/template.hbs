@@ -1,24 +1,36 @@
 <section class="Section">
 	<div class="Container">
-		<label class="u-push-1">
-			<p>Position your radio on the world map</p>
+		<div class="u-push-1">
+			<strong>
+				{{#if model.coordinatesLatitude}}
+					Your channel position
+				{{else}}
+					Position your radio on the world map
+				{{/if}}
+			</strong>
 			{{map-position-selection
 					submitTask=saveCoordinates
 					lat=(readonly model.coordinatesLatitude)
 					lng=(readonly model.coordinatesLongitude)
 			}}
-		</label>
+		</div>
 
-		{{#unless model.coordinatesLatitude}}
-			<aside>
+		<aside>
+			{{#if model.coordinatesLatitude}}
+				<p>
+					Channel coordinates:<br/>
+					Longitude: {{model.coordinatesLongitude}}<br/>
+					Ltitude: {{model.coordinatesLatitude}}
+				</p>
+			{{else}}
 				<p>
 					You can position your radio channel on planet earth map. Anywhere, just as you feel.
 				</p>
 				<p>
 					If you do, it will appear on the {{link-to "map" "channels.map"}} together with other channels.
 				</p>
+			{{/if}}
 			</aside>
-		{{/unless}}
 
 		{{outlet}}
 	</div>
