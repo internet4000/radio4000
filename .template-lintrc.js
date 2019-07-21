@@ -1,11 +1,12 @@
 'use strict';
 
 module.exports = {
-	extends: 'recommended',
-	rules: {
-		'block-indentation': false,
-		'quotes': false,
-		'no-html-comments': false,
-		'no-triple-curlies': false
-	}
+	// Uncomment this when you're ready to fix...
+	// extends: 'recommended',
+	// rules: {
+	// 	'block-indentation': false,
+	// 	'quotes': false,
+	// 	'no-html-comments': false,
+	// 	'no-triple-curlies': false
+	// }
 };
