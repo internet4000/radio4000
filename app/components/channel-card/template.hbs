@@ -8,9 +8,11 @@
 	</h3>
 </a>
 
-<p class="ChannelCard-body">
-	{{link-hashtags (do-truncate channel.body 200) channel.slug}}
-</p>
+{{#if channel.body}}
+	<p class="ChannelCard-body">
+		{{link-hashtags (do-truncate channel.body 200) channel.slug}}
+	</p>
+{{/if}}
 
 <div class="ChannelCard-controls">
 	{{play-shuffle-btn
