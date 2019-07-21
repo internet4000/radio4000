@@ -70,19 +70,7 @@ export default Route.extend(resetScroll, {
 			}
 		},
 		async redirectAfterAuth() {
-			const firebaseUid = this.session.data.authenticated.user.uid
-			const user = await this.store.findRecord('user', firebaseUid)
-
-			console.log('Found R4 user from login, storing in session.')
-			this.set('session.data.currentUser', user)
-
-			return user.get('channels').then(channels => {
-				const userChannel = get(channels, 'firstObject')
-				if (userChannel) {
-					return this.replaceWith('channel', userChannel)
-				}
-				return this.replaceWith('channels.new')
-			})
+			console.log('afterauth')
 		}
 	}
 })

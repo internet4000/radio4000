@@ -61,13 +61,14 @@ export default Ember.Controller.extend(Validations, ValidateSlug, {
 		try {
 			yield channel.validate()
 		} catch (err) {
-			throw new Error('Could not validate the channel')
+			throw new Error('Could not validate the channel', err)
 		}
 
 		try {
 			yield channel.save()
 		} catch (err) {
-			throw new Error('Could not save channel')
+			console.log(err)
+			throw new Error('Could not save channel', err)
 		}
 
 		const userChannels = yield user.get('channels')
