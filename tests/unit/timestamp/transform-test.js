@@ -3,7 +3,8 @@ import {module, test} from 'qunit'
 // https://github.com/rmmmp/emberfire-utils/blob/master/tests/unit/transforms/timestamp-test.js
 
 import {setupTest} from 'ember-qunit'
-import firebase from 'firebase'
+
+const TIMESTAMP = {'.sv': 'timestamp'}
 
 module('Unit | Transform | timestamp', function(hooks) {
 	setupTest(hooks)
@@ -11,14 +12,11 @@ module('Unit | Transform | timestamp', function(hooks) {
 	test('should serialize to Firebase server value timestamp', function(assert) {
 		assert.expect(1)
 
-		// Arrange
 		const transform = this.owner.lookup('transform:timestamp')
-
-		// Act
 		const result = transform.serialize()
 
-		// Assert
-		assert.deepEqual(result, firebase.database.ServerValue.TIMESTAMP)
+		assert.deepEqual(result, TIMESTAMP)
+		// assert.deepEqual(result, firebase.database.ServerValue.TIMESTAMP)
 	})
 
 	test('should deserialize to number', function(assert) {
