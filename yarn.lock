@@ -2872,7 +2872,7 @@ broccoli-funnel-reducer@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/broccoli-funnel-reducer/-/broccoli-funnel-reducer-1.0.0.tgz#11365b2a785aec9b17972a36df87eef24c5cc0ea"
 
-broccoli-funnel@^1.0.0, broccoli-funnel@^1.0.1, broccoli-funnel@^1.1.0, broccoli-funnel@^1.2.0:
+broccoli-funnel@^1.0.0, broccoli-funnel@^1.0.1, broccoli-funnel@^1.1.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/broccoli-funnel/-/broccoli-funnel-1.2.0.tgz#cddc3afc5ff1685a8023488fff74ce6fb5a51296"
   dependencies:
@@ -2954,7 +2954,7 @@ broccoli-lint-eslint@^4.2.1:
     lodash.defaultsdeep "^4.6.0"
     md5-hex "^2.0.0"
 
-broccoli-merge-trees@^1.0.0, broccoli-merge-trees@^1.1.0, broccoli-merge-trees@^1.2.4:
+broccoli-merge-trees@^1.0.0, broccoli-merge-trees@^1.1.0:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/broccoli-merge-trees/-/broccoli-merge-trees-1.2.4.tgz#a001519bb5067f06589d91afa2942445a2d0fdb5"
   dependencies:
@@ -3052,7 +3052,7 @@ broccoli-persistent-filter@^1.4.3:
     symlink-or-copy "^1.0.1"
     walk-sync "^0.3.1"
 
-broccoli-persistent-filter@^2.1.1, broccoli-persistent-filter@^2.2.2:
+broccoli-persistent-filter@^2.1.1, broccoli-persistent-filter@^2.2.2, broccoli-persistent-filter@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/broccoli-persistent-filter/-/broccoli-persistent-filter-2.3.1.tgz#4a052e0e0868b344c3a2977e35a3d497aa9eca72"
   integrity sha512-hVsmIgCDrl2NFM+3Gs4Cr2TA6UPaIZip99hN8mtkaUPgM8UeVnCbxelCvBjUBHo0oaaqP5jzqqnRVvb568Yu5g==
@@ -4662,7 +4662,7 @@ ember-cli-htmlbars-inline-precompile@^1.0.0:
     heimdalljs-logger "^0.1.9"
     silent-error "^1.1.0"
 
-ember-cli-htmlbars@^1.0.3, ember-cli-htmlbars@^1.1.1:
+ember-cli-htmlbars@^1.1.1:
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/ember-cli-htmlbars/-/ember-cli-htmlbars-1.3.4.tgz#461289724b34af372a6a0c4b6635819156963353"
   dependencies:
@@ -4688,6 +4688,16 @@ ember-cli-htmlbars@^3.0.0:
     broccoli-persistent-filter "^1.4.3"
     hash-for-dep "^1.2.3"
     json-stable-stringify "^1.0.0"
+    strip-bom "^3.0.0"
+
+ember-cli-htmlbars@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/ember-cli-htmlbars/-/ember-cli-htmlbars-3.1.0.tgz#87806c2a0bca2ab52d4fb8af8e2215c1ca718a99"
+  integrity sha512-cgvRJM73IT0aePUG7oQ/afB7vSRBV3N0wu9BrWhHX2zkR7A7cUBI7KC9VPk6tbctCXoM7BRGsCC4aIjF7yrfXA==
+  dependencies:
+    broccoli-persistent-filter "^2.3.1"
+    hash-for-dep "^1.5.1"
+    json-stable-stringify "^1.0.1"
     strip-bom "^3.0.0"
 
 ember-cli-inject-live-reload@^1.4.1:
@@ -4958,13 +4968,14 @@ ember-compatibility-helpers@^1.1.1, ember-compatibility-helpers@^1.2.0:
     ember-cli-version-checker "^2.1.1"
     semver "^5.4.1"
 
-ember-composability-tools@^0.0.9:
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/ember-composability-tools/-/ember-composability-tools-0.0.9.tgz#b5e790cc337c6546b55fe2a793ca6da3791916bb"
+ember-composability-tools@^0.0.12:
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/ember-composability-tools/-/ember-composability-tools-0.0.12.tgz#ac7954d4220468af2f431fefd8141d999daa1110"
+  integrity sha512-twb7I60OSSzHyJnCcl9OFw8OwfHvscHSQrgTFa4u6YNftKgNqXqc/Ejez1HqbG6I/CwGAcCrXquvTNDVSZdxvA==
   dependencies:
-    ember-cli-babel "^6.10.0"
-    ember-cli-htmlbars "^1.0.3"
-    ember-wormhole "0.5.3"
+    ember-cli-babel "^7.8.0"
+    ember-cli-htmlbars "^3.1.0"
+    ember-in-element-polyfill "^0.2.0"
 
 ember-concurrency@^1.0.0:
   version "1.0.0"
@@ -5062,9 +5073,10 @@ ember-fetch@^6.3.1:
     node-fetch "^2.3.0"
     whatwg-fetch "^3.0.0"
 
-ember-get-config@^0.2.3:
+ember-get-config@^0.2.4:
   version "0.2.4"
   resolved "https://registry.yarnpkg.com/ember-get-config/-/ember-get-config-0.2.4.tgz#118492a2a03d73e46004ed777928942021fe1ecd"
+  integrity sha1-EYSSoqA9c+RgBO13eSiUICH+Hs0=
   dependencies:
     broccoli-file-creator "^1.1.1"
     ember-cli-babel "^6.3.0"
@@ -5088,6 +5100,15 @@ ember-ignore-children-helper@^1.0.1:
   resolved "https://registry.yarnpkg.com/ember-ignore-children-helper/-/ember-ignore-children-helper-1.0.1.tgz#f7c4aa17afb9c5685e1d4dcdb61c7b138ca7cdc3"
   dependencies:
     ember-cli-babel "^6.8.2"
+
+ember-in-element-polyfill@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/ember-in-element-polyfill/-/ember-in-element-polyfill-0.2.0.tgz#3722b6488bd1609d7b501c3f208eff62ac3dbbef"
+  integrity sha512-cl7hWFhBcwbPbXOHjvupufwgQGRWnPNMXcJT9M/e07AbHVjbI7EnMqOfW1V2lJKsm6KQ1hT3frDcNQWZtS+6lQ==
+  dependencies:
+    debug "^3.1.0"
+    ember-cli-babel "^7.1.2"
+    ember-cli-version-checker "^2.1.0"
 
 ember-inflector@^3.0.0:
   version "3.0.1"
@@ -5117,21 +5138,31 @@ ember-keyboard@^4.0.0:
     babel-plugin-transform-object-rest-spread "^6.26.0"
     ember-cli-babel "^6.6.0"
 
-ember-leaflet@^3.0.17:
-  version "3.0.17"
-  resolved "https://registry.yarnpkg.com/ember-leaflet/-/ember-leaflet-3.0.17.tgz#3d9fd187635bf6fa402c0f06cd2e95d8e396bd4a"
+ember-leaflet@^3.1.3:
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/ember-leaflet/-/ember-leaflet-3.1.3.tgz#dcbbec7532228fe3e1194704f034f33fd50e715c"
+  integrity sha512-nUMRx/303K0GhGrhhrkuRrMAFP98DkxVXuUXQois/K8e8BNVUsJY1DboJFyCLYXXF3Wp6CFlqV8wEzDLwqUMtw==
   dependencies:
-    broccoli-funnel "^1.2.0"
-    broccoli-merge-trees "^1.2.4"
-    ember-cli-babel "^6.10.0"
-    ember-cli-htmlbars "^2.0.1"
-    ember-cli-version-checker "^2.1.0"
-    ember-composability-tools "^0.0.9"
-    ember-get-config "^0.2.3"
+    broccoli-funnel "^2.0.2"
+    broccoli-merge-trees "^3.0.2"
+    ember-cli-babel "^7.8.0"
+    ember-cli-htmlbars "^3.1.0"
+    ember-cli-version-checker "^3.1.3"
+    ember-composability-tools "^0.0.12"
+    ember-get-config "^0.2.4"
+    ember-in-element-polyfill "^0.2.0"
     ember-invoke-action "^1.5.1"
-    ember-wormhole "^0.5.2"
-    fastboot-transform "^0.1.1"
-    resolve "^1.7.0"
+    ember-let-polyfill "^0.1.0"
+    fastboot-transform "^0.1.3"
+    resolve "^1.11.1"
+
+ember-let-polyfill@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/ember-let-polyfill/-/ember-let-polyfill-0.1.0.tgz#9d37c610441eb41eaaea3a6782bbd4203f5cf0a9"
+  integrity sha512-olLHpS7JnqZcfyYRXcdLATYwDIopKA+ZzI8xswzCIcBYoRgoUJY7E/eW84Unu8ea1jtr/Unx+dQrsU+NrNSoBg==
+  dependencies:
+    ember-cli-babel "^6.16.0"
+    ember-cli-version-checker "^2.1.2"
 
 ember-load-initializers@^1.1.0:
   version "1.1.0"
@@ -5324,20 +5355,6 @@ ember-weakmap@^3.0.0:
     browserslist "^3.1.1"
     debug "^3.1.0"
     ember-cli-babel "^6.6.0"
-
-ember-wormhole@0.5.3:
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/ember-wormhole/-/ember-wormhole-0.5.3.tgz#441fdd7729a3b5eed3b0103db84f0ab880ac7f87"
-  dependencies:
-    ember-cli-babel "^6.8.2"
-    ember-cli-htmlbars "^2.0.1"
-
-ember-wormhole@^0.5.2:
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/ember-wormhole/-/ember-wormhole-0.5.4.tgz#968e80f093494f4aed266e750afa63919c61383d"
-  dependencies:
-    ember-cli-babel "^6.10.0"
-    ember-cli-htmlbars "^2.0.1"
 
 ember-wormhole@^0.5.5:
   version "0.5.5"
@@ -5914,9 +5931,10 @@ fast-sourcemap-concat@^1.4.0:
     source-map-url "^0.3.0"
     sourcemap-validator "^1.1.0"
 
-fastboot-transform@^0.1.1:
+fastboot-transform@^0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/fastboot-transform/-/fastboot-transform-0.1.3.tgz#7dea0b117594afd8772baa6c9b0919644e7f7dcd"
+  integrity sha512-6otygPIJw1ARp1jJb+6KVO56iKBjhO+5x59RSC9qiZTbZRrv+HZAuP00KD3s+nWMvcFDemtdkugki9DNFTTwCQ==
   dependencies:
     broccoli-stew "^1.5.0"
     convert-source-map "^1.5.1"
@@ -6649,7 +6667,7 @@ hash-for-dep@^1.0.2, hash-for-dep@^1.2.3:
     heimdalljs-logger "^0.1.7"
     resolve "^1.4.0"
 
-hash-for-dep@^1.4.7, hash-for-dep@^1.5.0:
+hash-for-dep@^1.4.7, hash-for-dep@^1.5.0, hash-for-dep@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/hash-for-dep/-/hash-for-dep-1.5.1.tgz#497754b39bee2f1c4ade4521bfd2af0a7c1196e3"
   integrity sha512-/dQ/A2cl7FBPI2pO0CANkvuuVi/IFS5oTyJ0PsOb6jW6WbVW1js5qJXMJTNbWHXBIPdFTWFbabjB+mE0d+gelw==
@@ -7477,9 +7495,10 @@ lcid@^2.0.0:
   dependencies:
     invert-kv "^2.0.0"
 
-leaflet@^1.3.4:
-  version "1.3.4"
-  resolved "https://registry.yarnpkg.com/leaflet/-/leaflet-1.3.4.tgz#7f006ea5832603b53d7269ef5c595fd773060a40"
+leaflet@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/leaflet/-/leaflet-1.5.1.tgz#9afb9d963d66c870066b1342e7a06f92840f46bf"
+  integrity sha512-ekM9KAeG99tYisNBg0IzEywAlp0hYI5XRipsqRXyRTeuU8jcuntilpp+eFf5gaE0xubc9RuSNIVtByEKwqFV0w==
 
 leek@0.0.24:
   version "0.0.24"
@@ -9685,7 +9704,7 @@ resolve@1.5.0:
   dependencies:
     path-parse "^1.0.5"
 
-resolve@^1.1.6, resolve@^1.3.0, resolve@^1.7.0:
+resolve@^1.1.6, resolve@^1.3.0:
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.7.1.tgz#aadd656374fd298aee895bc026b8297418677fd3"
   dependencies:
