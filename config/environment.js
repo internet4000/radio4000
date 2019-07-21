@@ -36,10 +36,6 @@ module.exports = function(environment) {
 			key: 'pk_test_Ti8aYhMv1as1ZrbaZzaI8QOk'
 		},
 
-		torii: {
-			sessionServiceName: 'session'
-		},
-
 		flashMessageDefaults: {
 			timeout: 3000,
 			extendedTimeout: 1000

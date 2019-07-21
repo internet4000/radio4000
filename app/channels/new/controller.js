@@ -5,7 +5,7 @@ import { validator, buildValidations } from 'ember-cp-validations'
 import channelConst from 'radio4000/utils/channel-const'
 import ValidateSlug from 'radio4000/mixins/validate-slug'
 
-const { warn, computed, get } = Ember
+const { computed, get } = Ember
 
 // This is copy/paste from channel model because we need to validate
 // a `title` field without using a full channel model.
@@ -38,7 +38,7 @@ export default Ember.Controller.extend(Validations, ValidateSlug, {
 			this.transitionToRoute('channel', channel)
 			messages.success('Voilà! You now have a Radio4000 📻', { timeout: 10000 })
 		} catch (err) {
-			warn(err)
+			console.warn(err)
 			messages.warning('Sorry, could not create your radio')
 		}
 	}).drop(),

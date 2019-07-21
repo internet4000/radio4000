@@ -34,13 +34,13 @@ Router.map(function() {
 			this.route('random')
 		})
 	})
-	this.authenticatedRoute('add')
-	this.authenticatedRoute('bookmarklet')
 	this.route('about', function() {
 		this.route('intro', {path: '/'})
 		this.route('contact')
 	})
 	this.route('feedback')
+
+	this.route('login')
 	this.route('auth', function() {
 		this.route('signup')
 		this.route('login')
@@ -54,7 +54,11 @@ Router.map(function() {
 		this.route('buttons')
 	})
 	this.route('404')
-	this.authenticatedRoute('settings', function() {
+
+	// authenticated routes
+	this.route('add')
+	this.route('bookmarklet')
+	this.route('settings', function() {
 		this.route('channel', function() {
 			this.route('backup')
 			this.route('delete')
@@ -62,7 +66,7 @@ Router.map(function() {
 		})
 		this.route('account')
 	})
-	this.authenticatedRoute('premium')
+	this.route('premium')
 })
 
 export default Router

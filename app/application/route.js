@@ -1,18 +1,9 @@
-import Ember from 'ember';
-import KeyboardShortcutsGlobal from 'radio4000/mixins/keyboard-shortcuts-global';
+import Route from '@ember/routing/route'
+import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin'
+import {inject as service} from '@ember/service'
+import KeyboardShortcutsGlobal from 'radio4000/mixins/keyboard-shortcuts-global'
 
-const {
-	Route,
-	inject
-} = Ember;
-
-export default Route.extend(KeyboardShortcutsGlobal, {
-	session: inject.service(),
-	player: inject.service(),
-
-	actions: {
-		accessDenied(a, b) {
-			Ember.debug('torii access denied', a, b)
-		}
-	}
-});
+export default Route.extend(ApplicationRouteMixin, KeyboardShortcutsGlobal, {
+	session: service(),
+	player: service()
+})
