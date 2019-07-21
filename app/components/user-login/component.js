@@ -11,8 +11,7 @@ export default Component.extend({
 			this.onLogin(provider, email, password)
 		},
 
-		resetPassword(email) {
-			const auth = get(this, 'firebaseApp').auth();
+		async resetPassword(email) {
 			const messages = get(this, 'flashMessages');
 
 			if (!email) {
@@ -20,6 +19,7 @@ export default Component.extend({
 				return;
 			}
 
+			const auth = await get(this, 'firebaseApp').auth();
 			auth.sendPasswordResetEmail(email).then(() => {
 				messages.success('Password reset. Check your email.', {
 					autoClear: false
