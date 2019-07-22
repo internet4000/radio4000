@@ -9,11 +9,7 @@
 			</p>
 		</header>
 		<div class="Container Container--small">
-			{{#if session.user}}
-				<p>You are logged in!</p>
-			{{else}}
-				{{user-login onLogin=(action "submitLogin")}}
-			{{/if}}
+			{{user-login onLogin=(action "submitLogin")}}
 		</div>
 	</section>
 </div>
