@@ -16,8 +16,7 @@
 		<div class="Form-group">
 			{{input type="password" value=password placeholder="Password" required="required"}}
 		</div>
-		<div class="BtnGroupWrapper BtnGroupWrapper--full">
-			<button class="Btn Btn--text" {{action "resetPassword" email}}>Forgot password?</button>
+		<div class="BtnGroup BtnGroup--right">
 			<button type="submit" class="Btn Btn--large">
 				Log in with email
 			</button>
@@ -37,4 +36,15 @@
 			Facebook
 		</button>
 	</div>
+
+	<details>
+		<summary>Forgot password?</summary>
+		<div class="Details-body">
+			<p>Not a problem! Enter your email in the field above, and click the following button.</p>
+			<div class="BtnGroup">
+				<button class="Btn" {{action "resetPassword" email}}>Send a password reset mail</button>
+			</div>
+			<p>Need more help? {{link-to "Ask a question!" "feedback"}}</p>
+		</div>
+	</details>
 {{/if}}
