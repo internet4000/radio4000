@@ -21,7 +21,7 @@ export default Component.extend({
 
 			const auth = await get(this, 'firebaseApp').auth();
 			auth.sendPasswordResetEmail(email).then(() => {
-				messages.success('Password reset. Check your email.', {
+				messages.success(`Check your inbox ${email} for instructions on how to reset your password.`, {
 					autoClear: false
 				});
 			}).catch(err => {

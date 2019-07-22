@@ -37,7 +37,7 @@ export default Route.extend(resetScroll, {
 	},
 
 	actions: {
-		async login([providerName, email, password]) {
+		async login(provider, email, password) {
 			const flashMessages = get(this, 'flashMessages')
 			const auth = await get(this, 'firebaseApp').auth()
 
