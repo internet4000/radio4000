@@ -48,7 +48,7 @@ export default Route.extend(resetScroll, {
 			if (iOS) options.redirect = true
 
 			get(this, 'session').open('firebase', options).then(() => {
-				flashMessages.info('You are now signed in!');
+				flashMessages.info('You are now logged in!');
 				this.send('redirectAfterAuth');
 			}).catch(error => {
 				this.onLoginError(error);
