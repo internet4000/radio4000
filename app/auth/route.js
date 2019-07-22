@@ -1,13 +1,14 @@
-import Ember from 'ember'
+import Route from '@ember/routing/route'
 import resetScroll from 'radio4000/mixins/reset-scroll'
 import firebase from 'firebase/app'
-
-const {Route, get, inject, debug} = Ember
+import {debug} from '@ember/debug'
+import { get } from '@ember/object'
+import {inject as service} from '@ember/service'
 
 export default Route.extend(resetScroll, {
-	flashMessages: inject.service(),
-	firebaseApp: inject.service(),
-	session: inject.service(),
+	flashMessages: service(),
+	firebaseApp: service(),
+	session: service(),
 
 	onLoginError(err) {
 		const messages = get(this, 'flashMessages')
@@ -37,7 +38,7 @@ export default Route.extend(resetScroll, {
 	},
 
 	actions: {
-		async login(provider, email, password) {
+		async login(providerName, email, password) {
 			const flashMessages = get(this, 'flashMessages')
 			const auth = await get(this, 'firebaseApp').auth()
 

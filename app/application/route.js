@@ -13,7 +13,7 @@ export default Route.extend(ApplicationRouteMixin, KeyboardShortcutsGlobal, {
 
 	beforeModel() {
 		if (this.session.isAuthenticated) {
-			this.setupUser({redirect: false})
+			this.setupUser(true)
 		}
 	},
 
@@ -22,7 +22,7 @@ export default Route.extend(ApplicationRouteMixin, KeyboardShortcutsGlobal, {
 		this._super(...arguments)
 	},
 
-	async setupUser({redirect}) {
+	async setupUser(shouldRedirect) {
 		const uid = this.session.get('data.authenticated.user.uid')
 		let user
 
@@ -51,7 +51,7 @@ export default Route.extend(ApplicationRouteMixin, KeyboardShortcutsGlobal, {
 
 		console.log({userChannel})
 
-		if (!redirect) return
+		if (!shouldRedirect) return
 
 		// and redirect..
 		if (userChannel) {
