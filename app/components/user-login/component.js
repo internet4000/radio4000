@@ -21,7 +21,7 @@ export default Component.extend({
 			}
 
 			auth.sendPasswordResetEmail(email).then(() => {
-				messages.success('Password reset. Check your email.', {
+				messages.success(`Check your inbox ${email} for instructions on how to reset your password.`, {
 					autoClear: false
 				});
 			}).catch(err => {
