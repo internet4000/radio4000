@@ -19,6 +19,10 @@ export default Mixin.create(EKMixin, {
 		return this.router.currentRouteName.startsWith('channel.')
 	}),
 
+	onMenuRoute: computed('router.currentRouteName', function() {
+		return this.router.currentRouteName.startsWith('menu')
+	}),
+
 	activateKeyboard: on('init', function() {
 		set(this, 'keyboardActivated', true)
 	}),
@@ -76,6 +80,9 @@ export default Mixin.create(EKMixin, {
 	}),
 	navigateToMenu: on(keyUp('KeyB'), function() {
 		this.transitionTo('menu')
+		if (get(this, 'onMenuRoute')) {
+			history.back()
+		}
 	}),
 	onKeyR: on(keyUp('KeyR'), function() {
 		if (get(this, 'isGoingTo')) {
