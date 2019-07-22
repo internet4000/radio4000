@@ -8,6 +8,7 @@ export default Component.extend({
 	session: inject.service(),
 	tagName: 'aside',
 	ariaRole: 'navigation',
+	replace: true,
 
 	actions: {
 		addTrack(trackModel) {
