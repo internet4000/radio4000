@@ -6,5 +6,5 @@ export default Ember.Route.extend({
 		if (get(this, 'session.isAuthenticated')) {
 			return transition.send('redirectAfterAuth')
 		}
-	},
+	}
 });
