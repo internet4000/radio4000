@@ -10,17 +10,8 @@ module('Integration | Component | navigation-menu-link', function(hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`{{navigation-menu-link}}`);
+    await render(hbs`{{navigation-menu-link "menu" "menu"}}`);
 
-    assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      {{#navigation-menu-link}}
-        template block text
-      {{/navigation-menu-link}}
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.ok(this.element.href.endsWith('/menu'));
   });
 });
