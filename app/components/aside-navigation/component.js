@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {Component, computed, get, inject} = Ember;
+const {Component, get, inject} = Ember;
 
 export default Component.extend({
 	uiStates: inject.service(),

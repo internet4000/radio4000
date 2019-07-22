@@ -1,7 +1,7 @@
 /* global document */
 import Ember from 'ember';
 
-const {Service, computed, get, set, run, on} = Ember;
+const {Service, computed, get, set, on} = Ember;
 
 export default Service.extend({
 	// Logic for showing keyboard shortcuts modal
