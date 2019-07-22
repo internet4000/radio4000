@@ -34,7 +34,7 @@ export default Route.extend(resetScroll, {
 	},
 
 	actions: {
-		login([provider, email, password]) {
+		login(provider, email, password) {
 			const flashMessages = get(this, 'flashMessages')
 
 			let options = {

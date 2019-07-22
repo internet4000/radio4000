@@ -41,7 +41,7 @@ export default Controller.extend({
 					this.onSignupError(err);
 				});
 			}
-			this.send('login', [provider]);
+			this.send('login', provider);
 		},
 		login() {
 			return true;
