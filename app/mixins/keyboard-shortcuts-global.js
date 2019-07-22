@@ -74,8 +74,8 @@ export default Mixin.create(EKMixin, {
 			set(this, 'uiStates.format', 1)
 		}
 	}),
-	toggleSidebar: on(keyUp('KeyB'), function() {
-		this.get('uiStates').togglePanelLeft();
+	navigateToMenu: on(keyUp('KeyB'), function() {
+		this.transitionTo('menu')
 	}),
 	onKeyR: on(keyUp('KeyR'), function() {
 		if (get(this, 'isGoingTo')) {
