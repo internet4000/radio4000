@@ -1,33 +1,13 @@
 import Ember from 'ember'
+import LinkComponent from '@ember/routing/link-component';
+const {Component, get} = Ember
 
-const {Component, inject, computed, get} = Ember
-
-export default Component.extend({
-	tagName: 'button',
-	uiStates: inject.service(),
-	attributeBindings: [
-		'title',
-		'ariaExpanded:aria-expanded',
-		'ariaHaspopup:aria-haspopup'
-	],
+export default LinkComponent.extend({
 	classNames: ['Btn', 'NavigationToggleBtn'],
-	classNameBindings: ['isToggled:is-active'],
-
-	isToggled: computed.oneWay('uiStates.isPanelLeftVisible'),
-
-	title: computed('isToggled', function() {
-		if (get(this, 'isToggled')) {
-			return 'Close the navigation menu'
+	click(event) {
+		if (get(this, 'active')) {
+			event.preventDefault
+			history.back()
 		}
-		return 'Open the navigation menu [shortcut: "b"]'
-	}),
-
-	ariaHaspopup: 'true',
-	ariaExpanded: computed('isToggled', function() {
-		return `${get(this, 'isToggled')}`
-	}),
-
-	click() {
-		get(this, 'uiStates').togglePanelLeft()
 	}
 })
