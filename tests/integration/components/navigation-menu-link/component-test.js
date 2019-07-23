@@ -11,7 +11,7 @@ module('Integration | Component | navigation-menu-link', function(hooks) {
     // Handle any actions with this.set('myAction', function(val) { ... });
 
     await render(hbs`{{navigation-menu-link "menu" "menu"}}`);
-
-    assert.ok(this.element.href.endsWith('/menu'));
+		const link = this.element.querySelector('a')
+    assert.ok(link);
   });
 });
