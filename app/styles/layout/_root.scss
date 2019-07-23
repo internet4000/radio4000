@@ -13,19 +13,6 @@
 	margin-right: $sidebar-width;
 }
 
-/**
- * Panel is open
- */
-
-.Root.is-panelLeftVisible {
-	.Aside--navigation {
-		display: flex;
-	}
-	.SiteMain {
-		opacity: 0.6;
-	}
-}
-
 /*
 	 Player is in maximized state
  */
