@@ -79,9 +79,10 @@ export default Mixin.create(EKMixin, {
 		}
 	}),
 	navigateToMenu: on(keyUp('KeyB'), function() {
-		this.transitionTo('menu')
 		if (get(this, 'onMenuRoute')) {
 			history.back()
+		} else {
+			this.transitionTo('menu')
 		}
 	}),
 	onKeyR: on(keyUp('KeyR'), function() {
