@@ -1,31 +1,38 @@
-<div class="Container">
-	{{#btn-group class="BtnGroup--right"}}
-		<button
-			class="Btn"
-			{{action 'clearChannelHistory'}}
-			disabled={{noHistory}}
-			title="When you click it will really be deleted from Radio4000's servers">
-			Clear history
-		</button>
-	{{/btn-group}}
-</div>
+{{#unless noHistory}}
+	<section class="Section">
+		<div class="Container Container--full">
+			{{#btn-group class="BtnGroup--right"}}
+				<button
+					class="Btn"
+					{{action 'clearChannelHistory'}}
+					title="When you click it will really be deleted from Radio4000's servers">
+					Clear history
+				</button>
+			{{/btn-group}}
+		</div>
+	</section>
+{{/unless}}
 
-<div class="Container Container--full">
-	<div class="Grid">
-		{{#if items}}
-			{{#each items as |item|}}
-				<div class="Grid-cell">
-					{{channel-card channel=item}}
-				</div>
-			{{/each}}
-		{{/if}}
+{{#if items}}
+	<section class="Section Section--flex Section--flexCenter">
+		<div class="Container Container--full">
+			<div class="Grid">
+				{{#each items as |item|}}
+					<div class="Grid-cell">
+						{{channel-card channel=item}}
+					</div>
+				{{/each}}
+			</div>
+		</div>
+	</section>
+{{/if}}
+
+
+<section class="Section Section--flex Section--flexCenter">
+	<div class="Container">
+		<p>This is your <strong>{{if items "" "empty"}} listening history</strong>. This page is <strong>private</strong>, only you can see it.</p>
+		{{#unless items}}
+			<p class="Muted">Tip: add radios you like to your favorites, and clear your history to start a fresh listening session</p>
+		{{/unless}}
 	</div>
-</div>
-
-
-<div class="Container Container--small">
-	<p>This is your <strong>{{if items "" "empty"}} listening history </strong>. This page is <strong>private</strong>, only you can see it.</p>
-	{{#unless items}}
-		<p class="Muted">Tip: add radios you like to your favorites, and clear your history to start a fresh listening session</p>
-	{{/unless}}
-</div>
+</section>
