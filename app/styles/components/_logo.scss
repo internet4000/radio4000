@@ -1,16 +1,10 @@
 .Logo {
+	display: inline-block;
 	margin-left: 3rem;
 	margin-right: 3rem;
 	margin-bottom: 1.5rem;
 	backface-visibility: hidden; // perf
 	// user-select: none; // don't highlight
-
-	// Only show when menu is open.
-	display: none;
-
-	.Root.is-panelLeftVisible & {
-		display: inline-block;
-	}
 }
 
 .Logo > a {

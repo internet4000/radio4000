@@ -1,1 +1,9 @@
-{{outlet}}
+{{#if session.isAuthenticated}}
+	<div class="Sections Sections--center">
+		<p class="Container u-tc">
+			{{link-to "You are logged in!" "application"}}
+		</p>
+	</div>
+{{else}}
+	{{outlet}}
+{{/if}}

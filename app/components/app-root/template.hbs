@@ -6,14 +6,9 @@
 	</aside>
 {{/if}}
 
-{{navigation-toggle-btn}}
+{{navigation-menu-link "menu" "menu"}}
 
 {{input-autocomplete}}
-
-{{aside-navigation
-	isAuthenticated=session.isAuthenticated
-	userChannel=session.currentUser.channels.firstObject
-	onClick=(action "openAddTrack")}}
 
 <main class="SiteMain">
 	{{yield}}

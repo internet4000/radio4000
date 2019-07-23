@@ -1,0 +1,7 @@
+<section class="Sections Sections--center">
+	{{aside-navigation
+			isAuthenticated=session.isAuthenticated
+			userChannel=session.currentUser.channels.firstObject}}
+</section>
+
+{{outlet}}
