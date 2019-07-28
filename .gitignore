@@ -16,6 +16,7 @@
 /testem.log
 /yarn-error.log
 *.swp
+jsconfig.json
 
 # ember-try
 /.node_modules.ember-try/
