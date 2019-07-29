@@ -69,7 +69,7 @@
 						Embed
 					{{/channel-sharer-url}}
 				</div>
-				<div title="Tip: paste this HTNML link element in the HTML code of any website to embed an icon linking to this radio">
+				<div class="u-push-1" title="Tip: paste this HTML link element in the HTML code of any website to embed an icon linking to this radio">
 					{{#channel-sharer-url
 							 slug=model.channel.slug
 							 showIcon=true
@@ -78,6 +78,9 @@
 						Icon
 					{{/channel-sharer-url}}
 				</div>
+				<p>
+					<a href="https://radio4000.com/{{model.channel.slug}}"><img width="30" src="https://assets.radio4000.com/icon-r4.svg" alt="{{model.channel.slug}}@r4"></a>
+				</p>
 			</aside>
 		</details>
 	</div>
