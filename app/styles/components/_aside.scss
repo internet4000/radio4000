@@ -27,17 +27,14 @@
 
 	&.is-active {
 		border-color: $primary-color;
+		outline-offset: 0.1rem;
+		outline-width: 1px;
+		outline-style: solid;
 	}
-}
-
-.NavigationToggleLayer {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	overflow-y: auto;
-	background-color: $overlay-color;
+	&:active,
+	&:hover {
+		border-color: $black;
+	}
 }
 
 /**
