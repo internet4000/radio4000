@@ -23,8 +23,8 @@ export default Component.extend({
 	url: computed('slug', 'showEmbed', function() {
 		if (get(this, 'showEmbed')) {
 			return get(this, 'embedCode')
-
-		} else if (get(this, 'showIcon')) {
+		}
+		if (get(this, 'showIcon')) {
 			return get(this, 'iconUrl')
 		}
 		return get(this, 'permalink')
