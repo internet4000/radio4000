@@ -1,6 +1,6 @@
 .ChannelCard {
 	position: relative;
-	background-color: $superlightgray;
+	// background-color: $superlightgray;
 	border: 1px solid $mediumlightgray;
 	border-radius: $border-radius;
 	.Cover--noImage .Cover-image {
@@ -37,20 +37,16 @@
 	@media (min-width: $layout-s) {
 		display: block;
 	}
-
-	& + .ChannelCard-body {
-		margin-top: 0.5rem;
-	}
 }
 
 .ChannelCard-title {
+	@include size-2;
+	margin-bottom: 0;
 	word-break: break-word;
 	color: $text-color;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding-top: 0.5rem;
-	padding-bottom: 0.5rem;
 
 	@media (min-width: $layout-s) {
 		justify-content: left;
@@ -58,11 +54,9 @@
 }
 
 .ChannelCard-body {
-	@include size-0;
-	color: $dark;
   // Ensure very long words do not mess up the layout.
 	word-break: break-word;
-
+	margin-bottom: 0;
 	padding-bottom: 2rem;
 	a {
 		text-decoration: none;
@@ -74,11 +68,7 @@
 }
 
 .ChannelCard-controls {
-	position: absolute;
-	top: 0.4rem;
-	left: 0.4rem;
-	z-index: 1;
-
+	margin-bottom: 0;
 	.Btn:focus {
 		// Because it is on top of images.
 		box-shadow: 0 0px 4px 4px rgba(255, 255, 255, 0.6);
@@ -86,9 +76,6 @@
 }
 
 .ChannelCard-favorite.Btn--text {
-	position: absolute;
-	bottom: 0;
-	right: 0;
 	cursor: pointer;
 	text-decoration: none;
 	&:hover {
@@ -135,14 +122,13 @@
 }
 
 .ChannelCard-title,
-.ChannelCard-body {
-	padding-left: 0.5em;
-	padding-right: 0.5rem;
-	margin-bottom: 0;
-
-	@media (min-width: $layout-m) {
-		padding-left: 1rem;
-	}
+.ChannelCard-body,
+.ChannelCard-controls {
+	padding-top: 0.5em;
+	padding-bottom: 0.3em;
+	padding-left: 0.7rem;
+	padding-right: 0.7rem;
+	background-color: $superlightgray;
 }
 
 // Wide modifier (also smaller)
@@ -173,19 +159,6 @@ $card-wide-cover-size: 4rem;
 
 	.ChannelCard-body {
 		display: none;
-		// margin-top: -1rem;
-		// padding-left: ($card-wide-cover-size + 1rem);
-		// padding-bottom: 1rem;
-	}
-
-	.ChannelCard-controls {
-		left: -0.5rem;
-		top: -0.5rem;
-		right: auto;
-
-		.Button {
-			padding: 0.6rem;
-		}
 	}
 }
 
