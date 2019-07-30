@@ -77,12 +77,7 @@ module.exports = function(environment) {
 			apiKey: 'AIzaSyAyeuzsaD353IhPbffzvP8EE88HNTwSTY0',
 			authDomain: 'radio4000.firebaseapp.com',
 			databaseURL: 'https://radio4000.firebaseio.com'
-		};
-
-		// Enable google analytics
-		ENV.googleAnalytics = {
-			webPropertyId: 'UA-3906535-23'
-		};
+		}
 	}
 
 	return ENV;
