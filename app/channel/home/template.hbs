@@ -1,10 +1,14 @@
 <div class="Sections Sections--center">
 	<section class="Section">
 		<div class="Container Container--small">
-			{{#link-to "channel.player"}}
+			<h1 class="u-tc" title="Explore radio">
+				{{#link-to "channel"}}
+					{{model.title}}
+				{{/link-to}}
+			</h1>
+			{{#link-to "channel.player" title="Go to radio player"}}
 				{{channel-cover src=model.image alt=model.title size=1000}}
 			{{/link-to}}
-			<h1 class="u-tc">{{model.title}}</h1>
 		</div>
 	</section>
 

@@ -152,6 +152,15 @@
 			color: transparent;
 			background-color: transparent;
 			border-color: transparent;
+			box-shadow: none;
+		}
+	}
+}
+
+.Root.is-docked.is-withPlayer {
+	.ChannelScreen {
+		.Btn {
+			display: none
 		}
 	}
 }
