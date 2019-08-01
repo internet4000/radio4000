@@ -125,31 +125,33 @@
 		height: auto;
 	}
 	radio4000-player {
-		max-height: 80vh
+		max-height: 80vh;
+		& .Layout {
+			border-width: 0;
+		}
 	}
 }
 
 .Root.is-docked.is-withoutPlayer {
 	.ChannelScreen {
-		&::before {
-			content: "▶";
+		.Btn i {
+			border: 0.2rem solid $white;
 			background-color: $purple;
 			color: $white;
-			width: 5rem;
-			border-radius: 0.2rem;
-			height: 5rem;
-			text-align: center;
+			width: 2em;
+			height: 2em;
 			display: flex;
+			@include size-6;
 			justify-content: center;
 			align-items: center;
-			line-height: 0;
-			padding-left: 0.3rem;
-			font-size: 3rem;
-			border: 0.2rem solid $black;
-			box-shadow: 3px 4px 10px $white;
+			border-radius: 0.2rem;
+			box-shadow: 0.2rem 0.2rem 1.5rem $black;
+			transition: 300ms background-color ease-out;
 		}
-		&::before:hover {
-			border-color: $white;
+		.Btn.is-running i {
+			color: transparent;
+			background-color: transparent;
+			border-color: transparent;
 		}
 	}
 }
