@@ -9,6 +9,8 @@ const {
 
 export default Controller.extend({
 	applicationController: inject.controller('application'),
+	uiStates: inject.service(),
+	player: inject.service(),
 
 	notExperienced: computed.not('model.channel.isExperienced'),
 	showWelcome: computed.and('notExperienced', 'model.channel.canEdit'),
@@ -20,6 +22,9 @@ export default Controller.extend({
 				newUrl: url,
 				showAddTrack: true
 			});
+		},
+		toggleDockedFormat() {
+			get(this, 'uiStates').toggleDockedFormat();
 		}
 	}
 });

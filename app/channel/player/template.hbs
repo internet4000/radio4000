@@ -1,0 +1,14 @@
+{{#if player.currentTrack}}
+	{{#link-to 'channel' model class="ChannelScreen"}}
+	{{/link-to}}
+{{else}}
+	<div class="ChannelScreen">
+		{{play-shuffle-btn channel=model class="Btn--large Channel-playback"}}
+	</div>
+{{/if}}
+
+<style>
+	.ChannelScreen {
+		background-image: url({{cover-img model.image format='jpg' size=1200}});
+	}
+</style>
