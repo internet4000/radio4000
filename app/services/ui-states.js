@@ -8,6 +8,15 @@ export default Service.extend({
 	// Logic for showing keyboard shortcuts modal
 	showShortcutsModal: false,
 
+	init() {
+		this._super(...arguments)
+		document.addEventListener('fullscreenchange', () => {
+			if (!document.fullscreenElement && get(this, 'isFullscreen')) {
+				this.toggleFullscreenFormat()
+			}
+		});
+	},
+
 	// all formats
 	isMinimized: computed.equal('format', 0),
 	isNormal: computed.equal('format', 1),
@@ -22,7 +31,9 @@ export default Service.extend({
 	}),
 	cycleFormat() {
 		// if we're fullscreen, just go out
-		this.isPlayerFullscreen() && this.exitFullscreen()
+		if (this.isPlayerFullscreen()) {
+			this.exitFullscreen()
+		}
 
 		if (get(this, 'isNormal')) {
 			return this.toggleMinimizedFormat()
@@ -42,14 +53,6 @@ export default Service.extend({
 		}
 	},
 
-	init() {
-		document.addEventListener('fullscreenchange', () => {
-			if (!document.fullscreenElement && get(this, 'isFullscreen')) {
-				this.toggleFullscreenFormat()
-			}
-		});
-	},
-
 	isPlayerFullscreen() {
 		return document.fullscreen
 	},
@@ -59,7 +62,9 @@ export default Service.extend({
 
 	// actions used by player UI buttons
 	toggleMinimizedFormat() {
-		this.isPlayerFullscreen() && this.exitFullscreen()
+		if (this.isPlayerFullscreen()) {
+			this.exitFullscreen()
+		}
 		if (get(this, 'isMinimized')) {
 			this.toggleNormalFormat()
 			return;
@@ -67,7 +72,9 @@ export default Service.extend({
 		set(this, 'format', 0);
 	},
 	toggleNormalFormat() {
-		this.isPlayerFullscreen() && this.exitFullscreen()
+		if (this.isPlayerFullscreen) {
+			this.exitFullscreen()
+		}
 
 		if (get(this, 'isNormal')) {
 			this.toggleFullscreenFormat()
