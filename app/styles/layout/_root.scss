@@ -9,38 +9,65 @@
 	flex-direction: row;
 }
 
-.Root:not(.is-minimized).is-withPlayer .SiteMain {
-	margin-right: $sidebar-width;
-}
-
-/*
-	 Player is in maximized state
- */
-
-.Root.is-maximized {
-	radio4000-player {
-		height: 100vh;
-
-		.Layout {
-			border: 0;
+.Root.is-normal {
+	&.is-withPlayer {
+		.SiteMain {
+			@media (min-width: $layout-m) {
+				margin-right: $sidebar-width;
+			}
+		}
+		.Playback-layoutButtons {
+			position: absolute;
+			top: 0;
+			left: 0;
+			flex-direction: column;
+			transform: translateX(-100%);
 		}
 	}
+}
 
-	.Playback-layoutButtons {
-		flex-direction: row;
-		top: 0.2rem;
-		right: 0;
-		left: auto;
-	}
-
+.Root.is-maximized {
 	.Playback-fullscreen {
 		display: none;
-		order: 1;
 		@media (min-width: $layout-l) {
 			display: block;
 		}
 	}
 }
+.Root.is-minimized {
+	.Playback-minimize {
+		display: none;
+		@media (min-width: $layout-l) {
+			display: block;
+		}
+	}
+}
+
+/*
+	 Player is in minimized state
+ */
+.Root.is-maximized {
+	.Playback-layoutButtons {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+	radio4000-player {
+		@media (min-width: $layout-m) {
+			@include size-2;
+		}
+		@media (min-width: $layout-ml) {
+			@include size-3;
+		}
+	}
+	radio4000-player .Layout {
+		border-width: 0;
+	}
+}
+
+/*
+	 Player is in minimized state
+ */
 
 .Root.is-minimized {
 	.Playback-layoutButtons {
@@ -64,19 +91,29 @@
 			display: none;
 		}
 	}
-
-	.Playback-minimize {
-		display: none;
-
-		@media (min-width: $layout-l) {
-			display: block;
-		}
-	}
 }
 
-// Hide the sidebar completely when we don't need it.
 .Root.is-withoutPlayer {
 	.Aside--right {
 		display: none;
+	}
+}
+
+.Root.is-docked.is-withPlayer {
+	flex-direction: column;
+	.Aside--right {
+		order: 0;
+		width: 100%;
+		padding-left: 5rem;
+		padding-right: 5rem;
+		padding-top: 1rem;
+		position: static;
+	}
+	.SiteMain {
+		order: 1;
+		margin-right: 0;
+	}
+	radio4000-player {
+		max-height: 80vh
 	}
 }

@@ -5,13 +5,10 @@
 }
 
 .Playback-layoutButtons {
-	position: absolute;
-	top: 0.3rem;
-	right: $sidebar-width;
 	z-index: 2;
 	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+	flex-direction: row;
+	justify-content: flex-end;
 
 	> .Btn {
 		margin: 1px;

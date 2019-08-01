@@ -4,47 +4,95 @@ import Ember from 'ember';
 const {Service, computed, get, set, on} = Ember;
 
 export default Service.extend({
+	initialWidth: null,
 	// Logic for showing keyboard shortcuts modal
 	showShortcutsModal: false,
 
-	// Set the format to 0 for mini, 1 for normal or 2 for max
+	// all formats
+	isMinimized: computed.equal('format', 0),
+	isNormal: computed.equal('format', 1),
+	isFullscreen: computed.equal('format', 2),
+	isDocked: computed.equal('format', 3),
+
 	format: computed('isMediumScreen', function() {
+		if (this.isPlayerFullscreen()) {
+			return 1
+		}
 		return get(this, 'isMediumScreen') ? 0 : 1
 	}),
-	isMinimized: computed.equal('format', 0),
-	// isNormal: computed.equal('format', 1),
-	isFullscreen: computed.equal('format', 2),
-
 	cycleFormat() {
-		let format = get(this, 'format');
-		if (format >= 2) {
-			set(this, 'format', 0);
-			return;
+		// if we're fullscreen, just go out
+		this.isPlayerFullscreen() && this.exitFullscreen()
+
+		if (get(this, 'isNormal')) {
+			return this.toggleMinimizedFormat()
 		}
-		this.incrementProperty('format');
+		if (get(this, 'isMinimized')) {
+			return this.toggleFullscreenFormat()
+		}
+		if (get(this, 'isFullscreen')) {
+			if (get(this, 'isMediumScreen')) {
+				this.toggleMinimizedFormat()
+			} else {
+				this.toggleNormalFormat()
+			}
+		}
 	},
+
+	init() {
+		document.addEventListener('fullscreenchange', () => {
+			if (!document.fullscreenElement && get(this, 'isFullscreen')) {
+				this.toggleFullscreenFormat()
+			}
+		});
+	},
+
+	isPlayerFullscreen() {
+		return document.fullscreen
+	},
+	exitFullscreen() {
+		document.exitFullscreen()
+	},
+
+	// actions used by player UI buttons
 	toggleMinimizedFormat() {
-		if (get(this, 'format') === 0) {
-			set(this, 'format', 1);
+		this.isPlayerFullscreen() && this.exitFullscreen()
+		if (get(this, 'isMinimized')) {
+			this.toggleNormalFormat()
 			return;
 		}
 		set(this, 'format', 0);
 	},
 	toggleNormalFormat() {
-		if (get(this, 'format') === 1) {
-			set(this, 'format', 1);
+		this.isPlayerFullscreen() && this.exitFullscreen()
+
+		if (get(this, 'isNormal')) {
+			this.toggleFullscreenFormat()
 			return;
 		}
-		set(this, 'format', 2);
+		set(this, 'format', 1);
 	},
 	toggleFullscreenFormat() {
-		if (get(this, 'format') === 2) {
-			set(this, 'format', 1);
+		if (get(this, 'isFullscreen')) {
+			if (get(this, 'isMediumScreen')) {
+				this.toggleMinimizedFormat()
+			} else {
+				this.toggleNormalFormat()
+			}
 			return;
 		}
+		window.document.querySelector('.Aside--right').requestFullscreen()
 		set(this, 'format', 2);
 	},
+	toggleDockedFormat() {
+		if (get(this, 'isDocked')) {
+			this.toggleNormalFormat()
+			return;
+		}
+		set(this, 'format', 3);
+	},
 
+	// responsive initial width for player
 	setInitialWidth: on('init', function () {
 		const body = document.querySelector('body');
 		const width = body.getBoundingClientRect().width;

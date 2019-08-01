@@ -70,7 +70,8 @@
 
 .Aside--right {
 	position: fixed;
-	z-index: 2;
+	// above main menu
+	z-index: 8;
 	top: auto;
 	right: 0;
 	bottom: 0;
@@ -79,13 +80,5 @@
 	.Root.is-minimized & {
 		width: auto;
 		height: auto;
-	}
-
-	.Root.is-maximized & {
-		top: 0;
-		right: 0;
-		width: 100%;
-		background-color: black;
-		z-index: 7;
 	}
 }
