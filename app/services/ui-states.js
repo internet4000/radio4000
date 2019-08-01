@@ -37,6 +37,9 @@ export default Service.extend({
 				this.toggleNormalFormat()
 			}
 		}
+		if (get(this, 'isDocked')) {
+			return this.toggleDockedFormat()
+		}
 	},
 
 	init() {
@@ -68,6 +71,10 @@ export default Service.extend({
 
 		if (get(this, 'isNormal')) {
 			this.toggleFullscreenFormat()
+			return;
+		}
+		if (get(this, 'isMediumScreen')) {
+			this.toggleMinimizedFormat()
 			return;
 		}
 		set(this, 'format', 1);

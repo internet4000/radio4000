@@ -101,17 +101,28 @@
 
 .Root.is-docked.is-withPlayer {
 	flex-direction: column;
-	.Aside--right {
-		order: 0;
-		width: 100%;
-		padding-left: 5rem;
-		padding-right: 5rem;
-		padding-top: 1rem;
-		position: static;
-	}
 	.SiteMain {
 		order: 1;
 		margin-right: 0;
+		min-height: auto;
+	}
+	.Aside--right {
+		position: static;
+		order: 0;
+		width: 70vw;
+
+		// center with this, so the link under is clickable
+		margin-left: auto;
+		margin-right: auto;
+
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	.Playback {
+		flex-grow: 0;
+		height: auto;
 	}
 	radio4000-player {
 		max-height: 80vh
