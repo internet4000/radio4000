@@ -14,6 +14,7 @@ export default Component.extend(EKMixin, {
 	grouped: false,
 	numbered: false,
 	searchQuery: '',
+	canLocate: false,
 
 	noSearchQuery: computed.not('searchQuery'),
 
@@ -30,6 +31,12 @@ export default Component.extend(EKMixin, {
 	actions: {
 		clearSearchQuery() {
 			set(this, 'searchQuery', '')
+		},
+		locateActiveTrack() {
+			const $track = document.querySelector(`.Track.Track--live`)
+			if ($track) {
+				$track.scrollIntoView()
+			}
 		}
 	}
 })
