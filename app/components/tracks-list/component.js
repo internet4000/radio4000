@@ -35,7 +35,10 @@ export default Component.extend(EKMixin, {
 		locateActiveTrack() {
 			const $track = document.querySelector(`.Track.Track--live`)
 			if ($track) {
-				$track.scrollIntoView()
+				$track.scrollIntoView({
+					behavior: 'smooth',
+					block: 'center'
+				})
 			}
 		}
 	}
