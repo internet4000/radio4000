@@ -1,1 +1,17 @@
-{{outlet}}
+<div class="Sections Sections--center">
+	<section class="Section">
+		<div class="Container">
+			<div class="List">
+				{{track-item track=model}}
+			</div>
+		</div>
+		<div class="Container Container--small">
+			{{#link-to "channel"}}
+				{{channel-card channel=model.channel wide=true}}
+			{{/link-to}}
+		</div>
+	</section>
+
+	{{outlet}}
+
+</div>

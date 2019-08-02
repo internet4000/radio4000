@@ -6,7 +6,9 @@ const {Route,
 
 export default Route.extend({
 	player: inject.service(),
-	afterModel(track) {
-		get(this, 'player').playTrack(track);
+	renderTemplate: function() {
+		this.render({
+			into: 'application'
+		});
 	}
 });
