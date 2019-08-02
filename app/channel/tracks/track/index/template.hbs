@@ -1,6 +1,21 @@
 <div class="Sections Sections--center">
 	<section class="Section">
-		<div class="Container">
+		<div class="Container u-push-1">
+			<div class="BtnGroup BtnGroup--right">
+				{{link-to
+						"Locate track"
+						"channel.tracks"
+						model.channel
+						(query-params locate=true)
+						class="Btn"
+						title="Locate this track in all tracks from this radio channel"}}
+				{{link-to
+						"Show all tracks"
+						'channel.tracks'
+						model.channel
+						class="Btn"
+						title="Display all tracks from this radio channel"}}
+			</div>
 			<div class="List">
 				{{track-item track=model}}
 			</div>

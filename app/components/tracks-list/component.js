@@ -5,7 +5,7 @@ import { array } from 'ember-awesome-macros'
 import { EKMixin, keyUp } from 'ember-keyboard'
 import raw from 'ember-macro-helpers/raw'
 
-const { Component, computed, set } = Ember
+const { Component, computed, set, get } = Ember
 
 export default Component.extend(EKMixin, {
 	classNames: ['TracksList'],
@@ -27,6 +27,20 @@ export default Component.extend(EKMixin, {
 	focusSearch: Ember.on(keyUp('shift+KeyS'), function() {
 		this.element.querySelector('input[type="search"]').focus()
 	}),
+
+	didRender() {
+		const locate = get(this, 'locate');
+		const $track = document.querySelector(`.Track.Track--live`)
+		if (locate && $track) {
+			$track.scrollIntoView({
+				behavior: 'smooth',
+				block: 'center'
+			})
+
+			// so it does not keep scroll each time it renders
+			set(this, 'locate', null)
+		}
+	},
 
 	actions: {
 		clearSearchQuery() {
