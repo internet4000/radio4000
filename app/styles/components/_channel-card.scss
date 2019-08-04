@@ -16,6 +16,14 @@
 		}
 	}
 	&.ChannelCard--wide {
+		display: flex;
+		a {
+			flex-grow: 1;
+		}
+		.ChannelCard-title {
+			flex-grow: 1;
+			height: 100%;
+		}
 		.Cover {
 			min-width: auto;
 		}
@@ -105,6 +113,9 @@
 // Little circle that indicates the channel is playing.
 .ChannelCard.is-active {
 	border-color: $primary-color;
+	a {
+		text-decoration: none;
+	}
 }
 
 .ChannelCard.is-active::before {
