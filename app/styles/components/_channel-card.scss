@@ -21,7 +21,6 @@
 			flex-grow: 1;
 		}
 		.ChannelCard-title {
-			flex-grow: 1;
 			height: 100%;
 		}
 		.Cover {
@@ -53,6 +52,7 @@
 	word-break: break-word;
 	color: $text-color;
 	display: flex;
+	flex-grow: 1;
 	align-items: center;
 	justify-content: center;
 
