@@ -2,13 +2,15 @@
 	<section class="Section">
 		<div class="Container u-push-1">
 			<div class="BtnGroup BtnGroup--right">
-				{{link-to
-						"◎"
-						"channel.tracks"
-						model.channel
-						(query-params locate=true)
-						class="Btn"
-						title="Locate this track in all tracks from this radio channel"}}
+				{{#if model.liveInCurrentPlayer}}
+					{{link-to
+							"◎"
+							"channel.tracks"
+							model.channel
+							(query-params locate=true)
+							class="Btn"
+							title="Locate this track in all tracks from this radio channel"}}
+				{{/if}}
 				{{link-to
 						"Show all tracks"
 						'channel.tracks'
