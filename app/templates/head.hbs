@@ -19,10 +19,13 @@ setting values on the 'head-data' service.
 
 {{#if model.slug}}
 	<link rel="alternate" type="application/json+oembed" href={{concat "https://api.radio4000.com/oembed?slug=" model.slug}} title={{concat model.title "'s oEmbed profile"}}>
+	<meta name="twitter:player" content={{concat "https://api.radio4000.com/embed?slug=" model.slug}}>
+	<meta name="twitter:player:width" content="450">
+	<meta name="twitter:player:height" content="450">
 {{/if}}
 
-{{#if model.ytid}}
-	<meta name="twitter:player" content={{concat "https://www.youtube.com/watch?v=" model.ytid}}>
+{{#if model.mediaUrl}}
+	<meta name="twitter:player" content={{model.mediaUrl}}>
 	<meta name="twitter:player:width" content="360">
 	<meta name="twitter:player:height" content="240">
 {{/if}}
