@@ -1,7 +1,8 @@
 import Ember from 'ember';
+import Route from '@ember/routing/route'
+import {mediaUrlParser} from 'media-url-parser'
 
-const {Route,
-			 inject,
+const {inject,
 			 get,
 			 set} = Ember;
 
@@ -18,7 +19,6 @@ export default Route.extend({
 		const headData = get(this, 'headData')
 		const channelTitle = model.get('channel.title')
 		const channelImage = model.get('channel.image')
-		const title = model.get('title')
 		const body = model.get('body') || ''
 
 		const description = `${body} ~ ${channelTitle}`
@@ -28,9 +28,14 @@ export default Route.extend({
 		// aka put youtube / soundcloud player,
 		// as such embed on the web is not made for long playback
 		set(headData, 'slug', null)
-		set(headData, 'title', title)
 		set(headData, 'description', description)
 		set(headData, 'image', channelImage)
+
+		// Enable youtube player embed for the track.
+		const parsed = mediaUrlParser(model.url)
+		if (parsed.provider === 'youtube') {
+			set(headData, 'ytid', parsed.id)
+		}
 	},
 
 	deactivate() {

@@ -1,15 +1,10 @@
-import Ember from 'ember';
-
-const {Route,
-			 get,
-			 set,
-			 inject} = Ember;
+import Route from '@ember/routing/route'
 
 export default Route.extend({
 	model(params) {
 		return this.store
 			.findRecord('track', params.track_id)
-			.catch(error => {
+			.catch(() => {
 				return this.transitionTo('channel.tracks')
 			})
 	}
