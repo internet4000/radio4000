@@ -80,12 +80,8 @@
 		width: auto;
 		height: auto;
 	}
-
 	.Root.is-maximized & {
-		top: 0;
-		right: 0;
-		width: 100%;
-		background-color: black;
-		z-index: 7;
+		// above menu
+		z-index: 8;
 	}
 }

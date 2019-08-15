@@ -47,6 +47,9 @@ export default Component.extend({
 		},
 		toggleFullscreenFormat() {
 			get(this, 'uiStates').toggleFullscreenFormat();
+		},
+		toggleDockedFormat() {
+			get(this, 'uiStates').toggleDockedFormat();
 		}
 	}
 });
