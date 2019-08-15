@@ -30,15 +30,8 @@ export default Component.extend(EKMixin, {
 
 	didRender() {
 		const locate = get(this, 'locate');
-		const $track = document.querySelector(`.Track.Track--live`)
-		if (locate && $track) {
-			$track.scrollIntoView({
-				behavior: 'smooth',
-				block: 'center'
-			})
-
-			// so it does not keep scroll each time it renders
-			set(this, 'locate', null)
+		if (locate) {
+			this.send('locateActiveTrack')
 		}
 	},
 
@@ -53,7 +46,9 @@ export default Component.extend(EKMixin, {
 					behavior: 'smooth',
 					block: 'center'
 				})
+				// so it does not keep scroll each time it renders
 			}
+			set(this, 'locate', null)
 		}
 	}
 })
