@@ -35,14 +35,6 @@
 		}
 	}
 }
-.Root.is-minimized {
-	.Playback-minimize {
-		display: none;
-		@media (min-width: $layout-l) {
-			display: block;
-		}
-	}
-}
 
 /*
 	 Player is in minimized state
@@ -78,17 +70,14 @@
 		left: auto;
 	}
 
-	.Playback {
-		width: 200px;
-		height: 200px;
-	}
-
 	radio4000-player {
 		height: 200px !important;
+		min-height: auto !important;
 
 		.TrackList,
 		.Layout-header,
-		.Layout-footer {
+		.Layout-footer,
+		.Layout-main {
 			display: none;
 		}
 	}
