@@ -33,6 +33,7 @@ Router.map(function() {
 		this.route('play', function() {
 			this.route('random')
 		})
+		this.route('player');
 	})
 	this.authenticatedRoute('add')
 	this.authenticatedRoute('bookmarklet')

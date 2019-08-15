@@ -5,8 +5,9 @@ const {inject, get, $} = Ember;
 
 export default Controller.extend({
 	player: inject.service(),
-	queryParams: ['search'],
+	queryParams: ['search', 'locate'],
 	search: '',
+	locate: '',
 
 	getSelectionFromJets() {
 		const $els = $('.ListGroup .Track:visible')

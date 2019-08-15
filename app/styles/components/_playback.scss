@@ -5,13 +5,10 @@
 }
 
 .Playback-layoutButtons {
-	position: absolute;
-	top: 0.3rem;
-	right: $sidebar-width;
 	z-index: 2;
 	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+	flex-direction: row;
+	justify-content: flex-end;
 
 	> .Btn {
 		margin: 1px;
@@ -36,3 +33,18 @@ radio4000-player .Layout {
 radio4000-player .Btn {
 	min-height: initial;
 }
+
+// do not display the playback button:
+// - when on the docked route: linked version
+// - when the link is visible (so not active) hide the btn
+.Playback-dock.is-active,
+.Playback-dock:not(.is-active) + .Playback-dock {
+	display: none;
+}
+
+// only display the .Btn
+// .Root.is-docked {
+// 	.Btn.Playback-dock {
+// 		display: none;
+// 	}
+// }

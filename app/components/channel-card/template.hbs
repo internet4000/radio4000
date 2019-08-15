@@ -14,20 +14,19 @@
 	</p>
 {{/if}}
 
-<div class="ChannelCard-controls">
+<div class="ChannelCard-controls BtnGroup BtnGroup--right">
+	{{#unless channel.canEdit}}
+		{{btn-favorite
+				class="ChannelCard-favorite Btn Btn--text Muted"
+				channel=channel
+				showText=false
+		}}
+	{{/unless}}
 	{{play-shuffle-btn
-		class="Btn--small"
-		channel=channel
-		showText=false
+			class="Btn--small"
+			channel=channel
+			showText=false
 	}}
 </div>
-
-{{#unless channel.canEdit}}
-	{{btn-favorite
-		class="ChannelCard-favorite Btn Btn--text Muted"
-		channel=channel
-		showText=false
-	}}
-{{/unless}}
 
 {{yield}}

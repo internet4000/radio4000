@@ -1,0 +1,41 @@
+.ChannelScreen {
+	// position element
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+
+	// position content
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	.Btn {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		// opacity: 0;
+		transition: opacity 500ms ease-in;
+		@include size-4;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+
+.ChannelScreen-media {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	// position bg image
+	background-size: cover;
+	background-position: center;
+	filter: blur(2px);
+}
