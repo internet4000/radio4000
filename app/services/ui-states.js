@@ -68,8 +68,10 @@ export default Service.extend({
 			this.exitFullscreen()
 		}
 		if (get(this, 'isMinimized')) {
-			this.toggleNormalFormat()
-			return;
+			if (!get(this, 'isMediumScreen')) {
+				this.toggleNormalFormat()
+				return;
+			}
 		}
 		set(this, 'format', 0);
 	},
