@@ -81,6 +81,12 @@
 			display: none;
 		}
 	}
+	.Playback-minimize {
+		display: none;
+		@media (min-width: $layout-l) {
+			display: block;
+		}
+	}
 }
 
 .Root.is-withoutPlayer {
