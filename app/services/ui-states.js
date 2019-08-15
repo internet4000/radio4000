@@ -99,6 +99,10 @@ export default Service.extend({
 		set(this, 'format', 2);
 	},
 	toggleDockedFormat() {
+		// if we're fullscreen, just go out
+		if (this.isPlayerFullscreen()) {
+			this.exitFullscreen()
+		}
 		if (get(this, 'isDocked')) {
 			this.toggleNormalFormat()
 			return;
