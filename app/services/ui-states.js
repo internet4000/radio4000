@@ -57,7 +57,9 @@ export default Service.extend({
 		return document.fullscreen
 	},
 	exitFullscreen() {
-		document.exitFullscreen()
+		if (this.isPlayerFullscreen()) {
+			document.exitFullscreen()
+		}
 	},
 
 	// actions used by player UI buttons
