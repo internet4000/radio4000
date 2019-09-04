@@ -1,6 +1,6 @@
 import Ember from 'ember'
 
-const {Component, get, set} = Ember
+const {Component, get, set, computed} = Ember
 
 export default Component.extend({
 	// channel: ember model,
@@ -11,6 +11,10 @@ export default Component.extend({
 		this._super(...arguments)
 		set(this, 'proxy', {})
 	},
+
+	changesToSave: computed.notEmpty('proxy'),
+
+	disableSave: computed.or('changesToSave', 'submitTask.isRunning'),
 
 	actions: {
 		cancel() {
