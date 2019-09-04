@@ -1,7 +1,12 @@
 <div class="Sections Sections--center">
 	<div class="Section">
 		<div class="Manchet">
-			<h2><small>Add a </small>new track<small> to your radio</small></h2>
+			<h2><small>Add a </small>new track<small> to</small></h2>
+			<p>
+				<center>
+					{{link-to model.title 'channel' model.slug}}
+				</center>
+			</p>
 		</div>
 		<div class="Container">
 			{{track-form-add
@@ -22,20 +27,16 @@
 	</div>
 	<section class="Section">
 		<div class="Container">
-			<div class="Grid">
-				<div class="Grid-cell Grid-cell--double">
-					<p>You are adding to:</p>
-					{{channel-card channel=model wide=true}}
-				</div>
-				<div class="Muted Grid-cell Grid-cell--double">
-					<p>
-						Tip: do you want to <strong>add tracks faster</strong> into your Radio4000 channel?
-					</p>
-					<p>
-						{{link-to "Get the bookmarklet" "bookmarklet" class="Btn"}}
-					</p>
-				</div>
-			</div>
+			<details>
+				<summary>
+					<em>Too slow?</em>
+				</summary>
+				<p>
+					Add tracks faster to your Radio with the {{link-to "bookmarklet" "bookmarklet"}}.
+				</p>
+				<p>
+				</p>
+			</details>
 		</div>
 	</section>
 </div>
