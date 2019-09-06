@@ -7,8 +7,8 @@ import {pickRandom} from 'radio4000/utils/random-helpers'
 let cache
 
 export default Route.extend({
-	maxFeatured: 20,
-	maxFavoritesPerChannel: 10,
+	maxFeatured: 70,
+	maxFavoritesPerChannel: 20,
 	maxTotal: 3,
 
 	model() {
