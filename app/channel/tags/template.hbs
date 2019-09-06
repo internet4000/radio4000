@@ -1,0 +1,18 @@
+<section class="Section">
+	<div class="Container Container--large">
+		<nav class="Tags">
+			{{#each model.tags.tags as |item|}}
+				{{#link-to
+						 "channel.tracks"
+						 model.channel
+						 (query-params search=item)
+						 class="Tag-item"
+				}}
+					{{item}}
+				{{/link-to}}
+			{{/each}}
+		</nav>
+	</div>
+</section>
+
+{{outlet}}
