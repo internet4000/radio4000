@@ -1,7 +1,20 @@
 <section class="Section">
 	<div class="Container Container--large">
+		<h2>Selected tags</h2>
+		{{channel-tags
+				tags=model.channel.selectedHashtags
+				channel=model.channel
+		}}
+	</div>
+</section>
+
+<section class="Section">
+	<div class="Container Container--large">
 		<h2>All tags</h2>
-		{{channel-tags tags=model.tags channel=model.channel}}
+		{{channel-tags
+				tags=model.tags.tags
+				channel=model.channel
+		}}
 	</div>
 </section>
 

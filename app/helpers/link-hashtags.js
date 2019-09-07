@@ -1,7 +1,7 @@
 import Ember from 'ember'
 import {helper} from '@ember/component/helper'
 import {htmlSafe, isHTMLSafe} from '@ember/string'
-import {hashtagRegex} from '../utils/hashtag'
+import {hashtagRegex} from 'radio4000/utils/hashtag'
 
 export function linkHashtags([string, slug]) {
 	if (!slug) {

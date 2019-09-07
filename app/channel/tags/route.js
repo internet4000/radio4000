@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route'
-import { generateUniqueHashtags } from '../../utils/hashtag'
+import { generateUniqueHashtags } from 'radio4000/utils/hashtag'
 
 export default Route.extend({
 	model() {
