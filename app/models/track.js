@@ -6,11 +6,7 @@ import {validator, buildValidations} from 'ember-cp-validations';
 import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
 import {fetchTrackAvailability} from 'radio4000/utils/youtube-api';
 import format from 'date-fns/format';
-import {
-	hashtagRegex,
-	generateHastags,
-	findHashtags
-} from '../utils/hashtag'
+import {findHashtags} from '../utils/hashtag'
 
 const {Model, attr, belongsTo} = DS;
 const {get, set, computed} = Ember;

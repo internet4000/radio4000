@@ -6,11 +6,10 @@ const findHashtags = searchText => {
 	// https://regexr.com/46r2p
 	var regexp = /(?:\B#)(\w|-?)+\b/g
 	let result = searchText.match(regexp)
-	if (result) {
-		return result.map(item => item.replace('#',''))
-	} else {
+	if (!result) {
 		return null
 	}
+	return result.map(item => item.replace('#', ''))
 }
 
 const generateHashtags = (items, attribute = 'body') => {
@@ -29,10 +28,10 @@ const generateHashtags = (items, attribute = 'body') => {
 }
 
 const generateUniqueHashtags = (items, attribute) => {
-	let tags = generateHashtags(items)
+	let tags = generateHashtags(items, attribute)
 
 	let uniqueTags = tags.reduce((acc, cur) => {
-		if(acc.hasOwnProperty(cur)) {
+		if (Object.prototype.hasOwnProperty.call(acc, cur)) {
 			acc[cur]++
 		} else {
 			acc[cur] = 1
@@ -48,8 +47,6 @@ const generateUniqueHashtags = (items, attribute) => {
 		tags: sortedTags.map(i => i[0]),
 		sortedTags: sortedTags
 	}
-
-	console.log('result', result)
 
 	return result
 }
