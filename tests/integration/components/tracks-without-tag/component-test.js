@@ -12,15 +12,6 @@ module('Integration | Component | tracks-without-tag', function(hooks) {
 
     await render(hbs`{{tracks-without-tag}}`);
 
-    assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      {{#tracks-without-tag}}
-        template block text
-      {{/tracks-without-tag}}
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.equal(this.element.textContent.trim(), 'No track is without tag.');
   });
 });

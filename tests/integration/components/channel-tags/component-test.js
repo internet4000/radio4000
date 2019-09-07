@@ -12,15 +12,6 @@ module('Integration | Component | channel-tags', function(hooks) {
 
     await render(hbs`{{channel-tags}}`);
 
-    assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      {{#channel-tags}}
-        template block text
-      {{/channel-tags}}
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.equal(this.element.textContent.trim(), 'There are no tags yet.');
   });
 });
