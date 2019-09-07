@@ -1,10 +1,9 @@
 import Ember from 'ember'
 import Controller from 'radio4000/sorting/controller'
-import { EKMixin, keyUp } from 'ember-keyboard'
 
 const {get, set, computed} = Ember
 
-export default Controller.extend(EKMixin, {
+export default Controller.extend({
 	queryParams: ['search'],
 	search: '',
 	searchResults: null,
@@ -20,10 +19,6 @@ export default Controller.extend(EKMixin, {
 	}),
 
 	noSearch: computed.not('search'),
-
-	focusSearch: Ember.on(keyUp('shift+KeyS'), function() {
-		this.element.querySelector('input[type="search"]').focus()
-	}),
 
 	actions: {
 		clearSearch() {
