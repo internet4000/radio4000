@@ -30,6 +30,8 @@ const generateHashtags = (items, attribute = 'body') => {
 const generateUniqueHashtags = (items, attribute) => {
 	let tags = generateHashtags(items, attribute)
 
+	if (!tags) return null
+
 	let uniqueTags = tags.reduce((acc, cur) => {
 		if (Object.prototype.hasOwnProperty.call(acc, cur)) {
 			acc[cur]++

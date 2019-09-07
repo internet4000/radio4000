@@ -1,18 +1,17 @@
 <section class="Section">
 	<div class="Container Container--large">
-		<nav class="Tags">
-			{{#each model.tags.tags as |item|}}
-				{{#link-to
-						 "channel.tracks"
-						 model.channel
-						 (query-params search=item)
-						 class="Tag-item"
-				}}
-					{{item}}
-				{{/link-to}}
-			{{/each}}
-		</nav>
+		<h2>All tags</h2>
+		{{channel-tags tags=model.tags channel=model.channel}}
 	</div>
 </section>
+
+{{#if model.canEdit}}
+	<section class="Section">
+		<div class="Container Container--large">
+			<h2>Tracks without tag</h2>
+			{{tracks-without-tag tracks=model.tracks}}
+		</div>
+	</section>
+{{/if}}
 
 {{outlet}}
