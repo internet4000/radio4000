@@ -1,0 +1,18 @@
+{{#if tracksWithoutTag.length}}
+
+	{{#tracks-list
+			 keyboardActivated=true
+			 items=tracksWithoutTag
+			 grouped=false
+			 search=false
+			 searchQuery=search
+			 locate=locate
+			 as |item|
+	}}
+		{{track-item track=item}}
+	{{/tracks-list}}
+{{else}}
+	<p>No track is without tag.</p>
+{{/if}}
+
+{{yield}}

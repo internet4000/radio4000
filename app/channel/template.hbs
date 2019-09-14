@@ -17,6 +17,14 @@
 					title="All tracks [⌨ g t]"}}
 					Tracks <span class="Muted">({{model.totalTracks}})</span>
 				{{/link-to}}
+				{{#if model.selectedHashtags}}
+					{{#link-to
+							 'channel.tags'
+							 class="Tabs-item"
+							 title="Tags from this radio's tracks [⌨ g #]"}}
+						Tags
+					{{/link-to}}
+				{{/if}}
 				{{#link-to
 					'channel.favorites'
 					class="Tabs-item"

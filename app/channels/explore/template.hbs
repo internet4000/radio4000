@@ -13,13 +13,15 @@
 						<span class="Label-title">
 							Search
 						</span>
-						{{jets-search
-								contentTag=".JetsSearchContainer"
-								content=filteredChannels
-								value=search
-								title="Search all radio channels (title and description); Usage: `word1 word2 ...` will find channels that have all words at the same time"
-								placeholder='radio channels…'
-						}}
+						{{#jets-search-focus}}
+							{{jets-search
+									contentTag=".JetsSearchContainer"
+									content=filteredChannels
+									value=search
+									title="Search all radio channels (title and description); Usage: `word1 word2 ...` will find channels that have all words at the same time [⌨ shift + s]"
+									placeholder="radio channels…"
+							}}
+						{{/jets-search-focus}}
 					</label>
 					<button type="button"
 						class="Btn"

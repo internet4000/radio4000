@@ -6,6 +6,7 @@ import {validator, buildValidations} from 'ember-cp-validations';
 import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
 import {fetchTrackAvailability} from 'radio4000/utils/youtube-api';
 import format from 'date-fns/format';
+import {findHashtags} from 'radio4000/utils/hashtag'
 
 const {Model, attr, belongsTo} = DS;
 const {get, set, computed} = Ember;
@@ -79,6 +80,12 @@ export default Model.extend(Validations, {
 		}
 
 		return format(created, 'MMMM YYYY');
+	}),
+
+	tags: computed('body', function() {
+		const body = get(this, 'body')
+		const tags = findHashtags(body)
+		return tags
 	}),
 
 	searchableData: computed('title', 'body', function() {

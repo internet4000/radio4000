@@ -1,9 +1,7 @@
 import Ember from 'ember'
 import {helper} from '@ember/component/helper'
 import {htmlSafe, isHTMLSafe} from '@ember/string'
-
-// https://regex101.com/r/pJ4wC5/1
-const hashtagRegex = /(^|\s)(#[a-z\d-]+)/ig
+import {hashtagRegex} from 'radio4000/utils/hashtag'
 
 export function linkHashtags([string, slug]) {
 	if (!slug) {
