@@ -18,23 +18,11 @@
 		{{link-to "Radio channels" "channels" title="Find radio channels to enjoy [⌨ g h]" class="Tabs-item"}}
 
 		{{#if isAuthenticated}}
-			{{#if userChannel}}
-				{{#link-to
-						 "channel"
-						 userChannel
-						 class="Tabs-item"
-						 title="Create your Radio4000 channel"}}
-					My radio
-				{{/link-to}}
-			{{else}}
-				{{#link-to
-						 "channels.new"
-						 class="Tabs-item"
-						 title="Create your Radio4000 channel"}}
+			{{#unless userChannel}}
+				{{#link-to "channels.new" class="Tabs-item" title="Create your Radio4000 channel"}}
 					Create my radio
 				{{/link-to}}
-			{{/if}}
-
+			{{/unless}}
 			{{#link-to "settings" class="Tabs-item" title="Customize your Radio4000"}}
 				Settings
 			{{/link-to}}
