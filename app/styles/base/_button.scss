@@ -293,14 +293,15 @@
 	}
 
 	&.is-active {
-		border-color: white;
 		background-color: $primary-color;
+
 		span {
 			background-color: white;
 		}
 	}
+
 	&:active,
 	&:hover {
-		border-width: 0.1rem;
+		border-width: 1px;
 	}
 }
