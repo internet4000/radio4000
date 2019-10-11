@@ -19,7 +19,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
 		// user.unloadRecord();
 
 		this.session.invalidate().then(() => {
-			flashMessages.success(`You have been signed out`);
+			flashMessages.success(`You are now logged out. Bye!`);
 			this.replaceWith('auth.login');
 		});
 	}

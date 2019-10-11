@@ -6,6 +6,9 @@ export default Route.extend(ResetScroll, {
 	queryParams: {
 		search: {
 			replace: true
+		},
+		locate: {
+			replace: true
 		}
 	},
 

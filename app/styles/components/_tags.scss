@@ -2,33 +2,10 @@
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-
-	label {
-		margin-right: 0.5em;
-	}
-
-	button + label {
-		margin-left: 0.5em;
-	}
 }
-
-.Tags--vertical {
-	flex-direction: column;
-
-	label {
-		margin-right: 0;
-		margin-bottom: 0.5em;
-	}
-
-	button + label {
-		margin-left: 0;
-		margin-bottom: 0.5em;
-	}
-}
-
-.Tag {
+.Tag-item {
+	padding: 0.4rem;
+	margin: 0.1rem;
 	background-color: $slightgray;
-	padding: 0.5rem;
-	margin: 0.2rem;
-	margin-right: 0.6rem;
+	text-decoration: none;
 }

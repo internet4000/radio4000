@@ -5,8 +5,9 @@ import {get} from '@ember/object'
 
 export default Controller.extend({
 	player: service(),
-	queryParams: ['search'],
+	queryParams: ['search', 'locate'],
 	search: '',
+	locate: '',
 
 	getSelectionFromJets() {
 		const $els = jQuery('.ListGroup .Track:visible')

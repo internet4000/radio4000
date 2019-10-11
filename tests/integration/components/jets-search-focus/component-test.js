@@ -3,22 +3,22 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | navigation-toggle-layer', function(hooks) {
+module('Integration | Component | jets-search-focus', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function(assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`{{navigation-toggle-layer}}`);
+    await render(hbs`{{jets-search-focus}}`);
 
     assert.equal(this.element.textContent.trim(), '');
 
     // Template block usage:
     await render(hbs`
-      {{#navigation-toggle-layer}}
+      {{#jets-search-focus}}
         template block text
-      {{/navigation-toggle-layer}}
+      {{/jets-search-focus}}
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');

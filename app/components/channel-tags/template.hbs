@@ -1,0 +1,16 @@
+<nav class="Tags">
+	{{#if tags}}
+		{{#each tags as |item|}}
+			{{#link-to
+					 "channel.tracks"
+					 channel
+					 (query-params search=(concat "#" item))
+					 class="Tag-item"
+			}}
+				{{item}}
+			{{/link-to}}
+		{{/each}}
+		{{else}}
+		<p>There are no tags yet.</p>
+	{{/if}}
+</nav>

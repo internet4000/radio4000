@@ -2,7 +2,7 @@ html {
 	font-size: $base-font-size;
 	line-height: $base-line-height;
 
-	@media (min-width: $layout-xl) {
+	@media (min-width: $layout-l) {
 		font-size: 16px;
 	}
 

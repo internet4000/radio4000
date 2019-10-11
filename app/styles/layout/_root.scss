@@ -9,51 +9,58 @@
 	flex-direction: row;
 }
 
-.Root:not(.is-minimized).is-withPlayer .SiteMain {
-	margin-right: $sidebar-width;
-}
-
-/**
- * Panel is open
- */
-
-.Root.is-panelLeftVisible {
-	.Aside--navigation {
-		display: flex;
-	}
-	.SiteMain {
-		opacity: 0.6;
-	}
-}
-
-/*
-	 Player is in maximized state
- */
-
-.Root.is-maximized {
-	radio4000-player {
-		height: 100vh;
-
-		.Layout {
-			border: 0;
+.Root.is-normal {
+	&.is-withPlayer {
+		.SiteMain {
+			@media (min-width: $layout-m) {
+				margin-right: $sidebar-width;
+				padding-right: 1rem;
+			}
+		}
+		.Playback-layoutButtons {
+			position: absolute;
+			top: 0;
+			left: 0;
+			flex-direction: column;
+			transform: translateX(-100%);
 		}
 	}
+}
 
-	.Playback-layoutButtons {
-		flex-direction: row;
-		top: 0.2rem;
-		right: 0;
-		left: auto;
-	}
-
+.Root.is-maximized {
 	.Playback-fullscreen {
 		display: none;
-		order: 1;
 		@media (min-width: $layout-l) {
 			display: block;
 		}
 	}
 }
+
+/*
+	 Player is in minimized state
+ */
+.Root.is-maximized {
+	.Playback-layoutButtons {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+	radio4000-player {
+		@media (min-width: $layout-m) {
+			@include size-2;
+		}
+		@media (min-width: $layout-ml) {
+			@include size-3;
+		}
+	}
+	radio4000-player .Layout {
+		border-width: 0;
+	}
+}
+
+/*
+	 Player is in minimized state
+ */
 
 .Root.is-minimized {
 	.Playback-layoutButtons {
@@ -63,33 +70,93 @@
 		left: auto;
 	}
 
-	.Playback {
-		width: 200px;
-		height: 200px;
-	}
-
 	radio4000-player {
 		height: 200px !important;
+		min-height: auto !important;
 
 		.TrackList,
 		.Layout-header,
-		.Layout-footer {
+		.Layout-footer,
+		.Layout-main {
 			display: none;
 		}
 	}
-
 	.Playback-minimize {
 		display: none;
-
 		@media (min-width: $layout-l) {
 			display: block;
 		}
 	}
 }
 
-// Hide the sidebar completely when we don't need it.
 .Root.is-withoutPlayer {
 	.Aside--right {
 		display: none;
+	}
+}
+
+.Root.is-docked.is-withPlayer {
+	flex-direction: column;
+	.SiteMain {
+		order: 1;
+		margin-right: 0;
+		min-height: auto;
+	}
+	.Aside--right {
+		position: static;
+		order: 0;
+		width: 70vw;
+
+		// center with this, so the link under is clickable
+		margin-left: auto;
+		margin-right: auto;
+
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	.Playback {
+		flex-grow: 0;
+		height: auto;
+	}
+	radio4000-player {
+		max-height: 80vh;
+		& .Layout {
+			border-width: 0;
+		}
+	}
+}
+
+.Root.is-docked.is-withoutPlayer {
+	.ChannelScreen {
+		.Btn i {
+			border: 0.2rem solid $white;
+			background-color: $purple;
+			color: $white;
+			width: 2em;
+			height: 2em;
+			display: flex;
+			@include size-6;
+			justify-content: center;
+			align-items: center;
+			border-radius: 0.2rem;
+			box-shadow: 0.2rem 0.2rem 1.5rem $black;
+			transition: 300ms background-color ease-out;
+		}
+		.Btn.is-running i {
+			color: transparent;
+			background-color: transparent;
+			border-color: transparent;
+			box-shadow: none;
+		}
+	}
+}
+
+.Root.is-docked.is-withPlayer {
+	.ChannelScreen {
+		.Btn {
+			display: none
+		}
 	}
 }

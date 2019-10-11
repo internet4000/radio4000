@@ -4980,6 +4980,7 @@ ember-cli-get-component-path-option@^1.0.0:
 ember-cli-google-analytics@^1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/ember-cli-google-analytics/-/ember-cli-google-analytics-1.5.0.tgz#e5574d15930925d05a238ced9fc4ec6d448e2a3c"
+  integrity sha1-5VdNFZMJJdBaI4ztn8TsbUSOKjw=
   dependencies:
     lodash-node "^2.4.1"
 

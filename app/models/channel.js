@@ -5,6 +5,7 @@ import {and, hash} from 'ember-awesome-macros';
 import {validator, buildValidations} from 'ember-cp-validations';
 import channelConst from 'radio4000/utils/channel-const';
 import toggleObject from 'radio4000/utils/toggle-object';
+import {findHashtags} from 'radio4000/utils/hashtag'
 
 const {attr, hasMany, belongsTo} = DS;
 const {computed, inject, get} = Ember;
@@ -96,6 +97,10 @@ export default DS.Model.extend(Validations, {
 
 	totalTracks: computed('tracks.[]', function () {
 		return this.hasMany('tracks').ids().length
+	}),
+
+	selectedHashtags: computed('body', function () {
+		return findHashtags(get(this, 'body'))
 	}),
 
 	hasFewTracks: computed.lte('totalTracks', 2),

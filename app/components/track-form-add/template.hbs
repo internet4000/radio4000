@@ -82,9 +82,9 @@
 
 <div class="Form-group">
 	{{#btn-group class="BtnGroupWrapper BtnGroupWrapper--full"}}
+		<button {{action "cancel"}} type="button" class="Btn" title="Go back, do not add the track">Cancel</button>
 		<button {{action "submit"}} type="submit" class="Btn Btn--important" title="Add track to your radio" disabled={{disableSubmit}}>
 			{{if submitTask.isIdle "Add track" "Adding…"}}
 		</button>
-		<button {{action "cancel"}} type="button" class="Btn" title="Go back, do not add the track">Cancel</button>
 	{{/btn-group}}
 </div>

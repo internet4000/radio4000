@@ -1,9 +1,8 @@
 /* eslint array-callback-return:0 */
 import EmberRouter from '@ember/routing/router'
 import config from './config/environment'
-import googlePageview from './mixins/google-pageview'
 
-const Router = EmberRouter.extend(googlePageview, {
+const Router = EmberRouter.extend({
 	location: config.locationType,
 	rootURL: config.rootURL
 })
@@ -17,6 +16,7 @@ Router.map(function() {
 		this.route('search')
 		this.route('explore')
 	})
+
 	this.route('channel', {path: '/:channel_slug'}, function() {
 		this.route('index', {path: '/'})
 		this.route('home')
@@ -34,7 +34,10 @@ Router.map(function() {
 		this.route('play', function() {
 			this.route('random')
 		})
+		this.route('player');
+		this.route('tags');
 	})
+
 	this.route('about', function() {
 		this.route('intro', {path: '/'})
 		this.route('contact')
@@ -46,13 +49,6 @@ Router.map(function() {
 		this.route('signup')
 		this.route('login')
 		this.route('logout', {path: '/logout'})
-	})
-	this.route('styleguide', function() {
-		this.route('typography')
-		this.route('colors')
-		this.route('forms')
-		this.route('tabs')
-		this.route('buttons')
 	})
 	this.route('404')
 
@@ -69,6 +65,15 @@ Router.map(function() {
 		this.route('account')
 	})
 	this.route('premium')
+	this.route('menu')
+
+	this.route('styleguide', function() {
+		this.route('typography')
+		this.route('colors')
+		this.route('forms')
+		this.route('tabs')
+		this.route('buttons')
+	})
 })
 
 export default Router

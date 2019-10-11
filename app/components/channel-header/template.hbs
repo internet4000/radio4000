@@ -17,6 +17,16 @@
 </div>
 
 <div class="BtnGroup Channel-buttons">
+	{{#if channel.isInPlayer}}
+		{{link-to
+				'◎'
+				'channel.tracks'
+				channel
+				(query-params locate=true)
+				title="Locate track in the channel's track list"
+				class="Btn Btn--channelActive"
+		}}
+	{{/if}}
 	{{#if channel.tracks}}
 		{{play-shuffle-btn channel=channel class="Btn--large Channel-playback"}}
 	{{/if}}

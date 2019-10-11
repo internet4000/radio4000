@@ -1,45 +1,3 @@
-/**
-	Site Aside
-*/
-
-.NavigationToggleBtn {
-	position: fixed;
-	top: 1rem;
-	left: 1rem;
-	z-index: 7;
-
-	display: block;
-	width: 2.7rem;
-	height: 2.7rem;
-
-	// "burger" lines inside
-	span {
-		display: block;
-		height: 3px;
-		margin: 3px;
-		background-color: black;
-		border-radius: $border-radius;
-	}
-
-	&.is-active {
-		border-color: $primary-color;
-	}
-}
-
-.NavigationToggleLayer {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	overflow-y: auto;
-	background-color: $overlay-color;
-}
-
-/**
- * Modifiers
- */
-
 .Aside--navigation {
 	display: none;
 	position: fixed;
@@ -79,12 +37,8 @@
 		width: auto;
 		height: auto;
 	}
-
 	.Root.is-maximized & {
-		top: 0;
-		right: 0;
-		width: 100%;
-		background-color: black;
-		z-index: 7;
+		// above menu
+		z-index: 8;
 	}
 }
