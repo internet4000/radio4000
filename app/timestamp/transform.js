@@ -1,5 +1,6 @@
 import Transform from '@ember-data/serializer/transform'
 import {inject as service} from '@ember/service'
+import firebase from 'firebase/app'
 
 export default Transform.extend({
 	firebaseApp: service(),
@@ -12,7 +13,7 @@ export default Transform.extend({
 	// From client to server.
 	// Note, this ALWAYS sets a new timestamp. Do not use it for "created" type dates.
 	serialize() {
-		return {'.sv': 'timestamp'}
-		// return this.firebaseApp.database.ServerValue.TIMESTAMP
+		// return {'.sv': 'timestamp'}
+		return firebase.database.ServerValue.TIMESTAMP
 	}
 })

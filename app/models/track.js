@@ -6,6 +6,7 @@ import format from 'date-fns/format';
 import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
 import {fetchTrackAvailability} from 'radio4000/utils/youtube-api';
 import { inject as service } from '@ember/service';
+import firebase from 'firebase/app'
 
 const {Model, attr, belongsTo} = DS;
 const {get, set, computed} = Ember;
@@ -44,7 +45,7 @@ export default Model.extend(Validations, {
 
 	created: attr('number', {
 		defaultValue() {
-			return this.firebaseApp.database.ServerValue.TIMESTAMP;
+			return firebase.database.ServerValue.TIMESTAMP
 		}
 	}),
 	url: attr('string'),
