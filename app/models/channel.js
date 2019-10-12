@@ -1,11 +1,12 @@
-import Ember from 'ember';
-import DS from 'ember-data';
-import {task} from 'ember-concurrency';
-import {and, hash} from 'ember-awesome-macros';
-import {validator, buildValidations} from 'ember-cp-validations';
-import channelConst from 'radio4000/utils/channel-const';
-import toggleObject from 'radio4000/utils/toggle-object';
+import Ember from 'ember'
+import DS from 'ember-data'
+import {task} from 'ember-concurrency'
+import {and, hash} from 'ember-awesome-macros'
+import {validator, buildValidations} from 'ember-cp-validations'
+import channelConst from 'radio4000/utils/channel-const'
+import toggleObject from 'radio4000/utils/toggle-object'
 import {findHashtags} from 'radio4000/utils/hashtag'
+import firebase from 'firebase/app'
 
 const {attr, hasMany, belongsTo} = DS;
 const {computed, inject, get} = Ember;
@@ -59,7 +60,8 @@ export default DS.Model.extend(Validations, {
 
 	created: attr('number', {
 		defaultValue() {
-			return new Date().getTime()
+			// return new Date().getTime()
+			return firebase.database.ServerValue.TIMESTAMP
 		}
 	}),
 	updated: attr('timestamp'),

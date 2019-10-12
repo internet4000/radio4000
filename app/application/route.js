@@ -29,12 +29,15 @@ export default Route.extend(ApplicationRouteMixin, KeyboardShortcutsGlobal, {
 		try {
 			// Get user model from the Firebase UID.
 			user = await this.store.findRecord('user', uid)
+			console.log('found user')
 		} catch (err) {
+			console.log('no user, creating')
 			// ... or create a new user with settings.
 			user = this.store.createRecord('user', {id: uid});
 			try {
 				await user.save()
 				await this.createUserSetting(user)
+				console.log('saved new user + settings')
 			} catch (err) {
 				console.log('could not create new user model', err)
 				return this.session.invalidate()
@@ -42,21 +45,19 @@ export default Route.extend(ApplicationRouteMixin, KeyboardShortcutsGlobal, {
 		}
 
 		// Store the user model in the session so it's available everywhere.
-		console.log('Found R4 user from login, storing in session.')
+		console.log('Found R4 user from login, storing in session.', {user})
 		this.set('session.data.currentUser', user)
-
-		// See if the user has a channel.
-		const channels = await user.get('channels')
-		const userChannel = channels.get('firstObject')
-
-		console.log({userChannel})
 
 		if (!shouldRedirect) return
 
-		// and redirect..
+		// See if the user has a channel to redirect to.
+		const channels = await user.get('channels')
+		const userChannel = channels.get('firstObject')
 		if (userChannel) {
+			console.log('redirecting to user channel')
 			return this.replaceWith('channel', userChannel)
 		}
+		console.log('no user channel. lets create one')
 		return this.replaceWith('channels.new')
 	},
 

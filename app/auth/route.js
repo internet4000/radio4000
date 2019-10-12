@@ -54,6 +54,8 @@ export default Route.extend(resetScroll, {
 			const iOS =
 				Boolean(navigator.platform) && /iPhone|iPod/.test(navigator.platform)
 
+			console.log('login', {providerName})
+
 			try {
 				let result
 				if (providerName === 'password') {
@@ -71,7 +73,7 @@ export default Route.extend(resetScroll, {
 			}
 		},
 		async redirectAfterAuth() {
-			console.log('afterauth')
+			console.log('afterauth?!?!')
 		}
 	}
 })
