@@ -5720,10 +5720,10 @@ ember-wormhole@^0.5.5:
     ember-cli-babel "^6.10.0"
     ember-cli-htmlbars "^2.0.1"
 
-emberfire@^3.0.0-rc.4:
-  version "3.0.0-rc.4"
-  resolved "https://registry.yarnpkg.com/emberfire/-/emberfire-3.0.0-rc.4.tgz#ea1484c7b210852c9171415c1a0f4ea67b2dc524"
-  integrity sha512-ph4uMhXVtp1yiDF/Nyjd+iFz8/lmxMJwJLVfj4ah5TdMu2evUzIF2D1tKORLOVoO0hhTTD2cM87Gghr9zne8ww==
+emberfire@^3.0.0-rc.5:
+  version "3.0.0-rc.5"
+  resolved "https://registry.yarnpkg.com/emberfire/-/emberfire-3.0.0-rc.5.tgz#37779782138537109927a57485637bee9bf31f67"
+  integrity sha512-74eBCT0eZ0GEQxHcnWjHvQVkHOKiANFVHLhnhsXRRy+xMBvOJyFltRl7V0L6eDWz6jSKYOVDPhTOlgHB67wghA==
   dependencies:
     broccoli-file-creator "^2.1.1"
     broccoli-funnel "^2.0.2"
