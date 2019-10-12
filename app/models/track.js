@@ -2,7 +2,6 @@ import Ember from 'ember';
 import DS from 'ember-data';
 import {task} from 'ember-concurrency';
 import {validator, buildValidations} from 'ember-cp-validations';
-import format from 'date-fns/format';
 import youtubeUrlToId from 'radio4000/utils/youtube-url-to-id';
 import {fetchTrackAvailability} from 'radio4000/utils/youtube-api';
 import { inject as service } from '@ember/service';
