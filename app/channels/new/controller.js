@@ -4,6 +4,7 @@ import { task } from 'ember-concurrency'
 import { validator, buildValidations } from 'ember-cp-validations'
 import channelConst from 'radio4000/utils/channel-const'
 import ValidateSlug from 'radio4000/mixins/validate-slug'
+import {inject as service} from '@ember/service'
 
 const { computed, get } = Ember
 
@@ -20,6 +21,8 @@ const Validations = buildValidations({
 })
 
 export default Ember.Controller.extend(Validations, ValidateSlug, {
+	session: service(),
+
 	title: '',
 
 	disableSubmit: computed.or(
@@ -44,7 +47,7 @@ export default Ember.Controller.extend(Validations, ValidateSlug, {
 	}).drop(),
 
 	reallyCreateRadio: task(function * () {
-		const user = get(this, 'session.currentUser')
+		const user = get(this, 'session.data.currentUser')
 		const title = get(this, 'title').trim()
 		let slug = slugify(title)
 
@@ -65,11 +68,14 @@ export default Ember.Controller.extend(Validations, ValidateSlug, {
 		}
 
 		try {
+			console.log(channel, channel.title)
 			yield channel.save()
 		} catch (err) {
 			console.log(err)
 			throw new Error('Could not save channel', err)
 		}
+
+		debugger
 
 		const userChannels = yield user.get('channels')
 		userChannels.addObject(channel)

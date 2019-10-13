@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import Route from '@ember/routing/route'
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin'
 import {inject as service} from '@ember/service'
@@ -24,27 +25,34 @@ export default Route.extend(ApplicationRouteMixin, KeyboardShortcutsGlobal, {
 		this._super(...arguments)
 	},
 
+	// After authenticating as a Firebase user, we use the uid
+	// to connect it with a Radio4000 user model.
 	async setupUser(shouldRedirect) {
-		console.log('setupUser')
 		const uid = this.session.get('data.authenticated.user.uid')
 		let user
 
 		try {
-			// Get user model from the Firebase UID.
 			console.log('Checking if we have an R4 user model from the UID...')
 			user = await this.store.findRecord('user', uid)
+			await user.save()
 		} catch (err) {
 			console.log('No user, creating')
-			// ... or create a new user with settings.
 			user = this.store.createRecord('user', {id: uid})
 		}
 
 		try {
 			await user.save()
+			console.log('Saved new user')
+		} catch(err) {
+			console.log('Could not save new user', err)
+			return this.session.invalidate()
+		}
+
+		try {
 			await this.createUserSetting(user)
-			console.log('Saved new user + settings')
+			console.log('Saved user settings')
 		} catch (err) {
-			console.log('Could not create new user model', err)
+			console.log('Could not create new user settings', err)
 			return this.session.invalidate()
 		}
 
@@ -77,7 +85,7 @@ export default Route.extend(ApplicationRouteMixin, KeyboardShortcutsGlobal, {
 			userSetting.save().then(() => {
 				user.set('settings', userSetting)
 				user.save().then(() => {
-					// debug('created new user settings')
+					console.log('created new user settings')
 					resolve(userSetting)
 				})
 			})
