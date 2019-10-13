@@ -57,23 +57,24 @@ export default Route.extend(resetScroll, {
 			console.log('login', {providerName})
 
 			try {
-				let result
+				let authSignInPromiseResult
 				if (providerName === 'password') {
-					result = await auth.signInWithEmailAndPassword(email, password)
+					authSignInPromiseResult = await auth.signInWithEmailAndPassword(email, password)
 				} else if (iOS) {
-					result = await auth.signInWithRedirect(provider)
+					authSignInPromiseResult = await auth.signInWithRedirect(provider)
 				} else {
-					result = await auth.signInWithPopup(provider)
+					authSignInPromiseResult = await auth.signInWithPopup(provider)
 				}
-				console.log({result})
+				console.log({authSignInPromiseResult})
 				flashMessages.info('You are now signed in!')
 				this.send('redirectAfterAuth')
 			} catch (err) {
 				this.onLoginError(err)
 			}
 		},
-		async redirectAfterAuth() {
-			console.log('afterauth?!?!')
+		redirectAfterAuth() {
+			// check application
+			console.log('redirectAfterAuth action')
 		}
 	}
 })
