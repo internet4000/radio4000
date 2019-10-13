@@ -1,9 +1,9 @@
 <div class="Container Container--contentCentered">
 	{{application-logo}}
 </div>
-<div class="Container Container--small">
 
-	{{#if isAuthenticated}}
+<div class="Container Container--small">
+	{{#if session.isAuthenticated}}
 		{{#if userChannel}}
 			<article class="Tabs">
 				{{channel-card channel=userChannel wide=true title="Your radio [⌨ g i]"}}
@@ -17,7 +17,7 @@
 	<nav class="Tabs">
 		{{link-to "Radio channels" "channels" title="Find radio channels to enjoy [⌨ g h]" class="Tabs-item"}}
 
-		{{#if isAuthenticated}}
+		{{#if session.isAuthenticated}}
 			{{#unless userChannel}}
 				{{#link-to "channels.new" class="Tabs-item" title="Create your Radio4000 channel"}}
 					Create my radio
@@ -31,7 +31,7 @@
 			{{/link-to}}
 		{{/if}}
 
-		{{#unless isAuthenticated}}
+		{{#unless session.isAuthenticated}}
 			{{#link-to
 					 "auth.login"
 					 class="Tabs-item"
