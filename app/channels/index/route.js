@@ -16,6 +16,9 @@ export default Route.extend({
 			return cache
 		}
 		return this.findFeatured().then(featured => {
+			if (!featured.length) {
+				return this.store.findAll('channel')
+			}
 			// Collect the unique favorites from the featured radios.
 			let favorites = featured
 				.map(channel => this.getRandomFavorites(channel))
