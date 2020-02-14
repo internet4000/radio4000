@@ -17,7 +17,7 @@ export default Component.extend({
 	}),
 	iconUrl: computed('slug', function () {
 		const slug = get(this, 'slug')
-		return `<a href="https://radio4000.com/${slug}"><img width="30" src="https://assets.radio4000.com/icon-r4.svg" alt="${slug}@r4"></a>`
+		return `<a href="https://radio4000.com/${slug}"><img width="30" src="https://assets.radio4000.com/icon-r4.svg" title="${slug}@r4" alt="${slug}@r4"></a>`
 	}),
 
 	url: computed('slug', 'showEmbed', function() {
