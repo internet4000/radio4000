@@ -10,6 +10,9 @@
 	.BtnGroups & {
 		margin-bottom: 0.4rem;
 	}
+	.BtnGroups &:last-child {
+		flex-grow: 0;
+	}
 }
 
 .BtnGroup--vertical {
