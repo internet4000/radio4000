@@ -179,10 +179,14 @@ progress {
 // labels
 .Label--horizontal {
 	display: flex;
+	flex-grow: 1;
 	align-items: center;
 	.Label-title {
 		padding-right: 0.5rem;
 	}
+}
+.Label-inputContainer {
+	flex-grow: 1;
 }
 
 
