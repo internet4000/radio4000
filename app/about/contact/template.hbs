@@ -29,7 +29,11 @@
 	</ul>
 
 	<div class="u-push-1">
-		{{user-agreements open=true}}
+		{{user-agreements
+				onAgreed=(action "signAgreement")
+				open=true
+				hideCheckbox=loggedOut
+				agreed=hasSigned}}
 	</div>
 
 	<h2>Security</h2>

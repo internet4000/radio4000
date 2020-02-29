@@ -4,7 +4,6 @@ const {Controller, get, inject, debug} = Ember;
 
 export default Controller.extend({
 	firebaseApp: inject.service(),
-	session: inject.service(),
 
 	async createFirebaseUser(email, password) {
 		let auth = get(this, 'firebaseApp').auth();

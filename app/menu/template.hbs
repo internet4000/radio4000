@@ -2,6 +2,12 @@
 	{{aside-navigation
 			isAuthenticated=session.isAuthenticated
 			userChannel=session.currentUser.channels.firstObject}}
+
+	<aside class="Container Container--small">
+		{{#unless hideUserAgreements}}
+			{{user-agreements onAgreed=(action "signAgreement")}}
+		{{/unless}}
+	</aside>
 </section>
 
 {{outlet}}
