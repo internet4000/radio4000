@@ -66,7 +66,10 @@ export default ToriiFirebaseAdapter.extend({
 		}
 
 		debug('No user settings found, creating…');
-		const userSetting = this.get('store').createRecord('user-setting', {user});
+		const userSetting = this.get('store').createRecord('user-setting', {
+			user,
+			signedUserAgreement: true
+		});
 		return new RSVP.Promise(resolve => {
 			userSetting.save().then(() => {
 				user.set('settings', userSetting);

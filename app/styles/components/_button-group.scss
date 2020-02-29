@@ -1,5 +1,6 @@
 .BtnGroup {
 	display: flex;
+	flex-grow: 1;
 	flex-shrink: 0;
 	flex-flow: row wrap;
 	align-items: center;
@@ -8,6 +9,9 @@
 
 	.BtnGroups & {
 		margin-bottom: 0.4rem;
+	}
+	.BtnGroups &:last-child {
+		flex-grow: 0;
 	}
 }
 

@@ -16,6 +16,7 @@
 	background-color: white !important; // js widget with forced inline styles
 	transition: width 200ms $easing;
 	width: 14rem; // wide enough to show placeholder
+	-webkit-appearance: none; // fix for iOS
 
 	&:not(:focus) {
 		width: 2.8rem;

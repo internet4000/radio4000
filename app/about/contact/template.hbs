@@ -20,7 +20,21 @@
 	</ul>
 
 	<h2>Privacy</h2>
-	<p>Please read the <a href="https://github.com/internet4000/publications/blob/master/user-agreement-privacy-policy-terms-of-use.md" target="_blank" rel="noopener">user agreement, privacy policy and terms of use</a>.</p>
+	<p>
+		It is suggested that you enhance your anononimity with the available methods, such as VPN softwares.
+	</p>
+	<ul>
+		<li>Learn about <a target="_blank" rel="noopener" href="https://systems.internet4000.com">internet usages</a></li>
+		<li><a target="_blank" rel="noopener" href="https://protonvpn.com/">Proton VPN</a></li>
+	</ul>
+
+	<div class="u-push-1">
+		{{user-agreements
+				onAgreed=(action "signAgreement")
+				open=true
+				hideCheckbox=loggedOut
+				agreed=hasSigned}}
+	</div>
 
 	<h2>Security</h2>
 	<p>If you find a critical bug, please let us know at our email above. We will fix it as fast as possible and invite you for good times if you ever come to visit in Berlin. Cheers.</p>

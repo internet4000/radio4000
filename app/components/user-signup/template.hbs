@@ -1,39 +1,58 @@
-<form {{action "submit" "password" email password on="submit"}} class="Form u-push-1">
-	{{#form-group model=this valuePath="email" label="Your e-mail addresss" as |v|}}
-		{{focus-input
-			type="email"
-			value=v
-			placeholder="example@example.com"
-			required="required"
-			autoFocus=true}}
-	{{/form-group}}
-	{{#form-group model=this valuePath="password" label="Password" as |v|}}
-		{{input type="password" value=v placeholder="Create a password" required="required"}}
-	{{/form-group}}
-	<div class="Form-group BtnGroup BtnGroup--right">
-		<button disabled={{validations.isInvalid}} type="submit" class="Btn Btn--large" title="Sign up or Log in with email">
-			Sign up with email
-		</button>
-	</div>
-</form>
+{{#if signedUp}}
+	{{#is-loading}}
+		Setting things up!
+	{{/is-loading}}
+{{else}}
+	<form {{action "submit" "password" email password on="submit"}} class="Form">
+		{{#form-group model=this valuePath="email" label="Your e-mail addresss" as |v|}}
+			{{focus-input
+					type="email"
+					value=v
+					placeholder="example@example.com"
+					required="required"
+					autoFocus=true}}
+		{{/form-group}}
+		{{#form-group model=this valuePath="password" label="Password" as |v|}}
+			{{input type="password" value=v placeholder="Create a password" required="required"}}
+		{{/form-group}}
 
-<details>
-	<summary>
-		<strong>Social provider signup</strong>
-	</summary>
-	<p>As a matter of convenience it is possible to create an account with an existing external provider. For privacy, it is recommended not to.</p>
-	<div class="BtnGroup BtnGroup--full">
-		<button
-			class="Btn Btn--large"
-			title="Sign up wtih your Google account"
-			{{action "submit" "google"}}>
-			Google
-		</button>
-		<button
-			class="Btn Btn--large"
-			title="Signup with your Facebook account"
-			{{action "submit" "facebook"}}>
-			Facebook
-		</button>
-	</div>
-</details>
+		{{user-agreements onAgreed=(action 'signUserAgreement')}}
+
+		{{#btn-group class="Form-group BtnGroup BtnGroup--right"}}
+			<button
+				disabled={{cannotEmailSignUp}}
+				type="submit"
+				class="Btn Btn--large"
+				title="Add track to your radio">
+				{{if submitTask.isIdle "Sign Up" "Signing Up…"}}
+			</button>
+		{{/btn-group}}
+	</form>
+
+	<details>
+		<summary>
+			Otherwise, use a <strong>social provider signup</strong>
+		</summary>
+		<p>As a matter of convenience it is possible to create an account with an existing external provider. For privacy, it is recommended not to.</p>
+
+		{{user-agreements onAgreed=(action 'signUserAgreement')}}
+
+		<div class="BtnGroup BtnGroup--full">
+			<button
+				class="Btn Btn--large"
+				title="Sign up wtih your Google account"
+				{{action "submit" "google"}}
+				disabled={{cannotSignUp}}>
+				Google
+			</button>
+			<button
+				class="Btn Btn--large"
+				title="Signup with your Facebook account"
+				{{action "submit" "facebook"}}
+				disabled={{cannotSignUp}}>
+				Facebook
+			</button>
+		</div>
+	</details>
+
+{{/if}}

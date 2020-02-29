@@ -31,11 +31,17 @@
 					</div>
 				{{/each}}
 			{{else}}
-				<div class="Grid-cell">
-					{{#is-loading}}
-						Loading featured radio channels…
-					{{/is-loading}}
-				</div>
+				{{#if model.length }}
+					<div class="Grid-cell">
+						{{#is-loading}}
+							Loading featured radio channels…
+						{{/is-loading}}
+					</div>
+				{{else}}
+					<div class="Grid-cell">
+						There are no featured channels
+					</div>
+				{{/if}}
 			{{/if}}
 		</div>
 	</div>

@@ -5,9 +5,10 @@ const {Controller, get, inject, debug} = Ember;
 export default Controller.extend({
 	firebaseApp: inject.service(),
 
-	createFirebaseUser(email, password) {
+	async createFirebaseUser(email, password) {
 		let auth = get(this, 'firebaseApp').auth();
-		return auth.createUserWithEmailAndPassword(email, password);
+		const user = await auth.createUserWithEmailAndPassword(email, password);
+		return user
 	},
 
 	onSignupError(err) {
@@ -33,18 +34,21 @@ export default Controller.extend({
 	},
 
 	actions: {
-		signup(provider, email, password) {
+		async signup(provider, email, password) {
+			if (!provider) return
 			if (provider === 'password') {
-				return this.createFirebaseUser(email, password).then(() => {
-					this.send('login', provider, email, password);
-				}).catch(err => {
-					this.onSignupError(err);
-				});
+				try {
+					await this.createFirebaseUser(email, password)
+					this.send('login', provider, email, password)
+				} catch (error) {
+					debug(error);
+				}
+			} else {
+				this.send('login', provider)
 			}
-			this.send('login', provider);
 		},
 		login() {
-			return true;
+			return true
 		}
 	}
 });

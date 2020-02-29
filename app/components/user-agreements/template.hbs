@@ -1,0 +1,27 @@
+<details open={{open}}>
+	{{#if title}}
+		<summary>{{title}}</summary>
+	{{/if}}
+
+	<p>Radio4000 aims for anonymity; storing as few data as possible, all of which should be anonymous, available, and fully disposable by the users (owners) themselves.</p>
+	<p>Please read the <a href="https://github.com/internet4000/publications/blob/master/user-agreement-privacy-policy-terms-of-use.md" target="_blank" rel="noopener">user agreement, privacy policy and terms of use</a>, for more details.</p>
+</details>
+
+{{#unless hideCheckbox}}
+	{{#if agreed}}
+		<label>
+			<input
+				type="checkbox"
+				checked="true"
+				disabled="true"/>
+			You agree with the above document and can therefore use Radio4000 and its related services. {{link-to 'You can always delete your account, and all related data' 'settings.account'}}.
+		</label>
+	{{else}}
+		<label>
+			<input
+				type="checkbox"
+				onclick={{action "userAgreed" value="target.checked"}}/>
+			I agree with the above document and can now use Radio4000 and its related services.
+		</label>
+	{{/if}}
+{{/unless}}
