@@ -36,13 +36,12 @@ export default Controller.extend({
 	actions: {
 		async signup(provider, email, password) {
 			if (!provider) return
-			let user;
 			if (provider === 'password') {
 				try {
 					await this.createFirebaseUser(email, password)
 					this.send('login', provider, email, password)
-				} catch(error) {
-					console.log('error', error)
+				} catch (error) {
+					debug(error);
 				}
 			} else {
 				this.send('login', provider)

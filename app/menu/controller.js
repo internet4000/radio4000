@@ -1,4 +1,5 @@
 import Controller from '@ember/controller'
+import Ember from 'ember';
 const {get, computed} = Ember;
 
 export default Controller.extend({

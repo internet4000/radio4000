@@ -27,7 +27,7 @@ export default Component.extend(Validations, {
 	cannotSignUp: computed.not('signedUserAgreement'),
 	cannotEmailSignUp: computed.or('submitTask.isRunning', 'validations.isInvalid'),
 	submitTask: task(function * (providerId, email, password) {
-		const onSignup = get(this, 'onSignup')(providerId, email, password);
+		get(this, 'onSignup')(providerId, email, password);
 		set(this, 'signedUp', true)
 		yield
 	}),
