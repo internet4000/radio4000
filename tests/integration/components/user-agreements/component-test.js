@@ -12,15 +12,6 @@ module('Integration | Component | user-agreements', function(hooks) {
 
     await render(hbs`{{user-agreements}}`);
 
-    assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      {{#user-agreements}}
-        template block text
-      {{/user-agreements}}
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.equal(this.element.querySelectorAll('input').length, 1);
   });
 });
