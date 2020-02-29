@@ -4,6 +4,7 @@ const {attr, belongsTo, hasMany} = DS;
 
 export default DS.Model.extend({
 	isRemoteActive: attr('boolean'),
+	signedUserAgreement: attr('boolean'),
 
 	user: belongsTo('user'),
 	trackForRemote: belongsTo('track', {
