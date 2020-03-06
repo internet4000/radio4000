@@ -84,6 +84,11 @@ The YouTube API can be used to fetch video titles when you paste in a
 URL. The API key comes from
 https://console.developers.google.com/apis/credentials?project=firebase-radio4000.
 
+You will need a Google Cloud Console API key, restricted to `Youtube
+Data API v3`, and put it into the `radio4000/config/environment.js`
+file, under the key `youtubeApiKey` (you should have two, one for
+production, and one for development environment).
+
 ## Authentication
 
 We're using a combination of [Firebase
@@ -92,19 +97,92 @@ Authentication](https://firebase.google.com/products/auth/),
 [EmberFire](https://github.com/firebase/emberfire/blob/master/docs/guide/authentication.md)
 to handle authentication.
 
-For authentication to work, in the file
-`radio4000/config/environment.js` you will have to update the key
-`ENV.firebase.authDomain` to the URL of your instance as provided by
-Firebase. For this, first activate authentication in your Firebase's
-project authentication settings panel.
-
-At the moment, authentication can be enabled with `Email and Password`,
-`Google`, `Facebook`. Note that social providers authentication with
-Google and Facebook will be shutdown in future versions.
-
 To access authentication in the Ember application, all routes and
 controllers come with the `session` service already injected.
 
 To get the current user (model), do `this.get('session.currentUser')`. 
 
 For more on auth, check the folders `app/auth` and `app/torii-adapters` as well as the above links.
+
+## Firebase configuration
+
+Links:
+- firebase project console: https://console.firebase.google.com
+- google cloud console (GCC) (> credentials): https://console.cloud.google.com/apis/credentials
+
+> At the moment, authentication can be enabled with `Email and
+> Password`, `Google`, `Facebook`. Note that social providers
+> authentication with Google and Facebook will be shutdown in future versions.
+
+For authentication to work, in the file
+`radio4000/config/environment.js` you will have to update the
+following keys, for the default environment, as well as `production`
+depending on your objectives.
+
+```
+apiKey: ''
+authDomain: ''
+databaseURL: ''
+```
+
+You can fin the values for your application, in your firebase project's
+console, at `Settings > Project
+Settings > General > Your Apps`.
+
+If you don't have an app already, create one of type `Web App`.
+
+You can find the values you're looking for under `Firebase SDK snippet
+> Config`.
+
+### Email/password
+
+1. In your project's console, `Authentication > Sign-in methods`, activate **Email/Password** (no
+need of activating email-link).
+
+2. In the Google Cloud Console, create a new api key (name: `auth`)
+
+- Application restrictions: HTTP referrers
+- Website restriction: `https://your-domain.com/*` +
+  `https://your-project.firebaseapp.com/*`
+- API restriction (1): Identity Toolkit API
+
+You should be done!
+
+### oAuth2 social login
+
+#### Google
+
+1. In the Google cloud Console, create a new `OAuth 2.0 Client IDs`
+
+Set the settings to:
+- Authorized JavaScript origins: `https://your-domain.com`
+- Authorized redirect URIs: `https://your-domain.com` +
+  `https://your-project.firebaseapp.com/__/auth/handler`
+	
+Copy, for the next step, the `Client ID` and `Client secret` values.
+
+2. In your project's console, `Authentication > Sign-in methods`,
+activate **Google**.
+
+Under `Sign-in methods > Google > Web SDK configuration`, paste the
+**Client ID** and **Secret** you copied before; save.
+
+3. Check the oAuth Consent Screen section,
+   https://console.cloud.google.com/apis/credentials/consent
+	 
+- Scopes for Google APIs: only the default (and minimum...), don't
+  require anything else, it is already too much (email, profile, openID).
+- Authorized domains: `your-domain.com` +
+  `your-project.firebaseapp.com`
+	
+	
+#### Facebook
+
+1. On the Facebook for Developers site
+   (https://developers.facebook.com), get the **App ID** and an **App Secret**
+   for your app.
+	 
+2. On your Firebase project console, at `Authentication > Sign-in
+   methodes > Facebook`, **activate** Facebook, then paste in **App ID**
+   and **Secret**
+
