@@ -19,7 +19,9 @@ const fetchYoutubeTrack = async (ytid, fields) => {
 
 const fetchTitle = async function (ytid) {
 	let data = await fetchYoutubeTrack(ytid, 'items(id,snippet(title))&part=snippet');
-
+	if (data.error) {
+		throw data.error
+	}
 	if (!data.items.length) {
 		debug('Could not find title for track');
 		return;
