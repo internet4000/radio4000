@@ -22,7 +22,7 @@ module.exports = function(environment) {
 			// when it is created
 		},
 
-		https://console.developers.google.com/apis/credentials?project=firebase-radio4000
+		/* https://console.developers.google.com/apis/credentials?project=firebase-radio4000 */
 		youtubeApiKey: 'AIzaSyBJSepQPx0l5mdrEZxbmyXW3mXjp9uiPSw',
 
 		// Radio4000 staging project.

@@ -86,14 +86,12 @@ export default Component.extend({
 		try {
 			title = yield fetchTitle(ytid)
 		} catch (error) {
-			console.log('error', error)
 			if (error.code === 403) {
 				const reason = error.errors[0].reason
-				if (reason === 'dailyLimitExceeded'
-				|| reason === 'quotaExceeded') {
+				if (reason === 'dailyLimitExceeded' ||
+						reason === 'quotaExceeded') {
 					get(this, 'flashMessages').info('Error fetching title, API limit exceded.', {timeout: 10000})
 				}
-				console.log('error fetching youtube title', error)
 			}
 		}
 		if (title) {
