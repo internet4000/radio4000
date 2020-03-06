@@ -12,7 +12,9 @@ const fetchYoutubeTrack = async (ytid, fields) => {
 
 	let rootUrl = `https://www.googleapis.com/youtube/v3/videos?key=${config.youtubeApiKey}`
 	let url = rootUrl + `&id=${ytid}&fields=${fields}`
-	let response = await fetch(url);
+	let response = await fetch(url, {
+		referrer: window.location.host
+	});
 	let data = await response.json();
 	return data
 }
