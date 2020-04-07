@@ -4,6 +4,10 @@ import ChannelsIndexRoute from 'radio4000/channels/index/route'
 
 export default ChannelsIndexRoute.extend({
 	model() {
-		return this.store.findAll('channel')
+		return this.store.query('channel', {
+			orderBy: 'isFeatured',
+			equalTo: true,
+			limitToLast: 10
+		});
 	}
 })
