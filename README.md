@@ -188,6 +188,20 @@ need of activating email-link).
 
 You should be done!
 
+#### Password reset link error
+
+There has been issues with the reset link set to users asking for it
+through the cms interface (and it using the provided firebase sdk method). 
+
+> "Your request to reset your password has expired or the link has
+> already been used".
+
+The reset link has a parameter `apiKey=abcd` that might be using a
+different key that the one configured in the cms. Be sure to find that
+key in the google cloud console for your project, and add it: `API
+restriction (1): Identity Toolkit API`. This key needs only access to
+this one service.
+
 ### oAuth2 social login
 
 #### Google
@@ -225,4 +239,3 @@ Under `Sign-in methods > Google > Web SDK configuration`, paste the
 2. On your Firebase project console, at `Authentication > Sign-in
    methodes > Facebook`, **activate** Facebook, then paste in **App ID**
    and **Secret**
-
