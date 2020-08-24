@@ -42,34 +42,34 @@
 
 	// edge-to-edge grid (also max-width for crossbrowser support)
 	@media (min-width: $layout-sm) {
-		flex-basis: 33%;
+		flex-basis: 50%;
 
 		.no-flexbox & {
-			max-width: 33%;
+			max-width: 50%;
 		}
 	}
 
 	@media (min-width: $layout-ml) {
-		flex-basis: 25%;
+		flex-basis: 30%;
 
 		.no-flexbox & {
-			max-width: 25%;
+			max-width: 30%;
 		}
 	}
 
 	@media (min-width: $layout-l) {
-		flex-basis: 20%;
+		flex-basis: 30%;
 
 		.no-flexbox & {
-			max-width: 20%;
+			max-width: 30%;
 		}
 	}
 
 	@media (min-width: $layout-xl) {
-		flex-basis: 14.28%;
+		flex-basis: 18%;
 
 		.no-flexbox & {
-			max-width: 14.28%;
+			max-width: 18%;
 		}
 	}
 }

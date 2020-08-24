@@ -105,18 +105,19 @@
  */
 
 .Btn--primary {
-	background-color: $green;
+	background-color: $purple;
 	color: $bleach;
 
 	&:hover,
 	&:focus,
 	&:active {
-		background-color: $green;
-		background-image: linear-gradient(to bottom, rgba($white, 0.1) 40%, $green);
+		background-color: $purple;
+		background-image: linear-gradient(to bottom, rgba($white, 0.1) 40%, $purple);
 	}
 
 	&:disabled {
-		color: rgba($bleach, 0.5);
+		color: $purple;
+		background-color: transparent;
 	}
 }
 
@@ -132,6 +133,11 @@
 	&:focus {
 		background-color: $primary-color;
 		color: $white;
+	}
+
+	&:disabled {
+		color: $purple;
+		background-color: transparent;
 	}
 }
 

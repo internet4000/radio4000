@@ -36,17 +36,25 @@
 	{{/if}}
 {{/form-group}}
 
+{{#form-group
+		 model=track
+		 valuePath="body"
+		 label="Description"
+		 hint="Give your track an optional description" as |value|}}
+	{{textarea value=value placeholder="Fantastic track! #fantastic (optional)"}}<br>
+{{/form-group}}
+
 {{#if showDiscogs}}
 	{{#form-group
 			 model=track
 			 valuePath="discogsUrl"
 			 label="Discogs URL"
-			 hint="Add the Discogs release URL related to the track. Discogs can provide aditional interesting data, such as the release year, label, and many more" as |value|}}
+			 hint="Add the Discogs release URL related to the track. Eg: https://www.discogs.com/Jennifer-Lara-I-Am-In-Love/master/541751" as |value|}}
 
 		{{focus-input
 				type="url"
 				value=value
-				placeholder="Paste in a Discogs link"}}
+				placeholder="Paste in a Discogs link (optional)"}}
 		{{#if fetchDiscogsInfo.isRunning}}
 			<p class="Form-groupStatus">Updating…</p>
 		{{/if}}
@@ -68,17 +76,10 @@
 	<p class="Muted">
 		<button
 			class="Btn"
+			title="Discogs is a music database than can provide aditional interesting data about your tracks, such as its release year, its label and genres. It will also try to help you find tags to organize your favorite musics as a database"
 			{{action 'showDiscogs'}}>Link Discogs release</button>
 		(optional)</p>
 {{/if}}
-
-{{#form-group
-		 model=track
-		 valuePath="body"
-		 label="Description"
-		 hint="Give your track an optional description" as |value|}}
-	{{textarea value=value placeholder="Fantastic track! #fantastic (optional)"}}<br>
-{{/form-group}}
 
 <div class="Form-group">
 	{{#btn-group class="BtnGroupWrapper BtnGroupWrapper--full"}}

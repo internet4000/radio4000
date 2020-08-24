@@ -1,12 +1,9 @@
 <div class="Sections Sections--center">
 	<div class="Section">
 		<div class="Manchet">
-			<h2><small>Add a </small>new track<small> to</small></h2>
-			<p>
-				<center>
-					{{link-to model.title 'channel' model.slug}}
-				</center>
-			</p>
+			<center>
+				Add a new track to {{link-to model.title 'channel' model.slug}}.
+			</center>
 		</div>
 		<div class="Container">
 			{{track-form-add

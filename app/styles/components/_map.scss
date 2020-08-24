@@ -69,6 +69,10 @@ Map
 	margin: 0;
 }
 
+.leaflet-popup-close-button {
+	display: none;
+}
+
 // Adapt .ChannelCard when inside a map popup
 .leaflet-popup-content .ChannelCard {
 	width: 220px;
