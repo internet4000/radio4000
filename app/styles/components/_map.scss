@@ -74,9 +74,21 @@ Map
 }
 
 // Adapt .ChannelCard when inside a map popup
-.leaflet-popup-content .ChannelCard {
-	width: 220px;
-	border: 0;
+.leaflet-popup-content {
+
+	.ChannelCard {
+		width: 95vw;
+		@media (min-width: $layout-s) {
+			width: 15rem;
+		}
+		@media (min-width: $layout-m) {
+			width: 20rem;
+		}
+	}
+
+	.ChannelCard-controls {
+		flex-grow: 0;
+	}
 }
 
 .MapMarker {
