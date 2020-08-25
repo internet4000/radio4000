@@ -84,15 +84,18 @@
 					{{channel-card channel=item index=index}}
 				</div>
 			{{/vertical-collection}}
-			{{#unless filteredChannels}}
-				<div class="Grid-cell">
-					{{#is-loading}}
-						<p>Loading radios</p>
-					{{/is-loading}}
-				</div>
-			{{/unless}}
 		</div>
 	{{/list-manipulation}}
+</section>
+
+<section class="Section--flex Section--flexCenter Container">
+	{{#unless filteredChannels}}
+		<div class="Grid-cell">
+			{{#is-loading}}
+				<p>Loading radios</p>
+			{{/is-loading}}
+		</div>
+	{{/unless}}
 </section>
 
 <section class="Section Container">

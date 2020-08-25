@@ -10,20 +10,6 @@
 <section class="Section Section--flex Section--flexCenter">
 	<div class="Container Container--full">
 		<div class="Grid Grid--vcenter">
-			<div class="Grid-cell">
-
-				{{#if session.isAuthenticated}}
-					<h2>Ciao!</h2>
-					<p>This is a selection of radio channels. Click one to listen and explore it.</p>
-					<p></p>
-				{{else}}
-					<h3>Welcome to Radio4000!</h3>
-					<p>Start your journey by listening to one of the radio channels on this page.</p>
-				{{/if}}
-				<p>
-					Each radio is <a href="{{href-to 'about'}}">curated by a human</a>.
-				</p>
-			</div>
 			{{#if filteredModel.length}}
 				{{#each filteredModel as |channel|}}
 					<div class="Grid-cell">
@@ -43,10 +29,21 @@
 					</div>
 				{{/if}}
 			{{/if}}
+
+			{{#unless session.isAuthenticated}}
+				<div class="Grid-cell Grid-cell--double">
+					<h3>Welcome to Radio4000!</h3>
+					<p>Start your journey by listening to one of the radio channels on this page.</p>
+					<p>
+						Each radio is <a href="{{href-to 'about'}}">curated by a human</a>.
+					</p>
+				</div>
+			{{/unless}}
 		</div>
 	</div>
 </section>
 
+{{#unless session.isAuthenticated}}
 <section class="Container">
 	<div class="u-tc">
 		{{#if session.isAuthenticated}}
@@ -56,3 +53,4 @@
 		{{/if}}
 	</div>
 </section>
+{{/unless}}

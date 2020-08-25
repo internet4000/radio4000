@@ -60,8 +60,12 @@
 	}
 }
 
-.BtnGroup--center {
+.BtnGroups--center {
 	justify-content: center;
+
+	.BtnGroup {
+		flex-grow: 0;
+	}
 }
 
 // Groups of BtnGroup
