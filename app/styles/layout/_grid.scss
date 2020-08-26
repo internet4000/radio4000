@@ -165,3 +165,11 @@
 .Grid .occluded-content {
 	flex: 0;
 }
+
+.Grid--home {
+	.Grid-cell:nth-of-type(n+3) {
+		@media (max-width: $layout-l) {
+			display: none;
+		}
+	}
+}

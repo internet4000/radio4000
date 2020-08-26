@@ -277,13 +277,19 @@
 
 .Btn--navigationToggle {
 	position: fixed;
-	bottom: 1rem;
-	left: 0.5rem;
+	bottom: 0.2rem;
+	left: 0.1rem;
 	z-index: 7;
 
+	padding-top: 0.7rem;
 	display: block;
-	width: 2.7rem;
-	height: 2.7rem;
+	width: 2.8rem;
+	height: 2.8rem;
+	opacity: 0.8;
+
+	@media (min-width: $layout-m) {
+		left: 0.5rem;
+	}
 
 	a {
 		display: block;
