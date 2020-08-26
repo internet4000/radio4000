@@ -36,7 +36,10 @@ const fetchTrackAvailability = async function (ytid) {
 	// let data = await fetchYoutubeTrack(ytid, 'items(id,status)&part=status')
 	let data = await fetchYoutubeTrack(ytid, 'items(id,snippet(title))&part=snippet')
 
-	return Boolean(data.items.length)
+	if (!data.error) {
+		return Boolean(data.items.length)
+	}
+	return true
 }
 
 export {fetchTitle, fetchTrackAvailability};
