@@ -16,6 +16,10 @@
 	}
 }
 
+.Playback-player {
+	flex-grow: 1;
+}
+
 /**
  * The external player used inside .Playback
  */
@@ -43,8 +47,17 @@ radio4000-player .Btn {
 }
 
 // only display the .Btn
-// .Root.is-docked {
-// 	.Btn.Playback-dock {
-// 		display: none;
-// 	}
-// }
+.Root.is-minimized {
+	.Playback {
+		display: flex;
+		flex-direction: column;
+	}
+	.Playback-layoutButtons {
+		order: 1;
+		display: flex;
+		flex-direction: row;
+		@media (min-width: $layout-xl) {
+			order: 0;
+		}
+	}
+}
