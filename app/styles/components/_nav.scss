@@ -1,0 +1,12 @@
+.NavMain {
+	position: fixed;
+	bottom: 0;
+	left: auto;
+
+	@media (max-width: $layout-m) {
+		margin-left: 2rem;
+		margin-right: 2rem;
+		overflow-x: scroll;
+		scrollbar-width: none;
+	}
+}

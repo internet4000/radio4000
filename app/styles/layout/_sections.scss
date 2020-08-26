@@ -12,8 +12,10 @@
 	flex-direction: column;
 	flex-grow: 1;
 	padding-top: 1rem;
+	padding-bottom: 5rem;
 	@media (min-width: $layout-xl) {
 		padding-top: 2rem;
+		padding-bottom: 2rem;
 	}
 }
 

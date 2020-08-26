@@ -1,6 +1,16 @@
+{{#unless session.isAuthenticated}}
+	<div class="Container Container--small u-tc">
+		<h3>Welcome to Radio4000!</h3>
+		<p>Start your journey by listening to one of the radio channels on this page.</p>
+		<p>
+			Each radio is <a href="{{href-to 'about'}}">curated by a human</a>.
+		</p>
+	</div>
+{{/unless}}
+
 <section class="Container Container--full">
-	<div class="BtnGroup BtnGroup--right">
-		{{play-random-channel}}
+	<div class="BtnGroup BtnGroup--center">
+		{{play-random-channel class="Btn--important"}}
 		<button {{action 'refreshSelection'}} class="Btn">
 			<i>⟳</i> Load new radios
 		</button>
@@ -9,7 +19,7 @@
 
 <section class="Section Section--flex Section--flexCenter">
 	<div class="Container Container--full">
-		<div class="Grid Grid--vcenter">
+		<div class="Grid Grid--vcenter Grid--home">
 			{{#if filteredModel.length}}
 				{{#each filteredModel as |channel|}}
 					<div class="Grid-cell">
@@ -29,16 +39,6 @@
 					</div>
 				{{/if}}
 			{{/if}}
-
-			{{#unless session.isAuthenticated}}
-				<div class="Grid-cell Grid-cell--double">
-					<h3>Welcome to Radio4000!</h3>
-					<p>Start your journey by listening to one of the radio channels on this page.</p>
-					<p>
-						Each radio is <a href="{{href-to 'about'}}">curated by a human</a>.
-					</p>
-				</div>
-			{{/unless}}
 		</div>
 	</div>
 </section>
@@ -49,7 +49,7 @@
 		{{#if session.isAuthenticated}}
 			<p>If anything, <a href="{{href-to 'feedback'}}">get in touch</a>.</p>
 		{{else}}
-			<p>It is always possible to <a href={{href-to "auth.signup"}}>create a radio yourself</a>.</p>
+			<p>It is always possible to <a href={{href-to "auth.signup"}}>create your radio</a>.</p>
 		{{/if}}
 	</div>
 </section>
