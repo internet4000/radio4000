@@ -1,8 +1,12 @@
 .InputAutocomplete {
 	position: fixed;
 	z-index: 7;
-	bottom: 3.5rem;
-	left: 0.5rem;
+	bottom: 2.3rem;
+	left: 0.1rem;
+	opacity: 0.8;
+	@media (min-width: $layout-m) {
+		left: 0.5rem;
+	}
 }
 
 .aa-container {
