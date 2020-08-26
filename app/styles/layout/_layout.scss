@@ -27,7 +27,6 @@ body {
  */
 .SiteMain {
 	display: flex;
-	min-height: 100vh;
 	width: 100%;
 	flex: 2;
 	overflow-x: hidden;
@@ -35,4 +34,13 @@ body {
 
 .overflow-x-auto {
 	overflow-x: auto;
+}
+
+.SiteHeader {
+	position: sticky;
+	top: 0;
+	display: flex;
+	flex-direction: row;
+	padding: 0.5rem;
+	justify-content: space-between;
 }

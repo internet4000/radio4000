@@ -7,6 +7,7 @@
 	display: flex;
 	flex-wrap: nowrap;
 	flex-direction: row;
+	min-height: 100vh;
 }
 
 .Root.is-normal {
@@ -63,11 +64,10 @@
  */
 
 .Root.is-minimized {
-	.Playback-layoutButtons {
-		flex-direction: row;
-		top: -2.3rem;
-		right: 0;
-		left: auto;
+	flex-direction: column;
+
+	.SiteMain {
+		order: 1;
 	}
 
 	radio4000-player {
