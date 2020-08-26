@@ -13,7 +13,7 @@
 					autoFocus=true}}
 		{{/form-group}}
 		{{#form-group model=this valuePath="password" label="Password" as |v|}}
-			{{input type="password" value=v placeholder="Create a password" required="required"}}
+			{{input type="password" value=v placeholder="Use a (new) and strong password " required="required"}}
 		{{/form-group}}
 
 		{{user-agreements onAgreed=(action 'signUserAgreement')}}

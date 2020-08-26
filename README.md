@@ -239,3 +239,14 @@ Under `Sign-in methods > Google > Web SDK configuration`, paste the
 2. On your Firebase project console, at `Authentication > Sign-in
    methodes > Facebook`, **activate** Facebook, then paste in **App ID**
    and **Secret**
+
+
+### Youtube API key
+
+For automatic fetching of tracks title, you will need a Youtube API key.
+
+https://console.cloud.google.com/apis/credentials
+
+- Enable Youtube Data Api
+- Create a new key, and restrict it to Youtube Data Api
+- paste the key in `/config/environment.js`
