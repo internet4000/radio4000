@@ -23,7 +23,7 @@ module.exports = function(environment) {
 		},
 
 		/* https://console.developers.google.com/apis/credentials?project=firebase-radio4000 */
-		youtubeApiKey: 'AIzaSyBfJXiX9YR1LF9qezG6-pUBPGhjV14gDbM',
+		youtubeApiKey: 'AIzaSyC7HUdFZ0lyCcBzxHPvr_aqEWTE7MdsCR4',
 
 		// Radio4000 staging project.
 		firebase: {
