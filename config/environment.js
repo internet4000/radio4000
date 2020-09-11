@@ -80,9 +80,9 @@ module.exports = function(environment) {
 		// here you can enable a production-specific feature
 		// Switch to live Firebase
 		ENV.firebase = {
-			apiKey: 'AIzaSyDu8ksQyO7t1hEAPjejIoA_xbMN7iiMakE',
-			authDomain: 'radio4000.firebaseapp.com',
-			databaseURL: 'https://radio4000.firebaseio.com'
+			apiKey: 'AIzaSyBztt0Gk6XqACSPcrllfKYF8sa10x3CovI',
+			authDomain: 'radio4000-prod.firebaseapp.com',
+			databaseURL: 'https://radio4000-prod.firebaseio.com'
 		}
 	}
 
