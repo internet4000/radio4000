@@ -23,7 +23,7 @@ module.exports = function(environment) {
 		},
 
 		/* https://console.developers.google.com/apis/credentials?project=firebase-radio4000 */
-		youtubeApiKey: 'AIzaSyBfJXiX9YR1LF9qezG6-pUBPGhjV14gDbM',
+		youtubeApiKey: 'AIzaSyC7HUdFZ0lyCcBzxHPvr_aqEWTE7MdsCR4',
 
 		// Radio4000 staging project.
 		firebase: {
@@ -80,9 +80,9 @@ module.exports = function(environment) {
 		// here you can enable a production-specific feature
 		// Switch to live Firebase
 		ENV.firebase = {
-			apiKey: 'AIzaSyBztt0Gk6XqACSPcrllfKYF8sa10x3CovI',
-			authDomain: 'radio4000-prod.firebaseapp.com',
-			databaseURL: 'https://radio4000-prod.firebaseio.com'
+			apiKey: 'AIzaSyDu8ksQyO7t1hEAPjejIoA_xbMN7iiMakE',
+			authDomain: 'radio4000.firebaseapp.com',
+			databaseURL: 'https://radio4000.firebaseio.com'
 		}
 	}
 
