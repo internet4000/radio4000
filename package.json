@@ -64,7 +64,7 @@
     "ember-href-to": "1.14.0",
     "ember-jets": "^1.3.0",
     "emberfire": "^2.0.10",
-    "lazysizes": "^4.1.5",
+    "lazysizes": "^5.2.1",
     "media-url-parser": "^0.1.3",
     "radio4000-player": "^0.6.14",
     "torii": "^0.10.1",
