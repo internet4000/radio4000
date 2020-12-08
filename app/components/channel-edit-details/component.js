@@ -1,6 +1,5 @@
-import Ember from 'ember'
-
-const {Component, get, set} = Ember
+import Component from '@ember/component'
+import {get, set, computed} from '@ember/object'
 
 export default Component.extend({
 	// channel: ember model,
@@ -12,13 +11,21 @@ export default Component.extend({
 		set(this, 'proxy', {})
 	},
 
+	// We want to disable the save button when either
+	// 1) no changes have been made to the "proxy" object
+	// 2) it's already saving/submitting
+	hasNoChanges: computed('proxy.{title,slug,body,link}', function () {
+		return Object.keys(this.proxy).length < 1
+	}),
+	disableSave: computed.or('hasNoChanges', 'submitTask.isRunning'),
+
 	actions: {
 		cancel() {
 			get(this, 'onCancel')()
 		},
 		submit() {
-			const proxy = get(this, 'proxy')
-			get(this, 'submitTask').perform(proxy)
+			get(this, 'submitTask').perform(get(this, 'proxy'))
+			set(this, 'proxy', {})
 		}
 	}
 })
