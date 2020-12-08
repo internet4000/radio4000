@@ -9,7 +9,7 @@
 		{{if uiStates.isMinimized '→' '↓'}}
 	</button>
 	{{#if uiStates.isDocked}}
-		<button class="Btn Playback-dock" {{action 'toggleDockedFormat'}} title="Dock player [⌨ f]">↔</button>
+		<button class="Btn Playback-dock" {{action 'toggleDockedFormat'}} title="Dock player [⌨ f]">→</button>
 	{{else}}
 		{{link-to '↔' 'channel.player' channel class="Btn Playback-dock"}}
 		<button class="Btn Playback-dock" {{action 'toggleDockedFormat'}} title="Dock player [⌨ f]">↔</button>
