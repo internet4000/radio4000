@@ -10,39 +10,42 @@
 			</h1>
 		</div>
 		<div class="Container Container--noPaddingMobile Container--contentCentered Container--full">
-			<nav class="Tabs Tabs--horizontal NavMain">
-				{{#link-to
-					'channel.tracks'
-					class="Tabs-item"
-					title="All tracks [⌨ g t]"}}
-					Tracks <span class="Muted">({{model.totalTracks}})</span>
-				{{/link-to}}
-				{{#if model.selectedHashtags}}
+			<nav class="NavMain">
+				<div class="Tabs Tabs--horizontal">
 					{{#link-to
-							 'channel.tags'
+							 'channel.tracks'
 							 class="Tabs-item"
-							 title="Tags from this radio's tracks [⌨ g #]"}}
-						Tags
+							 title="All tracks [⌨ g t]"}}
+						Tracks <span class="Muted">({{model.totalTracks}})</span>
 					{{/link-to}}
-				{{/if}}
-				{{#link-to
-					'channel.favorites'
-					class="Tabs-item"
-					title="Favorites of this radio [⌨ g f]"}}
-					Favorites
-				{{/link-to}}
-				{{#if model.canEdit}}
+					{{#if model.selectedHashtags}}
+						{{#link-to
+								 'channel.tags'
+								 class="Tabs-item"
+								 title="Tags from this radio's tracks [⌨ g #]"}}
+							Tags
+						{{/link-to}}
+					{{/if}}
 					{{#link-to
-						'channel.followers'
-						class="Tabs-item"
-						title="Followers of this radio"}}
-						Followers
+							 'channel.favorites'
+							 class="Tabs-item"
+							 title="Favorites of this radio [⌨ g f]"}}
+						Favorites
 					{{/link-to}}
-					<div class="Tabs-divider"></div>
+					{{#if model.canEdit}}
+						{{#link-to
+								 'channel.followers'
+								 class="Tabs-item"
+								 title="Followers of this radio"}}
+							Followers
+						{{/link-to}}
+					{{/if}}
+				</div>
+				<div class="Tabs Tabs--horizontal">
 					{{#link-to "settings.channel" class="Tabs-item" title="Edit your radio"}}
 						&rarr; Settings
 					{{/link-to}}
-				{{/if}}
+				</div>
 			</nav>
 		</div>
 	</section>

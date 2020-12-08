@@ -1,103 +1,104 @@
 {{title "Search Radio4000" replace=true}}
-
-<section class="Section Container Container--full">
-	{{#list-manipulation
-			 list=filteredChannels
-			 sortKey=sortKey
-			 sortDirection=sortDirection
-			 as |manipulatedList|}}
-		<div class="Form Form--full">
-			<div class="BtnGroups">
-				{{#btn-group}}
-					<label class="Label Label--horizontal">
-						<span class="Label-title">
-							Search
-						</span>
-						{{#jets-search-focus class="Label-inputContainer"}}
-							{{jets-search
-									contentTag=".JetsSearchContainer"
-									content=filteredChannels
-									value=search
-									title="Search all radio channels (title and description); Usage: `word1 word2 ...` will find channels that have all words at the same time [⌨ shift + s]"
-									placeholder="radio channels…"
-							}}
-						{{/jets-search-focus}}
-					</label>
-					<button type="button"
-						class="Btn"
-						disabled={{noSearch}}
-						title="Clear search query, fresh start!"
-						{{action 'clearSearch'}}
-					>x</button>
-				{{/btn-group}}
-
-				{{#btn-group}}
-					<label class="Label Label--horizontal">
-						<span class="Label-title">
-							Sort by
-						</span>
-						{{link-to
-								"Activity"
-								"channels.search"
-								(query-params sort="updated")
-								class="Btn"
-								title="Sort by activity, last updated date"}}
-						{{link-to
-								"Age"
-								"channels.search"
-								(query-params sort="created")
-								class="Btn"
-								title="Sort by age, created date"}}
-						{{link-to
-								"A-Z"
-								"channels.search"
-								(query-params sort="title")
-								class="Btn"
-								title="Sort by alphabetic order of titles"}}
-					</label>
-				{{/btn-group}}
-
-				{{#btn-group}}
-					{{link-to
-							"↑"
-							"channels.search"
-							(query-params sortDirection="asc")
+<div class="Sections">
+	<section class="Section Container Container--full">
+		{{#list-manipulation
+				 list=filteredChannels
+				 sortKey=sortKey
+				 sortDirection=sortDirection
+				 as |manipulatedList|}}
+			<div class="Form Form--full">
+				<div class="BtnGroups">
+					{{#btn-group}}
+						<label class="Label Label--horizontal">
+							<span class="Label-title">
+								Search
+							</span>
+							{{#jets-search-focus class="Label-inputContainer"}}
+								{{jets-search
+										contentTag=".JetsSearchContainer"
+										content=filteredChannels
+										value=search
+										title="Search all radio channels (title and description); Usage: `word1 word2 ...` will find channels that have all words at the same time [⌨ shift + s]"
+										placeholder="radio channels…"
+								}}
+							{{/jets-search-focus}}
+						</label>
+						<button type="button"
 							class="Btn"
-							title="Sort direction: ascending"}}
-					{{link-to
-							"↓"
-							"channels.search"
-							(query-params sortDirection="desc")
-							class="Btn"
-							title="Sort direction: descending"}}
-				{{/btn-group}}
-			</div>
-		</div>
+							disabled={{noSearch}}
+							title="Clear search query, fresh start!"
+							{{action 'clearSearch'}}
+						>x</button>
+					{{/btn-group}}
 
-		<div class="Grid JetsSearchContainer">
-			{{#vertical-collection manipulatedList
-					 estimateHeight=333
-					 bufferSize=8
-					 renderAll=true
-					 as |item index|}}
-				<div class="Grid-cell">
-					{{channel-card channel=item index=index}}
+					{{#btn-group}}
+						<label class="Label Label--horizontal">
+							<span class="Label-title">
+								Sort by
+							</span>
+							{{link-to
+									"Activity"
+									"channels.search"
+									(query-params sort="updated")
+									class="Btn"
+									title="Sort by activity, last updated date"}}
+							{{link-to
+									"Age"
+									"channels.search"
+									(query-params sort="created")
+									class="Btn"
+									title="Sort by age, created date"}}
+							{{link-to
+									"A-Z"
+									"channels.search"
+									(query-params sort="title")
+									class="Btn"
+									title="Sort by alphabetic order of titles"}}
+						</label>
+					{{/btn-group}}
+
+					{{#btn-group}}
+						{{link-to
+								"↑"
+								"channels.search"
+								(query-params sortDirection="asc")
+								class="Btn"
+								title="Sort direction: ascending"}}
+						{{link-to
+								"↓"
+								"channels.search"
+								(query-params sortDirection="desc")
+								class="Btn"
+								title="Sort direction: descending"}}
+					{{/btn-group}}
 				</div>
-			{{/vertical-collection}}
-		</div>
-	{{/list-manipulation}}
-</section>
+			</div>
 
-<section class="Section--flex Section--flexCenter Container">
-	{{#unless filteredChannels}}
-		<div class="Grid-cell">
-			{{#is-loading}}
-				<p>Loading radios</p>
-			{{/is-loading}}
-		</div>
-	{{/unless}}
-</section>
+			<div class="Grid JetsSearchContainer">
+				{{#vertical-collection manipulatedList
+						 estimateHeight=333
+						 bufferSize=8
+						 renderAll=true
+						 as |item index|}}
+					<div class="Grid-cell">
+						{{channel-card channel=item index=index}}
+					</div>
+				{{/vertical-collection}}
+			</div>
+		{{/list-manipulation}}
+	</section>
 
-<section class="Section Container">
-	<p class="u-tc">Not sure what to listen to? Try one of the <a href="{{href-to 'channels'}}">featured radios</a>.</p>
-</section>
+	<section class="Section--flex Section--flexCenter Container">
+		{{#unless filteredChannels}}
+			<div class="Grid-cell">
+				{{#is-loading}}
+					<p>Loading radios</p>
+				{{/is-loading}}
+			</div>
+		{{/unless}}
+	</section>
+
+	<section class="Section Container">
+		<p class="u-tc">Not sure what to listen to? Try one of the <a href="{{href-to 'channels'}}">featured radios</a>.</p>
+	</section>
+</div>

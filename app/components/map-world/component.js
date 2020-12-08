@@ -42,7 +42,7 @@ export default Component.extend({
 		initMap(event) {
 			const map = event.target
 			const credits = L.control.attribution({
-				position: 'bottomleft',
+				position: 'topright',
 				prefix: '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>'
 			}).addAttribution(`
 <a href="https://opentopomap.org/about" target="_blank" rel="noopener">OpenTopoMap</a> |
@@ -50,7 +50,7 @@ export default Component.extend({
 `)
 
 			map.addControl(credits)
-			map.zoomControl.setPosition('topright');
+			map.zoomControl.setPosition('bottomright');
 		},
 		updateCenter(e) {
 			// Create object with lat, lng and zoom.

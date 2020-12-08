@@ -1,10 +1,17 @@
 .FlashMessages {
 	@include size-1;
 	position: fixed;
-	z-index: 52; // over player
-	bottom: 1.4rem;
-	left: 0.7rem;
+	// over player
+	z-index: 52;
+	bottom: 0.4rem;
+	right: 0.7rem;
 	max-width: 20rem;
+	@media (min-width: $layout-l) {
+		bottom: auto;
+		right: auto;
+		top: 0.4rem;
+		left: 0.7rem;
+	}
 }
 
 .alert {
@@ -17,17 +24,23 @@
 	border-radius: $border-radius;
 	color: $white;
 	background-color: $slightgray;
-
-	// initial state
-	transform: translateX(110%);
 	transition: transform 250ms $easing4;
+
+	transform: translateX(110%);
+	@media (min-width: $layout-l) {
+		transform: translateX(-110%);
+	}
+
 
 	&.active {
 		transform: translateX(0);
 	}
 
 	&.exiting {
-		transform: translateX(-110%);
+		transform: translateX(110%);
+		@media (min-width: $layout-l) {
+			transform: translateX(-110%);
+		}
 	}
 }
 

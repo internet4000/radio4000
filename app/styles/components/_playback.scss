@@ -4,15 +4,33 @@
 	}
 }
 
-.Playback-layoutButtons {
+.Playback:hover {
+	.Playback-layoutButtons {
+	}
+	.Playback-layoutButtons .Btn {
+		border-color: $dark;
+	}
+}
+
+.Playback .Playback-layoutButtons {
 	z-index: 2;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
+	align-self: flex-end;
 
-	> .Btn {
+	position: absolute;
+	bottom: 0;
+	transform: translateY(100%);
+
+	@media (min-width: $layout-l) {
+		bottom: auto;
+	}
+
+	.Btn {
 		margin: 1px;
 		min-height: 0;
+		padding: 0.8rem;
 	}
 }
 

@@ -252,9 +252,9 @@
 
 .Btn--map {
 	z-index: 2;
-	position: fixed;
-	left: 2rem;
-	bottom: 2rem;
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
 	@media (max-width: $layout-xs), (max-height: $layout-xs){
 		display: none;
 	}
@@ -277,8 +277,8 @@
 
 .Btn--navigationToggle {
 	position: fixed;
-	bottom: 0.2rem;
-	left: 0.1rem;
+	bottom: 0.3rem;
+	left: 0.5rem;
 	z-index: 7;
 
 	padding-top: 0.7rem;
