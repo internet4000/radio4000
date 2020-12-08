@@ -32,6 +32,7 @@ body {
 	flex: 2;
 	overflow-x: hidden;
 	position: relative;
+	transition: margin-right 300ms $easing;
 }
 
 .overflow-x-auto {

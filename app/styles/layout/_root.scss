@@ -47,6 +47,7 @@
 		position: absolute;
 		top: 0;
 		right: 0;
+		bottom: auto;
 	}
 	radio4000-player {
 		@media (min-width: $layout-m) {
@@ -92,8 +93,8 @@
 }
 
 .Root.is-withoutPlayer {
-	.Aside--right {
-		display: none;
+	.Playback {
+		opacity: 0;
 	}
 }
 

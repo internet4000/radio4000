@@ -1,4 +1,6 @@
 .Playback {
+	opacity: 1;
+	transition: opacity 400ms $easing;
 	.Btn {
 		box-shadow: none;
 	}
@@ -38,7 +40,10 @@
 		transform: none;
 	}
 	.Root.is-minimized & {
-		transform: translateY(-100%);
+		transform: translateY(100%);
+		@media (min-width: $layout-l) {
+			transform: translateY(-100%);
+		}
 	}
 	.Root.is-maximized & {
 		transform: translateY(0);
@@ -55,6 +60,7 @@
 
 radio4000-player {
 	height: 100vh !important;
+	transition: height 300ms $easing;
 }
 
 radio4000-player .Layout {
