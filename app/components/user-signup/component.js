@@ -27,13 +27,18 @@ export default Component.extend(Validations, {
 	cannotSignUp: computed.not('signedUserAgreement'),
 	cannotEmailSignUp: computed.or('submitTask.isRunning', 'validations.isInvalid'),
 	submitTask: task(function * (providerId, email, password) {
-		get(this, 'onSignup')(providerId, email, password);
-		set(this, 'signedUp', true)
-		yield
+		yield get(this, 'onSignup')(providerId, email, password)
+			.then(data => {
+				if (data === false) {
+					set(this, 'signedUp', false)
+				} else {
+					set(this, 'signedUp', true)
+				}
+			})
 	}),
 	actions: {
 		submit(providerId, email, password) {
-			get(this, 'submitTask').perform(providerId, email, password);
+			get(this, 'submitTask').perform(providerId, email, password)
 		},
 		signUserAgreement(event) {
 			set(this, 'signedUserAgreement', event)
