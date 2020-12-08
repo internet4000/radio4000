@@ -1,12 +1,27 @@
 .NavMain {
-	position: fixed;
-	bottom: 0;
-	left: auto;
+	--position: 4rem;
 
-	@media (max-width: $layout-m) {
-		margin-left: 2rem;
-		margin-right: 2rem;
-		overflow-x: scroll;
-		scrollbar-width: none;
+	position: fixed;
+	bottom: 0.3rem;
+	left: 0;
+	// left: var(--position);
+	max-width: calc(100% - 0.5rem);
+
+	display: flex;
+	flex-wrap: nowrap;
+
+	overflow-x: scroll;
+	scrollbar-width: none;
+	@media (min-width: $layout-m) {
+		left: auto;
+		right: auto;
+		width: auto;
 	}
+
+	padding-left: var(--position);
+	margin-right: 2rem;
+}
+
+.NavMain .Tabs {
+	flex-wrap: nowrap;
 }
