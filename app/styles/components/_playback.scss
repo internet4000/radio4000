@@ -50,6 +50,26 @@
 	}
 }
 
+.Playback-dock {
+	.Root.is-maximized & {
+		// display: none;
+	}
+}
+.Playback-minimize {
+	.Root.is-docked & {
+		display: none;
+		@media (min-width: $layout-l) {
+			display: inline-block;
+		}
+	}
+}
+.Playback-fullscreen {
+	.Root.is-maximized & {
+		display: none;
+	}
+}
+
+
 .Playback-player {
 	flex-grow: 1;
 }
@@ -60,7 +80,10 @@
 
 radio4000-player {
 	height: 100vh !important;
-	transition: height 300ms $easing;
+	transition: height 400ms $easing3;
+	li {
+		margin-bottom: 0;
+	}
 }
 
 radio4000-player .Layout {

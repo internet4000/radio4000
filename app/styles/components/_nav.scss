@@ -4,7 +4,8 @@
 	position: fixed;
 	z-index: 2;
 	bottom: 0.3rem;
-	left: 0;
+	left: auto;
+	right: auto;
 	max-width: calc(100% - 0.5rem);
 	padding-left: var(--position);
 	padding-right: 2rem;
@@ -15,8 +16,6 @@
 	overflow-x: scroll;
 	scrollbar-width: none;
 	@media (min-width: $layout-m) {
-		left: auto;
-		right: auto;
 		width: auto;
 	}
 }
