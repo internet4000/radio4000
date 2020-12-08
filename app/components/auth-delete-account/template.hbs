@@ -1,6 +1,6 @@
 {{#if channel}}
 	<p>Your account currently owns this radio channel: <strong>{{channel.title}}</strong>.</p>
-	<p>You must {{link-to "delete your radio" "channel.delete" channel}} before you can delete your account.
+	<p>You must {{link-to "delete your radio" "settings.channel.delete"}} before you can delete your account.
 	</p>
 {{else}}
 	<button class="Btn Btn--danger" title="Once deleted, it's deleted" {{action "delete"}}>

@@ -18,7 +18,7 @@
 	{{/leaflet-map}}
 
 	<div class="BtnGroupWrapper BtnGroupWrapper--full">
-		<div class="BtnGroup">
+		<div class="BtnGroup" title="Place, remove and update the position of your radio channel on the world map. Place it freely, no borders.">
 			<button class="Btn" onclick={{perform submitTask null null}}>Remove location</button>
 			{{#if showButtons}}
 				<button class="Btn Btn--text" {{action "cancel"}}>Cancel</button>
@@ -26,7 +26,7 @@
 		</div>
 
 		{{#if showButtons}}
-			<div class="BtnGroup--right">
+			<div class="BtnGroup BtnGroup--right">
 				<button
 					class="Btn Btn--primary"
 					title="Update the coordinates of your radio channel"

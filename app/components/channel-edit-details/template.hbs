@@ -15,7 +15,7 @@
 		{{input type="text" value=(readonly v)
 			placeholder="ex: pirate-radio"
 			required="required"
-			title="The slug, is the URL of your radio, as in 'https://radio4000.com/your-radio'. Easy access to share."
+			title="The slug, is the URL of your radio, such as in 'https://radio4000.com/your-radio'. You can edit and share this link to access drectly your radio4000 channel"
 			minlength=titleMinLength
 			maxlength=titleMaxLength
 			input=(action (mut proxy.slug) value="target.value")}}
@@ -25,7 +25,7 @@
 		{{textarea value=(readonly v)
 			id="body"
 			maxlength=channelDescriptionMaxLength
-			title="Descriptive text and #hashtags to help others discover and explore your library"
+			title="Descriptive text and #hashtags to help others discover and explore your library."
 			placeholder="What is your radio about? ex: 'Fireplace music, #fire'"
 			input=(action (mut proxy.body) value="target.value")}}
 	{{/form-group}}
@@ -35,7 +35,7 @@
 			aria-invalid=(if channel.validations.attrs.link.isValid "false" "true")
 			pattern="https?://.+"
 			placeholder="Link to your website, ex: 'https://example.com'"
-			title="Where else on the internet can we continue explore your content? Like: 'https://your-other-site.org'. Farewell!"
+			title="Where else on the internet can we continue explore your content? Ex: https://your-other-site.org"
 			input=(action (mut proxy.link) value="target.value")}}
 	{{/form-group}}
 
