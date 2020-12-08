@@ -42,6 +42,7 @@ export default Controller.extend({
 				} catch (error) {
 					this.onSignupError(error)
 					debug(error)
+					return false
 				}
 			} else {
 				this.send('login', provider)
