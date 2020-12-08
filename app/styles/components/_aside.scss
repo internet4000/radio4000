@@ -1,3 +1,20 @@
+.Aside--login,
+.Aside--signup {
+	padding: 1.5rem 1rem;
+	margin: 1rem;
+	@media (min-width: $layout-m) {
+		padding: 2rem;
+	}
+}
+
+.Aside--login {
+	background-color: $mediumlightgray;
+}
+
+.Aside--signup {
+	background-color: $bleach;
+}
+
 .Aside--navigation {
 	display: none;
 	position: fixed;

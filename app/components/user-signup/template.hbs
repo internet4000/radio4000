@@ -16,14 +16,16 @@
 			{{input type="password" value=v placeholder="Use a (new) and strong password " required="required"}}
 		{{/form-group}}
 
-		{{user-agreements onAgreed=(action 'signUserAgreement')}}
+		{{user-agreements
+				onAgreed=(action 'signUserAgreement')
+				class="Form-group"}}
 
 		{{#btn-group class="Form-group BtnGroup BtnGroup--right"}}
 			<button
 				disabled={{cannotEmailSignUp}}
 				type="submit"
-				class="Btn Btn--large"
-				title="Add track to your radio">
+				class="Btn Btn--large Btn--primary"
+				title="Register a radio4000.com account">
 				{{if submitTask.isIdle "Sign Up" "Signing Up…"}}
 			</button>
 		{{/btn-group}}
