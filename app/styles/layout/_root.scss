@@ -30,14 +30,7 @@
 	}
 }
 
-.Root.is-maximized {
-	.Playback-fullscreen {
-		display: none;
-		@media (min-width: $layout-l) {
-			display: block;
-		}
-	}
-}
+
 
 /*
 	 Player is in minimized state
