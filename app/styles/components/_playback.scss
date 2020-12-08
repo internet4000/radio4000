@@ -19,6 +19,14 @@
 	justify-content: flex-end;
 	align-self: flex-end;
 
+	position: absolute;
+	bottom: 0;
+	transform: translateY(100%);
+
+	@media (min-width: $layout-l) {
+		bottom: auto;
+	}
+
 	.Btn {
 		margin: 1px;
 		min-height: 0;

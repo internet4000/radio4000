@@ -8,6 +8,11 @@ export default Route.extend({
 		lng: {replace: true},
 		zoom: {replace: true}
 	},
+	renderTemplate() {
+		this.render({
+			into: 'channels'
+		})
+	},
 
 	model() {
 		return this.store.findAll('channel')

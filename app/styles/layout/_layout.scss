@@ -27,9 +27,11 @@ body {
  */
 .SiteMain {
 	display: flex;
+	justify-content: center;
 	width: 100%;
 	flex: 2;
 	overflow-x: hidden;
+	position: relative;
 }
 
 .overflow-x-auto {

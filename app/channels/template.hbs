@@ -1,10 +1,5 @@
-<div class="Sections">
-	{{outlet}}
+<nav class="NavMain">
+	{{aside-channels userChannel=session.currentUser.channels.firstObject}}
+</nav>
 
-	<div class="Container Container--contentCentered Container--full">
-		<nav class="NavMain">
-			{{aside-channels
-					userChannel=session.currentUser.channels.firstObject}}
-		</nav>
-	</div>
-</div>
+{{outlet}}

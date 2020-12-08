@@ -2,10 +2,12 @@
 	--position: 4rem;
 
 	position: fixed;
+	z-index: 2;
 	bottom: 0.3rem;
 	left: 0;
-	// left: var(--position);
 	max-width: calc(100% - 0.5rem);
+	padding-left: var(--position);
+	padding-right: 2rem;
 
 	display: flex;
 	flex-wrap: nowrap;
@@ -17,9 +19,6 @@
 		right: auto;
 		width: auto;
 	}
-
-	padding-left: var(--position);
-	margin-right: 2rem;
 }
 
 .NavMain .Tabs {

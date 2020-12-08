@@ -252,9 +252,9 @@
 
 .Btn--map {
 	z-index: 2;
-	position: fixed;
-	left: 2rem;
-	bottom: 2rem;
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
 	@media (max-width: $layout-xs), (max-height: $layout-xs){
 		display: none;
 	}
