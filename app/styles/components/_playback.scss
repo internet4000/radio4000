@@ -4,15 +4,25 @@
 	}
 }
 
-.Playback-layoutButtons {
+.Playback:hover {
+	.Playback-layoutButtons {
+	}
+	.Playback-layoutButtons .Btn {
+		border-color: $dark;
+	}
+}
+
+.Playback .Playback-layoutButtons {
 	z-index: 2;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
+	align-self: flex-end;
 
-	> .Btn {
+	.Btn {
 		margin: 1px;
 		min-height: 0;
+		padding: 0.8rem;
 	}
 }
 
