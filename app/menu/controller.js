@@ -9,8 +9,13 @@ export default Controller.extend({
 	actions: {
 		signAgreement() {
 			get(this, 'session.currentUser.settings').then(settings => {
-				settings.set('signedUserAgreement', true)
-				settings.save()
+				if (!settings) {
+					const flashMessages = get(this, 'flashMessages')
+					flashMessages.success(`Our excuses. Settings signedUserAgreement failed to be saved... try again later`);
+				} else {
+					settings.set('signedUserAgreement', true)
+					settings.save()
+				}
 			})
 		}
 	}
