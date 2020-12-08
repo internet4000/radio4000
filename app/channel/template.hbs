@@ -41,11 +41,13 @@
 						{{/link-to}}
 					{{/if}}
 				</div>
-				<div class="Tabs Tabs--horizontal">
-					{{#link-to "settings.channel" class="Tabs-item" title="Edit your radio"}}
-						&rarr; Settings
-					{{/link-to}}
-				</div>
+				{{#if model.canEdit}}
+					<div class="Tabs Tabs--horizontal">
+						{{#link-to "settings.channel" class="Tabs-item" title="Edit your radio"}}
+							&rarr; Settings
+						{{/link-to}}
+					</div>
+				{{/if}}
 			</nav>
 		</div>
 	</section>
