@@ -32,6 +32,17 @@
 		min-height: 0;
 		padding: 0.8rem;
 	}
+
+	.Root.is-docked & {
+		position: static;
+		transform: none;
+	}
+	.Root.is-minimized & {
+		transform: translateY(-100%);
+	}
+	.Root.is-maximized & {
+		transform: translateY(0);
+	}
 }
 
 .Playback-player {

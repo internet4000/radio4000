@@ -121,6 +121,8 @@
 	.Playback {
 		flex-grow: 0;
 		height: auto;
+		display: flex;
+		flex-direction: column;
 	}
 	radio4000-player {
 		max-height: 80vh;
