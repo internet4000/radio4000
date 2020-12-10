@@ -4,6 +4,7 @@
 			autofocus="autofocus"
 			placeholder="ex: The pirate Radio"
 			required="required"
+			title="The title is the main text used when displaying your radio accross the r4 system."
 			minlength=titleMinLength
 			maxlength=titleMaxLength
 			input=(action (mut proxy.title) value="target.value")}}
@@ -14,6 +15,7 @@
 		{{input type="text" value=(readonly v)
 			placeholder="ex: pirate-radio"
 			required="required"
+			title="The slug, is the URL of your radio, such as in 'https://radio4000.com/your-radio'. You can edit and share this link to access drectly your radio4000 channel"
 			minlength=titleMinLength
 			maxlength=titleMaxLength
 			input=(action (mut proxy.slug) value="target.value")}}
@@ -23,7 +25,8 @@
 		{{textarea value=(readonly v)
 			id="body"
 			maxlength=channelDescriptionMaxLength
-			placeholder="What is your radio about? ex: 'Fireplace music'"
+			title="Descriptive text and #hashtags to help others discover and explore your library."
+			placeholder="What is your radio about? ex: 'Fireplace music, #fire'"
 			input=(action (mut proxy.body) value="target.value")}}
 	{{/form-group}}
 
@@ -32,12 +35,13 @@
 			aria-invalid=(if channel.validations.attrs.link.isValid "false" "true")
 			pattern="https?://.+"
 			placeholder="Link to your website, ex: 'https://example.com'"
+			title="Where else on the internet can we continue explore your content? Ex: https://your-other-site.org"
 			input=(action (mut proxy.link) value="target.value")}}
 	{{/form-group}}
 
 	<p class="BtnGroupWrapper BtnGroupWrapper--full">
 		<button type="button" class="Btn" {{action "cancel"}}>Cancel changes</button>
-		<button type="submit" class="Btn Btn--large Btn--primary" disabled={{submitTask.isRunning}}>
+		<button type="submit" class="Btn Btn--large Btn--primary" disabled={{disableSave}}>
 			{{#if submitTask.isRunning}}Saving…{{else}}Save{{/if}}
 		</button>
 	</p>

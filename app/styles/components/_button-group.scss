@@ -1,5 +1,6 @@
 .BtnGroup {
 	display: flex;
+	flex-grow: 1;
 	flex-shrink: 0;
 	flex-flow: row wrap;
 	align-items: center;
@@ -8,6 +9,9 @@
 
 	.BtnGroups & {
 		margin-bottom: 0.4rem;
+	}
+	.BtnGroups &:last-child {
+		flex-grow: 0;
 	}
 }
 
@@ -37,6 +41,11 @@
 	padding-right: 0;
 	padding-left: 1rem;
 }
+.BtnGroup--center {
+	justify-content: center;
+	padding-right: 1rem;
+	padding-left: 1rem;
+}
 
 .BtnGroup-label {
 	align-self: center;
@@ -56,8 +65,12 @@
 	}
 }
 
-.BtnGroup--center {
+.BtnGroups--center {
 	justify-content: center;
+
+	.BtnGroup {
+		flex-grow: 0;
+	}
 }
 
 // Groups of BtnGroup

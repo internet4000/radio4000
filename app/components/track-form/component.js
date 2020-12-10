@@ -5,9 +5,10 @@ import {task, timeout} from 'ember-concurrency';
 import {mediaUrlParser} from 'media-url-parser';
 import {and, or, not} from 'ember-awesome-macros'
 
-const {Component, get, set, observer, computed} = Ember;
+const {Component, get, set, observer, computed, inject} = Ember;
 
 export default Component.extend({
+	flashMessages: inject.service(),
 	tagName: 'form',
 	classNames: ['Form'],
 	classNameBindings: ['box:Form--box'],
@@ -52,6 +53,7 @@ export default Component.extend({
 		const newid = parsedMediaUrl.id
 		if (newid) {
 			track.set('ytid', newid);
+
 			if (parsedMediaUrl.provider === 'youtube') {
 				get(this, 'fetchYoutubeTitle').perform()
 			} else if (parsedMediaUrl.provider === 'soundcloud') {
@@ -79,8 +81,22 @@ export default Component.extend({
 		yield timeout(250); // throttle
 		const track = get(this, 'track')
 		const ytid = track.get('ytid')
-		let title = yield fetchTitle(ytid)
-		track.set('title', title)
+
+		let title
+		try {
+			title = yield fetchTitle(ytid)
+		} catch (error) {
+			if (error.code === 403) {
+				const reason = error.errors[0].reason
+				if (reason === 'dailyLimitExceeded' ||
+						reason === 'quotaExceeded') {
+					get(this, 'flashMessages').info('Error fetching title, API limit exceded.', {timeout: 10000})
+				}
+			}
+		}
+		if (title) {
+			track.set('title', title)
+		}
 	}).restartable(),
 
 	fetchSoundcloudTitle: task(function * () {

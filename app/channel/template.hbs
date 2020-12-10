@@ -1,8 +1,8 @@
 {{title model.title}}
 
 <div class="Sections">
-	<section class="Section Section--horizontal">
-		<div class="Manchet">
+	<section>
+		<div class="Manchet u-tc">
 			<h1 title={{model.body}}>
 				{{#link-to "channel.index" model}}
 					{{model.title}}
@@ -10,38 +10,43 @@
 			</h1>
 		</div>
 		<div class="Container Container--noPaddingMobile Container--contentCentered Container--full">
-			<nav class="Tabs Tabs--horizontal">
-				{{#link-to
-					'channel.tracks'
-					class="Tabs-item"
-					title="All tracks [⌨ g t]"}}
-					Tracks {{#if model.totalTracks}}<span class="Muted">({{model.totalTracks}})</span>{{/if}}
-				{{/link-to}}
-				{{#if model.selectedHashtags}}
+			<nav class="NavMain">
+				<div class="Tabs Tabs--horizontal">
 					{{#link-to
-							 'channel.tags'
+							 'channel.tracks'
 							 class="Tabs-item"
-							 title="Tags from this radio's tracks [⌨ g #]"}}
-						Tags
+							 title="All tracks [⌨ g t]"}}
+						Tracks <span class="Muted">({{model.totalTracks}})</span>
 					{{/link-to}}
-				{{/if}}
-				{{#link-to
-					'channel.favorites'
-					class="Tabs-item"
-					title="Favorites of this radio [⌨ g f]"}}
-					Favorites
-				{{/link-to}}
-				{{#if model.canEdit}}
+					{{#if model.selectedHashtags}}
+						{{#link-to
+								 'channel.tags'
+								 class="Tabs-item"
+								 title="Tags from this radio's tracks [⌨ g #]"}}
+							Tags
+						{{/link-to}}
+					{{/if}}
 					{{#link-to
-						'channel.followers'
-						class="Tabs-item"
-						title="Followers of this radio"}}
-						Followers
+							 'channel.favorites'
+							 class="Tabs-item"
+							 title="Favorites of this radio [⌨ g f]"}}
+						Favorites
 					{{/link-to}}
-					<div class="Tabs-divider"></div>
-					{{#link-to "settings.channel" class="Tabs-item" title="Edit your radio"}}
-						&rarr; Settings
-					{{/link-to}}
+					{{#if model.canEdit}}
+						{{#link-to
+								 'channel.followers'
+								 class="Tabs-item"
+								 title="Followers of this radio"}}
+							Followers
+						{{/link-to}}
+					{{/if}}
+				</div>
+				{{#if model.canEdit}}
+					<div class="Tabs Tabs--horizontal">
+						{{#link-to "settings.channel" class="Tabs-item" title="Edit your radio"}}
+							&rarr; Settings
+						{{/link-to}}
+					</div>
 				{{/if}}
 			</nav>
 		</div>

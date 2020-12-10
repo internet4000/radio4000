@@ -1,3 +1,21 @@
+.Aside--login,
+.Aside--signup {
+	padding: 1.5rem 1rem;
+	margin: 1rem;
+	max-width: 50rem;;
+	@media (min-width: $layout-m) {
+		padding: 2rem;
+	}
+}
+
+.Aside--login {
+	background-color: $mediumlightgray;
+}
+
+.Aside--signup {
+	background-color: $bleach;
+}
+
 .Aside--navigation {
 	display: none;
 	position: fixed;
@@ -28,14 +46,43 @@
 .Aside--right {
 	position: fixed;
 	z-index: 2;
-	top: auto;
 	right: 0;
 	bottom: 0;
-	width: $sidebar-width;
+	top: auto;
+
+	.Root.is-withPlayer.is-normal & {
+		width: $sidebar-width;
+		top: auto;
+	}
+	.Root.is-withoutPlayer.is-normal & {
+		width: 0;
+	}
+
+	.Root.is-withoutPlayer.is-minimized & {
+		height: 0;
+		overflow: hidden;
+	}
+	.Root.is-withPlayer & {
+		height: auto;
+	}
 
 	.Root.is-minimized & {
+		order: 0;
 		width: auto;
 		height: auto;
+		margin-top: 0.1rem;
+		position: sticky;
+		top: 0;
+		right: 0;
+		left: 0;
+
+		@media (min-width: $layout-l) {
+			position: fixed;
+			right: 0;
+			bottom: 0;
+			top: auto;
+			left: auto;
+		}
 	}
 	.Root.is-maximized & {
 		// above menu

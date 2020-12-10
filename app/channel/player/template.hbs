@@ -5,7 +5,13 @@
 {{else}}
 	<div class="ChannelScreen">
 		<div class="ChannelScreen-media"></div>
-		{{play-shuffle-btn channel=model showText=false class="Btn--large Btn--text Channel-playback"}}
+		{{#if model.tracks.length }}
+			{{play-shuffle-btn channel=model showText=false class="Btn--large Btn--text Channel-playback"}}
+		{{else }}
+			{{#link-to 'channel' model class="ChannelScreen"}}
+				<div class="ChannelScreen-media"></div>
+			{{/link-to}}
+		{{/if}}
 	</div>
 {{/if}}
 

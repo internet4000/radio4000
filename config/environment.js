@@ -22,12 +22,12 @@ module.exports = function(environment) {
 			// when it is created
 		},
 
-		// https://console.developers.google.com/apis/credentials/key/2?project=firebase-radio4000
-		youtubeApiKey: 'AIzaSyDOjhcGJWOvHaELFIh2YXIwYULuO_hOvkg',
+		/* https://console.developers.google.com/apis/credentials?project=firebase-radio4000 */
+		youtubeApiKey: 'AIzaSyBJSepQPx0l5mdrEZxbmyXW3mXjp9uiPSw',
 
 		// Radio4000 staging project.
 		firebase: {
-			apiKey: 'AIzaSyDi6cxC167OWaliNMnZkE0BX1XP8ObwdnQ',
+			apiKey: 'AIzaSyBwygjwKXbSHscVhdKuJpgBdd1C2g8aK4g',
 			authDomain: 'radio4000-staging.firebaseapp.com',
 			databaseURL: 'https://radio4000-staging.firebaseio.com'
 		},
@@ -52,6 +52,12 @@ module.exports = function(environment) {
 		// ENV.APP.LOG_TRANSITIONS = true;
 		// ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
 		// ENV.APP.LOG_VIEW_LOOKUPS = true;
+
+		/*
+			 just so it allows localhost, *staging environment*
+			 https://console.developers.google.com/apis/api/youtube.googleapis.com/credentials?project=radio4000-staging
+		 */
+		ENV.youtubeApiKey = 'AIzaSyAbjtPHB4lT9llC07q7YiLYB6HvPx4Cvu8'
 	}
 
 	if (environment === 'test') {
@@ -71,7 +77,7 @@ module.exports = function(environment) {
 
 		// Switch to live Firebase
 		ENV.firebase = {
-			apiKey: 'AIzaSyAyeuzsaD353IhPbffzvP8EE88HNTwSTY0',
+			apiKey: 'AIzaSyDu8ksQyO7t1hEAPjejIoA_xbMN7iiMakE',
 			authDomain: 'radio4000.firebaseapp.com',
 			databaseURL: 'https://radio4000.firebaseio.com'
 		}

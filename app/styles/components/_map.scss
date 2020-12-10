@@ -9,11 +9,6 @@ Map
 }
 
 .Map--fullscreen {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
 	@media (max-width: $layout-m), (max-height: $layout-s){
 		z-index: 1;
 	}
@@ -24,9 +19,10 @@ Map
 		margin-bottom: 0;
 	}
 
-	.leaflet-control-zoom {
-		@media (max-width: $layout-s) {
-			display: none;
+	.leaflet-bottom.leaflet-right {
+		bottom: 2rem;
+		@media (min-width: $layout-m) {
+			bottom: 0;
 		}
 	}
 }
@@ -69,10 +65,26 @@ Map
 	margin: 0;
 }
 
+.leaflet-popup-close-button {
+	display: none;
+}
+
 // Adapt .ChannelCard when inside a map popup
-.leaflet-popup-content .ChannelCard {
-	width: 220px;
-	border: 0;
+.leaflet-popup-content {
+
+	.ChannelCard {
+		width: 95vw;
+		@media (min-width: $layout-s) {
+			width: 15rem;
+		}
+		@media (min-width: $layout-m) {
+			width: 20rem;
+		}
+	}
+
+	.ChannelCard-controls {
+		flex-grow: 0;
+	}
 }
 
 .MapMarker {

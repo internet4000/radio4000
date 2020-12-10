@@ -1,52 +1,50 @@
-<section class="Container Container--full">
-	<div class="BtnGroup BtnGroup--right">
-		{{play-random-channel}}
-		<button {{action 'refreshSelection'}} class="Btn">
-			<i>⟳</i> Load new radios
-		</button>
-	</div>
-</section>
-
-<section class="Section Section--flex Section--flexCenter">
-	<div class="Container Container--full">
-		<div class="Grid Grid--vcenter">
-			<div class="Grid-cell">
-
-				{{#if session.isAuthenticated}}
-					<h2>Ciao!</h2>
-					<p>This is a selection of radio channels. Click one to listen and explore it.</p>
-					<p></p>
-				{{else}}
-					<h3>Welcome to Radio4000!</h3>
-					<p>Start your journey by listening to one of the radio channels on this page.</p>
-				{{/if}}
-				<p>
-					Each radio is <a href="{{href-to 'about'}}">curated by a human</a>.
-				</p>
-			</div>
-			{{#if filteredModel.length}}
-				{{#each filteredModel as |channel|}}
-					<div class="Grid-cell">
-						{{channel-card channel=channel}}
-					</div>
-				{{/each}}
-			{{else}}
-				<div class="Grid-cell">
-					{{#is-loading}}
-						Loading featured radio channels…
-					{{/is-loading}}
-				</div>
-			{{/if}}
+<div class="Sections">
+	{{#unless session.isAuthenticated}}
+		<div class="Container u-tc">
+			<h3>Welcome to Radio4000!</h3>
+			<p>
+				Start exploring by listening to one of these <a href="{{href-to 'about'}}">curated radio channels</a>.
+			</p>
 		</div>
-	</div>
-</section>
+	{{/unless}}
 
-<section class="Container">
-	<div class="u-tc">
-		{{#if session.isAuthenticated}}
-			<p>If anything, <a href="{{href-to 'feedback'}}">get in touch</a>.</p>
-		{{else}}
-			<p>It is always possible to <a href={{href-to "auth.signup"}}>create a radio yourself</a>.</p>
-		{{/if}}
-	</div>
-</section>
+	<section class="Container Container--full">
+		<div class="BtnGroup BtnGroup--center">
+			{{play-random-channel class="Btn--important"}}
+			<button {{action 'refreshSelection'}} class="Btn">
+				<i>⟳</i> Load new radios
+			</button>
+		</div>
+	</section>
+
+	<section class="Section Section--flex Section--flexCenter">
+		<div class="Container Container--full">
+			<div class="Grid Grid--vcenter Grid--home">
+				{{#if filteredModel.length}}
+					{{#each filteredModel as |channel|}}
+						<div class="Grid-cell">
+							{{channel-card channel=channel}}
+						</div>
+					{{/each}}
+			{{else}}
+					{{#if model.length }}
+						<div class="Grid-cell">
+							{{#is-loading}}
+								Loading featured radio channels…
+							{{/is-loading}}
+						</div>
+					{{else}}
+						<div class="Grid-cell">
+							There are no featured channels
+						</div>
+					{{/if}}
+				{{/if}}
+			</div>
+			{{#unless session.isAuthenticated}}
+				<div class="u-tc">
+					<p>You could also <a href={{href-to "auth.signup"}}>create a radio</a> for yourself.</p>
+				</div>
+			{{/unless}}
+		</div>
+	</section>
+</div>

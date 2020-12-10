@@ -18,7 +18,7 @@ export default Route.extend({
 		return this.findFeatured().then(featured => {
 			// Stop if we have no featured channels.
 			if (featured.content.length === 0) {
-				return
+				return this.store.findAll('channel')
 			}
 
 			// Collect the unique favorites from the featured radios.

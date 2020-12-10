@@ -27,12 +27,23 @@ body {
  */
 .SiteMain {
 	display: flex;
-	min-height: 100vh;
+	justify-content: center;
 	width: 100%;
 	flex: 2;
 	overflow-x: hidden;
+	position: relative;
+	transition: margin-right 300ms $easing;
 }
 
 .overflow-x-auto {
 	overflow-x: auto;
+}
+
+.SiteHeader {
+	position: sticky;
+	top: 0;
+	display: flex;
+	flex-direction: row;
+	padding: 0.5rem;
+	justify-content: space-between;
 }

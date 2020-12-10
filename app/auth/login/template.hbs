@@ -1,15 +1,19 @@
 <div class="Sections Sections--center">
-	<section class="Section">
-		<header class="Manchet">
-			<h1>
-				Log in <small>to Radio4000</small>
-			</h1>
-			<p class="u-tc">
-				No account? <a href="{{href-to 'auth.signup'}}">Sign up</a> &rarr;
-			</p>
-		</header>
-		<div class="Container Container--small">
-			{{user-login onLogin=(action "submitLogin")}}
-		</div>
+	<section class="Section Section--flex Section--flexCenter">
+		<article class="Aside Aside--login">
+			<header class="Manchet">
+				<h1>
+					Log in <small>to Radio4000</small>
+				</h1>
+			</header>
+			<div>
+				{{user-login onLogin=(action "submitLogin")}}
+			</div>
+		</article>
+	</section>
+	<section>
+		<p class="u-tc">
+			No account? &rarr; <a class="Btn Btn--primary" href="{{href-to 'auth.signup'}}">Sign up</a> !
+		</p>
 	</section>
 </div>

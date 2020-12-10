@@ -1,19 +1,77 @@
 .Playback {
+	opacity: 1;
+	transition: opacity 400ms $easing;
 	.Btn {
 		box-shadow: none;
 	}
 }
 
-.Playback-layoutButtons {
+.Playback:hover {
+	.Playback-layoutButtons {
+	}
+	.Playback-layoutButtons .Btn {
+		border-color: $dark;
+	}
+}
+
+.Playback .Playback-layoutButtons {
 	z-index: 2;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
+	align-self: flex-end;
 
-	> .Btn {
+	position: absolute;
+	bottom: 0;
+	transform: translateY(100%);
+
+	@media (min-width: $layout-l) {
+		bottom: auto;
+	}
+
+	.Btn {
 		margin: 1px;
 		min-height: 0;
+		padding: 0.8rem;
 	}
+
+	.Root.is-docked & {
+		position: static;
+		transform: none;
+	}
+	.Root.is-minimized & {
+		transform: translateY(100%);
+		@media (min-width: $layout-l) {
+			transform: translateY(-100%);
+		}
+	}
+	.Root.is-maximized & {
+		transform: translateY(0);
+	}
+}
+
+.Playback-dock {
+	.Root.is-maximized & {
+		// display: none;
+	}
+}
+.Playback-minimize {
+	.Root.is-docked & {
+		display: none;
+		@media (min-width: $layout-l) {
+			display: inline-block;
+		}
+	}
+}
+.Playback-fullscreen {
+	.Root.is-maximized & {
+		display: none;
+	}
+}
+
+
+.Playback-player {
+	flex-grow: 1;
 }
 
 /**
@@ -22,6 +80,10 @@
 
 radio4000-player {
 	height: 100vh !important;
+	transition: height 400ms $easing3;
+	li {
+		margin-bottom: 0;
+	}
 }
 
 radio4000-player .Layout {
@@ -43,8 +105,17 @@ radio4000-player .Btn {
 }
 
 // only display the .Btn
-// .Root.is-docked {
-// 	.Btn.Playback-dock {
-// 		display: none;
-// 	}
-// }
+.Root.is-minimized {
+	.Playback {
+		display: flex;
+		flex-direction: column;
+	}
+	.Playback-layoutButtons {
+		order: 1;
+		display: flex;
+		flex-direction: row;
+		@media (min-width: $layout-l) {
+			order: 0;
+		}
+	}
+}

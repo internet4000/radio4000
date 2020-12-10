@@ -105,18 +105,19 @@
  */
 
 .Btn--primary {
-	background-color: $green;
+	background-color: $purple;
 	color: $bleach;
 
 	&:hover,
 	&:focus,
 	&:active {
-		background-color: $green;
-		background-image: linear-gradient(to bottom, rgba($white, 0.1) 40%, $green);
+		background-color: $purple;
+		background-image: linear-gradient(to bottom, rgba($white, 0.1) 40%, $purple);
 	}
 
 	&:disabled {
-		color: rgba($bleach, 0.5);
+		color: $purple;
+		background-color: transparent;
 	}
 }
 
@@ -132,6 +133,11 @@
 	&:focus {
 		background-color: $primary-color;
 		color: $white;
+	}
+
+	&:disabled {
+		color: $purple;
+		background-color: transparent;
 	}
 }
 
@@ -246,9 +252,9 @@
 
 .Btn--map {
 	z-index: 2;
-	position: fixed;
-	left: 2rem;
-	bottom: 2rem;
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
 	@media (max-width: $layout-xs), (max-height: $layout-xs){
 		display: none;
 	}
@@ -271,13 +277,19 @@
 
 .Btn--navigationToggle {
 	position: fixed;
-	top: 1rem;
-	left: 1rem;
+	bottom: 0.3rem;
+	left: 0.5rem;
 	z-index: 7;
 
+	padding-top: 0.7rem;
 	display: block;
-	width: 2.7rem;
-	height: 2.7rem;
+	width: 2.8rem;
+	height: 2.8rem;
+	opacity: 0.8;
+
+	@media (min-width: $layout-m) {
+		left: 0.5rem;
+	}
 
 	a {
 		display: block;

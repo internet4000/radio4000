@@ -1,6 +1,13 @@
 <section class="Sections Sections--center">
 	{{aside-navigation
-		userChannel=session.data.currentUser.channels.firstObject}}
+			isAuthenticated=session.isAuthenticated
+			userChannel=session.data.currentUser.channels.firstObject}}
+
+	<aside class="Container Container--small">
+		{{#unless hideUserAgreements}}
+			{{user-agreements onAgreed=(action "signAgreement")}}
+		{{/unless}}
+	</aside>
 </section>
 
 {{outlet}}

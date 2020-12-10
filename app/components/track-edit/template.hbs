@@ -1,3 +1,17 @@
+<div class="Form-group">
+	<div class="BtnGroupWrapper BtnGroupWrapper--full">
+		{{#btn-group class="BtnGroup--right"}}
+		<button
+			onclick={{perform deleteTrack}}
+			class="Btn Btn--text Btn--danger u-alignRight"
+			title="Delete this track from your radio"
+			disabled={{deleteTrack.isRunning}}>
+			{{if deleteTrack.isIdle "Delete track" "Deleting track…"}}
+		</button>
+		{{/btn-group}}
+	</div>
+</div>
+
 {{#form-group
 		 model=track
 		 valuePath="url"
@@ -36,6 +50,14 @@
 	{{/if}}
 {{/form-group}}
 
+{{#form-group
+		 model=track
+		 valuePath="body"
+		 label="Description"
+		 hint="Give your track an optional description" as |value|}}
+	{{textarea value=value placeholder="Track description"}}<br>
+{{/form-group}}
+
 {{#if showDiscogsUI}}
 	{{#form-group
 			 model=track
@@ -45,7 +67,7 @@
 		{{focus-input
 				type="url"
 				value=value
-				placeholder="Paste in a Discogs link"}}
+				placeholder="Paste in a Discogs link (optional)"}}
 	{{/form-group}}
 	{{#if showDiscogsSearchSuggestion}}
 		<p>
@@ -68,17 +90,12 @@
 	{{/if}}
 {{/if}}
 
-{{#form-group
-		 model=track
-		 valuePath="body"
-		 label="Description"
-		 hint="Give your track an optional description" as |value|}}
-	{{textarea value=value placeholder="Track description"}}<br>
-{{/form-group}}
-
 <div class="Form-group">
 	<div class="BtnGroupWrapper BtnGroupWrapper--full">
 		{{#btn-group}}
+			<button {{action "cancel"}} class="Btn Btn--text" title="Stop editing the track">Cancel</button>
+		{{/btn-group}}
+		{{#btn-group class="BtnGroup--right"}}
 			<button
 				onclick={{perform submitTask}}
 				type="submit"
@@ -86,17 +103,6 @@
 				title="Save the track"
 				disabled={{submitDisabled}}>
 				{{if submitTask.isIdle "Save" "Saving…"}}
-			</button>
-
-			<button {{action "cancel"}} class="Btn Btn--text" title="Stop editing the track">Cancel</button>
-		{{/btn-group}}
-		{{#btn-group class="BtnGroup--right"}}
-			<button
-				onclick={{perform deleteTrack}}
-				class="Btn Btn--text Btn--danger u-alignRight"
-				title="Delete this track from your radio"
-				disabled={{deleteTrack.isRunning}}>
-				{{if deleteTrack.isIdle "Delete" "Deleting…"}}
 			</button>
 		{{/btn-group}}
 	</div>

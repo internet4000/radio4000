@@ -69,6 +69,10 @@ time {
 	font-style: italic;
 }
 
+li {
+	margin-bottom: 0.5rem;
+}
+
 // Normalize.css removes list styles. We want them back for <ol>.
 ol {
 	list-style: decimal;

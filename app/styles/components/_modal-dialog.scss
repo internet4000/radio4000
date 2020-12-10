@@ -5,7 +5,7 @@
 	border: 1px solid $mediumlightgray;
 	border-radius: $border-radius;
 	width: calc(100% - 2rem);
-	max-width: 500px;
+	max-width: 50em;
 	max-height: 95vh;
 	overflow: auto;
 }
@@ -14,4 +14,3 @@
 div.ember-modal-overlay.translucent {
 	background-color: $overlay-color;
 }
-

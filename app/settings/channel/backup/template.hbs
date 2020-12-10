@@ -2,16 +2,26 @@
 	<div class="Container">
 		<p>
 			You can export and save all data from this Radio4000 channel at any time.
-			The backup comes in the form of a <em>json</em> text file. Once opened,
-			you should save and store this file on your own device.
-			Preferably in a vault under the mountains.
+			The backup comes in the form of a <em>json</em> text file.
 		</p>
 		<p>
-			<a href="https://api.radio4000.com/backup?slug={{model.slug}}" rel="noopener" target="_blank" class="Btn">Create backup</a>
+			Download the file, and save it on your devices to create a backup.
 		</p>
 		<p>
-			Note, the backup does not contain any audio files, because they are hosted on YouTube.
-			It is also safe to share, no private information is included.
+			<a
+				href="https://api.radio4000.com/backup?slug={{model.slug}}"
+				rel="noopener"
+				target="_blank"
+				class="Btn"
+				title="Opens a new window, with all your channel's data represented in json format. Save this file on your device to make a backup."
+			>Create backup</a>
+		</p>
+		<p>
+			Note, the backup does not contain any media file. It is 100% text that you can read (json format), and re-use in other applications.
+			You own it, it is safe to share, as no private information is included (only tracks and channel informations).
+		</p>
+		<p>
+			If you are interested in a Command Line Application (CLI), you can use the javascript <a rel="noopener" target="_blank" href="https://www.npmjs.com/package/r4">npm package <code>r4</code></a> to synchronise your radio data.
 		</p>
 	</div>
 </section>
