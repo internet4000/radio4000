@@ -1,22 +1,24 @@
-import Ember from 'ember';
-import authenticatedRoute from 'radio4000/mixins/authenticated-route';
+import Route from '@ember/routing/route'
+import {inject as service} from '@ember/service'
+import {get} from '@ember/object'
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-const {get} = Ember;
+export default Route.extend(AuthenticatedRouteMixin, {
+	session: service(),
 
-export default Ember.Route.extend(authenticatedRoute, {
 	afterModel() {
 		const flashMessages = get(this, 'flashMessages');
 
-		// If we do not unload the user model, Firebase will warn about permissions.
-		let user = get(this, 'session.currentUser');
-		get(user, 'settings').then(s => {
-			if (s) {
-				s.unloadRecord();
-			}
-		});
-		user.unloadRecord();
+		// // If we do not unload the user model, Firebase will warn about permissions.
+		// let user = get(this, 'session.currentUser');
+		// get(user, 'settings').then(s => {
+		// 	if (s) {
+		// 		s.unloadRecord();
+		// 	}
+		// });
+		// user.unloadRecord();
 
-		get(this, 'session').close().then(() => {
+		this.session.invalidate().then(() => {
 			flashMessages.success(`You are now logged out. Bye!`);
 			this.replaceWith('auth.login');
 		});

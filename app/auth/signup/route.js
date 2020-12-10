@@ -1,10 +1,4 @@
-import Ember from 'ember';
-import {get} from '@ember/object'
+import Route from '@ember/routing/route'
+import UnauthenticatedRouteMixin from 'ember-simple-auth/mixins/unauthenticated-route-mixin'
 
-export default Ember.Route.extend({
-	beforeModel(transition) {
-		if (get(this, 'session.isAuthenticated')) {
-			return transition.send('redirectAfterAuth')
-		}
-	}
-});
+export default Route.extend(UnauthenticatedRouteMixin, {})

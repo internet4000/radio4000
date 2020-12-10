@@ -1,11 +1,10 @@
 /* eslint ember/no-on-calls-in-components:0 */
 
-import Ember from 'ember'
-import { array } from 'ember-awesome-macros'
+import Component from '@ember/component'
+import {computed, set, get} from '@ember/object'
+import {on} from '@ember/object/evented'
 import { EKMixin, keyUp } from 'ember-keyboard'
-import raw from 'ember-macro-helpers/raw'
-
-const { Component, computed, set, get } = Ember
+import { array } from 'ember-awesome-macros'
 
 export default Component.extend(EKMixin, {
 	classNames: ['TracksList'],
@@ -22,9 +21,10 @@ export default Component.extend(EKMixin, {
 	sortedItems: array.sort('items', ['created:desc']),
 
 	// Items grouped by month
-	groupedItems: array.groupBy('sortedItems', raw('createdMonth')),
+	groupKey: 'createdMonth',
+	groupedItems: array.groupBy('sortedItems', 'groupKey'),
 
-	focusSearch: Ember.on(keyUp('shift+KeyS'), function() {
+	focusSearch: on(keyUp('shift+KeyS'), function() {
 		this.element.querySelector('input[type="search"]').focus()
 	}),
 

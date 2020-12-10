@@ -1,6 +1,6 @@
-import DS from 'ember-data';
+import DS from 'ember-data'
 
-const {attr, belongsTo, hasMany} = DS;
+const {attr, belongsTo, hasMany} = DS
 
 export default DS.Model.extend({
 	isRemoteActive: attr('boolean'),
@@ -13,4 +13,4 @@ export default DS.Model.extend({
 	playedChannels: hasMany('channel', {
 		async: true
 	})
-});
+})

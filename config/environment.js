@@ -9,7 +9,7 @@ module.exports = function(environment) {
 		EmberENV: {
 			FEATURES: {
 				// Here you can enable experimental features on an ember canary build
-				// e.g. 'with-controller': true
+				// e.g. EMBER_NATIVE_DECORATOR_SUPPORT: true
 			},
 			EXTEND_PROTOTYPES: {
 				// Prevent Ember Data from overriding Date.parse.
@@ -34,10 +34,6 @@ module.exports = function(environment) {
 
 		stripe: {
 			key: 'pk_test_Ti8aYhMv1as1ZrbaZzaI8QOk'
-		},
-
-		torii: {
-			sessionServiceName: 'session'
 		},
 
 		flashMessageDefaults: {
@@ -78,6 +74,7 @@ module.exports = function(environment) {
 
 	if (environment === 'production') {
 		// here you can enable a production-specific feature
+
 		// Switch to live Firebase
 		ENV.firebase = {
 			apiKey: 'AIzaSyDu8ksQyO7t1hEAPjejIoA_xbMN7iiMakE',

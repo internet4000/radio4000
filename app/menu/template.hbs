@@ -1,7 +1,7 @@
 <section class="Sections Sections--center">
 	{{aside-navigation
 			isAuthenticated=session.isAuthenticated
-			userChannel=session.currentUser.channels.firstObject}}
+			userChannel=session.data.currentUser.channels.firstObject}}
 
 	<aside class="Container Container--small">
 		{{#unless hideUserAgreements}}

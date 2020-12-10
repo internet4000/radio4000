@@ -26,6 +26,9 @@ export default Route.extend({
 			return
 		}
 
+		// Fetch tracks.
+		model.get('tracks')
+
 		// Set meta tags
 		const headData = get(this, 'headData')
 		const description = model.get('body')

@@ -1,3 +1,5 @@
-import FirebaseAdapter from 'emberfire/adapters/firebase';
 
-export default FirebaseAdapter.extend({});
+import RealtimeDatabaseAdapter from 'emberfire/adapters/realtime-database';
+
+export default RealtimeDatabaseAdapter.extend({
+});

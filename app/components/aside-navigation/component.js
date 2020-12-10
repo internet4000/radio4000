@@ -1,11 +1,12 @@
-import Ember from 'ember';
-
-const {Component, get, inject} = Ember;
+import Component from '@ember/component'
+import {get} from '@ember/object'
+import {inject as service} from '@ember/service'
 
 export default Component.extend({
-	uiStates: inject.service(),
-	player: inject.service(),
-	session: inject.service(),
+	uiStates: service(),
+	player: service(),
+	session: service(),
+
 	tagName: 'aside',
 	ariaRole: 'navigation',
 	replace: true,

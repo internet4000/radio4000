@@ -1,15 +1,15 @@
-import Ember from 'ember'
 import DS from 'ember-data'
-import firebase from 'firebase'
+import {computed, get} from '@ember/object'
+import {inject as service} from '@ember/service'
 import {task} from 'ember-concurrency'
 import {and, hash} from 'ember-awesome-macros'
 import {validator, buildValidations} from 'ember-cp-validations'
 import channelConst from 'radio4000/utils/channel-const'
 import toggleObject from 'radio4000/utils/toggle-object'
 import {findHashtags} from 'radio4000/utils/hashtag'
+// import firebase from 'firebase/app'
 
 const {attr, hasMany, belongsTo} = DS;
-const {computed, inject, get} = Ember;
 
 const Validations = buildValidations({
 	title: [
@@ -54,12 +54,14 @@ const Validations = buildValidations({
 	*/
 
 export default DS.Model.extend(Validations, {
-	session: inject.service(),
-	flashMessages: inject.service(),
+	session: service(),
+	flashMessages: service(),
+	// firebaseApp: service(),
 
 	created: attr('number', {
 		defaultValue() {
-			return firebase.database.ServerValue.TIMESTAMP;
+			return new Date().getTime()
+			// return firebase.database.ServerValue.TIMESTAMP
 		}
 	}),
 	updated: attr('timestamp'),
@@ -86,7 +88,7 @@ export default DS.Model.extend(Validations, {
 	isInPlayer: false,
 
 	// Relationships.
-	tracks: hasMany('track', {async: true}),
+	tracks: hasMany('track'),
 	favoriteChannels: hasMany('channel', {inverse: null, async: true}),
 	channelPublic: belongsTo('channelPublic', {async: true}),
 
@@ -96,7 +98,7 @@ export default DS.Model.extend(Validations, {
 	}),
 
 	totalTracks: computed('tracks.[]', function () {
-		return this.hasMany('tracks').ids().length;
+		return this.hasMany('tracks').ids().length
 	}),
 
 	selectedHashtags: computed('body', function () {

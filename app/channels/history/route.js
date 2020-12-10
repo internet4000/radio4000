@@ -1,9 +1,8 @@
-import Ember from 'ember';
-import authenticatedRoute from 'radio4000/mixins/authenticated-route'
+import Route from '@ember/routing/route'
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin'
+import RSVP from 'rsvp';
 
-const {Route, RSVP} = Ember;
-
-export default Route.extend(authenticatedRoute, {
+export default Route.extend(AuthenticatedRouteMixin, {
 	model() {
 		return RSVP.hash({
 			userSettings: this.get('session.currentUser.settings')

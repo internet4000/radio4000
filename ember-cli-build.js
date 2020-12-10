@@ -7,8 +7,14 @@ module.exports = function (defaults) {
 		// Don't pollute our index.html with meta data.
 		storeConfigInMeta: false,
 
-		// Disable testing with localhost:4000/tests. Instead use `npm test`.
-		// tests: EmberApp.env() === 'test',
+		autoImport: {
+			webpack: {
+				node: {
+					// Polyfill node's `process` variable. Needed by Algolia.
+					process: 'mock'
+				}
+			}
+		},
 
 		// http://ember-service-worker.com/documentation/configuration/
 		'ember-service-worker': {

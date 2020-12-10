@@ -1,24 +1,11 @@
-import Ember from 'ember';
+import Component from '@ember/component'
 
-const {$} = Ember;
-
-export default Ember.Component.extend({
+export default Component.extend({
 	classNames: ['BtnGroup'],
 
-	didInsertElement() {
-		this._super()
-		this.attachButtonHandlers()
-	},
-
-	attachButtonHandlers() {
-		const $buttons = this.$().find('.Btn');
-
-		$buttons.on('click', event => {
-			const $clicked = $(event.currentTarget);
-			const $notClicked = $buttons.not($clicked);
-
-			$clicked.addClass('is-active');
-			$notClicked.removeClass('is-active');
-		});
+	click(event) {
+		const activeButton = this.element.querySelector('.Btn.is-active')
+		if (activeButton) activeButton.classList.remove('is-active')
+		event.target.classList.add('is-active')
 	}
-});
+})

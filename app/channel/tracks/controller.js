@@ -1,17 +1,17 @@
-import Ember from 'ember'
 import Controller from '@ember/controller'
-
-const {inject, get, $} = Ember;
+import jQuery from 'jquery'
+import {inject as service} from '@ember/service'
+import {get} from '@ember/object'
 
 export default Controller.extend({
-	player: inject.service(),
+	player: service(),
 	queryParams: ['search', 'locate'],
 	search: '',
 	locate: '',
 
 	getSelectionFromJets() {
-		const $els = $('.ListGroup .Track:visible')
-		const ids = $.map($els, el => el.getAttribute('data-track-id'))
+		const $els = jQuery('.ListGroup .Track:visible')
+		const ids = jQuery.map($els, el => el.getAttribute('data-track-id'))
 		if (ids.length) {
 			return ids
 		}
