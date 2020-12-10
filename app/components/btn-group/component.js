@@ -5,8 +5,7 @@ export default Component.extend({
 
 	click(event) {
 		const activeButton = this.element.querySelector('.Btn.is-active')
-
-		activeButton.classList.remove('is-active')
+		if (activeButton) activeButton.classList.remove('is-active')
 		event.target.classList.add('is-active')
 	}
 })
