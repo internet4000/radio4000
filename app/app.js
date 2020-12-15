@@ -8,6 +8,17 @@ import {debug} from '@ember/debug'
 import 'lazysizes/plugins/attrchange/ls.attrchange';
 import 'lazysizes';
 
+
+/* listener for window event change tab, source:
+	 https://github.com/mozilla/video-bg-play */
+window.addEventListener('visibilitychange', event => {
+	event.stopImmediatePropagation()
+}, true);
+window.addEventListener('fullscreenchange', event => {
+	event.stopImmediatePropagation()
+}, true);
+
+/* ember app */
 const App = Application.extend({
 	rootElement: '#Radio4000',
 	modulePrefix: config.modulePrefix,
