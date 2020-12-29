@@ -17,8 +17,6 @@
 			</form>
 		{{/if}}
 
-		<p>You can use any combination of email, google and facebook to sign in to Radio4000.</p>
-
 		{{account-provider-list
 				providerData=providerData
 				emailVerified=currentUser.emailVerified
@@ -26,30 +24,30 @@
 				resetPassword=(action "resetPassword")
 				verifyEmail=(action "verifyEmail")}}
 
-		<div class="ProviderAccounts">
-			{{#if hasEverything}}
-				<p class="Muted">There are no other accounts to connect.</p>
-			{{/if}}
-			{{#unless hasGoogle}}
-				{{account-provider-link
-						name="Google"
-						providerId="google.com"
-						disabled=hasGoogle
-						onLink=(action "linkAccount")}}
-			{{/unless}}
-			{{#unless hasFacebook}}
-				{{account-provider-link
-						name="Facebook"
-						providerId="facebook.com"
-						disabled=hasFacebook
-						onLink=(action "linkAccount")}}
-			{{/unless}}
-			{{#unless hasEmail}}
+		{{#unless hasEmail}}
+			<div class="ProviderAccounts">
+				<div class="Note">
+					<p>
+					</p>
+					<p>
+						Add an email address that <strong>you own</strong> (otherwise
+						you won't be able to retrieve a lost password, and we won't be
+						able to help!). You will be asked to confirm the new email (an email in your inbox).
+					</p>
+					<p>
+						Also use a strong and long enough password (four random
+						words separated by a random character?), and save it in a secure password manager.
+					</p>
+					<p>
+						If you make a mistake when writting the email address, you can remove  the newly added address.
+					</p>
+				</div>
+
 				{{account-email-link
 						name="Email"
 						onLink=(action "linkEmail")}}
-			{{/unless}}
-		</div>
+			</div>
+		{{/unless}}
 
 	</div>
 </section>

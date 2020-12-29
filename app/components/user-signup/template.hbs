@@ -31,30 +31,6 @@
 		{{/btn-group}}
 	</form>
 
-	<details>
-		<summary>
-			Otherwise, use a <strong>social provider signup</strong>
-		</summary>
-		<p>As a matter of convenience it is possible to create an account with an existing external provider. For privacy, it is recommended not to.</p>
-
-		{{user-agreements onAgreed=(action 'signUserAgreement')}}
-
-		<div class="BtnGroup BtnGroup--full">
-			<button
-				class="Btn Btn--large"
-				title="Sign up wtih your Google account"
-				{{action "submit" "google"}}
-				disabled={{cannotSignUp}}>
-				Google
-			</button>
-			<button
-				class="Btn Btn--large"
-				title="Signup with your Facebook account"
-				{{action "submit" "facebook"}}
-				disabled={{cannotSignUp}}>
-				Facebook
-			</button>
-		</div>
-	</details>
+	<p>It is <a href="https://blog.radio4000.com/posts/removing-social-providers-google-facebook-login/" target="_blank" rel="noopener">no more possible</a> to create an account with Google and Facebook</p>
 
 {{/if}}
