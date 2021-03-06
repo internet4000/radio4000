@@ -32,10 +32,10 @@ export default Controller.extend({
 						// because of our firebase rules which use the user relationship
 						this.deleteUserRelationshipFrom(channel)
 						set(this, 'isDeleting', false)
-						messages.success('Radio channel deleted. Farewell!', {
+						messages.success('Your radio channel has been deleted!', {
 							timeout: 10000
 						})
-						this.transitionToRoute('channels')
+						this.transitionToRoute('settings')
 					})
 				})
 			})

@@ -8144,16 +8144,16 @@ qunit@^2.5.0:
     resolve "1.5.0"
     walk-sync "0.3.2"
 
-radio4000-player@^0.6.14:
-  version "0.6.14"
-  resolved "https://registry.yarnpkg.com/radio4000-player/-/radio4000-player-0.6.14.tgz#9a229ae15971a72348a2e8a1f3e2526a34639845"
-  integrity sha512-ZBkk+MAEv63vspXNLvLV8sdqi3ympbcZXYoz9Vxi3tRni0hOSoi6+jshnGeJXxQ3U5UpeV92QZkILmkc0l5leA==
+radio4000-player@^0.6.16:
+  version "0.6.16"
+  resolved "https://registry.yarnpkg.com/radio4000-player/-/radio4000-player-0.6.16.tgz#f5232ed1e55eca6aa3a8dfcf29e9c7be6f5cdf67"
+  integrity sha512-xb48dVXSkISyiMm9r0zWA4WrenRFK6kblEmzTpKXuS6CMMLHwHLtLQTKJ1Av0YBpBAjsP2s48Z2HQrYhw1e34g==
   dependencies:
     "@vimeo/player" "^2.9.1"
     document-register-element "^1.8.1"
     lodash.debounce "^4.0.8"
     media-url-parser "^0.1.3"
-    unfetch "^3.0.0"
+    unfetch "^4.2.0"
     vue "^2.5.16"
     vue-custom-element "^3.2.6"
     youtube-player "^5.5.0"
@@ -9540,9 +9540,10 @@ underscore@>=1.8.3:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.9.1.tgz#06dce34a0e68a7babc29b365b8e74b8925203961"
 
-unfetch@^3.0.0:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/unfetch/-/unfetch-3.1.2.tgz#dc271ef77a2800768f7b459673c5604b5101ef77"
+unfetch@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/unfetch/-/unfetch-4.2.0.tgz#7e21b0ef7d363d8d9af0fb929a5555f6ef97a3be"
+  integrity sha512-F9p7yYCn6cIW9El1zi0HI6vqpeIvBsr3dSuRO6Xuppb1u5rXpCPmMvLSyECLhybr9isec8Ohl0hPekMVrEinDA==
 
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"
