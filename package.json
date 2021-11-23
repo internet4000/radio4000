@@ -40,7 +40,6 @@
     "ember-modal-dialog": "^3.0.0-beta.3",
     "ember-page-title": "^5.0.0",
     "ember-resolver": "^4.0.0",
-    "ember-service-worker": "^9.0.1",
     "ember-service-worker-asset-cache": "^0.6.4",
     "ember-service-worker-index": "^0.7.2",
     "ember-source": "~3.3.0",
