@@ -10,21 +10,6 @@ module.exports = function (defaults) {
 		// Disable testing with localhost:4000/tests. Instead use `npm test`.
 		// tests: EmberApp.env() === 'test',
 
-		// http://ember-service-worker.com/documentation/configuration/
-		// 'ember-service-worker': {
-		// 	enabled: EmberApp.env() === 'production',
-		// 	registrationStrategy: 'async',
-		// 	versionStrategy: 'every-build'
-		// },
-		// 'asset-cache': {
-		// 	include: ['assets/**/*', '**/*.html', 'index.html', '*.webmanifest']
-		// },
-		// 'esw-index': {
-		// 	excludeScope: [
-		// 		/\/favicon.png?$/
-		// 	]
-		// },
-
 		fingerprint: {
 			exclude: [
 				// favicons
