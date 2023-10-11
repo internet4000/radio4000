@@ -86,14 +86,11 @@ Lint scripts with:
 
 ## Deployment of the production version (radio4000.com)
 
-The site is hosted on netlify.com. Netlify deploys each branch and pull request automatically. 
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/a3870014-9717-4014-8cb2-ae448ffa1d76/deploy-status)](https://app.netlify.com/sites/radio4000/deploys)
+The site is hosted on Cloudflare pages and integrated with this git repository.
 
 - The `production` branch to https://radio4000.com ([request new deployment](https://github.com/internet4000/radio4000/compare/production...master?expand=1))
-- The `master` branch to https://master--radio4000.netlify.com
 
-> Branch deploys are lowercased and hyphenated. That is, a branch named `feat/my-feature` would result in the URL `feat-my-feature--radio4000.netlify.com`. It usually takes ~2 minutes from git push to deployment is live.
+It usually takes ~2 minutes from git push to deployment is live.
 
 See [contributing.md](https://github.com/internet4000/radio4000/blob/master/CONTRIBUTING.md) for more.
 
