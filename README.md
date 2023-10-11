@@ -55,8 +55,7 @@ To start developing on this project (namely radio4000, radio4000-cms,
 r4-cms), you will have to:
 
 1. have [git setup](https://help.github.com/en/github/getting-started-with-github/set-up-git).
-2. have [npm setup (recommended install:
-   nvm)](https://github.com/nvm-sh/nvm)
+2. have [npm setup (recommended install: nvm)](https://github.com/nvm-sh/nvm) with node version <= 12
 3. have the npm package [yarn set up](https://yarnpkg.com); it is then used as an alternative
    to npm in this project
 

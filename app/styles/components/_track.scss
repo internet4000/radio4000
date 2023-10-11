@@ -75,7 +75,7 @@
 	font-style: italic;
 	margin-bottom: 0;
 	word-break: break-word;
-
+	white-space: pre-wrap;
 	&:empty {
 		display: none;
 	}
