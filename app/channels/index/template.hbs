@@ -3,16 +3,31 @@
 		<div class="Container u-tc">
 			<h3>Welcome to Radio4000!</h3>
 			<p>
-				Start exploring by listening to one of these <a href="{{href-to 'about'}}">curated radio channels</a>.
+				Start exploring by listening to one of these
+				<a href="{{href-to 'about'}}">curated radio channels</a>.
 			</p>
 		</div>
 	{{/unless}}
 
+	<div class="Container u-tc">
+		<p>
+			The new r4 is almost here! Visit
+			<a href="https://beta.radio4000.com">beta.radio4000.com</a>
+			to give it a try. Feel free to give feedback on
+			<a
+				href="https://matrix.to/#/#radio4000:matrix.org"
+			>#radio4000:matrix.org</a>
+			community chat, or on
+			<a href="https://github.com/radio4000/components">github</a>
+		</p>
+	</div>
+
 	<section class="Container Container--full">
 		<div class="BtnGroup BtnGroup--center">
 			{{play-random-channel class="Btn--important"}}
-			<button {{action 'refreshSelection'}} class="Btn">
-				<i>⟳</i> Load new radios
+			<button {{action "refreshSelection"}} class="Btn">
+				<i>⟳</i>
+				Load new radios
 			</button>
 		</div>
 	</section>
@@ -26,8 +41,8 @@
 							{{channel-card channel=channel}}
 						</div>
 					{{/each}}
-			{{else}}
-					{{#if model.length }}
+				{{else}}
+					{{#if model.length}}
 						<div class="Grid-cell">
 							{{#is-loading}}
 								Loading featured radio channels…
@@ -42,7 +57,9 @@
 			</div>
 			{{#unless session.isAuthenticated}}
 				<div class="u-tc">
-					<p>You could also <a href={{href-to "auth.signup"}}>create a radio</a> for yourself.</p>
+					<p>You could also
+						<a href={{href-to "auth.signup"}}>create a radio</a>
+						for yourself.</p>
 				</div>
 			{{/unless}}
 		</div>
