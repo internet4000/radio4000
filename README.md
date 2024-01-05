@@ -94,6 +94,15 @@ It usually takes ~2 minutes from git push to deployment is live.
 
 See [contributing.md](https://github.com/internet4000/radio4000/blob/master/CONTRIBUTING.md) for more.
 
+Some times the Cloudflare Git integration doesn't trigger a deploy, then you can deploy manually as well:
+
+```
+# run locally
+nvm use 12
+yarn build
+wrangler pages deploy dist --project-name radio4000 --branch production
+```
+
 ## Backend (api.radio4000.com)
 
 We use Google's Firebase as our backend (database and API, on Google
